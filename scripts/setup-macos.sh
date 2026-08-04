@@ -13,6 +13,22 @@ ASSET_REMOTE=""
 ASSET_ENDPOINT=""
 ASSET_PROFILE=""
 
+find_smart_merge() {
+  local unity_contents candidate
+  unity_contents="$(cd -- "$(dirname -- "$UNITY_EDITOR")/.." && pwd)"
+
+  for candidate in \
+    "$unity_contents/Helpers/UnityYAMLMerge" \
+    "$unity_contents/Tools/UnityYAMLMerge"; do
+    if [[ -x "$candidate" ]]; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
 usage() {
   printf 'Usage: %s [--install-tools] [--open-unity] [--all] [--asset-remote URL] [--asset-endpoint URL] [--asset-profile NAME]\n' "$0"
 }
@@ -100,8 +116,7 @@ else
 fi
 
 if [[ -x "$UNITY_EDITOR" ]]; then
-  SMART_MERGE="$(cd -- "$(dirname -- "$UNITY_EDITOR")/.." && pwd)/Tools/UnityYAMLMerge"
-  if [[ -x "$SMART_MERGE" ]]; then
+  if SMART_MERGE="$(find_smart_merge)"; then
     git config --local merge.unityyamlmerge.name "Unity SmartMerge"
     git config --local merge.unityyamlmerge.driver "\"$SMART_MERGE\" merge -p %O %B %A %A"
     git config --local merge.unityyamlmerge.recursive binary
