@@ -19,8 +19,8 @@ propre PR.
 
 | Élément | Chemin | Origine |
 |---|---|---|
-| Labyrinthe | `Assets/_Project/Maze/Maze16x16.fbx` | export Blender `maze_16x16` (seed 89131092) |
-| Grille logique | `Assets/_Project/Maze/MazeGrid16x16.json` | même générateur, sert aux points d'apparition |
+| Labyrinthe | `Assets/_Project/Maze/Maze16x16.fbx` | `tools/maze-3d/build_maze.py` du dépôt de préproduction |
+| Grille logique | `Assets/_Project/Maze/MazeGrid16x16.json` | `tools/maze-forge/maps/maze_16_16x16.json` (seed 1704) |
 | Personnage | `Assets/_Project/Player/PersoBoule.fbx` | espèce « boule » du character creator |
 | Déplacement | `Assets/_Project/Runtime/Player/PlayerMotor.cs` | — |
 | Générateur de scène | `Assets/_Project/Editor/MazePlaytestBuild.cs` | — |
@@ -34,18 +34,41 @@ scène du test de connexion. Personne n'a donc à revendiquer la scène.
 Les FBX sortent de Blender avec la convention Unity (`axis_forward=-Z`,
 `axis_up=Y`, 1 unité = 1 m) : aucune correction n'est appliquée à l'import.
 
-- grille 16 x 16, cellule 4 m, murs statiques 3,2 m, map centrée sur l'origine ;
-- conversion Blender `(x, y, z)` vers Unity `(x, z, -y)` ;
-- les trois entrées sont côté **+Z**, le trésor côté **-Z** ;
+- couloir 2,50 m, murs 3,00 m de haut et 0,25 m d'épaisseur, donc un **pas de
+  grille de 2,75 m** ; emprise 44 x 44 m, map centrée sur l'origine ;
+- conversion Blender `(x, y, z)` vers Unity `(-x, z, -y)` — l'export
+  `axis_forward=-Z` fait pivoter la scène d'un demi-tour, **les deux** axes du
+  plan changent de signe ;
+- les **quatre** entrées sont côté **+Z**, le trésor côté **-Z** ;
 - personnage 1,40 m, origine aux pieds, yeux à 1,05 m.
 
-Les valeurs de cellule et de mur de la map générée (4 m / 3,2 m) diffèrent de la
-cible du concept (2,5 m / 3,0 m). C'est justement ce que ce test doit trancher :
-noter la sensation d'espace dans l'issue avant de figer la grille.
+Ces cotes sont celles du tableau d'échelle physique du concept : elles ne se
+règlent pas ici. Le pas de 2,75 m est la conséquence des deux premières valeurs,
+pas un réglage indépendant.
+
+Le `GridPitch` de `MazePlaytestBuild` duplique cette constante parce que la
+grille JSON ne la transporte pas. S'il s'écarte de `build_maze.py`, les
+apparitions tombent à côté des entrées.
+
+## Collisions
+
+Le FBX embarque de la végétation et des props denses. Poser un MeshCollider sur
+tout ferait cuire des millions de triangles pour rien : l'import ne génère aucun
+collider, et `MazePlaytestBuild` en pose un sur les seuls objets qui arrêtent le
+joueur — `Murs_Statiques`, `Bras_Pivots`, `Pivot_*`, `Sol_Dalles`, `Sol_Sable`,
+`Reperes_Gameplay` et `Props`. Seule `Vegetation` reste traversable : mousses,
+lierres et buissons doivent pouvoir être longés. La génération échoue si aucun de
+ces noms n'existe, pour que le renommage d'un objet dans le générateur ne
+produise pas silencieusement une map qu'on traverse.
 
 ## Lancer
 
-Les joueurs apparaissent sur les trois entrées, face au trésor.
+Les joueurs se répartissent sur les quatre entrées, dans la cellule du seuil,
+tournés vers le couloir le plus dégagé. Toutes les cellules d'entrée ne sont pas
+ouvertes vers l'intérieur et le générateur sème des gravats jusque dans les
+couloirs : la position et l'orientation sont donc mesurées sur la géométrie, pas
+déduites de la grille. `MazePlaytestBuild` refuse de produire la scène si une
+apparition n'a pas de sol, chevauche un collider ou n'a pas un pas de dégagement.
 
 ### Une seule machine
 

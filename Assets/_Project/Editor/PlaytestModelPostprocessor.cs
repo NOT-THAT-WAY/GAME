@@ -28,10 +28,11 @@ namespace NotThatWay.Game.Editor
             importer.animationType = ModelImporterAnimationType.None;
             importer.importConstraints = false;
 
-            // Le décor est statique : un MeshCollider par maillage suffit et évite
-            // de dessiner les collisions à la main. Le joueur, lui, utilise un
-            // CharacterController et ne doit porter aucun collider de maillage.
-            importer.addCollider = assetPath == MazeModelPath;
+            // Aucun collider automatique : le labyrinthe embarque de la végétation et
+            // des props denses qu'il serait absurde de faire cuire en MeshCollider.
+            // MazePlaytestBuild pose les colliders sur les seuls objets qui bloquent
+            // réellement le joueur. Le personnage, lui, utilise un CharacterController.
+            importer.addCollider = false;
         }
     }
 }
