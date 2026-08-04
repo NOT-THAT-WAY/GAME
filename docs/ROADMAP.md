@@ -2,7 +2,7 @@
 
 ## Position actuelle
 
-Le premier import Unity et un test local hôte/client sur Mac sont validés. Le profil distant Tailscale est automatisé, mais il n'existe pas encore de preuve produite par les trois machines ; le projet reste donc en **M0 — fondations**.
+Le premier import Unity et un test local hôte/client sur Mac sont validés. Le profil distant Tailscale est automatisé, mais il n'existe pas encore de preuve produite par les trois machines ; le projet reste donc en **M0 — fondations**. DVC, Wwise et Steam ne bloquent pas ce jalon.
 
 ## Priorités immédiates
 
@@ -15,10 +15,10 @@ Déjà terminé : premier import Unity, lockfile et migrations déterministes vi
 | P0 | ouverture propre sur le second Mac | Sean | Nils | doctor vert et aucun diff après ouverture/fermeture |
 | P0 | validation Windows IL2CPP | propriétaire du PC / Zak | Nils | exécutable lancé, log archivé dans l'issue |
 | P0 | connexion distante à trois via Tailscale + Tugboat | Zak | les deux autres | Zak, Sean, Nils visibles dans le roster depuis trois réseaux |
-| P1 | choisir le remote DVC privé, créer trois accès et restaurer un lot test | Nils | Zak | pull/push/restauration Mac + Windows avant le premier master |
 | P1 | blockout du pivot en T et échelle joueur | Sean | Zak | scène grise comprise sans explication |
-| P1 | gate Wwise Mac/Windows | Nils | Sean | événement sonore dans deux builds |
 | P1 | registre licences/données du premier lot | Zak | Sean | provenance et restrictions complètes |
+| P2 | choisir le remote DVC privé au premier master lourd | Nils | Zak | pull/push/restauration Mac + Windows avant de partager ce master |
+| P2 | gate Wwise Mac/Windows après le premier gameplay | Nils | Sean | événement sonore dans deux builds |
 | P2 | transport Steam | Zak | Nils | connexion réelle entre deux comptes |
 
 Le testeur externe du lot n'est ni son pilote ni son binôme. Les chapeaux tournent au lot suivant.
@@ -28,13 +28,11 @@ Le dépôt privé gratuit utilise le contrat local partagé : pas de push direct
 ## M0 — définition de terminé
 
 - les trois diagnostics passent ;
-- le remote DVC utilise des comptes individuels, le versioning objet et une sauvegarde restaurable ;
 - le projet s'ouvre sans resérialisation massive sur les trois machines ;
 - un build Windows Development IL2CPP se lance ;
-- les trois machines rejoignent la même session Tugboat depuis leurs réseaux respectifs ;
-- la scène contient une échelle joueur cohérente et un pivot en T lisible ;
-- Wwise compile et joue un événement minimal sur Mac/Windows, ou une décision écrite le reporte ;
-- licences et provenance du premier lot d'assets sont enregistrées.
+- les trois machines rejoignent la même session Tugboat depuis leurs réseaux respectifs.
+
+Le coffre DVC s'ouvre avant de partager le premier master lourd ou irremplaçable. Wwise s'ouvre après le premier gameplay testable, avec Nils comme seul poste Authoring au départ. Steam attend que Tailscale ait prouvé la connexion. Ces trois chantiers restent prévus, mais ne retardent pas l'onboarding.
 
 ## M1 — duel de pivot
 

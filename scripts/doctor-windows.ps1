@@ -12,6 +12,11 @@ Get-Content $ToolchainPath | ForEach-Object {
 }
 $ExpectedUnity = $Toolchain["UNITY_VERSION"]
 $ExpectedDvcMajor = $Toolchain["DVC_MAJOR_VERSION"]
+$DvcPointers = if (Get-Command git -ErrorAction SilentlyContinue) {
+    @(& git -C $RepoRoot ls-files "*.dvc" 2>$null | Where-Object { $_ -notmatch '^\.dvc/' })
+} else {
+    @()
+}
 $DefaultEditor = "C:\Program Files\Unity\Hub\Editor\$ExpectedUnity\Editor\Unity.exe"
 $UnityEditor = if ($env:GAME_UNITY_EDITOR) { $env:GAME_UNITY_EDITOR } else { $DefaultEditor }
 $ErrorCount = 0
@@ -42,8 +47,18 @@ if (Test-Command "git-lfs") {
 
 if (Test-Command "dvc") {
     $DvcVersion = (& dvc --version 2>$null) -join ""
-    if ($DvcVersion -match "^$([regex]::Escape($ExpectedDvcMajor))\.") { Write-Ok "DVC $DvcVersion" } else { Write-Fail "DVC majeur $ExpectedDvcMajor attendu, version trouvee: $DvcVersion" }
-} else { Write-Fail "DVC absent" }
+    if ($DvcVersion -match "^$([regex]::Escape($ExpectedDvcMajor))\.") {
+        Write-Ok "DVC $DvcVersion"
+    } elseif ($DvcPointers.Count -gt 0) {
+        Write-Fail "DVC majeur $ExpectedDvcMajor attendu, version trouvee: $DvcVersion"
+    } else {
+        Write-Warn "DVC $DvcVersion present mais hors version attendue - optionnel avant le premier master"
+    }
+} elseif ($DvcPointers.Count -gt 0) {
+    Write-Fail "DVC absent alors que des masters sont references"
+} else {
+    Write-Warn "DVC absent - normal avant le premier master"
+}
 
 $HubCandidates = @(
     "$env:ProgramFiles\Unity Hub\Unity Hub.exe",
@@ -55,8 +70,14 @@ if ($HubCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1) { W
 $SmartMerge = $null
 if (Test-Path $UnityEditor) {
     Write-Ok "Unity $ExpectedUnity trouve"
+    $EditorDirectory = Split-Path $UnityEditor -Parent
     $SmartMerge = Join-Path (Split-Path $UnityEditor -Parent) "Data\Tools\UnityYAMLMerge.exe"
     if (Test-Path $SmartMerge) { Write-Ok "UnityYAMLMerge trouve" } else { Write-Fail "UnityYAMLMerge introuvable" }
+    $WindowsVariations = Join-Path $EditorDirectory "Data\PlaybackEngines\windowsstandalonesupport\Variations"
+    $Il2CppVariation = Get-ChildItem $WindowsVariations -Directory -ErrorAction SilentlyContinue |
+        Where-Object { $_.Name -match 'il2cpp' } |
+        Select-Object -First 1
+    if ($Il2CppVariation) { Write-Ok "Windows Build Support IL2CPP detecte" } else { Write-Fail "Windows Build Support IL2CPP absent dans Unity Hub" }
 } else { Write-Fail "Unity $ExpectedUnity absent (ou GAME_UNITY_EDITOR incorrect)" }
 
 Set-Location $RepoRoot
@@ -85,7 +106,6 @@ if (Test-Command "git") {
         if ($LASTEXITCODE -eq 0 -and $DvcRemotes -match '(?m)^assets\s') {
             Write-Ok "Remote externe 'assets' configure localement"
         } else {
-            $DvcPointers = @(& git ls-files "*.dvc" | Where-Object { $_ -notmatch '^\.dvc/' })
             if ($DvcPointers.Count -gt 0) { Write-Fail "Des assets DVC existent mais le remote 'assets' n'est pas configure" } else { Write-Warn "Remote externe 'assets' non configure - aucun master n'est encore requis" }
         }
     }
@@ -107,7 +127,10 @@ try {
 }
 
 $VsWhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
-if (Test-Path $VsWhere) { Write-Ok "Visual Studio detecte" } else { Write-Warn "Visual Studio 2022 non detecte" }
+if (Test-Path $VsWhere) {
+    $VsInstallation = (& $VsWhere -latest -products * -requires Microsoft.VisualStudio.Workload.ManagedGame Microsoft.VisualStudio.Workload.NativeDesktop -property installationPath 2>$null) -join ""
+    if ($VsInstallation) { Write-Ok "Visual Studio Unity + C++ detecte" } else { Write-Fail "Visual Studio doit inclure Game development with Unity et Desktop development with C++" }
+} else { Write-Fail "Visual Studio 2022 non detecte" }
 
 $WwiseCandidates = @(
     "${env:ProgramFiles(x86)}\Audiokinetic\Launcher\WwiseLauncher.exe",

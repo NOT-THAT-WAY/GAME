@@ -7,11 +7,11 @@ L'objectif est que les trois machines ouvrent le même projet avec les mêmes ve
 | Étape | Qui | Résultat attendu |
 |---|---|---|
 | 0. Accès | les trois | accès GitHub, MFA, clone sur disque local |
-| 1. Outils | les trois | Git/LFS, DVC, Unity Hub, IDE, Tailscale |
-| 2. Coffre externe | administrateur puis les trois | remote privé, credentials individuels, pull test |
+| 1. Outils | les trois | Git/LFS, Unity Hub, IDE, Tailscale |
+| 2. Coffre externe | plus tard | DVC seulement au premier master lourd |
 | 3. Premier import | terminé sur Mac pilote | packages résolus et lockfile commité |
 | 4. Validation croisée | Windows + second Mac | aucun changement parasite, build Windows IL2CPP |
-| 5. Connexion | les trois | roster FishNet partagé sur le LAN |
+| 5. Connexion | les trois | roster FishNet partagé depuis leurs réseaux via Tailscale |
 | 6. Wwise | Nils puis builds Mac/Windows | Authoring centralisé, runtime identique pour tous |
 | 7. Steam | après LAN | transport ajouté sans casser Tugboat |
 
@@ -19,15 +19,15 @@ L'objectif est que les trois machines ouvrent le même projet avec les mêmes ve
 
 Commun aux trois postes :
 
-- Git, Git LFS et DVC 3.x ;
+- Git et Git LFS ;
 - Unity Hub et Unity `6000.3.20f1` ;
 - un éditeur C# avec son intégration Unity ;
 - Tailscale pour le réseau privé de développement lorsque chacun travaille depuis chez soi ;
-- accès individuel au GitHub privé et au remote d'assets.
+- accès individuel au GitHub privé.
 
 Sur les Mac Apple Silicon, le script installe Visual Studio Code et l'extension Unity de Microsoft, puis ouvre l'éditeur Unity Apple Silicon attendu. Un seul Mac a besoin du module Windows Build Support (Mono) si l'équipe veut produire un build de fumée non officiel depuis macOS.
 
-Sur Windows, ajouter Windows Build Support (IL2CPP) et Visual Studio 2022 avec « Game development with Unity ». Le PC reste la source de vérité des builds Windows natifs.
+Sur Windows, ajouter Windows Build Support (IL2CPP) et Visual Studio 2022 avec « Game development with Unity » **et** les outils C++/Windows SDK de « Desktop development with C++ ». Le PC reste la source de vérité des builds Windows natifs.
 
 Wwise et Steam ne sont pas nécessaires au premier test. Tailscale ne remplace pas Steam dans le jeu final : il relie seulement les machines de développement distantes.
 
@@ -45,7 +45,7 @@ cd GAME
 Avec un remote déjà choisi, la même commande peut tout configurer :
 
 ```bash
-./scripts/setup-macos.sh --all --remote-play --asset-remote "REMPLACER_PAR_URL_DVC"
+./scripts/setup-macos.sh --all --remote-play --with-assets --asset-remote "REMPLACER_PAR_URL_DVC"
 ```
 
 Pour un service S3-compatible :
@@ -53,6 +53,7 @@ Pour un service S3-compatible :
 ```bash
 ./scripts/setup-macos.sh --all \
   --remote-play \
+  --with-assets \
   --asset-remote "s3://<bucket>/game" \
   --asset-endpoint "https://<endpoint>" \
   --asset-profile "game-assets"
@@ -60,10 +61,10 @@ Pour un service S3-compatible :
 
 Le script :
 
-- installe ou vérifie Git, LFS, DVC, GitHub CLI, Unity Hub et Visual Studio Code via Homebrew ;
+- installe ou vérifie Git, LFS, GitHub CLI, Unity Hub et Visual Studio Code via Homebrew ;
 - installe l'extension Unity pour VS Code, qui apporte les dépendances C# ;
 - installe et ouvre Tailscale sans créer ni stocker de clé d'authentification ;
-- récupère les objets Git LFS et, si configurés, les lots DVC ;
+- récupère les objets Git LFS ; DVC n'est installé et synchronisé qu'avec `--with-assets` ;
 - configure UnityYAMLMerge ;
 - ouvre Unity Hub sur la version exacte ;
 - lance le diagnostic.
@@ -101,12 +102,13 @@ Avec le remote :
 powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 `
   -All `
   -RemotePlay `
+  -WithAssets `
   -AssetRemote "s3://<bucket>/game" `
   -AssetEndpoint "https://<endpoint>" `
   -AssetProfile "game-assets"
 ```
 
-Le script installe via `winget` Git/LFS, DVC, GitHub CLI, Unity Hub, Visual Studio et Tailscale, puis prépare LFS, DVC et Smart Merge. Visual Studio, Unity et l'extension VPN peuvent demander une élévation ou une confirmation interactive.
+Le script installe via `winget` Git/LFS, GitHub CLI, Unity Hub, Visual Studio et Tailscale, puis prépare LFS et Smart Merge. DVC n'est ajouté qu'avec `-WithAssets`. Visual Studio, Unity et l'extension VPN peuvent demander une élévation ou une confirmation interactive.
 
 Après l'installation Unity :
 
@@ -140,7 +142,7 @@ Lorsque les membres ne partagent pas le même Wi-Fi, suivre [REMOTE_CONNECTION_T
 
 Wwise `2025.1.4` est intégré sur une branche dédiée seulement après une compilation propre. Nils est le seul poste Wwise Authoring au départ. Il versionne dans la même PR l'intégration runtime et les SoundBanks approuvées via Git LFS ; Sean et Zak les récupèrent comme les autres assets et ne lancent jamais une intégration locale. Un événement minimal doit fonctionner dans un build Mac et Windows avant le merge.
 
-Steamworks.NET/FishySteamworks arrive après un test LAN vert. Tugboat reste toujours disponible, notamment parce que les tests Steam multi-instance locaux sont limités par les comptes Steam.
+Steamworks.NET/FishySteamworks arrive après un test distant Tugboat vert. Tugboat reste toujours disponible, notamment parce que les tests Steam multi-instance locaux sont limités par les comptes Steam.
 
 ## Quand une machine est intégrée
 

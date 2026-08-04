@@ -6,6 +6,10 @@ REPO_ROOT="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 TOOLCHAIN_FILE="$REPO_ROOT/config/toolchain.env"
 EXPECTED_UNITY="$(sed -n 's/^UNITY_VERSION=//p' "$TOOLCHAIN_FILE")"
 EXPECTED_DVC_MAJOR="$(sed -n 's/^DVC_MAJOR_VERSION=//p' "$TOOLCHAIN_FILE")"
+DVC_POINTER_COUNT=0
+if command -v git >/dev/null 2>&1; then
+  DVC_POINTER_COUNT="$(git -C "$REPO_ROOT" ls-files '*.dvc' 2>/dev/null | awk '!/^\.dvc\// { count++ } END { print count + 0 }')"
+fi
 DEFAULT_EDITOR="/Applications/Unity/Hub/Editor/$EXPECTED_UNITY/Unity.app/Contents/MacOS/Unity"
 UNITY_EDITOR="${GAME_UNITY_EDITOR:-$DEFAULT_EDITOR}"
 VSCODE_APP="/Applications/Visual Studio Code.app"
@@ -78,11 +82,15 @@ if command -v dvc >/dev/null 2>&1; then
   DVC_VERSION="$(dvc --version)"
   if [[ "$DVC_VERSION" == "$EXPECTED_DVC_MAJOR".* ]]; then
     ok "DVC $DVC_VERSION"
-  else
+  elif (( DVC_POINTER_COUNT > 0 )); then
     fail "DVC majeur $EXPECTED_DVC_MAJOR attendu, version trouvée: $DVC_VERSION"
+  else
+    warn "DVC $DVC_VERSION présent mais hors version attendue — optionnel avant le premier master"
   fi
+elif (( DVC_POINTER_COUNT > 0 )); then
+  fail "DVC absent alors que des masters sont référencés"
 else
-  fail "DVC absent"
+  warn "DVC absent — normal avant le premier master"
 fi
 
 if [[ -d "/Applications/Unity Hub.app" ]]; then
@@ -160,7 +168,6 @@ fi
 if command -v dvc >/dev/null 2>&1 && dvc remote list 2>/dev/null | awk '$1 == "assets" { found=1 } END { exit !found }'; then
   ok "Remote externe 'assets' configuré localement"
 else
-  DVC_POINTER_COUNT="$(git ls-files '*.dvc' | grep -v '^\.dvc/' | wc -l | tr -d ' ')"
   if (( DVC_POINTER_COUNT > 0 )); then
     fail "Des assets DVC existent mais le remote 'assets' n'est pas configuré"
   else

@@ -1,5 +1,13 @@
 # Pipeline des assets
 
+## Capacité disponible au départ
+
+Mesure du 4 août 2026 : le dépôt `GAME` fait environ **164 Kio**, ne contient encore **aucun objet Git LFS** et ne référence aucun lot DVC. Les deux autres machines peuvent donc cloner et construire le projet sans attendre le coffre de masters.
+
+L'organisation GitHub est sur le plan Free : elle inclut actuellement [**10 Gio de stockage Git LFS** et **10 Gio de téléchargement LFS par mois**](https://docs.github.com/en/billing/concepts/product-billing/git-lfs), avec une [limite de **2 Gio par fichier**](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage). Ce quota couvre les exports nécessaires au build, pas les `.blend`, PSD, sessions DAW ou prises brutes. Comme deux nouveaux clones retéléchargent chacun les objets LFS, l'équipe garde un budget interne de **2 Gio maximum d'exports actifs** pendant le prototype et vérifie la page Billing avant tout gros lot.
+
+Le remote DVC n'a pas encore de capacité partagée car aucun fournisseur n'est configuré. Ce n'est pas nécessaire pour installer les trois postes : aucun master n'est encore référencé. Le choix du coffre est reporté au premier gros fichier source ; Cloudflare R2 Standard reste un candidat économique à comparer à ce moment-là.
+
 ## Quatre niveaux, une vérité par niveau
 
 | Zone | Contenu | Stockage de référence |
@@ -31,6 +39,7 @@ Le responsable du stockage communique uniquement l'URL du remote et la méthode 
 macOS :
 
 ```bash
+./scripts/setup-macos.sh --install-tools --with-assets
 ./scripts/assets-macos.sh configure "s3://game-assets-production/dvc"
 ./scripts/assets-macos.sh pull
 ```
@@ -38,6 +47,7 @@ macOS :
 Windows :
 
 ```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -InstallTools -WithAssets
 .\scripts\assets-windows.ps1 -Action Configure -RemoteUrl "s3://game-assets-production/dvc"
 .\scripts\assets-windows.ps1 -Action Pull
 ```

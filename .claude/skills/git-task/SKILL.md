@@ -12,7 +12,7 @@ Exécuter le workflow au lieu de seulement donner les commandes.
 1. Lire `git status --short --branch` et les règles de `docs/WORKFLOW.md`.
 2. Ne jamais effacer, stasher ou déplacer des changements existants sans accord explicite.
 3. Ne jamais travailler ni pousser directement sur `main`.
-4. Ne jamais utiliser `--no-verify` ou `GAME_ALLOW_MAIN_PUSH=1`.
+4. Ne jamais utiliser `--no-verify`, modifier le hook local ou pousser `main` depuis une autre interface.
 
 ## Commencer
 
@@ -41,4 +41,4 @@ Si une branche valide contient déjà le travail demandé, la conserver au lieu 
 4. Publier avec un titre de PR correspondant :
    - macOS : `./scripts/publish-task.sh "TYPE: résultat testable"`
    - Windows : `.\scripts\publish-task.ps1 "TYPE: résultat testable"`
-5. Rendre le lien de la PR et l'état des contrôles. Ne merger que sur demande explicite ou si la demande initiale incluait clairement la livraison complète.
+5. Rendre le lien de la PR et l'état des contrôles. Ne pas demander automatiquement une revue à Zak ou Sean : Nils gère l'intégration. Ne merger que sur demande explicite de Nils ou si sa demande initiale incluait clairement la livraison complète.

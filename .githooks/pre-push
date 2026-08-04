@@ -16,9 +16,8 @@ while read -r LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA; do
   fi
 done
 
-if (( DIRECT_MAIN_PUSH == 1 )) && [[ "${GAME_ALLOW_MAIN_PUSH:-0}" != "1" ]]; then
+if (( DIRECT_MAIN_PUSH == 1 )); then
   printf 'Push direct vers main refusé. Créez une branche et ouvrez une pull request.\n' >&2
-  printf 'Urgence administrateur uniquement: GAME_ALLOW_MAIN_PUSH=1 git push ...\n' >&2
   exit 1
 fi
 
