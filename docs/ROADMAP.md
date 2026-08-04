@@ -2,18 +2,20 @@
 
 ## Position actuelle
 
-Le socle est préparé, mais il n'existe pas encore de preuve produite par les trois machines. Le projet est donc toujours en **M0 — fondations**.
+Le premier import Unity et un test local hôte/client sur Mac sont validés. Il n'existe pas encore de preuve produite par les trois machines ; le projet reste donc en **M0 — fondations**.
 
 ## Priorités immédiates
 
 Faire ces lots dans l'ordre. Les noms désignent une affinité de départ ; le propriétaire réel du poste ou la disponibilité prime.
 
+Déjà terminé : premier import Unity, lockfile et migrations déterministes via la PR #10 ; deux instances Mac se sont authentifiées avec un roster local à deux.
+
 | Priorité | Lot | Affinité pilote | Binôme | Preuve attendue |
 |---:|---|---|---|---|
-| P0 | choisir le remote DVC privé, créer trois accès et restaurer un lot test | Nils | Zak | pull/push/restauration Mac + Windows |
-| P0 | premier import Unity et lockfile | Nils | Sean | PR propre avec `packages-lock.json` |
+| P0 | ouverture propre sur le second Mac | Sean | Nils | doctor vert et aucun diff après ouverture/fermeture |
 | P0 | validation Windows IL2CPP | propriétaire du PC / Zak | Nils | exécutable lancé, log archivé dans l'issue |
 | P0 | connexion LAN à trois via Tugboat | Zak | les deux autres | Zak, Sean, Nils visibles dans le roster |
+| P1 | choisir le remote DVC privé, créer trois accès et restaurer un lot test | Nils | Zak | pull/push/restauration Mac + Windows avant le premier master |
 | P1 | blockout du pivot en T et échelle joueur | Sean | Zak | scène grise comprise sans explication |
 | P1 | gate Wwise Mac/Windows | Nils | Sean | événement sonore dans deux builds |
 | P1 | registre licences/données du premier lot | Zak | Sean | provenance et restrictions complètes |
@@ -21,7 +23,7 @@ Faire ces lots dans l'ordre. Les noms désignent une affinité de départ ; le p
 
 Le testeur externe du lot n'est ni son pilote ni son binôme. Les chapeaux tournent au lot suivant.
 
-Le plan GitHub actuel ne permet pas encore la protection serveur d'une branche privée. Le hook local bloque les pushes directs vers `main`, mais l'activation de la règle serveur « PR + une approbation + CI » reste une action d'administration à faire lors du passage au plan adapté.
+Le dépôt privé gratuit utilise le contrat local partagé : pas de push direct vers `main`, préfixe de branche contrôlé, PR et CI. Une protection serveur absolue pourra être ajoutée plus tard, mais elle n'est pas nécessaire pour démarrer à trois.
 
 ## M0 — définition de terminé
 

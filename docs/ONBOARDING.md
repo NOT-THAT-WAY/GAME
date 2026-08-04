@@ -12,7 +12,7 @@ Cette procédure est la référence pour le premier démarrage. On prépare **d'
 - une scène de test FishNet générée au build ;
 - la CI et les gardes-fous contre caches, secrets, gros fichiers et `.meta` manquants.
 
-Il reste deux initialisations réelles : laisser Unity créer le lockfile sur le Mac pilote, puis choisir le fournisseur du coffre DVC. Ces deux actions sont indépendantes ; le test réseau peut avancer sans coffre.
+Le lockfile Unity est mergé depuis la PR #10 et le test hôte/client local Mac est vert. Il reste à valider l'ouverture sur le second Mac, le build Windows, la connexion LAN à trois et, indépendamment, le fournisseur du coffre DVC.
 
 ## Initialisation assistée par Claude Code
 
@@ -91,43 +91,9 @@ Quand Hub a terminé, relancer :
 
 Le remote DVC, Wwise et Steam peuvent apparaître en avertissement. C'est normal à ce stade. Une ligne `[FAIL]` sur Git, LFS, DVC ou Unity doit être corrigée avant d'ouvrir le projet.
 
-### 1.3 Faire le premier import Unity
+### 1.3 Premier import Unity — terminé
 
-Créer la branche **avant** d'ouvrir Unity :
-
-```bash
-git switch -c chore/first-unity-import
-```
-
-Dans Unity Hub, ajouter/ouvrir le dossier `GAME` avec la version exacte. Puis :
-
-1. dans `Unity > Settings/Preferences > External Tools`, choisir Visual Studio Code ;
-2. attendre la fin de l'import et de la résolution des packages ;
-3. vérifier qu'il n'y a aucune erreur rouge dans la Console ;
-4. lancer `GAME > Validate Project Setup` ;
-5. ouvrir `Assets/Scenes/SampleScene.unity` ;
-6. entrer puis sortir du Play Mode ;
-7. fermer complètement Unity.
-
-Contrôler le résultat :
-
-```bash
-./scripts/doctor-macos.sh
-git status --short
-```
-
-Le changement principal attendu est `Packages/packages-lock.json`. Examiner toute autre migration au lieu de faire un `git add .` aveugle.
-
-```bash
-git add Packages/packages-lock.json
-# Ajouter individuellement une éventuelle migration Unity vérifiée.
-git diff --cached
-git commit -m "chore: lock first Unity import"
-git push -u origin HEAD
-gh pr create --fill
-```
-
-Merger la PR après contrôle de la CI. Les deux autres machines ne doivent pas ouvrir Unity avant ce merge.
+La PR #10 a enregistré le lockfile, les réglages migrés et la collection FishNet. Deux builds Mac successifs ainsi qu'un hôte et un client locaux ont été validés. Le Mac pilote doit désormais rester propre sur `main` ; les étapes actives reprennent à la section 3 pour donner accès aux autres membres.
 
 ## 2. Initialiser le coffre d'assets quand il est prêt
 

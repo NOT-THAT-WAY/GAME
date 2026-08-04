@@ -1,6 +1,6 @@
 # Installation de l'équipe — macOS et Windows
 
-L'objectif est que les trois machines ouvrent le même projet avec les mêmes versions, sans partager les caches. Une personne effectue le premier import ; les deux autres attendent son commit de verrouillage avant d'ouvrir Unity.
+L'objectif est que les trois machines ouvrent le même projet avec les mêmes versions, sans partager les caches. Le premier import est verrouillé sur `main` depuis la PR #10 ; les deux autres machines peuvent maintenant ouvrir Unity après leur setup.
 
 ## Ordre recommandé
 
@@ -9,7 +9,7 @@ L'objectif est que les trois machines ouvrent le même projet avec les mêmes ve
 | 0. Accès | les trois | accès GitHub, MFA, clone sur disque local |
 | 1. Outils | les trois | Git/LFS, DVC, Unity Hub, IDE |
 | 2. Coffre externe | administrateur puis les trois | remote privé, credentials individuels, pull test |
-| 3. Premier import | un Mac pilote | packages résolus et lockfile commité |
+| 3. Premier import | terminé sur Mac pilote | packages résolus et lockfile commité |
 | 4. Validation croisée | Windows + second Mac | aucun changement parasite, build Windows IL2CPP |
 | 5. Connexion | les trois | roster FishNet partagé sur le LAN |
 | 6. Wwise | Nils puis builds Mac/Windows | Authoring centralisé, runtime identique pour tous |
@@ -122,18 +122,9 @@ Chaque membre reçoit son propre accès avec le minimum de droits. Les clés ne 
 
 Le responsable réalise un test de restauration sur un clone propre avant d'y déposer des masters irremplaçables.
 
-## Premier import Unity — une seule personne
+## Premier import Unity — terminé
 
-1. Vérifier que `git status --short` ne retourne rien.
-2. Ouvrir `GAME` avec Unity `6000.3.20f1`.
-3. Attendre la résolution complète des packages.
-4. Lancer `GAME > Validate Project Setup`.
-5. Ouvrir `Assets/Scenes/SampleScene.unity`, entrer puis sortir du Play Mode.
-6. Fermer Unity et relancer le `doctor`.
-7. Examiner les changements. Le commit attendu contient surtout `Packages/packages-lock.json` et d'éventuelles migrations déterministes.
-8. Créer une PR `chore/first-unity-import`.
-
-Les deux autres machines attendent son merge, font `git pull --ff-only`, puis ouvrent Unity. Si Unity propose une montée de version, refuser.
+La PR #10 a figé `Packages/packages-lock.json` et les migrations déterministes de Unity `6000.3.20f1`. Sur chaque nouvelle machine : faire `git pull --ff-only`, exécuter le setup, puis ouvrir Unity avec cette version exacte. Si Unity propose une montée de version ou produit un gros diff après une simple ouverture/fermeture, arrêter et comparer la version avant tout commit.
 
 ## Validation croisée et connexion
 

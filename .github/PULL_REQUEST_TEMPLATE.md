@@ -8,6 +8,7 @@ Lister scènes, prefabs, ProjectSettings, Work Units, fichiers LFS, pointeurs DV
 
 ## Vérification
 
+- [ ] nom de branche et titre de PR utilisent le même type (`feat`, `fix`, `art`, `audio`, `data`, `docs` ou `chore`)
 - [ ] diagnostic local exécuté
 - [ ] Play Mode ou test pertinent exécuté
 - [ ] test par un second membre

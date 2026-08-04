@@ -11,6 +11,8 @@ while read -r LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA; do
   PUSH_INPUT="${PUSH_INPUT}${LOCAL_REF} ${LOCAL_SHA} ${REMOTE_REF} ${REMOTE_SHA}"$'\n'
   if [[ "$REMOTE_REF" == "refs/heads/main" ]]; then
     DIRECT_MAIN_PUSH=1
+  elif [[ "$REMOTE_REF" == refs/heads/* ]]; then
+    "$REPO_ROOT/scripts/validate-branch-name.sh" "${REMOTE_REF#refs/heads/}"
   fi
 done
 

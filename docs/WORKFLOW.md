@@ -9,19 +9,46 @@ issue courte → claim des fichiers/lots → branche courte → test → revue �
 Avant de commencer :
 
 ```bash
-git switch main
-git pull --ff-only
+./scripts/start-task.sh feat nom-court
 ./scripts/assets-macos.sh pull   # seulement si la tâche utilise des masters
-git switch -c feat/nom-court
 ```
 
-Sur Windows, remplacer la commande assets par `.\scripts\assets-windows.ps1 -Action Pull`.
+Sur Windows :
+
+```powershell
+.\scripts\start-task.ps1 feat nom-court
+.\scripts\assets-windows.ps1 -Action Pull  # seulement si nécessaire
+```
 
 À la fin, fermer Unity/Wwise, examiner `git status` et `dvc status`, puis lancer le diagnostic. Pour un master modifié : **`dvc push` avant `git push`**.
 
-Le hook partagé refuse les pushes directs vers `main` : le chemin normal est toujours une pull request avec une revue. Ce hook est un garde-fou local, pas une frontière de sécurité serveur ; activer aussi la protection de branche GitHub dès que le plan du dépôt privé la permet.
+Le hook partagé refuse les pushes directs vers `main` et les noms de branche hors contrat. Le chemin normal est toujours une pull request avec une revue. Ce hook est un garde-fou local, pas une frontière de sécurité serveur.
 
-Claude Code reçoit la même règle dans `CLAUDE.md` : une demande d'initialisation configure le hook, et aucune session ne doit utiliser `--no-verify` ou la variable de contournement administrateur. Tant que GitHub refuse la protection serveur sur ce dépôt privé, la protection dépend donc du hook installé et de cette discipline d'équipe.
+Claude Code reçoit la même règle dans `CLAUDE.md` et le skill `git-task`. Une demande d'initialisation configure le hook, et aucune session ne doit utiliser `--no-verify` ou la variable de contournement administrateur.
+
+## Branches et pull requests
+
+| Préfixe | Quand l'utiliser | Exemple |
+|---|---|---|
+| `feat/` | fonctionnalité jouable ou réseau | `feat/player-movement` |
+| `fix/` | bug ou régression | `fix/host-roster-sync` |
+| `art/` | visuel, animation ou export | `art/pivot-blockout` |
+| `audio/` | Wwise, musique ou SFX | `audio/pivot-effort` |
+| `data/` | DVC, schéma ou migration | `data/asset-catalog` |
+| `docs/` | documentation seule | `docs/windows-onboarding` |
+| `chore/` | outils, packages, CI, réglages | `chore/unity-lockfile` |
+
+Le titre de PR reprend le même type : `feat/player-movement` devient par exemple `feat: add player movement`. Après le commit :
+
+```bash
+./scripts/publish-task.sh "feat: add player movement"
+```
+
+```powershell
+.\scripts\publish-task.ps1 "feat: add player movement"
+```
+
+Le contrôle `workflow-policy` répète ces validations dans GitHub. Sans protection serveur payante, l'équipe garde la règle simple : une PR verte, puis une relecture par un autre membre avant le squash merge.
 
 ## Rôles temporaires
 
