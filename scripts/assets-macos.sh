@@ -12,6 +12,8 @@ Usage:
   ./scripts/assets-macos.sh pull [target]
   ./scripts/assets-macos.sh push [target]
   ./scripts/assets-macos.sh track <ExternalAssets/Discipline/AssetId>
+  ./scripts/assets-macos.sh smoke-init
+  ./scripts/assets-macos.sh smoke-verify
   ./scripts/assets-macos.sh status
 
 Le contenu lourd reste dans le remote DVC. Seuls les pointeurs .dvc vont dans Git.
@@ -118,6 +120,27 @@ case "$ACTION" in
     printf '\nLot indexé: %s\n' "$RELATIVE_PATH"
     printf 'Étapes suivantes: mettre à jour le registre, lancer assets-macos.sh push, puis committer les pointeurs.\n\n'
     git status --short -- "${RELATIVE_PATH}.dvc" "$(dirname -- "$RELATIVE_PATH")/.gitignore" docs/assets/ASSET_REGISTER.md
+    ;;
+
+  smoke-init)
+    require_remote
+    SMOKE_RELATIVE="ExternalAssets/Operations/VAULT-SMOKE-001"
+    mkdir -p "$REPO_ROOT/$SMOKE_RELATIVE"
+    printf 'GAME asset vault smoke test v1\n' > "$REPO_ROOT/$SMOKE_RELATIVE/proof.txt"
+    dvc add "$SMOKE_RELATIVE"
+    dvc push --remote "$REMOTE_NAME" "${SMOKE_RELATIVE}.dvc"
+    printf 'Test envoyé. Committez le pointeur et le .gitignore généré dans une PR dédiée:\n'
+    git status --short -- "${SMOKE_RELATIVE}.dvc" "$(dirname -- "$SMOKE_RELATIVE")/.gitignore"
+    ;;
+
+  smoke-verify)
+    require_remote
+    SMOKE_RELATIVE="ExternalAssets/Operations/VAULT-SMOKE-001"
+    [[ -f "${SMOKE_RELATIVE}.dvc" ]] || fail "Le pointeur du test n'est pas encore présent dans Git. Faites d'abord git pull."
+    dvc pull --remote "$REMOTE_NAME" "${SMOKE_RELATIVE}.dvc"
+    SMOKE_CONTENT="$(sed -n '1p' "$SMOKE_RELATIVE/proof.txt" 2>/dev/null || true)"
+    [[ "$SMOKE_CONTENT" == "GAME asset vault smoke test v1" ]] || fail "Le contenu restauré ne correspond pas à la preuve attendue."
+    printf 'Restauration DVC vérifiée: %s/proof.txt\n' "$SMOKE_RELATIVE"
     ;;
 
   status)

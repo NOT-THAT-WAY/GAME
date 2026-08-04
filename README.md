@@ -18,14 +18,21 @@ Le dépôt est au jalon **M0 — fondations**.
 
 La prochaine action utile est un **clone propre sur les trois machines**, puis le test de connexion. Le gameplay vient juste après.
 
+Pour exécuter l'installation dans le bon ordre — d'abord sur le Mac pilote, ensuite sur l'autre Mac et Windows — suivre [ONBOARDING.md](docs/ONBOARDING.md).
+
 ## Installation rapide
 
 Ne clonez pas le projet dans iCloud, OneDrive, Dropbox ou un dossier réseau.
 
 ### macOS
 
+Après installation de Homebrew :
+
 ```bash
-git clone https://github.com/NOT-THAT-WAY/GAME.git
+brew install git git-lfs gh
+gh auth login --web
+gh auth setup-git
+gh repo clone NOT-THAT-WAY/GAME
 cd GAME
 ./scripts/setup-macos.sh --all
 ```
@@ -38,16 +45,20 @@ Le script installe Git/LFS, DVC, GitHub CLI et Unity Hub, prépare Smart Merge e
 
 ### Windows — PowerShell
 
-Sur une machine vierge, installer Git puis rouvrir PowerShell :
+Sur une machine vierge, installer les outils nécessaires au clone puis rouvrir PowerShell :
 
 ```powershell
 winget install --id Git.Git --exact
+winget install --id GitHub.GitLFS --exact
+winget install --id GitHub.cli --exact
 ```
 
 Ensuite :
 
 ```powershell
-git clone https://github.com/NOT-THAT-WAY/GAME.git
+gh auth login --web
+gh auth setup-git
+gh repo clone NOT-THAT-WAY/GAME
 Set-Location GAME
 powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -All
 ```
@@ -61,12 +72,12 @@ Les scripts sont idempotents. L'éditeur Unity reste une étape interactive parc
 Les masters lourds ne sont pas envoyés dans GitHub. Une fois l'URL privée communiquée par l'administrateur du stockage :
 
 ```bash
-./scripts/assets-macos.sh configure "<URL_DVC>"
+./scripts/assets-macos.sh configure "REMPLACER_PAR_URL_DVC"
 ./scripts/assets-macos.sh pull
 ```
 
 ```powershell
-.\scripts\assets-windows.ps1 -Action Configure -RemoteUrl "<URL_DVC>"
+.\scripts\assets-windows.ps1 -Action Configure -RemoteUrl "REMPLACER_PAR_URL_DVC"
 .\scripts\assets-windows.ps1 -Action Pull
 ```
 
@@ -86,15 +97,15 @@ Après le premier import et le merge du lockfile :
 
 ```bash
 # Mac hôte
-./scripts/first-test-macos.sh host --name Nils
+./scripts/first-test-macos.sh host --name "TON_NOM"
 
 # Second Mac
-./scripts/first-test-macos.sh client --address <IP_HOTE> --name Sean
+./scripts/first-test-macos.sh client --address "192.168.1.42" --name "NOM_MAC_2"
 ```
 
 ```powershell
 # Windows
-.\scripts\first-test-windows.ps1 Client -Address <IP_HOTE> -Name Zak
+.\scripts\first-test-windows.ps1 Client -Address "192.168.1.42" -Name "NOM_WINDOWS"
 ```
 
 Le succès est simple : les trois noms apparaissent dans les trois fenêtres. Voir [le protocole complet](docs/FIRST_CONNECTION_TEST.md).
@@ -130,6 +141,7 @@ Le membre qui possède le PC prend la validation Windows. Les rôles pilote/bin�
 ## Documentation
 
 - [Roadmap et priorités](docs/ROADMAP.md)
+- [Ordre d'installation des trois postes](docs/ONBOARDING.md)
 - [Installation Mac/Windows](docs/SETUP.md)
 - [Premier test de connexion](docs/FIRST_CONNECTION_TEST.md)
 - [Travail à trois](docs/WORKFLOW.md)
