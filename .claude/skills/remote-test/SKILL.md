@@ -7,6 +7,13 @@ description: Prépare et lance le test multijoueur de GAME lorsque les participa
 
 Exécuter le workflow ; ne pas présenter une adresse LAN `192.168.x.x` comme joignable depuis Internet.
 
+## Choisir le profil
+
+Deux profils partagent ces scripts. Demander lequel si la formulation est ambiguë.
+
+- `connection` (défaut) : roster FishNet nu, preuve du jalon M0.
+- `maze` : labyrinthe 16x16 jouable avec un personnage déplaçable, décrit dans `docs/MAZE_PLAYTEST.md`. Ajouter `--profile maze` sur macOS ou `-Profile Maze` sur Windows à chaque commande ci-dessous, hôte comme clients : les trois machines doivent utiliser le même profil.
+
 ## Frontière de sécurité
 
 1. Tailscale est un outil de développement et ne fait pas partie du build distribué.
@@ -46,4 +53,4 @@ Le wrapper vérifie d'abord que l'hôte répond au niveau Tailscale, puis lance 
 
 ## Verdict
 
-Le test réussit lorsque les trois fenêtres affichent `AUTHENTICATED` et les trois noms. En cas d'échec, lire `Logs/ConnectionTest/` et suivre `docs/REMOTE_CONNECTION_TEST.md`. Ne pas prétendre que le duel jouable ou le transport Steam est déjà terminé.
+Le test réussit lorsque les trois fenêtres affichent `AUTHENTICATED` et les trois noms. En profil `maze`, ajouter la condition : chacun voit les autres se déplacer dans les couloirs sans téléportation ni traversée de mur. En cas d'échec, lire `Logs/ConnectionTest/` ou `Logs/MazePlaytest/` et suivre `docs/REMOTE_CONNECTION_TEST.md`. Ne pas prétendre que le duel jouable ou le transport Steam est déjà terminé.

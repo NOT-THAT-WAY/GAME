@@ -8,7 +8,10 @@ param(
     [int]$Port = 7770,
     [string]$Name = $env:USERNAME,
     [switch]$SkipBuild,
-    [switch]$BuildOnly
+    [switch]$BuildOnly,
+    [Alias("Profile")]
+    [ValidateSet("Connection", "Maze")]
+    [string]$TestProfile = "Connection"
 )
 
 $ErrorActionPreference = "Stop"
@@ -29,6 +32,7 @@ $ConnectionArguments = @{
     Role = $Role
     Port = $Port
     Name = $Name
+    TestProfile = $TestProfile
 }
 if ($Address) { $ConnectionArguments["Address"] = $Address }
 if ($SkipBuild) { $ConnectionArguments["SkipBuild"] = $true }
