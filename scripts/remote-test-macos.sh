@@ -26,7 +26,7 @@ for (( index=0; index < ${#FORWARD_ARGUMENTS[@]}; index++ )); do
   fi
 done
 
-LOCAL_TAILSCALE_IP="$($SCRIPT_DIR/tailscale-macos.sh ip)"
+LOCAL_TAILSCALE_IP="$("$SCRIPT_DIR/tailscale-macos.sh" ip)"
 
 if [[ "$ROLE" == "host" ]]; then
   printf 'Adresse distante de l’hôte: %s (à partager uniquement avec l’équipe)\n' "$LOCAL_TAILSCALE_IP"
