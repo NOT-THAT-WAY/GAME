@@ -49,7 +49,8 @@ steam_appid.txt
 /WwiseProject/.cache/
 /WwiseProject/.wsettings/
 /WwiseProject/GeneratedSoundBanks/
-/Assets/StreamingAssets/Audio/GeneratedSoundBanks/
+# Nils publie les SoundBanks runtime validées dans
+# /Assets/StreamingAssets/Audio/GeneratedSoundBanks/ ; elles sont suivies par LFS.
 /Assets/Wwise/GeneratedSoundBanks/
 *.akd
 

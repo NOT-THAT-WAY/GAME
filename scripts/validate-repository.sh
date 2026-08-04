@@ -8,6 +8,16 @@ cd -- "$REPO_ROOT"
 EXPECTED_UNITY="$(sed -n 's/^UNITY_VERSION=//p' config/toolchain.env)"
 PROJECT_UNITY="$(sed -n 's/^m_EditorVersion: //p' ProjectSettings/ProjectVersion.txt)"
 
+[[ -f CLAUDE.md ]]
+[[ -f .claude/skills/setup-game/SKILL.md ]]
+[[ -f .claude/skills/lan-test/SKILL.md ]]
+grep -Fq 'name: setup-game' .claude/skills/setup-game/SKILL.md
+grep -Fq 'name: lan-test' .claude/skills/lan-test/SKILL.md
+
+while IFS= read -r BASH_SCRIPT; do
+  bash -n "$BASH_SCRIPT"
+done < <(git ls-files '*.sh' '.githooks/pre-commit' '.githooks/pre-push')
+
 if [[ "$EXPECTED_UNITY" != "$PROJECT_UNITY" ]]; then
   printf 'Unity mismatch: toolchain=%s project=%s\n' "$EXPECTED_UNITY" "$PROJECT_UNITY" >&2
   exit 1
@@ -38,6 +48,9 @@ fi
 
 LFS_ATTRIBUTE="$(git check-attr filter -- Assets/_Project/Test.png)"
 [[ "$LFS_ATTRIBUTE" == *": lfs" ]]
+
+WWISE_LFS_ATTRIBUTE="$(git check-attr filter -- Assets/StreamingAssets/Audio/GeneratedSoundBanks/Test.bnk)"
+[[ "$WWISE_LFS_ATTRIBUTE" == *": lfs" ]]
 
 RAW_MASTERS="$(git ls-files | awk 'BEGIN{IGNORECASE=1} /\.(blend|blend[0-9]+|kra|psb|psd|als|logicx|rpp|sesx)$/ {print}')"
 if [[ -n "$RAW_MASTERS" ]]; then

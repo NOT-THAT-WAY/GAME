@@ -21,6 +21,8 @@ Sur Windows, remplacer la commande assets par `.\scripts\assets-windows.ps1 -Act
 
 Le hook partagé refuse les pushes directs vers `main` : le chemin normal est toujours une pull request avec une revue. Ce hook est un garde-fou local, pas une frontière de sécurité serveur ; activer aussi la protection de branche GitHub dès que le plan du dépôt privé la permet.
 
+Claude Code reçoit la même règle dans `CLAUDE.md` : une demande d'initialisation configure le hook, et aucune session ne doit utiliser `--no-verify` ou la variable de contournement administrateur. Tant que GitHub refuse la protection serveur sur ce dépôt privé, la protection dépend donc du hook installé et de cette discipline d'équipe.
+
 ## Rôles temporaires
 
 Chaque issue importante possède :
@@ -41,7 +43,7 @@ Les profils Zak/Sean/Nils orientent l'affectation mais ne créent aucun silo. Ch
 | manifest/lockfile | une seule PR de dépendance à la fois |
 | master DVC | un lot et un éditeur déclarés dans l'issue |
 | binaire runtime LFS | verrou LFS si l'édition directe est inévitable |
-| Wwise Work Unit | découpage par feature, jamais un Work Unit global |
+| Wwise Work Unit | Nils édite ; découpage par feature, jamais un Work Unit global |
 | schéma ou donnée partagée | migration dédiée, compatible ou accompagnée d'un convertisseur |
 
 UnityYAMLMerge réduit certains conflits mais ne rend pas sûres deux modifications simultanées de la même scène.
@@ -70,6 +72,8 @@ ExternalAssets/
 ```
 
 Chaque `<AssetId>` est suivi séparément par DVC. Ne jamais lancer `dvc add ExternalAssets` sur la racine entière.
+
+Nils possède seul Wwise Authoring au départ. Sean et Zak testent les événements existants depuis Unity ; ils reçoivent par Git/LFS la même intégration, les mêmes binaires de plateforme et les mêmes SoundBanks.
 
 ## Profils de test réseau
 

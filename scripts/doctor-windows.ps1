@@ -100,7 +100,7 @@ $WwiseCandidates = @(
     "${env:ProgramFiles(x86)}\Audiokinetic\Launcher\WwiseLauncher.exe",
     "$env:ProgramFiles\Audiokinetic\Launcher\WwiseLauncher.exe"
 )
-if ($WwiseCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1) { Write-Ok "Wwise Launcher present (gate audio)" } else { Write-Warn "Wwise Launcher non installe - normal avant la gate audio" }
+if ($WwiseCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1) { Write-Ok "Wwise Launcher present (poste audio de Nils)" } else { Write-Warn "Wwise Launcher absent - normal hors poste audio de Nils" }
 
 if ((Test-Path "${env:ProgramFiles(x86)}\Steam\steam.exe") -or (Test-Path "$env:ProgramFiles\Steam\steam.exe")) { Write-Ok "Steam present (gate Steam)" } else { Write-Warn "Steam non installe - normal avant la gate Steam" }
 

@@ -20,6 +20,10 @@ La prochaine action utile est un **clone propre sur les trois machines**, puis l
 
 Pour exécuter l'installation dans le bon ordre — d'abord sur le Mac pilote, ensuite sur l'autre Mac et Windows — suivre [ONBOARDING.md](docs/ONBOARDING.md).
 
+Avec Claude Code, lancer `claude` depuis la racine puis écrire `initialise l'environnement`. Le skill projet `setup-game` détecte Mac ou Windows, exécute le bon setup et rend le verdict du doctor. La commande explicite `/setup-game` produit le même résultat.
+
+`main` refuse les pushes directs sur chaque clone initialisé grâce au hook partagé, et Claude a la même interdiction. Le plan GitHub actuel du dépôt privé ne permet toutefois pas encore une protection serveur absolue : elle devra être activée dès le passage à GitHub Pro/Team ou si le dépôt devient public.
+
 ## Installation rapide
 
 Ne clonez pas le projet dans iCloud, OneDrive, Dropbox ou un dossier réseau.
@@ -37,7 +41,7 @@ cd GAME
 ./scripts/setup-macos.sh --all
 ```
 
-Le script installe Git/LFS, DVC, GitHub CLI et Unity Hub, prépare Smart Merge et ouvre l'installation exacte de Unity. Une fois Unity installé, relancer simplement :
+Le script installe Git/LFS, DVC, GitHub CLI, Unity Hub, Visual Studio Code et son extension Unity/C#, prépare Smart Merge et ouvre l'installation exacte de Unity. Une fois Unity installé, relancer simplement :
 
 ```bash
 ./scripts/setup-macos.sh

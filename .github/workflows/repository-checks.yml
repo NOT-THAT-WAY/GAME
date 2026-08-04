@@ -19,3 +19,34 @@ jobs:
           lfs: false
       - name: Validate repository contract
         run: ./scripts/validate-repository.sh
+
+  powershell-syntax:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          lfs: false
+      - name: Parse Windows scripts
+        shell: pwsh
+        run: |
+          $Failed = $false
+          Get-ChildItem -Path scripts -Filter *.ps1 | ForEach-Object {
+            $ScriptFile = $_
+            $Tokens = $null
+            $Errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile(
+              $ScriptFile.FullName,
+              [ref]$Tokens,
+              [ref]$Errors
+            ) > $null
+
+            foreach ($ParseError in $Errors) {
+              Write-Error "$($ScriptFile.Name): $($ParseError.Message)"
+              $Failed = $true
+            }
+          }
+
+          if ($Failed) {
+            throw "PowerShell syntax validation failed."
+          }

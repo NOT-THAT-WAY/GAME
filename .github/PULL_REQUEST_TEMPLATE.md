@@ -12,7 +12,7 @@ Lister scènes, prefabs, ProjectSettings, Work Units, fichiers LFS, pointeurs DV
 - [ ] Play Mode ou test pertinent exécuté
 - [ ] test par un second membre
 - [ ] autre OS testé si nécessaire
-- [ ] aucun cache, secret ou SoundBank générée
+- [ ] aucun cache, secret ou SoundBank intermédiaire ; les banques runtime approuvées utilisent Git LFS
 - [ ] `dvc push` terminé avant `git push` si un pointeur DVC change
 - [ ] aucun master éditable ou donnée personnelle ajouté à Git
 - [ ] registre des assets / ADR mis à jour si nécessaire

@@ -8,6 +8,8 @@ EXPECTED_UNITY="$(sed -n 's/^UNITY_VERSION=//p' "$TOOLCHAIN_FILE")"
 EXPECTED_DVC_MAJOR="$(sed -n 's/^DVC_MAJOR_VERSION=//p' "$TOOLCHAIN_FILE")"
 DEFAULT_EDITOR="/Applications/Unity/Hub/Editor/$EXPECTED_UNITY/Unity.app/Contents/MacOS/Unity"
 UNITY_EDITOR="${GAME_UNITY_EDITOR:-$DEFAULT_EDITOR}"
+VSCODE_APP="/Applications/Visual Studio Code.app"
+VSCODE_CLI="$VSCODE_APP/Contents/Resources/app/bin/code"
 ERROR_COUNT=0
 WARNING_COUNT=0
 
@@ -71,6 +73,32 @@ if [[ -d "/Applications/Unity Hub.app" ]]; then
   ok "Unity Hub installé"
 else
   fail "Unity Hub absent"
+fi
+
+if [[ -d "$VSCODE_APP" ]]; then
+  ok "Visual Studio Code installé"
+  if [[ -x "$VSCODE_CLI" ]]; then
+    VSCODE_EXTENSIONS="$("$VSCODE_CLI" --list-extensions 2>/dev/null || true)"
+    MISSING_VSCODE_EXTENSIONS=""
+    for extension_id in \
+      visualstudiotoolsforunity.vstuc \
+      ms-dotnettools.csharp \
+      ms-dotnettools.csdevkit; do
+      if ! printf '%s\n' "$VSCODE_EXTENSIONS" | grep -Fxiq -- "$extension_id"; then
+        MISSING_VSCODE_EXTENSIONS="${MISSING_VSCODE_EXTENSIONS}${MISSING_VSCODE_EXTENSIONS:+, }$extension_id"
+      fi
+    done
+
+    if [[ -z "$MISSING_VSCODE_EXTENSIONS" ]]; then
+      ok "Extensions VS Code Unity et C# installées"
+    else
+      fail "Extensions VS Code absentes: $MISSING_VSCODE_EXTENSIONS (relancer setup-macos.sh)"
+    fi
+  else
+    fail "CLI interne de Visual Studio Code introuvable"
+  fi
+else
+  fail "Visual Studio Code absent (relancer setup-macos.sh --install-tools)"
 fi
 
 if [[ -x "$UNITY_EDITOR" ]]; then
@@ -152,9 +180,9 @@ else
 fi
 
 if [[ -d "/Applications/Wwise Launcher.app" ]] || [[ -d "/Applications/Audiokinetic/Wwise Launcher.app" ]]; then
-  ok "Wwise Launcher présent (requis à la gate audio)"
+  ok "Wwise Launcher présent (poste audio de Nils)"
 else
-  warn "Wwise Launcher non installé — normal avant la gate audio"
+  warn "Wwise Launcher absent — normal hors poste audio de Nils"
 fi
 
 if [[ -d "/Applications/Steam.app" ]]; then

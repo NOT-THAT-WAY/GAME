@@ -9,7 +9,8 @@ Cette politique évite que GitHub, le coffre d'assets, les postes locaux et les 
 | code, réglages, scènes, prefabs, documentation | GitHub privé | branches + PR | historique Git |
 | binaires nécessaires à Unity/Wwise | Git LFS, avec budget surveillé | clone/pull Git | tant que référencés par une release supportée |
 | masters art/audio/IA et références lourdes | remote DVC privé | `dvc pull/push` | versioning objet + sauvegarde séparée |
-| `Library`, caches, builds locaux, SoundBanks générées | poste local | jamais | supprimables/reconstructibles |
+| SoundBanks runtime approuvées | Git LFS sous `Assets/StreamingAssets/Audio/GeneratedSoundBanks/` | clone/pull Git | tant que la version du jeu les référence |
+| `Library`, caches, builds locaux, SoundBanks intermédiaires | poste local | jamais | supprimables/reconstructibles |
 | builds de test et logs partagés | artefacts de release/CI dédiés plus tard | lien à durée limitée | 30 à 90 jours selon utilité |
 | secrets, tokens, clés Steam/cloud | gestionnaire de secrets ou variables locales | accès nominatif | rotation et révocation |
 | licences, factures, contrats, preuves nominatives | espace administratif privé | accès restreint | selon obligations ; Git ne garde qu'une référence |

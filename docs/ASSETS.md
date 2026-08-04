@@ -7,7 +7,8 @@
 | `ExternalAssets/<discipline>/<asset-id>/` | masters Blender/PSD/Krita, sessions DAW, prises brutes, références HD, sources IA | remote DVC privé, hors GitHub |
 | `Assets/_Project/<Feature>/` | FBX, textures, clips et prefabs optimisés réellement consommés par Unity | GitHub ; Git LFS pour les binaires |
 | `WwiseProject/` | projet, Work Units et Originals prêts à être utilisés | GitHub ; Git LFS pour l'audio binaire |
-| `Library/`, caches, SoundBanks, builds et exports temporaires | résultats reconstruisibles | local uniquement |
+| `Assets/StreamingAssets/Audio/GeneratedSoundBanks/` | SoundBanks runtime approuvées par Nils | Git LFS, identiques pour tous |
+| `Library/`, caches, SoundBanks de travail, builds et exports temporaires | résultats reconstruisibles | local uniquement |
 
 Un master n'est jamais l'asset de runtime. Exemple : `PivotDoor.blend` reste dans le coffre DVC ; `PivotDoor_LOD0.fbx`, ses textures compressées et son prefab arrivent dans `Assets/_Project/Pivot/`.
 
@@ -91,15 +92,17 @@ Les scènes et prefabs restent découpés par feature. Un export binaire modifi�
 - les Work Units `.wwu` ;
 - les `Originals/` nettoyés et prêts pour Wwise ;
 - scripts, presets et configuration non sensible nécessaires à la génération.
+- l'intégration Unity et ses binaires de plateforme ;
+- les SoundBanks runtime validées sous `Assets/StreamingAssets/Audio/GeneratedSoundBanks/`.
 
 À ignorer :
 
 - `.cache/` et `.wsettings/` ;
-- SoundBanks et autres sorties générées ;
+- SoundBanks intermédiaires dans `WwiseProject/GeneratedSoundBanks/` ;
 - préférences utilisateur ;
 - fichiers temporaires de profilage.
 
-Les Work Units sont découpés par feature (`Pivot`, `Player`, `Maze`, `UI`) et non par personne. Nils peut amorcer le pipeline sonore, mais Sean et Zak doivent pouvoir modifier ou tester un événement sans dépendre de lui.
+Les Work Units sont découpés par feature (`Pivot`, `Player`, `Maze`, `UI`) et non par personne. Nils est le seul à utiliser Wwise Authoring au départ. Sean et Zak peuvent déclencher et tester les événements déjà publiés depuis Unity sans Wwise installé ; toute modification ou régénération de banque passe par Nils et une PR audio.
 
 Les sessions de DAW, prises multicanales, stems de travail et rendus haute définition restent dans `ExternalAssets/Audio/<AssetId>/`. Wwise ne reçoit que les fichiers approuvés nécessaires au projet.
 

@@ -14,6 +14,31 @@ Cette procédure est la référence pour le premier démarrage. On prépare **d'
 
 Il reste deux initialisations réelles : laisser Unity créer le lockfile sur le Mac pilote, puis choisir le fournisseur du coffre DVC. Ces deux actions sont indépendantes ; le test réseau peut avancer sans coffre.
 
+## Initialisation assistée par Claude Code
+
+Si la commande `claude` n'existe pas encore, installer Claude Code une seule fois :
+
+```bash
+# macOS
+brew install --cask claude-code
+```
+
+```powershell
+# Windows PowerShell
+winget install Anthropic.ClaudeCode
+```
+
+Chaque membre lance ensuite `claude`, se connecte avec son propre compte et accepte la confiance du workspace après avoir lu `CLAUDE.md` et les skills du dépôt.
+
+Après le clone, un membre peut lancer Claude depuis la racine :
+
+```text
+claude
+> initialise l'environnement
+```
+
+Le fichier `CLAUDE.md` charge les règles du projet et le skill `setup-game` exécute le script correspondant à Mac ou Windows. `/setup-game` permet aussi de le déclencher explicitement. Les confirmations GitHub, Homebrew/winget et Unity Hub restent interactives ; Claude reprend ensuite le diagnostic. Aucun setup standard n'installe Wwise Authoring.
+
 ## 1. Ton Mac devient la machine pilote
 
 ### 1.1 Prérequis manuels
@@ -48,7 +73,7 @@ Depuis la racine du repo :
 ./scripts/setup-macos.sh --all
 ```
 
-Ce script installe ou vérifie : Git, Git LFS, GitHub CLI, DVC et Unity Hub. Il configure aussi Smart Merge, les hooks communs et le mode `pull --ff-only`.
+Ce script installe ou vérifie : Git, Git LFS, GitHub CLI, DVC, Unity Hub, Visual Studio Code et l'extension Unity/C#. Il configure aussi Smart Merge, les hooks communs et le mode `pull --ff-only`.
 
 Unity Hub s'ouvre sur `6000.3.20f1`. Choisir :
 
@@ -76,12 +101,13 @@ git switch -c chore/first-unity-import
 
 Dans Unity Hub, ajouter/ouvrir le dossier `GAME` avec la version exacte. Puis :
 
-1. attendre la fin de l'import et de la résolution des packages ;
-2. vérifier qu'il n'y a aucune erreur rouge dans la Console ;
-3. lancer `GAME > Validate Project Setup` ;
-4. ouvrir `Assets/Scenes/SampleScene.unity` ;
-5. entrer puis sortir du Play Mode ;
-6. fermer complètement Unity.
+1. dans `Unity > Settings/Preferences > External Tools`, choisir Visual Studio Code ;
+2. attendre la fin de l'import et de la résolution des packages ;
+3. vérifier qu'il n'y a aucune erreur rouge dans la Console ;
+4. lancer `GAME > Validate Project Setup` ;
+5. ouvrir `Assets/Scenes/SampleScene.unity` ;
+6. entrer puis sortir du Play Mode ;
+7. fermer complètement Unity.
 
 Contrôler le résultat :
 
@@ -254,3 +280,5 @@ Le test est vert quand les trois noms apparaissent dans les trois fenêtres. Ens
 | vérifier avant commit | `validate-repository.sh` + hook | hook Git via Git Bash |
 
 Tous les scripts de setup peuvent être relancés. En cas d'échec, ne pas mettre Unity ou un package à jour au hasard : conserver la sortie du `doctor`, le commit courant et l'OS, puis traiter l'écart dans un ticket.
+
+Une nouvelle machine est considérée intégrée lorsque son `doctor` affiche `0 erreur`, que `git status --short` reste vide après ouverture/fermeture de Unity et qu'elle peut rejoindre le test réseau. Le coffre DVC et Wwise restent optionnels tant que leurs jalons ne sont pas ouverts.
