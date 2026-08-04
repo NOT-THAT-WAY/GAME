@@ -55,7 +55,7 @@ case "$ACTION" in
     ;;
   ping)
     [[ -n "$PEER_ADDRESS" ]] || fail "l'action ping attend l'IP Tailscale de l'hôte."
-    "$TAILSCALE_CLI" ping --c 1 --timeout 5s "$PEER_ADDRESS"
+    "$TAILSCALE_CLI" ping --c 1 --until-direct=false --timeout 5s "$PEER_ADDRESS"
     ;;
   *)
     fail "action inconnue '$ACTION' (status, ip ou ping)."
