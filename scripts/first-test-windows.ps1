@@ -3,7 +3,7 @@ param(
     [Parameter(Mandatory = $true, Position = 0)]
     [ValidateSet("Host", "Client", "Manual")]
     [string]$Role,
-    [string]$Address = "127.0.0.1",
+    [string]$Address,
     [ValidateRange(1, 65535)]
     [int]$Port = 7770,
     [string]$Name = $env:USERNAME,
@@ -24,9 +24,10 @@ $UnityEditor = if ($env:GAME_UNITY_EDITOR) { $env:GAME_UNITY_EDITOR } else { $De
 $BuildPath = Join-Path $RepoRoot "Builds\ConnectionTest\Windows\GAME-Connection-Test.exe"
 $LogDirectory = Join-Path $RepoRoot "Logs\ConnectionTest"
 
-if ($Role -eq "Client" -and $Address -eq "127.0.0.1") {
-    throw "Un client sur une autre machine doit recevoir -Address HOST_IP."
+if ($Role -eq "Client" -and [string]::IsNullOrWhiteSpace($Address)) {
+    throw "Un client doit recevoir -Address HOST_IP (ou -Address 127.0.0.1 pour un test local)."
 }
+if ([string]::IsNullOrWhiteSpace($Address)) { $Address = "127.0.0.1" }
 if (-not (Test-Path $UnityEditor)) { throw "Unity $UnityVersion introuvable. Relancez setup-windows.ps1." }
 
 Set-Location $RepoRoot
