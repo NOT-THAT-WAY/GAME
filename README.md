@@ -11,7 +11,7 @@ Le dépôt est au jalon **M0 — fondations**.
 - [x] scripts d'installation, diagnostic, assets et test Mac/Windows ;
 - [x] séparation Git / Git LFS / coffre DVC externe / caches locaux ;
 - [ ] URL du coffre d'assets choisie et restauration testée ;
-- [ ] premier import Unity Mac et `packages-lock.json` mergé ;
+- [x] premier import Unity Mac et `packages-lock.json` mergé ;
 - [ ] ouverture propre sur le second Mac et build Windows IL2CPP ;
 - [ ] Zak, Sean et Nils visibles dans la même session LAN ;
 - [ ] compatibilité Wwise 2025.1.4 validée sur Mac et Windows.
@@ -22,7 +22,7 @@ Pour exécuter l'installation dans le bon ordre — d'abord sur le Mac pilote, e
 
 Avec Claude Code, lancer `claude` depuis la racine puis écrire `initialise l'environnement`. Le skill projet `setup-game` détecte Mac ou Windows, exécute le bon setup et rend le verdict du doctor. La commande explicite `/setup-game` produit le même résultat.
 
-`main` refuse les pushes directs sur chaque clone initialisé grâce au hook partagé, et Claude a la même interdiction. Le plan GitHub actuel du dépôt privé ne permet toutefois pas encore une protection serveur absolue : elle devra être activée dès le passage à GitHub Pro/Team ou si le dépôt devient public.
+`main` refuse les pushes directs sur chaque clone initialisé grâce au hook partagé, et Claude a la même interdiction. Les branches suivent `feat/...`, `fix/...`, `art/...`, `audio/...`, `data/...`, `docs/...` ou `chore/...` ; le script `publish-task` pousse ensuite la branche et ouvre sa PR. Le dépôt privé reste utilisable gratuitement par toute l'équipe sans protection serveur absolue.
 
 ## Installation rapide
 
@@ -138,7 +138,7 @@ Tout le monde touche au gameplay, au contenu et aux tests. Les profils indiquent
 |---|---|---|
 | Zak | technique, réseau, logique, juridique | test FishNet/Windows, règles réseau, licences |
 | Sean | création, visuel, narration, illustration, design, Unity | blockout, lisibilité du pivot, pipeline art |
-| Nils | technique + artistique, son, vision globale, IA | premier import, DVC, Wwise, cohérence d'intégration |
+| Nils | technique + artistique, son, vision globale, IA | DVC, Wwise, cohérence d'intégration |
 
 Le membre qui possède le PC prend la validation Windows. Les rôles pilote/binôme/testeur tournent à chaque lot afin qu'au moins deux personnes comprennent chaque système.
 

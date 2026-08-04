@@ -53,3 +53,4 @@ Exécuter le workflow ; ne pas se limiter à le réciter.
 2. Vérifier de nouveau `git status --short`.
 3. Résumer les erreurs réelles et les avertissements attendus. DVC, Wwise et Steam peuvent rester en avertissement avant leurs jalons.
 4. Ne déclarer la machine intégrée que si le doctor affiche zéro erreur. Après le lockfile, une ouverture/fermeture de Unity doit aussi laisser Git propre.
+5. Quand la machine est intégrée, indiquer que `lan-test` lance le test à trois ; ne pas prétendre que le gameplay du duel existe déjà.

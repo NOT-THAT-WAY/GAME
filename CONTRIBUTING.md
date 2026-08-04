@@ -5,7 +5,7 @@
 1. Exécuter le `doctor` de sa plateforme.
 2. Mettre `main` à jour avec `git pull --ff-only`.
 3. Si nécessaire, hydrater les masters avec le script `assets`.
-4. Créer une branche courte : `feat/...`, `fix/...`, `art/...`, `audio/...`, `data/...` ou `docs/...`.
+4. Créer une branche courte avec le script `start-task` ; ne pas la créer depuis une branche en retard.
 5. Revendiquer dans l'issue les scènes, prefabs, Work Units et lots DVC modifiés.
 
 ## Pendant le travail
@@ -28,6 +28,28 @@
 
 ## Commits et PR
 
+Une branche respecte exactement `TYPE/nom-court-en-minuscules`. Les types disponibles sont :
+
+| Type | Usage |
+|---|---|
+| `feat/` | gameplay, réseau ou nouvelle capacité |
+| `fix/` | bug ou régression |
+| `art/` | visuel, animation, UI artistique ou export |
+| `audio/` | Wwise, musique et effets sonores |
+| `data/` | DVC, schéma, catalogue ou migration |
+| `docs/` | documentation uniquement |
+| `chore/` | dépendances, réglages, CI et maintenance |
+
+Depuis un dépôt propre :
+
+```bash
+# macOS
+./scripts/start-task.sh feat player-movement
+
+# Windows PowerShell
+.\scripts\start-task.ps1 feat player-movement
+```
+
 Exemples :
 
 ```text
@@ -36,7 +58,21 @@ fix: clamp pivot state before replication
 art: add pivot blockout export
 audio: add pivot effort prototype
 data: document asset retention policy
+docs: clarify LAN test procedure
+chore: update repository checks
 ```
+
+Le titre de PR reprend le type de la branche. Après le commit :
+
+```bash
+# macOS
+./scripts/publish-task.sh "feat: add player movement"
+
+# Windows PowerShell
+.\scripts\publish-task.ps1 "feat: add player movement"
+```
+
+Le script vérifie le nom, refuse les changements non commités, pousse la branche et crée la PR avec GitHub CLI. Sans session `gh`, il donne le lien exact à ouvrir. La CI contrôle de nouveau le nom de branche et le titre de PR.
 
 Une PR indique le résultat, les fichiers/lots touchés et les tests réalisés. Une tâche est terminée seulement lorsqu'un autre membre peut la tester depuis un clone ou une mise à jour propre.
 

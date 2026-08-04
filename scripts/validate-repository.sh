@@ -11,8 +11,10 @@ PROJECT_UNITY="$(sed -n 's/^m_EditorVersion: //p' ProjectSettings/ProjectVersion
 [[ -f CLAUDE.md ]]
 [[ -f .claude/skills/setup-game/SKILL.md ]]
 [[ -f .claude/skills/lan-test/SKILL.md ]]
+[[ -f .claude/skills/git-task/SKILL.md ]]
 grep -Fq 'name: setup-game' .claude/skills/setup-game/SKILL.md
 grep -Fq 'name: lan-test' .claude/skills/lan-test/SKILL.md
+grep -Fq 'name: git-task' .claude/skills/git-task/SKILL.md
 
 while IFS= read -r BASH_SCRIPT; do
   bash -n "$BASH_SCRIPT"

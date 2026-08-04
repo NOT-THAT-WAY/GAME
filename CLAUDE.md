@@ -16,9 +16,10 @@ Le setup standard n'installe pas Wwise Authoring, le SDK Steam et ne configure p
 ## Git et collaboration
 
 - Inspecter la branche et `git status --short` avant toute modification.
-- Ne jamais travailler directement sur `main` : créer une branche courte (`feat/`, `fix/`, `art/`, `audio/`, `data/`, `docs/` ou `chore/`).
+- Ne jamais travailler directement sur `main` : utiliser le skill `git-task` et créer une branche courte (`feat/`, `fix/`, `art/`, `audio/`, `data/`, `docs/` ou `chore/`).
+- Le nom suit `TYPE/nom-court-en-minuscules` et le titre de PR reprend le même type (`feat: ...`, `fix: ...`, etc.).
 - Ne jamais contourner le hook avec `--no-verify` ou `GAME_ALLOW_MAIN_PUSH=1`.
-- Livrer par pull request et attendre les contrôles `validate` et `powershell-syntax`.
+- Livrer par pull request et attendre les contrôles `workflow-policy`, `validate` et `powershell-syntax`.
 - Une scène, un prefab racine, un Work Unit Wwise ou un lot DVC ne possède qu'un éditeur déclaré à la fois.
 
 ## Données et assets
