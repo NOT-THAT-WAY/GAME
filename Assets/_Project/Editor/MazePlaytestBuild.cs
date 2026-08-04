@@ -41,6 +41,20 @@ namespace NotThatWay.Game.Editor
         private const float EyeHeight = 1.05f;
         private const float SpawnHeight = 0.2f;
 
+        // Cotes du design, reprises de tools/maze-3d/build_maze.py : couloir 2,50 m
+        // et murs de 0,25 m d'épaisseur, donc un pas de grille de 2,75 m. La grille
+        // JSON ne les transporte pas ; les changer, c'est changer le design.
+        private const float GridPitch = 2.75f;
+
+        // Objets du FBX qui arrêtent réellement le joueur. `Props` en fait partie :
+        // ce sont des colonnes brisées et des jarres, les traverser se verrait tout
+        // de suite. Seule `Vegetation` (mousses, lierres, buissons) reste sans
+        // collider, parce qu'elle est dense et qu'on doit pouvoir la longer.
+        private static readonly string[] CollidingObjectPrefixes =
+        {
+            "Murs_Statiques", "Bras_Pivots", "Pivot_", "Sol_Dalles", "Sol_Sable", "Reperes_Gameplay", "Props"
+        };
+
         private static readonly Color SkyColor = new(0.96f, 0.85f, 0.72f);
 
         [MenuItem("GAME/Maze Playtest/Create Scene")]
@@ -58,6 +72,7 @@ namespace NotThatWay.Game.Editor
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             CreateEnvironment();
             var spawns = CreateSpawnPoints(layout);
+            VerifySpawns(spawns);
 
             var networkRoot = new GameObject("NetworkManager");
             networkRoot.AddComponent<Tugboat>();
@@ -99,25 +114,28 @@ namespace NotThatWay.Game.Editor
         [MenuItem("GAME/Maze Playtest/Render Preview")]
         public static void RenderPreview()
         {
-            if (!File.Exists(ScenePath))
-                CreateScene();
-
+            // Toujours régénérer : une scène laissée par une exécution précédente
+            // ferait mentir l'aperçu sur l'état réel des assets et du script.
+            CreateScene();
             EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
             Directory.CreateDirectory(PreviewDirectory);
 
             var layout = ReadLayout();
-            var span = layout.Width * layout.CellSize;
-            var entrance = CellCenterToUnity(layout.Entrances[0], layout);
-            var treasure = CellCenterToUnity(layout.Treasure, layout);
+            var span = layout.Width * GridPitch;
 
             var aerial = new Vector3(0f, span * 0.95f, span * 0.75f);
             RenderFrom(aerial, Quaternion.LookRotation((Vector3.zero - aerial).normalized, Vector3.up),
                 60f, "apercu-aerien.png");
 
-            var eye = entrance + new Vector3(0f, EyeHeight, 6f);
-            var toTreasure = treasure - eye;
-            toTreasure.y = 0f;
-            RenderFrom(eye, Quaternion.LookRotation(toTreasure.normalized, Vector3.up), 70f, "apercu-entree.png");
+            // Exactement ce que voit un joueur à son apparition : on relit le point
+            // d'apparition posé dans la scène plutôt que de le recalculer, sinon
+            // l'aperçu pourrait valider une vue que personne n'aura jamais.
+            var spawnRoot = GameObject.Find("SpawnPoints");
+            if (spawnRoot == null || spawnRoot.transform.childCount == 0)
+                throw new InvalidOperationException("Aucun point d'apparition dans la scène générée.");
+
+            var spawn = spawnRoot.transform.GetChild(0);
+            RenderFrom(spawn.position + Vector3.up * EyeHeight, spawn.rotation, 70f, "apercu-entree.png");
 
             Debug.Log($"[GAME-MAZE] Preview images written to {Path.GetFullPath(PreviewDirectory)}.");
         }
@@ -264,8 +282,23 @@ namespace NotThatWay.Game.Editor
             var maze = (GameObject)PrefabUtility.InstantiatePrefab(mazeModel);
             maze.name = "Maze16x16";
             maze.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+            var colliders = 0;
             foreach (var child in maze.GetComponentsInChildren<Transform>(true))
+            {
                 GameObjectUtility.SetStaticEditorFlags(child.gameObject, StaticEditorFlags.BatchingStatic | StaticEditorFlags.OccluderStatic | StaticEditorFlags.OccludeeStatic);
+
+                if (!BlocksThePlayer(child.name) || !child.TryGetComponent<MeshFilter>(out var meshFilter) || meshFilter.sharedMesh == null)
+                    continue;
+
+                child.gameObject.AddComponent<MeshCollider>();
+                colliders++;
+            }
+
+            if (colliders == 0)
+                throw new InvalidOperationException($"Aucun collider posé sur {MazeModelPath} : les noms d'objets du FBX ont changé, revoir CollidingObjectPrefixes.");
+
+            Debug.Log($"[GAME-MAZE] {colliders} MeshCollider(s) posé(s) sur le décor.");
 
             // Soleil venant du sud (côté des entrées) pour que la face abordée par les
             // joueurs soit éclairée et non à contre-jour.
@@ -279,7 +312,7 @@ namespace NotThatWay.Game.Editor
 
             var cameraObject = new GameObject("SpectatorCamera", typeof(Camera), typeof(AudioListener), typeof(SpectatorCamera));
             cameraObject.tag = "MainCamera";
-            var spectatorPosition = new Vector3(0f, 58f, 46f);
+            var spectatorPosition = new Vector3(0f, 40f, 32f);
             cameraObject.transform.SetPositionAndRotation(
                 spectatorPosition,
                 Quaternion.LookRotation((Vector3.zero - spectatorPosition).normalized, Vector3.up));
@@ -298,26 +331,81 @@ namespace NotThatWay.Game.Editor
             RenderSettings.fog = true;
             RenderSettings.fogMode = FogMode.Linear;
             RenderSettings.fogColor = SkyColor;
-            RenderSettings.fogStartDistance = 90f;
-            RenderSettings.fogEndDistance = 280f;
+            // Le sable s'arrête à 48 m du centre (emprise 44 m + 26 m de débord) :
+            // le brouillard fond son bord sans toucher aux couloirs.
+            RenderSettings.fogStartDistance = 45f;
+            RenderSettings.fogEndDistance = 150f;
             RenderSettings.sun = light;
+        }
+
+        /// <summary>
+        /// Vérifie chaque apparition contre la géométrie réelle : du sol dessous, pas
+        /// de mur autour, et de quoi avancer d'un pas. Un décalage d'axe entre la
+        /// grille et le FBX produit des points d'apparition parfaitement plausibles
+        /// mais posés dans un mur : seule une mesure sur la scène le détecte.
+        /// </summary>
+        private static void VerifySpawns(Transform[] spawns)
+        {
+            Physics.SyncTransforms();
+
+            var failures = new List<string>();
+            foreach (var spawn in spawns)
+            {
+                var feet = spawn.position;
+                var chest = feet + Vector3.up * (PlayerHeight / 2f);
+
+                if (!Physics.Raycast(feet + Vector3.up * 3f, Vector3.down, out var ground, 8f))
+                    failures.Add($"{spawn.name}: aucun sol sous le point d'apparition.");
+                else if (Mathf.Abs(ground.point.y - feet.y) > 1.5f)
+                    failures.Add($"{spawn.name}: sol à {ground.point.y:F2} m alors que le joueur est posé à {feet.y:F2} m.");
+
+                var overlaps = Physics.OverlapSphere(chest, PlayerRadius);
+                if (overlaps.Length > 0)
+                {
+                    var names = new List<string>(overlaps.Length);
+                    foreach (var overlap in overlaps)
+                        names.Add($"{overlap.name} (le plus proche à {Vector3.Distance(chest, overlap.ClosestPoint(chest)):F2} m)");
+                    failures.Add($"{spawn.name}: le joueur apparaît dans {string.Join(", ", names)}.");
+                }
+
+                if (Physics.Raycast(chest, spawn.forward, out var ahead, GridPitch))
+                    failures.Add($"{spawn.name}: obstacle à {ahead.distance:F2} m droit devant ({ahead.collider.name}).");
+            }
+
+            if (failures.Count > 0)
+                throw new InvalidOperationException("Points d'apparition invalides :\n  " + string.Join("\n  ", failures));
+
+            Debug.Log($"[GAME-MAZE] {spawns.Length} apparition(s) vérifiée(s) : sol présent, pas de collider, passage libre sur {GridPitch:F2} m.");
+        }
+
+        private static bool BlocksThePlayer(string objectName)
+        {
+            foreach (var prefix in CollidingObjectPrefixes)
+            {
+                if (objectName.StartsWith(prefix, StringComparison.Ordinal))
+                    return true;
+            }
+
+            return false;
         }
 
         private static Transform[] CreateSpawnPoints(MazeLayout layout)
         {
             var root = new GameObject("SpawnPoints").transform;
-            var treasure = CellCenterToUnity(layout.Treasure, layout);
             var spawns = new List<Transform>(layout.Entrances.Count);
+
+            // Les colliders du décor existent déjà : on peut interroger la géométrie.
+            Physics.SyncTransforms();
 
             foreach (var entrance in layout.Entrances)
             {
-                var position = CellCenterToUnity(entrance, layout) + Vector3.up * SpawnHeight;
+                // Dans la cellule du seuil, et non dehors : le sable extérieur est
+                // parsemé de props et le joueur y apparaîtrait le nez sur une colonne.
+                var inward = InwardDirection(entrance, layout);
+                var position = FindFreeSpot(CellCenterToUnity(entrance, layout) + Vector3.up * SpawnHeight, inward, entrance);
                 var point = new GameObject($"Spawn_Cell_{entrance.x}_{entrance.y}").transform;
                 point.SetParent(root, false);
-
-                var toTreasure = treasure - position;
-                toTreasure.y = 0f;
-                point.SetPositionAndRotation(position, Quaternion.LookRotation(toTreasure.normalized, Vector3.up));
+                point.SetPositionAndRotation(position, Quaternion.LookRotation(ClearestDirection(position, inward), Vector3.up));
                 spawns.Add(point);
             }
 
@@ -325,15 +413,99 @@ namespace NotThatWay.Game.Editor
         }
 
         /// <summary>
-        /// La grille Blender est centrée sur l'origine et l'export FBX applique la
-        /// conversion Blender (x, y, z) vers Unity (x, z, -y). Les entrées sont donc
-        /// du côté +Z dans Unity et le trésor du côté -Z.
+        /// Cherche un emplacement libre dans la cellule d'entrée. Le générateur sème des
+        /// colonnes brisées et des jarres jusque dans les couloirs : le centre exact
+        /// d'une cellule n'est pas garanti libre, et ça change à chaque graine de map.
+        /// </summary>
+        private static Vector3 FindFreeSpot(Vector3 center, Vector3 inward, Vector2Int entrance)
+        {
+            var sideways = Vector3.Cross(Vector3.up, inward);
+            // Le couloir fait 2,50 m : au-delà de 0,9 m d'écart on sortirait du passage.
+            var offsets = new[] { 0f, 0.55f, -0.55f, 0.9f, -0.9f };
+
+            foreach (var along in offsets)
+            {
+                foreach (var across in offsets)
+                {
+                    var candidate = center + inward * along + sideways * across;
+                    if (Physics.OverlapSphere(candidate + Vector3.up * (PlayerHeight / 2f), PlayerRadius).Length == 0)
+                        return candidate;
+                }
+            }
+
+            throw new InvalidOperationException(
+                $"Aucun emplacement libre dans la cellule d'entrée {entrance.x},{entrance.y} : le décor l'obstrue entièrement.");
+        }
+
+        /// <summary>
+        /// Choisit la direction de regard la plus dégagée parmi l'entrée du couloir et
+        /// ses deux perpendiculaires. Toutes les cellules d'entrée ne sont pas ouvertes
+        /// vers l'intérieur : certaines donnent sur un couloir latéral, et un joueur qui
+        /// apparaît le nez contre un mur croit à une map cassée. Faire demi-tour vers la
+        /// sortie n'est jamais proposé.
+        /// </summary>
+        private static Vector3 ClearestDirection(Vector3 spawnPosition, Vector3 inward)
+        {
+            var chest = spawnPosition + Vector3.up * (PlayerHeight / 2f);
+            var maxDistance = GridPitch * 3f;
+            var sideways = Vector3.Cross(Vector3.up, inward);
+
+            var best = inward;
+            var bestClearance = -1f;
+            foreach (var candidate in new[] { inward, sideways, -sideways })
+            {
+                var clearance = Physics.Raycast(chest, candidate, out var hit, maxDistance) ? hit.distance : maxDistance;
+
+                // À égalité, `inward` est testée en premier et gagne : entrer tout droit
+                // reste la lecture naturelle quand le couloir le permet.
+                if (clearance <= bestClearance)
+                    continue;
+
+                best = candidate;
+                bestClearance = clearance;
+            }
+
+            return best;
+        }
+
+        /// <summary>
+        /// Direction d'entrée dans le labyrinthe depuis une cellule de bord. Viser le
+        /// trésor serait faux : il est en diagonale pour la plupart des entrées, et le
+        /// joueur apparaîtrait face au mur voisin de sa porte.
+        /// </summary>
+        private static Vector3 InwardDirection(Vector2Int entrance, MazeLayout layout)
+        {
+            // Les deux axes du plan sont inversés à l'export : un bord « bas » de la
+            // grille se retrouve côté +Z dans Unity, un bord « gauche » côté +X.
+            if (entrance.y == 0)
+                return Vector3.back;
+            if (entrance.y == layout.Height - 1)
+                return Vector3.forward;
+            if (entrance.x == 0)
+                return Vector3.left;
+            if (entrance.x == layout.Width - 1)
+                return Vector3.right;
+
+            throw new InvalidOperationException(
+                $"L'entrée {entrance.x},{entrance.y} n'est sur aucun bord de la grille {layout.Width}x{layout.Height}.");
+        }
+
+        /// <summary>
+        /// Centre d'une cellule, avec la même formule que le générateur Blender :
+        /// un nœud vaut `(i - largeur / 2) * pas`, un centre de cellule ajoute un
+        /// demi-pas.
+        ///
+        /// L'export FBX en `axis_forward=-Z, axis_up=Y` fait pivoter la scène d'un
+        /// demi-tour autour de la verticale : Unity reçoit `(-x, z, -y)`, et non
+        /// `(x, z, -y)`. Les deux X et Z sont inversés, pas seulement Z. Un seul
+        /// signe oublié décale les apparitions d'un bout à l'autre de la map en
+        /// gardant l'air correct, d'où le contrôle de VerifySpawns.
         /// </summary>
         private static Vector3 CellCenterToUnity(Vector2Int cell, MazeLayout layout)
         {
-            var blenderX = -layout.Width * layout.CellSize / 2f + (cell.x + 0.5f) * layout.CellSize;
-            var blenderY = -layout.Height * layout.CellSize / 2f + (cell.y + 0.5f) * layout.CellSize;
-            return new Vector3(blenderX, 0f, -blenderY);
+            var blenderX = (cell.x - layout.Width / 2f + 0.5f) * GridPitch;
+            var blenderY = (cell.y - layout.Height / 2f + 0.5f) * GridPitch;
+            return new Vector3(-blenderX, 0f, -blenderY);
         }
 
         private static DefaultPrefabObjects LoadOrCreatePrefabCollection()
@@ -355,18 +527,16 @@ namespace NotThatWay.Game.Editor
 
         private readonly struct MazeLayout
         {
-            public MazeLayout(int width, int height, float cellSize, List<Vector2Int> entrances, Vector2Int treasure)
+            public MazeLayout(int width, int height, List<Vector2Int> entrances, Vector2Int treasure)
             {
                 Width = width;
                 Height = height;
-                CellSize = cellSize;
                 Entrances = entrances;
                 Treasure = treasure;
             }
 
             public int Width { get; }
             public int Height { get; }
-            public float CellSize { get; }
             public List<Vector2Int> Entrances { get; }
             public Vector2Int Treasure { get; }
         }
@@ -393,7 +563,6 @@ namespace NotThatWay.Game.Editor
             return new MazeLayout(
                 ReadInt(json, "width"),
                 ReadInt(json, "height"),
-                ReadFloat(json, "cell_size_m"),
                 entrances,
                 treasureCells[0]);
         }
