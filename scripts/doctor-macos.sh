@@ -12,6 +12,22 @@ VSCODE_APP="/Applications/Visual Studio Code.app"
 VSCODE_CLI="$VSCODE_APP/Contents/Resources/app/bin/code"
 ERROR_COUNT=0
 WARNING_COUNT=0
+REMOTE_PLAY_REQUIRED=0
+
+while (( $# > 0 )); do
+  case "$1" in
+    --remote-play) REMOTE_PLAY_REQUIRED=1 ;;
+    -h|--help)
+      printf 'Usage: %s [--remote-play]\n' "$0"
+      exit 0
+      ;;
+    *)
+      printf 'Argument inconnu: %s\n' "$1" >&2
+      exit 2
+      ;;
+  esac
+  shift
+done
 
 ok() { printf '[OK]   %s\n' "$1"; }
 warn() { printf '[WARN] %s\n' "$1"; WARNING_COUNT=$((WARNING_COUNT + 1)); }
@@ -177,6 +193,14 @@ if [[ "$HOOKS_PATH" == ".githooks" ]]; then
   fi
 else
   warn "Gardes-fous Git inactifs; relancer setup-macos.sh"
+fi
+
+if TAILSCALE_STATUS="$("$SCRIPT_DIR/tailscale-macos.sh" status 2>/dev/null)"; then
+  ok "$TAILSCALE_STATUS"
+elif (( REMOTE_PLAY_REQUIRED == 1 )); then
+  fail "Tailscale absent ou déconnecté — requis pour jouer depuis plusieurs réseaux"
+else
+  warn "Tailscale absent ou déconnecté — requis uniquement pour le test à distance"
 fi
 
 if [[ -d "/Applications/Wwise Launcher.app" ]] || [[ -d "/Applications/Audiokinetic/Wwise Launcher.app" ]]; then

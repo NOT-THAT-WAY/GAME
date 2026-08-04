@@ -7,7 +7,7 @@ L'objectif est que les trois machines ouvrent le même projet avec les mêmes ve
 | Étape | Qui | Résultat attendu |
 |---|---|---|
 | 0. Accès | les trois | accès GitHub, MFA, clone sur disque local |
-| 1. Outils | les trois | Git/LFS, DVC, Unity Hub, IDE |
+| 1. Outils | les trois | Git/LFS, DVC, Unity Hub, IDE, Tailscale |
 | 2. Coffre externe | administrateur puis les trois | remote privé, credentials individuels, pull test |
 | 3. Premier import | terminé sur Mac pilote | packages résolus et lockfile commité |
 | 4. Validation croisée | Windows + second Mac | aucun changement parasite, build Windows IL2CPP |
@@ -22,13 +22,14 @@ Commun aux trois postes :
 - Git, Git LFS et DVC 3.x ;
 - Unity Hub et Unity `6000.3.20f1` ;
 - un éditeur C# avec son intégration Unity ;
+- Tailscale pour le réseau privé de développement lorsque chacun travaille depuis chez soi ;
 - accès individuel au GitHub privé et au remote d'assets.
 
 Sur les Mac Apple Silicon, le script installe Visual Studio Code et l'extension Unity de Microsoft, puis ouvre l'éditeur Unity Apple Silicon attendu. Un seul Mac a besoin du module Windows Build Support (Mono) si l'équipe veut produire un build de fumée non officiel depuis macOS.
 
 Sur Windows, ajouter Windows Build Support (IL2CPP) et Visual Studio 2022 avec « Game development with Unity ». Le PC reste la source de vérité des builds Windows natifs.
 
-Wwise et Steam ne sont pas nécessaires au premier test.
+Wwise et Steam ne sont pas nécessaires au premier test. Tailscale ne remplace pas Steam dans le jeu final : il relie seulement les machines de développement distantes.
 
 ## macOS
 
@@ -38,19 +39,20 @@ gh auth login --web
 gh auth setup-git
 gh repo clone NOT-THAT-WAY/GAME
 cd GAME
-./scripts/setup-macos.sh --all
+./scripts/setup-macos.sh --all --remote-play
 ```
 
 Avec un remote déjà choisi, la même commande peut tout configurer :
 
 ```bash
-./scripts/setup-macos.sh --all --asset-remote "REMPLACER_PAR_URL_DVC"
+./scripts/setup-macos.sh --all --remote-play --asset-remote "REMPLACER_PAR_URL_DVC"
 ```
 
 Pour un service S3-compatible :
 
 ```bash
 ./scripts/setup-macos.sh --all \
+  --remote-play \
   --asset-remote "s3://<bucket>/game" \
   --asset-endpoint "https://<endpoint>" \
   --asset-profile "game-assets"
@@ -60,6 +62,7 @@ Le script :
 
 - installe ou vérifie Git, LFS, DVC, GitHub CLI, Unity Hub et Visual Studio Code via Homebrew ;
 - installe l'extension Unity pour VS Code, qui apporte les dépendances C# ;
+- installe et ouvre Tailscale sans créer ni stocker de clé d'authentification ;
 - récupère les objets Git LFS et, si configurés, les lots DVC ;
 - configure UnityYAMLMerge ;
 - ouvre Unity Hub sur la version exacte ;
@@ -68,8 +71,8 @@ Le script :
 Après avoir terminé l'installation de Unity dans Hub :
 
 ```bash
-./scripts/setup-macos.sh
-./scripts/doctor-macos.sh
+./scripts/setup-macos.sh --remote-play
+./scripts/doctor-macos.sh --remote-play
 ```
 
 ## Windows
@@ -89,7 +92,7 @@ gh auth login --web
 gh auth setup-git
 gh repo clone NOT-THAT-WAY/GAME
 Set-Location GAME
-powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -All
+powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -All -RemotePlay
 ```
 
 Avec le remote :
@@ -97,18 +100,19 @@ Avec le remote :
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 `
   -All `
+  -RemotePlay `
   -AssetRemote "s3://<bucket>/game" `
   -AssetEndpoint "https://<endpoint>" `
   -AssetProfile "game-assets"
 ```
 
-Le script installe via `winget` Git/LFS, DVC, GitHub CLI, Unity Hub et Visual Studio, puis prépare LFS, DVC et Smart Merge. Visual Studio et Unity peuvent demander une élévation ou une confirmation interactive.
+Le script installe via `winget` Git/LFS, DVC, GitHub CLI, Unity Hub, Visual Studio et Tailscale, puis prépare LFS, DVC et Smart Merge. Visual Studio, Unity et l'extension VPN peuvent demander une élévation ou une confirmation interactive.
 
 Après l'installation Unity :
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1
-powershell -ExecutionPolicy Bypass -File .\scripts\doctor-windows.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -RemotePlay
+powershell -ExecutionPolicy Bypass -File .\scripts\doctor-windows.ps1 -RemotePlay
 ```
 
 ## Credentials du coffre
@@ -129,6 +133,8 @@ La PR #10 a figé `Packages/packages-lock.json` et les migrations déterministes
 ## Validation croisée et connexion
 
 Chaque machine ouvre puis ferme le projet sans erreur ni resérialisation massive. Windows produit ensuite le build IL2CPP du test. Suivre [FIRST_CONNECTION_TEST.md](FIRST_CONNECTION_TEST.md) pour connecter les trois postes.
+
+Lorsque les membres ne partagent pas le même Wi-Fi, suivre [REMOTE_CONNECTION_TEST.md](REMOTE_CONNECTION_TEST.md). Chaque poste doit être connecté au même tailnet avec un compte individuel ; aucune clé d'authentification n'est stockée dans le projet.
 
 ## Gates Wwise et Steam
 

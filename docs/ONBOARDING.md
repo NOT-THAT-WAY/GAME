@@ -37,7 +37,7 @@ claude
 > initialise l'environnement
 ```
 
-Le fichier `CLAUDE.md` charge les règles du projet et le skill `setup-game` exécute le script correspondant à Mac ou Windows. `/setup-game` permet aussi de le déclencher explicitement. Les confirmations GitHub, Homebrew/winget et Unity Hub restent interactives ; Claude reprend ensuite le diagnostic. Aucun setup standard n'installe Wwise Authoring.
+Le fichier `CLAUDE.md` charge les règles du projet et le skill `setup-game` exécute le script correspondant à Mac ou Windows. `/setup-game` permet aussi de le déclencher explicitement. Les confirmations GitHub, Homebrew/winget, Unity Hub et Tailscale restent interactives ; Claude reprend ensuite le diagnostic. Aucun setup standard n'installe Wwise Authoring.
 
 ## 1. Ton Mac devient la machine pilote
 
@@ -70,10 +70,10 @@ Sur le Mac pilote actuel, vérifier simplement `gh auth status`.
 Depuis la racine du repo :
 
 ```bash
-./scripts/setup-macos.sh --all
+./scripts/setup-macos.sh --all --remote-play
 ```
 
-Ce script installe ou vérifie : Git, Git LFS, GitHub CLI, DVC, Unity Hub, Visual Studio Code et l'extension Unity/C#. Il configure aussi Smart Merge, les hooks communs et le mode `pull --ff-only`.
+Ce script installe ou vérifie : Git, Git LFS, GitHub CLI, DVC, Unity Hub, Visual Studio Code, l'extension Unity/C# et Tailscale. Il configure aussi Smart Merge, les hooks communs et le mode `pull --ff-only`.
 
 Unity Hub s'ouvre sur `6000.3.20f1`. Choisir :
 
@@ -85,8 +85,8 @@ Unity Hub s'ouvre sur `6000.3.20f1`. Choisir :
 Quand Hub a terminé, relancer :
 
 ```bash
-./scripts/setup-macos.sh
-./scripts/doctor-macos.sh
+./scripts/setup-macos.sh --remote-play
+./scripts/doctor-macos.sh --remote-play
 ```
 
 Le remote DVC, Wwise et Steam peuvent apparaître en avertissement. C'est normal à ce stade. Une ligne `[FAIL]` sur Git, LFS, DVC ou Unity doit être corrigée avant d'ouvrir le projet.
@@ -143,6 +143,8 @@ git config --global user.email "EMAIL_GITHUB"
 
 Les handles GitHub sont nécessaires pour les assigner ensuite aux tickets M0.
 
+Un seul membre (Nils par défaut) crée aussi le tailnet Tailscale et envoie deux invitations privées. Le fait que le Mac mini de Zak héberge une session ne lui impose pas d'être administrateur du tailnet. Chaque personne rejoint avec son propre compte ; aucune clé d'authentification n'est créée pour les postes humains ni copiée dans le repo.
+
 ## 4. Installer le deuxième Mac
 
 Seulement après le merge du lockfile :
@@ -154,14 +156,14 @@ gh auth login --web
 gh auth setup-git
 gh repo clone NOT-THAT-WAY/GAME
 cd GAME
-./scripts/setup-macos.sh --all
+./scripts/setup-macos.sh --all --remote-play
 ```
 
 Installer dans Hub la même version Apple Silicon, puis :
 
 ```bash
-./scripts/setup-macos.sh
-./scripts/doctor-macos.sh
+./scripts/setup-macos.sh --remote-play
+./scripts/doctor-macos.sh --remote-play
 ```
 
 Si le coffre DVC est prêt :
@@ -190,14 +192,14 @@ gh auth login --web
 gh auth setup-git
 gh repo clone NOT-THAT-WAY/GAME
 Set-Location GAME
-powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -All
+powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -All -RemotePlay
 ```
 
-Le script installe Git LFS, GitHub CLI, DVC, Unity Hub et Visual Studio 2022. Dans Unity Hub, installer `6000.3.20f1` avec **Windows Build Support (IL2CPP)**. Puis relancer :
+Le script installe Git LFS, GitHub CLI, DVC, Unity Hub, Visual Studio 2022 et Tailscale. Dans Unity Hub, installer `6000.3.20f1` avec **Windows Build Support (IL2CPP)**, puis accepter l'invitation Tailscale avec le compte individuel. Relancer :
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1
-powershell -ExecutionPolicy Bypass -File .\scripts\doctor-windows.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -RemotePlay
+powershell -ExecutionPolicy Bypass -File .\scripts\doctor-windows.ps1 -RemotePlay
 ```
 
 Si le coffre est prêt :
@@ -213,27 +215,27 @@ Ouvrir/fermer Unity et vérifier que Git reste propre. Produire ensuite le build
 .\scripts\first-test-windows.ps1 Manual -BuildOnly
 ```
 
-## 6. Faire le premier test réseau à trois
+## 6. Faire le premier test distant à trois
 
-Sur le Mac pilote :
+Zak peut héberger et jouer sur son Mac mini :
 
 ```bash
-./scripts/first-test-macos.sh host --name "TON_NOM"
+./scripts/remote-test-macos.sh host --name "Zak"
 ```
 
-Le script affiche une IP probable, par exemple `192.168.1.42`. Sur le second Mac :
+Le script affiche l'IP Tailscale `100.x.y.z`. Sur un client Mac :
 
 ```bash
-./scripts/first-test-macos.sh client --address "192.168.1.42" --name "NOM_MAC_2"
+./scripts/remote-test-macos.sh client --address "100.x.y.z" --name "Nils"
 ```
 
 Sur Windows :
 
 ```powershell
-.\scripts\first-test-windows.ps1 Client -Address "192.168.1.42" -Name "NOM_WINDOWS"
+.\scripts\remote-test-windows.ps1 Client -Address "100.x.y.z" -Name "Sean"
 ```
 
-Le test est vert quand les trois noms apparaissent dans les trois fenêtres. Ensuite seulement : blockout du pivot, gate Wwise, puis Steam.
+Le test est vert quand les trois noms apparaissent dans les trois fenêtres. Si les machines partagent exceptionnellement le même Wi-Fi, utiliser plutôt [FIRST_CONNECTION_TEST.md](FIRST_CONNECTION_TEST.md). Ensuite seulement : blockout du pivot, gate Wwise, puis Steam.
 
 ## Quel script utiliser
 
@@ -242,7 +244,8 @@ Le test est vert quand les trois noms apparaissent dans les trois fenêtres. Ens
 | installer/configurer la machine | `setup-macos.sh` | `setup-windows.ps1` |
 | vérifier l'environnement | `doctor-macos.sh` | `doctor-windows.ps1` |
 | configurer/synchroniser les masters | `assets-macos.sh` | `assets-windows.ps1` |
-| construire/lancer le test réseau | `first-test-macos.sh` | `first-test-windows.ps1` |
+| test sur le même réseau | `first-test-macos.sh` | `first-test-windows.ps1` |
+| test depuis plusieurs lieux | `remote-test-macos.sh` | `remote-test-windows.ps1` |
 | vérifier avant commit | `validate-repository.sh` + hook | hook Git via Git Bash |
 
 Tous les scripts de setup peuvent être relancés. En cas d'échec, ne pas mettre Unity ou un package à jour au hasard : conserver la sortie du `doctor`, le commit courant et l'OS, puis traiter l'écart dans un ticket.

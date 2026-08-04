@@ -1,9 +1,11 @@
 ---
 name: lan-test
-description: Construit et lance le premier test multijoueur LAN de GAME sur Mac ou Windows. Utiliser lorsque l'utilisateur veut jouer ensemble, héberger, rejoindre ou tester la connexion réseau.
+description: Construit et lance le premier test multijoueur LAN de GAME sur Mac ou Windows lorsque tous les joueurs sont sur le même réseau. Pour des lieux ou Wi-Fi différents, utiliser remote-test.
 ---
 
 # Lancer le test LAN GAME
+
+Ce skill est réservé au même réseau local. Si les participants sont chacun chez eux, basculer vers `remote-test` et ne pas utiliser l'adresse `192.168.x.x` de l'hôte.
 
 ## Préconditions
 

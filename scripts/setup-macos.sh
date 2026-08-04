@@ -11,6 +11,7 @@ VSCODE_APP="/Applications/Visual Studio Code.app"
 VSCODE_CLI="$VSCODE_APP/Contents/Resources/app/bin/code"
 INSTALL_TOOLS=0
 OPEN_UNITY=0
+REMOTE_PLAY=0
 ASSET_REMOTE=""
 ASSET_ENDPOINT=""
 ASSET_PROFILE=""
@@ -38,13 +39,14 @@ has_vscode_extension() {
 }
 
 usage() {
-  printf 'Usage: %s [--install-tools] [--open-unity] [--all] [--asset-remote URL] [--asset-endpoint URL] [--asset-profile NAME]\n' "$0"
+  printf 'Usage: %s [--install-tools] [--open-unity] [--remote-play] [--all] [--asset-remote URL] [--asset-endpoint URL] [--asset-profile NAME]\n' "$0"
 }
 
 while (( $# > 0 )); do
   case "$1" in
     --install-tools) INSTALL_TOOLS=1 ;;
     --open-unity) OPEN_UNITY=1 ;;
+    --remote-play) REMOTE_PLAY=1 ;;
     --all) INSTALL_TOOLS=1; OPEN_UNITY=1 ;;
     --asset-remote)
       (( $# >= 2 )) || { printf '%s\n' '--asset-remote attend une URL.' >&2; exit 2; }
@@ -86,6 +88,11 @@ if (( INSTALL_TOOLS == 1 )); then
   fi
   if [[ ! -d "$VSCODE_APP" ]]; then
     brew install --cask visual-studio-code
+  fi
+  if (( REMOTE_PLAY == 1 )) && \
+     [[ ! -x "/Applications/Tailscale.app/Contents/MacOS/Tailscale" ]] && \
+     ! command -v tailscale >/dev/null 2>&1; then
+    brew install --cask tailscale-app
   fi
 fi
 
@@ -138,6 +145,17 @@ else
   printf "Remote d'assets non configuré — le test réseau fonctionne sans lui.\n"
 fi
 
+if (( REMOTE_PLAY == 1 )); then
+  if TAILSCALE_STATUS="$("$SCRIPT_DIR/tailscale-macos.sh" status 2>/dev/null)"; then
+    printf '%s\n' "$TAILSCALE_STATUS"
+  elif [[ -d "/Applications/Tailscale.app" ]]; then
+    open -a Tailscale
+    printf "Tailscale ouvert. Connectez-vous avec votre compte et rejoignez l'invitation de l'équipe, puis relancez ce setup.\n"
+  else
+    printf "Tailscale n'est pas connecté. Démarrez le client, rejoignez le tailnet de l'équipe, puis relancez ce setup.\n"
+  fi
+fi
+
 if [[ -x "$UNITY_EDITOR" ]]; then
   if SMART_MERGE="$(find_smart_merge)"; then
     git config --local merge.unityyamlmerge.name "Unity SmartMerge"
@@ -150,9 +168,14 @@ elif (( OPEN_UNITY == 1 )); then
   open "unityhub://$UNITY_VERSION/$UNITY_CHANGESET"
 fi
 
-if [[ -x "$UNITY_EDITOR" ]]; then
-  exec "$SCRIPT_DIR/doctor-macos.sh"
+DOCTOR_ARGUMENTS=()
+if (( REMOTE_PLAY == 1 )); then
+  DOCTOR_ARGUMENTS+=(--remote-play)
 fi
 
-"$SCRIPT_DIR/doctor-macos.sh" || true
+if [[ -x "$UNITY_EDITOR" ]]; then
+  exec "$SCRIPT_DIR/doctor-macos.sh" "${DOCTOR_ARGUMENTS[@]}"
+fi
+
+"$SCRIPT_DIR/doctor-macos.sh" "${DOCTOR_ARGUMENTS[@]}" || true
 printf "\nTerminez l'installation Unity dans Hub, puis relancez ./scripts/setup-macos.sh.\n"

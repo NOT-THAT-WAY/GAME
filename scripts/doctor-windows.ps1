@@ -1,5 +1,7 @@
 [CmdletBinding()]
-param()
+param(
+    [switch]$RemotePlay
+)
 
 $ErrorActionPreference = "Continue"
 $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
@@ -91,6 +93,17 @@ if (Test-Command "git") {
     $GitName = (& git config --get user.name 2>$null) -join ""
     $GitEmail = (& git config --get user.email 2>$null) -join ""
     if ($GitName -and $GitEmail) { Write-Ok "Identite Git configuree" } else { Write-Warn "Nom ou email Git non configure" }
+}
+
+try {
+    $TailscaleIp = (& (Join-Path $PSScriptRoot "tailscale-windows.ps1") -Action Ip -ErrorAction Stop) -join ""
+    if ($TailscaleIp) { Write-Ok "Tailscale connecte: $TailscaleIp" } else { throw "IP Tailscale absente" }
+} catch {
+    if ($RemotePlay) {
+        Write-Fail "Tailscale absent ou deconnecte - requis pour jouer depuis plusieurs reseaux"
+    } else {
+        Write-Warn "Tailscale absent ou deconnecte - requis uniquement pour le test a distance"
+    }
 }
 
 $VsWhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"

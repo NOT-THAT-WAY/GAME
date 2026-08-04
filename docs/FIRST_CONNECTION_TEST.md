@@ -2,6 +2,8 @@
 
 Objectif : afficher les trois noms dans la même liste, sans Steam, Wwise ni gameplay. Cela valide les installations, le build, FishNet/Tugboat, l'adressage LAN et les pare-feux avant tout système plus complexe.
 
+Cette procédure exige le même réseau local. Si chacun est chez soi, suivre [REMOTE_CONNECTION_TEST.md](REMOTE_CONNECTION_TEST.md) ; une IP `192.168.x.x` n'est pas joignable depuis un autre domicile.
+
 ## Préconditions
 
 - les trois machines sont sur le même réseau local, sans VPN ;

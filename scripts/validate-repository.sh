@@ -12,9 +12,18 @@ PROJECT_UNITY="$(sed -n 's/^m_EditorVersion: //p' ProjectSettings/ProjectVersion
 [[ -f .claude/skills/setup-game/SKILL.md ]]
 [[ -f .claude/skills/lan-test/SKILL.md ]]
 [[ -f .claude/skills/git-task/SKILL.md ]]
+[[ -f .claude/skills/remote-test/SKILL.md ]]
 grep -Fq 'name: setup-game' .claude/skills/setup-game/SKILL.md
 grep -Fq 'name: lan-test' .claude/skills/lan-test/SKILL.md
 grep -Fq 'name: git-task' .claude/skills/git-task/SKILL.md
+grep -Fq 'name: remote-test' .claude/skills/remote-test/SKILL.md
+[[ -x scripts/tailscale-macos.sh ]]
+[[ -x scripts/remote-test-macos.sh ]]
+[[ -f scripts/tailscale-windows.ps1 ]]
+[[ -f scripts/remote-test-windows.ps1 ]]
+[[ -f docs/REMOTE_CONNECTION_TEST.md ]]
+grep -Fq 'tailscale-app' scripts/setup-macos.sh
+grep -Fq 'Tailscale.Tailscale' scripts/setup-windows.ps1
 
 while IFS= read -r BASH_SCRIPT; do
   bash -n "$BASH_SCRIPT"

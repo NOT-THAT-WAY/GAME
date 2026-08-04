@@ -12,12 +12,15 @@
 | Tugboat | inclus avec FishNet | sessions locales et LAN sans Steam |
 | Multiplayer Play Mode | `2.0.2` | plusieurs joueurs dans l'éditeur |
 | Multiplayer Tools | `2.2.10` | profils de latence/perte et métriques |
+| Tailscale | client stable auto-mis à jour | relie les postes distants pendant le développement, hors du build |
 | DVC | `3.x` | pointeurs Git vers les masters stockés hors GitHub |
 | Git LFS | version installée par la plateforme | binaires de runtime nécessaires au build uniquement |
 
 Toutes les versions sont exactes. Aucun membre ne clique sur « Update » isolément.
 
 DVC est borné au major 3 dans `config/toolchain.env`. Son remote n'est pas une dépendance du runtime : un développeur réseau peut compiler sans télécharger les sources Blender ou DAW qui ne sont pas utilisées par le build.
+
+Tailscale n'est ni un package Unity ni un transport livré aux joueurs. Il fournit uniquement une interface réseau privée aux postes de développement afin que Tugboat fonctionne entre plusieurs lieux. Sa connexion utilise des comptes individuels et aucune clé d'authentification n'entre dans le dépôt.
 
 ## Éléments volontairement différés
 
@@ -34,6 +37,7 @@ L'ancien document citait FishyFacepunch. Ce dépôt est aujourd'hui archivé ; i
 Décision :
 
 - Tugboat pour le développement quotidien et la première session entre machines ;
+- Tailscale autour de Tugboat lorsque les développeurs ne partagent pas le même réseau ;
 - FishySteamworks pour le profil Steam après cette gate ;
 - Multipass seulement si l'équipe a besoin d'exposer les deux transports simultanément dans la même build.
 
@@ -76,6 +80,7 @@ Une mise à jour doit tenir dans une seule PR et modifier ensemble :
 - [Unity CLI et installation des éditeurs](https://docs.unity.com/en-us/hub/use-unity-cli)
 - [FishNet 4.7.2](https://github.com/FirstGearGames/FishNet/releases/tag/4.7.2)
 - [Tugboat](https://fish-networking.gitbook.io/docs/fishnet-building-blocks/transports/tugboat)
+- [Installation Tailscale](https://tailscale.com/docs/install)
 - [FishySteamworks](https://fish-networking.gitbook.io/docs/fishnet-building-blocks/transports/fishysteamworks)
 - [Steamworks.NET 2025.164.1](https://github.com/rlabrecque/Steamworks.NET/releases/tag/2025.164.1)
 - [Wwise Unity Integration 2025.1.4](https://www.audiokinetic.com/en/public-library/2025.1.4_9062/?id=index.html&source=Unity)

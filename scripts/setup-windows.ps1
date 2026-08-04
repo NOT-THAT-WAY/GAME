@@ -3,6 +3,7 @@ param(
     [switch]$InstallTools,
     [switch]$InstallIDE,
     [switch]$OpenUnity,
+    [switch]$RemotePlay,
     [switch]$All,
     [string]$AssetRemote,
     [string]$AssetEndpoint,
@@ -40,6 +41,7 @@ if ($InstallTools) {
     Install-WingetPackage "GitHub.cli"
     Install-WingetPackage "Iterative.DVC"
     Install-WingetPackage "Unity.UnityHub"
+    if ($RemotePlay) { Install-WingetPackage "Tailscale.Tailscale" }
 }
 
 if ($InstallIDE) {
@@ -76,6 +78,20 @@ if ($LASTEXITCODE -eq 0 -and $DvcRemotes -match '(?m)^assets\s') {
     Write-Host "Remote d'assets non configure - le test reseau fonctionne sans lui."
 }
 
+if ($RemotePlay) {
+    try {
+        & (Join-Path $PSScriptRoot "tailscale-windows.ps1") -Action Status
+    } catch {
+        $TailscaleGuiCandidates = @(
+            (Join-Path $env:ProgramFiles "Tailscale\tailscale-ipn.exe"),
+            (Join-Path ${env:ProgramFiles(x86)} "Tailscale\tailscale-ipn.exe")
+        )
+        $TailscaleGui = $TailscaleGuiCandidates | Where-Object { $_ -and (Test-Path $_) } | Select-Object -First 1
+        if ($TailscaleGui) { Start-Process $TailscaleGui }
+        Write-Host "Tailscale doit etre connecte au tailnet de l'equipe. Terminez l'authentification, puis relancez ce setup."
+    }
+}
+
 if (Test-Path $UnityEditor) {
     $SmartMerge = Join-Path (Split-Path $UnityEditor -Parent) "Data\Tools\UnityYAMLMerge.exe"
     if (Test-Path $SmartMerge) {
@@ -90,11 +106,14 @@ if (Test-Path $UnityEditor) {
     Start-Process "unityhub://$UnityVersion/$UnityChangeset"
 }
 
+$DoctorArguments = @{}
+if ($RemotePlay) { $DoctorArguments["RemotePlay"] = $true }
+
 if (Test-Path $UnityEditor) {
-    & (Join-Path $PSScriptRoot "doctor-windows.ps1")
+    & (Join-Path $PSScriptRoot "doctor-windows.ps1") @DoctorArguments
     exit $LASTEXITCODE
 }
 
-& (Join-Path $PSScriptRoot "doctor-windows.ps1")
+& (Join-Path $PSScriptRoot "doctor-windows.ps1") @DoctorArguments
 Write-Host "`nTerminez l'installation Unity dans Hub, puis relancez setup-windows.ps1."
 exit 0
