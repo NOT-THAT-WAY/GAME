@@ -3,7 +3,7 @@
 ## Cycle quotidien
 
 ```text
-issue courte → claim des fichiers/lots → branche courte → test → revue → squash vers main
+issue courte → claim des fichiers/lots → branche courte → test → PR verte → intégration par Nils
 ```
 
 Avant de commencer :
@@ -22,7 +22,7 @@ Sur Windows :
 
 À la fin, fermer Unity/Wwise, examiner `git status` et `dvc status`, puis lancer le diagnostic. Pour un master modifié : **`dvc push` avant `git push`**.
 
-Le hook partagé refuse les pushes directs vers `main` et les noms de branche hors contrat. Le chemin normal est toujours une pull request avec une revue. Ce hook est un garde-fou local, pas une frontière de sécurité serveur.
+Le hook partagé refuse les pushes directs vers `main` et les noms de branche hors contrat. Le chemin normal est toujours une pull request avec les contrôles verts, puis une décision d'intégration de Nils. Ce hook est un garde-fou local, pas une frontière de sécurité serveur.
 
 Claude Code reçoit la même règle dans `CLAUDE.md` et le skill `git-task`. Une demande d'initialisation configure le hook, et aucune session ne doit utiliser `--no-verify`, modifier le hook ou pousser `main` depuis une autre interface.
 
@@ -48,7 +48,7 @@ Le titre de PR reprend le même type : `feat/player-movement` devient par exempl
 .\scripts\publish-task.ps1 "feat: add player movement"
 ```
 
-Le contrôle `workflow-policy` répète ces validations dans GitHub. Sans protection serveur payante, l'équipe garde la règle simple : une PR verte, puis une relecture par un autre membre avant le squash merge.
+Le contrôle `workflow-policy` répète ces validations dans GitHub. Sans protection serveur payante, l'équipe garde la règle simple : Zak et Sean publient une PR verte et Nils la relit, la teste au niveau de risque adapté, puis décide du squash merge. Une revue de Zak ou Sean peut être demandée pour leur expertise, mais elle n'est jamais obligatoire et ils n'ont pas à gérer l'interface des PR.
 
 La matrice complète de ce qui est permis, coordonné, différé ou interdit se trouve dans [PROJECT_RULES.md](PROJECT_RULES.md). Les limites de la CI et l'ordre d'activation des builds automatisés se trouvent dans [CI_BUILDS.md](CI_BUILDS.md).
 

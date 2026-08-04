@@ -57,9 +57,9 @@ Le dépôt privé de l'organisation est actuellement sur GitHub Free. La protect
 2. les branches et titres de PR suivent le même type : `feat`, `fix`, `art`, `audio`, `data`, `docs` ou `chore` ;
 3. GitHub Actions vérifie la politique, le dépôt et la syntaxe PowerShell avec des droits en lecture seule ; seules les Actions appartenant à GitHub sont autorisées et GitHub exige leur SHA complète ;
 4. GitHub n'autorise que le squash merge et supprime la branche après merge ;
-5. la règle humaine est une PR verte relue par un autre membre.
+5. la règle humaine est une PR verte dont Nils, intégrateur du dépôt, décide le squash merge ; une revue supplémentaire est facultative et ciblée selon le risque.
 
-Un hook local reste techniquement contournable et les trois membres ont actuellement le rôle GitHub Admin. La discipline PR + revue est donc une règle d'équipe, pas une frontière de sécurité absolue. Quand les rôles seront stabilisés, conserver un ou deux Owners maximum et donner aux autres le droit Write suffira pour le travail quotidien.
+Un hook local reste techniquement contournable et les trois membres ont actuellement le rôle GitHub Admin. La discipline branche + PR + décision de Nils est donc une règle d'équipe, pas une frontière de sécurité absolue. Quand les rôles seront stabilisés, conserver un ou deux Owners maximum et donner aux autres le droit Write suffira pour le travail quotidien.
 
 ## Choisir le bon type de branche
 

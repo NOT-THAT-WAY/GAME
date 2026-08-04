@@ -26,7 +26,7 @@ Avec Claude Code, lancer `claude` depuis la racine puis écrire `initialise l'en
 
 Pour intégrer Zak et Sean maintenant : Nils génère dans la console Tailscale deux liens **Invite external users** à usage unique avec le rôle Member, puis les envoie en privé. Le tailnet actuel est personnel et distinct de l'organisation GitHub. Après acceptation, chacun clone le repo et demande à Claude `initialise l'environnement pour jouer à distance`. Le coffre DVC peut attendre : aucun master n'est encore référencé.
 
-`main` refuse les pushes directs sur chaque clone initialisé grâce au hook partagé, et Claude a la même interdiction. Les branches suivent `feat/...`, `fix/...`, `art/...`, `audio/...`, `data/...`, `docs/...` ou `chore/...` ; le script `publish-task` pousse ensuite la branche et ouvre sa PR. Le dépôt privé reste utilisable gratuitement par toute l'équipe sans protection serveur absolue.
+`main` refuse les pushes directs sur chaque clone initialisé grâce au hook partagé, et Claude a la même interdiction. Les branches suivent `feat/...`, `fix/...`, `art/...`, `audio/...`, `data/...`, `docs/...` ou `chore/...` ; le script `publish-task` pousse ensuite la branche et ouvre sa PR. Zak et Sean n'ont pas à administrer, relire ou merger les PR : ils livrent une branche testée et Nils gère seul l'intégration. Le dépôt privé reste utilisable gratuitement par toute l'équipe sans protection serveur absolue.
 
 ## Installation rapide
 

@@ -103,7 +103,7 @@ Ne rien configurer ici pour l'instant. Au premier master Blender/PSD/DAW lourd, 
 
 ## 3. Donner accès aux deux autres membres
 
-Les trois comptes sont déjà membres actifs de `NOT-THAT-WAY` et ont accès au repo. Le droit nécessaire au quotidien est **Member + Write** ; le rôle Owner n'est pas requis pour coder, pousser une branche ou ouvrir une PR. Après l'onboarding, garder idéalement un ou deux Owners maximum et retirer aux autres la création/suppression globale de dépôts.
+Les trois comptes sont déjà membres actifs de `NOT-THAT-WAY` et ont accès au repo. Le droit nécessaire au quotidien est **Member + Write** ; le rôle Owner n'est pas requis pour coder, pousser une branche ou ouvrir une PR. Zak et Sean livrent leur branche et son résultat de test, sans devoir relire ni merger les PR ; Nils gère seul l'intégration. Après l'onboarding, garder idéalement un ou deux Owners maximum et retirer aux autres la création/suppression globale de dépôts.
 
 Chaque membre configure son identité Git avec son propre nom/email :
 
