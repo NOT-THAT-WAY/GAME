@@ -180,9 +180,9 @@ else
 fi
 
 if [[ -d "/Applications/Wwise Launcher.app" ]] || [[ -d "/Applications/Audiokinetic/Wwise Launcher.app" ]]; then
-  ok "Wwise Launcher présent (requis à la gate audio)"
+  ok "Wwise Launcher présent (poste audio de Nils)"
 else
-  warn "Wwise Launcher non installé — normal avant la gate audio"
+  warn "Wwise Launcher absent — normal hors poste audio de Nils"
 fi
 
 if [[ -d "/Applications/Steam.app" ]]; then

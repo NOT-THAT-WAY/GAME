@@ -12,7 +12,7 @@ L'objectif est que les trois machines ouvrent le même projet avec les mêmes ve
 | 3. Premier import | un Mac pilote | packages résolus et lockfile commité |
 | 4. Validation croisée | Windows + second Mac | aucun changement parasite, build Windows IL2CPP |
 | 5. Connexion | les trois | roster FishNet partagé sur le LAN |
-| 6. Wwise | un Mac puis Windows | compatibilité démontrée avant déploiement général |
+| 6. Wwise | Nils puis builds Mac/Windows | Authoring centralisé, runtime identique pour tous |
 | 7. Steam | après LAN | transport ajouté sans casser Tugboat |
 
 ## Outils installés maintenant
@@ -141,7 +141,7 @@ Chaque machine ouvre puis ferme le projet sans erreur ni resérialisation massiv
 
 ## Gates Wwise et Steam
 
-Wwise `2025.1.4` est intégré sur une branche dédiée seulement après une compilation propre. Le poste audio et un poste de secours installent Wwise Authoring ; les autres reçoivent l'intégration runtime et les SoundBanks par le dépôt, sans installation Authoring. Un événement minimal doit fonctionner dans un build Mac et Windows avant déploiement de l'intégration à toute l'équipe.
+Wwise `2025.1.4` est intégré sur une branche dédiée seulement après une compilation propre. Nils est le seul poste Wwise Authoring au départ. Il versionne dans la même PR l'intégration runtime et les SoundBanks approuvées via Git LFS ; Sean et Zak les récupèrent comme les autres assets et ne lancent jamais une intégration locale. Un événement minimal doit fonctionner dans un build Mac et Windows avant le merge.
 
 Steamworks.NET/FishySteamworks arrive après un test LAN vert. Tugboat reste toujours disponible, notamment parce que les tests Steam multi-instance locaux sont limités par les comptes Steam.
 
