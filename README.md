@@ -37,7 +37,7 @@ cd GAME
 ./scripts/setup-macos.sh --all
 ```
 
-Le script installe Git/LFS, DVC, GitHub CLI et Unity Hub, prépare Smart Merge et ouvre l'installation exacte de Unity. Une fois Unity installé, relancer simplement :
+Le script installe Git/LFS, DVC, GitHub CLI, Unity Hub, Visual Studio Code et son extension Unity/C#, prépare Smart Merge et ouvre l'installation exacte de Unity. Une fois Unity installé, relancer simplement :
 
 ```bash
 ./scripts/setup-macos.sh

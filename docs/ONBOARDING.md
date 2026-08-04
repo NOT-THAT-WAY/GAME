@@ -48,7 +48,7 @@ Depuis la racine du repo :
 ./scripts/setup-macos.sh --all
 ```
 
-Ce script installe ou vérifie : Git, Git LFS, GitHub CLI, DVC et Unity Hub. Il configure aussi Smart Merge, les hooks communs et le mode `pull --ff-only`.
+Ce script installe ou vérifie : Git, Git LFS, GitHub CLI, DVC, Unity Hub, Visual Studio Code et l'extension Unity/C#. Il configure aussi Smart Merge, les hooks communs et le mode `pull --ff-only`.
 
 Unity Hub s'ouvre sur `6000.3.20f1`. Choisir :
 
@@ -76,12 +76,13 @@ git switch -c chore/first-unity-import
 
 Dans Unity Hub, ajouter/ouvrir le dossier `GAME` avec la version exacte. Puis :
 
-1. attendre la fin de l'import et de la résolution des packages ;
-2. vérifier qu'il n'y a aucune erreur rouge dans la Console ;
-3. lancer `GAME > Validate Project Setup` ;
-4. ouvrir `Assets/Scenes/SampleScene.unity` ;
-5. entrer puis sortir du Play Mode ;
-6. fermer complètement Unity.
+1. dans `Unity > Settings/Preferences > External Tools`, choisir Visual Studio Code ;
+2. attendre la fin de l'import et de la résolution des packages ;
+3. vérifier qu'il n'y a aucune erreur rouge dans la Console ;
+4. lancer `GAME > Validate Project Setup` ;
+5. ouvrir `Assets/Scenes/SampleScene.unity` ;
+6. entrer puis sortir du Play Mode ;
+7. fermer complètement Unity.
 
 Contrôler le résultat :
 
@@ -254,3 +255,5 @@ Le test est vert quand les trois noms apparaissent dans les trois fenêtres. Ens
 | vérifier avant commit | `validate-repository.sh` + hook | hook Git via Git Bash |
 
 Tous les scripts de setup peuvent être relancés. En cas d'échec, ne pas mettre Unity ou un package à jour au hasard : conserver la sortie du `doctor`, le commit courant et l'OS, puis traiter l'écart dans un ticket.
+
+Une nouvelle machine est considérée intégrée lorsque son `doctor` affiche `0 erreur`, que `git status --short` reste vide après ouverture/fermeture de Unity et qu'elle peut rejoindre le test réseau. Le coffre DVC et Wwise restent optionnels tant que leurs jalons ne sont pas ouverts.

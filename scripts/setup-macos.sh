@@ -7,6 +7,8 @@ TOOLCHAIN_FILE="$REPO_ROOT/config/toolchain.env"
 UNITY_VERSION="$(sed -n 's/^UNITY_VERSION=//p' "$TOOLCHAIN_FILE")"
 UNITY_CHANGESET="$(sed -n 's/^UNITY_CHANGESET=//p' "$TOOLCHAIN_FILE")"
 UNITY_EDITOR="${GAME_UNITY_EDITOR:-/Applications/Unity/Hub/Editor/$UNITY_VERSION/Unity.app/Contents/MacOS/Unity}"
+VSCODE_APP="/Applications/Visual Studio Code.app"
+VSCODE_CLI="$VSCODE_APP/Contents/Resources/app/bin/code"
 INSTALL_TOOLS=0
 OPEN_UNITY=0
 ASSET_REMOTE=""
@@ -27,6 +29,12 @@ find_smart_merge() {
   done
 
   return 1
+}
+
+has_vscode_extension() {
+  local extension_id="$1"
+  [[ -x "$VSCODE_CLI" ]] || return 1
+  "$VSCODE_CLI" --list-extensions 2>/dev/null | grep -Fxiq -- "$extension_id"
 }
 
 usage() {
@@ -76,6 +84,9 @@ if (( INSTALL_TOOLS == 1 )); then
   if ! brew list --cask unity-hub >/dev/null 2>&1; then
     brew install --cask unity-hub
   fi
+  if [[ ! -d "$VSCODE_APP" ]]; then
+    brew install --cask visual-studio-code
+  fi
 fi
 
 if ! command -v git >/dev/null 2>&1; then
@@ -91,6 +102,18 @@ fi
 if ! command -v dvc >/dev/null 2>&1; then
   printf 'DVC est absent. Relancez avec --install-tools.\n' >&2
   exit 1
+fi
+
+if [[ -x "$VSCODE_CLI" ]]; then
+  for vscode_extension in \
+    visualstudiotoolsforunity.vstuc \
+    ms-dotnettools.csharp \
+    ms-dotnettools.csdevkit; do
+    if ! has_vscode_extension "$vscode_extension"; then
+      printf "Installation de l'extension VS Code %s.\n" "$vscode_extension"
+      "$VSCODE_CLI" --install-extension "$vscode_extension"
+    fi
+  done
 fi
 
 git lfs install --local --skip-repo

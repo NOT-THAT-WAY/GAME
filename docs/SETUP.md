@@ -21,10 +21,10 @@ Commun aux trois postes :
 
 - Git, Git LFS et DVC 3.x ;
 - Unity Hub et Unity `6000.3.20f1` ;
-- un éditeur C# ;
+- un éditeur C# avec son intégration Unity ;
 - accès individuel au GitHub privé et au remote d'assets.
 
-Sur les Mac Apple Silicon, sélectionner l'éditeur Apple Silicon. Un seul Mac a besoin du module Windows Build Support (Mono) si l'équipe veut produire un build de fumée non officiel depuis macOS.
+Sur les Mac Apple Silicon, le script installe Visual Studio Code et l'extension Unity de Microsoft, puis ouvre l'éditeur Unity Apple Silicon attendu. Un seul Mac a besoin du module Windows Build Support (Mono) si l'équipe veut produire un build de fumée non officiel depuis macOS.
 
 Sur Windows, ajouter Windows Build Support (IL2CPP) et Visual Studio 2022 avec « Game development with Unity ». Le PC reste la source de vérité des builds Windows natifs.
 
@@ -58,7 +58,8 @@ Pour un service S3-compatible :
 
 Le script :
 
-- installe ou vérifie Git, LFS, DVC, GitHub CLI et Unity Hub via Homebrew ;
+- installe ou vérifie Git, LFS, DVC, GitHub CLI, Unity Hub et Visual Studio Code via Homebrew ;
+- installe l'extension Unity pour VS Code, qui apporte les dépendances C# ;
 - récupère les objets Git LFS et, si configurés, les lots DVC ;
 - configure UnityYAMLMerge ;
 - ouvre Unity Hub sur la version exacte ;
@@ -140,9 +141,21 @@ Chaque machine ouvre puis ferme le projet sans erreur ni resérialisation massiv
 
 ## Gates Wwise et Steam
 
-Wwise `2025.1.4` est intégré sur une branche dédiée seulement après une compilation propre. Il doit jouer un événement minimal dans un build Mac et Windows avant installation sur le troisième poste.
+Wwise `2025.1.4` est intégré sur une branche dédiée seulement après une compilation propre. Le poste audio et un poste de secours installent Wwise Authoring ; les autres reçoivent l'intégration runtime et les SoundBanks par le dépôt, sans installation Authoring. Un événement minimal doit fonctionner dans un build Mac et Windows avant déploiement de l'intégration à toute l'équipe.
 
 Steamworks.NET/FishySteamworks arrive après un test LAN vert. Tugboat reste toujours disponible, notamment parce que les tests Steam multi-instance locaux sont limités par les comptes Steam.
+
+## Quand une machine est intégrée
+
+Une machine Mac ou Windows rejoint le travail partagé seulement lorsque :
+
+1. son `doctor` termine avec `0 erreur` ;
+2. Unity utilise exactement la version de `config/toolchain.env` ;
+3. `git status --short` est vide sur `main` après une ouverture et fermeture de Unity ;
+4. elle récupère un lot test DVC si le coffre est déjà activé ;
+5. elle construit ou rejoint le test de connexion correspondant à son rôle.
+
+Les avertissements Wwise, Steam ou coffre DVC sont acceptables uniquement tant que le jalon concerné n'a pas commencé.
 
 ## En cas d'écart
 

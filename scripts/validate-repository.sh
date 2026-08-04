@@ -8,6 +8,10 @@ cd -- "$REPO_ROOT"
 EXPECTED_UNITY="$(sed -n 's/^UNITY_VERSION=//p' config/toolchain.env)"
 PROJECT_UNITY="$(sed -n 's/^m_EditorVersion: //p' ProjectSettings/ProjectVersion.txt)"
 
+while IFS= read -r BASH_SCRIPT; do
+  bash -n "$BASH_SCRIPT"
+done < <(git ls-files '*.sh' '.githooks/pre-commit' '.githooks/pre-push')
+
 if [[ "$EXPECTED_UNITY" != "$PROJECT_UNITY" ]]; then
   printf 'Unity mismatch: toolchain=%s project=%s\n' "$EXPECTED_UNITY" "$PROJECT_UNITY" >&2
   exit 1
