@@ -1,0 +1,21 @@
+name: Repository checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          # Contract checks inspect pointers and metadata, not large payloads.
+          lfs: false
+      - name: Validate repository contract
+        run: ./scripts/validate-repository.sh

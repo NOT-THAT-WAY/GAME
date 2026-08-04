@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+"$REPO_ROOT/scripts/validate-repository.sh"
+
+if ! command -v git-lfs >/dev/null 2>&1; then
+  printf 'Git LFS est requis pour pousser ce dépôt.\n' >&2
+  exit 2
+fi
+
+git lfs pre-push "$@"

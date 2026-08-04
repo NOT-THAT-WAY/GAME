@@ -1,0 +1,137 @@
+# Installation de l'équipe — macOS et Windows
+
+L'objectif est que les trois machines ouvrent le même projet avec les mêmes versions, sans partager les caches. Une personne effectue le premier import ; les deux autres attendent son commit de verrouillage avant d'ouvrir Unity.
+
+## Ordre recommandé
+
+| Étape | Qui | Résultat attendu |
+|---|---|---|
+| 0. Accès | les trois | accès GitHub, MFA, clone sur disque local |
+| 1. Outils | les trois | Git/LFS, DVC, Unity Hub, IDE |
+| 2. Coffre externe | administrateur puis les trois | remote privé, credentials individuels, pull test |
+| 3. Premier import | un Mac pilote | packages résolus et lockfile commité |
+| 4. Validation croisée | Windows + second Mac | aucun changement parasite, build Windows IL2CPP |
+| 5. Connexion | les trois | roster FishNet partagé sur le LAN |
+| 6. Wwise | un Mac puis Windows | compatibilité démontrée avant déploiement général |
+| 7. Steam | après LAN | transport ajouté sans casser Tugboat |
+
+## Outils installés maintenant
+
+Commun aux trois postes :
+
+- Git, Git LFS et DVC 3.x ;
+- Unity Hub et Unity `6000.3.20f1` ;
+- un éditeur C# ;
+- accès individuel au GitHub privé et au remote d'assets.
+
+Sur les Mac Apple Silicon, sélectionner l'éditeur Apple Silicon. Un seul Mac a besoin du module Windows Build Support (Mono) si l'équipe veut produire un build de fumée non officiel depuis macOS.
+
+Sur Windows, ajouter Windows Build Support (IL2CPP) et Visual Studio 2022 avec « Game development with Unity ». Le PC reste la source de vérité des builds Windows natifs.
+
+Wwise et Steam ne sont pas nécessaires au premier test.
+
+## macOS
+
+```bash
+git clone https://github.com/NOT-THAT-WAY/GAME.git
+cd GAME
+./scripts/setup-macos.sh --all
+```
+
+Avec un remote déjà choisi, la même commande peut tout configurer :
+
+```bash
+./scripts/setup-macos.sh --all --asset-remote "<URL_DVC>"
+```
+
+Pour un service S3-compatible :
+
+```bash
+./scripts/setup-macos.sh --all \
+  --asset-remote "s3://<bucket>/game" \
+  --asset-endpoint "https://<endpoint>" \
+  --asset-profile "game-assets"
+```
+
+Le script :
+
+- installe ou vérifie Git, LFS, DVC, GitHub CLI et Unity Hub via Homebrew ;
+- récupère les objets Git LFS et, si configurés, les lots DVC ;
+- configure UnityYAMLMerge ;
+- ouvre Unity Hub sur la version exacte ;
+- lance le diagnostic.
+
+Après avoir terminé l'installation de Unity dans Hub :
+
+```bash
+./scripts/setup-macos.sh
+./scripts/doctor-macos.sh
+```
+
+## Windows
+
+Installer Git si nécessaire, rouvrir PowerShell, puis cloner :
+
+```powershell
+winget install --id Git.Git --exact
+git clone https://github.com/NOT-THAT-WAY/GAME.git
+Set-Location GAME
+powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -All
+```
+
+Avec le remote :
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 `
+  -All `
+  -AssetRemote "s3://<bucket>/game" `
+  -AssetEndpoint "https://<endpoint>" `
+  -AssetProfile "game-assets"
+```
+
+Le script installe via `winget` Git/LFS, DVC, GitHub CLI, Unity Hub et Visual Studio, puis prépare LFS, DVC et Smart Merge. Visual Studio et Unity peuvent demander une élévation ou une confirmation interactive.
+
+Après l'installation Unity :
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\doctor-windows.ps1
+```
+
+## Credentials du coffre
+
+Chaque membre reçoit son propre accès avec le minimum de droits. Les clés ne doivent pas être passées comme arguments des scripts, car l'historique du terminal peut les conserver.
+
+- utiliser le profil local du fournisseur ou ses variables d'environnement ;
+- l'URL et les options non sensibles sont stockées dans `.dvc/config.local` ;
+- ce fichier est ignoré par Git ;
+- ne jamais copier le dossier `.dvc/cache` entre membres comme méthode principale de partage.
+
+Le responsable réalise un test de restauration sur un clone propre avant d'y déposer des masters irremplaçables.
+
+## Premier import Unity — une seule personne
+
+1. Vérifier que `git status --short` ne retourne rien.
+2. Ouvrir `GAME` avec Unity `6000.3.20f1`.
+3. Attendre la résolution complète des packages.
+4. Lancer `GAME > Validate Project Setup`.
+5. Ouvrir `Assets/Scenes/SampleScene.unity`, entrer puis sortir du Play Mode.
+6. Fermer Unity et relancer le `doctor`.
+7. Examiner les changements. Le commit attendu contient surtout `Packages/packages-lock.json` et d'éventuelles migrations déterministes.
+8. Créer une PR `chore/first-unity-import`.
+
+Les deux autres machines attendent son merge, font `git pull --ff-only`, puis ouvrent Unity. Si Unity propose une montée de version, refuser.
+
+## Validation croisée et connexion
+
+Chaque machine ouvre puis ferme le projet sans erreur ni resérialisation massive. Windows produit ensuite le build IL2CPP du test. Suivre [FIRST_CONNECTION_TEST.md](FIRST_CONNECTION_TEST.md) pour connecter les trois postes.
+
+## Gates Wwise et Steam
+
+Wwise `2025.1.4` est intégré sur une branche dédiée seulement après une compilation propre. Il doit jouer un événement minimal dans un build Mac et Windows avant installation sur le troisième poste.
+
+Steamworks.NET/FishySteamworks arrive après un test LAN vert. Tugboat reste toujours disponible, notamment parce que les tests Steam multi-instance locaux sont limités par les comptes Steam.
+
+## En cas d'écart
+
+Ne pas mettre un package à jour sur une seule machine. Noter la commande, le commit et l'erreur ; vérifier `config/toolchain.env`, puis traiter tout changement de version dans une PR unique avec tests Mac et Windows.

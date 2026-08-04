@@ -1,0 +1,64 @@
+# Unity generated directories
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+/Assets/_GeneratedLocal/
+/Assets/_GeneratedLocal.meta
+
+# IDEs and editors
+.vs/
+.idea/
+.vscode/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Unity crash and profiling output
+sysinfo.txt
+*.stackdump
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.local.json
+steam_appid.txt
+/.dvc/config.local
+
+# Wwise generated/cache data. Authoring sources remain versioned.
+/WwiseProject/.cache/
+/WwiseProject/.wsettings/
+/WwiseProject/GeneratedSoundBanks/
+/Assets/StreamingAssets/Audio/GeneratedSoundBanks/
+/Assets/Wwise/GeneratedSoundBanks/
+*.akd
+
+# Build and package output
+*.apk
+*.aab
+*.app
+*.dmg
+*.exe
+*.msi
+*.pkg
+*.unitypackage

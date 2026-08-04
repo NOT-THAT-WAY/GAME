@@ -1,0 +1,65 @@
+name: Asset ou contenu
+description: Revendiquer, produire, intégrer et licencier un lot d'asset.
+title: "[ASSET] "
+labels:
+  - asset
+body:
+  - type: input
+    id: asset_id
+    attributes:
+      label: ID stable
+      description: Exemple ART-PIVOT-001 ou AUD-PIVOT-001.
+      placeholder: ART-PIVOT-001
+    validations:
+      required: true
+  - type: dropdown
+    id: discipline
+    attributes:
+      label: Discipline
+      options:
+        - Art
+        - Audio
+        - UI
+        - Narrative
+        - Reference
+        - ThirdParty
+    validations:
+      required: true
+  - type: input
+    id: dvc_path
+    attributes:
+      label: Lot DVC
+      placeholder: ExternalAssets/Art/ART-PIVOT-001
+    validations:
+      required: true
+  - type: textarea
+    id: outputs
+    attributes:
+      label: Sorties Unity ou Wwise
+      placeholder: Assets/_Project/Pivot/Art/PivotDoor_LOD0.fbx
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Provenance et licence
+      description: Source, auteur, date, licence, emplacement privé de la preuve et restrictions.
+    validations:
+      required: true
+  - type: input
+    id: claim_until
+    attributes:
+      label: Claim jusqu'au
+      description: Date courte au format YYYY-MM-DD ; renouveler si nécessaire.
+      placeholder: "2026-08-08"
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Contrat
+      options:
+        - label: Aucun autre membre ne travaille actuellement sur ce lot.
+          required: true
+        - label: Aucun secret, donnée personnelle ou preuve nominative ne sera ajouté à Git/DVC.
+          required: true

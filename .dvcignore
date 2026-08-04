@@ -1,0 +1,8 @@
+# Local noise must never enter the external asset index.
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.bak
+*.autosave
+~*
