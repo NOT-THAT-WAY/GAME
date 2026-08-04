@@ -13,12 +13,12 @@
 | Multiplayer Play Mode | `2.0.2` | plusieurs joueurs dans l'éditeur |
 | Multiplayer Tools | `2.2.10` | profils de latence/perte et métriques |
 | Tailscale | client stable auto-mis à jour | relie les postes distants pendant le développement, hors du build |
-| DVC | `3.x` | pointeurs Git vers les masters stockés hors GitHub |
+| DVC | `3.x`, différé | pointeurs Git vers les masters au premier lot lourd |
 | Git LFS | version installée par la plateforme | binaires de runtime nécessaires au build uniquement |
 
 Toutes les versions sont exactes. Aucun membre ne clique sur « Update » isolément.
 
-DVC est borné au major 3 dans `config/toolchain.env`. Son remote n'est pas une dépendance du runtime : un développeur réseau peut compiler sans télécharger les sources Blender ou DAW qui ne sont pas utilisées par le build.
+DVC est borné au major 3 dans `config/toolchain.env`, mais n'est pas installé pendant l'onboarding tant qu'aucun master n'est référencé. Son remote n'est pas une dépendance du runtime : un développeur réseau peut compiler sans télécharger les sources Blender ou DAW qui ne sont pas utilisées par le build.
 
 Tailscale n'est ni un package Unity ni un transport livré aux joueurs. Il fournit uniquement une interface réseau privée aux postes de développement afin que Tugboat fonctionne entre plusieurs lieux. Sa connexion utilise des comptes individuels et aucune clé d'authentification n'entre dans le dépôt.
 
@@ -55,6 +55,8 @@ La piste Steam Voice vers Wwise Audio Input reste un spike, pas un contrat confi
 - **Développement : macOS Apple Silicon + Windows**.
 - **Build Mac joueur : décision ultérieure**. Les plugins doivent néanmoins fonctionner dans l'éditeur macOS.
 - Pas de Windows ARM natif à ce stade.
+
+Les valeurs `WWISE_ENABLED`, `STEAM_TRANSPORT_ENABLED` et `UNITY_CI_BUILDS_ENABLED` restent à `0` dans `config/toolchain.env`. Une PR de gate les change uniquement avec l'intégration et ses preuves, afin d'éviter un état « à moitié installé » différent sur chaque poste.
 
 ## Architecture réseau de départ
 

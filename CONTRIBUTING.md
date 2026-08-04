@@ -4,7 +4,7 @@
 
 1. Exécuter le `doctor` de sa plateforme.
 2. Mettre `main` à jour avec `git pull --ff-only`.
-3. Si nécessaire, hydrater les masters avec le script `assets`.
+3. Hydrater les masters avec le script `assets` uniquement si la tâche référence déjà un lot DVC.
 4. Créer une branche courte avec le script `start-task` ; ne pas la créer depuis une branche en retard.
 5. Revendiquer dans l'issue les scènes, prefabs, Work Units et lots DVC modifiés.
 
@@ -80,7 +80,9 @@ Une PR indique le résultat, les fichiers/lots touchés et les tests réalisés.
 
 - résultat intégré dans une scène ou une build testable ;
 - aucun cache, secret ou master brut ajouté à Git ;
-- pointeurs DVC disponibles dans le remote ;
+- pointeurs DVC disponibles dans le remote si la tâche touche un master ;
 - validation par un second membre ;
 - test sur l'autre OS si le changement touche plugin, réseau, audio, chemins ou build ;
 - ADR/documentation mis à jour si un contrat partagé change.
+
+Lire aussi [le contrat du projet](docs/PROJECT_RULES.md) pour les changements autorisés/différés et [la matrice CI/build](docs/CI_BUILDS.md) pour décider quels OS doivent valider la PR.

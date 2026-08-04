@@ -4,6 +4,7 @@ param(
     [switch]$InstallIDE,
     [switch]$OpenUnity,
     [switch]$RemotePlay,
+    [switch]$WithAssets,
     [switch]$All,
     [string]$AssetRemote,
     [string]$AssetEndpoint,
@@ -12,6 +13,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 if ($All) { $InstallTools = $true; $InstallIDE = $true; $OpenUnity = $true }
+if ($AssetRemote) { $WithAssets = $true }
 
 $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $ToolchainPath = Join-Path $RepoRoot "config\toolchain.env"
@@ -39,14 +41,14 @@ if ($InstallTools) {
     Install-WingetPackage "Git.Git"
     Install-WingetPackage "GitHub.GitLFS"
     Install-WingetPackage "GitHub.cli"
-    Install-WingetPackage "Iterative.DVC"
+    if ($WithAssets) { Install-WingetPackage "Iterative.DVC" }
     Install-WingetPackage "Unity.UnityHub"
     if ($RemotePlay) { Install-WingetPackage "Tailscale.Tailscale" }
 }
 
 if ($InstallIDE) {
     if (-not (Get-Command winget -ErrorAction SilentlyContinue)) { throw "winget est requis pour -InstallIDE." }
-    Install-WingetPackage "Microsoft.VisualStudio.2022.Community" @("--override", "--wait --passive --add Microsoft.VisualStudio.Workload.ManagedGame --includeRecommended")
+    Install-WingetPackage "Microsoft.VisualStudio.2022.Community" @("--override", "--wait --passive --add Microsoft.VisualStudio.Workload.ManagedGame --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended")
 }
 
 $env:Path = [Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [Environment]::GetEnvironmentVariable("Path", "User")
@@ -54,7 +56,10 @@ $env:Path = [Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [En
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) { throw "Git est absent. Installez-le puis rouvrez PowerShell." }
 & git lfs version *> $null
 if ($LASTEXITCODE -ne 0) { throw "Git LFS est absent." }
-if (-not (Get-Command dvc -ErrorAction SilentlyContinue)) { throw "DVC est absent. Relancez avec -InstallTools puis rouvrez PowerShell." }
+$DvcPointers = @(& git ls-files "*.dvc" | Where-Object { $_ -notmatch '^\.dvc/' })
+if (($WithAssets -or $DvcPointers.Count -gt 0) -and -not (Get-Command dvc -ErrorAction SilentlyContinue)) {
+    throw "DVC est absent. Relancez avec -InstallTools -WithAssets puis rouvrez PowerShell."
+}
 
 & git lfs install --local --skip-repo
 & git lfs pull
@@ -71,11 +76,13 @@ if ($AssetRemote) {
     & (Join-Path $PSScriptRoot "assets-windows.ps1") @AssetArguments
 }
 
-$DvcRemotes = (& dvc remote list 2>$null) -join "`n"
-if ($LASTEXITCODE -eq 0 -and $DvcRemotes -match '(?m)^assets\s') {
+$DvcRemotes = if (Get-Command dvc -ErrorAction SilentlyContinue) { (& dvc remote list 2>$null) -join "`n" } else { "" }
+if ($DvcRemotes -match '(?m)^assets\s') {
     & (Join-Path $PSScriptRoot "assets-windows.ps1") -Action Pull
+} elseif ($DvcPointers.Count -gt 0) {
+    throw "Des assets DVC existent : installez DVC et configurez le remote 'assets'."
 } else {
-    Write-Host "Remote d'assets non configure - le test reseau fonctionne sans lui."
+    Write-Host "Coffre DVC reporte - aucun master n'est encore requis."
 }
 
 if ($RemotePlay) {

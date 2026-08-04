@@ -2,6 +2,8 @@
 
 Prototype multijoueur compétitif en vue subjective pour **2 à 12 joueurs**. Le premier objectif est de prouver qu'un duel autour d'un pivot de labyrinthe est amusant, lisible et réactif en réseau avant de produire le contenu final.
 
+La cible joueur initiale est **Windows x86_64 IL2CPP**. Le développement se fait sur deux Mac Apple Silicon et un PC Windows ; le build Mac reste un outil de test interne. FishNet/Tugboat fournit aujourd'hui un listen-server de prototype, Tailscale relie uniquement les postes de l'équipe, et Steam/serveur dédié attendent leur gate.
+
 ## Où en est le projet
 
 Le dépôt est au jalon **M0 — fondations**.
@@ -10,17 +12,19 @@ Le dépôt est au jalon **M0 — fondations**.
 - [x] versions Unity/FishNet figées et scène de connexion à trois générable ;
 - [x] scripts d'installation, diagnostic, assets et tests local/distant Mac/Windows ;
 - [x] séparation Git / Git LFS / coffre DVC externe / caches locaux ;
-- [ ] URL du coffre d'assets choisie et restauration testée ;
+- [ ] coffre d'assets à choisir au premier master lourd — ne bloque pas le setup ;
 - [x] premier import Unity Mac et `packages-lock.json` mergé ;
 - [ ] ouverture propre sur le second Mac et build Windows IL2CPP ;
 - [ ] Zak, Sean et Nils visibles dans la même session depuis leurs trois réseaux ;
-- [ ] compatibilité Wwise 2025.1.4 validée sur Mac et Windows.
+- [ ] gate Wwise à ouvrir après le premier test distant — ne bloque pas le setup.
 
 La machine pilote peut déjà construire et lancer le test. La prochaine action utile est un **clone propre sur le second Mac et sur Windows**, puis le test distant à trois. Le gameplay vient juste après.
 
 Pour exécuter l'installation dans le bon ordre — d'abord sur le Mac pilote, ensuite sur l'autre Mac et Windows — suivre [ONBOARDING.md](docs/ONBOARDING.md).
 
 Avec Claude Code, lancer `claude` depuis la racine puis écrire `initialise l'environnement`. Le skill projet `setup-game` détecte Mac ou Windows, installe aussi le client Tailscale de test distant, exécute le bon setup et rend le verdict du doctor. La connexion Tailscale reste un écran interactif individuel ; aucune clé n'est partagée avec Claude.
+
+Pour intégrer Zak et Sean maintenant : Nils génère dans la console Tailscale deux liens **Invite external users** à usage unique avec le rôle Member, puis les envoie en privé. Le tailnet actuel est personnel et distinct de l'organisation GitHub. Après acceptation, chacun clone le repo et demande à Claude `initialise l'environnement pour jouer à distance`. Le coffre DVC peut attendre : aucun master n'est encore référencé.
 
 `main` refuse les pushes directs sur chaque clone initialisé grâce au hook partagé, et Claude a la même interdiction. Les branches suivent `feat/...`, `fix/...`, `art/...`, `audio/...`, `data/...`, `docs/...` ou `chore/...` ; le script `publish-task` pousse ensuite la branche et ouvre sa PR. Le dépôt privé reste utilisable gratuitement par toute l'équipe sans protection serveur absolue.
 
@@ -41,7 +45,7 @@ cd GAME
 ./scripts/setup-macos.sh --all --remote-play
 ```
 
-Le script installe Git/LFS, DVC, GitHub CLI, Unity Hub, Visual Studio Code, son extension Unity/C# et Tailscale, prépare Smart Merge et ouvre les installations interactives. Une fois Unity et la connexion Tailscale terminés, relancer :
+Le script installe Git/LFS, GitHub CLI, Unity Hub, Visual Studio Code, son extension Unity/C# et Tailscale, prépare Smart Merge et ouvre les installations interactives. DVC reste hors du setup initial. Une fois Unity et la connexion Tailscale terminés, relancer :
 
 ```bash
 ./scripts/setup-macos.sh --remote-play
@@ -73,14 +77,18 @@ Les scripts sont idempotents. L'éditeur Unity reste une étape interactive parc
 
 ## Coffre d'assets hors GitHub
 
+État actuel : environ 164 Kio dans `GAME`, zéro objet LFS et zéro lot DVC. Le plan GitHub Free de l'organisation inclut 10 Gio de stockage LFS et 10 Gio de téléchargement mensuel ; le budget interne du prototype est limité à 2 Gio d'exports actifs. Cela suffit pour installer l'équipe et commencer. Le coffre des masters est reporté au premier gros fichier source ; voir [la stratégie d'assets](docs/ASSETS.md).
+
 Les masters lourds ne sont pas envoyés dans GitHub. Une fois l'URL privée communiquée par l'administrateur du stockage :
 
 ```bash
+./scripts/setup-macos.sh --install-tools --with-assets
 ./scripts/assets-macos.sh configure "REMPLACER_PAR_URL_DVC"
 ./scripts/assets-macos.sh pull
 ```
 
 ```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -InstallTools -WithAssets
 .\scripts\assets-windows.ps1 -Action Configure -RemoteUrl "REMPLACER_PAR_URL_DVC"
 .\scripts\assets-windows.ps1 -Action Pull
 ```
@@ -162,6 +170,8 @@ Le membre qui possède le PC prend la validation Windows. Les rôles pilote/bin�
 
 ## Documentation
 
+- [Contrat du jeu, permissions et interdictions](docs/PROJECT_RULES.md)
+- [CI et builds Mac/Windows](docs/CI_BUILDS.md)
 - [Roadmap et priorités](docs/ROADMAP.md)
 - [Ordre d'installation des trois postes](docs/ONBOARDING.md)
 - [Installation Mac/Windows](docs/SETUP.md)

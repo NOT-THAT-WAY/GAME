@@ -24,7 +24,7 @@ Sur Windows :
 
 Le hook partagé refuse les pushes directs vers `main` et les noms de branche hors contrat. Le chemin normal est toujours une pull request avec une revue. Ce hook est un garde-fou local, pas une frontière de sécurité serveur.
 
-Claude Code reçoit la même règle dans `CLAUDE.md` et le skill `git-task`. Une demande d'initialisation configure le hook, et aucune session ne doit utiliser `--no-verify` ou la variable de contournement administrateur.
+Claude Code reçoit la même règle dans `CLAUDE.md` et le skill `git-task`. Une demande d'initialisation configure le hook, et aucune session ne doit utiliser `--no-verify`, modifier le hook ou pousser `main` depuis une autre interface.
 
 ## Branches et pull requests
 
@@ -49,6 +49,8 @@ Le titre de PR reprend le même type : `feat/player-movement` devient par exempl
 ```
 
 Le contrôle `workflow-policy` répète ces validations dans GitHub. Sans protection serveur payante, l'équipe garde la règle simple : une PR verte, puis une relecture par un autre membre avant le squash merge.
+
+La matrice complète de ce qui est permis, coordonné, différé ou interdit se trouve dans [PROJECT_RULES.md](PROJECT_RULES.md). Les limites de la CI et l'ordre d'activation des builds automatisés se trouvent dans [CI_BUILDS.md](CI_BUILDS.md).
 
 ## Rôles temporaires
 

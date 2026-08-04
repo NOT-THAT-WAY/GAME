@@ -12,6 +12,7 @@ VSCODE_CLI="$VSCODE_APP/Contents/Resources/app/bin/code"
 INSTALL_TOOLS=0
 OPEN_UNITY=0
 REMOTE_PLAY=0
+WITH_ASSETS=0
 ASSET_REMOTE=""
 ASSET_ENDPOINT=""
 ASSET_PROFILE=""
@@ -39,7 +40,7 @@ has_vscode_extension() {
 }
 
 usage() {
-  printf 'Usage: %s [--install-tools] [--open-unity] [--remote-play] [--all] [--asset-remote URL] [--asset-endpoint URL] [--asset-profile NAME]\n' "$0"
+  printf 'Usage: %s [--install-tools] [--open-unity] [--remote-play] [--with-assets] [--all] [--asset-remote URL] [--asset-endpoint URL] [--asset-profile NAME]\n' "$0"
 }
 
 while (( $# > 0 )); do
@@ -47,10 +48,12 @@ while (( $# > 0 )); do
     --install-tools) INSTALL_TOOLS=1 ;;
     --open-unity) OPEN_UNITY=1 ;;
     --remote-play) REMOTE_PLAY=1 ;;
+    --with-assets) WITH_ASSETS=1 ;;
     --all) INSTALL_TOOLS=1; OPEN_UNITY=1 ;;
     --asset-remote)
       (( $# >= 2 )) || { printf '%s\n' '--asset-remote attend une URL.' >&2; exit 2; }
       ASSET_REMOTE="$2"
+      WITH_ASSETS=1
       shift
       ;;
     --asset-endpoint)
@@ -82,7 +85,10 @@ if (( INSTALL_TOOLS == 1 )); then
     exit 1
   fi
 
-  brew install git git-lfs gh dvc
+  brew install git git-lfs gh
+  if (( WITH_ASSETS == 1 )); then
+    brew install dvc
+  fi
   if ! brew list --cask unity-hub >/dev/null 2>&1; then
     brew install --cask unity-hub
   fi
@@ -106,8 +112,8 @@ if ! command -v git-lfs >/dev/null 2>&1; then
   exit 1
 fi
 
-if ! command -v dvc >/dev/null 2>&1; then
-  printf 'DVC est absent. Relancez avec --install-tools.\n' >&2
+if (( WITH_ASSETS == 1 )) && ! command -v dvc >/dev/null 2>&1; then
+  printf 'DVC est absent. Relancez avec --install-tools --with-assets.\n' >&2
   exit 1
 fi
 
@@ -139,10 +145,15 @@ if [[ -n "$ASSET_REMOTE" ]]; then
   "$SCRIPT_DIR/assets-macos.sh" "${ASSET_ARGUMENTS[@]}"
 fi
 
-if dvc remote list 2>/dev/null | awk '$1 == "assets" { found=1 } END { exit !found }'; then
+if command -v dvc >/dev/null 2>&1 && dvc remote list 2>/dev/null | awk '$1 == "assets" { found=1 } END { exit !found }'; then
   "$SCRIPT_DIR/assets-macos.sh" pull
 else
-  printf "Remote d'assets non configuré — le test réseau fonctionne sans lui.\n"
+  DVC_POINTER_COUNT="$(git ls-files '*.dvc' | awk '!/^\.dvc\// { count++ } END { print count + 0 }')"
+  if (( DVC_POINTER_COUNT > 0 )); then
+    printf "Des assets DVC existent : installez DVC et configurez le remote 'assets'.\n" >&2
+    exit 1
+  fi
+  printf "Coffre DVC reporté — aucun master n'est encore requis.\n"
 fi
 
 if (( REMOTE_PLAY == 1 )); then

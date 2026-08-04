@@ -72,6 +72,7 @@ fi
 [[ -x "$UNITY_EDITOR" ]] || fail "Unity $UNITY_VERSION introuvable. Relancez setup-macos.sh."
 
 cd -- "$REPO_ROOT"
+"$SCRIPT_DIR/doctor-macos.sh"
 "$SCRIPT_DIR/validate-repository.sh"
 
 if (( SKIP_BUILD == 0 )); then

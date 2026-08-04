@@ -12,7 +12,7 @@ Cette procédure est la référence pour le premier démarrage. On prépare **d'
 - une scène de test FishNet générée au build ;
 - la CI et les gardes-fous contre caches, secrets, gros fichiers et `.meta` manquants.
 
-Le lockfile Unity est mergé depuis la PR #10 et le test hôte/client local Mac est vert. Il reste à valider l'ouverture sur le second Mac, le build Windows, la connexion LAN à trois et, indépendamment, le fournisseur du coffre DVC.
+Le lockfile Unity est mergé depuis la PR #10, le test hôte/client local Mac est vert et le Mac pilote passe le doctor distant. Il reste à valider l'ouverture sur le second Mac, le build Windows et la connexion distante à trois. Le fournisseur du coffre DVC attend le premier master lourd.
 
 ## Initialisation assistée par Claude Code
 
@@ -73,7 +73,7 @@ Depuis la racine du repo :
 ./scripts/setup-macos.sh --all --remote-play
 ```
 
-Ce script installe ou vérifie : Git, Git LFS, GitHub CLI, DVC, Unity Hub, Visual Studio Code, l'extension Unity/C# et Tailscale. Il configure aussi Smart Merge, les hooks communs et le mode `pull --ff-only`.
+Ce script installe ou vérifie : Git, Git LFS, GitHub CLI, Unity Hub, Visual Studio Code, l'extension Unity/C# et Tailscale. Il configure aussi Smart Merge, les hooks communs et le mode `pull --ff-only`. DVC est volontairement reporté.
 
 Unity Hub s'ouvre sur `6000.3.20f1`. Choisir :
 
@@ -89,7 +89,7 @@ Quand Hub a terminé, relancer :
 ./scripts/doctor-macos.sh --remote-play
 ```
 
-Le remote DVC, Wwise et Steam peuvent apparaître en avertissement. C'est normal à ce stade. Une ligne `[FAIL]` sur Git, LFS, DVC ou Unity doit être corrigée avant d'ouvrir le projet.
+Le remote DVC, Wwise et Steam peuvent apparaître en avertissement. C'est normal à ce stade. Toute ligne `[FAIL]` doit être corrigée avant de déclarer la machine prête ; DVC ne produit un échec que lorsqu'un master est réellement référencé.
 
 ### 1.3 Premier import Unity — terminé
 
@@ -97,42 +97,13 @@ La PR #10 a enregistré le lockfile, les réglages migrés et la collection Fish
 
 ## 2. Initialiser le coffre d'assets quand il est prêt
 
-Cette étape peut se faire avant ou après le premier test LAN.
+Cette étape attendra l'installation des amis : aucun pointeur DVC n'existe encore et son absence ne bloque ni le clone, ni Unity, ni le test réseau. GitHub LFS fournit 10 Gio de stockage et 10 Gio de téléchargement mensuel au plan actuel ; le projet en utilise actuellement zéro.
 
-L'administrateur du stockage prépare :
-
-- un bucket privé S3-compatible ou un autre remote supporté par DVC ;
-- chiffrement et versioning objet ;
-- une deuxième sauvegarde ;
-- trois comptes individuels avec MFA et sans suppression permanente au quotidien ;
-- une URL commune et une méthode locale d'authentification.
-
-Ne jamais partager les clés dans Git ou Discord. Configurer les credentials avec le profil/outil du fournisseur, puis sur le Mac pilote :
-
-```bash
-git switch main
-git pull --ff-only
-git switch -c chore/asset-vault-smoke
-./scripts/assets-macos.sh configure "REMPLACER_PAR_URL_DVC"
-./scripts/assets-macos.sh smoke-init
-```
-
-Pour un service S3-compatible avec endpoint :
-
-```bash
-./scripts/assets-macos.sh configure "s3://NOM_DU_BUCKET/game" \
-  --endpoint "https://ENDPOINT_DU_FOURNISSEUR" \
-  --profile "game-assets"
-./scripts/assets-macos.sh smoke-init
-```
-
-Le script crée une preuve minuscule, l'envoie dans le remote et laisse seulement son pointeur dans Git. Committer les fichiers indiqués par `git status`, pousser la branche et merger la PR.
-
-Le test n'est réussi que lorsqu'une autre machine peut exécuter `smoke-verify` depuis un clone propre.
+Ne rien configurer ici pour l'instant. Au premier master Blender/PSD/DAW lourd, choisir le fournisseur et suivre [ASSETS.md](ASSETS.md). D'ici là, les exports nécessaires au build passent par Git LFS et les sources de travail restent locales avec une sauvegarde personnelle.
 
 ## 3. Donner accès aux deux autres membres
 
-Dans GitHub : `Settings > Collaborators and teams > Add people`, ajouter leurs comptes avec le droit d'écriture. Chacun accepte son invitation et active MFA.
+Les trois comptes sont déjà membres actifs de `NOT-THAT-WAY` et ont accès au repo. Le droit nécessaire au quotidien est **Member + Write** ; le rôle Owner n'est pas requis pour coder, pousser une branche ou ouvrir une PR. Après l'onboarding, garder idéalement un ou deux Owners maximum et retirer aux autres la création/suppression globale de dépôts.
 
 Chaque membre configure son identité Git avec son propre nom/email :
 
@@ -143,7 +114,11 @@ git config --global user.email "EMAIL_GITHUB"
 
 Les handles GitHub sont nécessaires pour les assigner ensuite aux tickets M0.
 
-Un seul membre (Nils par défaut) crée aussi le tailnet Tailscale et envoie deux invitations privées. Le fait que le Mac mini de Zak héberge une session ne lui impose pas d'être administrateur du tailnet. Chaque personne rejoint avec son propre compte ; aucune clé d'authentification n'est créée pour les postes humains ni copiée dans le repo.
+Le tailnet actuel est le tailnet GitHub **personnel** de Nils, pas celui de l'organisation `NOT-THAT-WAY`. C'est suffisant pour le test immédiat, mais les membres GitHub ne le rejoignent pas automatiquement. Nils ouvre la page **Users** de la console Tailscale, choisit **Invite external users**, génère deux liens à usage unique avec le rôle **Member** et les transmet séparément à Zak et Sean. Un lien d'invitation est un secret temporaire : ne jamais le committer ou le coller dans Claude.
+
+Chaque ami ouvre son lien, choisit **Sign up with GitHub**, sélectionne le tailnet invité et connecte sa propre machine. Le fait que le Mac mini de Zak héberge une session ne lui impose pas d'être administrateur du tailnet.
+
+Le plan Personal accepte actuellement six utilisateurs, mais Tailscale le réserve à un usage non commercial. Pour un projet commercial, utiliser le plan Standard ou remplacer ce profil par le transport Steam ; à trois, le tarif Standard actuel est de 24 USD/mois. Ne pas créer un tailnet GitHub d'organisation par erreur : ce serait un réseau séparé et il ne récupérerait pas les machines déjà affichées ici.
 
 ## 4. Installer le deuxième Mac
 
@@ -164,13 +139,6 @@ Installer dans Hub la même version Apple Silicon, puis :
 ```bash
 ./scripts/setup-macos.sh --remote-play
 ./scripts/doctor-macos.sh --remote-play
-```
-
-Si le coffre DVC est prêt :
-
-```bash
-./scripts/assets-macos.sh configure "REMPLACER_PAR_URL_DVC"
-./scripts/assets-macos.sh smoke-verify
 ```
 
 Ouvrir puis fermer Unity sans rien modifier. `git status --short` doit rester vide. Si Unity veut mettre à jour le projet ou produit un gros diff, arrêter et comparer la version exacte avant de committer quoi que ce soit.
@@ -195,18 +163,11 @@ Set-Location GAME
 powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -All -RemotePlay
 ```
 
-Le script installe Git LFS, GitHub CLI, DVC, Unity Hub, Visual Studio 2022 et Tailscale. Dans Unity Hub, installer `6000.3.20f1` avec **Windows Build Support (IL2CPP)**, puis accepter l'invitation Tailscale avec le compte individuel. Relancer :
+Le script installe Git LFS, GitHub CLI, Unity Hub, Visual Studio 2022 avec les workloads Unity/C++, et Tailscale. Dans Unity Hub, installer `6000.3.20f1` avec **Windows Build Support (IL2CPP)**, puis accepter l'invitation Tailscale avec le compte individuel. DVC attendra le premier master lourd. Relancer :
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -RemotePlay
 powershell -ExecutionPolicy Bypass -File .\scripts\doctor-windows.ps1 -RemotePlay
-```
-
-Si le coffre est prêt :
-
-```powershell
-.\scripts\assets-windows.ps1 -Action Configure -RemoteUrl "REMPLACER_PAR_URL_DVC"
-.\scripts\assets-windows.ps1 -Action SmokeVerify
 ```
 
 Ouvrir/fermer Unity et vérifier que Git reste propre. Produire ensuite le build de preuve :

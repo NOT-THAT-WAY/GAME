@@ -1,0 +1,74 @@
+name: Tâche de jeu ou technique
+description: Définir un résultat testable sans créer de conflit entre les trois membres.
+title: "[TASK] "
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Résultat testable
+      description: Décrire ce qu'une autre personne pourra voir ou vérifier.
+      placeholder: Deux joueurs peuvent pousser le pivot et voient le même état.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Zone principale
+      options:
+        - Gameplay
+        - Réseau
+        - Art / UI
+        - Audio
+        - Données / assets
+        - Build / CI
+        - Documentation
+    validations:
+      required: true
+  - type: input
+    id: pilot
+    attributes:
+      label: Pilote et binôme
+      placeholder: Zak (pilote), Sean (binôme)
+    validations:
+      required: true
+  - type: input
+    id: tester
+    attributes:
+      label: Testeur externe au lot
+      placeholder: Nils
+    validations:
+      required: true
+  - type: textarea
+    id: claims
+    attributes:
+      label: Fichiers ou objets revendiqués
+      description: Scènes, prefabs racine, ProjectSettings, packages, Work Units ou lots DVC.
+      placeholder: Assets/_Project/Pivot/Scenes/PivotTest.unity
+    validations:
+      required: true
+  - type: checkboxes
+    id: platforms
+    attributes:
+      label: Plateformes à valider
+      options:
+        - label: macOS Apple Silicon
+        - label: Windows x86_64 / IL2CPP
+        - label: Test réseau à plusieurs machines
+  - type: textarea
+    id: proof
+    attributes:
+      label: Preuve de terminé
+      placeholder: Commande, scénario et résultat attendu.
+    validations:
+      required: true
+  - type: checkboxes
+    id: contract
+    attributes:
+      label: Contrat
+      options:
+        - label: La tâche ne mélange pas une mise à jour de dépendance avec une feature.
+          required: true
+        - label: Aucun autre membre n'édite les mêmes objets partagés.
+          required: true
+        - label: Les gates différées ne seront pas ajoutées sans décision dédiée.
+          required: true

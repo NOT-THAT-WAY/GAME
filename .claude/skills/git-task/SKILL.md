@@ -12,7 +12,7 @@ Exécuter le workflow au lieu de seulement donner les commandes.
 1. Lire `git status --short --branch` et les règles de `docs/WORKFLOW.md`.
 2. Ne jamais effacer, stasher ou déplacer des changements existants sans accord explicite.
 3. Ne jamais travailler ni pousser directement sur `main`.
-4. Ne jamais utiliser `--no-verify` ou `GAME_ALLOW_MAIN_PUSH=1`.
+4. Ne jamais utiliser `--no-verify`, modifier le hook local ou pousser `main` depuis une autre interface.
 
 ## Commencer
 

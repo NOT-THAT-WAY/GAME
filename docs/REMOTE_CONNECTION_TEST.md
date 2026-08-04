@@ -4,12 +4,20 @@ Ce profil permet à Zak, Sean et Nils de tester FishNet/Tugboat depuis trois lie
 
 Ce n'est pas le réseau final du jeu. Tailscale reste un outil d'équipe externe au build ; Steam/FishySteamworks viendra après validation de la connexion et du premier gameplay.
 
+## Tailnet utilisé maintenant
+
+La fenêtre Tailscale du Mac pilote affiche un tailnet GitHub personnel. L'appartenance à l'organisation GitHub `NOT-THAT-WAY` ne donne donc pas automatiquement accès à ce réseau.
+
+Pour démarrer vite, Nils conserve ce tailnet et crée [deux invitations à usage unique](https://tailscale.com/docs/features/sharing/how-to/invite-any-user) : console Tailscale → **Users** → **Invite external users** → **Copy invite link** → rôle **Member**. Envoyer un lien différent à Zak et Sean par canal privé. Ne pas publier ces liens dans GitHub, Claude ou un salon partagé.
+
+Le [plan Personal](https://tailscale.com/pricing) accepte actuellement jusqu'à six utilisateurs, mais il est annoncé pour un usage non commercial. Si le développement devient commercial, passer au plan Standard — actuellement 8 USD par utilisateur et par mois — ou abandonner Tailscale au profit du profil Steam. Un [tailnet GitHub d'organisation](https://tailscale.com/docs/integrations/identity/github) serait un réseau séparé ; il n'est pas nécessaire pour le premier test.
+
 ## Ce qui reste manuel une seule fois
 
-Un administrateur crée le tailnet et invite les deux autres comptes. Chaque membre :
+L'administrateur invite les deux autres comptes. Chaque membre :
 
 1. utilise son propre compte ;
-2. accepte l'invitation privée ;
+2. ouvre son lien à usage unique et choisit **Sign up with GitHub** ;
 3. autorise l'extension VPN de macOS ou Windows ;
 4. termine la connexion dans l'application Tailscale.
 
