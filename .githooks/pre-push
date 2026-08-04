@@ -4,9 +4,25 @@ set -euo pipefail
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 "$REPO_ROOT/scripts/validate-repository.sh"
 
+PUSH_INPUT=""
+DIRECT_MAIN_PUSH=0
+while read -r LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA; do
+  [[ -n "${LOCAL_REF:-}" ]] || continue
+  PUSH_INPUT="${PUSH_INPUT}${LOCAL_REF} ${LOCAL_SHA} ${REMOTE_REF} ${REMOTE_SHA}"$'\n'
+  if [[ "$REMOTE_REF" == "refs/heads/main" ]]; then
+    DIRECT_MAIN_PUSH=1
+  fi
+done
+
+if (( DIRECT_MAIN_PUSH == 1 )) && [[ "${GAME_ALLOW_MAIN_PUSH:-0}" != "1" ]]; then
+  printf 'Push direct vers main refusé. Créez une branche et ouvrez une pull request.\n' >&2
+  printf 'Urgence administrateur uniquement: GAME_ALLOW_MAIN_PUSH=1 git push ...\n' >&2
+  exit 1
+fi
+
 if ! command -v git-lfs >/dev/null 2>&1; then
   printf 'Git LFS est requis pour pousser ce dépôt.\n' >&2
   exit 2
 fi
 
-git lfs pre-push "$@"
+printf '%s' "$PUSH_INPUT" | git lfs pre-push "$@"

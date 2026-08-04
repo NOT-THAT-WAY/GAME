@@ -21,6 +21,8 @@ Faire ces lots dans l'ordre. Les noms désignent une affinité de départ ; le p
 
 Le testeur externe du lot n'est ni son pilote ni son binôme. Les chapeaux tournent au lot suivant.
 
+Le plan GitHub actuel ne permet pas encore la protection serveur d'une branche privée. Le hook local bloque les pushes directs vers `main`, mais l'activation de la règle serveur « PR + une approbation + CI » reste une action d'administration à faire lors du passage au plan adapté.
+
 ## M0 — définition de terminé
 
 - les trois diagnostics passent ;

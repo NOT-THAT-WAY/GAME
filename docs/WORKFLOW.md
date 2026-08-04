@@ -19,6 +19,8 @@ Sur Windows, remplacer la commande assets par `.\scripts\assets-windows.ps1 -Act
 
 À la fin, fermer Unity/Wwise, examiner `git status` et `dvc status`, puis lancer le diagnostic. Pour un master modifié : **`dvc push` avant `git push`**.
 
+Le hook partagé refuse les pushes directs vers `main` : le chemin normal est toujours une pull request avec une revue. Ce hook est un garde-fou local, pas une frontière de sécurité serveur ; activer aussi la protection de branche GitHub dès que le plan du dépôt privé la permet.
+
 ## Rôles temporaires
 
 Chaque issue importante possède :
