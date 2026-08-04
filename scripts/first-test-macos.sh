@@ -6,7 +6,6 @@ REPO_ROOT="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 TOOLCHAIN_FILE="$REPO_ROOT/config/toolchain.env"
 UNITY_VERSION="$(sed -n 's/^UNITY_VERSION=//p' "$TOOLCHAIN_FILE")"
 UNITY_EDITOR="${GAME_UNITY_EDITOR:-/Applications/Unity/Hub/Editor/$UNITY_VERSION/Unity.app/Contents/MacOS/Unity}"
-BUILD_PATH="$REPO_ROOT/Builds/ConnectionTest/macOS/GAME-Connection-Test.app"
 ROLE="${1:-}"
 ADDRESS="127.0.0.1"
 ADDRESS_SET=0
@@ -14,14 +13,19 @@ PORT="7770"
 PLAYER_NAME="$(git -C "$REPO_ROOT" config --get user.name 2>/dev/null || hostname -s)"
 SKIP_BUILD=0
 BUILD_ONLY=0
+PROFILE="connection"
 
 usage() {
   cat <<'EOF'
 Usage:
-  ./scripts/first-test-macos.sh host [--name NAME] [--port 7770] [--skip-build]
-  ./scripts/first-test-macos.sh client --address HOST_IP [--name NAME] [--port 7770] [--skip-build]
-  ./scripts/first-test-macos.sh manual [--skip-build]
+  ./scripts/first-test-macos.sh host [--profile connection|maze] [--name NAME] [--port 7770] [--skip-build]
+  ./scripts/first-test-macos.sh client --address HOST_IP [--profile connection|maze] [--name NAME] [--port 7770] [--skip-build]
+  ./scripts/first-test-macos.sh manual [--profile connection|maze] [--skip-build]
   ./scripts/first-test-macos.sh host --build-only
+
+Profils:
+  connection  roster FishNet minimal, preuve du jalon M0 (par défaut)
+  maze        labyrinthe 16x16 jouable avec personnage déplaçable
 EOF
 }
 
@@ -52,6 +56,11 @@ while (( $# > 0 )); do
       PORT="$2"
       shift 2
       ;;
+    --profile)
+      (( $# >= 2 )) || fail "--profile attend connection ou maze."
+      PROFILE="$(printf '%s' "$2" | tr '[:upper:]' '[:lower:]')"
+      shift 2
+      ;;
     --skip-build) SKIP_BUILD=1; shift ;;
     --build-only) BUILD_ONLY=1; shift ;;
     -h|--help) usage; exit 0 ;;
@@ -62,6 +71,22 @@ done
 case "$ROLE" in
   host|client|manual) ;;
   *) fail "Le rôle doit être host, client ou manual." ;;
+esac
+
+case "$PROFILE" in
+  connection)
+    BUILD_METHOD="NotThatWay.Game.Editor.ConnectionTestBuild.BuildMac"
+    BUILD_PATH="$REPO_ROOT/Builds/ConnectionTest/macOS/GAME-Connection-Test.app"
+    LOG_DIRECTORY="$REPO_ROOT/Logs/ConnectionTest"
+    PROFILE_LABEL="test de connexion"
+    ;;
+  maze)
+    BUILD_METHOD="NotThatWay.Game.Editor.MazePlaytestBuild.BuildMac"
+    BUILD_PATH="$REPO_ROOT/Builds/MazePlaytest/macOS/GAME-Maze-Playtest.app"
+    LOG_DIRECTORY="$REPO_ROOT/Logs/MazePlaytest"
+    PROFILE_LABEL="labyrinthe jouable"
+    ;;
+  *) fail "Le profil doit être connection ou maze." ;;
 esac
 
 [[ "$PORT" =~ ^[0-9]+$ ]] || fail "Le port doit être numérique."
@@ -76,14 +101,14 @@ cd -- "$REPO_ROOT"
 "$SCRIPT_DIR/validate-repository.sh"
 
 if (( SKIP_BUILD == 0 )); then
-  mkdir -p "$REPO_ROOT/Logs/ConnectionTest"
-  printf 'Build macOS du test de connexion...\n'
+  mkdir -p "$LOG_DIRECTORY"
+  printf 'Build macOS du %s...\n' "$PROFILE_LABEL"
   "$UNITY_EDITOR" \
     -batchmode \
     -quit \
     -projectPath "$REPO_ROOT" \
-    -executeMethod NotThatWay.Game.Editor.ConnectionTestBuild.BuildMac \
-    -logFile "$REPO_ROOT/Logs/ConnectionTest/build-macos.log"
+    -executeMethod "$BUILD_METHOD" \
+    -logFile "$LOG_DIRECTORY/build-macos.log"
 fi
 
 [[ -d "$BUILD_PATH" ]] || fail "Build absent: $BUILD_PATH"
@@ -92,8 +117,8 @@ if (( BUILD_ONLY == 1 )); then
   exit 0
 fi
 
-mkdir -p "$REPO_ROOT/Logs/ConnectionTest"
-PLAYER_LOG="$REPO_ROOT/Logs/ConnectionTest/player-${ROLE}-$(date +%Y%m%d-%H%M%S).log"
+mkdir -p "$LOG_DIRECTORY"
+PLAYER_LOG="$LOG_DIRECTORY/player-${ROLE}-$(date +%Y%m%d-%H%M%S).log"
 open -n "$BUILD_PATH" --args \
   --game-role "$ROLE" \
   --game-address "$ADDRESS" \

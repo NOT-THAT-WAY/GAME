@@ -177,6 +177,7 @@ Le membre qui possède le PC prend la validation Windows. Les rôles pilote/bin�
 - [Installation Mac/Windows](docs/SETUP.md)
 - [Premier test de connexion](docs/FIRST_CONNECTION_TEST.md)
 - [Test depuis des réseaux différents](docs/REMOTE_CONNECTION_TEST.md)
+- [Test jouable du labyrinthe](docs/MAZE_PLAYTEST.md)
 - [Travail à trois](docs/WORKFLOW.md)
 - [Assets hors GitHub](docs/ASSETS.md)
 - [Gestion des données](docs/DATA_MANAGEMENT.md)

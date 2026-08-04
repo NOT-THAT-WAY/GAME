@@ -8,7 +8,12 @@ param(
     [int]$Port = 7770,
     [string]$Name = $env:USERNAME,
     [switch]$SkipBuild,
-    [switch]$BuildOnly
+    [switch]$BuildOnly,
+    # Nomme TestProfile pour ne pas masquer la variable automatique $PROFILE ;
+    # l'alias garde la meme ecriture que --profile sur macOS.
+    [Alias("Profile")]
+    [ValidateSet("Connection", "Maze")]
+    [string]$TestProfile = "Connection"
 )
 
 $ErrorActionPreference = "Stop"
@@ -21,8 +26,17 @@ Get-Content $ToolchainPath | ForEach-Object {
 $UnityVersion = $Toolchain["UNITY_VERSION"]
 $DefaultEditor = "C:\Program Files\Unity\Hub\Editor\$UnityVersion\Editor\Unity.exe"
 $UnityEditor = if ($env:GAME_UNITY_EDITOR) { $env:GAME_UNITY_EDITOR } else { $DefaultEditor }
-$BuildPath = Join-Path $RepoRoot "Builds\ConnectionTest\Windows\GAME-Connection-Test.exe"
-$LogDirectory = Join-Path $RepoRoot "Logs\ConnectionTest"
+if ($TestProfile -eq "Maze") {
+    $BuildMethod = "NotThatWay.Game.Editor.MazePlaytestBuild.BuildWindows"
+    $BuildPath = Join-Path $RepoRoot "Builds\MazePlaytest\Windows\GAME-Maze-Playtest.exe"
+    $LogDirectory = Join-Path $RepoRoot "Logs\MazePlaytest"
+    $ProfileLabel = "labyrinthe jouable"
+} else {
+    $BuildMethod = "NotThatWay.Game.Editor.ConnectionTestBuild.BuildWindows"
+    $BuildPath = Join-Path $RepoRoot "Builds\ConnectionTest\Windows\GAME-Connection-Test.exe"
+    $LogDirectory = Join-Path $RepoRoot "Logs\ConnectionTest"
+    $ProfileLabel = "test de connexion"
+}
 
 if ($Role -eq "Client" -and [string]::IsNullOrWhiteSpace($Address)) {
     throw "Un client doit recevoir -Address HOST_IP (ou -Address 127.0.0.1 pour un test local)."
@@ -37,12 +51,12 @@ if ($LASTEXITCODE -ne 0) { throw "Le diagnostic Windows doit passer avant le tes
 New-Item -ItemType Directory -Force -Path $LogDirectory | Out-Null
 if (-not $SkipBuild) {
     $BuildLog = Join-Path $LogDirectory "build-windows.log"
-    Write-Host "Build Windows IL2CPP du test de connexion..."
+    Write-Host "Build Windows IL2CPP du $ProfileLabel..."
     & $UnityEditor `
         -batchmode `
         -quit `
         -projectPath $RepoRoot `
-        -executeMethod "NotThatWay.Game.Editor.ConnectionTestBuild.BuildWindows" `
+        -executeMethod $BuildMethod `
         -logFile $BuildLog
     if ($LASTEXITCODE -ne 0) { throw "Le build Unity a echoue. Voir $BuildLog" }
 }

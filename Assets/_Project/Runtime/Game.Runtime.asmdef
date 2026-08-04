@@ -2,7 +2,8 @@
   "name": "Game.Runtime",
   "rootNamespace": "NotThatWay.Game",
   "references": [
-    "FishNet.Runtime"
+    "FishNet.Runtime",
+    "Unity.InputSystem"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],

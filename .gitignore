@@ -11,6 +11,22 @@
 /Assets/_GeneratedLocal/
 /Assets/_GeneratedLocal.meta
 
+# FishNet régénère seul cette collection en scannant les prefabs NetworkObject du
+# projet. Comme les prefabs réseau sont produits dans /Assets/_GeneratedLocal/,
+# son contenu diffère d'une machine à l'autre et salirait le dépôt à chaque
+# ouverture de Unity. Les scènes générées déclarent leur propre collection.
+/Assets/DefaultPrefabObjects.asset
+/Assets/DefaultPrefabObjects.asset.meta
+
+# com.unity.test-framework.performance écrit ces fichiers à chaque lancement de
+# Unity. Retirer la ligne Resources.meta le jour où le projet versionne un vrai
+# asset dans /Assets/Resources/.
+/Assets/Resources/PerformanceTestRunInfo.json
+/Assets/Resources/PerformanceTestRunInfo.json.meta
+/Assets/Resources/PerformanceTestRunSettings.json
+/Assets/Resources/PerformanceTestRunSettings.json.meta
+/Assets/Resources.meta
+
 # IDEs and editors
 .vs/
 .idea/
