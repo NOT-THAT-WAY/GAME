@@ -15,6 +15,22 @@ ok() { printf '[OK]   %s\n' "$1"; }
 warn() { printf '[WARN] %s\n' "$1"; WARNING_COUNT=$((WARNING_COUNT + 1)); }
 fail() { printf '[FAIL] %s\n' "$1"; ERROR_COUNT=$((ERROR_COUNT + 1)); }
 
+find_smart_merge() {
+  local unity_contents candidate
+  unity_contents="$(cd -- "$(dirname -- "$UNITY_EDITOR")/.." && pwd)"
+
+  for candidate in \
+    "$unity_contents/Helpers/UnityYAMLMerge" \
+    "$unity_contents/Tools/UnityYAMLMerge"; do
+    if [[ -x "$candidate" ]]; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
 printf 'GAME doctor — macOS\nProjet: %s\nUnity attendue: %s\n\n' "$REPO_ROOT" "$EXPECTED_UNITY"
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
@@ -59,10 +75,10 @@ fi
 
 if [[ -x "$UNITY_EDITOR" ]]; then
   ok "Unity $EXPECTED_UNITY trouvé"
-  SMART_MERGE="$(cd -- "$(dirname -- "$UNITY_EDITOR")/.." && pwd)/Tools/UnityYAMLMerge"
-  if [[ -x "$SMART_MERGE" ]]; then
+  if SMART_MERGE="$(find_smart_merge)"; then
     ok "UnityYAMLMerge trouvé"
   else
+    SMART_MERGE=""
     fail "UnityYAMLMerge introuvable dans l'installation Unity"
   fi
 else
