@@ -33,7 +33,10 @@ Wwise et Steam ne sont pas nécessaires au premier test.
 ## macOS
 
 ```bash
-git clone https://github.com/NOT-THAT-WAY/GAME.git
+brew install git git-lfs gh
+gh auth login --web
+gh auth setup-git
+gh repo clone NOT-THAT-WAY/GAME
 cd GAME
 ./scripts/setup-macos.sh --all
 ```
@@ -41,7 +44,7 @@ cd GAME
 Avec un remote déjà choisi, la même commande peut tout configurer :
 
 ```bash
-./scripts/setup-macos.sh --all --asset-remote "<URL_DVC>"
+./scripts/setup-macos.sh --all --asset-remote "REMPLACER_PAR_URL_DVC"
 ```
 
 Pour un service S3-compatible :
@@ -70,11 +73,20 @@ Après avoir terminé l'installation de Unity dans Hub :
 
 ## Windows
 
-Installer Git si nécessaire, rouvrir PowerShell, puis cloner :
+Installer les outils du clone si nécessaire, puis rouvrir PowerShell :
 
 ```powershell
 winget install --id Git.Git --exact
-git clone https://github.com/NOT-THAT-WAY/GAME.git
+winget install --id GitHub.GitLFS --exact
+winget install --id GitHub.cli --exact
+```
+
+Après avoir accepté l'invitation GitHub :
+
+```powershell
+gh auth login --web
+gh auth setup-git
+gh repo clone NOT-THAT-WAY/GAME
 Set-Location GAME
 powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -All
 ```

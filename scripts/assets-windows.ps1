@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet("Configure", "Pull", "Push", "Track", "Status")]
+    [ValidateSet("Configure", "Pull", "Push", "Track", "SmokeInit", "SmokeVerify", "Status")]
     [string]$Action = "Status",
     [string]$RemoteUrl,
     [string]$EndpointUrl,
@@ -79,6 +79,31 @@ switch ($Action) {
         Write-Host "`nLot indexe: $RelativePath"
         Write-Host "Etapes suivantes: mettre a jour le registre, lancer -Action Push, puis committer les pointeurs.`n"
         & git status --short -- "$RelativePath.dvc" "$(Split-Path $RelativePath -Parent)/.gitignore" "docs/assets/ASSET_REGISTER.md"
+    }
+
+    "SmokeInit" {
+        Assert-DvcRemote
+        $SmokeRelative = "ExternalAssets/Operations/VAULT-SMOKE-001"
+        $SmokeDirectory = Join-Path $RepoRoot $SmokeRelative
+        New-Item -ItemType Directory -Force -Path $SmokeDirectory | Out-Null
+        $Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+        [IO.File]::WriteAllText((Join-Path $SmokeDirectory "proof.txt"), "GAME asset vault smoke test v1`n", $Utf8NoBom)
+        Invoke-Dvc @("add", $SmokeRelative)
+        Invoke-Dvc @("push", "--remote", $RemoteName, "$SmokeRelative.dvc")
+        Write-Host "Test envoye. Committez le pointeur et le .gitignore genere dans une PR dediee:"
+        & git status --short -- "$SmokeRelative.dvc" "ExternalAssets/Operations/.gitignore"
+    }
+
+    "SmokeVerify" {
+        Assert-DvcRemote
+        $SmokeRelative = "ExternalAssets/Operations/VAULT-SMOKE-001"
+        if (-not (Test-Path "$SmokeRelative.dvc")) { throw "Le pointeur du test n'est pas encore present dans Git. Faites d'abord git pull." }
+        Invoke-Dvc @("pull", "--remote", $RemoteName, "$SmokeRelative.dvc")
+        $ProofPath = Join-Path $RepoRoot "$SmokeRelative/proof.txt"
+        if (-not (Test-Path $ProofPath)) { throw "Le fichier de preuve n'a pas ete restaure." }
+        $ProofContent = [IO.File]::ReadAllText($ProofPath).Trim()
+        if ($ProofContent -ne "GAME asset vault smoke test v1") { throw "Le contenu restaure ne correspond pas a la preuve attendue." }
+        Write-Host "Restauration DVC verifiee: $SmokeRelative/proof.txt"
     }
 
     "Status" {
