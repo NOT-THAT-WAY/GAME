@@ -2,7 +2,7 @@
 
 ## Position actuelle
 
-Le premier import Unity et un test local hôte/client sur Mac sont validés. Il n'existe pas encore de preuve produite par les trois machines ; le projet reste donc en **M0 — fondations**.
+Le premier import Unity et un test local hôte/client sur Mac sont validés. Le profil distant Tailscale est automatisé, mais il n'existe pas encore de preuve produite par les trois machines ; le projet reste donc en **M0 — fondations**.
 
 ## Priorités immédiates
 
@@ -14,7 +14,7 @@ Déjà terminé : premier import Unity, lockfile et migrations déterministes vi
 |---:|---|---|---|---|
 | P0 | ouverture propre sur le second Mac | Sean | Nils | doctor vert et aucun diff après ouverture/fermeture |
 | P0 | validation Windows IL2CPP | propriétaire du PC / Zak | Nils | exécutable lancé, log archivé dans l'issue |
-| P0 | connexion LAN à trois via Tugboat | Zak | les deux autres | Zak, Sean, Nils visibles dans le roster |
+| P0 | connexion distante à trois via Tailscale + Tugboat | Zak | les deux autres | Zak, Sean, Nils visibles dans le roster depuis trois réseaux |
 | P1 | choisir le remote DVC privé, créer trois accès et restaurer un lot test | Nils | Zak | pull/push/restauration Mac + Windows avant le premier master |
 | P1 | blockout du pivot en T et échelle joueur | Sean | Zak | scène grise comprise sans explication |
 | P1 | gate Wwise Mac/Windows | Nils | Sean | événement sonore dans deux builds |
@@ -31,7 +31,7 @@ Le dépôt privé gratuit utilise le contrat local partagé : pas de push direct
 - le remote DVC utilise des comptes individuels, le versioning objet et une sauvegarde restaurable ;
 - le projet s'ouvre sans resérialisation massive sur les trois machines ;
 - un build Windows Development IL2CPP se lance ;
-- les trois machines rejoignent la même session Tugboat ;
+- les trois machines rejoignent la même session Tugboat depuis leurs réseaux respectifs ;
 - la scène contient une échelle joueur cohérente et un pivot en T lisible ;
 - Wwise compile et joue un événement minimal sur Mac/Windows, ou une décision écrite le reporte ;
 - licences et provenance du premier lot d'assets sont enregistrées.

@@ -9,9 +9,9 @@
 
 ## Initialisation d'une machine
 
-Quand un utilisateur demande « initialise », « setup », « prépare la machine » ou une formulation équivalente, utiliser immédiatement le skill projet `setup-game` et exécuter ses vérifications. Ne pas répondre seulement avec une liste théorique.
+Quand un utilisateur demande « initialise », « setup », « prépare la machine » ou une formulation équivalente, utiliser immédiatement le skill projet `setup-game` et exécuter ses vérifications. L'équipe travaillant depuis plusieurs lieux, le profil standard inclut Tailscale pour les tests distants. Ne pas répondre seulement avec une liste théorique.
 
-Le setup standard n'installe pas Wwise Authoring, le SDK Steam et ne configure pas de secret DVC. Ces étapes ont leurs propres jalons. Wwise Authoring est réservé à Nils ; les autres postes consomment l'intégration et les SoundBanks versionnées dans le dépôt.
+Le setup standard n'installe pas Wwise Authoring, le SDK Steam et ne configure aucun secret DVC/Tailscale. Ces étapes ont leurs propres jalons. Wwise Authoring est réservé à Nils ; les autres postes consomment l'intégration et les SoundBanks versionnées dans le dépôt. La connexion initiale Tailscale reste interactive et propre à chaque membre.
 
 ## Git et collaboration
 
@@ -37,3 +37,4 @@ Le setup standard n'installe pas Wwise Authoring, le SDK Steam et ne configure p
 - Contrat du dépôt : `./scripts/validate-repository.sh`.
 - Une machine est prête quand son doctor affiche zéro erreur et que le dépôt reste propre après ouverture/fermeture de Unity.
 - Pour lancer la connexion à trois, utiliser le skill `lan-test`.
+- Si les membres sont sur des réseaux différents, utiliser `remote-test` au lieu de `lan-test`.

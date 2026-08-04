@@ -8,19 +8,19 @@ Le dépôt est au jalon **M0 — fondations**.
 
 - [x] dépôt privé, projet Unity URP et conventions de travail préparés ;
 - [x] versions Unity/FishNet figées et scène de connexion à trois générable ;
-- [x] scripts d'installation, diagnostic, assets et test Mac/Windows ;
+- [x] scripts d'installation, diagnostic, assets et tests local/distant Mac/Windows ;
 - [x] séparation Git / Git LFS / coffre DVC externe / caches locaux ;
 - [ ] URL du coffre d'assets choisie et restauration testée ;
 - [x] premier import Unity Mac et `packages-lock.json` mergé ;
 - [ ] ouverture propre sur le second Mac et build Windows IL2CPP ;
-- [ ] Zak, Sean et Nils visibles dans la même session LAN ;
+- [ ] Zak, Sean et Nils visibles dans la même session depuis leurs trois réseaux ;
 - [ ] compatibilité Wwise 2025.1.4 validée sur Mac et Windows.
 
-La prochaine action utile est un **clone propre sur les trois machines**, puis le test de connexion. Le gameplay vient juste après.
+La machine pilote peut déjà construire et lancer le test. La prochaine action utile est un **clone propre sur le second Mac et sur Windows**, puis le test distant à trois. Le gameplay vient juste après.
 
 Pour exécuter l'installation dans le bon ordre — d'abord sur le Mac pilote, ensuite sur l'autre Mac et Windows — suivre [ONBOARDING.md](docs/ONBOARDING.md).
 
-Avec Claude Code, lancer `claude` depuis la racine puis écrire `initialise l'environnement`. Le skill projet `setup-game` détecte Mac ou Windows, exécute le bon setup et rend le verdict du doctor. La commande explicite `/setup-game` produit le même résultat.
+Avec Claude Code, lancer `claude` depuis la racine puis écrire `initialise l'environnement`. Le skill projet `setup-game` détecte Mac ou Windows, installe aussi le client Tailscale de test distant, exécute le bon setup et rend le verdict du doctor. La connexion Tailscale reste un écran interactif individuel ; aucune clé n'est partagée avec Claude.
 
 `main` refuse les pushes directs sur chaque clone initialisé grâce au hook partagé, et Claude a la même interdiction. Les branches suivent `feat/...`, `fix/...`, `art/...`, `audio/...`, `data/...`, `docs/...` ou `chore/...` ; le script `publish-task` pousse ensuite la branche et ouvre sa PR. Le dépôt privé reste utilisable gratuitement par toute l'équipe sans protection serveur absolue.
 
@@ -38,13 +38,13 @@ gh auth login --web
 gh auth setup-git
 gh repo clone NOT-THAT-WAY/GAME
 cd GAME
-./scripts/setup-macos.sh --all
+./scripts/setup-macos.sh --all --remote-play
 ```
 
-Le script installe Git/LFS, DVC, GitHub CLI, Unity Hub, Visual Studio Code et son extension Unity/C#, prépare Smart Merge et ouvre l'installation exacte de Unity. Une fois Unity installé, relancer simplement :
+Le script installe Git/LFS, DVC, GitHub CLI, Unity Hub, Visual Studio Code, son extension Unity/C# et Tailscale, prépare Smart Merge et ouvre les installations interactives. Une fois Unity et la connexion Tailscale terminés, relancer :
 
 ```bash
-./scripts/setup-macos.sh
+./scripts/setup-macos.sh --remote-play
 ```
 
 ### Windows — PowerShell
@@ -64,10 +64,10 @@ gh auth login --web
 gh auth setup-git
 gh repo clone NOT-THAT-WAY/GAME
 Set-Location GAME
-powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -All
+powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -All -RemotePlay
 ```
 
-Après l'installation de Unity dans Hub, relancer `setup-windows.ps1` sans option.
+Après l'installation de Unity et la connexion Tailscale, relancer `setup-windows.ps1 -RemotePlay`.
 
 Les scripts sont idempotents. L'éditeur Unity reste une étape interactive parce que Hub doit confirmer l'architecture et les modules de build.
 
@@ -97,7 +97,7 @@ GitHub garde seulement les pointeurs DVC, les exports nécessaires au jeu et les
 
 ## Premier test à trois
 
-Après le premier import et le merge du lockfile :
+Sur le même réseau local, après le premier import et le merge du lockfile :
 
 ```bash
 # Mac hôte
@@ -114,6 +114,23 @@ Après le premier import et le merge du lockfile :
 
 Le succès est simple : les trois noms apparaissent dans les trois fenêtres. Voir [le protocole complet](docs/FIRST_CONNECTION_TEST.md).
 
+Si chacun est chez soi, ne pas utiliser l'IP `192.168.x.x`. Le Mac mini de Zak peut héberger et jouer :
+
+```bash
+# Hôte distant
+./scripts/remote-test-macos.sh host --name "Zak"
+
+# Client Mac avec l'IP Tailscale 100.x.y.z affichée par l'hôte
+./scripts/remote-test-macos.sh client --address "100.x.y.z" --name "Nils"
+```
+
+```powershell
+# Client Windows
+.\scripts\remote-test-windows.ps1 Client -Address "100.x.y.z" -Name "Sean"
+```
+
+Voir [le protocole distant](docs/REMOTE_CONNECTION_TEST.md). Aucun serveur dédié ni port de box n'est nécessaire ; la machine hôte doit simplement garder le jeu ouvert.
+
 ## Stack figée
 
 | Couche | Choix actuel | État |
@@ -123,10 +140,11 @@ Le succès est simple : les trois noms apparaissent dans les trois fenêtres. Vo
 | Input | Unity Input System `1.20.0` | dans le projet |
 | Réseau local | FishNet `4.7.2` + Tugboat | dans le projet |
 | Tests multi-instance | Multiplayer Play Mode `2.0.2` | dans le projet |
+| Réseau de développement distant | Tailscale, hors du build | setup Mac/Windows |
 | Masters lourds | DVC 3.x + stockage externe privé | scripts prêts, remote à choisir |
 | Assets de build | Git LFS + UnityYAMLMerge | configuré |
 | Audio | Wwise `2025.1.4` | après gate Mac/Windows |
-| Steam | Steamworks.NET `2025.164.1` + FishySteamworks `4.1.1` | après validation LAN |
+| Steam | Steamworks.NET `2025.164.1` + FishySteamworks `4.1.1` | après validation distante |
 
 FishyFacepunch n'est pas repris car son dépôt est archivé. Tugboat reste le profil quotidien ; Steam viendra en profil additionnel.
 
@@ -148,6 +166,7 @@ Le membre qui possède le PC prend la validation Windows. Les rôles pilote/bin�
 - [Ordre d'installation des trois postes](docs/ONBOARDING.md)
 - [Installation Mac/Windows](docs/SETUP.md)
 - [Premier test de connexion](docs/FIRST_CONNECTION_TEST.md)
+- [Test depuis des réseaux différents](docs/REMOTE_CONNECTION_TEST.md)
 - [Travail à trois](docs/WORKFLOW.md)
 - [Assets hors GitHub](docs/ASSETS.md)
 - [Gestion des données](docs/DATA_MANAGEMENT.md)
@@ -157,4 +176,4 @@ Le membre qui possède le PC prend la validation Windows. Les rôles pilote/bin�
 
 ## Règle de priorité
 
-**Environnements identiques → données fiables → connexion LAN → pivot jouable → réseau dégradé → audio/visuel → playtests.** Si le duel ne fonctionne pas en cubes gris, l'habillage ne le sauvera pas.
+**Environnements identiques → données fiables → connexion distante → pivot jouable → réseau dégradé → audio/visuel → playtests.** Si le duel ne fonctionne pas en cubes gris, l'habillage ne le sauvera pas.

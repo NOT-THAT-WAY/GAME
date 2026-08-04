@@ -105,9 +105,10 @@ Nils possède seul Wwise Authoring au départ. Sean et Zak testent les événeme
 ## Profils de test réseau
 
 1. local rapide : Multiplayer Play Mode + Tugboat ;
-2. LAN réel : trois machines + Tugboat ;
-3. conditions dégradées : latence/perte/jitter avec Multiplayer Tools ;
-4. Steam : deux comptes et deux machines après la gate LAN.
+2. LAN réel : trois machines sur le même réseau + Tugboat ;
+3. distant équipe : Tailscale + Tugboat, sans modification du build ;
+4. conditions dégradées : latence/perte/jitter avec Multiplayer Tools ;
+5. Steam : deux comptes et deux machines après la gate distante.
 
 Un bug indique le commit, OS, rôle hôte/client, transport et conditions réseau. Les adresses privées et logs contenant des identifiants ne sont pas copiés dans une issue publique.
 
