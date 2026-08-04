@@ -9,6 +9,7 @@ UNITY_EDITOR="${GAME_UNITY_EDITOR:-/Applications/Unity/Hub/Editor/$UNITY_VERSION
 BUILD_PATH="$REPO_ROOT/Builds/ConnectionTest/macOS/GAME-Connection-Test.app"
 ROLE="${1:-}"
 ADDRESS="127.0.0.1"
+ADDRESS_SET=0
 PORT="7770"
 PLAYER_NAME="$(git -C "$REPO_ROOT" config --get user.name 2>/dev/null || hostname -s)"
 SKIP_BUILD=0
@@ -38,6 +39,7 @@ while (( $# > 0 )); do
     --address)
       (( $# >= 2 )) || fail "--address attend l'IP de l'hôte."
       ADDRESS="$2"
+      ADDRESS_SET=1
       shift 2
       ;;
     --name)
@@ -64,8 +66,8 @@ esac
 
 [[ "$PORT" =~ ^[0-9]+$ ]] || fail "Le port doit être numérique."
 (( PORT >= 1 && PORT <= 65535 )) || fail "Le port doit être compris entre 1 et 65535."
-if [[ "$ROLE" == "client" && "$ADDRESS" == "127.0.0.1" ]]; then
-  fail "Un client sur une autre machine doit recevoir --address HOST_IP."
+if [[ "$ROLE" == "client" && "$ADDRESS_SET" == "0" ]]; then
+  fail "Un client doit recevoir --address HOST_IP (ou --address 127.0.0.1 pour un test local)."
 fi
 [[ -x "$UNITY_EDITOR" ]] || fail "Unity $UNITY_VERSION introuvable. Relancez setup-macos.sh."
 
