@@ -9,7 +9,7 @@ namespace NotThatWay.Game
     /// en local pour la réactivité, puis demande la validation à l'hôte : cooldown
     /// et recherche de cible sont mesurés côté serveur. Un coup qui ne trouve
     /// personne cherche un mur mobile devant le poing et demande à
-    /// <see cref="MovableWallDirector"/> de le faire pivoter. Le mouvement reste
+    /// <see cref="MovableWallDirector"/> de l'ébranler. Le mouvement reste
     /// client-authoritative (dette du smoke test) : l'hôte ne téléporte personne,
     /// le knockback d'un joueur est appliqué par son propre client via
     /// <see cref="PlayerMotor.ApplyKnockbackFromServer"/>. Le combat final relève de M1,
@@ -118,7 +118,8 @@ namespace NotThatWay.Game
 
         /// <summary>
         /// Coup porté dans le vide : si un mur mobile est à portée devant le poing,
-        /// l'hôte lui demande un quart de tour. La cible, le gond et le sens sont
+        /// l'hôte l'ébranle. Un coup ne suffit pas à l'ouvrir — il verse sa part
+        /// d'effort et il en faut trois enchaînés. La cible, le gond et le sens sont
         /// résolus là-bas, sur la copie serveur du décor — le client n'a désigné
         /// aucun mur et ne peut donc pas en pousser un qu'il ne voit pas.
         /// </summary>
@@ -138,7 +139,7 @@ namespace NotThatWay.Game
             if (wall == null)
                 return;
 
-            _wallDirector.TrySwing(wall, transform.position, transform.forward, hit.point);
+            _wallDirector.TryPunch(wall, transform.position, transform.forward, hit.point);
         }
 
         /// <summary>

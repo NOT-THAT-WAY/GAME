@@ -10,10 +10,11 @@ namespace NotThatWay.Game
     /// <summary>
     /// Détient la pose de tous les murs mobiles de la map et la réplique.
     ///
-    /// Deux façons de bouger un mur, une seule mécanique. Marcher contre lui
-    /// accumule un effort côté hôte et le fait céder lentement, comme un vantail
-    /// de pierre qu'on épaule ; un coup de poing emporte le quart de tour d'un
-    /// coup. Dans les deux cas le mur pivote autour du bout opposé au contact : on
+    /// Deux façons de bouger un mur, un seul effort. Marcher contre lui l'accumule
+    /// lentement, comme un vantail de pierre qu'on épaule ; un coup de poing en
+    /// verse un tiers d'un coup, et le mur reste ébranlé un instant avant de
+    /// retomber — trois coups enchaînés le font donc basculer, un seul jamais.
+    /// Dans les deux cas le mur pivote autour du bout opposé au contact : on
     /// pousse le battant, la charnière est en face. Le mur
     /// change donc d'axe et se pose sur l'arête perpendiculaire, exactement — un
     /// mur fait un pas de grille de long, et un quart de tour autour d'un nœud le
@@ -30,8 +31,13 @@ namespace NotThatWay.Game
     /// désigne que le mur, jamais le gond, le sens ni la durée de son effort —
     /// l'hôte mesure l'effort à son propre rythme, donc répéter l'intention plus
     /// vite ne fait pas céder le mur plus tôt. Dans les deux cas il valide portée,
-    /// repos, éloignement de l'arête d'origine, occupation de l'arête d'arrivée et
+    /// repos, ancrage à l'arête d'origine, occupation de l'arête d'arrivée et
     /// absence de joueur dessous.
+    ///
+    /// Un mur garde toujours un pied chez lui : son arête d'arrivée doit toucher
+    /// un des deux nœuds de son arête d'origine. Sans cette borne, des coups
+    /// répétés le font marcher d'arête en arête et il finit hors de vue derrière
+    /// le labyrinthe — un mur qui « disparaît ».
     ///
     /// Une réserve à connaître : l'effort d'une poussée en cours est répliqué, par
     /// paliers de 5 %, pour que tout le monde voie le battant céder. C'est un
@@ -57,8 +63,15 @@ namespace NotThatWay.Game
 
         // Poussée à l'épaule : lourde, mais pas au point qu'on renonce. L'effort
         // retombe un peu plus vite qu'il ne monte, donc lâcher ramène le battant.
-        private const float PushSeconds = 2.2f;
+        private const float PushSeconds = 3f;
         private const float ReleaseSeconds = 1.6f;
+
+        // Un coup de poing verse un tiers de la course : trois coups ouvrent le
+        // mur, un seul ne l'ouvre jamais. Le battant reste ébranlé plus longtemps
+        // que le repos du poing, donc enchaîner les coups accumule vraiment ;
+        // s'arrêter le laisse retomber.
+        private const float PunchEffort = 0.34f;
+        private const float PunchHoldSeconds = 1.4f;
 
         // Au-delà de ce silence, l'hôte considère que le joueur a cessé de pousser.
         // Le client répète son intention plus souvent que ça.
@@ -73,10 +86,6 @@ namespace NotThatWay.Game
         // céder sans transformer un état partagé en flux de transform.
         private const int PushStep = 5;
         private const float PushSmoothing = 12f;
-
-        // Un mur ne s'éloigne jamais de plus de deux pas de son arête d'origine :
-        // la map reste lisible et un mur ne traverse pas la moitié du plateau.
-        private const float MaxDistanceFromHome = GridPitch * 2f + 0.01f;
 
         // Portée de validation serveur, mesurée depuis le segment du mur et non
         // depuis son centre : un mur fait un pas de grille de long. La marge couvre
@@ -113,6 +122,10 @@ namespace NotThatWay.Game
         private float[] _effort = Array.Empty<float>();
         private float[] _pushIntentAt = Array.Empty<float>();
         private int[] _pushTarget = Array.Empty<int>();
+
+        // Tant que ce délai court, l'effort ne redescend pas : le mur encaisse le
+        // coup et vibre encore. C'est ce qui laisse enchaîner les frappes.
+        private float[] _punchHoldUntil = Array.Empty<float>();
 
         // Animation du battant, propre à chaque machine et jamais répliquée : elle
         // rattrape la pose reçue, elle ne la décide pas.
@@ -164,6 +177,7 @@ namespace NotThatWay.Game
             _nextSwingAllowedAt = new float[_walls.Length];
             _effort = new float[_walls.Length];
             _pushIntentAt = new float[_walls.Length];
+            _punchHoldUntil = new float[_walls.Length];
             _pushTarget = new int[_walls.Length];
             for (var index = 0; index < _walls.Length; index++)
                 _pushTarget[index] = -1;
@@ -372,8 +386,9 @@ namespace NotThatWay.Game
         }
 
         /// <summary>
-        /// Avance les efforts en cours, côté hôte uniquement. Un mur qu'on cesse de
-        /// pousser retombe ; un mur poussé jusqu'au bout bascule d'un quart de tour.
+        /// Avance les efforts en cours, côté hôte uniquement. Peu importe d'où vient
+        /// l'effort — épaule ou coup de poing — c'est le même compteur : un mur qu'on
+        /// laisse retombe, un mur mené jusqu'au bout bascule d'un quart de tour.
         /// </summary>
         private void AdvancePushes()
         {
@@ -383,15 +398,16 @@ namespace NotThatWay.Game
                 if (target < 0)
                     continue;
 
-                var pushing = Time.time - _pushIntentAt[id] <= IntentTimeout;
-                _effort[id] += pushing
-                    ? Time.deltaTime / PushSeconds
-                    : -Time.deltaTime / ReleaseSeconds;
+                if (Time.time - _pushIntentAt[id] <= IntentTimeout)
+                    _effort[id] += Time.deltaTime / PushSeconds;
+                else if (Time.time >= _punchHoldUntil[id])
+                    _effort[id] -= Time.deltaTime / ReleaseSeconds;
 
                 if (_effort[id] >= 1f)
                 {
                     _effort[id] = 0f;
                     _pushTarget[id] = -1;
+                    _punchHoldUntil[id] = 0f;
                     PublishPush(id, -1, 0f);
                     ApplyTurn(id, target);
                     continue;
@@ -401,6 +417,7 @@ namespace NotThatWay.Game
                 {
                     _effort[id] = 0f;
                     _pushTarget[id] = -1;
+                    _punchHoldUntil[id] = 0f;
                     PublishPush(id, -1, 0f);
                     continue;
                 }
@@ -420,16 +437,19 @@ namespace NotThatWay.Game
         }
 
         /// <summary>
-        /// Fait pivoter un mur d'un quart de tour si l'hôte l'accepte. Appelé
-        /// uniquement côté serveur, depuis la validation d'une frappe : le client n'a
-        /// désigné ni le mur, ni le gond, ni le sens.
+        /// Ébranle un mur d'un coup de poing. Le coup ne fait pas basculer le mur : il
+        /// verse un tiers de la course dans le même effort que la poussée à l'épaule,
+        /// et laisse le battant ébranlé un instant avant qu'il ne retombe. Trois coups
+        /// enchaînés l'ouvrent donc, un coup isolé jamais — c'est là qu'on sent le
+        /// poids de la pierre. Appelé uniquement côté serveur, depuis la validation
+        /// d'une frappe : le client n'a désigné ni le mur, ni le gond, ni le sens.
         /// </summary>
         /// <param name="wall">Mur touché sur la copie serveur du décor.</param>
         /// <param name="puncherPosition">Position répliquée du frappeur.</param>
         /// <param name="puncherForward">Regard du frappeur, qui donne le sens.</param>
         /// <param name="impactPoint">Point touché, qui désigne le battant donc le gond.</param>
-        /// <returns>Vrai si l'arête du mur a changé.</returns>
-        public bool TrySwing(MovableWall wall, Vector3 puncherPosition, Vector3 puncherForward, Vector3 impactPoint)
+        /// <returns>Vrai si le coup a porté sur le mur.</returns>
+        public bool TryPunch(MovableWall wall, Vector3 puncherPosition, Vector3 puncherForward, Vector3 impactPoint)
         {
             if (!IsServerStarted || wall == null)
                 return false;
@@ -445,17 +465,22 @@ namespace NotThatWay.Game
             if (DistanceToWall(puncherPosition, SlotCenter(slot), SlotAxis(FamilyOf(slot))) > ServerReach)
                 return false;
 
-            // Un coup de poing emporte le quart de tour même donné de biais, là où la
-            // poussée à l'épaule exige de pousser franchement vers quelque part.
+            // Un coup de poing porte même donné de biais, là où la poussée à l'épaule
+            // exige de pousser franchement vers quelque part.
             if (!TryResolveTarget(id, puncherForward, impactPoint, false, out var target))
                 return false;
 
-            // Le coup annule la poussée en cours : c'est lui qui a eu raison du mur.
-            _pushTarget[id] = -1;
-            _effort[id] = 0f;
-            PublishPush(id, -1, 0f);
+            // Frapper l'autre battant repart de zéro : on ne cumule pas deux efforts
+            // qui tirent le mur dans deux sens opposés.
+            if (_pushTarget[id] != target)
+            {
+                _pushTarget[id] = target;
+                _effort[id] = 0f;
+            }
 
-            return ApplyTurn(id, target);
+            _effort[id] += PunchEffort;
+            _punchHoldUntil[id] = Time.time + PunchHoldSeconds;
+            return true;
         }
 
         /// <summary>
@@ -495,7 +520,7 @@ namespace NotThatWay.Game
                     : new Vector2Int(arm.y, -arm.x);
 
                 var candidate = SlotForEdge(hinge, hinge + rotated);
-                if (candidate < 0 || _occupied.Contains(candidate))
+                if (candidate < 0 || _occupied.Contains(candidate) || !IsAnchoredToHome(_walls[id], candidate))
                     continue;
 
                 var score = Vector3.Dot(forward, NodePosition(hinge + rotated) - leafWorld);
@@ -523,8 +548,7 @@ namespace NotThatWay.Game
             if (_occupied.Contains(target))
                 return false;
 
-            var home = SlotCenter(wall.HomeFamily, wall.HomeSlotX, wall.HomeSlotY, _width, _height);
-            if (Vector3.Distance(SlotCenter(target), home) > MaxDistanceFromHome)
+            if (!IsAnchoredToHome(wall, target))
                 return false;
 
             if (!IsClearOfPlayers(SlotCenter(target), SlotAxis(FamilyOf(target))))
@@ -542,6 +566,21 @@ namespace NotThatWay.Game
             _poses[id] = Pack(target, TurnsOf(pose) + turn);
             _nextSwingAllowedAt[id] = Time.time + SwingCooldown;
             return true;
+        }
+
+        /// <summary>
+        /// Vrai si l'arête touche encore un des deux nœuds de l'arête d'origine du
+        /// mur. C'est ce qui garde chaque mur accroché à son embrasure : il pivote
+        /// autour de l'un ou l'autre de ses bouts, il ne se promène pas. Sans cette
+        /// borne, des coups répétés le font marcher d'arête en arête jusqu'à finir
+        /// hors de vue derrière le labyrinthe, et le joueur voit un mur disparaître.
+        /// </summary>
+        private static bool IsAnchoredToHome(MovableWall wall, int slot)
+        {
+            EdgeNodes(wall.HomeFamily, wall.HomeSlotX, wall.HomeSlotY, out var homeA, out var homeB);
+            EdgeNodes(FamilyOf(slot), XOf(slot), YOf(slot), out var first, out var second);
+
+            return first == homeA || first == homeB || second == homeA || second == homeB;
         }
 
         /// <summary>Angle monde du quart de tour qui mène d'une arête à l'autre autour de leur gond.</summary>

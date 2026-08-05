@@ -92,18 +92,22 @@ passer.
 
 ## Murs mobiles
 
-Deux façons de bouger un mur, une seule mécanique. **Marcher dedans** l'épaule la
-première : l'effort monte, le battant cède et bascule au bout d'environ 2 s de
-poussée continue. **Clic droit** : le coup emporte le quart de tour d'un seul
-coup. Dans les deux cas le mur pivote **autour du bout opposé au contact**, comme
-une porte lourde qu'on pousse par sa poignée. Il change donc d'axe — un mur
-nord-sud devient est-ouest — et vient se poser exactement sur l'arête
-perpendiculaire.
+Deux façons de bouger un mur, **un seul effort**. **Marcher dedans** l'épaule la
+première : l'effort monte et le battant bascule au bout d'environ 3 s de poussée
+continue. **Clic droit** : chaque coup verse un tiers de la course d'un coup, donc
+**trois coups enchaînés** ouvrent le mur et un coup isolé jamais. Dans les deux
+cas le mur pivote **autour du bout opposé au contact**, comme une porte lourde
+qu'on pousse par sa poignée. Il change donc d'axe — un mur nord-sud devient
+est-ouest — et vient se poser exactement sur l'arête perpendiculaire.
 
-Pousser ne demande aucun bouton : avancer contre le mur suffit. Lâcher fait
-retomber le battant, un peu plus vite qu'il n'était monté — un vantail de pierre
-qu'on cesse d'épauler ne reste pas entrouvert. Le pourcentage d'effort s'affiche
-dans le bandeau tant qu'on pousse.
+Les deux moyens alimentent le même compteur : épauler le mur en le martelant est
+la façon la plus rapide de l'ouvrir. Pousser ne demande aucun bouton : avancer
+contre le mur suffit. Lâcher fait retomber le battant, un peu plus vite qu'il
+n'était monté — un vantail de pierre qu'on cesse d'épauler ne reste pas
+entrouvert. Après un coup de poing le mur reste ébranlé 1,4 s avant de commencer
+à retomber, soit plus longtemps que le repos du poing : c'est ce qui permet
+d'enchaîner. Le pourcentage d'effort s'affiche dans le bandeau dès qu'un mur
+mobile est devant vous.
 
 Cette exactitude n'est pas un arrondi : la grille est carrée et un mur fait un
 pas de long, donc un quart de tour autour d'un nœud mène toujours d'une arête de
@@ -115,16 +119,20 @@ où l'on pousse. Frapper le milieu d'un mur marche aussi : le gond est alors
 simplement le bout le plus loin des deux.
 
 Les 173 murs intérieurs de la map sont concernés ; seul le pourtour est fixe,
-sans quoi le labyrinthe s'ouvrirait sur le sable. Un mur ne s'éloigne jamais de
-plus de deux pas de son arête d'origine, sinon quelques coups suffiraient à le
-promener à travers la map.
+sans quoi le labyrinthe s'ouvrirait sur le sable.
+
+**Un mur garde toujours un pied chez lui** : son arête d'arrivée doit toucher un
+des deux nœuds de son arête d'origine. Il pivote donc autour de l'un ou l'autre
+de ses bouts et ne peut occuper que les quelques arêtes qui les touchent. Sans
+cette borne, des coups répétés le faisaient marcher d'arête en arête jusqu'à
+finir hors de vue derrière le labyrinthe — le joueur voyait un mur disparaître.
 
 L'hôte décide seul. En frappant, **le client ne désigne même pas sa cible** : la
 copie serveur du décor résout le mur touché, le gond et le sens. En poussant, il
 ne désigne que le mur — ni le gond, ni le sens, ni la durée de son effort.
 **C'est l'hôte qui mesure l'effort, à son propre rythme** : répéter l'intention
 plus vite ne fait pas céder le mur plus tôt. Dans les deux cas il valide portée
-mesurée sur le segment, repos du mur, éloignement de l'origine, occupation de
+mesurée sur le segment, repos du mur, ancrage à l'arête d'origine, occupation de
 l'arête d'arrivée et absence de joueur dessous.
 
 Une nuance entre les deux : la poussée exige d'aller franchement vers quelque
@@ -252,8 +260,8 @@ changent pas de comportement.
 | Maj | sprint |
 | Espace | sauter — contournement provisoire des gravats, statut gameplay à décider |
 | Clic gauche maintenu + avancer | pousser un mur pivotant d'un quart de tour |
-| Clic droit | coup de poing : joueur ou bot devant soi, sinon le mur touché pivote d'un quart de tour |
-| Avancer contre un mur | le pousser à l'épaule : il cède au bout d'environ 2 s, et retombe si on lâche |
+| Clic droit | coup de poing : joueur ou bot devant soi, sinon le mur touché est ébranlé — trois coups enchaînés l'ouvrent |
+| Avancer contre un mur | le pousser à l'épaule : il cède au bout d'environ 3 s, et retombe si on lâche |
 | U | se dégager quand on est encastré dans un mur |
 | Échap | libérer ou recapturer le curseur |
 | Tab | masquer ou afficher le panneau réseau |

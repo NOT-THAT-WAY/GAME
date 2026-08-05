@@ -49,6 +49,10 @@ namespace NotThatWay.Game
         private const float WallPushReach = 1.2f;
         private const float WallPushIntentInterval = 0.1f;
 
+        // Portée du seul retour d'écran : elle couvre le bout du poing, pour voir
+        // l'effort monter en martelant un mur sans marcher dedans.
+        private const float WallFeedbackReach = 2f;
+
         // Se dégager ne se calcule pas en repoussant le joueur hors du mur :
         // `Physics.ComputePenetration` ne résout rien contre un MeshCollider non
         // convexe, et les murs du labyrinthe en sont. On vise donc un centre de
@@ -347,24 +351,27 @@ namespace NotThatWay.Game
             if (_wallDirector == null)
                 _wallDirector = FindFirstObjectByType<MovableWallDirector>(FindObjectsInactive.Include);
 
-            var keyboard = Keyboard.current;
-            var advancing = keyboard != null && (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed);
-
-            if (!advancing || _wallDirector == null)
+            if (_wallDirector == null)
             {
                 _pushedMovableWall = null;
                 return;
             }
 
+            // Le rayon part plus loin que le contact à l'épaule : il sert aussi à
+            // afficher l'effort du mur qu'on est en train de marteler sans avancer.
             var chest = transform.TransformPoint(_controller.center);
-            if (!Physics.Raycast(chest, transform.forward, out var hit, WallPushReach, ~0, QueryTriggerInteraction.Ignore))
+            if (!Physics.Raycast(chest, transform.forward, out var hit, WallFeedbackReach, ~0, QueryTriggerInteraction.Ignore))
             {
                 _pushedMovableWall = null;
                 return;
             }
 
             _pushedMovableWall = hit.collider.GetComponentInParent<MovableWall>();
-            if (_pushedMovableWall == null)
+            if (_pushedMovableWall == null || hit.distance > WallPushReach)
+                return;
+
+            var keyboard = Keyboard.current;
+            if (keyboard == null || !(keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed))
                 return;
 
             if (Time.time < _nextWallPushIntentAt)
@@ -598,7 +605,7 @@ namespace NotThatWay.Game
             var wallEffort = _pushedMovableWall != null && _wallDirector != null
                 ? $"  [{_wallDirector.EffortFor(_pushedMovableWall.Id) * 100f:F0} %]"
                 : "";
-            GUILayout.Label($"Avancer contre un mur = le pousser, c'est lourd{wallEffort}   ·   clic droit = coup de poing (joueur, bot ou mur)", style);
+            GUILayout.Label($"Avancer contre un mur = le pousser, c'est lourd{wallEffort}   ·   clic droit = coup de poing (3 coups enchaînés ouvrent un mur)", style);
             GUILayout.Label($"Échap curseur ({(_cursorLocked ? "capturé" : "libre")})   ·   Tab panneau réseau   ·   F1 vue {(_thirdPerson ? "3e personne" : "1re personne")}", style);
             GUILayout.Label($"U se dégager d'un mur{(Time.time < _unstickFeedbackUntil ? $"   —   {_unstickFeedback}" : "")}", style);
             GUILayout.EndArea();
