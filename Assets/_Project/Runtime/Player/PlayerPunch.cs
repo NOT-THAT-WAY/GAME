@@ -8,8 +8,8 @@ namespace NotThatWay.Game
     /// Coup de poing prototype du playtest labyrinthe. Le clic droit joue l'animation
     /// en local pour la réactivité, puis demande la validation à l'hôte : cooldown
     /// et recherche de cible sont mesurés côté serveur. Un coup qui ne trouve
-    /// personne cherche un mur coulissant devant le poing et demande à
-    /// <see cref="SlidingWallDirector"/> de le pousser d'une case. Le mouvement reste
+    /// personne cherche un mur mobile devant le poing et demande à
+    /// <see cref="MovableWallDirector"/> de le faire pivoter. Le mouvement reste
     /// client-authoritative (dette du smoke test) : l'hôte ne téléporte personne,
     /// le knockback d'un joueur est appliqué par son propre client via
     /// <see cref="PlayerMotor.ApplyKnockbackFromServer"/>. Le combat final relève de M1,
@@ -43,7 +43,7 @@ namespace NotThatWay.Game
 
         private PlayerMotor _motor;
         private Animator _animator;
-        private SlidingWallDirector _wallDirector;
+        private MovableWallDirector _wallDirector;
         // Le host possède la même instance côté client et côté serveur. Deux
         // horloges séparées évitent que le filtre local refuse immédiatement sa
         // propre requête serveur.
@@ -117,15 +117,15 @@ namespace NotThatWay.Game
         }
 
         /// <summary>
-        /// Coup porté dans le vide : si un mur coulissant est à portée devant le
-        /// poing, l'hôte lui demande de glisser d'une case. La cible est résolue
-        /// ici, sur la copie serveur du décor — le client n'a désigné aucun mur et
-        /// ne peut donc pas en pousser un qu'il ne voit pas.
+        /// Coup porté dans le vide : si un mur mobile est à portée devant le poing,
+        /// l'hôte lui demande un quart de tour. La cible, le gond et le sens sont
+        /// résolus là-bas, sur la copie serveur du décor — le client n'a désigné
+        /// aucun mur et ne peut donc pas en pousser un qu'il ne voit pas.
         /// </summary>
         private void TryPunchWall()
         {
             if (_wallDirector == null)
-                _wallDirector = FindFirstObjectByType<SlidingWallDirector>();
+                _wallDirector = FindFirstObjectByType<MovableWallDirector>();
 
             if (_wallDirector == null)
                 return;
@@ -134,11 +134,11 @@ namespace NotThatWay.Game
             if (!Physics.Raycast(origin, transform.forward, out var hit, PunchRange, ~0, QueryTriggerInteraction.Ignore))
                 return;
 
-            var wall = hit.collider.GetComponentInParent<SlidingWall>();
+            var wall = hit.collider.GetComponentInParent<MovableWall>();
             if (wall == null)
                 return;
 
-            _wallDirector.TrySlide(wall, transform.position, transform.forward, hit.point);
+            _wallDirector.TrySwing(wall, transform.position, transform.forward, hit.point);
         }
 
         /// <summary>

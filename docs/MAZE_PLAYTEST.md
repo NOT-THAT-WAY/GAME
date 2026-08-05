@@ -30,7 +30,7 @@ murs ou collisions suit [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.m
 | Personnage jouable + punch | `Assets/_Project/Player/PersoBouleRigged.fbx` | studio Blender `player-punch-rig-v001`, export validé sur `art/player-punch-rig` |
 | Déplacement | `Assets/_Project/Runtime/Player/PlayerMotor.cs` | — |
 | Punch | `Assets/_Project/Runtime/Player/PlayerPunch.cs` | intention cliente, validation hôte, animation et recul |
-| Murs coulissants | `Assets/_Project/Runtime/Maze/SlidingWall.cs`, `SlidingWallDirector.cs` | découpés depuis `MazeGrid16x16.json`, état discret répliqué |
+| Murs mobiles | `Assets/_Project/Runtime/Maze/MovableWall.cs`, `MovableWallDirector.cs` | découpés depuis `MazeGrid16x16.json`, état discret répliqué |
 | Bot d'entraînement | `Assets/_Project/Runtime/Player/SimpleBot.cs` | marche et recul simulés par l'hôte |
 | Générateur de scène | `Assets/_Project/Editor/MazePlaytestBuild.cs` | — |
 
@@ -74,7 +74,7 @@ Le FBX embarque de la végétation et des props denses. Pour ce smoke test,
 `Vegetation` reste traversable : mousses, lianes et buissons doivent pouvoir être
 longés.
 
-**Les murs statiques font exception depuis les murs coulissants** : ils ne
+**Les murs statiques font exception depuis les murs mobiles** : ils ne
 reçoivent plus de `MeshCollider` mais une `BoxCollider` aux cotes du design —
 2,75 m de long, 0,25 m d'épaisseur, hauteur relevée sur le maillage découpé. Leur
 collision vient donc de la topologie typée et non des triangles sculptés.
@@ -90,27 +90,38 @@ joueur**. Ce qui gêne dans un couloir, ce sont les `Props` — colonnes brisée
 caisses et jarres semées dans environ 15 % des cellules. Sauter suffit à les
 passer.
 
-## Murs coulissants
+## Murs mobiles
 
-Clic droit contre un mur droit : il glisse **d'une case de grille le long de sa
-propre ligne**, ouvrant le passage qu'il fermait et fermant celui où il arrive.
+Clic droit contre un mur droit : il pivote **d'un quart de tour autour du bout
+opposé à l'impact**, comme une porte lourde qu'on pousse par sa poignée. Il
+change donc d'axe — un mur nord-sud devient est-ouest — et vient se poser
+exactement sur l'arête perpendiculaire.
+
+Cette exactitude n'est pas un arrondi : la grille est carrée et un mur fait un
+pas de long, donc un quart de tour autour d'un nœud mène toujours d'une arête de
+la grille à une autre. Aucune pose intermédiaire n'existe, et le battement visible
+n'est qu'une interpolation locale entre deux poses valides.
+
+Le gond est le bout le plus éloigné du point touché, et le battant part du côté
+où l'on pousse. Frapper le milieu d'un mur marche aussi : le gond est alors
+simplement le bout le plus loin des deux.
+
 Les 173 murs intérieurs de la map sont concernés ; seul le pourtour est fixe,
-sans quoi le labyrinthe s'ouvrirait sur le sable.
-
-Le sens se lit d'abord dans le regard du frappeur projeté sur l'axe du mur : dans
-le couloir qui prolonge un mur, on le pousse devant soi. De plein fouet, le
-regard ne dit plus rien de cet axe et c'est le bord touché qui décide, comme une
-porte coulissante poussée par son montant.
+sans quoi le labyrinthe s'ouvrirait sur le sable. Un mur ne s'éloigne jamais de
+plus de deux pas de son arête d'origine, sinon quelques coups suffiraient à le
+promener à travers la map.
 
 L'hôte décide seul, et **le client ne désigne même pas sa cible** : il envoie une
-intention de frappe, la copie serveur du décor résout le mur touché, puis valide
-portée mesurée sur le segment, repos du mur, borne de deux cases autour de son
-origine, occupation de la case d'arrivée et absence de joueur dessous.
+intention de frappe, la copie serveur du décor résout le mur touché, le gond et
+le sens, puis valide portée mesurée sur le segment, repos du mur, éloignement de
+l'origine, occupation de l'arête d'arrivée et absence de joueur dessous.
 
 **Règle de collision retenue : un mur ne se referme jamais sur quelqu'un.** Si un
-joueur ou un bot occupe la case d'arrivée, la poussée est refusée — pas de KO,
+joueur ou un bot occupe l'arête d'arrivée, la poussée est refusée — pas de KO,
 pas de déplacement forcé. L'ADR 0004 laisse cette conséquence ouverte ; c'est le
-choix explicite du prototype, à trancher pour de bon en M1.
+choix explicite du prototype, à trancher pour de bon en M1. Un battant peut en
+revanche frôler quelqu'un pendant sa course : `U` sert à se dégager si le mur
+vous prend au passage.
 
 ### Découpe depuis la grille
 
@@ -118,7 +129,7 @@ Le FBX sort tous les murs statiques dans **un seul maillage fusionné**
 (`Murs_Statiques`) : aucun d'eux ne pouvait bouger seul. `SplitStaticWalls` le
 redécoupe en un objet par arête de `MazeGrid16x16.json`, chaque triangle
 rejoignant l'arête dont son barycentre est le plus proche. Identifiant, case
-d'origine, pas de glissement et collider viennent tous de la grille typée ; le
+d'origine et collider viennent tous de la grille typée ; le
 maillage sculpté n'est plus qu'un habillage, conformément à l'ADR 0004. La
 génération avertit si une arête pleine déclarée par le JSON ne reçoit aucun
 triangle, ce qui signalerait un FBX désaccordé de la grille.
@@ -128,9 +139,10 @@ comme le reste de la scène générée : rien de tout ça n'est versionné.
 
 ### Ce qui reste à faire
 
-Ce qui circule est **un décalage entier par mur**, jamais un transform image par
-image, et les 106 cases interdites (pourtour et bras de pivot) voyagent dans le
-prefab du director, donc à l'identique sur les trois machines. Mais la transition
+Ce qui circule est **un entier par mur** — son arête et son nombre de quarts de
+tour empaquetés ensemble —, jamais un transform image par image, et les 106
+arêtes interdites (pourtour et bras de pivot) voyagent dans le prefab du
+director, donc à l'identique sur les trois machines. Mais la transition
 visible et le collider avancent avec `Time.deltaTime` sur chaque machine, comme
 les pivots : deux joueurs peuvent rencontrer un mur à des positions
 intermédiaires différentes. Le cooldown serveur se mesure encore sur `Time.time`
@@ -219,7 +231,7 @@ changent pas de comportement.
 | Maj | sprint |
 | Espace | sauter — contournement provisoire des gravats, statut gameplay à décider |
 | Clic gauche maintenu + avancer | pousser un mur pivotant d'un quart de tour |
-| Clic droit | coup de poing : joueur ou bot devant soi, sinon le mur touché glisse d'une case |
+| Clic droit | coup de poing : joueur ou bot devant soi, sinon le mur touché pivote d'un quart de tour |
 | U | se dégager quand on est encastré dans un mur |
 | Échap | libérer ou recapturer le curseur |
 | Tab | masquer ou afficher le panneau réseau |

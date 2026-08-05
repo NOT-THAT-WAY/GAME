@@ -586,7 +586,7 @@ namespace NotThatWay.Game.Editor
             if (staticWalls == null)
                 throw new InvalidOperationException($"Aucun objet « {StaticWallsObject} » dans {MazeModelPath} : les noms d'objets du FBX ont changé.");
 
-            var slidingWalls = SplitStaticWalls(staticWalls, layout);
+            var movableWalls = SplitStaticWalls(staticWalls, layout);
 
             if (colliders == 0)
                 throw new InvalidOperationException($"Aucun collider posé sur {MazeModelPath} : les noms d'objets du FBX ont changé, revoir CollidingObjectPrefixes.");
@@ -604,7 +604,7 @@ namespace NotThatWay.Game.Editor
                 serializedWall.ApplyModifiedPropertiesWithoutUndo();
             }
 
-            Debug.Log($"[GAME-MAZE] {colliders} MeshCollider(s) posé(s), {pivots.Count} pivot(s) mobile(s) indexé(s), {slidingWalls} mur(s) coulissant(s) découpé(s).");
+            Debug.Log($"[GAME-MAZE] {colliders} MeshCollider(s) posé(s), {pivots.Count} pivot(s) mobile(s) indexé(s), {movableWalls} mur(s) mobile(s) découpé(s).");
 
             // Soleil venant du sud (côté des entrées) pour que la face abordée par les
             // joueurs soit éclairée et non à contre-jour.
@@ -698,9 +698,9 @@ namespace NotThatWay.Game.Editor
                 root.AddComponent<PivotDirector>();
 
                 // La grille voyage dans le prefab, donc à l'identique sur les trois
-                // machines : les cases interdites aux murs coulissants ne se
+                // machines : les cases interdites aux murs mobiles ne se
                 // redécouvrent pas dans la scène et ne dépendent d'aucun nom d'objet.
-                var wallDirector = root.AddComponent<SlidingWallDirector>();
+                var wallDirector = root.AddComponent<MovableWallDirector>();
                 var serializedWalls = new SerializedObject(wallDirector);
                 serializedWalls.FindProperty("_width").intValue = layout.Width;
                 serializedWalls.FindProperty("_height").intValue = layout.Height;
@@ -736,7 +736,7 @@ namespace NotThatWay.Game.Editor
         /// la grille, pas des triangles (ADR 0004). Le collider est une boîte aux
         /// cotes du design ; le maillage sculpté n'est plus qu'un habillage.
         /// </summary>
-        /// <returns>Nombre de murs coulissants créés.</returns>
+        /// <returns>Nombre de murs mobiles créés.</returns>
         private static int SplitStaticWalls(Transform source, MazeLayout layout)
         {
             if (!source.TryGetComponent<MeshFilter>(out var meshFilter) || meshFilter.sharedMesh == null)
@@ -777,7 +777,7 @@ namespace NotThatWay.Game.Editor
                     List<int> target;
                     if (TryFindWallSlot(centroid, layout, out var family, out var x, out var y))
                     {
-                        var key = SlidingWallDirector.SlotKey(family, x, y);
+                        var key = MovableWallDirector.SlotKey(family, x, y);
                         if (!buckets.TryGetValue(key, out var bucket))
                         {
                             bucket = new WallBucket(family, x, y, submeshes);
@@ -801,7 +801,7 @@ namespace NotThatWay.Game.Editor
             keys.Sort();
 
             var wallMeshes = new List<Mesh>(keys.Count + 1);
-            var slidingWalls = 0;
+            var movableWalls = 0;
 
             foreach (var key in keys)
             {
@@ -829,25 +829,19 @@ namespace NotThatWay.Game.Editor
 
                 if (IsPerimeterSlot(bucket.Family, bucket.X, bucket.Y, layout))
                 {
-                    // Le pourtour ne coulisse pas : ses voisines de ligne sont pleines,
-                    // il n'irait nulle part, et le laisser statique garde son batching.
+                    // Le pourtour ne pivote pas : il ferme le labyrinthe, et le laisser
+                    // statique garde son batching.
                     GameObjectUtility.SetStaticEditorFlags(wallObject,
                         StaticEditorFlags.BatchingStatic | StaticEditorFlags.OccluderStatic | StaticEditorFlags.OccludeeStatic);
                     continue;
                 }
 
-                var sliding = wallObject.AddComponent<SlidingWall>();
-                var serialized = new SerializedObject(sliding);
-                serialized.FindProperty("_id").intValue = slidingWalls++;
-                serialized.FindProperty("_family").intValue = bucket.Family;
-                serialized.FindProperty("_slotX").intValue = bucket.X;
-                serialized.FindProperty("_slotY").intValue = bucket.Y;
-                serialized.FindProperty("_home").vector3Value = slot;
-                // Déplacement d'une case vers les index croissants. Les deux axes du
-                // plan étant retournés à l'export, il pointe vers les négatifs.
-                serialized.FindProperty("_step").vector3Value = bucket.Family == 0
-                    ? new Vector3(0f, 0f, -GridPitch)
-                    : new Vector3(-GridPitch, 0f, 0f);
+                var movable = wallObject.AddComponent<MovableWall>();
+                var serialized = new SerializedObject(movable);
+                serialized.FindProperty("_id").intValue = movableWalls++;
+                serialized.FindProperty("_homeFamily").intValue = bucket.Family;
+                serialized.FindProperty("_homeSlotX").intValue = bucket.X;
+                serialized.FindProperty("_homeSlotY").intValue = bucket.Y;
                 serialized.ApplyModifiedPropertiesWithoutUndo();
             }
 
@@ -872,14 +866,14 @@ namespace NotThatWay.Game.Editor
             SaveWallMeshes(wallMeshes);
 
             var expected = CountMovableSlots(layout);
-            if (slidingWalls < expected)
+            if (movableWalls < expected)
             {
                 Debug.LogWarning(
-                    $"[GAME-MUR] {expected - slidingWalls} arête(s) pleine(s) de la grille n'ont reçu aucun triangle : " +
+                    $"[GAME-MUR] {expected - movableWalls} arête(s) pleine(s) de la grille n'ont reçu aucun triangle : " +
                     "un mur déclaré par MazeGrid16x16.json est absent du FBX, il ne sera ni visible ni frappable.");
             }
 
-            return slidingWalls;
+            return movableWalls;
         }
 
         /// <summary>Triangles d'un mur, regroupés par sous-maillage donc par matériau.</summary>
@@ -1015,22 +1009,16 @@ namespace NotThatWay.Game.Editor
         }
 
         /// <summary>
-        /// Centre monde d'une arête de la grille, avec la même convention d'axes
-        /// que <see cref="CellCenterToUnity"/>.
+        /// Centre monde d'une arête de la grille. La formule appartient au runtime :
+        /// c'est <see cref="MovableWallDirector"/> qui repose les murs à l'exécution,
+        /// et deux copies de ce calcul finiraient par diverger.
         /// </summary>
         private static Vector3 SlotCenterToUnity(int family, int x, int y, MazeLayout layout)
         {
-            var nodeX = x - layout.Width / 2f;
-            var nodeY = y - layout.Height / 2f;
-            if (family == 0)
-                nodeY += 0.5f;
-            else
-                nodeX += 0.5f;
-
-            return new Vector3(-nodeX * GridPitch, 0f, -nodeY * GridPitch);
+            return MovableWallDirector.SlotCenter(family, x, y, layout.Width, layout.Height);
         }
 
-        /// <summary>Arête du pourtour de la map, qui ferme le labyrinthe et ne coulisse pas.</summary>
+        /// <summary>Arête du pourtour de la map, qui ferme le labyrinthe et ne pivote pas.</summary>
         private static bool IsPerimeterSlot(int family, int x, int y, MazeLayout layout)
         {
             return family == 0
@@ -1038,7 +1026,7 @@ namespace NotThatWay.Game.Editor
                 : y == 0 || y == layout.Height;
         }
 
-        /// <summary>Nombre d'arêtes pleines qui devraient donner un mur coulissant.</summary>
+        /// <summary>Nombre d'arêtes pleines qui devraient donner un mur mobile.</summary>
         private static int CountMovableSlots(MazeLayout layout)
         {
             var count = 0;
@@ -1059,7 +1047,7 @@ namespace NotThatWay.Game.Editor
         }
 
         /// <summary>
-        /// Cases d'arête qu'aucun mur coulissant ne peut occuper : les bras de
+        /// Cases d'arête qu'aucun mur mobile ne peut occuper : les bras de
         /// pivot, qui tournent sur place, et le pourtour de la map, qui doit rester
         /// fermé.
         /// </summary>
@@ -1077,7 +1065,7 @@ namespace NotThatWay.Game.Editor
                             continue;
 
                         if (states[x, y] == PivotWallState || IsPerimeterSlot(family, x, y, layout))
-                            slots.Add(SlidingWallDirector.SlotKey(family, x, y));
+                            slots.Add(MovableWallDirector.SlotKey(family, x, y));
                     }
                 }
             }
