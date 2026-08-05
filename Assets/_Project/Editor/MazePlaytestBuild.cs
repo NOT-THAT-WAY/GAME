@@ -10,6 +10,7 @@ using FishNet.Managing.Object;
 using FishNet.Object;
 using FishNet.Transporting.Tugboat;
 using UnityEditor;
+using UnityEditor.Animations;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEditor.SceneManagement;
@@ -30,9 +31,12 @@ namespace NotThatWay.Game.Editor
         private const string PrefabsPath = GeneratedDirectory + "/MazePlaytestPrefabs.asset";
         private const string PlayerPrefabPath = GeneratedDirectory + "/MazePlayer.prefab";
         private const string PivotDirectorPrefabPath = GeneratedDirectory + "/PivotDirector.prefab";
+        private const string WallMeshesPath = GeneratedDirectory + "/MazeWallMeshes.asset";
+        private const string BotPrefabPath = GeneratedDirectory + "/MazeBot.prefab";
+        private const string PunchAnimatorPath = GeneratedDirectory + "/MazePunchAnimator.controller";
         private const string MazeModelPath = "Assets/_Project/Maze/Maze16x16.fbx";
         private const string MazeGridPath = "Assets/_Project/Maze/MazeGrid16x16.json";
-        private const string PlayerModelPath = "Assets/_Project/Player/PersoBoule.fbx";
+        private const string PlayerModelPath = "Assets/_Project/Player/PersoBouleRigged.fbx";
         private const string PreviewDirectory = "Logs/MazePlaytest";
 
         // Gabarit du personnage produit par build_character.py : 1,40 m, origine
@@ -41,6 +45,8 @@ namespace NotThatWay.Game.Editor
         private const float PlayerRadius = 0.45f;
         private const float EyeHeight = 1.05f;
         private const float SpawnHeight = 0.2f;
+        private const int PlayerTriangleBudget = 6000;
+        private const int PlayerBoneBudget = 16;
 
         // Cotes du design, reprises de tools/maze-3d/build_maze.py : couloir 2,50 m
         // et murs de 0,25 m d'épaisseur, donc un pas de grille de 2,75 m. La grille
@@ -51,9 +57,12 @@ namespace NotThatWay.Game.Editor
         // ce sont des colonnes brisées et des jarres, les traverser se verrait tout
         // de suite. Seule `Vegetation` (mousses, lierres, buissons) reste sans
         // collider, parce qu'elle est dense et qu'on doit pouvoir la longer.
+        // `Murs_Statiques` n'y figure pas : ce bloc est découpé par SplitStaticWalls
+        // et chaque mur reçoit une boîte aux cotes de la grille, pas un collider de
+        // maillage sculpté.
         private static readonly string[] CollidingObjectPrefixes =
         {
-            "Murs_Statiques", "Pivot_", "Sol_Dalles", "Sol_Sable", "Reperes_Gameplay", "Props"
+            "Pivot_", "Sol_Dalles", "Sol_Sable", "Reperes_Gameplay", "Props"
         };
 
         // Préfixe des pièces mobiles : chaque pivot est un objet à part, origine sur
@@ -61,6 +70,21 @@ namespace NotThatWay.Game.Editor
         // rotation impossible, d'où le contrôle de CreateEnvironment.
         private const string PivotPrefix = "Pivot_";
         private const string MergedArmsObject = "Bras_Pivots";
+
+        // Tous les murs statiques sortent du FBX dans un seul maillage fusionné :
+        // aucun d'eux ne pourrait bouger seul. SplitStaticWalls le redécoupe en un
+        // objet par arête de la grille JSON, ce qui rend chaque mur frappable.
+        private const string StaticWallsObject = "Murs_Statiques";
+
+        // Épaisseur d'un mur, du design repris par GridPitch. La hauteur, elle,
+        // est relevée sur le maillage découpé : le décor est sculpté et une valeur
+        // écrite ici mentirait sur la géométrie réelle.
+        private const float WallThickness = 0.25f;
+
+        // États d'arête de MazeGrid16x16.json, recopiés de sa clé `meta.edge_states`.
+        private const int EmptyWallState = 0;
+        private const int StaticWallState = 1;
+        private const int PivotWallState = 2;
 
         private static readonly Color SkyColor = new(0.96f, 0.85f, 0.72f);
 
@@ -71,15 +95,17 @@ namespace NotThatWay.Game.Editor
 
             var layout = ReadLayout();
             var playerPrefab = CreatePlayerPrefab();
-            var pivotDirectorPrefab = CreatePivotDirectorPrefab();
+            var pivotDirectorPrefab = CreatePivotDirectorPrefab(layout);
+            var botPrefab = CreateBotPrefab();
             var prefabCollection = LoadOrCreatePrefabCollection();
             prefabCollection.Clear();
             prefabCollection.AddObject(playerPrefab, true);
             prefabCollection.AddObject(pivotDirectorPrefab, true);
+            prefabCollection.AddObject(botPrefab, true);
             EditorUtility.SetDirty(prefabCollection);
 
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
-            CreateEnvironment();
+            CreateEnvironment(layout);
             var spawns = CreateSpawnPoints(layout);
             VerifySpawns(spawns);
 
@@ -99,6 +125,21 @@ namespace NotThatWay.Game.Editor
             var serializedSpawner = new SerializedObject(spawner);
             serializedSpawner.FindProperty("_playerPrefab").objectReferenceValue = playerPrefab;
             serializedSpawner.ApplyModifiedPropertiesWithoutUndo();
+
+            // Cible immédiatement testable : deux mètres devant la première
+            // apparition, dans le passage que VerifySpawns vient de déclarer libre.
+            // FindFreeSpot garde une marge de capsule si un prop frôle l'axe.
+            var botDirection = spawns[0].forward;
+            var botSpot = FindFreeSpot(
+                spawns[0].position + botDirection * 2f,
+                botDirection, layout.Entrances[0]);
+            var botSpawner = networkRoot.AddComponent<SimpleBotSpawner>();
+            var serializedBotSpawner = new SerializedObject(botSpawner);
+            serializedBotSpawner.FindProperty("_botPrefab").objectReferenceValue = botPrefab;
+            serializedBotSpawner.FindProperty("_spawnPosition").vector3Value = botSpot;
+            serializedBotSpawner.FindProperty("_spawnRotation").quaternionValue =
+                Quaternion.LookRotation(botDirection, Vector3.up);
+            serializedBotSpawner.ApplyModifiedPropertiesWithoutUndo();
 
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene, ScenePath))
@@ -152,6 +193,19 @@ namespace NotThatWay.Game.Editor
             RenderFrom(spawn.position + Vector3.up * EyeHeight, spawn.rotation, 70f, "apercu-entree.png");
 
             Debug.Log($"[GAME-MAZE] Preview images written to {Path.GetFullPath(PreviewDirectory)}.");
+        }
+
+        /// <summary>
+        /// Gate d'intégration d'un nouvel export joueur : force Unity à repasser le
+        /// ModelImporter, puis reconstruit et rend la scène avec le résultat réel.
+        /// </summary>
+        [MenuItem("GAME/Maze Playtest/Reimport Player + Render Preview")]
+        public static void ReimportPlayerAndRenderPreview()
+        {
+            AssetDatabase.ImportAsset(
+                PlayerModelPath,
+                ImportAssetOptions.ForceUpdate | ImportAssetOptions.ForceSynchronousImport);
+            RenderPreview();
         }
 
         private static void RenderFrom(Vector3 position, Quaternion rotation, float fieldOfView, string fileName)
@@ -243,6 +297,15 @@ namespace NotThatWay.Game.Editor
                 visual.name = "Visual";
                 visual.transform.SetParent(root.transform, false);
 
+                var animator = visual.GetComponentInChildren<Animator>(true);
+                if (animator == null)
+                    animator = visual.AddComponent<Animator>();
+
+                ValidateRiggedPlayerVisual(visual);
+                animator.runtimeAnimatorController = CreatePunchAnimatorController(visual);
+                animator.applyRootMotion = false;
+                animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+
                 var pivot = new GameObject("CameraPivot");
                 pivot.transform.SetParent(root.transform, false);
                 pivot.transform.localPosition = new Vector3(0f, EyeHeight, 0f);
@@ -275,11 +338,13 @@ namespace NotThatWay.Game.Editor
                 serializedMotor.FindProperty("_visual").objectReferenceValue = visual.transform;
                 serializedMotor.ApplyModifiedPropertiesWithoutUndo();
 
+                root.AddComponent<PlayerPunch>();
+
                 var saved = PrefabUtility.SaveAsPrefabAsset(root, PlayerPrefabPath);
                 if (saved == null)
                     throw new InvalidOperationException($"Unable to save {PlayerPrefabPath}.");
 
-                return saved.GetComponent<NetworkObject>();
+                return FinalizeNetworkPrefab(saved.GetComponent<NetworkObject>());
             }
             finally
             {
@@ -287,7 +352,192 @@ namespace NotThatWay.Game.Editor
             }
         }
 
-        private static void CreateEnvironment()
+        /// <summary>
+        /// Contrôleur minimal : pose de repos vide, clip Punch déclenché par le
+        /// paramètre homonyme, puis retour automatique au repos. Le fichier vit
+        /// avec les autres sorties locales régénérables de la scène.
+        /// </summary>
+        private static AnimatorController CreatePunchAnimatorController(GameObject visual)
+        {
+            var clips = new List<AnimationClip>();
+            foreach (var asset in AssetDatabase.LoadAllAssetRepresentationsAtPath(PlayerModelPath))
+            {
+                if (asset is AnimationClip clip && !clip.name.StartsWith("__preview__", StringComparison.Ordinal))
+                    clips.Add(clip);
+            }
+
+            AnimationClip punchClip = null;
+            foreach (var clip in clips)
+            {
+                if (clip.name == "Punch")
+                {
+                    punchClip = clip;
+                    break;
+                }
+            }
+
+            if (punchClip == null && clips.Count == 1)
+                punchClip = clips[0];
+
+            if (punchClip == null)
+            {
+                var names = new List<string>(clips.Count);
+                foreach (var clip in clips)
+                    names.Add(clip.name);
+
+                throw new InvalidOperationException(
+                    $"Clip Punch introuvable dans {PlayerModelPath}. Clips importés: {string.Join(", ", names)}.");
+            }
+
+            if (punchClip.length < 0.7f || punchClip.length > 0.9f)
+            {
+                throw new InvalidOperationException(
+                    $"Durée Punch inattendue: {punchClip.length:F3} s (attendu 20 images à 24 fps, environ 0,8 s).");
+            }
+
+            var bindings = AnimationUtility.GetCurveBindings(punchClip);
+            if (bindings.Length == 0)
+                throw new InvalidOperationException($"Le clip {punchClip.name} ne contient aucune courbe Unity.");
+
+            foreach (var binding in bindings)
+            {
+                if (binding.type != typeof(Transform) || string.IsNullOrEmpty(binding.path))
+                    continue;
+                if (visual.transform.Find(binding.path) == null)
+                    throw new InvalidOperationException(
+                        $"Binding Punch introuvable dans le prefab importé: {binding.path} ({binding.propertyName}).");
+            }
+
+            if (AssetDatabase.LoadAssetAtPath<AnimatorController>(PunchAnimatorPath) != null)
+                AssetDatabase.DeleteAsset(PunchAnimatorPath);
+
+            var controller = AnimatorController.CreateAnimatorControllerAtPath(PunchAnimatorPath);
+            controller.AddParameter("Punch", AnimatorControllerParameterType.Trigger);
+
+            var stateMachine = controller.layers[0].stateMachine;
+            var idle = stateMachine.AddState("Idle");
+            var punch = stateMachine.AddState("Punch");
+            punch.motion = punchClip;
+            stateMachine.defaultState = idle;
+
+            var enterPunch = stateMachine.AddAnyStateTransition(punch);
+            enterPunch.hasExitTime = false;
+            enterPunch.duration = 0.03f;
+            enterPunch.canTransitionToSelf = false;
+            enterPunch.AddCondition(AnimatorConditionMode.If, 0f, "Punch");
+
+            var leavePunch = punch.AddTransition(idle);
+            leavePunch.hasExitTime = true;
+            leavePunch.exitTime = 1f;
+            leavePunch.duration = 0.06f;
+
+            EditorUtility.SetDirty(controller);
+            Debug.Log(
+                $"[GAME-PUNCH] Clip Unity « {punchClip.name} » importé: {punchClip.length:F3} s, " +
+                $"{punchClip.frameRate:F0} fps, {bindings.Length} courbes résolues, loop={punchClip.isLooping}.");
+            return controller;
+        }
+
+        private static void ValidateRiggedPlayerVisual(GameObject visual)
+        {
+            var renderers = visual.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+            if (renderers.Length == 0)
+                throw new InvalidOperationException($"{PlayerModelPath} ne contient aucun SkinnedMeshRenderer.");
+
+            var bounds = renderers[0].bounds;
+            var bones = new HashSet<Transform>();
+            ulong triangles = 0;
+            foreach (var renderer in renderers)
+            {
+                bounds.Encapsulate(renderer.bounds);
+                foreach (var bone in renderer.bones)
+                {
+                    if (bone != null)
+                        bones.Add(bone);
+                }
+
+                var mesh = renderer.sharedMesh;
+                if (mesh == null)
+                    continue;
+
+                for (var subMesh = 0; subMesh < mesh.subMeshCount; subMesh++)
+                    triangles += mesh.GetIndexCount(subMesh) / 3;
+            }
+
+            if (bounds.size.y < 1.3f || bounds.size.y > 1.45f)
+                throw new InvalidOperationException(
+                    $"Hauteur Unity du joueur: {bounds.size.y:F3} m, hors contrat [1,30 ; 1,45] m.");
+            if (triangles > PlayerTriangleBudget)
+                throw new InvalidOperationException(
+                    $"Budget joueur dépassé: {triangles} triangles > {PlayerTriangleBudget}.");
+            if (bones.Count == 0 || bones.Count > PlayerBoneBudget)
+                throw new InvalidOperationException(
+                    $"Budget squelette invalide: {bones.Count} bones, attendu 1..{PlayerBoneBudget}.");
+
+            Debug.Log(
+                $"[GAME-PUNCH] Import Unity validé: {renderers.Length} meshes skinnés, " +
+                $"{triangles} triangles, {bones.Count} bones, hauteur {bounds.size.y:F3} m.");
+        }
+
+        /// <summary>
+        /// Clone réseau simple du personnage : l'hôte le déplace avec
+        /// <see cref="SimpleBot"/> et NetworkTransform réplique sa pose racine.
+        /// </summary>
+        private static NetworkObject CreateBotPrefab()
+        {
+            var model = AssetDatabase.LoadAssetAtPath<GameObject>(PlayerModelPath);
+            if (model == null)
+                throw new InvalidOperationException($"Modèle de personnage introuvable: {PlayerModelPath}.");
+
+            var root = new GameObject("MazeBot");
+            try
+            {
+                var controller = root.AddComponent<CharacterController>();
+                controller.height = PlayerHeight;
+                controller.radius = PlayerRadius;
+                controller.center = new Vector3(0f, PlayerHeight / 2f, 0f);
+                controller.slopeLimit = 45f;
+                controller.stepOffset = 0.3f;
+                controller.skinWidth = 0.03f;
+
+                var visual = (GameObject)PrefabUtility.InstantiatePrefab(model);
+                visual.name = "Visual";
+                visual.transform.SetParent(root.transform, false);
+
+                var animator = visual.GetComponentInChildren<Animator>(true);
+                if (animator != null)
+                {
+                    animator.runtimeAnimatorController = null;
+                    animator.applyRootMotion = false;
+                }
+
+                root.AddComponent<NetworkObject>();
+
+                var networkTransform = root.AddComponent<NetworkTransform>();
+                var serializedTransform = new SerializedObject(networkTransform);
+                serializedTransform.FindProperty("_componentConfiguration").enumValueIndex =
+                    (int)NetworkTransform.ComponentConfigurationType.CharacterController;
+                serializedTransform.FindProperty("_clientAuthoritative").boolValue = false;
+                serializedTransform.ApplyModifiedPropertiesWithoutUndo();
+
+                var bot = root.AddComponent<SimpleBot>();
+                var serializedBot = new SerializedObject(bot);
+                serializedBot.FindProperty("_visual").objectReferenceValue = visual.transform;
+                serializedBot.ApplyModifiedPropertiesWithoutUndo();
+
+                var saved = PrefabUtility.SaveAsPrefabAsset(root, BotPrefabPath);
+                if (saved == null)
+                    throw new InvalidOperationException($"Unable to save {BotPrefabPath}.");
+
+                return FinalizeNetworkPrefab(saved.GetComponent<NetworkObject>());
+            }
+            finally
+            {
+                UnityEngine.Object.DestroyImmediate(root);
+            }
+        }
+
+        private static void CreateEnvironment(MazeLayout layout)
         {
             var mazeModel = AssetDatabase.LoadAssetAtPath<GameObject>(MazeModelPath);
             if (mazeModel == null)
@@ -299,8 +549,18 @@ namespace NotThatWay.Game.Editor
 
             var colliders = 0;
             var pivots = new List<Transform>();
+            var staticWalls = (Transform)null;
             foreach (var child in maze.GetComponentsInChildren<Transform>(true))
             {
+                // Le bloc des murs statiques est traité à part : il est découpé en
+                // murs individuels, qui reçoivent un collider de boîte issu de la
+                // grille plutôt qu'un MeshCollider sur le décor sculpté.
+                if (child.name.StartsWith(StaticWallsObject, StringComparison.Ordinal))
+                {
+                    staticWalls = child;
+                    continue;
+                }
+
                 if (child.name.StartsWith(MergedArmsObject, StringComparison.Ordinal))
                 {
                     throw new InvalidOperationException(
@@ -323,6 +583,11 @@ namespace NotThatWay.Game.Editor
                 colliders++;
             }
 
+            if (staticWalls == null)
+                throw new InvalidOperationException($"Aucun objet « {StaticWallsObject} » dans {MazeModelPath} : les noms d'objets du FBX ont changé.");
+
+            var movableWalls = SplitStaticWalls(staticWalls, layout);
+
             if (colliders == 0)
                 throw new InvalidOperationException($"Aucun collider posé sur {MazeModelPath} : les noms d'objets du FBX ont changé, revoir CollidingObjectPrefixes.");
             if (pivots.Count == 0)
@@ -339,7 +604,7 @@ namespace NotThatWay.Game.Editor
                 serializedWall.ApplyModifiedPropertiesWithoutUndo();
             }
 
-            Debug.Log($"[GAME-MAZE] {colliders} MeshCollider(s) posé(s), {pivots.Count} pivot(s) mobile(s) indexé(s).");
+            Debug.Log($"[GAME-MAZE] {colliders} MeshCollider(s) posé(s), {pivots.Count} pivot(s) mobile(s) indexé(s), {movableWalls} mur(s) mobile(s) découpé(s).");
 
             // Soleil venant du sud (côté des entrées) pour que la face abordée par les
             // joueurs soit éclairée et non à contre-jour.
@@ -424,7 +689,7 @@ namespace NotThatWay.Game.Editor
         /// les pivots dans la scène à l'exécution, par leur index, donc rien n'est
         /// sérialisé ici.
         /// </summary>
-        private static NetworkObject CreatePivotDirectorPrefab()
+        private static NetworkObject CreatePivotDirectorPrefab(MazeLayout layout)
         {
             var root = new GameObject("PivotDirector");
             try
@@ -432,16 +697,380 @@ namespace NotThatWay.Game.Editor
                 root.AddComponent<NetworkObject>();
                 root.AddComponent<PivotDirector>();
 
+                // La grille voyage dans le prefab, donc à l'identique sur les trois
+                // machines : les cases interdites aux murs mobiles ne se
+                // redécouvrent pas dans la scène et ne dépendent d'aucun nom d'objet.
+                var wallDirector = root.AddComponent<MovableWallDirector>();
+                var serializedWalls = new SerializedObject(wallDirector);
+                serializedWalls.FindProperty("_width").intValue = layout.Width;
+                serializedWalls.FindProperty("_height").intValue = layout.Height;
+
+                var blocked = CollectBlockedSlots(layout);
+                var blockedProperty = serializedWalls.FindProperty("_blockedSlots");
+                blockedProperty.arraySize = blocked.Length;
+                for (var index = 0; index < blocked.Length; index++)
+                    blockedProperty.GetArrayElementAtIndex(index).intValue = blocked[index];
+
+                serializedWalls.ApplyModifiedPropertiesWithoutUndo();
+
                 var saved = PrefabUtility.SaveAsPrefabAsset(root, PivotDirectorPrefabPath);
                 if (saved == null)
                     throw new InvalidOperationException($"Unable to save {PivotDirectorPrefabPath}.");
 
-                return saved.GetComponent<NetworkObject>();
+                return FinalizeNetworkPrefab(saved.GetComponent<NetworkObject>());
             }
             finally
             {
                 UnityEngine.Object.DestroyImmediate(root);
             }
+        }
+
+        /// <summary>
+        /// Découpe le bloc fusionné des murs statiques en un objet par arête de la
+        /// grille, pour que chaque mur puisse coulisser seul.
+        ///
+        /// Le FBX sort tous les murs statiques dans un seul maillage : aucun d'eux
+        /// ne peut bouger. La découpe se fait sur la topologie typée du JSON et non
+        /// sur la géométrie — chaque triangle rejoint l'arête dont son barycentre
+        /// est le plus proche — donc les identifiants et les colliders viennent de
+        /// la grille, pas des triangles (ADR 0004). Le collider est une boîte aux
+        /// cotes du design ; le maillage sculpté n'est plus qu'un habillage.
+        /// </summary>
+        /// <returns>Nombre de murs mobiles créés.</returns>
+        private static int SplitStaticWalls(Transform source, MazeLayout layout)
+        {
+            if (!source.TryGetComponent<MeshFilter>(out var meshFilter) || meshFilter.sharedMesh == null)
+                throw new InvalidOperationException($"« {StaticWallsObject} » n'a pas de maillage dans {MazeModelPath}.");
+
+            var mesh = meshFilter.sharedMesh;
+            var submeshes = mesh.subMeshCount;
+            var sourceRenderer = source.GetComponent<MeshRenderer>();
+            var materials = sourceRenderer != null ? sourceRenderer.sharedMaterials : Array.Empty<Material>();
+            var parent = source.parent;
+
+            // Les sommets passent une fois en coordonnées monde : les objets créés
+            // ensuite sont posés à l'identité sur la case que la grille leur donne,
+            // sans hériter de la rotation d'export du FBX.
+            var localVertices = mesh.vertices;
+            var localNormals = mesh.normals;
+            var uv = mesh.uv;
+            var vertices = new Vector3[localVertices.Length];
+            for (var index = 0; index < vertices.Length; index++)
+                vertices[index] = source.TransformPoint(localVertices[index]);
+
+            var normals = new Vector3[localNormals.Length];
+            for (var index = 0; index < normals.Length; index++)
+                normals[index] = source.TransformDirection(localNormals[index]);
+
+            var buckets = new Dictionary<int, WallBucket>();
+            var loose = new List<int>[submeshes];
+
+            for (var submesh = 0; submesh < submeshes; submesh++)
+            {
+                var indices = mesh.GetTriangles(submesh);
+                for (var triangle = 0; triangle < indices.Length; triangle += 3)
+                {
+                    var centroid = (vertices[indices[triangle]]
+                        + vertices[indices[triangle + 1]]
+                        + vertices[indices[triangle + 2]]) / 3f;
+
+                    List<int> target;
+                    if (TryFindWallSlot(centroid, layout, out var family, out var x, out var y))
+                    {
+                        var key = MovableWallDirector.SlotKey(family, x, y);
+                        if (!buckets.TryGetValue(key, out var bucket))
+                        {
+                            bucket = new WallBucket(family, x, y, submeshes);
+                            buckets.Add(key, bucket);
+                        }
+
+                        target = bucket.Triangles[submesh] ??= new List<int>();
+                    }
+                    else
+                    {
+                        target = loose[submesh] ??= new List<int>();
+                    }
+
+                    target.Add(indices[triangle]);
+                    target.Add(indices[triangle + 1]);
+                    target.Add(indices[triangle + 2]);
+                }
+            }
+
+            var keys = new List<int>(buckets.Keys);
+            keys.Sort();
+
+            var wallMeshes = new List<Mesh>(keys.Count + 1);
+            var movableWalls = 0;
+
+            foreach (var key in keys)
+            {
+                var bucket = buckets[key];
+                var slot = SlotCenterToUnity(bucket.Family, bucket.X, bucket.Y, layout);
+                var name = $"Mur_{(bucket.Family == 0 ? "V" : "H")}_{bucket.X}_{bucket.Y}";
+
+                var wallMesh = BuildSubMesh(bucket.Triangles, vertices, normals, uv, slot, name);
+                wallMeshes.Add(wallMesh);
+
+                var wallObject = new GameObject(name);
+                wallObject.transform.SetParent(parent, false);
+                wallObject.transform.SetPositionAndRotation(slot, Quaternion.identity);
+                wallObject.AddComponent<MeshFilter>().sharedMesh = wallMesh;
+                wallObject.AddComponent<MeshRenderer>().sharedMaterials = materials;
+
+                // Cotes du design pour la collision, hauteur relevée sur le maillage :
+                // les pierres sculptées ne doivent pas décider où le joueur s'arrête.
+                var bounds = wallMesh.bounds;
+                var box = wallObject.AddComponent<BoxCollider>();
+                box.center = new Vector3(0f, bounds.center.y, 0f);
+                box.size = bucket.Family == 0
+                    ? new Vector3(WallThickness, bounds.size.y, GridPitch)
+                    : new Vector3(GridPitch, bounds.size.y, WallThickness);
+
+                if (IsPerimeterSlot(bucket.Family, bucket.X, bucket.Y, layout))
+                {
+                    // Le pourtour ne pivote pas : il ferme le labyrinthe, et le laisser
+                    // statique garde son batching.
+                    GameObjectUtility.SetStaticEditorFlags(wallObject,
+                        StaticEditorFlags.BatchingStatic | StaticEditorFlags.OccluderStatic | StaticEditorFlags.OccludeeStatic);
+                    continue;
+                }
+
+                var movable = wallObject.AddComponent<MovableWall>();
+                var serialized = new SerializedObject(movable);
+                serialized.FindProperty("_id").intValue = movableWalls++;
+                serialized.FindProperty("_homeFamily").intValue = bucket.Family;
+                serialized.FindProperty("_homeSlotX").intValue = bucket.X;
+                serialized.FindProperty("_homeSlotY").intValue = bucket.Y;
+                serialized.ApplyModifiedPropertiesWithoutUndo();
+            }
+
+            var looseMesh = BuildSubMesh(loose, vertices, normals, uv, Vector3.zero, $"{StaticWallsObject}_Divers");
+            if (looseMesh.vertexCount > 0)
+            {
+                // Restes qui ne tombent sur aucune arête pleine : décor, jamais une
+                // règle. Ils gardent le comportement d'avant, collider de maillage
+                // compris, et ne bougent pas.
+                wallMeshes.Add(looseMesh);
+                var looseObject = new GameObject(looseMesh.name);
+                looseObject.transform.SetParent(parent, false);
+                looseObject.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+                looseObject.AddComponent<MeshFilter>().sharedMesh = looseMesh;
+                looseObject.AddComponent<MeshRenderer>().sharedMaterials = materials;
+                looseObject.AddComponent<MeshCollider>();
+                GameObjectUtility.SetStaticEditorFlags(looseObject,
+                    StaticEditorFlags.BatchingStatic | StaticEditorFlags.OccluderStatic | StaticEditorFlags.OccludeeStatic);
+            }
+
+            UnityEngine.Object.DestroyImmediate(source.gameObject);
+            SaveWallMeshes(wallMeshes);
+
+            var expected = CountMovableSlots(layout);
+            if (movableWalls < expected)
+            {
+                Debug.LogWarning(
+                    $"[GAME-MUR] {expected - movableWalls} arête(s) pleine(s) de la grille n'ont reçu aucun triangle : " +
+                    "un mur déclaré par MazeGrid16x16.json est absent du FBX, il ne sera ni visible ni frappable.");
+            }
+
+            return movableWalls;
+        }
+
+        /// <summary>Triangles d'un mur, regroupés par sous-maillage donc par matériau.</summary>
+        private sealed class WallBucket
+        {
+            public WallBucket(int family, int x, int y, int submeshes)
+            {
+                Family = family;
+                X = x;
+                Y = y;
+                Triangles = new List<int>[submeshes];
+            }
+
+            public int Family { get; }
+            public int X { get; }
+            public int Y { get; }
+            public List<int>[] Triangles { get; }
+        }
+
+        /// <summary>
+        /// Reconstruit un maillage à partir des triangles retenus, réindexé et
+        /// recentré sur <paramref name="origin"/> pour que l'objet créé porte sa
+        /// propre position.
+        /// </summary>
+        private static Mesh BuildSubMesh(
+            List<int>[] triangles, Vector3[] vertices, Vector3[] normals, Vector2[] uv, Vector3 origin, string name)
+        {
+            var map = new Dictionary<int, int>();
+            var newVertices = new List<Vector3>();
+            var newNormals = normals.Length == vertices.Length ? new List<Vector3>() : null;
+            var newUv = uv.Length == vertices.Length ? new List<Vector2>() : null;
+            var newTriangles = new List<int>[triangles.Length];
+
+            for (var submesh = 0; submesh < triangles.Length; submesh++)
+            {
+                var source = triangles[submesh];
+                var target = new List<int>(source?.Count ?? 0);
+                newTriangles[submesh] = target;
+                if (source == null)
+                    continue;
+
+                foreach (var index in source)
+                {
+                    if (!map.TryGetValue(index, out var mapped))
+                    {
+                        mapped = newVertices.Count;
+                        map.Add(index, mapped);
+                        newVertices.Add(vertices[index] - origin);
+                        newNormals?.Add(normals[index]);
+                        newUv?.Add(uv[index]);
+                    }
+
+                    target.Add(mapped);
+                }
+            }
+
+            var mesh = new Mesh { name = name, indexFormat = IndexFormat.UInt32 };
+            mesh.SetVertices(newVertices);
+            if (newNormals != null)
+                mesh.SetNormals(newNormals);
+            if (newUv != null)
+                mesh.SetUVs(0, newUv);
+
+            mesh.subMeshCount = triangles.Length;
+            for (var submesh = 0; submesh < triangles.Length; submesh++)
+                mesh.SetTriangles(newTriangles[submesh], submesh);
+
+            mesh.RecalculateBounds();
+            return mesh;
+        }
+
+        /// <summary>
+        /// Les maillages découpés sont enregistrés dans un seul asset. Sans ça, ils
+        /// seraient sérialisés dans la scène générée et la feraient enfler à chaque
+        /// reconstruction.
+        /// </summary>
+        private static void SaveWallMeshes(List<Mesh> meshes)
+        {
+            AssetDatabase.DeleteAsset(WallMeshesPath);
+
+            var created = false;
+            foreach (var mesh in meshes)
+            {
+                if (!created)
+                {
+                    AssetDatabase.CreateAsset(mesh, WallMeshesPath);
+                    created = true;
+                }
+                else
+                {
+                    AssetDatabase.AddObjectToAsset(mesh, WallMeshesPath);
+                }
+            }
+
+            if (created)
+                AssetDatabase.SaveAssets();
+        }
+
+        /// <summary>
+        /// Arête pleine la plus proche d'un point. Inverse de
+        /// <see cref="CellCenterToUnity"/> : une arête verticale tient un nœud en x
+        /// et court sur une cellule en y, une horizontale fait l'inverse. On garde
+        /// la famille dont le point s'écarte le moins de la ligne, et on bascule sur
+        /// l'autre si cette arête-là est vide.
+        /// </summary>
+        private static bool TryFindWallSlot(Vector3 point, MazeLayout layout, out int family, out int x, out int y)
+        {
+            var nodeX = -point.x / GridPitch + layout.Width / 2f;
+            var nodeY = -point.z / GridPitch + layout.Height / 2f;
+
+            var verticalX = Mathf.Clamp(Mathf.RoundToInt(nodeX), 0, layout.Width);
+            var verticalY = Mathf.Clamp(Mathf.FloorToInt(nodeY), 0, layout.Height - 1);
+            var horizontalX = Mathf.Clamp(Mathf.FloorToInt(nodeX), 0, layout.Width - 1);
+            var horizontalY = Mathf.Clamp(Mathf.RoundToInt(nodeY), 0, layout.Height);
+
+            var verticalFirst = Mathf.Abs(nodeX - verticalX) <= Mathf.Abs(nodeY - horizontalY);
+            for (var attempt = 0; attempt < 2; attempt++)
+            {
+                var vertical = verticalFirst == (attempt == 0);
+                family = vertical ? 0 : 1;
+                x = vertical ? verticalX : horizontalX;
+                y = vertical ? verticalY : horizontalY;
+
+                var states = vertical ? layout.VerticalWalls : layout.HorizontalWalls;
+                if (states[x, y] == StaticWallState)
+                    return true;
+            }
+
+            family = 0;
+            x = 0;
+            y = 0;
+            return false;
+        }
+
+        /// <summary>
+        /// Centre monde d'une arête de la grille. La formule appartient au runtime :
+        /// c'est <see cref="MovableWallDirector"/> qui repose les murs à l'exécution,
+        /// et deux copies de ce calcul finiraient par diverger.
+        /// </summary>
+        private static Vector3 SlotCenterToUnity(int family, int x, int y, MazeLayout layout)
+        {
+            return MovableWallDirector.SlotCenter(family, x, y, layout.Width, layout.Height);
+        }
+
+        /// <summary>Arête du pourtour de la map, qui ferme le labyrinthe et ne pivote pas.</summary>
+        private static bool IsPerimeterSlot(int family, int x, int y, MazeLayout layout)
+        {
+            return family == 0
+                ? x == 0 || x == layout.Width
+                : y == 0 || y == layout.Height;
+        }
+
+        /// <summary>Nombre d'arêtes pleines qui devraient donner un mur mobile.</summary>
+        private static int CountMovableSlots(MazeLayout layout)
+        {
+            var count = 0;
+            for (var family = 0; family < 2; family++)
+            {
+                var states = family == 0 ? layout.VerticalWalls : layout.HorizontalWalls;
+                for (var x = 0; x < states.GetLength(0); x++)
+                {
+                    for (var y = 0; y < states.GetLength(1); y++)
+                    {
+                        if (states[x, y] == StaticWallState && !IsPerimeterSlot(family, x, y, layout))
+                            count++;
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        /// <summary>
+        /// Cases d'arête qu'aucun mur mobile ne peut occuper : les bras de
+        /// pivot, qui tournent sur place, et le pourtour de la map, qui doit rester
+        /// fermé.
+        /// </summary>
+        private static int[] CollectBlockedSlots(MazeLayout layout)
+        {
+            var slots = new List<int>();
+            for (var family = 0; family < 2; family++)
+            {
+                var states = family == 0 ? layout.VerticalWalls : layout.HorizontalWalls;
+                for (var x = 0; x < states.GetLength(0); x++)
+                {
+                    for (var y = 0; y < states.GetLength(1); y++)
+                    {
+                        if (states[x, y] == EmptyWallState)
+                            continue;
+
+                        if (states[x, y] == PivotWallState || IsPerimeterSlot(family, x, y, layout))
+                            slots.Add(MovableWallDirector.SlotKey(family, x, y));
+                    }
+                }
+            }
+
+            return slots.ToArray();
         }
 
         private static bool BlocksThePlayer(string objectName)
@@ -453,6 +1082,54 @@ namespace NotThatWay.Game.Editor
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Les prefabs de cette scène utilisent une collection FishNet locale, pas
+        /// la collection globale régénérée par le package. On reproduit donc ici
+        /// son hash FNV-1 stable basé sur chemin + nom avant le build.
+        /// </summary>
+        private static NetworkObject FinalizeNetworkPrefab(NetworkObject networkObject)
+        {
+            if (networkObject == null)
+                throw new InvalidOperationException("Prefab réseau généré sans NetworkObject.");
+
+            var pathAndName =
+                $"{AssetDatabase.GetAssetPath(networkObject.gameObject)}{networkObject.gameObject.name}"
+                    .Trim()
+                    .ToLowerInvariant();
+            var normalized = string.Empty;
+            foreach (var character in pathAndName)
+            {
+                if ((character >= 'a' && character <= 'z') || (character >= '0' && character <= '9'))
+                    normalized += character;
+            }
+
+            var hash = StableHashU64(normalized);
+            if (hash == 0)
+                throw new InvalidOperationException($"Hash FishNet nul pour {pathAndName}.");
+
+            networkObject.SetAssetPathHash(hash);
+            EditorUtility.SetDirty(networkObject);
+            return networkObject;
+        }
+
+        private static ulong StableHashU64(string value)
+        {
+            const ulong offsetBasis = 14695981039346656037;
+            const ulong prime = 1099511628211;
+
+            unchecked
+            {
+                var hash = offsetBasis;
+                foreach (var character in value)
+                {
+                    hash *= prime;
+                    hash ^= character;
+                }
+
+                return hash;
+            }
         }
 
         private static Transform[] CreateSpawnPoints(MazeLayout layout)
@@ -483,7 +1160,7 @@ namespace NotThatWay.Game.Editor
         /// colonnes brisées et des jarres jusque dans les couloirs : le centre exact
         /// d'une cellule n'est pas garanti libre, et ça change à chaque graine de map.
         /// </summary>
-        private static Vector3 FindFreeSpot(Vector3 center, Vector3 inward, Vector2Int entrance)
+        private static Vector3 FindFreeSpot(Vector3 center, Vector3 inward, Vector2Int cell)
         {
             var sideways = Vector3.Cross(Vector3.up, inward);
             // Le couloir fait 2,50 m : au-delà de 0,9 m d'écart on sortirait du passage.
@@ -500,7 +1177,7 @@ namespace NotThatWay.Game.Editor
             }
 
             throw new InvalidOperationException(
-                $"Aucun emplacement libre dans la cellule d'entrée {entrance.x},{entrance.y} : le décor l'obstrue entièrement.");
+                $"Aucun emplacement libre dans la cellule {cell.x},{cell.y} : le décor l'obstrue entièrement.");
         }
 
         /// <summary>
@@ -593,24 +1270,35 @@ namespace NotThatWay.Game.Editor
 
         private readonly struct MazeLayout
         {
-            public MazeLayout(int width, int height, List<Vector2Int> entrances, Vector2Int treasure)
+            public MazeLayout(
+                int width, int height, List<Vector2Int> entrances, Vector2Int treasure,
+                int[,] verticalWalls, int[,] horizontalWalls)
             {
                 Width = width;
                 Height = height;
                 Entrances = entrances;
                 Treasure = treasure;
+                VerticalWalls = verticalWalls;
+                HorizontalWalls = horizontalWalls;
             }
 
             public int Width { get; }
             public int Height { get; }
             public List<Vector2Int> Entrances { get; }
             public Vector2Int Treasure { get; }
+
+            /// <summary>Arêtes portées par un nœud en x, longues d'une cellule en y : `[largeur + 1, hauteur]`.</summary>
+            public int[,] VerticalWalls { get; }
+
+            /// <summary>Arêtes portées par un nœud en y, longues d'une cellule en x : `[largeur, hauteur + 1]`.</summary>
+            public int[,] HorizontalWalls { get; }
         }
 
         /// <summary>
-        /// Lecture minimale de `MazeGrid16x16.json` : seules les entrées, le trésor et
-        /// les dimensions sont nécessaires pour poser les points d'apparition. Le vrai
-        /// importeur de grille (murs et pivots) viendra avec le sprint pivot.
+        /// Lecture de `MazeGrid16x16.json` : dimensions, entrées, trésor et les deux
+        /// tables d'arêtes. Ce sont ces tables, et non les noms d'objets du FBX, qui
+        /// décident où sont les murs, lesquels peuvent coulisser et lesquels tiennent
+        /// un bras de pivot.
         /// </summary>
         private static MazeLayout ReadLayout()
         {
@@ -626,11 +1314,56 @@ namespace NotThatWay.Game.Editor
             if (treasureCells.Count != 1)
                 throw new InvalidOperationException($"Cellule de trésor illisible dans {MazeGridPath}.");
 
+            var width = ReadInt(json, "width");
+            var height = ReadInt(json, "height");
+
             return new MazeLayout(
-                ReadInt(json, "width"),
-                ReadInt(json, "height"),
+                width,
+                height,
                 entrances,
-                treasureCells[0]);
+                treasureCells[0],
+                ReadIntGrid(json, "vwalls", width + 1, height),
+                ReadIntGrid(json, "hwalls", width, height + 1));
+        }
+
+        /// <summary>
+        /// Table d'arêtes du JSON, vérifiée aux dimensions attendues : une grille mal
+        /// formée poserait des murs ailleurs que le décor, et la map serait
+        /// silencieusement injouable.
+        /// </summary>
+        private static int[,] ReadIntGrid(string json, string key, int columns, int rows)
+        {
+            var block = ExtractBracketBlock(json, key);
+            var parsed = new List<int[]>();
+
+            foreach (Match match in Regex.Matches(block, @"\[([^\[\]]*)\]"))
+            {
+                var values = new List<int>();
+                foreach (var piece in match.Groups[1].Value.Split(','))
+                {
+                    var trimmed = piece.Trim();
+                    if (trimmed.Length > 0)
+                        values.Add(int.Parse(trimmed, CultureInfo.InvariantCulture));
+                }
+
+                if (values.Count > 0)
+                    parsed.Add(values.ToArray());
+            }
+
+            if (parsed.Count != columns)
+                throw new InvalidOperationException($"\"{key}\" fait {parsed.Count} colonnes dans {MazeGridPath}, {columns} attendues.");
+
+            var grid = new int[columns, rows];
+            for (var column = 0; column < columns; column++)
+            {
+                if (parsed[column].Length != rows)
+                    throw new InvalidOperationException($"\"{key}\" colonne {column} fait {parsed[column].Length} entrées dans {MazeGridPath}, {rows} attendues.");
+
+                for (var row = 0; row < rows; row++)
+                    grid[column, row] = parsed[column][row];
+            }
+
+            return grid;
         }
 
         private static string ExtractBracketBlock(string json, string key)

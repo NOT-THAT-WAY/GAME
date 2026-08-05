@@ -11,9 +11,16 @@ namespace NotThatWay.Game.Editor
     {
         private const string MazeModelPath = "Assets/_Project/Maze/Maze16x16.fbx";
         private const string PlayerModelPath = "Assets/_Project/Player/PersoBoule.fbx";
+        private const string RiggedPlayerModelPath = "Assets/_Project/Player/PersoBouleRigged.fbx";
 
         private void OnPreprocessModel()
         {
+            if (assetPath == RiggedPlayerModelPath)
+            {
+                ConfigureRiggedPlayer();
+                return;
+            }
+
             if (assetPath != MazeModelPath && assetPath != PlayerModelPath)
                 return;
 
@@ -33,6 +40,27 @@ namespace NotThatWay.Game.Editor
             // MazePlaytestBuild pose les colliders sur les seuls objets qui bloquent
             // réellement le joueur. Le personnage, lui, utilise un CharacterController.
             importer.addCollider = false;
+        }
+
+        /// <summary>
+        /// Le personnage riggé du punch garde son animation. Type Generic : le rig
+        /// n'a pas besoin de l'avatar Humanoid. Le clip n'est volontairement pas
+        /// renommé ici : au premier OnPreprocessModel, Unity n'a pas encore rempli
+        /// defaultClipAnimations ; réassigner ce tableau vide supprimerait le take.
+        /// MazePlaytestBuild sélectionne l'unique clip importé sans dépendre de son nom.
+        /// </summary>
+        private void ConfigureRiggedPlayer()
+        {
+            var importer = (ModelImporter)assetImporter;
+
+            importer.importCameras = false;
+            importer.importLights = false;
+            importer.importBlendShapes = false;
+            importer.importConstraints = false;
+            importer.addCollider = false;
+
+            importer.importAnimation = true;
+            importer.animationType = ModelImporterAnimationType.Generic;
         }
     }
 }

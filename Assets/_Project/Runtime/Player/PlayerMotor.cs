@@ -1,4 +1,5 @@
 using System;
+using FishNet.Connection;
 using FishNet.Object;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -42,6 +43,16 @@ namespace NotThatWay.Game
         // couple : on appuie dans l'axe du mur, il ne part d'aucun côté.
         private const float MinimumTorque = 0.2f;
 
+        // Poussée d'un mur mobile : on doit être dessus, pas à bout de bras. L'hôte
+        // mesure l'effort ; le client se contente de répéter son intention assez
+        // souvent pour que l'hôte sache qu'on pousse encore.
+        private const float WallPushReach = 1.2f;
+        private const float WallPushIntentInterval = 0.1f;
+
+        // Portée du seul retour d'écran : elle couvre le bout du poing, pour voir
+        // l'effort monter en martelant un mur sans marcher dedans.
+        private const float WallFeedbackReach = 2f;
+
         // Se dégager ne se calcule pas en repoussant le joueur hors du mur :
         // `Physics.ComputePenetration` ne résout rien contre un MeshCollider non
         // convexe, et les murs du labyrinthe en sont. On vise donc un centre de
@@ -80,8 +91,20 @@ namespace NotThatWay.Game
 
         private const float UnstickFeedbackSeconds = 2f;
 
+        // Amortissement du knockback reçu d'un coup de poing : l'impulsion de
+        // départ (~4,5 m/s) s'éteint en une fraction de seconde.
+        private const float KnockbackDecay = 10f;
+
         private static readonly Vector3 FirstPersonOffset = Vector3.zero;
         private static readonly Vector3 ThirdPersonOffset = new(0f, 0.55f, -3.4f);
+
+        // Parties du modèle riggé que son porteur voit en vue subjective : sans
+        // elles, un coup de poing ne produit aucun retour à l'écran. Le corps et
+        // les pieds restent en ombre seule, la caméra étant à hauteur des yeux,
+        // donc à l'intérieur du volume du corps qu'elle masquerait entièrement.
+        // Ces noms viennent de l'export et ne servent qu'au rendu : aucune règle
+        // gameplay ni aucun identifiant réseau n'en dépend (ADR 0004).
+        private static readonly string[] FirstPersonVisibleParts = { "Forearm", "Fist" };
 
         [SerializeField] private Transform _cameraPivot;
         [SerializeField] private Camera _camera;
@@ -89,10 +112,14 @@ namespace NotThatWay.Game
 
         private CharacterController _controller;
         private Renderer[] _visualRenderers = Array.Empty<Renderer>();
+        private bool[] _visibleInFirstPerson = Array.Empty<bool>();
         private ConnectionSmokeTest _sessionPanel;
         private PivotDirector _pivotDirector;
         private PivotWall _pushedWall;
         private float _pushProgress;
+        private MovableWallDirector _wallDirector;
+        private MovableWall _pushedMovableWall;
+        private float _nextWallPushIntentAt;
         private float _pitch;
         private float _verticalVelocity;
         private float _lastGroundedAt = float.NegativeInfinity;
@@ -100,14 +127,37 @@ namespace NotThatWay.Game
         private bool _thirdPerson;
         private bool _cursorLocked;
         private Vector3 _spawnPosition;
+        private Vector3 _knockback;
         private string _unstickFeedback = string.Empty;
         private float _unstickFeedbackUntil = float.NegativeInfinity;
 
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
-            if (_visual != null)
-                _visualRenderers = _visual.GetComponentsInChildren<Renderer>(true);
+            if (_visual == null)
+                return;
+
+            _visualRenderers = _visual.GetComponentsInChildren<Renderer>(true);
+            _visibleInFirstPerson = new bool[_visualRenderers.Length];
+            for (var i = 0; i < _visualRenderers.Length; i++)
+                _visibleInFirstPerson[i] = IsFirstPersonPart(_visualRenderers[i]);
+        }
+
+        /// <summary>
+        /// Vrai si ce mesh reste affiché pour son propre porteur en vue subjective.
+        /// </summary>
+        private static bool IsFirstPersonPart(Renderer visualRenderer)
+        {
+            if (visualRenderer == null)
+                return false;
+
+            foreach (var part in FirstPersonVisibleParts)
+            {
+                if (visualRenderer.name.IndexOf(part, StringComparison.OrdinalIgnoreCase) >= 0)
+                    return true;
+            }
+
+            return false;
         }
 
         public override void OnStartClient()
@@ -122,6 +172,7 @@ namespace NotThatWay.Game
 
             _sessionPanel = FindFirstObjectByType<ConnectionSmokeTest>(FindObjectsInactive.Include);
             _pivotDirector = FindFirstObjectByType<PivotDirector>(FindObjectsInactive.Include);
+            _wallDirector = FindFirstObjectByType<MovableWallDirector>(FindObjectsInactive.Include);
             if (_camera != null)
                 _camera.gameObject.SetActive(true);
 
@@ -152,6 +203,7 @@ namespace NotThatWay.Game
             ApplyLook();
             ApplyMove();
             ApplyPush();
+            ApplyWallPush();
         }
 
         /// <summary>
@@ -283,6 +335,50 @@ namespace NotThatWay.Game
             // Tracé dans le log du joueur : c'est ce qui permet de dire après coup si
             // la touche n'a rien fait ou si elle a visé une cellule qui ne dégageait pas.
             Debug.Log($"[GAME-DEBLOCAGE] {message} — {transform.position}");
+        }
+
+        /// <summary>
+        /// Avancer contre un mur mobile, l'épaule dedans : l'hôte accumule l'effort
+        /// et le mur finit par céder d'un quart de tour. Pas de bouton — marcher
+        /// dedans suffit, comme on force une porte lourde.
+        ///
+        /// Le client ne fait que répéter son intention. Il ne décide ni de la durée
+        /// de l'effort, ni du gond, ni du sens, ni du moment où le mur bascule : tout
+        /// ça appartient à <see cref="MovableWallDirector"/>, côté hôte.
+        /// </summary>
+        private void ApplyWallPush()
+        {
+            if (_wallDirector == null)
+                _wallDirector = FindFirstObjectByType<MovableWallDirector>(FindObjectsInactive.Include);
+
+            if (_wallDirector == null)
+            {
+                _pushedMovableWall = null;
+                return;
+            }
+
+            // Le rayon part plus loin que le contact à l'épaule : il sert aussi à
+            // afficher l'effort du mur qu'on est en train de marteler sans avancer.
+            var chest = transform.TransformPoint(_controller.center);
+            if (!Physics.Raycast(chest, transform.forward, out var hit, WallFeedbackReach, ~0, QueryTriggerInteraction.Ignore))
+            {
+                _pushedMovableWall = null;
+                return;
+            }
+
+            _pushedMovableWall = hit.collider.GetComponentInParent<MovableWall>();
+            if (_pushedMovableWall == null || hit.distance > WallPushReach)
+                return;
+
+            var keyboard = Keyboard.current;
+            if (keyboard == null || !(keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed))
+                return;
+
+            if (Time.time < _nextWallPushIntentAt)
+                return;
+
+            _nextWallPushIntentAt = Time.time + WallPushIntentInterval;
+            _wallDirector.RequestWallPush(_pushedMovableWall.Id);
         }
 
         /// <summary>
@@ -430,8 +526,41 @@ namespace NotThatWay.Game
             _verticalVelocity += Gravity * Time.deltaTime;
 
             var motion = (transform.right * input.x + transform.forward * input.y) * (sprinting ? SprintSpeed : WalkSpeed);
+            motion += _knockback;
             motion.y = _verticalVelocity;
             _controller.Move(motion * Time.deltaTime);
+
+            _knockback = Vector3.MoveTowards(_knockback, Vector3.zero, KnockbackDecay * Time.deltaTime);
+        }
+
+        /// <summary>
+        /// Distribue depuis l'hôte une impulsion au propriétaire de ce joueur.
+        /// Le smoke test reste client-authoritative : l'hôte valide le coup, puis
+        /// le client victime applique lui-même le déplacement temporaire.
+        /// </summary>
+        public void ApplyKnockbackFromServer(Vector3 velocity)
+        {
+            if (!IsServerStarted || !Owner.IsValid)
+                return;
+
+            // En host mode, serveur et propriétaire partagent cette instance :
+            // appliquer directement évite un aller-retour TargetRpc inutile.
+            if (Owner.IsLocalClient)
+                ApplyKnockback(velocity);
+            else
+                ApplyKnockbackTargetRpc(Owner, velocity);
+        }
+
+        [TargetRpc]
+        private void ApplyKnockbackTargetRpc(NetworkConnection connection, Vector3 velocity)
+        {
+            ApplyKnockback(velocity);
+        }
+
+        private void ApplyKnockback(Vector3 velocity)
+        {
+            velocity.y = 0f;
+            _knockback = velocity;
         }
 
         private void ApplyCameraMode()
@@ -439,12 +568,19 @@ namespace NotThatWay.Game
             if (_camera != null)
                 _camera.transform.localPosition = _thirdPerson ? ThirdPersonOffset : FirstPersonOffset;
 
-            // En vue subjective le corps masquerait l'écran : il ne garde que son ombre.
-            var mode = _thirdPerson ? ShadowCastingMode.On : ShadowCastingMode.ShadowsOnly;
-            foreach (var visualRenderer in _visualRenderers)
+            // En vue subjective le corps masquerait l'écran : il ne garde que son
+            // ombre. Les avant-bras et les poings restent affichés, sans quoi une
+            // frappe ne produirait aucun retour visible pour celui qui la donne.
+            for (var i = 0; i < _visualRenderers.Length; i++)
             {
-                if (visualRenderer != null)
-                    visualRenderer.shadowCastingMode = mode;
+                var visualRenderer = _visualRenderers[i];
+                if (visualRenderer == null)
+                    continue;
+
+                var visible = _thirdPerson || _visibleInFirstPerson[i];
+                visualRenderer.shadowCastingMode = visible
+                    ? ShadowCastingMode.On
+                    : ShadowCastingMode.ShadowsOnly;
             }
         }
 
@@ -461,11 +597,15 @@ namespace NotThatWay.Game
                 return;
 
             var style = new GUIStyle(GUI.skin.label) { fontSize = 14, wordWrap = true };
-            var height = 96f;
+            var height = 118f;
             var area = new Rect(16f, Screen.height - height - 16f, Mathf.Min(760f, Screen.width - 32f), height);
             GUILayout.BeginArea(area, GUI.skin.box);
             GUILayout.Label("ZQSD / WASD se déplacer   ·   Maj sprint   ·   Espace sauter (marteler pour se décoincer)   ·   Souris regarder", style);
             GUILayout.Label($"Clic gauche maintenu + avancer contre un pivot turquoise = pousser{(_pushedWall != null ? $"  [{_pushProgress * 100f:F0} %]" : "")}", style);
+            var wallEffort = _pushedMovableWall != null && _wallDirector != null
+                ? $"  [{_wallDirector.EffortFor(_pushedMovableWall.Id) * 100f:F0} %]"
+                : "";
+            GUILayout.Label($"Avancer contre un mur = le pousser, c'est lourd{wallEffort}   ·   clic droit = coup de poing (3 coups enchaînés ouvrent un mur)", style);
             GUILayout.Label($"Échap curseur ({(_cursorLocked ? "capturé" : "libre")})   ·   Tab panneau réseau   ·   F1 vue {(_thirdPerson ? "3e personne" : "1re personne")}", style);
             GUILayout.Label($"U se dégager d'un mur{(Time.time < _unstickFeedbackUntil ? $"   —   {_unstickFeedback}" : "")}", style);
             GUILayout.EndArea();
