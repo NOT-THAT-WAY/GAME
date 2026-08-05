@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-codex-v001",
+  "passed": true,
+  "checks": {
+    "floor_penetration_within_tolerance": true,
+    "stance_slip_within_tolerance": true,
+    "hand_rim_contact_within_tolerance": true,
+    "side_wall_clearance_positive": true,
+    "ceiling_clearance_positive": true,
+    "camera_corridor_clear": true,
+    "final_character_frame_height": true
+  },
+  "tolerances": {
+    "floor_penetration_m": 0.025,
+    "stance_slip_m": 0.015,
+    "hand_contact_m": 0.04,
+    "camera_clearance_m": 0.12,
+    "final_frame_height": 0.12
+  },
+  "measurements": {
+    "minimum_floor_clearance_m": -0.010286,
+    "minimum_floor_clearance_frame": 176,
+    "maximum_stance_slip_m": 0.0,
+    "maximum_hand_contact_error_m": 0.021833,
+    "minimum_side_wall_clearance_m": 3.251526,
+    "minimum_side_wall_clearance_frame": 353,
+    "minimum_ceiling_clearance_m": 2.863524,
+    "minimum_ceiling_clearance_frame": 304,
+    "camera_to_front_shell_minimum_m": 1.78,
+    "final_character_frame_height_ratio": 0.167345
+  },
+  "stance_intervals": [
+    {
+      "frames": [
+        158,
+        169
+      ],
+      "side": "L",
+      "expected_y_m": -0.18,
+      "max_slip_m": 0.0,
+      "clearance_range_m": [
+        0.03,
+        0.03
+      ]
+    },
+    {
+      "frames": [
+        170,
+        181
+      ],
+      "side": "R",
+      "expected_y_m": -0.09,
+      "max_slip_m": 0.0,
+      "clearance_range_m": [
+        0.03,
+        0.03
+      ]
+    },
+    {
+      "frames": [
+        182,
+        193
+      ],
+      "side": "L",
+      "expected_y_m": -0.01,
+      "max_slip_m": 0.0,
+      "clearance_range_m": [
+        0.03,
+        0.03
+      ]
+    },
+    {
+      "frames": [
+        194,
+        206
+      ],
+      "side": "R",
+      "expected_y_m": 0.07,
+      "max_slip_m": 0.0,
+      "clearance_range_m": [
+        0.03,
+        0.03
+      ]
+    },
+    {
+      "frames": [
+        207,
+        218
+      ],
+      "side": "L",
+      "expected_y_m": 0.15,
+      "max_slip_m": 0.0,
+      "clearance_range_m": [
+        0.03,
+        0.03
+      ]
+    },
+    {
+      "frames": [
+        219,
+        230
+      ],
+      "side": "R",
+      "expected_y_m": 0.24,
+      "max_slip_m": 0.0,
+      "clearance_range_m": [
+        0.03,
+        0.03
+      ]
+    },
+    {
+      "frames": [
+        231,
+        242
+      ],
+      "side": "L",
+      "expected_y_m": 0.32,
+      "max_slip_m": 0.0,
+      "clearance_range_m": [
+        0.03,
+        0.03
+      ]
+    },
+    {
+      "frames": [
+        243,
+        255
+      ],
+      "side": "R",
+      "expected_y_m": 0.41,
+      "max_slip_m": 0.0,
+      "clearance_range_m": [
+        0.03,
+        0.03
+      ]
+    },
+    {
+      "frames": [
+        256,
+        360
+      ],
+      "side": "L",
+      "expected_y_m": 0.5,
+      "max_slip_m": 0.0,
+      "clearance_range_m": [
+        0.03,
+        0.03
+      ]
+    },
+    {
+      "frames": [
+        256,
+        360
+      ],
+      "side": "R",
+      "expected_y_m": 0.41,
+      "max_slip_m": 0.0,
+      "clearance_range_m": [
+        0.03,
+        0.03
+      ]
+    }
+  ],
+  "notes": [
+    "Two added trial-only foot controls align the rounded V2 leg ends with the audited 46-degree floor normal; evaluated mesh clearance, not bone position alone, is the collision criterion.",
+    "The floor is the audited inclined piano-roll plane; no flat surrogate floor is used.",
+    "Seated frames use the front rim as support and are excluded from the floor-penetration sweep.",
+    "Mesh topology and proportions are unchanged; only trial-copy weights and an armature were added."
+  ]
+}

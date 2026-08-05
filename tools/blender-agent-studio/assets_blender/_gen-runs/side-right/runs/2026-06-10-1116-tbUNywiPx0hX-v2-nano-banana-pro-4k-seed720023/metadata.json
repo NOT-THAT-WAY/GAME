@@ -1,0 +1,53 @@
+{
+  "snapshot_iso": "2026-06-10T11:16:40.775735+00:00",
+  "snapshot_folder": "2026-06-10-1116-tbUNywiPx0hX-v2-nano-banana-pro-4k-seed720023",
+  "url_id": "tbUNywiPx0hX",
+  "label": "v2-nano-banana-pro-4k-seed720023",
+  "output_file": "output.png",
+  "output_size_bytes": 16415194,
+  "url": "https://v3b.fal.media/files/b/0a9dba56/tbUNywiPx0hX_Ft2NQ0dI_MYMM4VlQ.png",
+  "source_path": "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781090197656645000_0.png",
+  "prompt_snapshot": null,
+  "prompt_source": null,
+  "refs_manifest": [
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-01_hero-front-3q.jpeg",
+      "size_bytes": 6849624,
+      "sha256_8": "746b1de0"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-02_hero-back-internals.jpeg",
+      "size_bytes": 6875634,
+      "sha256_8": "9389d1c8"
+    }
+  ],
+  "provider": "falai",
+  "model": "fal-ai/gemini-3-pro-image-preview/edit",
+  "cost_usd": 0.15,
+  "duration_sec": 64.97447562217712,
+  "seed": null,
+  "adapter_metadata": {
+    "output_urls": [
+      "https://v3b.fal.media/files/b/0a9dba56/tbUNywiPx0hX_Ft2NQ0dI_MYMM4VlQ.png"
+    ],
+    "local_paths": [
+      "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781090197656645000_0.png"
+    ],
+    "raw_result": "{'images': [{'url': 'https://v3b.fal.media/files/b/0a9dba56/tbUNywiPx0hX_Ft2NQ0dI_MYMM4VlQ.png', 'content_type': 'image/png', 'file_name': 'tbUNywiPx0hX_Ft2NQ0dI_MYMM4VlQ.png', 'file_size': None, 'width': None, 'height': None}], 'description': \"**Refining Visual Elements**\\n\\nI'm focusing on solidifying the core visual attributes of the device. My current efforts are directed towards precisely rendering its amethyst-purple hue and ensuring the profile view adheres strictly to the vertical, right...[truncated]",
+    "fal_model": "fal-ai/gemini-3-pro-image-preview/edit"
+  },
+  "extra": {
+    "spec": "audits_blender/pulsed-asset-prompts-v2.md (Sliz 2026-06-10)",
+    "doctrine": "v2 \u2014 prompt d\u00e9crit seulement le cadre, identit\u00e9 par refs, n\u00e9gatif court",
+    "kind": "preflight-reference-v2",
+    "provider": "falai",
+    "model": "fal-ai/gemini-3-pro-image-preview/edit",
+    "aspect_ratio": "16:9",
+    "resolution": "4K",
+    "output_format": "png",
+    "seed": 720023,
+    "image_id": "side-right",
+    "intended_dest": "assets_blender/04_side_right_canonical.png (NON copi\u00e9 \u2014 validation carte requise)",
+    "prompt": "Photorealistic product photography of the exact handheld device shown in the attached reference images \u2014 same shell, same proportions, same materials (glossy translucent amethyst-purple plastic with the internal PCB visible through it), same parting seam. Warm cream seamless background, soft drop shadow, consistent with the references. Do not add, remove, move or restyle any element of the device. No text overlays, no props, no people.\n\nStrict orthographic RIGHT-side profile of the device, shown as a TALL, NARROW, VERTICAL sliver: its height runs vertically (top edge up, bottom edge down) and its thin thickness is the narrow horizontal dimension. Long telephoto look, camera exactly at mid-height, no perspective distortion, device floating a few millimeters above the surface. The silhouette has a gently convex crown at the top, a softly domed back, and a rounded bottom; BOTH long edges are smooth, continuous, uninterrupted curves. The ONLY feature anywhere on this edge is the thin horizontal parting seam line running along it. This side \u2014 and every edge and side of the device \u2014 carries NO controls of any kind: no button, switch, wheel, thumbwheel, dial, knob, slider, port, hole, bump or protrusion. All controls live only on the front face and are not visible from this strict side view. The translucent amethyst-purple shell shows the internal PCB faintly. Warm cream seamless background, soft drop shadow."
+  }
+}

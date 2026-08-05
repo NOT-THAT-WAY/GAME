@@ -1,0 +1,51 @@
+{
+  "id": "scene-view-diagnostics",
+  "name": "Diagnostic cadrage déterministe",
+  "icon": "▤",
+  "category": "diagnostic production",
+  "mode": "MCP interactif",
+  "risk": "lecture",
+  "description": "Projette les bounds des objets dans la caméra et mesure couverture, centrage, clipping, occlusion et visibilité.",
+  "script": "workflows/scripts/scene_view_diagnostics.py",
+  "timeout": 180,
+  "produces_output": true,
+  "fields": [
+    {
+      "id": "collection",
+      "type": "text",
+      "label": "Collection cible (vide = meshes visibles)",
+      "default": ""
+    },
+    {
+      "id": "camera",
+      "type": "text",
+      "label": "Caméra (vide = active)",
+      "default": ""
+    },
+    {
+      "id": "frame",
+      "type": "integer",
+      "label": "Frame",
+      "default": 1,
+      "min": -100000,
+      "max": 100000
+    }
+  ],
+  "guide": [
+    "Exécuter avant de demander une correction de cadrage à la vision.",
+    "Utiliser coverage et center_offset comme vérité Blender.",
+    "Un verdict occluded repose sur un rayon vers le centre; confirmer les cas complexes par rendu."
+  ],
+  "execution": "mcp",
+  "mutates_scene": false,
+  "requires_confirmation": false,
+  "requires_working_copy": false,
+  "enabled_in_app": true,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "diagnostic",
+  "domains": [
+    "all"
+  ],
+  "maturity": "stable",
+  "scope": "generic-or-adaptable"
+}

@@ -1,0 +1,56 @@
+{
+  "workspace": "USTUDIO Camera Lab",
+  "created_at": "2026-07-19T12:07:59.553262+02:00",
+  "blend": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-projection-template/FL_Studio_Box_Projection_Template.blend",
+  "layout": {
+    "left": "VIEW_3D camera view, Rendered, overlays off",
+    "center": "VIEW_3D object and camera rig, Solid, relationship lines on",
+    "bottom": "Dope Sheet with channels and keyframes",
+    "right": "Outliner and Properties preserved"
+  },
+  "areas": [
+    {
+      "type": "OUTLINER",
+      "x": 2488,
+      "y": 1396,
+      "width": 532,
+      "height": 301
+    },
+    {
+      "type": "VIEW_3D",
+      "x": 4,
+      "y": 661,
+      "width": 664,
+      "height": 1036
+    },
+    {
+      "type": "VIEW_3D",
+      "x": 675,
+      "y": 661,
+      "width": 1806,
+      "height": 1036
+    },
+    {
+      "type": "DOPESHEET_EDITOR",
+      "x": 4,
+      "y": 170,
+      "width": 2477,
+      "height": 484
+    },
+    {
+      "type": "DOPESHEET_EDITOR",
+      "x": 4,
+      "y": 47,
+      "width": 2477,
+      "height": 116
+    },
+    {
+      "type": "PROPERTIES",
+      "x": 2488,
+      "y": 47,
+      "width": 532,
+      "height": 1342
+    }
+  ],
+  "tutorial_reference": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18 — 00:00–01:32"
+}

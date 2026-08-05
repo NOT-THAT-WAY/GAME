@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-kimi-v001",
+  "participant": "kimi",
+  "status": "completed",
+  "categories": {
+    "physics_affordance": {
+      "weight": 20,
+      "score": 92,
+      "evidence": [
+        "diagnostics/physical-validation.json",
+        "diagnostics/surface-analysis.json"
+      ]
+    },
+    "causality_continuity": {
+      "weight": 15,
+      "score": 87,
+      "evidence": [
+        "shot-manifest.json",
+        "scene-contract.json"
+      ]
+    },
+    "composition_camera": {
+      "weight": 15,
+      "score": 87,
+      "evidence": [
+        "gates/contact-sheet.jpg",
+        "diagnostics/physical-validation.json"
+      ]
+    },
+    "motion_rhythm": {
+      "weight": 15,
+      "score": 90,
+      "evidence": [
+        "shot-manifest.json"
+      ]
+    },
+    "lighting": {
+      "weight": 15,
+      "score": 80,
+      "evidence": [
+        "gates/lighting-gate-manifest.json"
+      ]
+    },
+    "materials_color_typography": {
+      "weight": 10,
+      "score": 85,
+      "evidence": [
+        "diagnostics/scene-audit.json"
+      ]
+    },
+    "technical_integrity": {
+      "weight": 10,
+      "score": 100,
+      "evidence": [
+        "renders/preview.mp4"
+      ]
+    }
+  },
+  "overall_score": 88.5,
+  "critical_failures": [],
+  "verdict": "ship",
+  "mission_rubric_commun": {
+    "contact_avec_la_pente": "23/25",
+    "biomecanique_et_centre_de_gravite": "17/20",
+    "rythme_et_appuis": "14/15",
+    "composition_et_camera": "13/15",
+    "lumiere_et_lisibilite": "8/10",
+    "integrite_technique": "15/15",
+    "total": "90/100"
+  }
+}

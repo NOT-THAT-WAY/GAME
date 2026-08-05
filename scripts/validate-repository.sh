@@ -21,12 +21,16 @@ PROJECT_CHANGESET="$(sed -n 's/^m_EditorVersionWithRevision: .*(\([^)]*\)).*/\1/
 [[ -f .claude/skills/git-task/SKILL.md ]]
 [[ -f .claude/skills/remote-test/SKILL.md ]]
 [[ -f .claude/skills/network-gameplay/SKILL.md ]]
+[[ -f .claude/skills/blender-production-studio/SKILL.md ]]
+[[ -f .agents/skills/blender-production-studio/SKILL.md ]]
 [[ -f docs/adr/0004-authoritative-topology-and-ticks.md ]]
 grep -Fq 'name: setup-game' .claude/skills/setup-game/SKILL.md
 grep -Fq 'name: lan-test' .claude/skills/lan-test/SKILL.md
 grep -Fq 'name: git-task' .claude/skills/git-task/SKILL.md
 grep -Fq 'name: remote-test' .claude/skills/remote-test/SKILL.md
 grep -Fq 'name: network-gameplay' .claude/skills/network-gameplay/SKILL.md
+grep -Fq 'name: blender-production-studio' .claude/skills/blender-production-studio/SKILL.md
+grep -Fq 'tools/blender-agent-studio' .claude/skills/blender-production-studio/SKILL.md
 grep -Fq 'skill `network-gameplay`' CLAUDE.md
 
 for NETWORK_RULE in \

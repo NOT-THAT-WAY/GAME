@@ -1,0 +1,90 @@
+{
+  "id": "build-camera-shot",
+  "name": "Construire un shot caméra reproductible",
+  "icon": "◉",
+  "category": "camera production",
+  "mode": "MCP interactif",
+  "risk": "écriture",
+  "description": "Crée un rig caméra isolé et copiable, anime un mouvement professionnel et écrit le manifeste exact du shot sans sauvegarder le .blend.",
+  "script": "workflows/scripts/build_camera_shot.py",
+  "timeout": 180,
+  "produces_output": true,
+  "warning": "Une nouvelle collection BAS_SHOT_* est créée et devient la caméra active. Valider le gate avant de sauvegarder.",
+  "fields": [
+    {
+      "id": "template",
+      "type": "select",
+      "label": "Template",
+      "options": [
+        "studio-orbit",
+        "dolly-reveal",
+        "crane-hero",
+        "three-quarter-rest"
+      ],
+      "default": "dolly-reveal"
+    },
+    {
+      "id": "target_collection",
+      "type": "text",
+      "label": "Collection cible (vide = auto)",
+      "default": ""
+    },
+    {
+      "id": "duration",
+      "type": "number",
+      "label": "Durée (s)",
+      "default": 6,
+      "min": 2,
+      "max": 30,
+      "step": 0.5
+    },
+    {
+      "id": "lens",
+      "type": "number",
+      "label": "Focale finale (mm)",
+      "default": 70,
+      "min": 18,
+      "max": 200,
+      "step": 1
+    },
+    {
+      "id": "distance_multiplier",
+      "type": "number",
+      "label": "Distance / taille objet",
+      "default": 4,
+      "min": 1.5,
+      "max": 12,
+      "step": 0.1
+    },
+    {
+      "id": "direction",
+      "type": "select",
+      "label": "Direction",
+      "options": [
+        "gauche",
+        "droite"
+      ],
+      "default": "gauche"
+    }
+  ],
+  "guide": [
+    "Lancer d’abord Inspecter ou Audit profond pour confirmer scène, échelle et dépendances.",
+    "Choisir la collection cible ou sélectionner ses meshes; le fallback utilise les meshes visibles.",
+    "Le rig est créé dans une collection BAS_SHOT_<job> indépendante avec TARGET et FOCUS séparés.",
+    "Lire la timeline, contrôler le Graph Editor et ajuster les AUTO_CLAMPED si nécessaire.",
+    "Lancer Gate de keyframes en filtrant le préfixe du shot, puis seulement sauvegarder."
+  ],
+  "execution": "mcp",
+  "mutates_scene": true,
+  "requires_confirmation": true,
+  "requires_working_copy": true,
+  "enabled_in_app": true,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "operation",
+  "domains": [
+    "cinematic",
+    "still"
+  ],
+  "maturity": "stable",
+  "scope": "generic-or-adaptable"
+}

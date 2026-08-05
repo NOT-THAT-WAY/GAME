@@ -1,0 +1,8 @@
+[
+  {
+    "id": "audio-mechanism-landmarks",
+    "score": 0.76,
+    "passed": false,
+    "notes": "Speaker, transport wheel, vertical rail and side controls are recognizable, but their relative scale and placement remain insufficient for the locked structural fidelity gate."
+  }
+]

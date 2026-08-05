@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "tutorial_id": "factory-animation-polygon-runway",
+  "model": "whisper.cpp large-v3-turbo + Codex visual/transcript synthesis",
+  "language": "en",
+  "analyzed_at": "2026-07-19T03:12:00+02:00",
+  "confidence": 0.95,
+  "summary": "Construction d'une boucle factory stylisée centrée sur un convoyeur : profil fermé converti en Curve, maillon répété par Array puis déformé par Curve, translation cyclique calibrée sur la longueur exacte d'un maillon, accessoires de production, boîtes animées avec vitesse constante sur le tapis et accents de chute/rotation réglés dans le Graph Editor.",
+  "evidence_quality": {"transcript": "usable", "visual": "strong", "regular_frames": 160, "scene_frames": 6, "contact_sheets": 4},
+  "chapters": [
+    {"start": 0, "end": 77, "title": "Présentation de la boucle factory", "evidence": ["transcript 00:00:00–00:01:17"]},
+    {"start": 77, "end": 300, "title": "Profil du convoyeur, Curve, Array et Curve modifier", "evidence": ["transcript 00:01:17–00:05:00", "contact-sheets/frames_1_48.jpg"]},
+    {"start": 300, "end": 545, "title": "Boucle du tapis calibrée sur un maillon", "evidence": ["transcript 00:05:00–00:09:05", "contact-sheets/frames_49_96.jpg"]},
+    {"start": 545, "end": 805, "title": "Modules d'entrée/sortie et boîte produit", "evidence": ["transcript 00:09:05–00:13:25"]},
+    {"start": 805, "end": 1315, "title": "Animation de la boîte, rotation, chute et Graph Editor", "evidence": ["transcript 00:13:25–00:21:55", "contact-sheets/frames_97_144.jpg"]},
+    {"start": 1315, "end": 1603, "title": "Habillage, matériaux, lumière et rendu final", "evidence": ["transcript 00:21:55–00:26:43", "contact-sheets/frames_145_160.jpg"]}
+  ],
+  "techniques": [
+    {
+      "domain": "procedural-modeling",
+      "name": "Convoyeur Array → Curve",
+      "steps": ["Dessiner et fermer le chemin du convoyeur.", "Le convertir en Curve.", "Modéliser un seul maillon avec une origine cohérente.", "Répéter ce maillon avec Array.", "Déformer l'ensemble sur le chemin avec Curve.", "Ajouter épaisseur et bevel sans casser l'espacement."],
+      "production_note": "La relation entre longueur du maillon, relative offset et axe de déformation doit rester mesurable."
+    },
+    {
+      "domain": "loop-animation",
+      "name": "Boucle exacte par translation d'un maillon",
+      "steps": ["Mesurer la dimension du maillon sur l'axe de déplacement.", "Poser la première clé de position.", "À la dernière frame, déplacer exactement d'une longueur de maillon.", "Mettre l'interpolation en Linear.", "Prévisualiser le passage dernier→premier et supprimer toute frame dupliquée au rendu si nécessaire."],
+      "evidence": ["transcript 00:05:00–00:08:05"]
+    },
+    {
+      "domain": "mechanical-animation",
+      "name": "Séparer transport constant et événements accentués",
+      "steps": ["Garder la translation sur le tapis strictement linéaire.", "Créer chute, bascule et rotation sur des canaux séparés.", "Régler les événements dans le Graph Editor.", "Décaler les boîtes d'une période constante pour alimenter la boucle."],
+      "production_note": "Une courbe Bézier sur le transport principal produit un glissement visible par rapport au tapis."
+    },
+    {
+      "domain": "layout",
+      "name": "Diorama isométrique lisible",
+      "steps": ["Choisir tôt la caméra trois-quarts/isométrique.", "Modéliser uniquement ce qui contribue au cadre.", "Garder les silhouettes des modules simples.", "Employer quelques grosses formes et une palette courte pour hiérarchiser la machine."],
+      "evidence": ["contact-sheets/frames_49_96.jpg", "contact-sheets/frames_145_160.jpg"]
+    }
+  ],
+  "workflow_recipe": {
+    "name": "Seamless conveyor loop",
+    "inputs": ["chemin fermé", "maillon source", "durée de boucle", "fps", "objets transportés", "cadence"],
+    "steps": ["Verrouiller fps et plage de frames.", "Construire et valider le convoyeur Array/Curve.", "Mesurer le pas réel du maillon.", "Créer une translation linéaire d'un pas sur une période.", "Animer un objet maître à vitesse compatible avec le tapis.", "Ajouter les événements de chute/rotation sans altérer le transport.", "Dupliquer avec un offset temporel constant.", "Ajouter modules, caméra et matériaux après validation de la boucle.", "Rendre une séquence incluant la jonction de boucle."],
+    "gates": ["jonction dernier→premier invisible", "aucun glissement boîte/tapis", "aucune collision aux courbes", "cadence régulière", "silhouettes séparées dans la caméra finale", "motion blur compatible avec la lisibilité"]
+  },
+  "reusable_assets": ["convoyeur paramétrique", "maillon source", "courbe fermée", "module entrée/sortie", "preset Linear loop", "camera isométrique"],
+  "risks": ["transforms non appliqués avant Array/Curve", "mauvais axe de déformation", "pas du maillon estimé au lieu d'être mesuré", "double frame à la jonction", "objets transportés en Bézier", "habillage ajouté avant validation mécanique"]
+}

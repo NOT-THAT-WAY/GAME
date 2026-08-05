@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pulsed-bench-demo-v001",
+  "status": "completed",
+  "mode": "micro-scene",
+  "objective": "Mini demo fonctionnelle de Pulsed pose sur un plan de travail : molette, sliders et D-pad jouent leurs courses, l'ecran repond aux memes valeurs.",
+  "source_blend": "projects/pulsed-model-v2/scene/pulsed_v2.blend",
+  "target_collection": "PULSED_V2",
+  "duration_seconds": 6,
+  "fps": 24,
+  "resolution": [960, 540],
+  "story": {
+    "premise": "Pulsed est pose a plat sur un plan de travail sombre, ecran allume au repos, waveform lente et plate.",
+    "cause": "La molette est roulee vers le haut : premier geste de reglage, il fixe la frequence.",
+    "action": "Le reglage se propage dans l'ordre reel d'usage — frequence par la molette, profondeur par le slider de gain, melange par le slider horizontal, validation par le D-pad.",
+    "result": "L'appareil reste exactement a sa place, ecran dense et jauge DEPTH pleine : le reglage a ete pris en compte.",
+    "beats": [
+      {"time_seconds": 0.0, "state": "still_initial", "cause": "appareil au repos sur son support", "visible_result": "assise et ecran lisibles, waveform lente"},
+      {"time_seconds": 0.75, "state": "anticipation", "cause": "la molette recule brievement avant de rouler", "visible_result": "amorce du geste perceptible avant tout changement lisible"},
+      {"time_seconds": 2.5, "state": "action", "cause": "la molette monte la frequence puis le gain monte la profondeur", "visible_result": "la waveform se resserre, la jauge DEPTH se remplit segment par segment"},
+      {"time_seconds": 4.5, "state": "impact", "cause": "le slider horizontal atteint sa position de melange", "visible_result": "amplitude maximale, l'ecran est au plus dense"},
+      {"time_seconds": 5.5, "state": "settle", "cause": "appui bref sur le D-pad puis relachement", "visible_result": "creux court de l'amplitude puis retour, energie absorbee"},
+      {"time_seconds": 6, "state": "still_final", "cause": "reglage termine", "visible_result": "etat stable, appareil toujours en appui, aucun deplacement"}
+    ]
+  },
+  "invariants": [
+    "proportions et identite canonique du sujet",
+    "aucune traversee ou collision non intentionnelle",
+    "orientation et affordance humaines correctes",
+    "aucun drift relatif pendant un contact mecanique",
+    "aucune frame corrompue ou manquante",
+    "ecran face a l'utilisateur pendant toute la sequence",
+    "cap du slider horizontal jamais en butee de rail"
+  ],
+  "camera": {
+    "style_source": "knowledge/tutorials/DRUMBOIII_DIRECTION.md",
+    "primary_move": "arc unique montant de gauche a droite, de la lecture rasante de la face vers un trois-quarts haut.",
+    "lens_mm_range": [35, 85],
+    "target_strategy": "TARGET independant place au centre du sujet, avec 4 frames de retard sur le travel puis arret net",
+    "focus_strategy": "FOCUS explicite sur un empty pose devant l'ecran, f/4, controle aux poses hero",
+    "hero_poses_seconds": [0.0, 1.1, 5.0, 6],
+    "forbidden": ["drift sans cause", "wobble prolonge", "clipping", "mouvement complexe concurrent de l'objet"]
+  },
+  "lighting": {
+    "style_source": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/analysis.json",
+    "preset": "drumboiii-layered",
+    "world_strength": 0.7,
+    "required_layers": ["SUN_REFLECTION", "BACK_SHAPE", "SIDE_GLIMMER_A", "SIDE_GLIMMER_B", "DETAIL_RETURN"],
+    "gate_each_layer": true,
+    "intensity_scaling_note": "Les watts du tutoriel valent pour un sujet de plusieurs metres. Le sujet fait 16 cm et le rig est place au rayon plancher de 0,5 m du script versionne : les ratios sont conserves, l'intensite globale est ramenee a 0,28.",
+    "forbidden": ["highlight clippe sur detail canonique", "lampe sans fonction visuelle nommee", "lumiere utilisee pour cacher une erreur de geometrie"]
+  },
+  "physics": {
+    "contract_files": ["knowledge/physics/object-contracts/pulsed.json"],
+    "gravity_enabled_or_justified": true,
+    "gravity_note": "Pas de simulation : l'objet est pose statiquement et son appui est MESURE sur la geometrie evaluee a chaque frame, ce qui est plus strict qu'une simulation non verifiee.",
+    "supports": [
+      {"subject": "PV2_shell_back", "support": "K3_PULSED_BENCH_V001_BENCH", "relation": "appui plante permanent"}
+    ],
+    "colliders": ["K3_PULSED_BENCH_V001_BENCH"],
+    "joints": [
+      {"name": "wheel", "type": "revolute", "axis": "X"},
+      {"name": "gain_slider", "type": "prismatic", "axis": "Z"},
+      {"name": "horizontal_slider", "type": "prismatic", "axis": "X"},
+      {"name": "dpad", "type": "revolute", "axis": "Z", "limits_degrees": [-8.0, 8.0]}
+    ],
+    "clearance_checks": [
+      "environment_penetration", "support_gap", "planted_contact_drift", "camera_clearance"
+    ],
+    "camera_corridor_clear": true,
+    "hand_convention": "Les courses sont jouees sans main visible. Convention de demonstration produit, declaree ici et dans le contrat d'objet ; l'affordance reelle reste 'actionne au pouce'."
+  },
+  "materials_and_design": {
+    "dominant_color": "amethyste translucide, base 0.30 0.15 0.55, transmission 0.95, IOR 1.53",
+    "secondary_color": "gris plastique des commandes, 0.50 0.49 0.53, roughness 0.38",
+    "accent_color": "teal d'ecran 0.16 0.86 0.78 en emission",
+    "material_roles": [
+      {"role": "coque translucide", "material": "M_shell_purple", "gate": "le PCB doit rester lisible au travers sans brouillard"},
+      {"role": "PCB", "material": "M_pcb", "gate": "pistes visibles mais carte sombre, jamais un aplat gris"},
+      {"role": "ecran", "material": "M_ui_teal et M_screen_bg", "gate": "teal non clippe en blanc apres AgX"},
+      {"role": "support", "material": "K3_PULSED_BENCH_V001_M_bench", "gate": "doit recevoir l'ombre de contact sans ecraser le sujet"}
+    ],
+    "typography": {
+      "used": true,
+      "content": "wordmark Pulsed, logo UNRECORDED, LOW BATT, SYNC, UI d'ecran",
+      "font": "logo UNRECORDED trace depuis le PNG de marque en geometrie reelle ; wordmark Pulsed encore en police Blender par defaut",
+      "legibility_gate": "le logo trace doit rester lisible aux poses hero ; le wordmark est declare non conforme et suivi comme dette"
+    }
+  },
+  "limits": {
+    "max_iterations_per_category": 3,
+    "allowed_output_root": "projects/kimi-k3-scene-trials/k3-pulsed-bench-demo-v001",
+    "overwrite_source_blend": false,
+    "save_only_trial_copy": true
+  }
+}

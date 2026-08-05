@@ -1,0 +1,20 @@
+{
+  "referenceAreaFraction": 0.697669921875,
+  "angles": [
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/gates/views/right.png",
+      "areaFraction": 0.641412109375,
+      "ratio": 0.9193632823544892,
+      "degenerate": false
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/gates/views/rear_three_quarter.png",
+      "areaFraction": 0.474099609375,
+      "ratio": 0.6795471533312617,
+      "degenerate": false
+    }
+  ],
+  "degenerate": false,
+  "collapseRatio": 0.15,
+  "note": "deterministic; zero token; a flat-plane-faking-a-volume collapses in silhouette area when orbited"
+}

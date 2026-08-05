@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-codex-v001",
+  "status": "validated",
+  "coordinate_frame": {
+    "up": "+Z world gravity opposite",
+    "user_side": "-Y open front",
+    "front": "-Y",
+    "right": "+X",
+    "units": "meters"
+  },
+  "objects": [
+    {
+      "name": "USTUDIO_PIANO_ROLL_FLOOR",
+      "semantic_role": "inclined running surface",
+      "fixed_or_moving": "fixed relative to USTUDIO_BOX_FLOAT_ROOT",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": ["evaluated upper plane"],
+      "support_surfaces": ["upper plane only"],
+      "allowed_motion": [],
+      "forbidden_motion": ["modification", "flattening", "replacement by hidden floor"]
+    },
+    {
+      "name": "USTUDIO_SLOPE_RUN_RIG",
+      "semantic_role": "humanoid runner",
+      "fixed_or_moving": "moving uphill",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": ["left sole", "right sole"],
+      "support_surfaces": ["USTUDIO_PIANO_ROLL_FLOOR"],
+      "allowed_motion": ["uphill run", "brace", "decelerate", "settle"],
+      "forbidden_motion": ["tangent foot slip", "surface penetration", "whole-body normal alignment", "unsupported flight hold"]
+    }
+  ],
+  "joints": [
+    {"rig": "USTUDIO_SLOPE_RUN_RIG", "type": "position-based articulated hierarchy", "limits": "knees remain on the anatomical forward side; elbows do not invert"}
+  ],
+  "supports_and_contacts": [
+    {"state": "run", "support": "USTUDIO_PIANO_ROLL_FLOOR", "rule": "one planted sole is stationary in surface tangent coordinates while the opposite foot swings"},
+    {"state": "still", "support": "USTUDIO_PIANO_ROLL_FLOOR", "rule": "both soles planted with visible grip"}
+  ],
+  "collision_pairs": [
+    ["USTUDIO_SLOPE_CHAR_*", "USTUDIO_PIANO_ROLL_FLOOR"],
+    ["USTUDIO_SLOPE_CAM_*", "USTUDIO_BOX shell"]
+  ],
+  "camera_corridor": {
+    "description": "Main camera stays on the +X side, moves parallel to the uphill tangent and preserves a world-stable horizon; diagnostic cameras are render-disabled.",
+    "clearance_margin_m": 0.08,
+    "obstacles": ["left and right frame", "playlist wall", "ceiling", "piano-roll plane"],
+    "validated": true
+  },
+  "shot_states": [
+    {"name": "K1_POSE", "time_seconds": 0.0, "object_state": "braced at lower slope", "camera_state": "three-quarter profile establishing diagonal"},
+    {"name": "K2_ANTICIPATION", "time_seconds": 1.1, "object_state": "weight transferred uphill", "camera_state": "short opposite move"},
+    {"name": "K3_TRAVEL", "time_seconds": 1.63, "object_state": "alternating planted and swing feet", "camera_state": "constant-offset uphill track"},
+    {"name": "K4_RECOVERY", "time_seconds": 6.77, "object_state": "deceleration and settle", "camera_state": "energy absorbed"},
+    {"name": "FINAL_STILL", "time_seconds": 8.0, "object_state": "both grips planted", "camera_state": "no wobble"}
+  ],
+  "validation": {
+    "required_views": ["main three-quarter", "strict profile", "top/rear", "surface-normal foot view"],
+    "sample_every_n_frames": 1,
+    "critical_failure_cap": 49
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "snapshot_iso": "2026-06-10T09:43:21.824202+00:00",
+  "snapshot_folder": "2026-06-10-0943-lgzd4me9bZBz-nano-banana-pro-4k-seed710001",
+  "url_id": "lgzd4me9bZBz",
+  "label": "nano-banana-pro-4k-seed710001",
+  "output_file": "output.png",
+  "output_size_bytes": 16468313,
+  "url": "https://v3b.fal.media/files/b/0a9db823/lgzd4me9bZBzq1IL4u6Jc_Z3h5DAi5.png",
+  "source_path": "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781084598542910000_0.png",
+  "prompt_snapshot": null,
+  "prompt_source": null,
+  "refs_manifest": [
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-01_hero-front-3q.jpeg",
+      "size_bytes": 6849624,
+      "sha256_8": "746b1de0"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-02_hero-back-internals.jpeg",
+      "size_bytes": 6875634,
+      "sha256_8": "9389d1c8"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/03_side_clean_canonical.png",
+      "size_bytes": 434655,
+      "sha256_8": "c24954f9"
+    }
+  ],
+  "provider": "falai",
+  "model": "fal-ai/gemini-3-pro-image-preview/edit",
+  "cost_usd": 0.15,
+  "duration_sec": 95.96595907211304,
+  "seed": null,
+  "adapter_metadata": {
+    "output_urls": [
+      "https://v3b.fal.media/files/b/0a9db823/lgzd4me9bZBzq1IL4u6Jc_Z3h5DAi5.png"
+    ],
+    "local_paths": [
+      "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781084598542910000_0.png"
+    ],
+    "raw_result": "{'images': [{'url': 'https://v3b.fal.media/files/b/0a9db823/lgzd4me9bZBzq1IL4u6Jc_Z3h5DAi5.png', 'content_type': 'image/png', 'file_name': 'lgzd4me9bZBzq1IL4u6Jc_Z3h5DAi5.png', 'file_size': None, 'width': None, 'height': None}], 'description': '**Generating Device Image**\\n\\nI\\'m focusing on rendering a photorealistic right-side profile of the \"Pulsed\" handheld device. My aim is to precisely capture its details as specified.\\n\\n\\n**Rendering Device Profile**\\n\\nI\\'m working on a photorealistic r...[truncated]",
+    "fal_model": "fal-ai/gemini-3-pro-image-preview/edit"
+  },
+  "extra": {
+    "spec": "blender-3d-preflight section 0.7 (Sliz 2026-06-10)",
+    "kind": "preflight-reference",
+    "provider": "falai",
+    "model": "fal-ai/gemini-3-pro-image-preview/edit",
+    "aspect_ratio": "16:9",
+    "resolution": "4K",
+    "output_format": "png",
+    "seed": 710001,
+    "image_id": "side-right",
+    "intended_dest": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/04_side_right_canonical.png",
+    "prompt": "\"Pulsed\" \u2014 a handheld electronic device: landscape rounded-rectangle slab, approx 160 \u00d7 96 \u00d7 22 mm (Game Boy Advance-class proportions), made of glossy transparent amethyst-purple plastic (\"atomic clear purple\") with the dark internal PCB fully visible through the shell. Two-piece shell (front + back) with a visible horizontal parting seam running around the side walls, and transparent cylindrical screw bosses in the corners. Front face: a raised outer rim frames a recessed faceplate; embossed cursive \"Pulsed\" wordmark top-center; small embossed \"U.\" logo top-right; large dark switched-off rectangular screen recessed in a tray left-of-center; light-grey finely-knurled thumbwheel at top-left, sunk in a circular well and protruding slightly through the left edge; vertical gain slider right of the screen \u2014 a capsule-shaped recessed slot with a small white cylindrical knob and an embossed tick scale on its right; matte light-grey round button embossed \"SYNC\" bottom-left in a circular well; long horizontal slider with a white handle bottom-center; matte light-grey cross-shaped D-pad with four embossed triangular arrows and a central dome, set in a cross-shaped well, bottom-right. Bottom edge: centered metal USB-C port plus a trapezoid multi-pin expansion port to its right, each in a rounded cutout. Photorealistic product photography.\n\nStrict right-side profile view of the device \u2014 the side WITHOUT the thumbwheel. The device stands upright on its bottom edge, floating a few millimeters above the surface, photographed exactly from the side with a long telephoto lens (200mm look, no perspective distortion), camera at device mid-height. Match the framing, background, lighting and floating style of the attached left-side profile reference, mirrored to the opposite side. Show: the full thickness profile with the slightly domed back shell, the horizontal parting seam, the silhouette of the front-face rim and controls in profile, and the clean right edge with no protruding wheel.\n\nThis must be EXACTLY the same device as in the attached reference images \u2014 same proportions, same materials, same control layout, same embossed markings. Do not invent any additional buttons, ports, holes, logos, text or stickers. No Nintendo, Game Boy or any real-world branding. Screen stays off (dark teal-black). Warm cream seamless background, soft drop shadow, soft warm rim light, consistent with the references. No people, no props, no text overlays."
+  }
+}

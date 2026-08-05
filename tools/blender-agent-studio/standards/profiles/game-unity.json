@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "game-unity",
+  "domain": "game-asset",
+  "blender_units": "meters",
+  "target": "Unity project declared in the project contract",
+  "target_axes": {"up": "Y", "forward": "+Z", "handedness": "left", "conversion_must_be_verified": true},
+  "budgets_must_be_declared": ["triangles_per_lod", "materials", "texture_memory", "bones", "bone_influences", "colliders"],
+  "required_gates": [
+    "unity_scale", "unity_orientation", "pivot", "lod_group", "colliders", "uv_and_lightmap",
+    "materials", "avatar_or_skeleton_if_present", "animation_clips_if_present", "unity_import_report"
+  ],
+  "preferred_interchange": ["fbx", "glb"],
+  "note": "Do not trust axis presets alone; measure the imported object in the declared Unity version.",
+  "final_validator": "workflows/tools/validate_team_project.py"
+}

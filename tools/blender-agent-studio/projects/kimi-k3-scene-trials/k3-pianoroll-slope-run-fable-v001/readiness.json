@@ -1,0 +1,32 @@
+{
+  "ready": true,
+  "participant": "fable",
+  "source_protected": true,
+  "other_participant_output_will_not_be_inspected": true,
+  "surface_object": "USTUDIO_PIANO_ROLL_FLOOR",
+  "expected_slope_degrees": 46.34,
+  "surface_must_be_measured_not_assumed": true,
+  "physics_understood": [
+    "les semelles suivent le plan incliné",
+    "le bassin se déplace parallèlement au plan",
+    "le torse ne doit pas être simplement tourné de 46 degrés",
+    "la posture reste gouvernée par la gravité monde",
+    "les pieds plantés ne glissent pas",
+    "une adhérence supérieure à 1 doit être visible et justifiée"
+  ],
+  "camera_understood": [
+    "la pente doit rester visible dans la composition",
+    "la caméra conserve un horizon monde compréhensible",
+    "les contacts des pieds restent observables",
+    "aucune caméra ne traverse la boîte"
+  ],
+  "will_not_do": [
+    "ajouter un sol horizontal invisible",
+    "faire courir le personnage verticalement sans adaptation",
+    "faire glisser les pieds pendant leur phase plantée",
+    "incliner tout le personnage perpendiculairement à la pente",
+    "cacher les contacts par le cadrage ou le motion blur",
+    "valider seulement les keyframes",
+    "accorder ship en présence d'une collision ou d'un drift"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "stage": "final-delivery",
+  "source_blend": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+  "working_blend": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-character-animation/FL_Studio_Box_Character_Anim.blend",
+  "copy_method": "built and validated in the isolated scene trial, then exported by filesystem copy to the requested delivery name",
+  "source_sha256": "c0b9c1a32722e8ec3fe49037011c81e529379235c67aa2b64e59bbe1a20fee36",
+  "working_sha256_at_step0": "c0b9c1a32722e8ec3fe49037011c81e529379235c67aa2b64e59bbe1a20fee36",
+  "working_sha256_final": "12d979bf2fc95267fe3233ce2b20ffa73c75beba3a92618a1a3d20150d91079f",
+  "source_preserved": true,
+  "animation_started": true,
+  "animation_completed": true,
+  "validation_report": "../kimi-k3-scene-trials/k3-flstudio-character-arc-v001/validation-report.json"
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 2,
+  "date": "2026-08-05",
+  "status": "ready_for_team_clone",
+  "private_team_clone_ready": true,
+  "public_release_ready": false,
+  "reference_environment": {
+    "platform": "macOS arm64",
+    "python": "3.14",
+    "blender": "5.1.1",
+    "ffmpeg": "8.1"
+  },
+  "catalog": {
+    "source_path_embedded": false,
+    "source_vault_fully_verified": true,
+    "verified_paths": 12251,
+    "unique_assets": 12115,
+    "logical_bytes_omitted": 7820498266,
+    "errors": []
+  },
+  "checks": {
+    "source_read_only_for_migration": true,
+    "compact_distribution_budget": true,
+    "binary_assets_bundled": 0,
+    "symlinks": 0,
+    "submodules": 0,
+    "git_lfs_rules": 0,
+    "personal_absolute_paths": 0,
+    "json_parse_errors": 0,
+    "python_syntax_errors": 0,
+    "workflow_catalogs": 18,
+    "workflow_catalogs_invalid": 0,
+    "unit_tests_passed": 12,
+    "unit_tests_failed": 0,
+    "skill_official_validation": true,
+    "javascript_syntax": true,
+    "docker_compose_schema": true,
+    "application_http_endpoints": true,
+    "application_catalog_without_binaries": true,
+    "blender_synthetic_smoke": true,
+    "glb_independent_reimport": true,
+    "fresh_git_clone": true,
+    "fresh_clone_worktree_clean": true,
+    "fresh_clone_unit_tests_passed": 12,
+    "repo_scoped_skill_discovery": true,
+    "fresh_clone_application_http": true,
+    "fresh_clone_skill_validation": true,
+    "fresh_clone_blender_smoke": true
+  },
+  "blender_smoke": {
+    "autoexec_disabled": true,
+    "fixture_is_temporary": true,
+    "camera_patterns": 3,
+    "lighting_ab_frames": 6,
+    "rendered_gate_frames": 3,
+    "reimported_meshes": 2,
+    "source_files_saved_or_overwritten": 0
+  },
+  "release_blockers": [
+    "Choose an explicit root license before public release.",
+    "Review audit/content-rights.json and every materialized asset before sharing binary packs.",
+    "Run Unity, Unreal or Godot gates inside the exact target project when applicable."
+  ]
+}

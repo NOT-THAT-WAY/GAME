@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-flstudio-character-arc-v001",
+  "status": "approved_for_build",
+  "coordinate_frame": {
+    "up": "+Z in USTUDIO_BOX_FLOAT_ROOT local space",
+    "user_side": "-Y / open front of box",
+    "front": "-Y",
+    "right": "+X",
+    "units": "meters"
+  },
+  "objects": [
+    {
+      "name": "USTUDIO_CHARACTER_ROOT",
+      "semantic_role": "faceless humanoid hero",
+      "fixed_or_moving": "moving; parented to USTUDIO_BOX_FLOAT_ROOT except exterior seated scene pose",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": ["feet", "pelvis seat contact", "right palm"],
+      "support_surfaces": ["USTUDIO_INTERFACE_BRIDGE", "USTUDIO_BOTTOM_FRAME_SEAT"],
+      "allowed_motion": ["walk", "run", "sit", "crouch", "look up", "rise"],
+      "forbidden_motion": ["teleport", "unmotivated drift", "environment intersection", "unsupported static pose"]
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE",
+      "semantic_role": "visible horizontal support and interface membrane",
+      "fixed_or_moving": "fixed relative to USTUDIO_BOX_FLOAT_ROOT",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": ["top horizontal deck"],
+      "support_surfaces": ["four visible luminous anchors to piano-roll ramp"],
+      "allowed_motion": ["emission pulse only"],
+      "forbidden_motion": ["translation", "rotation", "invisible support"]
+    }
+  ],
+  "joints": [
+    {"rig": "USTUDIO_CHARACTER_ARMATURE", "type": "pose bones", "limits": "anatomical silhouette range; no hyperextension or limb inversion"}
+  ],
+  "supports_and_contacts": [
+    {"state": "awakening_run_communion", "support": "USTUDIO_INTERFACE_BRIDGE", "rule": "both feet or declared hand/foot contacts remain on top plane z=1.94 local"},
+    {"state": "pause", "support": "USTUDIO_BOTTOM_FRAME_SEAT", "rule": "pelvis rests on frame top; legs remain outside shell with positive clearance"}
+  ],
+  "collision_pairs": [
+    ["USTUDIO_CHARACTER_*", "USTUDIO_PIANO_ROLL_FLOOR"],
+    ["USTUDIO_CHARACTER_*", "USTUDIO_BOX_SHELL*"],
+    ["USTUDIO_CAM_SCENE*", "USTUDIO_BOX_SHELL*"],
+    ["USTUDIO_CHARACTER_LIMBS", "USTUDIO_INTERFACE_BRIDGE"]
+  ],
+  "camera_corridor": {
+    "description": "Interior cameras stay inside the open-front prism and above the bridge; exterior pause camera remains in front of y=-20 to -8; spiral is a non-circular 3D path with clearance checks every 45 degrees and a measured rear maximum y=1.28 against wall y=1.36.",
+    "clearance_margin_m": 0.08,
+    "obstacles": ["ceiling", "side frames", "piano-roll ramp", "playlist wall", "character"],
+    "validated": true
+  },
+  "shot_states": [
+    {"name": "S1_AWAKENING", "frames": [9, 105], "object_state": "standing centered on bridge, head rises and turns", "camera_state": "18 mm worm eye push-in and tilt-up"},
+    {"name": "S2_PAUSE", "frames": [106, 202], "object_state": "seated on lower frame, feet pend outside, right foot taps", "camera_state": "35 to 55 mm macro foot to symmetric exterior reveal"},
+    {"name": "S3_RUN", "frames": [203, 298], "object_state": "runs along bridge, reacts at 251, settles and resumes", "camera_state": "50 mm frontal retreat with bounded deterministic shake"},
+    {"name": "S4_COMMUNION", "frames": [299, 396], "object_state": "crouched hand contact then rises", "camera_state": "35 to 85 mm descending 360 degree spiral with tested clearance"},
+    {"name": "FINAL_HOLD", "frames": [397, 406], "object_state": "hero still", "camera_state": "recovery complete, no float or wobble"}
+  ],
+  "validation": {
+    "required_views": ["nine musical hero frames", "side physical proof", "top camera corridor", "six-stage lighting A/B"],
+    "sample_every_n_frames": 1,
+    "critical_failure_cap": 49
+  }
+}

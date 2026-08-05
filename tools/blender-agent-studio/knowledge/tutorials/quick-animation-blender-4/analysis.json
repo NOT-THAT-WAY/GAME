@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "tutorial_id": "quick-animation-blender-4",
+  "model": "Codex visual synthesis; whisper.cpp transcript rejected as non-evidence",
+  "language": "visual-only",
+  "analyzed_at": "2026-07-19T03:14:00+02:00",
+  "confidence": 0.82,
+  "summary": "Workflow visuel de création rapide d'un plan automobile en environnement naturel : terrain sculpté, route inscrite dans le relief, voiture existante, matériaux de sol, végétation distribuée depuis une bibliothèque d'assets, architecture de fond, animation du véhicule et de la caméra, puis poussière/atmosphère et rendu. La vidéo montre bien l'ordre de fabrication mais ne fournit pas de narration exploitable pour confirmer les valeurs exactes.",
+  "evidence_quality": {
+    "transcript": "rejected: audio is music/non-narrated and ASR output is repetitive hallucination",
+    "visual": "strong for workflow order, moderate for exact settings",
+    "regular_frames": 138,
+    "scene_frames": 165,
+    "contact_sheets": 3
+  },
+  "chapters": [
+    {"start": 0, "end": 30, "title": "Résultat automobile final", "evidence": ["contact-sheets/frames_1_48.jpg"]},
+    {"start": 30, "end": 330, "title": "Blocage et sculpture du terrain", "evidence": ["frames/regular/frame_00004.jpg", "frames/regular/frame_00030.jpg", "contact-sheets/frames_1_48.jpg"]},
+    {"start": 330, "end": 500, "title": "Import de la voiture et première composition", "evidence": ["frames/regular/frame_00034.jpg", "contact-sheets/frames_1_48.jpg"]},
+    {"start": 500, "end": 790, "title": "Matières de sol, végétation et route", "evidence": ["contact-sheets/frames_49_96.jpg"]},
+    {"start": 790, "end": 1010, "title": "Trajectoire voiture, caméra et poussière", "evidence": ["contact-sheets/frames_49_96.jpg", "contact-sheets/frames_97_138.jpg"]},
+    {"start": 1010, "end": 1320, "title": "Bâtiment de fond et intégration matière", "evidence": ["contact-sheets/frames_97_138.jpg"]},
+    {"start": 1320, "end": 1380, "title": "Rendu final et ambiance", "evidence": ["contact-sheets/frames_97_138.jpg"]}
+  ],
+  "techniques": [
+    {
+      "domain": "environment",
+      "name": "Construire le décor du grand au petit",
+      "steps": ["Bloquer la masse du terrain.", "Sculpter seulement les reliefs visibles.", "Tracer la route et réserver sa largeur.", "Placer la voiture et tester la caméra.", "Ajouter ensuite matières, végétation et architecture de fond."],
+      "production_note": "Le cadrage pilote la densité du décor; l'extérieur du champ reste léger."
+    },
+    {
+      "domain": "asset-layout",
+      "name": "Végétation par bibliothèque et zones de densité",
+      "steps": ["Sélectionner quelques arbres compatibles d'échelle et de saison.", "Former des masses plutôt qu'une distribution uniforme.", "Garder une zone libre le long de la route et de la silhouette automobile.", "Randomiser rotation et échelle avec une plage limitée.", "Contrôler le contre-jour depuis la caméra finale."],
+      "production_note": "Les assets d'environnement servent le plan; ils ne doivent pas devenir le sujet principal."
+    },
+    {
+      "domain": "vehicle-animation",
+      "name": "Séparer trajectoire, véhicule et caméra",
+      "steps": ["Définir un contrôle ROOT pour la progression.", "Conserver roues et carrosserie sous des contrôles séparés.", "Construire la caméra après validation de la trajectoire.", "Ajouter vibrations, suspension et poussière en passes secondaires."],
+      "production_note": "Cette séparation est une recommandation de production déduite du workflow visible, pas un réglage explicitement narré."
+    },
+    {
+      "domain": "atmosphere",
+      "name": "Poussière comme preuve de vitesse et de contact",
+      "steps": ["Émettre près des roues arrière ou depuis une zone de trajectoire.", "Aligner vitesse initiale et déplacement du véhicule.", "Faire décroître densité et taille dans le sillage.", "Tester la lisibilité en motion blur et dans la lumière finale."],
+      "production_note": "Gater la poussière séparément : elle masque rapidement les roues et le sol."
+    }
+  ],
+  "workflow_recipe": {
+    "name": "Cinematic asset-in-environment shot",
+    "inputs": ["objet héros existant", "terrain", "route/trajectoire", "assets végétaux", "bâtiment de fond optionnel", "durée du plan"],
+    "steps": ["Auditer et normaliser l'asset héros.", "Bloquer terrain, horizon et route avec primitives simples.", "Créer la trajectoire et tester le véhicule en clay.", "Choisir une caméra dont la vitesse relative reste lisible.", "Créer les zones de végétation avec un corridor négatif autour de la route.", "Texturer en cohérence d'échelle.", "Ajouter architecture uniquement pour profondeur et narration.", "Ajouter poussière et micro-mouvements en passes secondaires.", "Rendre des gates clay, matière, végétation, motion et final."],
+    "gates": ["silhouette héros lisible", "aucune végétation dans le corridor véhicule", "échelle des textures cohérente", "caméra sans clipping terrain", "vitesse perceptible", "poussière ne masque pas le produit", "horizon et bâtiment soutiennent la profondeur"]
+  },
+  "reusable_assets": ["terrain blockout", "corridor de route", "zones de scatter", "rig véhicule ROOT/body/wheels", "rig caméra follow/target", "preset poussière"],
+  "risks": ["valeurs exactes non vérifiables sans narration", "sur-densité de végétation", "textures à échelle incohérente", "route flottante ou traversant le terrain", "caméra parentée directement au véhicule", "poussière utilisée pour cacher des contacts incorrects"]
+}

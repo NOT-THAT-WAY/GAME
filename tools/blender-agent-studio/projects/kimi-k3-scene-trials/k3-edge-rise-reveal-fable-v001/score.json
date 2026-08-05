@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-fable-v001",
+  "status": "completed",
+  "participant": "fable",
+  "overall_score": 49.0,
+  "verdict": "reject",
+  "critical_failures": ["collision_or_environment_traversal"],
+  "critical_failure_detail": {
+    "what": "le genou de la jambe qui franchit la marche traverse la rampe du Piano Roll de 4,4 cm au maximum",
+    "when": "environ 10 frames autour du step-up (frames 136-146)",
+    "why": "franchir une lèvre de 0,131 m avec des jambes de 0,227 m impose une flexion extrême, et sur une pente à 46,34° tout point qui avance entre dans le sol",
+    "mitigation_applied": "pole du genou porté par la normale du sol au lieu de la verticale monde, et swing du step-up abaissé : la traversée est passée de 25 cm à 4,4 cm, sans être éliminée",
+    "declared_because": "AGENTS.md et le brief traitent toute traversée de décor comme un échec critique, quelle que soit la note esthétique",
+    "artistic_score_before_cap": 78.05
+  },
+  "categories": {
+    "physics_affordance": {
+      "weight": 20,
+      "score": 74,
+      "evidence": [
+        "diagnostics/physical-validation.json",
+        "diagnostics/box-analysis.json",
+        "gates/contact-sheet.jpg"
+      ],
+      "notes": "Sur 360 frames evaluees depuis le mesh deforme : penetration des semelles nulle, au moins un pied plante a chaque frame, drift du pied plante 4,3 mm (G) et 3,6 mm (D) sous le seuil de 5 mm, semelles alignees sur le plan a 46,34 degres, aucune hyperextension (portee max 0,217 m pour une limite de 0,217 m). Reserve honnete : le genou de la jambe qui monte traverse la rampe de 4,6 cm au maximum pendant le step-up (frames ~136-146) — la marche de 0,131 m est haute pour des jambes de 0,227 m."
+    },
+    "causality_continuity": {
+      "weight": 15,
+      "score": 84,
+      "evidence": [
+        "diagnostics/motion-plan.json",
+        "gates/contact-sheet.jpg",
+        "brief.json"
+      ],
+      "notes": "Quatre temps dans l'ordre, chacun sur un downbeat mesure : assis avec le pied qui bat (1-57), sit-to-stand avec charge des mains et plongee du tronc (57-106), pivot puis marche montante en dix appuis (130-251), arret et lever du regard (299-345). Aucune coupe."
+    },
+    "composition_camera": {
+      "weight": 15,
+      "score": 82,
+      "evidence": [
+        "shot-manifest.json",
+        "gates/key1-assis.png",
+        "gates/key4-reveal.png"
+      ],
+      "notes": "Un seul plan continu de 38 mm a 17 mm, de (-1,95 ; -1,62 ; 0,95) a (-0,25 ; -2,65 ; 2,85). Clearance decor minimale 0,57 m, sujet dans le cadre sur les 360 frames, silhouette jamais sous 22,7 % de la hauteur du cadre (exige 12 %). TARGET et FOCUS independants, retard de 3 frames, arret complet a la fin. Reserve : la plongee croissante ecrase les jambes du personnage."
+    },
+    "motion_rhythm": {
+      "weight": 15,
+      "score": 72,
+      "evidence": [
+        "diagnostics/motion-plan.json",
+        "diagnostics/physical-validation.json",
+        "renders/preview.mp4"
+      ],
+      "notes": "Cadence d'un appui toutes les deux pulsations (24,2 frames), frontieres de temps sur les downbeats 57/106/130/251/299. Hauteur debout mesuree 0,87 m contre 0,66 m assis : le lever se lit. Reserve : la marche reste ramassee (bassin a 0,228 m pour une hauteur de hanche au repos de 0,289 m), consequence des jambes courtes de l'asset et de la pente."
+    },
+    "lighting": {
+      "weight": 15,
+      "score": 80,
+      "evidence": [
+        "gates/lighting-gate-manifest.json",
+        "gates/lighting-gate/gate_00_screens_only.png",
+        "gates/lighting-gate/gate_05_final.png"
+      ],
+      "notes": "Les ecrans du template restent la source principale ; trois ajouts seulement, chacun avec une fonction nommee (rim froid arriere 55 W, fill bas cote camera 26 W, rebond chaud 12 W). Gate cumulatif en six etats. Le corps blanc se detache de la rampe sans jamais clipper."
+    },
+    "materials_color_typography": {
+      "weight": 10,
+      "score": 80,
+      "evidence": [
+        "gates/contact-sheet.jpg",
+        "diagnostics/rig-report.json"
+      ],
+      "notes": "Asset utilise tel quel : 6348 vertices inchanges, seuls des vertex groups ajoutes. Palette : pearl du mascot, violets/verts des ecrans, accent lime des notes. Les notes sont transparentes hors declenchement (une premiere version les laissait en rectangles noirs)."
+    },
+    "technical_integrity": {
+      "weight": 10,
+      "score": 88,
+      "evidence": [
+        "renders/preview.mp4",
+        "diagnostics/scene-audit.json",
+        "diagnostics/physical-validation.json"
+      ],
+      "notes": "360/360 PNG (taille minimale 338 ko), MP4 H.264 640x360 30 fps 360 frames 12,000 s avec piste AAC, zero frame noire au blackdetect, aucun media manquant, template et asset sources intacts (SHA-256 verifies), audio monte dans le VSE du .blend."
+    }
+  },
+  "automatic_caps": {
+    "critical_failure_max_score": 49,
+    "critical_failure_types": [
+      "collision_or_environment_traversal",
+      "impossible_articulation_or_wrong_affordance",
+      "unmotivated_drift_or_contact_slip",
+      "canonical_identity_broken",
+      "camera_or_geometry_clipping",
+      "corrupt_missing_or_glitched_frames"
+    ]
+  },
+  "thresholds": {"ship_min": 85, "revise_min": 70, "reject_max": 69}
+}

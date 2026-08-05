@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/scene/trial.blend",
+  "scene": "K3_EDGE_RISE_REVEAL",
+  "frame": 110,
+  "camera": "K3_EDGE_CAMERA",
+  "lens": 50.0,
+  "clip": [
+    0.07999999821186066,
+    100.0
+  ],
+  "resolution": [
+    640,
+    360,
+    100
+  ],
+  "collection": "K3_EDGE_CHARACTER",
+  "summary": {
+    "visible": 2,
+    "partial": 0,
+    "occluded": 0,
+    "off-frame": 0
+  },
+  "objects": [
+    {
+      "object": "K3_EDGE_BODY_V2",
+      "verdict": "visible",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.360094,
+        0.107891,
+        0.629206,
+        0.631068
+      ],
+      "clipped_bounds": [
+        0.360094,
+        0.107891,
+        0.629206,
+        0.631068
+      ],
+      "coverage": 0.140793,
+      "center_offset": [
+        -0.00535,
+        -0.130521
+      ],
+      "depth_range": [
+        3.219147,
+        3.560938
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "K3_EDGE_HEAD_V2",
+      "verdict": "visible",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.43474,
+        0.601929,
+        0.553315,
+        0.783802
+      ],
+      "clipped_bounds": [
+        0.43474,
+        0.601929,
+        0.553315,
+        0.783802
+      ],
+      "coverage": 0.021566,
+      "center_offset": [
+        -0.005973,
+        0.192865
+      ],
+      "depth_range": [
+        3.209579,
+        3.508105
+      ],
+      "clip_near": false,
+      "clip_far": false
+    }
+  ]
+}

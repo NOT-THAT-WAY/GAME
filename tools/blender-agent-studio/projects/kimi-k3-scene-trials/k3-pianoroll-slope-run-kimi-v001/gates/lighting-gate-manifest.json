@@ -1,0 +1,76 @@
+{
+  "frame": 100,
+  "camera": "K3_CAM_MAIN",
+  "layers": [
+    {
+      "step": "00_world_only",
+      "enabled": []
+    },
+    {
+      "step": "01_sun",
+      "enabled": [
+        "K3_LIGHT_SUN"
+      ]
+    },
+    {
+      "step": "02_backlight",
+      "enabled": [
+        "K3_LIGHT_SUN",
+        "K3_LIGHT_BACKLIGHT"
+      ]
+    },
+    {
+      "step": "03_glimmer_lime",
+      "enabled": [
+        "K3_LIGHT_SUN",
+        "K3_LIGHT_BACKLIGHT",
+        "K3_LIGHT_GLIMMER_LIME"
+      ]
+    },
+    {
+      "step": "04_glimmer_magenta",
+      "enabled": [
+        "K3_LIGHT_SUN",
+        "K3_LIGHT_BACKLIGHT",
+        "K3_LIGHT_GLIMMER_LIME",
+        "K3_LIGHT_GLIMMER_MAGENTA"
+      ]
+    },
+    {
+      "step": "05_torso_return",
+      "enabled": [
+        "K3_LIGHT_SUN",
+        "K3_LIGHT_BACKLIGHT",
+        "K3_LIGHT_GLIMMER_LIME",
+        "K3_LIGHT_GLIMMER_MAGENTA",
+        "K3_LIGHT_TORSO_RETURN"
+      ]
+    }
+  ],
+  "renders": [
+    {
+      "step": "00_world_only",
+      "path": "gates/lighting-00_world_only.png"
+    },
+    {
+      "step": "01_sun",
+      "path": "gates/lighting-01_sun.png"
+    },
+    {
+      "step": "02_backlight",
+      "path": "gates/lighting-02_backlight.png"
+    },
+    {
+      "step": "03_glimmer_lime",
+      "path": "gates/lighting-03_glimmer_lime.png"
+    },
+    {
+      "step": "04_glimmer_magenta",
+      "path": "gates/lighting-04_glimmer_magenta.png"
+    },
+    {
+      "step": "05_torso_return",
+      "path": "gates/lighting-05_torso_return.png"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "factory-animation-polygon-runway",
+  "title": "Blender Factory Animation — Polygon Runway",
+  "status": "ready_for_ai",
+  "source_name": "source.mp4",
+  "original_filename": "Blender Factory Animation Tutorial Polygon Runway.mp4",
+  "original_sha256": "97288cc1b9f689eeba6f2b1abc1308311b07815f809837ab80b35d0d7151a0ae",
+  "source_policy": "Original conservé dans _incoming/04-new-tutorials; lien symbolique sans duplication",
+  "created": "2026-07-19T02:25:00+02:00",
+  "updated": "2026-07-19T03:20:00+02:00",
+  "analysis_status": "completed",
+  "technical": {
+    "duration": 1602.588277,
+    "frame_interval_requested": 10.0,
+    "frame_interval_effective": 10.0,
+    "scene_threshold": 0.26,
+    "regular_frame_count": 160,
+    "scene_frame_count": 6,
+    "has_video": true,
+    "has_audio": true
+  },
+  "evidence": {
+    "source": "knowledge/tutorials/_incoming/04-new-tutorials/Blender Factory Animation Tutorial Polygon Runway.mp4",
+    "probe": "knowledge/tutorials/factory-animation-polygon-runway/probe.json",
+    "frames_dir": "knowledge/tutorials/factory-animation-polygon-runway/frames/regular",
+    "scenes_dir": "knowledge/tutorials/factory-animation-polygon-runway/frames/scenes",
+    "contact_sheet": "knowledge/tutorials/factory-animation-polygon-runway/contact-sheet.jpg",
+    "audio": "knowledge/tutorials/factory-animation-polygon-runway/audio.wav",
+    "transcript": "knowledge/tutorials/factory-animation-polygon-runway/transcript.json",
+    "analysis": "knowledge/tutorials/factory-animation-polygon-runway/analysis.json",
+    "analysis_markdown": "knowledge/tutorials/factory-animation-polygon-runway/ANALYSIS.md"
+  }
+}

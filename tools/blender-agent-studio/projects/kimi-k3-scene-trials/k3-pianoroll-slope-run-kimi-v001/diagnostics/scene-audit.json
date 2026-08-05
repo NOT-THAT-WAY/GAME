@@ -1,0 +1,119 @@
+{
+  "file": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-kimi-v001/scene/trial.blend",
+  "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+  "frame_range": [
+    1,
+    240
+  ],
+  "fps": 30,
+  "engine": "BLENDER_EEVEE",
+  "resolution": [
+    640,
+    360
+  ],
+  "camera": "K3_CAM_MAIN",
+  "objects_total": 88,
+  "k3_work_collection_objects": [
+    "K3_CAM_DIAG_FEET_TARGET",
+    "K3_CAM_DIAG_FEET_TARGET.001",
+    "K3_CAM_DIAG_FEET_TARGET.002",
+    "K3_CAM_DIAG_FEET_TARGET.003",
+    "K3_CAM_DIAG_FEET_TARGET.004",
+    "K3_CAM_DIAG_FEET_TARGET.005",
+    "K3_CAM_DIAG_FEET_TARGET.006",
+    "K3_CAM_DIAG_FEET_TARGET.007",
+    "K3_CAM_DIAG_NORMAL",
+    "K3_CAM_DIAG_PROFILE",
+    "K3_CAM_DIAG_TOP",
+    "K3_CAM_MAIN",
+    "K3_CAM_MAIN_FOCUS",
+    "K3_CAM_MAIN_TARGET",
+    "K3_LIGHT_BACKLIGHT",
+    "K3_LIGHT_GLIMMER_LIME",
+    "K3_LIGHT_GLIMMER_MAGENTA",
+    "K3_LIGHT_SUN",
+    "K3_LIGHT_TORSO_RETURN",
+    "K3_RUNNER_ELBOW_L",
+    "K3_RUNNER_ELBOW_R",
+    "K3_RUNNER_FOOT_L",
+    "K3_RUNNER_FOOT_R",
+    "K3_RUNNER_FOREARM_L",
+    "K3_RUNNER_FOREARM_R",
+    "K3_RUNNER_HAND_L",
+    "K3_RUNNER_HAND_R",
+    "K3_RUNNER_HEAD",
+    "K3_RUNNER_HIP_L",
+    "K3_RUNNER_HIP_R",
+    "K3_RUNNER_KNEE_L",
+    "K3_RUNNER_KNEE_R",
+    "K3_RUNNER_NECK",
+    "K3_RUNNER_PELVIS",
+    "K3_RUNNER_RIG",
+    "K3_RUNNER_SHIN_L",
+    "K3_RUNNER_SHIN_R",
+    "K3_RUNNER_SHOULDER_L",
+    "K3_RUNNER_SHOULDER_R",
+    "K3_RUNNER_SOLE_L",
+    "K3_RUNNER_SOLE_R",
+    "K3_RUNNER_THIGH_L",
+    "K3_RUNNER_THIGH_R",
+    "K3_RUNNER_TORSO",
+    "K3_RUNNER_UPPERARM_L",
+    "K3_RUNNER_UPPERARM_R",
+    "K3_RUNNER_WAIST"
+  ],
+  "k3_cameras": [
+    "K3_CAM_DIAG_NORMAL",
+    "K3_CAM_DIAG_PROFILE",
+    "K3_CAM_DIAG_TOP",
+    "K3_CAM_MAIN"
+  ],
+  "k3_lights": [
+    "K3_LIGHT_BACKLIGHT",
+    "K3_LIGHT_GLIMMER_LIME",
+    "K3_LIGHT_GLIMMER_MAGENTA",
+    "K3_LIGHT_SUN",
+    "K3_LIGHT_TORSO_RETURN"
+  ],
+  "materials": [
+    "M_K3_GRIP_L",
+    "M_K3_GRIP_R",
+    "M_K3_RUNNER_PEARL"
+  ],
+  "audio_strips": [
+    "K3_MASTER_AUDIO",
+    "K3_MASTER_AUDIO.001",
+    "K3_MASTER_AUDIO.002",
+    "K3_MASTER_AUDIO.003",
+    "K3_MASTER_AUDIO.004",
+    "K3_MASTER_AUDIO.005",
+    "K3_MASTER_AUDIO.006",
+    "K3_MASTER_AUDIO.007"
+  ],
+  "grip_contract": {
+    "floor": 1.25,
+    "rig": 1.25
+  },
+  "markers": [
+    {
+      "name": "USTUDIO_MEDIA_IN",
+      "frame": 1
+    },
+    {
+      "name": "USTUDIO_MEDIA_QUARTER",
+      "frame": 102
+    },
+    {
+      "name": "USTUDIO_MEDIA_MIDDLE",
+      "frame": 203
+    },
+    {
+      "name": "USTUDIO_MEDIA_THREE_QUARTERS",
+      "frame": 305
+    },
+    {
+      "name": "USTUDIO_MEDIA_OUT",
+      "frame": 406
+    }
+  ]
+}

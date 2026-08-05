@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "tutorial_id": "drumboii-lighting-tutorial-2026-07-20",
+  "model": "whisper.cpp large-v3-turbo + Codex visual/transcript synthesis",
+  "language": "en",
+  "summary": "Drumboiii builds lighting additively. He deliberately lowers the HDRI to a restrained 0.5–0.7 foundation, adds an oblique Sun to sculpt reflections, then toggles a strong rear Area and three progressively smaller Area lights to restore edge shape and fine glimmers. The important transferable method is not the raw wattage but the ordered A/B evaluation of each light against the camera render.",
+  "confidence": 0.97,
+  "status": "analyzed_and_promoted",
+  "observed_project_context": {
+    "render_engine": "Cycles",
+    "composition": "vertical product/music visual with a pink bag, chrome chains, small planets and a bright cyan/cloud background",
+    "workspace": "camera render preview at left, scene viewport at center/right, World Shader Editor below, Outliner and light properties at right",
+    "light_collection": "LIGHTS containing Sun plus Area, Area.001, Area.002 and Area.003",
+    "evidence": [
+      {"time": 21, "frame": "frames/regular/frame_00008.jpg"},
+      {"time": 60, "frame": "frames/regular/frame_00021.jpg"},
+      {"time": 429, "frame": "frames/regular/frame_00144.jpg"}
+    ]
+  },
+  "chapters": [
+    {"start": 0, "end": 45, "title": "Scene, Cycles and zero-light baseline", "evidence": ["transcript 00:00:00–00:00:45"]},
+    {"start": 45, "end": 139, "title": "Visible sky separated from HDRI illumination", "evidence": ["transcript 00:00:45–00:02:19", "frame_00021.jpg", "frame_00044.jpg"]},
+    {"start": 139, "end": 199, "title": "Oblique Sun used to draw reflections", "evidence": ["transcript 00:02:19–00:03:19", "frame_00059.jpg"]},
+    {"start": 199, "end": 258, "title": "Strong rear Area restores volume and edge separation", "evidence": ["transcript 00:03:19–00:04:18", "evidence-crops/t209.jpg", "evidence-crops/t320.jpg"]},
+    {"start": 258, "end": 310, "title": "First side glimmer on chain detail", "evidence": ["transcript 00:04:18–00:05:10", "evidence-crops/t276.jpg"]},
+    {"start": 310, "end": 370, "title": "Second low-power side detail", "evidence": ["transcript 00:05:10–00:06:10", "evidence-crops/t357.jpg"]},
+    {"start": 370, "end": 408, "title": "Final Area raised from 20 W to 220 W", "evidence": ["transcript 00:06:10–00:06:48", "evidence-crops/t389.jpg", "evidence-crops/t420.jpg"]},
+    {"start": 408, "end": 446, "title": "Ordered recap and exposure warning", "evidence": ["transcript 00:06:48–00:07:26"]}
+  ],
+  "observed_values": {
+    "world": {
+      "hdri_filename_visible": "autumn_field_puresky_8k.exr",
+      "hdri_strength_demonstrated": 0.7,
+      "recommended_range_spoken": [0.5, 0.7],
+      "default_strength_rejected": 1.0,
+      "separation": "Light Path / Is Camera Ray drives a Mix Shader so the camera background and HDRI illumination can differ"
+    },
+    "sun": {
+      "strength": 1.0,
+      "orientation_spoken": "almost 90 degrees, approximately 70 degrees, then tilted away from a straight frontal direction",
+      "purpose": "control reflections and give the mesh depth"
+    },
+    "areas": [
+      {"object": "Area", "role": "rear shape/backlight", "power_w": 1400, "shape": "SQUARE", "size_m": 1.0, "temperature_k": 6500, "normalized": true},
+      {"object": "Area.001", "role": "first side glimmer", "power_w": 440, "shape": "SQUARE", "size_m": 1.0, "temperature_k": 6500, "normalized": true},
+      {"object": "Area.002", "role": "second subtle side detail", "power_w": 170, "shape": "SQUARE", "size_m": 1.0, "temperature_k": 6500, "normalized": true},
+      {"object": "Area.003", "role": "opposite detail return", "power_w_initial": 20, "power_w_final": 220, "shape": "SQUARE", "size_m": 1.0, "temperature_k": 6500, "normalized": true}
+    ],
+    "area_power_ratios_from_backlight": [1.0, 0.3143, 0.1214, 0.1571]
+  },
+  "techniques": [
+    {
+      "domain": "world-shading",
+      "name": "Separate visible world from lighting world",
+      "steps": [
+        "Use one branch for the visible sky/background.",
+        "Use an HDRI Background branch for illumination and reflections.",
+        "Drive a Mix Shader with Light Path / Is Camera Ray.",
+        "Lower HDRI strength before adding authored lights."
+      ],
+      "evidence": ["transcript 00:00:45–00:02:19", "frame_00021.jpg", "frame_00044.jpg"],
+      "production_note": "The exact custom sky node setup is not taught in this video; only the separation architecture is validated."
+    },
+    {
+      "domain": "look-development",
+      "name": "Reflection-first Sun",
+      "steps": [
+        "Start from the camera result, not the light gizmo.",
+        "Keep the Sun oblique rather than overhead or frontal.",
+        "Rotate it until useful reflections reveal the mesh structure."
+      ],
+      "evidence": ["transcript 00:02:19–00:03:19"]
+    },
+    {
+      "domain": "lighting",
+      "name": "Strong rear shape plus restrained glimmers",
+      "steps": [
+        "Place the main Area behind the subject so it points back toward the camera.",
+        "Use it to reveal top, bottom and side boundaries.",
+        "Add weaker side Areas only for local highlights on details such as chains or edges.",
+        "Scale power from the dominant rear light instead of copying scene-specific watts blindly."
+      ],
+      "evidence": ["transcript 00:03:19–00:06:48", "evidence-crops/t320.jpg", "evidence-crops/t276.jpg", "evidence-crops/t357.jpg", "evidence-crops/t420.jpg"]
+    },
+    {
+      "domain": "quality-gate",
+      "name": "Cumulative solo/A-B light test",
+      "steps": [
+        "Begin with the world foundation only.",
+        "Enable one light at a time in narrative order.",
+        "Toggle each light off/on while inspecting a specific visible region.",
+        "Keep it only if the difference is intentional and useful."
+      ],
+      "evidence": ["repeated visibility toggles throughout 00:02:19–00:06:48"]
+    }
+  ],
+  "workflow_recipe": {
+    "name": "DRUMBOIII layered reflection lighting",
+    "inputs": [
+      "render camera",
+      "subject collection and bounds",
+      "optional HDRI",
+      "world strength 0.5–0.7",
+      "global light intensity",
+      "render engine and view transform"
+    ],
+    "steps": [
+      "Lock a readable camera composition and inspect the unlit silhouette.",
+      "Create a camera-ray-separated world and set HDRI illumination to 0.5–0.7.",
+      "Add an oblique Sun and rotate it to sculpt useful surface reflections.",
+      "Add a camera-opposed rear Area as the dominant authored source.",
+      "Add side/detail Areas at approximately 31%, 12% and 16% of rear-light power as starting ratios.",
+      "Render cumulative gates and compare every layer to the previous image.",
+      "Move, strengthen or delete lights that do not create a readable intentional difference.",
+      "Only then animate the camera and re-gate lighting at every hero pose."
+    ],
+    "gates": [
+      "HDRI base preserves headroom and is intentionally incomplete",
+      "Sun creates shape through reflections without flattening the subject",
+      "backlight separates the silhouette without clipping edges",
+      "each glimmer has a named local purpose",
+      "final stack avoids global overexposure",
+      "lighting remains coherent at all camera hero poses"
+    ],
+    "outputs": ["USTUDIO_LIGHTING rig", "six cumulative gate renders", "lighting-gate-manifest.json"]
+  },
+  "limitations": [
+    "Raw wattages depend on scene scale, distance, material response, exposure and color management.",
+    "The tutorial shows one bright stylized product scene; its palette is not a universal requirement.",
+    "The custom procedural sky construction is explicitly referenced as a separate Patreon tutorial and cannot be reconstructed exactly from this source.",
+    "Exact light transforms are demonstrated visually but not numerically documented.",
+    "A light that barely changes this camera view may matter from another shot, so gates must be repeated at hero camera poses."
+  ],
+  "promoted_implementations": [
+    "workflows/scripts/studio_lighting.py preset drumboiii-layered",
+    "workflows/scripts/drumboiii_lighting_gate.py",
+    "workflows/catalog/drumboiii-lighting-gate.json",
+    "knowledge/tutorials/DRUMBOIII_DIRECTION.md"
+  ],
+  "analyzed_at": "2026-07-20T16:55:00+02:00"
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-codex-v001",
+  "status": "completed",
+  "overall_score": 86.2,
+  "verdict": "ship",
+  "critical_failures": [],
+  "categories": {
+    "physics_affordance": {
+      "weight": 20,
+      "score": 91,
+      "evidence": ["diagnostics/physical-validation.json", "gates/contact-sheet.jpg"],
+      "notes": "Contrôles évalués image par image: glissement de stance nul, pénétration maximale 1,03 cm sous tolérance et contact mains-bord à 2,18 cm. L'assise initiale reste visuellement plus proche d'une assise basse aux genoux repliés que d'une assise parfaitement explicite."
+    },
+    "causality_continuity": {
+      "weight": 15,
+      "score": 86,
+      "evidence": ["renders/preview.mp4", "gates/preview-review-sheet.jpg"],
+      "notes": "L'arc assis-bas, poussée, lever, marche, arrêt et contemplation est continu et sans coupe; l'ambiguïté de l'assise réduit la lecture du premier verbe."
+    },
+    "composition_camera": {
+      "weight": 15,
+      "score": 88,
+      "evidence": ["gates/contact-sheet.jpg", "shot-manifest.json"],
+      "notes": "Le dolly-crane passe clairement de 55 mm intime à 32 mm vaste. La silhouette finale mesure 16,73 % de la hauteur du cadre et reste centrée, lisible et entourée par l'interface."
+    },
+    "motion_rhythm": {
+      "weight": 15,
+      "score": 74,
+      "evidence": ["renders/preview.mp4", "diagnostics/film-motion.json", "diagnostics/physical-validation.json"],
+      "notes": "Huit contacts alternés suivent la grille à 148 BPM sans pied planté qui dérive. Le rig procédural transmet le poids mais les flexions de genou, coude et bassin manquent encore de finesse organique."
+    },
+    "lighting": {
+      "weight": 15,
+      "score": 84,
+      "evidence": ["gates/lighting-gate-manifest.json", "gates/05_DETAIL_RETURN.png"],
+      "notes": "Les écrans structurent le volume blanc, le cyan-magenta sépare bien le sujet et le scan lime conclut le plan. Le cône supérieur peut paraître un peu théâtral dans le dernier tiers."
+    },
+    "materials_color_typography": {
+      "weight": 10,
+      "score": 86,
+      "evidence": ["gates/key-final.png", "diagnostics/scene-audit.json"],
+      "notes": "L'identité blanche V2 est préservée et reçoit les couleurs d'écran; playlist, piano roll, browser et mixer restent reconnaissables dans le reveal."
+    },
+    "technical_integrity": {
+      "weight": 10,
+      "score": 96,
+      "evidence": ["renders/preview.mp4", "diagnostics/film-motion.json", "diagnostics/scene-audit.json"],
+      "notes": "360 frames exactes à 30 fps en 640x360, H.264 avec AAC stéréo, aucune frame noire, corrompue ou manquante détectée; sources et asset originaux inchangés."
+    }
+  },
+  "automatic_caps": {
+    "critical_failure_max_score": 49,
+    "critical_failure_types": [
+      "collision_or_environment_traversal",
+      "impossible_articulation_or_wrong_affordance",
+      "unmotivated_drift_or_contact_slip",
+      "canonical_identity_broken",
+      "camera_or_geometry_clipping",
+      "corrupt_missing_or_glitched_frames"
+    ]
+  },
+  "thresholds": {"ship_min": 85, "revise_min": 70, "reject_max": 69}
+}

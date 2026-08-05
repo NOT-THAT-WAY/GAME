@@ -1,0 +1,78 @@
+{
+  "measured_at_frame": 1,
+  "reference_space": "USTUDIO_BOX_FLOAT_ROOT local",
+  "surface_object": "USTUDIO_PIANO_ROLL_FLOOR",
+  "vertices_local": [
+    [
+      -3.78,
+      -0.42,
+      0.88
+    ],
+    [
+      3.78,
+      -0.42,
+      0.88
+    ],
+    [
+      3.05,
+      1.25,
+      2.63
+    ],
+    [
+      -3.05,
+      1.25,
+      2.63
+    ]
+  ],
+  "center_local": [
+    0.0,
+    0.415,
+    1.755
+  ],
+  "SURFACE_NORMAL": [
+    -0.0,
+    -0.72345,
+    0.69038
+  ],
+  "UPHILL_TANGENT": [
+    0.0,
+    0.69038,
+    0.72345
+  ],
+  "CROSS_SLOPE_TANGENT": [
+    -1.0,
+    0.0,
+    0.0
+  ],
+  "WORLD_GRAVITY": [
+    0.0,
+    0.0,
+    -9.81
+  ],
+  "slope_degrees_from_world_horizontal": 46.34,
+  "slope_degrees_crosscheck_atan2": 46.34,
+  "usable_length_uphill_m": 2.419,
+  "usable_width_cross_m": 7.56,
+  "low_edge_local": [
+    0.0,
+    -0.42,
+    0.88
+  ],
+  "high_edge_local": [
+    0.0,
+    1.25,
+    2.63
+  ],
+  "clearances_m": {
+    "high_point_to_back_wall": 3.8852,
+    "center_to_ceiling": 5.3886,
+    "center_to_left_wall": 3.3292,
+    "center_to_right_wall": 3.3292
+  },
+  "static_friction_min_theoretical": 1.0479,
+  "grip_contract": {
+    "property": "ustudio_grip_surface",
+    "friction_coefficient": 1.25,
+    "justification": "tan(46.34°) ≈ 1.048 < 1.25 : marge dynamique ~19%"
+  }
+}

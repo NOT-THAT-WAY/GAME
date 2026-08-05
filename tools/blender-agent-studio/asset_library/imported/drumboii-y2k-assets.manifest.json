@@ -1,0 +1,2522 @@
+{
+  "schema_version": 1,
+  "version": "1.0.0",
+  "blender_version": "5.1.1",
+  "source_directory": "asset_sources/drumboii-y2k/fbx",
+  "asset_count": 6,
+  "total_vertices": 289212,
+  "total_polygons": 280714,
+  "assets": [
+    {
+      "name": "BLOB_SPEAKER",
+      "type": "collection",
+      "catalog": "Props/DRUMBOII Y2K",
+      "source": "asset_sources/drumboii-y2k/fbx/BLOB_SPEAKER.fbx",
+      "preview": "asset_sources/drumboii-y2k/previews/blob_speaker.png",
+      "object_count": 1,
+      "mesh_count": 1,
+      "vertices": 12230,
+      "polygons": 12224,
+      "materials": [
+        "BLOB_SPEAKER_Black",
+        "BLOB_SPEAKER_Blue",
+        "BLOB_SPEAKER_Pink"
+      ],
+      "material_details": [
+        {
+          "name": "BLOB_SPEAKER_Black",
+          "diffuse_color": [
+            0.023113152012228966,
+            0.023113152012228966,
+            0.023113152012228966,
+            1.0
+          ],
+          "metallic": 0.5704545378684998,
+          "roughness": 0.125,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "BLOB_SPEAKER_Blue",
+          "diffuse_color": [
+            0.19383251667022705,
+            0.7422082424163818,
+            1.0,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.1772727370262146,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "BLOB_SPEAKER_Pink",
+          "diffuse_color": [
+            0.8000074625015259,
+            0.2811671495437622,
+            0.6344616413116455,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.15000000596046448,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        }
+      ],
+      "images": [],
+      "bounds": {
+        "min": [
+          -0.306816041469574,
+          -0.32529181241989136,
+          0.004257347900420427
+        ],
+        "max": [
+          0.30681610107421875,
+          0.4361674189567566,
+          0.9305238127708435
+        ],
+        "center": [
+          2.9802322387695312e-08,
+          0.05543780326843262,
+          0.4673905670642853
+        ],
+        "radius": 0.6734861197036048
+      },
+      "objects": [
+        {
+          "name": "Blob Speaker",
+          "type": "MESH",
+          "parent": null,
+          "scale": [
+            0.009999999776482582,
+            0.009999999776482582,
+            0.009999999776482582
+          ],
+          "rotation": [
+            1.570796251296997,
+            -0.0,
+            0.0
+          ],
+          "modifiers": []
+        }
+      ],
+      "root_objects": [
+        "Blob Speaker"
+      ],
+      "warnings": {
+        "non_unit_scale": [
+          "Blob Speaker"
+        ],
+        "high_poly": false,
+        "image_textures_absent": true
+      },
+      "usage": "Append (Reuse Data) for local shots; Link for a centrally updated library"
+    },
+    {
+      "name": "DRUMBOII_BLOB_BIKE",
+      "type": "collection",
+      "catalog": "Props/DRUMBOII Y2K",
+      "source": "asset_sources/drumboii-y2k/fbx/DRUMBOII_BLOB_BIKE.fbx",
+      "preview": "asset_sources/drumboii-y2k/previews/drumboii_blob_bike.png",
+      "object_count": 20,
+      "mesh_count": 19,
+      "vertices": 59295,
+      "polygons": 58992,
+      "materials": [
+        "DRUMBOII_BLOB_BIKE_Blue",
+        "DRUMBOII_BLOB_BIKE_Hood",
+        "DRUMBOII_BLOB_BIKE_InnerTire",
+        "DRUMBOII_BLOB_BIKE_Light Blue.001",
+        "DRUMBOII_BLOB_BIKE_Light Light",
+        "DRUMBOII_BLOB_BIKE_Material.022",
+        "DRUMBOII_BLOB_BIKE_Metal2",
+        "DRUMBOII_BLOB_BIKE_Pink Side",
+        "DRUMBOII_BLOB_BIKE_PurpleSeat",
+        "DRUMBOII_BLOB_BIKE_Red Light",
+        "DRUMBOII_BLOB_BIKE_sida bak.001",
+        "DRUMBOII_BLOB_BIKE_Steering",
+        "DRUMBOII_BLOB_BIKE_Tire"
+      ],
+      "material_details": [
+        {
+          "name": "DRUMBOII_BLOB_BIKE_Blue",
+          "diffuse_color": [
+            0.06351584196090698,
+            0.29228705167770386,
+            1.0,
+            1.0
+          ],
+          "metallic": 0.6795454025268555,
+          "roughness": 0.04772726073861122,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_BLOB_BIKE_Hood",
+          "diffuse_color": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.20000000298023224,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_BLOB_BIKE_InnerTire",
+          "diffuse_color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "metallic": 0.9749999642372131,
+          "roughness": 0.08409091830253601,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_BLOB_BIKE_Light Blue.001",
+          "diffuse_color": [
+            0.05565290153026581,
+            0.4422093629837036,
+            1.0,
+            1.0
+          ],
+          "metallic": 0.6795454025268555,
+          "roughness": 0.04772726073861122,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_BLOB_BIKE_Light Light",
+          "diffuse_color": [
+            0.8000156879425049,
+            0.4897293448448181,
+            0.05593881011009216,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.2295454442501068,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_BLOB_BIKE_Material.022",
+          "diffuse_color": [
+            1.0,
+            0.9114010334014893,
+            0.7667323350906372,
+            1.0
+          ],
+          "metallic": 1.0,
+          "roughness": 0.10000000149011612,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_BLOB_BIKE_Metal2",
+          "diffuse_color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "metallic": 0.9749999642372131,
+          "roughness": 0.08409091830253601,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_BLOB_BIKE_Pink Side",
+          "diffuse_color": [
+            1.0,
+            0.04019834101200104,
+            0.37283098697662354,
+            1.0
+          ],
+          "metallic": 0.6795454025268555,
+          "roughness": 0.04772726073861122,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_BLOB_BIKE_PurpleSeat",
+          "diffuse_color": [
+            0.49603909254074097,
+            0.3004833161830902,
+            0.8000156879425049,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.20000000298023224,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_BLOB_BIKE_Red Light",
+          "diffuse_color": [
+            0.8000229597091675,
+            0.02981499582529068,
+            0.13426706194877625,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.2295454442501068,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_BLOB_BIKE_sida bak.001",
+          "diffuse_color": [
+            0.01152490172535181,
+            0.14383146166801453,
+            1.0,
+            1.0
+          ],
+          "metallic": 0.6795454025268555,
+          "roughness": 0.04772726073861122,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_BLOB_BIKE_Steering",
+          "diffuse_color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "metallic": 0.9749999642372131,
+          "roughness": 0.08409091830253601,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_BLOB_BIKE_Tire",
+          "diffuse_color": [
+            0.014504173770546913,
+            0.014504173770546913,
+            0.014504173770546913,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.2454545497894287,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        }
+      ],
+      "images": [],
+      "bounds": {
+        "min": [
+          -2.015430450439453,
+          -0.45884013175964355,
+          -0.6085243821144104
+        ],
+        "max": [
+          1.680959701538086,
+          0.458839476108551,
+          2.0029256343841553
+        ],
+        "center": [
+          -0.1672353744506836,
+          -3.2782554626464844e-07,
+          0.6972006559371948
+        ],
+        "radius": 2.308955772531226
+      },
+      "objects": [
+        {
+          "name": "BackLight",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575702667236328,
+            1.7575703859329224,
+            1.7575702667236328
+          ],
+          "rotation": [
+            -3.387685865163803e-08,
+            -1.564212441444397,
+            -1.6733884243558261e-12
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "BackThing",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575702667236328,
+            1.7575702667236328,
+            1.7575703859329224
+          ],
+          "rotation": [
+            1.5707951784133911,
+            0.8733636736869812,
+            -7.145349911752419e-08
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "BLOB_BIKE",
+          "type": "EMPTY",
+          "parent": null,
+          "scale": [
+            1.9678617715835571,
+            0.6417042016983032,
+            0.9170873761177063
+          ],
+          "rotation": [
+            -1.6292068494294654e-07,
+            0.0,
+            0.0
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Chair",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575702667236328,
+            1.7575703859329224,
+            1.7575702667236328
+          ],
+          "rotation": [
+            5.3974322788974405e-09,
+            0.28463950753211975,
+            4.482956672546834e-09
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Cylinder",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575702667236328,
+            1.7575703859329224,
+            1.7575702667236328
+          ],
+          "rotation": [
+            -1.7057848467061376e-08,
+            -0.4423629343509674,
+            3.9180787325676647e-07
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "FrontLight",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575702667236328,
+            1.7575703859329224,
+            1.7575702667236328
+          ],
+          "rotation": [
+            3.387786051689545e-08,
+            1.5773800611495972,
+            -4.10356156606978e-13
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "GasPipe1",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575702667236328,
+            1.7575703859329224,
+            1.7575702667236328
+          ],
+          "rotation": [
+            6.577972158083867e-07,
+            1.4006502628326416,
+            7.459554467459384e-07
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "GasPipe2",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575702667236328,
+            1.7575703859329224,
+            1.7575702667236328
+          ],
+          "rotation": [
+            6.577972158083867e-07,
+            1.4006502628326416,
+            7.459554467459384e-07
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "GasPipe3",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575703859329224,
+            1.7575701475143433,
+            1.7575703859329224
+          ],
+          "rotation": [
+            1.5707961320877075,
+            0.87994784116745,
+            -1.6903253197142476e-07
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Hood",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575701475143433,
+            1.7575703859329224,
+            1.7575702667236328
+          ],
+          "rotation": [
+            3.2716549469569145e-08,
+            -0.6387719511985779,
+            -1.3437428947327135e-07
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Random",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575702667236328,
+            1.7575702667236328,
+            1.7575703859329224
+          ],
+          "rotation": [
+            1.570796012878418,
+            0.006583664566278458,
+            -3.606515974752256e-08
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Random2",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575701475143433,
+            1.7575703859329224,
+            1.7575702667236328
+          ],
+          "rotation": [
+            1.256340311783788e-07,
+            1.150816798210144,
+            6.79420452343038e-07
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Shell",
+          "type": "MESH",
+          "parent": "BLOB_BIKE",
+          "scale": [
+            0.5082055330276489,
+            1.5583504438400269,
+            1.0903899669647217
+          ],
+          "rotation": [
+            -8.764059616916953e-11,
+            -0.008597216568887234,
+            5.746650444393708e-08
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "SteeringWheel",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575703859329224,
+            1.7575701475143433,
+            1.7575701475143433
+          ],
+          "rotation": [
+            -0.4301713705062866,
+            -1.0293926777649176e-07,
+            1.5707963705062866
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "TireBack",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575703859329224,
+            1.7575702667236328,
+            1.7575702667236328
+          ],
+          "rotation": [
+            2.653654098510742,
+            -1.2217002165471058e-07,
+            1.5707957744598389
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "TireFront",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575703859329224,
+            1.7575702667236328,
+            1.7575702667236328
+          ],
+          "rotation": [
+            0.009010051377117634,
+            2.920398323169593e-08,
+            1.5707964897155762
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "TireProtectionBack",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575703859329224,
+            1.7575702667236328,
+            1.7575702667236328
+          ],
+          "rotation": [
+            -0.31340494751930237,
+            -4.1048323851100577e-08,
+            1.5707966089248657
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "TireProtectionFront",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575703859329224,
+            1.7575702667236328,
+            1.7575702667236328
+          ],
+          "rotation": [
+            0.009010350331664085,
+            3.490250577442566e-08,
+            1.5707963705062866
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "WheelBack",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575702667236328,
+            1.7575702667236328,
+            1.7575703859329224
+          ],
+          "rotation": [
+            1.5707956552505493,
+            2.6536543369293213,
+            -5.550299988499319e-07
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "WheelFront",
+          "type": "MESH",
+          "parent": "Shell",
+          "scale": [
+            1.7575702667236328,
+            1.7575702667236328,
+            1.7575703859329224
+          ],
+          "rotation": [
+            1.5707951784133911,
+            0.009010016918182373,
+            3.0750155133318913e-07
+          ],
+          "modifiers": []
+        }
+      ],
+      "root_objects": [
+        "BLOB_BIKE"
+      ],
+      "warnings": {
+        "non_unit_scale": [
+          "BackLight",
+          "BackThing",
+          "BLOB_BIKE",
+          "Chair",
+          "Cylinder",
+          "FrontLight",
+          "GasPipe1",
+          "GasPipe2",
+          "GasPipe3",
+          "Hood",
+          "Random",
+          "Random2",
+          "Shell",
+          "SteeringWheel",
+          "TireBack",
+          "TireFront",
+          "TireProtectionBack",
+          "TireProtectionFront",
+          "WheelBack",
+          "WheelFront"
+        ],
+        "high_poly": true,
+        "image_textures_absent": true
+      },
+      "usage": "Append (Reuse Data) for local shots; Link for a centrally updated library"
+    },
+    {
+      "name": "DRUMBOII_CONE",
+      "type": "collection",
+      "catalog": "Props/DRUMBOII Y2K",
+      "source": "asset_sources/drumboii-y2k/fbx/DRUMBOII_CONE.fbx",
+      "preview": "asset_sources/drumboii-y2k/previews/drumboii_cone.png",
+      "object_count": 1,
+      "mesh_count": 1,
+      "vertices": 5545,
+      "polygons": 5466,
+      "materials": [
+        "DRUMBOII_CONE_Orange",
+        "DRUMBOII_CONE_White"
+      ],
+      "material_details": [
+        {
+          "name": "DRUMBOII_CONE_Orange",
+          "diffuse_color": [
+            1.0,
+            0.23398154973983765,
+            0.06744832545518875,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.20000000298023224,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_CONE_White",
+          "diffuse_color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.20000000298023224,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        }
+      ],
+      "images": [],
+      "bounds": {
+        "min": [
+          -0.6142597794532776,
+          -0.6142597794532776,
+          0.0060520959086716175
+        ],
+        "max": [
+          0.6142597794532776,
+          0.6142599582672119,
+          1.079633355140686
+        ],
+        "center": [
+          0.0,
+          8.940696716308594e-08,
+          0.5428427457809448
+        ],
+        "radius": 1.021163262684136
+      },
+      "objects": [
+        {
+          "name": "Cone",
+          "type": "MESH",
+          "parent": null,
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            -1.6292068494294654e-07,
+            0.0,
+            0.0
+          ],
+          "modifiers": []
+        }
+      ],
+      "root_objects": [
+        "Cone"
+      ],
+      "warnings": {
+        "non_unit_scale": [],
+        "high_poly": false,
+        "image_textures_absent": true
+      },
+      "usage": "Append (Reuse Data) for local shots; Link for a centrally updated library"
+    },
+    {
+      "name": "DRUMBOII_FLIP_PHONE",
+      "type": "collection",
+      "catalog": "Props/DRUMBOII Y2K",
+      "source": "asset_sources/drumboii-y2k/fbx/DRUMBOII_FLIP_PHONE.fbx",
+      "preview": "asset_sources/drumboii-y2k/previews/drumboii_flip_phone.png",
+      "object_count": 24,
+      "mesh_count": 24,
+      "vertices": 85130,
+      "polygons": 80910,
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Button",
+        "DRUMBOII_FLIP_PHONE_Buttons Blue",
+        "DRUMBOII_FLIP_PHONE_Buttons Under",
+        "DRUMBOII_FLIP_PHONE_Phone Blue",
+        "DRUMBOII_FLIP_PHONE_Screen.001",
+        "DRUMBOII_FLIP_PHONE_Screws",
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "material_details": [
+        {
+          "name": "DRUMBOII_FLIP_PHONE_Button",
+          "diffuse_color": [
+            0.5729172229766846,
+            0.9190648198127747,
+            1.0,
+            1.0
+          ],
+          "metallic": 0.6522727012634277,
+          "roughness": 0.209090918302536,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_FLIP_PHONE_Buttons Blue",
+          "diffuse_color": [
+            0.18674440681934357,
+            0.7121822834014893,
+            1.0,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.19545453786849976,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_FLIP_PHONE_Buttons Under",
+          "diffuse_color": [
+            0.3039463758468628,
+            0.41726168990135193,
+            1.0,
+            1.0
+          ],
+          "metallic": 0.6522727012634277,
+          "roughness": 0.209090918302536,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_FLIP_PHONE_Phone Blue",
+          "diffuse_color": [
+            0.05610887333750725,
+            0.1612037718296051,
+            1.0,
+            1.0
+          ],
+          "metallic": 0.3272727131843567,
+          "roughness": 0.13409091532230377,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_FLIP_PHONE_Screen.001",
+          "diffuse_color": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "metallic": 1.0,
+          "roughness": 0.0681818276643753,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_FLIP_PHONE_Screws",
+          "diffuse_color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "metallic": 0.9749999642372131,
+          "roughness": 0.08409091830253601,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_FLIP_PHONE_Text",
+          "diffuse_color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.15454545617103577,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        }
+      ],
+      "images": [],
+      "bounds": {
+        "min": [
+          -0.3793586194515228,
+          -0.5294502973556519,
+          -0.8994448184967041
+        ],
+        "max": [
+          0.38005053997039795,
+          0.6741294264793396,
+          1.6778960227966309
+        ],
+        "center": [
+          0.00034596025943756104,
+          0.07233956456184387,
+          0.3892256021499634
+        ],
+        "radius": 1.4720727032508785
+      },
+      "objects": [
+        {
+          "name": "!!",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707958936691284,
+            -0.2028588056564331,
+            4.555755950264029e-08
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "%%",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -6.617445689285127e-24,
+            -1.3234886645404822e-23
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "123",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -1.9852333123550854e-23,
+            -1.3234883489961201e-23
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "456",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -1.9852333123550854e-23,
+            -1.3234883489961201e-23
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "789",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -1.9852333123550854e-23,
+            -1.3234883489961201e-23
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "??",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707961320877075,
+            0.3638174533843994,
+            -5.481209441882129e-08
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "ABC",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -3.308719491983716e-24,
+            9.926164984053616e-24
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Buttons",
+          "type": "MESH",
+          "parent": "Phone",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.4901161193847656e-07,
+            5.293955920339377e-23,
+            6.617448844728748e-24
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Circle",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707966089248657,
+            9.926170506079953e-24,
+            -1.6543612251060553e-23
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "DEF",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -3.308719491983716e-24,
+            9.926164984053616e-24
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "GHI",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -3.308719491983716e-24,
+            9.926164984053616e-24
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Hinge",
+          "type": "MESH",
+          "parent": "Phone",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.62987220287323,
+            1.862569996823941e-16,
+            1.0040177985336761e-16
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "JKL",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -3.308719491983716e-24,
+            9.926164984053616e-24
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "MNO",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -3.308719491983716e-24,
+            9.926164984053616e-24
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Phone",
+          "type": "MESH",
+          "parent": null,
+          "scale": [
+            1.0,
+            0.9999999403953552,
+            0.9999999403953552
+          ],
+          "rotation": [
+            -0.7292831540107727,
+            -1.4795615504102475e-16,
+            5.647651732822151e-17
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "PQR",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -3.308719491983716e-24,
+            9.926164984053616e-24
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Screen.001",
+          "type": "MESH",
+          "parent": "Hinge",
+          "scale": [
+            1.0,
+            1.0000001192092896,
+            1.0000001192092896
+          ],
+          "rotation": [
+            -0.9192647933959961,
+            7.074731467326956e-09,
+            -8.113152816235925e-09
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Screen2",
+          "type": "MESH",
+          "parent": "Screen.001",
+          "scale": [
+            1.0,
+            0.9999997019767761,
+            0.9999997019767761
+          ],
+          "rotation": [
+            1.5718647241592407,
+            -3.073696674960047e-08,
+            -2.3840765805971387e-08
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Screws",
+          "type": "MESH",
+          "parent": "Screen.001",
+          "scale": [
+            0.9999998807907104,
+            1.0,
+            0.9999997615814209
+          ],
+          "rotation": [
+            0.6838539242744446,
+            1.5380185842514038,
+            2.1717169284820557
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Screws2",
+          "type": "MESH",
+          "parent": "Phone",
+          "scale": [
+            1.0,
+            1.0000001192092896,
+            1.0000001192092896
+          ],
+          "rotation": [
+            1.5655361413955688,
+            -1.1541123759311893e-18,
+            2.7607728092976964e-20
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Screws3",
+          "type": "MESH",
+          "parent": "Phone",
+          "scale": [
+            1.0,
+            1.0000001192092896,
+            1.0000001192092896
+          ],
+          "rotation": [
+            1.5655361413955688,
+            -1.1541123759311893e-18,
+            2.7607728092976964e-20
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "STU",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -3.308719491983716e-24,
+            9.926164984053616e-24
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "VW",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -3.308719491983716e-24,
+            9.926164984053616e-24
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "XYZ",
+          "type": "MESH",
+          "parent": "Buttons",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            -3.308719491983716e-24,
+            9.926164984053616e-24
+          ],
+          "modifiers": []
+        }
+      ],
+      "root_objects": [
+        "Phone"
+      ],
+      "warnings": {
+        "non_unit_scale": [],
+        "high_poly": true,
+        "image_textures_absent": true
+      },
+      "usage": "Append (Reuse Data) for local shots; Link for a centrally updated library"
+    },
+    {
+      "name": "DRUMBOII_GAMEBOII",
+      "type": "collection",
+      "catalog": "Props/DRUMBOII Y2K",
+      "source": "asset_sources/drumboii-y2k/fbx/DRUMBOII_GAMEBOII.fbx",
+      "preview": "asset_sources/drumboii-y2k/previews/drumboii_gameboii.png",
+      "object_count": 24,
+      "mesh_count": 24,
+      "vertices": 80624,
+      "polygons": 79727,
+      "materials": [
+        "DRUMBOII_GAMEBOII_Black Button",
+        "DRUMBOII_GAMEBOII_Body Purple",
+        "DRUMBOII_GAMEBOII_Game Card",
+        "DRUMBOII_GAMEBOII_Green Buttton",
+        "DRUMBOII_GAMEBOII_Metal",
+        "DRUMBOII_GAMEBOII_Red Button",
+        "DRUMBOII_GAMEBOII_Screen",
+        "DRUMBOII_GAMEBOII_Side Buttons"
+      ],
+      "material_details": [
+        {
+          "name": "DRUMBOII_GAMEBOII_Black Button",
+          "diffuse_color": [
+            0.024460021406412125,
+            0.024460021406412125,
+            0.024460021406412125,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.20000000298023224,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_GAMEBOII_Body Purple",
+          "diffuse_color": [
+            0.1516193300485611,
+            0.21756811439990997,
+            0.8000315427780151,
+            1.0
+          ],
+          "metallic": 0.26818183064460754,
+          "roughness": 0.09545455873012543,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_GAMEBOII_Game Card",
+          "diffuse_color": [
+            0.09162040799856186,
+            0.09162040799856186,
+            0.09162040799856186,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.30000001192092896,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_GAMEBOII_Green Buttton",
+          "diffuse_color": [
+            0.05338485538959503,
+            0.8000229597091675,
+            0.11279664933681488,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.25,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_GAMEBOII_Metal",
+          "diffuse_color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "metallic": 0.9749999642372131,
+          "roughness": 0.08409091830253601,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_GAMEBOII_Red Button",
+          "diffuse_color": [
+            0.8000074625015259,
+            0.027980675920844078,
+            0.04766440764069557,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.25,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_GAMEBOII_Screen",
+          "diffuse_color": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "metallic": 1.0,
+          "roughness": 0.0,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_GAMEBOII_Side Buttons",
+          "diffuse_color": [
+            0.6251214742660522,
+            0.6251214742660522,
+            0.6251214742660522,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.20000000298023224,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        }
+      ],
+      "images": [],
+      "bounds": {
+        "min": [
+          -0.52385413646698,
+          -0.6206464171409607,
+          -0.8602356314659119
+        ],
+        "max": [
+          0.5434951782226562,
+          0.22484785318374634,
+          1.0657840967178345
+        ],
+        "center": [
+          0.009820520877838135,
+          -0.19789928197860718,
+          0.1027742326259613
+        ],
+        "radius": 1.1793692077308497
+      },
+      "objects": [
+        {
+          "name": "A",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707957744598389,
+            5.6270800871541585e-14,
+            -6.516826260849484e-07
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "A button",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707966089248657,
+            1.1565064930499076e-15,
+            5.2341824993175357e-14
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "B",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707957744598389,
+            5.6270800871541585e-14,
+            -6.516826260849484e-07
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "B Button",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707966089248657,
+            1.1565064930499076e-15,
+            5.2341824993175357e-14
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "ButtonsButtom",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707966089248657,
+            1.1565064930499076e-15,
+            5.2341824993175357e-14
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Card",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            -3.141592264175415,
+            -7.538135832771756e-15,
+            -3.7701666769371443e-16
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Cube.025",
+          "type": "MESH",
+          "parent": "SideButton_L",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.4901161193847656e-08,
+            -0.0,
+            0.0
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "GAMEBOII",
+          "type": "MESH",
+          "parent": null,
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            -0.7167266011238098,
+            1.3600459056488032e-14,
+            1.7484555314695172e-07
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "gameboy.013",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            -1.4901161193847656e-07,
+            8.671288039279086e-15,
+            9.408676637269464e-14
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "gameboy.016",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            -1.4901161193847656e-07,
+            8.675552003135564e-15,
+            4.927698535133439e-14
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Hinge1",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707964897155762,
+            -2.980235436211842e-08,
+            1.5707967281341553
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Hinge2",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            -2.4250853061676025,
+            -4.094385149932406e-14,
+            -6.498717652902997e-07
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Hinge3",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707964897155762,
+            -2.980235436211842e-08,
+            1.5707967281341553
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Hinge4",
+          "type": "MESH",
+          "parent": "Hinge2",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            -1.5707961320877075,
+            1.1920930376163597e-07,
+            -1.5707964897155762
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Hinge5",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707964897155762,
+            -2.980235436211842e-08,
+            1.5707967281341553
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "HingeSupport1",
+          "type": "MESH",
+          "parent": "Hinge2",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            -3.141592502593994,
+            1.235527115730009e-13,
+            -8.662515256219194e-07
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "HingeSupport2",
+          "type": "MESH",
+          "parent": "Hinge4",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            -1.5707963705062866,
+            -1.5707961320877075,
+            0.0
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "kmnapp",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            -2.9802322387695312e-08,
+            3.2832572516858574e-15,
+            5.477960275603218e-14
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Middle Button",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707966089248657,
+            2.037716817385269e-14,
+            6.997394742629115e-14
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Screen",
+          "type": "MESH",
+          "parent": "HingeSupport2",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            2.842170943040401e-14
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "SideButton_L",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            0.9999999403953552,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            2.8931144147037458e-09,
+            2.8279940167408313e-08,
+            0.20389607548713684
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "SideButton_R",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            6.75990960985473e-08,
+            -6.697634802321772e-08,
+            2.9247994422912598
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Sphere.006",
+          "type": "MESH",
+          "parent": "GAMEBOII",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707966089248657,
+            -1.0870736141766965e-13,
+            5.435586944197053e-14
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Sphere.007",
+          "type": "MESH",
+          "parent": "gameboy.013",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.5707966089248657,
+            9.918555912572305e-14,
+            -1.135710669524512e-14
+          ],
+          "modifiers": []
+        }
+      ],
+      "root_objects": [
+        "GAMEBOII"
+      ],
+      "warnings": {
+        "non_unit_scale": [],
+        "high_poly": true,
+        "image_textures_absent": true
+      },
+      "usage": "Append (Reuse Data) for local shots; Link for a centrally updated library"
+    },
+    {
+      "name": "DRUMBOII_TRAFFIC_LIGHT",
+      "type": "collection",
+      "catalog": "Props/DRUMBOII Y2K",
+      "source": "asset_sources/drumboii-y2k/fbx/DRUMBOII_TRAFFIC_LIGHT.fbx",
+      "preview": "asset_sources/drumboii-y2k/previews/drumboii_traffic_light.png",
+      "object_count": 24,
+      "mesh_count": 24,
+      "vertices": 46388,
+      "polygons": 43395,
+      "materials": [
+        "DRUMBOII_TRAFFIC_LIGHT_Blue Body",
+        "DRUMBOII_TRAFFIC_LIGHT_Blue Glass",
+        "DRUMBOII_TRAFFIC_LIGHT_Light Blue",
+        "DRUMBOII_TRAFFIC_LIGHT_Light Green",
+        "DRUMBOII_TRAFFIC_LIGHT_Light Red",
+        "DRUMBOII_TRAFFIC_LIGHT_Light Red Body",
+        "DRUMBOII_TRAFFIC_LIGHT_Light Yellow",
+        "DRUMBOII_TRAFFIC_LIGHT_Metal Pole",
+        "DRUMBOII_TRAFFIC_LIGHT_Metal Screws"
+      ],
+      "material_details": [
+        {
+          "name": "DRUMBOII_TRAFFIC_LIGHT_Blue Body",
+          "diffuse_color": [
+            0.16198329627513885,
+            0.3308231830596924,
+            0.8000229597091675,
+            1.0
+          ],
+          "metallic": 0.6000000238418579,
+          "roughness": 0.2545454502105713,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_TRAFFIC_LIGHT_Blue Glass",
+          "diffuse_color": [
+            0.12767021358013153,
+            0.5853540301322937,
+            1.0,
+            1.0
+          ],
+          "metallic": 0.9749999642372131,
+          "roughness": 0.08409091830253601,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_TRAFFIC_LIGHT_Light Blue",
+          "diffuse_color": [
+            0.16198329627513885,
+            0.3308231830596924,
+            0.8000229597091675,
+            1.0
+          ],
+          "metallic": 0.6000000238418579,
+          "roughness": 0.2545454502105713,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_TRAFFIC_LIGHT_Light Green",
+          "diffuse_color": [
+            0.11544693261384964,
+            0.8029724359512329,
+            0.14472699165344238,
+            1.0
+          ],
+          "metallic": 0.6000000238418579,
+          "roughness": 0.2545454502105713,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_TRAFFIC_LIGHT_Light Red",
+          "diffuse_color": [
+            0.800039529800415,
+            0.2079796940088272,
+            0.19480475783348083,
+            1.0
+          ],
+          "metallic": 0.6000000238418579,
+          "roughness": 0.2545454502105713,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_TRAFFIC_LIGHT_Light Red Body",
+          "diffuse_color": [
+            0.8000315427780151,
+            0.06998388469219208,
+            0.3421648442745209,
+            1.0
+          ],
+          "metallic": 0.6000000238418579,
+          "roughness": 0.2545454502105713,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_TRAFFIC_LIGHT_Light Yellow",
+          "diffuse_color": [
+            0.8000315427780151,
+            0.4183030128479004,
+            0.03031502664089203,
+            1.0
+          ],
+          "metallic": 0.6000000238418579,
+          "roughness": 0.2545454502105713,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_TRAFFIC_LIGHT_Metal Pole",
+          "diffuse_color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "metallic": 0.9749999642372131,
+          "roughness": 0.08409091830253601,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        },
+        {
+          "name": "DRUMBOII_TRAFFIC_LIGHT_Metal Screws",
+          "diffuse_color": [
+            0.800000011920929,
+            0.800000011920929,
+            0.800000011920929,
+            1.0
+          ],
+          "metallic": 0.9749999642372131,
+          "roughness": 0.08409091830253601,
+          "use_nodes": true,
+          "node_types": [
+            "ShaderNodeBsdfPrincipled",
+            "ShaderNodeOutputMaterial"
+          ]
+        }
+      ],
+      "images": [],
+      "bounds": {
+        "min": [
+          -0.4437252879142761,
+          0.25179988145828247,
+          0.0016522069927304983
+        ],
+        "max": [
+          1.0775556564331055,
+          1.2190215587615967,
+          3.477997303009033
+        ],
+        "center": [
+          0.3169151842594147,
+          0.7354106903076172,
+          1.7398247718811035
+        ],
+        "radius": 1.9579829568783578
+      },
+      "objects": [
+        {
+          "name": "BackBlue",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0000001192092896,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            -0.3529149293899536
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "BackBlue2",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.15376470983028412
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "BackGreen",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.15376470983028412
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "BackRed",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0000001192092896,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            -0.3529149293899536
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "BackYellow",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0000001192092896,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            -0.3529149293899536
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Box 1",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0000001192092896,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            -0.3529149293899536
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Box 2",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.15376470983028412
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Cap1",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0000001192092896,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            -0.3529149293899536
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Cap2",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0000001192092896,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            -0.3529149293899536
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Cap3",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0000001192092896,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            -0.3529149293899536
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Cap4",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.15376470983028412
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Cap5",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.15376470983028412
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Light1",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0,
+            1.0000001192092896
+          ],
+          "rotation": [
+            1.5707957744598389,
+            -1.617136469178604e-08,
+            -0.3529146611690521
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Light2",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0,
+            1.0000001192092896
+          ],
+          "rotation": [
+            1.5707957744598389,
+            -1.617136469178604e-08,
+            -0.3529146611690521
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Light3",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0,
+            1.0000001192092896
+          ],
+          "rotation": [
+            1.5707957744598389,
+            -1.617136469178604e-08,
+            -0.3529146611690521
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Light4",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            1.0138869299680664e-08,
+            0.15376463532447815
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Light5",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            1.570796012878418,
+            1.0138869299680664e-08,
+            0.15376463532447815
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Screws1",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0000001192092896,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            -0.3529149293899536
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Screws2.001",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0000001192092896,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            -0.3529149293899536
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Screws3.001",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0000001192092896,
+            1.0000001192092896,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            -0.3529149293899536
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Screws4",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.15376469492912292
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Screws5",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            0.0,
+            -0.0,
+            0.15376469492912292
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Support",
+          "type": "MESH",
+          "parent": "Traffic Light",
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            -0.20634996891021729,
+            1.570796251296997,
+            0.0
+          ],
+          "modifiers": []
+        },
+        {
+          "name": "Traffic Light",
+          "type": "MESH",
+          "parent": null,
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "rotation": [
+            -1.6292068494294654e-07,
+            0.0,
+            0.0
+          ],
+          "modifiers": []
+        }
+      ],
+      "root_objects": [
+        "Traffic Light"
+      ],
+      "warnings": {
+        "non_unit_scale": [],
+        "high_poly": false,
+        "image_textures_absent": true
+      },
+      "usage": "Append (Reuse Data) for local shots; Link for a centrally updated library"
+    }
+  ]
+}

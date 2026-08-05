@@ -1,0 +1,39 @@
+{
+  "template": "projects/fl-studio-box-template/FL_Studio_Box_Template.blend",
+  "created_at": "2026-07-19T04:27:06.606516+02:00",
+  "workflow": "relink-fl-studio-box-media",
+  "incoming": "projects/fl-studio-box-template/incoming",
+  "slots": {
+    "playlist": {
+      "material": "M_MOVIE_PLAYLIST",
+      "filename": "playlist.mp4",
+      "surface": "mur du fond"
+    },
+    "browser": {
+      "material": "M_MOVIE_BROWSER",
+      "filename": "browser.mp4",
+      "surface": "paroi gauche"
+    },
+    "mixer": {
+      "material": "M_MOVIE_MIXER",
+      "filename": "mixer.mp4",
+      "surface": "paroi droite"
+    },
+    "piano_roll": {
+      "material": "M_MOVIE_PIANO_ROLL",
+      "filename": "piano-roll.mp4",
+      "surface": "plancher incliné"
+    },
+    "channel_rack": {
+      "material": "M_MOVIE_CHANNEL_RACK",
+      "filename": "controller.mp4",
+      "surface": "module avant"
+    }
+  },
+  "default_timeline": {
+    "start": 1,
+    "end": 240,
+    "fps": 24
+  },
+  "save_policy": "workflow never saves the blend; validate gates before Save As"
+}

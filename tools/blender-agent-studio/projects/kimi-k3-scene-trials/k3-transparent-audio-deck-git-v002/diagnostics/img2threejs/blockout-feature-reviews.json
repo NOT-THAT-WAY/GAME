@@ -1,0 +1,8 @@
+[
+  {
+    "id": "transparent-chassis-silhouette",
+    "score": 0.81,
+    "passed": true,
+    "notes": "The thin rounded-cuboid chassis, aspect ratio and depth read correctly. The production pose is upright and supported rather than floating diagonally like the reference, so pose agreement is intentionally excluded from the geometry score."
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "snapshot_iso": "2026-06-10T10:25:29.499482+00:00",
+  "snapshot_folder": "2026-06-10-1025-HqnAQx33KG4D-v2-nano-banana-pro-4k-seed720004",
+  "url_id": "HqnAQx33KG4D",
+  "label": "v2-nano-banana-pro-4k-seed720004",
+  "output_file": "output.png",
+  "output_size_bytes": 16754947,
+  "url": "https://v3b.fal.media/files/b/0a9db922/HqnAQx33KG4DP9ruIYnU3_QLsSpT2Y.png",
+  "source_path": "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781087126384797000_0.png",
+  "prompt_snapshot": null,
+  "prompt_source": null,
+  "refs_manifest": [
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-10_macro-bottom-port-usbc.jpeg",
+      "size_bytes": 7027883,
+      "sha256_8": "714cd903"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-02_hero-back-internals.jpeg",
+      "size_bytes": 6875634,
+      "sha256_8": "9389d1c8"
+    }
+  ],
+  "provider": "falai",
+  "model": "fal-ai/gemini-3-pro-image-preview/edit",
+  "cost_usd": 0.15,
+  "duration_sec": 67.75626397132874,
+  "seed": null,
+  "adapter_metadata": {
+    "output_urls": [
+      "https://v3b.fal.media/files/b/0a9db922/HqnAQx33KG4DP9ruIYnU3_QLsSpT2Y.png"
+    ],
+    "local_paths": [
+      "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781087126384797000_0.png"
+    ],
+    "raw_result": "{'images': [{'url': 'https://v3b.fal.media/files/b/0a9db922/HqnAQx33KG4DP9ruIYnU3_QLsSpT2Y.png', 'content_type': 'image/png', 'file_name': 'HqnAQx33KG4DP9ruIYnU3_QLsSpT2Y.png', 'file_size': None, 'width': None, 'height': None}], 'description': \"**Capturing Device Edge**\\n\\nI'm focusing on rendering the bottom edge of the handheld device. My current emphasis is on achieving a photorealistic representation, particularly capturing the glossy, translucent amethyst-purple plastic, while aligning with...[truncated]",
+    "fal_model": "fal-ai/gemini-3-pro-image-preview/edit"
+  },
+  "extra": {
+    "spec": "audits_blender/pulsed-asset-prompts-v2.md (Sliz 2026-06-10)",
+    "doctrine": "v2 \u2014 prompt d\u00e9crit seulement le cadre, identit\u00e9 par refs, n\u00e9gatif court",
+    "kind": "preflight-reference-v2",
+    "provider": "falai",
+    "model": "fal-ai/gemini-3-pro-image-preview/edit",
+    "aspect_ratio": "16:9",
+    "resolution": "4K",
+    "output_format": "png",
+    "seed": 720004,
+    "image_id": "bottom-edge",
+    "intended_dest": "assets_blender/06_bottom_edge_canonical.png (NON copi\u00e9 \u2014 validation carte requise)",
+    "prompt": "Photorealistic product photography of the exact handheld device shown in the attached reference images \u2014 same shell, same proportions, same materials (glossy translucent amethyst-purple plastic with the internal PCB visible through it), same parting seam. Warm cream seamless background, soft drop shadow, consistent with the references. Do not add, remove, move or restyle any element of the device. No text overlays, no props, no people.\n\nStraight-on view of the BOTTOM edge of the device, camera at edge height, perfectly perpendicular, full device width sharp in frame with margin at both ends (deep focus, f/11). The ports exactly as in the attached bottom-edge close-up reference: the metal USB-C port slightly left of center, and the trapezoid multi-pin expansion port to its right, each recessed in its rounded cutout of the purple shell, with the parting seam running along the edge. Nothing else on this edge."
+  }
+}

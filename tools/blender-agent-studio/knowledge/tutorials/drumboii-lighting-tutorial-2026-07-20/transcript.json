@@ -1,0 +1,983 @@
+{
+  "source": "transcript-source.srt",
+  "format": "srt",
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.0,
+      "text": "Hello! In this video I'm going to show you how I think about lightning when I do my videos in Blender."
+    },
+    {
+      "start": 8.0,
+      "end": 12.0,
+      "text": "And I'm going to use one of my scenes from one of my videos here."
+    },
+    {
+      "start": 12.0,
+      "end": 20.0,
+      "text": "And I'm going to walk you through the process of how I set up my different types of lightning to achieve what I think is a satisfying look."
+    },
+    {
+      "start": 20.0,
+      "end": 24.0,
+      "text": "So a bit quick here, I use Cycles."
+    },
+    {
+      "start": 24.0,
+      "end": 29.0,
+      "text": "So right now I have zero lights on, so you can't see anything."
+    },
+    {
+      "start": 29.0,
+      "end": 34.0,
+      "text": "And to my left I have the camera view. Here I have the scene view."
+    },
+    {
+      "start": 34.0,
+      "end": 36.0,
+      "text": "And here are my different groups."
+    },
+    {
+      "start": 36.0,
+      "end": 41.0,
+      "text": "As you can see I have disabled the lightning for now and the camera."
+    },
+    {
+      "start": 41.0,
+      "end": 43.0,
+      "text": "And here I have all the stuff."
+    },
+    {
+      "start": 43.0,
+      "end": 45.0,
+      "text": "So yeah."
+    },
+    {
+      "start": 45.0,
+      "end": 50.0,
+      "text": "The first thing I'm going to do is to go to the world shader tab."
+    },
+    {
+      "start": 50.0,
+      "end": 53.0,
+      "text": "And I have this setup here."
+    },
+    {
+      "start": 53.0,
+      "end": 58.0,
+      "text": "And I have another video on my Patreon where I show you how I do this setup."
+    },
+    {
+      "start": 58.0,
+      "end": 61.0,
+      "text": "Actually, but a bit fast here."
+    },
+    {
+      "start": 61.0,
+      "end": 65.0,
+      "text": "I can show you that I have the sky setup which controls the sky background."
+    },
+    {
+      "start": 65.0,
+      "end": 67.0,
+      "text": "Go into mix shader."
+    },
+    {
+      "start": 67.0,
+      "end": 71.0,
+      "text": "And then I have an HDRI here which is going to give all the lightning."
+    },
+    {
+      "start": 71.0,
+      "end": 77.0,
+      "text": "And then I have a light path in camera array to combine the lightning with the sky background."
+    },
+    {
+      "start": 77.0,
+      "end": 81.0,
+      "text": "As you can see the background strength from the HDRI is set to zero."
+    },
+    {
+      "start": 81.0,
+      "end": 84.0,
+      "text": "And we can try to set it to one."
+    },
+    {
+      "start": 84.0,
+      "end": 92.0,
+      "text": "One is its default value which means that we have the default amount of light coming from the HDRI into the scene."
+    },
+    {
+      "start": 92.0,
+      "end": 96.0,
+      "text": "And as you can see we get some pretty cool results right away."
+    },
+    {
+      "start": 96.0,
+      "end": 101.0,
+      "text": "But in my opinion the lightning here looks a bit dull."
+    },
+    {
+      "start": 101.0,
+      "end": 106.0,
+      "text": "It's not really giving much life to the mesh and the structure in the scene."
+    },
+    {
+      "start": 106.0,
+      "end": 111.0,
+      "text": "You can see it's not really that interesting reflections and everything looks like flat almost."
+    },
+    {
+      "start": 111.0,
+      "end": 116.0,
+      "text": "So that's why I often want to add more lightning and not only use an HDRI."
+    },
+    {
+      "start": 116.0,
+      "end": 123.0,
+      "text": "So what I usually do here is that I set the strength of the HDRI texture to maybe 0.5 or 0.7."
+    },
+    {
+      "start": 123.0,
+      "end": 127.0,
+      "text": "Maybe we can go to 0.7 here I think."
+    },
+    {
+      "start": 127.0,
+      "end": 131.0,
+      "text": "And you can see now it looks really dull and not really that nice at all."
+    },
+    {
+      "start": 131.0,
+      "end": 139.0,
+      "text": "But I find it that around 0.7 or 0.5 gives me a good foundation to add more lightning on."
+    },
+    {
+      "start": 139.0,
+      "end": 142.0,
+      "text": "Without overexposureing it with light."
+    },
+    {
+      "start": 142.0,
+      "end": 146.0,
+      "text": "So the next thing we can do is to activate the light group here."
+    },
+    {
+      "start": 146.0,
+      "end": 149.0,
+      "text": "And the first thing I want to show you is the sun."
+    },
+    {
+      "start": 149.0,
+      "end": 153.0,
+      "text": "So I'm gonna activate the sun or you can see where I have placed it."
+    },
+    {
+      "start": 153.0,
+      "end": 155.0,
+      "text": "So the sun is over here and you can see if I disable it."
+    },
+    {
+      "start": 155.0,
+      "end": 157.0,
+      "text": "If you look here and then I add it again."
+    },
+    {
+      "start": 157.0,
+      "end": 160.0,
+      "text": "You can see that we instantly get some more cool reflections to the scene."
+    },
+    {
+      "start": 160.0,
+      "end": 164.0,
+      "text": "And I usually want to add the sun to almost a 90 degrees angle."
+    },
+    {
+      "start": 164.0,
+      "end": 166.0,
+      "text": "So I don't want it to be straight down."
+    },
+    {
+      "start": 166.0,
+      "end": 169.0,
+      "text": "I don't want it to be right forward but just about there."
+    },
+    {
+      "start": 169.0,
+      "end": 170.0,
+      "text": "Maybe like 70 degrees."
+    },
+    {
+      "start": 170.0,
+      "end": 178.0,
+      "text": "And I don't want it to be straight forward either because you can see if I have it pointing straight forward towards the scene."
+    },
+    {
+      "start": 178.0,
+      "end": 181.0,
+      "text": "You can see it's not really adding that much."
+    },
+    {
+      "start": 181.0,
+      "end": 185.0,
+      "text": "But if I tilt it just a bit I can control the reflections."
+    },
+    {
+      "start": 185.0,
+      "end": 188.0,
+      "text": "You can see now we get more reflections on the mesh here."
+    },
+    {
+      "start": 188.0,
+      "end": 191.0,
+      "text": "Which makes everything look more depth and interesting."
+    },
+    {
+      "start": 191.0,
+      "end": 193.0,
+      "text": "So I'm gonna leave it maybe here."
+    },
+    {
+      "start": 193.0,
+      "end": 196.0,
+      "text": "And you can see it already looks better."
+    },
+    {
+      "start": 196.0,
+      "end": 199.0,
+      "text": "Then I'm gonna activate this area lamp here."
+    },
+    {
+      "start": 199.0,
+      "end": 203.0,
+      "text": "And this lamp is background lightning."
+    },
+    {
+      "start": 203.0,
+      "end": 207.0,
+      "text": "And it's a subtle change but I feel like it makes everything come alive."
+    },
+    {
+      "start": 207.0,
+      "end": 208.0,
+      "text": "So you can see here."
+    },
+    {
+      "start": 208.0,
+      "end": 210.0,
+      "text": "Here is the area lamp."
+    },
+    {
+      "start": 210.0,
+      "end": 212.0,
+      "text": "And it's pointing from the back."
+    },
+    {
+      "start": 212.0,
+      "end": 214.0,
+      "text": "And you can see the camera is here."
+    },
+    {
+      "start": 214.0,
+      "end": 219.0,
+      "text": "So camera is looking this way and the lightning is looking back at the camera."
+    },
+    {
+      "start": 219.0,
+      "end": 222.0,
+      "text": "And if you look here over here to the left."
+    },
+    {
+      "start": 222.0,
+      "end": 224.0,
+      "text": "I will disable the backlight."
+    },
+    {
+      "start": 224.0,
+      "end": 226.0,
+      "text": "You can see everything becomes dark."
+    },
+    {
+      "start": 226.0,
+      "end": 228.0,
+      "text": "And then now I'm getting it back."
+    },
+    {
+      "start": 228.0,
+      "end": 232.0,
+      "text": "You can see it gets some like lightning coming from the top here."
+    },
+    {
+      "start": 232.0,
+      "end": 233.0,
+      "text": "And also the bottom."
+    },
+    {
+      "start": 233.0,
+      "end": 235.0,
+      "text": "So you see here is with the backlight."
+    },
+    {
+      "start": 235.0,
+      "end": 236.0,
+      "text": "And now it's off."
+    },
+    {
+      "start": 236.0,
+      "end": 238.0,
+      "text": "You can see everything becomes very flat."
+    },
+    {
+      "start": 238.0,
+      "end": 241.0,
+      "text": "And now it's back."
+    },
+    {
+      "start": 241.0,
+      "end": 243.0,
+      "text": "Same thing if you look over here."
+    },
+    {
+      "start": 243.0,
+      "end": 246.0,
+      "text": "I deactivate it."
+    },
+    {
+      "start": 246.0,
+      "end": 247.0,
+      "text": "It's a bit flat here."
+    },
+    {
+      "start": 247.0,
+      "end": 250.0,
+      "text": "And now it's getting back."
+    },
+    {
+      "start": 250.0,
+      "end": 253.0,
+      "text": "Just a little bit of lightning on the sides here."
+    },
+    {
+      "start": 253.0,
+      "end": 258.0,
+      "text": "Which I think adds a lot of realism in the end."
+    },
+    {
+      "start": 258.0,
+      "end": 261.0,
+      "text": "And then we can go to this lightning here to the right."
+    },
+    {
+      "start": 261.0,
+      "end": 263.0,
+      "text": "And see what it does."
+    },
+    {
+      "start": 263.0,
+      "end": 265.0,
+      "text": "So I have it placed over here."
+    },
+    {
+      "start": 265.0,
+      "end": 269.0,
+      "text": "And I don't think it's doing really that much at all."
+    },
+    {
+      "start": 269.0,
+      "end": 273.0,
+      "text": "Also of course you can see the strength down here."
+    },
+    {
+      "start": 273.0,
+      "end": 277.0,
+      "text": "But it's probably just adding a little bit of detail."
+    },
+    {
+      "start": 277.0,
+      "end": 280.0,
+      "text": "We can try to deactivate it."
+    },
+    {
+      "start": 280.0,
+      "end": 283.0,
+      "text": "It's not really doing that much."
+    },
+    {
+      "start": 283.0,
+      "end": 288.0,
+      "text": "But maybe just a little bit of details."
+    },
+    {
+      "start": 288.0,
+      "end": 290.0,
+      "text": "If I add it back."
+    },
+    {
+      "start": 290.0,
+      "end": 291.0,
+      "text": "Remove it back."
+    },
+    {
+      "start": 291.0,
+      "end": 294.0,
+      "text": "You can see for example here on the chain."
+    },
+    {
+      "start": 294.0,
+      "end": 297.0,
+      "text": "It just adds a little bit of like glimmer here."
+    },
+    {
+      "start": 297.0,
+      "end": 298.0,
+      "text": "So I remove it."
+    },
+    {
+      "start": 298.0,
+      "end": 299.0,
+      "text": "Now."
+    },
+    {
+      "start": 299.0,
+      "end": 301.0,
+      "text": "Now I'm getting it back."
+    },
+    {
+      "start": 301.0,
+      "end": 302.0,
+      "text": "So yeah."
+    },
+    {
+      "start": 302.0,
+      "end": 305.0,
+      "text": "It's just those like fine tuning details."
+    },
+    {
+      "start": 305.0,
+      "end": 308.0,
+      "text": "That this area lamp adds."
+    },
+    {
+      "start": 308.0,
+      "end": 311.0,
+      "text": "We can go to the third area lamp here."
+    },
+    {
+      "start": 311.0,
+      "end": 313.0,
+      "text": "You can see it's here."
+    },
+    {
+      "start": 313.0,
+      "end": 314.0,
+      "text": "Over here."
+    },
+    {
+      "start": 314.0,
+      "end": 315.0,
+      "text": "It's."
+    },
+    {
+      "start": 315.0,
+      "end": 316.0,
+      "text": "We had."
+    },
+    {
+      "start": 316.0,
+      "end": 317.0,
+      "text": "We had."
+    },
+    {
+      "start": 317.0,
+      "end": 318.0,
+      "text": "The backlight here."
+    },
+    {
+      "start": 318.0,
+      "end": 320.0,
+      "text": "Was at 1400 power."
+    },
+    {
+      "start": 320.0,
+      "end": 323.0,
+      "text": "And this one was like a third of it."
+    },
+    {
+      "start": 323.0,
+      "end": 325.0,
+      "text": "And now the third one."
+    },
+    {
+      "start": 325.0,
+      "end": 327.0,
+      "text": "Is even less."
+    },
+    {
+      "start": 327.0,
+      "end": 329.0,
+      "text": "So it's not really that strong at all."
+    },
+    {
+      "start": 329.0,
+      "end": 330.0,
+      "text": "But probably."
+    },
+    {
+      "start": 330.0,
+      "end": 333.0,
+      "text": "It's just adding a little bit of like detail."
+    },
+    {
+      "start": 333.0,
+      "end": 335.0,
+      "text": "From the side here."
+    },
+    {
+      "start": 335.0,
+      "end": 342.0,
+      "text": "You can see it's pointing to the side of the mesh here."
+    },
+    {
+      "start": 342.0,
+      "end": 343.0,
+      "text": "So we can try it."
+    },
+    {
+      "start": 343.0,
+      "end": 344.0,
+      "text": "If we look here."
+    },
+    {
+      "start": 344.0,
+      "end": 345.0,
+      "text": "From the side."
+    },
+    {
+      "start": 345.0,
+      "end": 347.0,
+      "text": "We can try to remove it."
+    },
+    {
+      "start": 347.0,
+      "end": 349.0,
+      "text": "And now it's back."
+    },
+    {
+      "start": 349.0,
+      "end": 350.0,
+      "text": "And."
+    },
+    {
+      "start": 350.0,
+      "end": 351.0,
+      "text": "Yeah."
+    },
+    {
+      "start": 351.0,
+      "end": 352.0,
+      "text": "You."
+    },
+    {
+      "start": 352.0,
+      "end": 353.0,
+      "text": "You probably wouldn't even notice it."
+    },
+    {
+      "start": 353.0,
+      "end": 354.0,
+      "text": "If I didn't have this."
+    },
+    {
+      "start": 354.0,
+      "end": 355.0,
+      "text": "But."
+    },
+    {
+      "start": 355.0,
+      "end": 356.0,
+      "text": "Probably just adds."
+    },
+    {
+      "start": 356.0,
+      "end": 358.0,
+      "text": "A little bit of more detail."
+    },
+    {
+      "start": 358.0,
+      "end": 359.0,
+      "text": "Again."
+    },
+    {
+      "start": 359.0,
+      "end": 360.0,
+      "text": "You."
+    },
+    {
+      "start": 360.0,
+      "end": 362.0,
+      "text": "Maybe you can see it on the chains here."
+    },
+    {
+      "start": 362.0,
+      "end": 364.0,
+      "text": "So if I deactivate it."
+    },
+    {
+      "start": 364.0,
+      "end": 365.0,
+      "text": "And add it."
+    },
+    {
+      "start": 365.0,
+      "end": 370.0,
+      "text": "With just a little bit more light."
+    },
+    {
+      "start": 370.0,
+      "end": 371.0,
+      "text": "And now."
+    },
+    {
+      "start": 371.0,
+      "end": 373.0,
+      "text": "We're adding in the final."
+    },
+    {
+      "start": 373.0,
+      "end": 374.0,
+      "text": "Area lamp here."
+    },
+    {
+      "start": 374.0,
+      "end": 375.0,
+      "text": "We can see."
+    },
+    {
+      "start": 375.0,
+      "end": 377.0,
+      "text": "And it's over here."
+    },
+    {
+      "start": 377.0,
+      "end": 379.0,
+      "text": "You can see it's pointing to the other."
+    },
+    {
+      "start": 379.0,
+      "end": 380.0,
+      "text": "In the other direction here."
+    },
+    {
+      "start": 380.0,
+      "end": 381.0,
+      "text": "And."
+    },
+    {
+      "start": 381.0,
+      "end": 382.0,
+      "text": "It's only."
+    },
+    {
+      "start": 382.0,
+      "end": 383.0,
+      "text": "It's 20 power."
+    },
+    {
+      "start": 383.0,
+      "end": 384.0,
+      "text": "So."
+    },
+    {
+      "start": 384.0,
+      "end": 385.0,
+      "text": "I would probably try."
+    },
+    {
+      "start": 385.0,
+      "end": 387.0,
+      "text": "Increasing the strength here."
+    },
+    {
+      "start": 387.0,
+      "end": 388.0,
+      "text": "Maybe do."
+    },
+    {
+      "start": 388.0,
+      "end": 389.0,
+      "text": "220."
+    },
+    {
+      "start": 389.0,
+      "end": 390.0,
+      "text": "Yeah."
+    },
+    {
+      "start": 390.0,
+      "end": 392.0,
+      "text": "Now we get some more details."
+    },
+    {
+      "start": 392.0,
+      "end": 393.0,
+      "text": "So we see."
+    },
+    {
+      "start": 393.0,
+      "end": 394.0,
+      "text": "Now we get some more."
+    },
+    {
+      "start": 394.0,
+      "end": 395.0,
+      "text": "Details over here."
+    },
+    {
+      "start": 395.0,
+      "end": 396.0,
+      "text": "To the left."
+    },
+    {
+      "start": 396.0,
+      "end": 397.0,
+      "text": "If I remove it."
+    },
+    {
+      "start": 397.0,
+      "end": 398.0,
+      "text": "If I."
+    },
+    {
+      "start": 398.0,
+      "end": 399.0,
+      "text": "If I remove the."
+    },
+    {
+      "start": 399.0,
+      "end": 400.0,
+      "text": "This area lamp."
+    },
+    {
+      "start": 400.0,
+      "end": 401.0,
+      "text": "You see."
+    },
+    {
+      "start": 401.0,
+      "end": 402.0,
+      "text": "It's kind of dark here."
+    },
+    {
+      "start": 402.0,
+      "end": 403.0,
+      "text": "And now it's back."
+    },
+    {
+      "start": 403.0,
+      "end": 405.0,
+      "text": "Now we get more details."
+    },
+    {
+      "start": 405.0,
+      "end": 406.0,
+      "text": "So yeah."
+    },
+    {
+      "start": 406.0,
+      "end": 407.0,
+      "text": "This."
+    },
+    {
+      "start": 407.0,
+      "end": 408.0,
+      "text": "That's essentially everything I do."
+    },
+    {
+      "start": 408.0,
+      "end": 409.0,
+      "text": "When I."
+    },
+    {
+      "start": 409.0,
+      "end": 410.0,
+      "text": "Light my scenes."
+    },
+    {
+      "start": 410.0,
+      "end": 411.0,
+      "text": "So."
+    },
+    {
+      "start": 411.0,
+      "end": 412.0,
+      "text": "Again."
+    },
+    {
+      "start": 412.0,
+      "end": 413.0,
+      "text": "The first step."
+    },
+    {
+      "start": 413.0,
+      "end": 414.0,
+      "text": "Is to add this."
+    },
+    {
+      "start": 414.0,
+      "end": 415.0,
+      "text": "HRI."
+    },
+    {
+      "start": 415.0,
+      "end": 416.0,
+      "text": "And not put strength to max."
+    },
+    {
+      "start": 416.0,
+      "end": 417.0,
+      "text": "Because if."
+    },
+    {
+      "start": 417.0,
+      "end": 418.0,
+      "text": "If we would."
+    },
+    {
+      "start": 418.0,
+      "end": 419.0,
+      "text": "Max it now."
+    },
+    {
+      "start": 419.0,
+      "end": 420.0,
+      "text": "When we have."
+    },
+    {
+      "start": 420.0,
+      "end": 421.0,
+      "text": "All."
+    },
+    {
+      "start": 421.0,
+      "end": 422.0,
+      "text": "This lighting also."
+    },
+    {
+      "start": 422.0,
+      "end": 423.0,
+      "text": "You can see that it would."
+    },
+    {
+      "start": 423.0,
+      "end": 424.0,
+      "text": "Become."
+    },
+    {
+      "start": 424.0,
+      "end": 425.0,
+      "text": "Almost overexposed."
+    },
+    {
+      "start": 425.0,
+      "end": 426.0,
+      "text": "But yeah."
+    },
+    {
+      "start": 426.0,
+      "end": 427.0,
+      "text": "You could probably use this too."
+    },
+    {
+      "start": 427.0,
+      "end": 428.0,
+      "text": "Controlled fine tune details."
+    },
+    {
+      "start": 428.0,
+      "end": 430.0,
+      "text": "With my own lightning."
+    },
+    {
+      "start": 430.0,
+      "end": 431.0,
+      "text": "About 0.7."
+    },
+    {
+      "start": 431.0,
+      "end": 432.0,
+      "text": "And then you have this."
+    },
+    {
+      "start": 432.0,
+      "end": 433.0,
+      "text": "Sun here."
+    },
+    {
+      "start": 433.0,
+      "end": 434.0,
+      "text": "It's a."
+    },
+    {
+      "start": 434.0,
+      "end": 435.0,
+      "text": "Almost 90 degrees angle."
+    },
+    {
+      "start": 435.0,
+      "end": 436.0,
+      "text": "Pointing."
+    },
+    {
+      "start": 436.0,
+      "end": 437.0,
+      "text": "A bit."
+    },
+    {
+      "start": 437.0,
+      "end": 438.0,
+      "text": "To the right."
+    },
+    {
+      "start": 438.0,
+      "end": 439.0,
+      "text": "And then I have."
+    },
+    {
+      "start": 439.0,
+      "end": 440.0,
+      "text": "Those."
+    },
+    {
+      "start": 440.0,
+      "end": 441.0,
+      "text": "Area lamps over here."
+    },
+    {
+      "start": 441.0,
+      "end": 442.0,
+      "text": "So yeah."
+    },
+    {
+      "start": 442.0,
+      "end": 443.0,
+      "text": "That's everything I do."
+    },
+    {
+      "start": 443.0,
+      "end": 444.0,
+      "text": "When I light my scenes."
+    },
+    {
+      "start": 444.0,
+      "end": 445.0,
+      "text": "Thank you for watching."
+    },
+    {
+      "start": 445.0,
+      "end": 446.0,
+      "text": "And see you in my next video."
+    }
+  ],
+  "text": "Hello! In this video I'm going to show you how I think about lightning when I do my videos in Blender. And I'm going to use one of my scenes from one of my videos here. And I'm going to walk you through the process of how I set up my different types of lightning to achieve what I think is a satisfying look. So a bit quick here, I use Cycles. So right now I have zero lights on, so you can't see anything. And to my left I have the camera view. Here I have the scene view. And here are my different groups. As you can see I have disabled the lightning for now and the camera. And here I have all the stuff. So yeah. The first thing I'm going to do is to go to the world shader tab. And I have this setup here. And I have another video on my Patreon where I show you how I do this setup. Actually, but a bit fast here. I can show you that I have the sky setup which controls the sky background. Go into mix shader. And then I have an HDRI here which is going to give all the lightning. And then I have a light path in camera array to combine the lightning with the sky background. As you can see the background strength from the HDRI is set to zero. And we can try to set it to one. One is its default value which means that we have the default amount of light coming from the HDRI into the scene. And as you can see we get some pretty cool results right away. But in my opinion the lightning here looks a bit dull. It's not really giving much life to the mesh and the structure in the scene. You can see it's not really that interesting reflections and everything looks like flat almost. So that's why I often want to add more lightning and not only use an HDRI. So what I usually do here is that I set the strength of the HDRI texture to maybe 0.5 or 0.7. Maybe we can go to 0.7 here I think. And you can see now it looks really dull and not really that nice at all. But I find it that around 0.7 or 0.5 gives me a good foundation to add more lightning on. Without overexposureing it with light. So the next thing we can do is to activate the light group here. And the first thing I want to show you is the sun. So I'm gonna activate the sun or you can see where I have placed it. So the sun is over here and you can see if I disable it. If you look here and then I add it again. You can see that we instantly get some more cool reflections to the scene. And I usually want to add the sun to almost a 90 degrees angle. So I don't want it to be straight down. I don't want it to be right forward but just about there. Maybe like 70 degrees. And I don't want it to be straight forward either because you can see if I have it pointing straight forward towards the scene. You can see it's not really adding that much. But if I tilt it just a bit I can control the reflections. You can see now we get more reflections on the mesh here. Which makes everything look more depth and interesting. So I'm gonna leave it maybe here. And you can see it already looks better. Then I'm gonna activate this area lamp here. And this lamp is background lightning. And it's a subtle change but I feel like it makes everything come alive. So you can see here. Here is the area lamp. And it's pointing from the back. And you can see the camera is here. So camera is looking this way and the lightning is looking back at the camera. And if you look here over here to the left. I will disable the backlight. You can see everything becomes dark. And then now I'm getting it back. You can see it gets some like lightning coming from the top here. And also the bottom. So you see here is with the backlight. And now it's off. You can see everything becomes very flat. And now it's back. Same thing if you look over here. I deactivate it. It's a bit flat here. And now it's getting back. Just a little bit of lightning on the sides here. Which I think adds a lot of realism in the end. And then we can go to this lightning here to the right. And see what it does. So I have it placed over here. And I don't think it's doing really that much at all. Also of course you can see the strength down here. But it's probably just adding a little bit of detail. We can try to deactivate it. It's not really doing that much. But maybe just a little bit of details. If I add it back. Remove it back. You can see for example here on the chain. It just adds a little bit of like glimmer here. So I remove it. Now. Now I'm getting it back. So yeah. It's just those like fine tuning details. That this area lamp adds. We can go to the third area lamp here. You can see it's here. Over here. It's. We had. We had. The backlight here. Was at 1400 power. And this one was like a third of it. And now the third one. Is even less. So it's not really that strong at all. But probably. It's just adding a little bit of like detail. From the side here. You can see it's pointing to the side of the mesh here. So we can try it. If we look here. From the side. We can try to remove it. And now it's back. And. Yeah. You. You probably wouldn't even notice it. If I didn't have this. But. Probably just adds. A little bit of more detail. Again. You. Maybe you can see it on the chains here. So if I deactivate it. And add it. With just a little bit more light. And now. We're adding in the final. Area lamp here. We can see. And it's over here. You can see it's pointing to the other. In the other direction here. And. It's only. It's 20 power. So. I would probably try. Increasing the strength here. Maybe do. 220. Yeah. Now we get some more details. So we see. Now we get some more. Details over here. To the left. If I remove it. If I. If I remove the. This area lamp. You see. It's kind of dark here. And now it's back. Now we get more details. So yeah. This. That's essentially everything I do. When I. Light my scenes. So. Again. The first step. Is to add this. HRI. And not put strength to max. Because if. If we would. Max it now. When we have. All. This lighting also. You can see that it would. Become. Almost overexposed. But yeah. You could probably use this too. Controlled fine tune details. With my own lightning. About 0.7. And then you have this. Sun here. It's a. Almost 90 degrees angle. Pointing. A bit. To the right. And then I have. Those. Area lamps over here. So yeah. That's everything I do. When I light my scenes. Thank you for watching. And see you in my next video."
+}

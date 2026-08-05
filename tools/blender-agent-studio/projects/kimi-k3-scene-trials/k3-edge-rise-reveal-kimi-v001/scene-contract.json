@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-kimi-v001",
+  "status": "completed",
+  "coordinate_frame": {
+    "up": "+Z",
+    "user_side": "interieur de la boite",
+    "front": "+Y (vers les ecrans du fond)",
+    "right": "+X",
+    "units": "meters"
+  },
+  "objects": [
+    {
+      "name": "K3_MECHA_MASCOT_ROOT",
+      "semantic_role": "hero_subject",
+      "fixed_or_moving": "moving",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": ["USTUDIO_FRONT_BOTTOM_RIM", "USTUDIO_PIANO_ROLL_FLOOR"],
+      "support_surfaces": ["USTUDIO_FRONT_BOTTOM_RIM (f1-130)", "USTUDIO_PIANO_ROLL_FLOOR (f130-360)"],
+      "allowed_motion": ["sit", "sit_to_stand", "walk_uphill", "stop", "look_up"],
+      "forbidden_motion": ["teleport", "unmotivated_drift", "environment_intersection"]
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_FLOOR",
+      "semantic_role": "media_playhead",
+      "fixed_or_moving": "moving (sweep x f1-397)",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": [],
+      "support_surfaces": [],
+      "allowed_motion": ["linear_x_sweep"],
+      "forbidden_motion": ["teleport", "unmotivated_drift", "environment_intersection"]
+    }
+  ],
+  "joints": [
+    {"rig": "K3_EDGE_RIG", "bones": ["Pelvis", "Spine", "Chest", "Neck", "Head", "UpperArm.L/R", "Forearm.L/R", "Thigh.L/R", "Shin.L/R"], "note": "rig ajoute par l'essai, mesh de l'asset non modifie, skinning auto-weights"}
+  ],
+  "supports_and_contacts": [
+    {"frames": "1-130", "support": "USTUDIO_FRONT_BOTTOM_RIM", "contact": "bassin (assis) puis pieds", "drift_max_m": 0.005},
+    {"frames": "130-360", "support": "USTUDIO_PIANO_ROLL_FLOOR", "contact": "pieds, semelles coplanaires pente 47.1 deg", "drift_max_m": 0.005}
+  ],
+  "collision_pairs": [
+    {"a": "K3_MECHA_BODY", "b": "USTUDIO_PIANO_ROLL_FLOOR", "tolerance_m": 0.002},
+    {"a": "K3_MECHA_BODY", "b": "USTUDIO_FRONT_BOTTOM_RIM", "tolerance_m": 0.002}
+  ],
+  "camera_corridor": {
+    "description": "frontal exterieur : camera de (x-1.55, y-3.6) a (x0, y-9.1), jamais dans la boite (facade y=-1.115)",
+    "clearance_margin_m": 2.08,
+    "obstacles": ["USTUDIO_FRONT_BOTTOM_RIM", "USTUDIO_CHANNEL_RACK_CASE"],
+    "validated": true
+  },
+  "shot_states": [
+    {"name": "S0_STILL", "time_seconds": 0.0, "object_state": "assis genoux remontes sur le rim, pied R bat le tempo", "camera_state": "proche, bas, contre-plongee legere, 50mm"},
+    {"name": "S1_ANTICIPATION", "time_seconds": 1.9, "object_state": "bascule arriere puis avant, mains sur genoux", "camera_state": "micro push-in"},
+    {"name": "S2_ACTION", "time_seconds": 3.5, "object_state": "debout puis marche montante sur la pente", "camera_state": "pull-back + elevation progressifs"},
+    {"name": "S3_IMPACT", "time_seconds": 6.8, "object_state": "la playhead le traverse, temps d'arret", "camera_state": "plan moyen, 38mm"},
+    {"name": "S4_SETTLE", "time_seconds": 10.0, "object_state": "arret au centre, torse se redresse", "camera_state": "large, 33mm"},
+    {"name": "S5_STILL", "time_seconds": 12, "object_state": "regard leve vers le haut des ecrans, hold", "camera_state": "plan large final 35mm, silhouette 13.7% du cadre"}
+  ],
+  "validation": {
+    "required_views": ["hero", "side", "top_or_rear_if_occluded"],
+    "sample_every_n_frames": 1,
+    "critical_failure_cap": 49
+  }
+}

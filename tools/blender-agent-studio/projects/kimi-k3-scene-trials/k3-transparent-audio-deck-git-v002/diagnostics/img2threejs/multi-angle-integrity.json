@@ -1,0 +1,26 @@
+{
+  "referenceAreaFraction": 0.486572265625,
+  "angles": [
+    {
+      "path": "gates/views/front.png",
+      "areaFraction": 0.697669921875,
+      "ratio": 1.4338464626191672,
+      "degenerate": false
+    },
+    {
+      "path": "gates/views/right.png",
+      "areaFraction": 0.641412109375,
+      "ratio": 1.318225790265931,
+      "degenerate": false
+    },
+    {
+      "path": "gates/views/rear_three_quarter.png",
+      "areaFraction": 0.474099609375,
+      "ratio": 0.9743662819869544,
+      "degenerate": false
+    }
+  ],
+  "degenerate": false,
+  "collapseRatio": 0.15,
+  "note": "Permanent-clone deterministic multi-angle gate. It proves non-degenerate volume, not reference fidelity at hidden angles."
+}

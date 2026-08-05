@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "wireless-pods-animation-polygon-runway",
+  "title": "Wireless Pods Blender Animation — Polygon Runway",
+  "status": "ready_for_ai",
+  "source_name": "source.mp4",
+  "original_filename": "Wireless Pods Blender Animation Tutorial Polygon Runway.mp4",
+  "original_sha256": "9db368cb24a1bdce4e1646e48e1fd41af53640032569afadec3ae5881f45c6b3",
+  "source_policy": "Original conservé dans _incoming/04-new-tutorials; lien symbolique sans duplication",
+  "created": "2026-07-19T02:25:00+02:00",
+  "updated": "2026-07-19T03:20:00+02:00",
+  "analysis_status": "completed",
+  "technical": {
+    "duration": 1880.6639,
+    "frame_interval_requested": 10.0,
+    "frame_interval_effective": 10.0,
+    "scene_threshold": 0.26,
+    "regular_frame_count": 188,
+    "scene_frame_count": 21,
+    "has_video": true,
+    "has_audio": true
+  },
+  "evidence": {
+    "source": "knowledge/tutorials/_incoming/04-new-tutorials/Wireless Pods Blender Animation Tutorial Polygon Runway.mp4",
+    "probe": "knowledge/tutorials/wireless-pods-animation-polygon-runway/probe.json",
+    "frames_dir": "knowledge/tutorials/wireless-pods-animation-polygon-runway/frames/regular",
+    "scenes_dir": "knowledge/tutorials/wireless-pods-animation-polygon-runway/frames/scenes",
+    "contact_sheet": "knowledge/tutorials/wireless-pods-animation-polygon-runway/contact-sheet.jpg",
+    "audio": "knowledge/tutorials/wireless-pods-animation-polygon-runway/audio.wav",
+    "transcript": "knowledge/tutorials/wireless-pods-animation-polygon-runway/transcript.json",
+    "analysis": "knowledge/tutorials/wireless-pods-animation-polygon-runway/analysis.json",
+    "analysis_markdown": "knowledge/tutorials/wireless-pods-animation-polygon-runway/ANALYSIS.md"
+  }
+}

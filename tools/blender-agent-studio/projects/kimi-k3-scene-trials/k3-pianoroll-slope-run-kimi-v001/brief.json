@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-kimi-v001",
+  "status": "ready",
+  "mode": "micro-scene",
+  "objective": "Un humanoïde monte la pente réelle du Piano Roll avec biomécanique, adhérence et caméra adaptées",
+  "source_blend": "projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+  "target_collection": "FL_STUDIO_INTERIOR",
+  "duration_seconds": 8,
+  "fps": 30,
+  "resolution": [
+    640,
+    360
+  ],
+  "story": {
+    "premise": "Un petit humanoïde blanc se tient au bas du Piano Roll incliné à ~46° dans la boîte FL Studio.",
+    "cause": "Le premier downbeat fort (frame ~57, grille audio 148,9 BPM) déclenche le départ.",
+    "action": "Il court vers le haut de la pente en adaptant appuis, foulée, centre de gravité et effort à l'angle réel.",
+    "result": "Il s'arrête avant le bord supérieur, récupère, pose finale stable.",
+    "beats": [
+      {
+        "time_seconds": 0.0,
+        "state": "still_initial",
+        "cause": "état établi",
+        "visible_result": "personnage et diagonale de pente lisibles"
+      },
+      {
+        "time_seconds": 0.57,
+        "state": "anticipation",
+        "cause": "lecture de la pente",
+        "visible_result": "transfert du poids vers l'amont"
+      },
+      {
+        "time_seconds": 1.9,
+        "state": "action",
+        "cause": "downbeat frame 57",
+        "visible_result": "premier appui fort, départ de course"
+      },
+      {
+        "time_seconds": 6.4,
+        "state": "impact",
+        "cause": "arrivée avant le bord supérieur",
+        "visible_result": "dernier appui, décélération"
+      },
+      {
+        "time_seconds": 7.0,
+        "state": "settle",
+        "cause": "dissipation de l'effort",
+        "visible_result": "récupération"
+      },
+      {
+        "time_seconds": 8,
+        "state": "still_final",
+        "cause": "action terminée",
+        "visible_result": "pose stable"
+      }
+    ]
+  },
+  "invariants": [
+    "proportions et identité canonique du sujet",
+    "aucune traversée ou collision non intentionnelle",
+    "orientation et affordance humaines correctes",
+    "aucun drift relatif pendant un contact mécanique",
+    "aucune frame corrompue ou manquante"
+  ],
+  "camera": {
+    "style_source": "knowledge/tutorials/DRUMBOIII_DIRECTION.md",
+    "primary_move": "tracking latéral trois-quarts montant, parallèle à UPHILL_TANGENT, distance constante",
+    "lens_mm_range": [
+      50,
+      65
+    ],
+    "target_strategy": "TARGET indépendant, points d'attention nommés",
+    "focus_strategy": "FOCUS explicite contrôlé aux poses hero",
+    "hero_poses_seconds": [
+      0.0,
+      1.9,
+      6.4,
+      8
+    ],
+    "forbidden": [
+      "drift sans cause",
+      "wobble prolongé",
+      "clipping",
+      "mouvement complexe concurrent de l'objet"
+    ]
+  },
+  "lighting": {
+    "style_source": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/analysis.json",
+    "preset": "drumboiii-layered",
+    "world_strength": 0.7,
+    "required_layers": [
+      "SUN_REFLECTION",
+      "BACK_SHAPE",
+      "SIDE_GLIMMER_A",
+      "SIDE_GLIMMER_B",
+      "DETAIL_RETURN"
+    ],
+    "gate_each_layer": true,
+    "forbidden": [
+      "highlight clippé sur détail canonique",
+      "lampe sans fonction visuelle nommée",
+      "lumière utilisée pour cacher une erreur de géométrie"
+    ]
+  },
+  "physics": {
+    "contract_files": [],
+    "gravity_enabled_or_justified": true,
+    "supports": [
+      "USTUDIO_PIANO_ROLL_FLOOR (grip contractuel mu=1.25, cause visible: semelles lime pulsées)"
+    ],
+    "colliders": [
+      "USTUDIO_PIANO_ROLL_FLOOR",
+      "USTUDIO_BACK_WALL",
+      "USTUDIO_CEILING"
+    ],
+    "joints": [],
+    "clearance_checks": [
+      "drift pied planté <= 0.005 m",
+      "pénétration <= 0.002 m",
+      "swing clearance >= 0.01 m",
+      "caméra/décor >= 0.08 m"
+    ],
+    "camera_corridor_clear": false
+  },
+  "materials_and_design": {
+    "dominant_color": "blanc pearl (personnage)",
+    "secondary_color": "gris chaud de la coque",
+    "accent_color": "lime (grip semelles, playhead) + magenta opposé",
+    "material_roles": [],
+    "typography": {
+      "used": false,
+      "content": "",
+      "font": "",
+      "legibility_gate": "not_applicable"
+    }
+  },
+  "limits": {
+    "max_iterations_per_category": 3,
+    "allowed_output_root": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-kimi-v001",
+    "overwrite_source_blend": false,
+    "save_only_trial_copy": true
+  }
+}

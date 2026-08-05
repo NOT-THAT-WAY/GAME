@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "object_class": "handheld_modulation_device",
+  "asset": "PULSED_V2",
+  "source_model": "projects/pulsed-model-v2/scene/pulsed_v2.blend",
+  "canonical_frame": {
+    "up": "+Z",
+    "user_side": "-Y",
+    "right": "+X",
+    "upright_required": false,
+    "note": "Repere du MODELE, en BU ou 1 BU = 1 cm. La face regarde -Y. Un plan qui pose l'objet a plat applique une rotation de -90 deg autour de X et un scale 0.01 pour passer en metres ; les limites ci-dessous restent exprimees dans le repere local du modele."
+  },
+  "semantics": {
+    "fixed_base": "PV2_shell_front + PV2_shell_back",
+    "information_surface": "PV2_screen_panel",
+    "interaction_surfaces": [
+      "PV2_wheel", "PV2_sync", "PV2_dpad", "PV2_hslider_cap", "PV2_gain_knob"
+    ],
+    "affordance": "tenu a deux mains en paysage ; le pouce gauche roule la molette et presse SYNC, le pouce droit pousse le D-pad et les deux sliders ; l'ecran fait face a l'utilisateur en usage.",
+    "declared_convention": "Dans un plan de demonstration produit, les courses peuvent etre jouees SANS main visible. C'est une convention de presentation, declaree ici et dans le brief de l'essai, pas une affirmation que l'objet s'actionne seul.",
+    "usage_state": "l'ecran doit rester face a l'utilisateur et les cinq surfaces d'interaction accessibles ; un plan qui masque l'ecran ou enterre une commande contredit l'affordance."
+  },
+  "joints": [
+    {
+      "name": "wheel",
+      "object": "PV2_wheel",
+      "type": "revolute",
+      "axis": "X",
+      "continuous": true,
+      "delta_limits_degrees": [-3600.0, 3600.0],
+      "note": "Tambour crante a axe horizontal. Rotation libre, c'est un encodeur : il n'a pas de butee. Seul son axe est contraint — toute rotation hors X est interdite."
+    },
+    {
+      "name": "gain_slider",
+      "object": "PV2_gain_knob",
+      "type": "prismatic",
+      "axis": "Z",
+      "travel_bu": [0.0, 1.10],
+      "reference": "position basse de la fente, u 0.784 / v 0.546 de la carte v4",
+      "note": "La course est bornee par la fente. Le knob ne doit jamais depasser v 0.274 en haut ni v 0.546 en bas, et ne touche jamais le D-pad."
+    },
+    {
+      "name": "horizontal_slider",
+      "object": "PV2_hslider_cap",
+      "type": "prismatic",
+      "axis": "X",
+      "travel_bu": [0.0, 1.70],
+      "note": "Cap a cheval sur un rail SURELEVE. Il ne va JAMAIS jusqu'au bout du rail : une marge d'au moins 0.28 BU reste a chaque extremite."
+    },
+    {
+      "name": "dpad",
+      "object": "PV2_dpad",
+      "type": "revolute",
+      "axis": "Z",
+      "delta_limits_degrees": [-8.0, 8.0],
+      "note": "Bascule autour du centre. +Z enfonce le bras droit, -Z le bras gauche. Une bascule au-dela de 8 deg ferait sortir un bras de son logement."
+    },
+    {
+      "name": "sync_button",
+      "object": "PV2_sync",
+      "type": "prismatic",
+      "axis": "Y",
+      "travel_bu": [0.0, 0.15],
+      "note": "Course d'appui vers +Y (vers l'interieur du boitier). Un deplacement vers -Y sortirait le bouton de la coque."
+    }
+  ],
+  "contact_rules": [
+    {
+      "name": "repos_sur_support",
+      "description": "Pose a plat face vers le haut, l'objet repose par le dome de sa coque arriere. Le point le plus bas de la geometrie evaluee doit toucher le plan du support : ni penetration, ni ecart.",
+      "support_semantics": "dome de PV2_shell_back / plateau du support",
+      "max_penetration_m": 0.002,
+      "max_support_gap_m": 0.005,
+      "max_planted_drift_m": 0.005
+    },
+    {
+      "name": "pas_de_levitation",
+      "description": "L'objet n'a aucune cause de levitation. Tout plan qui le fait flotter est un echec critique tant qu'une cause visible n'est pas etablie avant la perte d'appui."
+    }
+  ],
+  "visual_gates": {
+    "required_views": ["appui rasant montrant la ligne de contact", "profil orthographique", "pose hero"],
+    "required_questions": [
+      "Le point le plus bas touche-t-il le support, sans le traverser ?",
+      "L'ecran fait-il face a l'utilisateur pendant toute la sequence ?",
+      "Les cinq commandes restent-elles accessibles et dans leurs limites ?",
+      "Le cap du slider horizontal s'arrete-t-il avant la butee du rail ?",
+      "Le knob de gain reste-t-il dans sa fente sans toucher le D-pad ?",
+      "L'objet glisse-t-il sur le support sans cause ?"
+    ]
+  }
+}

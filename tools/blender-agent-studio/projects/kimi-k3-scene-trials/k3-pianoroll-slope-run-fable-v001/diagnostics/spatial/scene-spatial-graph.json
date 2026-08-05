@@ -1,0 +1,2599 @@
+{
+  "schema_version": 1,
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/scene/trial.blend",
+  "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+  "collection": null,
+  "truncated": false,
+  "objects": [
+    {
+      "name": "USTUDIO_MEDIA_CONTROLLER",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bounds_max": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "center": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": true
+    },
+    {
+      "name": "USTUDIO_SOFT_KEY",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -4.6,
+        -5.8,
+        7.5
+      ],
+      "bounds_max": [
+        -4.6,
+        -5.8,
+        7.5
+      ],
+      "center": [
+        -4.6,
+        -5.8,
+        7.5
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SOFT_FILL",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        4.8,
+        -4.5,
+        5.3
+      ],
+      "bounds_max": [
+        4.8,
+        -4.5,
+        5.3
+      ],
+      "center": [
+        4.8,
+        -4.5,
+        5.3
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SHADOW_TARGET",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        0.0,
+        0.4,
+        0.0
+      ],
+      "bounds_max": [
+        0.0,
+        0.4,
+        0.0
+      ],
+      "center": [
+        0.0,
+        0.4,
+        0.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FLOAT_SHADOW_KEY",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        0.0,
+        -0.8,
+        8.5
+      ],
+      "bounds_max": [
+        0.0,
+        -0.8,
+        8.5
+      ],
+      "center": [
+        0.0,
+        -0.8,
+        8.5
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_BOX_FLOAT_ROOT",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -0.047308,
+        -0.002995,
+        1.217362
+      ],
+      "bounds_max": [
+        -0.047308,
+        -0.002995,
+        1.217362
+      ],
+      "center": [
+        -0.047308,
+        -0.002995,
+        1.217362
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FRONT_TOP_RIM",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -4.542568,
+        -1.071878,
+        6.549263
+      ],
+      "bounds_max": [
+        4.567267,
+        -0.309441,
+        7.332794
+      ],
+      "center": [
+        0.01235,
+        -0.690659,
+        6.941029
+      ],
+      "dimensions": [
+        9.109835,
+        0.762437,
+        0.783531
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FRONT_BOTTOM_RIM",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -4.600635,
+        -1.101822,
+        1.249665
+      ],
+      "bounds_max": [
+        4.509201,
+        -0.339385,
+        2.033197
+      ],
+      "center": [
+        -0.045717,
+        -0.720604,
+        1.641431
+      ],
+      "dimensions": [
+        9.109836,
+        0.762437,
+        0.783532
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FRONT_LEFT_RIM",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -4.90371,
+        -1.061389,
+        1.974618
+      ],
+      "bounds_max": [
+        -4.129037,
+        -0.311685,
+        6.706231
+      ],
+      "center": [
+        -4.516374,
+        -0.686537,
+        4.340425
+      ],
+      "dimensions": [
+        0.774673,
+        0.749705,
+        4.731613
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FRONT_RIGHT_RIM",
+      "type": "MESH",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        4.095671,
+        -1.099578,
+        1.876229
+      ],
+      "bounds_max": [
+        4.870344,
+        -0.349874,
+        6.607842
+      ],
+      "center": [
+        4.483007,
+        -0.724726,
+        4.242035
+      ],
+      "dimensions": [
+        0.774673,
+        0.749705,
+        4.731613
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_TL",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -4.847749,
+        -1.208971,
+        6.229745
+      ],
+      "bounds_max": [
+        -3.731843,
+        -0.258113,
+        7.347042
+      ],
+      "center": [
+        -4.289796,
+        -0.733542,
+        6.788393
+      ],
+      "dimensions": [
+        1.115906,
+        0.950859,
+        1.117296
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_TR",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        3.75166,
+        -1.245463,
+        6.135729
+      ],
+      "bounds_max": [
+        4.867566,
+        -0.294604,
+        7.253026
+      ],
+      "center": [
+        4.309613,
+        -0.770034,
+        6.694377
+      ],
+      "dimensions": [
+        1.115906,
+        0.950859,
+        1.117296
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_BL",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -4.901433,
+        -1.236656,
+        1.330118
+      ],
+      "bounds_max": [
+        -3.785527,
+        -0.285797,
+        2.447414
+      ],
+      "center": [
+        -4.343481,
+        -0.761226,
+        1.888766
+      ],
+      "dimensions": [
+        1.115906,
+        0.950859,
+        1.117296
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_BR",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        3.697975,
+        -1.273147,
+        1.236102
+      ],
+      "bounds_max": [
+        4.813881,
+        -0.322288,
+        2.353398
+      ],
+      "center": [
+        4.255929,
+        -0.797718,
+        1.79475
+      ],
+      "dimensions": [
+        1.115906,
+        0.950859,
+        1.117296
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LEFT_DEPTH_TOP",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -4.633785,
+        -0.726736,
+        6.402422
+      ],
+      "bounds_max": [
+        -4.018075,
+        1.578916,
+        6.982039
+      ],
+      "center": [
+        -4.32593,
+        0.42609,
+        6.692231
+      ],
+      "dimensions": [
+        0.61571,
+        2.305652,
+        0.579618
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_RIGHT_DEPTH_TOP",
+      "type": "MESH",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        4.045619,
+        -0.763567,
+        6.307531
+      ],
+      "bounds_max": [
+        4.661329,
+        1.542085,
+        6.887149
+      ],
+      "center": [
+        4.353474,
+        0.389259,
+        6.59734
+      ],
+      "dimensions": [
+        0.61571,
+        2.305652,
+        0.579618
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LEFT_DEPTH_BOTTOM",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -4.68543,
+        -0.763347,
+        1.693406
+      ],
+      "bounds_max": [
+        -4.070137,
+        1.442308,
+        2.272454
+      ],
+      "center": [
+        -4.377783,
+        0.339481,
+        1.98293
+      ],
+      "dimensions": [
+        0.615293,
+        2.205655,
+        0.579048
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_RIGHT_DEPTH_BOTTOM",
+      "type": "MESH",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        3.993974,
+        -0.800178,
+        1.598516
+      ],
+      "bounds_max": [
+        4.609266,
+        1.405477,
+        2.177563
+      ],
+      "center": [
+        4.30162,
+        0.30265,
+        1.88804
+      ],
+      "dimensions": [
+        0.615293,
+        2.205655,
+        0.579048
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CEILING",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -4.043987,
+        -0.721234,
+        6.283756
+      ],
+      "bounds_max": [
+        4.069017,
+        1.615112,
+        6.745379
+      ],
+      "center": [
+        0.012515,
+        0.446939,
+        6.514567
+      ],
+      "dimensions": [
+        8.113005,
+        2.336346,
+        0.461623
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_BACK_WALL",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -3.530805,
+        1.387487,
+        2.119003
+      ],
+      "bounds_max": [
+        3.518425,
+        1.80204,
+        6.597244
+      ],
+      "center": [
+        -0.00619,
+        1.594763,
+        4.358123
+      ],
+      "dimensions": [
+        7.04923,
+        0.414553,
+        4.478241
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_BACK_SCREEN_TOP",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -3.23808,
+        1.230982,
+        6.093599
+      ],
+      "bounds_max": [
+        3.264333,
+        1.419689,
+        6.365553
+      ],
+      "center": [
+        0.013127,
+        1.325335,
+        6.229576
+      ],
+      "dimensions": [
+        6.502413,
+        0.188707,
+        0.271955
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -3.262074,
+        1.218609,
+        3.903765
+      ],
+      "bounds_max": [
+        3.24034,
+        1.407315,
+        4.17572
+      ],
+      "center": [
+        -0.010867,
+        1.312962,
+        4.039742
+      ],
+      "dimensions": [
+        6.502413,
+        0.188707,
+        0.271955
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LEFT_PURPLE_LED",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -4.592939,
+        -1.126661,
+        3.45207
+      ],
+      "bounds_max": [
+        -4.486708,
+        -1.008146,
+        4.893571
+      ],
+      "center": [
+        -4.539824,
+        -1.067403,
+        4.172821
+      ],
+      "dimensions": [
+        0.106231,
+        0.118515,
+        1.441501
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_RIGHT_PURPLE_LED",
+      "type": "MESH",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        4.446439,
+        -1.165019,
+        3.353244
+      ],
+      "bounds_max": [
+        4.55267,
+        -1.046504,
+        4.794745
+      ],
+      "center": [
+        4.499555,
+        -1.105762,
+        4.073995
+      ],
+      "dimensions": [
+        0.106231,
+        0.118515,
+        1.441501
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_BOTTOM_GREEN_LED",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -0.768308,
+        -1.159072,
+        1.560417
+      ],
+      "bounds_max": [
+        0.673258,
+        -1.042343,
+        1.686778
+      ],
+      "center": [
+        -0.047525,
+        -1.100707,
+        1.623597
+      ],
+      "dimensions": [
+        1.441566,
+        0.116729,
+        0.12636
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_GROUND",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "bounds_min": [
+        -8.0,
+        -4.0,
+        -0.32
+      ],
+      "bounds_max": [
+        8.0,
+        10.0,
+        0.0
+      ],
+      "center": [
+        0.0,
+        3.0,
+        -0.16
+      ],
+      "dimensions": [
+        16.0,
+        14.0,
+        0.32
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_PLAYLIST_BACK_WALL",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "bounds_min": [
+        -3.028984,
+        1.360881,
+        4.136376
+      ],
+      "bounds_max": [
+        3.031417,
+        1.397244,
+        6.102262
+      ],
+      "center": [
+        0.001216,
+        1.379062,
+        5.119319
+      ],
+      "dimensions": [
+        6.060401,
+        0.036364,
+        1.965886
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_BROWSER_LEFT_WALL",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "bounds_min": [
+        -4.117028,
+        -0.343645,
+        2.294537
+      ],
+      "bounds_max": [
+        -3.146411,
+        1.322818,
+        6.313632
+      ],
+      "center": [
+        -3.63172,
+        0.489586,
+        4.304085
+      ],
+      "dimensions": [
+        0.970617,
+        1.666462,
+        4.019095
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_MIXER_RIGHT_WALL",
+      "type": "MESH",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "bounds_min": [
+        3.122473,
+        -0.374366,
+        2.215389
+      ],
+      "bounds_max": [
+        4.093091,
+        1.292097,
+        6.234484
+      ],
+      "center": [
+        3.607782,
+        0.458866,
+        4.224936
+      ],
+      "dimensions": [
+        0.970618,
+        1.666462,
+        4.019095
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_PIANO_ROLL_FLOOR",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "bounds_min": [
+        -3.819163,
+        -0.434052,
+        2.048852
+      ],
+      "bounds_max": [
+        3.766473,
+        1.277873,
+        3.890878
+      ],
+      "center": [
+        -0.026345,
+        0.421911,
+        2.969865
+      ],
+      "dimensions": [
+        7.585635,
+        1.711924,
+        1.842026
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHANNEL_RACK_CASE",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHANNEL_RACK_ROOT",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "bounds_min": [
+        0.223898,
+        -1.017122,
+        1.909744
+      ],
+      "bounds_max": [
+        3.801737,
+        -0.632098,
+        2.98931
+      ],
+      "center": [
+        2.012817,
+        -0.82461,
+        2.449527
+      ],
+      "dimensions": [
+        3.577839,
+        0.385024,
+        1.079566
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHANNEL_RACK_SURFACE",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHANNEL_RACK_ROOT",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "bounds_min": [
+        0.337244,
+        -1.094063,
+        2.012783
+      ],
+      "bounds_max": [
+        3.686217,
+        -1.075145,
+        2.889233
+      ],
+      "center": [
+        2.01173,
+        -1.084604,
+        2.451008
+      ],
+      "dimensions": [
+        3.348973,
+        0.018918,
+        0.876449
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHANNEL_RACK_ROOT",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "PLAYBACK_MOTION"
+      ],
+      "bounds_min": [
+        2.012316,
+        -0.944607,
+        2.450211
+      ],
+      "bounds_max": [
+        2.012316,
+        -0.944607,
+        2.450211
+      ],
+      "center": [
+        2.012316,
+        -0.944607,
+        2.450211
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_BACK",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "PLAYBACK_MOTION"
+      ],
+      "bounds_min": [
+        0.714733,
+        1.222802,
+        4.231428
+      ],
+      "bounds_max": [
+        0.786247,
+        1.288965,
+        5.992182
+      ],
+      "center": [
+        0.75049,
+        1.255884,
+        5.111805
+      ],
+      "dimensions": [
+        0.071513,
+        0.066163,
+        1.760754
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_FLOOR",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "PLAYBACK_MOTION"
+      ],
+      "bounds_min": [
+        -0.026,
+        -1.22,
+        -0.022
+      ],
+      "bounds_max": [
+        0.026,
+        1.22,
+        0.022
+      ],
+      "center": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dimensions": [
+        0.052,
+        2.44,
+        0.044
+      ],
+      "hidden_render": true
+    },
+    {
+      "name": "USTUDIO_FRONT_KEY",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "LIGHTING"
+      ],
+      "bounds_min": [
+        -3.8,
+        -5.0,
+        7.0
+      ],
+      "bounds_max": [
+        -3.8,
+        -5.0,
+        7.0
+      ],
+      "center": [
+        -3.8,
+        -5.0,
+        7.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FRONT_FILL",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "LIGHTING"
+      ],
+      "bounds_min": [
+        4.0,
+        -4.2,
+        4.7
+      ],
+      "bounds_max": [
+        4.0,
+        -4.2,
+        4.7
+      ],
+      "center": [
+        4.0,
+        -4.2,
+        4.7
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_GREEN_BOUNCE",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "LIGHTING"
+      ],
+      "bounds_min": [
+        0.0,
+        -1.8,
+        0.55
+      ],
+      "bounds_max": [
+        0.0,
+        -1.8,
+        0.55
+      ],
+      "center": [
+        0.0,
+        -1.8,
+        0.55
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_INTERIOR_FILL",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "LIGHTING"
+      ],
+      "bounds_min": [
+        0.0,
+        0.55,
+        4.9
+      ],
+      "bounds_max": [
+        0.0,
+        0.55,
+        4.9
+      ],
+      "center": [
+        0.0,
+        0.55,
+        4.9
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_BOX_TARGET",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "CAMERA_RIG"
+      ],
+      "bounds_min": [
+        -0.042202,
+        0.244854,
+        4.217798
+      ],
+      "bounds_max": [
+        -0.042202,
+        0.244854,
+        4.217798
+      ],
+      "center": [
+        -0.042202,
+        0.244854,
+        4.217798
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_BOX_CAMERA",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "CAMERA_RIG"
+      ],
+      "bounds_min": [
+        0.537507,
+        -19.479563,
+        5.342592
+      ],
+      "bounds_max": [
+        0.537507,
+        -19.479563,
+        5.342592
+      ],
+      "center": [
+        0.537507,
+        -19.479563,
+        5.342592
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_RUNNER_MESH",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "K3_FABLE_RUNNER",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.074306,
+        0.712251,
+        3.437956
+      ],
+      "bounds_max": [
+        0.039145,
+        1.029858,
+        3.756399
+      ],
+      "center": [
+        -0.017581,
+        0.871055,
+        3.597178
+      ],
+      "dimensions": [
+        0.113451,
+        0.317607,
+        0.318444
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_LIGHT_RIG",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.017755,
+        0.852077,
+        3.588631
+      ],
+      "bounds_max": [
+        -0.017755,
+        0.852077,
+        3.588631
+      ],
+      "center": [
+        -0.017755,
+        0.852077,
+        3.588631
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_SUN",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.017267,
+        -1.01715,
+        4.358756
+      ],
+      "bounds_max": [
+        -0.017267,
+        -1.01715,
+        4.358756
+      ],
+      "center": [
+        -0.017267,
+        -1.01715,
+        4.358756
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_BACKLIGHT",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "K3_FABLE_LIGHT_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        0.11853,
+        1.038582,
+        5.004979
+      ],
+      "bounds_max": [
+        0.11853,
+        1.038582,
+        5.004979
+      ],
+      "center": [
+        0.11853,
+        1.038582,
+        5.004979
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_GLIMMER_LIME",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "K3_FABLE_LIGHT_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.570291,
+        0.588013,
+        3.462638
+      ],
+      "bounds_max": [
+        -0.570291,
+        0.588013,
+        3.462638
+      ],
+      "center": [
+        -0.570291,
+        0.588013,
+        3.462638
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_GLIMMER_MAGENTA",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "K3_FABLE_LIGHT_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        0.584773,
+        0.731397,
+        3.862852
+      ],
+      "bounds_max": [
+        0.584773,
+        0.731397,
+        3.862852
+      ],
+      "center": [
+        0.584773,
+        0.731397,
+        3.862852
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_DETAIL_TORSO",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "K3_FABLE_LIGHT_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.920235,
+        -0.065697,
+        3.723599
+      ],
+      "bounds_max": [
+        -0.920235,
+        -0.065697,
+        3.723599
+      ],
+      "center": [
+        -0.920235,
+        -0.065697,
+        3.723599
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_CAM_TARGET",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.016282,
+        0.867092,
+        3.717469
+      ],
+      "bounds_max": [
+        -0.016282,
+        0.867092,
+        3.717469
+      ],
+      "center": [
+        -0.016282,
+        0.867092,
+        3.717469
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_CAM_FOCUS",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.016777,
+        0.867052,
+        3.67226
+      ],
+      "bounds_max": [
+        -0.016777,
+        0.867052,
+        3.67226
+      ],
+      "center": [
+        -0.016777,
+        0.867052,
+        3.67226
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_CAM_MAIN",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -1.40459,
+        0.211889,
+        3.767453
+      ],
+      "bounds_max": [
+        -1.40459,
+        0.211889,
+        3.767453
+      ],
+      "center": [
+        -1.40459,
+        0.211889,
+        3.767453
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_DIAG_TARGET_PROFILE",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.017974,
+        0.851965,
+        3.568632
+      ],
+      "bounds_max": [
+        -0.017974,
+        0.851965,
+        3.568632
+      ],
+      "center": [
+        -0.017974,
+        0.851965,
+        3.568632
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_CAM_DIAG_PROFILE",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -1.667093,
+        0.859361,
+        3.656665
+      ],
+      "bounds_max": [
+        -1.667093,
+        0.859361,
+        3.656665
+      ],
+      "center": [
+        -1.667093,
+        0.859361,
+        3.656665
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_DIAG_TARGET_REAR",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.018949,
+        0.896912,
+        3.461977
+      ],
+      "bounds_max": [
+        -0.018949,
+        0.896912,
+        3.461977
+      ],
+      "center": [
+        -0.018949,
+        0.896912,
+        3.461977
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_CAM_DIAG_TOPREAR",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.35912,
+        0.981917,
+        4.33019
+      ],
+      "bounds_max": [
+        -0.35912,
+        0.981917,
+        4.33019
+      ],
+      "center": [
+        -0.35912,
+        0.981917,
+        4.33019
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_DIAG_TARGET_NORMAL",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.018949,
+        0.896912,
+        3.461977
+      ],
+      "bounds_max": [
+        -0.018949,
+        0.896912,
+        3.461977
+      ],
+      "center": [
+        -0.018949,
+        0.896912,
+        3.461977
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "K3_FABLE_CAM_DIAG_NORMAL",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_FABLE_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.013081,
+        0.111119,
+        4.303757
+      ],
+      "bounds_max": [
+        -0.013081,
+        0.111119,
+        4.303757
+      ],
+      "center": [
+        -0.013081,
+        0.111119,
+        4.303757
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    }
+  ],
+  "relations": [
+    {
+      "from": "USTUDIO_MEDIA_CONTROLLER",
+      "to": "USTUDIO_GROUND",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_MEDIA_CONTROLLER",
+      "to": "USTUDIO_PLAYHEAD_FLOOR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SHADOW_TARGET",
+      "to": "USTUDIO_GROUND",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SHADOW_TARGET",
+      "to": "USTUDIO_PLAYHEAD_FLOOR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_TOP_RIM",
+      "to": "USTUDIO_FRONT_LEFT_RIM",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_TOP_RIM",
+      "to": "USTUDIO_FRONT_RIGHT_RIM",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_TOP_RIM",
+      "to": "USTUDIO_FRONT_CORNER_TL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_TOP_RIM",
+      "to": "USTUDIO_FRONT_CORNER_TR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_TOP_RIM",
+      "to": "USTUDIO_LEFT_DEPTH_TOP",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_TOP_RIM",
+      "to": "USTUDIO_RIGHT_DEPTH_TOP",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_TOP_RIM",
+      "to": "USTUDIO_CEILING",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_TOP_RIM",
+      "to": "USTUDIO_BROWSER_LEFT_WALL",
+      "aabb_distance": 0.235631,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_BOTTOM_RIM",
+      "to": "USTUDIO_FRONT_LEFT_RIM",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_BOTTOM_RIM",
+      "to": "USTUDIO_FRONT_RIGHT_RIM",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_BOTTOM_RIM",
+      "to": "USTUDIO_FRONT_CORNER_BL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_BOTTOM_RIM",
+      "to": "USTUDIO_FRONT_CORNER_BR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_BOTTOM_RIM",
+      "to": "USTUDIO_LEFT_DEPTH_BOTTOM",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_BOTTOM_RIM",
+      "to": "USTUDIO_RIGHT_DEPTH_BOTTOM",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_BOTTOM_RIM",
+      "to": "USTUDIO_BOTTOM_GREEN_LED",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_BOTTOM_RIM",
+      "to": "USTUDIO_MIXER_RIGHT_WALL",
+      "aabb_distance": 0.182192,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_BOTTOM_RIM",
+      "to": "USTUDIO_PIANO_ROLL_FLOOR",
+      "aabb_distance": 0.015655,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_BOTTOM_RIM",
+      "to": "USTUDIO_CHANNEL_RACK_CASE",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_BOTTOM_RIM",
+      "to": "USTUDIO_CHANNEL_RACK_SURFACE",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_LEFT_RIM",
+      "to": "USTUDIO_FRONT_CORNER_TL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_LEFT_RIM",
+      "to": "USTUDIO_FRONT_CORNER_BL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_LEFT_RIM",
+      "to": "USTUDIO_LEFT_DEPTH_TOP",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_LEFT_RIM",
+      "to": "USTUDIO_LEFT_DEPTH_BOTTOM",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_LEFT_RIM",
+      "to": "USTUDIO_CEILING",
+      "aabb_distance": 0.08505,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_LEFT_RIM",
+      "to": "USTUDIO_LEFT_PURPLE_LED",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_LEFT_RIM",
+      "to": "USTUDIO_BROWSER_LEFT_WALL",
+      "aabb_distance": 0.012009,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_RIGHT_RIM",
+      "to": "USTUDIO_FRONT_CORNER_TR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_RIGHT_RIM",
+      "to": "USTUDIO_FRONT_CORNER_BR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_RIGHT_RIM",
+      "to": "USTUDIO_RIGHT_DEPTH_TOP",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_RIGHT_RIM",
+      "to": "USTUDIO_RIGHT_DEPTH_BOTTOM",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_RIGHT_RIM",
+      "to": "USTUDIO_CEILING",
+      "aabb_distance": 0.026654,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_RIGHT_RIM",
+      "to": "USTUDIO_RIGHT_PURPLE_LED",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_RIGHT_RIM",
+      "to": "USTUDIO_MIXER_RIGHT_WALL",
+      "aabb_distance": 0.00258,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_TL",
+      "to": "USTUDIO_LEFT_DEPTH_TOP",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_TL",
+      "to": "USTUDIO_CEILING",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_TL",
+      "to": "USTUDIO_BROWSER_LEFT_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_TR",
+      "to": "USTUDIO_RIGHT_DEPTH_TOP",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_TR",
+      "to": "USTUDIO_CEILING",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_TR",
+      "to": "USTUDIO_MIXER_RIGHT_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_BL",
+      "to": "USTUDIO_LEFT_DEPTH_BOTTOM",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_BL",
+      "to": "USTUDIO_BROWSER_LEFT_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_BL",
+      "to": "USTUDIO_PIANO_ROLL_FLOOR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_BR",
+      "to": "USTUDIO_RIGHT_DEPTH_BOTTOM",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_BR",
+      "to": "USTUDIO_MIXER_RIGHT_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_BR",
+      "to": "USTUDIO_PIANO_ROLL_FLOOR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_BR",
+      "to": "USTUDIO_CHANNEL_RACK_CASE",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FRONT_CORNER_BR",
+      "to": "USTUDIO_CHANNEL_RACK_SURFACE",
+      "aabb_distance": 0.011758,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_LEFT_DEPTH_TOP",
+      "to": "USTUDIO_CEILING",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_LEFT_DEPTH_TOP",
+      "to": "USTUDIO_BROWSER_LEFT_WALL",
+      "aabb_distance": 0.08879,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_RIGHT_DEPTH_TOP",
+      "to": "USTUDIO_CEILING",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_RIGHT_DEPTH_TOP",
+      "to": "USTUDIO_MIXER_RIGHT_WALL",
+      "aabb_distance": 0.073048,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_LEFT_DEPTH_BOTTOM",
+      "to": "USTUDIO_BROWSER_LEFT_WALL",
+      "aabb_distance": 0.022083,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_RIGHT_DEPTH_BOTTOM",
+      "to": "USTUDIO_MIXER_RIGHT_WALL",
+      "aabb_distance": 0.037825,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_RIGHT_DEPTH_BOTTOM",
+      "to": "USTUDIO_PIANO_ROLL_FLOOR",
+      "aabb_distance": 0.227501,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_RIGHT_DEPTH_BOTTOM",
+      "to": "USTUDIO_CHANNEL_RACK_CASE",
+      "aabb_distance": 0.192237,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CEILING",
+      "to": "USTUDIO_BACK_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CEILING",
+      "to": "USTUDIO_BACK_SCREEN_TOP",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CEILING",
+      "to": "USTUDIO_PLAYLIST_BACK_WALL",
+      "aabb_distance": 0.181494,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CEILING",
+      "to": "USTUDIO_BROWSER_LEFT_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CEILING",
+      "to": "USTUDIO_MIXER_RIGHT_WALL",
+      "aabb_distance": 0.049272,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_WALL",
+      "to": "USTUDIO_BACK_SCREEN_TOP",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_WALL",
+      "to": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_WALL",
+      "to": "USTUDIO_PLAYLIST_BACK_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_WALL",
+      "to": "USTUDIO_BROWSER_LEFT_WALL",
+      "aabb_distance": 0.064669,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_WALL",
+      "to": "USTUDIO_MIXER_RIGHT_WALL",
+      "aabb_distance": 0.09539,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_WALL",
+      "to": "USTUDIO_PIANO_ROLL_FLOOR",
+      "aabb_distance": 0.109614,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_WALL",
+      "to": "USTUDIO_PLAYHEAD_BACK",
+      "aabb_distance": 0.098521,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_SCREEN_TOP",
+      "to": "USTUDIO_PLAYLIST_BACK_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_SCREEN_TOP",
+      "to": "USTUDIO_BROWSER_LEFT_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_SCREEN_TOP",
+      "to": "USTUDIO_MIXER_RIGHT_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_SCREEN_TOP",
+      "to": "USTUDIO_PLAYHEAD_BACK",
+      "aabb_distance": 0.101417,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "to": "USTUDIO_PLAYLIST_BACK_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "to": "USTUDIO_BROWSER_LEFT_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "to": "USTUDIO_MIXER_RIGHT_WALL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "to": "USTUDIO_PIANO_ROLL_FLOOR",
+      "aabb_distance": 0.012887,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "to": "USTUDIO_PLAYHEAD_BACK",
+      "aabb_distance": 0.055708,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "to": "K3_FABLE_RUNNER_MESH",
+      "aabb_distance": 0.239465,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BOTTOM_GREEN_LED",
+      "to": "USTUDIO_CHANNEL_RACK_CASE",
+      "aabb_distance": 0.224389,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_GROUND",
+      "to": "USTUDIO_PLAYHEAD_FLOOR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PLAYLIST_BACK_WALL",
+      "to": "USTUDIO_BROWSER_LEFT_WALL",
+      "aabb_distance": 0.123442,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PLAYLIST_BACK_WALL",
+      "to": "USTUDIO_MIXER_RIGHT_WALL",
+      "aabb_distance": 0.114116,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PLAYLIST_BACK_WALL",
+      "to": "USTUDIO_PLAYHEAD_BACK",
+      "aabb_distance": 0.071915,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_BROWSER_LEFT_WALL",
+      "to": "USTUDIO_PIANO_ROLL_FLOOR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_MIXER_RIGHT_WALL",
+      "to": "USTUDIO_PIANO_ROLL_FLOOR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "USTUDIO_CHANNEL_RACK_CASE",
+      "aabb_distance": 0.198047,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "K3_FABLE_RUNNER_MESH",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "K3_FABLE_LIGHT_RIG",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "K3_FABLE_GLIMMER_LIME",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "K3_FABLE_GLIMMER_MAGENTA",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "K3_FABLE_DETAIL_TORSO",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "K3_FABLE_CAM_TARGET",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "K3_FABLE_CAM_FOCUS",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "K3_FABLE_CAM_MAIN",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "K3_FABLE_DIAG_TARGET_PROFILE",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "K3_FABLE_CAM_DIAG_PROFILE",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "K3_FABLE_DIAG_TARGET_REAR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIANO_ROLL_FLOOR",
+      "to": "K3_FABLE_DIAG_TARGET_NORMAL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHANNEL_RACK_CASE",
+      "to": "USTUDIO_CHANNEL_RACK_SURFACE",
+      "aabb_distance": 0.058022,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHANNEL_RACK_CASE",
+      "to": "USTUDIO_CHANNEL_RACK_ROOT",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHANNEL_RACK_SURFACE",
+      "to": "USTUDIO_CHANNEL_RACK_ROOT",
+      "aabb_distance": 0.130537,
+      "relation": "near",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_BOX_TARGET",
+      "to": "K3_FABLE_CAM_DIAG_NORMAL",
+      "aabb_distance": 0.161623,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_RUNNER_MESH",
+      "to": "K3_FABLE_LIGHT_RIG",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_RUNNER_MESH",
+      "to": "K3_FABLE_CAM_TARGET",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_RUNNER_MESH",
+      "to": "K3_FABLE_CAM_FOCUS",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_RUNNER_MESH",
+      "to": "K3_FABLE_DIAG_TARGET_PROFILE",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_RUNNER_MESH",
+      "to": "K3_FABLE_DIAG_TARGET_REAR",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_RUNNER_MESH",
+      "to": "K3_FABLE_DIAG_TARGET_NORMAL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_LIGHT_RIG",
+      "to": "K3_FABLE_CAM_TARGET",
+      "aabb_distance": 0.129718,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_LIGHT_RIG",
+      "to": "K3_FABLE_CAM_FOCUS",
+      "aabb_distance": 0.084965,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_LIGHT_RIG",
+      "to": "K3_FABLE_DIAG_TARGET_PROFILE",
+      "aabb_distance": 0.02,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_LIGHT_RIG",
+      "to": "K3_FABLE_DIAG_TARGET_REAR",
+      "aabb_distance": 0.134361,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_LIGHT_RIG",
+      "to": "K3_FABLE_DIAG_TARGET_NORMAL",
+      "aabb_distance": 0.134361,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_CAM_TARGET",
+      "to": "K3_FABLE_CAM_FOCUS",
+      "aabb_distance": 0.045211,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_CAM_TARGET",
+      "to": "K3_FABLE_DIAG_TARGET_PROFILE",
+      "aabb_distance": 0.149613,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_CAM_FOCUS",
+      "to": "K3_FABLE_DIAG_TARGET_PROFILE",
+      "aabb_distance": 0.104727,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_CAM_FOCUS",
+      "to": "K3_FABLE_DIAG_TARGET_REAR",
+      "aabb_distance": 0.212404,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_CAM_FOCUS",
+      "to": "K3_FABLE_DIAG_TARGET_NORMAL",
+      "aabb_distance": 0.212404,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_DIAG_TARGET_PROFILE",
+      "to": "K3_FABLE_DIAG_TARGET_REAR",
+      "aabb_distance": 0.115744,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_DIAG_TARGET_PROFILE",
+      "to": "K3_FABLE_DIAG_TARGET_NORMAL",
+      "aabb_distance": 0.115744,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "K3_FABLE_DIAG_TARGET_REAR",
+      "to": "K3_FABLE_DIAG_TARGET_NORMAL",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    }
+  ],
+  "summary": {
+    "objects": 57,
+    "relations": 124,
+    "roles": {
+      "core": 1,
+      "accessory": 24,
+      "control": 32,
+      "reference": 0
+    }
+  }
+}

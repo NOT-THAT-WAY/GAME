@@ -1,0 +1,4232 @@
+1
+00:00:00,000 --> 00:00:26,180
+ Hello everyone, in this tutorial, I'm going to break down how I made this Ray-Ben meta commercial in Blender.
+
+2
+00:00:26,180 --> 00:00:32,890
+ I'll quickly run through how I modeled the glasses and then I'll show you how the scene was set up as well as how I did
+
+3
+00:00:32,890 --> 00:00:37,720
+ this effect right here where the glasses breaks apart and comes back together.
+
+4
+00:00:37,720 --> 00:00:43,960
+ If you want access to this entire blend file, you can download it by becoming a member on my Patreon.
+
+5
+00:00:43,960 --> 00:00:50,800
+ So consider becoming a member on my Patreon and get access to my past and future tutorial project files.
+
+6
+00:00:50,800 --> 00:00:55,360
+ Alright, without further ado, let's get started with the tutorial.
+
+7
+00:00:56,180 --> 00:00:59,240
+ Okay, so I'm going to hit A and then X to delete everything.
+
+8
+00:00:59,240 --> 00:01:05,080
+ I'll do shift A and we'll add in a reference image to help us model our glasses.
+
+9
+00:01:05,080 --> 00:01:11,840
+ So I'll choose reference right here, downloads right here, and I'm going to be using these Ray-Ben photos right here.
+
+10
+00:01:11,840 --> 00:01:13,160
+ So I'll leave a link in the description.
+
+11
+00:01:13,160 --> 00:01:16,440
+ You could download them and then save them and then open them up like this.
+
+12
+00:01:16,440 --> 00:01:19,160
+ Okay, and I'm going to select my reference photo.
+
+13
+00:01:19,260 --> 00:01:21,720
+ I'm going to go to the transformation settings and I'll just zero it out.
+
+14
+00:01:21,720 --> 00:01:26,920
+ And then I'll put 90 on the X axis and we're good to go.
+
+15
+00:01:26,920 --> 00:01:28,480
+ So we'll go to the minus Y view.
+
+16
+00:01:28,480 --> 00:01:31,960
+ I'm going to go over here and just decrease the opacity a bit.
+
+17
+00:01:31,960 --> 00:01:35,180
+ To model this, I'm just going to basically be tracing over it.
+
+18
+00:01:35,180 --> 00:01:36,380
+ Okay, then hit shift A.
+
+19
+00:01:36,380 --> 00:01:37,660
+ We'll add in a mesh cube.
+
+20
+00:01:37,660 --> 00:01:39,700
+ Okay, go into edit mode.
+
+21
+00:01:40,040 --> 00:01:43,640
+ And with the entire cube selected, we'll hit M and then merge at center.
+
+22
+00:01:43,640 --> 00:01:48,080
+ Go back to minus Y and you can see that there's one vertice in the middle.
+
+23
+00:01:48,080 --> 00:01:51,660
+ Go back into object mode for a second and we'll go to the modifiers.
+
+24
+00:01:51,660 --> 00:01:53,340
+ We'll add in a mirror modifier.
+
+25
+00:01:53,340 --> 00:01:57,000
+ So search for a mirror modifier and then we can go back into edit mode.
+
+26
+00:01:57,000 --> 00:01:58,720
+ And now we can start tracing over.
+
+27
+00:01:58,720 --> 00:02:03,240
+ So we'll go hit G and then Z on our keyboard to move it up.
+
+28
+00:02:03,240 --> 00:02:05,240
+ And we'll start from this point right here.
+
+29
+00:02:05,240 --> 00:02:08,920
+ Okay, and then we'll hit E on my keyboard to extrude it.
+
+30
+00:02:09,320 --> 00:02:10,660
+ I'm going to start extruding it.
+
+31
+00:02:10,660 --> 00:02:13,100
+ So we might need to move this a little down actually.
+
+32
+00:02:13,100 --> 00:02:13,940
+ There we go.
+
+33
+00:02:13,940 --> 00:02:15,740
+ And now we can start tracing.
+
+34
+00:02:15,740 --> 00:02:18,720
+ So deselect, select this vertice at the end.
+
+35
+00:02:18,720 --> 00:02:23,180
+ And then we'll just hit E and we'll keep extruding until the entire,
+
+36
+00:02:23,180 --> 00:02:25,740
+ and we'll keep extruding around the entire glasses.
+
+37
+00:02:25,740 --> 00:02:34,360
+ Be patient here.
+
+38
+00:02:34,360 --> 00:02:35,160
+ You don't have to rush it.
+
+39
+00:02:39,320 --> 00:03:07,360
+ Once we get to the end portion here, we'll start adding smaller and smaller vertices to make up for the, you know,
+
+40
+00:03:07,360 --> 00:03:08,180
+ rounded edges here.
+
+41
+00:03:08,180 --> 00:03:15,740
+ So let's do like this and I'm just taking my timer.
+
+42
+00:03:15,800 --> 00:03:23,360
+ So let's do like this and I'm just taking my timer.
+
+43
+00:03:23,360 --> 00:03:25,360
+ So let's do like this and I'm just taking my timer.
+
+44
+00:03:25,360 --> 00:03:27,420
+ So let's do like this and I'm just taking my timer.
+
+45
+00:03:27,420 --> 00:03:29,360
+ So let's do like this and I'm just taking my timer.
+
+46
+00:03:29,360 --> 00:03:31,360
+ So let's do like this and I'm just taking my timer.
+
+47
+00:03:31,360 --> 00:03:33,420
+ So let's do like this and I'm just taking my timer.
+
+48
+00:03:33,420 --> 00:03:35,420
+ So let's do like this and I'm just taking my timer.
+
+49
+00:03:35,420 --> 00:03:37,420
+ So let's do like this and I'm just taking my timer.
+
+50
+00:03:37,420 --> 00:03:39,360
+ So let's do like this and I'm just taking my timer.
+
+51
+00:03:39,360 --> 00:03:50,060
+ Okay, I'm nearing the end here.
+
+52
+00:03:50,060 --> 00:03:56,080
+ I'm just going to click on clipping right here and then I'll hit E again to extrude and then I'll just hit X and then I'll
+
+53
+00:03:56,080 --> 00:03:58,300
+ just bring it towards the middle and then click.
+
+54
+00:03:58,980 --> 00:04:02,180
+ Okay, and now it is pretty much done and traced.
+
+55
+00:04:02,180 --> 00:04:10,400
+ I can just hit A and then hit F and we can fill in those faces and now we have a perfect outline of our glasses.
+
+56
+00:04:10,400 --> 00:04:17,300
+ Okay, now we can move on to the next step by going to wireframe and we need to make this hole here for the lenses.
+
+57
+00:04:17,660 --> 00:04:22,480
+ So to do that, I'm just going to deselect for a second so I can see it better then I'm going to zoom in.
+
+58
+00:04:22,480 --> 00:04:26,750
+ I'll just start cutting a hole using the knife tool so you can click on the knife tool right here or you can just hit K
+
+59
+00:04:26,750 --> 00:04:27,540
+ on your keyboard.
+
+60
+00:04:27,540 --> 00:04:35,480
+ Okay, there we go and then I'll just start clicking right here and we'll start making the hole for the lens.
+
+61
+00:04:35,480 --> 00:04:39,920
+ Again, take your time with this, no need to rush.
+
+62
+00:04:47,660 --> 00:05:14,160
+ Okay, there we go and now I can just hit enter and now I got a hole for the lenses.
+
+63
+00:05:15,420 --> 00:05:17,140
+ Let's go and use the face select tool.
+
+64
+00:05:17,140 --> 00:05:21,500
+ I'll just select the middle face and then I can just hit X and I'll delete faces.
+
+65
+00:05:21,500 --> 00:05:22,380
+ There we go.
+
+66
+00:05:22,380 --> 00:05:30,720
+ Okay, now to make the holes for the camera lenses right here, let me just show you what I mean.
+
+67
+00:05:30,720 --> 00:05:35,260
+ If I open up a new window, you don't have to do this but I just want to show you what I mean.
+
+68
+00:05:35,260 --> 00:05:43,220
+ Let's go to, so these are the metaglasses that I'm actually going to be making in the commercial
+
+69
+00:05:43,220 --> 00:05:46,380
+ and we want to make this camera part right here.
+
+70
+00:05:46,380 --> 00:05:52,060
+ Okay, and the reason why I'm not using this reference photo is because I don't have, you know, a side view of the legs
+
+71
+00:05:52,060 --> 00:05:52,460
+ here.
+
+72
+00:05:52,460 --> 00:05:54,380
+ So that's why I decided to go with this.
+
+73
+00:05:54,380 --> 00:06:00,440
+ They're generally the same shape so it's fine but yeah, let's go ahead and just let's make the camera lens.
+
+74
+00:06:00,440 --> 00:06:03,860
+ So to do that, we're going to go into optic mode.
+
+75
+00:06:03,860 --> 00:06:06,600
+ Just hide this for a second by going here, hide.
+
+76
+00:06:07,600 --> 00:06:14,620
+ Go to solid view, we can just go ahead and do shift D to duplicate this and then escape to set it back in place.
+
+77
+00:06:14,620 --> 00:06:20,020
+ This is just a backup copy that you can use in case you make a mistake so you can go back to it.
+
+78
+00:06:20,020 --> 00:06:24,660
+ So let's just go over here, turn on this camera icon and we can just hide our backup copy.
+
+79
+00:06:24,760 --> 00:06:30,220
+ So now that we have our, you know, frames, we're going to go make the lens, camera lens.
+
+80
+00:06:30,220 --> 00:06:33,200
+ Let's do shift A, we'll add in a cylinder.
+
+81
+00:06:33,200 --> 00:06:37,960
+ I'm going to go to add cylinder, let's make the radius 0.1.
+
+82
+00:06:37,960 --> 00:06:45,580
+ I'll do RX 90 and let's go to the minus Y view and we'll just move it over.
+
+83
+00:06:46,620 --> 00:06:50,720
+ So we can see that it's located like generally around this area.
+
+84
+00:06:50,720 --> 00:06:53,540
+ So let's move it over here.
+
+85
+00:06:53,540 --> 00:06:57,420
+ You can make it just a bit smaller by hitting S.
+
+86
+00:06:57,420 --> 00:06:58,640
+ I'll just make it a little smaller.
+
+87
+00:06:58,640 --> 00:07:00,100
+ I think that's good.
+
+88
+00:07:00,100 --> 00:07:05,400
+ Okay, now we can go ahead and we'll select frames right here.
+
+89
+00:07:05,400 --> 00:07:07,040
+ We can rename this to frames.
+
+90
+00:07:07,040 --> 00:07:09,160
+ Yeah, we'll select them, go to the modifiers.
+
+91
+00:07:09,160 --> 00:07:13,300
+ We'll add modifier and we can add in a boolean modifier.
+
+92
+00:07:13,300 --> 00:07:15,900
+ And for the object, we'll select our cylinder right here.
+
+93
+00:07:16,500 --> 00:07:21,080
+ And it should make a hole right through our frames.
+
+94
+00:07:21,080 --> 00:07:23,740
+ So I'll just go ahead and just hit apply.
+
+95
+00:07:23,740 --> 00:07:25,880
+ And boom.
+
+96
+00:07:25,880 --> 00:07:27,620
+ Now we don't need this anymore.
+
+97
+00:07:27,620 --> 00:07:28,300
+ We can hide it.
+
+98
+00:07:28,300 --> 00:07:32,740
+ And now we should have the holes for our camera lens.
+
+99
+00:07:32,740 --> 00:07:36,320
+ Now we can go ahead and let's go to the side view now.
+
+100
+00:07:36,320 --> 00:07:37,540
+ And we'll extrude it.
+
+101
+00:07:37,540 --> 00:07:40,040
+ But I need a better reference for the side view.
+
+102
+00:07:40,040 --> 00:07:42,360
+ So I'm going to just collapse this window for a second.
+
+103
+00:07:42,360 --> 00:07:43,760
+ I'm going to go shift A.
+
+104
+00:07:44,400 --> 00:07:46,600
+ We'll add in another reference image.
+
+105
+00:07:46,600 --> 00:07:49,300
+ And this one is going to be this reference image right here.
+
+106
+00:07:50,060 --> 00:07:51,140
+ Again, we'll zero it out.
+
+107
+00:07:51,140 --> 00:07:53,640
+ Just do 90.
+
+108
+00:07:53,640 --> 00:07:56,180
+ And we'll do 90 on the Z.
+
+109
+00:07:56,180 --> 00:07:58,600
+ Okay, let's go to the minus X view.
+
+110
+00:07:58,600 --> 00:08:00,140
+ So let's move it back here.
+
+111
+00:08:02,260 --> 00:08:04,920
+ And we'll select our frames, right?
+
+112
+00:08:04,920 --> 00:08:06,060
+ We'll go into edit mode.
+
+113
+00:08:06,060 --> 00:08:07,620
+ We'll hit A to select everything.
+
+114
+00:08:07,620 --> 00:08:09,760
+ And then we'll go to the minus X.
+
+115
+00:08:09,760 --> 00:08:11,620
+ And we'll just hit E to extrude.
+
+116
+00:08:11,620 --> 00:08:13,260
+ So E extrude backwards.
+
+117
+00:08:13,260 --> 00:08:16,140
+ And we'll make it that thick.
+
+118
+00:08:16,140 --> 00:08:17,160
+ Boom.
+
+119
+00:08:19,160 --> 00:08:19,560
+ Okay.
+
+120
+00:08:19,560 --> 00:08:20,060
+ All right.
+
+121
+00:08:20,060 --> 00:08:22,640
+ We need an edge loop here for our lenses.
+
+122
+00:08:22,640 --> 00:08:24,880
+ So we'll hit Ctrl R on our keyboard.
+
+123
+00:08:24,880 --> 00:08:26,720
+ And we'll add in a loop cut.
+
+124
+00:08:26,720 --> 00:08:28,540
+ And we'll hit escape to set it back in place.
+
+125
+00:08:28,540 --> 00:08:29,700
+ Okay.
+
+126
+00:08:29,700 --> 00:08:30,800
+ We won't add it yet.
+
+127
+00:08:30,800 --> 00:08:31,420
+ We'll add it later.
+
+128
+00:08:31,420 --> 00:08:33,220
+ But for now, that's going to be over there.
+
+129
+00:08:33,220 --> 00:08:33,860
+ Okay.
+
+130
+00:08:33,860 --> 00:08:36,040
+ For the back side here, we'll just hit.
+
+131
+00:08:36,040 --> 00:08:36,660
+ We'll hold.
+
+132
+00:08:36,660 --> 00:08:37,360
+ We'll deselect.
+
+133
+00:08:37,360 --> 00:08:38,400
+ Hold Alt.
+
+134
+00:08:38,400 --> 00:08:39,940
+ Select this edge loop right here.
+
+135
+00:08:39,940 --> 00:08:41,160
+ Hold Shift.
+
+136
+00:08:41,160 --> 00:08:41,420
+ Alt.
+
+137
+00:08:41,420 --> 00:08:42,260
+ Select this edge loop.
+
+138
+00:08:42,520 --> 00:08:44,380
+ And then we'll hit F to fill in that face.
+
+139
+00:08:44,380 --> 00:08:46,560
+ And then we're going to select this line here.
+
+140
+00:08:46,560 --> 00:08:47,020
+ Hold Shift.
+
+141
+00:08:47,020 --> 00:08:47,700
+ Select this line.
+
+142
+00:08:47,700 --> 00:08:50,940
+ With X to dissolve edges or delete edges.
+
+143
+00:08:50,940 --> 00:08:54,120
+ And we'll just go ahead and select this face here.
+
+144
+00:08:54,120 --> 00:08:55,940
+ We'll hit G and then Y.
+
+145
+00:08:55,940 --> 00:08:56,860
+ Move it in a bit.
+
+146
+00:08:56,860 --> 00:09:00,620
+ And then I'm going to use the line select tool.
+
+147
+00:09:00,620 --> 00:09:01,600
+ Deselect.
+
+148
+00:09:01,600 --> 00:09:02,360
+ Hold Alt.
+
+149
+00:09:02,360 --> 00:09:05,140
+ And then select all the edges right here.
+
+150
+00:09:05,140 --> 00:09:06,660
+ And then hit F to fill in that face.
+
+151
+00:09:06,660 --> 00:09:07,460
+ Nice.
+
+152
+00:09:07,460 --> 00:09:08,420
+ Okay.
+
+153
+00:09:08,420 --> 00:09:10,960
+ Now let's move on to modeling the legs here.
+
+154
+00:09:11,060 --> 00:09:13,880
+ So let's go into the back view here.
+
+155
+00:09:13,880 --> 00:09:16,400
+ Let's go hit K on our.
+
+156
+00:09:16,400 --> 00:09:17,940
+ Oh, let's go to edit mode, sorry.
+
+157
+00:09:17,940 --> 00:09:19,340
+ And then hit K on our keyboard.
+
+158
+00:09:19,340 --> 00:09:21,760
+ And we'll just select this one right here.
+
+159
+00:09:21,760 --> 00:09:23,000
+ And we'll go all the way down.
+
+160
+00:09:23,000 --> 00:09:24,560
+ And boom.
+
+161
+00:09:24,560 --> 00:09:26,780
+ And then you can just hit enter.
+
+162
+00:09:26,780 --> 00:09:27,360
+ All right.
+
+163
+00:09:27,360 --> 00:09:29,020
+ Then we can do the face select tool.
+
+164
+00:09:29,020 --> 00:09:30,340
+ We'll select this face.
+
+165
+00:09:30,340 --> 00:09:33,540
+ And we can just do Shift D to duplicate it.
+
+166
+00:09:33,540 --> 00:09:34,960
+ And then escape to set it back in place.
+
+167
+00:09:34,960 --> 00:09:37,500
+ Then we'll move it forward just a little bit.
+
+168
+00:09:37,500 --> 00:09:39,340
+ We'll just hit G and Y.
+
+169
+00:09:40,780 --> 00:09:41,100
+ Okay.
+
+170
+00:09:41,100 --> 00:09:44,380
+ And then we can hit P, separate selection.
+
+171
+00:09:44,380 --> 00:09:45,320
+ Okay.
+
+172
+00:09:45,320 --> 00:09:46,320
+ Go back into object mode.
+
+173
+00:09:46,320 --> 00:09:47,980
+ And we have this new object right here.
+
+174
+00:09:47,980 --> 00:09:51,580
+ And we'll rename it to legs.
+
+175
+00:09:51,580 --> 00:09:54,000
+ And then go into edit mode.
+
+176
+00:09:54,000 --> 00:09:54,860
+ Hit A.
+
+177
+00:09:54,860 --> 00:09:56,500
+ And we'll go to the minus X view.
+
+178
+00:09:56,500 --> 00:09:58,860
+ And let's try lining up the image, actually.
+
+179
+00:09:58,860 --> 00:10:00,740
+ So let's go back into object mode for a second.
+
+180
+00:10:00,740 --> 00:10:02,140
+ Let's select the reference image.
+
+181
+00:10:02,140 --> 00:10:04,900
+ Let's just line it up with our...
+
+182
+00:10:10,780 --> 00:10:12,120
+ That works.
+
+183
+00:10:12,120 --> 00:10:12,900
+ Okay.
+
+184
+00:10:12,900 --> 00:10:14,440
+ And now we can select this.
+
+185
+00:10:14,440 --> 00:10:15,280
+ Go to edit mode.
+
+186
+00:10:15,280 --> 00:10:17,520
+ And we'll go to the minus X view.
+
+187
+00:10:17,520 --> 00:10:20,580
+ And then we can just hit E, extrude.
+
+188
+00:10:20,580 --> 00:10:25,420
+ We'll move it down.
+
+189
+00:10:29,220 --> 00:10:30,620
+ You can hit S to scale it.
+
+190
+00:10:30,620 --> 00:10:33,480
+ Okay.
+
+191
+00:10:33,480 --> 00:10:36,340
+ And then we'll hit E again to extrude.
+
+192
+00:10:36,340 --> 00:10:38,040
+ S to scale.
+
+193
+00:10:43,280 --> 00:10:45,980
+ Then I can hit R and then X on my keyboard.
+
+194
+00:10:45,980 --> 00:10:47,640
+ And we'll rotate it just a bit.
+
+195
+00:10:47,640 --> 00:10:49,560
+ Hit E.
+
+196
+00:10:49,560 --> 00:10:54,360
+ Scale down a bit.
+
+197
+00:10:54,360 --> 00:10:57,540
+ Put R and then X again.
+
+198
+00:10:58,080 --> 00:10:58,580
+ E.
+
+199
+00:10:58,580 --> 00:11:03,180
+ You want R X a little more.
+
+200
+00:11:03,180 --> 00:11:04,120
+ And then E.
+
+201
+00:11:04,120 --> 00:11:06,600
+ Something like that.
+
+202
+00:11:06,600 --> 00:11:08,340
+ R X again.
+
+203
+00:11:08,340 --> 00:11:10,920
+ R X.
+
+204
+00:11:10,920 --> 00:11:13,200
+ E.
+
+205
+00:11:13,200 --> 00:11:15,220
+ Scale.
+
+206
+00:11:15,220 --> 00:11:18,000
+ R X.
+
+207
+00:11:18,000 --> 00:11:20,640
+ E.
+
+208
+00:11:20,640 --> 00:11:22,260
+ Scale.
+
+209
+00:11:22,260 --> 00:11:28,040
+ R X.
+
+210
+00:11:28,960 --> 00:11:29,920
+ Scale some more.
+
+211
+00:11:29,920 --> 00:11:38,160
+ And.
+
+212
+00:11:38,160 --> 00:11:41,020
+ Alright.
+
+213
+00:11:41,020 --> 00:11:42,940
+ Now we'll just select our legs here.
+
+214
+00:11:42,940 --> 00:11:44,060
+ We'll go to the modifiers.
+
+215
+00:11:44,060 --> 00:11:46,260
+ We'll add in a subdivision surface modifier.
+
+216
+00:11:46,260 --> 00:11:48,260
+ And.
+
+217
+00:11:48,260 --> 00:11:51,240
+ I don't know what happened there.
+
+218
+00:11:51,240 --> 00:11:52,760
+ But we'll just add in one more.
+
+219
+00:11:52,760 --> 00:11:55,600
+ And to fix that.
+
+220
+00:11:55,600 --> 00:11:56,920
+ We can just hit CTRL R.
+
+221
+00:11:56,920 --> 00:11:57,680
+ Add in a loop cut.
+
+222
+00:11:58,500 --> 00:11:59,680
+ And we can just flatten it out.
+
+223
+00:11:59,680 --> 00:12:00,860
+ You know what?
+
+224
+00:12:00,860 --> 00:12:01,420
+ We'll do one more.
+
+225
+00:12:01,420 --> 00:12:07,060
+ Should fix it.
+
+226
+00:12:07,060 --> 00:12:07,700
+ Yeah.
+
+227
+00:12:07,700 --> 00:12:09,980
+ Looking better.
+
+228
+00:12:09,980 --> 00:12:11,520
+ Go back into edit mode.
+
+229
+00:12:11,520 --> 00:12:12,980
+ We'll also add in a loop cut right here.
+
+230
+00:12:13,020 --> 00:12:13,680
+ So CTRL R.
+
+231
+00:12:13,680 --> 00:12:13,680
+ So CTRL R.
+
+232
+00:12:13,680 --> 00:12:14,400
+ Loop cut.
+
+233
+00:12:14,400 --> 00:12:16,420
+ Boom.
+
+234
+00:12:16,420 --> 00:12:17,500
+ Yeah.
+
+235
+00:12:17,500 --> 00:12:19,900
+ You can go to top view.
+
+236
+00:12:19,900 --> 00:12:22,960
+ Go into edit mode.
+
+237
+00:12:22,960 --> 00:12:24,880
+ Which is a CTRL R.
+
+238
+00:12:24,880 --> 00:12:26,160
+ Add in a loop cut.
+
+239
+00:12:26,160 --> 00:12:28,860
+ We'll just flatten it out like this.
+
+240
+00:12:28,860 --> 00:12:31,980
+ You should also select this entire line right here.
+
+241
+00:12:31,980 --> 00:12:32,960
+ So hold alt.
+
+242
+00:12:32,960 --> 00:12:34,160
+ It's like this entire line.
+
+243
+00:12:34,800 --> 00:12:35,740
+ And we'll just move it.
+
+244
+00:12:35,740 --> 00:12:39,720
+ To the side by hitting G and then X.
+
+245
+00:12:39,720 --> 00:12:42,480
+ Okay.
+
+246
+00:12:42,480 --> 00:12:43,860
+ Now to connect this.
+
+247
+00:12:43,860 --> 00:12:45,420
+ We'll go into edit mode again.
+
+248
+00:12:45,420 --> 00:12:45,900
+ We'll select.
+
+249
+00:12:45,900 --> 00:12:47,080
+ We'll use the face select tool.
+
+250
+00:12:47,080 --> 00:12:48,080
+ We'll select this face.
+
+251
+00:12:48,080 --> 00:12:49,880
+ And I'm just going to move.
+
+252
+00:12:49,880 --> 00:12:51,140
+ We'll use the.
+
+253
+00:12:51,140 --> 00:12:53,060
+ Proportional editing tool.
+
+254
+00:12:53,060 --> 00:12:53,840
+ Hit G.
+
+255
+00:12:53,840 --> 00:12:55,460
+ And then X.
+
+256
+00:12:55,460 --> 00:12:55,980
+ Or sorry.
+
+257
+00:12:55,980 --> 00:12:56,400
+ Y.
+
+258
+00:12:56,400 --> 00:12:58,220
+ And we'll move it forward.
+
+259
+00:12:58,220 --> 00:13:00,080
+ So you can scroll on your mouse wheel.
+
+260
+00:13:00,080 --> 00:13:00,640
+ To make this.
+
+261
+00:13:00,640 --> 00:13:01,840
+ Smaller or bigger.
+
+262
+00:13:01,840 --> 00:13:09,260
+ And there.
+
+263
+00:13:09,260 --> 00:13:09,700
+ There we go.
+
+264
+00:13:09,700 --> 00:13:10,440
+ Alright.
+
+265
+00:13:10,440 --> 00:13:11,520
+ Next I'm going to click on this.
+
+266
+00:13:11,520 --> 00:13:12,820
+ I'll hide the reference image.
+
+267
+00:13:12,820 --> 00:13:13,740
+ Because we don't need it right now.
+
+268
+00:13:13,740 --> 00:13:15,240
+ And now I'm going to click on the frames.
+
+269
+00:13:15,240 --> 00:13:17,500
+ And let's add a bevel modifier to the frames.
+
+270
+00:13:17,500 --> 00:13:20,060
+ Because right now the edges are super sharp.
+
+271
+00:13:20,060 --> 00:13:20,900
+ And in real life.
+
+272
+00:13:20,900 --> 00:13:22,860
+ That's not really realistic.
+
+273
+00:13:22,860 --> 00:13:24,300
+ So we need to add a bevel to that.
+
+274
+00:13:24,300 --> 00:13:25,380
+ So modifiers.
+
+275
+00:13:25,380 --> 00:13:26,540
+ Go to.
+
+276
+00:13:26,540 --> 00:13:28,020
+ Search for bevel.
+
+277
+00:13:28,020 --> 00:13:29,380
+ That's too much.
+
+278
+00:13:29,380 --> 00:13:30,060
+ That's too much.
+
+279
+00:13:30,080 --> 00:13:31,080
+ So let's go to the amount.
+
+280
+00:13:31,080 --> 00:13:32,340
+ Let's just decrease it.
+
+281
+00:13:32,340 --> 00:13:34,640
+ Something like.
+
+282
+00:13:34,640 --> 00:13:36,540
+ This could work.
+
+283
+00:13:36,540 --> 00:13:39,220
+ And I also want to right click.
+
+284
+00:13:39,220 --> 00:13:40,360
+ And shade out a smooth.
+
+285
+00:13:40,360 --> 00:13:41,800
+ That's looking much better.
+
+286
+00:13:41,800 --> 00:13:43,200
+ Now if you want to add more segments.
+
+287
+00:13:43,200 --> 00:13:43,840
+ Just be careful.
+
+288
+00:13:43,840 --> 00:13:44,680
+ If you add two.
+
+289
+00:13:44,680 --> 00:13:45,700
+ Or even three.
+
+290
+00:13:45,700 --> 00:13:46,560
+ You're going to see like.
+
+291
+00:13:46,560 --> 00:13:48,080
+ Weird artifacting happening.
+
+292
+00:13:48,080 --> 00:13:49,720
+ Happening on the frames.
+
+293
+00:13:49,720 --> 00:13:50,560
+ And that's because there's not.
+
+294
+00:13:50,560 --> 00:13:51,120
+ You know.
+
+295
+00:13:51,120 --> 00:13:52,700
+ Proper geometry at the top.
+
+296
+00:13:52,700 --> 00:13:54,000
+ So yeah.
+
+297
+00:13:54,000 --> 00:13:55,440
+ If you want more segments.
+
+298
+00:13:55,440 --> 00:13:56,820
+ You got to keep it at flat.
+
+299
+00:13:56,820 --> 00:13:58,040
+ Or you can just copy me.
+
+300
+00:13:58,040 --> 00:13:59,380
+ And keep the segments at one.
+
+301
+00:13:59,380 --> 00:14:00,080
+ And we'll just.
+
+302
+00:14:00,080 --> 00:14:00,460
+ You know.
+
+303
+00:14:00,460 --> 00:14:01,260
+ Auto shade smooth.
+
+304
+00:14:01,260 --> 00:14:02,740
+ And we don't have to deal with that.
+
+305
+00:14:02,740 --> 00:14:04,020
+ Okay.
+
+306
+00:14:04,020 --> 00:14:05,080
+ Now let's move on.
+
+307
+00:14:05,080 --> 00:14:06,520
+ To adding the materials.
+
+308
+00:14:06,520 --> 00:14:07,160
+ Now I.
+
+309
+00:14:07,160 --> 00:14:07,660
+ You can see.
+
+310
+00:14:07,660 --> 00:14:09,560
+ I have this blender kit add-on right here.
+
+311
+00:14:09,560 --> 00:14:10,620
+ I enabled it beforehand.
+
+312
+00:14:10,620 --> 00:14:11,420
+ So let's go to edit.
+
+313
+00:14:11,420 --> 00:14:12,060
+ Preferences.
+
+314
+00:14:12,060 --> 00:14:13,260
+ If you go to add-ons.
+
+315
+00:14:13,920 --> 00:14:15,260
+ And you got to download it first.
+
+316
+00:14:15,260 --> 00:14:16,420
+ So I'll leave a link in the description.
+
+317
+00:14:16,420 --> 00:14:17,500
+ To download this add-on.
+
+318
+00:14:17,500 --> 00:14:18,280
+ It's called blender kit.
+
+319
+00:14:18,280 --> 00:14:18,980
+ It's completely free.
+
+320
+00:14:18,980 --> 00:14:19,900
+ Make sure you download it.
+
+321
+00:14:19,900 --> 00:14:21,000
+ And install it into blender.
+
+322
+00:14:21,000 --> 00:14:23,120
+ And then make sure it's checkmarked here.
+
+323
+00:14:23,120 --> 00:14:24,760
+ So it'll show up right here.
+
+324
+00:14:24,760 --> 00:14:26,660
+ So yeah.
+
+325
+00:14:26,660 --> 00:14:27,700
+ I have it enabled.
+
+326
+00:14:27,700 --> 00:14:28,660
+ Save preferences.
+
+327
+00:14:28,660 --> 00:14:29,880
+ And then we can close out of that.
+
+328
+00:14:29,880 --> 00:14:31,440
+ And this is what I'm going to use.
+
+329
+00:14:31,440 --> 00:14:32,940
+ To add in my materials.
+
+330
+00:14:32,940 --> 00:14:34,660
+ So let's go to materials.
+
+331
+00:14:35,660 --> 00:14:37,100
+ And I'm going to search for.
+
+332
+00:14:37,100 --> 00:14:38,740
+ A you know.
+
+333
+00:14:38,740 --> 00:14:40,360
+ Glossy plastic material.
+
+334
+00:14:40,360 --> 00:14:42,420
+ So let's go to.
+
+335
+00:14:42,420 --> 00:14:42,840
+ You know what.
+
+336
+00:14:42,840 --> 00:14:44,240
+ Let's go to render engine.
+
+337
+00:14:44,240 --> 00:14:45,140
+ Let's switch to cycles.
+
+338
+00:14:45,140 --> 00:14:46,980
+ Let's switch this to GPU.
+
+339
+00:14:46,980 --> 00:14:48,480
+ Highly recommend it if you have it.
+
+340
+00:14:48,480 --> 00:14:49,520
+ For faster rendering.
+
+341
+00:14:49,520 --> 00:14:52,500
+ We'll switch the viewport samples to 200.
+
+342
+00:14:52,500 --> 00:14:54,760
+ Because we are going to be rendering at 200 at the end.
+
+343
+00:14:54,760 --> 00:14:56,640
+ And we need some world lighting.
+
+344
+00:14:56,640 --> 00:14:58,220
+ So let's go to the world properties.
+
+345
+00:14:58,220 --> 00:14:58,920
+ Let's go to color.
+
+346
+00:14:58,920 --> 00:15:00,440
+ Environment texture.
+
+347
+00:15:00,440 --> 00:15:02,880
+ And I will go to HDRIs.
+
+348
+00:15:02,880 --> 00:15:04,000
+ I'll leave a link in the description.
+
+349
+00:15:04,000 --> 00:15:05,200
+ For the same one that I'm using.
+
+350
+00:15:05,660 --> 00:15:06,800
+ And we'll just hit open image.
+
+351
+00:15:06,800 --> 00:15:09,360
+ We'll use this 4K EXR version.
+
+352
+00:15:09,360 --> 00:15:11,480
+ And now we're ready to go.
+
+353
+00:15:11,480 --> 00:15:12,100
+ So yeah.
+
+354
+00:15:12,100 --> 00:15:13,280
+ Make sure you save your work by the way.
+
+355
+00:15:13,280 --> 00:15:14,680
+ Save your work.
+
+356
+00:15:14,680 --> 00:15:17,120
+ I saved mine as Ray-Ban Meta Glasses tutorial.
+
+357
+00:15:17,120 --> 00:15:18,160
+ And yeah.
+
+358
+00:15:18,160 --> 00:15:19,980
+ So just save your work.
+
+359
+00:15:19,980 --> 00:15:20,640
+ Okay.
+
+360
+00:15:20,640 --> 00:15:22,180
+ Let's go to render mode.
+
+361
+00:15:22,180 --> 00:15:24,420
+ All right.
+
+362
+00:15:24,420 --> 00:15:25,640
+ Let's go to here.
+
+363
+00:15:25,640 --> 00:15:26,240
+ Materials.
+
+364
+00:15:26,240 --> 00:15:26,900
+ There we go.
+
+365
+00:15:26,900 --> 00:15:29,760
+ And let's search for glossy plastic.
+
+366
+00:15:29,760 --> 00:15:30,480
+ Enter.
+
+367
+00:15:30,480 --> 00:15:32,720
+ Let's go and use a procedural based.
+
+368
+00:15:34,280 --> 00:15:36,900
+ And we'll just use high gloss red plastic for now.
+
+369
+00:15:36,900 --> 00:15:39,880
+ So drag it on to your frames.
+
+370
+00:15:39,880 --> 00:15:41,360
+ And it should show up.
+
+371
+00:15:41,360 --> 00:15:42,560
+ So let's go to material properties.
+
+372
+00:15:42,560 --> 00:15:43,940
+ And it should be right there.
+
+373
+00:15:43,940 --> 00:15:45,580
+ Boom.
+
+374
+00:15:45,580 --> 00:15:46,540
+ Look at that.
+
+375
+00:15:46,540 --> 00:15:49,420
+ Now you can change the color by going to the shader editor.
+
+376
+00:15:49,420 --> 00:15:52,520
+ And we'll just change the rough.
+
+377
+00:15:52,520 --> 00:15:53,600
+ Hit the end here.
+
+378
+00:15:53,600 --> 00:15:56,760
+ And we'll go here and just make this completely black.
+
+379
+00:15:56,760 --> 00:15:57,760
+ Okay.
+
+380
+00:15:57,760 --> 00:15:58,660
+ Cool.
+
+381
+00:15:59,140 --> 00:16:01,140
+ We're going to have the same to the legs as well.
+
+382
+00:16:01,140 --> 00:16:02,920
+ Okay.
+
+383
+00:16:02,920 --> 00:16:03,760
+ Cool.
+
+384
+00:16:03,760 --> 00:16:04,500
+ Looking nice.
+
+385
+00:16:04,500 --> 00:16:05,260
+ Looking good.
+
+386
+00:16:05,260 --> 00:16:06,260
+ Okay.
+
+387
+00:16:06,260 --> 00:16:10,840
+ Now let's move on to making the camera lens inside these holes here.
+
+388
+00:16:10,840 --> 00:16:11,960
+ So let's go to solid mode.
+
+389
+00:16:11,960 --> 00:16:14,780
+ I'm just going to hide all of these objects for now.
+
+390
+00:16:14,780 --> 00:16:17,740
+ Let's collapse this window by clicking and dragging to the right.
+
+391
+00:16:18,240 --> 00:16:22,480
+ And I'm going to, we'll just close out of that.
+
+392
+00:16:22,480 --> 00:16:23,020
+ Okay.
+
+393
+00:16:23,020 --> 00:16:23,480
+ Shift A.
+
+394
+00:16:23,480 --> 00:16:25,620
+ Add in a mesh UV sphere.
+
+395
+00:16:25,620 --> 00:16:27,360
+ Minus X view.
+
+396
+00:16:27,360 --> 00:16:28,500
+ Let's go to wireframe.
+
+397
+00:16:28,500 --> 00:16:31,060
+ Let's go into edit mode by hitting tab.
+
+398
+00:16:31,060 --> 00:16:32,660
+ Use the face select tool.
+
+399
+00:16:32,660 --> 00:16:33,260
+ Deselect.
+
+400
+00:16:33,260 --> 00:16:34,500
+ We'll select the back portion.
+
+401
+00:16:34,500 --> 00:16:35,500
+ Back half like this.
+
+402
+00:16:35,500 --> 00:16:36,900
+ Hit exit delete faces.
+
+403
+00:16:36,900 --> 00:16:38,320
+ Nice.
+
+404
+00:16:38,520 --> 00:16:39,320
+ Go to solid mode.
+
+405
+00:16:39,320 --> 00:16:41,300
+ Go back to the edge select tool.
+
+406
+00:16:41,300 --> 00:16:43,040
+ Hold Alt.
+
+407
+00:16:43,040 --> 00:16:44,220
+ Select the edge here.
+
+408
+00:16:44,220 --> 00:16:46,500
+ And then hit F to fill in that face.
+
+409
+00:16:46,500 --> 00:16:48,860
+ And let's select the back face here.
+
+410
+00:16:48,860 --> 00:16:50,100
+ Minus X view.
+
+411
+00:16:50,100 --> 00:16:51,260
+ Hit E to extrude back.
+
+412
+00:16:51,260 --> 00:16:52,880
+ Boom.
+
+413
+00:16:52,880 --> 00:16:54,400
+ Now we can go to front view.
+
+414
+00:16:54,400 --> 00:16:55,440
+ Deselect.
+
+415
+00:16:55,440 --> 00:16:56,780
+ Select all the front faces.
+
+416
+00:16:56,780 --> 00:16:58,860
+ And make sure all of them are selected.
+
+417
+00:16:58,860 --> 00:17:02,180
+ So it looks like, oh, see the bottom parts are not selected.
+
+418
+00:17:02,180 --> 00:17:03,120
+ So hold Shift.
+
+419
+00:17:03,120 --> 00:17:03,640
+ Select that.
+
+420
+00:17:03,640 --> 00:17:04,740
+ Select this face.
+
+421
+00:17:04,740 --> 00:17:05,520
+ Select this face.
+
+422
+00:17:05,520 --> 00:17:07,260
+ Select these faces as well.
+
+423
+00:17:07,340 --> 00:17:09,080
+ So hold Alt plus Shift.
+
+424
+00:17:09,080 --> 00:17:11,360
+ So it should look like this.
+
+425
+00:17:11,360 --> 00:17:14,660
+ And now all you have to do is hit I to insert the face.
+
+426
+00:17:14,660 --> 00:17:17,040
+ Once set all the way from here.
+
+427
+00:17:17,040 --> 00:17:17,740
+ That's good enough.
+
+428
+00:17:17,740 --> 00:17:20,620
+ Then we'll hit E to extrude back.
+
+429
+00:17:20,620 --> 00:17:22,500
+ Okay.
+
+430
+00:17:22,500 --> 00:17:24,600
+ And then we'll hit S to scale down a bit.
+
+431
+00:17:24,600 --> 00:17:26,480
+ There we go.
+
+432
+00:17:26,480 --> 00:17:27,220
+ I'm going to deselect.
+
+433
+00:17:27,220 --> 00:17:28,460
+ I'm going to hold Alt.
+
+434
+00:17:28,460 --> 00:17:29,340
+ Select these faces.
+
+435
+00:17:29,340 --> 00:17:32,720
+ And then we'll just hit S.
+
+436
+00:17:32,720 --> 00:17:33,940
+ Scale up a bit.
+
+437
+00:17:33,940 --> 00:17:34,780
+ Yeah.
+
+438
+00:17:34,780 --> 00:17:36,640
+ And we'll back.
+
+439
+00:17:36,720 --> 00:17:37,660
+ We can just move it back.
+
+440
+00:17:37,660 --> 00:17:39,600
+ Okay.
+
+441
+00:17:39,600 --> 00:17:41,100
+ So that's what the lens is looking like.
+
+442
+00:17:41,100 --> 00:17:44,100
+ We can just go to the subdivision surface modifier.
+
+443
+00:17:44,100 --> 00:17:45,020
+ Add in.
+
+444
+00:17:45,020 --> 00:17:45,480
+ Or sorry.
+
+445
+00:17:45,480 --> 00:17:46,240
+ Go to modifiers tab.
+
+446
+00:17:46,240 --> 00:17:47,780
+ Add in a subdivision surface modifier.
+
+447
+00:17:47,780 --> 00:17:49,100
+ I can't talk today.
+
+448
+00:17:49,100 --> 00:17:49,940
+ All right.
+
+449
+00:17:49,940 --> 00:17:52,380
+ We'll switch this to one and just hit apply.
+
+450
+00:17:52,380 --> 00:17:54,500
+ And we want to fix the back here.
+
+451
+00:17:54,500 --> 00:17:55,840
+ So let's go into edit mode.
+
+452
+00:17:55,840 --> 00:17:57,000
+ All of these faces here.
+
+453
+00:17:57,000 --> 00:17:58,400
+ So back view.
+
+454
+00:17:58,900 --> 00:18:00,280
+ We can use this.
+
+455
+00:18:00,280 --> 00:18:02,300
+ We can use the select circle tool.
+
+456
+00:18:02,300 --> 00:18:02,860
+ Hold shift.
+
+457
+00:18:02,860 --> 00:18:04,140
+ Select all these faces.
+
+458
+00:18:04,140 --> 00:18:05,200
+ Hit X.
+
+459
+00:18:05,200 --> 00:18:05,980
+ Delete faces.
+
+460
+00:18:05,980 --> 00:18:08,400
+ Then we'll use the edge select tool.
+
+461
+00:18:08,400 --> 00:18:09,920
+ Go back to select tool.
+
+462
+00:18:09,920 --> 00:18:11,200
+ Hold Alt.
+
+463
+00:18:11,200 --> 00:18:13,640
+ And select the line around.
+
+464
+00:18:13,640 --> 00:18:14,540
+ Like this.
+
+465
+00:18:15,840 --> 00:18:18,080
+ And we'll hit F to fill in that face.
+
+466
+00:18:18,080 --> 00:18:21,760
+ And then we could hit GY and move it back.
+
+467
+00:18:21,760 --> 00:18:23,340
+ All right.
+
+468
+00:18:23,340 --> 00:18:24,720
+ Our lens is done.
+
+469
+00:18:24,720 --> 00:18:26,440
+ We can do shade auto smooth.
+
+470
+00:18:26,440 --> 00:18:27,860
+ And let's do the materials now.
+
+471
+00:18:27,960 --> 00:18:29,280
+ So let's go into materials.
+
+472
+00:18:29,280 --> 00:18:30,100
+ Hit new.
+
+473
+00:18:30,100 --> 00:18:32,980
+ We'll call this camera lens.
+
+474
+00:18:32,980 --> 00:18:34,840
+ Go to the render mode.
+
+475
+00:18:34,840 --> 00:18:37,340
+ And we'll give it a roughness of zero.
+
+476
+00:18:37,340 --> 00:18:42,000
+ And transmission of one to mimic that lens look.
+
+477
+00:18:42,000 --> 00:18:48,040
+ Now I want this part here to be black metallic.
+
+478
+00:18:48,040 --> 00:18:49,780
+ So hit go to edit mode.
+
+479
+00:18:49,780 --> 00:18:51,400
+ We'll use the face select tool.
+
+480
+00:18:51,400 --> 00:18:52,040
+ Deselect.
+
+481
+00:18:52,040 --> 00:18:53,700
+ Hold Alt.
+
+482
+00:18:53,700 --> 00:18:56,540
+ Hold Alt shift.
+
+483
+00:18:56,540 --> 00:18:57,200
+ Select this.
+
+484
+00:18:57,280 --> 00:18:58,280
+ Hold Alt shifts like this.
+
+485
+00:18:58,280 --> 00:19:00,660
+ And hold shifts like this face.
+
+486
+00:19:00,660 --> 00:19:04,140
+ We'll add in a new material by hitting plus.
+
+487
+00:19:04,140 --> 00:19:05,600
+ Hit new.
+
+488
+00:19:05,600 --> 00:19:08,220
+ We'll go into render mode.
+
+489
+00:19:08,220 --> 00:19:11,900
+ And, you know, we want to hit a sign.
+
+490
+00:19:11,900 --> 00:19:14,600
+ And now we'll make this black here.
+
+491
+00:19:14,600 --> 00:19:15,840
+ So let's go metallic.
+
+492
+00:19:15,840 --> 00:19:17,940
+ And we'll make it dark.
+
+493
+00:19:17,940 --> 00:19:19,140
+ Okay.
+
+494
+00:19:19,140 --> 00:19:21,400
+ And you notice how this is turning black too.
+
+495
+00:19:21,400 --> 00:19:23,080
+ And that's because it's reflecting off of this.
+
+496
+00:19:23,080 --> 00:19:24,000
+ So don't worry about that.
+
+497
+00:19:24,000 --> 00:19:25,120
+ And there you go.
+
+498
+00:19:25,120 --> 00:19:26,280
+ Our lens is done.
+
+499
+00:19:26,600 --> 00:19:28,180
+ Now we can do one more thing.
+
+500
+00:19:28,180 --> 00:19:30,220
+ Let's go into solid mode.
+
+501
+00:19:30,220 --> 00:19:31,140
+ Let's go to wireframe.
+
+502
+00:19:31,140 --> 00:19:32,980
+ And you know what?
+
+503
+00:19:32,980 --> 00:19:33,860
+ Let's go to edit mode.
+
+504
+00:19:33,860 --> 00:19:34,960
+ Hit A to select everything.
+
+505
+00:19:34,960 --> 00:19:36,800
+ And we can do shift D to duplicate it.
+
+506
+00:19:36,800 --> 00:19:38,220
+ And then escape to set it back in place.
+
+507
+00:19:38,220 --> 00:19:39,780
+ Let's go to minus Y view.
+
+508
+00:19:39,780 --> 00:19:40,680
+ And just hit S.
+
+509
+00:19:41,220 --> 00:19:43,880
+ And we'll add in a smaller lens inside the lens.
+
+510
+00:19:43,880 --> 00:19:46,980
+ To mimic those rings you see inside of camera lenses.
+
+511
+00:19:46,980 --> 00:19:49,260
+ This might not be accurate.
+
+512
+00:19:49,260 --> 00:19:51,840
+ But, you know, it looks about the same.
+
+513
+00:19:51,840 --> 00:19:53,900
+ So please don't come at me.
+
+514
+00:19:53,900 --> 00:19:57,200
+ I think our camera lens is good to go.
+
+515
+00:19:57,200 --> 00:20:00,280
+ So let's bring back our legs and frames.
+
+516
+00:20:00,280 --> 00:20:01,600
+ We can go to solid mode.
+
+517
+00:20:01,600 --> 00:20:03,480
+ Let's make this.
+
+518
+00:20:03,480 --> 00:20:06,140
+ Let's turn on cavity so we can see better.
+
+519
+00:20:06,840 --> 00:20:08,860
+ We'll make this smaller by hitting S.
+
+520
+00:20:08,860 --> 00:20:14,980
+ Let's go to the minus X view.
+
+521
+00:20:14,980 --> 00:20:18,240
+ Let's move it back.
+
+522
+00:20:18,240 --> 00:20:20,820
+ I think right here is good.
+
+523
+00:20:20,820 --> 00:20:21,800
+ All right.
+
+524
+00:20:21,800 --> 00:20:25,000
+ One more thing we can do is we can add in a glass material.
+
+525
+00:20:25,180 --> 00:20:27,600
+ So let's go into, let's select the frames.
+
+526
+00:20:27,600 --> 00:20:29,160
+ Hit, go to edit mode.
+
+527
+00:20:29,160 --> 00:20:30,560
+ Deselect.
+
+528
+00:20:30,560 --> 00:20:31,660
+ Use the edge select tool.
+
+529
+00:20:31,660 --> 00:20:34,640
+ Hold shift alt like this.
+
+530
+00:20:34,640 --> 00:20:35,760
+ This.
+
+531
+00:20:35,760 --> 00:20:40,460
+ And we can just do shift Z to duplicate it.
+
+532
+00:20:40,460 --> 00:20:42,720
+ Escape to set it back in place.
+
+533
+00:20:42,720 --> 00:20:45,040
+ And then we'll hit F to fill in that face.
+
+534
+00:20:45,040 --> 00:20:47,760
+ Hit the plus icon for a new material.
+
+535
+00:20:47,760 --> 00:20:49,480
+ Hit new.
+
+536
+00:20:49,960 --> 00:20:52,120
+ And this is going to be just, you know, glass.
+
+537
+00:20:52,120 --> 00:20:57,000
+ So we could just, you know, I think there's a glass material here.
+
+538
+00:20:57,000 --> 00:20:57,720
+ There we go.
+
+539
+00:20:57,720 --> 00:20:59,700
+ Go to render mode.
+
+540
+00:20:59,700 --> 00:21:01,600
+ Hit assign.
+
+541
+00:21:01,600 --> 00:21:04,740
+ Oh, we've got to turn the roughness down.
+
+542
+00:21:04,740 --> 00:21:06,440
+ Should be able to see inside.
+
+543
+00:21:06,440 --> 00:21:06,700
+ Yeah.
+
+544
+00:21:06,700 --> 00:21:07,360
+ There we go.
+
+545
+00:21:07,360 --> 00:21:08,980
+ And there we go.
+
+546
+00:21:09,880 --> 00:21:12,980
+ We'll rename this to lens glass.
+
+547
+00:21:12,980 --> 00:21:13,620
+ Okay.
+
+548
+00:21:13,620 --> 00:21:15,720
+ Okay.
+
+549
+00:21:15,720 --> 00:21:16,100
+ Nice.
+
+550
+00:21:16,100 --> 00:21:21,740
+ We got to rename this sphere inside to camera lens.
+
+551
+00:21:21,740 --> 00:21:22,260
+ Okay.
+
+552
+00:21:22,260 --> 00:21:25,900
+ And we need to duplicate it.
+
+553
+00:21:25,900 --> 00:21:31,420
+ So we'll hit alt D and we'll just bring it almost done.
+
+554
+00:21:31,420 --> 00:21:35,940
+ And now let's move on to the, the inside of frames here.
+
+555
+00:21:35,940 --> 00:21:36,420
+ Okay.
+
+556
+00:21:36,420 --> 00:21:37,000
+ Save your work.
+
+557
+00:21:37,000 --> 00:21:37,560
+ Save your work.
+
+558
+00:21:37,560 --> 00:21:38,620
+ Control S.
+
+559
+00:21:38,620 --> 00:21:39,300
+ Save your work.
+
+560
+00:21:39,700 --> 00:21:40,380
+ All right, select your frames.
+
+561
+00:21:40,380 --> 00:21:42,160
+ Let's go into edit mode.
+
+562
+00:21:42,160 --> 00:21:44,720
+ Hold alt and we'll select these.
+
+563
+00:21:44,720 --> 00:21:46,620
+ We'll make sure the line select tool is selected.
+
+564
+00:21:46,620 --> 00:21:48,660
+ And then hold alt, select this.
+
+565
+00:21:48,660 --> 00:21:52,220
+ And then just hit F to add in those glasses.
+
+566
+00:21:52,220 --> 00:21:53,280
+ Okay.
+
+567
+00:21:53,280 --> 00:21:55,720
+ And now we have some glasses.
+
+568
+00:21:55,720 --> 00:21:58,200
+ We can select using face select what we can select these glasses.
+
+569
+00:21:58,200 --> 00:21:59,580
+ Go to lens glass.
+
+570
+00:21:59,580 --> 00:22:00,400
+ Let me just hit assign.
+
+571
+00:22:00,400 --> 00:22:07,560
+ And now we have some, you know, lenses inside the frames as well.
+
+572
+00:22:07,560 --> 00:22:08,120
+ Okay.
+
+573
+00:22:08,120 --> 00:22:09,600
+ So now that you have the frames, let's go back.
+
+574
+00:22:09,600 --> 00:22:14,360
+ To edit mode, select these frames and we can just hit P to separate selection.
+
+575
+00:22:14,360 --> 00:22:15,560
+ Okay.
+
+576
+00:22:15,560 --> 00:22:24,200
+ And once I separated, we can call them inside lens and we can go move on.
+
+577
+00:22:24,200 --> 00:22:25,000
+ Let's go into edit mode.
+
+578
+00:22:25,000 --> 00:22:26,280
+ Actually hit eight, select everything.
+
+579
+00:22:26,280 --> 00:22:29,040
+ We can move forward a little bit.
+
+580
+00:22:30,660 --> 00:22:32,300
+ And then it eats extrude back.
+
+581
+00:22:32,300 --> 00:22:34,420
+ Just gives them a bit more thickness.
+
+582
+00:22:34,420 --> 00:22:37,420
+ Now the glasses are good to go.
+
+583
+00:22:37,420 --> 00:22:45,640
+ But if you want to take it further, you could go ahead and add the Ray-Ban logo to the glasses to make it look like it's,
+
+584
+00:22:45,640 --> 00:22:47,420
+ you know, a Ray-Ban meta glasses.
+
+585
+00:22:48,180 --> 00:22:52,880
+ Uh, I'm not going to show you how to do that in this tutorial because you need to convert, you need to download the
+
+586
+00:22:52,880 --> 00:22:54,940
+ logo first and then convert it into an SVG.
+
+587
+00:22:54,940 --> 00:22:55,940
+ So I've already done that.
+
+588
+00:22:55,940 --> 00:22:59,700
+ I'm going to go ahead and just click on import scale.
+
+589
+00:23:00,060 --> 00:23:01,500
+ Scalable vector graphic SVG.
+
+590
+00:23:01,500 --> 00:23:05,700
+ And I'll search for, you know, the logo right here.
+
+591
+00:23:05,700 --> 00:23:06,540
+ I have it right here.
+
+592
+00:23:06,540 --> 00:23:07,540
+ I have the RB one.
+
+593
+00:23:07,540 --> 00:23:10,420
+ And then the Ray-Ban one, let's go with the RB first.
+
+594
+00:23:10,420 --> 00:23:11,900
+ There it is.
+
+595
+00:23:11,900 --> 00:23:15,420
+ And then delete this and boom Ray-Ban logo right here.
+
+596
+00:23:15,420 --> 00:23:17,300
+ Uh, let's do right.
+
+597
+00:23:17,300 --> 00:23:21,100
+ Click geometry to origin or X 90 enter.
+
+598
+00:23:21,100 --> 00:23:26,060
+ And we'll just change the material here to white.
+
+599
+00:23:26,060 --> 00:23:28,380
+ We want to make the value like three.
+
+600
+00:23:28,380 --> 00:23:30,140
+ So it's super white.
+
+601
+00:23:30,140 --> 00:23:36,340
+ So let's go into render mode and we can just, you know, go ahead and make it small and add it.
+
+602
+00:23:42,220 --> 00:23:43,700
+ And we'll do the same thing again.
+
+603
+00:23:43,700 --> 00:23:50,660
+ We'll, I'm going to import, let's go vector graphic RB and change this to white.
+
+604
+00:23:50,660 --> 00:23:52,580
+ And this one goes to the bottom.
+
+605
+00:23:52,580 --> 00:23:56,460
+ Let's just move it till there's like no reflection.
+
+606
+00:23:56,460 --> 00:23:57,060
+ All right.
+
+607
+00:23:57,060 --> 00:23:59,420
+ Now we can move on to the animation portion.
+
+608
+00:23:59,420 --> 00:24:02,100
+ Let's do shift a, we'll add in an empty sphere.
+
+609
+00:24:02,100 --> 00:24:05,340
+ I'm going to use this sphere and I'm going to attach everything to this sphere.
+
+610
+00:24:05,340 --> 00:24:10,620
+ So let's just make this big top view, move it towards the middle.
+
+611
+00:24:11,380 --> 00:24:16,860
+ Then hit a select everything we can do control P on our keyboard and we'll parent to the object.
+
+612
+00:24:16,860 --> 00:24:18,580
+ So now this will control everything.
+
+613
+00:24:18,580 --> 00:24:24,740
+ Now to start off, I'm going to first make this glasses real world scale.
+
+614
+00:24:24,740 --> 00:24:26,860
+ Cause right now they are way too big.
+
+615
+00:24:26,860 --> 00:24:28,540
+ So I already did the measurements.
+
+616
+00:24:28,540 --> 00:24:35,580
+ All you have to do is just copy the scale here, make it 0.03 and that'll be matching real world glasses.
+
+617
+00:24:35,580 --> 00:24:40,060
+ So let's go put it in the middle and I'm going to move it up a little bit.
+
+618
+00:24:40,420 --> 00:24:44,700
+ I'm going to go to blender kit and I'm going to import in a table that it can sit on.
+
+619
+00:24:44,700 --> 00:24:47,300
+ So let's go type in glass table.
+
+620
+00:24:47,300 --> 00:24:51,380
+ And again, you don't have to use this exact one that I'm using.
+
+621
+00:24:51,380 --> 00:24:53,180
+ I'll be using this one right here.
+
+622
+00:24:53,180 --> 00:25:01,580
+ Let's move it towards the, uh, well, actually let's select the table itself.
+
+623
+00:25:01,580 --> 00:25:03,420
+ We'll move it in the middle centered out.
+
+624
+00:25:03,420 --> 00:25:05,420
+ Okay.
+
+625
+00:25:05,420 --> 00:25:08,580
+ Uh, we'll also move the glasses up.
+
+626
+00:25:08,580 --> 00:25:10,980
+ Okay.
+
+627
+00:25:10,980 --> 00:25:14,580
+ And I'll have the glasses start like this.
+
+628
+00:25:15,100 --> 00:25:18,460
+ All right, now for the lighting, let's see what the lighting is looking like.
+
+629
+00:25:18,460 --> 00:25:19,540
+ Let's go to rendered mode.
+
+630
+00:25:19,540 --> 00:25:21,220
+ All right.
+
+631
+00:25:21,220 --> 00:25:22,100
+ It's way too bright.
+
+632
+00:25:22,100 --> 00:25:23,620
+ So I'm going to go to the world tidings.
+
+633
+00:25:23,620 --> 00:25:25,780
+ I'm just going to make the 0.1.
+
+634
+00:25:25,780 --> 00:25:27,220
+ Nice.
+
+635
+00:25:27,380 --> 00:25:30,020
+ I'm also going to add a backdrop.
+
+636
+00:25:30,020 --> 00:25:32,580
+ So let's do shift a, add in a mesh plane.
+
+637
+00:25:33,020 --> 00:25:37,260
+ We'll make it go at S and then five on my keyboard.
+
+638
+00:25:37,260 --> 00:25:38,260
+ Go to edit mode.
+
+639
+00:25:38,260 --> 00:25:40,700
+ It's like this hit E and then Z to extrude up.
+
+640
+00:25:40,700 --> 00:25:41,580
+ Okay.
+
+641
+00:25:41,580 --> 00:25:42,380
+ I'll select this line.
+
+642
+00:25:42,380 --> 00:25:46,060
+ I'll hit control B on my keyboard, and then I'll scroll on my mouse wheel to add some loop
+
+643
+00:25:46,060 --> 00:25:48,180
+ cuts, tab out and shade smooth.
+
+644
+00:25:48,180 --> 00:25:49,060
+ Okay.
+
+645
+00:25:49,060 --> 00:25:52,080
+ We'll go to the material properties, give it a material.
+
+646
+00:25:52,080 --> 00:25:53,940
+ We'll get it a diffuse material.
+
+647
+00:25:53,940 --> 00:25:55,700
+ Be a little bit red.
+
+648
+00:25:55,700 --> 00:25:57,860
+ Roughness is going to be 0.3.
+
+649
+00:25:57,860 --> 00:26:01,980
+ Let's go into the, uh, shader editor right here.
+
+650
+00:26:02,120 --> 00:26:06,600
+ And I want to give it a gradient texture because right now it's a bit too basic.
+
+651
+00:26:06,600 --> 00:26:08,280
+ So let's go ahead.
+
+652
+00:26:08,280 --> 00:26:10,560
+ We'll do shift a, add in a color ramp.
+
+653
+00:26:10,560 --> 00:26:13,560
+ Color ramp needs to match this color right here.
+
+654
+00:26:13,560 --> 00:26:19,640
+ So I'm just going to click on this and I'll use the eyedropper tool, which will match the
+
+655
+00:26:19,640 --> 00:26:20,020
+ color.
+
+656
+00:26:20,020 --> 00:26:21,400
+ Okay.
+
+657
+00:26:21,400 --> 00:26:27,520
+ And then a shift a again, we'll do a gradient texture, plug that in, and then we'll plug
+
+658
+00:26:27,520 --> 00:26:28,300
+ that in.
+
+659
+00:26:28,300 --> 00:26:29,080
+ Boom.
+
+660
+00:26:29,320 --> 00:26:33,680
+ All we need to do is just add in a texture coordinate.
+
+661
+00:26:33,800 --> 00:26:37,520
+ So hit control T on your keyboard, which adds a mapping coordinate and texture coordinates.
+
+662
+00:26:37,520 --> 00:26:39,280
+ And we'll just change the rotation.
+
+663
+00:26:39,280 --> 00:26:44,900
+ Uh, maybe something like this, uh, but I want this color to be the same as this.
+
+664
+00:26:44,900 --> 00:26:47,560
+ We'll just make it a little darker.
+
+665
+00:26:47,560 --> 00:26:49,080
+ Yeah.
+
+666
+00:26:49,080 --> 00:26:51,700
+ You know, let's make it a little more red.
+
+667
+00:26:51,700 --> 00:26:54,160
+ There we go.
+
+668
+00:26:55,760 --> 00:26:56,880
+ Let's copy that.
+
+669
+00:26:56,880 --> 00:26:59,420
+ It's darker.
+
+670
+00:26:59,420 --> 00:27:04,820
+ I'm just going to do alt D to duplicate it.
+
+671
+00:27:04,820 --> 00:27:05,860
+ Skip to set it back in place.
+
+672
+00:27:05,860 --> 00:27:09,560
+ I'll do R, Z, and then 90 on my keyboard to rotate it.
+
+673
+00:27:14,400 --> 00:27:14,800
+ All right.
+
+674
+00:27:14,800 --> 00:27:15,960
+ Now let's add some lighting.
+
+675
+00:27:15,960 --> 00:27:24,300
+ So shift a, we'll add in a area lights, move this up above, make the power about 35 super
+
+676
+00:27:24,300 --> 00:27:24,560
+ bright.
+
+677
+00:27:24,560 --> 00:27:25,160
+ There we go.
+
+678
+00:27:25,160 --> 00:27:31,260
+ And then at shadow caustics, add in one more light.
+
+679
+00:27:31,340 --> 00:27:32,360
+ It's this, okay.
+
+680
+00:27:32,360 --> 00:27:35,460
+ So the setup is going to be a basic two point lighting setup.
+
+681
+00:27:35,460 --> 00:27:37,520
+ Shift D to duplicate again, escape.
+
+682
+00:27:37,520 --> 00:27:47,280
+ I'll make the shape a disc onto R X 90, R Z 90, and I'll just move it to the side, maybe
+
+683
+00:27:47,280 --> 00:27:51,520
+ make it smaller, rotate a bit, something like that.
+
+684
+00:27:51,520 --> 00:27:55,660
+ I'll make the power for this about seven and I'll make it red.
+
+685
+00:27:55,660 --> 00:27:58,260
+ Okay.
+
+686
+00:27:58,260 --> 00:28:00,220
+ And there is the lighting setup.
+
+687
+00:28:00,220 --> 00:28:06,060
+ Let me just collapse this window and yeah, shift a, we'll add in a camera now.
+
+688
+00:28:06,060 --> 00:28:17,120
+ Let's go to the camera view, camera back and we'll be up, make this zero, make this, make
+
+689
+00:28:17,120 --> 00:28:17,780
+ this zero.
+
+690
+00:28:17,780 --> 00:28:22,740
+ And I'm just going to look at this.
+
+691
+00:28:22,740 --> 00:28:26,880
+ Okay.
+
+692
+00:28:26,880 --> 00:28:29,440
+ So this is a lot, this is the lighting setup right now.
+
+693
+00:28:29,440 --> 00:28:33,940
+ I have this light pointing over here and then this giant light at the top.
+
+694
+00:28:33,940 --> 00:28:36,080
+ Let's start animating.
+
+695
+00:28:36,080 --> 00:28:37,200
+ So let's start with the camera.
+
+696
+00:28:37,200 --> 00:28:43,460
+ I'll do a basic pan in let's hit I on the keyboard, I over here to add a keyframe on location
+
+697
+00:28:43,460 --> 00:28:44,900
+ rotation, make sure you're on frame one.
+
+698
+00:28:44,900 --> 00:28:48,420
+ This animation is going to be 30 frames per second.
+
+699
+00:28:48,420 --> 00:28:50,840
+ Check mark, render region, crop the render region.
+
+700
+00:28:51,000 --> 00:28:51,640
+ Let's go to 90 seconds.
+
+701
+00:28:51,640 --> 00:28:53,400
+ Let's go to 90 seconds, which is about three seconds.
+
+702
+00:28:53,400 --> 00:28:56,220
+ And then we'll pan in the camera forward.
+
+703
+00:28:56,220 --> 00:29:00,000
+ And we're going to move it up a bit.
+
+704
+00:29:00,000 --> 00:29:05,020
+ Hit I, I to add in that keyframe on frame 90.
+
+705
+00:29:05,020 --> 00:29:07,360
+ And that's, this is the movements right here.
+
+706
+00:29:07,360 --> 00:29:08,860
+ Okay.
+
+707
+00:29:09,340 --> 00:29:11,860
+ Now let's animate the glasses floating up.
+
+708
+00:29:11,860 --> 00:29:16,720
+ So let's select the empty on, hit I and then I and the location rotation frame one.
+
+709
+00:29:16,720 --> 00:29:19,100
+ And then let's go, you know what?
+
+710
+00:29:19,100 --> 00:29:21,160
+ Let's have, let's have a start at frame 20.
+
+711
+00:29:21,160 --> 00:29:24,340
+ Actually, let's go all the way to frame 70.
+
+712
+00:29:25,300 --> 00:29:33,120
+ We'll have it move up a little, I'll hit RR to rotate it like this.
+
+713
+00:29:33,120 --> 00:29:34,300
+ It's going to rotate like this.
+
+714
+00:29:34,300 --> 00:29:39,020
+ Hit I, I let's see what that looks like.
+
+715
+00:29:39,020 --> 00:29:40,400
+ There we go.
+
+716
+00:29:40,400 --> 00:29:44,740
+ And then the last 20 frames, it'll just move up really fast.
+
+717
+00:29:44,740 --> 00:29:45,360
+ So then I'll go.
+
+718
+00:29:54,960 --> 00:29:58,620
+ Hit I, I, see what that looks like.
+
+719
+00:29:58,620 --> 00:30:00,140
+ Boom.
+
+720
+00:30:00,140 --> 00:30:05,480
+ Now it's a bit too, the transition is a bit too sharp.
+
+721
+00:30:05,480 --> 00:30:08,360
+ So to smooth that out, I'll hit A and then right click.
+
+722
+00:30:08,360 --> 00:30:11,900
+ And right now it's on linear and we want to change it to bezier to smooth it out.
+
+723
+00:30:11,900 --> 00:30:13,360
+ Let's see what that does.
+
+724
+00:30:13,360 --> 00:30:15,100
+ Boom.
+
+725
+00:30:15,100 --> 00:30:17,320
+ Shot one's done.
+
+726
+00:30:17,320 --> 00:30:18,000
+ Cool.
+
+727
+00:30:18,000 --> 00:30:20,820
+ The next shot, I'm going to duplicate this camera.
+
+728
+00:30:20,820 --> 00:30:21,960
+ So shift D to duplicate it.
+
+729
+00:30:21,960 --> 00:30:23,100
+ Escape set it back in place.
+
+730
+00:30:23,100 --> 00:30:24,440
+ Hover over your timeline.
+
+731
+00:30:24,560 --> 00:30:26,120
+ Hit A and then X to delete everything.
+
+732
+00:30:26,120 --> 00:30:27,560
+ This is our second camera angle.
+
+733
+00:30:27,560 --> 00:30:31,200
+ So we'll go to view and we'll change this as our primary camera angle now.
+
+734
+00:30:31,200 --> 00:30:33,860
+ And for this one, it's going to be a little closer.
+
+735
+00:30:33,860 --> 00:30:36,360
+ So we'll change the focal length to 75 millimeters.
+
+736
+00:30:36,360 --> 00:30:41,020
+ And then I'm going to move this camera a little forward and up.
+
+737
+00:30:44,300 --> 00:30:51,060
+ Maybe 90, maybe 90, like this, should show up right here.
+
+738
+00:30:51,060 --> 00:30:52,760
+ Okay.
+
+739
+00:30:52,760 --> 00:30:57,740
+ Now I want, maybe I want the glasses to be more in the middle.
+
+740
+00:30:57,740 --> 00:30:58,360
+ So right here.
+
+741
+00:31:00,660 --> 00:31:01,100
+ Okay.
+
+742
+00:31:01,100 --> 00:31:03,420
+ So I'm on frame 90.
+
+743
+00:31:03,420 --> 00:31:04,440
+ I'll just update that keyframe.
+
+744
+00:31:04,440 --> 00:31:05,000
+ So hit I.
+
+745
+00:31:05,000 --> 00:31:07,600
+ Boom.
+
+746
+00:31:07,600 --> 00:31:13,240
+ I'll actually have the camera a little closer.
+
+747
+00:31:13,240 --> 00:31:17,740
+ Maybe up.
+
+748
+00:31:23,100 --> 00:31:23,460
+ Okay.
+
+749
+00:31:23,460 --> 00:31:25,620
+ So that's the second camera angle.
+
+750
+00:31:25,620 --> 00:31:27,300
+ For this second camera angle.
+
+751
+00:31:27,300 --> 00:31:27,540
+ Okay.
+
+752
+00:31:27,540 --> 00:31:28,460
+ That's way too big, by the way.
+
+753
+00:31:28,460 --> 00:31:29,940
+ We can just make that smaller.
+
+754
+00:31:29,940 --> 00:31:31,860
+ By going to view board display.
+
+755
+00:31:31,860 --> 00:31:32,880
+ Just change the size.
+
+756
+00:31:32,880 --> 00:31:33,480
+ Boom.
+
+757
+00:31:33,480 --> 00:31:34,080
+ Okay.
+
+758
+00:31:34,080 --> 00:31:37,240
+ So for this break apart scene, I'm actually going to make a new scene.
+
+759
+00:31:37,500 --> 00:31:39,240
+ So this will, this will be the intro shot.
+
+760
+00:31:39,240 --> 00:31:43,920
+ And then for the, you know, the glasses breaking apart and then coming back together, I'll just
+
+761
+00:31:43,920 --> 00:31:47,500
+ make a new scene by going up to the top right corner and just clicking on full copy.
+
+762
+00:31:47,500 --> 00:31:52,820
+ I'll rename this to break apart or what's called break.
+
+763
+00:31:52,820 --> 00:31:55,640
+ And then we're going to go to this camera back.
+
+764
+00:31:55,640 --> 00:31:59,600
+ We're going to go back to this camera and we'll start the breaking scene.
+
+765
+00:31:59,600 --> 00:32:00,240
+ So boom.
+
+766
+00:32:00,240 --> 00:32:01,700
+ Okay.
+
+767
+00:32:01,700 --> 00:32:06,200
+ So now that we have a new scene called break, I'm going to change the animation here.
+
+768
+00:32:06,200 --> 00:32:10,020
+ So instead, so with this new break scene here, I'm actually going to have the animation start
+
+769
+00:32:10,020 --> 00:32:13,100
+ from the zero.
+
+770
+00:32:13,100 --> 00:32:16,980
+ So actually move this frame right here or this, yeah, this key frame right here.
+
+771
+00:32:16,980 --> 00:32:19,980
+ And I'll move this right here.
+
+772
+00:32:19,980 --> 00:32:25,200
+ Well, actually we'll delete this key frame.
+
+773
+00:32:25,200 --> 00:32:26,920
+ Let's move this key frame to frame 20.
+
+774
+00:32:26,920 --> 00:32:28,700
+ So it just shows up like this.
+
+775
+00:32:28,700 --> 00:32:32,040
+ It's a bit too fast.
+
+776
+00:32:32,860 --> 00:32:40,020
+ So we'll start the glasses right here and then we'll just update the key frame right here.
+
+777
+00:32:40,020 --> 00:32:41,160
+ Boom.
+
+778
+00:32:41,160 --> 00:32:42,740
+ Somewhere in the middle.
+
+779
+00:32:42,740 --> 00:32:44,180
+ Boom.
+
+780
+00:32:44,180 --> 00:32:45,380
+ Okay.
+
+781
+00:32:45,380 --> 00:32:49,180
+ And I'll also have the camera pan in a bit.
+
+782
+00:32:49,180 --> 00:32:50,720
+ So I'm going to have to start back.
+
+783
+00:32:52,180 --> 00:32:57,920
+ Hit I and then I, and then I, and then frame 60, it'll just zoom in.
+
+784
+00:32:57,920 --> 00:33:04,280
+ I, I, and then at frame 60, it'll just, it'll just burst.
+
+785
+00:33:04,280 --> 00:33:09,780
+ So let's, I'm going to make the total frames here, 165.
+
+786
+00:33:09,780 --> 00:33:12,600
+ And let's start with this piece.
+
+787
+00:33:13,420 --> 00:33:22,360
+ So we'll hit I and then I will also select this piece, hit I, I, it's like this piece, hit I, I.
+
+788
+00:33:22,360 --> 00:33:28,360
+ It's like this hit I, I, and there we go.
+
+789
+00:33:28,360 --> 00:33:29,220
+ Okay.
+
+790
+00:33:29,220 --> 00:33:33,240
+ So let's go 10 frames ahead and then that's where the pieces will break.
+
+791
+00:33:33,240 --> 00:33:37,300
+ So it's going to go, I'll just move it like somewhere here.
+
+792
+00:33:40,740 --> 00:33:48,600
+ Well, maybe like somewhere here, maybe like rotate it like this, hit I, I, and then these
+
+793
+00:33:48,600 --> 00:33:49,800
+ are going to be a little forward.
+
+794
+00:33:49,800 --> 00:34:04,320
+ So I'll move them like, that, I, I, these are also going to, let's have them fly.
+
+795
+00:34:04,320 --> 00:34:08,600
+ Let's have them fly like here.
+
+796
+00:34:10,740 --> 00:34:17,740
+ I, I, I, and this little piece right here, I guess we'll just have it fly up here.
+
+797
+00:34:17,740 --> 00:34:24,160
+ I, I, all these little logos are supposed to be attached to the frame.
+
+798
+00:34:24,160 --> 00:34:25,840
+ So let's just attach those to the frame here.
+
+799
+00:34:25,840 --> 00:34:27,200
+ Click on this.
+
+800
+00:34:27,200 --> 00:34:30,880
+ Let's click the frames here, control P, parents and boom.
+
+801
+00:34:32,540 --> 00:34:32,940
+ Okay.
+
+802
+00:34:32,940 --> 00:34:34,560
+ This is how they break.
+
+803
+00:34:34,560 --> 00:34:38,660
+ And then from frame 70, they'll be coming back together.
+
+804
+00:34:38,660 --> 00:34:41,940
+ So put them back to zero.
+
+805
+00:34:41,940 --> 00:34:45,560
+ Select the, we'll select this here first.
+
+806
+00:34:45,560 --> 00:34:47,600
+ Put it back to zero.
+
+807
+00:34:47,600 --> 00:34:49,700
+ Rotation back to zero.
+
+808
+00:34:49,700 --> 00:34:51,700
+ And then hit I, I.
+
+809
+00:34:51,700 --> 00:34:53,180
+ And then this as well.
+
+810
+00:34:53,180 --> 00:34:55,040
+ Back to zero.
+
+811
+00:34:55,540 --> 00:34:58,640
+ Zero, I, I.
+
+812
+00:34:58,640 --> 00:35:05,460
+ Zero, zero, I, I.
+
+813
+00:35:05,460 --> 00:35:07,480
+ And this as well.
+
+814
+00:35:07,480 --> 00:35:12,440
+ Zero, zero, I, I.
+
+815
+00:35:12,440 --> 00:35:13,000
+ Okay.
+
+816
+00:35:13,000 --> 00:35:14,140
+ See what that looks like?
+
+817
+00:35:14,140 --> 00:35:14,420
+ Boom.
+
+818
+00:35:14,420 --> 00:35:16,320
+ Boom.
+
+819
+00:35:17,400 --> 00:35:20,140
+ And when they break, I also want the camera to zoom out.
+
+820
+00:35:20,140 --> 00:35:23,360
+ So the camera is going to zoom out from right here.
+
+821
+00:35:23,360 --> 00:35:25,860
+ Boom.
+
+822
+00:35:25,860 --> 00:35:32,100
+ Maybe down, up.
+
+823
+00:35:32,100 --> 00:35:35,360
+ So high, I for the camera.
+
+824
+00:35:35,360 --> 00:35:36,960
+ So boom.
+
+825
+00:35:36,960 --> 00:35:40,140
+ And it's coming back together.
+
+826
+00:35:40,140 --> 00:35:44,740
+ I, I.
+
+827
+00:35:44,740 --> 00:35:45,280
+ Okay.
+
+828
+00:35:47,400 --> 00:35:47,880
+ Okay.
+
+829
+00:35:47,880 --> 00:35:49,740
+ And you know what?
+
+830
+00:35:49,740 --> 00:35:50,820
+ We'll make this all Bezier.
+
+831
+00:35:50,820 --> 00:35:52,920
+ So I'm going to select each of these.
+
+832
+00:35:52,920 --> 00:35:53,440
+ Hit A.
+
+833
+00:35:53,440 --> 00:35:54,500
+ And then I'll the right click.
+
+834
+00:35:54,500 --> 00:35:55,520
+ And I'll just do Bezier.
+
+835
+00:35:55,520 --> 00:35:58,280
+ Same with this.
+
+836
+00:35:58,280 --> 00:35:58,900
+ Hit A.
+
+837
+00:35:58,900 --> 00:35:59,540
+ Right click.
+
+838
+00:35:59,540 --> 00:36:00,220
+ Bezier.
+
+839
+00:36:00,220 --> 00:36:02,460
+ This too.
+
+840
+00:36:02,460 --> 00:36:03,220
+ Hover over timeline.
+
+841
+00:36:03,220 --> 00:36:03,740
+ Hit A.
+
+842
+00:36:03,740 --> 00:36:04,260
+ Right click.
+
+843
+00:36:04,260 --> 00:36:04,760
+ Bezier.
+
+844
+00:36:04,760 --> 00:36:07,040
+ And then this as well.
+
+845
+00:36:07,040 --> 00:36:07,360
+ A.
+
+846
+00:36:07,360 --> 00:36:07,920
+ Right click.
+
+847
+00:36:07,920 --> 00:36:08,400
+ Bezier.
+
+848
+00:36:08,400 --> 00:36:09,620
+ Boom.
+
+849
+00:36:09,620 --> 00:36:11,100
+ Boom.
+
+850
+00:36:11,100 --> 00:36:13,720
+ You know what?
+
+851
+00:36:13,720 --> 00:36:14,640
+ Select the camera as well.
+
+852
+00:36:14,640 --> 00:36:15,220
+ Hit A.
+
+853
+00:36:15,220 --> 00:36:15,860
+ And then right click.
+
+854
+00:36:15,860 --> 00:36:16,760
+ We'll just Bezier.
+
+855
+00:36:18,200 --> 00:36:18,720
+ Boom.
+
+856
+00:36:18,720 --> 00:36:21,840
+ For the camera.
+
+857
+00:36:21,840 --> 00:36:23,760
+ As it's zooming out.
+
+858
+00:36:23,760 --> 00:36:25,440
+ I want it to zoom out a bit more.
+
+859
+00:36:25,440 --> 00:36:30,040
+ So I'm going to have it keep zooming.
+
+860
+00:36:30,040 --> 00:36:33,620
+ Until 110.
+
+861
+00:36:33,620 --> 00:36:39,080
+ Hit I.
+
+862
+00:36:39,080 --> 00:36:42,900
+ No, it's still not zooming.
+
+863
+00:36:42,900 --> 00:36:44,280
+ Let's have it zoom more.
+
+864
+00:36:44,280 --> 00:36:49,900
+ I, I.
+
+865
+00:36:49,900 --> 00:36:53,500
+ A little bit more.
+
+866
+00:36:53,500 --> 00:36:55,780
+ I.
+
+867
+00:36:55,780 --> 00:36:57,040
+ See what that looks like.
+
+868
+00:36:57,040 --> 00:36:57,380
+ Boom.
+
+869
+00:36:57,380 --> 00:36:58,780
+ Boom.
+
+870
+00:36:58,780 --> 00:37:00,620
+ Let's start sooner.
+
+871
+00:37:00,620 --> 00:37:05,460
+ Something like that.
+
+872
+00:37:06,960 --> 00:37:08,420
+ Again, it's really trial and error.
+
+873
+00:37:08,420 --> 00:37:13,360
+ I'm usually just, you know, going back to it and then, you know, fixing the camera motion.
+
+874
+00:37:13,360 --> 00:37:15,180
+ It's never really on the first try.
+
+875
+00:37:15,180 --> 00:37:16,860
+ But, yeah.
+
+876
+00:37:16,860 --> 00:37:18,400
+ Bit of a mistake here.
+
+877
+00:37:18,400 --> 00:37:19,340
+ Let me just.
+
+878
+00:37:23,020 --> 00:37:23,380
+ Yeah.
+
+879
+00:37:23,380 --> 00:37:24,640
+ Move that back a little faster.
+
+880
+00:37:24,640 --> 00:37:25,800
+ Okay.
+
+881
+00:37:25,800 --> 00:37:32,860
+ And then as it comes back together, I'll just have, I'll just have the glasses go back down.
+
+882
+00:37:32,860 --> 00:37:33,620
+ So I, I.
+
+883
+00:37:33,620 --> 00:37:36,800
+ And then, yeah.
+
+884
+00:37:37,360 --> 00:37:38,740
+ It just goes back down.
+
+885
+00:37:38,740 --> 00:37:42,080
+ I, I.
+
+886
+00:37:42,080 --> 00:37:44,420
+ A.
+
+887
+00:37:44,420 --> 00:37:45,220
+ Right click.
+
+888
+00:37:45,220 --> 00:37:45,580
+ Bézier.
+
+889
+00:37:45,580 --> 00:37:48,220
+ That's too strong.
+
+890
+00:37:48,220 --> 00:37:48,940
+ So let's go.
+
+891
+00:37:51,280 --> 00:37:51,640
+ Okay.
+
+892
+00:37:51,640 --> 00:37:53,400
+ So this is what it's looking like so far.
+
+893
+00:37:53,400 --> 00:37:55,680
+ And let's go into rendered mode to see what it's looking like.
+
+894
+00:37:55,680 --> 00:37:59,540
+ And we can do a few more things to make the scene look even better.
+
+895
+00:37:59,540 --> 00:38:03,420
+ So for starters, I'm going to bring down this area light at the top right here.
+
+896
+00:38:03,420 --> 00:38:05,220
+ I'm going to bring it down a little bit more.
+
+897
+00:38:05,220 --> 00:38:08,280
+ So we'll bring it low right here.
+
+898
+00:38:08,280 --> 00:38:10,800
+ Maybe even lower.
+
+899
+00:38:12,400 --> 00:38:15,200
+ Get some more highlights on the glasses.
+
+900
+00:38:15,200 --> 00:38:18,580
+ And then I'm going to go to the render properties here.
+
+901
+00:38:18,580 --> 00:38:21,720
+ I'm going to make sure my final max samples are at 200.
+
+902
+00:38:21,720 --> 00:38:25,100
+ If you have a slow computer, you can render this at a hundred samples.
+
+903
+00:38:25,100 --> 00:38:25,920
+ That'll still work.
+
+904
+00:38:25,920 --> 00:38:29,520
+ And then I will go to the view transform here.
+
+905
+00:38:29,520 --> 00:38:33,040
+ And I'm going to change the look to high contrast.
+
+906
+00:38:33,040 --> 00:38:34,300
+ Okay.
+
+907
+00:38:34,300 --> 00:38:35,880
+ And then I'm going to up the exposure a bit.
+
+908
+00:38:35,880 --> 00:38:37,660
+ So let me just up the exposure a bit.
+
+909
+00:38:37,660 --> 00:38:39,460
+ There we go.
+
+910
+00:38:39,460 --> 00:38:42,180
+ I think that looks much cooler.
+
+911
+00:38:42,760 --> 00:38:47,520
+ And for this area light here, you know, I actually ended up adjusting it.
+
+912
+00:38:47,520 --> 00:38:50,760
+ So you can see the rotation of the area light right here and the location.
+
+913
+00:38:50,760 --> 00:38:57,200
+ I wanted just a little bit of a red highlights on the side because, you know, it is shining a red light on the glasses.
+
+914
+00:38:57,200 --> 00:39:02,720
+ So, yeah, this is what the lighting setup looks like now.
+
+915
+00:39:02,720 --> 00:39:06,580
+ Let me just hide the table empty here so you're not confused.
+
+916
+00:39:06,580 --> 00:39:11,940
+ So, yeah, this is what it looks like now with that area light shining at the back like this.
+
+917
+00:39:12,100 --> 00:39:13,960
+ And the top light like this.
+
+918
+00:39:13,960 --> 00:39:15,700
+ Okay.
+
+919
+00:39:15,700 --> 00:39:18,500
+ Let's select the glasses controller here.
+
+920
+00:39:18,500 --> 00:39:22,600
+ And I don't like how it completely stops moving once it reaches the top here.
+
+921
+00:39:22,600 --> 00:39:24,820
+ I kind of want it to keep moving before it breaks.
+
+922
+00:39:24,980 --> 00:39:31,260
+ So, on frame 60, I'm going to have, I'm going to hit RR and I'm going to just move it slightly up, I guess.
+
+923
+00:39:31,260 --> 00:39:38,100
+ Something like, something like that could work.
+
+924
+00:39:38,100 --> 00:39:41,440
+ And then I'll go to the rotation and just hit I and then I.
+
+925
+00:39:42,440 --> 00:39:45,280
+ And so now if I go into salt mode, that's what it's looking like.
+
+926
+00:39:45,280 --> 00:39:45,580
+ Boom.
+
+927
+00:39:46,580 --> 00:39:46,780
+ Okay.
+
+928
+00:39:46,780 --> 00:39:53,580
+ So, one last thing we're going to do is we're going to add a particle system for when the glasses burst like this.
+
+929
+00:39:53,580 --> 00:39:54,240
+ Okay.
+
+930
+00:39:54,240 --> 00:40:02,510
+ So, to do that, I'm going to, let's click on the empty here and I'll do control, I'll do shift S and I'll do cursor to
+
+931
+00:40:02,510 --> 00:40:03,340
+ select it.
+
+932
+00:40:03,780 --> 00:40:07,820
+ And then I'll do shift A, I'll add in a mesh icosphere.
+
+933
+00:40:07,820 --> 00:40:09,640
+ I'll hit S to scale it down.
+
+934
+00:40:09,640 --> 00:40:12,640
+ And this is going to be the particle emitter.
+
+935
+00:40:12,640 --> 00:40:16,800
+ So, we'll actually move it towards the middle of the glasses.
+
+936
+00:40:16,800 --> 00:40:17,700
+ So, let's go to top view.
+
+937
+00:40:17,700 --> 00:40:22,860
+ And let's just make sure it's centered where the glasses break apart.
+
+938
+00:40:22,860 --> 00:40:25,500
+ So, right there will work.
+
+939
+00:40:25,500 --> 00:40:27,540
+ Don't worry, you can scale it down.
+
+940
+00:40:27,540 --> 00:40:29,620
+ It's not really going to be shown in the final render.
+
+941
+00:40:29,620 --> 00:40:31,220
+ This is what's going to emit the particles.
+
+942
+00:40:31,360 --> 00:40:34,520
+ So, go to the particle settings, hit the plus icon, and I'll add some particles.
+
+943
+00:40:34,520 --> 00:40:37,840
+ So, we'll add in about 200 particles.
+
+944
+00:40:37,840 --> 00:40:40,480
+ They're going to start at frame 60.
+
+945
+00:40:40,480 --> 00:40:42,200
+ So, frame 60 is the start frame.
+
+946
+00:40:42,200 --> 00:40:44,140
+ And the end frame could be frame 70.
+
+947
+00:40:44,140 --> 00:40:46,760
+ The lifetime, doesn't really matter.
+
+948
+00:40:46,760 --> 00:40:47,460
+ I'll make it 150.
+
+949
+00:40:47,460 --> 00:40:49,660
+ And we'll go down.
+
+950
+00:40:49,660 --> 00:40:51,720
+ We'll hit play.
+
+951
+00:40:51,720 --> 00:40:53,480
+ Oh, they're falling down.
+
+952
+00:40:53,480 --> 00:40:57,560
+ We need to go all the way down and just turn off the force or field weights.
+
+953
+00:40:57,560 --> 00:40:58,540
+ Turn off gravity.
+
+954
+00:40:58,540 --> 00:41:00,280
+ So, now they'll start floating.
+
+955
+00:41:01,120 --> 00:41:05,440
+ I'll make the velocity here to 0.7.
+
+956
+00:41:05,440 --> 00:41:08,160
+ And we're going to have...
+
+957
+00:41:08,160 --> 00:41:09,980
+ I don't want these particles to look like circles.
+
+958
+00:41:09,980 --> 00:41:12,080
+ I want them to look like small glass particles.
+
+959
+00:41:12,080 --> 00:41:13,780
+ So, we'll do shift A again.
+
+960
+00:41:13,780 --> 00:41:15,120
+ We'll add in another icosphere.
+
+961
+00:41:15,120 --> 00:41:17,000
+ We'll make the subdivisions one.
+
+962
+00:41:17,000 --> 00:41:20,940
+ And I'm going to also make it super small.
+
+963
+00:41:20,940 --> 00:41:23,220
+ Zoom in.
+
+964
+00:41:26,900 --> 00:41:30,040
+ And something like that could work.
+
+965
+00:41:30,040 --> 00:41:31,980
+ Okay.
+
+966
+00:41:31,980 --> 00:41:32,920
+ We'll move it out the frame.
+
+967
+00:41:32,920 --> 00:41:35,560
+ So, that's over there.
+
+968
+00:41:35,560 --> 00:41:36,440
+ It's called icosphere one.
+
+969
+00:41:36,440 --> 00:41:37,400
+ We'll call it particle, actually.
+
+970
+00:41:37,400 --> 00:41:39,500
+ Okay.
+
+971
+00:41:39,500 --> 00:41:40,960
+ Let's go into camera view.
+
+972
+00:41:40,960 --> 00:41:42,340
+ Let's select our particle system.
+
+973
+00:41:42,340 --> 00:41:44,180
+ And we'll go over here.
+
+974
+00:41:44,180 --> 00:41:44,740
+ Render as.
+
+975
+00:41:44,740 --> 00:41:45,560
+ We'll change it to object.
+
+976
+00:41:46,420 --> 00:41:50,100
+ And I'm going to go and change the object to particle, which we just named.
+
+977
+00:41:50,100 --> 00:41:50,780
+ Okay.
+
+978
+00:41:50,780 --> 00:41:51,380
+ We can't see it.
+
+979
+00:41:51,380 --> 00:41:52,800
+ And we've got to change the scale here.
+
+980
+00:41:52,800 --> 00:41:55,020
+ So, we'll change it to 0.9.
+
+981
+00:41:55,020 --> 00:41:56,880
+ And we'll change the randomness to 1.
+
+982
+00:41:57,720 --> 00:41:58,900
+ And we'll turn off show emitter.
+
+983
+00:41:58,900 --> 00:42:01,960
+ So, the emitter won't show up in the final render settings.
+
+984
+00:42:01,960 --> 00:42:02,880
+ Okay.
+
+985
+00:42:02,880 --> 00:42:05,480
+ I think that's pretty much it.
+
+986
+00:42:05,480 --> 00:42:08,500
+ Just hit play to see what the particle system looks like.
+
+987
+00:42:08,500 --> 00:42:10,080
+ Burst.
+
+988
+00:42:10,080 --> 00:42:10,960
+ Okay.
+
+989
+00:42:10,960 --> 00:42:15,660
+ We need a turbulence force because we want the particles to flow around the scene once they,
+
+990
+00:42:15,660 --> 00:42:17,280
+ you know, burst with the glasses.
+
+991
+00:42:17,280 --> 00:42:24,160
+ So, to make them flow, we're going to use a force field called a turbulence force field.
+
+992
+00:42:24,800 --> 00:42:27,640
+ So, this turbulence force field, we can go to the settings right here.
+
+993
+00:42:27,640 --> 00:42:30,220
+ And we'll change the strength to 0.1.
+
+994
+00:42:30,220 --> 00:42:32,840
+ And the flow is going to be 2.5.
+
+995
+00:42:32,840 --> 00:42:33,900
+ Okay.
+
+996
+00:42:33,900 --> 00:42:36,000
+ So, now if you play, boom.
+
+997
+00:42:36,000 --> 00:42:37,780
+ Now, they're flowing.
+
+998
+00:42:37,780 --> 00:42:42,180
+ Let's just add in a material for the particle.
+
+999
+00:42:42,180 --> 00:42:43,860
+ So, right here.
+
+1000
+00:42:43,860 --> 00:42:45,040
+ Go to the material properties.
+
+1001
+00:42:45,040 --> 00:42:45,660
+ We'll hit new.
+
+1002
+00:42:45,660 --> 00:42:47,320
+ We'll just call it.
+
+1003
+00:42:47,320 --> 00:42:49,060
+ We'll make it a glass material.
+
+1004
+00:42:49,060 --> 00:42:51,200
+ So, just make it a glass material.
+
+1005
+00:42:51,200 --> 00:42:52,720
+ We can make roughness low.
+
+1006
+00:42:53,800 --> 00:42:56,560
+ And, yeah.
+
+1007
+00:42:56,560 --> 00:42:57,560
+ Let's go to render mode.
+
+1008
+00:42:57,560 --> 00:42:58,700
+ See what they're looking like.
+
+1009
+00:42:58,700 --> 00:43:01,100
+ This is what they look like.
+
+1010
+00:43:01,100 --> 00:43:02,840
+ Let's go over here.
+
+1011
+00:43:02,840 --> 00:43:06,220
+ They're a bit too big.
+
+1012
+00:43:06,220 --> 00:43:08,700
+ I'm going to go check the particle system again.
+
+1013
+00:43:08,700 --> 00:43:11,140
+ Let's go to the particle tabs.
+
+1014
+00:43:11,140 --> 00:43:12,200
+ They're too big.
+
+1015
+00:43:12,200 --> 00:43:13,800
+ So, I'm going to make them small here.
+
+1016
+00:43:14,800 --> 00:43:18,340
+ Maybe, like, something like that.
+
+1017
+00:43:18,340 --> 00:43:23,780
+ Boom.
+
+1018
+00:43:23,780 --> 00:43:28,940
+ Maybe I'll change the seed to, like, 8.
+
+1019
+00:43:33,440 --> 00:43:33,840
+ Okay.
+
+1020
+00:43:33,840 --> 00:43:35,520
+ I think we are good to go.
+
+1021
+00:43:35,520 --> 00:43:38,780
+ You just want to go ahead and bake the particle system.
+
+1022
+00:43:38,780 --> 00:43:41,620
+ So, go ahead and just hit bake all dynamics.
+
+1023
+00:43:41,620 --> 00:43:43,760
+ Now, it'll play back smoothly.
+
+1024
+00:43:43,760 --> 00:43:48,780
+ By the way, the backdrop is, the mapping settings for the backdrop is this right here.
+
+1025
+00:43:49,160 --> 00:43:53,720
+ So, you can go ahead and copy those so you can get the exact backdrop, you know, gradient settings that I have.
+
+1026
+00:43:55,420 --> 00:43:57,880
+ But, I think we are good to go for the render.
+
+1027
+00:43:57,880 --> 00:44:00,320
+ So, let's go ahead and go to the output properties.
+
+1028
+00:44:00,320 --> 00:44:01,560
+ Let's go.
+
+1029
+00:44:01,560 --> 00:44:05,200
+ Oh, we want to turn on motion blur.
+
+1030
+00:44:05,200 --> 00:44:06,540
+ So, make sure you turn on motion blur.
+
+1031
+00:44:06,540 --> 00:44:09,960
+ 100 max samples.
+
+1032
+00:44:09,960 --> 00:44:10,720
+ Or, you can do 200.
+
+1033
+00:44:10,720 --> 00:44:13,060
+ 100 works just fine as well.
+
+1034
+00:44:13,060 --> 00:44:15,480
+ For the file format, you can do PNG.
+
+1035
+00:44:15,480 --> 00:44:18,660
+ But, then you do have to convert it into a video file after.
+
+1036
+00:44:18,660 --> 00:44:21,920
+ Or, you can just, you know, straight up just make it an FF MPEG video.
+
+1037
+00:44:21,920 --> 00:44:23,360
+ And, don't have to worry about that.
+
+1038
+00:44:23,360 --> 00:44:24,440
+ Go to encoding.
+
+1039
+00:44:24,720 --> 00:44:27,180
+ We can change the container to MP4.
+
+1040
+00:44:27,180 --> 00:44:29,360
+ And, yeah.
+
+1041
+00:44:29,360 --> 00:44:30,680
+ Resolution 100%.
+
+1042
+00:44:30,680 --> 00:44:34,820
+ And, we can go ahead and just start rendering it.
+
+1043
+00:44:34,820 --> 00:44:36,140
+ So, I'll save it to a folder.
+
+1044
+00:44:36,140 --> 00:44:37,800
+ We can save it.
+
+1045
+00:44:37,800 --> 00:44:40,460
+ I have a folder called Ray-Ban Metas.
+
+1046
+00:44:40,460 --> 00:44:41,920
+ And, this is the folder I can save it on.
+
+1047
+00:44:41,920 --> 00:44:42,860
+ Boom.
+
+1048
+00:44:42,860 --> 00:44:43,600
+ I'll save it there.
+
+1049
+00:44:43,600 --> 00:44:48,160
+ And, then all you have to do is just hit render animation and wait for it to render.
+
+1050
+00:44:48,160 --> 00:44:49,140
+ Okay.
+
+1051
+00:44:49,140 --> 00:44:51,160
+ And, that's pretty much it for this video.
+
+1052
+00:44:51,160 --> 00:44:53,880
+ If you have any questions or if you're unclear of anything,
+
+1053
+00:44:54,020 --> 00:44:57,160
+ make sure you leave a comment down below and I'll do my best to answer them.
+
+1054
+00:44:57,160 --> 00:44:58,380
+ And, yeah.
+
+1055
+00:44:58,380 --> 00:45:02,480
+ Again, if you want access to this entire blend file with all three different scenes
+
+1056
+00:45:02,480 --> 00:45:08,260
+ and the Ray-Ban Meta glasses, you can download it by becoming a member on my Patreon.
+
+1057
+00:45:08,260 --> 00:45:14,040
+ So, consider becoming a member and get access to all my past and future tutorial project files.
+
+1058
+00:45:14,480 --> 00:45:18,320
+ Okay. Until next time, it's been your boy, OnlyRJ. Peace.
+

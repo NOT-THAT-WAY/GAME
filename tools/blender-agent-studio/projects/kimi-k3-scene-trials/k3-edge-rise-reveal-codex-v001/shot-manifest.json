@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-codex-v001",
+  "camera": "K3_EDGE_CAMERA",
+  "target": "K3_EDGE_CAMERA_TARGET",
+  "focus": "K3_EDGE_CAMERA_FOCUS",
+  "frame_range": [
+    1,
+    360
+  ],
+  "fps": 30,
+  "continuous_single_shot": true,
+  "lens_mm": {
+    "1": 55.0,
+    "61": 56.0,
+    "110": 50.0,
+    "207": 42.0,
+    "256": 37.0,
+    "304": 34.0,
+    "353": 32.0,
+    "360": 32.0
+  },
+  "camera_positions": {
+    "1": [
+      0.95,
+      -3.0,
+      1.45
+    ],
+    "61": [
+      1.02,
+      -2.86,
+      1.37
+    ],
+    "110": [
+      0.8,
+      -3.6,
+      1.82
+    ],
+    "207": [
+      0.42,
+      -5.25,
+      2.62
+    ],
+    "256": [
+      0.2,
+      -6.55,
+      3.25
+    ],
+    "304": [
+      0.0,
+      -7.85,
+      3.9
+    ],
+    "353": [
+      -0.08,
+      -8.25,
+      4.18
+    ],
+    "360": [
+      -0.08,
+      -8.25,
+      4.18
+    ]
+  },
+  "move": "K1 intimate low, K2 opposing dip, K3 dolly-crane out/up, K4 short wide recovery",
+  "audio_bpm": 148.0,
+  "downbeats": [
+    12,
+    61,
+    110,
+    158,
+    207,
+    256,
+    304,
+    353
+  ],
+  "personal_idea": "Acid-lime playhead scan crosses the white body on frame 353."
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "asset_name": "Mecha Mascot",
+  "version": "1.0.0",
+  "blend": "asset_library/characters/mecha-mascot-v001.blend",
+  "glb": "asset_library/characters/mecha-mascot-v001.glb",
+  "bytes": {
+    "blend": 487597,
+    "glb": 2067272
+  },
+  "collection": "K3_MECHA_MASCOT_ASSET",
+  "root": "K3_MECHA_MASCOT_ROOT",
+  "meshes": [
+    "K3_MECHA_BODY",
+    "K3_MECHA_HEAD"
+  ],
+  "catalog_id": "78b89a7c-a662-4fc9-9b68-401d8b8f661a",
+  "catalog_path": "Characters/Mascots",
+  "front_axis": "-Y",
+  "up_axis": "+Z",
+  "ground_contact_z_m": 0.0,
+  "source_trial": "projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v001/scene/trial.blend",
+  "source_reference": {
+    "original_basename": "model 3D mecha.png",
+    "available_in_clone": false,
+    "redistribution_status": "unknown"
+  },
+  "topology": {
+    "body_manifold": true,
+    "head_manifold": true,
+    "uv_ready": true
+  },
+  "deformation_note": "Use the root for global motion and a shared Lattice or armature for future Squishy deformation."
+}

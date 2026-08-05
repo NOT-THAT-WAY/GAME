@@ -1,0 +1,14 @@
+{
+  "admitted": true,
+  "reasons": [],
+  "provenance": {
+    "viewpoint": "hero-front-right-three-quarter",
+    "sourcePath": "references/reference-hero.jpg",
+    "width": 1199,
+    "height": 1592,
+    "foregroundCoverage": 0.5917,
+    "largestComponentFraction": 0.9363,
+    "pHash": 14983546023872828456,
+    "duplicateOfHash": null
+  }
+}

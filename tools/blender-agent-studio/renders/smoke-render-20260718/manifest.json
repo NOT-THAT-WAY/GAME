@@ -1,0 +1,20 @@
+{
+  "scene": "FLROOM",
+  "camera": "ustudio_camera",
+  "engine": "BLENDER_EEVEE",
+  "frames": [
+    1,
+    8,
+    22,
+    40,
+    48
+  ],
+  "files": [
+    "${BLENDER_AGENT_STUDIO_ROOT}/renders/smoke-render-20260718/frame_0001.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/renders/smoke-render-20260718/frame_0008.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/renders/smoke-render-20260718/frame_0022.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/renders/smoke-render-20260718/frame_0040.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/renders/smoke-render-20260718/frame_0048.png"
+  ],
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/Pulsed_3D_model.blend"
+}

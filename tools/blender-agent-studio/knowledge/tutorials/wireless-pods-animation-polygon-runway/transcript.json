@@ -1,0 +1,1348 @@
+{
+  "source": "transcript-source.srt",
+  "format": "srt",
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 10.81,
+      "text": "Hey everyone, welcome to my new tutorial. Today we are going to create this cool product animation and I really hope"
+    },
+    {
+      "start": 10.81,
+      "end": 15.15,
+      "text": "you will enjoy this one and if you do, please don't forget to leave that like and if you're new around here, hit that"
+    },
+    {
+      "start": 15.15,
+      "end": 15.78,
+      "text": "subscribe."
+    },
+    {
+      "start": 15.78,
+      "end": 21.39,
+      "text": "Now let's jump right into empty blender file and first of all, let's select the light, press X and delete and we'll"
+    },
+    {
+      "start": 21.39,
+      "end": 27.68,
+      "text": "actually use the cube here. So let's select it and let's press ctrl 2 to add subdivision surface modifier and let's"
+    },
+    {
+      "start": 27.68,
+      "end": 29.46,
+      "text": "scale it down a little bit."
+    },
+    {
+      "start": 29.46,
+      "end": 35.07,
+      "text": "So press S and scale it down because this is two meters wide, which is quite a lot for an earphone, but I won't be"
+    },
+    {
+      "start": 35.07,
+      "end": 36.74,
+      "text": "doing like an exact proportions here."
+    },
+    {
+      "start": 36.74,
+      "end": 41.94,
+      "text": "I just want to make it a little bit smaller like this. Okay, now let's press ctrl A and apply the scale."
+    },
+    {
+      "start": 41.94,
+      "end": 48.47,
+      "text": "And now before we tap into the edit mode, let's go to the modifiers panel and let's apply that subdivision modifier and"
+    },
+    {
+      "start": 48.47,
+      "end": 56.88,
+      "text": "let's tap into the edit mode now, press S then Y and scale it on Y axis to create that shape."
+    },
+    {
+      "start": 57.68,
+      "end": 66.26,
+      "text": "Maybe a little bit more like this. I think that'll be okay. Now let's look from the front by pressing one on the non-pad"
+    },
+    {
+      "start": 66.26,
+      "end": 73.52,
+      "text": "and let's select this vertex right here and press O to enable proportional editing right here and press G then X and"
+    },
+    {
+      "start": 73.52,
+      "end": 78.74,
+      "text": "start moving it and then reduce the fall of radius if it's too large with the mouse wheel."
+    },
+    {
+      "start": 78.74,
+      "end": 89.25,
+      "text": "So now let's press O to disable proportional editing and let's enable X-ray view and let's select those vertices right"
+    },
+    {
+      "start": 89.25,
+      "end": 92.56,
+      "text": "here you will see it's selected on the other side as well."
+    },
+    {
+      "start": 92.56,
+      "end": 99.97,
+      "text": "Press G then X and move it slightly back so it doesn't get in the way and now press K for knife tool, click here and"
+    },
+    {
+      "start": 99.97,
+      "end": 107.0,
+      "text": "press A for angle snap and C to enable cut through and you can see it enabled right here."
+    },
+    {
+      "start": 107.0,
+      "end": 115.00999999999999,
+      "text": "So now let's just click here and confirm with enter and now we can select all of these vertices here press X and delete"
+    },
+    {
+      "start": 115.00999999999999,
+      "end": 121.44,
+      "text": "those alt click this loop and press F to fill now let's modify the shape even further."
+    },
+    {
+      "start": 121.44,
+      "end": 129.44,
+      "text": "So press G then X and move it outside a little bit so we get more of this like a raindrop shape and now we want to extrude"
+    },
+    {
+      "start": 129.44,
+      "end": 133.88,
+      "text": "the rest of the shape."
+    },
+    {
+      "start": 133.88,
+      "end": 140.19,
+      "text": "I will go like this here if you feel like this is too fast for you or you don't understand some core concepts make sure"
+    },
+    {
+      "start": 140.19,
+      "end": 145.86,
+      "text": "to check out my courses I carefully design them to take you from beginner skills through low-pull illustration all the"
+    },
+    {
+      "start": 145.86,
+      "end": 151.4,
+      "text": "way to full character illustration textured environments and much more and I build the courses as creative projects"
+    },
+    {
+      "start": 151.4,
+      "end": 157.84,
+      "text": "each with its own style and every time there's a new technique or something needs explaining we stop for a while and"
+    },
+    {
+      "start": 157.84,
+      "end": 162.54,
+      "text": "you get an in-depth explanation but in the end you still get a full project result."
+    },
+    {
+      "start": 162.54,
+      "end": 170.43,
+      "text": "So if you're interested please check out the link in the description so let's step back in now let's deactivate the x-ray"
+    },
+    {
+      "start": 170.43,
+      "end": 177.42000000000002,
+      "text": "view and we'll need to figure out the way how to do that so let's press 3 for face select and select all these faces"
+    },
+    {
+      "start": 177.42000000000002,
+      "end": 185.78,
+      "text": "right here and hold shift to add to selection on to select all of these and some of these on top as well and now let's"
+    },
+    {
+      "start": 185.78,
+      "end": 192.46,
+      "text": "press I to insert just a tiny bit like this and now I'll use loop tools"
+    },
+    {
+      "start": 192.46,
+      "end": 202.06,
+      "text": "add-on if you don't have it active go to edit preferences and in the extensions search for loop tools and you can see I"
+    },
+    {
+      "start": 202.06,
+      "end": 207.57999999999998,
+      "text": "have it installed right here but you should probably have it right there and you just click install button and the loop"
+    },
+    {
+      "start": 207.57999999999998,
+      "end": 213.24,
+      "text": "tools will be active and then you can just right click and in the loop tools menu choose circle"
+    },
+    {
+      "start": 213.24,
+      "end": 226.85,
+      "text": "and now let's rotate this way and move it outside like this and a little bit down okay I think that's a good start and"
+    },
+    {
+      "start": 226.85,
+      "end": 234.01,
+      "text": "now press x and delete all of these faces we just want this opening right here and to better see what we are doing let's"
+    },
+    {
+      "start": 234.01,
+      "end": 235.24,
+      "text": "add some subdivision surface"
+    },
+    {
+      "start": 235.24,
+      "end": 243.16,
+      "text": "so let's go here and add subdivision surface modifier with two levels of subdivision and now press 2 for edge select"
+    },
+    {
+      "start": 243.16,
+      "end": 251.82,
+      "text": "alt-click this loop and we can make it smaller of course something like this and rotate it a little bit from the angle"
+    },
+    {
+      "start": 251.82,
+      "end": 255.24,
+      "text": "and basically you will kind of need to eyeball this"
+    },
+    {
+      "start": 255.24,
+      "end": 264.84,
+      "text": "you don't want to go too far from the earphone something like this should be okay and we're basically checking for all"
+    },
+    {
+      "start": 264.84,
+      "end": 273.24,
+      "text": "sides here how the shape is coming up and now let's press E then Z and extrude this down now let's look from this side"
+    },
+    {
+      "start": 273.24,
+      "end": 278.85,
+      "text": "and press R to rotate and press R to rotate and we want to rotate this so we get as close to the flat surface as"
+    },
+    {
+      "start": 278.85,
+      "end": 280.24,
+      "text": "possible doesn't need to be perfect"
+    },
+    {
+      "start": 280.24,
+      "end": 288.69,
+      "text": "and now press S to scale it down like this and let's update the rotation a little bit here and there maybe move it"
+    },
+    {
+      "start": 288.69,
+      "end": 292.24,
+      "text": "outside a little bit I think this looks fine"
+    },
+    {
+      "start": 292.24,
+      "end": 301.43,
+      "text": "so now we can press S then Z and 0 to make it completely flat and now we can just press E then Z and extrude it down"
+    },
+    {
+      "start": 301.43,
+      "end": 302.24,
+      "text": "just like this"
+    },
+    {
+      "start": 302.24,
+      "end": 310.85,
+      "text": "just like this okay and now let's press F to fill control B to bevel and let's increase number of cuts with the mouse"
+    },
+    {
+      "start": 310.85,
+      "end": 313.24,
+      "text": "wheel so we get some support loops"
+    },
+    {
+      "start": 313.24,
+      "end": 320.65,
+      "text": "like this and now let's press ctrl R and create one more loop so we get some better shading and we can press ctrl R"
+    },
+    {
+      "start": 320.65,
+      "end": 323.24,
+      "text": "again here to add more geometry there"
+    },
+    {
+      "start": 323.24,
+      "end": 331.24,
+      "text": "so now let's step out and let's right click and shade smooth and see how the shape looks"
+    },
+    {
+      "start": 331.24,
+      "end": 339.24,
+      "text": "I think this is just fine but it needs some tweaks so you'll need to go in and kind of move some of these vertices"
+    },
+    {
+      "start": 339.24,
+      "end": 342.24,
+      "text": "around so we get a little bit more round connection around here"
+    },
+    {
+      "start": 342.24,
+      "end": 350.48,
+      "text": "so for example you can select this one and bring it outside like this and you will see on the subdivided surface how"
+    },
+    {
+      "start": 350.48,
+      "end": 360.24,
+      "text": "the curve change but then you probably need to go around and play with those other ones as well so it plays nicely"
+    },
+    {
+      "start": 360.24,
+      "end": 360.24,
+      "text": "together"
+    },
+    {
+      "start": 360.24,
+      "end": 367.24,
+      "text": "okay"
+    },
+    {
+      "start": 367.24,
+      "end": 376.26,
+      "text": "yeah but I think overall it looks great so let's step back in press 3 for face select select the front face here and"
+    },
+    {
+      "start": 376.26,
+      "end": 388.71,
+      "text": "press I to insert E to extrude E to extrude again and I to inset again so we get a little bit sharper transition back"
+    },
+    {
+      "start": 388.71,
+      "end": 389.24,
+      "text": "there"
+    },
+    {
+      "start": 389.24,
+      "end": 399.47,
+      "text": "okay yeah I think I like this so let's look from the front and press G to move it to the side here off center and now"
+    },
+    {
+      "start": 399.47,
+      "end": 408.95,
+      "text": "we can press Alt D and then X to move another one here and then press S then X and minus one so we flip it to the other"
+    },
+    {
+      "start": 408.95,
+      "end": 417.79,
+      "text": "side press G then X to move it somewhere here and we can move this one closer and now we'll create the docking station"
+    },
+    {
+      "start": 417.79,
+      "end": 418.24,
+      "text": "for those so let's"
+    },
+    {
+      "start": 418.24,
+      "end": 425.24,
+      "text": "okay so let's press shift a and let's add a cube tab into the edit mode and just scale it down like this we can enable"
+    },
+    {
+      "start": 425.24,
+      "end": 425.24,
+      "text": "x-ray view so we better see what's happening there"
+    },
+    {
+      "start": 425.24,
+      "end": 432.24,
+      "text": "we'll probably need something like this here and then press S then Z scale it down okay maybe G then Z and move it down"
+    },
+    {
+      "start": 432.24,
+      "end": 432.24,
+      "text": "a little bit like this and now of course from the side here so let's press 7 on the numpad to look from the top press S"
+    },
+    {
+      "start": 432.24,
+      "end": 432.24,
+      "text": "then Y and scale it and now let's press CTRL B to create the bevel and press C to enable clamp and now increase number"
+    },
+    {
+      "start": 432.24,
+      "end": 432.24,
+      "text": "of cuts with the mouse and now increase number of cuts with the mouse"
+    },
+    {
+      "start": 432.24,
+      "end": 439.92,
+      "text": "then Z, scale it down. Okay, maybe G, then Z and move it down a little bit like this. And now of"
+    },
+    {
+      "start": 439.92,
+      "end": 444.04,
+      "text": "course from the side here. So let's press 7 on the numpad to look from the top. Press S then Y"
+    },
+    {
+      "start": 444.04,
+      "end": 452.98,
+      "text": "and scale it. And now let's press ctrl B to create the bevel and press C to enable clamp."
+    },
+    {
+      "start": 452.98,
+      "end": 460.84000000000003,
+      "text": "And now increase number of cuts with the mouse wheel to something more smooth like this."
+    },
+    {
+      "start": 461.4,
+      "end": 467.56,
+      "text": "And now since we are overlapping with some of the vertices, let's press A and M to merge and choose"
+    },
+    {
+      "start": 467.56,
+      "end": 473.28,
+      "text": "by distance. Now let's look from the front again and let's press ctrl R and create a loop cut"
+    },
+    {
+      "start": 473.28,
+      "end": 480.04,
+      "text": "right here. There will be the place where we basically split this into two parts. So let's"
+    },
+    {
+      "start": 480.04,
+      "end": 485.06,
+      "text": "press 1 for vertex select, hold shift and select all of these other vertices. Make sure you're in"
+    },
+    {
+      "start": 485.06,
+      "end": 492.72,
+      "text": "the X-ray mode. So you select everything and press P and separate selection. Now let's tab out and let's"
+    },
+    {
+      "start": 492.72,
+      "end": 498.4,
+      "text": "select this part right here. Tab into the edit mode and we'll press 2 for edge select, select this edge,"
+    },
+    {
+      "start": 498.4,
+      "end": 506.22,
+      "text": "hold shift S and snap cursor to select it. And now we can tab out, right click and set origin to the 3D"
+    },
+    {
+      "start": 506.22,
+      "end": 513.76,
+      "text": "cursor. So this way, if you press R then X, you will be able to just flip this like that. And now let's"
+    },
+    {
+      "start": 513.76,
+      "end": 518.72,
+      "text": "toggle the X-ray again. Now let's finish with our objects. So tab into the edit mode. Alt click this loop,"
+    },
+    {
+      "start": 518.72,
+      "end": 526.38,
+      "text": "press F to fill, I to inset, a little bit like this and E to extrude down. I won't go into details and"
+    },
+    {
+      "start": 526.38,
+      "end": 532.32,
+      "text": "create like this curved encasing for those. I would probably go and do that using booleans or something"
+    },
+    {
+      "start": 532.32,
+      "end": 537.66,
+      "text": "like that. But here for the simple animation, very stylized. I think this will be more than enough."
+    },
+    {
+      "start": 537.66,
+      "end": 546.78,
+      "text": "And then I will tab out and add a bell modifier with two segments here. And let's reduce the amount"
+    },
+    {
+      "start": 546.78,
+      "end": 552.54,
+      "text": "to something like this. And now if you press control two, you will add subdivision surface modifier and you"
+    },
+    {
+      "start": 552.54,
+      "end": 557.58,
+      "text": "will see the bell modifier creates those support loops. So you get those nice sharp edges. Right click"
+    },
+    {
+      "start": 557.58,
+      "end": 564.06,
+      "text": "and shade smooth. And let's do the same thing here. So tab into the edit mode, alt click this loop, press F,"
+    },
+    {
+      "start": 564.06,
+      "end": 575.1,
+      "text": "I to inset and E to extrude. Somewhere here. And now we can tab out, alt shift, select the main one"
+    },
+    {
+      "start": 575.74,
+      "end": 596.62,
+      "text": "and press control P and parent to object. And now let's select this one, press H to hide and select"
+    },
+    {
+      "start": 596.62,
+      "end": 603.02,
+      "text": "these two by holding shift. And the main case is last and press control P and parent them as well."
+    },
+    {
+      "start": 603.02,
+      "end": 609.02,
+      "text": "So now if we take this, we can move the whole thing. And now just to make this a little bit more"
+    },
+    {
+      "start": 609.02,
+      "end": 614.54,
+      "text": "interesting, let's press alt H to unhide. And with the cursor still there, let's press shift A and"
+    },
+    {
+      "start": 614.54,
+      "end": 621.26,
+      "text": "let's add a cylinder. And I will modify the vertices to 12, tab into the edit mode and just scale it down"
+    },
+    {
+      "start": 621.26,
+      "end": 624.86,
+      "text": "using S and then press R then Y."
+    },
+    {
+      "start": 627.34,
+      "end": 632.54,
+      "text": "Enter 90 and confirm to rotate these 90 degrees and press S then X to scale it up."
+    },
+    {
+      "start": 632.54,
+      "end": 637.5,
+      "text": "So we'll just basically create the hinge. And now we can press three, four phase select, select this"
+    },
+    {
+      "start": 637.5,
+      "end": 642.06,
+      "text": "phase, hold shift, select the other one, press control B and create the bevel and reduce number"
+    },
+    {
+      "start": 642.06,
+      "end": 648.3,
+      "text": "of cuts with the mouse wheel. So we have only two loops there like this and press control R and create"
+    },
+    {
+      "start": 648.3,
+      "end": 655.34,
+      "text": "few cuts in the middle here to have like more evened out shading. Now tab out right click and shade smooth."
+    },
+    {
+      "start": 655.34,
+      "end": 660.46,
+      "text": "And this will be our hinge. So press G then Y and move it inside a little bit."
+    },
+    {
+      "start": 660.46,
+      "end": 667.5,
+      "text": "Maybe we can make it even smaller like this. So it's just a tiny detail and let's hold shift,"
+    },
+    {
+      "start": 667.5,
+      "end": 671.1,
+      "text": "select the main part and press control P and parent to object."
+    },
+    {
+      "start": 671.1,
+      "end": 675.58,
+      "text": "So now we're ready. So let's hit zero on a numpad for camera view. And this is too far."
+    },
+    {
+      "start": 675.58,
+      "end": 680.78,
+      "text": "So the easiest way to position camera is to press N for the side panel. And in the view options,"
+    },
+    {
+      "start": 680.78,
+      "end": 685.82,
+      "text": "you can enable camera to view. So now you can use your viewport controls to position your camera."
+    },
+    {
+      "start": 685.82,
+      "end": 693.5,
+      "text": "And I'm interested in an angle like this. And don't forget to disable that. You can right click and"
+    },
+    {
+      "start": 693.5,
+      "end": 699.26,
+      "text": "add to quick favorites. So then if you press Q, you can have the lock camera to view right there."
+    },
+    {
+      "start": 699.26,
+      "end": 703.5,
+      "text": "And now with the side panel still open, let's go to the item menu and leave it open. We'll need this."
+    },
+    {
+      "start": 703.5,
+      "end": 711.66,
+      "text": "And let's create some animations. So I want this to be 120 frames long. And in the output settings,"
+    },
+    {
+      "start": 711.66,
+      "end": 719.02,
+      "text": "let's modify this to 30 FPS. And first of all, I want to create the rotation with the main body. And I"
+    },
+    {
+      "start": 719.02,
+      "end": 724.54,
+      "text": "want to rotate this around Z axis. So let's right click here and insert single keyframe. And the reason"
+    },
+    {
+      "start": 724.54,
+      "end": 730.46,
+      "text": "why I'm doing it this way will be clear to you in a few moments. So let me select this here, press Shift"
+    },
+    {
+      "start": 730.46,
+      "end": 739.02,
+      "text": "D and duplicate it to the other side. Now let's go to frame 30. And I want to rotate this full circle."
+    },
+    {
+      "start": 739.02,
+      "end": 746.86,
+      "text": "So 360. Let's confirm and right click and insert single keyframe. So it's not very simple rotation"
+    },
+    {
+      "start": 746.86,
+      "end": 752.86,
+      "text": "animation, but I want this object to kind of spool up to the other side before the actual rotation. So"
+    },
+    {
+      "start": 752.86,
+      "end": 763.74,
+      "text": "on the frame 10 or nine, something really close. I want to reset this back to zero and go few negative"
+    },
+    {
+      "start": 763.74,
+      "end": 769.74,
+      "text": "degrees. So I don't know, maybe something like minus 30 and let's right click and insert single keyframe."
+    },
+    {
+      "start": 769.74,
+      "end": 774.46,
+      "text": "And this is basically the blockout for the animation, but I want this to continue rotating a little bit"
+    },
+    {
+      "start": 774.46,
+      "end": 783.26,
+      "text": "and then, you know, start again in this movement. So I will basically just select this keyframe right"
+    },
+    {
+      "start": 783.26,
+      "end": 791.74,
+      "text": "here, press Shift D and duplicate it right there to the end of the animation plus one frame. So 121."
+    },
+    {
+      "start": 792.94,
+      "end": 798.94,
+      "text": "And now if we make this a little bit larger and hit Ctrl Tab here, you will get into the graph editor and"
+    },
+    {
+      "start": 798.94,
+      "end": 806.86,
+      "text": "you can use Ctrl and middle mouse button to kind of scale this in and out like this. And now I want to"
+    },
+    {
+      "start": 806.86,
+      "end": 816.14,
+      "text": "change this animation curve to be kind of a little bit more snappy. So first of all, here, I want this"
+    },
+    {
+      "start": 816.14,
+      "end": 822.14,
+      "text": "movement to be a little bit more sudden. So let's move the handle right there. And here, let's select this"
+    },
+    {
+      "start": 822.14,
+      "end": 827.58,
+      "text": "keyframe and press V and I want to change this to free. So this will allow me to move just one handle"
+    },
+    {
+      "start": 827.58,
+      "end": 835.98,
+      "text": "like this. And now this keyframe, I want to move down a little bit. So if you remember, this is 360 frames,"
+    },
+    {
+      "start": 835.98,
+      "end": 843.34,
+      "text": "but I want to end on the frame. So I will press G then Y here and move this slightly down like this,"
+    },
+    {
+      "start": 843.34,
+      "end": 852.06,
+      "text": "and then adjust the handle. So it's more smooth there. So we'll get this kind of"
+    },
+    {
+      "start": 852.06,
+      "end": 860.3,
+      "text": "movement. And you will see the whole rotation happens here. But then the finish is very smooth and"
+    },
+    {
+      "start": 860.3,
+      "end": 869.82,
+      "text": "continues until the end. Maybe we can bring this a little bit lower and make this handle shorter."
+    },
+    {
+      "start": 873.66,
+      "end": 880.3,
+      "text": "Okay, I really like this. And then what I want to happen is for the lid to open. And you know, those"
+    },
+    {
+      "start": 880.3,
+      "end": 886.78,
+      "text": "spots to fly out for a little bit and then, you know, folding back down with the lid closing in a"
+    },
+    {
+      "start": 886.78,
+      "end": 894.54,
+      "text": "sudden movement. So let's go to like frame 15, for example. And let's insert the X rotation here for"
+    },
+    {
+      "start": 895.18,
+      "end": 907.26,
+      "text": "the lid part. Insert single keyframe. And then on a frame 25, let's rotate this like that. So I don't"
+    },
+    {
+      "start": 907.26,
+      "end": 914.86,
+      "text": "know, minus 170 doesn't need to go all the way to 180. Right click and insert single keyframe. And again,"
+    },
+    {
+      "start": 914.86,
+      "end": 919.18,
+      "text": "at this stage, we're just blocking out the animation. Let's select this frame right here,"
+    },
+    {
+      "start": 919.18,
+      "end": 925.82,
+      "text": "press Shift D, then X to lock it on the X axis. And let's just move it here on frame 60. Remember,"
+    },
+    {
+      "start": 925.82,
+      "end": 930.06,
+      "text": "this is the keyframe. These are only the handles. And now basically, we just need to select this one"
+    },
+    {
+      "start": 930.06,
+      "end": 935.82,
+      "text": "here, press Shift D, press X to lock it and do the same thing and move it to frame 70. So this is the"
+    },
+    {
+      "start": 935.82,
+      "end": 942.3,
+      "text": "movement locking place. But again, I want to make this a little bit more snappy. So let's select this"
+    },
+    {
+      "start": 942.3,
+      "end": 949.66,
+      "text": "keyframe right there, press V and choose free and now modify the handle. So it's more steep here."
+    },
+    {
+      "start": 949.66,
+      "end": 956.54,
+      "text": "And let's do the same thing right here. So it kind of, you know, shuts the lid with a sudden movement."
+    },
+    {
+      "start": 956.54,
+      "end": 964.22,
+      "text": "So press V choose free and do it right there as well. But again, I want this movement to be sudden"
+    },
+    {
+      "start": 964.22,
+      "end": 969.26,
+      "text": "in the beginning and then continue a little bit as the animation goes on. So let's select this one,"
+    },
+    {
+      "start": 969.26,
+      "end": 977.98,
+      "text": "press G then Y and move it back here. So we create this kind of curve right there. And now if you play"
+    },
+    {
+      "start": 977.98,
+      "end": 985.9,
+      "text": "back, we'll open and continue the movement a little bit and then shuts down suddenly. And now let's press"
+    },
+    {
+      "start": 985.9,
+      "end": 992.86,
+      "text": "H to hide this object in the viewport. And let's select this one, this left one, I want this to move"
+    },
+    {
+      "start": 992.86,
+      "end": 1000.7,
+      "text": "first. So let's move. I don't know, like frame 15 is fine. And let's right click and insert Z location"
+    },
+    {
+      "start": 1000.7,
+      "end": 1006.38,
+      "text": "insert single keyframe there. And then we'll move to frame 30 because we want to leave the lid a little"
+    },
+    {
+      "start": 1006.38,
+      "end": 1014.46,
+      "text": "bit of a time to open so it doesn't like fly through. So on frame 30, we should be somewhere here, for"
+    },
+    {
+      "start": 1014.46,
+      "end": 1020.22,
+      "text": "example, right click and insert single keyframe. And if this is close together, you can of course use"
+    },
+    {
+      "start": 1020.22,
+      "end": 1026.54,
+      "text": "Ctrl and middle mouse button to zoom on it. But if you press period on a numpad, it will zoom just right"
+    },
+    {
+      "start": 1026.54,
+      "end": 1032.38,
+      "text": "in. And now let's do the same thing as before. But it will happen a little bit sooner. So around frame"
+    },
+    {
+      "start": 1032.38,
+      "end": 1038.54,
+      "text": "50 and 60. So let's select this one, press Shift D, then X, move it to frame 50. And then this one"
+    },
+    {
+      "start": 1039.5,
+      "end": 1047.42,
+      "text": "right here. And again, we'll select these two, press V and choose free. And now make them a little bit more"
+    },
+    {
+      "start": 1047.42,
+      "end": 1055.5,
+      "text": "steep, like this. And again, I want this to be like a continuous movement right there. So let's select"
+    },
+    {
+      "start": 1055.5,
+      "end": 1064.86,
+      "text": "this one, press G, then Y and move it down slightly like this. So it will fly up and continue the movement"
+    },
+    {
+      "start": 1064.86,
+      "end": 1073.58,
+      "text": "until it kind of falls down in a sudden movement. Okay, and now I want to do the same thing on the"
+    },
+    {
+      "start": 1073.58,
+      "end": 1081.02,
+      "text": "other one. So let's move to frame like 25. Select this one. And let's right click and insert single"
+    },
+    {
+      "start": 1081.02,
+      "end": 1086.7,
+      "text": "keyframe here. But I won't do that all over again. Let's just select this one, select all of the keyframes,"
+    },
+    {
+      "start": 1086.7,
+      "end": 1093.9,
+      "text": "press Ctrl C. And now let's select this one and press Ctrl V. I will paste the movement on the Z axis."
+    },
+    {
+      "start": 1093.9,
+      "end": 1100.38,
+      "text": "So we will get the same thing. But one difference I want to do here is to select these two"
+    },
+    {
+      "start": 1100.38,
+      "end": 1108.54,
+      "text": "with the handles as well and press G, then Y and move them higher up. So this one will fly higher."
+    },
+    {
+      "start": 1108.54,
+      "end": 1114.86,
+      "text": "And here we can adjust for the curves. So let's zoom on it. And we can readjust the handles."
+    },
+    {
+      "start": 1115.66,
+      "end": 1120.7,
+      "text": "So it matches the value range. Okay."
+    },
+    {
+      "start": 1120.7,
+      "end": 1127.66,
+      "text": "Now let's press Alt H in the viewport and let's play back the whole animation."
+    },
+    {
+      "start": 1127.66,
+      "end": 1135.1,
+      "text": "Okay, I think we'll need to figure out the timing a little bit better. I think"
+    },
+    {
+      "start": 1135.1,
+      "end": 1141.98,
+      "text": "the shift between those two is a little bit too late. So let's just move them five frames within each other."
+    },
+    {
+      "start": 1144.86,
+      "end": 1151.66,
+      "text": "And I think the rotation might need a little bit of a help. I think we need to be higher up here with the rotation."
+    },
+    {
+      "start": 1151.66,
+      "end": 1165.74,
+      "text": "Okay, and these might go a little bit sooner. So let's select both of those."
+    },
+    {
+      "start": 1165.74,
+      "end": 1168.54,
+      "text": "Select all keyframes, press G, then X and just move it"
+    },
+    {
+      "start": 1171.26,
+      "end": 1172.3,
+      "text": "to the left a little bit to the left a little bit."
+    },
+    {
+      "start": 1172.3,
+      "end": 1178.78,
+      "text": "Okay, and now closing the lid should match"
+    },
+    {
+      "start": 1178.78,
+      "end": 1188.54,
+      "text": "the fall of the earphones. So here it should be already closed. So either we can make this longer"
+    },
+    {
+      "start": 1188.54,
+      "end": 1194.38,
+      "text": "or we can bring this a little bit sooner. So let's just bring this right here."
+    },
+    {
+      "start": 1197.74,
+      "end": 1201.1,
+      "text": "Maybe even sooner."
+    },
+    {
+      "start": 1201.1,
+      "end": 1205.58,
+      "text": "Okay."
+    },
+    {
+      "start": 1205.58,
+      "end": 1212.94,
+      "text": "And maybe readjust the curve a little bit so it's more fluent."
+    },
+    {
+      "start": 1217.5,
+      "end": 1225.18,
+      "text": "Nice. I really like this. So now the reason why I only why I'm only doing these keyframes on certain"
+    },
+    {
+      "start": 1225.18,
+      "end": 1231.18,
+      "text": "channels. First of all, it's much easier to see, you know, when you have just one animation curve."
+    },
+    {
+      "start": 1231.18,
+      "end": 1236.14,
+      "text": "But other than that, I can still modify the rotation on Y and on X."
+    },
+    {
+      "start": 1236.94,
+      "end": 1242.38,
+      "text": "And this will still work. So you can still reposition your object. You don't have any"
+    },
+    {
+      "start": 1242.38,
+      "end": 1246.62,
+      "text": "location keyframes, so you can move it around and it will still, you know, animate."
+    },
+    {
+      "start": 1246.62,
+      "end": 1253.58,
+      "text": "And you can change all of those values except the one that is always already keyframes. So yeah,"
+    },
+    {
+      "start": 1253.58,
+      "end": 1258.54,
+      "text": "let's let's do a little bit of this rotation. I think it gives the scene a little bit more dynamic"
+    },
+    {
+      "start": 1259.9,
+      "end": 1264.86,
+      "text": "like this. And now I want to animate the camera a little bit because when they fly up, I think this"
+    },
+    {
+      "start": 1264.86,
+      "end": 1270.54,
+      "text": "breaks the composition a little bit. And I think a little bit of a camera handshake should look nicely"
+    },
+    {
+      "start": 1270.54,
+      "end": 1277.34,
+      "text": "here. So let's select the camera and let's just right click and insert keyframes on rotation. Let's"
+    },
+    {
+      "start": 1277.34,
+      "end": 1284.7,
+      "text": "press control tab here and let's go back here to the timeline. And now let's press shift D and duplicate it"
+    },
+    {
+      "start": 1284.7,
+      "end": 1293.26,
+      "text": "to the other side. And now let's make some keyframes in between. So we can enable recording and press R"
+    },
+    {
+      "start": 1293.26,
+      "end": 1301.1,
+      "text": "twice and hold shift for smaller increments and do very small adjustments with the camera rotation. R twice"
+    },
+    {
+      "start": 1301.1,
+      "end": 1312.3,
+      "text": "and hold shift. But remember, really small adjustments. And now here, when it's up, we can go a little bit"
+    },
+    {
+      "start": 1312.3,
+      "end": 1322.3,
+      "text": "higher. So it's centered here. And then when it goes down, you can press R twice and go back here like this,"
+    },
+    {
+      "start": 1323.1,
+      "end": 1332.62,
+      "text": "and then finish with, you know, some slight movements. Okay. And now don't forget to disable this. That could"
+    },
+    {
+      "start": 1332.62,
+      "end": 1340.62,
+      "text": "cause a lot of mess if you, you know, keep moving things around with auto keying on. Okay. Works nicely,"
+    },
+    {
+      "start": 1340.62,
+      "end": 1345.74,
+      "text": "but I think we need to go higher up a little bit sooner. So maybe just delete this keyframe right there."
+    },
+    {
+      "start": 1346.54,
+      "end": 1356.46,
+      "text": "So we kind of follow the scene a little bit better and then maybe move this a little bit later. Now"
+    },
+    {
+      "start": 1356.46,
+      "end": 1362.22,
+      "text": "let's hold shift reset cursor to world origin. Let's press shift A. We'll add a plane. Press R then X to"
+    },
+    {
+      "start": 1362.22,
+      "end": 1369.82,
+      "text": "rotate it towards the camera like this and then R Z. Okay. And then press G and shift Z to move on X and"
+    },
+    {
+      "start": 1369.82,
+      "end": 1380.94,
+      "text": "Y axis. Let's make it larger. So this will be our backdrop like this. And now I'll use, you know, some,"
+    },
+    {
+      "start": 1380.94,
+      "end": 1393.42,
+      "text": "some HDRI from Polyhaven. Let me bring in this one and let me switch to shader editor right there and to the"
+    },
+    {
+      "start": 1393.42,
+      "end": 1401.74,
+      "text": "world settings and you will see the HDRI right here. So let's set up some rendering. I will switch to cycles"
+    },
+    {
+      "start": 1401.74,
+      "end": 1409.9,
+      "text": "enable GPU and the noising and something like 64 frames for the animation should be fine. Let's press"
+    },
+    {
+      "start": 1409.9,
+      "end": 1417.82,
+      "text": "control B to limit the preview only for the camera and let's preview the rendered. Um, first I want to check"
+    },
+    {
+      "start": 1417.82,
+      "end": 1426.46,
+      "text": "the rotation here of the lighting. I think I want the windows to be on the left side here. So"
+    },
+    {
+      "start": 1426.46,
+      "end": 1437.34,
+      "text": "something like this should work nicely. And now I want to reduce the strength because I want only,"
+    },
+    {
+      "start": 1437.34,
+      "end": 1440.22,
+      "text": "I want this for only reflections and reduce the warmth"
+    },
+    {
+      "start": 1442.3,
+      "end": 1449.02,
+      "text": "like this. So we get a little bit of a blue light, maybe a little bit of a thing there. The HDRIs in"
+    },
+    {
+      "start": 1449.02,
+      "end": 1455.1,
+      "text": "this form come from Polyhaven. When you have the pay that on, uh, I'm in no way affiliated. I just use it"
+    },
+    {
+      "start": 1455.1,
+      "end": 1462.86,
+      "text": "like this. You are free to go to Polyhaven, download the same HDRI and create this setup on your own. Um,"
+    },
+    {
+      "start": 1462.86,
+      "end": 1468.78,
+      "text": "this is how it looks right here. Um, but it's just super convenient, you know, to have this"
+    },
+    {
+      "start": 1470.22,
+      "end": 1476.54,
+      "text": "as a drag and drop into your scene. So that's why I purchased the add on. And by the way, it's like"
+    },
+    {
+      "start": 1476.54,
+      "end": 1482.38,
+      "text": "super cheap for the value you're getting. So, um, yeah, definitely get it if you can. So I'll press"
+    },
+    {
+      "start": 1482.38,
+      "end": 1489.98,
+      "text": "control B here to limit this again and let's press shift a and I'll add some area light to add additional"
+    },
+    {
+      "start": 1489.98,
+      "end": 1498.14,
+      "text": "lighting, make it larger for some soft shadows and increase the power like that. And for some additional"
+    },
+    {
+      "start": 1498.14,
+      "end": 1506.46,
+      "text": "reflections, I will pressure a and add spotlight. Press G then Z move it up here. And now press period on a"
+    },
+    {
+      "start": 1506.46,
+      "end": 1512.78,
+      "text": "keyboard to switch to 3d cursor for the pivot point, or you can do it right here and then press R twice"
+    },
+    {
+      "start": 1512.78,
+      "end": 1520.22,
+      "text": "to rotate this around from the side here and do this really strong, like 500"
+    },
+    {
+      "start": 1522.06,
+      "end": 1534.22,
+      "text": "and find some nice rim light here. Something like this. Now we can select the object, create a new"
+    },
+    {
+      "start": 1534.22,
+      "end": 1542.38,
+      "text": "material, and this will be the white one. And let's decrease the roughness almost all the way to zero."
+    },
+    {
+      "start": 1542.38,
+      "end": 1548.54,
+      "text": "And you will see those reflections from the HDRI. So this is why I used it in the first place here."
+    },
+    {
+      "start": 1548.54,
+      "end": 1555.74,
+      "text": "And here in the back, we can make this metal. So let's increase the metallic all the way."
+    },
+    {
+      "start": 1555.74,
+      "end": 1562.86,
+      "text": "Reduce the roughness a little bit and maybe reduce the brightness. But I think this is fine."
+    },
+    {
+      "start": 1562.86,
+      "end": 1568.78,
+      "text": "So now if we play back the animation, let me bring up the timeline here."
+    },
+    {
+      "start": 1570.38,
+      "end": 1577.9,
+      "text": "Let's scrub through the animation. This should be the same white material there."
+    },
+    {
+      "start": 1577.9,
+      "end": 1584.7,
+      "text": "And if I tab in with this still selected, I can press Ctrl + on a numpad"
+    },
+    {
+      "start": 1587.58,
+      "end": 1595.98,
+      "text": "and create a new material and hit assign and create a new one there. That will be black with full roughness."
+    },
+    {
+      "start": 1595.98,
+      "end": 1603.98,
+      "text": "Okay, looks quite nice, I think. And now with the background, we can create a new material there"
+    },
+    {
+      "start": 1603.98,
+      "end": 1611.74,
+      "text": "and maybe play with the brightness. Or you can, you know, subdivide this, add some displacement,"
+    },
+    {
+      "start": 1611.74,
+      "end": 1615.02,
+      "text": "do like wavy texture or something. Should be really nice."
+    },
+    {
+      "start": 1615.02,
+      "end": 1623.82,
+      "text": "Okay, I really like that. Now, to make this a little bit more funky, we can do some color shifts there."
+    },
+    {
+      "start": 1623.82,
+      "end": 1631.26,
+      "text": "So let me switch the material to object mode in the shader editor. And let me bring this up a little bit."
+    },
+    {
+      "start": 1632.62,
+      "end": 1641.18,
+      "text": "Like that. And let's press shift a and let's search for hue saturation value. And let's find some nice color like this."
+    },
+    {
+      "start": 1641.18,
+      "end": 1648.14,
+      "text": "Okay, and let's set the hue to zero and just plug it right here."
+    },
+    {
+      "start": 1648.14,
+      "end": 1659.66,
+      "text": "Okay, they'll give us this color right there. And on frame zero, we can right click and insert keyframe on the hue."
+    },
+    {
+      "start": 1659.66,
+      "end": 1666.7,
+      "text": "And then on 121, we can change this to one, right click and insert keyframe. But remember,"
+    },
+    {
+      "start": 1666.7,
+      "end": 1672.38,
+      "text": "this will be Bezier animation. And to see those keyframes here, you need to have the node selected."
+    },
+    {
+      "start": 1672.38,
+      "end": 1679.82,
+      "text": "So now you can see those right there. You can hold shift, select them, press T and choose linear interpolation."
+    },
+    {
+      "start": 1679.82,
+      "end": 1689.18,
+      "text": "So they'll change the colors much more in a much more fluent way. So we have this, you know, funky color change there."
+    },
+    {
+      "start": 1689.66,
+      "end": 1696.54,
+      "text": "And I really don't like how I left this open. So we can either bring this lower down,"
+    },
+    {
+      "start": 1696.54,
+      "end": 1701.26,
+      "text": "or we can change the angle. So we can just play with this rotation here."
+    },
+    {
+      "start": 1703.26,
+      "end": 1705.26,
+      "text": "So it's not, you know, visible."
+    },
+    {
+      "start": 1705.26,
+      "end": 1717.5,
+      "text": "Of course, you're more than welcome to go in, you know, and model the inside. So it looks better."
+    },
+    {
+      "start": 1717.5,
+      "end": 1724.94,
+      "text": "Okay, and I would like to do the same thing on the background here. So let's select this node right"
+    },
+    {
+      "start": 1724.94,
+      "end": 1731.5,
+      "text": "here, press Ctrl C, and I will select the background and press Ctrl V here. But now we don't have the keyframes"
+    },
+    {
+      "start": 1731.5,
+      "end": 1737.5,
+      "text": "there because we moved it to another object. So let's go to frame one. And let's set the hue to zero."
+    },
+    {
+      "start": 1738.38,
+      "end": 1746.54,
+      "text": "And right click and insert keyframe. And again, 121. Let's set this to one. Right click and insert keyframe."
+    },
+    {
+      "start": 1746.54,
+      "end": 1751.98,
+      "text": "And we can plug it here to the background. So now the background will change as well. But it's a little"
+    },
+    {
+      "start": 1751.98,
+      "end": 1759.74,
+      "text": "bit too strong for my taste. So I think I will just go ahead and reduce the saturation here in the main color."
+    },
+    {
+      "start": 1762.06,
+      "end": 1771.42,
+      "text": "And maybe increase the value a little bit. So this will give us like a more pastel color look. So now the"
+    },
+    {
+      "start": 1771.42,
+      "end": 1776.94,
+      "text": "final thing I want to do here is to give this a little bit more punch. So first of all, in the render"
+    },
+    {
+      "start": 1776.94,
+      "end": 1784.62,
+      "text": "settings, make sure you enable motion blur. And in the color management, we can enable higher contrast"
+    },
+    {
+      "start": 1784.62,
+      "end": 1793.34,
+      "text": "settings like this and play with the exposure. But you can enable curves as well. And and set the bright"
+    },
+    {
+      "start": 1793.34,
+      "end": 1800.78,
+      "text": "tones somewhere here and then bring down the darker parts. So now if you move this, you will see the"
+    },
+    {
+      "start": 1800.78,
+      "end": 1812.38,
+      "text": "contrast is more punchy. As you move this lower, you get this darker shades in the shadows. Okay,"
+    },
+    {
+      "start": 1812.38,
+      "end": 1818.94,
+      "text": "and maybe we can add a little bit more saturation to the background. Okay."
+    },
+    {
+      "start": 1818.94,
+      "end": 1830.06,
+      "text": "Yeah, it looks quite nice. So of course, now you can play around with some more lights. For example,"
+    },
+    {
+      "start": 1830.06,
+      "end": 1836.54,
+      "text": "you can try to duplicate this one and create, you know, some more reflections from different angles. But"
+    },
+    {
+      "start": 1836.54,
+      "end": 1841.66,
+      "text": "yeah, otherwise, I really like the final animation. So when you're satisfied, you can just go"
+    },
+    {
+      "start": 1841.66,
+      "end": 1849.1,
+      "text": "to the output settings, switch this to ffmpeg, encoding, choose mp4, choose your folder,"
+    },
+    {
+      "start": 1849.1,
+      "end": 1855.18,
+      "text": "and then go render, render animation, wait out your frames, and your animation will be ready. So I"
+    },
+    {
+      "start": 1855.18,
+      "end": 1860.62,
+      "text": "really hope you enjoyed this one. And again, if you did, please leave that like. And if you're a new"
+    },
+    {
+      "start": 1860.62,
+      "end": 1867.5,
+      "text": "round here, hit that subscribe. Thank you all for watching and have a wonderful day."
+    }
+  ],
+  "text": "Hey everyone, welcome to my new tutorial. Today we are going to create this cool product animation and I really hope you will enjoy this one and if you do, please don't forget to leave that like and if you're new around here, hit that subscribe. Now let's jump right into empty blender file and first of all, let's select the light, press X and delete and we'll actually use the cube here. So let's select it and let's press ctrl 2 to add subdivision surface modifier and let's scale it down a little bit. So press S and scale it down because this is two meters wide, which is quite a lot for an earphone, but I won't be doing like an exact proportions here. I just want to make it a little bit smaller like this. Okay, now let's press ctrl A and apply the scale. And now before we tap into the edit mode, let's go to the modifiers panel and let's apply that subdivision modifier and let's tap into the edit mode now, press S then Y and scale it on Y axis to create that shape. Maybe a little bit more like this. I think that'll be okay. Now let's look from the front by pressing one on the non-pad and let's select this vertex right here and press O to enable proportional editing right here and press G then X and start moving it and then reduce the fall of radius if it's too large with the mouse wheel. So now let's press O to disable proportional editing and let's enable X-ray view and let's select those vertices right here you will see it's selected on the other side as well. Press G then X and move it slightly back so it doesn't get in the way and now press K for knife tool, click here and press A for angle snap and C to enable cut through and you can see it enabled right here. So now let's just click here and confirm with enter and now we can select all of these vertices here press X and delete those alt click this loop and press F to fill now let's modify the shape even further. So press G then X and move it outside a little bit so we get more of this like a raindrop shape and now we want to extrude the rest of the shape. I will go like this here if you feel like this is too fast for you or you don't understand some core concepts make sure to check out my courses I carefully design them to take you from beginner skills through low-pull illustration all the way to full character illustration textured environments and much more and I build the courses as creative projects each with its own style and every time there's a new technique or something needs explaining we stop for a while and you get an in-depth explanation but in the end you still get a full project result. So if you're interested please check out the link in the description so let's step back in now let's deactivate the x-ray view and we'll need to figure out the way how to do that so let's press 3 for face select and select all these faces right here and hold shift to add to selection on to select all of these and some of these on top as well and now let's press I to insert just a tiny bit like this and now I'll use loop tools add-on if you don't have it active go to edit preferences and in the extensions search for loop tools and you can see I have it installed right here but you should probably have it right there and you just click install button and the loop tools will be active and then you can just right click and in the loop tools menu choose circle and now let's rotate this way and move it outside like this and a little bit down okay I think that's a good start and now press x and delete all of these faces we just want this opening right here and to better see what we are doing let's add some subdivision surface so let's go here and add subdivision surface modifier with two levels of subdivision and now press 2 for edge select alt-click this loop and we can make it smaller of course something like this and rotate it a little bit from the angle and basically you will kind of need to eyeball this you don't want to go too far from the earphone something like this should be okay and we're basically checking for all sides here how the shape is coming up and now let's press E then Z and extrude this down now let's look from this side and press R to rotate and press R to rotate and we want to rotate this so we get as close to the flat surface as possible doesn't need to be perfect and now press S to scale it down like this and let's update the rotation a little bit here and there maybe move it outside a little bit I think this looks fine so now we can press S then Z and 0 to make it completely flat and now we can just press E then Z and extrude it down just like this just like this okay and now let's press F to fill control B to bevel and let's increase number of cuts with the mouse wheel so we get some support loops like this and now let's press ctrl R and create one more loop so we get some better shading and we can press ctrl R again here to add more geometry there so now let's step out and let's right click and shade smooth and see how the shape looks I think this is just fine but it needs some tweaks so you'll need to go in and kind of move some of these vertices around so we get a little bit more round connection around here so for example you can select this one and bring it outside like this and you will see on the subdivided surface how the curve change but then you probably need to go around and play with those other ones as well so it plays nicely together okay yeah but I think overall it looks great so let's step back in press 3 for face select select the front face here and press I to insert E to extrude E to extrude again and I to inset again so we get a little bit sharper transition back there okay yeah I think I like this so let's look from the front and press G to move it to the side here off center and now we can press Alt D and then X to move another one here and then press S then X and minus one so we flip it to the other side press G then X to move it somewhere here and we can move this one closer and now we'll create the docking station for those so let's okay so let's press shift a and let's add a cube tab into the edit mode and just scale it down like this we can enable x-ray view so we better see what's happening there we'll probably need something like this here and then press S then Z scale it down okay maybe G then Z and move it down a little bit like this and now of course from the side here so let's press 7 on the numpad to look from the top press S then Y and scale it and now let's press CTRL B to create the bevel and press C to enable clamp and now increase number of cuts with the mouse and now increase number of cuts with the mouse then Z, scale it down. Okay, maybe G, then Z and move it down a little bit like this. And now of course from the side here. So let's press 7 on the numpad to look from the top. Press S then Y and scale it. And now let's press ctrl B to create the bevel and press C to enable clamp. And now increase number of cuts with the mouse wheel to something more smooth like this. And now since we are overlapping with some of the vertices, let's press A and M to merge and choose by distance. Now let's look from the front again and let's press ctrl R and create a loop cut right here. There will be the place where we basically split this into two parts. So let's press 1 for vertex select, hold shift and select all of these other vertices. Make sure you're in the X-ray mode. So you select everything and press P and separate selection. Now let's tab out and let's select this part right here. Tab into the edit mode and we'll press 2 for edge select, select this edge, hold shift S and snap cursor to select it. And now we can tab out, right click and set origin to the 3D cursor. So this way, if you press R then X, you will be able to just flip this like that. And now let's toggle the X-ray again. Now let's finish with our objects. So tab into the edit mode. Alt click this loop, press F to fill, I to inset, a little bit like this and E to extrude down. I won't go into details and create like this curved encasing for those. I would probably go and do that using booleans or something like that. But here for the simple animation, very stylized. I think this will be more than enough. And then I will tab out and add a bell modifier with two segments here. And let's reduce the amount to something like this. And now if you press control two, you will add subdivision surface modifier and you will see the bell modifier creates those support loops. So you get those nice sharp edges. Right click and shade smooth. And let's do the same thing here. So tab into the edit mode, alt click this loop, press F, I to inset and E to extrude. Somewhere here. And now we can tab out, alt shift, select the main one and press control P and parent to object. And now let's select this one, press H to hide and select these two by holding shift. And the main case is last and press control P and parent them as well. So now if we take this, we can move the whole thing. And now just to make this a little bit more interesting, let's press alt H to unhide. And with the cursor still there, let's press shift A and let's add a cylinder. And I will modify the vertices to 12, tab into the edit mode and just scale it down using S and then press R then Y. Enter 90 and confirm to rotate these 90 degrees and press S then X to scale it up. So we'll just basically create the hinge. And now we can press three, four phase select, select this phase, hold shift, select the other one, press control B and create the bevel and reduce number of cuts with the mouse wheel. So we have only two loops there like this and press control R and create few cuts in the middle here to have like more evened out shading. Now tab out right click and shade smooth. And this will be our hinge. So press G then Y and move it inside a little bit. Maybe we can make it even smaller like this. So it's just a tiny detail and let's hold shift, select the main part and press control P and parent to object. So now we're ready. So let's hit zero on a numpad for camera view. And this is too far. So the easiest way to position camera is to press N for the side panel. And in the view options, you can enable camera to view. So now you can use your viewport controls to position your camera. And I'm interested in an angle like this. And don't forget to disable that. You can right click and add to quick favorites. So then if you press Q, you can have the lock camera to view right there. And now with the side panel still open, let's go to the item menu and leave it open. We'll need this. And let's create some animations. So I want this to be 120 frames long. And in the output settings, let's modify this to 30 FPS. And first of all, I want to create the rotation with the main body. And I want to rotate this around Z axis. So let's right click here and insert single keyframe. And the reason why I'm doing it this way will be clear to you in a few moments. So let me select this here, press Shift D and duplicate it to the other side. Now let's go to frame 30. And I want to rotate this full circle. So 360. Let's confirm and right click and insert single keyframe. So it's not very simple rotation animation, but I want this object to kind of spool up to the other side before the actual rotation. So on the frame 10 or nine, something really close. I want to reset this back to zero and go few negative degrees. So I don't know, maybe something like minus 30 and let's right click and insert single keyframe. And this is basically the blockout for the animation, but I want this to continue rotating a little bit and then, you know, start again in this movement. So I will basically just select this keyframe right here, press Shift D and duplicate it right there to the end of the animation plus one frame. So 121. And now if we make this a little bit larger and hit Ctrl Tab here, you will get into the graph editor and you can use Ctrl and middle mouse button to kind of scale this in and out like this. And now I want to change this animation curve to be kind of a little bit more snappy. So first of all, here, I want this movement to be a little bit more sudden. So let's move the handle right there. And here, let's select this keyframe and press V and I want to change this to free. So this will allow me to move just one handle like this. And now this keyframe, I want to move down a little bit. So if you remember, this is 360 frames, but I want to end on the frame. So I will press G then Y here and move this slightly down like this, and then adjust the handle. So it's more smooth there. So we'll get this kind of movement. And you will see the whole rotation happens here. But then the finish is very smooth and continues until the end. Maybe we can bring this a little bit lower and make this handle shorter. Okay, I really like this. And then what I want to happen is for the lid to open. And you know, those spots to fly out for a little bit and then, you know, folding back down with the lid closing in a sudden movement. So let's go to like frame 15, for example. And let's insert the X rotation here for the lid part. Insert single keyframe. And then on a frame 25, let's rotate this like that. So I don't know, minus 170 doesn't need to go all the way to 180. Right click and insert single keyframe. And again, at this stage, we're just blocking out the animation. Let's select this frame right here, press Shift D, then X to lock it on the X axis. And let's just move it here on frame 60. Remember, this is the keyframe. These are only the handles. And now basically, we just need to select this one here, press Shift D, press X to lock it and do the same thing and move it to frame 70. So this is the movement locking place. But again, I want to make this a little bit more snappy. So let's select this keyframe right there, press V and choose free and now modify the handle. So it's more steep here. And let's do the same thing right here. So it kind of, you know, shuts the lid with a sudden movement. So press V choose free and do it right there as well. But again, I want this movement to be sudden in the beginning and then continue a little bit as the animation goes on. So let's select this one, press G then Y and move it back here. So we create this kind of curve right there. And now if you play back, we'll open and continue the movement a little bit and then shuts down suddenly. And now let's press H to hide this object in the viewport. And let's select this one, this left one, I want this to move first. So let's move. I don't know, like frame 15 is fine. And let's right click and insert Z location insert single keyframe there. And then we'll move to frame 30 because we want to leave the lid a little bit of a time to open so it doesn't like fly through. So on frame 30, we should be somewhere here, for example, right click and insert single keyframe. And if this is close together, you can of course use Ctrl and middle mouse button to zoom on it. But if you press period on a numpad, it will zoom just right in. And now let's do the same thing as before. But it will happen a little bit sooner. So around frame 50 and 60. So let's select this one, press Shift D, then X, move it to frame 50. And then this one right here. And again, we'll select these two, press V and choose free. And now make them a little bit more steep, like this. And again, I want this to be like a continuous movement right there. So let's select this one, press G, then Y and move it down slightly like this. So it will fly up and continue the movement until it kind of falls down in a sudden movement. Okay, and now I want to do the same thing on the other one. So let's move to frame like 25. Select this one. And let's right click and insert single keyframe here. But I won't do that all over again. Let's just select this one, select all of the keyframes, press Ctrl C. And now let's select this one and press Ctrl V. I will paste the movement on the Z axis. So we will get the same thing. But one difference I want to do here is to select these two with the handles as well and press G, then Y and move them higher up. So this one will fly higher. And here we can adjust for the curves. So let's zoom on it. And we can readjust the handles. So it matches the value range. Okay. Now let's press Alt H in the viewport and let's play back the whole animation. Okay, I think we'll need to figure out the timing a little bit better. I think the shift between those two is a little bit too late. So let's just move them five frames within each other. And I think the rotation might need a little bit of a help. I think we need to be higher up here with the rotation. Okay, and these might go a little bit sooner. So let's select both of those. Select all keyframes, press G, then X and just move it to the left a little bit to the left a little bit. Okay, and now closing the lid should match the fall of the earphones. So here it should be already closed. So either we can make this longer or we can bring this a little bit sooner. So let's just bring this right here. Maybe even sooner. Okay. And maybe readjust the curve a little bit so it's more fluent. Nice. I really like this. So now the reason why I only why I'm only doing these keyframes on certain channels. First of all, it's much easier to see, you know, when you have just one animation curve. But other than that, I can still modify the rotation on Y and on X. And this will still work. So you can still reposition your object. You don't have any location keyframes, so you can move it around and it will still, you know, animate. And you can change all of those values except the one that is always already keyframes. So yeah, let's let's do a little bit of this rotation. I think it gives the scene a little bit more dynamic like this. And now I want to animate the camera a little bit because when they fly up, I think this breaks the composition a little bit. And I think a little bit of a camera handshake should look nicely here. So let's select the camera and let's just right click and insert keyframes on rotation. Let's press control tab here and let's go back here to the timeline. And now let's press shift D and duplicate it to the other side. And now let's make some keyframes in between. So we can enable recording and press R twice and hold shift for smaller increments and do very small adjustments with the camera rotation. R twice and hold shift. But remember, really small adjustments. And now here, when it's up, we can go a little bit higher. So it's centered here. And then when it goes down, you can press R twice and go back here like this, and then finish with, you know, some slight movements. Okay. And now don't forget to disable this. That could cause a lot of mess if you, you know, keep moving things around with auto keying on. Okay. Works nicely, but I think we need to go higher up a little bit sooner. So maybe just delete this keyframe right there. So we kind of follow the scene a little bit better and then maybe move this a little bit later. Now let's hold shift reset cursor to world origin. Let's press shift A. We'll add a plane. Press R then X to rotate it towards the camera like this and then R Z. Okay. And then press G and shift Z to move on X and Y axis. Let's make it larger. So this will be our backdrop like this. And now I'll use, you know, some, some HDRI from Polyhaven. Let me bring in this one and let me switch to shader editor right there and to the world settings and you will see the HDRI right here. So let's set up some rendering. I will switch to cycles enable GPU and the noising and something like 64 frames for the animation should be fine. Let's press control B to limit the preview only for the camera and let's preview the rendered. Um, first I want to check the rotation here of the lighting. I think I want the windows to be on the left side here. So something like this should work nicely. And now I want to reduce the strength because I want only, I want this for only reflections and reduce the warmth like this. So we get a little bit of a blue light, maybe a little bit of a thing there. The HDRIs in this form come from Polyhaven. When you have the pay that on, uh, I'm in no way affiliated. I just use it like this. You are free to go to Polyhaven, download the same HDRI and create this setup on your own. Um, this is how it looks right here. Um, but it's just super convenient, you know, to have this as a drag and drop into your scene. So that's why I purchased the add on. And by the way, it's like super cheap for the value you're getting. So, um, yeah, definitely get it if you can. So I'll press control B here to limit this again and let's press shift a and I'll add some area light to add additional lighting, make it larger for some soft shadows and increase the power like that. And for some additional reflections, I will pressure a and add spotlight. Press G then Z move it up here. And now press period on a keyboard to switch to 3d cursor for the pivot point, or you can do it right here and then press R twice to rotate this around from the side here and do this really strong, like 500 and find some nice rim light here. Something like this. Now we can select the object, create a new material, and this will be the white one. And let's decrease the roughness almost all the way to zero. And you will see those reflections from the HDRI. So this is why I used it in the first place here. And here in the back, we can make this metal. So let's increase the metallic all the way. Reduce the roughness a little bit and maybe reduce the brightness. But I think this is fine. So now if we play back the animation, let me bring up the timeline here. Let's scrub through the animation. This should be the same white material there. And if I tab in with this still selected, I can press Ctrl + on a numpad and create a new material and hit assign and create a new one there. That will be black with full roughness. Okay, looks quite nice, I think. And now with the background, we can create a new material there and maybe play with the brightness. Or you can, you know, subdivide this, add some displacement, do like wavy texture or something. Should be really nice. Okay, I really like that. Now, to make this a little bit more funky, we can do some color shifts there. So let me switch the material to object mode in the shader editor. And let me bring this up a little bit. Like that. And let's press shift a and let's search for hue saturation value. And let's find some nice color like this. Okay, and let's set the hue to zero and just plug it right here. Okay, they'll give us this color right there. And on frame zero, we can right click and insert keyframe on the hue. And then on 121, we can change this to one, right click and insert keyframe. But remember, this will be Bezier animation. And to see those keyframes here, you need to have the node selected. So now you can see those right there. You can hold shift, select them, press T and choose linear interpolation. So they'll change the colors much more in a much more fluent way. So we have this, you know, funky color change there. And I really don't like how I left this open. So we can either bring this lower down, or we can change the angle. So we can just play with this rotation here. So it's not, you know, visible. Of course, you're more than welcome to go in, you know, and model the inside. So it looks better. Okay, and I would like to do the same thing on the background here. So let's select this node right here, press Ctrl C, and I will select the background and press Ctrl V here. But now we don't have the keyframes there because we moved it to another object. So let's go to frame one. And let's set the hue to zero. And right click and insert keyframe. And again, 121. Let's set this to one. Right click and insert keyframe. And we can plug it here to the background. So now the background will change as well. But it's a little bit too strong for my taste. So I think I will just go ahead and reduce the saturation here in the main color. And maybe increase the value a little bit. So this will give us like a more pastel color look. So now the final thing I want to do here is to give this a little bit more punch. So first of all, in the render settings, make sure you enable motion blur. And in the color management, we can enable higher contrast settings like this and play with the exposure. But you can enable curves as well. And and set the bright tones somewhere here and then bring down the darker parts. So now if you move this, you will see the contrast is more punchy. As you move this lower, you get this darker shades in the shadows. Okay, and maybe we can add a little bit more saturation to the background. Okay. Yeah, it looks quite nice. So of course, now you can play around with some more lights. For example, you can try to duplicate this one and create, you know, some more reflections from different angles. But yeah, otherwise, I really like the final animation. So when you're satisfied, you can just go to the output settings, switch this to ffmpeg, encoding, choose mp4, choose your folder, and then go render, render animation, wait out your frames, and your animation will be ready. So I really hope you enjoyed this one. And again, if you did, please leave that like. And if you're a new round here, hit that subscribe. Thank you all for watching and have a wonderful day."
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-kimi-v001",
+  "status": "completed",
+  "mode": "micro-scene",
+  "objective": "Le Reveil du Bord : assis sur le bord, le personnage se leve, marche vers le centre et contemple les ecrans, en un seul plan continu de l'intime vers le vaste",
+  "source_blend": "projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+  "target_collection": "K3_MECHA_MASCOT_ASSET",
+  "duration_seconds": 12,
+  "fps": 30,
+  "resolution": [640, 360],
+  "story": {
+    "premise": "Un petit humanoide blanc vit dans une boite geante qui est un logiciel de musique ; il est assis sur le bord inferieur, un pied bat le tempo.",
+    "cause": "Sur la deuxieme mesure (f57), il prend appui sur ses genoux et bascule vers l'avant.",
+    "action": "Il se leve puis gravit le Piano Roll incline a 47 degres jusqu'a son centre, en 8 pas cales sur la grille 148.9 BPM.",
+    "result": "Arrete au centre du sol-ecran, il leve lentement la tete vers le haut des ecrans pendant que la lumiere monte.",
+    "beats": [
+      {"time_seconds": 0.0, "state": "still_initial", "cause": "etat etabli", "visible_result": "petite silhouette assise sur le bord, ecrans geants derriere"},
+      {"time_seconds": 1.9, "state": "anticipation", "cause": "bascule arriere puis avant (f57-78)", "visible_result": "transfert de poids lisible, mains sur les genoux"},
+      {"time_seconds": 3.5, "state": "action", "cause": "lever puis marche montante (f106-299)", "visible_result": "8 pas reels sur la pente, tete qui balaye les murs"},
+      {"time_seconds": 6.8, "state": "impact", "cause": "la playhead le traverse sur la mesure f203", "visible_result": "halo lime balayant son corps, temps d'arret"},
+      {"time_seconds": 10.0, "state": "settle", "cause": "arret au centre (f299-330)", "visible_result": "stabilisation, torse qui se redresse"},
+      {"time_seconds": 12, "state": "still_final", "cause": "regard leve vers le haut des ecrans (f348)", "visible_result": "silhouette blanche lumineuse au coeur de la boite"}
+    ]
+  },
+  "invariants": [
+    "proportions et identite canonique du sujet",
+    "aucune traversée ou collision non intentionnelle",
+    "orientation et affordance humaines correctes",
+    "aucun drift relatif pendant un contact mécanique",
+    "aucune frame corrompue ou manquante"
+  ],
+  "camera": {
+    "style_source": "knowledge/tutorials/DRUMBOIII_DIRECTION.md",
+    "primary_move": "pull-back + crane continu : proche/bas (f1) vers large/eleve (f348), sans coupe",
+    "lens_mm_range": [35, 50],
+    "target_strategy": "TARGET K3_EDGE_TARGET parente au float root, du torse assis vers le centre de la boite",
+    "focus_strategy": "DOF sur TARGET, f-stop 2.8 (intime) a 5.6 (large)",
+    "hero_poses_seconds": [0.6, 2.6, 6.8, 11.6],
+    "forbidden": ["drift sans cause", "wobble prolongé", "clipping", "mouvement complexe concurrent de l'objet"]
+  },
+  "lighting": {
+    "style_source": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/analysis.json",
+    "preset": "drumboiii-layered",
+    "world_strength": 0.7,
+    "required_layers": ["SUN_REFLECTION", "BACK_SHAPE", "SIDE_GLIMMER_A", "SIDE_GLIMMER_B", "DETAIL_RETURN"],
+    "gate_each_layer": true,
+    "forbidden": ["highlight clippé sur détail canonique", "lampe sans fonction visuelle nommée", "lumière utilisée pour cacher une erreur de géométrie"]
+  },
+  "physics": {
+    "contract_files": [],
+    "gravity_enabled_or_justified": true,
+    "supports": ["USTUDIO_FRONT_BOTTOM_RIM (assise)", "USTUDIO_PIANO_ROLL_FLOOR (marche, 47.1 deg)"],
+    "colliders": ["USTUDIO_FRONT_BOTTOM_RIM", "USTUDIO_PIANO_ROLL_FLOOR"],
+    "joints": ["K3_EDGE_RIG : Pelvis/Spine/Chest/Neck/Head + bras et jambes 2 segments"],
+    "clearance_checks": ["drift pied plante <= 0.005 m", "penetration <= 0.002 m", "swing clearance >= 0.01 m"],
+    "camera_corridor_clear": true
+  },
+  "materials_and_design": {
+    "dominant_color": "blanc pearl mat (personnage)",
+    "secondary_color": "lime des ecrans et de la playhead",
+    "accent_color": "magenta des LED laterales",
+    "material_roles": ["corps blanc = ecran de projection", "ecrans = source lumineuse principale"],
+    "typography": {"used": false, "content": "", "font": "", "legibility_gate": "not_applicable"}
+  },
+  "limits": {
+    "max_iterations_per_category": 3,
+    "allowed_output_root": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-kimi-v001",
+    "overwrite_source_blend": false,
+    "save_only_trial_copy": true
+  }
+}

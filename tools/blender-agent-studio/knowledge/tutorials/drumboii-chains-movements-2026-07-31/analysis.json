@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "tutorial_id": "drumboii-chains-movements-2026-07-31",
+  "model": "whisper.cpp large-v3-turbo + Opus 5 visual/transcript synthesis",
+  "language": "en",
+  "summary": "Drumboiii ne fabrique pas une chaine articulee : il construit UN maillon, le repete avec un Array puis le plie sur une NurbsPath avec un Curve modifier. Le mouvement ne vient jamais de la transform de l'objet — il vient des deformeurs. Deux methodes sont montrees. Methode A : deux Simple Deform en mode Twist sur des axes perpendiculaires (X puis Y), memes valeurs mais de signe oppose, puis les cles du second sont DECALEES d'un quart de periode pour que les deux torsions s'entrelacent au lieu de s'additionner. Methode B : un seul Simple Deform dont l'Origin est un Empty, et la rotation Z de cet Empty est pilotee par un driver `#frame/60` — rotation infinie, zero keyframe. L'apport transferable n'est pas la chaine : c'est que le mouvement d'ambiance se fabrique par dephasage de deformeurs de faible amplitude, ou par driver, jamais en keyframant la transform du sujet.",
+  "confidence": 0.94,
+  "status": "analyzed",
+  "duration_seconds": 454.45,
+  "observed_project_context": {
+    "blender_ui": "Layout, Object Mode, viewport a gauche, Outliner et Properties a droite, Dope Sheet elargi en bas a partir de 03:20",
+    "scene_objects": ["Torus (le maillon + Array + Curve + Simple Deform)", "NurbsPath (le chemin)", "Empty (Plain Axes, pilote la methode B)"],
+    "action_datablock": "TorusAction, canaux Angle [SimpleDeform] et Angle [SimpleDeform.001]",
+    "render_settings_visible": "1920x1080 100%, sortie /tmp/, PNG RGBA 8 bits, compression 15%",
+    "addon_visible": "Un panneau 'Differential Growth' est present dans les Object Properties de l'auteur — addon tiers, sans rapport avec ce tutoriel",
+    "evidence": [
+      {"time": 195, "frame": "frames/regular/frame_00066.jpg"},
+      {"time": 339, "frame": "frames/regular/frame_00114.jpg"},
+      {"time": 447, "frame": "frames/regular/frame_00150.jpg"}
+    ]
+  },
+  "chapters": [
+    {"start": 0, "end": 15, "title": "Intention : chaines de decor, deux facons de les animer", "evidence": ["transcript 00:00:00-00:00:15"]},
+    {"start": 15, "end": 66, "title": "Fabriquer un maillon depuis un Torus, puis son voisin a 90 degres", "evidence": ["transcript 00:00:15-00:01:06", "frames/regular/frame_00009.jpg", "frames/evidence-crops/_scan_bevel.jpg"]},
+    {"start": 66, "end": 85, "title": "Array : recoller les maillons avec l'Offset relatif", "evidence": ["transcript 00:01:06-00:01:25", "frames/regular/frame_00026.jpg", "frames/regular/frame_00029.jpg"]},
+    {"start": 85, "end": 132, "title": "NurbsPath et deplacement de l'origine sur l'extremite du chemin", "evidence": ["transcript 00:01:25-00:02:12", "frames/regular/frame_00039.jpg"]},
+    {"start": 132, "end": 165, "title": "Curve modifier : plier la chaine sur le chemin, ajuster echelle et Count", "evidence": ["transcript 00:02:12-00:02:45", "frames/evidence-crops/_scan_curve_added.jpg", "frames/regular/frame_00066.jpg"]},
+    {"start": 165, "end": 195, "title": "Sculpter le chemin en vue de cote, puis casser la planeite en Y", "evidence": ["transcript 00:02:46-00:03:15", "frames/regular/frame_00057.jpg"]},
+    {"start": 195, "end": 231, "title": "Preparation methode A : Simple Deform, passage en 60 fps, plage 1-500", "evidence": ["transcript 00:03:15-00:03:52", "frames/regular/frame_00073.jpg", "frames/regular/frame_00075.jpg"]},
+    {"start": 231, "end": 292, "title": "Twist n1 sur X : cles -10 / +10 / -10 aux frames 1 / 50 / 100, puis copie du bloc", "evidence": ["transcript 00:03:52-00:04:52", "frames/regular/frame_00078.jpg", "frames/regular/frame_00086.jpg"]},
+    {"start": 292, "end": 330, "title": "Twist n2 sur Y : memes valeurs inversees — et le resultat empire", "evidence": ["transcript 00:04:52-00:05:30", "frames/regular/frame_00100.jpg", "frames/regular/frame_00106.jpg"]},
+    {"start": 330, "end": 368, "title": "La correction : decaler les cles du second Twist d'environ 25 frames", "evidence": ["transcript 00:05:30-00:06:08", "frames/evidence-crops/_montage_dopesheet.jpg"]},
+    {"start": 368, "end": 440, "title": "Methode B : Simple Deform + Empty + driver #frame/60 sur la rotation Z", "evidence": ["transcript 00:06:08-00:07:20", "frames/regular/frame_00138.jpg", "frames/regular/frame_00144.jpg", "frames/regular/frame_00150.jpg"]},
+    {"start": 440, "end": 454, "title": "Cloture", "evidence": ["transcript 00:07:20-00:07:34"]}
+  ],
+  "observed_values": {
+    "link_mesh": {
+      "primitive": "Torus",
+      "minor_radius_default": 0.25,
+      "minor_radius_used": 0.35,
+      "major_radius": "1.0 m (defaut, non touche)",
+      "align": "World",
+      "location": [0, 0, 0],
+      "rotation": [0, 0, 0],
+      "generate_uvs": true,
+      "spoken_reason": "that thickness is perfect for a chain",
+      "evidence": ["frames/evidence-crops/_montage_torus.jpg", "transcript 00:00:21-00:00:32"]
+    },
+    "bevel": {
+      "operator": "mesh.bevel via Ctrl+B en Edit Mode, X-ray actif, anneau de vertices du milieu selectionne",
+      "width_type": "Offset",
+      "width_m": 0.0406,
+      "segments": 1,
+      "profile_shape": 0.5,
+      "material_index": -1,
+      "loop_slide": true,
+      "clamp_overlap": false,
+      "miter_outer": "Sharp",
+      "miter_inner": "Sharp",
+      "intersection_type": "Grid Fill",
+      "profile_type": "Superellipse",
+      "purpose_inferred": "Segments=1 ne biseaute rien visuellement : il DEDOUBLE l'anneau central en deux anneaux, ce qui cree la partie droite du maillon quand le cote droit est ensuite tire en G X.",
+      "evidence": ["frames/evidence-crops/_scan_bevel.jpg", "transcript 00:00:35-00:00:49"]
+    },
+    "second_link": {
+      "sequence": ["A (tout selectionner)", "Shift+D puis X (duplique et contraint sur X)", "Enter", "R puis X puis 90 (rotation 90 degres autour de X)"],
+      "evidence": ["transcript 00:00:49-00:01:06"]
+    },
+    "array_modifier": {
+      "shape": "Line",
+      "count_initial": 3,
+      "count_after_tuning": 24,
+      "count_final_after_path_scaling": 19,
+      "offset_method": "Relative",
+      "relative_offset": {"x_default": 1.0, "x_used": 0.768, "y": 0.0, "z": 0.0},
+      "rotation": [0, 0, 0],
+      "scale": [1.0, 1.0, 1.0],
+      "realize_instances": true,
+      "randomize": false,
+      "merge": false,
+      "evidence": ["frames/evidence-crops/_montage_array.jpg", "frames/regular/frame_00066.jpg"]
+    },
+    "path": {
+      "type": "Curve > Path (NurbsPath)",
+      "origin_setup": "En Edit Mode, A puis G X pour amener le DERNIER point de controle sur l'origine de l'objet. L'origine du chemin se retrouve donc a une extremite de la chaine.",
+      "spoken_reason": "which will make everything easier to animate later on",
+      "shaping": "Vue de cote, Edit Mode, deplacement libre des points ; puis G Y sur des points isoles pour sortir la courbe du plan",
+      "evidence": ["frames/regular/frame_00039.jpg", "transcript 00:01:36-00:02:12", "transcript 00:02:46-00:03:15"]
+    },
+    "curve_modifier": {
+      "curve_object": "NurbsPath",
+      "deform_axis": "X",
+      "vertex_group": "",
+      "added_at_seconds": 144,
+      "evidence": ["frames/evidence-crops/_scan_curve_added.jpg", "frames/regular/frame_00066.jpg"]
+    },
+    "modifier_stack_order": ["Array", "Curve", "SimpleDeform", "SimpleDeform.001"],
+    "scene": {
+      "frame_rate_before": 24,
+      "frame_rate_used": 60,
+      "frame_start": 1,
+      "frame_end_set_on_camera": 500,
+      "frame_end_observed_later": 400,
+      "resolution": [1920, 1080],
+      "evidence": ["frames/evidence-crops/_montage_curve_render.jpg", "frames/evidence-crops/_montage_dopesheet.jpg"]
+    },
+    "method_a_twin_twist": {
+      "deform_1": {"name": "SimpleDeform", "mode": "Twist", "axis": "X", "origin": null, "keys": [{"frame": 1, "angle_deg": -10}, {"frame": 50, "angle_deg": 10}, {"frame": 100, "angle_deg": -10}]},
+      "deform_2": {"name": "SimpleDeform.001", "mode": "Twist", "axis": "Y", "origin": null, "angle_default_seen": 45, "keys": [{"frame": 1, "angle_deg": 10}, {"frame": 50, "angle_deg": -10}, {"frame": 100, "angle_deg": 10}], "note": "valeurs inversees par rapport au premier"},
+      "cycle_extension": "Les cles 1-100 sont selectionnees puis collees a la suite (Cmd+C / Cmd+V), la premiere et la derniere ayant la meme valeur, la boucle se raccorde.",
+      "period_frames": 100,
+      "period_seconds_at_60fps": 1.667,
+      "phase_offset_frames": 25,
+      "phase_offset_fraction_of_period": 0.25,
+      "why_it_works_inferred": "Les cles alignees font que les deux torsions atteignent leurs extremes ENSEMBLE : les deux axes basculent au meme instant, l'oeil lit un seul aller-retour rigide. Decalees d'un quart de periode, X est a l'extreme quand Y passe par zero — la somme decrit une rotation lente au lieu d'une oscillation plate.",
+      "spoken_diagnosis": "it looks kind of static / really static and ugly almost",
+      "interpolated_values_checked": "A t=333 s, SimpleDeform = +6,03 deg et SimpleDeform.001 = -6,03 deg, ce qui confirme l'opposition de signe.",
+      "evidence": ["frames/evidence-crops/_montage_deform1.jpg", "frames/evidence-crops/_montage_deform2.jpg", "frames/evidence-crops/_montage_dopesheet.jpg"]
+    },
+    "method_b_driver": {
+      "helper_object": "Empty, type Plain Axes, ajoute par Shift+A",
+      "driven_property": "Empty.rotation_euler.z",
+      "expression_typed": "#frame/60",
+      "unit_trap_verified": {
+        "claim": "Le driver ecrit la valeur BRUTE de la propriete, qui est en RADIANS, meme si le champ s'affiche en degres.",
+        "measurement": "A la frame 9, le champ affiche 8,59 deg. 9/60 = 0,15 rad = 8,594 deg. Correspondance exacte.",
+        "consequence": "La vitesse est 1 radian par seconde a 60 fps ; un tour complet prend 2*pi*60 = 377 frames = 6,28 s.",
+        "evidence": "frames/evidence-crops/_montage_driver_math.jpg"
+      },
+      "simple_deform_used": {"mode": "Twist", "axis": "X", "origin_object": "Empty", "angle_default": 45, "angle_recommended_spoken": 10},
+      "empty_placement_effect": "Le Simple Deform lit la position ET la rotation de son objet Origin. Deplacer l'Empty (vu a Z = 1,5119 m) change l'axe autour duquel la chaine se tord.",
+      "spoken_reason": "it's driving it automatically / you can play around with the placement of this, which will affect how the rotation is",
+      "evidence": ["frames/evidence-crops/_montage_driver.jpg", "frames/evidence-crops/_montage_driver_math.jpg", "transcript 00:06:19-00:07:27"]
+    }
+  },
+  "techniques": [
+    {
+      "domain": "modeling",
+      "name": "Maillon de chaine par Torus biseaute",
+      "steps": [
+        "Shift+A > Mesh > Torus, puis dans le panneau operateur passer Minor Radius de 0,25 a 0,35.",
+        "Tab en Edit Mode, activer le X-ray, selectionner l'anneau de vertices du milieu.",
+        "Ctrl+B avec Segments 1 : l'anneau devient deux anneaux (Width Offset 0,0406 m).",
+        "Selectionner la moitie droite, G X, tirer : la partie droite du maillon apparait.",
+        "A, Shift+D, X, Enter pour dupliquer sur X, puis R X 90 pour croiser le second maillon."
+      ],
+      "evidence": ["transcript 00:00:15-00:01:06", "frames/evidence-crops/_montage_torus.jpg", "frames/evidence-crops/_scan_bevel.jpg"]
+    },
+    {
+      "domain": "modifiers",
+      "name": "Array relatif puis Curve : chaine longue et pliable",
+      "steps": [
+        "Array sur la paire de maillons, Offset Method Relative.",
+        "Descendre Relative Offset X depuis 1,000 jusqu'a ce que les maillons s'emboitent (0,768 ici).",
+        "Monter Count (24) — la chaine est encore droite.",
+        "Ajouter un Curve modifier APRES l'Array, Curve Object = NurbsPath, Deform Axis = X.",
+        "Re-regler Count apres toute mise a l'echelle du chemin (24 est redescendu a 19)."
+      ],
+      "constraints": [
+        "L'Offset X depend entierement de l'etirement du maillon en G X : 0,768 n'est pas une constante universelle.",
+        "L'ordre Array puis Curve est obligatoire : inverse, la courbe deformerait un seul maillon avant repetition.",
+        "Longueur de chaine = Count x Offset x taille du maillon ; elle doit etre reaccordee a chaque changement d'echelle du chemin."
+      ],
+      "evidence": ["frames/evidence-crops/_montage_array.jpg", "frames/regular/frame_00066.jpg"]
+    },
+    {
+      "domain": "animation",
+      "name": "Mouvement d'ambiance par paire de Twist dephasee",
+      "steps": [
+        "Ajouter un Simple Deform en mode Twist, axe X, en bout de pile.",
+        "Keyframer l'Angle : frame 1 = -10 deg, frame 50 = +10 deg, frame 100 = -10 deg.",
+        "Selectionner le bloc de cles et le coller a la suite pour prolonger la boucle.",
+        "Ajouter un second Simple Deform, Twist, axe Y, memes valeurs de signe oppose.",
+        "Selectionner UNIQUEMENT les cles du second et les decaler d'un quart de periode (25 frames sur 100)."
+      ],
+      "gate": "Aligne, le mouvement se lit comme un seul aller-retour rigide. Dephase, aucun extreme des deux axes ne tombe sur la meme frame.",
+      "evidence": ["frames/evidence-crops/_montage_dopesheet.jpg", "transcript 00:03:52-00:06:08"]
+    },
+    {
+      "domain": "animation",
+      "name": "Rotation perpetuelle par driver, sans keyframe",
+      "steps": [
+        "Shift+A > Empty > Plain Axes.",
+        "Dans le champ Rotation Z de l'Empty, taper `#frame/60` : Blender cree un driver.",
+        "Sur la chaine, un seul Simple Deform Twist, et renseigner Origin = Empty.",
+        "Descendre l'Angle de 45 deg a ~10 deg : a 45 le mouvement est violent.",
+        "Deplacer l'Empty pour changer l'axe apparent de la torsion."
+      ],
+      "constraints": [
+        "Le diviseur EST la cadence : `#frame/<fps>` donne exactement 1 rad/s, soit un tour toutes les 6,28 s, quelle que soit la cadence. `#frame/60` copie tel quel dans une scene a 24 fps tourne 2,5 fois trop lentement.",
+        "Un driver n'apparait pas dans le Dope Sheet : il est invisible pour tout controle base sur les F-Curves.",
+        "Le champ passe en violet — c'est le seul indice visuel qu'une valeur est pilotee."
+      ],
+      "evidence": ["frames/evidence-crops/_montage_driver.jpg", "frames/evidence-crops/_montage_driver_math.jpg"]
+    }
+  ],
+  "reusable_assets": [
+    "Maillon parametrique : Torus Minor Radius 0,35 + Ctrl+B Segments 1 + etirement X.",
+    "Preset Array relatif 0,768 valable UNIQUEMENT pour ce ratio d'etirement.",
+    "Recette de dephasage : deux deformeurs, memes cles, decalage = periode / 4."
+  ],
+  "workflow_recipe": {
+    "name": "DRUMBOIII chaine + mouvement d'ambiance",
+    "inputs": ["un maillon de chaine", "une courbe de trajet", "une cadence de scene", "une amplitude d'angle cible"],
+    "steps": [
+      "Modeler un maillon, dupliquer a 90 degres.",
+      "Array relatif, Offset X accorde jusqu'a emboitement, Count provisoire.",
+      "Chemin dont l'origine est posee sur une extremite.",
+      "Curve modifier apres l'Array, axe de deformation X.",
+      "Sculpter le chemin en vue de cote puis casser la planeite.",
+      "Choisir le moteur de mouvement : paire de Twist dephasee (boucle exacte, controlable) OU driver `#frame/fps` (infini, zero cle).",
+      "Regler l'amplitude par le bas : partir de 10 degres, pas de 45."
+    ],
+    "gates": [
+      "La chaine ne traverse pas son chemin et les maillons restent emboites apres toute mise a l'echelle.",
+      "Aucun extreme des deux Twist ne tombe sur la meme frame.",
+      "L'amplitude reste lisible en arriere-plan sans attirer l'oeil hors du sujet.",
+      "Si driver : verifier la vitesse en secondes, pas en frames."
+    ],
+    "outputs": ["chaine de decor animee en boucle", "ou chaine en derive perpetuelle sans keyframe"]
+  },
+  "portage_repo": {
+    "fps_conversion": "Le depot travaille a 24 fps. Periode 100 frames a 60 fps = 1,667 s = 40 frames a 24 fps ; le decalage de 25 frames devient 10 frames. Le diviseur du driver passe de 60 a 24.",
+    "amplitude": "10 degres a l'echelle de ses scenes verticales. Sur un sujet de 16 cm cadre serre, l'amplitude doit etre re-jugee au rendu, pas recopiee.",
+    "compatibilite_contrats": "Cette technique anime des DEFORMEURS, pas la transform du sujet. Elle est donc compatible avec un contact plante et n'invalide pas les mesures de penetration, d'ecart d'appui et de drift — a condition de ne l'appliquer qu'a des objets de decor, jamais a un sujet dont le contrat physique impose une geometrie rigide."
+  },
+  "risks": [
+    "Recopier Relative Offset X = 0,768 sans re-emboiter les maillons : la valeur ne vaut que pour son etirement.",
+    "Recopier `#frame/60` dans une scene a 24 fps : la rotation devient 2,5 fois trop lente.",
+    "Croire que le driver ecrit des degres : il ecrit des radians, l'erreur est d'un facteur 57,3.",
+    "Oublier de re-regler Count apres avoir mis le chemin a l'echelle : la chaine deborde ou s'arrete court.",
+    "Appliquer Simple Deform a un objet dont le contrat physique exige une geometrie rigide.",
+    "Laisser l'Angle a 45 degres par defaut : l'auteur le qualifie lui-meme de really intense."
+  ],
+  "open_questions": [
+    "L'auteur ne montre pas comment il boucle EXACTEMENT une sequence : le collage de cles prolonge la boucle mais la longueur totale (End 500 puis 400 observe) n'est pas un multiple annonce de la periode.",
+    "L'interpolation des cles n'est jamais ouverte dans le Graph Editor : Bezier par defaut est probable mais non verifie.",
+    "Le materiau chrome des chaines de ses rendus finaux n'est pas traite dans ce tutoriel."
+  ],
+  "limitations": [
+    "La source est une capture d'ecran d'une page Patreon, pas le fichier de l'auteur. Le contenu utile ne fait que 992x558 : les petites valeurs d'interface ont ete lues par recadrage et agrandissement, et gardent une incertitude sur les derniers chiffres.",
+    "Un seul changement de plan detecte (scene_frame_count = 1) : le tutoriel est un screencast continu, la detection de plans n'apporte rien ici et les frames regulieres sont la seule couverture visuelle.",
+    "Frame End lu a 500 a t=321 s puis a 400 a partir de t=339 s ; le changement n'est pas commente et n'a pas ete capture.",
+    "Les timings de transcript viennent de whisper large-v3-turbo. Ils ont ete recoupes visuellement en quatre points (Array a 69 s, Curve a 144 s, Simple Deform a 210 s, driver a 411 s) et concordent ; ils ne sont pas garantis ailleurs.",
+    "Aucune etape n'a encore ete reproduite dans Blender : tout est au niveau observe, rien n'est au niveau valide."
+  ],
+  "promoted_implementations": [],
+  "promotion_candidate": {
+    "target": "workflows/catalog/ambient-deformer-motion.json",
+    "blocked_by": "Exige entrees typees, script idempotent, manifeste de sortie, mode operatoire dans l'app et gate reproductible — aucun n'existe encore. Non promu."
+  },
+  "analyzed_at": "2026-07-31T13:05:00+02:00"
+}

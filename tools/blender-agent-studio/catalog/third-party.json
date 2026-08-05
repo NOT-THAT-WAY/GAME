@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "bundled": false,
+  "dependencies": [
+    {
+      "name": "img2threejs",
+      "url": "https://github.com/img2threejs/img2threejs.git",
+      "commit": "8b53125081c3798cf95bd517b64be024515a1c8d",
+      "license_observed": "Apache-2.0",
+      "purpose": "optional image-to-3D research reference"
+    },
+    {
+      "name": "Articulate Anything",
+      "url": "https://github.com/vlongle/articulate-anything.git",
+      "commit": "b311003f8265c186314618a353089d0d86260a8f",
+      "license_observed": null,
+      "purpose": "optional articulation research; verify rights before use"
+    },
+    {
+      "name": "PhysBench",
+      "url": "https://github.com/physical-superintelligence-lab/PhysBench.git",
+      "commit": "a7eadc4da554e20163303ec0c1e076a35a9f52e2",
+      "license_observed": "Apache-2.0",
+      "purpose": "optional physical-reasoning reference"
+    },
+    {
+      "name": "Robo-CSK Benchmark",
+      "url": "https://github.com/ag-sc/Robo-CSK-Benchmark.git",
+      "commit": "30e1adbb17149e6d00f88271ee3e173059a11eee",
+      "license_observed": null,
+      "purpose": "optional embodied-commonsense reference; verify rights before use"
+    }
+  ],
+  "policy": "Clone an optional dependency outside this repository at the exact commit; never enable or execute it merely because it is listed here."
+}

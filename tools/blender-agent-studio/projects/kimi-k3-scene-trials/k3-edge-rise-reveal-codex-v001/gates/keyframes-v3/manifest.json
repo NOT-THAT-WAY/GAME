@@ -1,0 +1,27 @@
+{
+  "scene": "K3_EDGE_RISE_REVEAL",
+  "camera": "K3_EDGE_CAMERA",
+  "engine": "BLENDER_EEVEE",
+  "marker_prefix": "K3_EDGE_",
+  "frames": [
+    1,
+    61,
+    110,
+    207,
+    256,
+    304,
+    353,
+    360
+  ],
+  "files": [
+    "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/gates/keyframes-v3/frame_0001.png",
+    "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/gates/keyframes-v3/frame_0061.png",
+    "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/gates/keyframes-v3/frame_0110.png",
+    "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/gates/keyframes-v3/frame_0207.png",
+    "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/gates/keyframes-v3/frame_0256.png",
+    "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/gates/keyframes-v3/frame_0304.png",
+    "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/gates/keyframes-v3/frame_0353.png",
+    "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/gates/keyframes-v3/frame_0360.png"
+  ],
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/scene/trial.blend"
+}

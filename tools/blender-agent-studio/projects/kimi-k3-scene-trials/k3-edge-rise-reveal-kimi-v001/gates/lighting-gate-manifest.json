@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-kimi-v001",
+  "preset": "drumboiii-layered",
+  "note": "les ecrans sont la source principale ; le corps blanc sert d'ecran de projection",
+  "renders": [
+    {"layer": "BASE_WORLD", "path": "gates/00_BASE_WORLD.png", "frame": 17, "description": "ecrans + world retenu : la boite lumineuse etablit le monde, personnage assis"},
+    {"layer": "SUN_REFLECTION", "path": "gates/01_SUN_REFLECTION.png", "frame": 68, "description": "cles frontales du template (FRONT_KEY/SOFT_KEY assagis) modelant le buste pendant l'anticipation"},
+    {"layer": "BACK_SHAPE", "path": "gates/02_BACK_SHAPE.png", "frame": 299, "description": "K3_EDGE_BACKRIM magenta depuis la playlist : silhouette decoupee sur les ecrans"},
+    {"layer": "SIDE_GLIMMER_A", "path": "gates/03_SIDE_GLIMMER_A.png", "frame": 130, "description": "K3_EDGE_BOUNCE lime : rebond du Piano Roll sur le cote des jambes en marche"},
+    {"layer": "SIDE_GLIMMER_B", "path": "gates/04_SIDE_GLIMMER_B.png", "frame": 203, "description": "K3_EDGE_PLAYHEAD_SWEEP : balayage lime synchronise sur la playhead traversant le personnage"},
+    {"layer": "DETAIL_RETURN", "path": "gates/05_DETAIL_RETURN.png", "frame": 348, "description": "K3_EDGE_HERO : retour de detail blanc, la silhouette devient le point le plus lumineux"}
+  ]
+}

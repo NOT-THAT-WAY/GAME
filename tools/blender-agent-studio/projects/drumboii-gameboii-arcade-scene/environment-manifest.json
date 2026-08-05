@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-07-19T02:17:59+02:00",
+  "project": "projects/drumboii-gameboii-arcade-scene/Drumboii_Gameboii_Arcade_Scene.blend",
+  "asset": {
+    "name": "DRUMBOII_GAMEBOII",
+    "library": "asset_library/imported/drumboii-y2k-assets.blend",
+    "collection": "PRODUCT_GAMEBOII",
+    "polygons_from_audit": 79727,
+    "source_materials": 8
+  },
+  "knowledge_sources": [
+    "knowledge/tutorials/beginner-blender-tutorial-2026/analysis.json",
+    "knowledge/tutorials/beginner-blender-tutorial-2026/WORKFLOW_RECIPES.md",
+    "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/analysis.json"
+  ],
+  "scene": {
+    "name": "GAMEBOII_ARCADE_HERO",
+    "camera": "USTUDIO_ARCADE_CAMERA",
+    "focus_object": "USTUDIO_FOCUS_SCREEN",
+    "frame_range": [
+      1,
+      120
+    ],
+    "fps": 24,
+    "product_bounds": {
+      "min": [
+        -0.5955870151519775,
+        -0.6817631125450134,
+        0.30000001192092896
+      ],
+      "max": [
+        0.5628366470336914,
+        0.2870135009288788,
+        2.2260196208953857
+      ],
+      "center": [
+        -0.016375184059143066,
+        -0.19737480580806732,
+        1.263009786605835
+      ],
+      "radius": 1.2237264075260172
+    }
+  },
+  "environment": {
+    "style": "Y2K arcade portal",
+    "lighting_roles": [
+      "USTUDIO_SUN_KEY",
+      "USTUDIO_SKY_FILL",
+      "USTUDIO_INDOOR_BOUNCE",
+      "USTUDIO_PORTAL_RIM"
+    ],
+    "collections": [
+      "PRODUCT_GAMEBOII",
+      "PRODUCT_CONTROLS",
+      "ENVIRONMENT_ARCADE",
+      "LIGHTING_ROLES",
+      "CAMERA_RIG"
+    ]
+  },
+  "gates": {
+    "eevee": {
+      "file": "projects/drumboii-gameboii-arcade-scene/gate/hero-eevee.png",
+      "seconds": 0.663,
+      "engine": "BLENDER_EEVEE"
+    },
+    "cycles": {
+      "file": "projects/drumboii-gameboii-arcade-scene/gate/hero-cycles.png",
+      "seconds": 2.676,
+      "samples": 32,
+      "denoise": true
+    }
+  }
+}

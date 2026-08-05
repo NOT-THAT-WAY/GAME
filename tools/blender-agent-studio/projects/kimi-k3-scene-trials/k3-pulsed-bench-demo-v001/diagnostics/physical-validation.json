@@ -1,0 +1,108 @@
+{
+  "schema_version": 2,
+  "trial_id": "k3-pulsed-bench-demo-v001",
+  "status": "completed",
+  "method": {
+    "evaluated_geometry": true,
+    "modifiers_and_armature_applied_in_evaluation": true,
+    "coordinate_space": "monde de scene/trial.blend, en metres",
+    "coordinate_space_source": "scene.unit_settings METRIC ; le modele natif est en BU ou 1 BU = 1 cm, ramene a l'echelle reelle par K3_PULSED_BENCH_V001_ROOT (scale 0.01), donc les coordonnees monde SONT des metres et se comparent directement aux seuils.",
+    "moving_parent_evaluated_each_frame": true,
+    "sample_frame_step": 1,
+    "frame_start": 1,
+    "frame_end": 144,
+    "distance_method": "distance verticale signee de chaque sommet evalue du sujet au plan d'appui DERIVE DU MESH du banc (max Z de ses sommets evalues, recalcule a chaque frame), et nearest-surface BVH pour la clearance camera",
+    "overlap_method": "BVHTree.overlap entre les triangles evalues des demi-coques et ceux du banc, a chaque frame ; paires en intersection sur toute la plage : 0"
+  },
+  "semantic_pairs": [
+    {
+      "pair": "coque arriere de Pulsed / plateau du banc",
+      "type": "support_contact",
+      "expected": "contact planté permanent, sans penetration ni glissement"
+    },
+    {
+      "pair": "corps de Pulsed / plateau du banc",
+      "type": "collision",
+      "expected": "aucune traversee"
+    },
+    {
+      "pair": "camera / sujet et decor",
+      "type": "camera_corridor",
+      "expected": "aucune approche sous 80 mm sur toute la trajectoire"
+    }
+  ],
+  "checks": {
+    "environment_penetration": {
+      "applicable": true,
+      "operator": "<=",
+      "value_m": 0.0,
+      "threshold_m": 0.002,
+      "passed": true,
+      "worst_frame": 1,
+      "frames_outside_threshold": 0,
+      "evidence": [
+        "diagnostics/physics-timeline.csv",
+        "gates/proof-support.png",
+        "gates/proof-side.png"
+      ]
+    },
+    "support_gap": {
+      "applicable": true,
+      "operator": "<=",
+      "value_m": 0.0,
+      "threshold_m": 0.005,
+      "passed": true,
+      "worst_frame": 1,
+      "frames_outside_threshold": 0,
+      "evidence": [
+        "diagnostics/physics-timeline.csv",
+        "gates/proof-support.png",
+        "gates/proof-side.png"
+      ]
+    },
+    "planted_contact_drift": {
+      "applicable": true,
+      "operator": "<=",
+      "value_m": 0.0,
+      "threshold_m": 0.005,
+      "passed": true,
+      "worst_frame": 1,
+      "frames_outside_threshold": 0,
+      "evidence": [
+        "diagnostics/physics-timeline.csv",
+        "gates/proof-support.png",
+        "gates/proof-side.png"
+      ]
+    },
+    "camera_clearance": {
+      "applicable": true,
+      "operator": ">=",
+      "value_m": 0.116,
+      "threshold_m": 0.08,
+      "passed": true,
+      "worst_frame": 26,
+      "frames_outside_threshold": 0,
+      "evidence": [
+        "diagnostics/physics-timeline.csv",
+        "gates/proof-support.png",
+        "gates/proof-side.png"
+      ]
+    },
+    "swing_clearance": {
+      "applicable": false,
+      "not_applicable_reason": "Aucun membre en swing. Les seules pieces mobiles sont des commandes guidees dans leur logement (molette revolute, sliders prismatiques, D-pad bascule) : elles sont EN CONTACT avec la coque par construction, un seuil de degagement de 10 mm n'a pas de sens pour elles. Leurs limites sont verifiees par le contrat d'objet pulsed.json."
+    }
+  },
+  "passed": true,
+  "critical_failures": [],
+  "proof_views": [
+    "gates/proof-support.png",
+    "gates/proof-side.png",
+    "gates/proof-hero.png"
+  ],
+  "limitations": [
+    "Le sujet est pose et immobile : le contact est statique, ce qui rend les preuves d'appui simples a satisfaire. Ce n'est pas un test de locomotion.",
+    "Les courses des commandes sont jouees sans main visible. La convention est declaree dans brief.json et dans le contrat d'objet ; l'affordance reelle reste 'actionne au pouce'.",
+    "Le recouvrement BVH n'est evalue qu'entre les demi-coques et le banc : les commandes sont interieures au volume de la coque et ne peuvent pas atteindre le plateau."
+  ]
+}

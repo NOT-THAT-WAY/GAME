@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-kimi-v001",
+  "camera": "K3_EDGE_CAM",
+  "mode": "single_continuous_shot",
+  "duration_seconds": 12,
+  "fps": 30,
+  "frames": [1, 360],
+  "target": "K3_EDGE_TARGET (parente USTUDIO_BOX_FLOAT_ROOT)",
+  "focus": "DOF sur K3_EDGE_TARGET, f-stop 2.8 -> 5.6",
+  "moves": [
+    {"frames": [1, 57], "name": "intime_edge", "description": "proche et bas sur le personnage assis sur le bord, micro push-in", "lens_mm": [50, 48]},
+    {"frames": [57, 106], "name": "rise", "description": "levee progressive pendant le sit-to-stand", "lens_mm": [48, 46]},
+    {"frames": [106, 299], "name": "pullback_climb", "description": "recul + elevation continus pendant la marche montante, playhead crossing a f203", "lens_mm": [46, 33]},
+    {"frames": [299, 360], "name": "wide_reveal", "description": "plan large, silhouette 13.7% du cadre, hold sans wobble", "lens_mm": [33, 35]}
+  ],
+  "diagnostic_cameras_not_in_edit": ["K3_EDGE_DIAG_SIDE"],
+  "markers": {
+    "K3_EDGE_SIT": 1, "K3_EDGE_STAND": 57, "K3_EDGE_WALK": 106,
+    "K3_EDGE_PLAYHEAD": 203, "K3_EDGE_STOP": 299, "K3_EDGE_LOOK": 320, "K3_EDGE_HOLD": 348
+  },
+  "audio": "K3_EDGE_AUDIO (master.mp4 du template, VSE canal 1)"
+}

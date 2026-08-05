@@ -1,0 +1,615 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | OPENMP = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 4
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "${LEGACY_HELP_ROOT}/work/models/ggml-large-v3-turbo.bin",
+		"language": "auto",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:29,980"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 29980
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:30,000",
+				"to": "00:00:59,980"
+			},
+			"offsets": {
+				"from": 30000,
+				"to": 59980
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:00,000",
+				"to": "00:01:29,980"
+			},
+			"offsets": {
+				"from": 60000,
+				"to": 89980
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:30,000",
+				"to": "00:01:59,980"
+			},
+			"offsets": {
+				"from": 90000,
+				"to": 119980
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:00,000",
+				"to": "00:02:29,980"
+			},
+			"offsets": {
+				"from": 120000,
+				"to": 149980
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:30,000",
+				"to": "00:02:59,980"
+			},
+			"offsets": {
+				"from": 150000,
+				"to": 179980
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:00,000",
+				"to": "00:03:29,980"
+			},
+			"offsets": {
+				"from": 180000,
+				"to": 209980
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:30,000",
+				"to": "00:03:59,980"
+			},
+			"offsets": {
+				"from": 210000,
+				"to": 239980
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:00,000",
+				"to": "00:04:10,000"
+			},
+			"offsets": {
+				"from": 240000,
+				"to": 250000
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:10,000",
+				"to": "00:04:29,980"
+			},
+			"offsets": {
+				"from": 250000,
+				"to": 269980
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:30,000",
+				"to": "00:04:40,000"
+			},
+			"offsets": {
+				"from": 270000,
+				"to": 280000
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:40,000",
+				"to": "00:04:40,000"
+			},
+			"offsets": {
+				"from": 280000,
+				"to": 280000
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:40,000",
+				"to": "00:04:50,000"
+			},
+			"offsets": {
+				"from": 280000,
+				"to": 290000
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:50,000",
+				"to": "00:05:00,000"
+			},
+			"offsets": {
+				"from": 290000,
+				"to": 300000
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:00,000",
+				"to": "00:05:00,000"
+			},
+			"offsets": {
+				"from": 300000,
+				"to": 300000
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:00,000",
+				"to": "00:05:10,000"
+			},
+			"offsets": {
+				"from": 300000,
+				"to": 310000
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:10,000",
+				"to": "00:05:10,000"
+			},
+			"offsets": {
+				"from": 310000,
+				"to": 310000
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:10,000",
+				"to": "00:05:12,000"
+			},
+			"offsets": {
+				"from": 310000,
+				"to": 312000
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:40,000",
+				"to": "00:06:09,980"
+			},
+			"offsets": {
+				"from": 340000,
+				"to": 369980
+			},
+			"text": " Transcription by CastingWords"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:10,000",
+				"to": "00:06:39,980"
+			},
+			"offsets": {
+				"from": 370000,
+				"to": 399980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:40,000",
+				"to": "00:07:09,980"
+			},
+			"offsets": {
+				"from": 400000,
+				"to": 429980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:10,000",
+				"to": "00:07:39,980"
+			},
+			"offsets": {
+				"from": 430000,
+				"to": 459980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:40,000",
+				"to": "00:08:09,980"
+			},
+			"offsets": {
+				"from": 460000,
+				"to": 489980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:10,000",
+				"to": "00:08:39,980"
+			},
+			"offsets": {
+				"from": 490000,
+				"to": 519980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:40,000",
+				"to": "00:09:09,980"
+			},
+			"offsets": {
+				"from": 520000,
+				"to": 549980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:10,000",
+				"to": "00:09:39,980"
+			},
+			"offsets": {
+				"from": 550000,
+				"to": 579980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:40,000",
+				"to": "00:10:09,980"
+			},
+			"offsets": {
+				"from": 580000,
+				"to": 609980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:10,000",
+				"to": "00:10:39,980"
+			},
+			"offsets": {
+				"from": 610000,
+				"to": 639980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:40,000",
+				"to": "00:11:09,980"
+			},
+			"offsets": {
+				"from": 640000,
+				"to": 669980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:10,000",
+				"to": "00:11:39,980"
+			},
+			"offsets": {
+				"from": 670000,
+				"to": 699980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:40,000",
+				"to": "00:12:09,980"
+			},
+			"offsets": {
+				"from": 700000,
+				"to": 729980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:10,000",
+				"to": "00:12:39,980"
+			},
+			"offsets": {
+				"from": 730000,
+				"to": 759980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:40,000",
+				"to": "00:13:09,980"
+			},
+			"offsets": {
+				"from": 760000,
+				"to": 789980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:10,000",
+				"to": "00:13:39,980"
+			},
+			"offsets": {
+				"from": 790000,
+				"to": 819980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:40,000",
+				"to": "00:14:09,980"
+			},
+			"offsets": {
+				"from": 820000,
+				"to": 849980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:10,000",
+				"to": "00:14:39,980"
+			},
+			"offsets": {
+				"from": 850000,
+				"to": 879980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:40,000",
+				"to": "00:15:09,980"
+			},
+			"offsets": {
+				"from": 880000,
+				"to": 909980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:10,000",
+				"to": "00:15:39,980"
+			},
+			"offsets": {
+				"from": 910000,
+				"to": 939980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:40,000",
+				"to": "00:16:09,980"
+			},
+			"offsets": {
+				"from": 940000,
+				"to": 969980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:10,000",
+				"to": "00:16:39,980"
+			},
+			"offsets": {
+				"from": 970000,
+				"to": 999980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:40,000",
+				"to": "00:17:09,980"
+			},
+			"offsets": {
+				"from": 1000000,
+				"to": 1029980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:10,000",
+				"to": "00:17:39,980"
+			},
+			"offsets": {
+				"from": 1030000,
+				"to": 1059980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:40,000",
+				"to": "00:18:09,980"
+			},
+			"offsets": {
+				"from": 1060000,
+				"to": 1089980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:18:10,000",
+				"to": "00:18:39,980"
+			},
+			"offsets": {
+				"from": 1090000,
+				"to": 1119980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:18:40,000",
+				"to": "00:19:09,980"
+			},
+			"offsets": {
+				"from": 1120000,
+				"to": 1149980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:19:10,000",
+				"to": "00:19:39,980"
+			},
+			"offsets": {
+				"from": 1150000,
+				"to": 1179980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:19:40,000",
+				"to": "00:20:09,980"
+			},
+			"offsets": {
+				"from": 1180000,
+				"to": 1209980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:20:10,000",
+				"to": "00:20:39,980"
+			},
+			"offsets": {
+				"from": 1210000,
+				"to": 1239980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:20:40,000",
+				"to": "00:21:09,980"
+			},
+			"offsets": {
+				"from": 1240000,
+				"to": 1269980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:21:10,000",
+				"to": "00:21:39,980"
+			},
+			"offsets": {
+				"from": 1270000,
+				"to": 1299980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:21:40,000",
+				"to": "00:22:09,980"
+			},
+			"offsets": {
+				"from": 1300000,
+				"to": 1329980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:22:10,000",
+				"to": "00:22:39,980"
+			},
+			"offsets": {
+				"from": 1330000,
+				"to": 1359980
+			},
+			"text": " Thank you."
+		},
+		{
+			"timestamps": {
+				"from": "00:22:40,000",
+				"to": "00:23:09,980"
+			},
+			"offsets": {
+				"from": 1360000,
+				"to": 1389980
+			},
+			"text": " Thank you."
+		}
+	]
+}

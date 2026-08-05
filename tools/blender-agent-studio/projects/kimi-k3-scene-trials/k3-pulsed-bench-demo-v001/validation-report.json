@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-07-30T17:19:22.368242+00:00",
+  "trial_id": "k3-pulsed-bench-demo-v001",
+  "stage": "final",
+  "package_valid": true,
+  "artistic_verdict": "revise",
+  "calculated_score": 76.3,
+  "expected_verdict": "revise",
+  "errors": [],
+  "warnings": [],
+  "video_probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 960,
+        "height": 540,
+        "avg_frame_rate": "24/1",
+        "nb_frames": "144"
+      }
+    ],
+    "format": {
+      "duration": "6.000000"
+    }
+  }
+}

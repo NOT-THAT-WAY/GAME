@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "workflow": "object-sculpt-spec-to-blender/drumboiii-lighting-gate",
+  "created_at": "2026-07-30T14:37:15.059893+00:00",
+  "frame": 1,
+  "engine": "BLENDER_EEVEE",
+  "order": [
+    "SUN_REFLECTION",
+    "BACK_SHAPE",
+    "SIDE_GLIMMER_A",
+    "SIDE_GLIMMER_B",
+    "DETAIL_RETURN"
+  ],
+  "principle": "world, reflection sun, shape backlight, two local glimmers, detail return",
+  "renders": [
+    {
+      "stage": "00_BASE_WORLD",
+      "enabled": [],
+      "path": "gates/lighting/00_BASE_WORLD.png"
+    },
+    {
+      "stage": "01_SUN_REFLECTION",
+      "enabled": [
+        "SUN_REFLECTION"
+      ],
+      "path": "gates/lighting/01_SUN_REFLECTION.png"
+    },
+    {
+      "stage": "02_BACK_SHAPE",
+      "enabled": [
+        "SUN_REFLECTION",
+        "BACK_SHAPE"
+      ],
+      "path": "gates/lighting/02_BACK_SHAPE.png"
+    },
+    {
+      "stage": "03_SIDE_GLIMMER_A",
+      "enabled": [
+        "SUN_REFLECTION",
+        "BACK_SHAPE",
+        "SIDE_GLIMMER_A"
+      ],
+      "path": "gates/lighting/03_SIDE_GLIMMER_A.png"
+    },
+    {
+      "stage": "04_SIDE_GLIMMER_B",
+      "enabled": [
+        "SUN_REFLECTION",
+        "BACK_SHAPE",
+        "SIDE_GLIMMER_A",
+        "SIDE_GLIMMER_B"
+      ],
+      "path": "gates/lighting/04_SIDE_GLIMMER_B.png"
+    },
+    {
+      "stage": "05_DETAIL_RETURN",
+      "enabled": [
+        "SUN_REFLECTION",
+        "BACK_SHAPE",
+        "SIDE_GLIMMER_A",
+        "SIDE_GLIMMER_B",
+        "DETAIL_RETURN"
+      ],
+      "path": "gates/lighting/05_DETAIL_RETURN.png"
+    }
+  ],
+  "saved": true
+}

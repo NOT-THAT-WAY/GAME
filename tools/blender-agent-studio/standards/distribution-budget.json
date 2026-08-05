@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "max_repository_bytes": 52428800,
+  "max_file_bytes": 5242880,
+  "catalog_max_file_bytes": 20971520,
+  "forbidden_binary_extensions": [
+    ".blend", ".blend1", ".fbx", ".glb", ".gltf", ".obj", ".stl",
+    ".usd", ".usda", ".usdc", ".usdz", ".abc", ".ply", ".png", ".jpg",
+    ".jpeg", ".webp", ".gif", ".exr", ".hdr", ".tif", ".tiff", ".tga",
+    ".bmp", ".psd", ".mp4", ".mov", ".m4v", ".webm", ".mkv", ".wav",
+    ".mp3", ".aif", ".aiff", ".flac", ".ogg", ".m4a", ".aac", ".vdb",
+    ".sbsar", ".npy", ".zip", ".7z"
+  ],
+  "text_extensions": [
+    ".md", ".json", ".jsonl", ".py", ".sh", ".toml", ".yml", ".yaml",
+    ".txt", ".srt", ".vtt", ".html", ".css", ".js", ".swift", ".plist",
+    ".csv", ".svg", ".example"
+  ],
+  "forbidden_path_usernames": [
+    "unrecorded"
+  ],
+  "required_files": [
+    "README.md", "AGENTS.md", "AGENT_HANDBOOK.md", "catalog/capabilities.json",
+    "catalog/assets.json", "catalog/asset-families.json", "catalog/blender-scenes.json",
+    "catalog/catalog-manifest.json",
+    "standards/CORE_PRODUCTION_STANDARD.md", "standards/GAME_ASSET_STANDARD.md",
+    "standards/RIG_ANIMATION_STANDARD.md", "standards/DELIVERY_STANDARD.md",
+    ".agents/skills/blender-production-studio/SKILL.md"
+  ]
+}

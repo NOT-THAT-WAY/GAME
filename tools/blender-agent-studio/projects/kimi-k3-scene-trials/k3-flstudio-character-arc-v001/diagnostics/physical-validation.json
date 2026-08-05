@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "critical_failures": [],
+  "method": "sample all 406 frames in evaluated Blender scene plus PNG signature/size checks",
+  "checks": {
+    "source_exists": true,
+    "source_sha256": "c0b9c1a32722e8ec3fe49037011c81e529379235c67aa2b64e59bbe1a20fee36",
+    "trial_is_not_source": true,
+    "visible_horizontal_support": true,
+    "support_errors": 0,
+    "seat_contact_errors": 0,
+    "camera_corridor_errors": 0,
+    "run_drift_errors": 0,
+    "max_run_camera_offset_error_m": 3.6e-07,
+    "render_frame_count": 406,
+    "bad_png_count": 0,
+    "playhead_back_reused": true,
+    "floor_playhead_still_disabled": true,
+    "camera_count_new": 4
+  },
+  "orbit_camera_local_bounds_m": {
+    "x": [
+      -1.104365,
+      1.084918
+    ],
+    "y": [
+      -1.09,
+      1.250469
+    ],
+    "z": [
+      2.22,
+      4.6
+    ]
+  },
+  "sampled_states": [
+    {
+      "frame": 1,
+      "character_local": [
+        -0.0,
+        0.14,
+        1.945
+      ],
+      "pelvis_local": [
+        -0.0,
+        0.14,
+        2.09
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE1_AWAKENING"
+    },
+    {
+      "frame": 9,
+      "character_local": [
+        0.0,
+        0.14,
+        1.945
+      ],
+      "pelvis_local": [
+        0.0,
+        0.14,
+        2.09
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE1_AWAKENING"
+    },
+    {
+      "frame": 57,
+      "character_local": [
+        0.0,
+        0.14,
+        1.945
+      ],
+      "pelvis_local": [
+        0.0,
+        0.14,
+        2.09
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE1_AWAKENING"
+    },
+    {
+      "frame": 105,
+      "character_local": [
+        -0.0,
+        0.14,
+        1.945
+      ],
+      "pelvis_local": [
+        -0.0,
+        0.14,
+        2.09
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE1_AWAKENING"
+    },
+    {
+      "frame": 106,
+      "character_local": [
+        0.0,
+        -1.06,
+        0.615
+      ],
+      "pelvis_local": [
+        0.0,
+        -1.06,
+        0.76
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE2_PAUSE"
+    },
+    {
+      "frame": 154,
+      "character_local": [
+        0.0,
+        -1.06,
+        0.615
+      ],
+      "pelvis_local": [
+        -0.0,
+        -1.06,
+        0.76
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE2_PAUSE"
+    },
+    {
+      "frame": 202,
+      "character_local": [
+        0.0,
+        -1.06,
+        0.615
+      ],
+      "pelvis_local": [
+        0.0,
+        -1.06,
+        0.76
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE2_PAUSE"
+    },
+    {
+      "frame": 203,
+      "character_local": [
+        0.5,
+        0.16,
+        1.945
+      ],
+      "pelvis_local": [
+        0.5,
+        0.16,
+        2.089984
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE3_RUN"
+    },
+    {
+      "frame": 251,
+      "character_local": [
+        1.07,
+        0.16,
+        1.945
+      ],
+      "pelvis_local": [
+        1.07,
+        0.16,
+        2.064613
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE3_RUN"
+    },
+    {
+      "frame": 298,
+      "character_local": [
+        1.7,
+        0.16,
+        1.945
+      ],
+      "pelvis_local": [
+        1.7,
+        0.16,
+        2.040016
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE3_RUN"
+    },
+    {
+      "frame": 299,
+      "character_local": [
+        -0.0,
+        0.16,
+        1.945
+      ],
+      "pelvis_local": [
+        -0.0,
+        0.16,
+        2.04
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE4_COMMUNION"
+    },
+    {
+      "frame": 348,
+      "character_local": [
+        -0.0,
+        0.16,
+        1.945
+      ],
+      "pelvis_local": [
+        -0.0,
+        0.16,
+        2.08
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE4_COMMUNION"
+    },
+    {
+      "frame": 396,
+      "character_local": [
+        0.0,
+        0.16,
+        1.945
+      ],
+      "pelvis_local": [
+        0.0,
+        0.16,
+        2.09
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE4_COMMUNION"
+    },
+    {
+      "frame": 406,
+      "character_local": [
+        -0.0,
+        0.16,
+        1.945
+      ],
+      "pelvis_local": [
+        -0.0,
+        0.16,
+        2.09
+      ],
+      "active_camera": "USTUDIO_CAM_SCENE4_COMMUNION"
+    }
+  ],
+  "errors": {
+    "support": [],
+    "camera_corridor": [],
+    "run_drift": [],
+    "bad_png": []
+  },
+  "physical_rule": "character is supported by the visible horizontal bridge or the real lower rim; no invisible floor"
+}

@@ -1,0 +1,46 @@
+{
+  "id": "validate-articulated-object",
+  "name": "Prévalider un objet articulé (bounds/AABB)",
+  "icon": "⚙",
+  "category": "diagnostic production",
+  "mode": "MCP interactif",
+  "risk": "lecture",
+  "description": "Prévalide contrat, axe, signe, limites, états et clearances par bounds. Ne remplace pas une preuve finale sur meshes évalués/BVH.",
+  "script": "workflows/scripts/validate_articulated_object.py",
+  "timeout": 300,
+  "produces_output": true,
+  "fields": [
+    {
+      "id": "contract",
+      "type": "file",
+      "label": "Contrat objet relatif au workspace",
+      "required": true
+    }
+  ],
+  "guide": [
+    "Créer ou sélectionner un contrat dans knowledge/physics/object-contracts/.",
+    "Rendre les deux signes candidats du joint depuis le côté utilisateur.",
+    "Lancer ce validateur avant toute animation finale.",
+    "Un échec bloque le rendu ; un succès reste préliminaire jusqu’à la validation géométrique v2."
+  ],
+  "safety_notes": [
+    "Compatible avec le schéma joint unique documenté par le script.",
+    "Les AABB peuvent manquer une intersection réelle ou produire un faux positif.",
+    "Ne jamais citer ce workflow comme preuve physique finale."
+  ],
+  "execution": "mcp",
+  "mutates_scene": false,
+  "requires_confirmation": false,
+  "requires_working_copy": false,
+  "enabled_in_app": true,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "preliminary",
+  "status": "experimental",
+  "domains": [
+    "asset",
+    "game-asset",
+    "rig"
+  ],
+  "maturity": "preliminary",
+  "scope": "generic-or-adaptable"
+}

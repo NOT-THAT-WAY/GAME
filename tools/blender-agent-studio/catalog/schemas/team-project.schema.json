@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/blender-team-studio/team-project.schema.json",
+  "title": "Blender Team Studio project contract",
+  "type": "object",
+  "required": [
+    "schema_version", "project_id", "project_type", "status", "objective", "target",
+    "technical_profile", "style_profile", "object_prefix", "local_work_root",
+    "source_overwrite_allowed", "binary_files_allowed_in_git"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "project_id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*-v[0-9]{3}$"},
+    "project_type": {
+      "enum": ["asset", "game-asset", "rig", "animation", "environment", "cinematic", "still", "procedural"]
+    },
+    "status": {"enum": ["scaffolded", "in_progress", "reviewed", "released", "rejected"]},
+    "objective": {"type": "string", "minLength": 1},
+    "target": {"type": "string", "minLength": 1},
+    "technical_profile": {"type": "string", "minLength": 1},
+    "style_profile": {"type": "string", "minLength": 1},
+    "object_prefix": {"type": "string", "pattern": "^BAS_[A-Z0-9_]+_$"},
+    "catalog_asset_references": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+    },
+    "local_work_root": {"type": "string", "pattern": "^local_work/"},
+    "source_overwrite_allowed": {"const": false},
+    "binary_files_allowed_in_git": {"const": false}
+  },
+  "additionalProperties": true
+}

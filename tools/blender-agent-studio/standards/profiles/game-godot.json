@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "game-godot",
+  "domain": "game-asset",
+  "blender_units": "meters",
+  "target": "Godot project declared in the project contract",
+  "target_axes": {"up": "Y", "forward": "-Z", "conversion_must_be_verified": true},
+  "budgets_must_be_declared": ["triangles_per_lod", "materials", "texture_memory", "bones", "colliders"],
+  "required_gates": [
+    "godot_scale", "godot_orientation", "pivot", "lod", "collision", "uv", "materials",
+    "skeleton_and_clips_if_present", "godot_import_report"
+  ],
+  "preferred_interchange": ["glb"],
+  "note": "Treat glTF compatibility as preliminary until the declared Godot project imports cleanly.",
+  "final_validator": "workflows/tools/validate_team_project.py"
+}

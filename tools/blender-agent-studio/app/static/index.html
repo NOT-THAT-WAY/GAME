@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Blender Team Studio</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">B</div><div><strong>Blender Team Studio</strong><span>COMPACT PIPELINE</span></div></div>
+    <nav id="nav">
+      <button class="nav-item active" data-view="dashboard"><span>⌂</span>Vue d’ensemble</button>
+      <button class="nav-item" data-view="projects"><span>◇</span>Projets & scènes <b id="nav-projects">—</b></button>
+      <button class="nav-item" data-view="assets"><span>▦</span>Catalogue assets <b id="nav-assets">—</b></button>
+      <button class="nav-item" data-view="blenderAssets"><span>⬡</span>Bibliothèque 3D <b id="nav-blender-assets">—</b></button>
+      <button class="nav-item" data-view="tutorials"><span>▷</span>Tutoriels Lab <b id="nav-tutorials">—</b></button>
+      <button class="nav-item" data-view="workflows"><span>⌘</span>Workflows <b id="nav-workflows">—</b></button>
+      <button class="nav-item" data-view="runs"><span>▶</span>Tous les runs <b id="nav-runs">—</b></button>
+      <button class="nav-item" data-view="jobs"><span>≋</span>Jobs</button>
+      <button class="nav-item" data-view="knowledge"><span>?</span>Méthode & docs</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="connection"><i id="mcp-dot"></i><div><strong id="mcp-side">Blender hors ligne</strong><span>127.0.0.1:9876</span></div></div>
+      <button class="ghost full" data-native="openBlender">Ouvrir le projet Blender</button>
+      <button class="ghost full" data-native="openVSCode">Ouvrir dans VS Code</button>
+      <span class="local-only">● LOCAL UNIQUEMENT · 127.0.0.1:8778</span>
+    </div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div><span class="eyebrow" id="eyebrow">BLENDER TEAM PIPELINE</span><h1 id="page-title">Vue d’ensemble</h1></div>
+      <div class="top-actions"><button class="ghost" id="refresh">Actualiser</button><button class="primary" data-native="openBlender">Ouvrir Blender</button></div>
+    </header>
+    <section id="content" aria-live="polite"><div class="loader">Indexation de la bibliothèque…</div></section>
+  </main>
+
+  <div id="modal" class="modal hidden"><div class="modal-card"><button class="modal-close" aria-label="Fermer">×</button><div id="modal-content"></div></div></div>
+  <div id="toast" class="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

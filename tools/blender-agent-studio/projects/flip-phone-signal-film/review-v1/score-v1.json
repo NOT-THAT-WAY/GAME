@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "title": "LAST SIGNAL V1",
+  "overall_percent": 49.0,
+  "categories": [
+    {"name": "story_causality", "weight": 15, "score": 50},
+    {"name": "product_readability", "weight": 12, "score": 63},
+    {"name": "object_motion", "weight": 12, "score": 34},
+    {"name": "camera_editing", "weight": 12, "score": 38},
+    {"name": "rhythm_breathing", "weight": 12, "score": 36},
+    {"name": "set_depth", "weight": 8, "score": 48},
+    {"name": "materials_redesign", "weight": 8, "score": 62},
+    {"name": "lighting_color", "weight": 8, "score": 61},
+    {"name": "typography_graphics", "weight": 5, "score": 42},
+    {"name": "technical_finish", "weight": 8, "score": 65}
+  ],
+  "critical_failures": [
+    "parent_child_double_transform_in_assembly",
+    "unmotivated_occlusion_near_12_seconds",
+    "static_conveyor_creates_product_drift",
+    "large_composition_discontinuities_at_all_four_camera_cuts",
+    "multiple_competing_motion_channels",
+    "lighting_does_not_encode_dormant_to_restored_state"
+  ]
+}

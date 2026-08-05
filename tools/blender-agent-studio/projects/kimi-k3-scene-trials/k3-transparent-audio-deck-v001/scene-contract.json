@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-transparent-audio-deck-v001",
+  "status": "completed",
+  "coordinate_frame": {
+    "up": "+Z",
+    "user_side": "-Y",
+    "front": "-Y",
+    "right": "+X",
+    "origin": "bottom centre of the outer shell",
+    "units": "meters"
+  },
+  "objects": [
+    {
+      "name": "K3_TAD_ROOT",
+      "semantic_role": "hero_subject",
+      "fixed_or_moving": "fixed; camera-only preview",
+      "parent": null,
+      "interaction_surfaces": ["K3_TAD_RED_TOP_BUTTON", "K3_TAD_TOP_DIAL_CORE", "K3_TAD_SIDE_SOCKET_01..03"],
+      "support_surfaces": ["evaluated lower shell edge at world z=0"],
+      "allowed_motion": ["whole-object transform in downstream scenes", "no object motion in this trial"],
+      "forbidden_motion": ["teleport", "unmotivated drift", "environment intersection"]
+    }
+  ],
+  "joints": [],
+  "supports_and_contacts": [
+    {
+      "subject": "K3_TAD_ROOT",
+      "support": "K3_TAD_GROUND",
+      "relationship": "required contact",
+      "support_plane_world_z_m": 0.0,
+      "max_gap_m": 0.005,
+      "max_penetration_m": 0.002
+    }
+  ],
+  "collision_pairs": [
+    {"a": "K3_TAD_ROOT", "b": "K3_TAD_GROUND", "allowed": "support contact only"}
+  ],
+  "camera_corridor": {
+    "description": "Orbit radius 0.52–0.54 m around target (0, 0, 0.122), clear of the asset AABB.",
+    "clearance_margin_m": 0.08,
+    "obstacles": ["K3_TAD_ROOT"],
+    "validated": true
+  },
+  "shot_states": [
+    {"name": "S0_STILL", "time_seconds": 0.0, "object_state": "static and supported", "camera_state": "hero three-quarter establish"},
+    {"name": "S1_ANTICIPATION", "time_seconds": 1.0, "object_state": "static and supported", "camera_state": "four-degree counter-move"},
+    {"name": "S2_ACTION", "time_seconds": 2.0, "object_state": "static and supported", "camera_state": "clockwise arc travel"},
+    {"name": "S3_IMPACT", "time_seconds": 5.0, "object_state": "static and supported", "camera_state": "opposite three-quarter reached"},
+    {"name": "S4_SETTLE", "time_seconds": 6.0, "object_state": "static and supported", "camera_state": "short overshoot"},
+    {"name": "S5_STILL", "time_seconds": 8, "object_state": "static and supported", "camera_state": "stable recovery"}
+  ],
+  "validation": {
+    "evaluation_rules": "knowledge/SCENE_TRIAL_EVALUATION_RULES.md",
+    "physical_evidence_schema_version": 2,
+    "required_views": ["hero", "side", "rear_if_occluded"],
+    "sample_every_n_frames": 1,
+    "thresholds_locked_before_animation": true,
+    "default_thresholds_m": {
+      "max_environment_penetration": 0.002,
+      "max_planted_support_gap": 0.005,
+      "max_planted_drift": 0.005,
+      "min_swing_clearance": 0.01,
+      "min_camera_clearance": 0.08
+    },
+    "critical_failure_cap": 49
+  }
+}

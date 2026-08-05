@@ -1,0 +1,27 @@
+{
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-console-2026-07-19/source-reference/output.mp4",
+  "source_probe": {
+    "width": 1280,
+    "height": 720,
+    "r_frame_rate": "24/1",
+    "duration": "10.041667"
+  },
+  "start_time": 0.0,
+  "duration": 1.5,
+  "timeline_fps": 24,
+  "timeline_frames": [
+    1,
+    36
+  ],
+  "loop": true,
+  "generated_slots": {
+    "playlist": "${BLENDER_AGENT_STUDIO_ROOT}/renders/relink-fl-studio-box-media-smoke-20260719-0426/playlist.mp4",
+    "browser": "${BLENDER_AGENT_STUDIO_ROOT}/renders/relink-fl-studio-box-media-smoke-20260719-0426/browser.mp4",
+    "mixer": "${BLENDER_AGENT_STUDIO_ROOT}/renders/relink-fl-studio-box-media-smoke-20260719-0426/mixer.mp4",
+    "piano_roll": "${BLENDER_AGENT_STUDIO_ROOT}/renders/relink-fl-studio-box-media-smoke-20260719-0426/piano-roll.mp4",
+    "channel_rack": "${BLENDER_AGENT_STUDIO_ROOT}/renders/relink-fl-studio-box-media-smoke-20260719-0426/controller.mp4"
+  },
+  "scene": "FL_STUDIO_BOX_TEMPLATE",
+  "blend_saved": false,
+  "next_step": "Render gates with marker prefix USTUDIO_MEDIA_, then Save As after validation"
+}

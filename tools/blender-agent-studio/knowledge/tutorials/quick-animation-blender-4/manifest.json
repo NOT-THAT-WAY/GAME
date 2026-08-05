@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "quick-animation-blender-4",
+  "title": "Creating Quick Animation in Blender 4.0",
+  "status": "ready_for_ai",
+  "source_name": "source.mp4",
+  "original_filename": "Creating Quick Animation In Blender 4.0.mp4",
+  "original_sha256": "90295d1bec49c7b34a2ad5e5d7de78a6c83a7e96a8fbe9ceef95beed94d5ecf0",
+  "source_policy": "Original conservé dans _incoming/04-new-tutorials; lien symbolique sans duplication",
+  "created": "2026-07-19T02:25:00+02:00",
+  "updated": "2026-07-19T03:20:00+02:00",
+  "analysis_status": "completed",
+  "technical": {
+    "duration": 1379.724943,
+    "frame_interval_requested": 10.0,
+    "frame_interval_effective": 10.0,
+    "scene_threshold": 0.26,
+    "regular_frame_count": 138,
+    "scene_frame_count": 165,
+    "has_video": true,
+    "has_audio": true
+  },
+  "evidence": {
+    "source": "knowledge/tutorials/_incoming/04-new-tutorials/Creating Quick Animation In Blender 4.0.mp4",
+    "probe": "knowledge/tutorials/quick-animation-blender-4/probe.json",
+    "frames_dir": "knowledge/tutorials/quick-animation-blender-4/frames/regular",
+    "scenes_dir": "knowledge/tutorials/quick-animation-blender-4/frames/scenes",
+    "contact_sheet": "knowledge/tutorials/quick-animation-blender-4/contact-sheet.jpg",
+    "audio": "knowledge/tutorials/quick-animation-blender-4/audio.wav",
+    "transcript": "knowledge/tutorials/quick-animation-blender-4/transcript.json",
+    "analysis": "knowledge/tutorials/quick-animation-blender-4/analysis.json",
+    "analysis_markdown": "knowledge/tutorials/quick-animation-blender-4/ANALYSIS.md",
+    "transcript_quality": "rejected_non_narrated_audio"
+  }
+}

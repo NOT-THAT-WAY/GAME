@@ -1,0 +1,22 @@
+{
+  "passed": false,
+  "checks": {
+    "silhouetteIoU": 0.5901,
+    "aspectRatioDelta": 0.058,
+    "scaleDelta": 0.0616,
+    "bilateralSymmetryError": 0.0085
+  },
+  "lockedThresholds": {
+    "minimumSilhouetteIoU": 0.85,
+    "maximumAspectRatioDelta": 0.05
+  },
+  "failures": [
+    "silhouette IoU 0.590 is below threshold 0.85",
+    "aspect-ratio delta 0.058 exceeds threshold 0.05"
+  ],
+  "renderHash": "0d52863fdcaac016",
+  "passId": "structural-pass",
+  "multiAngleDegeneracy": "passed; diagnostics/img2threejs/multi-angle-integrity.json",
+  "interpretation": "The deterministic mask includes transparent boundaries, presentation shadow and pose/framing differences. This explains part of the delta but does not waive the hard gate.",
+  "nextAction": "refine-code or request clean orthographic references; thresholds remain unchanged"
+}

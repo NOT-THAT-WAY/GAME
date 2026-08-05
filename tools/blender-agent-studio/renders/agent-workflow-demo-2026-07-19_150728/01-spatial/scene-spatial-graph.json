@@ -1,0 +1,1273 @@
+{
+  "schema_version": 1,
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/Pulsed_3D_model.blend",
+  "scene": "FLROOM",
+  "collection": null,
+  "truncated": false,
+  "objects": [
+    {
+      "name": "flroom_shell",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -27.5,
+        -18.5,
+        -3.5
+      ],
+      "bounds_max": [
+        27.5,
+        18.5,
+        28.5
+      ],
+      "center": [
+        0.0,
+        0.0,
+        12.5
+      ],
+      "dimensions": [
+        55.0,
+        37.0,
+        32.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "flroom_cutter",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -24.0,
+        -26.5,
+        0.0
+      ],
+      "bounds_max": [
+        24.0,
+        15.0,
+        25.0
+      ],
+      "center": [
+        0.0,
+        -5.75,
+        12.5
+      ],
+      "dimensions": [
+        48.0,
+        41.5,
+        25.0
+      ],
+      "hidden_render": true
+    },
+    {
+      "name": "void_ground",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -200.0,
+        -200.0,
+        -3.7
+      ],
+      "bounds_max": [
+        200.0,
+        200.0,
+        -3.5
+      ],
+      "center": [
+        0.0,
+        0.0,
+        -3.6
+      ],
+      "dimensions": [
+        400.0,
+        400.0,
+        0.2
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "flroom_device_pivot",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        0.334565,
+        -10.2601,
+        5.09507
+      ],
+      "bounds_max": [
+        0.334565,
+        -10.2601,
+        5.09507
+      ],
+      "center": [
+        0.334565,
+        -10.2601,
+        5.09507
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "pulsed_dpad_flroom",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "flroom_device_pivot",
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        4.651966,
+        -12.600857,
+        7.948359
+      ],
+      "bounds_max": [
+        7.268572,
+        -11.566334,
+        10.523431
+      ],
+      "center": [
+        5.960269,
+        -12.083595,
+        9.235895
+      ],
+      "dimensions": [
+        2.616607,
+        1.034523,
+        2.575072
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "pulsed_hslider_flroom",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "flroom_device_pivot",
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -3.590969,
+        -11.661819,
+        8.158102
+      ],
+      "bounds_max": [
+        -2.770299,
+        -10.871829,
+        10.040075
+      ],
+      "center": [
+        -3.180634,
+        -11.266824,
+        9.099089
+      ],
+      "dimensions": [
+        0.82067,
+        0.789989,
+        1.881973
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "pulsed_hslider_rail_flroom",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "flroom_device_pivot",
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -3.949009,
+        -11.987161,
+        8.376332
+      ],
+      "bounds_max": [
+        3.162788,
+        -10.506848,
+        9.994139
+      ],
+      "center": [
+        -0.393111,
+        -11.247005,
+        9.185236
+      ],
+      "dimensions": [
+        7.111797,
+        1.480312,
+        1.617806
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "pulsed_internals_flroom",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "flroom_device_pivot",
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -8.624064,
+        -11.951244,
+        6.797884
+      ],
+      "bounds_max": [
+        8.903243,
+        -9.401522,
+        16.784449
+      ],
+      "center": [
+        0.139589,
+        -10.676383,
+        11.791166
+      ],
+      "dimensions": [
+        17.527308,
+        2.549723,
+        9.986565
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "pulsed_pcb_flroom",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "flroom_device_pivot",
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -9.525594,
+        -12.595163,
+        5.533491
+      ],
+      "bounds_max": [
+        9.806886,
+        -8.953694,
+        17.19772
+      ],
+      "center": [
+        0.140646,
+        -10.774429,
+        11.365605
+      ],
+      "dimensions": [
+        19.332479,
+        3.641469,
+        11.664228
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "pulsed_screen_flroom",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "flroom_device_pivot",
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -4.72475,
+        -11.868073,
+        10.477386
+      ],
+      "bounds_max": [
+        4.803105,
+        -10.795165,
+        14.909977
+      ],
+      "center": [
+        0.039178,
+        -11.331619,
+        12.693682
+      ],
+      "dimensions": [
+        9.527855,
+        1.072908,
+        4.432591
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "pulsed_shell_back_flroom",
+      "type": "MESH",
+      "role": "core",
+      "parent": "flroom_device_pivot",
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -10.351576,
+        -11.880799,
+        4.830106
+      ],
+      "bounds_max": [
+        10.793159,
+        -7.886717,
+        17.981501
+      ],
+      "center": [
+        0.220792,
+        -9.883759,
+        11.405804
+      ],
+      "dimensions": [
+        21.144735,
+        3.994082,
+        13.151394
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "pulsed_shell_front_flroom",
+      "type": "MESH",
+      "role": "core",
+      "parent": "flroom_device_pivot",
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -10.474177,
+        -12.951521,
+        4.770565
+      ],
+      "bounds_max": [
+        10.660697,
+        -9.639843,
+        17.954662
+      ],
+      "center": [
+        0.09326,
+        -11.295682,
+        11.362614
+      ],
+      "dimensions": [
+        21.134874,
+        3.311678,
+        13.184097
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "pulsed_slider_gain_flroom",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "flroom_device_pivot",
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        5.597943,
+        -12.290723,
+        12.526405
+      ],
+      "bounds_max": [
+        5.982995,
+        -11.810519,
+        12.885544
+      ],
+      "center": [
+        5.790469,
+        -12.050621,
+        12.705975
+      ],
+      "dimensions": [
+        0.385052,
+        0.480204,
+        0.359138
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "pulsed_sync_flroom",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "flroom_device_pivot",
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -6.948482,
+        -11.321954,
+        7.90171
+      ],
+      "bounds_max": [
+        -4.854093,
+        -10.540305,
+        9.965655
+      ],
+      "center": [
+        -5.901287,
+        -10.931129,
+        8.933682
+      ],
+      "dimensions": [
+        2.094389,
+        0.781649,
+        2.063946
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "pulsed_wheel_flroom",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "flroom_device_pivot",
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -6.549953,
+        -12.081903,
+        11.615524
+      ],
+      "bounds_max": [
+        -5.72818,
+        -9.915284,
+        13.755196
+      ],
+      "center": [
+        -6.139067,
+        -10.998593,
+        12.68536
+      ],
+      "dimensions": [
+        0.821773,
+        2.166618,
+        2.139671
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "pulsed_wheel_mounts_flroom",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "flroom_device_pivot",
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -7.091278,
+        -11.357669,
+        12.298431
+      ],
+      "bounds_max": [
+        -5.173998,
+        -10.497165,
+        13.076654
+      ],
+      "center": [
+        -6.132638,
+        -10.927417,
+        12.687543
+      ],
+      "dimensions": [
+        1.91728,
+        0.860504,
+        0.778223
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "fl_key",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -18.0,
+        -55.0,
+        22.0
+      ],
+      "bounds_max": [
+        -18.0,
+        -55.0,
+        22.0
+      ],
+      "center": [
+        -18.0,
+        -55.0,
+        22.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "fl_fill",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        22.0,
+        -50.0,
+        12.0
+      ],
+      "bounds_max": [
+        22.0,
+        -50.0,
+        12.0
+      ],
+      "center": [
+        22.0,
+        -50.0,
+        12.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "fl_bounce",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        0.0,
+        0.0,
+        1.2
+      ],
+      "bounds_max": [
+        0.0,
+        0.0,
+        1.2
+      ],
+      "center": [
+        0.0,
+        0.0,
+        1.2
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "fl_device_key",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        0.0,
+        -26.0,
+        13.0
+      ],
+      "bounds_max": [
+        0.0,
+        -26.0,
+        13.0
+      ],
+      "center": [
+        0.0,
+        -26.0,
+        13.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "flroom_target",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        0.0,
+        0.0,
+        10.5
+      ],
+      "bounds_max": [
+        0.0,
+        0.0,
+        10.5
+      ],
+      "center": [
+        0.0,
+        0.0,
+        10.5
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "flroom_cam_front",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        0.0,
+        -140.0,
+        11.0
+      ],
+      "bounds_max": [
+        0.0,
+        -140.0,
+        11.0
+      ],
+      "center": [
+        0.0,
+        -140.0,
+        11.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "flroom_cam_34",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        -80.0,
+        -110.0,
+        42.0
+      ],
+      "bounds_max": [
+        -80.0,
+        -110.0,
+        42.0
+      ],
+      "center": [
+        -80.0,
+        -110.0,
+        42.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "flroom_cam_inside",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "bounds_min": [
+        0.0,
+        -36.0,
+        13.5
+      ],
+      "bounds_max": [
+        0.0,
+        -36.0,
+        13.5
+      ],
+      "center": [
+        0.0,
+        -36.0,
+        13.5
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    }
+  ],
+  "relations": [
+    {
+      "from": "flroom_shell",
+      "to": "flroom_cutter",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "void_ground",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "flroom_device_pivot",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "pulsed_dpad_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "pulsed_hslider_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "pulsed_hslider_rail_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "pulsed_internals_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "pulsed_pcb_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "pulsed_screen_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "pulsed_shell_back_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "pulsed_shell_front_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "pulsed_slider_gain_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "pulsed_sync_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "pulsed_wheel_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "pulsed_wheel_mounts_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "fl_bounce",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_shell",
+      "to": "flroom_target",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "flroom_device_pivot",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "pulsed_dpad_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "pulsed_hslider_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "pulsed_hslider_rail_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "pulsed_internals_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "pulsed_pcb_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "pulsed_screen_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "pulsed_shell_back_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "pulsed_shell_front_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "pulsed_slider_gain_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "pulsed_sync_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "pulsed_wheel_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "pulsed_wheel_mounts_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "fl_bounce",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "fl_device_key",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_cutter",
+      "to": "flroom_target",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "flroom_device_pivot",
+      "to": "pulsed_shell_back_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "flroom_device_pivot",
+      "to": "pulsed_shell_front_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "pulsed_dpad_flroom",
+      "to": "pulsed_internals_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_dpad_flroom",
+      "to": "pulsed_pcb_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_dpad_flroom",
+      "to": "pulsed_screen_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_dpad_flroom",
+      "to": "pulsed_shell_back_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_dpad_flroom",
+      "to": "pulsed_shell_front_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_hslider_flroom",
+      "to": "pulsed_hslider_rail_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_hslider_flroom",
+      "to": "pulsed_internals_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_hslider_flroom",
+      "to": "pulsed_pcb_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_hslider_flroom",
+      "to": "pulsed_shell_back_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_hslider_flroom",
+      "to": "pulsed_shell_front_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_hslider_rail_flroom",
+      "to": "pulsed_internals_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_hslider_rail_flroom",
+      "to": "pulsed_pcb_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_hslider_rail_flroom",
+      "to": "pulsed_shell_back_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_hslider_rail_flroom",
+      "to": "pulsed_shell_front_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_internals_flroom",
+      "to": "pulsed_pcb_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_internals_flroom",
+      "to": "pulsed_screen_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_internals_flroom",
+      "to": "pulsed_shell_back_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_internals_flroom",
+      "to": "pulsed_shell_front_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_internals_flroom",
+      "to": "pulsed_slider_gain_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_internals_flroom",
+      "to": "pulsed_sync_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_internals_flroom",
+      "to": "pulsed_wheel_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_internals_flroom",
+      "to": "pulsed_wheel_mounts_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_pcb_flroom",
+      "to": "pulsed_screen_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_pcb_flroom",
+      "to": "pulsed_shell_back_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_pcb_flroom",
+      "to": "pulsed_shell_front_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_pcb_flroom",
+      "to": "pulsed_slider_gain_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_pcb_flroom",
+      "to": "pulsed_sync_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_pcb_flroom",
+      "to": "pulsed_wheel_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_pcb_flroom",
+      "to": "pulsed_wheel_mounts_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_screen_flroom",
+      "to": "pulsed_shell_back_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_screen_flroom",
+      "to": "pulsed_shell_front_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_shell_back_flroom",
+      "to": "pulsed_shell_front_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_shell_back_flroom",
+      "to": "pulsed_slider_gain_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_shell_back_flroom",
+      "to": "pulsed_sync_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_shell_back_flroom",
+      "to": "pulsed_wheel_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_shell_back_flroom",
+      "to": "pulsed_wheel_mounts_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_shell_front_flroom",
+      "to": "pulsed_slider_gain_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_shell_front_flroom",
+      "to": "pulsed_sync_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_shell_front_flroom",
+      "to": "pulsed_wheel_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_shell_front_flroom",
+      "to": "pulsed_wheel_mounts_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "pulsed_wheel_flroom",
+      "to": "pulsed_wheel_mounts_flroom",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    }
+  ],
+  "summary": {
+    "objects": 24,
+    "relations": 76,
+    "roles": {
+      "core": 5,
+      "accessory": 10,
+      "control": 9,
+      "reference": 0
+    }
+  }
+}

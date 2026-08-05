@@ -1,0 +1,993 @@
+{
+  "schema_version": 1,
+  "families": [
+    {
+      "family_id": "Pulsed_3D_model.backup-2026-06-10.blend",
+      "source_prefix": "Pulsed_3D_model.backup-2026-06-10.blend",
+      "path_count": 1,
+      "unique_asset_count": 1,
+      "logical_bytes": 96886,
+      "unique_bytes": 96886,
+      "kinds": {
+        "geometry": 1
+      },
+      "extensions": {
+        ".blend": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "Pulsed_3D_model.blend",
+      "source_prefix": "Pulsed_3D_model.blend",
+      "path_count": 1,
+      "unique_asset_count": 1,
+      "logical_bytes": 307159,
+      "unique_bytes": 307159,
+      "kinds": {
+        "geometry": 1
+      },
+      "extensions": {
+        ".blend": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "Pulsed_3D_model.blend1",
+      "source_prefix": "Pulsed_3D_model.blend1",
+      "path_count": 1,
+      "unique_asset_count": 1,
+      "logical_bytes": 309001,
+      "unique_bytes": 309001,
+      "kinds": {
+        "geometry": 1
+      },
+      "extensions": {
+        ".blend1": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "_ALL-IMAGES_2026-06-10",
+      "source_prefix": "_ALL-IMAGES_2026-06-10",
+      "path_count": 15,
+      "unique_asset_count": 15,
+      "logical_bytes": 257250024,
+      "unique_bytes": 257250024,
+      "kinds": {
+        "image": 15
+      },
+      "extensions": {
+        ".png": 15
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "app",
+      "source_prefix": "app",
+      "path_count": 11,
+      "unique_asset_count": 7,
+      "logical_bytes": 1081781,
+      "unique_bytes": 548068,
+      "kinds": {
+        "image": 11
+      },
+      "extensions": {
+        ".png": 11
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "asset_library:characters",
+      "source_prefix": "asset_library/characters",
+      "path_count": 4,
+      "unique_asset_count": 4,
+      "logical_bytes": 4768221,
+      "unique_bytes": 4768221,
+      "kinds": {
+        "geometry": 4
+      },
+      "extensions": {
+        ".blend": 2,
+        ".glb": 2
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "asset_library:imported",
+      "source_prefix": "asset_library/imported",
+      "path_count": 2,
+      "unique_asset_count": 2,
+      "logical_bytes": 17910564,
+      "unique_bytes": 17910564,
+      "kinds": {
+        "geometry": 2
+      },
+      "extensions": {
+        ".blend": 1,
+        ".blend1": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "asset_library:production",
+      "source_prefix": "asset_library/production",
+      "path_count": 1,
+      "unique_asset_count": 1,
+      "logical_bytes": 96672,
+      "unique_bytes": 96672,
+      "kinds": {
+        "geometry": 1
+      },
+      "extensions": {
+        ".blend": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "asset_library:products",
+      "source_prefix": "asset_library/products",
+      "path_count": 1,
+      "unique_asset_count": 1,
+      "logical_bytes": 306501,
+      "unique_bytes": 306501,
+      "kinds": {
+        "geometry": 1
+      },
+      "extensions": {
+        ".blend": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "asset_sources:drumboii-y2k",
+      "source_prefix": "asset_sources/drumboii-y2k",
+      "path_count": 12,
+      "unique_asset_count": 12,
+      "logical_bytes": 14690161,
+      "unique_bytes": 14690161,
+      "kinds": {
+        "geometry": 6,
+        "image": 6
+      },
+      "extensions": {
+        ".fbx": 6,
+        ".png": 6
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "assets_blender",
+      "source_prefix": "assets_blender",
+      "path_count": 46,
+      "unique_asset_count": 32,
+      "logical_bytes": 568175513,
+      "unique_bytes": 337865013,
+      "kinds": {
+        "image": 46
+      },
+      "extensions": {
+        ".jpeg": 12,
+        ".png": 34
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "assets_blender:_gen-runs:bottom-edge",
+      "source_prefix": "assets_blender/_gen-runs/bottom-edge",
+      "path_count": 2,
+      "unique_asset_count": 2,
+      "logical_bytes": 33519268,
+      "unique_bytes": 33519268,
+      "kinds": {
+        "image": 2
+      },
+      "extensions": {
+        ".png": 2
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "assets_blender:_gen-runs:front-uncropped",
+      "source_prefix": "assets_blender/_gen-runs/front-uncropped",
+      "path_count": 2,
+      "unique_asset_count": 2,
+      "logical_bytes": 36370014,
+      "unique_bytes": 36370014,
+      "kinds": {
+        "image": 2
+      },
+      "extensions": {
+        ".png": 2
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "assets_blender:_gen-runs:hero-back-top",
+      "source_prefix": "assets_blender/_gen-runs/hero-back-top",
+      "path_count": 1,
+      "unique_asset_count": 1,
+      "logical_bytes": 17568832,
+      "unique_bytes": 17568832,
+      "kinds": {
+        "image": 1
+      },
+      "extensions": {
+        ".png": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "assets_blender:_gen-runs:material-neutral",
+      "source_prefix": "assets_blender/_gen-runs/material-neutral",
+      "path_count": 1,
+      "unique_asset_count": 1,
+      "logical_bytes": 18175936,
+      "unique_bytes": 18175936,
+      "kinds": {
+        "image": 1
+      },
+      "extensions": {
+        ".png": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "assets_blender:_gen-runs:side-right",
+      "source_prefix": "assets_blender/_gen-runs/side-right",
+      "path_count": 7,
+      "unique_asset_count": 7,
+      "logical_bytes": 117914964,
+      "unique_bytes": 117914964,
+      "kinds": {
+        "image": 7
+      },
+      "extensions": {
+        ".png": 7
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "assets_blender:_gen-runs:top-edge",
+      "source_prefix": "assets_blender/_gen-runs/top-edge",
+      "path_count": 2,
+      "unique_asset_count": 2,
+      "logical_bytes": 33701010,
+      "unique_bytes": 33701010,
+      "kinds": {
+        "image": 2
+      },
+      "extensions": {
+        ".png": 2
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "assets_blender:_gen-runs:wheel",
+      "source_prefix": "assets_blender/_gen-runs/wheel",
+      "path_count": 1,
+      "unique_asset_count": 1,
+      "logical_bytes": 2514821,
+      "unique_bytes": 2514821,
+      "kinds": {
+        "image": 1
+      },
+      "extensions": {
+        ".jpg": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "exports",
+      "source_prefix": "exports",
+      "path_count": 1,
+      "unique_asset_count": 1,
+      "logical_bytes": 3423216,
+      "unique_bytes": 3423216,
+      "kinds": {
+        "geometry": 1
+      },
+      "extensions": {
+        ".glb": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "knowledge:tutorials:_incoming",
+      "source_prefix": "knowledge/tutorials/_incoming",
+      "path_count": 5,
+      "unique_asset_count": 5,
+      "logical_bytes": 1609644270,
+      "unique_bytes": 1609644270,
+      "kinds": {
+        "video": 5
+      },
+      "extensions": {
+        ".mp4": 5
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "knowledge:tutorials:beginner-blender-tutorial-2026",
+      "source_prefix": "knowledge/tutorials/beginner-blender-tutorial-2026",
+      "path_count": 809,
+      "unique_asset_count": 809,
+      "logical_bytes": 540556213,
+      "unique_bytes": 540556213,
+      "kinds": {
+        "audio": 1,
+        "image": 808
+      },
+      "extensions": {
+        ".jpg": 808,
+        ".wav": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "knowledge:tutorials:drumboii-camera-tutorial-2026-07-18",
+      "source_prefix": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18",
+      "path_count": 220,
+      "unique_asset_count": 220,
+      "logical_bytes": 110623277,
+      "unique_bytes": 110623277,
+      "kinds": {
+        "audio": 1,
+        "image": 218,
+        "video": 1
+      },
+      "extensions": {
+        ".jpg": 218,
+        ".mp4": 1,
+        ".wav": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "knowledge:tutorials:drumboii-chains-movements-2026-07-31",
+      "source_prefix": "knowledge/tutorials/drumboii-chains-movements-2026-07-31",
+      "path_count": 203,
+      "unique_asset_count": 202,
+      "logical_bytes": 43553213,
+      "unique_bytes": 43548056,
+      "kinds": {
+        "audio": 1,
+        "image": 201,
+        "video": 1
+      },
+      "extensions": {
+        ".jpg": 201,
+        ".mp4": 1,
+        ".wav": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "knowledge:tutorials:drumboii-lighting-tutorial-2026-07-20",
+      "source_prefix": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20",
+      "path_count": 163,
+      "unique_asset_count": 163,
+      "logical_bytes": 56349436,
+      "unique_bytes": 56349436,
+      "kinds": {
+        "audio": 1,
+        "image": 161,
+        "video": 1
+      },
+      "extensions": {
+        ".jpg": 161,
+        ".mp4": 1,
+        ".wav": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "knowledge:tutorials:factory-animation-polygon-runway",
+      "source_prefix": "knowledge/tutorials/factory-animation-polygon-runway",
+      "path_count": 172,
+      "unique_asset_count": 172,
+      "logical_bytes": 63115269,
+      "unique_bytes": 63115269,
+      "kinds": {
+        "audio": 1,
+        "image": 171
+      },
+      "extensions": {
+        ".jpg": 171,
+        ".wav": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "knowledge:tutorials:quick-animation-blender-4",
+      "source_prefix": "knowledge/tutorials/quick-animation-blender-4",
+      "path_count": 308,
+      "unique_asset_count": 304,
+      "logical_bytes": 72507427,
+      "unique_bytes": 72230764,
+      "kinds": {
+        "audio": 1,
+        "image": 307
+      },
+      "extensions": {
+        ".jpg": 307,
+        ".wav": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "knowledge:tutorials:ray-ban-product-animation",
+      "source_prefix": "knowledge/tutorials/ray-ban-product-animation",
+      "path_count": 383,
+      "unique_asset_count": 382,
+      "logical_bytes": 119125617,
+      "unique_bytes": 119039183,
+      "kinds": {
+        "audio": 1,
+        "image": 382
+      },
+      "extensions": {
+        ".jpg": 382,
+        ".wav": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "knowledge:tutorials:wireless-pods-animation-polygon-runway",
+      "source_prefix": "knowledge/tutorials/wireless-pods-animation-polygon-runway",
+      "path_count": 215,
+      "unique_asset_count": 215,
+      "logical_bytes": 75082132,
+      "unique_bytes": 75082132,
+      "kinds": {
+        "audio": 1,
+        "image": 214
+      },
+      "extensions": {
+        ".jpg": 214,
+        ".wav": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "library",
+      "source_prefix": "library",
+      "path_count": 558,
+      "unique_asset_count": 547,
+      "logical_bytes": 547840754,
+      "unique_bytes": 520877685,
+      "kinds": {
+        "image": 545,
+        "video": 13
+      },
+      "extensions": {
+        ".mp4": 13,
+        ".png": 545
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:drumboii-blob-speaker-camera-study",
+      "source_prefix": "projects/drumboii-blob-speaker-camera-study",
+      "path_count": 8,
+      "unique_asset_count": 8,
+      "logical_bytes": 3794326,
+      "unique_bytes": 3794326,
+      "kinds": {
+        "geometry": 2,
+        "image": 5,
+        "video": 1
+      },
+      "extensions": {
+        ".blend": 1,
+        ".blend1": 1,
+        ".mp4": 1,
+        ".png": 5
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:drumboii-gameboii-arcade-scene",
+      "source_prefix": "projects/drumboii-gameboii-arcade-scene",
+      "path_count": 4,
+      "unique_asset_count": 4,
+      "logical_bytes": 7561815,
+      "unique_bytes": 7561815,
+      "kinds": {
+        "geometry": 2,
+        "image": 2
+      },
+      "extensions": {
+        ".blend": 1,
+        ".blend1": 1,
+        ".png": 2
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:drumboii-lighting-study-2026-07-20",
+      "source_prefix": "projects/drumboii-lighting-study-2026-07-20",
+      "path_count": 7,
+      "unique_asset_count": 7,
+      "logical_bytes": 764276,
+      "unique_bytes": 764276,
+      "kinds": {
+        "image": 7
+      },
+      "extensions": {
+        ".jpg": 1,
+        ".png": 6
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:fl-studio-box-character-animation",
+      "source_prefix": "projects/fl-studio-box-character-animation",
+      "path_count": 428,
+      "unique_asset_count": 428,
+      "logical_bytes": 134088968,
+      "unique_bytes": 134088968,
+      "kinds": {
+        "geometry": 3,
+        "image": 422,
+        "video": 3
+      },
+      "extensions": {
+        ".blend": 2,
+        ".blend1": 1,
+        ".jpg": 4,
+        ".mp4": 3,
+        ".png": 418
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:fl-studio-box-projection-template",
+      "source_prefix": "projects/fl-studio-box-projection-template",
+      "path_count": 414,
+      "unique_asset_count": 414,
+      "logical_bytes": 141202779,
+      "unique_bytes": 141202779,
+      "kinds": {
+        "geometry": 2,
+        "image": 409,
+        "video": 3
+      },
+      "extensions": {
+        ".blend": 1,
+        ".blend1": 1,
+        ".jpg": 1,
+        ".mp4": 3,
+        ".png": 408
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:fl-studio-box-semantic-template",
+      "source_prefix": "projects/fl-studio-box-semantic-template",
+      "path_count": 1258,
+      "unique_asset_count": 1258,
+      "logical_bytes": 390015297,
+      "unique_bytes": 390015297,
+      "kinds": {
+        "geometry": 2,
+        "image": 1247,
+        "video": 9
+      },
+      "extensions": {
+        ".blend": 1,
+        ".blend1": 1,
+        ".jpg": 4,
+        ".mp4": 9,
+        ".png": 1243
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:fl-studio-box-template",
+      "source_prefix": "projects/fl-studio-box-template",
+      "path_count": 17,
+      "unique_asset_count": 17,
+      "logical_bytes": 7186689,
+      "unique_bytes": 7186689,
+      "kinds": {
+        "geometry": 2,
+        "image": 10,
+        "video": 5
+      },
+      "extensions": {
+        ".blend": 1,
+        ".blend1": 1,
+        ".jpg": 1,
+        ".mp4": 5,
+        ".png": 9
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:fl-studio-console-2026-07-19",
+      "source_prefix": "projects/fl-studio-console-2026-07-19",
+      "path_count": 1287,
+      "unique_asset_count": 1285,
+      "logical_bytes": 430265718,
+      "unique_bytes": 428912033,
+      "kinds": {
+        "geometry": 10,
+        "image": 1264,
+        "video": 13
+      },
+      "extensions": {
+        ".blend": 5,
+        ".blend1": 5,
+        ".jpg": 8,
+        ".mp4": 13,
+        ".png": 1256
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:flip-phone-signal-film",
+      "source_prefix": "projects/flip-phone-signal-film",
+      "path_count": 38,
+      "unique_asset_count": 38,
+      "logical_bytes": 18270045,
+      "unique_bytes": 18270045,
+      "kinds": {
+        "geometry": 2,
+        "image": 36
+      },
+      "extensions": {
+        ".blend": 1,
+        ".blend1": 1,
+        ".jpg": 2,
+        ".png": 34
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:flip-phone-signal-film-v2",
+      "source_prefix": "projects/flip-phone-signal-film-v2",
+      "path_count": 158,
+      "unique_asset_count": 154,
+      "logical_bytes": 80084667,
+      "unique_bytes": 78148787,
+      "kinds": {
+        "geometry": 2,
+        "image": 156
+      },
+      "extensions": {
+        ".blend": 1,
+        ".blend1": 1,
+        ".jpg": 20,
+        ".png": 136
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:golem-de-gres",
+      "source_prefix": "projects/golem-de-gres",
+      "path_count": 7,
+      "unique_asset_count": 7,
+      "logical_bytes": 3254660,
+      "unique_bytes": 3254660,
+      "kinds": {
+        "geometry": 2,
+        "image": 5
+      },
+      "extensions": {
+        ".blend": 1,
+        ".blend1": 1,
+        ".png": 5
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:kimi-k3-scene-trials",
+      "source_prefix": "projects/kimi-k3-scene-trials",
+      "path_count": 3370,
+      "unique_asset_count": 3335,
+      "logical_bytes": 1134908407,
+      "unique_bytes": 1122542613,
+      "kinds": {
+        "geometry": 29,
+        "image": 3326,
+        "video": 15
+      },
+      "extensions": {
+        ".blend": 15,
+        ".blend1": 10,
+        ".glb": 4,
+        ".jpg": 56,
+        ".mp4": 15,
+        ".png": 3270
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:pulsed-model-v2",
+      "source_prefix": "projects/pulsed-model-v2",
+      "path_count": 131,
+      "unique_asset_count": 131,
+      "logical_bytes": 87928271,
+      "unique_bytes": 87928271,
+      "kinds": {
+        "geometry": 4,
+        "image": 125,
+        "video": 2
+      },
+      "extensions": {
+        ".blend": 2,
+        ".blend1": 2,
+        ".jpg": 66,
+        ".mp4": 2,
+        ".png": 59
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "projects:tutorial-synthesis-lab-2026-07-19",
+      "source_prefix": "projects/tutorial-synthesis-lab-2026-07-19",
+      "path_count": 295,
+      "unique_asset_count": 295,
+      "logical_bytes": 80221693,
+      "unique_bytes": 80221693,
+      "kinds": {
+        "geometry": 10,
+        "image": 284,
+        "video": 1
+      },
+      "extensions": {
+        ".blend": 6,
+        ".blend1": 4,
+        ".jpg": 8,
+        ".mp4": 1,
+        ".png": 276
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:agent-workflow-demo-2026-07-19_150706",
+      "source_prefix": "renders/agent-workflow-demo-2026-07-19_150706",
+      "path_count": 2,
+      "unique_asset_count": 2,
+      "logical_bytes": 781184,
+      "unique_bytes": 781184,
+      "kinds": {
+        "image": 2
+      },
+      "extensions": {
+        ".png": 2
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:agent-workflow-demo-2026-07-19_150728",
+      "source_prefix": "renders/agent-workflow-demo-2026-07-19_150728",
+      "path_count": 2,
+      "unique_asset_count": 2,
+      "logical_bytes": 781184,
+      "unique_bytes": 781184,
+      "kinds": {
+        "image": 2
+      },
+      "extensions": {
+        ".png": 2
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:agent-workflow-demo-2026-07-19_150809",
+      "source_prefix": "renders/agent-workflow-demo-2026-07-19_150809",
+      "path_count": 2,
+      "unique_asset_count": 2,
+      "logical_bytes": 727601,
+      "unique_bytes": 727601,
+      "kinds": {
+        "image": 2
+      },
+      "extensions": {
+        ".png": 2
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:agent-workflow-demo-2026-07-19_150833",
+      "source_prefix": "renders/agent-workflow-demo-2026-07-19_150833",
+      "path_count": 2,
+      "unique_asset_count": 2,
+      "logical_bytes": 812063,
+      "unique_bytes": 812063,
+      "kinds": {
+        "image": 2
+      },
+      "extensions": {
+        ".png": 2
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:capabilities-video-2026-07-19_151134",
+      "source_prefix": "renders/capabilities-video-2026-07-19_151134",
+      "path_count": 154,
+      "unique_asset_count": 154,
+      "logical_bytes": 63848352,
+      "unique_bytes": 63848352,
+      "kinds": {
+        "image": 152,
+        "video": 2
+      },
+      "extensions": {
+        ".mp4": 2,
+        ".png": 152
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:last-signal-film-2026-07-19_153502",
+      "source_prefix": "renders/last-signal-film-2026-07-19_153502",
+      "path_count": 733,
+      "unique_asset_count": 733,
+      "logical_bytes": 460061973,
+      "unique_bytes": 460061973,
+      "kinds": {
+        "audio": 1,
+        "image": 731,
+        "video": 1
+      },
+      "extensions": {
+        ".mp4": 1,
+        ".png": 731,
+        ".wav": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:last-signal-film-v2-final",
+      "source_prefix": "renders/last-signal-film-v2-final",
+      "path_count": 725,
+      "unique_asset_count": 725,
+      "logical_bytes": 363250038,
+      "unique_bytes": 363250038,
+      "kinds": {
+        "audio": 1,
+        "image": 723,
+        "video": 1
+      },
+      "extensions": {
+        ".mp4": 1,
+        ".png": 723,
+        ".wav": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:pulsed-master-film-2026-07-19_152053",
+      "source_prefix": "renders/pulsed-master-film-2026-07-19_152053",
+      "path_count": 20,
+      "unique_asset_count": 20,
+      "logical_bytes": 17788946,
+      "unique_bytes": 17788946,
+      "kinds": {
+        "image": 12,
+        "video": 8
+      },
+      "extensions": {
+        ".mp4": 8,
+        ".png": 12
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:pulsed-master-film-2026-07-19_152157",
+      "source_prefix": "renders/pulsed-master-film-2026-07-19_152157",
+      "path_count": 18,
+      "unique_asset_count": 18,
+      "logical_bytes": 18960475,
+      "unique_bytes": 18960475,
+      "kinds": {
+        "image": 10,
+        "video": 8
+      },
+      "extensions": {
+        ".mp4": 8,
+        ".png": 10
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:relink-fl-studio-box-media-smoke-20260719-0426",
+      "source_prefix": "renders/relink-fl-studio-box-media-smoke-20260719-0426",
+      "path_count": 6,
+      "unique_asset_count": 6,
+      "logical_bytes": 468139,
+      "unique_bytes": 468139,
+      "kinds": {
+        "image": 1,
+        "video": 5
+      },
+      "extensions": {
+        ".mp4": 5,
+        ".png": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:relink-fl-studio-box-projection-smoke-20260719-1208",
+      "source_prefix": "renders/relink-fl-studio-box-projection-smoke-20260719-1208",
+      "path_count": 3,
+      "unique_asset_count": 3,
+      "logical_bytes": 650464,
+      "unique_bytes": 650464,
+      "kinds": {
+        "image": 1,
+        "video": 2
+      },
+      "extensions": {
+        ".mp4": 2,
+        ".png": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:relink-fl-studio-box-semantic-smoke-20260719-1226",
+      "source_prefix": "renders/relink-fl-studio-box-semantic-smoke-20260719-1226",
+      "path_count": 6,
+      "unique_asset_count": 6,
+      "logical_bytes": 486295,
+      "unique_bytes": 486295,
+      "kinds": {
+        "image": 1,
+        "video": 5
+      },
+      "extensions": {
+        ".mp4": 5,
+        ".png": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:screenshots",
+      "source_prefix": "renders/screenshots",
+      "path_count": 2,
+      "unique_asset_count": 2,
+      "logical_bytes": 1468856,
+      "unique_bytes": 1468856,
+      "kinds": {
+        "image": 2
+      },
+      "extensions": {
+        ".png": 2
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:smoke-export-20260718",
+      "source_prefix": "renders/smoke-export-20260718",
+      "path_count": 1,
+      "unique_asset_count": 1,
+      "logical_bytes": 3604036,
+      "unique_bytes": 3604036,
+      "kinds": {
+        "geometry": 1
+      },
+      "extensions": {
+        ".glb": 1
+      },
+      "bundled": false
+    },
+    {
+      "family_id": "renders:smoke-render-20260718",
+      "source_prefix": "renders/smoke-render-20260718",
+      "path_count": 5,
+      "unique_asset_count": 5,
+      "logical_bytes": 682897,
+      "unique_bytes": 682897,
+      "kinds": {
+        "image": 5
+      },
+      "extensions": {
+        ".png": 5
+      },
+      "bundled": false
+    }
+  ]
+}

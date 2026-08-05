@@ -1,0 +1,39 @@
+{
+  "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+  "camera": "USTUDIO_SLOPE_CAM_MAIN",
+  "engine": "BLENDER_EEVEE",
+  "marker_prefix": "USTUDIO_SLOPE_GATE_",
+  "frames": [
+    1,
+    17,
+    33,
+    49,
+    57,
+    81,
+    106,
+    130,
+    154,
+    178,
+    192,
+    203,
+    224,
+    240
+  ],
+  "files": [
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0001.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0017.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0033.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0049.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0057.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0081.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0106.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0130.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0154.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0178.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0192.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0203.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0224.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/camera-clay-v2/frame_0240.png"
+  ],
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/scene/trial.blend"
+}

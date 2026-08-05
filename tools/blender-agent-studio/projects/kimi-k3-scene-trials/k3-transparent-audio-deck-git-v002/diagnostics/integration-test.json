@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-transparent-audio-deck-git-v002",
+  "status": "completed",
+  "tested_at": "2026-07-30T16:38:14+02:00",
+  "source_image": {
+    "path": "references/reference-hero.jpg",
+    "sha256": "f675052da337278fdaa0da2123ece73d2d4278a12afd1cc50863417cfcd5ac28",
+    "width": 1199,
+    "height": 1592,
+    "technical_suitability": "pass",
+    "reference_admitted": true
+  },
+  "img2threejs": {
+    "path": "third_party/img2threejs",
+    "repository": "https://github.com/img2threejs/img2threejs.git",
+    "commit": "8b53125081c3798cf95bd517b64be024515a1c8d",
+    "clone_is_shallow": false,
+    "worktree_clean": true,
+    "test_count": 266,
+    "starter_generated_from_this_image": true,
+    "strict_spec_passed": true,
+    "components": 22,
+    "materials": 13,
+    "repetition_systems": 6
+  },
+  "blender": {
+    "version": "5.1.1",
+    "factory_startup": true,
+    "objects_built": 86,
+    "scene_objects": 94,
+    "scene_mesh_datablocks": 74,
+    "scene_materials": 14,
+    "blend_reopen_dirty": false,
+    "glb_reimport_passed": true,
+    "glb_meshes": 77,
+    "glb_empties": 6,
+    "glb_materials": 15
+  },
+  "physical": {
+    "passed": true,
+    "environment_penetration_m": 0.0,
+    "support_gap_m": 0.0,
+    "minimum_camera_clearance_m": 0.418083,
+    "camera_frames_checked": 192,
+    "frames_outside_threshold": 0
+  },
+  "preview": {
+    "path": "renders/preview.mp4",
+    "codec": "h264",
+    "width": 576,
+    "height": 720,
+    "fps": 24,
+    "frames": 192,
+    "duration_seconds": 8.0
+  },
+  "gates": {
+    "blockout": "passed",
+    "multi_angle_degeneracy": "passed",
+    "structural_tier1": "failed",
+    "structural_iou": 0.5901,
+    "structural_iou_required": 0.85,
+    "aspect_ratio_delta": 0.058,
+    "aspect_ratio_delta_maximum": 0.05
+  },
+  "implementation_findings": [
+    {
+      "finding": "A fresh upstream starter had no concrete lightingFromPhoto entries and failed strict validation.",
+      "correction": "The versioned normalizer now seeds key/reflection, environment fill, rim/glimmer, exposure, tone mapping, background and contact-shadow intent when absent.",
+      "verification": "Strict validation passes with zero errors and zero warnings."
+    },
+    {
+      "finding": "Upstream still does not generate a Blender recipe.",
+      "handling": "This run generated fresh intake/spec state but reused only the already reviewed v001 blenderRecipe as an explicitly recorded regression fixture."
+    }
+  ]
+}

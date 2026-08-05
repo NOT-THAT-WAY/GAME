@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "tutorial_id": "beginner-blender-tutorial-2026",
+  "model": "whisper.cpp large-v3-turbo + Codex visual/transcript synthesis",
+  "language": "en",
+  "analyzed_at": "2026-07-19T02:15:00+02:00",
+  "confidence": 0.96,
+  "summary": "Blender 5.0 beginner production course built around a donut, icing, plate, coffee mug and final cafe-style still. It progresses from navigation and mesh editing to non-destructive modifiers, organic modeling, sculpting, PBR texture maps, UV seams, an atlas texture, Blender 5.0 Scatter on Surface, weight-painted distribution, randomized materials, a three-role lighting rig, depth of field, Eevee quality controls and a final Eevee/Cycles comparison.",
+  "observed_project_context": {
+    "blender_version": "5.0",
+    "duration_seconds": 15550.065442,
+    "delivery": "854 × 480, 30 fps",
+    "final_scene": ["donut", "icing", "sprinkles", "plate", "mug", "coffee foam", "table", "camera", "lighting"],
+    "evidence": {
+      "transcript_segments": 4686,
+      "regular_frames": 480,
+      "scene_frames": 300,
+      "contact_sheets": 10
+    }
+  },
+  "chapters": [
+    {
+      "start": 0,
+      "end": 1696,
+      "title": "Fondations Blender et premiers volumes",
+      "outcomes": ["navigation viewport", "transformations", "torus donut", "cylindre de tasse", "modes Object/Edit", "Solidify et Subdivision Surface"],
+      "evidence": ["transcript 00:00:00–00:28:16", "contact-sheets/frames_1_48.jpg"]
+    },
+    {
+      "start": 1696,
+      "end": 3545,
+      "title": "Modélisation de la tasse depuis une référence",
+      "outcomes": ["référence image", "silhouette", "loop cuts", "anse extrudée", "normales", "application contrôlée de Solidify"],
+      "evidence": ["transcript 00:28:16–00:59:05", "keyframes/0028_mug_reference.jpg", "contact-sheets/frames_49_96.jpg"]
+    },
+    {
+      "start": 3545,
+      "end": 5413,
+      "title": "Icing organique et projection sur le donut",
+      "outcomes": ["duplication du donut", "édition proportionnelle", "drips", "stack Shrinkwrap → Solidify → Subdivision", "sculpt Inflate/Grab", "challenge plate"],
+      "evidence": ["transcript 00:59:05–01:30:13", "keyframes/0059_icing.jpg", "contact-sheets/frames_97_192.jpg"]
+    },
+    {
+      "start": 5413,
+      "end": 7428,
+      "title": "Plateau, variation organique et premiers rendus",
+      "outcomes": ["plate par extrusion et inset", "Merge by Distance", "Subdivision", "Lattice", "caméra statique", "matériaux Principled", "ray tracing Eevee", "SSS alimentaire", "table optimisée pour le cadre"],
+      "evidence": ["transcript 01:30:13–02:03:48", "keyframes/0130_plate.jpg", "contact-sheets/frames_193_240.jpg"]
+    },
+    {
+      "start": 7428,
+      "end": 9332,
+      "title": "Textures PBR et UV du plate/donut",
+      "outcomes": ["Base Color", "Normal", "Roughness", "Shader Editor", "addon Poliigon optionnel", "UV seams", "Angle Based unwrap", "échelle du matériau"],
+      "evidence": ["transcript 02:03:48–02:35:32", "keyframes/0203_texturing.jpg", "contact-sheets/frames_241_288.jpg"]
+    },
+    {
+      "start": 9332,
+      "end": 11367,
+      "title": "UV avancées de la tasse et atlas de mousse",
+      "outcomes": ["seams cachées", "Live Unwrap", "îlots UV", "Mio3 UV Gridify optionnel", "texel density", "correction locale du stretching", "texture atlas"],
+      "evidence": ["transcript 02:35:32–03:09:27", "keyframes/0235_uv_mug.jpg", "contact-sheets/frames_289_336.jpg"]
+    },
+    {
+      "start": 11367,
+      "end": 13577,
+      "title": "Sprinkles procéduraux avec Scatter on Surface",
+      "outcomes": ["collection source", "instances", "orientation et offset", "Weight Paint", "Distribution Mask", "Poisson Disc", "seed", "Object Info Random", "Color Ramp", "palette et SSS"],
+      "evidence": ["transcript 03:09:27–03:46:17", "keyframes/0309_sprinkles.jpg", "contact-sheets/frames_337_432.jpg"]
+    },
+    {
+      "start": 13577,
+      "end": 15550,
+      "title": "Hiérarchie, éclairage, caméra et rendu final",
+      "outcomes": ["parenting Keep Transform", "sun key", "sky fill", "indoor bounce", "blockers", "DOF", "Eevee steps/samples/probe/jitter", "Cycles GPU/denoise", "comparaison temps-qualité"],
+      "evidence": ["transcript 03:46:17–04:19:10", "keyframes/0346_lighting.jpg", "keyframes/0409_depth_of_field.jpg", "keyframes/0412_cycles.jpg", "contact-sheets/frames_433_480.jpg"]
+    }
+  ],
+  "techniques": [
+    {
+      "domain": "workflow",
+      "name": "Non-destructif jusqu’au point de personnalisation",
+      "steps": ["Construire avec des modifiers réglables.", "Valider proportions et silhouette.", "Appliquer seulement le modifier dont la géométrie réelle est nécessaire.", "Conserver les modifiers encore utiles en aval."],
+      "evidence": ["transcript 00:42:51–00:44:17", "transcript 01:25:41–01:26:03"],
+      "production_note": "Dupliquer ou versionner le .blend avant toute application irréversible."
+    },
+    {
+      "domain": "modeling",
+      "name": "Anse intégrée à la tasse",
+      "steps": ["Choisir une face alignée au centre.", "Appliquer Solidify avant l’extrusion de l’anse.", "Extruder par segments en vue frontale.", "Recalculer les normales avec Shift+N si l’extrusion part du mauvais côté.", "Ajouter des loops de support avant Subdivision."],
+      "evidence": ["transcript 00:42:04–00:50:10"]
+    },
+    {
+      "domain": "modeling",
+      "name": "Icing dérivé du donut",
+      "steps": ["Dupliquer le donut sans déplacement.", "Supprimer la moitié inférieure.", "Former les drips avec édition proportionnelle.", "Utiliser Shrinkwrap vers le donut.", "Ordonner Shrinkwrap avant Solidify puis Subdivision.", "Appliquer Subdivision seulement avant sculpture détaillée."],
+      "evidence": ["transcript 01:01:48–01:15:18", "transcript 01:25:41–01:28:55"]
+    },
+    {
+      "domain": "topology",
+      "name": "Stack de modifiers dépendant de l’ordre",
+      "steps": ["Projeter d’abord la surface de base.", "Ajouter ensuite l’épaisseur.", "Lisser en dernier."],
+      "evidence": ["transcript 01:14:24–01:15:08"],
+      "production_note": "Shrinkwrap → Solidify → Subdivision évite le z-fighting et conserve des drips collés."
+    },
+    {
+      "domain": "shading",
+      "name": "Matériau PBR minimal fiable",
+      "steps": ["Connecter Base Color en sRGB.", "Passer Normal et Roughness en Non-Color.", "Faire passer la normal map par un nœud Normal Map.", "Connecter Roughness directement au Principled BSDF.", "N’ajouter displacement ou metallic que si la matière l’exige."],
+      "evidence": ["transcript 02:04:17–02:19:36"]
+    },
+    {
+      "domain": "uv",
+      "name": "Seams guidées par visibilité et déformation",
+      "steps": ["Imaginer l’objet en papier.", "Placer les seams dans les zones cachées.", "Séparer les zones qui ne peuvent pas se déplier sans stretching.", "Lancer Angle Based Unwrap.", "Contrôler avec la texture réelle et corriger localement les îlots."],
+      "evidence": ["transcript 02:26:36–02:28:58", "transcript 02:37:31–02:54:54"]
+    },
+    {
+      "domain": "uv",
+      "name": "Redressement d’un îlot avec Mio3 UV",
+      "steps": ["Installer l’extension communautaire Mio3 UV depuis extensions.blender.org.", "Ouvrir le panneau N du UV Editor.", "Sélectionner l’îlot.", "Utiliser Gridify puis réaligner l’échelle et le texel density."],
+      "evidence": ["transcript 02:45:57–02:50:56"],
+      "production_note": "Dépendance optionnelle; conserver une méthode native de repli."
+    },
+    {
+      "domain": "texturing",
+      "name": "Texture atlas pour la mousse de café",
+      "steps": ["Créer une surface séparée au niveau du liquide.", "UV unwrap de la surface.", "Charger l’atlas.", "Déplacer et redimensionner l’îlot sur la variation choisie.", "Déconnecter alpha/AO/metallic inutiles."],
+      "evidence": ["transcript 03:00:45–03:08:48"]
+    },
+    {
+      "domain": "geometry-nodes",
+      "name": "Scatter on Surface depuis une collection",
+      "steps": ["Créer plusieurs meshes de sprinkles à faible coût.", "Les ranger dans une collection masquée.", "Ajouter Scatter on Surface sur l’icing.", "Choisir la collection, activer Pick Instance et Reset Transform.", "Choisir l’axe d’alignement, randomiser la rotation et régler Surface Offset."],
+      "evidence": ["transcript 03:09:27–03:21:47"],
+      "production_note": "Disponible nativement à partir de Blender 5.0."
+    },
+    {
+      "domain": "geometry-nodes",
+      "name": "Masque de distribution peint",
+      "steps": ["Créer un Vertex Group sur la surface.", "Peindre les zones autorisées en Weight Paint.", "Brancher le groupe sur Distribution Mask et non sur Density.", "Conserver Density comme quantité globale."],
+      "evidence": ["transcript 03:22:38–03:27:37"]
+    },
+    {
+      "domain": "geometry-nodes",
+      "name": "Réduction contrôlée des intersections",
+      "steps": ["Choisir Density pour accéder à Poisson Disc.", "Régler Minimum Distance assez bas pour conserver du chaos.", "Explorer Seed pour trouver une distribution propre.", "Ajouter une petite randomisation d’inclinaison."],
+      "evidence": ["transcript 03:27:44–03:31:43"],
+      "production_note": "Poisson Disc réduit les collisions mais ne tient pas compte de la forme réelle de chaque instance."
+    },
+    {
+      "domain": "shading",
+      "name": "Couleur aléatoire indépendante de la forme",
+      "steps": ["Partager un seul matériau entre les objets source avec Ctrl+L → Materials.", "Utiliser Object Info → Random.", "Passer la valeur dans une Color Ramp.", "Utiliser Constant pour des couleurs discrètes.", "Régler les positions de la ramp pour contrôler les proportions."],
+      "evidence": ["transcript 03:33:35–03:42:55"]
+    },
+    {
+      "domain": "lighting",
+      "name": "Éclairage par rôles isolés",
+      "steps": ["Créer un Sun chaud comme key directionnelle.", "Créer un Point large et froid comme sky fill.", "Créer un autre Point comme indoor bounce.", "Évaluer chaque lumière seule avant combinaison.", "Utiliser des blockers pour dessiner les ombres."],
+      "evidence": ["transcript 03:48:24–04:01:25"],
+      "production_note": "La taille/radius contrôle surtout la douceur des ombres; la distance des Point lights modifie fortement l’exposition."
+    },
+    {
+      "domain": "camera",
+      "name": "Cadrage et profondeur de champ orientés sujet",
+      "steps": ["Passer en vue caméra.", "Activer Lock Camera to View uniquement pendant le cadrage.", "Désactiver le lock après placement.", "Activer Depth of Field.", "Choisir explicitement l’objet d’icing comme focus."],
+      "evidence": ["transcript 04:00:54–04:01:51", "transcript 04:08:47–04:10:25"]
+    },
+    {
+      "domain": "rendering",
+      "name": "Gate Eevee",
+      "steps": ["Activer le ray tracing si le matériel le permet.", "Monter Steps vers 16.", "Ajuster les samples viewport/render.", "Baker un Light Probe Volume si le screen-space perd le rebond.", "Activer Jitter sur les ombres douces seulement pour le rendu."],
+      "evidence": ["transcript 01:50:52–01:52:49", "transcript 04:01:53–04:11:27"]
+    },
+    {
+      "domain": "rendering",
+      "name": "Gate Cycles",
+      "steps": ["Activer le backend GPU approprié: OptiX/CUDA, HIP, oneAPI ou Metal.", "Choisir GPU Compute plutôt que CPU.", "Limiter la taille du viewport pendant le lookdev.", "Activer le denoise viewport pour l’inspection.", "Rendre un frame test et comparer temps/qualité avec Eevee."],
+      "evidence": ["transcript 04:11:29–04:17:40"]
+    }
+  ],
+  "reusable_assets": [
+    {"name": "Sprinkle source collection", "type": "collection", "contents": "6–8 variations low-poly", "copy_strategy": "Append or asset-mark collection"},
+    {"name": "Scatter-on-Surface preset", "type": "modifier/geometry-nodes", "contents": "collection input, distribution mask, Poisson settings, transforms", "copy_strategy": "modifier asset or controlled workflow"},
+    {"name": "Cafe three-role lighting", "type": "collection", "contents": "sun key, sky fill, indoor bounce, blockers", "copy_strategy": "append rig and retarget scale"},
+    {"name": "Product camera DOF", "type": "camera rig", "contents": "camera, explicit focus object, gate settings", "copy_strategy": "append and retarget focus"},
+    {"name": "PBR material template", "type": "node group", "contents": "base color, normal-map conversion, roughness", "copy_strategy": "asset-mark node group"}
+  ],
+  "workflow_recipe": {
+    "name": "Beginner-to-product still pipeline",
+    "inputs": ["reference images", "target dimensions", "hero camera intent", "approved texture sources", "render engine budget"],
+    "steps": [
+      "Block primitives at real scale and save a version.",
+      "Model with reversible modifiers and audit modifier order.",
+      "Apply only the geometry required for custom topology or sculpting.",
+      "Create UV seams and validate stretching before lookdev.",
+      "Build PBR materials with explicit color-space rules.",
+      "Build source variations and scatter them non-destructively.",
+      "Organize hierarchy, collections and reusable controls.",
+      "Light one role at a time and gate silhouette, material and focus.",
+      "Run Eevee and Cycles test frames, then choose engine from the measured budget."
+    ],
+    "gates": ["scale/proportions", "clean silhouette", "modifier order", "no z-fighting", "UV stretching", "texture dependency audit", "instance collisions", "lighting roles", "focus target", "render time and noise"],
+    "outputs": ["versioned .blend", "asset collections", "material dependencies", "gate frames", "render diagnostic", "final still"]
+  },
+  "risks": [
+    "Scatter on Surface requires Blender 5.0 or newer.",
+    "Mio3 UV and the Poliigon addon are optional third-party dependencies and must not become silent requirements.",
+    "The demonstrated Poliigon texture library belongs to the presenter; licensing and redistribution must be checked per asset.",
+    "Applying modifiers is destructive and must be preceded by a version or duplicate.",
+    "Exact texture scale, light power, samples and subsurface values are scene-dependent.",
+    "Poisson Disc only approximates collision avoidance for irregular instances.",
+    "Eevee screen-space illumination can change during camera animation.",
+    "The tutorial covers a static camera and does not replace the DRUMBOII animation tutorial.",
+    "Medium High Contrast is a creative look choice, not a universal color-management rule."
+  ],
+  "open_questions": [
+    "Which of the six demonstrated texture packs may be redistributed inside this repository?",
+    "Should Mio3 UV be installed globally or replaced by a native unwrap workflow?",
+    "Which reusable rigs should be promoted to the production Asset Library first?",
+    "Should final product animation default to Eevee for gates and Cycles for approved hero frames?"
+  ]
+}

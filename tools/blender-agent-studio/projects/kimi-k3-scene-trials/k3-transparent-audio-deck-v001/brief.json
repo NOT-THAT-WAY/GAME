@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-transparent-audio-deck-v001",
+  "status": "completed",
+  "mode": "micro-scene",
+  "objective": "Reconstruire depuis une vue hero un appareil audio transparent modulaire, physiquement cohérent et lisible sous plusieurs angles, puis livrer un asset Blender et GLB gatés.",
+  "source_blend": null,
+  "source_reference": "references/reference-hero.jpg",
+  "target_collection": "K3_TAD_ASSET",
+  "duration_seconds": 8,
+  "fps": 24,
+  "resolution": [576, 720],
+  "story": {
+    "premise": "L’appareil audio transparent repose verticalement sur un support plan, dans un studio sombre qui révèle ses couches internes.",
+    "cause": "La caméra marque une courte anticipation puis commence un arc de contrôle autour du prop statique.",
+    "action": "Un arc caméra unique révèle successivement la face canonique, l’épaisseur, la réglette latérale et la continuité arrière inférée.",
+    "result": "La caméra dépasse légèrement sa pose puis revient sur un trois-quarts stable qui confirme volume, support et hiérarchie.",
+    "beats": [
+      {"time_seconds": 0.0, "state": "still_initial", "cause": "état établi", "visible_result": "sujet, support et contexte lisibles"},
+      {"time_seconds": 1.0, "state": "anticipation", "cause": "recul angulaire de quatre degrés", "visible_result": "préparation sans mouvement de l’objet"},
+      {"time_seconds": 2.0, "state": "action", "cause": "départ de l’arc caméra", "visible_result": "face, épaisseur et contrôles latéraux deviennent lisibles"},
+      {"time_seconds": 5.0, "state": "impact", "cause": "fin du travel principal", "visible_result": "angle opposé atteint sans collision ni perte du sujet"},
+      {"time_seconds": 6.0, "state": "settle", "cause": "dissipation de l’énergie caméra", "visible_result": "overshoot court"},
+      {"time_seconds": 8, "state": "still_final", "cause": "mouvement terminé", "visible_result": "recovery stable"}
+    ]
+  },
+  "invariants": [
+    "proportions et identité visible du sujet",
+    "aucune traversée ou collision non intentionnelle",
+    "orientation et affordance humaines correctes",
+    "aucun drift relatif pendant le contact de support",
+    "aucune frame corrompue ou manquante",
+    "les détails arrière restent explicitement inférés"
+  ],
+  "camera": {
+    "style_source": "knowledge/tutorials/DRUMBOIII_DIRECTION.md",
+    "primary_move": "Arc unique avec anticipation, travel, overshoot et recovery.",
+    "lens_mm_range": [62, 68],
+    "target_strategy": "K3_TAD_CAMERA_TARGET indépendant au centre optique du prop",
+    "focus_strategy": "focus explicite sur K3_TAD_CAMERA_TARGET",
+    "hero_poses_seconds": [0.0, 1.0, 5.0, 6.875, 8.0],
+    "forbidden": ["drift sans cause", "wobble prolongé", "clipping", "mouvement concurrent de l’objet"]
+  },
+  "lighting": {
+    "style_source": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/analysis.json",
+    "preset": "drumboiii-layered-recalibrated-transparent-prop",
+    "world_strength": 0.32,
+    "required_layers": ["SUN_REFLECTION", "BACK_SHAPE", "SIDE_GLIMMER_A", "SIDE_GLIMMER_B", "DETAIL_RETURN"],
+    "gate_each_layer": true,
+    "forbidden": ["highlight clippé sur détail canonique", "lampe sans fonction visuelle nommée", "lumière utilisée pour cacher une erreur de géométrie"]
+  },
+  "physics": {
+    "contract_files": ["scene-contract.json", "object-sculpt-spec.json"],
+    "gravity_enabled_or_justified": true,
+    "gravity_justification": "Prop statique posé; aucune simulation dynamique n’est nécessaire dans ce trial.",
+    "supports": ["K3_TAD_GROUND at world z=0"],
+    "colliders": ["K3_TAD_COLLIDER_PROXY"],
+    "joints": [],
+    "clearance_checks": ["evaluated asset bounds versus support plane", "camera distance versus evaluated asset bounds"],
+    "camera_corridor_clear": true
+  },
+  "materials_and_design": {
+    "dominant_color": "pale blue-grey translucent polycarbonate",
+    "secondary_color": "black rubber and glossy mechanism",
+    "accent_color": "saturated pink-red controls",
+    "material_roles": ["clear shell", "frosted backing", "black rubber", "glossy black plastic", "brushed metal", "red accent", "PCB and LED internals"],
+    "typography": {
+      "used": true,
+      "content": "AUDIO // 01, generic reconstruction label",
+      "font": "Blender built-in Bfont",
+      "legibility_gate": "secondary; no exact reference branding claimed"
+    }
+  },
+  "limits": {
+    "max_iterations_per_category": 3,
+    "allowed_output_root": "projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001",
+    "overwrite_source_blend": false,
+    "save_only_trial_copy": true
+  }
+}

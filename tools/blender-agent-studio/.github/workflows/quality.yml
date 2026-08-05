@@ -1,0 +1,29 @@
+name: quality
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  compact-studio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install media and Python test dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          python -m pip install -r app/requirements.txt
+      - name: Validate catalogue and compact distribution
+        run: |
+          python tools/verify_asset_catalog.py
+          python tools/check_distribution_budget.py
+      - name: Static checks
+        run: |
+          python -m compileall -q app workflows tools skills
+          node --check app/static/app.js
+      - name: Unit tests
+        run: python -m unittest discover -s app/tests -p 'test_*.py'

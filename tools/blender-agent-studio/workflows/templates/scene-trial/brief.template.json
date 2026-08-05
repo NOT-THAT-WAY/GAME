@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "trial_id": "__TRIAL_ID__",
+  "status": "draft",
+  "mode": "micro-scene",
+  "objective": "__OBJECTIVE__",
+  "source_blend": "__SOURCE_BLEND__",
+  "target_collection": "TO_INSPECT",
+  "duration_seconds": "__DURATION__",
+  "fps": "__FPS__",
+  "style_profile": "__STYLE_PROFILE__",
+  "resolution": [960, 540],
+  "story": {
+    "premise": "À compléter : situation concrète en une phrase.",
+    "cause": "À compléter : événement visible qui déclenche l'action.",
+    "action": "À compléter : mouvement principal unique.",
+    "result": "À compléter : nouvel état stable et lisible.",
+    "beats": [
+      {"time_seconds": 0.0, "state": "still_initial", "cause": "état établi", "visible_result": "sujet et contexte lisibles"},
+      {"time_seconds": 1.0, "state": "anticipation", "cause": "à compléter", "visible_result": "préparation perceptible"},
+      {"time_seconds": 2.0, "state": "action", "cause": "à compléter", "visible_result": "événement principal"},
+      {"time_seconds": 5.0, "state": "impact", "cause": "fin de l'action", "visible_result": "conséquence visible"},
+      {"time_seconds": 6.0, "state": "settle", "cause": "dissipation de l'énergie", "visible_result": "recovery court"},
+      {"time_seconds": "__DURATION__", "state": "still_final", "cause": "action terminée", "visible_result": "résultat stable"}
+    ]
+  },
+  "invariants": [
+    "proportions et identité canonique du sujet",
+    "aucune traversée ou collision non intentionnelle",
+    "orientation et affordance humaines correctes",
+    "aucun drift relatif pendant un contact mécanique",
+    "aucune frame corrompue ou manquante"
+  ],
+  "camera": {
+    "style_source": "knowledge/style-profiles/__STYLE_PROFILE__.md",
+    "primary_move": "À compléter : dolly, arc, crane ou orbit unique.",
+    "lens_mm_range": [35, 85],
+    "target_strategy": "TARGET indépendant, points d'attention nommés",
+    "focus_strategy": "FOCUS explicite contrôlé aux poses hero",
+    "hero_poses_seconds": [0.0, 2.0, 5.0, "__DURATION__"],
+    "forbidden": ["drift sans cause", "wobble prolongé", "clipping", "mouvement complexe concurrent de l'objet"]
+  },
+  "lighting": {
+    "style_source": "knowledge/style-profiles/__STYLE_PROFILE__.md",
+    "preset": "functional-layered",
+    "world_strength": 0.7,
+    "required_layers": ["KEY_FORM", "FILL_CONTROL", "BACK_SEPARATION", "DETAIL_ACCENT"],
+    "gate_each_layer": true,
+    "forbidden": ["highlight clippé sur détail canonique", "lampe sans fonction visuelle nommée", "lumière utilisée pour cacher une erreur de géométrie"]
+  },
+  "physics": {
+    "contract_files": [],
+    "gravity_enabled_or_justified": false,
+    "supports": [],
+    "colliders": [],
+    "joints": [],
+    "clearance_checks": [],
+    "camera_corridor_clear": false
+  },
+  "materials_and_design": {
+    "dominant_color": "À compléter",
+    "secondary_color": "À compléter",
+    "accent_color": "À compléter",
+    "material_roles": [],
+    "typography": {"used": false, "content": "", "font": "", "legibility_gate": "not_applicable"}
+  },
+  "limits": {
+    "max_iterations_per_category": 3,
+    "allowed_output_root": "projects/scene-trials/__TRIAL_ID__",
+    "overwrite_source_blend": false,
+    "save_only_trial_copy": true
+  }
+}

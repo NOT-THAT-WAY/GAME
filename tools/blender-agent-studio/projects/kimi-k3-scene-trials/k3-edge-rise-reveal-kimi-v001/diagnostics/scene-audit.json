@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "scene": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-edge-rise-reveal-kimi-v001/scene/trial.blend",
+ "frame_range": [
+  1,
+  360
+ ],
+ "fps": 30,
+ "engine": "BLENDER_EEVEE",
+ "camera": "K3_EDGE_CAM",
+ "objects_total": 51,
+ "k3_objects": [
+  "K3_EDGE_BACKRIM",
+  "K3_EDGE_BOUNCE",
+  "K3_EDGE_CAM",
+  "K3_EDGE_HERO",
+  "K3_EDGE_PLAYHEAD_SWEEP",
+  "K3_EDGE_RIG",
+  "K3_EDGE_TARGET",
+  "K3_MECHA_BODY",
+  "K3_MECHA_HEAD",
+  "K3_MECHA_MASCOT_ROOT"
+ ],
+ "template_objects_intact": true,
+ "asset_meshes_unmodified": {
+  "K3_MECHA_BODY_verts": 6348,
+  "K3_MECHA_HEAD_verts": 1986,
+  "note": "6348 + 1986 = identiques a l'asset publie ; seuls vertex groups + modifier ajoutes"
+ },
+ "rig_added": "K3_EDGE_RIG (13 os, documente FINAL_REVIEW.md)",
+ "audio_strips": [
+  "K3_EDGE_AUDIO"
+ ],
+ "vse_sound_present": true
+}

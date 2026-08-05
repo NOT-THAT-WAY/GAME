@@ -1,0 +1,22 @@
+[
+  {
+    "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-01_hero-front-3q.jpeg",
+    "size_bytes": 6849624,
+    "sha256_8": "746b1de0"
+  },
+  {
+    "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-02_hero-back-internals.jpeg",
+    "size_bytes": 6875634,
+    "sha256_8": "9389d1c8"
+  },
+  {
+    "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/03_side_clean_canonical.png",
+    "size_bytes": 434655,
+    "sha256_8": "c24954f9"
+  },
+  {
+    "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-03_macro-faceplate-screen-gain-dpad.jpeg",
+    "size_bytes": 7341506,
+    "sha256_8": "f86bab9a"
+  }
+]

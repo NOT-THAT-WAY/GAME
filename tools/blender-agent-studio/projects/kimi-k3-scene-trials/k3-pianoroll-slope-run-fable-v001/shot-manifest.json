@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-fable-v001",
+  "camera": "K3_FABLE_CAM_MAIN",
+  "camera_name": "K3_FABLE_CAM_MAIN",
+  "lens_mm": 50.0,
+  "aperture_fstop": 5.0,
+  "sensor": "36mm auto",
+  "resolution": [
+    640,
+    360
+  ],
+  "fps": 30,
+  "frames": [
+    1,
+    240
+  ],
+  "parenting": "rig rigide avec USTUDIO_BOX_FLOAT_ROOT ; Track To en espace monde garde l'horizon niveau",
+  "target": "K3_FABLE_CAM_TARGET, poitrine du coureur avec retard de 2 frames",
+  "focus": "K3_FABLE_CAM_FOCUS, poitrine sans retard, DOF f/5.0",
+  "move_grammar": {
+    "K1_pose": "frames 1-40, pose laterale trois-quarts qui etablit la pente",
+    "K2_anticipation": "frames 40-52, arc de -4 degres autour du coureur, distance constante",
+    "K3_travel": "frames 52-206, tracking parallele a UPHILL_TANGENT, offset constant (-1.287, -0.601, +0.19) m",
+    "K4_recovery": "frames 206-228, arc de +1.4 degres qui s'amortit, puis arret complet",
+    "still": "frames 228-240, aucune animation caméra"
+  },
+  "offset_from_runner_m": [
+    -1.386,
+    -0.647,
+    0.16
+  ],
+  "distance_to_runner_m": 1.538,
+  "three_quarter_angle_deg": 25.0,
+  "apparent_slope_angle_in_frame_deg": {
+    "30": 51.1,
+    "80": 51.73,
+    "120": 51.82,
+    "160": 51.42,
+    "200": 51.21,
+    "235": 51.43
+  },
+  "diagnostic_cameras": [
+    {
+      "name": "K3_FABLE_CAM_DIAG_PROFILE",
+      "purpose": "profil strict pour les gates physiques"
+    },
+    {
+      "name": "K3_FABLE_CAM_DIAG_TOPREAR",
+      "purpose": "top/rear sur les contacts des pieds"
+    },
+    {
+      "name": "K3_FABLE_CAM_DIAG_NORMAL",
+      "purpose": "vue selon la normale de surface, drift et placements"
+    }
+  ],
+  "forbidden_checked": [
+    "aucun roll copie de la pente",
+    "aucune traversee de decor (validee frame par frame)",
+    "distance constante ±0.01 m"
+  ]
+}

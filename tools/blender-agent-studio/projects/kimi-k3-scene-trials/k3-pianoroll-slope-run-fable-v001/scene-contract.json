@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-fable-v001",
+  "status": "measured",
+  "coordinate_frame": {
+    "up": "+Z",
+    "user_side": "-Y, face ouverte de la boîte, côté aval de la rampe",
+    "front": "-Y",
+    "right": "+X",
+    "units": "meters",
+    "reference": "repère local de USTUDIO_BOX_FLOAT_ROOT ; le root flotte lentement en monde (±1°), tout l'intérieur est rigide avec lui"
+  },
+  "surface_contract": {
+    "object": "USTUDIO_PIANO_ROLL_FLOOR",
+    "measured_slope_degrees": 46.34,
+    "SURFACE_NORMAL": [0.0, -0.723449, 0.690377],
+    "UPHILL_TANGENT": [0.0, 0.690377, 0.723449],
+    "CROSS_SLOPE_TANGENT": [-1.0, 0.0, 0.0],
+    "WORLD_GRAVITY": [0.0, 0.0, -9.81],
+    "plane_origin": [0.0, 0.415, 1.755],
+    "usable_length_uphill_m": 2.419,
+    "usable_width_cross_m": 7.56,
+    "static_friction_required": 1.048,
+    "grip_coefficient_contract": 1.25,
+    "grip_visible_cause": "semelles grip lime, propriété ustudio_grip_surface, pulse d'émission uniquement au contact",
+    "evidence": "diagnostics/surface-analysis.json"
+  },
+  "objects": [
+    {
+      "name": "K3_FABLE_RUNNER",
+      "semantic_role": "hero_subject",
+      "fixed_or_moving": "moving",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": ["semelles lime grip"],
+      "support_surfaces": ["USTUDIO_PIANO_ROLL_FLOOR"],
+      "allowed_motion": ["course montante le long de UPHILL_TANGENT", "oscillation du bassin selon la normale", "gestes de membres articulés"],
+      "forbidden_motion": ["teleport", "unmotivated_drift", "environment_intersection", "glissement du pied planté", "rotation rigide du corps entier selon la normale du plan"]
+    },
+    {
+      "name": "USTUDIO_PIANO_ROLL_FLOOR",
+      "semantic_role": "support_ramp",
+      "fixed_or_moving": "fixed_relative_to_root",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": ["face superieure inclinee de 46.34 degres"],
+      "support_surfaces": [],
+      "allowed_motion": [],
+      "forbidden_motion": ["any"]
+    },
+    {
+      "name": "K3_FABLE_CAM_MAIN",
+      "semantic_role": "hero_camera",
+      "fixed_or_moving": "moving",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": [],
+      "support_surfaces": [],
+      "allowed_motion": ["tracking parallele a UPHILL_TANGENT", "arcs a distance constante pour anticipation et recovery"],
+      "forbidden_motion": ["traversee du decor", "roll copie de la pente", "variation de distance au sujet superieure a 0.01 m"]
+    }
+  ],
+  "joints": [
+    {"name": "bassin", "type": "root", "note": "translation parallele au plan + oscillation normale"},
+    {"name": "colonne_basse_et_poitrine", "type": "revolute", "note": "inclinaison amont 15-25 degres par rapport a la verticale monde pendant la course"},
+    {"name": "tete", "type": "revolute", "note": "compense la lean pour regarder la trajectoire"},
+    {"name": "epaules_coudes", "type": "revolute", "note": "balancier actif oppose aux jambes"},
+    {"name": "hanches_genoux_chevilles", "type": "revolute", "note": "IK analytique, genou toujours flechi vers l'avant, jamais en hyperextension"},
+    {"name": "pieds", "type": "revolute", "note": "semelles coplanaires au plan pendant chaque contact"}
+  ],
+  "supports_and_contacts": [
+    {
+      "support": "USTUDIO_PIANO_ROLL_FLOOR",
+      "supported": "K3_FABLE_RUNNER",
+      "rule": "seul support autorise ; aucun sol horizontal invisible ; contact statique sans drift tangent pendant la phase plantee",
+      "friction": {"required_minimum": 1.048, "contract": 1.25}
+    }
+  ],
+  "collision_pairs": [
+    {"a": "K3_FABLE_RUNNER", "b": "USTUDIO_PIANO_ROLL_FLOOR", "rule": "penetration maximale 0.002 m"},
+    {"a": "K3_FABLE_RUNNER", "b": "parois, plafond, cadres", "rule": "aucune traversee"},
+    {"a": "K3_FABLE_CAM_MAIN", "b": "tout le decor", "rule": "clearance minimale 0.08 m"}
+  ],
+  "locomotion_plan": {
+    "path_cross_slope_x": 0.0,
+    "start_feet_s": -0.95,
+    "step_length_m": 0.14,
+    "footfall_frames_on_beats": "premier appui fort frame 57, puis un appui par pulsation de 12.1 frames jusque vers 190, deceleration vers 203",
+    "margins_to_surface_ends_m": 0.15,
+    "balance_rule": "la projection gravitaire du centre de masse tombe pres du pied porteur : le bassin reste environ 0.14-0.17 m en amont du pied plante le long de la pente"
+  },
+  "camera_corridor": {
+    "description": "cote -X de la boite, x proche de -1.45, trois-quarts avant de 25 degres vers -Y, deplacement parallele a UPHILL_TANGENT, distance au coureur constante",
+    "clearance_margin_m": 0.08,
+    "obstacles": ["USTUDIO_PIANO_ROLL_FLOOR sous la camera", "USTUDIO_FRONT_BOTTOM_RIM", "USTUDIO_BROWSER_LEFT_WALL", "USTUDIO_CEILING"],
+    "validated": true
+  },
+  "shot_states": [
+    {"name": "S0_STILL", "time_seconds": 0.0, "object_state": "respiration au pied de la rampe, feet s proche de -0.95", "camera_state": "K1 pose laterale qui etablit la pente"},
+    {"name": "S1_WEIGHT_SHIFT", "time_seconds": 0.53, "object_state": "transfert du poids vers l'amont", "camera_state": "K1 tenue"},
+    {"name": "S2_ANTICIPATION", "time_seconds": 1.07, "object_state": "compression, genou leve, bras armes", "camera_state": "K2 court arc oppose a distance constante"},
+    {"name": "S3_ACTION", "time_seconds": 1.87, "object_state": "premier appui fort sur downbeat frame 57, course montante", "camera_state": "K3 tracking parallele a la pente"},
+    {"name": "S4_IMPACT", "time_seconds": 6.73, "object_state": "deceleration sur downbeat frame 203", "camera_state": "K3 fin de travel"},
+    {"name": "S5_SETTLE", "time_seconds": 7.3, "object_state": "recuperation amortie", "camera_state": "K4 recovery en arc court"},
+    {"name": "S6_STILL", "time_seconds": 8, "object_state": "pose finale stable sur la pente", "camera_state": "arret complet sans wobble"}
+  ],
+  "validation": {
+    "required_views": ["hero", "side", "top_or_rear_if_occluded", "surface_normal"],
+    "sample_every_n_frames": 1,
+    "critical_failure_cap": 49,
+    "thresholds": {
+      "planted_foot_tangent_drift_max_m": 0.005,
+      "penetration_max_m": 0.002,
+      "swing_toe_clearance_min_m": 0.01,
+      "root_height_error_max_m": 0.003,
+      "camera_distance_variation_max_m": 0.01,
+      "camera_decor_clearance_min_m": 0.08
+    }
+  }
+}

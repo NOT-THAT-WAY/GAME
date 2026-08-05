@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/Pulsed_3D_model.blend",
+  "scene": "FLROOM",
+  "camera": "flroom_cam_front",
+  "saved": false,
+  "artifacts": {
+    "spatial_graph": "01-spatial/scene-spatial-graph.json",
+    "camera_diagnostics": "02-camera/scene-view-diagnostics.json",
+    "continue_manifest": "03-iteration-continue/iteration-manifest.json",
+    "stop_manifest": "04-iteration-stop/iteration-manifest.json",
+    "renders": [
+      "${BLENDER_AGENT_STUDIO_ROOT}/renders/agent-workflow-demo-2026-07-19_150809/05-softbox-product.png",
+      "${BLENDER_AGENT_STUDIO_ROOT}/renders/agent-workflow-demo-2026-07-19_150809/06-dark-rim.png"
+    ]
+  }
+}

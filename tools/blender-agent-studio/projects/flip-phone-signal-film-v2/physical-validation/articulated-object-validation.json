@@ -1,0 +1,369 @@
+{
+  "schema_version": 1,
+  "blend": "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film-v2/Flip_Phone_Last_Signal_V2.blend",
+  "contract": "${BLENDER_AGENT_STUDIO_ROOT}/knowledge/physics/object-contracts/drumboii-flip-phone.json",
+  "object_class": "clamshell_flip_phone",
+  "passed": true,
+  "checks": [
+    {
+      "name": "semantic_contract_complete",
+      "passed": true,
+      "missing": []
+    },
+    {
+      "name": "joint_state_closed",
+      "frame": 1,
+      "actual_delta_degrees": 140.0,
+      "expected_delta_degrees": 140.0,
+      "error_degrees": 0.0,
+      "within_limits": true,
+      "passed": true
+    },
+    {
+      "name": "joint_state_closed_hold",
+      "frame": 288,
+      "actual_delta_degrees": 140.0,
+      "expected_delta_degrees": 140.0,
+      "error_degrees": 0.0,
+      "within_limits": true,
+      "passed": true
+    },
+    {
+      "name": "joint_state_opening_anticipation",
+      "frame": 310,
+      "actual_delta_degrees": 140.0,
+      "expected_delta_degrees": 140.0,
+      "error_degrees": 0.0,
+      "within_limits": true,
+      "passed": true
+    },
+    {
+      "name": "joint_state_open",
+      "frame": 350,
+      "actual_delta_degrees": -0.0,
+      "expected_delta_degrees": 0.0,
+      "error_degrees": 0.0,
+      "within_limits": true,
+      "passed": true
+    },
+    {
+      "name": "joint_state_open_settle",
+      "frame": 378,
+      "actual_delta_degrees": -0.0,
+      "expected_delta_degrees": 0.0,
+      "error_degrees": 0.0,
+      "within_limits": true,
+      "passed": true
+    },
+    {
+      "name": "joint_main_action_monotonic",
+      "direction": "decreasing",
+      "start_delta_degrees": 140.0,
+      "end_delta_degrees": -0.0,
+      "passed": true
+    },
+    {
+      "name": "phone_on_carrier",
+      "frame": 1,
+      "clearance_z": 0.065552,
+      "allowed": [
+        0.04,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "phone_on_carrier",
+      "frame": 144,
+      "clearance_z": 0.065552,
+      "allowed": [
+        0.04,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "phone_on_carrier",
+      "frame": 236,
+      "clearance_z": 0.065552,
+      "allowed": [
+        0.04,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "phone_on_carrier",
+      "frame": 248,
+      "clearance_z": 0.065552,
+      "allowed": [
+        0.04,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "phone_on_carrier",
+      "frame": 264,
+      "clearance_z": 0.065552,
+      "allowed": [
+        0.04,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "phone_on_carrier",
+      "frame": 276,
+      "clearance_z": 0.065552,
+      "allowed": [
+        0.04,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_above_rail",
+      "frame": 1,
+      "clearance_z": 0.055,
+      "allowed": [
+        0.03,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_above_rail",
+      "frame": 144,
+      "clearance_z": 0.055,
+      "allowed": [
+        0.03,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_above_rail",
+      "frame": 236,
+      "clearance_z": 0.055,
+      "allowed": [
+        0.03,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_crosses_above_dais",
+      "frame": 256,
+      "clearance_z": 0.285,
+      "allowed": [
+        0.25,
+        0.4
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_crosses_above_dais",
+      "frame": 264,
+      "clearance_z": 0.285,
+      "allowed": [
+        0.25,
+        0.4
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_landed_on_dais",
+      "frame": 276,
+      "clearance_z": 0.005,
+      "allowed": [
+        0.0,
+        0.02
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_landed_on_dais",
+      "frame": 288,
+      "clearance_z": 0.005,
+      "allowed": [
+        0.0,
+        0.02
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_landed_on_dais",
+      "frame": 350,
+      "clearance_z": 0.005,
+      "allowed": [
+        0.0,
+        0.02
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_landed_on_dais",
+      "frame": 432,
+      "clearance_z": 0.005,
+      "allowed": [
+        0.0,
+        0.02
+      ],
+      "passed": true
+    }
+  ],
+  "clearances": [
+    {
+      "name": "phone_on_carrier",
+      "frame": 1,
+      "clearance_z": 0.065552,
+      "allowed": [
+        0.04,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "phone_on_carrier",
+      "frame": 144,
+      "clearance_z": 0.065552,
+      "allowed": [
+        0.04,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "phone_on_carrier",
+      "frame": 236,
+      "clearance_z": 0.065552,
+      "allowed": [
+        0.04,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "phone_on_carrier",
+      "frame": 248,
+      "clearance_z": 0.065552,
+      "allowed": [
+        0.04,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "phone_on_carrier",
+      "frame": 264,
+      "clearance_z": 0.065552,
+      "allowed": [
+        0.04,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "phone_on_carrier",
+      "frame": 276,
+      "clearance_z": 0.065552,
+      "allowed": [
+        0.04,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_above_rail",
+      "frame": 1,
+      "clearance_z": 0.055,
+      "allowed": [
+        0.03,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_above_rail",
+      "frame": 144,
+      "clearance_z": 0.055,
+      "allowed": [
+        0.03,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_above_rail",
+      "frame": 236,
+      "clearance_z": 0.055,
+      "allowed": [
+        0.03,
+        0.09
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_crosses_above_dais",
+      "frame": 256,
+      "clearance_z": 0.285,
+      "allowed": [
+        0.25,
+        0.4
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_crosses_above_dais",
+      "frame": 264,
+      "clearance_z": 0.285,
+      "allowed": [
+        0.25,
+        0.4
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_landed_on_dais",
+      "frame": 276,
+      "clearance_z": 0.005,
+      "allowed": [
+        0.0,
+        0.02
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_landed_on_dais",
+      "frame": 288,
+      "clearance_z": 0.005,
+      "allowed": [
+        0.0,
+        0.02
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_landed_on_dais",
+      "frame": 350,
+      "clearance_z": 0.005,
+      "allowed": [
+        0.0,
+        0.02
+      ],
+      "passed": true
+    },
+    {
+      "name": "carrier_landed_on_dais",
+      "frame": 432,
+      "clearance_z": 0.005,
+      "allowed": [
+        0.0,
+        0.02
+      ],
+      "passed": true
+    }
+  ],
+  "principle": "physics + articulation + affordance; no single layer is sufficient"
+}

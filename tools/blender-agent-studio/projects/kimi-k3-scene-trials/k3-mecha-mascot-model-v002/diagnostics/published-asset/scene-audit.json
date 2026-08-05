@@ -1,0 +1,331 @@
+{
+  "schema_version": 2,
+  "file": "${BLENDER_AGENT_STUDIO_ROOT}/asset_library/characters/mecha-mascot-v002.blend",
+  "blender_version": "5.1.1",
+  "saved": true,
+  "active_scene": "MECHA_MASCOT_ASSET",
+  "summary": {
+    "scenes": 1,
+    "objects": 3,
+    "meshes": 2,
+    "materials": 2,
+    "images": 0,
+    "missing_images": 0,
+    "asset_blocks": 2,
+    "external_libraries": 0,
+    "geometry_issue_objects": 0
+  },
+  "scenes": [
+    {
+      "name": "MECHA_MASCOT_ASSET",
+      "active": true,
+      "objects": 3,
+      "camera": null,
+      "frame_range": [
+        1,
+        1
+      ],
+      "fps": 24.0,
+      "engine": "BLENDER_EEVEE",
+      "resolution": [
+        720,
+        720,
+        100
+      ],
+      "pixel_aspect": [
+        1.0,
+        1.0
+      ],
+      "film_transparent": false,
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v002/gates/views/side.png",
+      "file_format": "PNG",
+      "view_transform": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "exposure": 0.0,
+      "gamma": 1.0,
+      "units": {
+        "system": "METRIC",
+        "scale_length": 1.0,
+        "length_unit": "METERS"
+      },
+      "markers": [
+        {
+          "name": "K3_MECHA_K1_POSE",
+          "frame": 1
+        },
+        {
+          "name": "K3_MECHA_K2_ANTICIPATION",
+          "frame": 18
+        },
+        {
+          "name": "K3_MECHA_K3_TRAVEL",
+          "frame": 108
+        },
+        {
+          "name": "K3_MECHA_K4_RECOVERY",
+          "frame": 132
+        },
+        {
+          "name": "K3_MECHA_HOLD",
+          "frame": 144
+        }
+      ]
+    }
+  ],
+  "collections": [
+    {
+      "name": "K3_MECHA_MASCOT_ASSET",
+      "objects": 3,
+      "children": [],
+      "asset": true
+    }
+  ],
+  "objects": [
+    {
+      "name": "K3_MECHA_BODY",
+      "type": "MESH",
+      "collections": [
+        "K3_MECHA_MASCOT_ASSET"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        2.20851,
+        0.30149,
+        1.74403
+      ],
+      "parent": "K3_MECHA_MASCOT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "K3_MECHA_FINAL_SUBDIVISION",
+          "type": "SUBSURF"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "K3_MECHA_MAT_BODY"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "deformation_ready",
+        "front_axis",
+        "recommended_secondary_deformer",
+        "semantic_role"
+      ],
+      "geometry": {
+        "mesh": "K3_MECHA_BODY_MESH",
+        "vertices": 6348,
+        "edges": 13792,
+        "polygons": 7446,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 2200,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "K3_MECHA_HEAD",
+      "type": "MESH",
+      "collections": [
+        "K3_MECHA_MASCOT_ASSET"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        1.79802
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.55,
+        0.528,
+        0.55
+      ],
+      "parent": "K3_MECHA_MASCOT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "K3_MECHA_MAT_BODY"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "semantic_role",
+        "separate_for_future_animation"
+      ],
+      "geometry": {
+        "mesh": "K3_MECHA_HEAD_MESH",
+        "vertices": 1986,
+        "edges": 4032,
+        "polygons": 2048,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 128,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "K3_MECHA_MASCOT_ROOT",
+      "type": "EMPTY",
+      "collections": [
+        "K3_MECHA_MASCOT_ASSET"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [
+        "asset_name",
+        "front_axis",
+        "up_axis"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "K3_MECHA_MAT_BODY",
+      "users": 3,
+      "asset": true,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "K3_MECHA_MAT_GROUND",
+      "users": 0,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    }
+  ],
+  "images": [],
+  "assets": [
+    {
+      "type": "collections",
+      "name": "K3_MECHA_MASCOT_ASSET",
+      "description": "Mecha Mascot — reusable soft humanoid character",
+      "author": "UNRECORDED",
+      "catalog_id": "78b89a7c-a662-4fc9-9b68-401d8b8f661a",
+      "tags": [
+        "character",
+        "mascot",
+        "squishy",
+        "organic",
+        "mecha"
+      ]
+    },
+    {
+      "type": "materials",
+      "name": "K3_MECHA_MAT_BODY",
+      "description": "Warm neutral material for the Mecha Mascot organic body",
+      "author": "UNRECORDED",
+      "catalog_id": "00000000-0000-0000-0000-000000000000",
+      "tags": []
+    }
+  ],
+  "external_libraries": [],
+  "issues": {
+    "missing_images": [],
+    "objects_with_unapplied_scale": [],
+    "unnamed_objects": [],
+    "geometry": {},
+    "scenes_without_camera": [
+      "MECHA_MASCOT_ASSET"
+    ],
+    "scenes_without_units": []
+  }
+}

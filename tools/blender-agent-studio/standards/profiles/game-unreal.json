@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "id": "game-unreal",
+  "domain": "game-asset",
+  "blender_units": "meters",
+  "target": "Unreal Engine project declared in the project contract",
+  "target_units": "centimeters",
+  "target_axes": {"up": "Z", "forward": "+X", "conversion_must_be_verified": true},
+  "budgets_must_be_declared": ["triangles_per_lod", "nanite_policy", "materials", "texture_memory", "bones", "colliders"],
+  "required_gates": [
+    "unreal_scale", "unreal_orientation", "pivot", "lod_or_nanite", "simple_and_complex_collision",
+    "uv_and_lightmap", "materials", "skeleton_if_present", "animation_clips_if_present", "unreal_import_report"
+  ],
+  "preferred_interchange": ["fbx", "glb", "usd"],
+  "note": "Record exporter and importer settings; validate the result in the declared Unreal version.",
+  "final_validator": "workflows/tools/validate_team_project.py"
+}

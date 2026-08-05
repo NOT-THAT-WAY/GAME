@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "beginner-blender-tutorial-2026",
+  "title": "Beginner Blender Tutorial 2026",
+  "status": "ready_for_ai",
+  "source_name": "source.mp4",
+  "original_filename": "Beginner Blender Tutorial 2026.mp4",
+  "original_sha256": "d527529a9cdffa39e4d733ceba44d68635655cdda0e02fea798f60817c1a6de5",
+  "source_policy": "Original conservé dans _incoming; lien symbolique utilisé sans duplication",
+  "created": "2026-07-19T01:45:00+02:00",
+  "updated": "2026-07-19T02:05:46+02:00",
+  "analysis_status": "completed",
+  "technical": {
+    "duration": 15550.065442,
+    "frame_interval_requested": 30.0,
+    "frame_interval_effective": 32.39596967083333,
+    "scene_threshold": 0.24,
+    "regular_frame_count": 480,
+    "scene_frame_count": 300,
+    "has_video": true,
+    "has_audio": true
+  },
+  "evidence": {
+    "source": "knowledge/tutorials/_incoming/Beginner Blender Tutorial 2026.mp4",
+    "probe": "knowledge/tutorials/beginner-blender-tutorial-2026/probe.json",
+    "frames_dir": "knowledge/tutorials/beginner-blender-tutorial-2026/frames/regular",
+    "scenes_dir": "knowledge/tutorials/beginner-blender-tutorial-2026/frames/scenes",
+    "contact_sheet": "knowledge/tutorials/beginner-blender-tutorial-2026/contact-sheet.jpg",
+    "audio": "knowledge/tutorials/beginner-blender-tutorial-2026/audio.wav",
+    "transcript": "knowledge/tutorials/beginner-blender-tutorial-2026/transcript.json"
+  },
+  "analysis_outputs": {
+    "analysis": "knowledge/tutorials/beginner-blender-tutorial-2026/analysis.json",
+    "report": "knowledge/tutorials/beginner-blender-tutorial-2026/ANALYSIS.md",
+    "recipes": "knowledge/tutorials/beginner-blender-tutorial-2026/WORKFLOW_RECIPES.md",
+    "shortcuts": "knowledge/tutorials/beginner-blender-tutorial-2026/SHORTCUTS_AND_OPERATORS.md",
+    "contact_sheets": "knowledge/tutorials/beginner-blender-tutorial-2026/contact-sheets",
+    "keyframes": "knowledge/tutorials/beginner-blender-tutorial-2026/keyframes"
+  }
+}

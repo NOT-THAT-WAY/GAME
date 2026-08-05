@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-kimi-v001",
+  "created_at": "2026-07-21T01:59:40+02:00",
+  "status": "final",
+  "source_blend": "projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+  "source_blend_bytes": 161144,
+  "output_root": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-kimi-v001",
+  "source_overwrite_allowed": false,
+  "trial_blend": "scene/trial.blend",
+  "preview": "renders/preview.mp4",
+  "validation": "validation-report.json"
+}

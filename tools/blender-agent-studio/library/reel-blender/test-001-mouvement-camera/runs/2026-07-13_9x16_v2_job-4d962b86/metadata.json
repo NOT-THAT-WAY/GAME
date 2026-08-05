@@ -1,0 +1,23 @@
+{
+  "job_id": "4d962b86-135e-4ab9-9be1-6225743cdc9d",
+  "date": "2026-07-13",
+  "lane": "MCP Higgsfield",
+  "model": "seedance_2_0",
+  "mode": "fast",
+  "resolution": "720p",
+  "aspect_ratio": "9:16",
+  "duration_s": 6,
+  "generate_audio": false,
+  "cost_credits": 21,
+  "balance_after_two_runs": 758,
+  "prompt_file": "../../prompts/seedance-v2v-9x16-v2.md",
+  "declined_preset": "24bae836-2c4a-48e0-89b6-49fcc0b21612 (IN THE DARK)",
+  "diff_vs_run1": "panels storyboard retires des refs (canoniques only) + verrou orientation landscape dans MOTION SOURCE + edges sealed dans CONSTRAINTS",
+  "medias": [
+    {"ref": "01_canonical_front.png", "role": "image_references", "media_id": "4514c2bf-17a7-4061-b989-a4d8751c609a"},
+    {"ref": "02_canonical_back.png", "role": "image_references", "media_id": "ffe1c8d7-df23-4ba7-bd54-32da087f7ec3"},
+    {"ref": "03_canonical_side.png", "role": "image_references", "media_id": "b520c2ee-3953-4418-aca6-aef514a55ba0"},
+    {"ref": "08_blender_motion_skeleton_6s.mp4", "role": "video_references", "media_id": "5e8aa801-5a3d-4c99-a45f-d3021f868166"}
+  ],
+  "motion_source": "blender-choreography/runs/sb-001-crane-2026-07-13/preview_sb001_6s.mp4"
+}

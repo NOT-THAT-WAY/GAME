@@ -1,0 +1,43 @@
+{
+  "id": "create-mecha-mascot-asset",
+  "name": "Créer la mascotte Mecha organique",
+  "icon": "●",
+  "category": "asset modeling",
+  "mode": "Blender batch",
+  "risk": "écriture bornée",
+  "description": "Construit le corps organique et la tête de la mascotte depuis la référence, prépare la collection asset et produit les gates du trial sans toucher aux .blend sources.",
+  "script": "workflows/scripts/create_mecha_mascot_asset.py",
+  "timeout": 1200,
+  "produces_output": true,
+  "warning": "Le script efface la scène chargée. Il doit être exécuté en batch avec --factory-startup dans un asset-build dédié, jamais via MCP.",
+  "safety_notes": [
+    "L’app refuse ce workflow tant qu’un dispatcher batch isolé n’est pas disponible.",
+    "Le dossier cible doit vivre sous projects/asset-builds/ ou un essai isolé déclaré."
+  ],
+  "fields": [
+    {
+      "id": "trial_dir",
+      "type": "text",
+      "label": "Dossier trial",
+      "required": true
+    },
+    {
+      "id": "reference_image",
+      "type": "text",
+      "label": "Image de référence",
+      "required": true
+    }
+  ],
+  "execution": "batch",
+  "mutates_scene": true,
+  "requires_confirmation": true,
+  "requires_working_copy": true,
+  "enabled_in_app": false,
+  "save_policy": "isolated_output_only",
+  "evidence_level": "operation",
+  "domains": [
+    "asset"
+  ],
+  "maturity": "project-derived",
+  "scope": "generic-or-adaptable"
+}

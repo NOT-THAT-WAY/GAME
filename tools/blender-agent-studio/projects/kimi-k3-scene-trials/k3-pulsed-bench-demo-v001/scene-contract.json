@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pulsed-bench-demo-v001",
+  "status": "locked",
+  "locked_before_animation": true,
+  "coordinate_frame": {
+    "up": "+Z",
+    "user_side": "-Y",
+    "front": "-Y",
+    "right": "+X",
+    "units": "meters",
+    "scale_note": "Le modele natif est en BU ou 1 BU = 1 cm. K3_PULSED_BENCH_V001_ROOT porte un scale 0.01, donc les coordonnees monde de la scene d'essai SONT des metres et se comparent directement aux seuils."
+  },
+  "objects": [
+    {
+      "name": "PV2_shell_back",
+      "semantic_role": "hero_subject_support_face",
+      "fixed_or_moving": "fixed",
+      "parent": "K3_PULSED_BENCH_V001_ROOT",
+      "interaction_surfaces": [],
+      "support_surfaces": ["dome dorsal, en appui sur le plateau"],
+      "allowed_motion": [],
+      "forbidden_motion": ["teleport", "unmotivated_drift", "environment_intersection"]
+    },
+    {
+      "name": "PV2_shell_front",
+      "semantic_role": "hero_subject_information_face",
+      "fixed_or_moving": "fixed",
+      "parent": "K3_PULSED_BENCH_V001_ROOT",
+      "interaction_surfaces": ["plaque encastree portant les cinq commandes"],
+      "support_surfaces": [],
+      "allowed_motion": [],
+      "forbidden_motion": ["teleport", "unmotivated_drift", "environment_intersection"]
+    },
+    {
+      "name": "PV2_wheel",
+      "semantic_role": "control_encoder",
+      "fixed_or_moving": "moving",
+      "parent": "K3_PULSED_BENCH_V001_ROOT",
+      "interaction_surfaces": ["tambour crante"],
+      "support_surfaces": [],
+      "allowed_motion": ["rotation autour de X local"],
+      "forbidden_motion": ["translation", "rotation hors axe X"]
+    },
+    {
+      "name": "PV2_gain_knob",
+      "semantic_role": "control_prismatic",
+      "fixed_or_moving": "moving",
+      "parent": "K3_PULSED_BENCH_V001_ROOT",
+      "interaction_surfaces": ["knob de gain"],
+      "support_surfaces": [],
+      "allowed_motion": ["translation Z locale, course 0 a 1.10 BU"],
+      "forbidden_motion": ["sortie de fente", "contact avec le D-pad"]
+    },
+    {
+      "name": "PV2_hslider_cap",
+      "semantic_role": "control_prismatic",
+      "fixed_or_moving": "moving",
+      "parent": "K3_PULSED_BENCH_V001_ROOT",
+      "interaction_surfaces": ["cap a cheval sur le rail surelev"],
+      "support_surfaces": [],
+      "allowed_motion": ["translation X locale, course 0 a 1.70 BU"],
+      "forbidden_motion": ["butee de rail", "sortie du rail"]
+    },
+    {
+      "name": "PV2_dpad",
+      "semantic_role": "control_rocker",
+      "fixed_or_moving": "moving",
+      "parent": "K3_PULSED_BENCH_V001_ROOT",
+      "interaction_surfaces": ["croix directionnelle"],
+      "support_surfaces": [],
+      "allowed_motion": ["bascule autour de Z local, plus ou moins 8 degres"],
+      "forbidden_motion": ["translation", "bascule au-dela de 8 degres"]
+    },
+    {
+      "name": "K3_PULSED_BENCH_V001_BENCH",
+      "semantic_role": "support_surface",
+      "fixed_or_moving": "fixed",
+      "parent": "none",
+      "interaction_surfaces": [],
+      "support_surfaces": ["plateau superieur, plan derive du mesh"],
+      "allowed_motion": [],
+      "forbidden_motion": ["teleport", "unmotivated_drift", "environment_intersection"]
+    }
+  ],
+  "joints": [
+    {"name": "wheel", "object": "PV2_wheel", "type": "revolute", "axis": "X", "limits_degrees": [-3600.0, 3600.0], "contract": "knowledge/physics/object-contracts/pulsed.json"},
+    {"name": "gain_slider", "object": "PV2_gain_knob", "type": "prismatic", "axis": "Z", "travel_bu": [0.0, 1.10], "contract": "knowledge/physics/object-contracts/pulsed.json"},
+    {"name": "horizontal_slider", "object": "PV2_hslider_cap", "type": "prismatic", "axis": "X", "travel_bu": [0.0, 1.70], "contract": "knowledge/physics/object-contracts/pulsed.json"},
+    {"name": "dpad", "object": "PV2_dpad", "type": "revolute", "axis": "Z", "limits_degrees": [-8.0, 8.0], "contract": "knowledge/physics/object-contracts/pulsed.json"}
+  ],
+  "supports_and_contacts": [
+    {
+      "name": "pulsed_on_bench",
+      "subject": "PV2_shell_back",
+      "support": "K3_PULSED_BENCH_V001_BENCH",
+      "type": "planted_contact",
+      "expected": "contact permanent du frame 1 au frame 144, sans penetration ni glissement",
+      "support_plane_source": "max Z des sommets EVALUES du mesh du banc, recalcule a chaque frame"
+    }
+  ],
+  "collision_pairs": [
+    {"a": "PV2_shell_back", "b": "K3_PULSED_BENCH_V001_BENCH", "method": "BVHTree.overlap sur triangles evalues"},
+    {"a": "PV2_shell_front", "b": "K3_PULSED_BENCH_V001_BENCH", "method": "BVHTree.overlap sur triangles evalues"}
+  ],
+  "camera_corridor": {
+    "description": "Arc montant de gauche a droite, de z 0.128 m a z 0.286 m, a 0.30 a 0.40 m du sujet. Le seul obstacle est le plateau du banc, situe sous la trajectoire.",
+    "clearance_margin_m": 0.08,
+    "obstacles": ["K3_PULSED_BENCH_V001_BENCH", "PV2_shell_front", "PV2_shell_back"],
+    "validated": true
+  },
+  "shot_states": [
+    {"name": "S0_STILL", "time_seconds": 0.0, "object_state": "au repos, toutes commandes en position basse, waveform lente", "camera_state": "K1 pose rasante, lecture de la face"},
+    {"name": "S1_ANTICIPATION", "time_seconds": 1.0, "object_state": "molette en recul bref avant de rouler", "camera_state": "K2 recul a l'oppose du travel"},
+    {"name": "S2_ACTION", "time_seconds": 2.0, "object_state": "molette en rotation, frequence en hausse", "camera_state": "debut de l'arc montant"},
+    {"name": "S3_IMPACT", "time_seconds": 5.0, "object_state": "gain haut, slider horizontal en position de melange, amplitude maximale", "camera_state": "K3 travel, trois-quarts haut"},
+    {"name": "S4_SETTLE", "time_seconds": 5.7, "object_state": "appui D-pad puis relachement, creux d'amplitude", "camera_state": "entree du recovery"},
+    {"name": "S5_STILL", "time_seconds": 6, "object_state": "etat stable, appareil toujours en appui", "camera_state": "K4 recovery, arret net"}
+  ],
+  "validation": {
+    "evaluation_rules": "knowledge/SCENE_TRIAL_EVALUATION_RULES.md",
+    "object_contract": "knowledge/physics/object-contracts/pulsed.json",
+    "physical_evidence_schema_version": 2,
+    "required_views": ["hero", "side", "top_or_rear_if_occluded"],
+    "sample_every_n_frames": 1,
+    "thresholds_locked_before_animation": true,
+    "default_thresholds_m": {
+      "max_environment_penetration": 0.002,
+      "max_planted_support_gap": 0.005,
+      "max_planted_drift": 0.005,
+      "min_swing_clearance": 0.01,
+      "min_camera_clearance": 0.08
+    },
+    "threshold_change_log": [
+      "Aucun seuil n'a ete assoupli. La premiere passe de preuves a mesure 74 mm de clearance camera contre 80 mm exiges : c'est la TRAJECTOIRE CAMERA qui a ete relevee, pas le seuil."
+    ],
+    "critical_failure_cap": 49
+  }
+}

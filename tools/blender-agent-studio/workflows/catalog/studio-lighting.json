@@ -1,0 +1,124 @@
+{
+  "id": "studio-lighting",
+  "name": "Éclairage studio contrôlé",
+  "icon": "☼",
+  "category": "lighting production",
+  "mode": "MCP interactif",
+  "risk": "écriture",
+  "description": "Crée ou remplace un rig BAS_LIGHTING adapté aux bounds évalués. Le preset neutre est le défaut; Drumboiii reste un profil opt-in.",
+  "script": "workflows/scripts/studio_lighting.py",
+  "timeout": 120,
+  "produces_output": false,
+  "warning": "Remplace BAS_LIGHTING, peut masquer les autres lights et modifier le view transform. Drumboiii crée un nouveau World dédié sans effacer l’original. Le fichier n’est pas sauvegardé.",
+  "fields": [
+    {
+      "id": "preset",
+      "type": "select",
+      "label": "Preset",
+      "options": [
+        "drumboiii-layered",
+        "softbox-product",
+        "three-point",
+        "dark-rim"
+      ],
+      "default": "softbox-product"
+    },
+    {
+      "id": "target_collection",
+      "type": "text",
+      "label": "Collection cible (vide = auto)",
+      "default": ""
+    },
+    {
+      "id": "intensity",
+      "type": "number",
+      "label": "Intensité globale",
+      "default": 1,
+      "min": 0.1,
+      "max": 5,
+      "step": 0.05
+    },
+    {
+      "id": "mute_existing_lights",
+      "type": "boolean",
+      "label": "Neutraliser les autres lights",
+      "default": true
+    },
+    {
+      "id": "configure_world",
+      "type": "boolean",
+      "label": "Monde séparé caméra / éclairage",
+      "default": true
+    },
+    {
+      "id": "world_strength",
+      "type": "number",
+      "label": "Force base environnement",
+      "default": 0.7,
+      "min": 0,
+      "max": 2,
+      "step": 0.05
+    },
+    {
+      "id": "visible_world_strength",
+      "type": "number",
+      "label": "Force ciel visible",
+      "default": 0.35,
+      "min": 0,
+      "max": 2,
+      "step": 0.05
+    },
+    {
+      "id": "hdri_path",
+      "type": "text",
+      "label": "HDRI local optionnel",
+      "default": ""
+    },
+    {
+      "id": "render_engine",
+      "type": "select",
+      "label": "Moteur rendu",
+      "options": [
+        "CYCLES",
+        "BLENDER_EEVEE_NEXT",
+        "KEEP"
+      ],
+      "default": "CYCLES"
+    },
+    {
+      "id": "view_transform",
+      "type": "select",
+      "label": "Transform de vue",
+      "options": [
+        "AgX",
+        "Khronos PBR Neutral"
+      ],
+      "default": "AgX"
+    }
+  ],
+  "guide": [
+    "Commencer par le profil du brief; neutral-production utilise softbox-product par défaut.",
+    "Pour Drumboiii: environnement à 0,5–0,7, soleil oblique, fort backlight, puis glimmers subtils.",
+    "Juger chaque lampe en solo puis en A/B; une lampe sans différence lisible doit être déplacée, renforcée ou supprimée.",
+    "Les ratios 1400/440/170/220 viennent du tutoriel; le script les adapte à l'échelle du sujet et à la caméra.",
+    "Utiliser Khronos PBR Neutral pour contrôler la fidélité des couleurs produit.",
+    "Le World original est conservé et référencé dans la collection BAS_LIGHTING.",
+    "Rendre un gate avant toute sauvegarde."
+  ],
+  "execution": "mcp",
+  "mutates_scene": true,
+  "requires_confirmation": true,
+  "requires_working_copy": true,
+  "enabled_in_app": true,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "operation",
+  "domains": [
+    "asset",
+    "game-asset",
+    "environment",
+    "cinematic",
+    "still"
+  ],
+  "maturity": "stable",
+  "scope": "generic-or-adaptable"
+}

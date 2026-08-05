@@ -1,0 +1,5298 @@
+{
+  "source": "transcript-source.srt",
+  "format": "srt",
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 26.18,
+      "text": "Hello everyone, in this tutorial, I'm going to break down how I made this Ray-Ben meta commercial in Blender."
+    },
+    {
+      "start": 26.18,
+      "end": 32.89,
+      "text": "I'll quickly run through how I modeled the glasses and then I'll show you how the scene was set up as well as how I did"
+    },
+    {
+      "start": 32.89,
+      "end": 37.72,
+      "text": "this effect right here where the glasses breaks apart and comes back together."
+    },
+    {
+      "start": 37.72,
+      "end": 43.96,
+      "text": "If you want access to this entire blend file, you can download it by becoming a member on my Patreon."
+    },
+    {
+      "start": 43.96,
+      "end": 50.8,
+      "text": "So consider becoming a member on my Patreon and get access to my past and future tutorial project files."
+    },
+    {
+      "start": 50.8,
+      "end": 55.36,
+      "text": "Alright, without further ado, let's get started with the tutorial."
+    },
+    {
+      "start": 56.18,
+      "end": 59.24,
+      "text": "Okay, so I'm going to hit A and then X to delete everything."
+    },
+    {
+      "start": 59.24,
+      "end": 65.08,
+      "text": "I'll do shift A and we'll add in a reference image to help us model our glasses."
+    },
+    {
+      "start": 65.08,
+      "end": 71.84,
+      "text": "So I'll choose reference right here, downloads right here, and I'm going to be using these Ray-Ben photos right here."
+    },
+    {
+      "start": 71.84,
+      "end": 73.16,
+      "text": "So I'll leave a link in the description."
+    },
+    {
+      "start": 73.16,
+      "end": 76.44,
+      "text": "You could download them and then save them and then open them up like this."
+    },
+    {
+      "start": 76.44,
+      "end": 79.16,
+      "text": "Okay, and I'm going to select my reference photo."
+    },
+    {
+      "start": 79.26,
+      "end": 81.72,
+      "text": "I'm going to go to the transformation settings and I'll just zero it out."
+    },
+    {
+      "start": 81.72,
+      "end": 86.92,
+      "text": "And then I'll put 90 on the X axis and we're good to go."
+    },
+    {
+      "start": 86.92,
+      "end": 88.48,
+      "text": "So we'll go to the minus Y view."
+    },
+    {
+      "start": 88.48,
+      "end": 91.96000000000001,
+      "text": "I'm going to go over here and just decrease the opacity a bit."
+    },
+    {
+      "start": 91.96000000000001,
+      "end": 95.18,
+      "text": "To model this, I'm just going to basically be tracing over it."
+    },
+    {
+      "start": 95.18,
+      "end": 96.38,
+      "text": "Okay, then hit shift A."
+    },
+    {
+      "start": 96.38,
+      "end": 97.66,
+      "text": "We'll add in a mesh cube."
+    },
+    {
+      "start": 97.66,
+      "end": 99.7,
+      "text": "Okay, go into edit mode."
+    },
+    {
+      "start": 100.03999999999999,
+      "end": 103.64,
+      "text": "And with the entire cube selected, we'll hit M and then merge at center."
+    },
+    {
+      "start": 103.64,
+      "end": 108.08,
+      "text": "Go back to minus Y and you can see that there's one vertice in the middle."
+    },
+    {
+      "start": 108.08,
+      "end": 111.66,
+      "text": "Go back into object mode for a second and we'll go to the modifiers."
+    },
+    {
+      "start": 111.66,
+      "end": 113.34,
+      "text": "We'll add in a mirror modifier."
+    },
+    {
+      "start": 113.34,
+      "end": 117.0,
+      "text": "So search for a mirror modifier and then we can go back into edit mode."
+    },
+    {
+      "start": 117.0,
+      "end": 118.72,
+      "text": "And now we can start tracing over."
+    },
+    {
+      "start": 118.72,
+      "end": 123.24,
+      "text": "So we'll go hit G and then Z on our keyboard to move it up."
+    },
+    {
+      "start": 123.24,
+      "end": 125.24,
+      "text": "And we'll start from this point right here."
+    },
+    {
+      "start": 125.24,
+      "end": 128.92,
+      "text": "Okay, and then we'll hit E on my keyboard to extrude it."
+    },
+    {
+      "start": 129.32,
+      "end": 130.66,
+      "text": "I'm going to start extruding it."
+    },
+    {
+      "start": 130.66,
+      "end": 133.1,
+      "text": "So we might need to move this a little down actually."
+    },
+    {
+      "start": 133.1,
+      "end": 133.94,
+      "text": "There we go."
+    },
+    {
+      "start": 133.94,
+      "end": 135.74,
+      "text": "And now we can start tracing."
+    },
+    {
+      "start": 135.74,
+      "end": 138.72,
+      "text": "So deselect, select this vertice at the end."
+    },
+    {
+      "start": 138.72,
+      "end": 143.18,
+      "text": "And then we'll just hit E and we'll keep extruding until the entire,"
+    },
+    {
+      "start": 143.18,
+      "end": 145.74,
+      "text": "and we'll keep extruding around the entire glasses."
+    },
+    {
+      "start": 145.74,
+      "end": 154.36,
+      "text": "Be patient here."
+    },
+    {
+      "start": 154.36,
+      "end": 155.16,
+      "text": "You don't have to rush it."
+    },
+    {
+      "start": 159.32,
+      "end": 187.36,
+      "text": "Once we get to the end portion here, we'll start adding smaller and smaller vertices to make up for the, you know,"
+    },
+    {
+      "start": 187.36,
+      "end": 188.18,
+      "text": "rounded edges here."
+    },
+    {
+      "start": 188.18,
+      "end": 195.74,
+      "text": "So let's do like this and I'm just taking my timer."
+    },
+    {
+      "start": 195.8,
+      "end": 203.36,
+      "text": "So let's do like this and I'm just taking my timer."
+    },
+    {
+      "start": 203.36,
+      "end": 205.36,
+      "text": "So let's do like this and I'm just taking my timer."
+    },
+    {
+      "start": 205.36,
+      "end": 207.42000000000002,
+      "text": "So let's do like this and I'm just taking my timer."
+    },
+    {
+      "start": 207.42000000000002,
+      "end": 209.36,
+      "text": "So let's do like this and I'm just taking my timer."
+    },
+    {
+      "start": 209.36,
+      "end": 211.36,
+      "text": "So let's do like this and I'm just taking my timer."
+    },
+    {
+      "start": 211.36,
+      "end": 213.42000000000002,
+      "text": "So let's do like this and I'm just taking my timer."
+    },
+    {
+      "start": 213.42000000000002,
+      "end": 215.42000000000002,
+      "text": "So let's do like this and I'm just taking my timer."
+    },
+    {
+      "start": 215.42000000000002,
+      "end": 217.42000000000002,
+      "text": "So let's do like this and I'm just taking my timer."
+    },
+    {
+      "start": 217.42000000000002,
+      "end": 219.36,
+      "text": "So let's do like this and I'm just taking my timer."
+    },
+    {
+      "start": 219.36,
+      "end": 230.06,
+      "text": "Okay, I'm nearing the end here."
+    },
+    {
+      "start": 230.06,
+      "end": 236.07999999999998,
+      "text": "I'm just going to click on clipping right here and then I'll hit E again to extrude and then I'll just hit X and then I'll"
+    },
+    {
+      "start": 236.07999999999998,
+      "end": 238.3,
+      "text": "just bring it towards the middle and then click."
+    },
+    {
+      "start": 238.98,
+      "end": 242.18,
+      "text": "Okay, and now it is pretty much done and traced."
+    },
+    {
+      "start": 242.18,
+      "end": 250.4,
+      "text": "I can just hit A and then hit F and we can fill in those faces and now we have a perfect outline of our glasses."
+    },
+    {
+      "start": 250.4,
+      "end": 257.3,
+      "text": "Okay, now we can move on to the next step by going to wireframe and we need to make this hole here for the lenses."
+    },
+    {
+      "start": 257.66,
+      "end": 262.48,
+      "text": "So to do that, I'm just going to deselect for a second so I can see it better then I'm going to zoom in."
+    },
+    {
+      "start": 262.48,
+      "end": 266.75,
+      "text": "I'll just start cutting a hole using the knife tool so you can click on the knife tool right here or you can just hit K"
+    },
+    {
+      "start": 266.75,
+      "end": 267.54,
+      "text": "on your keyboard."
+    },
+    {
+      "start": 267.54,
+      "end": 275.48,
+      "text": "Okay, there we go and then I'll just start clicking right here and we'll start making the hole for the lens."
+    },
+    {
+      "start": 275.48,
+      "end": 279.92,
+      "text": "Again, take your time with this, no need to rush."
+    },
+    {
+      "start": 287.65999999999997,
+      "end": 314.16,
+      "text": "Okay, there we go and now I can just hit enter and now I got a hole for the lenses."
+    },
+    {
+      "start": 315.42,
+      "end": 317.14,
+      "text": "Let's go and use the face select tool."
+    },
+    {
+      "start": 317.14,
+      "end": 321.5,
+      "text": "I'll just select the middle face and then I can just hit X and I'll delete faces."
+    },
+    {
+      "start": 321.5,
+      "end": 322.38,
+      "text": "There we go."
+    },
+    {
+      "start": 322.38,
+      "end": 330.72,
+      "text": "Okay, now to make the holes for the camera lenses right here, let me just show you what I mean."
+    },
+    {
+      "start": 330.72,
+      "end": 335.26,
+      "text": "If I open up a new window, you don't have to do this but I just want to show you what I mean."
+    },
+    {
+      "start": 335.26,
+      "end": 343.22,
+      "text": "Let's go to, so these are the metaglasses that I'm actually going to be making in the commercial"
+    },
+    {
+      "start": 343.22,
+      "end": 346.38,
+      "text": "and we want to make this camera part right here."
+    },
+    {
+      "start": 346.38,
+      "end": 352.06,
+      "text": "Okay, and the reason why I'm not using this reference photo is because I don't have, you know, a side view of the legs"
+    },
+    {
+      "start": 352.06,
+      "end": 352.46,
+      "text": "here."
+    },
+    {
+      "start": 352.46,
+      "end": 354.38,
+      "text": "So that's why I decided to go with this."
+    },
+    {
+      "start": 354.38,
+      "end": 360.44,
+      "text": "They're generally the same shape so it's fine but yeah, let's go ahead and just let's make the camera lens."
+    },
+    {
+      "start": 360.44,
+      "end": 363.86,
+      "text": "So to do that, we're going to go into optic mode."
+    },
+    {
+      "start": 363.86,
+      "end": 366.6,
+      "text": "Just hide this for a second by going here, hide."
+    },
+    {
+      "start": 367.6,
+      "end": 374.62,
+      "text": "Go to solid view, we can just go ahead and do shift D to duplicate this and then escape to set it back in place."
+    },
+    {
+      "start": 374.62,
+      "end": 380.02,
+      "text": "This is just a backup copy that you can use in case you make a mistake so you can go back to it."
+    },
+    {
+      "start": 380.02,
+      "end": 384.66,
+      "text": "So let's just go over here, turn on this camera icon and we can just hide our backup copy."
+    },
+    {
+      "start": 384.76,
+      "end": 390.22,
+      "text": "So now that we have our, you know, frames, we're going to go make the lens, camera lens."
+    },
+    {
+      "start": 390.22,
+      "end": 393.2,
+      "text": "Let's do shift A, we'll add in a cylinder."
+    },
+    {
+      "start": 393.2,
+      "end": 397.96,
+      "text": "I'm going to go to add cylinder, let's make the radius 0.1."
+    },
+    {
+      "start": 397.96,
+      "end": 405.58,
+      "text": "I'll do RX 90 and let's go to the minus Y view and we'll just move it over."
+    },
+    {
+      "start": 406.62,
+      "end": 410.72,
+      "text": "So we can see that it's located like generally around this area."
+    },
+    {
+      "start": 410.72,
+      "end": 413.54,
+      "text": "So let's move it over here."
+    },
+    {
+      "start": 413.54,
+      "end": 417.42,
+      "text": "You can make it just a bit smaller by hitting S."
+    },
+    {
+      "start": 417.42,
+      "end": 418.64,
+      "text": "I'll just make it a little smaller."
+    },
+    {
+      "start": 418.64,
+      "end": 420.1,
+      "text": "I think that's good."
+    },
+    {
+      "start": 420.1,
+      "end": 425.4,
+      "text": "Okay, now we can go ahead and we'll select frames right here."
+    },
+    {
+      "start": 425.4,
+      "end": 427.04,
+      "text": "We can rename this to frames."
+    },
+    {
+      "start": 427.04,
+      "end": 429.16,
+      "text": "Yeah, we'll select them, go to the modifiers."
+    },
+    {
+      "start": 429.16,
+      "end": 433.3,
+      "text": "We'll add modifier and we can add in a boolean modifier."
+    },
+    {
+      "start": 433.3,
+      "end": 435.9,
+      "text": "And for the object, we'll select our cylinder right here."
+    },
+    {
+      "start": 436.5,
+      "end": 441.08,
+      "text": "And it should make a hole right through our frames."
+    },
+    {
+      "start": 441.08,
+      "end": 443.74,
+      "text": "So I'll just go ahead and just hit apply."
+    },
+    {
+      "start": 443.74,
+      "end": 445.88,
+      "text": "And boom."
+    },
+    {
+      "start": 445.88,
+      "end": 447.62,
+      "text": "Now we don't need this anymore."
+    },
+    {
+      "start": 447.62,
+      "end": 448.3,
+      "text": "We can hide it."
+    },
+    {
+      "start": 448.3,
+      "end": 452.74,
+      "text": "And now we should have the holes for our camera lens."
+    },
+    {
+      "start": 452.74,
+      "end": 456.32,
+      "text": "Now we can go ahead and let's go to the side view now."
+    },
+    {
+      "start": 456.32,
+      "end": 457.54,
+      "text": "And we'll extrude it."
+    },
+    {
+      "start": 457.54,
+      "end": 460.04,
+      "text": "But I need a better reference for the side view."
+    },
+    {
+      "start": 460.04,
+      "end": 462.36,
+      "text": "So I'm going to just collapse this window for a second."
+    },
+    {
+      "start": 462.36,
+      "end": 463.76,
+      "text": "I'm going to go shift A."
+    },
+    {
+      "start": 464.4,
+      "end": 466.6,
+      "text": "We'll add in another reference image."
+    },
+    {
+      "start": 466.6,
+      "end": 469.3,
+      "text": "And this one is going to be this reference image right here."
+    },
+    {
+      "start": 470.06,
+      "end": 471.14,
+      "text": "Again, we'll zero it out."
+    },
+    {
+      "start": 471.14,
+      "end": 473.64,
+      "text": "Just do 90."
+    },
+    {
+      "start": 473.64,
+      "end": 476.18,
+      "text": "And we'll do 90 on the Z."
+    },
+    {
+      "start": 476.18,
+      "end": 478.6,
+      "text": "Okay, let's go to the minus X view."
+    },
+    {
+      "start": 478.6,
+      "end": 480.14,
+      "text": "So let's move it back here."
+    },
+    {
+      "start": 482.26,
+      "end": 484.92,
+      "text": "And we'll select our frames, right?"
+    },
+    {
+      "start": 484.92,
+      "end": 486.06,
+      "text": "We'll go into edit mode."
+    },
+    {
+      "start": 486.06,
+      "end": 487.62,
+      "text": "We'll hit A to select everything."
+    },
+    {
+      "start": 487.62,
+      "end": 489.76,
+      "text": "And then we'll go to the minus X."
+    },
+    {
+      "start": 489.76,
+      "end": 491.62,
+      "text": "And we'll just hit E to extrude."
+    },
+    {
+      "start": 491.62,
+      "end": 493.26,
+      "text": "So E extrude backwards."
+    },
+    {
+      "start": 493.26,
+      "end": 496.14,
+      "text": "And we'll make it that thick."
+    },
+    {
+      "start": 496.14,
+      "end": 497.16,
+      "text": "Boom."
+    },
+    {
+      "start": 499.16,
+      "end": 499.56,
+      "text": "Okay."
+    },
+    {
+      "start": 499.56,
+      "end": 500.06,
+      "text": "All right."
+    },
+    {
+      "start": 500.06,
+      "end": 502.64,
+      "text": "We need an edge loop here for our lenses."
+    },
+    {
+      "start": 502.64,
+      "end": 504.88,
+      "text": "So we'll hit Ctrl R on our keyboard."
+    },
+    {
+      "start": 504.88,
+      "end": 506.72,
+      "text": "And we'll add in a loop cut."
+    },
+    {
+      "start": 506.72,
+      "end": 508.54,
+      "text": "And we'll hit escape to set it back in place."
+    },
+    {
+      "start": 508.54,
+      "end": 509.7,
+      "text": "Okay."
+    },
+    {
+      "start": 509.7,
+      "end": 510.8,
+      "text": "We won't add it yet."
+    },
+    {
+      "start": 510.8,
+      "end": 511.42,
+      "text": "We'll add it later."
+    },
+    {
+      "start": 511.42,
+      "end": 513.22,
+      "text": "But for now, that's going to be over there."
+    },
+    {
+      "start": 513.22,
+      "end": 513.86,
+      "text": "Okay."
+    },
+    {
+      "start": 513.86,
+      "end": 516.04,
+      "text": "For the back side here, we'll just hit."
+    },
+    {
+      "start": 516.04,
+      "end": 516.66,
+      "text": "We'll hold."
+    },
+    {
+      "start": 516.66,
+      "end": 517.36,
+      "text": "We'll deselect."
+    },
+    {
+      "start": 517.36,
+      "end": 518.4,
+      "text": "Hold Alt."
+    },
+    {
+      "start": 518.4,
+      "end": 519.94,
+      "text": "Select this edge loop right here."
+    },
+    {
+      "start": 519.94,
+      "end": 521.16,
+      "text": "Hold Shift."
+    },
+    {
+      "start": 521.16,
+      "end": 521.42,
+      "text": "Alt."
+    },
+    {
+      "start": 521.42,
+      "end": 522.26,
+      "text": "Select this edge loop."
+    },
+    {
+      "start": 522.52,
+      "end": 524.38,
+      "text": "And then we'll hit F to fill in that face."
+    },
+    {
+      "start": 524.38,
+      "end": 526.56,
+      "text": "And then we're going to select this line here."
+    },
+    {
+      "start": 526.56,
+      "end": 527.02,
+      "text": "Hold Shift."
+    },
+    {
+      "start": 527.02,
+      "end": 527.7,
+      "text": "Select this line."
+    },
+    {
+      "start": 527.7,
+      "end": 530.94,
+      "text": "With X to dissolve edges or delete edges."
+    },
+    {
+      "start": 530.94,
+      "end": 534.12,
+      "text": "And we'll just go ahead and select this face here."
+    },
+    {
+      "start": 534.12,
+      "end": 535.94,
+      "text": "We'll hit G and then Y."
+    },
+    {
+      "start": 535.94,
+      "end": 536.86,
+      "text": "Move it in a bit."
+    },
+    {
+      "start": 536.86,
+      "end": 540.62,
+      "text": "And then I'm going to use the line select tool."
+    },
+    {
+      "start": 540.62,
+      "end": 541.6,
+      "text": "Deselect."
+    },
+    {
+      "start": 541.6,
+      "end": 542.36,
+      "text": "Hold Alt."
+    },
+    {
+      "start": 542.36,
+      "end": 545.14,
+      "text": "And then select all the edges right here."
+    },
+    {
+      "start": 545.14,
+      "end": 546.66,
+      "text": "And then hit F to fill in that face."
+    },
+    {
+      "start": 546.66,
+      "end": 547.46,
+      "text": "Nice."
+    },
+    {
+      "start": 547.46,
+      "end": 548.42,
+      "text": "Okay."
+    },
+    {
+      "start": 548.42,
+      "end": 550.96,
+      "text": "Now let's move on to modeling the legs here."
+    },
+    {
+      "start": 551.06,
+      "end": 553.88,
+      "text": "So let's go into the back view here."
+    },
+    {
+      "start": 553.88,
+      "end": 556.4,
+      "text": "Let's go hit K on our."
+    },
+    {
+      "start": 556.4,
+      "end": 557.94,
+      "text": "Oh, let's go to edit mode, sorry."
+    },
+    {
+      "start": 557.94,
+      "end": 559.34,
+      "text": "And then hit K on our keyboard."
+    },
+    {
+      "start": 559.34,
+      "end": 561.76,
+      "text": "And we'll just select this one right here."
+    },
+    {
+      "start": 561.76,
+      "end": 563.0,
+      "text": "And we'll go all the way down."
+    },
+    {
+      "start": 563.0,
+      "end": 564.56,
+      "text": "And boom."
+    },
+    {
+      "start": 564.56,
+      "end": 566.78,
+      "text": "And then you can just hit enter."
+    },
+    {
+      "start": 566.78,
+      "end": 567.36,
+      "text": "All right."
+    },
+    {
+      "start": 567.36,
+      "end": 569.02,
+      "text": "Then we can do the face select tool."
+    },
+    {
+      "start": 569.02,
+      "end": 570.34,
+      "text": "We'll select this face."
+    },
+    {
+      "start": 570.34,
+      "end": 573.54,
+      "text": "And we can just do Shift D to duplicate it."
+    },
+    {
+      "start": 573.54,
+      "end": 574.96,
+      "text": "And then escape to set it back in place."
+    },
+    {
+      "start": 574.96,
+      "end": 577.5,
+      "text": "Then we'll move it forward just a little bit."
+    },
+    {
+      "start": 577.5,
+      "end": 579.34,
+      "text": "We'll just hit G and Y."
+    },
+    {
+      "start": 580.78,
+      "end": 581.1,
+      "text": "Okay."
+    },
+    {
+      "start": 581.1,
+      "end": 584.38,
+      "text": "And then we can hit P, separate selection."
+    },
+    {
+      "start": 584.38,
+      "end": 585.32,
+      "text": "Okay."
+    },
+    {
+      "start": 585.32,
+      "end": 586.32,
+      "text": "Go back into object mode."
+    },
+    {
+      "start": 586.32,
+      "end": 587.98,
+      "text": "And we have this new object right here."
+    },
+    {
+      "start": 587.98,
+      "end": 591.58,
+      "text": "And we'll rename it to legs."
+    },
+    {
+      "start": 591.58,
+      "end": 594.0,
+      "text": "And then go into edit mode."
+    },
+    {
+      "start": 594.0,
+      "end": 594.86,
+      "text": "Hit A."
+    },
+    {
+      "start": 594.86,
+      "end": 596.5,
+      "text": "And we'll go to the minus X view."
+    },
+    {
+      "start": 596.5,
+      "end": 598.86,
+      "text": "And let's try lining up the image, actually."
+    },
+    {
+      "start": 598.86,
+      "end": 600.74,
+      "text": "So let's go back into object mode for a second."
+    },
+    {
+      "start": 600.74,
+      "end": 602.14,
+      "text": "Let's select the reference image."
+    },
+    {
+      "start": 602.14,
+      "end": 604.9,
+      "text": "Let's just line it up with our..."
+    },
+    {
+      "start": 610.78,
+      "end": 612.12,
+      "text": "That works."
+    },
+    {
+      "start": 612.12,
+      "end": 612.9,
+      "text": "Okay."
+    },
+    {
+      "start": 612.9,
+      "end": 614.44,
+      "text": "And now we can select this."
+    },
+    {
+      "start": 614.44,
+      "end": 615.28,
+      "text": "Go to edit mode."
+    },
+    {
+      "start": 615.28,
+      "end": 617.52,
+      "text": "And we'll go to the minus X view."
+    },
+    {
+      "start": 617.52,
+      "end": 620.58,
+      "text": "And then we can just hit E, extrude."
+    },
+    {
+      "start": 620.58,
+      "end": 625.42,
+      "text": "We'll move it down."
+    },
+    {
+      "start": 629.22,
+      "end": 630.62,
+      "text": "You can hit S to scale it."
+    },
+    {
+      "start": 630.62,
+      "end": 633.48,
+      "text": "Okay."
+    },
+    {
+      "start": 633.48,
+      "end": 636.34,
+      "text": "And then we'll hit E again to extrude."
+    },
+    {
+      "start": 636.34,
+      "end": 638.04,
+      "text": "S to scale."
+    },
+    {
+      "start": 643.28,
+      "end": 645.98,
+      "text": "Then I can hit R and then X on my keyboard."
+    },
+    {
+      "start": 645.98,
+      "end": 647.64,
+      "text": "And we'll rotate it just a bit."
+    },
+    {
+      "start": 647.64,
+      "end": 649.56,
+      "text": "Hit E."
+    },
+    {
+      "start": 649.56,
+      "end": 654.36,
+      "text": "Scale down a bit."
+    },
+    {
+      "start": 654.36,
+      "end": 657.54,
+      "text": "Put R and then X again."
+    },
+    {
+      "start": 658.08,
+      "end": 658.58,
+      "text": "E."
+    },
+    {
+      "start": 658.58,
+      "end": 663.18,
+      "text": "You want R X a little more."
+    },
+    {
+      "start": 663.18,
+      "end": 664.12,
+      "text": "And then E."
+    },
+    {
+      "start": 664.12,
+      "end": 666.6,
+      "text": "Something like that."
+    },
+    {
+      "start": 666.6,
+      "end": 668.34,
+      "text": "R X again."
+    },
+    {
+      "start": 668.34,
+      "end": 670.92,
+      "text": "R X."
+    },
+    {
+      "start": 670.92,
+      "end": 673.2,
+      "text": "E."
+    },
+    {
+      "start": 673.2,
+      "end": 675.22,
+      "text": "Scale."
+    },
+    {
+      "start": 675.22,
+      "end": 678.0,
+      "text": "R X."
+    },
+    {
+      "start": 678.0,
+      "end": 680.64,
+      "text": "E."
+    },
+    {
+      "start": 680.64,
+      "end": 682.26,
+      "text": "Scale."
+    },
+    {
+      "start": 682.26,
+      "end": 688.04,
+      "text": "R X."
+    },
+    {
+      "start": 688.96,
+      "end": 689.92,
+      "text": "Scale some more."
+    },
+    {
+      "start": 689.92,
+      "end": 698.16,
+      "text": "And."
+    },
+    {
+      "start": 698.16,
+      "end": 701.02,
+      "text": "Alright."
+    },
+    {
+      "start": 701.02,
+      "end": 702.94,
+      "text": "Now we'll just select our legs here."
+    },
+    {
+      "start": 702.94,
+      "end": 704.06,
+      "text": "We'll go to the modifiers."
+    },
+    {
+      "start": 704.06,
+      "end": 706.26,
+      "text": "We'll add in a subdivision surface modifier."
+    },
+    {
+      "start": 706.26,
+      "end": 708.26,
+      "text": "And."
+    },
+    {
+      "start": 708.26,
+      "end": 711.24,
+      "text": "I don't know what happened there."
+    },
+    {
+      "start": 711.24,
+      "end": 712.76,
+      "text": "But we'll just add in one more."
+    },
+    {
+      "start": 712.76,
+      "end": 715.6,
+      "text": "And to fix that."
+    },
+    {
+      "start": 715.6,
+      "end": 716.92,
+      "text": "We can just hit CTRL R."
+    },
+    {
+      "start": 716.92,
+      "end": 717.68,
+      "text": "Add in a loop cut."
+    },
+    {
+      "start": 718.5,
+      "end": 719.68,
+      "text": "And we can just flatten it out."
+    },
+    {
+      "start": 719.68,
+      "end": 720.86,
+      "text": "You know what?"
+    },
+    {
+      "start": 720.86,
+      "end": 721.42,
+      "text": "We'll do one more."
+    },
+    {
+      "start": 721.42,
+      "end": 727.06,
+      "text": "Should fix it."
+    },
+    {
+      "start": 727.06,
+      "end": 727.7,
+      "text": "Yeah."
+    },
+    {
+      "start": 727.7,
+      "end": 729.98,
+      "text": "Looking better."
+    },
+    {
+      "start": 729.98,
+      "end": 731.52,
+      "text": "Go back into edit mode."
+    },
+    {
+      "start": 731.52,
+      "end": 732.98,
+      "text": "We'll also add in a loop cut right here."
+    },
+    {
+      "start": 733.02,
+      "end": 733.68,
+      "text": "So CTRL R."
+    },
+    {
+      "start": 733.68,
+      "end": 733.68,
+      "text": "So CTRL R."
+    },
+    {
+      "start": 733.68,
+      "end": 734.4,
+      "text": "Loop cut."
+    },
+    {
+      "start": 734.4,
+      "end": 736.42,
+      "text": "Boom."
+    },
+    {
+      "start": 736.42,
+      "end": 737.5,
+      "text": "Yeah."
+    },
+    {
+      "start": 737.5,
+      "end": 739.9,
+      "text": "You can go to top view."
+    },
+    {
+      "start": 739.9,
+      "end": 742.96,
+      "text": "Go into edit mode."
+    },
+    {
+      "start": 742.96,
+      "end": 744.88,
+      "text": "Which is a CTRL R."
+    },
+    {
+      "start": 744.88,
+      "end": 746.16,
+      "text": "Add in a loop cut."
+    },
+    {
+      "start": 746.16,
+      "end": 748.86,
+      "text": "We'll just flatten it out like this."
+    },
+    {
+      "start": 748.86,
+      "end": 751.98,
+      "text": "You should also select this entire line right here."
+    },
+    {
+      "start": 751.98,
+      "end": 752.96,
+      "text": "So hold alt."
+    },
+    {
+      "start": 752.96,
+      "end": 754.16,
+      "text": "It's like this entire line."
+    },
+    {
+      "start": 754.8,
+      "end": 755.74,
+      "text": "And we'll just move it."
+    },
+    {
+      "start": 755.74,
+      "end": 759.72,
+      "text": "To the side by hitting G and then X."
+    },
+    {
+      "start": 759.72,
+      "end": 762.48,
+      "text": "Okay."
+    },
+    {
+      "start": 762.48,
+      "end": 763.86,
+      "text": "Now to connect this."
+    },
+    {
+      "start": 763.86,
+      "end": 765.42,
+      "text": "We'll go into edit mode again."
+    },
+    {
+      "start": 765.42,
+      "end": 765.9,
+      "text": "We'll select."
+    },
+    {
+      "start": 765.9,
+      "end": 767.08,
+      "text": "We'll use the face select tool."
+    },
+    {
+      "start": 767.08,
+      "end": 768.08,
+      "text": "We'll select this face."
+    },
+    {
+      "start": 768.08,
+      "end": 769.88,
+      "text": "And I'm just going to move."
+    },
+    {
+      "start": 769.88,
+      "end": 771.14,
+      "text": "We'll use the."
+    },
+    {
+      "start": 771.14,
+      "end": 773.06,
+      "text": "Proportional editing tool."
+    },
+    {
+      "start": 773.06,
+      "end": 773.84,
+      "text": "Hit G."
+    },
+    {
+      "start": 773.84,
+      "end": 775.46,
+      "text": "And then X."
+    },
+    {
+      "start": 775.46,
+      "end": 775.98,
+      "text": "Or sorry."
+    },
+    {
+      "start": 775.98,
+      "end": 776.4,
+      "text": "Y."
+    },
+    {
+      "start": 776.4,
+      "end": 778.22,
+      "text": "And we'll move it forward."
+    },
+    {
+      "start": 778.22,
+      "end": 780.08,
+      "text": "So you can scroll on your mouse wheel."
+    },
+    {
+      "start": 780.08,
+      "end": 780.64,
+      "text": "To make this."
+    },
+    {
+      "start": 780.64,
+      "end": 781.84,
+      "text": "Smaller or bigger."
+    },
+    {
+      "start": 781.84,
+      "end": 789.26,
+      "text": "And there."
+    },
+    {
+      "start": 789.26,
+      "end": 789.7,
+      "text": "There we go."
+    },
+    {
+      "start": 789.7,
+      "end": 790.44,
+      "text": "Alright."
+    },
+    {
+      "start": 790.44,
+      "end": 791.52,
+      "text": "Next I'm going to click on this."
+    },
+    {
+      "start": 791.52,
+      "end": 792.82,
+      "text": "I'll hide the reference image."
+    },
+    {
+      "start": 792.82,
+      "end": 793.74,
+      "text": "Because we don't need it right now."
+    },
+    {
+      "start": 793.74,
+      "end": 795.24,
+      "text": "And now I'm going to click on the frames."
+    },
+    {
+      "start": 795.24,
+      "end": 797.5,
+      "text": "And let's add a bevel modifier to the frames."
+    },
+    {
+      "start": 797.5,
+      "end": 800.06,
+      "text": "Because right now the edges are super sharp."
+    },
+    {
+      "start": 800.06,
+      "end": 800.9,
+      "text": "And in real life."
+    },
+    {
+      "start": 800.9,
+      "end": 802.86,
+      "text": "That's not really realistic."
+    },
+    {
+      "start": 802.86,
+      "end": 804.3,
+      "text": "So we need to add a bevel to that."
+    },
+    {
+      "start": 804.3,
+      "end": 805.38,
+      "text": "So modifiers."
+    },
+    {
+      "start": 805.38,
+      "end": 806.54,
+      "text": "Go to."
+    },
+    {
+      "start": 806.54,
+      "end": 808.02,
+      "text": "Search for bevel."
+    },
+    {
+      "start": 808.02,
+      "end": 809.38,
+      "text": "That's too much."
+    },
+    {
+      "start": 809.38,
+      "end": 810.06,
+      "text": "That's too much."
+    },
+    {
+      "start": 810.08,
+      "end": 811.08,
+      "text": "So let's go to the amount."
+    },
+    {
+      "start": 811.08,
+      "end": 812.34,
+      "text": "Let's just decrease it."
+    },
+    {
+      "start": 812.34,
+      "end": 814.64,
+      "text": "Something like."
+    },
+    {
+      "start": 814.64,
+      "end": 816.54,
+      "text": "This could work."
+    },
+    {
+      "start": 816.54,
+      "end": 819.22,
+      "text": "And I also want to right click."
+    },
+    {
+      "start": 819.22,
+      "end": 820.36,
+      "text": "And shade out a smooth."
+    },
+    {
+      "start": 820.36,
+      "end": 821.8,
+      "text": "That's looking much better."
+    },
+    {
+      "start": 821.8,
+      "end": 823.2,
+      "text": "Now if you want to add more segments."
+    },
+    {
+      "start": 823.2,
+      "end": 823.84,
+      "text": "Just be careful."
+    },
+    {
+      "start": 823.84,
+      "end": 824.68,
+      "text": "If you add two."
+    },
+    {
+      "start": 824.68,
+      "end": 825.7,
+      "text": "Or even three."
+    },
+    {
+      "start": 825.7,
+      "end": 826.56,
+      "text": "You're going to see like."
+    },
+    {
+      "start": 826.56,
+      "end": 828.08,
+      "text": "Weird artifacting happening."
+    },
+    {
+      "start": 828.08,
+      "end": 829.72,
+      "text": "Happening on the frames."
+    },
+    {
+      "start": 829.72,
+      "end": 830.56,
+      "text": "And that's because there's not."
+    },
+    {
+      "start": 830.56,
+      "end": 831.12,
+      "text": "You know."
+    },
+    {
+      "start": 831.12,
+      "end": 832.7,
+      "text": "Proper geometry at the top."
+    },
+    {
+      "start": 832.7,
+      "end": 834.0,
+      "text": "So yeah."
+    },
+    {
+      "start": 834.0,
+      "end": 835.44,
+      "text": "If you want more segments."
+    },
+    {
+      "start": 835.44,
+      "end": 836.82,
+      "text": "You got to keep it at flat."
+    },
+    {
+      "start": 836.82,
+      "end": 838.04,
+      "text": "Or you can just copy me."
+    },
+    {
+      "start": 838.04,
+      "end": 839.38,
+      "text": "And keep the segments at one."
+    },
+    {
+      "start": 839.38,
+      "end": 840.08,
+      "text": "And we'll just."
+    },
+    {
+      "start": 840.08,
+      "end": 840.46,
+      "text": "You know."
+    },
+    {
+      "start": 840.46,
+      "end": 841.26,
+      "text": "Auto shade smooth."
+    },
+    {
+      "start": 841.26,
+      "end": 842.74,
+      "text": "And we don't have to deal with that."
+    },
+    {
+      "start": 842.74,
+      "end": 844.02,
+      "text": "Okay."
+    },
+    {
+      "start": 844.02,
+      "end": 845.08,
+      "text": "Now let's move on."
+    },
+    {
+      "start": 845.08,
+      "end": 846.52,
+      "text": "To adding the materials."
+    },
+    {
+      "start": 846.52,
+      "end": 847.16,
+      "text": "Now I."
+    },
+    {
+      "start": 847.16,
+      "end": 847.66,
+      "text": "You can see."
+    },
+    {
+      "start": 847.66,
+      "end": 849.56,
+      "text": "I have this blender kit add-on right here."
+    },
+    {
+      "start": 849.56,
+      "end": 850.62,
+      "text": "I enabled it beforehand."
+    },
+    {
+      "start": 850.62,
+      "end": 851.42,
+      "text": "So let's go to edit."
+    },
+    {
+      "start": 851.42,
+      "end": 852.06,
+      "text": "Preferences."
+    },
+    {
+      "start": 852.06,
+      "end": 853.26,
+      "text": "If you go to add-ons."
+    },
+    {
+      "start": 853.92,
+      "end": 855.26,
+      "text": "And you got to download it first."
+    },
+    {
+      "start": 855.26,
+      "end": 856.42,
+      "text": "So I'll leave a link in the description."
+    },
+    {
+      "start": 856.42,
+      "end": 857.5,
+      "text": "To download this add-on."
+    },
+    {
+      "start": 857.5,
+      "end": 858.28,
+      "text": "It's called blender kit."
+    },
+    {
+      "start": 858.28,
+      "end": 858.98,
+      "text": "It's completely free."
+    },
+    {
+      "start": 858.98,
+      "end": 859.9,
+      "text": "Make sure you download it."
+    },
+    {
+      "start": 859.9,
+      "end": 861.0,
+      "text": "And install it into blender."
+    },
+    {
+      "start": 861.0,
+      "end": 863.12,
+      "text": "And then make sure it's checkmarked here."
+    },
+    {
+      "start": 863.12,
+      "end": 864.76,
+      "text": "So it'll show up right here."
+    },
+    {
+      "start": 864.76,
+      "end": 866.66,
+      "text": "So yeah."
+    },
+    {
+      "start": 866.66,
+      "end": 867.7,
+      "text": "I have it enabled."
+    },
+    {
+      "start": 867.7,
+      "end": 868.66,
+      "text": "Save preferences."
+    },
+    {
+      "start": 868.66,
+      "end": 869.88,
+      "text": "And then we can close out of that."
+    },
+    {
+      "start": 869.88,
+      "end": 871.44,
+      "text": "And this is what I'm going to use."
+    },
+    {
+      "start": 871.44,
+      "end": 872.94,
+      "text": "To add in my materials."
+    },
+    {
+      "start": 872.94,
+      "end": 874.66,
+      "text": "So let's go to materials."
+    },
+    {
+      "start": 875.66,
+      "end": 877.1,
+      "text": "And I'm going to search for."
+    },
+    {
+      "start": 877.1,
+      "end": 878.74,
+      "text": "A you know."
+    },
+    {
+      "start": 878.74,
+      "end": 880.36,
+      "text": "Glossy plastic material."
+    },
+    {
+      "start": 880.36,
+      "end": 882.42,
+      "text": "So let's go to."
+    },
+    {
+      "start": 882.42,
+      "end": 882.84,
+      "text": "You know what."
+    },
+    {
+      "start": 882.84,
+      "end": 884.24,
+      "text": "Let's go to render engine."
+    },
+    {
+      "start": 884.24,
+      "end": 885.14,
+      "text": "Let's switch to cycles."
+    },
+    {
+      "start": 885.14,
+      "end": 886.98,
+      "text": "Let's switch this to GPU."
+    },
+    {
+      "start": 886.98,
+      "end": 888.48,
+      "text": "Highly recommend it if you have it."
+    },
+    {
+      "start": 888.48,
+      "end": 889.52,
+      "text": "For faster rendering."
+    },
+    {
+      "start": 889.52,
+      "end": 892.5,
+      "text": "We'll switch the viewport samples to 200."
+    },
+    {
+      "start": 892.5,
+      "end": 894.76,
+      "text": "Because we are going to be rendering at 200 at the end."
+    },
+    {
+      "start": 894.76,
+      "end": 896.64,
+      "text": "And we need some world lighting."
+    },
+    {
+      "start": 896.64,
+      "end": 898.22,
+      "text": "So let's go to the world properties."
+    },
+    {
+      "start": 898.22,
+      "end": 898.92,
+      "text": "Let's go to color."
+    },
+    {
+      "start": 898.92,
+      "end": 900.44,
+      "text": "Environment texture."
+    },
+    {
+      "start": 900.44,
+      "end": 902.88,
+      "text": "And I will go to HDRIs."
+    },
+    {
+      "start": 902.88,
+      "end": 904.0,
+      "text": "I'll leave a link in the description."
+    },
+    {
+      "start": 904.0,
+      "end": 905.2,
+      "text": "For the same one that I'm using."
+    },
+    {
+      "start": 905.66,
+      "end": 906.8,
+      "text": "And we'll just hit open image."
+    },
+    {
+      "start": 906.8,
+      "end": 909.36,
+      "text": "We'll use this 4K EXR version."
+    },
+    {
+      "start": 909.36,
+      "end": 911.48,
+      "text": "And now we're ready to go."
+    },
+    {
+      "start": 911.48,
+      "end": 912.1,
+      "text": "So yeah."
+    },
+    {
+      "start": 912.1,
+      "end": 913.28,
+      "text": "Make sure you save your work by the way."
+    },
+    {
+      "start": 913.28,
+      "end": 914.68,
+      "text": "Save your work."
+    },
+    {
+      "start": 914.68,
+      "end": 917.12,
+      "text": "I saved mine as Ray-Ban Meta Glasses tutorial."
+    },
+    {
+      "start": 917.12,
+      "end": 918.16,
+      "text": "And yeah."
+    },
+    {
+      "start": 918.16,
+      "end": 919.98,
+      "text": "So just save your work."
+    },
+    {
+      "start": 919.98,
+      "end": 920.64,
+      "text": "Okay."
+    },
+    {
+      "start": 920.64,
+      "end": 922.18,
+      "text": "Let's go to render mode."
+    },
+    {
+      "start": 922.18,
+      "end": 924.42,
+      "text": "All right."
+    },
+    {
+      "start": 924.42,
+      "end": 925.64,
+      "text": "Let's go to here."
+    },
+    {
+      "start": 925.64,
+      "end": 926.24,
+      "text": "Materials."
+    },
+    {
+      "start": 926.24,
+      "end": 926.9,
+      "text": "There we go."
+    },
+    {
+      "start": 926.9,
+      "end": 929.76,
+      "text": "And let's search for glossy plastic."
+    },
+    {
+      "start": 929.76,
+      "end": 930.48,
+      "text": "Enter."
+    },
+    {
+      "start": 930.48,
+      "end": 932.72,
+      "text": "Let's go and use a procedural based."
+    },
+    {
+      "start": 934.28,
+      "end": 936.9,
+      "text": "And we'll just use high gloss red plastic for now."
+    },
+    {
+      "start": 936.9,
+      "end": 939.88,
+      "text": "So drag it on to your frames."
+    },
+    {
+      "start": 939.88,
+      "end": 941.36,
+      "text": "And it should show up."
+    },
+    {
+      "start": 941.36,
+      "end": 942.56,
+      "text": "So let's go to material properties."
+    },
+    {
+      "start": 942.56,
+      "end": 943.94,
+      "text": "And it should be right there."
+    },
+    {
+      "start": 943.94,
+      "end": 945.58,
+      "text": "Boom."
+    },
+    {
+      "start": 945.58,
+      "end": 946.54,
+      "text": "Look at that."
+    },
+    {
+      "start": 946.54,
+      "end": 949.42,
+      "text": "Now you can change the color by going to the shader editor."
+    },
+    {
+      "start": 949.42,
+      "end": 952.52,
+      "text": "And we'll just change the rough."
+    },
+    {
+      "start": 952.52,
+      "end": 953.6,
+      "text": "Hit the end here."
+    },
+    {
+      "start": 953.6,
+      "end": 956.76,
+      "text": "And we'll go here and just make this completely black."
+    },
+    {
+      "start": 956.76,
+      "end": 957.76,
+      "text": "Okay."
+    },
+    {
+      "start": 957.76,
+      "end": 958.66,
+      "text": "Cool."
+    },
+    {
+      "start": 959.14,
+      "end": 961.14,
+      "text": "We're going to have the same to the legs as well."
+    },
+    {
+      "start": 961.14,
+      "end": 962.92,
+      "text": "Okay."
+    },
+    {
+      "start": 962.92,
+      "end": 963.76,
+      "text": "Cool."
+    },
+    {
+      "start": 963.76,
+      "end": 964.5,
+      "text": "Looking nice."
+    },
+    {
+      "start": 964.5,
+      "end": 965.26,
+      "text": "Looking good."
+    },
+    {
+      "start": 965.26,
+      "end": 966.26,
+      "text": "Okay."
+    },
+    {
+      "start": 966.26,
+      "end": 970.84,
+      "text": "Now let's move on to making the camera lens inside these holes here."
+    },
+    {
+      "start": 970.84,
+      "end": 971.96,
+      "text": "So let's go to solid mode."
+    },
+    {
+      "start": 971.96,
+      "end": 974.78,
+      "text": "I'm just going to hide all of these objects for now."
+    },
+    {
+      "start": 974.78,
+      "end": 977.74,
+      "text": "Let's collapse this window by clicking and dragging to the right."
+    },
+    {
+      "start": 978.24,
+      "end": 982.48,
+      "text": "And I'm going to, we'll just close out of that."
+    },
+    {
+      "start": 982.48,
+      "end": 983.02,
+      "text": "Okay."
+    },
+    {
+      "start": 983.02,
+      "end": 983.48,
+      "text": "Shift A."
+    },
+    {
+      "start": 983.48,
+      "end": 985.62,
+      "text": "Add in a mesh UV sphere."
+    },
+    {
+      "start": 985.62,
+      "end": 987.36,
+      "text": "Minus X view."
+    },
+    {
+      "start": 987.36,
+      "end": 988.5,
+      "text": "Let's go to wireframe."
+    },
+    {
+      "start": 988.5,
+      "end": 991.06,
+      "text": "Let's go into edit mode by hitting tab."
+    },
+    {
+      "start": 991.06,
+      "end": 992.66,
+      "text": "Use the face select tool."
+    },
+    {
+      "start": 992.66,
+      "end": 993.26,
+      "text": "Deselect."
+    },
+    {
+      "start": 993.26,
+      "end": 994.5,
+      "text": "We'll select the back portion."
+    },
+    {
+      "start": 994.5,
+      "end": 995.5,
+      "text": "Back half like this."
+    },
+    {
+      "start": 995.5,
+      "end": 996.9,
+      "text": "Hit exit delete faces."
+    },
+    {
+      "start": 996.9,
+      "end": 998.32,
+      "text": "Nice."
+    },
+    {
+      "start": 998.52,
+      "end": 999.32,
+      "text": "Go to solid mode."
+    },
+    {
+      "start": 999.32,
+      "end": 1001.3,
+      "text": "Go back to the edge select tool."
+    },
+    {
+      "start": 1001.3,
+      "end": 1003.04,
+      "text": "Hold Alt."
+    },
+    {
+      "start": 1003.04,
+      "end": 1004.22,
+      "text": "Select the edge here."
+    },
+    {
+      "start": 1004.22,
+      "end": 1006.5,
+      "text": "And then hit F to fill in that face."
+    },
+    {
+      "start": 1006.5,
+      "end": 1008.86,
+      "text": "And let's select the back face here."
+    },
+    {
+      "start": 1008.86,
+      "end": 1010.1,
+      "text": "Minus X view."
+    },
+    {
+      "start": 1010.1,
+      "end": 1011.26,
+      "text": "Hit E to extrude back."
+    },
+    {
+      "start": 1011.26,
+      "end": 1012.88,
+      "text": "Boom."
+    },
+    {
+      "start": 1012.88,
+      "end": 1014.4,
+      "text": "Now we can go to front view."
+    },
+    {
+      "start": 1014.4,
+      "end": 1015.44,
+      "text": "Deselect."
+    },
+    {
+      "start": 1015.44,
+      "end": 1016.78,
+      "text": "Select all the front faces."
+    },
+    {
+      "start": 1016.78,
+      "end": 1018.86,
+      "text": "And make sure all of them are selected."
+    },
+    {
+      "start": 1018.86,
+      "end": 1022.18,
+      "text": "So it looks like, oh, see the bottom parts are not selected."
+    },
+    {
+      "start": 1022.18,
+      "end": 1023.12,
+      "text": "So hold Shift."
+    },
+    {
+      "start": 1023.12,
+      "end": 1023.64,
+      "text": "Select that."
+    },
+    {
+      "start": 1023.64,
+      "end": 1024.74,
+      "text": "Select this face."
+    },
+    {
+      "start": 1024.74,
+      "end": 1025.52,
+      "text": "Select this face."
+    },
+    {
+      "start": 1025.52,
+      "end": 1027.26,
+      "text": "Select these faces as well."
+    },
+    {
+      "start": 1027.34,
+      "end": 1029.08,
+      "text": "So hold Alt plus Shift."
+    },
+    {
+      "start": 1029.08,
+      "end": 1031.36,
+      "text": "So it should look like this."
+    },
+    {
+      "start": 1031.36,
+      "end": 1034.66,
+      "text": "And now all you have to do is hit I to insert the face."
+    },
+    {
+      "start": 1034.66,
+      "end": 1037.04,
+      "text": "Once set all the way from here."
+    },
+    {
+      "start": 1037.04,
+      "end": 1037.74,
+      "text": "That's good enough."
+    },
+    {
+      "start": 1037.74,
+      "end": 1040.62,
+      "text": "Then we'll hit E to extrude back."
+    },
+    {
+      "start": 1040.62,
+      "end": 1042.5,
+      "text": "Okay."
+    },
+    {
+      "start": 1042.5,
+      "end": 1044.6,
+      "text": "And then we'll hit S to scale down a bit."
+    },
+    {
+      "start": 1044.6,
+      "end": 1046.48,
+      "text": "There we go."
+    },
+    {
+      "start": 1046.48,
+      "end": 1047.22,
+      "text": "I'm going to deselect."
+    },
+    {
+      "start": 1047.22,
+      "end": 1048.46,
+      "text": "I'm going to hold Alt."
+    },
+    {
+      "start": 1048.46,
+      "end": 1049.34,
+      "text": "Select these faces."
+    },
+    {
+      "start": 1049.34,
+      "end": 1052.72,
+      "text": "And then we'll just hit S."
+    },
+    {
+      "start": 1052.72,
+      "end": 1053.94,
+      "text": "Scale up a bit."
+    },
+    {
+      "start": 1053.94,
+      "end": 1054.78,
+      "text": "Yeah."
+    },
+    {
+      "start": 1054.78,
+      "end": 1056.64,
+      "text": "And we'll back."
+    },
+    {
+      "start": 1056.72,
+      "end": 1057.66,
+      "text": "We can just move it back."
+    },
+    {
+      "start": 1057.66,
+      "end": 1059.6,
+      "text": "Okay."
+    },
+    {
+      "start": 1059.6,
+      "end": 1061.1,
+      "text": "So that's what the lens is looking like."
+    },
+    {
+      "start": 1061.1,
+      "end": 1064.1,
+      "text": "We can just go to the subdivision surface modifier."
+    },
+    {
+      "start": 1064.1,
+      "end": 1065.02,
+      "text": "Add in."
+    },
+    {
+      "start": 1065.02,
+      "end": 1065.48,
+      "text": "Or sorry."
+    },
+    {
+      "start": 1065.48,
+      "end": 1066.24,
+      "text": "Go to modifiers tab."
+    },
+    {
+      "start": 1066.24,
+      "end": 1067.78,
+      "text": "Add in a subdivision surface modifier."
+    },
+    {
+      "start": 1067.78,
+      "end": 1069.1,
+      "text": "I can't talk today."
+    },
+    {
+      "start": 1069.1,
+      "end": 1069.94,
+      "text": "All right."
+    },
+    {
+      "start": 1069.94,
+      "end": 1072.38,
+      "text": "We'll switch this to one and just hit apply."
+    },
+    {
+      "start": 1072.38,
+      "end": 1074.5,
+      "text": "And we want to fix the back here."
+    },
+    {
+      "start": 1074.5,
+      "end": 1075.84,
+      "text": "So let's go into edit mode."
+    },
+    {
+      "start": 1075.84,
+      "end": 1077.0,
+      "text": "All of these faces here."
+    },
+    {
+      "start": 1077.0,
+      "end": 1078.4,
+      "text": "So back view."
+    },
+    {
+      "start": 1078.9,
+      "end": 1080.28,
+      "text": "We can use this."
+    },
+    {
+      "start": 1080.28,
+      "end": 1082.3,
+      "text": "We can use the select circle tool."
+    },
+    {
+      "start": 1082.3,
+      "end": 1082.86,
+      "text": "Hold shift."
+    },
+    {
+      "start": 1082.86,
+      "end": 1084.14,
+      "text": "Select all these faces."
+    },
+    {
+      "start": 1084.14,
+      "end": 1085.2,
+      "text": "Hit X."
+    },
+    {
+      "start": 1085.2,
+      "end": 1085.98,
+      "text": "Delete faces."
+    },
+    {
+      "start": 1085.98,
+      "end": 1088.4,
+      "text": "Then we'll use the edge select tool."
+    },
+    {
+      "start": 1088.4,
+      "end": 1089.92,
+      "text": "Go back to select tool."
+    },
+    {
+      "start": 1089.92,
+      "end": 1091.2,
+      "text": "Hold Alt."
+    },
+    {
+      "start": 1091.2,
+      "end": 1093.64,
+      "text": "And select the line around."
+    },
+    {
+      "start": 1093.64,
+      "end": 1094.54,
+      "text": "Like this."
+    },
+    {
+      "start": 1095.84,
+      "end": 1098.08,
+      "text": "And we'll hit F to fill in that face."
+    },
+    {
+      "start": 1098.08,
+      "end": 1101.76,
+      "text": "And then we could hit GY and move it back."
+    },
+    {
+      "start": 1101.76,
+      "end": 1103.34,
+      "text": "All right."
+    },
+    {
+      "start": 1103.34,
+      "end": 1104.72,
+      "text": "Our lens is done."
+    },
+    {
+      "start": 1104.72,
+      "end": 1106.44,
+      "text": "We can do shade auto smooth."
+    },
+    {
+      "start": 1106.44,
+      "end": 1107.86,
+      "text": "And let's do the materials now."
+    },
+    {
+      "start": 1107.96,
+      "end": 1109.28,
+      "text": "So let's go into materials."
+    },
+    {
+      "start": 1109.28,
+      "end": 1110.1,
+      "text": "Hit new."
+    },
+    {
+      "start": 1110.1,
+      "end": 1112.98,
+      "text": "We'll call this camera lens."
+    },
+    {
+      "start": 1112.98,
+      "end": 1114.84,
+      "text": "Go to the render mode."
+    },
+    {
+      "start": 1114.84,
+      "end": 1117.34,
+      "text": "And we'll give it a roughness of zero."
+    },
+    {
+      "start": 1117.34,
+      "end": 1122.0,
+      "text": "And transmission of one to mimic that lens look."
+    },
+    {
+      "start": 1122.0,
+      "end": 1128.04,
+      "text": "Now I want this part here to be black metallic."
+    },
+    {
+      "start": 1128.04,
+      "end": 1129.78,
+      "text": "So hit go to edit mode."
+    },
+    {
+      "start": 1129.78,
+      "end": 1131.4,
+      "text": "We'll use the face select tool."
+    },
+    {
+      "start": 1131.4,
+      "end": 1132.04,
+      "text": "Deselect."
+    },
+    {
+      "start": 1132.04,
+      "end": 1133.7,
+      "text": "Hold Alt."
+    },
+    {
+      "start": 1133.7,
+      "end": 1136.54,
+      "text": "Hold Alt shift."
+    },
+    {
+      "start": 1136.54,
+      "end": 1137.2,
+      "text": "Select this."
+    },
+    {
+      "start": 1137.28,
+      "end": 1138.28,
+      "text": "Hold Alt shifts like this."
+    },
+    {
+      "start": 1138.28,
+      "end": 1140.66,
+      "text": "And hold shifts like this face."
+    },
+    {
+      "start": 1140.66,
+      "end": 1144.14,
+      "text": "We'll add in a new material by hitting plus."
+    },
+    {
+      "start": 1144.14,
+      "end": 1145.6,
+      "text": "Hit new."
+    },
+    {
+      "start": 1145.6,
+      "end": 1148.22,
+      "text": "We'll go into render mode."
+    },
+    {
+      "start": 1148.22,
+      "end": 1151.9,
+      "text": "And, you know, we want to hit a sign."
+    },
+    {
+      "start": 1151.9,
+      "end": 1154.6,
+      "text": "And now we'll make this black here."
+    },
+    {
+      "start": 1154.6,
+      "end": 1155.84,
+      "text": "So let's go metallic."
+    },
+    {
+      "start": 1155.84,
+      "end": 1157.94,
+      "text": "And we'll make it dark."
+    },
+    {
+      "start": 1157.94,
+      "end": 1159.14,
+      "text": "Okay."
+    },
+    {
+      "start": 1159.14,
+      "end": 1161.4,
+      "text": "And you notice how this is turning black too."
+    },
+    {
+      "start": 1161.4,
+      "end": 1163.08,
+      "text": "And that's because it's reflecting off of this."
+    },
+    {
+      "start": 1163.08,
+      "end": 1164.0,
+      "text": "So don't worry about that."
+    },
+    {
+      "start": 1164.0,
+      "end": 1165.12,
+      "text": "And there you go."
+    },
+    {
+      "start": 1165.12,
+      "end": 1166.28,
+      "text": "Our lens is done."
+    },
+    {
+      "start": 1166.6,
+      "end": 1168.18,
+      "text": "Now we can do one more thing."
+    },
+    {
+      "start": 1168.18,
+      "end": 1170.22,
+      "text": "Let's go into solid mode."
+    },
+    {
+      "start": 1170.22,
+      "end": 1171.14,
+      "text": "Let's go to wireframe."
+    },
+    {
+      "start": 1171.14,
+      "end": 1172.98,
+      "text": "And you know what?"
+    },
+    {
+      "start": 1172.98,
+      "end": 1173.86,
+      "text": "Let's go to edit mode."
+    },
+    {
+      "start": 1173.86,
+      "end": 1174.96,
+      "text": "Hit A to select everything."
+    },
+    {
+      "start": 1174.96,
+      "end": 1176.8,
+      "text": "And we can do shift D to duplicate it."
+    },
+    {
+      "start": 1176.8,
+      "end": 1178.22,
+      "text": "And then escape to set it back in place."
+    },
+    {
+      "start": 1178.22,
+      "end": 1179.78,
+      "text": "Let's go to minus Y view."
+    },
+    {
+      "start": 1179.78,
+      "end": 1180.68,
+      "text": "And just hit S."
+    },
+    {
+      "start": 1181.22,
+      "end": 1183.88,
+      "text": "And we'll add in a smaller lens inside the lens."
+    },
+    {
+      "start": 1183.88,
+      "end": 1186.98,
+      "text": "To mimic those rings you see inside of camera lenses."
+    },
+    {
+      "start": 1186.98,
+      "end": 1189.26,
+      "text": "This might not be accurate."
+    },
+    {
+      "start": 1189.26,
+      "end": 1191.84,
+      "text": "But, you know, it looks about the same."
+    },
+    {
+      "start": 1191.84,
+      "end": 1193.9,
+      "text": "So please don't come at me."
+    },
+    {
+      "start": 1193.9,
+      "end": 1197.2,
+      "text": "I think our camera lens is good to go."
+    },
+    {
+      "start": 1197.2,
+      "end": 1200.28,
+      "text": "So let's bring back our legs and frames."
+    },
+    {
+      "start": 1200.28,
+      "end": 1201.6,
+      "text": "We can go to solid mode."
+    },
+    {
+      "start": 1201.6,
+      "end": 1203.48,
+      "text": "Let's make this."
+    },
+    {
+      "start": 1203.48,
+      "end": 1206.14,
+      "text": "Let's turn on cavity so we can see better."
+    },
+    {
+      "start": 1206.84,
+      "end": 1208.86,
+      "text": "We'll make this smaller by hitting S."
+    },
+    {
+      "start": 1208.86,
+      "end": 1214.98,
+      "text": "Let's go to the minus X view."
+    },
+    {
+      "start": 1214.98,
+      "end": 1218.24,
+      "text": "Let's move it back."
+    },
+    {
+      "start": 1218.24,
+      "end": 1220.82,
+      "text": "I think right here is good."
+    },
+    {
+      "start": 1220.82,
+      "end": 1221.8,
+      "text": "All right."
+    },
+    {
+      "start": 1221.8,
+      "end": 1225.0,
+      "text": "One more thing we can do is we can add in a glass material."
+    },
+    {
+      "start": 1225.18,
+      "end": 1227.6,
+      "text": "So let's go into, let's select the frames."
+    },
+    {
+      "start": 1227.6,
+      "end": 1229.16,
+      "text": "Hit, go to edit mode."
+    },
+    {
+      "start": 1229.16,
+      "end": 1230.56,
+      "text": "Deselect."
+    },
+    {
+      "start": 1230.56,
+      "end": 1231.66,
+      "text": "Use the edge select tool."
+    },
+    {
+      "start": 1231.66,
+      "end": 1234.64,
+      "text": "Hold shift alt like this."
+    },
+    {
+      "start": 1234.64,
+      "end": 1235.76,
+      "text": "This."
+    },
+    {
+      "start": 1235.76,
+      "end": 1240.46,
+      "text": "And we can just do shift Z to duplicate it."
+    },
+    {
+      "start": 1240.46,
+      "end": 1242.72,
+      "text": "Escape to set it back in place."
+    },
+    {
+      "start": 1242.72,
+      "end": 1245.04,
+      "text": "And then we'll hit F to fill in that face."
+    },
+    {
+      "start": 1245.04,
+      "end": 1247.76,
+      "text": "Hit the plus icon for a new material."
+    },
+    {
+      "start": 1247.76,
+      "end": 1249.48,
+      "text": "Hit new."
+    },
+    {
+      "start": 1249.96,
+      "end": 1252.12,
+      "text": "And this is going to be just, you know, glass."
+    },
+    {
+      "start": 1252.12,
+      "end": 1257.0,
+      "text": "So we could just, you know, I think there's a glass material here."
+    },
+    {
+      "start": 1257.0,
+      "end": 1257.72,
+      "text": "There we go."
+    },
+    {
+      "start": 1257.72,
+      "end": 1259.7,
+      "text": "Go to render mode."
+    },
+    {
+      "start": 1259.7,
+      "end": 1261.6,
+      "text": "Hit assign."
+    },
+    {
+      "start": 1261.6,
+      "end": 1264.74,
+      "text": "Oh, we've got to turn the roughness down."
+    },
+    {
+      "start": 1264.74,
+      "end": 1266.44,
+      "text": "Should be able to see inside."
+    },
+    {
+      "start": 1266.44,
+      "end": 1266.7,
+      "text": "Yeah."
+    },
+    {
+      "start": 1266.7,
+      "end": 1267.36,
+      "text": "There we go."
+    },
+    {
+      "start": 1267.36,
+      "end": 1268.98,
+      "text": "And there we go."
+    },
+    {
+      "start": 1269.88,
+      "end": 1272.98,
+      "text": "We'll rename this to lens glass."
+    },
+    {
+      "start": 1272.98,
+      "end": 1273.62,
+      "text": "Okay."
+    },
+    {
+      "start": 1273.62,
+      "end": 1275.72,
+      "text": "Okay."
+    },
+    {
+      "start": 1275.72,
+      "end": 1276.1,
+      "text": "Nice."
+    },
+    {
+      "start": 1276.1,
+      "end": 1281.74,
+      "text": "We got to rename this sphere inside to camera lens."
+    },
+    {
+      "start": 1281.74,
+      "end": 1282.26,
+      "text": "Okay."
+    },
+    {
+      "start": 1282.26,
+      "end": 1285.9,
+      "text": "And we need to duplicate it."
+    },
+    {
+      "start": 1285.9,
+      "end": 1291.42,
+      "text": "So we'll hit alt D and we'll just bring it almost done."
+    },
+    {
+      "start": 1291.42,
+      "end": 1295.94,
+      "text": "And now let's move on to the, the inside of frames here."
+    },
+    {
+      "start": 1295.94,
+      "end": 1296.42,
+      "text": "Okay."
+    },
+    {
+      "start": 1296.42,
+      "end": 1297.0,
+      "text": "Save your work."
+    },
+    {
+      "start": 1297.0,
+      "end": 1297.56,
+      "text": "Save your work."
+    },
+    {
+      "start": 1297.56,
+      "end": 1298.62,
+      "text": "Control S."
+    },
+    {
+      "start": 1298.62,
+      "end": 1299.3,
+      "text": "Save your work."
+    },
+    {
+      "start": 1299.7,
+      "end": 1300.38,
+      "text": "All right, select your frames."
+    },
+    {
+      "start": 1300.38,
+      "end": 1302.16,
+      "text": "Let's go into edit mode."
+    },
+    {
+      "start": 1302.16,
+      "end": 1304.72,
+      "text": "Hold alt and we'll select these."
+    },
+    {
+      "start": 1304.72,
+      "end": 1306.62,
+      "text": "We'll make sure the line select tool is selected."
+    },
+    {
+      "start": 1306.62,
+      "end": 1308.66,
+      "text": "And then hold alt, select this."
+    },
+    {
+      "start": 1308.66,
+      "end": 1312.22,
+      "text": "And then just hit F to add in those glasses."
+    },
+    {
+      "start": 1312.22,
+      "end": 1313.28,
+      "text": "Okay."
+    },
+    {
+      "start": 1313.28,
+      "end": 1315.72,
+      "text": "And now we have some glasses."
+    },
+    {
+      "start": 1315.72,
+      "end": 1318.2,
+      "text": "We can select using face select what we can select these glasses."
+    },
+    {
+      "start": 1318.2,
+      "end": 1319.58,
+      "text": "Go to lens glass."
+    },
+    {
+      "start": 1319.58,
+      "end": 1320.4,
+      "text": "Let me just hit assign."
+    },
+    {
+      "start": 1320.4,
+      "end": 1327.56,
+      "text": "And now we have some, you know, lenses inside the frames as well."
+    },
+    {
+      "start": 1327.56,
+      "end": 1328.12,
+      "text": "Okay."
+    },
+    {
+      "start": 1328.12,
+      "end": 1329.6,
+      "text": "So now that you have the frames, let's go back."
+    },
+    {
+      "start": 1329.6,
+      "end": 1334.36,
+      "text": "To edit mode, select these frames and we can just hit P to separate selection."
+    },
+    {
+      "start": 1334.36,
+      "end": 1335.56,
+      "text": "Okay."
+    },
+    {
+      "start": 1335.56,
+      "end": 1344.2,
+      "text": "And once I separated, we can call them inside lens and we can go move on."
+    },
+    {
+      "start": 1344.2,
+      "end": 1345.0,
+      "text": "Let's go into edit mode."
+    },
+    {
+      "start": 1345.0,
+      "end": 1346.28,
+      "text": "Actually hit eight, select everything."
+    },
+    {
+      "start": 1346.28,
+      "end": 1349.04,
+      "text": "We can move forward a little bit."
+    },
+    {
+      "start": 1350.66,
+      "end": 1352.3,
+      "text": "And then it eats extrude back."
+    },
+    {
+      "start": 1352.3,
+      "end": 1354.42,
+      "text": "Just gives them a bit more thickness."
+    },
+    {
+      "start": 1354.42,
+      "end": 1357.42,
+      "text": "Now the glasses are good to go."
+    },
+    {
+      "start": 1357.42,
+      "end": 1365.64,
+      "text": "But if you want to take it further, you could go ahead and add the Ray-Ban logo to the glasses to make it look like it's,"
+    },
+    {
+      "start": 1365.64,
+      "end": 1367.42,
+      "text": "you know, a Ray-Ban meta glasses."
+    },
+    {
+      "start": 1368.18,
+      "end": 1372.88,
+      "text": "Uh, I'm not going to show you how to do that in this tutorial because you need to convert, you need to download the"
+    },
+    {
+      "start": 1372.88,
+      "end": 1374.94,
+      "text": "logo first and then convert it into an SVG."
+    },
+    {
+      "start": 1374.94,
+      "end": 1375.94,
+      "text": "So I've already done that."
+    },
+    {
+      "start": 1375.94,
+      "end": 1379.7,
+      "text": "I'm going to go ahead and just click on import scale."
+    },
+    {
+      "start": 1380.06,
+      "end": 1381.5,
+      "text": "Scalable vector graphic SVG."
+    },
+    {
+      "start": 1381.5,
+      "end": 1385.7,
+      "text": "And I'll search for, you know, the logo right here."
+    },
+    {
+      "start": 1385.7,
+      "end": 1386.54,
+      "text": "I have it right here."
+    },
+    {
+      "start": 1386.54,
+      "end": 1387.54,
+      "text": "I have the RB one."
+    },
+    {
+      "start": 1387.54,
+      "end": 1390.42,
+      "text": "And then the Ray-Ban one, let's go with the RB first."
+    },
+    {
+      "start": 1390.42,
+      "end": 1391.9,
+      "text": "There it is."
+    },
+    {
+      "start": 1391.9,
+      "end": 1395.42,
+      "text": "And then delete this and boom Ray-Ban logo right here."
+    },
+    {
+      "start": 1395.42,
+      "end": 1397.3,
+      "text": "Uh, let's do right."
+    },
+    {
+      "start": 1397.3,
+      "end": 1401.1,
+      "text": "Click geometry to origin or X 90 enter."
+    },
+    {
+      "start": 1401.1,
+      "end": 1406.06,
+      "text": "And we'll just change the material here to white."
+    },
+    {
+      "start": 1406.06,
+      "end": 1408.38,
+      "text": "We want to make the value like three."
+    },
+    {
+      "start": 1408.38,
+      "end": 1410.14,
+      "text": "So it's super white."
+    },
+    {
+      "start": 1410.14,
+      "end": 1416.34,
+      "text": "So let's go into render mode and we can just, you know, go ahead and make it small and add it."
+    },
+    {
+      "start": 1422.22,
+      "end": 1423.7,
+      "text": "And we'll do the same thing again."
+    },
+    {
+      "start": 1423.7,
+      "end": 1430.66,
+      "text": "We'll, I'm going to import, let's go vector graphic RB and change this to white."
+    },
+    {
+      "start": 1430.66,
+      "end": 1432.58,
+      "text": "And this one goes to the bottom."
+    },
+    {
+      "start": 1432.58,
+      "end": 1436.46,
+      "text": "Let's just move it till there's like no reflection."
+    },
+    {
+      "start": 1436.46,
+      "end": 1437.06,
+      "text": "All right."
+    },
+    {
+      "start": 1437.06,
+      "end": 1439.42,
+      "text": "Now we can move on to the animation portion."
+    },
+    {
+      "start": 1439.42,
+      "end": 1442.1,
+      "text": "Let's do shift a, we'll add in an empty sphere."
+    },
+    {
+      "start": 1442.1,
+      "end": 1445.34,
+      "text": "I'm going to use this sphere and I'm going to attach everything to this sphere."
+    },
+    {
+      "start": 1445.34,
+      "end": 1450.62,
+      "text": "So let's just make this big top view, move it towards the middle."
+    },
+    {
+      "start": 1451.38,
+      "end": 1456.86,
+      "text": "Then hit a select everything we can do control P on our keyboard and we'll parent to the object."
+    },
+    {
+      "start": 1456.86,
+      "end": 1458.58,
+      "text": "So now this will control everything."
+    },
+    {
+      "start": 1458.58,
+      "end": 1464.74,
+      "text": "Now to start off, I'm going to first make this glasses real world scale."
+    },
+    {
+      "start": 1464.74,
+      "end": 1466.86,
+      "text": "Cause right now they are way too big."
+    },
+    {
+      "start": 1466.86,
+      "end": 1468.54,
+      "text": "So I already did the measurements."
+    },
+    {
+      "start": 1468.54,
+      "end": 1475.58,
+      "text": "All you have to do is just copy the scale here, make it 0.03 and that'll be matching real world glasses."
+    },
+    {
+      "start": 1475.58,
+      "end": 1480.06,
+      "text": "So let's go put it in the middle and I'm going to move it up a little bit."
+    },
+    {
+      "start": 1480.42,
+      "end": 1484.7,
+      "text": "I'm going to go to blender kit and I'm going to import in a table that it can sit on."
+    },
+    {
+      "start": 1484.7,
+      "end": 1487.3,
+      "text": "So let's go type in glass table."
+    },
+    {
+      "start": 1487.3,
+      "end": 1491.38,
+      "text": "And again, you don't have to use this exact one that I'm using."
+    },
+    {
+      "start": 1491.38,
+      "end": 1493.18,
+      "text": "I'll be using this one right here."
+    },
+    {
+      "start": 1493.18,
+      "end": 1501.58,
+      "text": "Let's move it towards the, uh, well, actually let's select the table itself."
+    },
+    {
+      "start": 1501.58,
+      "end": 1503.42,
+      "text": "We'll move it in the middle centered out."
+    },
+    {
+      "start": 1503.42,
+      "end": 1505.42,
+      "text": "Okay."
+    },
+    {
+      "start": 1505.42,
+      "end": 1508.58,
+      "text": "Uh, we'll also move the glasses up."
+    },
+    {
+      "start": 1508.58,
+      "end": 1510.98,
+      "text": "Okay."
+    },
+    {
+      "start": 1510.98,
+      "end": 1514.58,
+      "text": "And I'll have the glasses start like this."
+    },
+    {
+      "start": 1515.1,
+      "end": 1518.46,
+      "text": "All right, now for the lighting, let's see what the lighting is looking like."
+    },
+    {
+      "start": 1518.46,
+      "end": 1519.54,
+      "text": "Let's go to rendered mode."
+    },
+    {
+      "start": 1519.54,
+      "end": 1521.22,
+      "text": "All right."
+    },
+    {
+      "start": 1521.22,
+      "end": 1522.1,
+      "text": "It's way too bright."
+    },
+    {
+      "start": 1522.1,
+      "end": 1523.62,
+      "text": "So I'm going to go to the world tidings."
+    },
+    {
+      "start": 1523.62,
+      "end": 1525.78,
+      "text": "I'm just going to make the 0.1."
+    },
+    {
+      "start": 1525.78,
+      "end": 1527.22,
+      "text": "Nice."
+    },
+    {
+      "start": 1527.38,
+      "end": 1530.02,
+      "text": "I'm also going to add a backdrop."
+    },
+    {
+      "start": 1530.02,
+      "end": 1532.58,
+      "text": "So let's do shift a, add in a mesh plane."
+    },
+    {
+      "start": 1533.02,
+      "end": 1537.26,
+      "text": "We'll make it go at S and then five on my keyboard."
+    },
+    {
+      "start": 1537.26,
+      "end": 1538.26,
+      "text": "Go to edit mode."
+    },
+    {
+      "start": 1538.26,
+      "end": 1540.7,
+      "text": "It's like this hit E and then Z to extrude up."
+    },
+    {
+      "start": 1540.7,
+      "end": 1541.58,
+      "text": "Okay."
+    },
+    {
+      "start": 1541.58,
+      "end": 1542.38,
+      "text": "I'll select this line."
+    },
+    {
+      "start": 1542.38,
+      "end": 1546.06,
+      "text": "I'll hit control B on my keyboard, and then I'll scroll on my mouse wheel to add some loop"
+    },
+    {
+      "start": 1546.06,
+      "end": 1548.18,
+      "text": "cuts, tab out and shade smooth."
+    },
+    {
+      "start": 1548.18,
+      "end": 1549.06,
+      "text": "Okay."
+    },
+    {
+      "start": 1549.06,
+      "end": 1552.08,
+      "text": "We'll go to the material properties, give it a material."
+    },
+    {
+      "start": 1552.08,
+      "end": 1553.94,
+      "text": "We'll get it a diffuse material."
+    },
+    {
+      "start": 1553.94,
+      "end": 1555.7,
+      "text": "Be a little bit red."
+    },
+    {
+      "start": 1555.7,
+      "end": 1557.86,
+      "text": "Roughness is going to be 0.3."
+    },
+    {
+      "start": 1557.86,
+      "end": 1561.98,
+      "text": "Let's go into the, uh, shader editor right here."
+    },
+    {
+      "start": 1562.12,
+      "end": 1566.6,
+      "text": "And I want to give it a gradient texture because right now it's a bit too basic."
+    },
+    {
+      "start": 1566.6,
+      "end": 1568.28,
+      "text": "So let's go ahead."
+    },
+    {
+      "start": 1568.28,
+      "end": 1570.56,
+      "text": "We'll do shift a, add in a color ramp."
+    },
+    {
+      "start": 1570.56,
+      "end": 1573.56,
+      "text": "Color ramp needs to match this color right here."
+    },
+    {
+      "start": 1573.56,
+      "end": 1579.64,
+      "text": "So I'm just going to click on this and I'll use the eyedropper tool, which will match the"
+    },
+    {
+      "start": 1579.64,
+      "end": 1580.02,
+      "text": "color."
+    },
+    {
+      "start": 1580.02,
+      "end": 1581.4,
+      "text": "Okay."
+    },
+    {
+      "start": 1581.4,
+      "end": 1587.52,
+      "text": "And then a shift a again, we'll do a gradient texture, plug that in, and then we'll plug"
+    },
+    {
+      "start": 1587.52,
+      "end": 1588.3,
+      "text": "that in."
+    },
+    {
+      "start": 1588.3,
+      "end": 1589.08,
+      "text": "Boom."
+    },
+    {
+      "start": 1589.32,
+      "end": 1593.68,
+      "text": "All we need to do is just add in a texture coordinate."
+    },
+    {
+      "start": 1593.8,
+      "end": 1597.52,
+      "text": "So hit control T on your keyboard, which adds a mapping coordinate and texture coordinates."
+    },
+    {
+      "start": 1597.52,
+      "end": 1599.28,
+      "text": "And we'll just change the rotation."
+    },
+    {
+      "start": 1599.28,
+      "end": 1604.9,
+      "text": "Uh, maybe something like this, uh, but I want this color to be the same as this."
+    },
+    {
+      "start": 1604.9,
+      "end": 1607.56,
+      "text": "We'll just make it a little darker."
+    },
+    {
+      "start": 1607.56,
+      "end": 1609.08,
+      "text": "Yeah."
+    },
+    {
+      "start": 1609.08,
+      "end": 1611.7,
+      "text": "You know, let's make it a little more red."
+    },
+    {
+      "start": 1611.7,
+      "end": 1614.16,
+      "text": "There we go."
+    },
+    {
+      "start": 1615.76,
+      "end": 1616.88,
+      "text": "Let's copy that."
+    },
+    {
+      "start": 1616.88,
+      "end": 1619.42,
+      "text": "It's darker."
+    },
+    {
+      "start": 1619.42,
+      "end": 1624.82,
+      "text": "I'm just going to do alt D to duplicate it."
+    },
+    {
+      "start": 1624.82,
+      "end": 1625.86,
+      "text": "Skip to set it back in place."
+    },
+    {
+      "start": 1625.86,
+      "end": 1629.56,
+      "text": "I'll do R, Z, and then 90 on my keyboard to rotate it."
+    },
+    {
+      "start": 1634.4,
+      "end": 1634.8,
+      "text": "All right."
+    },
+    {
+      "start": 1634.8,
+      "end": 1635.96,
+      "text": "Now let's add some lighting."
+    },
+    {
+      "start": 1635.96,
+      "end": 1644.3,
+      "text": "So shift a, we'll add in a area lights, move this up above, make the power about 35 super"
+    },
+    {
+      "start": 1644.3,
+      "end": 1644.56,
+      "text": "bright."
+    },
+    {
+      "start": 1644.56,
+      "end": 1645.16,
+      "text": "There we go."
+    },
+    {
+      "start": 1645.16,
+      "end": 1651.26,
+      "text": "And then at shadow caustics, add in one more light."
+    },
+    {
+      "start": 1651.34,
+      "end": 1652.36,
+      "text": "It's this, okay."
+    },
+    {
+      "start": 1652.36,
+      "end": 1655.46,
+      "text": "So the setup is going to be a basic two point lighting setup."
+    },
+    {
+      "start": 1655.46,
+      "end": 1657.52,
+      "text": "Shift D to duplicate again, escape."
+    },
+    {
+      "start": 1657.52,
+      "end": 1667.28,
+      "text": "I'll make the shape a disc onto R X 90, R Z 90, and I'll just move it to the side, maybe"
+    },
+    {
+      "start": 1667.28,
+      "end": 1671.52,
+      "text": "make it smaller, rotate a bit, something like that."
+    },
+    {
+      "start": 1671.52,
+      "end": 1675.66,
+      "text": "I'll make the power for this about seven and I'll make it red."
+    },
+    {
+      "start": 1675.66,
+      "end": 1678.26,
+      "text": "Okay."
+    },
+    {
+      "start": 1678.26,
+      "end": 1680.22,
+      "text": "And there is the lighting setup."
+    },
+    {
+      "start": 1680.22,
+      "end": 1686.06,
+      "text": "Let me just collapse this window and yeah, shift a, we'll add in a camera now."
+    },
+    {
+      "start": 1686.06,
+      "end": 1697.12,
+      "text": "Let's go to the camera view, camera back and we'll be up, make this zero, make this, make"
+    },
+    {
+      "start": 1697.12,
+      "end": 1697.78,
+      "text": "this zero."
+    },
+    {
+      "start": 1697.78,
+      "end": 1702.74,
+      "text": "And I'm just going to look at this."
+    },
+    {
+      "start": 1702.74,
+      "end": 1706.88,
+      "text": "Okay."
+    },
+    {
+      "start": 1706.88,
+      "end": 1709.44,
+      "text": "So this is a lot, this is the lighting setup right now."
+    },
+    {
+      "start": 1709.44,
+      "end": 1713.94,
+      "text": "I have this light pointing over here and then this giant light at the top."
+    },
+    {
+      "start": 1713.94,
+      "end": 1716.08,
+      "text": "Let's start animating."
+    },
+    {
+      "start": 1716.08,
+      "end": 1717.2,
+      "text": "So let's start with the camera."
+    },
+    {
+      "start": 1717.2,
+      "end": 1723.46,
+      "text": "I'll do a basic pan in let's hit I on the keyboard, I over here to add a keyframe on location"
+    },
+    {
+      "start": 1723.46,
+      "end": 1724.9,
+      "text": "rotation, make sure you're on frame one."
+    },
+    {
+      "start": 1724.9,
+      "end": 1728.42,
+      "text": "This animation is going to be 30 frames per second."
+    },
+    {
+      "start": 1728.42,
+      "end": 1730.84,
+      "text": "Check mark, render region, crop the render region."
+    },
+    {
+      "start": 1731.0,
+      "end": 1731.64,
+      "text": "Let's go to 90 seconds."
+    },
+    {
+      "start": 1731.64,
+      "end": 1733.4,
+      "text": "Let's go to 90 seconds, which is about three seconds."
+    },
+    {
+      "start": 1733.4,
+      "end": 1736.22,
+      "text": "And then we'll pan in the camera forward."
+    },
+    {
+      "start": 1736.22,
+      "end": 1740.0,
+      "text": "And we're going to move it up a bit."
+    },
+    {
+      "start": 1740.0,
+      "end": 1745.02,
+      "text": "Hit I, I to add in that keyframe on frame 90."
+    },
+    {
+      "start": 1745.02,
+      "end": 1747.36,
+      "text": "And that's, this is the movements right here."
+    },
+    {
+      "start": 1747.36,
+      "end": 1748.86,
+      "text": "Okay."
+    },
+    {
+      "start": 1749.34,
+      "end": 1751.86,
+      "text": "Now let's animate the glasses floating up."
+    },
+    {
+      "start": 1751.86,
+      "end": 1756.72,
+      "text": "So let's select the empty on, hit I and then I and the location rotation frame one."
+    },
+    {
+      "start": 1756.72,
+      "end": 1759.1,
+      "text": "And then let's go, you know what?"
+    },
+    {
+      "start": 1759.1,
+      "end": 1761.16,
+      "text": "Let's have, let's have a start at frame 20."
+    },
+    {
+      "start": 1761.16,
+      "end": 1764.34,
+      "text": "Actually, let's go all the way to frame 70."
+    },
+    {
+      "start": 1765.3,
+      "end": 1773.12,
+      "text": "We'll have it move up a little, I'll hit RR to rotate it like this."
+    },
+    {
+      "start": 1773.12,
+      "end": 1774.3,
+      "text": "It's going to rotate like this."
+    },
+    {
+      "start": 1774.3,
+      "end": 1779.02,
+      "text": "Hit I, I let's see what that looks like."
+    },
+    {
+      "start": 1779.02,
+      "end": 1780.4,
+      "text": "There we go."
+    },
+    {
+      "start": 1780.4,
+      "end": 1784.74,
+      "text": "And then the last 20 frames, it'll just move up really fast."
+    },
+    {
+      "start": 1784.74,
+      "end": 1785.36,
+      "text": "So then I'll go."
+    },
+    {
+      "start": 1794.96,
+      "end": 1798.62,
+      "text": "Hit I, I, see what that looks like."
+    },
+    {
+      "start": 1798.62,
+      "end": 1800.14,
+      "text": "Boom."
+    },
+    {
+      "start": 1800.14,
+      "end": 1805.48,
+      "text": "Now it's a bit too, the transition is a bit too sharp."
+    },
+    {
+      "start": 1805.48,
+      "end": 1808.36,
+      "text": "So to smooth that out, I'll hit A and then right click."
+    },
+    {
+      "start": 1808.36,
+      "end": 1811.9,
+      "text": "And right now it's on linear and we want to change it to bezier to smooth it out."
+    },
+    {
+      "start": 1811.9,
+      "end": 1813.36,
+      "text": "Let's see what that does."
+    },
+    {
+      "start": 1813.36,
+      "end": 1815.1,
+      "text": "Boom."
+    },
+    {
+      "start": 1815.1,
+      "end": 1817.32,
+      "text": "Shot one's done."
+    },
+    {
+      "start": 1817.32,
+      "end": 1818.0,
+      "text": "Cool."
+    },
+    {
+      "start": 1818.0,
+      "end": 1820.82,
+      "text": "The next shot, I'm going to duplicate this camera."
+    },
+    {
+      "start": 1820.82,
+      "end": 1821.96,
+      "text": "So shift D to duplicate it."
+    },
+    {
+      "start": 1821.96,
+      "end": 1823.1,
+      "text": "Escape set it back in place."
+    },
+    {
+      "start": 1823.1,
+      "end": 1824.44,
+      "text": "Hover over your timeline."
+    },
+    {
+      "start": 1824.56,
+      "end": 1826.12,
+      "text": "Hit A and then X to delete everything."
+    },
+    {
+      "start": 1826.12,
+      "end": 1827.56,
+      "text": "This is our second camera angle."
+    },
+    {
+      "start": 1827.56,
+      "end": 1831.2,
+      "text": "So we'll go to view and we'll change this as our primary camera angle now."
+    },
+    {
+      "start": 1831.2,
+      "end": 1833.86,
+      "text": "And for this one, it's going to be a little closer."
+    },
+    {
+      "start": 1833.86,
+      "end": 1836.36,
+      "text": "So we'll change the focal length to 75 millimeters."
+    },
+    {
+      "start": 1836.36,
+      "end": 1841.02,
+      "text": "And then I'm going to move this camera a little forward and up."
+    },
+    {
+      "start": 1844.3,
+      "end": 1851.06,
+      "text": "Maybe 90, maybe 90, like this, should show up right here."
+    },
+    {
+      "start": 1851.06,
+      "end": 1852.76,
+      "text": "Okay."
+    },
+    {
+      "start": 1852.76,
+      "end": 1857.74,
+      "text": "Now I want, maybe I want the glasses to be more in the middle."
+    },
+    {
+      "start": 1857.74,
+      "end": 1858.36,
+      "text": "So right here."
+    },
+    {
+      "start": 1860.66,
+      "end": 1861.1,
+      "text": "Okay."
+    },
+    {
+      "start": 1861.1,
+      "end": 1863.42,
+      "text": "So I'm on frame 90."
+    },
+    {
+      "start": 1863.42,
+      "end": 1864.44,
+      "text": "I'll just update that keyframe."
+    },
+    {
+      "start": 1864.44,
+      "end": 1865.0,
+      "text": "So hit I."
+    },
+    {
+      "start": 1865.0,
+      "end": 1867.6,
+      "text": "Boom."
+    },
+    {
+      "start": 1867.6,
+      "end": 1873.24,
+      "text": "I'll actually have the camera a little closer."
+    },
+    {
+      "start": 1873.24,
+      "end": 1877.74,
+      "text": "Maybe up."
+    },
+    {
+      "start": 1883.1,
+      "end": 1883.46,
+      "text": "Okay."
+    },
+    {
+      "start": 1883.46,
+      "end": 1885.62,
+      "text": "So that's the second camera angle."
+    },
+    {
+      "start": 1885.62,
+      "end": 1887.3,
+      "text": "For this second camera angle."
+    },
+    {
+      "start": 1887.3,
+      "end": 1887.54,
+      "text": "Okay."
+    },
+    {
+      "start": 1887.54,
+      "end": 1888.46,
+      "text": "That's way too big, by the way."
+    },
+    {
+      "start": 1888.46,
+      "end": 1889.94,
+      "text": "We can just make that smaller."
+    },
+    {
+      "start": 1889.94,
+      "end": 1891.86,
+      "text": "By going to view board display."
+    },
+    {
+      "start": 1891.86,
+      "end": 1892.88,
+      "text": "Just change the size."
+    },
+    {
+      "start": 1892.88,
+      "end": 1893.48,
+      "text": "Boom."
+    },
+    {
+      "start": 1893.48,
+      "end": 1894.08,
+      "text": "Okay."
+    },
+    {
+      "start": 1894.08,
+      "end": 1897.24,
+      "text": "So for this break apart scene, I'm actually going to make a new scene."
+    },
+    {
+      "start": 1897.5,
+      "end": 1899.24,
+      "text": "So this will, this will be the intro shot."
+    },
+    {
+      "start": 1899.24,
+      "end": 1903.92,
+      "text": "And then for the, you know, the glasses breaking apart and then coming back together, I'll just"
+    },
+    {
+      "start": 1903.92,
+      "end": 1907.5,
+      "text": "make a new scene by going up to the top right corner and just clicking on full copy."
+    },
+    {
+      "start": 1907.5,
+      "end": 1912.82,
+      "text": "I'll rename this to break apart or what's called break."
+    },
+    {
+      "start": 1912.82,
+      "end": 1915.64,
+      "text": "And then we're going to go to this camera back."
+    },
+    {
+      "start": 1915.64,
+      "end": 1919.6,
+      "text": "We're going to go back to this camera and we'll start the breaking scene."
+    },
+    {
+      "start": 1919.6,
+      "end": 1920.24,
+      "text": "So boom."
+    },
+    {
+      "start": 1920.24,
+      "end": 1921.7,
+      "text": "Okay."
+    },
+    {
+      "start": 1921.7,
+      "end": 1926.2,
+      "text": "So now that we have a new scene called break, I'm going to change the animation here."
+    },
+    {
+      "start": 1926.2,
+      "end": 1930.02,
+      "text": "So instead, so with this new break scene here, I'm actually going to have the animation start"
+    },
+    {
+      "start": 1930.02,
+      "end": 1933.1,
+      "text": "from the zero."
+    },
+    {
+      "start": 1933.1,
+      "end": 1936.98,
+      "text": "So actually move this frame right here or this, yeah, this key frame right here."
+    },
+    {
+      "start": 1936.98,
+      "end": 1939.98,
+      "text": "And I'll move this right here."
+    },
+    {
+      "start": 1939.98,
+      "end": 1945.2,
+      "text": "Well, actually we'll delete this key frame."
+    },
+    {
+      "start": 1945.2,
+      "end": 1946.92,
+      "text": "Let's move this key frame to frame 20."
+    },
+    {
+      "start": 1946.92,
+      "end": 1948.7,
+      "text": "So it just shows up like this."
+    },
+    {
+      "start": 1948.7,
+      "end": 1952.04,
+      "text": "It's a bit too fast."
+    },
+    {
+      "start": 1952.86,
+      "end": 1960.02,
+      "text": "So we'll start the glasses right here and then we'll just update the key frame right here."
+    },
+    {
+      "start": 1960.02,
+      "end": 1961.16,
+      "text": "Boom."
+    },
+    {
+      "start": 1961.16,
+      "end": 1962.74,
+      "text": "Somewhere in the middle."
+    },
+    {
+      "start": 1962.74,
+      "end": 1964.18,
+      "text": "Boom."
+    },
+    {
+      "start": 1964.18,
+      "end": 1965.38,
+      "text": "Okay."
+    },
+    {
+      "start": 1965.38,
+      "end": 1969.18,
+      "text": "And I'll also have the camera pan in a bit."
+    },
+    {
+      "start": 1969.18,
+      "end": 1970.72,
+      "text": "So I'm going to have to start back."
+    },
+    {
+      "start": 1972.18,
+      "end": 1977.92,
+      "text": "Hit I and then I, and then I, and then frame 60, it'll just zoom in."
+    },
+    {
+      "start": 1977.92,
+      "end": 1984.28,
+      "text": "I, I, and then at frame 60, it'll just, it'll just burst."
+    },
+    {
+      "start": 1984.28,
+      "end": 1989.78,
+      "text": "So let's, I'm going to make the total frames here, 165."
+    },
+    {
+      "start": 1989.78,
+      "end": 1992.6,
+      "text": "And let's start with this piece."
+    },
+    {
+      "start": 1993.42,
+      "end": 2002.36,
+      "text": "So we'll hit I and then I will also select this piece, hit I, I, it's like this piece, hit I, I."
+    },
+    {
+      "start": 2002.36,
+      "end": 2008.36,
+      "text": "It's like this hit I, I, and there we go."
+    },
+    {
+      "start": 2008.36,
+      "end": 2009.22,
+      "text": "Okay."
+    },
+    {
+      "start": 2009.22,
+      "end": 2013.24,
+      "text": "So let's go 10 frames ahead and then that's where the pieces will break."
+    },
+    {
+      "start": 2013.24,
+      "end": 2017.3,
+      "text": "So it's going to go, I'll just move it like somewhere here."
+    },
+    {
+      "start": 2020.74,
+      "end": 2028.6,
+      "text": "Well, maybe like somewhere here, maybe like rotate it like this, hit I, I, and then these"
+    },
+    {
+      "start": 2028.6,
+      "end": 2029.8,
+      "text": "are going to be a little forward."
+    },
+    {
+      "start": 2029.8,
+      "end": 2044.32,
+      "text": "So I'll move them like, that, I, I, these are also going to, let's have them fly."
+    },
+    {
+      "start": 2044.32,
+      "end": 2048.6,
+      "text": "Let's have them fly like here."
+    },
+    {
+      "start": 2050.74,
+      "end": 2057.74,
+      "text": "I, I, I, and this little piece right here, I guess we'll just have it fly up here."
+    },
+    {
+      "start": 2057.74,
+      "end": 2064.16,
+      "text": "I, I, all these little logos are supposed to be attached to the frame."
+    },
+    {
+      "start": 2064.16,
+      "end": 2065.84,
+      "text": "So let's just attach those to the frame here."
+    },
+    {
+      "start": 2065.84,
+      "end": 2067.2,
+      "text": "Click on this."
+    },
+    {
+      "start": 2067.2,
+      "end": 2070.88,
+      "text": "Let's click the frames here, control P, parents and boom."
+    },
+    {
+      "start": 2072.54,
+      "end": 2072.94,
+      "text": "Okay."
+    },
+    {
+      "start": 2072.94,
+      "end": 2074.56,
+      "text": "This is how they break."
+    },
+    {
+      "start": 2074.56,
+      "end": 2078.66,
+      "text": "And then from frame 70, they'll be coming back together."
+    },
+    {
+      "start": 2078.66,
+      "end": 2081.94,
+      "text": "So put them back to zero."
+    },
+    {
+      "start": 2081.94,
+      "end": 2085.56,
+      "text": "Select the, we'll select this here first."
+    },
+    {
+      "start": 2085.56,
+      "end": 2087.6,
+      "text": "Put it back to zero."
+    },
+    {
+      "start": 2087.6,
+      "end": 2089.7,
+      "text": "Rotation back to zero."
+    },
+    {
+      "start": 2089.7,
+      "end": 2091.7,
+      "text": "And then hit I, I."
+    },
+    {
+      "start": 2091.7,
+      "end": 2093.18,
+      "text": "And then this as well."
+    },
+    {
+      "start": 2093.18,
+      "end": 2095.04,
+      "text": "Back to zero."
+    },
+    {
+      "start": 2095.54,
+      "end": 2098.64,
+      "text": "Zero, I, I."
+    },
+    {
+      "start": 2098.64,
+      "end": 2105.46,
+      "text": "Zero, zero, I, I."
+    },
+    {
+      "start": 2105.46,
+      "end": 2107.48,
+      "text": "And this as well."
+    },
+    {
+      "start": 2107.48,
+      "end": 2112.44,
+      "text": "Zero, zero, I, I."
+    },
+    {
+      "start": 2112.44,
+      "end": 2113.0,
+      "text": "Okay."
+    },
+    {
+      "start": 2113.0,
+      "end": 2114.14,
+      "text": "See what that looks like?"
+    },
+    {
+      "start": 2114.14,
+      "end": 2114.42,
+      "text": "Boom."
+    },
+    {
+      "start": 2114.42,
+      "end": 2116.32,
+      "text": "Boom."
+    },
+    {
+      "start": 2117.4,
+      "end": 2120.14,
+      "text": "And when they break, I also want the camera to zoom out."
+    },
+    {
+      "start": 2120.14,
+      "end": 2123.36,
+      "text": "So the camera is going to zoom out from right here."
+    },
+    {
+      "start": 2123.36,
+      "end": 2125.86,
+      "text": "Boom."
+    },
+    {
+      "start": 2125.86,
+      "end": 2132.1,
+      "text": "Maybe down, up."
+    },
+    {
+      "start": 2132.1,
+      "end": 2135.36,
+      "text": "So high, I for the camera."
+    },
+    {
+      "start": 2135.36,
+      "end": 2136.96,
+      "text": "So boom."
+    },
+    {
+      "start": 2136.96,
+      "end": 2140.14,
+      "text": "And it's coming back together."
+    },
+    {
+      "start": 2140.14,
+      "end": 2144.74,
+      "text": "I, I."
+    },
+    {
+      "start": 2144.74,
+      "end": 2145.28,
+      "text": "Okay."
+    },
+    {
+      "start": 2147.4,
+      "end": 2147.88,
+      "text": "Okay."
+    },
+    {
+      "start": 2147.88,
+      "end": 2149.74,
+      "text": "And you know what?"
+    },
+    {
+      "start": 2149.74,
+      "end": 2150.82,
+      "text": "We'll make this all Bezier."
+    },
+    {
+      "start": 2150.82,
+      "end": 2152.92,
+      "text": "So I'm going to select each of these."
+    },
+    {
+      "start": 2152.92,
+      "end": 2153.44,
+      "text": "Hit A."
+    },
+    {
+      "start": 2153.44,
+      "end": 2154.5,
+      "text": "And then I'll the right click."
+    },
+    {
+      "start": 2154.5,
+      "end": 2155.52,
+      "text": "And I'll just do Bezier."
+    },
+    {
+      "start": 2155.52,
+      "end": 2158.28,
+      "text": "Same with this."
+    },
+    {
+      "start": 2158.28,
+      "end": 2158.9,
+      "text": "Hit A."
+    },
+    {
+      "start": 2158.9,
+      "end": 2159.54,
+      "text": "Right click."
+    },
+    {
+      "start": 2159.54,
+      "end": 2160.22,
+      "text": "Bezier."
+    },
+    {
+      "start": 2160.22,
+      "end": 2162.46,
+      "text": "This too."
+    },
+    {
+      "start": 2162.46,
+      "end": 2163.22,
+      "text": "Hover over timeline."
+    },
+    {
+      "start": 2163.22,
+      "end": 2163.74,
+      "text": "Hit A."
+    },
+    {
+      "start": 2163.74,
+      "end": 2164.26,
+      "text": "Right click."
+    },
+    {
+      "start": 2164.26,
+      "end": 2164.76,
+      "text": "Bezier."
+    },
+    {
+      "start": 2164.76,
+      "end": 2167.04,
+      "text": "And then this as well."
+    },
+    {
+      "start": 2167.04,
+      "end": 2167.36,
+      "text": "A."
+    },
+    {
+      "start": 2167.36,
+      "end": 2167.92,
+      "text": "Right click."
+    },
+    {
+      "start": 2167.92,
+      "end": 2168.4,
+      "text": "Bezier."
+    },
+    {
+      "start": 2168.4,
+      "end": 2169.62,
+      "text": "Boom."
+    },
+    {
+      "start": 2169.62,
+      "end": 2171.1,
+      "text": "Boom."
+    },
+    {
+      "start": 2171.1,
+      "end": 2173.72,
+      "text": "You know what?"
+    },
+    {
+      "start": 2173.72,
+      "end": 2174.64,
+      "text": "Select the camera as well."
+    },
+    {
+      "start": 2174.64,
+      "end": 2175.22,
+      "text": "Hit A."
+    },
+    {
+      "start": 2175.22,
+      "end": 2175.86,
+      "text": "And then right click."
+    },
+    {
+      "start": 2175.86,
+      "end": 2176.76,
+      "text": "We'll just Bezier."
+    },
+    {
+      "start": 2178.2,
+      "end": 2178.72,
+      "text": "Boom."
+    },
+    {
+      "start": 2178.72,
+      "end": 2181.84,
+      "text": "For the camera."
+    },
+    {
+      "start": 2181.84,
+      "end": 2183.76,
+      "text": "As it's zooming out."
+    },
+    {
+      "start": 2183.76,
+      "end": 2185.44,
+      "text": "I want it to zoom out a bit more."
+    },
+    {
+      "start": 2185.44,
+      "end": 2190.04,
+      "text": "So I'm going to have it keep zooming."
+    },
+    {
+      "start": 2190.04,
+      "end": 2193.62,
+      "text": "Until 110."
+    },
+    {
+      "start": 2193.62,
+      "end": 2199.08,
+      "text": "Hit I."
+    },
+    {
+      "start": 2199.08,
+      "end": 2202.9,
+      "text": "No, it's still not zooming."
+    },
+    {
+      "start": 2202.9,
+      "end": 2204.28,
+      "text": "Let's have it zoom more."
+    },
+    {
+      "start": 2204.28,
+      "end": 2209.9,
+      "text": "I, I."
+    },
+    {
+      "start": 2209.9,
+      "end": 2213.5,
+      "text": "A little bit more."
+    },
+    {
+      "start": 2213.5,
+      "end": 2215.78,
+      "text": "I."
+    },
+    {
+      "start": 2215.78,
+      "end": 2217.04,
+      "text": "See what that looks like."
+    },
+    {
+      "start": 2217.04,
+      "end": 2217.38,
+      "text": "Boom."
+    },
+    {
+      "start": 2217.38,
+      "end": 2218.78,
+      "text": "Boom."
+    },
+    {
+      "start": 2218.78,
+      "end": 2220.62,
+      "text": "Let's start sooner."
+    },
+    {
+      "start": 2220.62,
+      "end": 2225.46,
+      "text": "Something like that."
+    },
+    {
+      "start": 2226.96,
+      "end": 2228.42,
+      "text": "Again, it's really trial and error."
+    },
+    {
+      "start": 2228.42,
+      "end": 2233.36,
+      "text": "I'm usually just, you know, going back to it and then, you know, fixing the camera motion."
+    },
+    {
+      "start": 2233.36,
+      "end": 2235.18,
+      "text": "It's never really on the first try."
+    },
+    {
+      "start": 2235.18,
+      "end": 2236.86,
+      "text": "But, yeah."
+    },
+    {
+      "start": 2236.86,
+      "end": 2238.4,
+      "text": "Bit of a mistake here."
+    },
+    {
+      "start": 2238.4,
+      "end": 2239.34,
+      "text": "Let me just."
+    },
+    {
+      "start": 2243.02,
+      "end": 2243.38,
+      "text": "Yeah."
+    },
+    {
+      "start": 2243.38,
+      "end": 2244.64,
+      "text": "Move that back a little faster."
+    },
+    {
+      "start": 2244.64,
+      "end": 2245.8,
+      "text": "Okay."
+    },
+    {
+      "start": 2245.8,
+      "end": 2252.86,
+      "text": "And then as it comes back together, I'll just have, I'll just have the glasses go back down."
+    },
+    {
+      "start": 2252.86,
+      "end": 2253.62,
+      "text": "So I, I."
+    },
+    {
+      "start": 2253.62,
+      "end": 2256.8,
+      "text": "And then, yeah."
+    },
+    {
+      "start": 2257.36,
+      "end": 2258.74,
+      "text": "It just goes back down."
+    },
+    {
+      "start": 2258.74,
+      "end": 2262.08,
+      "text": "I, I."
+    },
+    {
+      "start": 2262.08,
+      "end": 2264.42,
+      "text": "A."
+    },
+    {
+      "start": 2264.42,
+      "end": 2265.22,
+      "text": "Right click."
+    },
+    {
+      "start": 2265.22,
+      "end": 2265.58,
+      "text": "Bézier."
+    },
+    {
+      "start": 2265.58,
+      "end": 2268.22,
+      "text": "That's too strong."
+    },
+    {
+      "start": 2268.22,
+      "end": 2268.94,
+      "text": "So let's go."
+    },
+    {
+      "start": 2271.28,
+      "end": 2271.64,
+      "text": "Okay."
+    },
+    {
+      "start": 2271.64,
+      "end": 2273.4,
+      "text": "So this is what it's looking like so far."
+    },
+    {
+      "start": 2273.4,
+      "end": 2275.68,
+      "text": "And let's go into rendered mode to see what it's looking like."
+    },
+    {
+      "start": 2275.68,
+      "end": 2279.54,
+      "text": "And we can do a few more things to make the scene look even better."
+    },
+    {
+      "start": 2279.54,
+      "end": 2283.42,
+      "text": "So for starters, I'm going to bring down this area light at the top right here."
+    },
+    {
+      "start": 2283.42,
+      "end": 2285.22,
+      "text": "I'm going to bring it down a little bit more."
+    },
+    {
+      "start": 2285.22,
+      "end": 2288.28,
+      "text": "So we'll bring it low right here."
+    },
+    {
+      "start": 2288.28,
+      "end": 2290.8,
+      "text": "Maybe even lower."
+    },
+    {
+      "start": 2292.4,
+      "end": 2295.2,
+      "text": "Get some more highlights on the glasses."
+    },
+    {
+      "start": 2295.2,
+      "end": 2298.58,
+      "text": "And then I'm going to go to the render properties here."
+    },
+    {
+      "start": 2298.58,
+      "end": 2301.72,
+      "text": "I'm going to make sure my final max samples are at 200."
+    },
+    {
+      "start": 2301.72,
+      "end": 2305.1,
+      "text": "If you have a slow computer, you can render this at a hundred samples."
+    },
+    {
+      "start": 2305.1,
+      "end": 2305.92,
+      "text": "That'll still work."
+    },
+    {
+      "start": 2305.92,
+      "end": 2309.52,
+      "text": "And then I will go to the view transform here."
+    },
+    {
+      "start": 2309.52,
+      "end": 2313.04,
+      "text": "And I'm going to change the look to high contrast."
+    },
+    {
+      "start": 2313.04,
+      "end": 2314.3,
+      "text": "Okay."
+    },
+    {
+      "start": 2314.3,
+      "end": 2315.88,
+      "text": "And then I'm going to up the exposure a bit."
+    },
+    {
+      "start": 2315.88,
+      "end": 2317.66,
+      "text": "So let me just up the exposure a bit."
+    },
+    {
+      "start": 2317.66,
+      "end": 2319.46,
+      "text": "There we go."
+    },
+    {
+      "start": 2319.46,
+      "end": 2322.18,
+      "text": "I think that looks much cooler."
+    },
+    {
+      "start": 2322.76,
+      "end": 2327.52,
+      "text": "And for this area light here, you know, I actually ended up adjusting it."
+    },
+    {
+      "start": 2327.52,
+      "end": 2330.76,
+      "text": "So you can see the rotation of the area light right here and the location."
+    },
+    {
+      "start": 2330.76,
+      "end": 2337.2,
+      "text": "I wanted just a little bit of a red highlights on the side because, you know, it is shining a red light on the glasses."
+    },
+    {
+      "start": 2337.2,
+      "end": 2342.72,
+      "text": "So, yeah, this is what the lighting setup looks like now."
+    },
+    {
+      "start": 2342.72,
+      "end": 2346.58,
+      "text": "Let me just hide the table empty here so you're not confused."
+    },
+    {
+      "start": 2346.58,
+      "end": 2351.94,
+      "text": "So, yeah, this is what it looks like now with that area light shining at the back like this."
+    },
+    {
+      "start": 2352.1,
+      "end": 2353.96,
+      "text": "And the top light like this."
+    },
+    {
+      "start": 2353.96,
+      "end": 2355.7,
+      "text": "Okay."
+    },
+    {
+      "start": 2355.7,
+      "end": 2358.5,
+      "text": "Let's select the glasses controller here."
+    },
+    {
+      "start": 2358.5,
+      "end": 2362.6,
+      "text": "And I don't like how it completely stops moving once it reaches the top here."
+    },
+    {
+      "start": 2362.6,
+      "end": 2364.82,
+      "text": "I kind of want it to keep moving before it breaks."
+    },
+    {
+      "start": 2364.98,
+      "end": 2371.26,
+      "text": "So, on frame 60, I'm going to have, I'm going to hit RR and I'm going to just move it slightly up, I guess."
+    },
+    {
+      "start": 2371.26,
+      "end": 2378.1,
+      "text": "Something like, something like that could work."
+    },
+    {
+      "start": 2378.1,
+      "end": 2381.44,
+      "text": "And then I'll go to the rotation and just hit I and then I."
+    },
+    {
+      "start": 2382.44,
+      "end": 2385.28,
+      "text": "And so now if I go into salt mode, that's what it's looking like."
+    },
+    {
+      "start": 2385.28,
+      "end": 2385.58,
+      "text": "Boom."
+    },
+    {
+      "start": 2386.58,
+      "end": 2386.78,
+      "text": "Okay."
+    },
+    {
+      "start": 2386.78,
+      "end": 2393.58,
+      "text": "So, one last thing we're going to do is we're going to add a particle system for when the glasses burst like this."
+    },
+    {
+      "start": 2393.58,
+      "end": 2394.24,
+      "text": "Okay."
+    },
+    {
+      "start": 2394.24,
+      "end": 2402.51,
+      "text": "So, to do that, I'm going to, let's click on the empty here and I'll do control, I'll do shift S and I'll do cursor to"
+    },
+    {
+      "start": 2402.51,
+      "end": 2403.34,
+      "text": "select it."
+    },
+    {
+      "start": 2403.78,
+      "end": 2407.82,
+      "text": "And then I'll do shift A, I'll add in a mesh icosphere."
+    },
+    {
+      "start": 2407.82,
+      "end": 2409.64,
+      "text": "I'll hit S to scale it down."
+    },
+    {
+      "start": 2409.64,
+      "end": 2412.64,
+      "text": "And this is going to be the particle emitter."
+    },
+    {
+      "start": 2412.64,
+      "end": 2416.8,
+      "text": "So, we'll actually move it towards the middle of the glasses."
+    },
+    {
+      "start": 2416.8,
+      "end": 2417.7,
+      "text": "So, let's go to top view."
+    },
+    {
+      "start": 2417.7,
+      "end": 2422.86,
+      "text": "And let's just make sure it's centered where the glasses break apart."
+    },
+    {
+      "start": 2422.86,
+      "end": 2425.5,
+      "text": "So, right there will work."
+    },
+    {
+      "start": 2425.5,
+      "end": 2427.54,
+      "text": "Don't worry, you can scale it down."
+    },
+    {
+      "start": 2427.54,
+      "end": 2429.62,
+      "text": "It's not really going to be shown in the final render."
+    },
+    {
+      "start": 2429.62,
+      "end": 2431.22,
+      "text": "This is what's going to emit the particles."
+    },
+    {
+      "start": 2431.36,
+      "end": 2434.52,
+      "text": "So, go to the particle settings, hit the plus icon, and I'll add some particles."
+    },
+    {
+      "start": 2434.52,
+      "end": 2437.84,
+      "text": "So, we'll add in about 200 particles."
+    },
+    {
+      "start": 2437.84,
+      "end": 2440.48,
+      "text": "They're going to start at frame 60."
+    },
+    {
+      "start": 2440.48,
+      "end": 2442.2,
+      "text": "So, frame 60 is the start frame."
+    },
+    {
+      "start": 2442.2,
+      "end": 2444.14,
+      "text": "And the end frame could be frame 70."
+    },
+    {
+      "start": 2444.14,
+      "end": 2446.76,
+      "text": "The lifetime, doesn't really matter."
+    },
+    {
+      "start": 2446.76,
+      "end": 2447.46,
+      "text": "I'll make it 150."
+    },
+    {
+      "start": 2447.46,
+      "end": 2449.66,
+      "text": "And we'll go down."
+    },
+    {
+      "start": 2449.66,
+      "end": 2451.72,
+      "text": "We'll hit play."
+    },
+    {
+      "start": 2451.72,
+      "end": 2453.48,
+      "text": "Oh, they're falling down."
+    },
+    {
+      "start": 2453.48,
+      "end": 2457.56,
+      "text": "We need to go all the way down and just turn off the force or field weights."
+    },
+    {
+      "start": 2457.56,
+      "end": 2458.54,
+      "text": "Turn off gravity."
+    },
+    {
+      "start": 2458.54,
+      "end": 2460.28,
+      "text": "So, now they'll start floating."
+    },
+    {
+      "start": 2461.12,
+      "end": 2465.44,
+      "text": "I'll make the velocity here to 0.7."
+    },
+    {
+      "start": 2465.44,
+      "end": 2468.16,
+      "text": "And we're going to have..."
+    },
+    {
+      "start": 2468.16,
+      "end": 2469.98,
+      "text": "I don't want these particles to look like circles."
+    },
+    {
+      "start": 2469.98,
+      "end": 2472.08,
+      "text": "I want them to look like small glass particles."
+    },
+    {
+      "start": 2472.08,
+      "end": 2473.78,
+      "text": "So, we'll do shift A again."
+    },
+    {
+      "start": 2473.78,
+      "end": 2475.12,
+      "text": "We'll add in another icosphere."
+    },
+    {
+      "start": 2475.12,
+      "end": 2477.0,
+      "text": "We'll make the subdivisions one."
+    },
+    {
+      "start": 2477.0,
+      "end": 2480.94,
+      "text": "And I'm going to also make it super small."
+    },
+    {
+      "start": 2480.94,
+      "end": 2483.22,
+      "text": "Zoom in."
+    },
+    {
+      "start": 2486.9,
+      "end": 2490.04,
+      "text": "And something like that could work."
+    },
+    {
+      "start": 2490.04,
+      "end": 2491.98,
+      "text": "Okay."
+    },
+    {
+      "start": 2491.98,
+      "end": 2492.92,
+      "text": "We'll move it out the frame."
+    },
+    {
+      "start": 2492.92,
+      "end": 2495.56,
+      "text": "So, that's over there."
+    },
+    {
+      "start": 2495.56,
+      "end": 2496.44,
+      "text": "It's called icosphere one."
+    },
+    {
+      "start": 2496.44,
+      "end": 2497.4,
+      "text": "We'll call it particle, actually."
+    },
+    {
+      "start": 2497.4,
+      "end": 2499.5,
+      "text": "Okay."
+    },
+    {
+      "start": 2499.5,
+      "end": 2500.96,
+      "text": "Let's go into camera view."
+    },
+    {
+      "start": 2500.96,
+      "end": 2502.34,
+      "text": "Let's select our particle system."
+    },
+    {
+      "start": 2502.34,
+      "end": 2504.18,
+      "text": "And we'll go over here."
+    },
+    {
+      "start": 2504.18,
+      "end": 2504.74,
+      "text": "Render as."
+    },
+    {
+      "start": 2504.74,
+      "end": 2505.56,
+      "text": "We'll change it to object."
+    },
+    {
+      "start": 2506.42,
+      "end": 2510.1,
+      "text": "And I'm going to go and change the object to particle, which we just named."
+    },
+    {
+      "start": 2510.1,
+      "end": 2510.78,
+      "text": "Okay."
+    },
+    {
+      "start": 2510.78,
+      "end": 2511.38,
+      "text": "We can't see it."
+    },
+    {
+      "start": 2511.38,
+      "end": 2512.8,
+      "text": "And we've got to change the scale here."
+    },
+    {
+      "start": 2512.8,
+      "end": 2515.02,
+      "text": "So, we'll change it to 0.9."
+    },
+    {
+      "start": 2515.02,
+      "end": 2516.88,
+      "text": "And we'll change the randomness to 1."
+    },
+    {
+      "start": 2517.72,
+      "end": 2518.9,
+      "text": "And we'll turn off show emitter."
+    },
+    {
+      "start": 2518.9,
+      "end": 2521.96,
+      "text": "So, the emitter won't show up in the final render settings."
+    },
+    {
+      "start": 2521.96,
+      "end": 2522.88,
+      "text": "Okay."
+    },
+    {
+      "start": 2522.88,
+      "end": 2525.48,
+      "text": "I think that's pretty much it."
+    },
+    {
+      "start": 2525.48,
+      "end": 2528.5,
+      "text": "Just hit play to see what the particle system looks like."
+    },
+    {
+      "start": 2528.5,
+      "end": 2530.08,
+      "text": "Burst."
+    },
+    {
+      "start": 2530.08,
+      "end": 2530.96,
+      "text": "Okay."
+    },
+    {
+      "start": 2530.96,
+      "end": 2535.66,
+      "text": "We need a turbulence force because we want the particles to flow around the scene once they,"
+    },
+    {
+      "start": 2535.66,
+      "end": 2537.28,
+      "text": "you know, burst with the glasses."
+    },
+    {
+      "start": 2537.28,
+      "end": 2544.16,
+      "text": "So, to make them flow, we're going to use a force field called a turbulence force field."
+    },
+    {
+      "start": 2544.8,
+      "end": 2547.64,
+      "text": "So, this turbulence force field, we can go to the settings right here."
+    },
+    {
+      "start": 2547.64,
+      "end": 2550.22,
+      "text": "And we'll change the strength to 0.1."
+    },
+    {
+      "start": 2550.22,
+      "end": 2552.84,
+      "text": "And the flow is going to be 2.5."
+    },
+    {
+      "start": 2552.84,
+      "end": 2553.9,
+      "text": "Okay."
+    },
+    {
+      "start": 2553.9,
+      "end": 2556.0,
+      "text": "So, now if you play, boom."
+    },
+    {
+      "start": 2556.0,
+      "end": 2557.78,
+      "text": "Now, they're flowing."
+    },
+    {
+      "start": 2557.78,
+      "end": 2562.18,
+      "text": "Let's just add in a material for the particle."
+    },
+    {
+      "start": 2562.18,
+      "end": 2563.86,
+      "text": "So, right here."
+    },
+    {
+      "start": 2563.86,
+      "end": 2565.04,
+      "text": "Go to the material properties."
+    },
+    {
+      "start": 2565.04,
+      "end": 2565.66,
+      "text": "We'll hit new."
+    },
+    {
+      "start": 2565.66,
+      "end": 2567.32,
+      "text": "We'll just call it."
+    },
+    {
+      "start": 2567.32,
+      "end": 2569.06,
+      "text": "We'll make it a glass material."
+    },
+    {
+      "start": 2569.06,
+      "end": 2571.2,
+      "text": "So, just make it a glass material."
+    },
+    {
+      "start": 2571.2,
+      "end": 2572.72,
+      "text": "We can make roughness low."
+    },
+    {
+      "start": 2573.8,
+      "end": 2576.56,
+      "text": "And, yeah."
+    },
+    {
+      "start": 2576.56,
+      "end": 2577.56,
+      "text": "Let's go to render mode."
+    },
+    {
+      "start": 2577.56,
+      "end": 2578.7,
+      "text": "See what they're looking like."
+    },
+    {
+      "start": 2578.7,
+      "end": 2581.1,
+      "text": "This is what they look like."
+    },
+    {
+      "start": 2581.1,
+      "end": 2582.84,
+      "text": "Let's go over here."
+    },
+    {
+      "start": 2582.84,
+      "end": 2586.22,
+      "text": "They're a bit too big."
+    },
+    {
+      "start": 2586.22,
+      "end": 2588.7,
+      "text": "I'm going to go check the particle system again."
+    },
+    {
+      "start": 2588.7,
+      "end": 2591.14,
+      "text": "Let's go to the particle tabs."
+    },
+    {
+      "start": 2591.14,
+      "end": 2592.2,
+      "text": "They're too big."
+    },
+    {
+      "start": 2592.2,
+      "end": 2593.8,
+      "text": "So, I'm going to make them small here."
+    },
+    {
+      "start": 2594.8,
+      "end": 2598.34,
+      "text": "Maybe, like, something like that."
+    },
+    {
+      "start": 2598.34,
+      "end": 2603.78,
+      "text": "Boom."
+    },
+    {
+      "start": 2603.78,
+      "end": 2608.94,
+      "text": "Maybe I'll change the seed to, like, 8."
+    },
+    {
+      "start": 2613.44,
+      "end": 2613.84,
+      "text": "Okay."
+    },
+    {
+      "start": 2613.84,
+      "end": 2615.52,
+      "text": "I think we are good to go."
+    },
+    {
+      "start": 2615.52,
+      "end": 2618.78,
+      "text": "You just want to go ahead and bake the particle system."
+    },
+    {
+      "start": 2618.78,
+      "end": 2621.62,
+      "text": "So, go ahead and just hit bake all dynamics."
+    },
+    {
+      "start": 2621.62,
+      "end": 2623.76,
+      "text": "Now, it'll play back smoothly."
+    },
+    {
+      "start": 2623.76,
+      "end": 2628.78,
+      "text": "By the way, the backdrop is, the mapping settings for the backdrop is this right here."
+    },
+    {
+      "start": 2629.16,
+      "end": 2633.72,
+      "text": "So, you can go ahead and copy those so you can get the exact backdrop, you know, gradient settings that I have."
+    },
+    {
+      "start": 2635.42,
+      "end": 2637.88,
+      "text": "But, I think we are good to go for the render."
+    },
+    {
+      "start": 2637.88,
+      "end": 2640.32,
+      "text": "So, let's go ahead and go to the output properties."
+    },
+    {
+      "start": 2640.32,
+      "end": 2641.56,
+      "text": "Let's go."
+    },
+    {
+      "start": 2641.56,
+      "end": 2645.2,
+      "text": "Oh, we want to turn on motion blur."
+    },
+    {
+      "start": 2645.2,
+      "end": 2646.54,
+      "text": "So, make sure you turn on motion blur."
+    },
+    {
+      "start": 2646.54,
+      "end": 2649.96,
+      "text": "100 max samples."
+    },
+    {
+      "start": 2649.96,
+      "end": 2650.72,
+      "text": "Or, you can do 200."
+    },
+    {
+      "start": 2650.72,
+      "end": 2653.06,
+      "text": "100 works just fine as well."
+    },
+    {
+      "start": 2653.06,
+      "end": 2655.48,
+      "text": "For the file format, you can do PNG."
+    },
+    {
+      "start": 2655.48,
+      "end": 2658.66,
+      "text": "But, then you do have to convert it into a video file after."
+    },
+    {
+      "start": 2658.66,
+      "end": 2661.92,
+      "text": "Or, you can just, you know, straight up just make it an FF MPEG video."
+    },
+    {
+      "start": 2661.92,
+      "end": 2663.36,
+      "text": "And, don't have to worry about that."
+    },
+    {
+      "start": 2663.36,
+      "end": 2664.44,
+      "text": "Go to encoding."
+    },
+    {
+      "start": 2664.72,
+      "end": 2667.18,
+      "text": "We can change the container to MP4."
+    },
+    {
+      "start": 2667.18,
+      "end": 2669.36,
+      "text": "And, yeah."
+    },
+    {
+      "start": 2669.36,
+      "end": 2670.68,
+      "text": "Resolution 100%."
+    },
+    {
+      "start": 2670.68,
+      "end": 2674.82,
+      "text": "And, we can go ahead and just start rendering it."
+    },
+    {
+      "start": 2674.82,
+      "end": 2676.14,
+      "text": "So, I'll save it to a folder."
+    },
+    {
+      "start": 2676.14,
+      "end": 2677.8,
+      "text": "We can save it."
+    },
+    {
+      "start": 2677.8,
+      "end": 2680.46,
+      "text": "I have a folder called Ray-Ban Metas."
+    },
+    {
+      "start": 2680.46,
+      "end": 2681.92,
+      "text": "And, this is the folder I can save it on."
+    },
+    {
+      "start": 2681.92,
+      "end": 2682.86,
+      "text": "Boom."
+    },
+    {
+      "start": 2682.86,
+      "end": 2683.6,
+      "text": "I'll save it there."
+    },
+    {
+      "start": 2683.6,
+      "end": 2688.16,
+      "text": "And, then all you have to do is just hit render animation and wait for it to render."
+    },
+    {
+      "start": 2688.16,
+      "end": 2689.14,
+      "text": "Okay."
+    },
+    {
+      "start": 2689.14,
+      "end": 2691.16,
+      "text": "And, that's pretty much it for this video."
+    },
+    {
+      "start": 2691.16,
+      "end": 2693.88,
+      "text": "If you have any questions or if you're unclear of anything,"
+    },
+    {
+      "start": 2694.02,
+      "end": 2697.16,
+      "text": "make sure you leave a comment down below and I'll do my best to answer them."
+    },
+    {
+      "start": 2697.16,
+      "end": 2698.38,
+      "text": "And, yeah."
+    },
+    {
+      "start": 2698.38,
+      "end": 2702.48,
+      "text": "Again, if you want access to this entire blend file with all three different scenes"
+    },
+    {
+      "start": 2702.48,
+      "end": 2708.26,
+      "text": "and the Ray-Ban Meta glasses, you can download it by becoming a member on my Patreon."
+    },
+    {
+      "start": 2708.26,
+      "end": 2714.04,
+      "text": "So, consider becoming a member and get access to all my past and future tutorial project files."
+    },
+    {
+      "start": 2714.48,
+      "end": 2718.32,
+      "text": "Okay. Until next time, it's been your boy, OnlyRJ. Peace."
+    }
+  ],
+  "text": "Hello everyone, in this tutorial, I'm going to break down how I made this Ray-Ben meta commercial in Blender. I'll quickly run through how I modeled the glasses and then I'll show you how the scene was set up as well as how I did this effect right here where the glasses breaks apart and comes back together. If you want access to this entire blend file, you can download it by becoming a member on my Patreon. So consider becoming a member on my Patreon and get access to my past and future tutorial project files. Alright, without further ado, let's get started with the tutorial. Okay, so I'm going to hit A and then X to delete everything. I'll do shift A and we'll add in a reference image to help us model our glasses. So I'll choose reference right here, downloads right here, and I'm going to be using these Ray-Ben photos right here. So I'll leave a link in the description. You could download them and then save them and then open them up like this. Okay, and I'm going to select my reference photo. I'm going to go to the transformation settings and I'll just zero it out. And then I'll put 90 on the X axis and we're good to go. So we'll go to the minus Y view. I'm going to go over here and just decrease the opacity a bit. To model this, I'm just going to basically be tracing over it. Okay, then hit shift A. We'll add in a mesh cube. Okay, go into edit mode. And with the entire cube selected, we'll hit M and then merge at center. Go back to minus Y and you can see that there's one vertice in the middle. Go back into object mode for a second and we'll go to the modifiers. We'll add in a mirror modifier. So search for a mirror modifier and then we can go back into edit mode. And now we can start tracing over. So we'll go hit G and then Z on our keyboard to move it up. And we'll start from this point right here. Okay, and then we'll hit E on my keyboard to extrude it. I'm going to start extruding it. So we might need to move this a little down actually. There we go. And now we can start tracing. So deselect, select this vertice at the end. And then we'll just hit E and we'll keep extruding until the entire, and we'll keep extruding around the entire glasses. Be patient here. You don't have to rush it. Once we get to the end portion here, we'll start adding smaller and smaller vertices to make up for the, you know, rounded edges here. So let's do like this and I'm just taking my timer. So let's do like this and I'm just taking my timer. So let's do like this and I'm just taking my timer. So let's do like this and I'm just taking my timer. So let's do like this and I'm just taking my timer. So let's do like this and I'm just taking my timer. So let's do like this and I'm just taking my timer. So let's do like this and I'm just taking my timer. So let's do like this and I'm just taking my timer. So let's do like this and I'm just taking my timer. Okay, I'm nearing the end here. I'm just going to click on clipping right here and then I'll hit E again to extrude and then I'll just hit X and then I'll just bring it towards the middle and then click. Okay, and now it is pretty much done and traced. I can just hit A and then hit F and we can fill in those faces and now we have a perfect outline of our glasses. Okay, now we can move on to the next step by going to wireframe and we need to make this hole here for the lenses. So to do that, I'm just going to deselect for a second so I can see it better then I'm going to zoom in. I'll just start cutting a hole using the knife tool so you can click on the knife tool right here or you can just hit K on your keyboard. Okay, there we go and then I'll just start clicking right here and we'll start making the hole for the lens. Again, take your time with this, no need to rush. Okay, there we go and now I can just hit enter and now I got a hole for the lenses. Let's go and use the face select tool. I'll just select the middle face and then I can just hit X and I'll delete faces. There we go. Okay, now to make the holes for the camera lenses right here, let me just show you what I mean. If I open up a new window, you don't have to do this but I just want to show you what I mean. Let's go to, so these are the metaglasses that I'm actually going to be making in the commercial and we want to make this camera part right here. Okay, and the reason why I'm not using this reference photo is because I don't have, you know, a side view of the legs here. So that's why I decided to go with this. They're generally the same shape so it's fine but yeah, let's go ahead and just let's make the camera lens. So to do that, we're going to go into optic mode. Just hide this for a second by going here, hide. Go to solid view, we can just go ahead and do shift D to duplicate this and then escape to set it back in place. This is just a backup copy that you can use in case you make a mistake so you can go back to it. So let's just go over here, turn on this camera icon and we can just hide our backup copy. So now that we have our, you know, frames, we're going to go make the lens, camera lens. Let's do shift A, we'll add in a cylinder. I'm going to go to add cylinder, let's make the radius 0.1. I'll do RX 90 and let's go to the minus Y view and we'll just move it over. So we can see that it's located like generally around this area. So let's move it over here. You can make it just a bit smaller by hitting S. I'll just make it a little smaller. I think that's good. Okay, now we can go ahead and we'll select frames right here. We can rename this to frames. Yeah, we'll select them, go to the modifiers. We'll add modifier and we can add in a boolean modifier. And for the object, we'll select our cylinder right here. And it should make a hole right through our frames. So I'll just go ahead and just hit apply. And boom. Now we don't need this anymore. We can hide it. And now we should have the holes for our camera lens. Now we can go ahead and let's go to the side view now. And we'll extrude it. But I need a better reference for the side view. So I'm going to just collapse this window for a second. I'm going to go shift A. We'll add in another reference image. And this one is going to be this reference image right here. Again, we'll zero it out. Just do 90. And we'll do 90 on the Z. Okay, let's go to the minus X view. So let's move it back here. And we'll select our frames, right? We'll go into edit mode. We'll hit A to select everything. And then we'll go to the minus X. And we'll just hit E to extrude. So E extrude backwards. And we'll make it that thick. Boom. Okay. All right. We need an edge loop here for our lenses. So we'll hit Ctrl R on our keyboard. And we'll add in a loop cut. And we'll hit escape to set it back in place. Okay. We won't add it yet. We'll add it later. But for now, that's going to be over there. Okay. For the back side here, we'll just hit. We'll hold. We'll deselect. Hold Alt. Select this edge loop right here. Hold Shift. Alt. Select this edge loop. And then we'll hit F to fill in that face. And then we're going to select this line here. Hold Shift. Select this line. With X to dissolve edges or delete edges. And we'll just go ahead and select this face here. We'll hit G and then Y. Move it in a bit. And then I'm going to use the line select tool. Deselect. Hold Alt. And then select all the edges right here. And then hit F to fill in that face. Nice. Okay. Now let's move on to modeling the legs here. So let's go into the back view here. Let's go hit K on our. Oh, let's go to edit mode, sorry. And then hit K on our keyboard. And we'll just select this one right here. And we'll go all the way down. And boom. And then you can just hit enter. All right. Then we can do the face select tool. We'll select this face. And we can just do Shift D to duplicate it. And then escape to set it back in place. Then we'll move it forward just a little bit. We'll just hit G and Y. Okay. And then we can hit P, separate selection. Okay. Go back into object mode. And we have this new object right here. And we'll rename it to legs. And then go into edit mode. Hit A. And we'll go to the minus X view. And let's try lining up the image, actually. So let's go back into object mode for a second. Let's select the reference image. Let's just line it up with our... That works. Okay. And now we can select this. Go to edit mode. And we'll go to the minus X view. And then we can just hit E, extrude. We'll move it down. You can hit S to scale it. Okay. And then we'll hit E again to extrude. S to scale. Then I can hit R and then X on my keyboard. And we'll rotate it just a bit. Hit E. Scale down a bit. Put R and then X again. E. You want R X a little more. And then E. Something like that. R X again. R X. E. Scale. R X. E. Scale. R X. Scale some more. And. Alright. Now we'll just select our legs here. We'll go to the modifiers. We'll add in a subdivision surface modifier. And. I don't know what happened there. But we'll just add in one more. And to fix that. We can just hit CTRL R. Add in a loop cut. And we can just flatten it out. You know what? We'll do one more. Should fix it. Yeah. Looking better. Go back into edit mode. We'll also add in a loop cut right here. So CTRL R. So CTRL R. Loop cut. Boom. Yeah. You can go to top view. Go into edit mode. Which is a CTRL R. Add in a loop cut. We'll just flatten it out like this. You should also select this entire line right here. So hold alt. It's like this entire line. And we'll just move it. To the side by hitting G and then X. Okay. Now to connect this. We'll go into edit mode again. We'll select. We'll use the face select tool. We'll select this face. And I'm just going to move. We'll use the. Proportional editing tool. Hit G. And then X. Or sorry. Y. And we'll move it forward. So you can scroll on your mouse wheel. To make this. Smaller or bigger. And there. There we go. Alright. Next I'm going to click on this. I'll hide the reference image. Because we don't need it right now. And now I'm going to click on the frames. And let's add a bevel modifier to the frames. Because right now the edges are super sharp. And in real life. That's not really realistic. So we need to add a bevel to that. So modifiers. Go to. Search for bevel. That's too much. That's too much. So let's go to the amount. Let's just decrease it. Something like. This could work. And I also want to right click. And shade out a smooth. That's looking much better. Now if you want to add more segments. Just be careful. If you add two. Or even three. You're going to see like. Weird artifacting happening. Happening on the frames. And that's because there's not. You know. Proper geometry at the top. So yeah. If you want more segments. You got to keep it at flat. Or you can just copy me. And keep the segments at one. And we'll just. You know. Auto shade smooth. And we don't have to deal with that. Okay. Now let's move on. To adding the materials. Now I. You can see. I have this blender kit add-on right here. I enabled it beforehand. So let's go to edit. Preferences. If you go to add-ons. And you got to download it first. So I'll leave a link in the description. To download this add-on. It's called blender kit. It's completely free. Make sure you download it. And install it into blender. And then make sure it's checkmarked here. So it'll show up right here. So yeah. I have it enabled. Save preferences. And then we can close out of that. And this is what I'm going to use. To add in my materials. So let's go to materials. And I'm going to search for. A you know. Glossy plastic material. So let's go to. You know what. Let's go to render engine. Let's switch to cycles. Let's switch this to GPU. Highly recommend it if you have it. For faster rendering. We'll switch the viewport samples to 200. Because we are going to be rendering at 200 at the end. And we need some world lighting. So let's go to the world properties. Let's go to color. Environment texture. And I will go to HDRIs. I'll leave a link in the description. For the same one that I'm using. And we'll just hit open image. We'll use this 4K EXR version. And now we're ready to go. So yeah. Make sure you save your work by the way. Save your work. I saved mine as Ray-Ban Meta Glasses tutorial. And yeah. So just save your work. Okay. Let's go to render mode. All right. Let's go to here. Materials. There we go. And let's search for glossy plastic. Enter. Let's go and use a procedural based. And we'll just use high gloss red plastic for now. So drag it on to your frames. And it should show up. So let's go to material properties. And it should be right there. Boom. Look at that. Now you can change the color by going to the shader editor. And we'll just change the rough. Hit the end here. And we'll go here and just make this completely black. Okay. Cool. We're going to have the same to the legs as well. Okay. Cool. Looking nice. Looking good. Okay. Now let's move on to making the camera lens inside these holes here. So let's go to solid mode. I'm just going to hide all of these objects for now. Let's collapse this window by clicking and dragging to the right. And I'm going to, we'll just close out of that. Okay. Shift A. Add in a mesh UV sphere. Minus X view. Let's go to wireframe. Let's go into edit mode by hitting tab. Use the face select tool. Deselect. We'll select the back portion. Back half like this. Hit exit delete faces. Nice. Go to solid mode. Go back to the edge select tool. Hold Alt. Select the edge here. And then hit F to fill in that face. And let's select the back face here. Minus X view. Hit E to extrude back. Boom. Now we can go to front view. Deselect. Select all the front faces. And make sure all of them are selected. So it looks like, oh, see the bottom parts are not selected. So hold Shift. Select that. Select this face. Select this face. Select these faces as well. So hold Alt plus Shift. So it should look like this. And now all you have to do is hit I to insert the face. Once set all the way from here. That's good enough. Then we'll hit E to extrude back. Okay. And then we'll hit S to scale down a bit. There we go. I'm going to deselect. I'm going to hold Alt. Select these faces. And then we'll just hit S. Scale up a bit. Yeah. And we'll back. We can just move it back. Okay. So that's what the lens is looking like. We can just go to the subdivision surface modifier. Add in. Or sorry. Go to modifiers tab. Add in a subdivision surface modifier. I can't talk today. All right. We'll switch this to one and just hit apply. And we want to fix the back here. So let's go into edit mode. All of these faces here. So back view. We can use this. We can use the select circle tool. Hold shift. Select all these faces. Hit X. Delete faces. Then we'll use the edge select tool. Go back to select tool. Hold Alt. And select the line around. Like this. And we'll hit F to fill in that face. And then we could hit GY and move it back. All right. Our lens is done. We can do shade auto smooth. And let's do the materials now. So let's go into materials. Hit new. We'll call this camera lens. Go to the render mode. And we'll give it a roughness of zero. And transmission of one to mimic that lens look. Now I want this part here to be black metallic. So hit go to edit mode. We'll use the face select tool. Deselect. Hold Alt. Hold Alt shift. Select this. Hold Alt shifts like this. And hold shifts like this face. We'll add in a new material by hitting plus. Hit new. We'll go into render mode. And, you know, we want to hit a sign. And now we'll make this black here. So let's go metallic. And we'll make it dark. Okay. And you notice how this is turning black too. And that's because it's reflecting off of this. So don't worry about that. And there you go. Our lens is done. Now we can do one more thing. Let's go into solid mode. Let's go to wireframe. And you know what? Let's go to edit mode. Hit A to select everything. And we can do shift D to duplicate it. And then escape to set it back in place. Let's go to minus Y view. And just hit S. And we'll add in a smaller lens inside the lens. To mimic those rings you see inside of camera lenses. This might not be accurate. But, you know, it looks about the same. So please don't come at me. I think our camera lens is good to go. So let's bring back our legs and frames. We can go to solid mode. Let's make this. Let's turn on cavity so we can see better. We'll make this smaller by hitting S. Let's go to the minus X view. Let's move it back. I think right here is good. All right. One more thing we can do is we can add in a glass material. So let's go into, let's select the frames. Hit, go to edit mode. Deselect. Use the edge select tool. Hold shift alt like this. This. And we can just do shift Z to duplicate it. Escape to set it back in place. And then we'll hit F to fill in that face. Hit the plus icon for a new material. Hit new. And this is going to be just, you know, glass. So we could just, you know, I think there's a glass material here. There we go. Go to render mode. Hit assign. Oh, we've got to turn the roughness down. Should be able to see inside. Yeah. There we go. And there we go. We'll rename this to lens glass. Okay. Okay. Nice. We got to rename this sphere inside to camera lens. Okay. And we need to duplicate it. So we'll hit alt D and we'll just bring it almost done. And now let's move on to the, the inside of frames here. Okay. Save your work. Save your work. Control S. Save your work. All right, select your frames. Let's go into edit mode. Hold alt and we'll select these. We'll make sure the line select tool is selected. And then hold alt, select this. And then just hit F to add in those glasses. Okay. And now we have some glasses. We can select using face select what we can select these glasses. Go to lens glass. Let me just hit assign. And now we have some, you know, lenses inside the frames as well. Okay. So now that you have the frames, let's go back. To edit mode, select these frames and we can just hit P to separate selection. Okay. And once I separated, we can call them inside lens and we can go move on. Let's go into edit mode. Actually hit eight, select everything. We can move forward a little bit. And then it eats extrude back. Just gives them a bit more thickness. Now the glasses are good to go. But if you want to take it further, you could go ahead and add the Ray-Ban logo to the glasses to make it look like it's, you know, a Ray-Ban meta glasses. Uh, I'm not going to show you how to do that in this tutorial because you need to convert, you need to download the logo first and then convert it into an SVG. So I've already done that. I'm going to go ahead and just click on import scale. Scalable vector graphic SVG. And I'll search for, you know, the logo right here. I have it right here. I have the RB one. And then the Ray-Ban one, let's go with the RB first. There it is. And then delete this and boom Ray-Ban logo right here. Uh, let's do right. Click geometry to origin or X 90 enter. And we'll just change the material here to white. We want to make the value like three. So it's super white. So let's go into render mode and we can just, you know, go ahead and make it small and add it. And we'll do the same thing again. We'll, I'm going to import, let's go vector graphic RB and change this to white. And this one goes to the bottom. Let's just move it till there's like no reflection. All right. Now we can move on to the animation portion. Let's do shift a, we'll add in an empty sphere. I'm going to use this sphere and I'm going to attach everything to this sphere. So let's just make this big top view, move it towards the middle. Then hit a select everything we can do control P on our keyboard and we'll parent to the object. So now this will control everything. Now to start off, I'm going to first make this glasses real world scale. Cause right now they are way too big. So I already did the measurements. All you have to do is just copy the scale here, make it 0.03 and that'll be matching real world glasses. So let's go put it in the middle and I'm going to move it up a little bit. I'm going to go to blender kit and I'm going to import in a table that it can sit on. So let's go type in glass table. And again, you don't have to use this exact one that I'm using. I'll be using this one right here. Let's move it towards the, uh, well, actually let's select the table itself. We'll move it in the middle centered out. Okay. Uh, we'll also move the glasses up. Okay. And I'll have the glasses start like this. All right, now for the lighting, let's see what the lighting is looking like. Let's go to rendered mode. All right. It's way too bright. So I'm going to go to the world tidings. I'm just going to make the 0.1. Nice. I'm also going to add a backdrop. So let's do shift a, add in a mesh plane. We'll make it go at S and then five on my keyboard. Go to edit mode. It's like this hit E and then Z to extrude up. Okay. I'll select this line. I'll hit control B on my keyboard, and then I'll scroll on my mouse wheel to add some loop cuts, tab out and shade smooth. Okay. We'll go to the material properties, give it a material. We'll get it a diffuse material. Be a little bit red. Roughness is going to be 0.3. Let's go into the, uh, shader editor right here. And I want to give it a gradient texture because right now it's a bit too basic. So let's go ahead. We'll do shift a, add in a color ramp. Color ramp needs to match this color right here. So I'm just going to click on this and I'll use the eyedropper tool, which will match the color. Okay. And then a shift a again, we'll do a gradient texture, plug that in, and then we'll plug that in. Boom. All we need to do is just add in a texture coordinate. So hit control T on your keyboard, which adds a mapping coordinate and texture coordinates. And we'll just change the rotation. Uh, maybe something like this, uh, but I want this color to be the same as this. We'll just make it a little darker. Yeah. You know, let's make it a little more red. There we go. Let's copy that. It's darker. I'm just going to do alt D to duplicate it. Skip to set it back in place. I'll do R, Z, and then 90 on my keyboard to rotate it. All right. Now let's add some lighting. So shift a, we'll add in a area lights, move this up above, make the power about 35 super bright. There we go. And then at shadow caustics, add in one more light. It's this, okay. So the setup is going to be a basic two point lighting setup. Shift D to duplicate again, escape. I'll make the shape a disc onto R X 90, R Z 90, and I'll just move it to the side, maybe make it smaller, rotate a bit, something like that. I'll make the power for this about seven and I'll make it red. Okay. And there is the lighting setup. Let me just collapse this window and yeah, shift a, we'll add in a camera now. Let's go to the camera view, camera back and we'll be up, make this zero, make this, make this zero. And I'm just going to look at this. Okay. So this is a lot, this is the lighting setup right now. I have this light pointing over here and then this giant light at the top. Let's start animating. So let's start with the camera. I'll do a basic pan in let's hit I on the keyboard, I over here to add a keyframe on location rotation, make sure you're on frame one. This animation is going to be 30 frames per second. Check mark, render region, crop the render region. Let's go to 90 seconds. Let's go to 90 seconds, which is about three seconds. And then we'll pan in the camera forward. And we're going to move it up a bit. Hit I, I to add in that keyframe on frame 90. And that's, this is the movements right here. Okay. Now let's animate the glasses floating up. So let's select the empty on, hit I and then I and the location rotation frame one. And then let's go, you know what? Let's have, let's have a start at frame 20. Actually, let's go all the way to frame 70. We'll have it move up a little, I'll hit RR to rotate it like this. It's going to rotate like this. Hit I, I let's see what that looks like. There we go. And then the last 20 frames, it'll just move up really fast. So then I'll go. Hit I, I, see what that looks like. Boom. Now it's a bit too, the transition is a bit too sharp. So to smooth that out, I'll hit A and then right click. And right now it's on linear and we want to change it to bezier to smooth it out. Let's see what that does. Boom. Shot one's done. Cool. The next shot, I'm going to duplicate this camera. So shift D to duplicate it. Escape set it back in place. Hover over your timeline. Hit A and then X to delete everything. This is our second camera angle. So we'll go to view and we'll change this as our primary camera angle now. And for this one, it's going to be a little closer. So we'll change the focal length to 75 millimeters. And then I'm going to move this camera a little forward and up. Maybe 90, maybe 90, like this, should show up right here. Okay. Now I want, maybe I want the glasses to be more in the middle. So right here. Okay. So I'm on frame 90. I'll just update that keyframe. So hit I. Boom. I'll actually have the camera a little closer. Maybe up. Okay. So that's the second camera angle. For this second camera angle. Okay. That's way too big, by the way. We can just make that smaller. By going to view board display. Just change the size. Boom. Okay. So for this break apart scene, I'm actually going to make a new scene. So this will, this will be the intro shot. And then for the, you know, the glasses breaking apart and then coming back together, I'll just make a new scene by going up to the top right corner and just clicking on full copy. I'll rename this to break apart or what's called break. And then we're going to go to this camera back. We're going to go back to this camera and we'll start the breaking scene. So boom. Okay. So now that we have a new scene called break, I'm going to change the animation here. So instead, so with this new break scene here, I'm actually going to have the animation start from the zero. So actually move this frame right here or this, yeah, this key frame right here. And I'll move this right here. Well, actually we'll delete this key frame. Let's move this key frame to frame 20. So it just shows up like this. It's a bit too fast. So we'll start the glasses right here and then we'll just update the key frame right here. Boom. Somewhere in the middle. Boom. Okay. And I'll also have the camera pan in a bit. So I'm going to have to start back. Hit I and then I, and then I, and then frame 60, it'll just zoom in. I, I, and then at frame 60, it'll just, it'll just burst. So let's, I'm going to make the total frames here, 165. And let's start with this piece. So we'll hit I and then I will also select this piece, hit I, I, it's like this piece, hit I, I. It's like this hit I, I, and there we go. Okay. So let's go 10 frames ahead and then that's where the pieces will break. So it's going to go, I'll just move it like somewhere here. Well, maybe like somewhere here, maybe like rotate it like this, hit I, I, and then these are going to be a little forward. So I'll move them like, that, I, I, these are also going to, let's have them fly. Let's have them fly like here. I, I, I, and this little piece right here, I guess we'll just have it fly up here. I, I, all these little logos are supposed to be attached to the frame. So let's just attach those to the frame here. Click on this. Let's click the frames here, control P, parents and boom. Okay. This is how they break. And then from frame 70, they'll be coming back together. So put them back to zero. Select the, we'll select this here first. Put it back to zero. Rotation back to zero. And then hit I, I. And then this as well. Back to zero. Zero, I, I. Zero, zero, I, I. And this as well. Zero, zero, I, I. Okay. See what that looks like? Boom. Boom. And when they break, I also want the camera to zoom out. So the camera is going to zoom out from right here. Boom. Maybe down, up. So high, I for the camera. So boom. And it's coming back together. I, I. Okay. Okay. And you know what? We'll make this all Bezier. So I'm going to select each of these. Hit A. And then I'll the right click. And I'll just do Bezier. Same with this. Hit A. Right click. Bezier. This too. Hover over timeline. Hit A. Right click. Bezier. And then this as well. A. Right click. Bezier. Boom. Boom. You know what? Select the camera as well. Hit A. And then right click. We'll just Bezier. Boom. For the camera. As it's zooming out. I want it to zoom out a bit more. So I'm going to have it keep zooming. Until 110. Hit I. No, it's still not zooming. Let's have it zoom more. I, I. A little bit more. I. See what that looks like. Boom. Boom. Let's start sooner. Something like that. Again, it's really trial and error. I'm usually just, you know, going back to it and then, you know, fixing the camera motion. It's never really on the first try. But, yeah. Bit of a mistake here. Let me just. Yeah. Move that back a little faster. Okay. And then as it comes back together, I'll just have, I'll just have the glasses go back down. So I, I. And then, yeah. It just goes back down. I, I. A. Right click. Bézier. That's too strong. So let's go. Okay. So this is what it's looking like so far. And let's go into rendered mode to see what it's looking like. And we can do a few more things to make the scene look even better. So for starters, I'm going to bring down this area light at the top right here. I'm going to bring it down a little bit more. So we'll bring it low right here. Maybe even lower. Get some more highlights on the glasses. And then I'm going to go to the render properties here. I'm going to make sure my final max samples are at 200. If you have a slow computer, you can render this at a hundred samples. That'll still work. And then I will go to the view transform here. And I'm going to change the look to high contrast. Okay. And then I'm going to up the exposure a bit. So let me just up the exposure a bit. There we go. I think that looks much cooler. And for this area light here, you know, I actually ended up adjusting it. So you can see the rotation of the area light right here and the location. I wanted just a little bit of a red highlights on the side because, you know, it is shining a red light on the glasses. So, yeah, this is what the lighting setup looks like now. Let me just hide the table empty here so you're not confused. So, yeah, this is what it looks like now with that area light shining at the back like this. And the top light like this. Okay. Let's select the glasses controller here. And I don't like how it completely stops moving once it reaches the top here. I kind of want it to keep moving before it breaks. So, on frame 60, I'm going to have, I'm going to hit RR and I'm going to just move it slightly up, I guess. Something like, something like that could work. And then I'll go to the rotation and just hit I and then I. And so now if I go into salt mode, that's what it's looking like. Boom. Okay. So, one last thing we're going to do is we're going to add a particle system for when the glasses burst like this. Okay. So, to do that, I'm going to, let's click on the empty here and I'll do control, I'll do shift S and I'll do cursor to select it. And then I'll do shift A, I'll add in a mesh icosphere. I'll hit S to scale it down. And this is going to be the particle emitter. So, we'll actually move it towards the middle of the glasses. So, let's go to top view. And let's just make sure it's centered where the glasses break apart. So, right there will work. Don't worry, you can scale it down. It's not really going to be shown in the final render. This is what's going to emit the particles. So, go to the particle settings, hit the plus icon, and I'll add some particles. So, we'll add in about 200 particles. They're going to start at frame 60. So, frame 60 is the start frame. And the end frame could be frame 70. The lifetime, doesn't really matter. I'll make it 150. And we'll go down. We'll hit play. Oh, they're falling down. We need to go all the way down and just turn off the force or field weights. Turn off gravity. So, now they'll start floating. I'll make the velocity here to 0.7. And we're going to have... I don't want these particles to look like circles. I want them to look like small glass particles. So, we'll do shift A again. We'll add in another icosphere. We'll make the subdivisions one. And I'm going to also make it super small. Zoom in. And something like that could work. Okay. We'll move it out the frame. So, that's over there. It's called icosphere one. We'll call it particle, actually. Okay. Let's go into camera view. Let's select our particle system. And we'll go over here. Render as. We'll change it to object. And I'm going to go and change the object to particle, which we just named. Okay. We can't see it. And we've got to change the scale here. So, we'll change it to 0.9. And we'll change the randomness to 1. And we'll turn off show emitter. So, the emitter won't show up in the final render settings. Okay. I think that's pretty much it. Just hit play to see what the particle system looks like. Burst. Okay. We need a turbulence force because we want the particles to flow around the scene once they, you know, burst with the glasses. So, to make them flow, we're going to use a force field called a turbulence force field. So, this turbulence force field, we can go to the settings right here. And we'll change the strength to 0.1. And the flow is going to be 2.5. Okay. So, now if you play, boom. Now, they're flowing. Let's just add in a material for the particle. So, right here. Go to the material properties. We'll hit new. We'll just call it. We'll make it a glass material. So, just make it a glass material. We can make roughness low. And, yeah. Let's go to render mode. See what they're looking like. This is what they look like. Let's go over here. They're a bit too big. I'm going to go check the particle system again. Let's go to the particle tabs. They're too big. So, I'm going to make them small here. Maybe, like, something like that. Boom. Maybe I'll change the seed to, like, 8. Okay. I think we are good to go. You just want to go ahead and bake the particle system. So, go ahead and just hit bake all dynamics. Now, it'll play back smoothly. By the way, the backdrop is, the mapping settings for the backdrop is this right here. So, you can go ahead and copy those so you can get the exact backdrop, you know, gradient settings that I have. But, I think we are good to go for the render. So, let's go ahead and go to the output properties. Let's go. Oh, we want to turn on motion blur. So, make sure you turn on motion blur. 100 max samples. Or, you can do 200. 100 works just fine as well. For the file format, you can do PNG. But, then you do have to convert it into a video file after. Or, you can just, you know, straight up just make it an FF MPEG video. And, don't have to worry about that. Go to encoding. We can change the container to MP4. And, yeah. Resolution 100%. And, we can go ahead and just start rendering it. So, I'll save it to a folder. We can save it. I have a folder called Ray-Ban Metas. And, this is the folder I can save it on. Boom. I'll save it there. And, then all you have to do is just hit render animation and wait for it to render. Okay. And, that's pretty much it for this video. If you have any questions or if you're unclear of anything, make sure you leave a comment down below and I'll do my best to answer them. And, yeah. Again, if you want access to this entire blend file with all three different scenes and the Ray-Ban Meta glasses, you can download it by becoming a member on my Patreon. So, consider becoming a member and get access to all my past and future tutorial project files. Okay. Until next time, it's been your boy, OnlyRJ. Peace."
+}

@@ -1,0 +1,53 @@
+{
+  "snapshot_iso": "2026-06-10T10:23:31.055444+00:00",
+  "snapshot_folder": "2026-06-10-1023-40cxw9Wnol7b-v2-nano-banana-pro-4k-seed720013",
+  "url_id": "40cxw9Wnol7b",
+  "label": "v2-nano-banana-pro-4k-seed720013",
+  "output_file": "output.png",
+  "output_size_bytes": 16432283,
+  "url": "https://v3b.fal.media/files/b/0a9db916/40cxw9Wnol7bvg8ltEOG8_4SZT9tUK.png",
+  "source_path": "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781087008351062000_0.png",
+  "prompt_snapshot": null,
+  "prompt_source": null,
+  "refs_manifest": [
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/_gen-runs/side-right/runs/2026-06-10-0947-qyPJgBu9y_32-nano-banana-pro-4k-seed710021/output.png",
+      "size_bytes": 17470151,
+      "sha256_8": "80341963"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-01_hero-front-3q.jpeg",
+      "size_bytes": 6849624,
+      "sha256_8": "746b1de0"
+    }
+  ],
+  "provider": "falai",
+  "model": "fal-ai/gemini-3-pro-image-preview/edit",
+  "cost_usd": 0.15,
+  "duration_sec": 72.97119808197021,
+  "seed": null,
+  "adapter_metadata": {
+    "output_urls": [
+      "https://v3b.fal.media/files/b/0a9db916/40cxw9Wnol7bvg8ltEOG8_4SZT9tUK.png"
+    ],
+    "local_paths": [
+      "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781087008351062000_0.png"
+    ],
+    "raw_result": "{'images': [{'url': 'https://v3b.fal.media/files/b/0a9db916/40cxw9Wnol7bvg8ltEOG8_4SZT9tUK.png', 'content_type': 'image/png', 'file_name': '40cxw9Wnol7bvg8ltEOG8_4SZT9tUK.png', 'file_size': None, 'width': None, 'height': None}], 'description': \"**Refining Device Form**\\n\\nI'm focusing on creating a perfectly smooth side profile for the handheld device. My current effort involves integrating the side-view reference to meticulously remove all extraneous elements, ensuring a clean, unblemished surf...[truncated]",
+    "fal_model": "fal-ai/gemini-3-pro-image-preview/edit"
+  },
+  "extra": {
+    "spec": "audits_blender/pulsed-asset-prompts-v2.md (Sliz 2026-06-10)",
+    "doctrine": "v2 \u2014 prompt d\u00e9crit seulement le cadre, identit\u00e9 par refs, n\u00e9gatif court",
+    "kind": "preflight-reference-v2",
+    "provider": "falai",
+    "model": "fal-ai/gemini-3-pro-image-preview/edit",
+    "aspect_ratio": "16:9",
+    "resolution": "4K",
+    "output_format": "png",
+    "seed": 720013,
+    "image_id": "side-right",
+    "intended_dest": "assets_blender/04_side_right_canonical.png (NON copi\u00e9 \u2014 validation carte requise)",
+    "prompt": "Photorealistic product photography of the exact handheld device shown in the attached reference images \u2014 same shell, same proportions, same materials (glossy translucent amethyst-purple plastic with the internal PCB visible through it), same parting seam. Warm cream seamless background, soft drop shadow, consistent with the references. Do not add, remove, move or restyle any element of the device. No text overlays, no props, no people.\n\nTake the attached side-view generation and clean its silhouette so that the ENTIRE outline is perfectly smooth and continuous: delete every round knob, bump, nub, wheel and protrusion sticking out of the left or right contour \u2014 there must be NONE. This is the right side of the device, which is completely plain: the only feature on this edge is the thin horizontal parting seam line; the shell surfaces above and below it are smooth and uninterrupted, with a gently convex crown at the top and a softly domed back. No control, button, switch, wheel, dial, knob, port or hole anywhere on this edge. Keep everything else identical: vertical tall-narrow profile orientation, framing, lighting, warm cream background, floating pose and proportions."
+  }
+}

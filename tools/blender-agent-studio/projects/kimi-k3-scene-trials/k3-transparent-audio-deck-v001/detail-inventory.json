@@ -1,0 +1,184 @@
+{
+  "sourceImage": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/references/reference-hero.jpg",
+  "zonesDir": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/diagnostics/img2threejs/detail-zones",
+  "detailInventory": {
+    "scanMethod": "grid-3x3",
+    "targetMinDetails": 10,
+    "details": [
+      {
+        "id": "detail-upper-diaphragm-and-dial",
+        "kind": "contour",
+        "description": "Upper circular diaphragm has concentric silver and black layers; a dark knurled dial protrudes from the top edge.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "primary identity and top silhouette",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "speaker-assembly.concentric-profile"
+        },
+        "evidenceRef": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/diagnostics/img2threejs/detail-zones/zone-r0c1.png",
+        "confidence": 0.95
+      },
+      {
+        "id": "detail-red-control-and-side-strip",
+        "kind": "hole",
+        "description": "Saturated red top control, clear corner boss, and black right-side strip with recessed circular controls.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "accent hierarchy and right-side function cues",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "side-control-strip.three-sockets"
+        },
+        "evidenceRef": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/diagnostics/img2threejs/detail-zones/zone-r0c2.png",
+        "confidence": 0.9
+      },
+      {
+        "id": "detail-pale-panel-linework",
+        "kind": "linework",
+        "description": "Pale inner panel carries fine black micro-label linework and a red registration dot.",
+        "region": {
+          "x": 0.0,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "graphic balance",
+        "mapsTo": {
+          "type": "material.localOverrides",
+          "ref": "inner-panel.micro-label"
+        },
+        "evidenceRef": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/diagnostics/img2threejs/detail-zones/zone-r1c0.png",
+        "confidence": 0.82
+      },
+      {
+        "id": "detail-transport-wheel",
+        "kind": "contour",
+        "description": "Lower transport wheel uses a dark textured face, recessed hub, clear rim, and a red slot behind it.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "cassette-mechanism identity",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "transport-wheel.layered-wheel"
+        },
+        "evidenceRef": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/diagnostics/img2threejs/detail-zones/zone-r1c1.png",
+        "confidence": 0.93
+      },
+      {
+        "id": "detail-right-edge-controls",
+        "kind": "hole",
+        "description": "Right edge exposes a black inset carrier and the visible ends of three circular sockets or buttons.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "right-side silhouette",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "side-control-strip.three-sockets"
+        },
+        "evidenceRef": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/diagnostics/img2threejs/detail-zones/zone-r1c2.png",
+        "confidence": 0.84
+      },
+      {
+        "id": "detail-lower-left-fastener",
+        "kind": "fastener",
+        "description": "Lower-left shell corner has a metal fastener nested in a clear chamfered boss.",
+        "region": {
+          "x": 0.0,
+          "y": 0.6667,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "assembly readability",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "outer-shell.corner-fastener-system"
+        },
+        "evidenceRef": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/diagnostics/img2threejs/detail-zones/zone-r2c0.png",
+        "confidence": 0.92
+      },
+      {
+        "id": "detail-bottom-bosses-and-seams",
+        "kind": "seam",
+        "description": "Bottom shell edge contains molded seams, clear standoffs, countersunk hardware, and shallow port-like recesses.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.6667,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "bottom-shell depth and manufacturing cues",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "outer-shell.bottom-seam-system"
+        },
+        "evidenceRef": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/diagnostics/img2threejs/detail-zones/zone-r2c1.png",
+        "confidence": 0.8
+      },
+      {
+        "id": "detail-shell-bevel",
+        "kind": "bevel",
+        "description": "Broad transparent perimeter chamfer creates continuous bright refraction lines.",
+        "region": {"x": 0.13, "y": 0.17, "width": 0.73, "height": 0.62, "units": "normalized"},
+        "scale": "meso",
+        "affects": "outer silhouette and transparent response",
+        "mapsTo": {"type": "component.localFeatures", "ref": "outer-shell.edge-bevel"},
+        "evidenceRef": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/references/reference-hero.jpg",
+        "confidence": 0.95
+      },
+      {
+        "id": "detail-status-leds",
+        "kind": "emissive",
+        "description": "Tiny yellow and green points sit beside the lower internal rail.",
+        "region": {"x": 0.58, "y": 0.58, "width": 0.08, "height": 0.08, "units": "normalized"},
+        "scale": "micro",
+        "affects": "electronic detail",
+        "mapsTo": {"type": "material.localOverrides", "ref": "pcb.status-leds"},
+        "evidenceRef": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/references/reference-hero.jpg",
+        "confidence": 0.72
+      },
+      {
+        "id": "detail-clear-standoffs",
+        "kind": "fastener",
+        "description": "Clear circular standoffs separate the transparent front plate from the pale internal panel.",
+        "region": {"x": 0.22, "y": 0.22, "width": 0.52, "height": 0.53, "units": "normalized"},
+        "scale": "micro",
+        "affects": "layered-shell depth",
+        "mapsTo": {"type": "component.localFeatures", "ref": "outer-shell.clear-standoff-system"},
+        "evidenceRef": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/references/reference-hero.jpg",
+        "confidence": 0.86
+      }
+    ]
+  },
+  "authoringInstruction": "Open each zone crop under zonesDir and replace every detail stub's kind, description, scale, affects, mapsTo, and confidence with what is actually observed. Add more detail entries per zone if a single zone contains multiple distinct marks; do not leave stubs unfilled or unlinked (mapsTo must reference a real component.localFeatures or material.localOverrides entry)."
+}

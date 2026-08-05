@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "tutorial_id": "drumboii-camera-tutorial-2026-07-18",
+  "model": "whisper.cpp large-v3-turbo + Codex visual/transcript synthesis",
+  "language": "en",
+  "summary": "The tutorial explains a hand-animated product-camera style built from short momentum motifs rather than a single smooth point-to-point move. A major move is split into anticipation, main travel and recovery; static sections receive a subtle vertical middle key; depth-of-field values are synchronized with camera keys; and a Track To target Empty is animated independently to control attention and add operator-like reaction lag.",
+  "confidence": 0.94,
+  "observed_project_context": {
+    "example_project": "Squelch Snare tutorial, created in 2025",
+    "scene_frame_range": [500, 2700],
+    "scene_fps": 60,
+    "delivery_orientation": "vertical 2160 × 3840 visible in Blender output settings",
+    "visible_workspace": "camera/render preview on the left, 3D scene viewport on the right, Dope Sheet at the bottom",
+    "evidence": [
+      {"time": 30, "frame": "frames/regular/frame_00007.jpg"},
+      {"time": 180, "frame": "frames/regular/frame_00037.jpg"}
+    ]
+  },
+  "chapters": [
+    {"start": 0, "end": 92, "title": "Reading the camera animation in the Dope Sheet", "evidence": ["transcript 00:00:00–00:01:32", "frame_00007.jpg"]},
+    {"start": 92, "end": 120, "title": "60 fps timing and frame-rate conversion", "evidence": ["transcript 00:01:32–00:02:00"]},
+    {"start": 120, "end": 198, "title": "Anticipation, main move and rebound", "evidence": ["transcript 00:02:00–00:03:18", "frame_00037.jpg"]},
+    {"start": 198, "end": 335, "title": "Adding floating motion to an otherwise static hold", "evidence": ["transcript 00:03:18–00:05:35", "frame_00061.jpg"]},
+    {"start": 335, "end": 575, "title": "Repeating the four-key momentum motif", "evidence": ["transcript 00:05:35–00:09:35"]},
+    {"start": 575, "end": 735, "title": "Synchronizing focus distance and f-stop", "evidence": ["transcript 00:09:35–00:12:15", "frame_00121.jpg"]},
+    {"start": 735, "end": 835, "title": "Track To constraint and target Empty setup", "evidence": ["transcript 00:12:15–00:13:55", "frame_00151.jpg", "frame_00187.jpg"]},
+    {"start": 835, "end": 925, "title": "Animating the visual center of attention", "evidence": ["transcript 00:13:55–00:15:25"]},
+    {"start": 925, "end": 1077, "title": "Target bounce and delayed operator reaction", "evidence": ["transcript 00:15:25–00:17:53"]}
+  ],
+  "techniques": [
+    {
+      "domain": "camera-animation",
+      "name": "Four-key momentum motif",
+      "steps": [
+        "K1 establishes the current pose.",
+        "K2 moves slightly opposite the intended direction to gather momentum.",
+        "K3 performs the main fast move.",
+        "K4 rebounds or settles slightly back from the extreme."
+      ],
+      "evidence": ["transcript 00:08:59–00:09:35"],
+      "production_note": "Treat this as a local motion motif, not a fixed universal timing rule. Gate acceleration and overshoot in the Graph Editor."
+    },
+    {
+      "domain": "camera-animation",
+      "name": "Floating hold",
+      "steps": [
+        "Find two hold keys with identical or near-identical transforms.",
+        "Insert a middle Location key.",
+        "Offset it slightly on Z, then return to the original pose."
+      ],
+      "evidence": ["transcript 00:04:43–00:05:30", "frame_00061.jpg"],
+      "production_note": "Optional stylistic motion. Disable it when a true still frame is needed for identity, compositing or AI video conditioning."
+    },
+    {
+      "domain": "depth-of-field",
+      "name": "Focus keys synchronized with camera keys",
+      "steps": [
+        "At every important camera pose, inspect subject sharpness.",
+        "Adjust focus distance with fine increments.",
+        "Insert a focus-distance key and, when required, an f-stop key at the same frame."
+      ],
+      "evidence": ["transcript 00:09:35–00:12:11", "frame_00121.jpg"],
+      "production_note": "Manual focus pulls are deliberate but tedious. A focus object can be evaluated as a more robust alternative when exact target tracking is desired."
+    },
+    {
+      "domain": "camera-rig",
+      "name": "Independent animated Track To target",
+      "steps": [
+        "Create an Empty near the subject with Shift+A.",
+        "Add a Track To constraint to the camera and set the Empty as target.",
+        "Animate the Empty toward successive visual attention points.",
+        "Offset target keys a few frames behind fast subject motion for operator-like reaction."
+      ],
+      "evidence": ["transcript 00:12:15–00:17:43", "frame_00151.jpg", "frame_00187.jpg"],
+      "production_note": "The transcript phrase about reaction time is noisy; visual evidence supports a delay of a few frames, not seconds."
+    },
+    {
+      "domain": "timing",
+      "name": "Frame-rate aware timing",
+      "steps": ["Author demonstrates at 60 fps.", "Convert frame offsets proportionally for 24 or 30 fps instead of copying numbers literally."],
+      "evidence": ["transcript 00:01:32–00:02:00"]
+    }
+  ],
+  "workflow_recipe": {
+    "name": "DRUMBOII four-key hero camera",
+    "inputs": [
+      "target collection",
+      "start and destination poses",
+      "duration and project fps",
+      "anticipation amplitude",
+      "overshoot/recovery amplitude",
+      "optional hold drift",
+      "focus mode",
+      "target lag in frames"
+    ],
+    "steps": [
+      "Audit the target asset and establish a clean camera composition.",
+      "Create ROOT, camera and TARGET Empty controls.",
+      "Add Track To from camera to TARGET.",
+      "Build K1–K4 for the camera using anticipation, main move and recovery.",
+      "Add a middle Z key only where a floating hold is stylistically appropriate.",
+      "Animate TARGET between visual interest points, optionally lagging subject motion by a few frames.",
+      "Key focus distance/f-stop with major camera poses or validate an explicit focus object.",
+      "Inspect F-Curves for speed continuity and overshoot.",
+      "Render a marker-based gate before saving."
+    ],
+    "gates": [
+      "K1 composition and readable silhouette",
+      "K2 anticipation is perceptible but not distracting",
+      "K3 main move preserves subject identity and avoids clipping",
+      "K4 recovery does not oscillate indefinitely",
+      "focus remains intentional at every hero pose",
+      "target lag feels human rather than erroneous"
+    ],
+    "outputs": ["camera rig collection", "shot manifest", "gate frames", "diagnostic notes"]
+  },
+  "asset_specific_applications": [
+    {"asset": "BLOB_SPEAKER", "attention_points": ["top controls", "front shell", "feet"], "recommended_move": "short dolly reveal with restrained recovery"},
+    {"asset": "DRUMBOII_GAMEBOII", "attention_points": ["screen", "D-pad", "A/B buttons", "hinge"], "recommended_move": "three-quarter push with target shift from screen to controls"},
+    {"asset": "DRUMBOII_FLIP_PHONE", "attention_points": ["upper screen", "hinge", "keypad"], "recommended_move": "vertical crane or focus pull across the open clamshell"},
+    {"asset": "DRUMBOII_TRAFFIC_LIGHT", "attention_points": ["upper signal", "side signal", "pole"], "recommended_move": "target-led tilt with delayed attention shift"},
+    {"asset": "DRUMBOII_BLOB_BIKE", "attention_points": ["front fairing", "handlebars", "wheels", "seat"], "recommended_move": "low three-quarter tracking move; optimize before large duplication"},
+    {"asset": "DRUMBOII_CONE", "attention_points": ["top", "stripe rhythm", "base"], "recommended_move": "simple scale-reference or fast anticipation insert"}
+  ],
+  "risks": [
+    "The tutorial demonstrates many hand-authored keys but does not explain exact interpolation/handle settings.",
+    "The 60 fps frame values cannot be copied directly into the current 24 fps Pulsed workflow.",
+    "Micro-floating holds conflict with shots that require a genuinely static conditioning frame.",
+    "Manual focus-distance keying can drift if the subject or target changes after animation.",
+    "Too much anticipation or recovery produces a toy-like wobble instead of believable camera mass."
+  ],
+  "open_questions": [
+    "Which interpolation and handle types were used in the source project?",
+    "Were camera rotations directly keyed or fully produced by the Track To target?",
+    "What exact frame delay was used for the reaction-lag example?",
+    "Is f-stop animated for exposure/look, depth-of-field shape, or both?"
+  ],
+  "analyzed_at": "2026-07-19T00:50:00+02:00"
+}

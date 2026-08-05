@@ -1,0 +1,2980 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | OPENMP = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 4
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "${LEGACY_HELP_ROOT}/work/models/ggml-large-v3-turbo.bin",
+		"language": "auto",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:10,810"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 10810
+			},
+			"text": " Hey everyone, welcome to my new tutorial. Today we are going to create this cool product animation and I really hope"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:10,810",
+				"to": "00:00:15,150"
+			},
+			"offsets": {
+				"from": 10810,
+				"to": 15150
+			},
+			"text": " you will enjoy this one and if you do, please don't forget to leave that like and if you're new around here, hit that"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:15,150",
+				"to": "00:00:15,780"
+			},
+			"offsets": {
+				"from": 15150,
+				"to": 15780
+			},
+			"text": " subscribe."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:15,780",
+				"to": "00:00:21,390"
+			},
+			"offsets": {
+				"from": 15780,
+				"to": 21390
+			},
+			"text": " Now let's jump right into empty blender file and first of all, let's select the light, press X and delete and we'll"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:21,390",
+				"to": "00:00:27,680"
+			},
+			"offsets": {
+				"from": 21390,
+				"to": 27680
+			},
+			"text": " actually use the cube here. So let's select it and let's press ctrl 2 to add subdivision surface modifier and let's"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:27,680",
+				"to": "00:00:29,460"
+			},
+			"offsets": {
+				"from": 27680,
+				"to": 29460
+			},
+			"text": " scale it down a little bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:29,460",
+				"to": "00:00:35,070"
+			},
+			"offsets": {
+				"from": 29460,
+				"to": 35070
+			},
+			"text": " So press S and scale it down because this is two meters wide, which is quite a lot for an earphone, but I won't be"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:35,070",
+				"to": "00:00:36,740"
+			},
+			"offsets": {
+				"from": 35070,
+				"to": 36740
+			},
+			"text": " doing like an exact proportions here."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:36,740",
+				"to": "00:00:41,940"
+			},
+			"offsets": {
+				"from": 36740,
+				"to": 41940
+			},
+			"text": " I just want to make it a little bit smaller like this. Okay, now let's press ctrl A and apply the scale."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:41,940",
+				"to": "00:00:48,470"
+			},
+			"offsets": {
+				"from": 41940,
+				"to": 48470
+			},
+			"text": " And now before we tap into the edit mode, let's go to the modifiers panel and let's apply that subdivision modifier and"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:48,470",
+				"to": "00:00:56,880"
+			},
+			"offsets": {
+				"from": 48470,
+				"to": 56880
+			},
+			"text": " let's tap into the edit mode now, press S then Y and scale it on Y axis to create that shape."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:57,680",
+				"to": "00:01:06,260"
+			},
+			"offsets": {
+				"from": 57680,
+				"to": 66260
+			},
+			"text": " Maybe a little bit more like this. I think that'll be okay. Now let's look from the front by pressing one on the non-pad"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:06,260",
+				"to": "00:01:13,520"
+			},
+			"offsets": {
+				"from": 66260,
+				"to": 73520
+			},
+			"text": " and let's select this vertex right here and press O to enable proportional editing right here and press G then X and"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:13,520",
+				"to": "00:01:18,740"
+			},
+			"offsets": {
+				"from": 73520,
+				"to": 78740
+			},
+			"text": " start moving it and then reduce the fall of radius if it's too large with the mouse wheel."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:18,740",
+				"to": "00:01:29,250"
+			},
+			"offsets": {
+				"from": 78740,
+				"to": 89250
+			},
+			"text": " So now let's press O to disable proportional editing and let's enable X-ray view and let's select those vertices right"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:29,250",
+				"to": "00:01:32,560"
+			},
+			"offsets": {
+				"from": 89250,
+				"to": 92560
+			},
+			"text": " here you will see it's selected on the other side as well."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:32,560",
+				"to": "00:01:39,970"
+			},
+			"offsets": {
+				"from": 92560,
+				"to": 99970
+			},
+			"text": " Press G then X and move it slightly back so it doesn't get in the way and now press K for knife tool, click here and"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:39,970",
+				"to": "00:01:47,000"
+			},
+			"offsets": {
+				"from": 99970,
+				"to": 107000
+			},
+			"text": " press A for angle snap and C to enable cut through and you can see it enabled right here."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:47,000",
+				"to": "00:01:55,010"
+			},
+			"offsets": {
+				"from": 107000,
+				"to": 115010
+			},
+			"text": " So now let's just click here and confirm with enter and now we can select all of these vertices here press X and delete"
+		},
+		{
+			"timestamps": {
+				"from": "00:01:55,010",
+				"to": "00:02:01,440"
+			},
+			"offsets": {
+				"from": 115010,
+				"to": 121440
+			},
+			"text": " those alt click this loop and press F to fill now let's modify the shape even further."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:01,440",
+				"to": "00:02:09,440"
+			},
+			"offsets": {
+				"from": 121440,
+				"to": 129440
+			},
+			"text": " So press G then X and move it outside a little bit so we get more of this like a raindrop shape and now we want to extrude"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:09,440",
+				"to": "00:02:13,880"
+			},
+			"offsets": {
+				"from": 129440,
+				"to": 133880
+			},
+			"text": " the rest of the shape."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:13,880",
+				"to": "00:02:20,190"
+			},
+			"offsets": {
+				"from": 133880,
+				"to": 140190
+			},
+			"text": " I will go like this here if you feel like this is too fast for you or you don't understand some core concepts make sure"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:20,190",
+				"to": "00:02:25,860"
+			},
+			"offsets": {
+				"from": 140190,
+				"to": 145860
+			},
+			"text": " to check out my courses I carefully design them to take you from beginner skills through low-pull illustration all the"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:25,860",
+				"to": "00:02:31,400"
+			},
+			"offsets": {
+				"from": 145860,
+				"to": 151400
+			},
+			"text": " way to full character illustration textured environments and much more and I build the courses as creative projects"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:31,400",
+				"to": "00:02:37,840"
+			},
+			"offsets": {
+				"from": 151400,
+				"to": 157840
+			},
+			"text": " each with its own style and every time there's a new technique or something needs explaining we stop for a while and"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:37,840",
+				"to": "00:02:42,540"
+			},
+			"offsets": {
+				"from": 157840,
+				"to": 162540
+			},
+			"text": " you get an in-depth explanation but in the end you still get a full project result."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:42,540",
+				"to": "00:02:50,430"
+			},
+			"offsets": {
+				"from": 162540,
+				"to": 170430
+			},
+			"text": " So if you're interested please check out the link in the description so let's step back in now let's deactivate the x-ray"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:50,430",
+				"to": "00:02:57,420"
+			},
+			"offsets": {
+				"from": 170430,
+				"to": 177420
+			},
+			"text": " view and we'll need to figure out the way how to do that so let's press 3 for face select and select all these faces"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:57,420",
+				"to": "00:03:05,780"
+			},
+			"offsets": {
+				"from": 177420,
+				"to": 185780
+			},
+			"text": " right here and hold shift to add to selection on to select all of these and some of these on top as well and now let's"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:05,780",
+				"to": "00:03:12,460"
+			},
+			"offsets": {
+				"from": 185780,
+				"to": 192460
+			},
+			"text": " press I to insert just a tiny bit like this and now I'll use loop tools"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:12,460",
+				"to": "00:03:22,060"
+			},
+			"offsets": {
+				"from": 192460,
+				"to": 202060
+			},
+			"text": " add-on if you don't have it active go to edit preferences and in the extensions search for loop tools and you can see I"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:22,060",
+				"to": "00:03:27,580"
+			},
+			"offsets": {
+				"from": 202060,
+				"to": 207580
+			},
+			"text": " have it installed right here but you should probably have it right there and you just click install button and the loop"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:27,580",
+				"to": "00:03:33,240"
+			},
+			"offsets": {
+				"from": 207580,
+				"to": 213240
+			},
+			"text": " tools will be active and then you can just right click and in the loop tools menu choose circle"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:33,240",
+				"to": "00:03:46,850"
+			},
+			"offsets": {
+				"from": 213240,
+				"to": 226850
+			},
+			"text": " and now let's rotate this way and move it outside like this and a little bit down okay I think that's a good start and"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:46,850",
+				"to": "00:03:54,010"
+			},
+			"offsets": {
+				"from": 226850,
+				"to": 234010
+			},
+			"text": " now press x and delete all of these faces we just want this opening right here and to better see what we are doing let's"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:54,010",
+				"to": "00:03:55,240"
+			},
+			"offsets": {
+				"from": 234010,
+				"to": 235240
+			},
+			"text": " add some subdivision surface"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:55,240",
+				"to": "00:04:03,160"
+			},
+			"offsets": {
+				"from": 235240,
+				"to": 243160
+			},
+			"text": " so let's go here and add subdivision surface modifier with two levels of subdivision and now press 2 for edge select"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:03,160",
+				"to": "00:04:11,820"
+			},
+			"offsets": {
+				"from": 243160,
+				"to": 251820
+			},
+			"text": " alt-click this loop and we can make it smaller of course something like this and rotate it a little bit from the angle"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:11,820",
+				"to": "00:04:15,240"
+			},
+			"offsets": {
+				"from": 251820,
+				"to": 255240
+			},
+			"text": " and basically you will kind of need to eyeball this"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:15,240",
+				"to": "00:04:24,840"
+			},
+			"offsets": {
+				"from": 255240,
+				"to": 264840
+			},
+			"text": " you don't want to go too far from the earphone something like this should be okay and we're basically checking for all"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:24,840",
+				"to": "00:04:33,240"
+			},
+			"offsets": {
+				"from": 264840,
+				"to": 273240
+			},
+			"text": " sides here how the shape is coming up and now let's press E then Z and extrude this down now let's look from this side"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:33,240",
+				"to": "00:04:38,850"
+			},
+			"offsets": {
+				"from": 273240,
+				"to": 278850
+			},
+			"text": " and press R to rotate and press R to rotate and we want to rotate this so we get as close to the flat surface as"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:38,850",
+				"to": "00:04:40,240"
+			},
+			"offsets": {
+				"from": 278850,
+				"to": 280240
+			},
+			"text": " possible doesn't need to be perfect"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:40,240",
+				"to": "00:04:48,690"
+			},
+			"offsets": {
+				"from": 280240,
+				"to": 288690
+			},
+			"text": " and now press S to scale it down like this and let's update the rotation a little bit here and there maybe move it"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:48,690",
+				"to": "00:04:52,240"
+			},
+			"offsets": {
+				"from": 288690,
+				"to": 292240
+			},
+			"text": " outside a little bit I think this looks fine"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:52,240",
+				"to": "00:05:01,430"
+			},
+			"offsets": {
+				"from": 292240,
+				"to": 301430
+			},
+			"text": " so now we can press S then Z and 0 to make it completely flat and now we can just press E then Z and extrude it down"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:01,430",
+				"to": "00:05:02,240"
+			},
+			"offsets": {
+				"from": 301430,
+				"to": 302240
+			},
+			"text": " just like this"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:02,240",
+				"to": "00:05:10,850"
+			},
+			"offsets": {
+				"from": 302240,
+				"to": 310850
+			},
+			"text": " just like this okay and now let's press F to fill control B to bevel and let's increase number of cuts with the mouse"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:10,850",
+				"to": "00:05:13,240"
+			},
+			"offsets": {
+				"from": 310850,
+				"to": 313240
+			},
+			"text": " wheel so we get some support loops"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:13,240",
+				"to": "00:05:20,650"
+			},
+			"offsets": {
+				"from": 313240,
+				"to": 320650
+			},
+			"text": " like this and now let's press ctrl R and create one more loop so we get some better shading and we can press ctrl R"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:20,650",
+				"to": "00:05:23,240"
+			},
+			"offsets": {
+				"from": 320650,
+				"to": 323240
+			},
+			"text": " again here to add more geometry there"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:23,240",
+				"to": "00:05:31,240"
+			},
+			"offsets": {
+				"from": 323240,
+				"to": 331240
+			},
+			"text": " so now let's step out and let's right click and shade smooth and see how the shape looks"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:31,240",
+				"to": "00:05:39,240"
+			},
+			"offsets": {
+				"from": 331240,
+				"to": 339240
+			},
+			"text": " I think this is just fine but it needs some tweaks so you'll need to go in and kind of move some of these vertices"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:39,240",
+				"to": "00:05:42,240"
+			},
+			"offsets": {
+				"from": 339240,
+				"to": 342240
+			},
+			"text": " around so we get a little bit more round connection around here"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:42,240",
+				"to": "00:05:50,480"
+			},
+			"offsets": {
+				"from": 342240,
+				"to": 350480
+			},
+			"text": " so for example you can select this one and bring it outside like this and you will see on the subdivided surface how"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:50,480",
+				"to": "00:06:00,240"
+			},
+			"offsets": {
+				"from": 350480,
+				"to": 360240
+			},
+			"text": " the curve change but then you probably need to go around and play with those other ones as well so it plays nicely"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:00,240",
+				"to": "00:06:00,240"
+			},
+			"offsets": {
+				"from": 360240,
+				"to": 360240
+			},
+			"text": " together"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:00,240",
+				"to": "00:06:07,240"
+			},
+			"offsets": {
+				"from": 360240,
+				"to": 367240
+			},
+			"text": " okay"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:07,240",
+				"to": "00:06:16,260"
+			},
+			"offsets": {
+				"from": 367240,
+				"to": 376260
+			},
+			"text": " yeah but I think overall it looks great so let's step back in press 3 for face select select the front face here and"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:16,260",
+				"to": "00:06:28,710"
+			},
+			"offsets": {
+				"from": 376260,
+				"to": 388710
+			},
+			"text": " press I to insert E to extrude E to extrude again and I to inset again so we get a little bit sharper transition back"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:28,710",
+				"to": "00:06:29,240"
+			},
+			"offsets": {
+				"from": 388710,
+				"to": 389240
+			},
+			"text": " there"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:29,240",
+				"to": "00:06:39,470"
+			},
+			"offsets": {
+				"from": 389240,
+				"to": 399470
+			},
+			"text": " okay yeah I think I like this so let's look from the front and press G to move it to the side here off center and now"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:39,470",
+				"to": "00:06:48,950"
+			},
+			"offsets": {
+				"from": 399470,
+				"to": 408950
+			},
+			"text": " we can press Alt D and then X to move another one here and then press S then X and minus one so we flip it to the other"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:48,950",
+				"to": "00:06:57,790"
+			},
+			"offsets": {
+				"from": 408950,
+				"to": 417790
+			},
+			"text": " side press G then X to move it somewhere here and we can move this one closer and now we'll create the docking station"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:57,790",
+				"to": "00:06:58,240"
+			},
+			"offsets": {
+				"from": 417790,
+				"to": 418240
+			},
+			"text": " for those so let's"
+		},
+		{
+			"timestamps": {
+				"from": "00:06:58,240",
+				"to": "00:07:05,240"
+			},
+			"offsets": {
+				"from": 418240,
+				"to": 425240
+			},
+			"text": " okay so let's press shift a and let's add a cube tab into the edit mode and just scale it down like this we can enable"
+		},
+		{
+			"timestamps": {
+				"from": "00:07:05,240",
+				"to": "00:07:05,240"
+			},
+			"offsets": {
+				"from": 425240,
+				"to": 425240
+			},
+			"text": " x-ray view so we better see what's happening there"
+		},
+		{
+			"timestamps": {
+				"from": "00:07:05,240",
+				"to": "00:07:12,240"
+			},
+			"offsets": {
+				"from": 425240,
+				"to": 432240
+			},
+			"text": " we'll probably need something like this here and then press S then Z scale it down okay maybe G then Z and move it down"
+		},
+		{
+			"timestamps": {
+				"from": "00:07:12,240",
+				"to": "00:07:12,240"
+			},
+			"offsets": {
+				"from": 432240,
+				"to": 432240
+			},
+			"text": " a little bit like this and now of course from the side here so let's press 7 on the numpad to look from the top press S"
+		},
+		{
+			"timestamps": {
+				"from": "00:07:12,240",
+				"to": "00:07:12,240"
+			},
+			"offsets": {
+				"from": 432240,
+				"to": 432240
+			},
+			"text": " then Y and scale it and now let's press CTRL B to create the bevel and press C to enable clamp and now increase number"
+		},
+		{
+			"timestamps": {
+				"from": "00:07:12,240",
+				"to": "00:07:12,240"
+			},
+			"offsets": {
+				"from": 432240,
+				"to": 432240
+			},
+			"text": " of cuts with the mouse and now increase number of cuts with the mouse"
+		},
+		{
+			"timestamps": {
+				"from": "00:07:12,240",
+				"to": "00:07:19,920"
+			},
+			"offsets": {
+				"from": 432240,
+				"to": 439920
+			},
+			"text": " then Z, scale it down. Okay, maybe G, then Z and move it down a little bit like this. And now of"
+		},
+		{
+			"timestamps": {
+				"from": "00:07:19,920",
+				"to": "00:07:24,040"
+			},
+			"offsets": {
+				"from": 439920,
+				"to": 444040
+			},
+			"text": " course from the side here. So let's press 7 on the numpad to look from the top. Press S then Y"
+		},
+		{
+			"timestamps": {
+				"from": "00:07:24,040",
+				"to": "00:07:32,980"
+			},
+			"offsets": {
+				"from": 444040,
+				"to": 452980
+			},
+			"text": " and scale it. And now let's press ctrl B to create the bevel and press C to enable clamp."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:32,980",
+				"to": "00:07:40,840"
+			},
+			"offsets": {
+				"from": 452980,
+				"to": 460840
+			},
+			"text": " And now increase number of cuts with the mouse wheel to something more smooth like this."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:41,400",
+				"to": "00:07:47,560"
+			},
+			"offsets": {
+				"from": 461400,
+				"to": 467560
+			},
+			"text": " And now since we are overlapping with some of the vertices, let's press A and M to merge and choose"
+		},
+		{
+			"timestamps": {
+				"from": "00:07:47,560",
+				"to": "00:07:53,280"
+			},
+			"offsets": {
+				"from": 467560,
+				"to": 473280
+			},
+			"text": " by distance. Now let's look from the front again and let's press ctrl R and create a loop cut"
+		},
+		{
+			"timestamps": {
+				"from": "00:07:53,280",
+				"to": "00:08:00,040"
+			},
+			"offsets": {
+				"from": 473280,
+				"to": 480040
+			},
+			"text": " right here. There will be the place where we basically split this into two parts. So let's"
+		},
+		{
+			"timestamps": {
+				"from": "00:08:00,040",
+				"to": "00:08:05,060"
+			},
+			"offsets": {
+				"from": 480040,
+				"to": 485060
+			},
+			"text": " press 1 for vertex select, hold shift and select all of these other vertices. Make sure you're in"
+		},
+		{
+			"timestamps": {
+				"from": "00:08:05,060",
+				"to": "00:08:12,720"
+			},
+			"offsets": {
+				"from": 485060,
+				"to": 492720
+			},
+			"text": " the X-ray mode. So you select everything and press P and separate selection. Now let's tab out and let's"
+		},
+		{
+			"timestamps": {
+				"from": "00:08:12,720",
+				"to": "00:08:18,400"
+			},
+			"offsets": {
+				"from": 492720,
+				"to": 498400
+			},
+			"text": " select this part right here. Tab into the edit mode and we'll press 2 for edge select, select this edge,"
+		},
+		{
+			"timestamps": {
+				"from": "00:08:18,400",
+				"to": "00:08:26,220"
+			},
+			"offsets": {
+				"from": 498400,
+				"to": 506220
+			},
+			"text": " hold shift S and snap cursor to select it. And now we can tab out, right click and set origin to the 3D"
+		},
+		{
+			"timestamps": {
+				"from": "00:08:26,220",
+				"to": "00:08:33,760"
+			},
+			"offsets": {
+				"from": 506220,
+				"to": 513760
+			},
+			"text": " cursor. So this way, if you press R then X, you will be able to just flip this like that. And now let's"
+		},
+		{
+			"timestamps": {
+				"from": "00:08:33,760",
+				"to": "00:08:38,720"
+			},
+			"offsets": {
+				"from": 513760,
+				"to": 518720
+			},
+			"text": " toggle the X-ray again. Now let's finish with our objects. So tab into the edit mode. Alt click this loop,"
+		},
+		{
+			"timestamps": {
+				"from": "00:08:38,720",
+				"to": "00:08:46,380"
+			},
+			"offsets": {
+				"from": 518720,
+				"to": 526380
+			},
+			"text": " press F to fill, I to inset, a little bit like this and E to extrude down. I won't go into details and"
+		},
+		{
+			"timestamps": {
+				"from": "00:08:46,380",
+				"to": "00:08:52,320"
+			},
+			"offsets": {
+				"from": 526380,
+				"to": 532320
+			},
+			"text": " create like this curved encasing for those. I would probably go and do that using booleans or something"
+		},
+		{
+			"timestamps": {
+				"from": "00:08:52,320",
+				"to": "00:08:57,660"
+			},
+			"offsets": {
+				"from": 532320,
+				"to": 537660
+			},
+			"text": " like that. But here for the simple animation, very stylized. I think this will be more than enough."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:57,660",
+				"to": "00:09:06,780"
+			},
+			"offsets": {
+				"from": 537660,
+				"to": 546780
+			},
+			"text": " And then I will tab out and add a bell modifier with two segments here. And let's reduce the amount"
+		},
+		{
+			"timestamps": {
+				"from": "00:09:06,780",
+				"to": "00:09:12,540"
+			},
+			"offsets": {
+				"from": 546780,
+				"to": 552540
+			},
+			"text": " to something like this. And now if you press control two, you will add subdivision surface modifier and you"
+		},
+		{
+			"timestamps": {
+				"from": "00:09:12,540",
+				"to": "00:09:17,580"
+			},
+			"offsets": {
+				"from": 552540,
+				"to": 557580
+			},
+			"text": " will see the bell modifier creates those support loops. So you get those nice sharp edges. Right click"
+		},
+		{
+			"timestamps": {
+				"from": "00:09:17,580",
+				"to": "00:09:24,060"
+			},
+			"offsets": {
+				"from": 557580,
+				"to": 564060
+			},
+			"text": " and shade smooth. And let's do the same thing here. So tab into the edit mode, alt click this loop, press F,"
+		},
+		{
+			"timestamps": {
+				"from": "00:09:24,060",
+				"to": "00:09:35,100"
+			},
+			"offsets": {
+				"from": 564060,
+				"to": 575100
+			},
+			"text": " I to inset and E to extrude. Somewhere here. And now we can tab out, alt shift, select the main one"
+		},
+		{
+			"timestamps": {
+				"from": "00:09:35,740",
+				"to": "00:09:56,620"
+			},
+			"offsets": {
+				"from": 575740,
+				"to": 596620
+			},
+			"text": " and press control P and parent to object. And now let's select this one, press H to hide and select"
+		},
+		{
+			"timestamps": {
+				"from": "00:09:56,620",
+				"to": "00:10:03,020"
+			},
+			"offsets": {
+				"from": 596620,
+				"to": 603020
+			},
+			"text": " these two by holding shift. And the main case is last and press control P and parent them as well."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:03,020",
+				"to": "00:10:09,020"
+			},
+			"offsets": {
+				"from": 603020,
+				"to": 609020
+			},
+			"text": " So now if we take this, we can move the whole thing. And now just to make this a little bit more"
+		},
+		{
+			"timestamps": {
+				"from": "00:10:09,020",
+				"to": "00:10:14,540"
+			},
+			"offsets": {
+				"from": 609020,
+				"to": 614540
+			},
+			"text": " interesting, let's press alt H to unhide. And with the cursor still there, let's press shift A and"
+		},
+		{
+			"timestamps": {
+				"from": "00:10:14,540",
+				"to": "00:10:21,260"
+			},
+			"offsets": {
+				"from": 614540,
+				"to": 621260
+			},
+			"text": " let's add a cylinder. And I will modify the vertices to 12, tab into the edit mode and just scale it down"
+		},
+		{
+			"timestamps": {
+				"from": "00:10:21,260",
+				"to": "00:10:24,860"
+			},
+			"offsets": {
+				"from": 621260,
+				"to": 624860
+			},
+			"text": " using S and then press R then Y."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:27,340",
+				"to": "00:10:32,540"
+			},
+			"offsets": {
+				"from": 627340,
+				"to": 632540
+			},
+			"text": " Enter 90 and confirm to rotate these 90 degrees and press S then X to scale it up."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:32,540",
+				"to": "00:10:37,500"
+			},
+			"offsets": {
+				"from": 632540,
+				"to": 637500
+			},
+			"text": " So we'll just basically create the hinge. And now we can press three, four phase select, select this"
+		},
+		{
+			"timestamps": {
+				"from": "00:10:37,500",
+				"to": "00:10:42,060"
+			},
+			"offsets": {
+				"from": 637500,
+				"to": 642060
+			},
+			"text": " phase, hold shift, select the other one, press control B and create the bevel and reduce number"
+		},
+		{
+			"timestamps": {
+				"from": "00:10:42,060",
+				"to": "00:10:48,300"
+			},
+			"offsets": {
+				"from": 642060,
+				"to": 648300
+			},
+			"text": " of cuts with the mouse wheel. So we have only two loops there like this and press control R and create"
+		},
+		{
+			"timestamps": {
+				"from": "00:10:48,300",
+				"to": "00:10:55,340"
+			},
+			"offsets": {
+				"from": 648300,
+				"to": 655340
+			},
+			"text": " few cuts in the middle here to have like more evened out shading. Now tab out right click and shade smooth."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:55,340",
+				"to": "00:11:00,460"
+			},
+			"offsets": {
+				"from": 655340,
+				"to": 660460
+			},
+			"text": " And this will be our hinge. So press G then Y and move it inside a little bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:00,460",
+				"to": "00:11:07,500"
+			},
+			"offsets": {
+				"from": 660460,
+				"to": 667500
+			},
+			"text": " Maybe we can make it even smaller like this. So it's just a tiny detail and let's hold shift,"
+		},
+		{
+			"timestamps": {
+				"from": "00:11:07,500",
+				"to": "00:11:11,100"
+			},
+			"offsets": {
+				"from": 667500,
+				"to": 671100
+			},
+			"text": " select the main part and press control P and parent to object."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:11,100",
+				"to": "00:11:15,580"
+			},
+			"offsets": {
+				"from": 671100,
+				"to": 675580
+			},
+			"text": " So now we're ready. So let's hit zero on a numpad for camera view. And this is too far."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:15,580",
+				"to": "00:11:20,780"
+			},
+			"offsets": {
+				"from": 675580,
+				"to": 680780
+			},
+			"text": " So the easiest way to position camera is to press N for the side panel. And in the view options,"
+		},
+		{
+			"timestamps": {
+				"from": "00:11:20,780",
+				"to": "00:11:25,820"
+			},
+			"offsets": {
+				"from": 680780,
+				"to": 685820
+			},
+			"text": " you can enable camera to view. So now you can use your viewport controls to position your camera."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:25,820",
+				"to": "00:11:33,500"
+			},
+			"offsets": {
+				"from": 685820,
+				"to": 693500
+			},
+			"text": " And I'm interested in an angle like this. And don't forget to disable that. You can right click and"
+		},
+		{
+			"timestamps": {
+				"from": "00:11:33,500",
+				"to": "00:11:39,260"
+			},
+			"offsets": {
+				"from": 693500,
+				"to": 699260
+			},
+			"text": " add to quick favorites. So then if you press Q, you can have the lock camera to view right there."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:39,260",
+				"to": "00:11:43,500"
+			},
+			"offsets": {
+				"from": 699260,
+				"to": 703500
+			},
+			"text": " And now with the side panel still open, let's go to the item menu and leave it open. We'll need this."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:43,500",
+				"to": "00:11:51,660"
+			},
+			"offsets": {
+				"from": 703500,
+				"to": 711660
+			},
+			"text": " And let's create some animations. So I want this to be 120 frames long. And in the output settings,"
+		},
+		{
+			"timestamps": {
+				"from": "00:11:51,660",
+				"to": "00:11:59,020"
+			},
+			"offsets": {
+				"from": 711660,
+				"to": 719020
+			},
+			"text": " let's modify this to 30 FPS. And first of all, I want to create the rotation with the main body. And I"
+		},
+		{
+			"timestamps": {
+				"from": "00:11:59,020",
+				"to": "00:12:04,540"
+			},
+			"offsets": {
+				"from": 719020,
+				"to": 724540
+			},
+			"text": " want to rotate this around Z axis. So let's right click here and insert single keyframe. And the reason"
+		},
+		{
+			"timestamps": {
+				"from": "00:12:04,540",
+				"to": "00:12:10,460"
+			},
+			"offsets": {
+				"from": 724540,
+				"to": 730460
+			},
+			"text": " why I'm doing it this way will be clear to you in a few moments. So let me select this here, press Shift"
+		},
+		{
+			"timestamps": {
+				"from": "00:12:10,460",
+				"to": "00:12:19,020"
+			},
+			"offsets": {
+				"from": 730460,
+				"to": 739020
+			},
+			"text": " D and duplicate it to the other side. Now let's go to frame 30. And I want to rotate this full circle."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:19,020",
+				"to": "00:12:26,860"
+			},
+			"offsets": {
+				"from": 739020,
+				"to": 746860
+			},
+			"text": " So 360. Let's confirm and right click and insert single keyframe. So it's not very simple rotation"
+		},
+		{
+			"timestamps": {
+				"from": "00:12:26,860",
+				"to": "00:12:32,860"
+			},
+			"offsets": {
+				"from": 746860,
+				"to": 752860
+			},
+			"text": " animation, but I want this object to kind of spool up to the other side before the actual rotation. So"
+		},
+		{
+			"timestamps": {
+				"from": "00:12:32,860",
+				"to": "00:12:43,740"
+			},
+			"offsets": {
+				"from": 752860,
+				"to": 763740
+			},
+			"text": " on the frame 10 or nine, something really close. I want to reset this back to zero and go few negative"
+		},
+		{
+			"timestamps": {
+				"from": "00:12:43,740",
+				"to": "00:12:49,740"
+			},
+			"offsets": {
+				"from": 763740,
+				"to": 769740
+			},
+			"text": " degrees. So I don't know, maybe something like minus 30 and let's right click and insert single keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:49,740",
+				"to": "00:12:54,460"
+			},
+			"offsets": {
+				"from": 769740,
+				"to": 774460
+			},
+			"text": " And this is basically the blockout for the animation, but I want this to continue rotating a little bit"
+		},
+		{
+			"timestamps": {
+				"from": "00:12:54,460",
+				"to": "00:13:03,260"
+			},
+			"offsets": {
+				"from": 774460,
+				"to": 783260
+			},
+			"text": " and then, you know, start again in this movement. So I will basically just select this keyframe right"
+		},
+		{
+			"timestamps": {
+				"from": "00:13:03,260",
+				"to": "00:13:11,740"
+			},
+			"offsets": {
+				"from": 783260,
+				"to": 791740
+			},
+			"text": " here, press Shift D and duplicate it right there to the end of the animation plus one frame. So 121."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:12,940",
+				"to": "00:13:18,940"
+			},
+			"offsets": {
+				"from": 792940,
+				"to": 798940
+			},
+			"text": " And now if we make this a little bit larger and hit Ctrl Tab here, you will get into the graph editor and"
+		},
+		{
+			"timestamps": {
+				"from": "00:13:18,940",
+				"to": "00:13:26,860"
+			},
+			"offsets": {
+				"from": 798940,
+				"to": 806860
+			},
+			"text": " you can use Ctrl and middle mouse button to kind of scale this in and out like this. And now I want to"
+		},
+		{
+			"timestamps": {
+				"from": "00:13:26,860",
+				"to": "00:13:36,140"
+			},
+			"offsets": {
+				"from": 806860,
+				"to": 816140
+			},
+			"text": " change this animation curve to be kind of a little bit more snappy. So first of all, here, I want this"
+		},
+		{
+			"timestamps": {
+				"from": "00:13:36,140",
+				"to": "00:13:42,140"
+			},
+			"offsets": {
+				"from": 816140,
+				"to": 822140
+			},
+			"text": " movement to be a little bit more sudden. So let's move the handle right there. And here, let's select this"
+		},
+		{
+			"timestamps": {
+				"from": "00:13:42,140",
+				"to": "00:13:47,580"
+			},
+			"offsets": {
+				"from": 822140,
+				"to": 827580
+			},
+			"text": " keyframe and press V and I want to change this to free. So this will allow me to move just one handle"
+		},
+		{
+			"timestamps": {
+				"from": "00:13:47,580",
+				"to": "00:13:55,980"
+			},
+			"offsets": {
+				"from": 827580,
+				"to": 835980
+			},
+			"text": " like this. And now this keyframe, I want to move down a little bit. So if you remember, this is 360 frames,"
+		},
+		{
+			"timestamps": {
+				"from": "00:13:55,980",
+				"to": "00:14:03,340"
+			},
+			"offsets": {
+				"from": 835980,
+				"to": 843340
+			},
+			"text": " but I want to end on the frame. So I will press G then Y here and move this slightly down like this,"
+		},
+		{
+			"timestamps": {
+				"from": "00:14:03,340",
+				"to": "00:14:12,060"
+			},
+			"offsets": {
+				"from": 843340,
+				"to": 852060
+			},
+			"text": " and then adjust the handle. So it's more smooth there. So we'll get this kind of"
+		},
+		{
+			"timestamps": {
+				"from": "00:14:12,060",
+				"to": "00:14:20,300"
+			},
+			"offsets": {
+				"from": 852060,
+				"to": 860300
+			},
+			"text": " movement. And you will see the whole rotation happens here. But then the finish is very smooth and"
+		},
+		{
+			"timestamps": {
+				"from": "00:14:20,300",
+				"to": "00:14:29,820"
+			},
+			"offsets": {
+				"from": 860300,
+				"to": 869820
+			},
+			"text": " continues until the end. Maybe we can bring this a little bit lower and make this handle shorter."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:33,660",
+				"to": "00:14:40,300"
+			},
+			"offsets": {
+				"from": 873660,
+				"to": 880300
+			},
+			"text": " Okay, I really like this. And then what I want to happen is for the lid to open. And you know, those"
+		},
+		{
+			"timestamps": {
+				"from": "00:14:40,300",
+				"to": "00:14:46,780"
+			},
+			"offsets": {
+				"from": 880300,
+				"to": 886780
+			},
+			"text": " spots to fly out for a little bit and then, you know, folding back down with the lid closing in a"
+		},
+		{
+			"timestamps": {
+				"from": "00:14:46,780",
+				"to": "00:14:54,540"
+			},
+			"offsets": {
+				"from": 886780,
+				"to": 894540
+			},
+			"text": " sudden movement. So let's go to like frame 15, for example. And let's insert the X rotation here for"
+		},
+		{
+			"timestamps": {
+				"from": "00:14:55,180",
+				"to": "00:15:07,260"
+			},
+			"offsets": {
+				"from": 895180,
+				"to": 907260
+			},
+			"text": " the lid part. Insert single keyframe. And then on a frame 25, let's rotate this like that. So I don't"
+		},
+		{
+			"timestamps": {
+				"from": "00:15:07,260",
+				"to": "00:15:14,860"
+			},
+			"offsets": {
+				"from": 907260,
+				"to": 914860
+			},
+			"text": " know, minus 170 doesn't need to go all the way to 180. Right click and insert single keyframe. And again,"
+		},
+		{
+			"timestamps": {
+				"from": "00:15:14,860",
+				"to": "00:15:19,180"
+			},
+			"offsets": {
+				"from": 914860,
+				"to": 919180
+			},
+			"text": " at this stage, we're just blocking out the animation. Let's select this frame right here,"
+		},
+		{
+			"timestamps": {
+				"from": "00:15:19,180",
+				"to": "00:15:25,820"
+			},
+			"offsets": {
+				"from": 919180,
+				"to": 925820
+			},
+			"text": " press Shift D, then X to lock it on the X axis. And let's just move it here on frame 60. Remember,"
+		},
+		{
+			"timestamps": {
+				"from": "00:15:25,820",
+				"to": "00:15:30,060"
+			},
+			"offsets": {
+				"from": 925820,
+				"to": 930060
+			},
+			"text": " this is the keyframe. These are only the handles. And now basically, we just need to select this one"
+		},
+		{
+			"timestamps": {
+				"from": "00:15:30,060",
+				"to": "00:15:35,820"
+			},
+			"offsets": {
+				"from": 930060,
+				"to": 935820
+			},
+			"text": " here, press Shift D, press X to lock it and do the same thing and move it to frame 70. So this is the"
+		},
+		{
+			"timestamps": {
+				"from": "00:15:35,820",
+				"to": "00:15:42,300"
+			},
+			"offsets": {
+				"from": 935820,
+				"to": 942300
+			},
+			"text": " movement locking place. But again, I want to make this a little bit more snappy. So let's select this"
+		},
+		{
+			"timestamps": {
+				"from": "00:15:42,300",
+				"to": "00:15:49,660"
+			},
+			"offsets": {
+				"from": 942300,
+				"to": 949660
+			},
+			"text": " keyframe right there, press V and choose free and now modify the handle. So it's more steep here."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:49,660",
+				"to": "00:15:56,540"
+			},
+			"offsets": {
+				"from": 949660,
+				"to": 956540
+			},
+			"text": " And let's do the same thing right here. So it kind of, you know, shuts the lid with a sudden movement."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:56,540",
+				"to": "00:16:04,220"
+			},
+			"offsets": {
+				"from": 956540,
+				"to": 964220
+			},
+			"text": " So press V choose free and do it right there as well. But again, I want this movement to be sudden"
+		},
+		{
+			"timestamps": {
+				"from": "00:16:04,220",
+				"to": "00:16:09,260"
+			},
+			"offsets": {
+				"from": 964220,
+				"to": 969260
+			},
+			"text": " in the beginning and then continue a little bit as the animation goes on. So let's select this one,"
+		},
+		{
+			"timestamps": {
+				"from": "00:16:09,260",
+				"to": "00:16:17,980"
+			},
+			"offsets": {
+				"from": 969260,
+				"to": 977980
+			},
+			"text": " press G then Y and move it back here. So we create this kind of curve right there. And now if you play"
+		},
+		{
+			"timestamps": {
+				"from": "00:16:17,980",
+				"to": "00:16:25,900"
+			},
+			"offsets": {
+				"from": 977980,
+				"to": 985900
+			},
+			"text": " back, we'll open and continue the movement a little bit and then shuts down suddenly. And now let's press"
+		},
+		{
+			"timestamps": {
+				"from": "00:16:25,900",
+				"to": "00:16:32,860"
+			},
+			"offsets": {
+				"from": 985900,
+				"to": 992860
+			},
+			"text": " H to hide this object in the viewport. And let's select this one, this left one, I want this to move"
+		},
+		{
+			"timestamps": {
+				"from": "00:16:32,860",
+				"to": "00:16:40,700"
+			},
+			"offsets": {
+				"from": 992860,
+				"to": 1000700
+			},
+			"text": " first. So let's move. I don't know, like frame 15 is fine. And let's right click and insert Z location"
+		},
+		{
+			"timestamps": {
+				"from": "00:16:40,700",
+				"to": "00:16:46,380"
+			},
+			"offsets": {
+				"from": 1000700,
+				"to": 1006380
+			},
+			"text": " insert single keyframe there. And then we'll move to frame 30 because we want to leave the lid a little"
+		},
+		{
+			"timestamps": {
+				"from": "00:16:46,380",
+				"to": "00:16:54,460"
+			},
+			"offsets": {
+				"from": 1006380,
+				"to": 1014460
+			},
+			"text": " bit of a time to open so it doesn't like fly through. So on frame 30, we should be somewhere here, for"
+		},
+		{
+			"timestamps": {
+				"from": "00:16:54,460",
+				"to": "00:17:00,220"
+			},
+			"offsets": {
+				"from": 1014460,
+				"to": 1020220
+			},
+			"text": " example, right click and insert single keyframe. And if this is close together, you can of course use"
+		},
+		{
+			"timestamps": {
+				"from": "00:17:00,220",
+				"to": "00:17:06,540"
+			},
+			"offsets": {
+				"from": 1020220,
+				"to": 1026540
+			},
+			"text": " Ctrl and middle mouse button to zoom on it. But if you press period on a numpad, it will zoom just right"
+		},
+		{
+			"timestamps": {
+				"from": "00:17:06,540",
+				"to": "00:17:12,380"
+			},
+			"offsets": {
+				"from": 1026540,
+				"to": 1032380
+			},
+			"text": " in. And now let's do the same thing as before. But it will happen a little bit sooner. So around frame"
+		},
+		{
+			"timestamps": {
+				"from": "00:17:12,380",
+				"to": "00:17:18,540"
+			},
+			"offsets": {
+				"from": 1032380,
+				"to": 1038540
+			},
+			"text": " 50 and 60. So let's select this one, press Shift D, then X, move it to frame 50. And then this one"
+		},
+		{
+			"timestamps": {
+				"from": "00:17:19,500",
+				"to": "00:17:27,420"
+			},
+			"offsets": {
+				"from": 1039500,
+				"to": 1047420
+			},
+			"text": " right here. And again, we'll select these two, press V and choose free. And now make them a little bit more"
+		},
+		{
+			"timestamps": {
+				"from": "00:17:27,420",
+				"to": "00:17:35,500"
+			},
+			"offsets": {
+				"from": 1047420,
+				"to": 1055500
+			},
+			"text": " steep, like this. And again, I want this to be like a continuous movement right there. So let's select"
+		},
+		{
+			"timestamps": {
+				"from": "00:17:35,500",
+				"to": "00:17:44,860"
+			},
+			"offsets": {
+				"from": 1055500,
+				"to": 1064860
+			},
+			"text": " this one, press G, then Y and move it down slightly like this. So it will fly up and continue the movement"
+		},
+		{
+			"timestamps": {
+				"from": "00:17:44,860",
+				"to": "00:17:53,580"
+			},
+			"offsets": {
+				"from": 1064860,
+				"to": 1073580
+			},
+			"text": " until it kind of falls down in a sudden movement. Okay, and now I want to do the same thing on the"
+		},
+		{
+			"timestamps": {
+				"from": "00:17:53,580",
+				"to": "00:18:01,020"
+			},
+			"offsets": {
+				"from": 1073580,
+				"to": 1081020
+			},
+			"text": " other one. So let's move to frame like 25. Select this one. And let's right click and insert single"
+		},
+		{
+			"timestamps": {
+				"from": "00:18:01,020",
+				"to": "00:18:06,700"
+			},
+			"offsets": {
+				"from": 1081020,
+				"to": 1086700
+			},
+			"text": " keyframe here. But I won't do that all over again. Let's just select this one, select all of the keyframes,"
+		},
+		{
+			"timestamps": {
+				"from": "00:18:06,700",
+				"to": "00:18:13,900"
+			},
+			"offsets": {
+				"from": 1086700,
+				"to": 1093900
+			},
+			"text": " press Ctrl C. And now let's select this one and press Ctrl V. I will paste the movement on the Z axis."
+		},
+		{
+			"timestamps": {
+				"from": "00:18:13,900",
+				"to": "00:18:20,380"
+			},
+			"offsets": {
+				"from": 1093900,
+				"to": 1100380
+			},
+			"text": " So we will get the same thing. But one difference I want to do here is to select these two"
+		},
+		{
+			"timestamps": {
+				"from": "00:18:20,380",
+				"to": "00:18:28,540"
+			},
+			"offsets": {
+				"from": 1100380,
+				"to": 1108540
+			},
+			"text": " with the handles as well and press G, then Y and move them higher up. So this one will fly higher."
+		},
+		{
+			"timestamps": {
+				"from": "00:18:28,540",
+				"to": "00:18:34,860"
+			},
+			"offsets": {
+				"from": 1108540,
+				"to": 1114860
+			},
+			"text": " And here we can adjust for the curves. So let's zoom on it. And we can readjust the handles."
+		},
+		{
+			"timestamps": {
+				"from": "00:18:35,660",
+				"to": "00:18:40,700"
+			},
+			"offsets": {
+				"from": 1115660,
+				"to": 1120700
+			},
+			"text": " So it matches the value range. Okay."
+		},
+		{
+			"timestamps": {
+				"from": "00:18:40,700",
+				"to": "00:18:47,660"
+			},
+			"offsets": {
+				"from": 1120700,
+				"to": 1127660
+			},
+			"text": " Now let's press Alt H in the viewport and let's play back the whole animation."
+		},
+		{
+			"timestamps": {
+				"from": "00:18:47,660",
+				"to": "00:18:55,100"
+			},
+			"offsets": {
+				"from": 1127660,
+				"to": 1135100
+			},
+			"text": " Okay, I think we'll need to figure out the timing a little bit better. I think"
+		},
+		{
+			"timestamps": {
+				"from": "00:18:55,100",
+				"to": "00:19:01,980"
+			},
+			"offsets": {
+				"from": 1135100,
+				"to": 1141980
+			},
+			"text": " the shift between those two is a little bit too late. So let's just move them five frames within each other."
+		},
+		{
+			"timestamps": {
+				"from": "00:19:04,860",
+				"to": "00:19:11,660"
+			},
+			"offsets": {
+				"from": 1144860,
+				"to": 1151660
+			},
+			"text": " And I think the rotation might need a little bit of a help. I think we need to be higher up here with the rotation."
+		},
+		{
+			"timestamps": {
+				"from": "00:19:11,660",
+				"to": "00:19:25,740"
+			},
+			"offsets": {
+				"from": 1151660,
+				"to": 1165740
+			},
+			"text": " Okay, and these might go a little bit sooner. So let's select both of those."
+		},
+		{
+			"timestamps": {
+				"from": "00:19:25,740",
+				"to": "00:19:28,540"
+			},
+			"offsets": {
+				"from": 1165740,
+				"to": 1168540
+			},
+			"text": " Select all keyframes, press G, then X and just move it"
+		},
+		{
+			"timestamps": {
+				"from": "00:19:31,260",
+				"to": "00:19:32,300"
+			},
+			"offsets": {
+				"from": 1171260,
+				"to": 1172300
+			},
+			"text": " to the left a little bit to the left a little bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:19:32,300",
+				"to": "00:19:38,780"
+			},
+			"offsets": {
+				"from": 1172300,
+				"to": 1178780
+			},
+			"text": " Okay, and now closing the lid should match"
+		},
+		{
+			"timestamps": {
+				"from": "00:19:38,780",
+				"to": "00:19:48,540"
+			},
+			"offsets": {
+				"from": 1178780,
+				"to": 1188540
+			},
+			"text": " the fall of the earphones. So here it should be already closed. So either we can make this longer"
+		},
+		{
+			"timestamps": {
+				"from": "00:19:48,540",
+				"to": "00:19:54,380"
+			},
+			"offsets": {
+				"from": 1188540,
+				"to": 1194380
+			},
+			"text": " or we can bring this a little bit sooner. So let's just bring this right here."
+		},
+		{
+			"timestamps": {
+				"from": "00:19:57,740",
+				"to": "00:20:01,100"
+			},
+			"offsets": {
+				"from": 1197740,
+				"to": 1201100
+			},
+			"text": " Maybe even sooner."
+		},
+		{
+			"timestamps": {
+				"from": "00:20:01,100",
+				"to": "00:20:05,580"
+			},
+			"offsets": {
+				"from": 1201100,
+				"to": 1205580
+			},
+			"text": " Okay."
+		},
+		{
+			"timestamps": {
+				"from": "00:20:05,580",
+				"to": "00:20:12,940"
+			},
+			"offsets": {
+				"from": 1205580,
+				"to": 1212940
+			},
+			"text": " And maybe readjust the curve a little bit so it's more fluent."
+		},
+		{
+			"timestamps": {
+				"from": "00:20:17,500",
+				"to": "00:20:25,180"
+			},
+			"offsets": {
+				"from": 1217500,
+				"to": 1225180
+			},
+			"text": " Nice. I really like this. So now the reason why I only why I'm only doing these keyframes on certain"
+		},
+		{
+			"timestamps": {
+				"from": "00:20:25,180",
+				"to": "00:20:31,180"
+			},
+			"offsets": {
+				"from": 1225180,
+				"to": 1231180
+			},
+			"text": " channels. First of all, it's much easier to see, you know, when you have just one animation curve."
+		},
+		{
+			"timestamps": {
+				"from": "00:20:31,180",
+				"to": "00:20:36,140"
+			},
+			"offsets": {
+				"from": 1231180,
+				"to": 1236140
+			},
+			"text": " But other than that, I can still modify the rotation on Y and on X."
+		},
+		{
+			"timestamps": {
+				"from": "00:20:36,940",
+				"to": "00:20:42,380"
+			},
+			"offsets": {
+				"from": 1236940,
+				"to": 1242380
+			},
+			"text": " And this will still work. So you can still reposition your object. You don't have any"
+		},
+		{
+			"timestamps": {
+				"from": "00:20:42,380",
+				"to": "00:20:46,620"
+			},
+			"offsets": {
+				"from": 1242380,
+				"to": 1246620
+			},
+			"text": " location keyframes, so you can move it around and it will still, you know, animate."
+		},
+		{
+			"timestamps": {
+				"from": "00:20:46,620",
+				"to": "00:20:53,580"
+			},
+			"offsets": {
+				"from": 1246620,
+				"to": 1253580
+			},
+			"text": " And you can change all of those values except the one that is always already keyframes. So yeah,"
+		},
+		{
+			"timestamps": {
+				"from": "00:20:53,580",
+				"to": "00:20:58,540"
+			},
+			"offsets": {
+				"from": 1253580,
+				"to": 1258540
+			},
+			"text": " let's let's do a little bit of this rotation. I think it gives the scene a little bit more dynamic"
+		},
+		{
+			"timestamps": {
+				"from": "00:20:59,900",
+				"to": "00:21:04,860"
+			},
+			"offsets": {
+				"from": 1259900,
+				"to": 1264860
+			},
+			"text": " like this. And now I want to animate the camera a little bit because when they fly up, I think this"
+		},
+		{
+			"timestamps": {
+				"from": "00:21:04,860",
+				"to": "00:21:10,540"
+			},
+			"offsets": {
+				"from": 1264860,
+				"to": 1270540
+			},
+			"text": " breaks the composition a little bit. And I think a little bit of a camera handshake should look nicely"
+		},
+		{
+			"timestamps": {
+				"from": "00:21:10,540",
+				"to": "00:21:17,340"
+			},
+			"offsets": {
+				"from": 1270540,
+				"to": 1277340
+			},
+			"text": " here. So let's select the camera and let's just right click and insert keyframes on rotation. Let's"
+		},
+		{
+			"timestamps": {
+				"from": "00:21:17,340",
+				"to": "00:21:24,700"
+			},
+			"offsets": {
+				"from": 1277340,
+				"to": 1284700
+			},
+			"text": " press control tab here and let's go back here to the timeline. And now let's press shift D and duplicate it"
+		},
+		{
+			"timestamps": {
+				"from": "00:21:24,700",
+				"to": "00:21:33,260"
+			},
+			"offsets": {
+				"from": 1284700,
+				"to": 1293260
+			},
+			"text": " to the other side. And now let's make some keyframes in between. So we can enable recording and press R"
+		},
+		{
+			"timestamps": {
+				"from": "00:21:33,260",
+				"to": "00:21:41,100"
+			},
+			"offsets": {
+				"from": 1293260,
+				"to": 1301100
+			},
+			"text": " twice and hold shift for smaller increments and do very small adjustments with the camera rotation. R twice"
+		},
+		{
+			"timestamps": {
+				"from": "00:21:41,100",
+				"to": "00:21:52,300"
+			},
+			"offsets": {
+				"from": 1301100,
+				"to": 1312300
+			},
+			"text": " and hold shift. But remember, really small adjustments. And now here, when it's up, we can go a little bit"
+		},
+		{
+			"timestamps": {
+				"from": "00:21:52,300",
+				"to": "00:22:02,300"
+			},
+			"offsets": {
+				"from": 1312300,
+				"to": 1322300
+			},
+			"text": " higher. So it's centered here. And then when it goes down, you can press R twice and go back here like this,"
+		},
+		{
+			"timestamps": {
+				"from": "00:22:03,100",
+				"to": "00:22:12,620"
+			},
+			"offsets": {
+				"from": 1323100,
+				"to": 1332620
+			},
+			"text": " and then finish with, you know, some slight movements. Okay. And now don't forget to disable this. That could"
+		},
+		{
+			"timestamps": {
+				"from": "00:22:12,620",
+				"to": "00:22:20,620"
+			},
+			"offsets": {
+				"from": 1332620,
+				"to": 1340620
+			},
+			"text": " cause a lot of mess if you, you know, keep moving things around with auto keying on. Okay. Works nicely,"
+		},
+		{
+			"timestamps": {
+				"from": "00:22:20,620",
+				"to": "00:22:25,740"
+			},
+			"offsets": {
+				"from": 1340620,
+				"to": 1345740
+			},
+			"text": " but I think we need to go higher up a little bit sooner. So maybe just delete this keyframe right there."
+		},
+		{
+			"timestamps": {
+				"from": "00:22:26,540",
+				"to": "00:22:36,460"
+			},
+			"offsets": {
+				"from": 1346540,
+				"to": 1356460
+			},
+			"text": " So we kind of follow the scene a little bit better and then maybe move this a little bit later. Now"
+		},
+		{
+			"timestamps": {
+				"from": "00:22:36,460",
+				"to": "00:22:42,220"
+			},
+			"offsets": {
+				"from": 1356460,
+				"to": 1362220
+			},
+			"text": " let's hold shift reset cursor to world origin. Let's press shift A. We'll add a plane. Press R then X to"
+		},
+		{
+			"timestamps": {
+				"from": "00:22:42,220",
+				"to": "00:22:49,820"
+			},
+			"offsets": {
+				"from": 1362220,
+				"to": 1369820
+			},
+			"text": " rotate it towards the camera like this and then R Z. Okay. And then press G and shift Z to move on X and"
+		},
+		{
+			"timestamps": {
+				"from": "00:22:49,820",
+				"to": "00:23:00,940"
+			},
+			"offsets": {
+				"from": 1369820,
+				"to": 1380940
+			},
+			"text": " Y axis. Let's make it larger. So this will be our backdrop like this. And now I'll use, you know, some,"
+		},
+		{
+			"timestamps": {
+				"from": "00:23:00,940",
+				"to": "00:23:13,420"
+			},
+			"offsets": {
+				"from": 1380940,
+				"to": 1393420
+			},
+			"text": " some HDRI from Polyhaven. Let me bring in this one and let me switch to shader editor right there and to the"
+		},
+		{
+			"timestamps": {
+				"from": "00:23:13,420",
+				"to": "00:23:21,740"
+			},
+			"offsets": {
+				"from": 1393420,
+				"to": 1401740
+			},
+			"text": " world settings and you will see the HDRI right here. So let's set up some rendering. I will switch to cycles"
+		},
+		{
+			"timestamps": {
+				"from": "00:23:21,740",
+				"to": "00:23:29,900"
+			},
+			"offsets": {
+				"from": 1401740,
+				"to": 1409900
+			},
+			"text": " enable GPU and the noising and something like 64 frames for the animation should be fine. Let's press"
+		},
+		{
+			"timestamps": {
+				"from": "00:23:29,900",
+				"to": "00:23:37,820"
+			},
+			"offsets": {
+				"from": 1409900,
+				"to": 1417820
+			},
+			"text": " control B to limit the preview only for the camera and let's preview the rendered. Um, first I want to check"
+		},
+		{
+			"timestamps": {
+				"from": "00:23:37,820",
+				"to": "00:23:46,460"
+			},
+			"offsets": {
+				"from": 1417820,
+				"to": 1426460
+			},
+			"text": " the rotation here of the lighting. I think I want the windows to be on the left side here. So"
+		},
+		{
+			"timestamps": {
+				"from": "00:23:46,460",
+				"to": "00:23:57,340"
+			},
+			"offsets": {
+				"from": 1426460,
+				"to": 1437340
+			},
+			"text": " something like this should work nicely. And now I want to reduce the strength because I want only,"
+		},
+		{
+			"timestamps": {
+				"from": "00:23:57,340",
+				"to": "00:24:00,220"
+			},
+			"offsets": {
+				"from": 1437340,
+				"to": 1440220
+			},
+			"text": " I want this for only reflections and reduce the warmth"
+		},
+		{
+			"timestamps": {
+				"from": "00:24:02,300",
+				"to": "00:24:09,020"
+			},
+			"offsets": {
+				"from": 1442300,
+				"to": 1449020
+			},
+			"text": " like this. So we get a little bit of a blue light, maybe a little bit of a thing there. The HDRIs in"
+		},
+		{
+			"timestamps": {
+				"from": "00:24:09,020",
+				"to": "00:24:15,100"
+			},
+			"offsets": {
+				"from": 1449020,
+				"to": 1455100
+			},
+			"text": " this form come from Polyhaven. When you have the pay that on, uh, I'm in no way affiliated. I just use it"
+		},
+		{
+			"timestamps": {
+				"from": "00:24:15,100",
+				"to": "00:24:22,860"
+			},
+			"offsets": {
+				"from": 1455100,
+				"to": 1462860
+			},
+			"text": " like this. You are free to go to Polyhaven, download the same HDRI and create this setup on your own. Um,"
+		},
+		{
+			"timestamps": {
+				"from": "00:24:22,860",
+				"to": "00:24:28,780"
+			},
+			"offsets": {
+				"from": 1462860,
+				"to": 1468780
+			},
+			"text": " this is how it looks right here. Um, but it's just super convenient, you know, to have this"
+		},
+		{
+			"timestamps": {
+				"from": "00:24:30,220",
+				"to": "00:24:36,540"
+			},
+			"offsets": {
+				"from": 1470220,
+				"to": 1476540
+			},
+			"text": " as a drag and drop into your scene. So that's why I purchased the add on. And by the way, it's like"
+		},
+		{
+			"timestamps": {
+				"from": "00:24:36,540",
+				"to": "00:24:42,380"
+			},
+			"offsets": {
+				"from": 1476540,
+				"to": 1482380
+			},
+			"text": " super cheap for the value you're getting. So, um, yeah, definitely get it if you can. So I'll press"
+		},
+		{
+			"timestamps": {
+				"from": "00:24:42,380",
+				"to": "00:24:49,980"
+			},
+			"offsets": {
+				"from": 1482380,
+				"to": 1489980
+			},
+			"text": " control B here to limit this again and let's press shift a and I'll add some area light to add additional"
+		},
+		{
+			"timestamps": {
+				"from": "00:24:49,980",
+				"to": "00:24:58,140"
+			},
+			"offsets": {
+				"from": 1489980,
+				"to": 1498140
+			},
+			"text": " lighting, make it larger for some soft shadows and increase the power like that. And for some additional"
+		},
+		{
+			"timestamps": {
+				"from": "00:24:58,140",
+				"to": "00:25:06,460"
+			},
+			"offsets": {
+				"from": 1498140,
+				"to": 1506460
+			},
+			"text": " reflections, I will pressure a and add spotlight. Press G then Z move it up here. And now press period on a"
+		},
+		{
+			"timestamps": {
+				"from": "00:25:06,460",
+				"to": "00:25:12,780"
+			},
+			"offsets": {
+				"from": 1506460,
+				"to": 1512780
+			},
+			"text": " keyboard to switch to 3d cursor for the pivot point, or you can do it right here and then press R twice"
+		},
+		{
+			"timestamps": {
+				"from": "00:25:12,780",
+				"to": "00:25:20,220"
+			},
+			"offsets": {
+				"from": 1512780,
+				"to": 1520220
+			},
+			"text": " to rotate this around from the side here and do this really strong, like 500"
+		},
+		{
+			"timestamps": {
+				"from": "00:25:22,060",
+				"to": "00:25:34,220"
+			},
+			"offsets": {
+				"from": 1522060,
+				"to": 1534220
+			},
+			"text": " and find some nice rim light here. Something like this. Now we can select the object, create a new"
+		},
+		{
+			"timestamps": {
+				"from": "00:25:34,220",
+				"to": "00:25:42,380"
+			},
+			"offsets": {
+				"from": 1534220,
+				"to": 1542380
+			},
+			"text": " material, and this will be the white one. And let's decrease the roughness almost all the way to zero."
+		},
+		{
+			"timestamps": {
+				"from": "00:25:42,380",
+				"to": "00:25:48,540"
+			},
+			"offsets": {
+				"from": 1542380,
+				"to": 1548540
+			},
+			"text": " And you will see those reflections from the HDRI. So this is why I used it in the first place here."
+		},
+		{
+			"timestamps": {
+				"from": "00:25:48,540",
+				"to": "00:25:55,740"
+			},
+			"offsets": {
+				"from": 1548540,
+				"to": 1555740
+			},
+			"text": " And here in the back, we can make this metal. So let's increase the metallic all the way."
+		},
+		{
+			"timestamps": {
+				"from": "00:25:55,740",
+				"to": "00:26:02,860"
+			},
+			"offsets": {
+				"from": 1555740,
+				"to": 1562860
+			},
+			"text": " Reduce the roughness a little bit and maybe reduce the brightness. But I think this is fine."
+		},
+		{
+			"timestamps": {
+				"from": "00:26:02,860",
+				"to": "00:26:08,780"
+			},
+			"offsets": {
+				"from": 1562860,
+				"to": 1568780
+			},
+			"text": " So now if we play back the animation, let me bring up the timeline here."
+		},
+		{
+			"timestamps": {
+				"from": "00:26:10,380",
+				"to": "00:26:17,900"
+			},
+			"offsets": {
+				"from": 1570380,
+				"to": 1577900
+			},
+			"text": " Let's scrub through the animation. This should be the same white material there."
+		},
+		{
+			"timestamps": {
+				"from": "00:26:17,900",
+				"to": "00:26:24,700"
+			},
+			"offsets": {
+				"from": 1577900,
+				"to": 1584700
+			},
+			"text": " And if I tab in with this still selected, I can press Ctrl + on a numpad"
+		},
+		{
+			"timestamps": {
+				"from": "00:26:27,580",
+				"to": "00:26:35,980"
+			},
+			"offsets": {
+				"from": 1587580,
+				"to": 1595980
+			},
+			"text": " and create a new material and hit assign and create a new one there. That will be black with full roughness."
+		},
+		{
+			"timestamps": {
+				"from": "00:26:35,980",
+				"to": "00:26:43,980"
+			},
+			"offsets": {
+				"from": 1595980,
+				"to": 1603980
+			},
+			"text": " Okay, looks quite nice, I think. And now with the background, we can create a new material there"
+		},
+		{
+			"timestamps": {
+				"from": "00:26:43,980",
+				"to": "00:26:51,740"
+			},
+			"offsets": {
+				"from": 1603980,
+				"to": 1611740
+			},
+			"text": " and maybe play with the brightness. Or you can, you know, subdivide this, add some displacement,"
+		},
+		{
+			"timestamps": {
+				"from": "00:26:51,740",
+				"to": "00:26:55,020"
+			},
+			"offsets": {
+				"from": 1611740,
+				"to": 1615020
+			},
+			"text": " do like wavy texture or something. Should be really nice."
+		},
+		{
+			"timestamps": {
+				"from": "00:26:55,020",
+				"to": "00:27:03,820"
+			},
+			"offsets": {
+				"from": 1615020,
+				"to": 1623820
+			},
+			"text": " Okay, I really like that. Now, to make this a little bit more funky, we can do some color shifts there."
+		},
+		{
+			"timestamps": {
+				"from": "00:27:03,820",
+				"to": "00:27:11,260"
+			},
+			"offsets": {
+				"from": 1623820,
+				"to": 1631260
+			},
+			"text": " So let me switch the material to object mode in the shader editor. And let me bring this up a little bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:27:12,620",
+				"to": "00:27:21,180"
+			},
+			"offsets": {
+				"from": 1632620,
+				"to": 1641180
+			},
+			"text": " Like that. And let's press shift a and let's search for hue saturation value. And let's find some nice color like this."
+		},
+		{
+			"timestamps": {
+				"from": "00:27:21,180",
+				"to": "00:27:28,140"
+			},
+			"offsets": {
+				"from": 1641180,
+				"to": 1648140
+			},
+			"text": " Okay, and let's set the hue to zero and just plug it right here."
+		},
+		{
+			"timestamps": {
+				"from": "00:27:28,140",
+				"to": "00:27:39,660"
+			},
+			"offsets": {
+				"from": 1648140,
+				"to": 1659660
+			},
+			"text": " Okay, they'll give us this color right there. And on frame zero, we can right click and insert keyframe on the hue."
+		},
+		{
+			"timestamps": {
+				"from": "00:27:39,660",
+				"to": "00:27:46,700"
+			},
+			"offsets": {
+				"from": 1659660,
+				"to": 1666700
+			},
+			"text": " And then on 121, we can change this to one, right click and insert keyframe. But remember,"
+		},
+		{
+			"timestamps": {
+				"from": "00:27:46,700",
+				"to": "00:27:52,380"
+			},
+			"offsets": {
+				"from": 1666700,
+				"to": 1672380
+			},
+			"text": " this will be Bezier animation. And to see those keyframes here, you need to have the node selected."
+		},
+		{
+			"timestamps": {
+				"from": "00:27:52,380",
+				"to": "00:27:59,820"
+			},
+			"offsets": {
+				"from": 1672380,
+				"to": 1679820
+			},
+			"text": " So now you can see those right there. You can hold shift, select them, press T and choose linear interpolation."
+		},
+		{
+			"timestamps": {
+				"from": "00:27:59,820",
+				"to": "00:28:09,180"
+			},
+			"offsets": {
+				"from": 1679820,
+				"to": 1689180
+			},
+			"text": " So they'll change the colors much more in a much more fluent way. So we have this, you know, funky color change there."
+		},
+		{
+			"timestamps": {
+				"from": "00:28:09,660",
+				"to": "00:28:16,540"
+			},
+			"offsets": {
+				"from": 1689660,
+				"to": 1696540
+			},
+			"text": " And I really don't like how I left this open. So we can either bring this lower down,"
+		},
+		{
+			"timestamps": {
+				"from": "00:28:16,540",
+				"to": "00:28:21,260"
+			},
+			"offsets": {
+				"from": 1696540,
+				"to": 1701260
+			},
+			"text": " or we can change the angle. So we can just play with this rotation here."
+		},
+		{
+			"timestamps": {
+				"from": "00:28:23,260",
+				"to": "00:28:25,260"
+			},
+			"offsets": {
+				"from": 1703260,
+				"to": 1705260
+			},
+			"text": " So it's not, you know, visible."
+		},
+		{
+			"timestamps": {
+				"from": "00:28:25,260",
+				"to": "00:28:37,500"
+			},
+			"offsets": {
+				"from": 1705260,
+				"to": 1717500
+			},
+			"text": " Of course, you're more than welcome to go in, you know, and model the inside. So it looks better."
+		},
+		{
+			"timestamps": {
+				"from": "00:28:37,500",
+				"to": "00:28:44,940"
+			},
+			"offsets": {
+				"from": 1717500,
+				"to": 1724940
+			},
+			"text": " Okay, and I would like to do the same thing on the background here. So let's select this node right"
+		},
+		{
+			"timestamps": {
+				"from": "00:28:44,940",
+				"to": "00:28:51,500"
+			},
+			"offsets": {
+				"from": 1724940,
+				"to": 1731500
+			},
+			"text": " here, press Ctrl C, and I will select the background and press Ctrl V here. But now we don't have the keyframes"
+		},
+		{
+			"timestamps": {
+				"from": "00:28:51,500",
+				"to": "00:28:57,500"
+			},
+			"offsets": {
+				"from": 1731500,
+				"to": 1737500
+			},
+			"text": " there because we moved it to another object. So let's go to frame one. And let's set the hue to zero."
+		},
+		{
+			"timestamps": {
+				"from": "00:28:58,380",
+				"to": "00:29:06,540"
+			},
+			"offsets": {
+				"from": 1738380,
+				"to": 1746540
+			},
+			"text": " And right click and insert keyframe. And again, 121. Let's set this to one. Right click and insert keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:29:06,540",
+				"to": "00:29:11,980"
+			},
+			"offsets": {
+				"from": 1746540,
+				"to": 1751980
+			},
+			"text": " And we can plug it here to the background. So now the background will change as well. But it's a little"
+		},
+		{
+			"timestamps": {
+				"from": "00:29:11,980",
+				"to": "00:29:19,740"
+			},
+			"offsets": {
+				"from": 1751980,
+				"to": 1759740
+			},
+			"text": " bit too strong for my taste. So I think I will just go ahead and reduce the saturation here in the main color."
+		},
+		{
+			"timestamps": {
+				"from": "00:29:22,060",
+				"to": "00:29:31,420"
+			},
+			"offsets": {
+				"from": 1762060,
+				"to": 1771420
+			},
+			"text": " And maybe increase the value a little bit. So this will give us like a more pastel color look. So now the"
+		},
+		{
+			"timestamps": {
+				"from": "00:29:31,420",
+				"to": "00:29:36,940"
+			},
+			"offsets": {
+				"from": 1771420,
+				"to": 1776940
+			},
+			"text": " final thing I want to do here is to give this a little bit more punch. So first of all, in the render"
+		},
+		{
+			"timestamps": {
+				"from": "00:29:36,940",
+				"to": "00:29:44,620"
+			},
+			"offsets": {
+				"from": 1776940,
+				"to": 1784620
+			},
+			"text": " settings, make sure you enable motion blur. And in the color management, we can enable higher contrast"
+		},
+		{
+			"timestamps": {
+				"from": "00:29:44,620",
+				"to": "00:29:53,340"
+			},
+			"offsets": {
+				"from": 1784620,
+				"to": 1793340
+			},
+			"text": " settings like this and play with the exposure. But you can enable curves as well. And and set the bright"
+		},
+		{
+			"timestamps": {
+				"from": "00:29:53,340",
+				"to": "00:30:00,780"
+			},
+			"offsets": {
+				"from": 1793340,
+				"to": 1800780
+			},
+			"text": " tones somewhere here and then bring down the darker parts. So now if you move this, you will see the"
+		},
+		{
+			"timestamps": {
+				"from": "00:30:00,780",
+				"to": "00:30:12,380"
+			},
+			"offsets": {
+				"from": 1800780,
+				"to": 1812380
+			},
+			"text": " contrast is more punchy. As you move this lower, you get this darker shades in the shadows. Okay,"
+		},
+		{
+			"timestamps": {
+				"from": "00:30:12,380",
+				"to": "00:30:18,940"
+			},
+			"offsets": {
+				"from": 1812380,
+				"to": 1818940
+			},
+			"text": " and maybe we can add a little bit more saturation to the background. Okay."
+		},
+		{
+			"timestamps": {
+				"from": "00:30:18,940",
+				"to": "00:30:30,060"
+			},
+			"offsets": {
+				"from": 1818940,
+				"to": 1830060
+			},
+			"text": " Yeah, it looks quite nice. So of course, now you can play around with some more lights. For example,"
+		},
+		{
+			"timestamps": {
+				"from": "00:30:30,060",
+				"to": "00:30:36,540"
+			},
+			"offsets": {
+				"from": 1830060,
+				"to": 1836540
+			},
+			"text": " you can try to duplicate this one and create, you know, some more reflections from different angles. But"
+		},
+		{
+			"timestamps": {
+				"from": "00:30:36,540",
+				"to": "00:30:41,660"
+			},
+			"offsets": {
+				"from": 1836540,
+				"to": 1841660
+			},
+			"text": " yeah, otherwise, I really like the final animation. So when you're satisfied, you can just go"
+		},
+		{
+			"timestamps": {
+				"from": "00:30:41,660",
+				"to": "00:30:49,100"
+			},
+			"offsets": {
+				"from": 1841660,
+				"to": 1849100
+			},
+			"text": " to the output settings, switch this to ffmpeg, encoding, choose mp4, choose your folder,"
+		},
+		{
+			"timestamps": {
+				"from": "00:30:49,100",
+				"to": "00:30:55,180"
+			},
+			"offsets": {
+				"from": 1849100,
+				"to": 1855180
+			},
+			"text": " and then go render, render animation, wait out your frames, and your animation will be ready. So I"
+		},
+		{
+			"timestamps": {
+				"from": "00:30:55,180",
+				"to": "00:31:00,620"
+			},
+			"offsets": {
+				"from": 1855180,
+				"to": 1860620
+			},
+			"text": " really hope you enjoyed this one. And again, if you did, please leave that like. And if you're a new"
+		},
+		{
+			"timestamps": {
+				"from": "00:31:00,620",
+				"to": "00:31:07,500"
+			},
+			"offsets": {
+				"from": 1860620,
+				"to": 1867500
+			},
+			"text": " round here, hit that subscribe. Thank you all for watching and have a wonderful day."
+		}
+	]
+}

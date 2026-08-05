@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "asset_id": "__ASSET_ID__",
+  "status": "draft",
+  "units": "meters",
+  "coordinate_frame": {"up": "+Z", "front": "TO_DEFINE", "right": "TO_DEFINE"},
+  "bounds_m": {"x": null, "y": null, "z": null, "tolerance_percent": 2.0},
+  "identity": {
+    "canonical_parts": [],
+    "protected_surfaces": [],
+    "forbidden_changes": []
+  },
+  "mechanics": {
+    "articulated": false,
+    "joints": [],
+    "supports": [],
+    "interaction_surfaces": [],
+    "forbidden_collisions": []
+  },
+  "geometry": {
+    "watertight_required": false,
+    "non_manifold_policy": "document_by_intended_use",
+    "evaluated_mesh_audit_required": true,
+    "apply_modifiers_before_delivery": false
+  },
+  "materials": {"roles": [], "color_space_policy": "Base Color sRGB; data maps Non-Color"}
+}

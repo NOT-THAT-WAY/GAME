@@ -1,0 +1,58 @@
+{
+  "snapshot_iso": "2026-06-10T10:21:25.383707+00:00",
+  "snapshot_folder": "2026-06-10-1021-XAXs1g34NyjW-v2-nano-banana-pro-4k-seed720003",
+  "url_id": "XAXs1g34NyjW",
+  "label": "v2-nano-banana-pro-4k-seed720003",
+  "output_file": "output.png",
+  "output_size_bytes": 17341812,
+  "url": "https://v3b.fal.media/files/b/0a9db90a/XAXs1g34NyjWT8FGd1l62_MQDGkFzC.png",
+  "source_path": "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781086882495580000_0.png",
+  "prompt_snapshot": null,
+  "prompt_source": null,
+  "refs_manifest": [
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/_gen-runs/side-right/runs/2026-06-10-0947-qyPJgBu9y_32-nano-banana-pro-4k-seed710021/output.png",
+      "size_bytes": 17470151,
+      "sha256_8": "80341963"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/03_side_clean_canonical.png",
+      "size_bytes": 434655,
+      "sha256_8": "c24954f9"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-01_hero-front-3q.jpeg",
+      "size_bytes": 6849624,
+      "sha256_8": "746b1de0"
+    }
+  ],
+  "provider": "falai",
+  "model": "fal-ai/gemini-3-pro-image-preview/edit",
+  "cost_usd": 0.15,
+  "duration_sec": 66.99217510223389,
+  "seed": null,
+  "adapter_metadata": {
+    "output_urls": [
+      "https://v3b.fal.media/files/b/0a9db90a/XAXs1g34NyjWT8FGd1l62_MQDGkFzC.png"
+    ],
+    "local_paths": [
+      "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781086882495580000_0.png"
+    ],
+    "raw_result": "{'images': [{'url': 'https://v3b.fal.media/files/b/0a9db90a/XAXs1g34NyjWT8FGd1l62_MQDGkFzC.png', 'content_type': 'image/png', 'file_name': 'XAXs1g34NyjWT8FGd1l62_MQDGkFzC.png', 'file_size': None, 'width': None, 'height': None}], 'description': '**Refining Device Details**\\n\\nI\\'m currently focusing on rendering the precise right-side profile of the handheld device. My aim is to meticulously smooth the edge, ensuring it aligns exactly with the specified parameters and removing any prior protrusio...[truncated]",
+    "fal_model": "fal-ai/gemini-3-pro-image-preview/edit"
+  },
+  "extra": {
+    "spec": "audits_blender/pulsed-asset-prompts-v2.md (Sliz 2026-06-10)",
+    "doctrine": "v2 \u2014 prompt d\u00e9crit seulement le cadre, identit\u00e9 par refs, n\u00e9gatif court",
+    "kind": "preflight-reference-v2",
+    "provider": "falai",
+    "model": "fal-ai/gemini-3-pro-image-preview/edit",
+    "aspect_ratio": "16:9",
+    "resolution": "4K",
+    "output_format": "png",
+    "seed": 720003,
+    "image_id": "side-right",
+    "intended_dest": "assets_blender/04_side_right_canonical.png (NON copi\u00e9 \u2014 validation carte requise)",
+    "prompt": "Photorealistic product photography of the exact handheld device shown in the attached reference images \u2014 same shell, same proportions, same materials (glossy translucent amethyst-purple plastic with the internal PCB visible through it), same parting seam. Warm cream seamless background, soft drop shadow, consistent with the references. Do not add, remove, move or restyle any element of the device. No text overlays, no props, no people.\n\nSame image as the attached side-view generation, with one correction: remove the small parasitic bump on the lower left of the silhouette. The right-side edge of the device is plain \u2014 only the horizontal parting seam runs along it, with smooth continuous shell surfaces above and below. No control, button, wheel, dial, port or hole anywhere on this edge. Keep everything else identical: framing, lighting, background, proportions."
+  }
+}

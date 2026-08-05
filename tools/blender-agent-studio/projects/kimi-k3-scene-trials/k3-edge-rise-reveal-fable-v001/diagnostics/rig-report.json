@@ -1,0 +1,79 @@
+{
+  "asset": "${BLENDER_AGENT_STUDIO_ROOT}/asset_library/characters/mecha-mascot-v002.blend",
+  "scale": 0.424,
+  "character_height_m": 0.8798,
+  "bones": [
+    "ROOT",
+    "SPINE",
+    "CHEST",
+    "HEAD",
+    "CLAV.L",
+    "UPPERARM.L",
+    "FOREARM.L",
+    "CLAV.R",
+    "UPPERARM.R",
+    "FOREARM.R",
+    "THIGH.L",
+    "SHIN.L",
+    "FOOT.L",
+    "THIGH.R",
+    "SHIN.R",
+    "FOOT.R"
+  ],
+  "skin_method": "DETERMINISTIC_SEGMENT_DISTANCE",
+  "vertex_groups": [
+    "CHEST",
+    "CLAV.L",
+    "CLAV.R",
+    "FOOT.L",
+    "FOOT.R",
+    "FOREARM.L",
+    "FOREARM.R",
+    "HEAD",
+    "ROOT",
+    "SHIN.L",
+    "SHIN.R",
+    "SPINE",
+    "THIGH.L",
+    "THIGH.R",
+    "UPPERARM.L",
+    "UPPERARM.R"
+  ],
+  "weighted_vertices": 6348,
+  "total_vertices": 6348,
+  "mesh_untouched": {
+    "body_vertices": 6348,
+    "body_polygons": 7446,
+    "head_vertices": 1986,
+    "note": "seuls des vertex groups ont ete ajoutes ; aucune coordonnee de vertex modifiee"
+  },
+  "landmarks_asset_units": {
+    "pelvis_z": 0.68,
+    "hip": [
+      0.172,
+      0.62
+    ],
+    "knee": [
+      0.238,
+      0.352
+    ],
+    "ankle": [
+      0.241,
+      0.092
+    ],
+    "shoulder": [
+      0.17,
+      1.268
+    ],
+    "elbow_L": [
+      0.6776,
+      0.0,
+      1.4706
+    ],
+    "hand_L": [
+      1.0801,
+      -0.0,
+      1.6374
+    ]
+  }
+}

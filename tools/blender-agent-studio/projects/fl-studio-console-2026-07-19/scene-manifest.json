@@ -1,0 +1,40 @@
+{
+  "project": "FL Studio Console Study",
+  "created_at": "2026-07-19T03:54:33.303637+02:00",
+  "blend": "projects/fl-studio-console-2026-07-19/FL_Studio_Console_Study.blend",
+  "references": [
+    "${ORIGINAL_DOWNLOADS}/output.mp4",
+    "${ORIGINAL_DOWNLOADS}/output-2.mp4",
+    "${ORIGINAL_DOWNLOADS}/t0.3s.png",
+    "${ORIGINAL_DOWNLOADS}/t2.5s.png",
+    "${ORIGINAL_DOWNLOADS}/t5.0s.png"
+  ],
+  "editable_modules": [
+    "shell",
+    "browser",
+    "playlist",
+    "piano_roll",
+    "mixer",
+    "controller",
+    "playheads",
+    "meters",
+    "lighting",
+    "camera"
+  ],
+  "animation": {
+    "frames": [
+      1,
+      240
+    ],
+    "fps": 24,
+    "duration_seconds": 10
+  },
+  "gate_frames": [
+    1,
+    60,
+    120,
+    180,
+    240
+  ],
+  "source_strategy": "cropped FL Studio reference panels on real modular geometry; no recursive projection of the final render"
+}

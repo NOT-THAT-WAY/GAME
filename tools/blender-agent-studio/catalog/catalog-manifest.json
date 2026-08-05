@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-04T19:18:23.738116+00:00",
+  "source_label": "BLENDER_ASSET_VAULT",
+  "source_path_embedded": false,
+  "distribution_mode": "catalog_only_no_binary_assets",
+  "regular_asset_paths": 12251,
+  "symlink_aliases": 5,
+  "broken_aliases": [],
+  "unique_content_assets": 12115,
+  "logical_bytes_omitted": 7820498266,
+  "unique_bytes_omitted": 7009145417,
+  "duplicate_bytes_not_repeated": 811352849,
+  "kinds": {
+    "audio": 10,
+    "geometry": 91,
+    "image": 12045,
+    "video": 105
+  },
+  "blender_scenes": 77,
+  "catalog_file_sha256": {
+    "assets.json": "4c25c4831a7b00e979df77566d4a8d71f8b342905ad493f30bfefca67cb59c7d",
+    "asset-families.json": "c4a88d5188b0b5362e65f80490cfc2e42e6bef0a7bc58ef6a2bf85b50598a11f",
+    "blender-scenes.json": "a95111996806d1825f45886ba684bde97f2965cd1e52f56302bf08997793bb9a"
+  },
+  "verification": {
+    "content_sha256": true,
+    "image_metadata": true,
+    "ffprobe_media_metadata": true,
+    "blend_audit_imported": true,
+    "assets_bundled": false
+  }
+}

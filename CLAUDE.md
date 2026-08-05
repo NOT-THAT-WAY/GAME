@@ -7,6 +7,20 @@
 - Ne jamais mettre à jour Unity, un package, FishNet, Wwise ou Steam sur une seule machine.
 - Ne jamais supprimer ou écraser des changements existants sans demande explicite.
 
+## Production Blender et assets 3D
+
+Pour toute demande de modélisation, génération d'asset, rig, animation, rendu, lookdev,
+environnement procédural ou export Unity, utiliser automatiquement le skill
+`blender-production-studio`. Le studio compact est déjà versionné dans
+`tools/blender-agent-studio/` ; ne pas le recloner ni créer de dépôt Git imbriqué. Le skill Claude
+correspondant est `.claude/skills/blender-production-studio/` et le skill Codex est également
+disponible sous `.agents/skills/blender-production-studio/`.
+
+Le travail Blender reste dans `tools/blender-agent-studio/local_work/` et `local_assets/`. Un export
+vers `Assets/_Project/` est autorisé seulement après validation de la cible Unity, avec son `.meta`,
+sa provenance et sa licence. Les `.blend`, masters PSD/DAW, caches et rendus lourds ne vont jamais
+dans Git ; ils restent dans le coffre DVC/privé déclaré.
+
 ## Initialisation d'une machine
 
 Quand un utilisateur demande « initialise », « setup », « prépare la machine » ou une formulation équivalente, utiliser immédiatement le skill projet `setup-game` et exécuter ses vérifications. L'équipe travaillant depuis plusieurs lieux, le profil standard inclut Tailscale pour les tests distants. Ne pas répondre seulement avec une liste théorique.

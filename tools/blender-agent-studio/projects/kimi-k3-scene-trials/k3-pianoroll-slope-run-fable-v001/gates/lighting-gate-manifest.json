@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-fable-v001",
+  "style_source": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/analysis.json",
+  "hero_frame": 120,
+  "iteration": "lighting-01 : backlight 110W->58W, remonte (+N 0.85), spread 70deg — suppression du lavage speculaire coin amont",
+  "order": "env retenu -> sun oblique -> backlight dominant -> glimmer lime -> glimmer magenta -> retour torse",
+  "energy_ratios_vs_backlight": {
+    "K3_FABLE_BACKLIGHT": 1.0,
+    "K3_FABLE_SUN": "2.2 W/m2 (soleil, echelle differente)",
+    "K3_FABLE_GLIMMER_LIME": 0.241,
+    "K3_FABLE_GLIMMER_MAGENTA": 0.19,
+    "K3_FABLE_DETAIL_TORSO": 0.224
+  },
+  "sole_pulse_rule": "l'emission lime des semelles est keyframee uniquement pendant les contacts ; aucune emission permanente sous les pieds",
+  "renders": [
+    {
+      "path": "gates/lighting-gate/gate_00_env_retenu.png",
+      "layer": "gate_00_env_retenu",
+      "light": "template",
+      "purpose": "environnement du template seul : ecrans emissifs et lampes existantes",
+      "frame": 120
+    },
+    {
+      "path": "gates/lighting-gate/gate_01_sun_oblique.png",
+      "layer": "gate_01_sun_oblique",
+      "light": "K3_FABLE_SUN",
+      "purpose": "Sun oblique rasant qui dessine la surface et projette l'ombre du coureur sur la pente",
+      "frame": 120
+    },
+    {
+      "path": "gates/lighting-gate/gate_02_backlight.png",
+      "layer": "gate_02_backlight",
+      "light": "K3_FABLE_BACKLIGHT",
+      "purpose": "Area arriere dominant remonte et resserre : contour sans lavage speculaire",
+      "frame": 120
+    },
+    {
+      "path": "gates/lighting-gate/gate_03_glimmer_lime.png",
+      "layer": "gate_03_glimmer_lime",
+      "light": "K3_FABLE_GLIMMER_LIME",
+      "purpose": "glimmer lime sur les semelles et le bord montant",
+      "frame": 120
+    },
+    {
+      "path": "gates/lighting-gate/gate_04_glimmer_magenta.png",
+      "layer": "gate_04_glimmer_magenta",
+      "light": "K3_FABLE_GLIMMER_MAGENTA",
+      "purpose": "glimmer magenta oppose, echo des LEDs violettes",
+      "frame": 120
+    },
+    {
+      "path": "gates/lighting-gate/gate_05_detail_torse.png",
+      "layer": "gate_05_detail_torse",
+      "light": "K3_FABLE_DETAIL_TORSO",
+      "purpose": "retour de detail doux sur le torse",
+      "frame": 120
+    }
+  ]
+}

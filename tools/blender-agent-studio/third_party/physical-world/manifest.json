@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "downloaded_at": "2026-07-20",
+  "repositories": [
+    {
+      "name": "articulate-anything",
+      "url": "https://github.com/vlongle/articulate-anything",
+      "commit": "b311003f8265c186314618a353089d0d86260a8f",
+      "declared_license": "MIT badge in README; no LICENSE file found in checkout",
+      "usage": "research reference only until license file is confirmed",
+      "relevant_concepts": ["revolute joints", "joint limits", "pivot criticism", "affordance grounding"]
+    },
+    {
+      "name": "PhysBench",
+      "url": "https://github.com/physical-superintelligence-lab/PhysBench",
+      "commit": "a7eadc4da554e20163303ec0c1e076a35a9f52e2",
+      "declared_license": "Apache-2.0",
+      "usage": "benchmark taxonomy reference",
+      "relevant_concepts": ["object properties", "physical relationships", "scene physics", "dynamics"]
+    },
+    {
+      "name": "Robo-CSK-Benchmark",
+      "url": "https://github.com/ag-sc/Robo-CSK-Benchmark",
+      "commit": "30e1adbb17149e6d00f88271ee3e173059a11eee",
+      "declared_license": null,
+      "usage": "local research reference only; do not redistribute code or data",
+      "relevant_concepts": ["affordances", "tool usage", "embodied commonsense", "causality"]
+    }
+  ]
+}

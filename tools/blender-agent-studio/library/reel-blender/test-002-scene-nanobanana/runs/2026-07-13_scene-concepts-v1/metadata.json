@@ -1,0 +1,17 @@
+{
+  "date": "2026-07-13",
+  "lane": "MCP Higgsfield",
+  "model": "nano_banana_pro (route nano_banana_2)",
+  "aspect_ratio": "9:16",
+  "resolution": "1k (768x1376)",
+  "cost_credits_per_image": 2,
+  "cost_credits_total": 6,
+  "balance_after": 731,
+  "prompt_file": "../../prompts/nano-banana-scene-concepts-v1.md",
+  "reference": {"file": "refs/01_canonical_front.png", "media_id": "4514c2bf-17a7-4061-b989-a4d8751c609a", "reused_from": "test-001 run v3"},
+  "jobs": [
+    {"concept": "A levitation-mirror-floor", "job_id": "8c6161f1-9abe-45ff-ad78-83e47ba39cdf", "file": "concept-A_levitation-mirror-floor.png"},
+    {"concept": "B violet-atmosphere-halo", "job_id": "f96d5331-38d6-46f4-bd98-38525da3adc9", "file": "concept-B_violet-atmosphere-halo.png"},
+    {"concept": "C glass-props-parallax", "job_id": "9538815c-3e12-4fb4-b3e7-58cd43467716", "file": "concept-C_glass-props-parallax.png"}
+  ]
+}

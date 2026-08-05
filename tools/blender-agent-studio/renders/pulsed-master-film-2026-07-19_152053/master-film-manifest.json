@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "output": "${BLENDER_AGENT_STUDIO_ROOT}/renders/pulsed-master-film-2026-07-19_152053/PULSED-End-to-End-Master-Film.mp4",
+  "duration": 27.5,
+  "fps": 24,
+  "resolution": [
+    1280,
+    720
+  ],
+  "sources": {
+    "capabilities": "renders/capabilities-video-2026-07-19_151134/UNRECORDED-Blender-Agent-Demo.mp4",
+    "flroom": "library/blender-choreography/runs/flroom-scene-2026-07-14/hover_10s_v2.mp4",
+    "seedance": "library/reel-blender/test-001-mouvement-camera/runs/2026-07-13_9x16_v4_job-c4157c99/output.mp4",
+    "semantic": "projects/fl-studio-box-semantic-template/semantic-floating-preview-v6-drumboii-color-with-audio.mp4",
+    "tutorial": "projects/tutorial-synthesis-lab-2026-07-19/final-preview.mp4"
+  },
+  "tutorial_knowledge": [
+    "beginner lookdev, UV, lighting and DOF",
+    "Drumboii four-key camera language, target lag and focus",
+    "Ray-Ban reverse-built assembly reveal",
+    "Factory linear mechanical loop and separation of transport/impact curves",
+    "Quick Animation environment-first blocking",
+    "Wireless Pods hierarchy, causal choreography and local/global controls"
+  ],
+  "acts": [
+    {
+      "title": "01  FORM / IDENTITY",
+      "subtitle": "canonical model  •  spatial grounding"
+    },
+    {
+      "title": "02  CAMERA / MASS / FOCUS",
+      "subtitle": "anticipation  •  travel  •  recovery"
+    },
+    {
+      "title": "03  MATERIAL / STYLE TRANSFER",
+      "subtitle": "transparent shell  •  controlled reflections"
+    },
+    {
+      "title": "04  PLUGIN IN SITUATION",
+      "subtitle": "Pulsed controlling a living FL Studio scene"
+    },
+    {
+      "title": "05  MECHANICS / ENVIRONMENT / SYSTEMS",
+      "subtitle": "assembly  •  conveyor  •  world building"
+    },
+    {
+      "title": "06  GATED FINAL",
+      "subtitle": "inspect  •  render  •  correct  •  human approval"
+    }
+  ],
+  "safety": {
+    "source_blends_saved": false,
+    "uses_validated_existing_renders": true
+  }
+}

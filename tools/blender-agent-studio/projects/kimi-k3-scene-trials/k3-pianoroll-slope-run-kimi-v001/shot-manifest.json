@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-kimi-v001",
+  "fps": 30,
+  "frames": [
+    1,
+    240
+  ],
+  "duration_seconds": 8.0,
+  "resolution": [
+    640,
+    360
+  ],
+  "shots": [
+    {
+      "name": "SLOPE_RUN_MAIN",
+      "camera": "K3_CAM_MAIN",
+      "lens_mm": 60,
+      "frames": [
+        1,
+        240
+      ],
+      "move": "tracking latéral trois-quarts montant, parallèle à UPHILL_TANGENT, distance 0,95 m constante",
+      "keys_drumboiii": {
+        "K1": "frames 1-16 : pose latérale établissant la diagonale de pente",
+        "K2": "frames 17-49 : anticipation portée par le TARGET (-0,03 m en aval)",
+        "K3": "frames 49-192 : tracking de la course, distance constante",
+        "K4": "frames 193-212 : overshoot du TARGET (+0,025 m) puis arrêt complet"
+      },
+      "target": "K3_CAM_MAIN_TARGET (retard 2 frames)",
+      "focus": "K3_CAM_MAIN_FOCUS, f/4",
+      "beats": {
+        "1-16": "respiration, lecture de la pente",
+        "17-32": "transfert du poids vers l'amont",
+        "33-48": "anticipation, premier swing",
+        "49-192": "course montante, appuis sur les downbeats 57,4 + i*12,1034 (148,9 BPM)",
+        "193-208": "décélération",
+        "209-224": "récupération, mains vers les genoux",
+        "225-240": "pose finale stable"
+      }
+    }
+  ],
+  "diagnostic_cameras_not_in_edit": [
+    {
+      "camera": "K3_CAM_DIAG_PROFILE",
+      "purpose": "profil strict : pente réelle 46,34° et inclinaison du torse"
+    },
+    {
+      "camera": "K3_CAM_DIAG_TOP",
+      "purpose": "contacts des pieds vus du dessus"
+    },
+    {
+      "camera": "K3_CAM_DIAG_NORMAL",
+      "purpose": "vue suivant SURFACE_NORMAL : coplanarité des semelles"
+    }
+  ],
+  "audio": {
+    "strip": "K3_MASTER_AUDIO",
+    "source": "projects/fl-studio-box-semantic-template/media/current/master.mp4",
+    "mounted_in_vse": true,
+    "grid": "downbeats 9 + k*12,1034 frames (148,9 BPM, cf audio-grid-estimate.json)"
+  },
+  "grip_contract": {
+    "property": "ustudio_grip_surface",
+    "friction_coefficient": 1.25,
+    "minimum_required": 1.05,
+    "visible_cause": "semelles lime émissives, pulse uniquement pendant les appuis",
+    "no_hidden_horizontal_support": true
+  },
+  "camera": "K3_CAM_MAIN"
+}

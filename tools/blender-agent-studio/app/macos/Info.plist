@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>CFBundleDevelopmentRegion</key><string>fr</string>
+  <key>CFBundleExecutable</key><string>BlenderStudio</string>
+  <key>CFBundleIconFile</key><string>BlenderStudioIcon</string>
+  <key>CFBundleIdentifier</key><string>local.blender-agent.studio</string>
+  <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+  <key>CFBundleName</key><string>Blender Studio</string>
+  <key>CFBundleDisplayName</key><string>Blender Studio</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>1.0.0</string>
+  <key>CFBundleVersion</key><string>1</string>
+  <key>LSMinimumSystemVersion</key><string>13.0</string>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>NSAppTransportSecurity</key><dict><key>NSAllowsLocalNetworking</key><true/></dict>
+  <key>StudioComposePath</key><string>__COMPOSE_PATH__</string>
+  <key>BlenderProjectRoot</key><string>__BLENDER_ROOT__</string>
+  <key>BlenderDefaultBlend</key><string>__DEFAULT_BLEND__</string>
+</dict></plist>

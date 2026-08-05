@@ -1,0 +1,7059 @@
+{
+ "schema_version": 1,
+ "trial_id": "k3-edge-rise-reveal-fable-v001",
+ "frames": 360,
+ "ground_model": {
+  "rim_z": 0.76,
+  "ramp_edge_y": -0.42,
+  "ramp_slope_deg": 46.34,
+  "lip_height_m": 0.1305
+ },
+ "results": {
+  "max_penetration_m": 0.0,
+  "min_planted_gap_m": 0.0014,
+  "max_planted_drift_m": {
+   "L": 0.00431,
+   "R": 0.00362
+  },
+  "min_swing_gap_m": 0.00319,
+  "lowest_body_point_vs_ground_m": -0.04367,
+  "lowest_body_point_detail": {
+   "frame": 140,
+   "pos": [
+    -0.714,
+    -0.2895,
+    0.973
+   ],
+   "ground_here": 1.0167,
+   "bones": {
+    "ROOT": [
+     -0.5664,
+     -0.4238,
+     0.9834
+    ],
+    "SPINE": [
+     -0.5461,
+     -0.4045,
+     1.0988
+    ],
+    "CHEST": [
+     -0.529,
+     -0.3882,
+     1.2129
+    ],
+    "HEAD": [
+     -0.5161,
+     -0.376,
+     1.3325
+    ],
+    "CLAV.L": [
+     -0.529,
+     -0.3882,
+     1.2214
+    ],
+    "UPPERARM.L": [
+     -0.579,
+     -0.3356,
+     1.2214
+    ],
+    "FOREARM.L": [
+     -0.6743,
+     -0.3181,
+     1.0109
+    ],
+    "CLAV.R": [
+     -0.529,
+     -0.3882,
+     1.2214
+    ],
+    "UPPERARM.R": [
+     -0.479,
+     -0.4408,
+     1.2214
+    ],
+    "FOREARM.R": [
+     -0.4913,
+     -0.5607,
+     1.0235
+    ],
+    "THIGH.L": [
+     -0.6166,
+     -0.3709,
+     0.9579
+    ],
+    "SHIN.L": [
+     -0.5861,
+     -0.4037,
+     1.0661
+    ],
+    "FOOT.L": [
+     -0.6323,
+     -0.4224,
+     0.9677
+    ],
+    "THIGH.R": [
+     -0.5161,
+     -0.4766,
+     0.9579
+    ],
+    "SHIN.R": [
+     -0.468,
+     -0.5165,
+     0.859
+    ],
+    "FOOT.R": [
+     -0.5609,
+     -0.5118,
+     0.7998
+    ]
+   }
+  },
+  "max_standing_height_m": 0.9467,
+  "frames_with_no_foot_planted": [],
+  "camera_min_clearance_m": 0.5725,
+  "subject_height_fraction_min": 0.2269
+ },
+ "contact_runs": {
+  "L": [
+   {
+    "start": 1,
+    "end": 132,
+    "drift_m": 0.00389
+   },
+   {
+    "start": 143,
+    "end": 156,
+    "drift_m": 0.00283
+   },
+   {
+    "start": 167,
+    "end": 180,
+    "drift_m": 0.00371
+   },
+   {
+    "start": 191,
+    "end": 205,
+    "drift_m": 0.00431
+   },
+   {
+    "start": 215,
+    "end": 229,
+    "drift_m": 0.00317
+   },
+   {
+    "start": 239,
+    "end": 360,
+    "drift_m": 0.00381
+   }
+  ],
+  "R": [
+   {
+    "start": 1,
+    "end": 6,
+    "drift_m": 1e-05
+   },
+   {
+    "start": 13,
+    "end": 18,
+    "drift_m": 1e-05
+   },
+   {
+    "start": 25,
+    "end": 30,
+    "drift_m": 0.0
+   },
+   {
+    "start": 37,
+    "end": 42,
+    "drift_m": 0.0
+   },
+   {
+    "start": 49,
+    "end": 120,
+    "drift_m": 0.00357
+   },
+   {
+    "start": 130,
+    "end": 144,
+    "drift_m": 0.00181
+   },
+   {
+    "start": 155,
+    "end": 168,
+    "drift_m": 0.00242
+   },
+   {
+    "start": 179,
+    "end": 193,
+    "drift_m": 0.00168
+   },
+   {
+    "start": 203,
+    "end": 217,
+    "drift_m": 0.00233
+   },
+   {
+    "start": 227,
+    "end": 241,
+    "drift_m": 0.00298
+   },
+   {
+    "start": 251,
+    "end": 360,
+    "drift_m": 0.00362
+   }
+  ]
+ },
+ "checks": {
+  "no_penetration": true,
+  "planted_drift_ok": true,
+  "always_supported": true,
+  "no_body_through_floor": false,
+  "camera_clearance_ok": true,
+  "subject_always_in_frame": true,
+  "subject_readable_at_end": true
+ },
+ "passed": false,
+ "per_frame": [
+  {
+   "frame": 1,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4196,
+   "standing_height": 0.6596
+  },
+  {
+   "frame": 2,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4194,
+   "standing_height": 0.6594
+  },
+  {
+   "frame": 3,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4193,
+   "standing_height": 0.6593
+  },
+  {
+   "frame": 4,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4191,
+   "standing_height": 0.6591
+  },
+  {
+   "frame": 5,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4189,
+   "standing_height": 0.6589
+  },
+  {
+   "frame": 6,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00286,
+     "planted": true,
+     "cx": -0.64733,
+     "cy": -0.55623
+    }
+   },
+   "head_top_z": 1.4188,
+   "standing_height": 0.6588
+  },
+  {
+   "frame": 7,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00902,
+     "planted": false,
+     "cx": -0.64735,
+     "cy": -0.55607
+    }
+   },
+   "head_top_z": 1.4186,
+   "standing_height": 0.6586
+  },
+  {
+   "frame": 8,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01562,
+     "planted": false,
+     "cx": -0.64737,
+     "cy": -0.5559
+    }
+   },
+   "head_top_z": 1.4185,
+   "standing_height": 0.6585
+  },
+  {
+   "frame": 9,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01925,
+     "planted": false,
+     "cx": -0.64738,
+     "cy": -0.55581
+    }
+   },
+   "head_top_z": 1.4183,
+   "standing_height": 0.6583
+  },
+  {
+   "frame": 10,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.0183,
+     "planted": false,
+     "cx": -0.64738,
+     "cy": -0.55583
+    }
+   },
+   "head_top_z": 1.4182,
+   "standing_height": 0.6582
+  },
+  {
+   "frame": 11,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01319,
+     "planted": false,
+     "cx": -0.64736,
+     "cy": -0.55596
+    }
+   },
+   "head_top_z": 1.4181,
+   "standing_height": 0.6581
+  },
+  {
+   "frame": 12,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00625,
+     "planted": false,
+     "cx": -0.64734,
+     "cy": -0.55614
+    }
+   },
+   "head_top_z": 1.418,
+   "standing_height": 0.658
+  },
+  {
+   "frame": 13,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4179,
+   "standing_height": 0.6579
+  },
+  {
+   "frame": 14,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4178,
+   "standing_height": 0.6578
+  },
+  {
+   "frame": 15,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4177,
+   "standing_height": 0.6577
+  },
+  {
+   "frame": 16,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4177,
+   "standing_height": 0.6577
+  },
+  {
+   "frame": 17,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4176,
+   "standing_height": 0.6576
+  },
+  {
+   "frame": 18,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55623
+    }
+   },
+   "head_top_z": 1.4176,
+   "standing_height": 0.6576
+  },
+  {
+   "frame": 19,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00831,
+     "planted": false,
+     "cx": -0.64734,
+     "cy": -0.55609
+    }
+   },
+   "head_top_z": 1.4176,
+   "standing_height": 0.6576
+  },
+  {
+   "frame": 20,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01505,
+     "planted": false,
+     "cx": -0.64737,
+     "cy": -0.55592
+    }
+   },
+   "head_top_z": 1.4176,
+   "standing_height": 0.6576
+  },
+  {
+   "frame": 21,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01909,
+     "planted": false,
+     "cx": -0.64738,
+     "cy": -0.55581
+    }
+   },
+   "head_top_z": 1.4176,
+   "standing_height": 0.6576
+  },
+  {
+   "frame": 22,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01861,
+     "planted": false,
+     "cx": -0.64738,
+     "cy": -0.55582
+    }
+   },
+   "head_top_z": 1.4177,
+   "standing_height": 0.6577
+  },
+  {
+   "frame": 23,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01383,
+     "planted": false,
+     "cx": -0.64736,
+     "cy": -0.55595
+    }
+   },
+   "head_top_z": 1.4178,
+   "standing_height": 0.6578
+  },
+  {
+   "frame": 24,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00692,
+     "planted": false,
+     "cx": -0.64734,
+     "cy": -0.55612
+    }
+   },
+   "head_top_z": 1.4179,
+   "standing_height": 0.6579
+  },
+  {
+   "frame": 25,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.418,
+   "standing_height": 0.658
+  },
+  {
+   "frame": 26,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4181,
+   "standing_height": 0.6581
+  },
+  {
+   "frame": 27,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4182,
+   "standing_height": 0.6582
+  },
+  {
+   "frame": 28,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4183,
+   "standing_height": 0.6583
+  },
+  {
+   "frame": 29,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4185,
+   "standing_height": 0.6585
+  },
+  {
+   "frame": 30,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4186,
+   "standing_height": 0.6586
+  },
+  {
+   "frame": 31,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00761,
+     "planted": false,
+     "cx": -0.64734,
+     "cy": -0.55611
+    }
+   },
+   "head_top_z": 1.4188,
+   "standing_height": 0.6588
+  },
+  {
+   "frame": 32,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01445,
+     "planted": false,
+     "cx": -0.64737,
+     "cy": -0.55593
+    }
+   },
+   "head_top_z": 1.4189,
+   "standing_height": 0.6589
+  },
+  {
+   "frame": 33,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01887,
+     "planted": false,
+     "cx": -0.64738,
+     "cy": -0.55582
+    }
+   },
+   "head_top_z": 1.4191,
+   "standing_height": 0.6591
+  },
+  {
+   "frame": 34,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01887,
+     "planted": false,
+     "cx": -0.64738,
+     "cy": -0.55582
+    }
+   },
+   "head_top_z": 1.4192,
+   "standing_height": 0.6592
+  },
+  {
+   "frame": 35,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01445,
+     "planted": false,
+     "cx": -0.64737,
+     "cy": -0.55593
+    }
+   },
+   "head_top_z": 1.4194,
+   "standing_height": 0.6594
+  },
+  {
+   "frame": 36,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00761,
+     "planted": false,
+     "cx": -0.64734,
+     "cy": -0.55611
+    }
+   },
+   "head_top_z": 1.4195,
+   "standing_height": 0.6595
+  },
+  {
+   "frame": 37,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4197,
+   "standing_height": 0.6597
+  },
+  {
+   "frame": 38,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4198,
+   "standing_height": 0.6598
+  },
+  {
+   "frame": 39,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.42,
+   "standing_height": 0.66
+  },
+  {
+   "frame": 40,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4201,
+   "standing_height": 0.6601
+  },
+  {
+   "frame": 41,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4203,
+   "standing_height": 0.6603
+  },
+  {
+   "frame": 42,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4204,
+   "standing_height": 0.6604
+  },
+  {
+   "frame": 43,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00692,
+     "planted": false,
+     "cx": -0.64734,
+     "cy": -0.55612
+    }
+   },
+   "head_top_z": 1.4205,
+   "standing_height": 0.6605
+  },
+  {
+   "frame": 44,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01383,
+     "planted": false,
+     "cx": -0.64736,
+     "cy": -0.55595
+    }
+   },
+   "head_top_z": 1.4206,
+   "standing_height": 0.6606
+  },
+  {
+   "frame": 45,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01861,
+     "planted": false,
+     "cx": -0.64738,
+     "cy": -0.55582
+    }
+   },
+   "head_top_z": 1.4208,
+   "standing_height": 0.6608
+  },
+  {
+   "frame": 46,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01909,
+     "planted": false,
+     "cx": -0.64738,
+     "cy": -0.55581
+    }
+   },
+   "head_top_z": 1.4209,
+   "standing_height": 0.6609
+  },
+  {
+   "frame": 47,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.01505,
+     "planted": false,
+     "cx": -0.64737,
+     "cy": -0.55592
+    }
+   },
+   "head_top_z": 1.421,
+   "standing_height": 0.661
+  },
+  {
+   "frame": 48,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00831,
+     "planted": false,
+     "cx": -0.64734,
+     "cy": -0.55609
+    }
+   },
+   "head_top_z": 1.4211,
+   "standing_height": 0.6611
+  },
+  {
+   "frame": 49,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55623
+    }
+   },
+   "head_top_z": 1.4211,
+   "standing_height": 0.6611
+  },
+  {
+   "frame": 50,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4212,
+   "standing_height": 0.6612
+  },
+  {
+   "frame": 51,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4213,
+   "standing_height": 0.6613
+  },
+  {
+   "frame": 52,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4213,
+   "standing_height": 0.6613
+  },
+  {
+   "frame": 53,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4214,
+   "standing_height": 0.6614
+  },
+  {
+   "frame": 54,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4214,
+   "standing_height": 0.6614
+  },
+  {
+   "frame": 55,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4215,
+   "standing_height": 0.6615
+  },
+  {
+   "frame": 56,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4215,
+   "standing_height": 0.6615
+  },
+  {
+   "frame": 57,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4216,
+   "standing_height": 0.6616
+  },
+  {
+   "frame": 58,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4204,
+   "standing_height": 0.6604
+  },
+  {
+   "frame": 59,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4198,
+   "standing_height": 0.6598
+  },
+  {
+   "frame": 60,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4186,
+   "standing_height": 0.6586
+  },
+  {
+   "frame": 61,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4169,
+   "standing_height": 0.6569
+  },
+  {
+   "frame": 62,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4144,
+   "standing_height": 0.6544
+  },
+  {
+   "frame": 63,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4111,
+   "standing_height": 0.6511
+  },
+  {
+   "frame": 64,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.407,
+   "standing_height": 0.647
+  },
+  {
+   "frame": 65,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.4022,
+   "standing_height": 0.6422
+  },
+  {
+   "frame": 66,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.3966,
+   "standing_height": 0.6366
+  },
+  {
+   "frame": 67,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79268,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64732,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.3906,
+   "standing_height": 0.6306
+  },
+  {
+   "frame": 68,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79267,
+     "cy": -0.55624
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64733,
+     "cy": -0.55624
+    }
+   },
+   "head_top_z": 1.3841,
+   "standing_height": 0.6241
+  },
+  {
+   "frame": 69,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.79267,
+     "cy": -0.55626
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.64733,
+     "cy": -0.55626
+    }
+   },
+   "head_top_z": 1.3775,
+   "standing_height": 0.6175
+  },
+  {
+   "frame": 70,
+   "feet": {
+    "L": {
+     "gap": 0.00225,
+     "planted": true,
+     "cx": -0.79266,
+     "cy": -0.55632
+    },
+    "R": {
+     "gap": 0.00225,
+     "planted": true,
+     "cx": -0.64734,
+     "cy": -0.55632
+    }
+   },
+   "head_top_z": 1.3722,
+   "standing_height": 0.6122
+  },
+  {
+   "frame": 71,
+   "feet": {
+    "L": {
+     "gap": 0.00221,
+     "planted": true,
+     "cx": -0.79265,
+     "cy": -0.55642
+    },
+    "R": {
+     "gap": 0.00221,
+     "planted": true,
+     "cx": -0.64735,
+     "cy": -0.55642
+    }
+   },
+   "head_top_z": 1.3682,
+   "standing_height": 0.6082
+  },
+  {
+   "frame": 72,
+   "feet": {
+    "L": {
+     "gap": 0.00216,
+     "planted": true,
+     "cx": -0.79265,
+     "cy": -0.55656
+    },
+    "R": {
+     "gap": 0.00216,
+     "planted": true,
+     "cx": -0.64735,
+     "cy": -0.55656
+    }
+   },
+   "head_top_z": 1.3661,
+   "standing_height": 0.6061
+  },
+  {
+   "frame": 73,
+   "feet": {
+    "L": {
+     "gap": 0.00211,
+     "planted": true,
+     "cx": -0.79264,
+     "cy": -0.55674
+    },
+    "R": {
+     "gap": 0.00211,
+     "planted": true,
+     "cx": -0.64736,
+     "cy": -0.55674
+    }
+   },
+   "head_top_z": 1.3662,
+   "standing_height": 0.6062
+  },
+  {
+   "frame": 74,
+   "feet": {
+    "L": {
+     "gap": 0.00204,
+     "planted": true,
+     "cx": -0.79263,
+     "cy": -0.55697
+    },
+    "R": {
+     "gap": 0.00204,
+     "planted": true,
+     "cx": -0.64737,
+     "cy": -0.55697
+    }
+   },
+   "head_top_z": 1.3688,
+   "standing_height": 0.6088
+  },
+  {
+   "frame": 75,
+   "feet": {
+    "L": {
+     "gap": 0.00196,
+     "planted": true,
+     "cx": -0.79263,
+     "cy": -0.55723
+    },
+    "R": {
+     "gap": 0.00196,
+     "planted": true,
+     "cx": -0.64737,
+     "cy": -0.55723
+    }
+   },
+   "head_top_z": 1.3733,
+   "standing_height": 0.6133
+  },
+  {
+   "frame": 76,
+   "feet": {
+    "L": {
+     "gap": 0.00189,
+     "planted": true,
+     "cx": -0.79262,
+     "cy": -0.55754
+    },
+    "R": {
+     "gap": 0.00189,
+     "planted": true,
+     "cx": -0.64738,
+     "cy": -0.55754
+    }
+   },
+   "head_top_z": 1.3795,
+   "standing_height": 0.6195
+  },
+  {
+   "frame": 77,
+   "feet": {
+    "L": {
+     "gap": 0.00181,
+     "planted": true,
+     "cx": -0.79262,
+     "cy": -0.55789
+    },
+    "R": {
+     "gap": 0.00181,
+     "planted": true,
+     "cx": -0.64738,
+     "cy": -0.55789
+    }
+   },
+   "head_top_z": 1.3873,
+   "standing_height": 0.6273
+  },
+  {
+   "frame": 78,
+   "feet": {
+    "L": {
+     "gap": 0.00173,
+     "planted": true,
+     "cx": -0.79262,
+     "cy": -0.55828
+    },
+    "R": {
+     "gap": 0.00173,
+     "planted": true,
+     "cx": -0.64738,
+     "cy": -0.55828
+    }
+   },
+   "head_top_z": 1.3964,
+   "standing_height": 0.6364
+  },
+  {
+   "frame": 79,
+   "feet": {
+    "L": {
+     "gap": 0.00166,
+     "planted": true,
+     "cx": -0.79262,
+     "cy": -0.55871
+    },
+    "R": {
+     "gap": 0.00166,
+     "planted": true,
+     "cx": -0.64738,
+     "cy": -0.55871
+    }
+   },
+   "head_top_z": 1.4065,
+   "standing_height": 0.6465
+  },
+  {
+   "frame": 80,
+   "feet": {
+    "L": {
+     "gap": 0.0016,
+     "planted": true,
+     "cx": -0.79263,
+     "cy": -0.55917
+    },
+    "R": {
+     "gap": 0.0016,
+     "planted": true,
+     "cx": -0.64737,
+     "cy": -0.55917
+    }
+   },
+   "head_top_z": 1.4174,
+   "standing_height": 0.6574
+  },
+  {
+   "frame": 81,
+   "feet": {
+    "L": {
+     "gap": 0.00156,
+     "planted": true,
+     "cx": -0.79183,
+     "cy": -0.55838
+    },
+    "R": {
+     "gap": 0.00156,
+     "planted": true,
+     "cx": -0.64817,
+     "cy": -0.55838
+    }
+   },
+   "head_top_z": 1.4289,
+   "standing_height": 0.6689
+  },
+  {
+   "frame": 82,
+   "feet": {
+    "L": {
+     "gap": 0.00153,
+     "planted": true,
+     "cx": -0.79214,
+     "cy": -0.55713
+    },
+    "R": {
+     "gap": 0.00153,
+     "planted": true,
+     "cx": -0.64786,
+     "cy": -0.55713
+    }
+   },
+   "head_top_z": 1.4409,
+   "standing_height": 0.6809
+  },
+  {
+   "frame": 83,
+   "feet": {
+    "L": {
+     "gap": 0.00153,
+     "planted": true,
+     "cx": -0.79213,
+     "cy": -0.55749
+    },
+    "R": {
+     "gap": 0.00153,
+     "planted": true,
+     "cx": -0.64787,
+     "cy": -0.55749
+    }
+   },
+   "head_top_z": 1.4532,
+   "standing_height": 0.6932
+  },
+  {
+   "frame": 84,
+   "feet": {
+    "L": {
+     "gap": 0.00154,
+     "planted": true,
+     "cx": -0.79212,
+     "cy": -0.55782
+    },
+    "R": {
+     "gap": 0.00154,
+     "planted": true,
+     "cx": -0.64788,
+     "cy": -0.55782
+    }
+   },
+   "head_top_z": 1.4659,
+   "standing_height": 0.7059
+  },
+  {
+   "frame": 85,
+   "feet": {
+    "L": {
+     "gap": 0.00157,
+     "planted": true,
+     "cx": -0.7921,
+     "cy": -0.55812
+    },
+    "R": {
+     "gap": 0.00157,
+     "planted": true,
+     "cx": -0.6479,
+     "cy": -0.55812
+    }
+   },
+   "head_top_z": 1.4786,
+   "standing_height": 0.7186
+  },
+  {
+   "frame": 86,
+   "feet": {
+    "L": {
+     "gap": 0.00161,
+     "planted": true,
+     "cx": -0.79207,
+     "cy": -0.55837
+    },
+    "R": {
+     "gap": 0.00161,
+     "planted": true,
+     "cx": -0.64793,
+     "cy": -0.55837
+    }
+   },
+   "head_top_z": 1.4913,
+   "standing_height": 0.7313
+  },
+  {
+   "frame": 87,
+   "feet": {
+    "L": {
+     "gap": 0.00165,
+     "planted": true,
+     "cx": -0.79398,
+     "cy": -0.55738
+    },
+    "R": {
+     "gap": 0.00165,
+     "planted": true,
+     "cx": -0.64602,
+     "cy": -0.55738
+    }
+   },
+   "head_top_z": 1.5037,
+   "standing_height": 0.7437
+  },
+  {
+   "frame": 88,
+   "feet": {
+    "L": {
+     "gap": 0.00169,
+     "planted": true,
+     "cx": -0.79395,
+     "cy": -0.55752
+    },
+    "R": {
+     "gap": 0.00169,
+     "planted": true,
+     "cx": -0.64605,
+     "cy": -0.55752
+    }
+   },
+   "head_top_z": 1.5158,
+   "standing_height": 0.7558
+  },
+  {
+   "frame": 89,
+   "feet": {
+    "L": {
+     "gap": 0.00172,
+     "planted": true,
+     "cx": -0.79393,
+     "cy": -0.55761
+    },
+    "R": {
+     "gap": 0.00172,
+     "planted": true,
+     "cx": -0.64607,
+     "cy": -0.55761
+    }
+   },
+   "head_top_z": 1.5277,
+   "standing_height": 0.7677
+  },
+  {
+   "frame": 90,
+   "feet": {
+    "L": {
+     "gap": 0.00173,
+     "planted": true,
+     "cx": -0.79391,
+     "cy": -0.55767
+    },
+    "R": {
+     "gap": 0.00173,
+     "planted": true,
+     "cx": -0.64609,
+     "cy": -0.55767
+    }
+   },
+   "head_top_z": 1.5389,
+   "standing_height": 0.7789
+  },
+  {
+   "frame": 91,
+   "feet": {
+    "L": {
+     "gap": 0.00173,
+     "planted": true,
+     "cx": -0.79389,
+     "cy": -0.55769
+    },
+    "R": {
+     "gap": 0.00173,
+     "planted": true,
+     "cx": -0.64611,
+     "cy": -0.55769
+    }
+   },
+   "head_top_z": 1.5495,
+   "standing_height": 0.7895
+  },
+  {
+   "frame": 92,
+   "feet": {
+    "L": {
+     "gap": 0.00172,
+     "planted": true,
+     "cx": -0.79389,
+     "cy": -0.55768
+    },
+    "R": {
+     "gap": 0.00172,
+     "planted": true,
+     "cx": -0.64611,
+     "cy": -0.55768
+    }
+   },
+   "head_top_z": 1.5594,
+   "standing_height": 0.7994
+  },
+  {
+   "frame": 93,
+   "feet": {
+    "L": {
+     "gap": 0.00169,
+     "planted": true,
+     "cx": -0.7939,
+     "cy": -0.55764
+    },
+    "R": {
+     "gap": 0.00169,
+     "planted": true,
+     "cx": -0.6461,
+     "cy": -0.55764
+    }
+   },
+   "head_top_z": 1.5694,
+   "standing_height": 0.8094
+  },
+  {
+   "frame": 94,
+   "feet": {
+    "L": {
+     "gap": 0.00166,
+     "planted": true,
+     "cx": -0.79392,
+     "cy": -0.55758
+    },
+    "R": {
+     "gap": 0.00166,
+     "planted": true,
+     "cx": -0.64608,
+     "cy": -0.55758
+    }
+   },
+   "head_top_z": 1.5794,
+   "standing_height": 0.8194
+  },
+  {
+   "frame": 95,
+   "feet": {
+    "L": {
+     "gap": 0.00162,
+     "planted": true,
+     "cx": -0.79395,
+     "cy": -0.55751
+    },
+    "R": {
+     "gap": 0.00162,
+     "planted": true,
+     "cx": -0.64605,
+     "cy": -0.55751
+    }
+   },
+   "head_top_z": 1.5892,
+   "standing_height": 0.8292
+  },
+  {
+   "frame": 96,
+   "feet": {
+    "L": {
+     "gap": 0.00157,
+     "planted": true,
+     "cx": -0.79206,
+     "cy": -0.55862
+    },
+    "R": {
+     "gap": 0.00157,
+     "planted": true,
+     "cx": -0.64794,
+     "cy": -0.55862
+    }
+   },
+   "head_top_z": 1.5984,
+   "standing_height": 0.8384
+  },
+  {
+   "frame": 97,
+   "feet": {
+    "L": {
+     "gap": 0.00153,
+     "planted": true,
+     "cx": -0.79212,
+     "cy": -0.55851
+    },
+    "R": {
+     "gap": 0.00153,
+     "planted": true,
+     "cx": -0.64788,
+     "cy": -0.55851
+    }
+   },
+   "head_top_z": 1.6068,
+   "standing_height": 0.8468
+  },
+  {
+   "frame": 98,
+   "feet": {
+    "L": {
+     "gap": 0.00149,
+     "planted": true,
+     "cx": -0.79219,
+     "cy": -0.55838
+    },
+    "R": {
+     "gap": 0.00149,
+     "planted": true,
+     "cx": -0.64781,
+     "cy": -0.55838
+    }
+   },
+   "head_top_z": 1.6142,
+   "standing_height": 0.8542
+  },
+  {
+   "frame": 99,
+   "feet": {
+    "L": {
+     "gap": 0.00145,
+     "planted": true,
+     "cx": -0.79227,
+     "cy": -0.55826
+    },
+    "R": {
+     "gap": 0.00145,
+     "planted": true,
+     "cx": -0.64773,
+     "cy": -0.55826
+    }
+   },
+   "head_top_z": 1.6206,
+   "standing_height": 0.8606
+  },
+  {
+   "frame": 100,
+   "feet": {
+    "L": {
+     "gap": 0.00142,
+     "planted": true,
+     "cx": -0.79234,
+     "cy": -0.55813
+    },
+    "R": {
+     "gap": 0.00142,
+     "planted": true,
+     "cx": -0.64766,
+     "cy": -0.55813
+    }
+   },
+   "head_top_z": 1.6257,
+   "standing_height": 0.8657
+  },
+  {
+   "frame": 101,
+   "feet": {
+    "L": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.791,
+     "cy": -0.55939
+    },
+    "R": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.649,
+     "cy": -0.55939
+    }
+   },
+   "head_top_z": 1.6292,
+   "standing_height": 0.8692
+  },
+  {
+   "frame": 102,
+   "feet": {
+    "L": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.791,
+     "cy": -0.55939
+    },
+    "R": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.649,
+     "cy": -0.55939
+    }
+   },
+   "head_top_z": 1.6298,
+   "standing_height": 0.8698
+  },
+  {
+   "frame": 103,
+   "feet": {
+    "L": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.791,
+     "cy": -0.55939
+    },
+    "R": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.649,
+     "cy": -0.55939
+    }
+   },
+   "head_top_z": 1.6302,
+   "standing_height": 0.8702
+  },
+  {
+   "frame": 104,
+   "feet": {
+    "L": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.791,
+     "cy": -0.55939
+    },
+    "R": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.649,
+     "cy": -0.55939
+    }
+   },
+   "head_top_z": 1.6305,
+   "standing_height": 0.8705
+  },
+  {
+   "frame": 105,
+   "feet": {
+    "L": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.791,
+     "cy": -0.55939
+    },
+    "R": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.649,
+     "cy": -0.55939
+    }
+   },
+   "head_top_z": 1.6307,
+   "standing_height": 0.8707
+  },
+  {
+   "frame": 106,
+   "feet": {
+    "L": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.791,
+     "cy": -0.55939
+    },
+    "R": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.649,
+     "cy": -0.55939
+    }
+   },
+   "head_top_z": 1.6307,
+   "standing_height": 0.8707
+  },
+  {
+   "frame": 107,
+   "feet": {
+    "L": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.791,
+     "cy": -0.55941
+    },
+    "R": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.64899,
+     "cy": -0.55937
+    }
+   },
+   "head_top_z": 1.6307,
+   "standing_height": 0.8707
+  },
+  {
+   "frame": 108,
+   "feet": {
+    "L": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.79098,
+     "cy": -0.55947
+    },
+    "R": {
+     "gap": 0.0014,
+     "planted": true,
+     "cx": -0.64899,
+     "cy": -0.55935
+    }
+   },
+   "head_top_z": 1.6303,
+   "standing_height": 0.8703
+  },
+  {
+   "frame": 109,
+   "feet": {
+    "L": {
+     "gap": 0.00142,
+     "planted": true,
+     "cx": -0.79228,
+     "cy": -0.55817
+    },
+    "R": {
+     "gap": 0.00141,
+     "planted": true,
+     "cx": -0.64755,
+     "cy": -0.55804
+    }
+   },
+   "head_top_z": 1.6289,
+   "standing_height": 0.8689
+  },
+  {
+   "frame": 110,
+   "feet": {
+    "L": {
+     "gap": 0.00144,
+     "planted": true,
+     "cx": -0.79219,
+     "cy": -0.55829
+    },
+    "R": {
+     "gap": 0.00142,
+     "planted": true,
+     "cx": -0.64753,
+     "cy": -0.55807
+    }
+   },
+   "head_top_z": 1.627,
+   "standing_height": 0.867
+  },
+  {
+   "frame": 111,
+   "feet": {
+    "L": {
+     "gap": 0.00147,
+     "planted": true,
+     "cx": -0.79208,
+     "cy": -0.55843
+    },
+    "R": {
+     "gap": 0.00143,
+     "planted": true,
+     "cx": -0.64751,
+     "cy": -0.5581
+    }
+   },
+   "head_top_z": 1.6247,
+   "standing_height": 0.8647
+  },
+  {
+   "frame": 112,
+   "feet": {
+    "L": {
+     "gap": 0.0015,
+     "planted": true,
+     "cx": -0.79198,
+     "cy": -0.55859
+    },
+    "R": {
+     "gap": 0.00144,
+     "planted": true,
+     "cx": -0.64748,
+     "cy": -0.55812
+    }
+   },
+   "head_top_z": 1.6221,
+   "standing_height": 0.8621
+  },
+  {
+   "frame": 113,
+   "feet": {
+    "L": {
+     "gap": 0.00154,
+     "planted": true,
+     "cx": -0.79187,
+     "cy": -0.55876
+    },
+    "R": {
+     "gap": 0.00146,
+     "planted": true,
+     "cx": -0.64744,
+     "cy": -0.55814
+    }
+   },
+   "head_top_z": 1.6192,
+   "standing_height": 0.8592
+  },
+  {
+   "frame": 114,
+   "feet": {
+    "L": {
+     "gap": 0.00158,
+     "planted": true,
+     "cx": -0.79177,
+     "cy": -0.55894
+    },
+    "R": {
+     "gap": 0.00147,
+     "planted": true,
+     "cx": -0.64739,
+     "cy": -0.55816
+    }
+   },
+   "head_top_z": 1.6161,
+   "standing_height": 0.8561
+  },
+  {
+   "frame": 115,
+   "feet": {
+    "L": {
+     "gap": 0.00163,
+     "planted": true,
+     "cx": -0.79323,
+     "cy": -0.55743
+    },
+    "R": {
+     "gap": 0.00148,
+     "planted": true,
+     "cx": -0.64734,
+     "cy": -0.55817
+    }
+   },
+   "head_top_z": 1.6127,
+   "standing_height": 0.8527
+  },
+  {
+   "frame": 116,
+   "feet": {
+    "L": {
+     "gap": 0.00169,
+     "planted": true,
+     "cx": -0.79306,
+     "cy": -0.55754
+    },
+    "R": {
+     "gap": 0.0015,
+     "planted": true,
+     "cx": -0.64729,
+     "cy": -0.55818
+    }
+   },
+   "head_top_z": 1.6093,
+   "standing_height": 0.8493
+  },
+  {
+   "frame": 117,
+   "feet": {
+    "L": {
+     "gap": 0.00175,
+     "planted": true,
+     "cx": -0.7929,
+     "cy": -0.55766
+    },
+    "R": {
+     "gap": 0.00151,
+     "planted": true,
+     "cx": -0.64722,
+     "cy": -0.55819
+    }
+   },
+   "head_top_z": 1.6057,
+   "standing_height": 0.8457
+  },
+  {
+   "frame": 118,
+   "feet": {
+    "L": {
+     "gap": 0.00181,
+     "planted": true,
+     "cx": -0.79275,
+     "cy": -0.55778
+    },
+    "R": {
+     "gap": 0.00152,
+     "planted": true,
+     "cx": -0.64716,
+     "cy": -0.5582
+    }
+   },
+   "head_top_z": 1.602,
+   "standing_height": 0.842
+  },
+  {
+   "frame": 119,
+   "feet": {
+    "L": {
+     "gap": 0.00188,
+     "planted": true,
+     "cx": -0.7926,
+     "cy": -0.5579
+    },
+    "R": {
+     "gap": 0.00153,
+     "planted": true,
+     "cx": -0.64709,
+     "cy": -0.5582
+    }
+   },
+   "head_top_z": 1.5984,
+   "standing_height": 0.8384
+  },
+  {
+   "frame": 120,
+   "feet": {
+    "L": {
+     "gap": 0.00195,
+     "planted": true,
+     "cx": -0.79247,
+     "cy": -0.55802
+    },
+    "R": {
+     "gap": 0.00154,
+     "planted": true,
+     "cx": -0.64701,
+     "cy": -0.55821
+    }
+   },
+   "head_top_z": 1.5948,
+   "standing_height": 0.8348
+  },
+  {
+   "frame": 121,
+   "feet": {
+    "L": {
+     "gap": 0.00201,
+     "planted": true,
+     "cx": -0.79236,
+     "cy": -0.55814
+    },
+    "R": {
+     "gap": 0.01584,
+     "planted": false,
+     "cx": -0.64415,
+     "cy": -0.55804
+    }
+   },
+   "head_top_z": 1.5913,
+   "standing_height": 0.8313
+  },
+  {
+   "frame": 122,
+   "feet": {
+    "L": {
+     "gap": 0.00208,
+     "planted": true,
+     "cx": -0.79225,
+     "cy": -0.55826
+    },
+    "R": {
+     "gap": 0.03319,
+     "planted": false,
+     "cx": -0.63907,
+     "cy": -0.55538
+    }
+   },
+   "head_top_z": 1.5879,
+   "standing_height": 0.8279
+  },
+  {
+   "frame": 123,
+   "feet": {
+    "L": {
+     "gap": 0.00214,
+     "planted": true,
+     "cx": -0.79216,
+     "cy": -0.55837
+    },
+    "R": {
+     "gap": 0.04533,
+     "planted": false,
+     "cx": -0.6299,
+     "cy": -0.55034
+    }
+   },
+   "head_top_z": 1.5847,
+   "standing_height": 0.8247
+  },
+  {
+   "frame": 124,
+   "feet": {
+    "L": {
+     "gap": 0.0022,
+     "planted": true,
+     "cx": -0.79209,
+     "cy": -0.55847
+    },
+    "R": {
+     "gap": 0.05305,
+     "planted": false,
+     "cx": -0.6201,
+     "cy": -0.54329
+    }
+   },
+   "head_top_z": 1.5818,
+   "standing_height": 0.8218
+  },
+  {
+   "frame": 125,
+   "feet": {
+    "L": {
+     "gap": 0.00226,
+     "planted": true,
+     "cx": -0.79203,
+     "cy": -0.55856
+    },
+    "R": {
+     "gap": 0.05636,
+     "planted": false,
+     "cx": -0.60641,
+     "cy": -0.53557
+    }
+   },
+   "head_top_z": 1.5792,
+   "standing_height": 0.8192
+  },
+  {
+   "frame": 126,
+   "feet": {
+    "L": {
+     "gap": 0.00231,
+     "planted": true,
+     "cx": -0.79199,
+     "cy": -0.55864
+    },
+    "R": {
+     "gap": 0.05522,
+     "planted": false,
+     "cx": -0.59559,
+     "cy": -0.52872
+    }
+   },
+   "head_top_z": 1.5769,
+   "standing_height": 0.8169
+  },
+  {
+   "frame": 127,
+   "feet": {
+    "L": {
+     "gap": 0.00234,
+     "planted": true,
+     "cx": -0.79196,
+     "cy": -0.5587
+    },
+    "R": {
+     "gap": 0.04965,
+     "planted": false,
+     "cx": -0.58249,
+     "cy": -0.52279
+    }
+   },
+   "head_top_z": 1.5751,
+   "standing_height": 0.8151
+  },
+  {
+   "frame": 128,
+   "feet": {
+    "L": {
+     "gap": 0.00237,
+     "planted": true,
+     "cx": -0.79194,
+     "cy": -0.55875
+    },
+    "R": {
+     "gap": 0.03973,
+     "planted": false,
+     "cx": -0.57136,
+     "cy": -0.51649
+    }
+   },
+   "head_top_z": 1.5737,
+   "standing_height": 0.8137
+  },
+  {
+   "frame": 129,
+   "feet": {
+    "L": {
+     "gap": 0.00239,
+     "planted": true,
+     "cx": -0.79193,
+     "cy": -0.55878
+    },
+    "R": {
+     "gap": 0.0253,
+     "planted": false,
+     "cx": -0.56356,
+     "cy": -0.51214
+    }
+   },
+   "head_top_z": 1.5729,
+   "standing_height": 0.8129
+  },
+  {
+   "frame": 130,
+   "feet": {
+    "L": {
+     "gap": 0.0025,
+     "planted": true,
+     "cx": -0.79191,
+     "cy": -0.55887
+    },
+    "R": {
+     "gap": 0.00176,
+     "planted": true,
+     "cx": -0.56023,
+     "cy": -0.51035
+    }
+   },
+   "head_top_z": 1.567,
+   "standing_height": 0.807
+  },
+  {
+   "frame": 131,
+   "feet": {
+    "L": {
+     "gap": 0.00159,
+     "planted": true,
+     "cx": -0.79119,
+     "cy": -0.55983
+    },
+    "R": {
+     "gap": 0.00155,
+     "planted": true,
+     "cx": -0.56025,
+     "cy": -0.5101
+    }
+   },
+   "head_top_z": 1.5633,
+   "standing_height": 0.8033
+  },
+  {
+   "frame": 132,
+   "feet": {
+    "L": {
+     "gap": 0.00162,
+     "planted": true,
+     "cx": -0.79188,
+     "cy": -0.55763
+    },
+    "R": {
+     "gap": 0.00156,
+     "planted": true,
+     "cx": -0.56031,
+     "cy": -0.51013
+    }
+   },
+   "head_top_z": 1.5664,
+   "standing_height": 0.8064
+  },
+  {
+   "frame": 133,
+   "feet": {
+    "L": {
+     "gap": 0.00872,
+     "planted": false,
+     "cx": -0.79099,
+     "cy": -0.55659
+    },
+    "R": {
+     "gap": 0.00156,
+     "planted": true,
+     "cx": -0.56034,
+     "cy": -0.51015
+    }
+   },
+   "head_top_z": 1.5711,
+   "standing_height": 0.8111
+  },
+  {
+   "frame": 134,
+   "feet": {
+    "L": {
+     "gap": 0.02902,
+     "planted": false,
+     "cx": -0.78029,
+     "cy": -0.54785
+    },
+    "R": {
+     "gap": 0.0016,
+     "planted": true,
+     "cx": -0.5605,
+     "cy": -0.51024
+    }
+   },
+   "head_top_z": 1.576,
+   "standing_height": 0.816
+  },
+  {
+   "frame": 135,
+   "feet": {
+    "L": {
+     "gap": 0.05545,
+     "planted": false,
+     "cx": -0.7613,
+     "cy": -0.52721
+    },
+    "R": {
+     "gap": 0.00168,
+     "planted": true,
+     "cx": -0.55853,
+     "cy": -0.51096
+    }
+   },
+   "head_top_z": 1.5799,
+   "standing_height": 0.8199
+  },
+  {
+   "frame": 136,
+   "feet": {
+    "L": {
+     "gap": 0.08551,
+     "planted": false,
+     "cx": -0.73636,
+     "cy": -0.49981
+    },
+    "R": {
+     "gap": 0.00182,
+     "planted": true,
+     "cx": -0.55882,
+     "cy": -0.51107
+    }
+   },
+   "head_top_z": 1.5817,
+   "standing_height": 0.8217
+  },
+  {
+   "frame": 137,
+   "feet": {
+    "L": {
+     "gap": 0.11633,
+     "planted": false,
+     "cx": -0.7082,
+     "cy": -0.4686
+    },
+    "R": {
+     "gap": 0.00199,
+     "planted": true,
+     "cx": -0.55914,
+     "cy": -0.51108
+    }
+   },
+   "head_top_z": 1.5808,
+   "standing_height": 0.8208
+  },
+  {
+   "frame": 138,
+   "feet": {
+    "L": {
+     "gap": 0.03019,
+     "planted": false,
+     "cx": -0.68785,
+     "cy": -0.41482
+    },
+    "R": {
+     "gap": 0.00218,
+     "planted": true,
+     "cx": -0.55943,
+     "cy": -0.51086
+    }
+   },
+   "head_top_z": 1.5774,
+   "standing_height": 0.8174
+  },
+  {
+   "frame": 139,
+   "feet": {
+    "L": {
+     "gap": 0.03173,
+     "planted": false,
+     "cx": -0.65948,
+     "cy": -0.40159
+    },
+    "R": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.55955,
+     "cy": -0.51048
+    }
+   },
+   "head_top_z": 1.5723,
+   "standing_height": 0.8123
+  },
+  {
+   "frame": 140,
+   "feet": {
+    "L": {
+     "gap": 0.03671,
+     "planted": false,
+     "cx": -0.6311,
+     "cy": -0.39464
+    },
+    "R": {
+     "gap": 0.00232,
+     "planted": true,
+     "cx": -0.55958,
+     "cy": -0.51036
+    }
+   },
+   "head_top_z": 1.5668,
+   "standing_height": 0.8068
+  },
+  {
+   "frame": 141,
+   "feet": {
+    "L": {
+     "gap": 0.02198,
+     "planted": false,
+     "cx": -0.6171,
+     "cy": -0.37477
+    },
+    "R": {
+     "gap": 0.00157,
+     "planted": true,
+     "cx": -0.56062,
+     "cy": -0.51037
+    }
+   },
+   "head_top_z": 1.6171,
+   "standing_height": 0.8571
+  },
+  {
+   "frame": 142,
+   "feet": {
+    "L": {
+     "gap": 0.00572,
+     "planted": false,
+     "cx": -0.60857,
+     "cy": -0.36082
+    },
+    "R": {
+     "gap": 0.00156,
+     "planted": true,
+     "cx": -0.56059,
+     "cy": -0.51038
+    }
+   },
+   "head_top_z": 1.6161,
+   "standing_height": 0.8561
+  },
+  {
+   "frame": 143,
+   "feet": {
+    "L": {
+     "gap": 0.00239,
+     "planted": true,
+     "cx": -0.60839,
+     "cy": -0.36044
+    },
+    "R": {
+     "gap": 0.00155,
+     "planted": true,
+     "cx": -0.56056,
+     "cy": -0.51039
+    }
+   },
+   "head_top_z": 1.6149,
+   "standing_height": 0.8549
+  },
+  {
+   "frame": 144,
+   "feet": {
+    "L": {
+     "gap": 0.00237,
+     "planted": true,
+     "cx": -0.60856,
+     "cy": -0.3586
+    },
+    "R": {
+     "gap": 0.00154,
+     "planted": true,
+     "cx": -0.56053,
+     "cy": -0.5104
+    }
+   },
+   "head_top_z": 1.6139,
+   "standing_height": 0.8539
+  },
+  {
+   "frame": 145,
+   "feet": {
+    "L": {
+     "gap": 0.00237,
+     "planted": true,
+     "cx": -0.60856,
+     "cy": -0.35863
+    },
+    "R": {
+     "gap": 0.00688,
+     "planted": false,
+     "cx": -0.5601,
+     "cy": -0.51002
+    }
+   },
+   "head_top_z": 1.6187,
+   "standing_height": 0.8587
+  },
+  {
+   "frame": 146,
+   "feet": {
+    "L": {
+     "gap": 0.00238,
+     "planted": true,
+     "cx": -0.60861,
+     "cy": -0.35859
+    },
+    "R": {
+     "gap": 0.02534,
+     "planted": false,
+     "cx": -0.55339,
+     "cy": -0.50369
+    }
+   },
+   "head_top_z": 1.6392,
+   "standing_height": 0.8792
+  },
+  {
+   "frame": 147,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.60858,
+     "cy": -0.35868
+    },
+    "R": {
+     "gap": 0.04882,
+     "planted": false,
+     "cx": -0.53994,
+     "cy": -0.49095
+    }
+   },
+   "head_top_z": 1.6662,
+   "standing_height": 0.9062
+  },
+  {
+   "frame": 148,
+   "feet": {
+    "L": {
+     "gap": 0.00231,
+     "planted": true,
+     "cx": -0.60846,
+     "cy": -0.35886
+    },
+    "R": {
+     "gap": 0.07534,
+     "planted": false,
+     "cx": -0.52364,
+     "cy": -0.47355
+    }
+   },
+   "head_top_z": 1.6954,
+   "standing_height": 0.9354
+  },
+  {
+   "frame": 149,
+   "feet": {
+    "L": {
+     "gap": 0.00226,
+     "planted": true,
+     "cx": -0.60823,
+     "cy": -0.35892
+    },
+    "R": {
+     "gap": 0.10255,
+     "planted": false,
+     "cx": -0.50137,
+     "cy": -0.45376
+    }
+   },
+   "head_top_z": 1.7067,
+   "standing_height": 0.9467
+  },
+  {
+   "frame": 150,
+   "feet": {
+    "L": {
+     "gap": 0.00224,
+     "planted": true,
+     "cx": -0.61068,
+     "cy": -0.35878
+    },
+    "R": {
+     "gap": 0.00903,
+     "planted": false,
+     "cx": -0.48759,
+     "cy": -0.41341
+    }
+   },
+   "head_top_z": 1.7143,
+   "standing_height": 0.8274
+  },
+  {
+   "frame": 151,
+   "feet": {
+    "L": {
+     "gap": 0.00226,
+     "planted": true,
+     "cx": -0.61053,
+     "cy": -0.359
+    },
+    "R": {
+     "gap": 0.01851,
+     "planted": false,
+     "cx": -0.46712,
+     "cy": -0.40812
+    }
+   },
+   "head_top_z": 1.7202,
+   "standing_height": 0.8278
+  },
+  {
+   "frame": 152,
+   "feet": {
+    "L": {
+     "gap": 0.00233,
+     "planted": true,
+     "cx": -0.61046,
+     "cy": -0.35929
+    },
+    "R": {
+     "gap": 0.0291,
+     "planted": false,
+     "cx": -0.44523,
+     "cy": -0.41233
+    }
+   },
+   "head_top_z": 1.7251,
+   "standing_height": 0.837
+  },
+  {
+   "frame": 153,
+   "feet": {
+    "L": {
+     "gap": 0.00241,
+     "planted": true,
+     "cx": -0.61046,
+     "cy": -0.3596
+    },
+    "R": {
+     "gap": 0.02063,
+     "planted": false,
+     "cx": -0.43266,
+     "cy": -0.39616
+    }
+   },
+   "head_top_z": 1.7296,
+   "standing_height": 0.8247
+  },
+  {
+   "frame": 154,
+   "feet": {
+    "L": {
+     "gap": 0.00251,
+     "planted": true,
+     "cx": -0.61049,
+     "cy": -0.3599
+    },
+    "R": {
+     "gap": 0.00696,
+     "planted": false,
+     "cx": -0.42682,
+     "cy": -0.38483
+    }
+   },
+   "head_top_z": 1.7345,
+   "standing_height": 0.8176
+  },
+  {
+   "frame": 155,
+   "feet": {
+    "L": {
+     "gap": 0.00261,
+     "planted": true,
+     "cx": -0.60628,
+     "cy": -0.35924
+    },
+    "R": {
+     "gap": 0.00218,
+     "planted": true,
+     "cx": -0.42415,
+     "cy": -0.38157
+    }
+   },
+   "head_top_z": 1.7397,
+   "standing_height": 0.8194
+  },
+  {
+   "frame": 156,
+   "feet": {
+    "L": {
+     "gap": 0.00267,
+     "planted": true,
+     "cx": -0.60631,
+     "cy": -0.35935
+    },
+    "R": {
+     "gap": 0.00219,
+     "planted": true,
+     "cx": -0.42411,
+     "cy": -0.38164
+    }
+   },
+   "head_top_z": 1.7446,
+   "standing_height": 0.8244
+  },
+  {
+   "frame": 157,
+   "feet": {
+    "L": {
+     "gap": 0.01356,
+     "planted": false,
+     "cx": -0.60999,
+     "cy": -0.36349
+    },
+    "R": {
+     "gap": 0.00219,
+     "planted": true,
+     "cx": -0.42404,
+     "cy": -0.38172
+    }
+   },
+   "head_top_z": 1.7503,
+   "standing_height": 0.8301
+  },
+  {
+   "frame": 158,
+   "feet": {
+    "L": {
+     "gap": 0.0423,
+     "planted": false,
+     "cx": -0.603,
+     "cy": -0.37099
+    },
+    "R": {
+     "gap": 0.00224,
+     "planted": true,
+     "cx": -0.42655,
+     "cy": -0.38184
+    }
+   },
+   "head_top_z": 1.7595,
+   "standing_height": 0.8395
+  },
+  {
+   "frame": 159,
+   "feet": {
+    "L": {
+     "gap": 0.06182,
+     "planted": false,
+     "cx": -0.58816,
+     "cy": -0.36734
+    },
+    "R": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.42633,
+     "cy": -0.38224
+    }
+   },
+   "head_top_z": 1.7701,
+   "standing_height": 0.8506
+  },
+  {
+   "frame": 160,
+   "feet": {
+    "L": {
+     "gap": 0.07486,
+     "planted": false,
+     "cx": -0.56676,
+     "cy": -0.35414
+    },
+    "R": {
+     "gap": 0.0024,
+     "planted": true,
+     "cx": -0.42384,
+     "cy": -0.38237
+    }
+   },
+   "head_top_z": 1.7709,
+   "standing_height": 0.8515
+  },
+  {
+   "frame": 161,
+   "feet": {
+    "L": {
+     "gap": 0.08158,
+     "planted": false,
+     "cx": -0.54205,
+     "cy": -0.333
+    },
+    "R": {
+     "gap": 0.00247,
+     "planted": true,
+     "cx": -0.42397,
+     "cy": -0.38249
+    }
+   },
+   "head_top_z": 1.7709,
+   "standing_height": 0.8516
+  },
+  {
+   "frame": 162,
+   "feet": {
+    "L": {
+     "gap": 0.08185,
+     "planted": false,
+     "cx": -0.51614,
+     "cy": -0.30749
+    },
+    "R": {
+     "gap": 0.00256,
+     "planted": true,
+     "cx": -0.42253,
+     "cy": -0.38157
+    }
+   },
+   "head_top_z": 1.7699,
+   "standing_height": 0.8496
+  },
+  {
+   "frame": 163,
+   "feet": {
+    "L": {
+     "gap": 0.07572,
+     "planted": false,
+     "cx": -0.49133,
+     "cy": -0.28005
+    },
+    "R": {
+     "gap": 0.00266,
+     "planted": true,
+     "cx": -0.42263,
+     "cy": -0.38171
+    }
+   },
+   "head_top_z": 1.7676,
+   "standing_height": 0.8474
+  },
+  {
+   "frame": 164,
+   "feet": {
+    "L": {
+     "gap": 0.06329,
+     "planted": false,
+     "cx": -0.47101,
+     "cy": -0.25223
+    },
+    "R": {
+     "gap": 0.00277,
+     "planted": true,
+     "cx": -0.42272,
+     "cy": -0.38185
+    }
+   },
+   "head_top_z": 1.764,
+   "standing_height": 0.844
+  },
+  {
+   "frame": 165,
+   "feet": {
+    "L": {
+     "gap": 0.04421,
+     "planted": false,
+     "cx": -0.45427,
+     "cy": -0.22713
+    },
+    "R": {
+     "gap": 0.00289,
+     "planted": true,
+     "cx": -0.4228,
+     "cy": -0.382
+    }
+   },
+   "head_top_z": 1.7595,
+   "standing_height": 0.8397
+  },
+  {
+   "frame": 166,
+   "feet": {
+    "L": {
+     "gap": 0.01688,
+     "planted": false,
+     "cx": -0.44671,
+     "cy": -0.20541
+    },
+    "R": {
+     "gap": 0.00299,
+     "planted": true,
+     "cx": -0.42287,
+     "cy": -0.38212
+    }
+   },
+   "head_top_z": 1.7547,
+   "standing_height": 0.835
+  },
+  {
+   "frame": 167,
+   "feet": {
+    "L": {
+     "gap": 0.00248,
+     "planted": true,
+     "cx": -0.44509,
+     "cy": -0.19765
+    },
+    "R": {
+     "gap": 0.00308,
+     "planted": true,
+     "cx": -0.42291,
+     "cy": -0.38222
+    }
+   },
+   "head_top_z": 1.7506,
+   "standing_height": 0.831
+  },
+  {
+   "frame": 168,
+   "feet": {
+    "L": {
+     "gap": 0.0025,
+     "planted": true,
+     "cx": -0.44473,
+     "cy": -0.19768
+    },
+    "R": {
+     "gap": 0.00313,
+     "planted": true,
+     "cx": -0.42292,
+     "cy": -0.38229
+    }
+   },
+   "head_top_z": 1.7481,
+   "standing_height": 0.8285
+  },
+  {
+   "frame": 169,
+   "feet": {
+    "L": {
+     "gap": 0.00252,
+     "planted": true,
+     "cx": -0.44468,
+     "cy": -0.19774
+    },
+    "R": {
+     "gap": 0.00937,
+     "planted": false,
+     "cx": -0.42356,
+     "cy": -0.38431
+    }
+   },
+   "head_top_z": 1.7484,
+   "standing_height": 0.831
+  },
+  {
+   "frame": 170,
+   "feet": {
+    "L": {
+     "gap": 0.00252,
+     "planted": true,
+     "cx": -0.44335,
+     "cy": -0.19774
+    },
+    "R": {
+     "gap": 0.04008,
+     "planted": false,
+     "cx": -0.41749,
+     "cy": -0.39355
+    }
+   },
+   "head_top_z": 1.7633,
+   "standing_height": 0.8556
+  },
+  {
+   "frame": 171,
+   "feet": {
+    "L": {
+     "gap": 0.00253,
+     "planted": true,
+     "cx": -0.44404,
+     "cy": -0.19709
+    },
+    "R": {
+     "gap": 0.0604,
+     "planted": false,
+     "cx": -0.40297,
+     "cy": -0.38901
+    }
+   },
+   "head_top_z": 1.7896,
+   "standing_height": 0.8771
+  },
+  {
+   "frame": 172,
+   "feet": {
+    "L": {
+     "gap": 0.00239,
+     "planted": true,
+     "cx": -0.4438,
+     "cy": -0.1967
+    },
+    "R": {
+     "gap": 0.07413,
+     "planted": false,
+     "cx": -0.38231,
+     "cy": -0.37495
+    }
+   },
+   "head_top_z": 1.8237,
+   "standing_height": 0.8965
+  },
+  {
+   "frame": 173,
+   "feet": {
+    "L": {
+     "gap": 0.00226,
+     "planted": true,
+     "cx": -0.4434,
+     "cy": -0.19678
+    },
+    "R": {
+     "gap": 0.08144,
+     "planted": false,
+     "cx": -0.35784,
+     "cy": -0.3538
+    }
+   },
+   "head_top_z": 1.8608,
+   "standing_height": 0.9114
+  },
+  {
+   "frame": 174,
+   "feet": {
+    "L": {
+     "gap": 0.00223,
+     "planted": true,
+     "cx": -0.4458,
+     "cy": -0.19683
+    },
+    "R": {
+     "gap": 0.08205,
+     "planted": false,
+     "cx": -0.33199,
+     "cy": -0.32766
+    }
+   },
+   "head_top_z": 1.8847,
+   "standing_height": 0.9079
+  },
+  {
+   "frame": 175,
+   "feet": {
+    "L": {
+     "gap": 0.00225,
+     "planted": true,
+     "cx": -0.44563,
+     "cy": -0.19706
+    },
+    "R": {
+     "gap": 0.07619,
+     "planted": false,
+     "cx": -0.3082,
+     "cy": -0.30121
+    }
+   },
+   "head_top_z": 1.8911,
+   "standing_height": 0.8866
+  },
+  {
+   "frame": 176,
+   "feet": {
+    "L": {
+     "gap": 0.00231,
+     "planted": true,
+     "cx": -0.44554,
+     "cy": -0.19735
+    },
+    "R": {
+     "gap": 0.06411,
+     "planted": false,
+     "cx": -0.28634,
+     "cy": -0.27259
+    }
+   },
+   "head_top_z": 1.8962,
+   "standing_height": 0.8618
+  },
+  {
+   "frame": 177,
+   "feet": {
+    "L": {
+     "gap": 0.0024,
+     "planted": true,
+     "cx": -0.44553,
+     "cy": -0.19767
+    },
+    "R": {
+     "gap": 0.04575,
+     "planted": false,
+     "cx": -0.26987,
+     "cy": -0.24645
+    }
+   },
+   "head_top_z": 1.9009,
+   "standing_height": 0.8391
+  },
+  {
+   "frame": 178,
+   "feet": {
+    "L": {
+     "gap": 0.0025,
+     "planted": true,
+     "cx": -0.44556,
+     "cy": -0.19799
+    },
+    "R": {
+     "gap": 0.01962,
+     "planted": false,
+     "cx": -0.26107,
+     "cy": -0.22437
+    }
+   },
+   "head_top_z": 1.9059,
+   "standing_height": 0.8209
+  },
+  {
+   "frame": 179,
+   "feet": {
+    "L": {
+     "gap": 0.00261,
+     "planted": true,
+     "cx": -0.4414,
+     "cy": -0.19725
+    },
+    "R": {
+     "gap": 0.00219,
+     "planted": true,
+     "cx": -0.25971,
+     "cy": -0.21413
+    }
+   },
+   "head_top_z": 1.9111,
+   "standing_height": 0.8154
+  },
+  {
+   "frame": 180,
+   "feet": {
+    "L": {
+     "gap": 0.00268,
+     "planted": true,
+     "cx": -0.44143,
+     "cy": -0.19739
+    },
+    "R": {
+     "gap": 0.00219,
+     "planted": true,
+     "cx": -0.25969,
+     "cy": -0.2142
+    }
+   },
+   "head_top_z": 1.9162,
+   "standing_height": 0.8205
+  },
+  {
+   "frame": 181,
+   "feet": {
+    "L": {
+     "gap": 0.00319,
+     "planted": false,
+     "cx": -0.44594,
+     "cy": -0.19827
+    },
+    "R": {
+     "gap": 0.00219,
+     "planted": true,
+     "cx": -0.25963,
+     "cy": -0.21426
+    }
+   },
+   "head_top_z": 1.9212,
+   "standing_height": 0.8256
+  },
+  {
+   "frame": 182,
+   "feet": {
+    "L": {
+     "gap": 0.03759,
+     "planted": false,
+     "cx": -0.43868,
+     "cy": -0.20749
+    },
+    "R": {
+     "gap": 0.00222,
+     "planted": true,
+     "cx": -0.25951,
+     "cy": -0.21442
+    }
+   },
+   "head_top_z": 1.9299,
+   "standing_height": 0.8345
+  },
+  {
+   "frame": 183,
+   "feet": {
+    "L": {
+     "gap": 0.0585,
+     "planted": false,
+     "cx": -0.42789,
+     "cy": -0.20538
+    },
+    "R": {
+     "gap": 0.0023,
+     "planted": true,
+     "cx": -0.25934,
+     "cy": -0.21472
+    }
+   },
+   "head_top_z": 1.9408,
+   "standing_height": 0.8457
+  },
+  {
+   "frame": 184,
+   "feet": {
+    "L": {
+     "gap": 0.07275,
+     "planted": false,
+     "cx": -0.40893,
+     "cy": -0.19509
+    },
+    "R": {
+     "gap": 0.00239,
+     "planted": true,
+     "cx": -0.25931,
+     "cy": -0.21496
+    }
+   },
+   "head_top_z": 1.9459,
+   "standing_height": 0.851
+  },
+  {
+   "frame": 185,
+   "feet": {
+    "L": {
+     "gap": 0.0807,
+     "planted": false,
+     "cx": -0.38618,
+     "cy": -0.17462
+    },
+    "R": {
+     "gap": 0.00246,
+     "planted": true,
+     "cx": -0.25942,
+     "cy": -0.2151
+    }
+   },
+   "head_top_z": 1.9464,
+   "standing_height": 0.8517
+  },
+  {
+   "frame": 186,
+   "feet": {
+    "L": {
+     "gap": 0.08224,
+     "planted": false,
+     "cx": -0.36187,
+     "cy": -0.14928
+    },
+    "R": {
+     "gap": 0.00254,
+     "planted": true,
+     "cx": -0.25803,
+     "cy": -0.21414
+    }
+   },
+   "head_top_z": 1.9455,
+   "standing_height": 0.8497
+  },
+  {
+   "frame": 187,
+   "feet": {
+    "L": {
+     "gap": 0.07735,
+     "planted": false,
+     "cx": -0.3382,
+     "cy": -0.12148
+    },
+    "R": {
+     "gap": 0.00264,
+     "planted": true,
+     "cx": -0.25814,
+     "cy": -0.21427
+    }
+   },
+   "head_top_z": 1.9433,
+   "standing_height": 0.8477
+  },
+  {
+   "frame": 188,
+   "feet": {
+    "L": {
+     "gap": 0.06618,
+     "planted": false,
+     "cx": -0.31715,
+     "cy": -0.09378
+    },
+    "R": {
+     "gap": 0.00276,
+     "planted": true,
+     "cx": -0.25823,
+     "cy": -0.21442
+    }
+   },
+   "head_top_z": 1.9398,
+   "standing_height": 0.8444
+  },
+  {
+   "frame": 189,
+   "feet": {
+    "L": {
+     "gap": 0.04864,
+     "planted": false,
+     "cx": -0.30194,
+     "cy": -0.06723
+    },
+    "R": {
+     "gap": 0.00287,
+     "planted": true,
+     "cx": -0.25832,
+     "cy": -0.21456
+    }
+   },
+   "head_top_z": 1.9354,
+   "standing_height": 0.8401
+  },
+  {
+   "frame": 190,
+   "feet": {
+    "L": {
+     "gap": 0.02351,
+     "planted": false,
+     "cx": -0.29287,
+     "cy": -0.04479
+    },
+    "R": {
+     "gap": 0.00299,
+     "planted": true,
+     "cx": -0.25838,
+     "cy": -0.2147
+    }
+   },
+   "head_top_z": 1.9306,
+   "standing_height": 0.8355
+  },
+  {
+   "frame": 191,
+   "feet": {
+    "L": {
+     "gap": 0.00254,
+     "planted": true,
+     "cx": -0.28638,
+     "cy": -0.03195
+    },
+    "R": {
+     "gap": 0.00308,
+     "planted": true,
+     "cx": -0.25843,
+     "cy": -0.2148
+    }
+   },
+   "head_top_z": 1.926,
+   "standing_height": 0.831
+  },
+  {
+   "frame": 192,
+   "feet": {
+    "L": {
+     "gap": 0.0025,
+     "planted": true,
+     "cx": -0.29021,
+     "cy": -0.03286
+    },
+    "R": {
+     "gap": 0.00314,
+     "planted": true,
+     "cx": -0.25845,
+     "cy": -0.21487
+    }
+   },
+   "head_top_z": 1.9229,
+   "standing_height": 0.828
+  },
+  {
+   "frame": 193,
+   "feet": {
+    "L": {
+     "gap": 0.0025,
+     "planted": true,
+     "cx": -0.28996,
+     "cy": -0.03286
+    },
+    "R": {
+     "gap": 0.00317,
+     "planted": true,
+     "cx": -0.25844,
+     "cy": -0.21491
+    }
+   },
+   "head_top_z": 1.9216,
+   "standing_height": 0.8267
+  },
+  {
+   "frame": 194,
+   "feet": {
+    "L": {
+     "gap": 0.00253,
+     "planted": true,
+     "cx": -0.28679,
+     "cy": -0.0318
+    },
+    "R": {
+     "gap": 0.0351,
+     "planted": false,
+     "cx": -0.25556,
+     "cy": -0.22549
+    }
+   },
+   "head_top_z": 1.9341,
+   "standing_height": 0.8502
+  },
+  {
+   "frame": 195,
+   "feet": {
+    "L": {
+     "gap": 0.00255,
+     "planted": true,
+     "cx": -0.28733,
+     "cy": -0.03128
+    },
+    "R": {
+     "gap": 0.05687,
+     "planted": false,
+     "cx": -0.24336,
+     "cy": -0.22265
+    }
+   },
+   "head_top_z": 1.9585,
+   "standing_height": 0.8716
+  },
+  {
+   "frame": 196,
+   "feet": {
+    "L": {
+     "gap": 0.0024,
+     "planted": true,
+     "cx": -0.28876,
+     "cy": -0.0317
+    },
+    "R": {
+     "gap": 0.07187,
+     "planted": false,
+     "cx": -0.22498,
+     "cy": -0.20944
+    }
+   },
+   "head_top_z": 1.9924,
+   "standing_height": 0.8918
+  },
+  {
+   "frame": 197,
+   "feet": {
+    "L": {
+     "gap": 0.00225,
+     "planted": true,
+     "cx": -0.28777,
+     "cy": -0.03375
+    },
+    "R": {
+     "gap": 0.08046,
+     "planted": false,
+     "cx": -0.20259,
+     "cy": -0.18849
+    }
+   },
+   "head_top_z": 2.0306,
+   "standing_height": 0.908
+  },
+  {
+   "frame": 198,
+   "feet": {
+    "L": {
+     "gap": 0.00221,
+     "planted": true,
+     "cx": -0.29069,
+     "cy": -0.03192
+    },
+    "R": {
+     "gap": 0.08239,
+     "planted": false,
+     "cx": -0.17848,
+     "cy": -0.16204
+    }
+   },
+   "head_top_z": 2.0582,
+   "standing_height": 0.9078
+  },
+  {
+   "frame": 199,
+   "feet": {
+    "L": {
+     "gap": 0.00223,
+     "planted": true,
+     "cx": -0.2905,
+     "cy": -0.03216
+    },
+    "R": {
+     "gap": 0.0778,
+     "planted": false,
+     "cx": -0.15584,
+     "cy": -0.13481
+    }
+   },
+   "head_top_z": 2.0652,
+   "standing_height": 0.8864
+  },
+  {
+   "frame": 200,
+   "feet": {
+    "L": {
+     "gap": 0.00229,
+     "planted": true,
+     "cx": -0.2904,
+     "cy": -0.03247
+    },
+    "R": {
+     "gap": 0.06699,
+     "planted": false,
+     "cx": -0.13463,
+     "cy": -0.10501
+    }
+   },
+   "head_top_z": 2.0709,
+   "standing_height": 0.8608
+  },
+  {
+   "frame": 201,
+   "feet": {
+    "L": {
+     "gap": 0.00238,
+     "planted": true,
+     "cx": -0.29037,
+     "cy": -0.03281
+    },
+    "R": {
+     "gap": 0.04994,
+     "planted": false,
+     "cx": -0.11804,
+     "cy": -0.07745
+    }
+   },
+   "head_top_z": 2.0758,
+   "standing_height": 0.8369
+  },
+  {
+   "frame": 202,
+   "feet": {
+    "L": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": -0.2904,
+     "cy": -0.03315
+    },
+    "R": {
+     "gap": 0.02577,
+     "planted": false,
+     "cx": -0.10821,
+     "cy": -0.05413
+    }
+   },
+   "head_top_z": 2.0808,
+   "standing_height": 0.8174
+  },
+  {
+   "frame": 203,
+   "feet": {
+    "L": {
+     "gap": 0.00261,
+     "planted": true,
+     "cx": -0.28633,
+     "cy": -0.03225
+    },
+    "R": {
+     "gap": 0.00222,
+     "planted": true,
+     "cx": -0.105,
+     "cy": -0.04167
+    }
+   },
+   "head_top_z": 2.0859,
+   "standing_height": 0.8095
+  },
+  {
+   "frame": 204,
+   "feet": {
+    "L": {
+     "gap": 0.0027,
+     "planted": true,
+     "cx": -0.28637,
+     "cy": -0.03242
+    },
+    "R": {
+     "gap": 0.00222,
+     "planted": true,
+     "cx": -0.10565,
+     "cy": -0.03966
+    }
+   },
+   "head_top_z": 2.0911,
+   "standing_height": 0.8125
+  },
+  {
+   "frame": 205,
+   "feet": {
+    "L": {
+     "gap": 0.00276,
+     "planted": true,
+     "cx": -0.28639,
+     "cy": -0.03251
+    },
+    "R": {
+     "gap": 0.00221,
+     "planted": true,
+     "cx": -0.1056,
+     "cy": -0.0397
+    }
+   },
+   "head_top_z": 2.0957,
+   "standing_height": 0.8172
+  },
+  {
+   "frame": 206,
+   "feet": {
+    "L": {
+     "gap": 0.03242,
+     "planted": false,
+     "cx": -0.28628,
+     "cy": -0.04177
+    },
+    "R": {
+     "gap": 0.00222,
+     "planted": true,
+     "cx": -0.1055,
+     "cy": -0.03983
+    }
+   },
+   "head_top_z": 2.1038,
+   "standing_height": 0.8275
+  },
+  {
+   "frame": 207,
+   "feet": {
+    "L": {
+     "gap": 0.05484,
+     "planted": false,
+     "cx": -0.27621,
+     "cy": -0.04049
+    },
+    "R": {
+     "gap": 0.00226,
+     "planted": true,
+     "cx": -0.10535,
+     "cy": -0.04007
+    }
+   },
+   "head_top_z": 2.1147,
+   "standing_height": 0.837
+  },
+  {
+   "frame": 208,
+   "feet": {
+    "L": {
+     "gap": 0.07036,
+     "planted": false,
+     "cx": -0.26224,
+     "cy": -0.03296
+    },
+    "R": {
+     "gap": 0.00237,
+     "planted": true,
+     "cx": -0.10513,
+     "cy": -0.04046
+    }
+   },
+   "head_top_z": 2.1264,
+   "standing_height": 0.8487
+  },
+  {
+   "frame": 209,
+   "feet": {
+    "L": {
+     "gap": 0.07954,
+     "planted": false,
+     "cx": -0.24276,
+     "cy": -0.01322
+    },
+    "R": {
+     "gap": 0.00245,
+     "planted": true,
+     "cx": -0.10522,
+     "cy": -0.04062
+    }
+   },
+   "head_top_z": 2.1276,
+   "standing_height": 0.8501
+  },
+  {
+   "frame": 210,
+   "feet": {
+    "L": {
+     "gap": 0.08234,
+     "planted": false,
+     "cx": -0.22152,
+     "cy": 0.01192
+    },
+    "R": {
+     "gap": 0.00254,
+     "planted": true,
+     "cx": -0.10393,
+     "cy": -0.0396
+    }
+   },
+   "head_top_z": 2.127,
+   "standing_height": 0.8483
+  },
+  {
+   "frame": 211,
+   "feet": {
+    "L": {
+     "gap": 0.07869,
+     "planted": false,
+     "cx": -0.20049,
+     "cy": 0.04007
+    },
+    "R": {
+     "gap": 0.00264,
+     "planted": true,
+     "cx": -0.10404,
+     "cy": -0.03974
+    }
+   },
+   "head_top_z": 2.125,
+   "standing_height": 0.8465
+  },
+  {
+   "frame": 212,
+   "feet": {
+    "L": {
+     "gap": 0.06869,
+     "planted": false,
+     "cx": -0.18163,
+     "cy": 0.0687
+    },
+    "R": {
+     "gap": 0.00275,
+     "planted": true,
+     "cx": -0.10413,
+     "cy": -0.03989
+    }
+   },
+   "head_top_z": 2.1218,
+   "standing_height": 0.8435
+  },
+  {
+   "frame": 213,
+   "feet": {
+    "L": {
+     "gap": 0.05248,
+     "planted": false,
+     "cx": -0.16443,
+     "cy": 0.09586
+    },
+    "R": {
+     "gap": 0.00288,
+     "planted": true,
+     "cx": -0.10422,
+     "cy": -0.04005
+    }
+   },
+   "head_top_z": 2.1177,
+   "standing_height": 0.8396
+  },
+  {
+   "frame": 214,
+   "feet": {
+    "L": {
+     "gap": 0.0293,
+     "planted": false,
+     "cx": -0.15502,
+     "cy": 0.1189
+    },
+    "R": {
+     "gap": 0.00299,
+     "planted": true,
+     "cx": -0.1043,
+     "cy": -0.04018
+    }
+   },
+   "head_top_z": 2.1125,
+   "standing_height": 0.8345
+  },
+  {
+   "frame": 215,
+   "feet": {
+    "L": {
+     "gap": 0.00284,
+     "planted": true,
+     "cx": -0.15117,
+     "cy": 0.13619
+    },
+    "R": {
+     "gap": 0.00309,
+     "planted": true,
+     "cx": -0.10434,
+     "cy": -0.0403
+    }
+   },
+   "head_top_z": 2.1079,
+   "standing_height": 0.8301
+  },
+  {
+   "frame": 216,
+   "feet": {
+    "L": {
+     "gap": 0.00267,
+     "planted": true,
+     "cx": -0.15098,
+     "cy": 0.13639
+    },
+    "R": {
+     "gap": 0.00317,
+     "planted": true,
+     "cx": -0.10437,
+     "cy": -0.04039
+    }
+   },
+   "head_top_z": 2.1045,
+   "standing_height": 0.8267
+  },
+  {
+   "frame": 217,
+   "feet": {
+    "L": {
+     "gap": 0.00258,
+     "planted": true,
+     "cx": -0.15076,
+     "cy": 0.13646
+    },
+    "R": {
+     "gap": 0.00319,
+     "planted": true,
+     "cx": -0.10436,
+     "cy": -0.04042
+    }
+   },
+   "head_top_z": 2.103,
+   "standing_height": 0.8252
+  },
+  {
+   "frame": 218,
+   "feet": {
+    "L": {
+     "gap": 0.00262,
+     "planted": true,
+     "cx": -0.15119,
+     "cy": 0.13667
+    },
+    "R": {
+     "gap": 0.02972,
+     "planted": false,
+     "cx": -0.10395,
+     "cy": -0.04983
+    }
+   },
+   "head_top_z": 2.1117,
+   "standing_height": 0.8438
+  },
+  {
+   "frame": 219,
+   "feet": {
+    "L": {
+     "gap": 0.00259,
+     "planted": true,
+     "cx": -0.15143,
+     "cy": 0.13725
+    },
+    "R": {
+     "gap": 0.05306,
+     "planted": false,
+     "cx": -0.09475,
+     "cy": -0.04827
+    }
+   },
+   "head_top_z": 2.1351,
+   "standing_height": 0.8656
+  },
+  {
+   "frame": 220,
+   "feet": {
+    "L": {
+     "gap": 0.00238,
+     "planted": true,
+     "cx": -0.15187,
+     "cy": 0.13494
+    },
+    "R": {
+     "gap": 0.06934,
+     "planted": false,
+     "cx": -0.07985,
+     "cy": -0.03495
+    }
+   },
+   "head_top_z": 2.1702,
+   "standing_height": 0.8867
+  },
+  {
+   "frame": 221,
+   "feet": {
+    "L": {
+     "gap": 0.0022,
+     "planted": true,
+     "cx": -0.15114,
+     "cy": 0.13479
+    },
+    "R": {
+     "gap": 0.07919,
+     "planted": false,
+     "cx": -0.06114,
+     "cy": -0.01291
+    }
+   },
+   "head_top_z": 2.2112,
+   "standing_height": 0.9046
+  },
+  {
+   "frame": 222,
+   "feet": {
+    "L": {
+     "gap": 0.00216,
+     "planted": true,
+     "cx": -0.15434,
+     "cy": 0.13629
+    },
+    "R": {
+     "gap": 0.08236,
+     "planted": false,
+     "cx": -0.04063,
+     "cy": 0.01543
+    }
+   },
+   "head_top_z": 2.2383,
+   "standing_height": 0.902
+  },
+  {
+   "frame": 223,
+   "feet": {
+    "L": {
+     "gap": 0.00219,
+     "planted": true,
+     "cx": -0.15413,
+     "cy": 0.136
+    },
+    "R": {
+     "gap": 0.0791,
+     "planted": false,
+     "cx": -0.02088,
+     "cy": 0.04496
+    }
+   },
+   "head_top_z": 2.2464,
+   "standing_height": 0.8792
+  },
+  {
+   "frame": 224,
+   "feet": {
+    "L": {
+     "gap": 0.00226,
+     "planted": true,
+     "cx": -0.15402,
+     "cy": 0.13565
+    },
+    "R": {
+     "gap": 0.06961,
+     "planted": false,
+     "cx": -0.00213,
+     "cy": 0.07735
+    }
+   },
+   "head_top_z": 2.253,
+   "standing_height": 0.8518
+  },
+  {
+   "frame": 225,
+   "feet": {
+    "L": {
+     "gap": 0.00236,
+     "planted": true,
+     "cx": -0.15398,
+     "cy": 0.13527
+    },
+    "R": {
+     "gap": 0.0539,
+     "planted": false,
+     "cx": 0.01505,
+     "cy": 0.10618
+    }
+   },
+   "head_top_z": 2.2587,
+   "standing_height": 0.8273
+  },
+  {
+   "frame": 226,
+   "feet": {
+    "L": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": -0.154,
+     "cy": 0.13488
+    },
+    "R": {
+     "gap": 0.03143,
+     "planted": false,
+     "cx": 0.02474,
+     "cy": 0.13169
+    }
+   },
+   "head_top_z": 2.2642,
+   "standing_height": 0.8061
+  },
+  {
+   "frame": 227,
+   "feet": {
+    "L": {
+     "gap": 0.00262,
+     "planted": true,
+     "cx": -0.15021,
+     "cy": 0.13617
+    },
+    "R": {
+     "gap": 0.00237,
+     "planted": true,
+     "cx": 0.02761,
+     "cy": 0.15044
+    }
+   },
+   "head_top_z": 2.2698,
+   "standing_height": 0.807
+  },
+  {
+   "frame": 228,
+   "feet": {
+    "L": {
+     "gap": 0.00274,
+     "planted": true,
+     "cx": -0.15027,
+     "cy": 0.13598
+    },
+    "R": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": 0.02766,
+     "cy": 0.15041
+    }
+   },
+   "head_top_z": 2.2753,
+   "standing_height": 0.8127
+  },
+  {
+   "frame": 229,
+   "feet": {
+    "L": {
+     "gap": 0.00282,
+     "planted": true,
+     "cx": -0.1503,
+     "cy": 0.13585
+    },
+    "R": {
+     "gap": 0.00234,
+     "planted": true,
+     "cx": 0.02771,
+     "cy": 0.15038
+    }
+   },
+   "head_top_z": 2.2799,
+   "standing_height": 0.8175
+  },
+  {
+   "frame": 230,
+   "feet": {
+    "L": {
+     "gap": 0.02678,
+     "planted": false,
+     "cx": -0.15191,
+     "cy": 0.12647
+    },
+    "R": {
+     "gap": 0.00231,
+     "planted": true,
+     "cx": 0.02781,
+     "cy": 0.1503
+    }
+   },
+   "head_top_z": 2.2874,
+   "standing_height": 0.8348
+  },
+  {
+   "frame": 231,
+   "feet": {
+    "L": {
+     "gap": 0.05089,
+     "planted": false,
+     "cx": -0.14687,
+     "cy": 0.12438
+    },
+    "R": {
+     "gap": 0.00229,
+     "planted": true,
+     "cx": 0.028,
+     "cy": 0.15012
+    }
+   },
+   "head_top_z": 2.2984,
+   "standing_height": 0.8479
+  },
+  {
+   "frame": 232,
+   "feet": {
+    "L": {
+     "gap": 0.06771,
+     "planted": false,
+     "cx": -0.13833,
+     "cy": 0.13281
+    },
+    "R": {
+     "gap": 0.00231,
+     "planted": true,
+     "cx": 0.02712,
+     "cy": 0.15181
+    }
+   },
+   "head_top_z": 2.3108,
+   "standing_height": 0.8515
+  },
+  {
+   "frame": 233,
+   "feet": {
+    "L": {
+     "gap": 0.07814,
+     "planted": false,
+     "cx": -0.12769,
+     "cy": 0.14676
+    },
+    "R": {
+     "gap": 0.0024,
+     "planted": true,
+     "cx": 0.02732,
+     "cy": 0.1514
+    }
+   },
+   "head_top_z": 2.3229,
+   "standing_height": 0.849
+  },
+  {
+   "frame": 234,
+   "feet": {
+    "L": {
+     "gap": 0.08216,
+     "planted": false,
+     "cx": -0.11541,
+     "cy": 0.16896
+    },
+    "R": {
+     "gap": 0.00254,
+     "planted": true,
+     "cx": 0.02844,
+     "cy": 0.15236
+    }
+   },
+   "head_top_z": 2.3277,
+   "standing_height": 0.8479
+  },
+  {
+   "frame": 235,
+   "feet": {
+    "L": {
+     "gap": 0.07973,
+     "planted": false,
+     "cx": -0.10479,
+     "cy": 0.19388
+    },
+    "R": {
+     "gap": 0.00266,
+     "planted": true,
+     "cx": 0.0283,
+     "cy": 0.1522
+    }
+   },
+   "head_top_z": 2.326,
+   "standing_height": 0.8464
+  },
+  {
+   "frame": 236,
+   "feet": {
+    "L": {
+     "gap": 0.07091,
+     "planted": false,
+     "cx": -0.09334,
+     "cy": 0.22109
+    },
+    "R": {
+     "gap": 0.00279,
+     "planted": true,
+     "cx": 0.02815,
+     "cy": 0.15203
+    }
+   },
+   "head_top_z": 2.3226,
+   "standing_height": 0.8432
+  },
+  {
+   "frame": 237,
+   "feet": {
+    "L": {
+     "gap": 0.05585,
+     "planted": false,
+     "cx": -0.08412,
+     "cy": 0.24745
+    },
+    "R": {
+     "gap": 0.00293,
+     "planted": true,
+     "cx": 0.028,
+     "cy": 0.15184
+    }
+   },
+   "head_top_z": 2.3179,
+   "standing_height": 0.8387
+  },
+  {
+   "frame": 238,
+   "feet": {
+    "L": {
+     "gap": 0.03437,
+     "planted": false,
+     "cx": -0.07427,
+     "cy": 0.27064
+    },
+    "R": {
+     "gap": 0.00307,
+     "planted": true,
+     "cx": 0.02787,
+     "cy": 0.15167
+    }
+   },
+   "head_top_z": 2.3123,
+   "standing_height": 0.8332
+  },
+  {
+   "frame": 239,
+   "feet": {
+    "L": {
+     "gap": 0.00293,
+     "planted": true,
+     "cx": -0.07089,
+     "cy": 0.29304
+    },
+    "R": {
+     "gap": 0.0032,
+     "planted": true,
+     "cx": 0.02776,
+     "cy": 0.15151
+    }
+   },
+   "head_top_z": 2.307,
+   "standing_height": 0.8281
+  },
+  {
+   "frame": 240,
+   "feet": {
+    "L": {
+     "gap": 0.00278,
+     "planted": true,
+     "cx": -0.07071,
+     "cy": 0.29305
+    },
+    "R": {
+     "gap": 0.00329,
+     "planted": true,
+     "cx": 0.02769,
+     "cy": 0.15141
+    }
+   },
+   "head_top_z": 2.3025,
+   "standing_height": 0.8237
+  },
+  {
+   "frame": 241,
+   "feet": {
+    "L": {
+     "gap": 0.00269,
+     "planted": true,
+     "cx": -0.07083,
+     "cy": 0.29296
+    },
+    "R": {
+     "gap": 0.00332,
+     "planted": true,
+     "cx": 0.02855,
+     "cy": 0.15327
+    }
+   },
+   "head_top_z": 2.3008,
+   "standing_height": 0.82
+  },
+  {
+   "frame": 242,
+   "feet": {
+    "L": {
+     "gap": 0.00261,
+     "planted": true,
+     "cx": -0.07082,
+     "cy": 0.29288
+    },
+    "R": {
+     "gap": 0.0239,
+     "planted": false,
+     "cx": 0.0277,
+     "cy": 0.14195
+    }
+   },
+   "head_top_z": 2.3059,
+   "standing_height": 0.837
+  },
+  {
+   "frame": 243,
+   "feet": {
+    "L": {
+     "gap": 0.00248,
+     "planted": true,
+     "cx": -0.07089,
+     "cy": 0.29191
+    },
+    "R": {
+     "gap": 0.04907,
+     "planted": false,
+     "cx": 0.03025,
+     "cy": 0.13708
+    }
+   },
+   "head_top_z": 2.3225,
+   "standing_height": 0.8587
+  },
+  {
+   "frame": 244,
+   "feet": {
+    "L": {
+     "gap": 0.00233,
+     "planted": true,
+     "cx": -0.07287,
+     "cy": 0.29163
+    },
+    "R": {
+     "gap": 0.06666,
+     "planted": false,
+     "cx": 0.03476,
+     "cy": 0.14195
+    }
+   },
+   "head_top_z": 2.3481,
+   "standing_height": 0.8792
+  },
+  {
+   "frame": 245,
+   "feet": {
+    "L": {
+     "gap": 0.00219,
+     "planted": true,
+     "cx": -0.07236,
+     "cy": 0.29131
+    },
+    "R": {
+     "gap": 0.07782,
+     "planted": false,
+     "cx": 0.04256,
+     "cy": 0.15292
+    }
+   },
+   "head_top_z": 2.379,
+   "standing_height": 0.8986
+  },
+  {
+   "frame": 246,
+   "feet": {
+    "L": {
+     "gap": 0.00212,
+     "planted": true,
+     "cx": -0.07201,
+     "cy": 0.29091
+    },
+    "R": {
+     "gap": 0.08237,
+     "planted": false,
+     "cx": 0.0491,
+     "cy": 0.17084
+    }
+   },
+   "head_top_z": 2.4035,
+   "standing_height": 0.9044
+  },
+  {
+   "frame": 247,
+   "feet": {
+    "L": {
+     "gap": 0.00213,
+     "planted": true,
+     "cx": -0.07186,
+     "cy": 0.2909
+    },
+    "R": {
+     "gap": 0.08031,
+     "planted": false,
+     "cx": 0.05335,
+     "cy": 0.19268
+    }
+   },
+   "head_top_z": 2.4034,
+   "standing_height": 0.8813
+  },
+  {
+   "frame": 248,
+   "feet": {
+    "L": {
+     "gap": 0.00215,
+     "planted": true,
+     "cx": -0.07169,
+     "cy": 0.2909
+    },
+    "R": {
+     "gap": 0.07202,
+     "planted": false,
+     "cx": 0.05906,
+     "cy": 0.21468
+    }
+   },
+   "head_top_z": 2.4017,
+   "standing_height": 0.8566
+  },
+  {
+   "frame": 249,
+   "feet": {
+    "L": {
+     "gap": 0.00217,
+     "planted": true,
+     "cx": -0.0715,
+     "cy": 0.29089
+    },
+    "R": {
+     "gap": 0.05756,
+     "planted": false,
+     "cx": 0.0641,
+     "cy": 0.23818
+    }
+   },
+   "head_top_z": 2.3996,
+   "standing_height": 0.8299
+  },
+  {
+   "frame": 250,
+   "feet": {
+    "L": {
+     "gap": 0.00219,
+     "planted": true,
+     "cx": -0.07344,
+     "cy": 0.29198
+    },
+    "R": {
+     "gap": 0.03665,
+     "planted": false,
+     "cx": 0.06953,
+     "cy": 0.25997
+    }
+   },
+   "head_top_z": 2.3983,
+   "standing_height": 0.8058
+  },
+  {
+   "frame": 251,
+   "feet": {
+    "L": {
+     "gap": 0.00221,
+     "planted": true,
+     "cx": -0.0733,
+     "cy": 0.29188
+    },
+    "R": {
+     "gap": 0.00259,
+     "planted": true,
+     "cx": 0.07345,
+     "cy": 0.28256
+    }
+   },
+   "head_top_z": 2.3989,
+   "standing_height": 0.7826
+  },
+  {
+   "frame": 252,
+   "feet": {
+    "L": {
+     "gap": 0.0022,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29169
+    },
+    "R": {
+     "gap": 0.00251,
+     "planted": true,
+     "cx": 0.07075,
+     "cy": 0.28176
+    }
+   },
+   "head_top_z": 2.4084,
+   "standing_height": 0.793
+  },
+  {
+   "frame": 253,
+   "feet": {
+    "L": {
+     "gap": 0.0022,
+     "planted": true,
+     "cx": -0.07325,
+     "cy": 0.29161
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.07083,
+     "cy": 0.28174
+    }
+   },
+   "head_top_z": 2.411,
+   "standing_height": 0.7956
+  },
+  {
+   "frame": 254,
+   "feet": {
+    "L": {
+     "gap": 0.00221,
+     "planted": true,
+     "cx": -0.07323,
+     "cy": 0.29155
+    },
+    "R": {
+     "gap": 0.00247,
+     "planted": true,
+     "cx": 0.07088,
+     "cy": 0.28172
+    }
+   },
+   "head_top_z": 2.4134,
+   "standing_height": 0.798
+  },
+  {
+   "frame": 255,
+   "feet": {
+    "L": {
+     "gap": 0.00221,
+     "planted": true,
+     "cx": -0.07322,
+     "cy": 0.29151
+    },
+    "R": {
+     "gap": 0.00245,
+     "planted": true,
+     "cx": 0.07092,
+     "cy": 0.2817
+    }
+   },
+   "head_top_z": 2.4155,
+   "standing_height": 0.8001
+  },
+  {
+   "frame": 256,
+   "feet": {
+    "L": {
+     "gap": 0.00221,
+     "planted": true,
+     "cx": -0.0732,
+     "cy": 0.29148
+    },
+    "R": {
+     "gap": 0.00244,
+     "planted": true,
+     "cx": 0.07095,
+     "cy": 0.28168
+    }
+   },
+   "head_top_z": 2.4175,
+   "standing_height": 0.8022
+  },
+  {
+   "frame": 257,
+   "feet": {
+    "L": {
+     "gap": 0.00221,
+     "planted": true,
+     "cx": -0.07319,
+     "cy": 0.29144
+    },
+    "R": {
+     "gap": 0.00243,
+     "planted": true,
+     "cx": 0.07098,
+     "cy": 0.28166
+    }
+   },
+   "head_top_z": 2.4199,
+   "standing_height": 0.8046
+  },
+  {
+   "frame": 258,
+   "feet": {
+    "L": {
+     "gap": 0.00222,
+     "planted": true,
+     "cx": -0.07317,
+     "cy": 0.2914
+    },
+    "R": {
+     "gap": 0.00242,
+     "planted": true,
+     "cx": 0.07102,
+     "cy": 0.28164
+    }
+   },
+   "head_top_z": 2.4225,
+   "standing_height": 0.8072
+  },
+  {
+   "frame": 259,
+   "feet": {
+    "L": {
+     "gap": 0.00222,
+     "planted": true,
+     "cx": -0.07315,
+     "cy": 0.29135
+    },
+    "R": {
+     "gap": 0.00241,
+     "planted": true,
+     "cx": 0.07106,
+     "cy": 0.28161
+    }
+   },
+   "head_top_z": 2.4253,
+   "standing_height": 0.8101
+  },
+  {
+   "frame": 260,
+   "feet": {
+    "L": {
+     "gap": 0.00222,
+     "planted": true,
+     "cx": -0.07314,
+     "cy": 0.2913
+    },
+    "R": {
+     "gap": 0.0024,
+     "planted": true,
+     "cx": 0.07111,
+     "cy": 0.28157
+    }
+   },
+   "head_top_z": 2.4284,
+   "standing_height": 0.8132
+  },
+  {
+   "frame": 261,
+   "feet": {
+    "L": {
+     "gap": 0.00223,
+     "planted": true,
+     "cx": -0.07312,
+     "cy": 0.29125
+    },
+    "R": {
+     "gap": 0.00239,
+     "planted": true,
+     "cx": 0.07116,
+     "cy": 0.28153
+    }
+   },
+   "head_top_z": 2.4316,
+   "standing_height": 0.8164
+  },
+  {
+   "frame": 262,
+   "feet": {
+    "L": {
+     "gap": 0.00223,
+     "planted": true,
+     "cx": -0.07311,
+     "cy": 0.29118
+    },
+    "R": {
+     "gap": 0.00238,
+     "planted": true,
+     "cx": 0.07121,
+     "cy": 0.28149
+    }
+   },
+   "head_top_z": 2.4349,
+   "standing_height": 0.8198
+  },
+  {
+   "frame": 263,
+   "feet": {
+    "L": {
+     "gap": 0.00224,
+     "planted": true,
+     "cx": -0.0731,
+     "cy": 0.29112
+    },
+    "R": {
+     "gap": 0.00237,
+     "planted": true,
+     "cx": 0.07127,
+     "cy": 0.28144
+    }
+   },
+   "head_top_z": 2.4383,
+   "standing_height": 0.8232
+  },
+  {
+   "frame": 264,
+   "feet": {
+    "L": {
+     "gap": 0.00224,
+     "planted": true,
+     "cx": -0.07309,
+     "cy": 0.29105
+    },
+    "R": {
+     "gap": 0.00236,
+     "planted": true,
+     "cx": 0.07133,
+     "cy": 0.28139
+    }
+   },
+   "head_top_z": 2.4417,
+   "standing_height": 0.8267
+  },
+  {
+   "frame": 265,
+   "feet": {
+    "L": {
+     "gap": 0.00225,
+     "planted": true,
+     "cx": -0.07308,
+     "cy": 0.29097
+    },
+    "R": {
+     "gap": 0.00236,
+     "planted": true,
+     "cx": 0.0714,
+     "cy": 0.28133
+    }
+   },
+   "head_top_z": 2.4452,
+   "standing_height": 0.8302
+  },
+  {
+   "frame": 266,
+   "feet": {
+    "L": {
+     "gap": 0.00226,
+     "planted": true,
+     "cx": -0.07308,
+     "cy": 0.29089
+    },
+    "R": {
+     "gap": 0.00236,
+     "planted": true,
+     "cx": 0.07146,
+     "cy": 0.28127
+    }
+   },
+   "head_top_z": 2.4486,
+   "standing_height": 0.8337
+  },
+  {
+   "frame": 267,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.07309,
+     "cy": 0.29081
+    },
+    "R": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": 0.07153,
+     "cy": 0.2812
+    }
+   },
+   "head_top_z": 2.4519,
+   "standing_height": 0.8372
+  },
+  {
+   "frame": 268,
+   "feet": {
+    "L": {
+     "gap": 0.00227,
+     "planted": true,
+     "cx": -0.07309,
+     "cy": 0.29073
+    },
+    "R": {
+     "gap": 0.00236,
+     "planted": true,
+     "cx": 0.0716,
+     "cy": 0.28113
+    }
+   },
+   "head_top_z": 2.4552,
+   "standing_height": 0.8405
+  },
+  {
+   "frame": 269,
+   "feet": {
+    "L": {
+     "gap": 0.00228,
+     "planted": true,
+     "cx": -0.07311,
+     "cy": 0.29065
+    },
+    "R": {
+     "gap": 0.00236,
+     "planted": true,
+     "cx": 0.07167,
+     "cy": 0.28105
+    }
+   },
+   "head_top_z": 2.4583,
+   "standing_height": 0.8437
+  },
+  {
+   "frame": 270,
+   "feet": {
+    "L": {
+     "gap": 0.00229,
+     "planted": true,
+     "cx": -0.07312,
+     "cy": 0.29056
+    },
+    "R": {
+     "gap": 0.00237,
+     "planted": true,
+     "cx": 0.07175,
+     "cy": 0.28097
+    }
+   },
+   "head_top_z": 2.4613,
+   "standing_height": 0.8468
+  },
+  {
+   "frame": 271,
+   "feet": {
+    "L": {
+     "gap": 0.0023,
+     "planted": true,
+     "cx": -0.07314,
+     "cy": 0.29048
+    },
+    "R": {
+     "gap": 0.00238,
+     "planted": true,
+     "cx": 0.07182,
+     "cy": 0.28089
+    }
+   },
+   "head_top_z": 2.4641,
+   "standing_height": 0.8497
+  },
+  {
+   "frame": 272,
+   "feet": {
+    "L": {
+     "gap": 0.00231,
+     "planted": true,
+     "cx": -0.07317,
+     "cy": 0.2904
+    },
+    "R": {
+     "gap": 0.0024,
+     "planted": true,
+     "cx": 0.07189,
+     "cy": 0.28081
+    }
+   },
+   "head_top_z": 2.4668,
+   "standing_height": 0.8524
+  },
+  {
+   "frame": 273,
+   "feet": {
+    "L": {
+     "gap": 0.00232,
+     "planted": true,
+     "cx": -0.0732,
+     "cy": 0.29032
+    },
+    "R": {
+     "gap": 0.00241,
+     "planted": true,
+     "cx": 0.06985,
+     "cy": 0.28213
+    }
+   },
+   "head_top_z": 2.4692,
+   "standing_height": 0.8534
+  },
+  {
+   "frame": 274,
+   "feet": {
+    "L": {
+     "gap": 0.00233,
+     "planted": true,
+     "cx": -0.07323,
+     "cy": 0.29025
+    },
+    "R": {
+     "gap": 0.00243,
+     "planted": true,
+     "cx": 0.06989,
+     "cy": 0.28205
+    }
+   },
+   "head_top_z": 2.4713,
+   "standing_height": 0.8557
+  },
+  {
+   "frame": 275,
+   "feet": {
+    "L": {
+     "gap": 0.00234,
+     "planted": true,
+     "cx": -0.07325,
+     "cy": 0.29018
+    },
+    "R": {
+     "gap": 0.00245,
+     "planted": true,
+     "cx": 0.06994,
+     "cy": 0.28197
+    }
+   },
+   "head_top_z": 2.4733,
+   "standing_height": 0.8577
+  },
+  {
+   "frame": 276,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29012
+    },
+    "R": {
+     "gap": 0.00247,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.2819
+    }
+   },
+   "head_top_z": 2.4749,
+   "standing_height": 0.8594
+  },
+  {
+   "frame": 277,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07329,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06999,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4757,
+   "standing_height": 0.8603
+  },
+  {
+   "frame": 278,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07329,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06999,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4757,
+   "standing_height": 0.8602
+  },
+  {
+   "frame": 279,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4756,
+   "standing_height": 0.8601
+  },
+  {
+   "frame": 280,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4755,
+   "standing_height": 0.8601
+  },
+  {
+   "frame": 281,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4755,
+   "standing_height": 0.8601
+  },
+  {
+   "frame": 282,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4755,
+   "standing_height": 0.86
+  },
+  {
+   "frame": 283,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4755,
+   "standing_height": 0.86
+  },
+  {
+   "frame": 284,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4755,
+   "standing_height": 0.86
+  },
+  {
+   "frame": 285,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4755,
+   "standing_height": 0.86
+  },
+  {
+   "frame": 286,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4755,
+   "standing_height": 0.86
+  },
+  {
+   "frame": 287,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4755,
+   "standing_height": 0.86
+  },
+  {
+   "frame": 288,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4755,
+   "standing_height": 0.86
+  },
+  {
+   "frame": 289,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4755,
+   "standing_height": 0.86
+  },
+  {
+   "frame": 290,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4755,
+   "standing_height": 0.86
+  },
+  {
+   "frame": 291,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4754,
+   "standing_height": 0.86
+  },
+  {
+   "frame": 292,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4754,
+   "standing_height": 0.86
+  },
+  {
+   "frame": 293,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4754,
+   "standing_height": 0.86
+  },
+  {
+   "frame": 294,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4754,
+   "standing_height": 0.8599
+  },
+  {
+   "frame": 295,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4754,
+   "standing_height": 0.8599
+  },
+  {
+   "frame": 296,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4754,
+   "standing_height": 0.8599
+  },
+  {
+   "frame": 297,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4754,
+   "standing_height": 0.8599
+  },
+  {
+   "frame": 298,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4754,
+   "standing_height": 0.8599
+  },
+  {
+   "frame": 299,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4754,
+   "standing_height": 0.8599
+  },
+  {
+   "frame": 300,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4754,
+   "standing_height": 0.8599
+  },
+  {
+   "frame": 301,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4753,
+   "standing_height": 0.8598
+  },
+  {
+   "frame": 302,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4752,
+   "standing_height": 0.8598
+  },
+  {
+   "frame": 303,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4751,
+   "standing_height": 0.8596
+  },
+  {
+   "frame": 304,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4749,
+   "standing_height": 0.8594
+  },
+  {
+   "frame": 305,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4747,
+   "standing_height": 0.8592
+  },
+  {
+   "frame": 306,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4745,
+   "standing_height": 0.859
+  },
+  {
+   "frame": 307,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4742,
+   "standing_height": 0.8587
+  },
+  {
+   "frame": 308,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4738,
+   "standing_height": 0.8583
+  },
+  {
+   "frame": 309,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4732,
+   "standing_height": 0.8578
+  },
+  {
+   "frame": 310,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4725,
+   "standing_height": 0.857
+  },
+  {
+   "frame": 311,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4719,
+   "standing_height": 0.8564
+  },
+  {
+   "frame": 312,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4711,
+   "standing_height": 0.8556
+  },
+  {
+   "frame": 313,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.47,
+   "standing_height": 0.8546
+  },
+  {
+   "frame": 314,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4688,
+   "standing_height": 0.8533
+  },
+  {
+   "frame": 315,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4677,
+   "standing_height": 0.8522
+  },
+  {
+   "frame": 316,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4663,
+   "standing_height": 0.8508
+  },
+  {
+   "frame": 317,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4647,
+   "standing_height": 0.8492
+  },
+  {
+   "frame": 318,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4631,
+   "standing_height": 0.8476
+  },
+  {
+   "frame": 319,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4613,
+   "standing_height": 0.8459
+  },
+  {
+   "frame": 320,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4594,
+   "standing_height": 0.8439
+  },
+  {
+   "frame": 321,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4574,
+   "standing_height": 0.8419
+  },
+  {
+   "frame": 322,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4554,
+   "standing_height": 0.8399
+  },
+  {
+   "frame": 323,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4532,
+   "standing_height": 0.8377
+  },
+  {
+   "frame": 324,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4509,
+   "standing_height": 0.8354
+  },
+  {
+   "frame": 325,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4488,
+   "standing_height": 0.8333
+  },
+  {
+   "frame": 326,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4466,
+   "standing_height": 0.8311
+  },
+  {
+   "frame": 327,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4443,
+   "standing_height": 0.8288
+  },
+  {
+   "frame": 328,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4421,
+   "standing_height": 0.8266
+  },
+  {
+   "frame": 329,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.44,
+   "standing_height": 0.8246
+  },
+  {
+   "frame": 330,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.438,
+   "standing_height": 0.8225
+  },
+  {
+   "frame": 331,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.436,
+   "standing_height": 0.8206
+  },
+  {
+   "frame": 332,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4342,
+   "standing_height": 0.8187
+  },
+  {
+   "frame": 333,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4326,
+   "standing_height": 0.8171
+  },
+  {
+   "frame": 334,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4312,
+   "standing_height": 0.8157
+  },
+  {
+   "frame": 335,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.43,
+   "standing_height": 0.8145
+  },
+  {
+   "frame": 336,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4289,
+   "standing_height": 0.8134
+  },
+  {
+   "frame": 337,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.428,
+   "standing_height": 0.8125
+  },
+  {
+   "frame": 338,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4273,
+   "standing_height": 0.8118
+  },
+  {
+   "frame": 339,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4268,
+   "standing_height": 0.8114
+  },
+  {
+   "frame": 340,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4266,
+   "standing_height": 0.8112
+  },
+  {
+   "frame": 341,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4266,
+   "standing_height": 0.8111
+  },
+  {
+   "frame": 342,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4265,
+   "standing_height": 0.8111
+  },
+  {
+   "frame": 343,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4265,
+   "standing_height": 0.811
+  },
+  {
+   "frame": 344,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4264,
+   "standing_height": 0.811
+  },
+  {
+   "frame": 345,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4264,
+   "standing_height": 0.8109
+  },
+  {
+   "frame": 346,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4263,
+   "standing_height": 0.8109
+  },
+  {
+   "frame": 347,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4263,
+   "standing_height": 0.8108
+  },
+  {
+   "frame": 348,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4262,
+   "standing_height": 0.8108
+  },
+  {
+   "frame": 349,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4262,
+   "standing_height": 0.8107
+  },
+  {
+   "frame": 350,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4262,
+   "standing_height": 0.8107
+  },
+  {
+   "frame": 351,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4261,
+   "standing_height": 0.8107
+  },
+  {
+   "frame": 352,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4261,
+   "standing_height": 0.8106
+  },
+  {
+   "frame": 353,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.4261,
+   "standing_height": 0.8106
+  },
+  {
+   "frame": 354,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.426,
+   "standing_height": 0.8106
+  },
+  {
+   "frame": 355,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.426,
+   "standing_height": 0.8105
+  },
+  {
+   "frame": 356,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.426,
+   "standing_height": 0.8105
+  },
+  {
+   "frame": 357,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.426,
+   "standing_height": 0.8105
+  },
+  {
+   "frame": 358,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.426,
+   "standing_height": 0.8105
+  },
+  {
+   "frame": 359,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.426,
+   "standing_height": 0.8105
+  },
+  {
+   "frame": 360,
+   "feet": {
+    "L": {
+     "gap": 0.00235,
+     "planted": true,
+     "cx": -0.07328,
+     "cy": 0.29009
+    },
+    "R": {
+     "gap": 0.00249,
+     "planted": true,
+     "cx": 0.06998,
+     "cy": 0.28185
+    }
+   },
+   "head_top_z": 2.426,
+   "standing_height": 0.8105
+  }
+ ]
+}

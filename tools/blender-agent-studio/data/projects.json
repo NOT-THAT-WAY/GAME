@@ -1,0 +1,5 @@
+{
+  "schema_version": 2,
+  "projects": [],
+  "note": "Optional hand-authored metadata for local Blender projects. Historical scenes are indexed in catalog/blender-scenes.json."
+}

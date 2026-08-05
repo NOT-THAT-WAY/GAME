@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "workflow": "validate-mecha-mascot-export",
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/asset_library/characters/mecha-mascot-v001.glb",
+  "bytes": 2067272,
+  "passed": true,
+  "mesh_count": 2,
+  "objects": [
+    "K3_MECHA_MASCOT_ROOT",
+    "K3_MECHA_BODY",
+    "K3_MECHA_HEAD"
+  ],
+  "mesh_checks": [
+    {
+      "object": "K3_MECHA_BODY",
+      "vertices": 32122,
+      "faces": 64240,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "materials": [
+        "K3_MECHA_MAT_BODY"
+      ]
+    },
+    {
+      "object": "K3_MECHA_HEAD",
+      "vertices": 1986,
+      "faces": 3968,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "materials": [
+        "K3_MECHA_MAT_BODY"
+      ]
+    }
+  ]
+}

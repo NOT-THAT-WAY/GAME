@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pulsed-bench-demo-v001",
+  "status": "completed",
+  "scored_at": "2026-07-30",
+  "overall_score": 76.3,
+  "raw_score": 76.3,
+  "verdict": "revise",
+  "critical_failures": [],
+  "categories": {
+    "physics_affordance": {
+      "weight": 20,
+      "score": 88,
+      "comment": "Appui reel et mesure : penetration, ecart et drift a 0,000 mm sur les 144 frames, 0 paire BVH en intersection, clearance camera 116 mm. Plan d'appui derive du mesh du banc, matrice du parent anime recalculee a chaque frame. Contrat d'objet ecrit et respecte. Retire de la note : les courses sont jouees sans main visible, convention declaree mais qui affaiblit l'affordance.",
+      "evidence": [
+        "diagnostics/physical-validation.json",
+        "diagnostics/physics-timeline.csv",
+        "gates/proof-support.png",
+        "gates/proof-side.png"
+      ]
+    },
+    "causality_continuity": {
+      "weight": 15,
+      "score": 72,
+      "comment": "La chaine etat vers cause vers action vers consequence vers repos existe et se lit : molette puis gain puis melange puis validation, avec l'ecran qui suit les memes valeurs. Mais la cause premiere reste conventionnelle : aucune main n'entre dans le champ, donc le premier mouvement de molette est postule plutot que motive.",
+      "evidence": ["renders/preview.mp4", "brief.json", "gates/contact-sheet.jpg"]
+    },
+    "composition_camera": {
+      "weight": 15,
+      "score": 64,
+      "comment": "Les 4 poses Drumboiii sont en place et le recovery s'arrete net, sans derive. Mais l'ouverture est trop rasante : aux frames 1 a 30 l'ecran n'est pas lisible et on lit surtout la tranche. Une bande noire non expliquee traverse le haut du cadre vers la frame 30, la camera voyant au-dela du plateau. Deux defauts de cadrage reels.",
+      "evidence": ["gates/contact-sheet.jpg", "shot-manifest.json", "gates/proof-hero.png"]
+    },
+    "motion_rhythm": {
+      "weight": 15,
+      "score": 78,
+      "comment": "Anticipation courte de la molette avant sa rotation, action etalee, creux d'amplitude a l'appui D-pad puis retour : le rythme respire. La jauge DEPTH se remplit segment par segment pendant la course du gain, ce qui lie visiblement commande et affichage. Le settle final est un peu court.",
+      "evidence": ["renders/preview.mp4", "gates/contact-sheet.jpg"]
+    },
+    "lighting": {
+      "weight": 15,
+      "score": 76,
+      "comment": "Rig par couches fonctionnelles avec gate cumulatif a 6 rendus, monde HDRI separe du ciel camera par Is Camera Ray. Les watts du tutoriel ont ete recalibres sur un sujet de 16 cm au lieu d'etre recopies. Reste un lavage speculaire sur la moitie droite de la coque, qui blanchit le plastique au lieu de l'expliquer.",
+      "evidence": [
+        "gates/lighting-gate-manifest.json",
+        "gates/lighting/00_BASE_WORLD.png",
+        "gates/lighting/05_DETAIL_RETURN.png"
+      ]
+    },
+    "materials_color_typography": {
+      "weight": 10,
+      "score": 62,
+      "comment": "Amethyste translucide credible, PCB lisible au travers sans brouillard, ecran teal non clippe. Le logo UNRECORDED est du vrai glyphe trace depuis l'asset de marque. Mais le wordmark Pulsed est encore en police Blender par defaut : c'est un defaut d'identite visible, declare et non masque.",
+      "evidence": [
+        "gates/proof-hero.png",
+        "gates/lighting/05_DETAIL_RETURN.png",
+        "brief.json"
+      ]
+    },
+    "technical_integrity": {
+      "weight": 10,
+      "score": 90,
+      "comment": "144 frames rendues, aucune manquante ni corrompue, duree 6,000 s exactement conforme au brief, 960x540, Cycles 64 samples, AgX. Source jamais ouverte ni ecrasee : le modele est append. Paquet complet et audit technique produit.",
+      "evidence": [
+        "renders/preview.mp4",
+        "diagnostics/scene-audit.json",
+        "shot-manifest.json"
+      ]
+    }
+  },
+  "verdict_rationale": "Aucun echec critique : l'appui est reel et mesure, rien ne traverse, la camera ne clippe pas. La note reste sous 85 pour trois raisons nommees et corrigibles — ouverture trop rasante avec une bande noire au cadre, lavage speculaire a droite, et wordmark encore en police par defaut.",
+  "next_actions": [
+    "Relever et rapprocher la pose K1 pour que l'ecran soit lisible des la premiere seconde, et fermer le cadre pour supprimer la bande noire vers la frame 30.",
+    "Reduire SIDE_GLIMMER_A ou l'ecarter : il blanchit la coque a droite au lieu d'en expliquer la surface.",
+    "Remplacer le wordmark Pulsed par le vrai glyphe via logo_trace.build, des que le PNG de marque est disponible.",
+    "Allonger le settle final de 4 a 6 frames."
+  ]
+}

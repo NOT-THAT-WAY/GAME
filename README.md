@@ -22,6 +22,12 @@ La machine pilote peut construire le labyrinthe et lancer un smoke test où le j
 
 Pour exécuter l'installation dans le bon ordre — d'abord sur le Mac pilote, ensuite sur l'autre Mac et Windows — suivre [ONBOARDING.md](docs/ONBOARDING.md).
 
+Le studio Blender compact est intégré dans `tools/blender-agent-studio/`. Il est versionné dans ce
+repo sans son historique Git et sans les 7,82 Go d'assets sources : `catalog/assets.json` en conserve
+l'inventaire vérifiable. Claude découvre automatiquement
+`.claude/skills/blender-production-studio/` et Codex
+`.agents/skills/blender-production-studio/` depuis la racine de `GAME`.
+
 Avec Claude Code, lancer `claude` depuis la racine puis écrire `initialise l'environnement`. Le skill projet `setup-game` détecte Mac ou Windows, installe aussi le client Tailscale de test distant, exécute le bon setup et rend le verdict du doctor. La connexion Tailscale reste un écran interactif individuel ; aucune clé n'est partagée avec Claude.
 
 Pour intégrer Zak et Sean : Nils envoie en privé des invitations Tailscale individuelles, jamais une clé d'authentification. Le tailnet actuel est personnel et distinct de l'organisation GitHub ; comme le jeu vise un usage commercial, son propriétaire doit confirmer ou adopter un plan compatible avant le prochain playtest structuré ([conditions des offres Tailscale](https://tailscale.com/pricing)). Après acceptation, chacun clone le repo et demande à Claude `initialise l'environnement pour jouer à distance`. L'absence de remote DVC ne bloque pas ce setup, mais bloque désormais toute modification ou transmission des masters des FBX actuels.
@@ -175,6 +181,7 @@ Le membre qui possède le PC prend la validation Windows. Les rôles pilote/bin�
 - [Roadmap et priorités](docs/ROADMAP.md)
 - [Ordre d'installation des trois postes](docs/ONBOARDING.md)
 - [Installation Mac/Windows](docs/SETUP.md)
+- [Studio Blender intégré et skills](docs/BLENDER_STUDIO.md)
 - [Premier test de connexion](docs/FIRST_CONNECTION_TEST.md)
 - [Test depuis des réseaux différents](docs/REMOTE_CONNECTION_TEST.md)
 - [Test jouable du labyrinthe](docs/MAZE_PLAYTEST.md)

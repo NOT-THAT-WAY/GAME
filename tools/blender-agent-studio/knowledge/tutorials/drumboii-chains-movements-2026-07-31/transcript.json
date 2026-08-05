@@ -1,0 +1,663 @@
+{
+  "source": "transcript-source.srt",
+  "format": "srt",
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.0,
+      "text": "Hello! In this video I'm going to show you how I do my chain animations."
+    },
+    {
+      "start": 7.0,
+      "end": 11.0,
+      "text": "I often use chains as decorations in my videos, often in the background."
+    },
+    {
+      "start": 11.0,
+      "end": 15.0,
+      "text": "And today I'm going to show you two ways to do these types of animations."
+    },
+    {
+      "start": 15.0,
+      "end": 18.0,
+      "text": "So to start off, I'm just going to create a little chain here."
+    },
+    {
+      "start": 18.0,
+      "end": 21.0,
+      "text": "So I'm going to press Shift+A and add in a torus."
+    },
+    {
+      "start": 21.0,
+      "end": 28.0,
+      "text": "And before I do anything, I'm going to press down to the left here and increase this to 0.35."
+    },
+    {
+      "start": 28.0,
+      "end": 32.0,
+      "text": "Because I find that that thickness is perfect for a chain."
+    },
+    {
+      "start": 32.0,
+      "end": 35.0,
+      "text": "I'm going to select it and press tab to go to edit mode."
+    },
+    {
+      "start": 35.0,
+      "end": 40.0,
+      "text": "I'm going to go to x-ray and select all these vertices in the middle."
+    },
+    {
+      "start": 40.0,
+      "end": 42.0,
+      "text": "Then bevel them, press Ctrl+B."
+    },
+    {
+      "start": 42.0,
+      "end": 44.0,
+      "text": "So now we have perfect symmetry here."
+    },
+    {
+      "start": 44.0,
+      "end": 49.0,
+      "text": "And we can select the right side, press G, X and drag it out. Something like that."
+    },
+    {
+      "start": 49.0,
+      "end": 52.0,
+      "text": "And while I'm in edit mode, I'm going to press A to select all."
+    },
+    {
+      "start": 52.0,
+      "end": 57.0,
+      "text": "Then press Shift+D and then X to move it forward on the X axis."
+    },
+    {
+      "start": 57.0,
+      "end": 58.0,
+      "text": "And then press Enter."
+    },
+    {
+      "start": 58.0,
+      "end": 64.0,
+      "text": "And while it's selected, I'm going to press R, X and then 90 degrees to rotate it 90 degrees."
+    },
+    {
+      "start": 64.0,
+      "end": 66.0,
+      "text": "So now we have an instance of a chain here."
+    },
+    {
+      "start": 66.0,
+      "end": 69.0,
+      "text": "What we can do now is to add an array."
+    },
+    {
+      "start": 69.0,
+      "end": 71.0,
+      "text": "So I'm going to add an array modifier here."
+    },
+    {
+      "start": 71.0,
+      "end": 74.0,
+      "text": "And as you can see, they are not really overlapping perfectly here."
+    },
+    {
+      "start": 74.0,
+      "end": 80.0,
+      "text": "So I'm going to go to the offset X here and move it back when it looks like it's matching."
+    },
+    {
+      "start": 80.0,
+      "end": 81.0,
+      "text": "So something like that maybe."
+    },
+    {
+      "start": 81.0,
+      "end": 85.0,
+      "text": "I'm going to increase the count maybe to 24."
+    },
+    {
+      "start": 85.0,
+      "end": 88.0,
+      "text": "But we need to attach this to a curve."
+    },
+    {
+      "start": 88.0,
+      "end": 90.0,
+      "text": "So I'm going to just temporarily hide this."
+    },
+    {
+      "start": 90.0,
+      "end": 95.0,
+      "text": "And now I'm going to search for Shift+A and a path."
+    },
+    {
+      "start": 95.0,
+      "end": 96.0,
+      "text": "You can see we have a path here."
+    },
+    {
+      "start": 96.0,
+      "end": 103.0,
+      "text": "And what we want to do is to press Tab to go into edit mode and make sure everything is selected by pressing A."
+    },
+    {
+      "start": 103.0,
+      "end": 108.0,
+      "text": "And then we want to have the end here as the middle point where the cursor is."
+    },
+    {
+      "start": 108.0,
+      "end": 120.0,
+      "text": "Press A to select everything, then G and X and move this to the right side until you see the last dot lining up in the middle."
+    },
+    {
+      "start": 120.0,
+      "end": 129.0,
+      "text": "So you see here, the last dot is in the middle here, which means that the center of the origin point of the path is here,"
+    },
+    {
+      "start": 129.0,
+      "end": 132.0,
+      "text": "which will make everything easier to animate later on."
+    },
+    {
+      "start": 132.0,
+      "end": 136.0,
+      "text": "And now we can unhide the tors here and we probably need to scale this down a bit."
+    },
+    {
+      "start": 136.0,
+      "end": 139.0,
+      "text": "So I'm going to select it and press S and scale it down."
+    },
+    {
+      "start": 139.0,
+      "end": 142.0,
+      "text": "And now we want to attach the chain to the curve."
+    },
+    {
+      "start": 142.0,
+      "end": 145.0,
+      "text": "So I'm going to add a modifier and search for Curve."
+    },
+    {
+      "start": 145.0,
+      "end": 147.0,
+      "text": "And then on the dropdown, I'm going to select the path."
+    },
+    {
+      "start": 147.0,
+      "end": 153.0,
+      "text": "So now it's attached to the curve underneath here, as you can see I have selected here."
+    },
+    {
+      "start": 153.0,
+      "end": 159.0,
+      "text": "So I'm going to select the curve, the path here, and probably we will need to make it a little bit longer."
+    },
+    {
+      "start": 159.0,
+      "end": 161.0,
+      "text": "So I'm going to scale it."
+    },
+    {
+      "start": 161.0,
+      "end": 163.0,
+      "text": "So you see, now it's lining up here."
+    },
+    {
+      "start": 163.0,
+      "end": 166.0,
+      "text": "Yeah, so now we're going to just make a random shape."
+    },
+    {
+      "start": 166.0,
+      "end": 171.0,
+      "text": "So I'm going to go to the side view here and I'm going to make sure the path is selected."
+    },
+    {
+      "start": 171.0,
+      "end": 175.0,
+      "text": "Then go into edit mode and just start playing around with the vertices here."
+    },
+    {
+      "start": 175.0,
+      "end": 183.0,
+      "text": "And it looks a bit flat, so I'm going to take this vertices and move it maybe on the y-axis here."
+    },
+    {
+      "start": 183.0,
+      "end": 187.0,
+      "text": "Then take this one, press G, Y and move it to the other side."
+    },
+    {
+      "start": 187.0,
+      "end": 190.0,
+      "text": "And press this one, G, Y and move it here."
+    },
+    {
+      "start": 190.0,
+      "end": 195.0,
+      "text": "So now we have a nice type of shape here."
+    },
+    {
+      "start": 195.0,
+      "end": 197.0,
+      "text": "So how do we animate this?"
+    },
+    {
+      "start": 197.0,
+      "end": 202.0,
+      "text": "Because as you can see here in my video, they are like floating around in my videos."
+    },
+    {
+      "start": 202.0,
+      "end": 206.0,
+      "text": "And the first thing I'm going to show you how to do this is to use simple deforms."
+    },
+    {
+      "start": 206.0,
+      "end": 211.0,
+      "text": "So make sure you have selected the chain, then add modifier and add a simple deform."
+    },
+    {
+      "start": 211.0,
+      "end": 213.0,
+      "text": "We're going to animate this by using keyframes."
+    },
+    {
+      "start": 213.0,
+      "end": 217.0,
+      "text": "So one thing to point out is that I animate in 60 FPS."
+    },
+    {
+      "start": 217.0,
+      "end": 220.0,
+      "text": "So make sure you have selected 60 FPS for this animation."
+    },
+    {
+      "start": 220.0,
+      "end": 225.0,
+      "text": "And we can make it a little bit longer, maybe frame 1 to 500."
+    },
+    {
+      "start": 225.0,
+      "end": 229.0,
+      "text": "And now make sure you have selected the chain and go to modifiers."
+    },
+    {
+      "start": 229.0,
+      "end": 232.0,
+      "text": "And make sure you have it on frame 1 here."
+    },
+    {
+      "start": 232.0,
+      "end": 234.0,
+      "text": "What I want to do is animate this."
+    },
+    {
+      "start": 234.0,
+      "end": 237.0,
+      "text": "We can use the twist here, for example, and axis X."
+    },
+    {
+      "start": 237.0,
+      "end": 239.0,
+      "text": "And just animate it a little bit like this."
+    },
+    {
+      "start": 239.0,
+      "end": 243.0,
+      "text": "So on frame 1, for example, I'm going to put -10."
+    },
+    {
+      "start": 244.0,
+      "end": 250.0,
+      "text": "And then I like to go forward maybe like 50 frames we can try."
+    },
+    {
+      "start": 250.0,
+      "end": 252.0,
+      "text": "And I'm going to put +10."
+    },
+    {
+      "start": 252.0,
+      "end": 256.0,
+      "text": "And then I want to go to frame 100 here and press -10 again."
+    },
+    {
+      "start": 256.0,
+      "end": 259.0,
+      "text": "And then I will just copy/paste everything like this."
+    },
+    {
+      "start": 259.0,
+      "end": 266.0,
+      "text": "Because you can see the first frame here has the same value, -10, as the last frame here, -10."
+    },
+    {
+      "start": 266.0,
+      "end": 274.0,
+      "text": "Which means that we can select all these and press command C and just copy it like this."
+    },
+    {
+      "start": 274.0,
+      "end": 279.0,
+      "text": "So you see here, if you watch here while I'm scrolling forward, -10."
+    },
+    {
+      "start": 279.0,
+      "end": 281.0,
+      "text": "Then we are on 10."
+    },
+    {
+      "start": 281.0,
+      "end": 283.0,
+      "text": "Then we are -10."
+    },
+    {
+      "start": 283.0,
+      "end": 285.0,
+      "text": "And 10, -10."
+    },
+    {
+      "start": 285.0,
+      "end": 289.0,
+      "text": "Yeah, so as you can see now, it's just moving around."
+    },
+    {
+      "start": 289.0,
+      "end": 292.0,
+      "text": "But it looks kind of static, I think."
+    },
+    {
+      "start": 292.0,
+      "end": 296.0,
+      "text": "Which is why I always use two types of simple deforms."
+    },
+    {
+      "start": 296.0,
+      "end": 298.0,
+      "text": "So now we are going to add in another one."
+    },
+    {
+      "start": 298.0,
+      "end": 300.0,
+      "text": "But this time I'm going to use the y-axis."
+    },
+    {
+      "start": 300.0,
+      "end": 302.0,
+      "text": "And we are going to do the same process."
+    },
+    {
+      "start": 302.0,
+      "end": 306.0,
+      "text": "But this time I'm going to, on the first frame, use 10 degrees."
+    },
+    {
+      "start": 306.0,
+      "end": 309.0,
+      "text": "And we can drop it down here so you see."
+    },
+    {
+      "start": 309.0,
+      "end": 314.0,
+      "text": "And then on frame 50, you can see the first simple deform is on 10."
+    },
+    {
+      "start": 314.0,
+      "end": 316.0,
+      "text": "But this one will be inverted to -10."
+    },
+    {
+      "start": 316.0,
+      "end": 321.0,
+      "text": "And then again, 10 here on the second one while this is -10."
+    },
+    {
+      "start": 321.0,
+      "end": 323.0,
+      "text": "And -10 here while this is 10."
+    },
+    {
+      "start": 323.0,
+      "end": 326.0,
+      "text": "And then we will just copy this over here like that."
+    },
+    {
+      "start": 326.0,
+      "end": 330.0,
+      "text": "But now you can see that the animation looks really static and ugly almost."
+    },
+    {
+      "start": 330.0,
+      "end": 332.0,
+      "text": "And I don't really want that."
+    },
+    {
+      "start": 332.0,
+      "end": 338.0,
+      "text": "So what I do is that I select, you can see here, the last deform, which is this one we added."
+    },
+    {
+      "start": 338.0,
+      "end": 340.0,
+      "text": "I'm going to select all these keyframes."
+    },
+    {
+      "start": 340.0,
+      "end": 345.0,
+      "text": "And then I'm going to move them back around 25."
+    },
+    {
+      "start": 345.0,
+      "end": 348.0,
+      "text": "So now you can see that they are kind of overlapping."
+    },
+    {
+      "start": 348.0,
+      "end": 353.0,
+      "text": "Because here are the keyframes for the first simple deform we made."
+    },
+    {
+      "start": 353.0,
+      "end": 356.0,
+      "text": "And in between them we have the second deform keyframes."
+    },
+    {
+      "start": 356.0,
+      "end": 359.0,
+      "text": "Which means that they will like be combined and overlap each other."
+    },
+    {
+      "start": 359.0,
+      "end": 364.0,
+      "text": "And now you can see it looks much smoother."
+    },
+    {
+      "start": 364.0,
+      "end": 368.0,
+      "text": "But this is pretty much everything I do for my chain animations."
+    },
+    {
+      "start": 368.0,
+      "end": 371.0,
+      "text": "But there's actually a simpler way to do this."
+    },
+    {
+      "start": 371.0,
+      "end": 374.0,
+      "text": "So we can get rid of these simple deforms here."
+    },
+    {
+      "start": 374.0,
+      "end": 376.0,
+      "text": "And now we have nothing again."
+    },
+    {
+      "start": 376.0,
+      "end": 379.0,
+      "text": "Now we're going to add in just a new simple deform."
+    },
+    {
+      "start": 379.0,
+      "end": 381.0,
+      "text": "And we're also going to add an empty object."
+    },
+    {
+      "start": 381.0,
+      "end": 384.0,
+      "text": "So I'm going to press Shift + A and search for plain axis."
+    },
+    {
+      "start": 384.0,
+      "end": 389.0,
+      "text": "And now we're going to use a driver to animate this axis with."
+    },
+    {
+      "start": 389.0,
+      "end": 393.0,
+      "text": "And the driver is like you are typing in a constant animation."
+    },
+    {
+      "start": 393.0,
+      "end": 396.0,
+      "text": "So instead of animating this with keyframes."
+    },
+    {
+      "start": 396.0,
+      "end": 397.0,
+      "text": "We can type in a number."
+    },
+    {
+      "start": 397.0,
+      "end": 401.0,
+      "text": "And it will like rotate into infinity."
+    },
+    {
+      "start": 401.0,
+      "end": 404.0,
+      "text": "So I'm actually going to animate it on the Z axis here."
+    },
+    {
+      "start": 404.0,
+      "end": 406.0,
+      "text": "To do that you're going to press this."
+    },
+    {
+      "start": 406.0,
+      "end": 409.0,
+      "text": "And then type in hashtag frame slash."
+    },
+    {
+      "start": 409.0,
+      "end": 411.0,
+      "text": "And we're going to try 60."
+    },
+    {
+      "start": 411.0,
+      "end": 414.0,
+      "text": "And you're going to see that it starts rotating."
+    },
+    {
+      "start": 414.0,
+      "end": 416.0,
+      "text": "But we're not animating it."
+    },
+    {
+      "start": 416.0,
+      "end": 418.0,
+      "text": "It's driving it automatically."
+    },
+    {
+      "start": 418.0,
+      "end": 419.0,
+      "text": "The cool thing about this."
+    },
+    {
+      "start": 419.0,
+      "end": 421.0,
+      "text": "Is that you can now go to the chain."
+    },
+    {
+      "start": 421.0,
+      "end": 422.0,
+      "text": "And press this drop down."
+    },
+    {
+      "start": 422.0,
+      "end": 424.0,
+      "text": "And select empty object."
+    },
+    {
+      "start": 424.0,
+      "end": 426.0,
+      "text": "And if you press space now."
+    },
+    {
+      "start": 426.0,
+      "end": 429.0,
+      "text": "You will see that it's rotating automatically."
+    },
+    {
+      "start": 429.0,
+      "end": 431.0,
+      "text": "But you can see that it looks really intense."
+    },
+    {
+      "start": 431.0,
+      "end": 433.0,
+      "text": "So you might want to turn down the angle here."
+    },
+    {
+      "start": 433.0,
+      "end": 435.0,
+      "text": "To maybe something like 10."
+    },
+    {
+      "start": 435.0,
+      "end": 438.0,
+      "text": "So yeah just a subtle little animation."
+    },
+    {
+      "start": 438.0,
+      "end": 441.0,
+      "text": "And you can play around with the placement of this."
+    },
+    {
+      "start": 441.0,
+      "end": 443.0,
+      "text": "Which will affect how the rotation is."
+    },
+    {
+      "start": 443.0,
+      "end": 447.0,
+      "text": "Depending on both of its origin points."
+    },
+    {
+      "start": 447.0,
+      "end": 449.0,
+      "text": "But yeah that's pretty much everything I do."
+    },
+    {
+      "start": 449.0,
+      "end": 450.0,
+      "text": "For my chain animations."
+    },
+    {
+      "start": 450.0,
+      "end": 452.0,
+      "text": "Let me know if you wonder anything down below."
+    },
+    {
+      "start": 452.0,
+      "end": 454.0,
+      "text": "And I'll see you in the next video."
+    }
+  ],
+  "text": "Hello! In this video I'm going to show you how I do my chain animations. I often use chains as decorations in my videos, often in the background. And today I'm going to show you two ways to do these types of animations. So to start off, I'm just going to create a little chain here. So I'm going to press Shift+A and add in a torus. And before I do anything, I'm going to press down to the left here and increase this to 0.35. Because I find that that thickness is perfect for a chain. I'm going to select it and press tab to go to edit mode. I'm going to go to x-ray and select all these vertices in the middle. Then bevel them, press Ctrl+B. So now we have perfect symmetry here. And we can select the right side, press G, X and drag it out. Something like that. And while I'm in edit mode, I'm going to press A to select all. Then press Shift+D and then X to move it forward on the X axis. And then press Enter. And while it's selected, I'm going to press R, X and then 90 degrees to rotate it 90 degrees. So now we have an instance of a chain here. What we can do now is to add an array. So I'm going to add an array modifier here. And as you can see, they are not really overlapping perfectly here. So I'm going to go to the offset X here and move it back when it looks like it's matching. So something like that maybe. I'm going to increase the count maybe to 24. But we need to attach this to a curve. So I'm going to just temporarily hide this. And now I'm going to search for Shift+A and a path. You can see we have a path here. And what we want to do is to press Tab to go into edit mode and make sure everything is selected by pressing A. And then we want to have the end here as the middle point where the cursor is. Press A to select everything, then G and X and move this to the right side until you see the last dot lining up in the middle. So you see here, the last dot is in the middle here, which means that the center of the origin point of the path is here, which will make everything easier to animate later on. And now we can unhide the tors here and we probably need to scale this down a bit. So I'm going to select it and press S and scale it down. And now we want to attach the chain to the curve. So I'm going to add a modifier and search for Curve. And then on the dropdown, I'm going to select the path. So now it's attached to the curve underneath here, as you can see I have selected here. So I'm going to select the curve, the path here, and probably we will need to make it a little bit longer. So I'm going to scale it. So you see, now it's lining up here. Yeah, so now we're going to just make a random shape. So I'm going to go to the side view here and I'm going to make sure the path is selected. Then go into edit mode and just start playing around with the vertices here. And it looks a bit flat, so I'm going to take this vertices and move it maybe on the y-axis here. Then take this one, press G, Y and move it to the other side. And press this one, G, Y and move it here. So now we have a nice type of shape here. So how do we animate this? Because as you can see here in my video, they are like floating around in my videos. And the first thing I'm going to show you how to do this is to use simple deforms. So make sure you have selected the chain, then add modifier and add a simple deform. We're going to animate this by using keyframes. So one thing to point out is that I animate in 60 FPS. So make sure you have selected 60 FPS for this animation. And we can make it a little bit longer, maybe frame 1 to 500. And now make sure you have selected the chain and go to modifiers. And make sure you have it on frame 1 here. What I want to do is animate this. We can use the twist here, for example, and axis X. And just animate it a little bit like this. So on frame 1, for example, I'm going to put -10. And then I like to go forward maybe like 50 frames we can try. And I'm going to put +10. And then I want to go to frame 100 here and press -10 again. And then I will just copy/paste everything like this. Because you can see the first frame here has the same value, -10, as the last frame here, -10. Which means that we can select all these and press command C and just copy it like this. So you see here, if you watch here while I'm scrolling forward, -10. Then we are on 10. Then we are -10. And 10, -10. Yeah, so as you can see now, it's just moving around. But it looks kind of static, I think. Which is why I always use two types of simple deforms. So now we are going to add in another one. But this time I'm going to use the y-axis. And we are going to do the same process. But this time I'm going to, on the first frame, use 10 degrees. And we can drop it down here so you see. And then on frame 50, you can see the first simple deform is on 10. But this one will be inverted to -10. And then again, 10 here on the second one while this is -10. And -10 here while this is 10. And then we will just copy this over here like that. But now you can see that the animation looks really static and ugly almost. And I don't really want that. So what I do is that I select, you can see here, the last deform, which is this one we added. I'm going to select all these keyframes. And then I'm going to move them back around 25. So now you can see that they are kind of overlapping. Because here are the keyframes for the first simple deform we made. And in between them we have the second deform keyframes. Which means that they will like be combined and overlap each other. And now you can see it looks much smoother. But this is pretty much everything I do for my chain animations. But there's actually a simpler way to do this. So we can get rid of these simple deforms here. And now we have nothing again. Now we're going to add in just a new simple deform. And we're also going to add an empty object. So I'm going to press Shift + A and search for plain axis. And now we're going to use a driver to animate this axis with. And the driver is like you are typing in a constant animation. So instead of animating this with keyframes. We can type in a number. And it will like rotate into infinity. So I'm actually going to animate it on the Z axis here. To do that you're going to press this. And then type in hashtag frame slash. And we're going to try 60. And you're going to see that it starts rotating. But we're not animating it. It's driving it automatically. The cool thing about this. Is that you can now go to the chain. And press this drop down. And select empty object. And if you press space now. You will see that it's rotating automatically. But you can see that it looks really intense. So you might want to turn down the angle here. To maybe something like 10. So yeah just a subtle little animation. And you can play around with the placement of this. Which will affect how the rotation is. Depending on both of its origin points. But yeah that's pretty much everything I do. For my chain animations. Let me know if you wonder anything down below. And I'll see you in the next video."
+}

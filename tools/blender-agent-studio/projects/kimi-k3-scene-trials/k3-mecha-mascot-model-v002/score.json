@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-mecha-mascot-model-v002",
+  "status": "completed",
+  "overall_score": 92.25,
+  "verdict": "ship",
+  "critical_failures": [],
+  "categories": {
+    "physics_affordance": {"weight": 20, "score": 96, "evidence": ["diagnostics/physical-validation.json", "gates/contact-sheet.jpg"], "notes": "Deux jambes longues restent distinctes, fermées et en contact symétrique à z=0."},
+    "causality_continuity": {"weight": 15, "score": 88, "evidence": ["renders/preview.mp4", "shot-manifest.json"], "notes": "Le même arc que la V1 permet une comparaison directe des proportions."},
+    "composition_camera": {"weight": 15, "score": 94, "evidence": ["diagnostics/scene-view-diagnostics.json", "gates/v1-v2-comparison.jpg"], "notes": "Les jambes allongées et resserrées restent entièrement visibles et mieux équilibrées sous le torse."},
+    "motion_rhythm": {"weight": 15, "score": 89, "evidence": ["renders/preview.mp4", "shot-manifest.json"], "notes": "Arc K1-K4 stable avec hold final, personnage immobile."},
+    "lighting": {"weight": 15, "score": 90, "evidence": ["gates/lighting-gate-manifest.json", "gates/05_DETAIL_RETURN.png"], "notes": "Six couches cumulées conservent la lisibilité des nouveaux volumes."},
+    "materials_color_typography": {"weight": 10, "score": 92, "evidence": ["gates/views/front.png", "asset-manifest.json"], "notes": "Matériau ivoire neutre cohérent avec les nouvelles références."},
+    "technical_integrity": {"weight": 10, "score": 97, "evidence": ["diagnostics/scene-audit.json", "diagnostics/export-validation.json", "diagnostics/published-asset/scene-audit.json"], "notes": "Zéro alerte géométrique ou dépendance ; GLB V2 réimporté manifold."}
+  },
+  "automatic_caps": {
+    "critical_failure_max_score": 49,
+    "critical_failure_types": [
+      "collision_or_environment_traversal",
+      "impossible_articulation_or_wrong_affordance",
+      "unmotivated_drift_or_contact_slip",
+      "canonical_identity_broken",
+      "camera_or_geometry_clipping",
+      "corrupt_missing_or_glitched_frames"
+    ]
+  },
+  "thresholds": {"ship_min": 85, "revise_min": 70, "reject_max": 69}
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-codex-v001",
+  "status": "completed",
+  "mode": "physics-camera-benchmark",
+  "objective": "Un humanoïde monte la pente réelle du Piano Roll avec biomécanique, adhérence et caméra adaptées.",
+  "source_blend": "projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+  "target_collection": "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK",
+  "duration_seconds": 8,
+  "fps": 30,
+  "resolution": [640, 360],
+  "story": {
+    "premise": "Une figurine mesure visuellement une pente d'interface trop raide pour une course ordinaire.",
+    "cause": "Ses semelles grip lime s'activent au premier appui.",
+    "action": "Elle transfère son poids vers l'amont puis monte par petits pas rapides, torse gouverné par la gravité.",
+    "result": "Elle atteint le haut, absorbe son énergie et s'immobilise sans glisser.",
+    "beats": [
+      {"frame": 1, "state": "still", "visible_result": "pente et échelle établies"},
+      {"frame": 17, "state": "weight_transfer", "visible_result": "centre de masse vers l'amont"},
+      {"frame": 33, "state": "anticipation", "visible_result": "recul court de caméra et premier pied préparé"},
+      {"frame": 49, "state": "launch", "visible_result": "premier contact grip"},
+      {"frame": 57, "state": "first_strong_step", "visible_result": "appui calé sur pulsation"},
+      {"frame": 192, "state": "deceleration", "visible_result": "foulée raccourcie"},
+      {"frame": 203, "state": "recovery", "visible_result": "énergie absorbée"},
+      {"frame": 224, "state": "settle", "visible_result": "aucun glissement"},
+      {"frame": 240, "state": "still_final", "visible_result": "pose stable au sommet"}
+    ]
+  },
+  "invariants": [
+    "template source intact",
+    "surface USTUDIO_PIANO_ROLL_FLOOR non modifiée",
+    "aucun sol horizontal invisible",
+    "semelles coplanaires au Piano Roll lors des contacts",
+    "pieds plantés sans drift tangent supérieur à 0.005m",
+    "torse référencé à la gravité monde et non à la normale du plan",
+    "caméra sans traversée et pente toujours lisible",
+    "240 frames décodables avec audio"
+  ],
+  "camera": {
+    "style_source": "knowledge/tutorials/DRUMBOIII_DIRECTION.md",
+    "primary_move": "tracking latéral trois-quarts parallèle à la pente",
+    "lens_mm_range": [52, 60],
+    "target_strategy": "TARGET indépendant avec retard de deux frames pendant le travel",
+    "focus_strategy": "FOCUS indépendant sur la poitrine",
+    "hero_pose_frames": [1, 33, 49, 106, 154, 203, 240],
+    "forbidden": ["roll copié depuis la pente", "pente aplatie", "pieds masqués", "drift distance", "traversée décor"]
+  },
+  "lighting": {
+    "style_source": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/analysis.json",
+    "preset": "drumboiii-layered-adapted",
+    "world_strength": 0.22,
+    "required_layers": ["SUN_REFLECTION", "BACK_SHAPE", "SIDE_GLIMMER_A", "SIDE_GLIMMER_B", "DETAIL_RETURN"],
+    "gate_each_layer": true,
+    "forbidden": ["grip lumineux hors contact", "highlight clippé", "lampe masquant une erreur d'appui"]
+  },
+  "physics": {
+    "contract_files": ["scene-contract.json"],
+    "gravity_enabled_or_justified": true,
+    "supports": ["USTUDIO_PIANO_ROLL_FLOOR"],
+    "colliders": ["USTUDIO_PIANO_ROLL_FLOOR", "USTUDIO_BOX shell"],
+    "joints": ["position-based humanoid rig with measured hip, knee, ankle, shoulder and elbow points"],
+    "clearance_checks": ["planted sole drift", "sole penetration", "swing toe clearance", "camera corridor"],
+    "camera_corridor_clear": true
+  },
+  "materials_and_design": {
+    "dominant_color": "pearl white",
+    "secondary_color": "deep plum interface",
+    "accent_color": "contact lime with magenta counterlight",
+    "material_roles": ["matte body", "rubber grip soles", "contact-only emission"],
+    "typography": {"used": true, "content": "existing FL Studio interface typography", "font": "source media", "legibility_gate": "unwarped and secondary to the slope action"}
+  },
+  "limits": {
+    "max_iterations_per_category": 3,
+    "allowed_output_root": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001",
+    "overwrite_source_blend": false,
+    "save_only_trial_copy": true
+  }
+}

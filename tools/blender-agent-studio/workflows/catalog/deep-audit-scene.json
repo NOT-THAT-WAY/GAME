@@ -1,0 +1,44 @@
+{
+  "id": "deep-audit-scene",
+  "name": "Audit profond scène & assets",
+  "icon": "⌕",
+  "category": "diagnostic production",
+  "mode": "MCP interactif",
+  "risk": "lecture",
+  "description": "Inventorie objets, géométrie, matériaux, images, dépendances, caméras, animations et assets marqués dans un manifeste versionné.",
+  "script": "workflows/scripts/deep_audit_scene.py",
+  "timeout": 300,
+  "produces_output": true,
+  "fields": [
+    {
+      "id": "include_nodes",
+      "type": "boolean",
+      "label": "Inclure les nodes de matériaux",
+      "default": true
+    },
+    {
+      "id": "include_geometry_checks",
+      "type": "boolean",
+      "label": "Contrôler la topologie",
+      "default": true
+    }
+  ],
+  "guide": [
+    "Ouvrir le fichier et activer la scène à auditer.",
+    "Lancer l’audit avant toute modification ou import d’asset.",
+    "Contrôler unités, images manquantes, scales non appliquées, topologie et bibliothèques externes.",
+    "Conserver scene-audit.json avec le gate de production."
+  ],
+  "execution": "mcp",
+  "mutates_scene": false,
+  "requires_confirmation": false,
+  "requires_working_copy": false,
+  "enabled_in_app": true,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "diagnostic",
+  "domains": [
+    "all"
+  ],
+  "maturity": "stable",
+  "scope": "generic-or-adaptable"
+}

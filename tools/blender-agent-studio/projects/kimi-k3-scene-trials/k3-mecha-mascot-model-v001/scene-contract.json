@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-mecha-mascot-model-v001",
+  "status": "validated",
+  "coordinate_frame": {
+    "up": "+Z",
+    "user_side": "-Y",
+    "front": "-Y",
+    "right": "+X",
+    "units": "meters"
+  },
+  "objects": [
+    {
+      "name": "K3_MECHA_MASCOT_ROOT",
+      "semantic_role": "hero_subject",
+      "fixed_or_moving": "fixed_during_asset_preview",
+      "parent": null,
+      "interaction_surfaces": ["corps souple destiné aux futures animations Squishy"],
+      "support_surfaces": ["extrémités arrondies des deux jambes au niveau z=0"],
+      "allowed_motion": ["transform globale future via la racine", "déformation future non destructive via lattice ou armature"],
+      "forbidden_motion": ["teleport", "unmotivated_drift", "environment_intersection"]
+    }
+  ],
+  "joints": [],
+  "supports_and_contacts": [
+    {"object": "K3_MECHA_BODY", "support": "K3_MECHA_GROUND", "relation": "two_foot_contact", "plane_z_m": 0.0}
+  ],
+  "collision_pairs": [
+    {"a": "K3_MECHA_BODY", "b": "K3_MECHA_GROUND", "allowed": "tangent_contact_only"}
+  ],
+  "camera_corridor": {
+    "description": "Arc frontal de moins de 25 degrés autour du sujet, hors des bounds du modèle et au-dessus du sol.",
+    "clearance_margin_m": 0.1,
+    "obstacles": [],
+    "validated": true
+  },
+  "shot_states": [
+    {"name": "S0_STILL", "time_seconds": 0.0, "object_state": "debout et immobile", "camera_state": "vue frontale trois-quarts légère"},
+    {"name": "S1_ANTICIPATION", "time_seconds": 0.75, "object_state": "debout et immobile", "camera_state": "contre-arc court"},
+    {"name": "S2_ACTION", "time_seconds": 1.5, "object_state": "debout et immobile", "camera_state": "arc principal"},
+    {"name": "S3_IMPACT", "time_seconds": 4.5, "object_state": "debout et immobile", "camera_state": "pose hero opposée"},
+    {"name": "S4_SETTLE", "time_seconds": 5.5, "object_state": "debout et immobile", "camera_state": "recovery"},
+    {"name": "S5_STILL", "time_seconds": 6, "object_state": "debout et immobile", "camera_state": "hold final"}
+  ],
+  "validation": {
+    "required_views": ["hero", "side", "top_or_rear_if_occluded"],
+    "sample_every_n_frames": 1,
+    "critical_failure_cap": 49
+  }
+}

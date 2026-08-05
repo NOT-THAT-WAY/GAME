@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-fable-v001",
+  "status": "completed",
+  "participant": "fable",
+  "overall_score": 89.45,
+  "verdict": "ship",
+  "critical_failures": [],
+  "categories": {
+    "physics_affordance": {
+      "weight": 20,
+      "score": 95,
+      "evidence": [
+        "diagnostics/physical-validation.json",
+        "diagnostics/surface-analysis.json",
+        "gates/contact-sheet-feet.jpg"
+      ],
+      "notes": "11/11 checks verts sur 240 frames évaluées : drift pied planté max 2e-06 m (seuil 0.005), pénétration 0 (seuil 0.002), clearance swing min 0.0137 m (seuil 0.01), erreur hauteur bassin/plan 0 (seuil 0.003), zéro genou inversé, marge amont min 0.27 m. Adhérence diégétique : semelles lime ustudio_grip_surface=1.25 pour un minimum requis tan(46.34°)=1.048, pulse d'émission uniquement au contact. Aucun sol horizontal invisible."
+    },
+    "causality_continuity": {
+      "weight": 15,
+      "score": 88,
+      "evidence": [
+        "diagnostics/motion-plan.json",
+        "gates/contact-sheet.jpg",
+        "brief.json"
+      ],
+      "notes": "Chaîne causale : musique -> lecture de la pente -> transfert de poids -> anticipation (genou droit levé f41) -> drive du pied gauche -> premier appui fort sur le downbeat f57 -> course -> décélération sur le downbeat f203 -> récupération -> pose stable. Le pulse lime n'existe qu'au contact."
+    },
+    "composition_camera": {
+      "weight": 15,
+      "score": 84,
+      "evidence": [
+        "shot-manifest.json",
+        "gates/contact-sheet.jpg",
+        "diagnostics/physical-validation.json"
+      ],
+      "notes": "Tracking latéral trois-quarts 25° côté -X, 50 mm, K1 pose / K2 arc d'anticipation -4° / K3 travel parallèle à UPHILL_TANGENT / K4 recovery +1.4° puis arrêt réel. Distance au coureur constante à 3e-05 m près, clearance décor min 0.618 m, pieds dans le cadre 100 % de la course, horizon monde niveau via Track To en espace monde. Réserve : la diagonale apparente de la pente est ~51°, hors de la bande 20-35° demandée — impossibilité projective documentée (toute caméra sans roll proche du profil projette une pente de 46.34° à un angle >= 46.34° ; seule une vue plongeante l'aplatirait, ce que la mission interdit)."
+    },
+    "motion_rhythm": {
+      "weight": 15,
+      "score": 90,
+      "evidence": [
+        "diagnostics/motion-plan.json",
+        "diagnostics/physical-validation.json",
+        "renders/preview.mp4"
+      ],
+      "notes": "12 appuis sur la grille de pulsations mesurée (période 12.1 frames, 148.7 BPM), premier appui fort f57, décélération f203, phases 1-16/17-32/33-48/49-192/193-208/209-224/225-240 respectées. Pas raccourcis (0.13 m), cadence 2.7 pas/s, genoux hauts, bras actifs en opposition, bob du bassin min à mi-appui et max en vol. Réserve : la grille rythmique reste l'estimation spectrale du dépôt, non re-confirmée à l'écoute humaine."
+    },
+    "lighting": {
+      "weight": 15,
+      "score": 87,
+      "evidence": [
+        "gates/lighting-gate-manifest.json",
+        "gates/lighting-gate/gate_05_detail_torse.png",
+        "gates/lighting-gate/gate_00_env_retenu.png"
+      ],
+      "notes": "Six états A/B cumulatifs : env retenu, Sun oblique rasant (l'ombre portée du coureur prouve la pente), backlight dominant, glimmer lime semelles/bord montant, glimmer magenta opposé, retour torse. Une itération bornée (backlight 110->58 W, +N 0.85, spread 70°) a supprimé le lavage spéculaire du coin amont. Émission des semelles uniquement au contact."
+    },
+    "materials_color_typography": {
+      "weight": 10,
+      "score": 88,
+      "evidence": [
+        "gates/contact-sheet.jpg",
+        "diagnostics/scene-audit.json"
+      ],
+      "notes": "Coureur pearl mat sans visage (0.323 m), semelles lime grip, contre-accent magenta lumière ; matériaux et écrans du template inchangés ; aucune typographie ajoutée."
+    },
+    "technical_integrity": {
+      "weight": 10,
+      "score": 93,
+      "evidence": [
+        "renders/preview.mp4",
+        "diagnostics/scene-audit.json",
+        "copy-manifest.json"
+      ],
+      "notes": "240/240 PNG (taille min 310 ko, zéro frame noire au blackdetect), MP4 H.264 640x360 30 fps 240 frames 8.000 s avec AAC, aucun média manquant, source template intacte (SHA-256 vérifié), travail borné à scene/trial.blend et objets K3_*."
+    }
+  },
+  "mission_score_breakdown_over_100": {
+    "contact_avec_la_pente_25": 24.0,
+    "biomecanique_et_centre_de_gravite_20": 18.0,
+    "rythme_et_appuis_15": 13.5,
+    "composition_et_camera_15": 12.5,
+    "lumiere_et_lisibilite_10": 9.0,
+    "integrite_technique_15": 14.5,
+    "total": 91.5
+  },
+  "automatic_caps": {
+    "critical_failure_max_score": 49,
+    "critical_failure_types": [
+      "collision_or_environment_traversal",
+      "impossible_articulation_or_wrong_affordance",
+      "unmotivated_drift_or_contact_slip",
+      "canonical_identity_broken",
+      "camera_or_geometry_clipping",
+      "corrupt_missing_or_glitched_frames"
+    ]
+  },
+  "thresholds": {"ship_min": 85, "revise_min": 70, "reject_max": 69}
+}

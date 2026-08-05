@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-fable-v001",
+  "source": "projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+  "copy": "scene/trial.blend",
+  "sha256_source": "c0b9c1a32722e8ec3fe49037011c81e529379235c67aa2b64e59bbe1a20fee36",
+  "sha256_copy_at_creation": "c0b9c1a32722e8ec3fe49037011c81e529379235c67aa2b64e59bbe1a20fee36",
+  "copied_at": "2026-07-21",
+  "note": "La copie est identique octet pour octet au source au moment de la création. Le source ne sera jamais modifié."
+}
