@@ -2,13 +2,26 @@
 
 ## Ce qui est actif maintenant
 
-La CI actuelle est volontairement légère et sans secret Unity :
+La CI actuelle est volontairement légère et sans secret Unity. Un seul contrôle,
+`repository-checks`, exécute trois étapes sur Ubuntu :
 
-| Contrôle | Plateforme CI | Ce qu'il prouve |
+| Étape | Ce qu'elle prouve | Quand |
 |---|---|---|
-| `workflow-policy` | Ubuntu | branche et titre de PR conformes |
-| `validate` | Ubuntu | versions, métadonnées Unity, LFS/DVC, fichiers interdits et présence du contrat réseau/skill Claude |
-| `powershell-syntax` | Windows | tous les scripts `.ps1` sont analysables par PowerShell |
+| Validate branch and pull request title | branche et titre de PR conformes | pull request |
+| Validate repository contract | versions, métadonnées Unity, LFS/DVC, fichiers interdits et présence du contrat réseau/skill Claude | toujours |
+| Parse Windows scripts | tous les scripts `.ps1` sont analysables par PowerShell | toujours |
+
+Les trois étaient trois jobs séparés, dont un sous Windows. GitHub facture chaque
+job à la minute supérieure et double le tarif Windows : trente secondes de
+travail réel coûtaient 4 minutes par pull request. Les regrouper ramène le coût à
+1 minute par exécution, sans rien retirer aux contrôles. `pwsh` étant préinstallé
+sur les runners Ubuntu et son parseur indépendant de la plateforme, analyser du
+PowerShell n'y perd rien.
+
+En contrepartie, la PR n'affiche plus qu'un seul check : l'étape en échec se lit
+dans le log du job, pas dans la liste des contrôles. Ajouter un job pour
+retrouver un nom distinct coûte au moins une minute par exécution, à peser contre
+les 2 000 minutes mensuelles du plan Free.
 
 Les jobs ont uniquement `contents: read`, ne téléchargent pas les payloads LFS et n'utilisent aucun secret de build. Le dépôt n'autorise actuellement que les Actions appartenant à GitHub et exige une empreinte SHA complète. Dependabot proposera séparément leurs mises à jour. Une future Action Unity externe devra être revue puis autorisée explicitement pendant sa gate.
 

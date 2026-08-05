@@ -36,7 +36,7 @@ Dette connue : `PlayerMotor`, `PivotDirector` et les `MeshCollider` créés par 
 - Ne jamais travailler directement sur `main` : utiliser le skill `git-task` et créer une branche courte (`feat/`, `fix/`, `art/`, `audio/`, `data/`, `docs/` ou `chore/`).
 - Le nom suit `TYPE/nom-court-en-minuscules` et le titre de PR reprend le même type (`feat: ...`, `fix: ...`, etc.).
 - Ne jamais contourner le hook avec `--no-verify`, modifier le hook local ou pousser `main` depuis une autre interface.
-- Livrer par pull request et attendre les contrôles `workflow-policy`, `validate` et `powershell-syntax`.
+- Livrer par pull request et attendre le contrôle `repository-checks`.
 - Nils est l'intégrateur : ne pas demander automatiquement une revue à Zak ou Sean et ne jamais merger à leur place. Ils publient leur branche testée ; Nils décide du merge.
 - Une scène, un prefab racine, un Work Unit Wwise ou un lot DVC ne possède qu'un éditeur déclaré à la fois.
 - La cible joueur initiale est Windows x86_64 IL2CPP ; macOS Apple Silicon est une plateforme de développement. Ne pas ajouter une autre cible sans ADR et validation dédiée.

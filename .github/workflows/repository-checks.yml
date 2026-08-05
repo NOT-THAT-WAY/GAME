@@ -1,5 +1,23 @@
 name: Repository checks
 
+# Un seul job, sur Ubuntu, volontairement.
+#
+# GitHub facture chaque job à la minute supérieure et applique un multiplicateur
+# par plateforme : Ubuntu x1, Windows x2, macOS x10. Les trois contrôles de ce
+# dépôt durent ensemble une trentaine de secondes, mais découpés en trois jobs
+# dont un sous Windows ils coûtaient 4 minutes par pull request — 104 minutes
+# facturées pour 14 minutes de calcul réel. Le gaspillage venait du découpage,
+# pas du nombre de pull requests : les regrouper ramène le coût à 1 minute par
+# exécution.
+#
+# Analyser du PowerShell ne demande pas Windows : `pwsh` est préinstallé sur les
+# runners Ubuntu et le parseur est celui de PowerShell 7, indépendant de la
+# plateforme. Le contrôle est identique pour la moitié du prix.
+#
+# À savoir avant de redécouper : un job ajouté coûte au moins une minute même
+# s'il ne fait rien, et le budget de l'organisation est de 2 000 minutes par
+# mois sur le plan Free.
+
 on:
   pull_request:
   push:
@@ -13,23 +31,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  workflow-policy:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-        with:
-          lfs: false
-          persist-credentials: false
-      - name: Validate branch and pull request title
-        env:
-          HEAD_BRANCH: ${{ github.head_ref }}
-          PR_TITLE: ${{ github.event.pull_request.title }}
-        run: ./scripts/validate-pr-policy.sh "$HEAD_BRANCH" "$PR_TITLE"
-
-  validate:
+  repository-checks:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -39,18 +41,18 @@ jobs:
           # Contract checks inspect pointers and metadata, not large payloads.
           lfs: false
           persist-credentials: false
+
+      # Un push direct sur main n'a ni branche source ni titre de PR à valider.
+      - name: Validate branch and pull request title
+        if: github.event_name == 'pull_request'
+        env:
+          HEAD_BRANCH: ${{ github.head_ref }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: ./scripts/validate-pr-policy.sh "$HEAD_BRANCH" "$PR_TITLE"
+
       - name: Validate repository contract
         run: ./scripts/validate-repository.sh
 
-  powershell-syntax:
-    runs-on: windows-latest
-    timeout-minutes: 5
-    steps:
-      - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-        with:
-          lfs: false
-          persist-credentials: false
       - name: Parse Windows scripts
         shell: pwsh
         run: |
