@@ -42,27 +42,46 @@ namespace NotThatWay.Game
         // couple : on appuie dans l'axe du mur, il ne part d'aucun côté.
         private const float MinimumTorque = 0.2f;
 
-        // Se dégager n'est pas un pouvoir : le refuge est un endroit où le joueur
-        // tenait déjà debout, relevé assez souvent pour rester à portée de pas et
-        // assez rarement pour ne rien coûter.
-        private const float SafeSampleInterval = 0.25f;
+        // Se dégager ne se calcule pas en repoussant le joueur hors du mur :
+        // `Physics.ComputePenetration` ne résout rien contre un MeshCollider non
+        // convexe, et les murs du labyrinthe en sont. On vise donc un centre de
+        // cellule voisin, validé par des tests d'overlap qui, eux, fonctionnent
+        // contre une géométrie concave.
+        //
+        // Même pas de grille que `MazePlaytestBuild` : la grille JSON ne le
+        // transporte pas. S'il s'en écarte, le dégagement vise entre deux couloirs.
+        private const float RespawnGridPitch = 2.75f;
 
-        // Sortir d'un mur demande plusieurs passes : chaque dépénétration peut en
-        // révéler une autre quand deux colliders se chevauchent dans un angle.
-        private const int UnstickIterations = 8;
+        // Une à deux cellules suffisent à sortir du mur où l'on est encastré sans
+        // rendre la touche téléporteuse. Le troisième anneau n'est qu'un secours
+        // pour les culs-de-sac ceinturés de gravats.
+        private const int RespawnNearestRing = 1;
+        private const int RespawnFurthestRing = 3;
 
-        // Marge ajoutée à la sortie calculée, sinon on ressort exactement tangent
-        // au collider et la frame suivante y replonge.
-        private const float UnstickSkin = 0.02f;
+        // Le sol se cherche depuis la hauteur des yeux, pas depuis le ciel : un tir
+        // parti au-dessus des murs prendrait le dessus d'un mur de 3 m pour un sol,
+        // et le dégagement déposerait le joueur sur le toit du labyrinthe. Parti d'ici,
+        // un tir lancé dans un mur le traverse sans accrocher — les faces arrière ne
+        // sont pas testées — et retombe sur la dalle, que le test de gabarit refusera.
+        private const float GroundProbeHeight = 1.5f;
+
+        // Un sol qui s'écarte trop des pieds du joueur n'est pas le sien : la map n'a
+        // qu'un niveau, l'écart ne peut venir que d'un dessus de mur ou d'un trou.
+        private const float MaxGroundStep = 1.5f;
+
+        // Le joueur est reposé légèrement au-dessus du sol touché, comme les
+        // apparitions de `MazePlaytestBuild`.
+        private const float RespawnGroundOffset = 0.2f;
+
+        // On teste un gabarit un peu plus fin que le joueur : un couloir de 2,50 m
+        // laisse largement la place, et cette marge évite de refuser une cellule
+        // parce que la capsule frôle la plinthe d'un mur.
+        private const float RespawnClearance = 0.9f;
 
         private const float UnstickFeedbackSeconds = 2f;
 
         private static readonly Vector3 FirstPersonOffset = Vector3.zero;
         private static readonly Vector3 ThirdPersonOffset = new(0f, 0.55f, -3.4f);
-
-        // Le test de chevauchement tourne quatre fois par seconde : un tampon
-        // partagé évite d'allouer un tableau à chaque relevé.
-        private static readonly Collider[] OverlapBuffer = new Collider[16];
 
         [SerializeField] private Transform _cameraPivot;
         [SerializeField] private Camera _camera;
@@ -80,9 +99,7 @@ namespace NotThatWay.Game
         private float _lastJumpPressedAt = float.NegativeInfinity;
         private bool _thirdPerson;
         private bool _cursorLocked;
-        private Vector3 _safePosition;
-        private bool _hasSafePosition;
-        private float _lastSafeSampleAt = float.NegativeInfinity;
+        private Vector3 _spawnPosition;
         private string _unstickFeedback = string.Empty;
         private float _unstickFeedbackUntil = float.NegativeInfinity;
 
@@ -108,12 +125,10 @@ namespace NotThatWay.Game
             if (_camera != null)
                 _camera.gameObject.SetActive(true);
 
-            // L'apparition est le seul endroit dont on sache déjà qu'il est libre :
-            // `MazePlaytestBuild` refuse de produire la scène si elle n'a pas de sol,
-            // chevauche un collider ou manque de dégagement. Elle sert de refuge tant
-            // que le joueur n'a pas fait un pas.
-            _safePosition = transform.position;
-            _hasSafePosition = true;
+            // Dernier recours du dégagement : `MazePlaytestBuild` refuse de produire
+            // la scène si une apparition n'a pas de sol, chevauche un collider ou
+            // manque de dégagement. C'est le seul point dont la validité est acquise.
+            _spawnPosition = transform.position;
 
             ApplyCameraMode();
             SetCursorLocked(true);
@@ -137,115 +152,111 @@ namespace NotThatWay.Game
             ApplyLook();
             ApplyMove();
             ApplyPush();
-            RecordSafePosition();
         }
 
         /// <summary>
-        /// Relève la dernière position franchement libre : au sol et sans chevaucher
-        /// de collider. Le refuge suit donc le joueur à un quart de seconde près, ce
-        /// qui rend la touche de dégagement indolore quand on n'est pas coincé et
-        /// utile quand on l'est. Un point atteint en étant déjà encastré n'est jamais
-        /// retenu, sinon se dégager renverrait dans le mur.
-        /// </summary>
-        private void RecordSafePosition()
-        {
-            if (!_controller.isGrounded || Time.time - _lastSafeSampleAt < SafeSampleInterval)
-                return;
-
-            _lastSafeSampleAt = Time.time;
-            if (TryComputeEscape(transform.position, out _))
-                return;
-
-            _safePosition = transform.position;
-            _hasSafePosition = true;
-        }
-
-        /// <summary>
-        /// Dégage le joueur encastré dans la géométrie. On tente d'abord de ressortir
-        /// sur place, ce qui garde la progression ; si le chevauchement ne se résout
-        /// pas, on revient au dernier appui sûr.
+        /// Replace le joueur encastré sur le centre d'une cellule voisine libre, en
+        /// s'éloignant par anneaux : on prend la plus proche qui a du sol et de quoi
+        /// tenir debout. Faute de quoi on retombe sur l'apparition, seul point dont
+        /// la validité soit garantie par la génération de scène.
         /// </summary>
         private void ApplyUnstick()
         {
-            var target = transform.position;
-            var freed = false;
-
-            for (var i = 0; i < UnstickIterations; i++)
+            for (var ring = RespawnNearestRing; ring <= RespawnFurthestRing; ring++)
             {
-                if (!TryComputeEscape(target, out var escape))
-                    break;
+                if (!TryFindFreeCell(ring, out var target))
+                    continue;
 
-                target += escape;
-                freed = true;
-            }
-
-            if (freed)
-            {
                 Teleport(target);
-                SetUnstickFeedback("dégagé sur place");
+                SetUnstickFeedback($"replacé {ring} cellule{(ring > 1 ? "s" : "")} plus loin");
                 return;
             }
 
-            if (_hasSafePosition)
-            {
-                Teleport(_safePosition);
-                SetUnstickFeedback("replacé au dernier appui sûr");
-                return;
-            }
-
-            SetUnstickFeedback("aucun refuge enregistré");
+            Teleport(_spawnPosition);
+            SetUnstickFeedback("aucune cellule libre : renvoyé à l'entrée");
         }
 
         /// <summary>
-        /// Somme les sorties de chaque collider qui chevauche la capsule à la position
-        /// donnée. Renvoie faux quand rien ne chevauche : c'est aussi le test qui sert
-        /// à valider un refuge.
+        /// Parcourt les cellules situées exactement à <paramref name="ring"/> cases du
+        /// joueur et retient la plus proche qui soit praticable.
         /// </summary>
-        private bool TryComputeEscape(Vector3 position, out Vector3 escape)
+        private bool TryFindFreeCell(int ring, out Vector3 target)
         {
-            escape = Vector3.zero;
-            GetCapsule(position, out var bottom, out var top, out var radius);
+            var position = transform.position;
+            var originX = SnapToCell(position.x);
+            var originZ = SnapToCell(position.z);
 
-            // Les déclencheurs ne bloquent personne : les inclure ferait ressortir le
-            // joueur de zones qu'il est censé traverser.
-            var count = Physics.OverlapCapsuleNonAlloc(
-                bottom, top, radius, OverlapBuffer, ~0, QueryTriggerInteraction.Ignore);
+            target = Vector3.zero;
+            var bestDistance = float.PositiveInfinity;
 
-            var resolved = false;
-            for (var i = 0; i < count; i++)
+            for (var dx = -ring; dx <= ring; dx++)
             {
-                var other = OverlapBuffer[i];
+                for (var dz = -ring; dz <= ring; dz++)
+                {
+                    // Seulement le pourtour de l'anneau : l'intérieur a déjà été testé
+                    // par les tours précédents.
+                    if (Mathf.Max(Mathf.Abs(dx), Mathf.Abs(dz)) != ring)
+                        continue;
 
-                // Sa propre capsule figure toujours dans le résultat.
-                if (other == null || other.transform.IsChildOf(transform))
-                    continue;
+                    var candidate = new Vector3(
+                        originX + dx * RespawnGridPitch,
+                        position.y,
+                        originZ + dz * RespawnGridPitch);
 
-                if (!Physics.ComputePenetration(
-                        _controller, position, transform.rotation,
-                        other, other.transform.position, other.transform.rotation,
-                        out var direction, out var distance))
-                    continue;
+                    if (!TryStandAt(candidate, out var standing))
+                        continue;
 
-                escape += direction * (distance + UnstickSkin);
-                resolved = true;
+                    var distance = (standing - position).sqrMagnitude;
+                    if (distance >= bestDistance)
+                        continue;
+
+                    bestDistance = distance;
+                    target = standing;
+                }
             }
 
-            return resolved;
+            return !float.IsPositiveInfinity(bestDistance);
         }
 
-        private void GetCapsule(Vector3 position, out Vector3 bottom, out Vector3 top, out float radius)
+        /// <summary>
+        /// Cherche le sol sous un centre de cellule et vérifie qu'un joueur y tient.
+        /// Les deux tests utilisent des requêtes d'overlap, qui fonctionnent contre les
+        /// MeshCollider concaves du labyrinthe.
+        /// </summary>
+        private bool TryStandAt(Vector3 cellCenter, out Vector3 standing)
         {
-            var scale = transform.lossyScale;
-            var lateral = Mathf.Max(scale.x, scale.z);
-            radius = _controller.radius * lateral;
+            standing = cellCenter;
 
-            // Une capsule ne peut pas être plus courte que ses deux hémisphères.
+            var from = new Vector3(cellCenter.x, cellCenter.y + GroundProbeHeight, cellCenter.z);
+            if (!Physics.Raycast(from, Vector3.down, out var ground, GroundProbeHeight + MaxGroundStep,
+                    ~0, QueryTriggerInteraction.Ignore))
+                return false;
+
+            // Deuxième garde contre le dessus d'un mur, au cas où la cellule visée
+            // porterait une marche : on ne se dégage pas vers un autre étage.
+            if (Mathf.Abs(ground.point.y - cellCenter.y) > MaxGroundStep)
+                return false;
+
+            standing = ground.point + Vector3.up * RespawnGroundOffset;
+
+            var scale = transform.lossyScale;
+            var radius = _controller.radius * Mathf.Max(scale.x, scale.z) * RespawnClearance;
             var height = Mathf.Max(_controller.height * scale.y, radius * 2f);
-            var center = position + transform.TransformVector(_controller.center);
+            var center = standing + Vector3.up * (height * 0.5f);
             var half = Mathf.Max(0f, height * 0.5f - radius);
 
-            bottom = center - Vector3.up * half;
-            top = center + Vector3.up * half;
+            return !Physics.CheckCapsule(
+                center - Vector3.up * half, center + Vector3.up * half, radius,
+                ~0, QueryTriggerInteraction.Ignore);
+        }
+
+        /// <summary>
+        /// Les centres de cellule tombent sur les demi-pas de la grille : la map fait
+        /// un nombre pair de cases et reste centrée sur l'origine.
+        /// </summary>
+        private static float SnapToCell(float value)
+        {
+            return (Mathf.Round(value / RespawnGridPitch - 0.5f) + 0.5f) * RespawnGridPitch;
         }
 
         /// <summary>
@@ -268,6 +279,10 @@ namespace NotThatWay.Game
         {
             _unstickFeedback = message;
             _unstickFeedbackUntil = Time.time + UnstickFeedbackSeconds;
+
+            // Tracé dans le log du joueur : c'est ce qui permet de dire après coup si
+            // la touche n'a rien fait ou si elle a visé une cellule qui ne dégageait pas.
+            Debug.Log($"[GAME-DEBLOCAGE] {message} — {transform.position}");
         }
 
         /// <summary>

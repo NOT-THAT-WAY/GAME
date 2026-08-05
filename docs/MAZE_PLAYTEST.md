@@ -143,16 +143,23 @@ changent pas de comportement.
 La vue de référence reste la première personne. La troisième personne est là pour
 vérifier le gabarit du personnage, pas pour jouer.
 
-`U` tente d'abord de ressortir sur place, en sommant la sortie de chaque collider
-qui chevauche la capsule : on garde alors sa position dans le couloir. Si le
-chevauchement ne se résout pas, le joueur revient au dernier appui sûr — la
-dernière position où il était au sol sans rien chevaucher, relevée quatre fois
-par seconde. Appuyer sur `U` sans être coincé est donc quasi sans effet : le
-refuge suit à un quart de seconde derrière.
+`U` replace le joueur sur le centre d'une cellule voisine libre : une case
+d'abord, puis deux, puis trois. À chaque anneau, la cellule retenue est la plus
+proche qui ait du sol sous elle et de quoi tenir debout. Si les trois anneaux
+sont bouchés, le joueur repart de son entrée, seul point dont
+`MazePlaytestBuild` garantit le sol et le dégagement.
 
-Un joueur encastré ne met plus son refuge à jour, sinon se dégager le renverrait
-dans le mur. Tant qu'aucun pas n'a été fait, le refuge est l'apparition, dont
-`MazePlaytestBuild` a déjà vérifié le sol et le dégagement.
+Cette touche ne repousse **pas** le joueur hors du mur : `ComputePenetration` ne
+résout rien contre un `MeshCollider` non convexe, et les murs du labyrinthe en
+sont. La validation d'une cellule passe donc par un tir vers le sol et un
+`CheckCapsule`, qui fonctionnent contre une géométrie concave. Pour la même
+raison, le dégagement vise la grille au lieu de mémoriser la dernière position
+« sûre » : un test de chevauchement qui ne détecte rien enregistrerait comme sûre
+la position où l'on est encastré.
+
+`RespawnGridPitch` duplique le pas de grille pour la même raison que le
+`GridPitch` de `MazePlaytestBuild` : s'il s'en écarte, le dégagement vise entre
+deux couloirs.
 
 ## Vérifier sans lancer de partie
 
