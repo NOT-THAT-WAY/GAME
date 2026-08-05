@@ -31,6 +31,13 @@ namespace NotThatWay.Game
 
         private readonly SyncList<byte> _orientations = new();
         private Transform[] _pivots = Array.Empty<Transform>();
+
+        // Pose de repos relevée à la résolution, et non supposée à l'identité. Les
+        // objets `Pivot_*` sortent du FBX avec la conversion d'axes Blender portée par
+        // le nœud lui-même — une rotation de -90° en x. Leur imposer un lacet pur les
+        // couchait par terre dès la première image, collider compris, donc sans qu'on
+        // ait rien poussé. Le quart de tour se compose désormais par-dessus cette pose.
+        private Quaternion[] _restRotations = Array.Empty<Quaternion>();
         private float[] _nextPushAllowedAt = Array.Empty<float>();
 
         /// <summary>
@@ -44,8 +51,12 @@ namespace NotThatWay.Game
             Array.Sort(walls, (left, right) => left.Index.CompareTo(right.Index));
 
             _pivots = new Transform[walls.Length];
+            _restRotations = new Quaternion[walls.Length];
             for (var index = 0; index < walls.Length; index++)
+            {
                 _pivots[index] = walls[index].transform;
+                _restRotations[index] = walls[index].transform.localRotation;
+            }
         }
 
         public override void OnStartServer()
@@ -83,7 +94,10 @@ namespace NotThatWay.Game
                 if (pivot == null)
                     continue;
 
-                var target = Quaternion.Euler(0f, _orientations[index] * 90f, 0f);
+                // Lacet monde posé sur la pose de repos : la racine de la map est à
+                // l'identité, donc c'est bien le quart de tour attendu autour de la
+                // verticale, et le bras reste debout.
+                var target = Quaternion.Euler(0f, _orientations[index] * 90f, 0f) * _restRotations[index];
                 pivot.localRotation = Quaternion.RotateTowards(
                     pivot.localRotation, target, 90f / QuarterTurnSeconds * Time.deltaTime);
             }
