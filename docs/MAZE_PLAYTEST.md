@@ -135,12 +135,24 @@ changent pas de comportement.
 | Maj | sprint |
 | Espace | sauter — marteler la touche pour se décoincer des gravats |
 | Clic gauche maintenu + avancer | pousser un mur pivotant d'un quart de tour |
+| U | se dégager quand on est encastré dans un mur |
 | Échap | libérer ou recapturer le curseur |
 | Tab | masquer ou afficher le panneau réseau |
 | F1 | basculer 1re / 3e personne (vue de contrôle) |
 
 La vue de référence reste la première personne. La troisième personne est là pour
 vérifier le gabarit du personnage, pas pour jouer.
+
+`U` tente d'abord de ressortir sur place, en sommant la sortie de chaque collider
+qui chevauche la capsule : on garde alors sa position dans le couloir. Si le
+chevauchement ne se résout pas, le joueur revient au dernier appui sûr — la
+dernière position où il était au sol sans rien chevaucher, relevée quatre fois
+par seconde. Appuyer sur `U` sans être coincé est donc quasi sans effet : le
+refuge suit à un quart de seconde derrière.
+
+Un joueur encastré ne met plus son refuge à jour, sinon se dégager le renverrait
+dans le mur. Tant qu'aucun pas n'a été fait, le refuge est l'apparition, dont
+`MazePlaytestBuild` a déjà vérifié le sol et le dégagement.
 
 ## Vérifier sans lancer de partie
 

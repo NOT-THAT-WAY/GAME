@@ -42,8 +42,27 @@ namespace NotThatWay.Game
         // couple : on appuie dans l'axe du mur, il ne part d'aucun côté.
         private const float MinimumTorque = 0.2f;
 
+        // Se dégager n'est pas un pouvoir : le refuge est un endroit où le joueur
+        // tenait déjà debout, relevé assez souvent pour rester à portée de pas et
+        // assez rarement pour ne rien coûter.
+        private const float SafeSampleInterval = 0.25f;
+
+        // Sortir d'un mur demande plusieurs passes : chaque dépénétration peut en
+        // révéler une autre quand deux colliders se chevauchent dans un angle.
+        private const int UnstickIterations = 8;
+
+        // Marge ajoutée à la sortie calculée, sinon on ressort exactement tangent
+        // au collider et la frame suivante y replonge.
+        private const float UnstickSkin = 0.02f;
+
+        private const float UnstickFeedbackSeconds = 2f;
+
         private static readonly Vector3 FirstPersonOffset = Vector3.zero;
         private static readonly Vector3 ThirdPersonOffset = new(0f, 0.55f, -3.4f);
+
+        // Le test de chevauchement tourne quatre fois par seconde : un tampon
+        // partagé évite d'allouer un tableau à chaque relevé.
+        private static readonly Collider[] OverlapBuffer = new Collider[16];
 
         [SerializeField] private Transform _cameraPivot;
         [SerializeField] private Camera _camera;
@@ -61,6 +80,11 @@ namespace NotThatWay.Game
         private float _lastJumpPressedAt = float.NegativeInfinity;
         private bool _thirdPerson;
         private bool _cursorLocked;
+        private Vector3 _safePosition;
+        private bool _hasSafePosition;
+        private float _lastSafeSampleAt = float.NegativeInfinity;
+        private string _unstickFeedback = string.Empty;
+        private float _unstickFeedbackUntil = float.NegativeInfinity;
 
         private void Awake()
         {
@@ -84,6 +108,13 @@ namespace NotThatWay.Game
             if (_camera != null)
                 _camera.gameObject.SetActive(true);
 
+            // L'apparition est le seul endroit dont on sache déjà qu'il est libre :
+            // `MazePlaytestBuild` refuse de produire la scène si elle n'a pas de sol,
+            // chevauche un collider ou manque de dégagement. Elle sert de refuge tant
+            // que le joueur n'a pas fait un pas.
+            _safePosition = transform.position;
+            _hasSafePosition = true;
+
             ApplyCameraMode();
             SetCursorLocked(true);
         }
@@ -106,6 +137,137 @@ namespace NotThatWay.Game
             ApplyLook();
             ApplyMove();
             ApplyPush();
+            RecordSafePosition();
+        }
+
+        /// <summary>
+        /// Relève la dernière position franchement libre : au sol et sans chevaucher
+        /// de collider. Le refuge suit donc le joueur à un quart de seconde près, ce
+        /// qui rend la touche de dégagement indolore quand on n'est pas coincé et
+        /// utile quand on l'est. Un point atteint en étant déjà encastré n'est jamais
+        /// retenu, sinon se dégager renverrait dans le mur.
+        /// </summary>
+        private void RecordSafePosition()
+        {
+            if (!_controller.isGrounded || Time.time - _lastSafeSampleAt < SafeSampleInterval)
+                return;
+
+            _lastSafeSampleAt = Time.time;
+            if (TryComputeEscape(transform.position, out _))
+                return;
+
+            _safePosition = transform.position;
+            _hasSafePosition = true;
+        }
+
+        /// <summary>
+        /// Dégage le joueur encastré dans la géométrie. On tente d'abord de ressortir
+        /// sur place, ce qui garde la progression ; si le chevauchement ne se résout
+        /// pas, on revient au dernier appui sûr.
+        /// </summary>
+        private void ApplyUnstick()
+        {
+            var target = transform.position;
+            var freed = false;
+
+            for (var i = 0; i < UnstickIterations; i++)
+            {
+                if (!TryComputeEscape(target, out var escape))
+                    break;
+
+                target += escape;
+                freed = true;
+            }
+
+            if (freed)
+            {
+                Teleport(target);
+                SetUnstickFeedback("dégagé sur place");
+                return;
+            }
+
+            if (_hasSafePosition)
+            {
+                Teleport(_safePosition);
+                SetUnstickFeedback("replacé au dernier appui sûr");
+                return;
+            }
+
+            SetUnstickFeedback("aucun refuge enregistré");
+        }
+
+        /// <summary>
+        /// Somme les sorties de chaque collider qui chevauche la capsule à la position
+        /// donnée. Renvoie faux quand rien ne chevauche : c'est aussi le test qui sert
+        /// à valider un refuge.
+        /// </summary>
+        private bool TryComputeEscape(Vector3 position, out Vector3 escape)
+        {
+            escape = Vector3.zero;
+            GetCapsule(position, out var bottom, out var top, out var radius);
+
+            // Les déclencheurs ne bloquent personne : les inclure ferait ressortir le
+            // joueur de zones qu'il est censé traverser.
+            var count = Physics.OverlapCapsuleNonAlloc(
+                bottom, top, radius, OverlapBuffer, ~0, QueryTriggerInteraction.Ignore);
+
+            var resolved = false;
+            for (var i = 0; i < count; i++)
+            {
+                var other = OverlapBuffer[i];
+
+                // Sa propre capsule figure toujours dans le résultat.
+                if (other == null || other.transform.IsChildOf(transform))
+                    continue;
+
+                if (!Physics.ComputePenetration(
+                        _controller, position, transform.rotation,
+                        other, other.transform.position, other.transform.rotation,
+                        out var direction, out var distance))
+                    continue;
+
+                escape += direction * (distance + UnstickSkin);
+                resolved = true;
+            }
+
+            return resolved;
+        }
+
+        private void GetCapsule(Vector3 position, out Vector3 bottom, out Vector3 top, out float radius)
+        {
+            var scale = transform.lossyScale;
+            var lateral = Mathf.Max(scale.x, scale.z);
+            radius = _controller.radius * lateral;
+
+            // Une capsule ne peut pas être plus courte que ses deux hémisphères.
+            var height = Mathf.Max(_controller.height * scale.y, radius * 2f);
+            var center = position + transform.TransformVector(_controller.center);
+            var half = Mathf.Max(0f, height * 0.5f - radius);
+
+            bottom = center - Vector3.up * half;
+            top = center + Vector3.up * half;
+        }
+
+        /// <summary>
+        /// Le <see cref="CharacterController"/> réécrit la position à chaque image :
+        /// il faut le désactiver le temps du déplacement, sinon la téléportation est
+        /// annulée dans la foulée.
+        /// </summary>
+        private void Teleport(Vector3 position)
+        {
+            _controller.enabled = false;
+            transform.position = position;
+            _controller.enabled = true;
+
+            // Repartir d'une chute nulle : garder la vitesse accumulée en étant coincé
+            // renverrait le joueur dans le sol.
+            _verticalVelocity = GroundedVelocity;
+        }
+
+        private void SetUnstickFeedback(string message)
+        {
+            _unstickFeedback = message;
+            _unstickFeedbackUntil = Time.time + UnstickFeedbackSeconds;
         }
 
         /// <summary>
@@ -188,6 +350,9 @@ namespace NotThatWay.Game
                 _thirdPerson = !_thirdPerson;
                 ApplyCameraMode();
             }
+
+            if (keyboard.uKey.wasPressedThisFrame)
+                ApplyUnstick();
         }
 
         private void ApplyLook()
@@ -281,12 +446,13 @@ namespace NotThatWay.Game
                 return;
 
             var style = new GUIStyle(GUI.skin.label) { fontSize = 14, wordWrap = true };
-            var height = 76f;
+            var height = 96f;
             var area = new Rect(16f, Screen.height - height - 16f, Mathf.Min(760f, Screen.width - 32f), height);
             GUILayout.BeginArea(area, GUI.skin.box);
             GUILayout.Label("ZQSD / WASD se déplacer   ·   Maj sprint   ·   Espace sauter (marteler pour se décoincer)   ·   Souris regarder", style);
             GUILayout.Label($"Clic gauche maintenu + avancer contre un pivot turquoise = pousser{(_pushedWall != null ? $"  [{_pushProgress * 100f:F0} %]" : "")}", style);
             GUILayout.Label($"Échap curseur ({(_cursorLocked ? "capturé" : "libre")})   ·   Tab panneau réseau   ·   F1 vue {(_thirdPerson ? "3e personne" : "1re personne")}", style);
+            GUILayout.Label($"U se dégager d'un mur{(Time.time < _unstickFeedbackUntil ? $"   —   {_unstickFeedback}" : "")}", style);
             GUILayout.EndArea();
         }
     }
