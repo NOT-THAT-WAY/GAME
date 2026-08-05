@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 namespace NotThatWay.Game
 {
     /// <summary>
-    /// Coup de poing prototype du playtest labyrinthe. La touche F joue l'animation
+    /// Coup de poing prototype du playtest labyrinthe. Le clic droit joue l'animation
     /// en local pour la réactivité, puis demande la validation à l'hôte : cooldown
     /// et recherche de cible sont mesurés côté serveur. Le mouvement reste
     /// client-authoritative (dette du smoke test) : l'hôte ne téléporte personne,
@@ -54,8 +54,11 @@ namespace NotThatWay.Game
             if (!IsOwner)
                 return;
 
-            var keyboard = Keyboard.current;
-            if (keyboard == null || !keyboard.fKey.wasPressedThisFrame)
+            // Le clic gauche maintenu sert déjà à pousser un pivot : la frappe prend
+            // le bouton droit, libre. Lecture directe de la souris comme le reste du
+            // prototype ; les Input Actions partagées arrivent avec M1 (ADR 0004).
+            var mouse = Mouse.current;
+            if (mouse == null || !mouse.rightButton.wasPressedThisFrame)
                 return;
 
             // Filtre local sur le même tempo que le serveur : inutile de faire

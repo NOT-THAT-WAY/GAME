@@ -88,12 +88,21 @@ namespace NotThatWay.Game
         private static readonly Vector3 FirstPersonOffset = Vector3.zero;
         private static readonly Vector3 ThirdPersonOffset = new(0f, 0.55f, -3.4f);
 
+        // Parties du modèle riggé que son porteur voit en vue subjective : sans
+        // elles, un coup de poing ne produit aucun retour à l'écran. Le corps et
+        // les pieds restent en ombre seule, la caméra étant à hauteur des yeux,
+        // donc à l'intérieur du volume du corps qu'elle masquerait entièrement.
+        // Ces noms viennent de l'export et ne servent qu'au rendu : aucune règle
+        // gameplay ni aucun identifiant réseau n'en dépend (ADR 0004).
+        private static readonly string[] FirstPersonVisibleParts = { "Forearm", "Fist" };
+
         [SerializeField] private Transform _cameraPivot;
         [SerializeField] private Camera _camera;
         [SerializeField] private Transform _visual;
 
         private CharacterController _controller;
         private Renderer[] _visualRenderers = Array.Empty<Renderer>();
+        private bool[] _visibleInFirstPerson = Array.Empty<bool>();
         private ConnectionSmokeTest _sessionPanel;
         private PivotDirector _pivotDirector;
         private PivotWall _pushedWall;
@@ -112,8 +121,30 @@ namespace NotThatWay.Game
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
-            if (_visual != null)
-                _visualRenderers = _visual.GetComponentsInChildren<Renderer>(true);
+            if (_visual == null)
+                return;
+
+            _visualRenderers = _visual.GetComponentsInChildren<Renderer>(true);
+            _visibleInFirstPerson = new bool[_visualRenderers.Length];
+            for (var i = 0; i < _visualRenderers.Length; i++)
+                _visibleInFirstPerson[i] = IsFirstPersonPart(_visualRenderers[i]);
+        }
+
+        /// <summary>
+        /// Vrai si ce mesh reste affiché pour son propre porteur en vue subjective.
+        /// </summary>
+        private static bool IsFirstPersonPart(Renderer visualRenderer)
+        {
+            if (visualRenderer == null)
+                return false;
+
+            foreach (var part in FirstPersonVisibleParts)
+            {
+                if (visualRenderer.name.IndexOf(part, StringComparison.OrdinalIgnoreCase) >= 0)
+                    return true;
+            }
+
+            return false;
         }
 
         public override void OnStartClient()
@@ -478,12 +509,19 @@ namespace NotThatWay.Game
             if (_camera != null)
                 _camera.transform.localPosition = _thirdPerson ? ThirdPersonOffset : FirstPersonOffset;
 
-            // En vue subjective le corps masquerait l'écran : il ne garde que son ombre.
-            var mode = _thirdPerson ? ShadowCastingMode.On : ShadowCastingMode.ShadowsOnly;
-            foreach (var visualRenderer in _visualRenderers)
+            // En vue subjective le corps masquerait l'écran : il ne garde que son
+            // ombre. Les avant-bras et les poings restent affichés, sans quoi une
+            // frappe ne produirait aucun retour visible pour celui qui la donne.
+            for (var i = 0; i < _visualRenderers.Length; i++)
             {
-                if (visualRenderer != null)
-                    visualRenderer.shadowCastingMode = mode;
+                var visualRenderer = _visualRenderers[i];
+                if (visualRenderer == null)
+                    continue;
+
+                var visible = _thirdPerson || _visibleInFirstPerson[i];
+                visualRenderer.shadowCastingMode = visible
+                    ? ShadowCastingMode.On
+                    : ShadowCastingMode.ShadowsOnly;
             }
         }
 
@@ -505,7 +543,7 @@ namespace NotThatWay.Game
             GUILayout.BeginArea(area, GUI.skin.box);
             GUILayout.Label("ZQSD / WASD se déplacer   ·   Maj sprint   ·   Espace sauter (marteler pour se décoincer)   ·   Souris regarder", style);
             GUILayout.Label($"Clic gauche maintenu + avancer contre un pivot turquoise = pousser{(_pushedWall != null ? $"  [{_pushProgress * 100f:F0} %]" : "")}", style);
-            GUILayout.Label("F — coup de poing (joueur ou bot devant, à bout de bras)", style);
+            GUILayout.Label("Clic droit — coup de poing (joueur ou bot devant, à bout de bras)", style);
             GUILayout.Label($"Échap curseur ({(_cursorLocked ? "capturé" : "libre")})   ·   Tab panneau réseau   ·   F1 vue {(_thirdPerson ? "3e personne" : "1re personne")}", style);
             GUILayout.Label($"U se dégager d'un mur{(Time.time < _unstickFeedbackUntil ? $"   —   {_unstickFeedback}" : "")}", style);
             GUILayout.EndArea();

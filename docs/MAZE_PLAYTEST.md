@@ -125,7 +125,8 @@ déduites de la grille. `MazePlaytestBuild` refuse de produire la scène si une
 apparition n'a pas de sol, chevauche un collider ou n'a pas un pas de dégagement.
 Le bot apparaît deux mètres devant la première entrée validée et avance dans le
 couloir dès que le serveur démarre ; il tourne devant un obstacle et recule
-brièvement lorsqu'un punch le touche. L'hôte peut donc tester `F` immédiatement.
+brièvement lorsqu'un punch le touche. L'hôte peut donc tester le clic droit
+immédiatement.
 
 ### Une seule machine
 
@@ -164,7 +165,7 @@ changent pas de comportement.
 | Maj | sprint |
 | Espace | sauter — contournement provisoire des gravats, statut gameplay à décider |
 | Clic gauche maintenu + avancer | pousser un mur pivotant d'un quart de tour |
-| F | donner un coup de poing au joueur ou au bot devant soi |
+| Clic droit | donner un coup de poing au joueur ou au bot devant soi |
 | U | se dégager quand on est encastré dans un mur |
 | Échap | libérer ou recapturer le curseur |
 | Tab | masquer ou afficher le panneau réseau |
@@ -172,6 +173,13 @@ changent pas de comportement.
 
 La vue de référence reste la première personne. La troisième personne est là pour
 vérifier le gabarit du personnage, pas pour jouer.
+
+En première personne, le porteur voit ses propres avant-bras et ses poings ; le
+corps et les pieds ne gardent que leur ombre, la caméra étant placée à hauteur des
+yeux, à l'intérieur du volume du corps. Sans cette exception, un coup de poing ne
+donnait aucun retour à l'écran tant qu'il ne touchait personne. La sélection se
+fait sur le nom des meshes de l'export (`Forearm`, `Fist`) et ne concerne que le
+rendu : aucune règle gameplay n'en dépend.
 
 `U` replace le joueur sur le centre d'une cellule voisine libre : une case
 d'abord, puis deux, puis trois. À chaque anneau, la cellule retenue est la plus
