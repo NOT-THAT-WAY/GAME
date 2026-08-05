@@ -543,7 +543,7 @@ namespace NotThatWay.Game
             GUILayout.BeginArea(area, GUI.skin.box);
             GUILayout.Label("ZQSD / WASD se déplacer   ·   Maj sprint   ·   Espace sauter (marteler pour se décoincer)   ·   Souris regarder", style);
             GUILayout.Label($"Clic gauche maintenu + avancer contre un pivot turquoise = pousser{(_pushedWall != null ? $"  [{_pushProgress * 100f:F0} %]" : "")}", style);
-            GUILayout.Label("Clic droit — coup de poing (joueur ou bot devant, à bout de bras)", style);
+            GUILayout.Label("Clic droit — coup de poing (joueur, bot, ou mur : il glisse d'une case le long de sa ligne)", style);
             GUILayout.Label($"Échap curseur ({(_cursorLocked ? "capturé" : "libre")})   ·   Tab panneau réseau   ·   F1 vue {(_thirdPerson ? "3e personne" : "1re personne")}", style);
             GUILayout.Label($"U se dégager d'un mur{(Time.time < _unstickFeedbackUntil ? $"   —   {_unstickFeedback}" : "")}", style);
             GUILayout.EndArea();

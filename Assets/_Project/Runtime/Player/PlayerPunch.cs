@@ -7,7 +7,9 @@ namespace NotThatWay.Game
     /// <summary>
     /// Coup de poing prototype du playtest labyrinthe. Le clic droit joue l'animation
     /// en local pour la réactivité, puis demande la validation à l'hôte : cooldown
-    /// et recherche de cible sont mesurés côté serveur. Le mouvement reste
+    /// et recherche de cible sont mesurés côté serveur. Un coup qui ne trouve
+    /// personne cherche un mur coulissant devant le poing et demande à
+    /// <see cref="SlidingWallDirector"/> de le pousser d'une case. Le mouvement reste
     /// client-authoritative (dette du smoke test) : l'hôte ne téléporte personne,
     /// le knockback d'un joueur est appliqué par son propre client via
     /// <see cref="PlayerMotor.ApplyKnockbackFromServer"/>. Le combat final relève de M1,
@@ -35,8 +37,13 @@ namespace NotThatWay.Game
 
         private static readonly int PunchTrigger = Animator.StringToHash("Punch");
 
+        // Hauteur du poing, réutilisée pour la ligne de vue et pour le rayon qui
+        // cherche un mur : un coup part de la poitrine, pas des pieds.
+        private const float ChestHeight = 0.7f;
+
         private PlayerMotor _motor;
         private Animator _animator;
+        private SlidingWallDirector _wallDirector;
         // Le host possède la même instance côté client et côté serveur. Deux
         // horloges séparées évitent que le filtre local refuse immédiatement sa
         // propre requête serveur.
@@ -105,6 +112,33 @@ namespace NotThatWay.Game
                 victimPlayer.ApplyKnockbackFromServer(direction * KnockbackSpeed);
             else if (victimBot != null)
                 victimBot.ApplyKnockback(direction * KnockbackSpeed);
+            else
+                TryPunchWall();
+        }
+
+        /// <summary>
+        /// Coup porté dans le vide : si un mur coulissant est à portée devant le
+        /// poing, l'hôte lui demande de glisser d'une case. La cible est résolue
+        /// ici, sur la copie serveur du décor — le client n'a désigné aucun mur et
+        /// ne peut donc pas en pousser un qu'il ne voit pas.
+        /// </summary>
+        private void TryPunchWall()
+        {
+            if (_wallDirector == null)
+                _wallDirector = FindFirstObjectByType<SlidingWallDirector>();
+
+            if (_wallDirector == null)
+                return;
+
+            var origin = transform.position + Vector3.up * ChestHeight;
+            if (!Physics.Raycast(origin, transform.forward, out var hit, PunchRange, ~0, QueryTriggerInteraction.Ignore))
+                return;
+
+            var wall = hit.collider.GetComponentInParent<SlidingWall>();
+            if (wall == null)
+                return;
+
+            _wallDirector.TrySlide(wall, transform.position, transform.forward, hit.point);
         }
 
         /// <summary>
@@ -174,9 +208,8 @@ namespace NotThatWay.Game
         /// </summary>
         private bool HasLineOfSight(Transform target)
         {
-            var chestHeight = 0.7f;
-            var start = transform.position + Vector3.up * chestHeight;
-            var end = target.position + Vector3.up * chestHeight;
+            var start = transform.position + Vector3.up * ChestHeight;
+            var end = target.position + Vector3.up * ChestHeight;
 
             if (!Physics.Linecast(start, end, out var hit, ~0, QueryTriggerInteraction.Ignore))
                 return true;
