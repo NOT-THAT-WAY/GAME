@@ -7,6 +7,7 @@
 3. Hydrater les masters avec le script `assets` uniquement si la tâche référence déjà un lot DVC.
 4. Créer une branche courte avec le script `start-task` ; ne pas la créer depuis une branche en retard.
 5. Revendiquer dans l'issue les scènes, prefabs, Work Units et lots DVC modifiés.
+6. Pour un joueur, mur/pivot, collision, topologie, interaction ou transport, lire [l'ADR 0004](docs/adr/0004-authoritative-topology-and-ticks.md) et appliquer le skill Claude `network-gameplay` avant de coder.
 
 ## Pendant le travail
 
@@ -17,6 +18,8 @@
 - ne jamais committer caches, builds, secrets, credentials DVC ou données personnelles ;
 - ne jamais placer un master éditable dans Git, même sous LFS ;
 - enregistrer source, version, auteur, licence, preuve et restrictions avant l'import d'un asset externe ou IA.
+
+Un changement de gameplay partagé distingue toujours l'intention cliente de la décision de l'hôte. Il indique dans l'issue les IDs/schéma touchés, l'ordre de tick, la politique de collision, le snapshot d'arrivée tardive et le profil réseau de preuve. Les implémentations actuelles de `PlayerMotor`, `PivotDirector` et des colliders FBX sont des prototypes à migrer, pas des exemples à étendre.
 
 ## Livrer un asset
 
@@ -83,6 +86,7 @@ Une PR indique le résultat, les fichiers/lots touchés et les tests réalisés.
 - pointeurs DVC disponibles dans le remote si la tâche touche un master ;
 - validation par un second membre ;
 - test sur l'autre OS si le changement touche plugin, réseau, audio, chemins ou build ;
+- pour un état gameplay partagé : tests du modèle pur, scène grise à deux joueurs, arrivée tardive et réseau dégradé selon l'ADR 0004 ;
 - ADR/documentation mis à jour si un contrat partagé change.
 
 Lire aussi [le contrat du projet](docs/PROJECT_RULES.md) pour les changements autorisés/différés et [la matrice CI/build](docs/CI_BUILDS.md) pour décider quels OS doivent valider la PR.

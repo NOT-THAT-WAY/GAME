@@ -11,7 +11,7 @@ Contrat technique actuel :
 - cible joueur initiale : **Windows x86_64**, build IL2CPP produit sur Windows ;
 - postes de développement : **macOS Apple Silicon** et **Windows x86_64** ;
 - réseau : listen-server à hôte autoritaire avec FishNet/Tugboat ;
-- Tailscale : réseau privé de test entre développeurs, jamais une dépendance du jeu livré ;
+- Tailscale : réseau privé de test entre développeurs, avec une offre compatible avec l'usage du projet, jamais une dépendance du jeu livré ;
 - rendu : URP, profil PC ;
 - `main` doit toujours s'ouvrir et rester constructible avec la version exacte de Unity enregistrée.
 
@@ -28,10 +28,24 @@ Un build Mac sert au développement et aux tests internes. Une sortie macOS, Lin
 
 L'issue indique un pilote, un binôme, un testeur et les scènes/prefabs/lots revendiqués. Les affinités de profil orientent le départ sans créer de territoire permanent.
 
+## Invariants du gameplay réseau
+
+Toute fonctionnalité qui modifie un joueur, un mur, une collision, une interaction, l'énergie ou le résultat d'une partie suit [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.md) :
+
+- l'hôte simule sur le tick FishNet après avoir validé une intention cliente ;
+- les murs utilisent des IDs stables et des transitions datées par tick ;
+- la topologie typée/versionnée est la source des collisions, apparitions et checksums ; le FBX reste un rendu ;
+- le déplacement final utilise commandes par tick, Input Actions et `Replicate`/`Reconcile` ;
+- les snapshots d'arrivée tardive contiennent tick, checksum et révisions ;
+- `Time.time`, `Time.deltaTime`, les noms de GameObject et les `MeshCollider` du décor ne décident jamais d'un état partagé ;
+- Tugboat et Steam restent derrière une cible de connexion indépendante du gameplay.
+
+`PlayerMotor`, `PivotDirector` et la génération actuelle de `MeshCollider` dans `MazePlaytestBuild` sont des dettes de smoke test. Leur présence ne crée pas un précédent. Avant d'ajouter énergie, contestation, trésor ou un autre verbe réseau, migrer la topologie, les murs et le joueur dans l'ordre de l'ADR et prouver le résultat dans une scène grise à un pivot/deux joueurs.
+
 ## Ce qui attend une gate
 
-- DVC et son stockage distant : au premier master Blender/PSD/DAW lourd ou irremplaçable ;
-- Wwise : après le premier gameplay distant, avec Nils comme seul poste Authoring au départ ;
+- DVC et son stockage distant : gate désormais à ouvrir avant toute modification ou transmission des masters qui ont produit les deux FBX actuels ;
+- Wwise : après la première preuve distante autoritaire de la scène grise, avec Nils comme seul poste Authoring au départ ;
 - Steamworks/FishySteamworks : après la preuve distante Tailscale/Tugboat ;
 - Addressables : avant la production de contenu, uniquement si le volume le justifie ;
 - serveur dédié, matchmaking, voix de proximité, anti-cheat et builds de release : après validation du duel.

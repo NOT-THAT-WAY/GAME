@@ -90,6 +90,14 @@ Assets/
 
 Dans `_Project`, regrouper par feature (`Core`, `Player`, `Pivot`, `Maze`, `Audio`, `UI`) plutôt que dans de grands dossiers globaux Scripts/Prefabs/Textures. Chaque feature possède ses petits prefabs, tests et scènes additives.
 
+### Frontière gameplay réseau
+
+Toute modification d'un joueur, d'un mur/pivot, d'une collision, d'une interaction, de la topologie ou de la connexion applique [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.md). Avec Claude, le skill `network-gameplay` est obligatoire pour ces sujets.
+
+Le code de domaine déterministe reste en C# pur et avance sur les ticks ; les `NetworkBehaviour` restent aux frontières de FishNet. Les clients envoient des intentions, l'hôte valide et simule. Les colliders viennent de la topologie versionnée, tandis que FBX, animation et interpolation restent visuels. Le prototype `PlayerMotor`/`PivotDirector`/`MazePlaytestBuild` ne constitue pas le patron d'architecture M1.
+
+La preuve de référence est une scène grise à un pivot et deux joueurs. La map 16x16 sert ensuite de test d'intégration afin de ne pas confondre un bug réseau avec un import, un prop ou un maillage complexe.
+
 Les masters correspondants restent hors GitHub :
 
 ```text
@@ -111,6 +119,8 @@ Nils possède seul Wwise Authoring au départ. Sean et Zak testent les événeme
 3. distant équipe : Tailscale + Tugboat, sans modification du build ;
 4. conditions dégradées : latence/perte/jitter avec Multiplayer Tools ;
 5. Steam : deux comptes et deux machines après la gate distante.
+
+Un changement d'état partagé vérifie aussi une arrivée tardive en cours de transition, un snapshot/reconnexion, 30/60/120 FPS et le profil `80 ms RTT / 2 % perte / 20 ms jitter`. Le résultat compare tick, checksum de topologie et révisions, pas seulement l'apparence à l'écran.
 
 Un bug indique le commit, OS, rôle hôte/client, transport et conditions réseau. Les adresses privées et logs contenant des identifiants ne sont pas copiés dans une issue publique.
 

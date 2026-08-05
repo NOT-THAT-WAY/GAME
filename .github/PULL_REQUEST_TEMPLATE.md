@@ -26,3 +26,12 @@ Lister scènes, prefabs, ProjectSettings, Work Units, fichiers LFS, pointeurs DV
 - [ ] `dvc push` terminé avant `git push` si un pointeur DVC change
 - [ ] aucun master éditable ou donnée personnelle ajouté à Git
 - [ ] registre des assets / ADR mis à jour si nécessaire
+
+## Contrat gameplay réseau — si concerné
+
+- [ ] le client envoie une intention et l'hôte valide/simule sur le tick FishNet
+- [ ] IDs, schéma/checksum, transition (`startTick`, durée, révision) et snapshot sont explicités
+- [ ] collision autoritaire issue de la topologie, indépendante du FBX et du rendu par image
+- [ ] déplacement partagé fondé sur Input Actions et `Replicate`/`Reconcile`, ou dette clairement bornée
+- [ ] arrivée tardive/reconnexion, 30/60/120 FPS et profil `80 ms / 2 % / 20 ms` vérifiés selon le risque
+- [ ] conséquence d'un mur sur un joueur et autres décisions ouvertes citées, jamais inventées silencieusement

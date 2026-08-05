@@ -46,6 +46,12 @@ body:
       placeholder: Assets/_Project/Pivot/Scenes/PivotTest.unity
     validations:
       required: true
+  - type: textarea
+    id: network_contract
+    attributes:
+      label: Contrat gameplay réseau (si concerné)
+      description: Préciser autorité, tick, IDs/schéma, collision, snapshot d'arrivée tardive et profil réseau. Lire l'ADR 0004 pour tout joueur, mur/pivot, interaction, topologie ou transport.
+      placeholder: Intention cliente → validation hôte au tick ; wallId stable ; collision issue de la topologie ; test 80 ms / 2 % / 20 ms.
   - type: checkboxes
     id: platforms
     attributes:
@@ -71,4 +77,6 @@ body:
         - label: Aucun autre membre n'édite les mêmes objets partagés.
           required: true
         - label: Les gates différées ne seront pas ajoutées sans décision dédiée.
+          required: true
+        - label: Si la tâche touche un état gameplay partagé, elle suivra l'ADR 0004 et ne copiera pas l'architecture du smoke test actuel.
           required: true

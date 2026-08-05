@@ -2,11 +2,13 @@
 
 ## Capacité disponible au départ
 
-Mesure du 4 août 2026 : le dépôt `GAME` fait environ **164 Kio**, ne contient encore **aucun objet Git LFS** et ne référence aucun lot DVC. Les deux autres machines peuvent donc cloner et construire le projet sans attendre le coffre de masters.
+Mesure du 5 août 2026 : le dépôt contient **deux objets Git LFS**, `Maze16x16.fbx` d'environ **38 Mo** et `PersoBoule.fbx` d'environ **101 Ko**, et ne référence encore aucun lot DVC. Les deux autres machines peuvent cloner et construire le projet avec ces exports, mais elles ne peuvent pas régénérer leurs sources.
 
 L'organisation GitHub est sur le plan Free : elle inclut actuellement [**10 Gio de stockage Git LFS** et **10 Gio de téléchargement LFS par mois**](https://docs.github.com/en/billing/concepts/product-billing/git-lfs), avec une [limite de **2 Gio par fichier**](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage). Ce quota couvre les exports nécessaires au build, pas les `.blend`, PSD, sessions DAW ou prises brutes. Comme deux nouveaux clones retéléchargent chacun les objets LFS, l'équipe garde un budget interne de **2 Gio maximum d'exports actifs** pendant le prototype et vérifie la page Billing avant tout gros lot.
 
-Le remote DVC n'a pas encore de capacité partagée car aucun fournisseur n'est configuré. Ce n'est pas nécessaire pour installer les trois postes : aucun master n'est encore référencé. Le choix du coffre est reporté au premier gros fichier source ; Cloudflare R2 Standard reste un candidat économique à comparer à ce moment-là.
+Le remote DVC n'a pas encore de capacité partagée car aucun fournisseur n'est configuré. Les masters Blender qui ont produit les deux FBX sont absents : le choix du coffre n'est donc plus différable avant leur prochaine modification ou transmission. Cela ne bloque pas l'installation d'un développeur qui consomme seulement les exports. Comparer les fournisseurs au moment de la gate, sans inscrire dans le dépôt une promesse de prix volatile.
+
+La gate DVC réussit lorsque les deux masters sont enregistrés comme lots séparés, poussés dans un remote privé versionné, restaurés sur Mac et Windows, et reliés aux lignes `ART-MAZE-001` et `ART-PERSO-001` du [registre](assets/ASSET_REGISTER.md). Aucun master ne doit être envoyé dans Git/LFS pour aller plus vite.
 
 ## Quatre niveaux, une vérité par niveau
 

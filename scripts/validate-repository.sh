@@ -20,10 +20,29 @@ PROJECT_CHANGESET="$(sed -n 's/^m_EditorVersionWithRevision: .*(\([^)]*\)).*/\1/
 [[ -f .claude/skills/lan-test/SKILL.md ]]
 [[ -f .claude/skills/git-task/SKILL.md ]]
 [[ -f .claude/skills/remote-test/SKILL.md ]]
+[[ -f .claude/skills/network-gameplay/SKILL.md ]]
+[[ -f docs/adr/0004-authoritative-topology-and-ticks.md ]]
 grep -Fq 'name: setup-game' .claude/skills/setup-game/SKILL.md
 grep -Fq 'name: lan-test' .claude/skills/lan-test/SKILL.md
 grep -Fq 'name: git-task' .claude/skills/git-task/SKILL.md
 grep -Fq 'name: remote-test' .claude/skills/remote-test/SKILL.md
+grep -Fq 'name: network-gameplay' .claude/skills/network-gameplay/SKILL.md
+grep -Fq 'skill `network-gameplay`' CLAUDE.md
+
+for NETWORK_RULE in \
+  'Time.deltaTime' \
+  'startTick' \
+  'schemaVersion' \
+  'Replicate`/`Reconcile' \
+  'MeshCollider' \
+  'ConnectionTarget' \
+  '80 ms RTT / 2 % perte / 20 ms jitter'; do
+  if ! grep -Fq "$NETWORK_RULE" .claude/skills/network-gameplay/SKILL.md || \
+     ! grep -Fq "$NETWORK_RULE" docs/adr/0004-authoritative-topology-and-ticks.md; then
+    printf 'Network gameplay guardrail missing from skill or ADR: %s\n' "$NETWORK_RULE" >&2
+    exit 1
+  fi
+done
 [[ -x scripts/tailscale-macos.sh ]]
 [[ -x scripts/remote-test-macos.sh ]]
 [[ -f scripts/tailscale-windows.ps1 ]]

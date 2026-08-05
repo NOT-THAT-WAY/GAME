@@ -7,10 +7,12 @@ La CI actuelle est volontairement légère et sans secret Unity :
 | Contrôle | Plateforme CI | Ce qu'il prouve |
 |---|---|---|
 | `workflow-policy` | Ubuntu | branche et titre de PR conformes |
-| `validate` | Ubuntu | versions, métadonnées Unity, LFS/DVC, fichiers interdits et contrat projet |
+| `validate` | Ubuntu | versions, métadonnées Unity, LFS/DVC, fichiers interdits et présence du contrat réseau/skill Claude |
 | `powershell-syntax` | Windows | tous les scripts `.ps1` sont analysables par PowerShell |
 
 Les jobs ont uniquement `contents: read`, ne téléchargent pas les payloads LFS et n'utilisent aucun secret de build. Le dépôt n'autorise actuellement que les Actions appartenant à GitHub et exige une empreinte SHA complète. Dependabot proposera séparément leurs mises à jour. Une future Action Unity externe devra être revue puis autorisée explicitement pendant sa gate.
+
+Le contrôle `validate` empêche la suppression silencieuse de l'ADR 0004, du skill `network-gameplay` et de ses notions minimales (`startTick`, réconciliation, topologie/colliders, cible de connexion et profil dégradé). Il ne prouve pas que le code les respecte : cette preuve vient des tests EditMode/PlayMode et de la matrice réseau.
 
 La CI ne prétend pas encore compiler Unity. La compilation de preuve actuelle est locale :
 
@@ -30,6 +32,7 @@ Le premier produit un build de développement macOS. Le second doit produire le 
 |---|---:|---:|---:|
 | docs, règles, scripts Bash | obligatoire | syntaxe PowerShell si touchée | non |
 | gameplay C# pur | build/Play Mode | smoke test avant merge important | EditMode puis PlayMode |
+| état gameplay partagé, murs ou joueur | scène grise + réseau dégradé | IL2CPP + autre machine au même commit | EditMode déterministe + PlayMode à deux |
 | scène, prefab, URP, input | ouverture propre + build | ouverture/smoke test | PlayMode |
 | `Packages`, `ProjectSettings`, plugin natif, réseau, Wwise | build obligatoire | build IL2CPP obligatoire | matrice Mac + Windows |
 | release Windows | test secondaire | build signé sur poste/runner contrôlé | Windows uniquement |
@@ -41,7 +44,10 @@ Le premier produit un build de développement macOS. Le second doit produire le 
 - aucun upload automatique de builds ;
 - aucun déploiement Steam ;
 - aucun runner auto-hébergé ;
-- aucun secret Wwise, DVC ou Tailscale.
+- aucun secret Wwise, DVC ou Tailscale ;
+- aucun scan de contenu dédié aux secrets ; le validateur ne couvre pour l'instant que les chemins suspects.
+
+Avant d'introduire des credentials DVC, Wwise, Steam, signature ou publication dans GitHub, ajouter une gate de détection de secrets compatible avec la politique d'Actions du dépôt, épinglée par SHA ou exécutée par un outil contrôlé avec checksum. Les secrets restent dans GitHub Environments ou le gestionnaire prévu, jamais dans un fichier de configuration versionné.
 
 Ajouter un workflow qui attend un secret absent créerait une fausse CI rouge. Ces éléments restent donc documentés jusqu'à leur gate.
 
@@ -49,7 +55,7 @@ Ajouter un workflow qui attend un secret absent créerait une fausse CI rouge. C
 
 Ouvrir une PR `chore/unity-build-ci` seulement lorsque :
 
-1. un test EditMode et un test PlayMode utiles existent ;
+1. un test EditMode du modèle déterministe et un test PlayMode dans la scène grise à deux joueurs existent ;
 2. le build Mac et le build Windows IL2CPP passent manuellement au même commit ;
 3. l'équipe choisit le mode de licence Unity et le runner ;
 4. les secrets sont stockés dans GitHub, jamais dans un fichier ou un log ;
