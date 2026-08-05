@@ -43,6 +43,12 @@ namespace NotThatWay.Game
         // couple : on appuie dans l'axe du mur, il ne part d'aucun côté.
         private const float MinimumTorque = 0.2f;
 
+        // Poussée d'un mur mobile : on doit être dessus, pas à bout de bras. L'hôte
+        // mesure l'effort ; le client se contente de répéter son intention assez
+        // souvent pour que l'hôte sache qu'on pousse encore.
+        private const float WallPushReach = 1.2f;
+        private const float WallPushIntentInterval = 0.1f;
+
         // Se dégager ne se calcule pas en repoussant le joueur hors du mur :
         // `Physics.ComputePenetration` ne résout rien contre un MeshCollider non
         // convexe, et les murs du labyrinthe en sont. On vise donc un centre de
@@ -107,6 +113,9 @@ namespace NotThatWay.Game
         private PivotDirector _pivotDirector;
         private PivotWall _pushedWall;
         private float _pushProgress;
+        private MovableWallDirector _wallDirector;
+        private MovableWall _pushedMovableWall;
+        private float _nextWallPushIntentAt;
         private float _pitch;
         private float _verticalVelocity;
         private float _lastGroundedAt = float.NegativeInfinity;
@@ -159,6 +168,7 @@ namespace NotThatWay.Game
 
             _sessionPanel = FindFirstObjectByType<ConnectionSmokeTest>(FindObjectsInactive.Include);
             _pivotDirector = FindFirstObjectByType<PivotDirector>(FindObjectsInactive.Include);
+            _wallDirector = FindFirstObjectByType<MovableWallDirector>(FindObjectsInactive.Include);
             if (_camera != null)
                 _camera.gameObject.SetActive(true);
 
@@ -189,6 +199,7 @@ namespace NotThatWay.Game
             ApplyLook();
             ApplyMove();
             ApplyPush();
+            ApplyWallPush();
         }
 
         /// <summary>
@@ -320,6 +331,47 @@ namespace NotThatWay.Game
             // Tracé dans le log du joueur : c'est ce qui permet de dire après coup si
             // la touche n'a rien fait ou si elle a visé une cellule qui ne dégageait pas.
             Debug.Log($"[GAME-DEBLOCAGE] {message} — {transform.position}");
+        }
+
+        /// <summary>
+        /// Avancer contre un mur mobile, l'épaule dedans : l'hôte accumule l'effort
+        /// et le mur finit par céder d'un quart de tour. Pas de bouton — marcher
+        /// dedans suffit, comme on force une porte lourde.
+        ///
+        /// Le client ne fait que répéter son intention. Il ne décide ni de la durée
+        /// de l'effort, ni du gond, ni du sens, ni du moment où le mur bascule : tout
+        /// ça appartient à <see cref="MovableWallDirector"/>, côté hôte.
+        /// </summary>
+        private void ApplyWallPush()
+        {
+            if (_wallDirector == null)
+                _wallDirector = FindFirstObjectByType<MovableWallDirector>(FindObjectsInactive.Include);
+
+            var keyboard = Keyboard.current;
+            var advancing = keyboard != null && (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed);
+
+            if (!advancing || _wallDirector == null)
+            {
+                _pushedMovableWall = null;
+                return;
+            }
+
+            var chest = transform.TransformPoint(_controller.center);
+            if (!Physics.Raycast(chest, transform.forward, out var hit, WallPushReach, ~0, QueryTriggerInteraction.Ignore))
+            {
+                _pushedMovableWall = null;
+                return;
+            }
+
+            _pushedMovableWall = hit.collider.GetComponentInParent<MovableWall>();
+            if (_pushedMovableWall == null)
+                return;
+
+            if (Time.time < _nextWallPushIntentAt)
+                return;
+
+            _nextWallPushIntentAt = Time.time + WallPushIntentInterval;
+            _wallDirector.RequestWallPush(_pushedMovableWall.Id);
         }
 
         /// <summary>
@@ -543,7 +595,10 @@ namespace NotThatWay.Game
             GUILayout.BeginArea(area, GUI.skin.box);
             GUILayout.Label("ZQSD / WASD se déplacer   ·   Maj sprint   ·   Espace sauter (marteler pour se décoincer)   ·   Souris regarder", style);
             GUILayout.Label($"Clic gauche maintenu + avancer contre un pivot turquoise = pousser{(_pushedWall != null ? $"  [{_pushProgress * 100f:F0} %]" : "")}", style);
-            GUILayout.Label("Clic droit — coup de poing (joueur, bot, ou mur : frappé près d'un bout, il pivote sur l'autre)", style);
+            var wallEffort = _pushedMovableWall != null && _wallDirector != null
+                ? $"  [{_wallDirector.EffortFor(_pushedMovableWall.Id) * 100f:F0} %]"
+                : "";
+            GUILayout.Label($"Avancer contre un mur = le pousser, c'est lourd{wallEffort}   ·   clic droit = coup de poing (joueur, bot ou mur)", style);
             GUILayout.Label($"Échap curseur ({(_cursorLocked ? "capturé" : "libre")})   ·   Tab panneau réseau   ·   F1 vue {(_thirdPerson ? "3e personne" : "1re personne")}", style);
             GUILayout.Label($"U se dégager d'un mur{(Time.time < _unstickFeedbackUntil ? $"   —   {_unstickFeedback}" : "")}", style);
             GUILayout.EndArea();

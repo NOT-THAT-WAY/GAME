@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine;
@@ -9,8 +10,11 @@ namespace NotThatWay.Game
     /// <summary>
     /// Détient la pose de tous les murs mobiles de la map et la réplique.
     ///
-    /// Un coup de poing fait pivoter un mur d'un quart de tour autour du bout
-    /// opposé à l'impact : on pousse le battant, la charnière est en face. Le mur
+    /// Deux façons de bouger un mur, une seule mécanique. Marcher contre lui
+    /// accumule un effort côté hôte et le fait céder lentement, comme un vantail
+    /// de pierre qu'on épaule ; un coup de poing emporte le quart de tour d'un
+    /// coup. Dans les deux cas le mur pivote autour du bout opposé au contact : on
+    /// pousse le battant, la charnière est en face. Le mur
     /// change donc d'axe et se pose sur l'arête perpendiculaire, exactement — un
     /// mur fait un pas de grille de long, et un quart de tour autour d'un nœud le
     /// mène d'une arête de la grille à une autre sans pose intermédiaire possible.
@@ -21,11 +25,19 @@ namespace NotThatWay.Game
     /// affichent des angles intermédiaires différents restent d'accord sur le
     /// labyrinthe, parce qu'elles convergent vers la même arête.
     ///
-    /// L'hôte décide seul. Le client n'envoie même pas de cible : il envoie une
-    /// intention de frappe à <see cref="PlayerPunch"/>, et c'est la copie serveur
-    /// du décor qui désigne le mur touché, puis valide portée, repos, éloignement
-    /// de l'arête d'origine, occupation de l'arête d'arrivée et absence de joueur
-    /// dessous.
+    /// L'hôte décide seul. Le client n'envoie même pas de cible quand il frappe :
+    /// la copie serveur du décor désigne le mur touché. Quand il pousse, il ne
+    /// désigne que le mur, jamais le gond, le sens ni la durée de son effort —
+    /// l'hôte mesure l'effort à son propre rythme, donc répéter l'intention plus
+    /// vite ne fait pas céder le mur plus tôt. Dans les deux cas il valide portée,
+    /// repos, éloignement de l'arête d'origine, occupation de l'arête d'arrivée et
+    /// absence de joueur dessous.
+    ///
+    /// Une réserve à connaître : l'effort d'une poussée en cours est répliqué, par
+    /// paliers de 5 %, pour que tout le monde voie le battant céder. C'est un
+    /// scalaire par mur poussé et non un transform, mais c'est un cran de plus que
+    /// l'état purement discret des pivots. La migration de l'ADR 0004 le remplace
+    /// par une transition à `startTick`/`durationTicks`.
     ///
     /// Règle de collision retenue pour ce prototype : un mur ne se referme jamais
     /// sur quelqu'un. Si un joueur ou un bot occupe l'arête d'arrivée, la poussée
@@ -42,6 +54,25 @@ namespace NotThatWay.Game
         // continuer à la pousser sans jamais reprendre un mur en plein vol.
         private const float SwingSeconds = 0.85f;
         private const float SwingCooldown = 0.95f;
+
+        // Poussée à l'épaule : lourde, mais pas au point qu'on renonce. L'effort
+        // retombe un peu plus vite qu'il ne monte, donc lâcher ramène le battant.
+        private const float PushSeconds = 2.2f;
+        private const float ReleaseSeconds = 1.6f;
+
+        // Au-delà de ce silence, l'hôte considère que le joueur a cessé de pousser.
+        // Le client répète son intention plus souvent que ça.
+        private const float IntentTimeout = 0.25f;
+
+        // Contact à l'épaule : plus court que la portée du poing, on doit toucher
+        // le mur. La marge couvre le trajet du message.
+        private const float PushReach = 1.8f;
+
+        // L'effort répliqué est quantifié : inutile d'envoyer chaque centième. Vingt
+        // paliers sur toute la course, lissés localement, suffisent à voir le mur
+        // céder sans transformer un état partagé en flux de transform.
+        private const int PushStep = 5;
+        private const float PushSmoothing = 12f;
 
         // Un mur ne s'éloigne jamais de plus de deux pas de son arête d'origine :
         // la map reste lisible et un mur ne traverse pas la moitié du plateau.
@@ -66,10 +97,22 @@ namespace NotThatWay.Game
         [SerializeField] private int[] _blockedSlots = Array.Empty<int>();
 
         private readonly SyncList<int> _poses = new();
+
+        // Poussée en cours par mur : arête visée et effort en pourcents, empaquetés.
+        // Zéro veut dire « personne ne pousse ». C'est ce qui permet à toutes les
+        // machines de voir le battant céder pendant qu'on s'appuie dessus.
+        private readonly SyncList<int> _pushes = new();
+
         private readonly HashSet<int> _occupied = new();
 
         private MovableWall[] _walls = Array.Empty<MovableWall>();
         private float[] _nextSwingAllowedAt = Array.Empty<float>();
+
+        // Effort mesuré par l'hôte, et lui seul : un client qui répéterait son
+        // intention plus vite ne pousserait pas plus fort pour autant.
+        private float[] _effort = Array.Empty<float>();
+        private float[] _pushIntentAt = Array.Empty<float>();
+        private int[] _pushTarget = Array.Empty<int>();
 
         // Animation du battant, propre à chaque machine et jamais répliquée : elle
         // rattrape la pose reçue, elle ne la décide pas.
@@ -79,6 +122,10 @@ namespace NotThatWay.Game
         private Quaternion[] _swingFromRotation = Array.Empty<Quaternion>();
         private float[] _swingAngle = Array.Empty<float>();
         private float[] _swingProgress = Array.Empty<float>();
+        private int[] _shownPushTarget = Array.Empty<int>();
+        private float[] _shownEffort = Array.Empty<float>();
+        private Vector3[] _pushHinge = Array.Empty<Vector3>();
+        private float[] _pushAngle = Array.Empty<float>();
 
         /// <summary>
         /// Les murs sont retrouvés dans la scène et triés par leur identifiant, posé
@@ -100,6 +147,13 @@ namespace NotThatWay.Game
             _swingFromRotation = new Quaternion[walls.Length];
             _swingAngle = new float[walls.Length];
             _swingProgress = new float[walls.Length];
+            _shownEffort = new float[walls.Length];
+            _pushHinge = new Vector3[walls.Length];
+            _pushAngle = new float[walls.Length];
+
+            _shownPushTarget = new int[walls.Length];
+            for (var index = 0; index < walls.Length; index++)
+                _shownPushTarget[index] = -1;
         }
 
         public override void OnStartServer()
@@ -108,16 +162,23 @@ namespace NotThatWay.Game
 
             ResolveWalls();
             _nextSwingAllowedAt = new float[_walls.Length];
+            _effort = new float[_walls.Length];
+            _pushIntentAt = new float[_walls.Length];
+            _pushTarget = new int[_walls.Length];
+            for (var index = 0; index < _walls.Length; index++)
+                _pushTarget[index] = -1;
 
             _occupied.Clear();
             foreach (var slot in _blockedSlots)
                 _occupied.Add(slot);
 
             _poses.Clear();
+            _pushes.Clear();
             foreach (var wall in _walls)
             {
                 var slot = SlotKey(wall.HomeFamily, wall.HomeSlotX, wall.HomeSlotY);
                 _poses.Add(Pack(slot, 0));
+                _pushes.Add(0);
                 _occupied.Add(slot);
             }
 
@@ -137,6 +198,9 @@ namespace NotThatWay.Game
 
         private void Update()
         {
+            if (IsServerStarted)
+                AdvancePushes();
+
             // Chaque machine rejoue la même cible : la pose affichée rattrape l'arête
             // répliquée, sans que personne n'envoie de transform. Une différence entre
             // pose reçue et pose affichée déclenche le battement local.
@@ -151,16 +215,70 @@ namespace NotThatWay.Game
                 if (_shownPose[index] != pose)
                     BeginSwing(index, pose);
 
-                if (_swingProgress[index] >= 1f)
+                if (_swingProgress[index] < 1f)
+                {
+                    _swingProgress[index] = Mathf.Min(1f, _swingProgress[index] + Time.deltaTime / SwingSeconds);
+
+                    var swing = Quaternion.AngleAxis(_swingAngle[index] * Ease(_swingProgress[index]), Vector3.up);
+                    wall.transform.SetPositionAndRotation(
+                        _swingHinge[index] + swing * (_swingFromPosition[index] - _swingHinge[index]),
+                        swing * _swingFromRotation[index]);
                     continue;
+                }
 
-                _swingProgress[index] = Mathf.Min(1f, _swingProgress[index] + Time.deltaTime / SwingSeconds);
-
-                var rotation = Quaternion.AngleAxis(_swingAngle[index] * Ease(_swingProgress[index]), Vector3.up);
-                wall.transform.SetPositionAndRotation(
-                    _swingHinge[index] + rotation * (_swingFromPosition[index] - _swingHinge[index]),
-                    rotation * _swingFromRotation[index]);
+                ShowPush(index, wall, pose);
             }
+        }
+
+        /// <summary>
+        /// Pose le mur à l'endroit où la poussée en cours l'a amené. L'effort reçu est
+        /// lissé sur place : il arrive par paliers, et un vantail de pierre ne
+        /// progresse pas par à-coups.
+        /// </summary>
+        private void ShowPush(int index, MovableWall wall, int pose)
+        {
+            var packed = index < _pushes.Count ? _pushes[index] : 0;
+            var target = packed == 0 ? -1 : PushSlotOf(packed);
+            var wanted = packed == 0 ? 0f : PushPercentOf(packed) / 100f;
+
+            if (target >= 0 && target != _shownPushTarget[index])
+            {
+                if (TryFindHinge(SlotOf(pose), target, out var hinge))
+                {
+                    _shownPushTarget[index] = target;
+                    _pushHinge[index] = NodePosition(hinge);
+                    _pushAngle[index] = QuarterTurnAngle(SlotOf(pose), target, hinge);
+                }
+                else
+                {
+                    wanted = 0f;
+                }
+            }
+            else if (target < 0)
+            {
+                // Le mur a été lâché : il revient, il ne se fige pas en biais.
+                wanted = 0f;
+            }
+
+            _shownEffort[index] = Mathf.Lerp(
+                _shownEffort[index], wanted, 1f - Mathf.Exp(-PushSmoothing * Time.deltaTime));
+
+            var basePosition = SlotCenter(SlotOf(pose));
+            var baseRotation = Quaternion.AngleAxis(90f * TurnsOf(pose), Vector3.up);
+
+            if (_shownEffort[index] < 0.002f)
+            {
+                _shownEffort[index] = 0f;
+                _shownPushTarget[index] = -1;
+                if (wall.transform.position != basePosition)
+                    wall.transform.SetPositionAndRotation(basePosition, baseRotation);
+                return;
+            }
+
+            var rotation = Quaternion.AngleAxis(_pushAngle[index] * Ease(_shownEffort[index]), Vector3.up);
+            wall.transform.SetPositionAndRotation(
+                _pushHinge[index] + rotation * (basePosition - _pushHinge[index]),
+                rotation * baseRotation);
         }
 
         /// <summary>
@@ -173,10 +291,23 @@ namespace NotThatWay.Game
             var previous = _shownPose[index];
             _shownPose[index] = pose;
 
+            var target = SlotCenter(SlotOf(pose));
+            var targetRotation = Quaternion.AngleAxis(90f * TurnsOf(pose), Vector3.up);
+
+            // Une poussée qui aboutit a déjà amené le battant au bout de sa course :
+            // rejouer le mouvement le ferait repartir en arrière d'un coup.
+            if (_shownPushTarget[index] == SlotOf(pose))
+            {
+                _shownPushTarget[index] = -1;
+                _shownEffort[index] = 0f;
+                _walls[index].transform.SetPositionAndRotation(target, targetRotation);
+                _swingProgress[index] = 1f;
+                return;
+            }
+
             if (previous < 0 || !TryFindHinge(SlotOf(previous), SlotOf(pose), out var hinge))
             {
-                _walls[index].transform.SetPositionAndRotation(
-                    SlotCenter(SlotOf(pose)), Quaternion.AngleAxis(90f * TurnsOf(pose), Vector3.up));
+                _walls[index].transform.SetPositionAndRotation(target, targetRotation);
                 _swingProgress[index] = 1f;
                 return;
             }
@@ -186,12 +317,106 @@ namespace NotThatWay.Game
             _swingFromRotation[index] = Quaternion.AngleAxis(90f * TurnsOf(previous), Vector3.up);
             _swingAngle[index] = Mathf.DeltaAngle(90f * TurnsOf(previous), 90f * TurnsOf(pose));
             _swingProgress[index] = 0f;
+            _shownEffort[index] = 0f;
+            _shownPushTarget[index] = -1;
         }
 
         /// <summary>Départ et arrivée mous, plein élan au milieu : le poids d'un vantail de pierre.</summary>
         private static float Ease(float t)
         {
             return t * t * t * (t * (t * 6f - 15f) + 10f);
+        }
+
+        /// <summary>
+        /// Intention de pousser un mur à l'épaule, répétée par le client tant qu'il
+        /// avance contre lui. L'hôte ne fait qu'enregistrer l'intention : c'est lui
+        /// qui mesure l'effort, à son propre rythme, donc répéter le message plus vite
+        /// ne fait pas céder le mur plus tôt.
+        /// </summary>
+        [ServerRpc(RequireOwnership = false)]
+        public void RequestWallPush(int wallId, NetworkConnection sender = null)
+        {
+            if (wallId < 0 || wallId >= _walls.Length || wallId >= _poses.Count)
+                return;
+
+            if (Time.time < _nextSwingAllowedAt[wallId])
+                return;
+
+            var pusher = sender?.FirstObject;
+            if (pusher == null)
+                return;
+
+            var position = pusher.transform.position;
+            var forward = pusher.transform.forward;
+
+            // Contact à l'épaule, et non à bout de bras : on doit être sur le mur.
+            if (DistanceToWall(position, SlotCenter(SlotOf(_poses[wallId])), SlotAxis(FamilyOf(SlotOf(_poses[wallId])))) > PushReach)
+                return;
+
+            // Le joueur doit pousser vers quelque part : marcher le long d'un mur ne
+            // le fait pas céder, seulement marcher dedans.
+            if (!TryResolveTarget(wallId, forward, position, true, out var target))
+            {
+                _pushTarget[wallId] = -1;
+                return;
+            }
+
+            // Changer de sens en cours de poussée remet l'effort à zéro.
+            if (_pushTarget[wallId] != target)
+            {
+                _pushTarget[wallId] = target;
+                _effort[wallId] = 0f;
+            }
+
+            _pushIntentAt[wallId] = Time.time;
+        }
+
+        /// <summary>
+        /// Avance les efforts en cours, côté hôte uniquement. Un mur qu'on cesse de
+        /// pousser retombe ; un mur poussé jusqu'au bout bascule d'un quart de tour.
+        /// </summary>
+        private void AdvancePushes()
+        {
+            for (var id = 0; id < _walls.Length && id < _pushes.Count; id++)
+            {
+                var target = _pushTarget[id];
+                if (target < 0)
+                    continue;
+
+                var pushing = Time.time - _pushIntentAt[id] <= IntentTimeout;
+                _effort[id] += pushing
+                    ? Time.deltaTime / PushSeconds
+                    : -Time.deltaTime / ReleaseSeconds;
+
+                if (_effort[id] >= 1f)
+                {
+                    _effort[id] = 0f;
+                    _pushTarget[id] = -1;
+                    PublishPush(id, -1, 0f);
+                    ApplyTurn(id, target);
+                    continue;
+                }
+
+                if (_effort[id] <= 0f)
+                {
+                    _effort[id] = 0f;
+                    _pushTarget[id] = -1;
+                    PublishPush(id, -1, 0f);
+                    continue;
+                }
+
+                PublishPush(id, target, _effort[id]);
+            }
+        }
+
+        private void PublishPush(int id, int target, float effort)
+        {
+            var packed = target < 0
+                ? 0
+                : PackPush(target, Mathf.Clamp(Mathf.RoundToInt(effort * 100f / PushStep) * PushStep, 0, 100));
+
+            if (_pushes[id] != packed)
+                _pushes[id] = packed;
         }
 
         /// <summary>
@@ -216,34 +441,51 @@ namespace NotThatWay.Game
             if (Time.time < _nextSwingAllowedAt[id])
                 return false;
 
-            var pose = _poses[id];
-            var slot = SlotOf(pose);
-            var family = FamilyOf(slot);
-
-            if (DistanceToWall(puncherPosition, SlotCenter(slot), SlotAxis(family)) > ServerReach)
+            var slot = SlotOf(_poses[id]);
+            if (DistanceToWall(puncherPosition, SlotCenter(slot), SlotAxis(FamilyOf(slot))) > ServerReach)
                 return false;
 
-            EdgeNodes(family, XOf(slot), YOf(slot), out var nodeA, out var nodeB);
+            // Un coup de poing emporte le quart de tour même donné de biais, là où la
+            // poussée à l'épaule exige de pousser franchement vers quelque part.
+            if (!TryResolveTarget(id, puncherForward, impactPoint, false, out var target))
+                return false;
+
+            // Le coup annule la poussée en cours : c'est lui qui a eu raison du mur.
+            _pushTarget[id] = -1;
+            _effort[id] = 0f;
+            PublishPush(id, -1, 0f);
+
+            return ApplyTurn(id, target);
+        }
+
+        /// <summary>
+        /// Arête vers laquelle ce mur basculerait sous une poussée venue de
+        /// <paramref name="contactPoint"/> et dirigée par <paramref name="pushForward"/>.
+        ///
+        /// Le gond est le bout le plus éloigné du contact : on pousse le battant,
+        /// jamais la charnière. Des deux quarts de tour possibles autour de ce gond,
+        /// on garde celui qui emmène le battant du côté où l'on pousse.
+        /// </summary>
+        private bool TryResolveTarget(int id, Vector3 pushForward, Vector3 contactPoint, bool requireForward, out int target)
+        {
+            target = -1;
+
+            var slot = SlotOf(_poses[id]);
+            EdgeNodes(FamilyOf(slot), XOf(slot), YOf(slot), out var nodeA, out var nodeB);
+
             var worldA = NodePosition(nodeA);
             var worldB = NodePosition(nodeB);
-
-            // Le gond est le bout opposé à l'impact : on pousse le battant, jamais la
-            // charnière. Frapper près d'un bout fait donc pivoter le mur autour de
-            // l'autre, comme on ouvre une porte par sa poignée.
-            var hingeIsA = (impactPoint - worldA).sqrMagnitude > (impactPoint - worldB).sqrMagnitude;
+            var hingeIsA = (contactPoint - worldA).sqrMagnitude > (contactPoint - worldB).sqrMagnitude;
             var hinge = hingeIsA ? nodeA : nodeB;
             var leaf = hingeIsA ? nodeB : nodeA;
-            var hingeWorld = hingeIsA ? worldA : worldB;
             var leafWorld = hingeIsA ? worldB : worldA;
 
             var arm = leaf - hinge;
-            var forward = puncherForward;
+            var forward = pushForward;
             forward.y = 0f;
             forward.Normalize();
 
-            var bestScore = float.NegativeInfinity;
-            var bestSlot = -1;
-            var bestTurn = 0;
+            var bestScore = requireForward ? 0f : float.NegativeInfinity;
 
             for (var sign = -1; sign <= 1; sign += 2)
             {
@@ -252,42 +494,77 @@ namespace NotThatWay.Game
                     ? new Vector2Int(-arm.y, arm.x)
                     : new Vector2Int(arm.y, -arm.x);
 
-                var targetLeaf = hinge + rotated;
-                var targetSlot = SlotForEdge(hinge, targetLeaf);
-                if (targetSlot < 0 || _occupied.Contains(targetSlot))
+                var candidate = SlotForEdge(hinge, hinge + rotated);
+                if (candidate < 0 || _occupied.Contains(candidate))
                     continue;
 
-                // Le battant part du côté où l'on pousse.
-                var targetLeafWorld = NodePosition(targetLeaf);
-                var score = Vector3.Dot(forward, targetLeafWorld - leafWorld);
+                var score = Vector3.Dot(forward, NodePosition(hinge + rotated) - leafWorld);
                 if (score <= bestScore)
                     continue;
 
                 bestScore = score;
-                bestSlot = targetSlot;
-
-                // Le sens de rotation se relit sur la géométrie et non sur le signe de
-                // grille : les deux axes du plan sont retournés à l'export du FBX.
-                bestTurn = Vector3.SignedAngle(leafWorld - hingeWorld, targetLeafWorld - hingeWorld, Vector3.up) > 0f
-                    ? 1
-                    : -1;
+                target = candidate;
             }
 
-            if (bestSlot < 0)
+            return target >= 0;
+        }
+
+        /// <summary>
+        /// Pose le mur sur son arête d'arrivée, après les dernières vérifications que
+        /// l'hôte doit refaire au moment où le mur bouge vraiment : la carte a pu
+        /// changer depuis le début d'une poussée.
+        /// </summary>
+        private bool ApplyTurn(int id, int target)
+        {
+            var pose = _poses[id];
+            var slot = SlotOf(pose);
+            var wall = _walls[id];
+
+            if (_occupied.Contains(target))
                 return false;
 
             var home = SlotCenter(wall.HomeFamily, wall.HomeSlotX, wall.HomeSlotY, _width, _height);
-            if (Vector3.Distance(SlotCenter(bestSlot), home) > MaxDistanceFromHome)
+            if (Vector3.Distance(SlotCenter(target), home) > MaxDistanceFromHome)
                 return false;
 
-            if (!IsClearOfPlayers(SlotCenter(bestSlot), SlotAxis(FamilyOf(bestSlot))))
+            if (!IsClearOfPlayers(SlotCenter(target), SlotAxis(FamilyOf(target))))
                 return false;
+
+            if (!TryFindHinge(slot, target, out var hinge))
+                return false;
+
+            // Le sens de rotation se relit sur la géométrie et non sur le signe de
+            // grille : les deux axes du plan sont retournés à l'export du FBX.
+            var turn = QuarterTurnAngle(slot, target, hinge) > 0f ? 1 : -1;
 
             _occupied.Remove(slot);
-            _occupied.Add(bestSlot);
-            _poses[id] = Pack(bestSlot, TurnsOf(pose) + bestTurn);
+            _occupied.Add(target);
+            _poses[id] = Pack(target, TurnsOf(pose) + turn);
             _nextSwingAllowedAt[id] = Time.time + SwingCooldown;
             return true;
+        }
+
+        /// <summary>Angle monde du quart de tour qui mène d'une arête à l'autre autour de leur gond.</summary>
+        private float QuarterTurnAngle(int fromSlot, int toSlot, Vector2Int hinge)
+        {
+            EdgeNodes(FamilyOf(fromSlot), XOf(fromSlot), YOf(fromSlot), out var fromA, out var fromB);
+            EdgeNodes(FamilyOf(toSlot), XOf(toSlot), YOf(toSlot), out var toA, out var toB);
+
+            var hingeWorld = NodePosition(hinge);
+            var fromLeaf = NodePosition(fromA == hinge ? fromB : fromA);
+            var toLeaf = NodePosition(toA == hinge ? toB : toA);
+
+            return Vector3.SignedAngle(fromLeaf - hingeWorld, toLeaf - hingeWorld, Vector3.up);
+        }
+
+        /// <summary>Effort visible sur un mur, de 0 à 1. Sert au retour d'écran du pousseur.</summary>
+        public float EffortFor(int wallId)
+        {
+            if (wallId < 0 || wallId >= _pushes.Count)
+                return 0f;
+
+            var packed = _pushes[wallId];
+            return packed == 0 ? 0f : PushPercentOf(packed) / 100f;
         }
 
         /// <summary>
@@ -449,6 +726,15 @@ namespace NotThatWay.Game
         private static int SlotOf(int pose) => pose / 4;
 
         private static int TurnsOf(int pose) => pose & 3;
+
+        // Poussée répliquée : l'arête visée et l'effort en pourcents dans un entier.
+        // Zéro veut dire « aucune poussée » — l'arête 0 est sur le pourtour de la map,
+        // elle n'est jamais une arrivée possible.
+        private static int PackPush(int slot, int percent) => slot * 128 + percent;
+
+        private static int PushSlotOf(int packed) => packed / 128;
+
+        private static int PushPercentOf(int packed) => packed % 128;
 
         private static int FamilyOf(int slot) => slot / 1_000_000;
 
