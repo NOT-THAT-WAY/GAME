@@ -184,7 +184,15 @@ if [[ -n "$LARGE_NON_LFS" ]]; then
   exit 1
 fi
 
-FORBIDDEN_TRACKED="$(git ls-files | awk 'BEGIN{IGNORECASE=1} /(^|\/)(Library|Temp|Obj|Logs|UserSettings|Build|Builds)(\/|$)/ {print}')"
+# The embedded Blender studio has documentation folders named `library/` and `renders/`.
+# Restrict this Unity-generated-path guard to the GAME tree and normalize case explicitly so
+# macOS/BSD awk and Ubuntu awk enforce the same rule.
+FORBIDDEN_TRACKED="$(git ls-files | awk '
+  {
+    path=tolower($0)
+    if (path !~ /^tools\/blender-agent-studio\// && path ~ /(^|\/)(library|temp|obj|logs|usersettings|build|builds)(\/|$)/) print
+  }
+')"
 if [[ -n "$FORBIDDEN_TRACKED" ]]; then
   printf 'Generated Unity paths are tracked:\n%s\n' "$FORBIDDEN_TRACKED" >&2
   exit 1
