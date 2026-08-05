@@ -6,7 +6,8 @@ contenu est déjà versionné dans ce dépôt, sans `.git` imbriqué et sans les
 
 ## Initialisation d'une machine
 
-Depuis la racine de `GAME`, une seule initialisation locale suffit :
+Depuis la racine de `GAME`, Claude lance automatiquement cette initialisation au premier travail
+Blender. Elle peut aussi être lancée manuellement :
 
 ```bash
 python3 tools/blender-agent-studio/tools/bootstrap.py --configure

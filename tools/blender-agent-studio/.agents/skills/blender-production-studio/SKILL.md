@@ -8,6 +8,17 @@ description: Build, audit, model, generate, rig, animate, light, render, optimiz
 Treat the repository as a production system. Preserve sources, declare the target and budgets, and
 match every claim to evidence strong enough to support it.
 
+## First-use setup
+
+When the user asks for Blender work, perform the local setup automatically from this studio root:
+
+1. If `.studio.local.json` or `app/.env` is missing, run `python3 tools/bootstrap.py --configure`.
+2. Run `python3 workflows/tools/studio_readiness_check.py` before creating or editing a scene.
+3. If the readiness check reports a missing Blender, FFmpeg or other machine dependency, report the
+   exact missing item and ask for the appropriate machine setup; never silently install system
+   software or secrets.
+4. Continue with the requested Blender task only after the relevant readiness gate is clear.
+
 ## Start every task
 
 1. Run `scripts/locate_repo.py` when the repository root is not obvious.

@@ -18,10 +18,13 @@ def tracked_or_present() -> list[Path]:
         output = subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT)
         return [ROOT / raw.decode() for raw in output.split(b"\0") if raw]
     ignored_roots = {".git", "local_assets", "local_work", "projects/work", "renders/local"}
+    ignored_files = {".studio.local.json", "app/.env"}
     result = []
     for path in ROOT.rglob("*"):
         relative = path.relative_to(ROOT).as_posix()
         if any(relative == root or relative.startswith(root + "/") for root in ignored_roots):
+            continue
+        if relative in ignored_files:
             continue
         if any(part in {"__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".venv", "venv"} for part in path.relative_to(ROOT).parts):
             continue

@@ -20,6 +20,18 @@ Keep Blender sources, renders, caches and exports in the studio's ignored `local
 Unity `.meta` files and the provenance/licence record required by GAME. Keep editable `.blend`, PSD,
 raw media and other masters outside Git in the declared DVC/private vault workflow.
 
+## First-use setup
+
+When the user asks for Blender work, perform the local setup automatically after changing into
+`tools/blender-agent-studio/`:
+
+1. If `.studio.local.json` or `app/.env` is missing, run `python3 tools/bootstrap.py --configure`.
+2. Run `python3 workflows/tools/studio_readiness_check.py` before creating or editing a scene.
+3. If the readiness check reports a missing Blender, FFmpeg or other machine dependency, report the
+   exact missing item and use the existing GAME `setup-game` workflow for an interactive install;
+   never silently install system software or secrets.
+4. Continue with the requested Blender task only after the relevant readiness gate is clear.
+
 ## Start every task
 
 1. Run `scripts/locate_repo.py` after changing into `tools/blender-agent-studio/` when the repository root is not obvious.
