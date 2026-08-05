@@ -29,6 +29,7 @@ namespace NotThatWay.Game.Editor
         private const string ScenePath = GeneratedDirectory + "/MazePlaytest.unity";
         private const string PrefabsPath = GeneratedDirectory + "/MazePlaytestPrefabs.asset";
         private const string PlayerPrefabPath = GeneratedDirectory + "/MazePlayer.prefab";
+        private const string PivotDirectorPrefabPath = GeneratedDirectory + "/PivotDirector.prefab";
         private const string MazeModelPath = "Assets/_Project/Maze/Maze16x16.fbx";
         private const string MazeGridPath = "Assets/_Project/Maze/MazeGrid16x16.json";
         private const string PlayerModelPath = "Assets/_Project/Player/PersoBoule.fbx";
@@ -52,8 +53,14 @@ namespace NotThatWay.Game.Editor
         // collider, parce qu'elle est dense et qu'on doit pouvoir la longer.
         private static readonly string[] CollidingObjectPrefixes =
         {
-            "Murs_Statiques", "Bras_Pivots", "Pivot_", "Sol_Dalles", "Sol_Sable", "Reperes_Gameplay", "Props"
+            "Murs_Statiques", "Pivot_", "Sol_Dalles", "Sol_Sable", "Reperes_Gameplay", "Props"
         };
+
+        // Préfixe des pièces mobiles : chaque pivot est un objet à part, origine sur
+        // son nœud, totem et bras réunis. Un export qui les fusionnerait rendrait la
+        // rotation impossible, d'où le contrôle de CreateEnvironment.
+        private const string PivotPrefix = "Pivot_";
+        private const string MergedArmsObject = "Bras_Pivots";
 
         private static readonly Color SkyColor = new(0.96f, 0.85f, 0.72f);
 
@@ -64,9 +71,11 @@ namespace NotThatWay.Game.Editor
 
             var layout = ReadLayout();
             var playerPrefab = CreatePlayerPrefab();
+            var pivotDirectorPrefab = CreatePivotDirectorPrefab();
             var prefabCollection = LoadOrCreatePrefabCollection();
             prefabCollection.Clear();
             prefabCollection.AddObject(playerPrefab, true);
+            prefabCollection.AddObject(pivotDirectorPrefab, true);
             EditorUtility.SetDirty(prefabCollection);
 
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
@@ -79,6 +88,11 @@ namespace NotThatWay.Game.Editor
             var networkManager = networkRoot.AddComponent<NetworkManager>();
             networkManager.SpawnablePrefabs = prefabCollection;
             networkRoot.AddComponent<ConnectionSmokeTest>();
+
+            var directorSpawner = networkRoot.AddComponent<PivotDirectorSpawner>();
+            var serializedDirector = new SerializedObject(directorSpawner);
+            serializedDirector.FindProperty("_directorPrefab").objectReferenceValue = pivotDirectorPrefab;
+            serializedDirector.ApplyModifiedPropertiesWithoutUndo();
 
             var spawner = networkRoot.AddComponent<PlayerSpawner>();
             spawner.Spawns = spawns;
@@ -284,9 +298,23 @@ namespace NotThatWay.Game.Editor
             maze.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
 
             var colliders = 0;
+            var pivots = new List<Transform>();
             foreach (var child in maze.GetComponentsInChildren<Transform>(true))
             {
-                GameObjectUtility.SetStaticEditorFlags(child.gameObject, StaticEditorFlags.BatchingStatic | StaticEditorFlags.OccluderStatic | StaticEditorFlags.OccludeeStatic);
+                if (child.name.StartsWith(MergedArmsObject, StringComparison.Ordinal))
+                {
+                    throw new InvalidOperationException(
+                        $"{MazeModelPath} contient encore « {MergedArmsObject} » : les bras de tous les pivots y sont fusionnés et aucun ne peut tourner seul. " +
+                        "Ré-exporter la map avec tools/maze-3d/build_maze.py, qui sort un objet par pivot.");
+                }
+
+                var isPivot = child.name.StartsWith(PivotPrefix, StringComparison.Ordinal);
+                if (isPivot)
+                    pivots.Add(child);
+                else
+                    // Un objet statique ne peut pas bouger : les pivots en sont exclus,
+                    // sinon le batching fige leur maillage à l'orientation de départ.
+                    GameObjectUtility.SetStaticEditorFlags(child.gameObject, StaticEditorFlags.BatchingStatic | StaticEditorFlags.OccluderStatic | StaticEditorFlags.OccludeeStatic);
 
                 if (!BlocksThePlayer(child.name) || !child.TryGetComponent<MeshFilter>(out var meshFilter) || meshFilter.sharedMesh == null)
                     continue;
@@ -297,8 +325,21 @@ namespace NotThatWay.Game.Editor
 
             if (colliders == 0)
                 throw new InvalidOperationException($"Aucun collider posé sur {MazeModelPath} : les noms d'objets du FBX ont changé, revoir CollidingObjectPrefixes.");
+            if (pivots.Count == 0)
+                throw new InvalidOperationException($"Aucun objet « {PivotPrefix}… » dans {MazeModelPath} : la map ne contient pas de mur pivotant.");
 
-            Debug.Log($"[GAME-MAZE] {colliders} MeshCollider(s) posé(s) sur le décor.");
+            // Ordre de nom : les trois machines numérotent les pivots pareil sans
+            // s'échanger la carte, et l'index suffit à désigner un pivot sur le réseau.
+            pivots.Sort((left, right) => string.CompareOrdinal(left.name, right.name));
+            for (var index = 0; index < pivots.Count; index++)
+            {
+                var wall = pivots[index].gameObject.AddComponent<PivotWall>();
+                var serializedWall = new SerializedObject(wall);
+                serializedWall.FindProperty("_index").intValue = index;
+                serializedWall.ApplyModifiedPropertiesWithoutUndo();
+            }
+
+            Debug.Log($"[GAME-MAZE] {colliders} MeshCollider(s) posé(s), {pivots.Count} pivot(s) mobile(s) indexé(s).");
 
             // Soleil venant du sud (côté des entrées) pour que la face abordée par les
             // joueurs soit éclairée et non à contre-jour.
@@ -376,6 +417,31 @@ namespace NotThatWay.Game.Editor
                 throw new InvalidOperationException("Points d'apparition invalides :\n  " + string.Join("\n  ", failures));
 
             Debug.Log($"[GAME-MAZE] {spawns.Length} apparition(s) vérifiée(s) : sol présent, pas de collider, passage libre sur {GridPitch:F2} m.");
+        }
+
+        /// <summary>
+        /// Prefab de l'objet réseau qui détient l'orientation des pivots. Il retrouve
+        /// les pivots dans la scène à l'exécution, par leur index, donc rien n'est
+        /// sérialisé ici.
+        /// </summary>
+        private static NetworkObject CreatePivotDirectorPrefab()
+        {
+            var root = new GameObject("PivotDirector");
+            try
+            {
+                root.AddComponent<NetworkObject>();
+                root.AddComponent<PivotDirector>();
+
+                var saved = PrefabUtility.SaveAsPrefabAsset(root, PivotDirectorPrefabPath);
+                if (saved == null)
+                    throw new InvalidOperationException($"Unable to save {PivotDirectorPrefabPath}.");
+
+                return saved.GetComponent<NetworkObject>();
+            }
+            finally
+            {
+                UnityEngine.Object.DestroyImmediate(root);
+            }
         }
 
         private static bool BlocksThePlayer(string objectName)

@@ -61,9 +61,31 @@ lierres et buissons doivent pouvoir être longés.
 
 Conséquence utile au diagnostic : **les lianes et la mousse n'arrêtent jamais un
 joueur**. Ce qui gêne dans un couloir, ce sont les `Props` — colonnes brisées,
-caisses et jarres semées dans environ 15 % des cellules — et les `Bras_Pivots`,
-figés en orientation 0 tant que la rotation n'existe pas. Sauter suffit pour les
-premiers ; les seconds attendent le sprint pivot. La génération échoue si aucun de
+caisses et jarres semées dans environ 15 % des cellules. Sauter suffit à les
+passer.
+
+## Murs pivotants
+
+Clic gauche maintenu en avançant contre un bras de pivot : le mur part d'un quart
+de tour dans le sens où l'on appuie. Le sens vient du signe du couple `r x F`
+autour de la verticale, donc pousser près du totem ne tourne rien et pousser dans
+l'axe du bras non plus — il faut un bras de levier.
+
+Ce qui circule sur le réseau est **un octet d'orientation par pivot**, jamais le
+transform d'un mur image par image. L'hôte valide la demande — portée, temps de
+recharge — puis publie le nouvel état ; chaque machine rattrape l'angle affiché
+en local. Deux joueurs peuvent donc voir des angles intermédiaires différents
+sans jamais être en désaccord sur le labyrinthe.
+
+Cela suppose que **chaque pivot soit un objet distinct dans le FBX**, totem et
+bras réunis, origine sur son nœud. `tools/maze-3d/build_maze.py` le garantit
+depuis qu'il ne fusionne plus les bras. Un export qui contiendrait encore
+`Bras_Pivots` fait échouer la génération de scène avec le message qui explique
+quoi ré-exporter — sans quoi on obtiendrait une map où faire tourner un pivot
+ferait tourner les dix-sept.
+
+Les objets `Pivot_*` sont exclus des drapeaux statiques : un maillage marqué
+statique est figé dans le batching et ne tournerait jamais à l'écran. La génération échoue si aucun de
 ces noms n'existe, pour que le renommage d'un objet dans le générateur ne
 produise pas silencieusement une map qu'on traverse.
 
@@ -112,6 +134,7 @@ changent pas de comportement.
 | Souris | regarder |
 | Maj | sprint |
 | Espace | sauter — marteler la touche pour se décoincer des gravats |
+| Clic gauche maintenu + avancer | pousser un mur pivotant d'un quart de tour |
 | Échap | libérer ou recapturer le curseur |
 | Tab | masquer ou afficher le panneau réseau |
 | F1 | basculer 1re / 3e personne (vue de contrôle) |
