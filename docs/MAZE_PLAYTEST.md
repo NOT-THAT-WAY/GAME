@@ -57,7 +57,13 @@ tout ferait cuire des millions de triangles pour rien : l'import ne génère auc
 collider, et `MazePlaytestBuild` en pose un sur les seuls objets qui arrêtent le
 joueur — `Murs_Statiques`, `Bras_Pivots`, `Pivot_*`, `Sol_Dalles`, `Sol_Sable`,
 `Reperes_Gameplay` et `Props`. Seule `Vegetation` reste traversable : mousses,
-lierres et buissons doivent pouvoir être longés. La génération échoue si aucun de
+lierres et buissons doivent pouvoir être longés.
+
+Conséquence utile au diagnostic : **les lianes et la mousse n'arrêtent jamais un
+joueur**. Ce qui gêne dans un couloir, ce sont les `Props` — colonnes brisées,
+caisses et jarres semées dans environ 15 % des cellules — et les `Bras_Pivots`,
+figés en orientation 0 tant que la rotation n'existe pas. Sauter suffit pour les
+premiers ; les seconds attendent le sprint pivot. La génération échoue si aucun de
 ces noms n'existe, pour que le renommage d'un objet dans le générateur ne
 produise pas silencieusement une map qu'on traverse.
 
@@ -105,6 +111,7 @@ changent pas de comportement.
 | ZQSD / WASD / flèches | se déplacer |
 | Souris | regarder |
 | Maj | sprint |
+| Espace | sauter — marteler la touche pour se décoincer des gravats |
 | Échap | libérer ou recapturer le curseur |
 | Tab | masquer ou afficher le panneau réseau |
 | F1 | basculer 1re / 3e personne (vue de contrôle) |

@@ -22,6 +22,17 @@ namespace NotThatWay.Game
         private const float LookSensitivity = 0.12f;
         private const float MaxPitch = 85f;
 
+        // 5,5 m/s sous une gravité de 22 m/s² donnent une pointe à 0,69 m, soit la
+        // moitié du gabarit : de quoi passer les gravats des couloirs sans donner
+        // l'agilité qui rendrait les murs de 3 m franchissables.
+        private const float JumpSpeed = 5.5f;
+
+        // Deux tolérances qui font que marteler la touche répond au lieu d'avaler
+        // des appuis : un saut reste permis juste après avoir quitté le sol, et un
+        // appui juste avant l'atterrissage est rejoué à la réception.
+        private const float CoyoteTime = 0.12f;
+        private const float JumpBufferTime = 0.15f;
+
         private static readonly Vector3 FirstPersonOffset = Vector3.zero;
         private static readonly Vector3 ThirdPersonOffset = new(0f, 0.55f, -3.4f);
 
@@ -34,6 +45,8 @@ namespace NotThatWay.Game
         private ConnectionSmokeTest _sessionPanel;
         private float _pitch;
         private float _verticalVelocity;
+        private float _lastGroundedAt = float.NegativeInfinity;
+        private float _lastJumpPressedAt = float.NegativeInfinity;
         private bool _thirdPerson;
         private bool _cursorLocked;
 
@@ -133,12 +146,30 @@ namespace NotThatWay.Game
                 if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed) input.x += 1f;
                 if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed) input.x -= 1f;
                 sprinting = keyboard.leftShiftKey.isPressed || keyboard.rightShiftKey.isPressed;
+
+                if (keyboard.spaceKey.wasPressedThisFrame)
+                    _lastJumpPressedAt = Time.time;
             }
 
             input = Vector2.ClampMagnitude(input, 1f);
 
-            if (_controller.isGrounded && _verticalVelocity < 0f)
-                _verticalVelocity = GroundedVelocity;
+            if (_controller.isGrounded)
+            {
+                _lastGroundedAt = Time.time;
+                if (_verticalVelocity < 0f)
+                    _verticalVelocity = GroundedVelocity;
+            }
+
+            if (Time.time - _lastGroundedAt <= CoyoteTime && Time.time - _lastJumpPressedAt <= JumpBufferTime)
+            {
+                _verticalVelocity = JumpSpeed;
+
+                // Consommer les deux fenêtres, sinon le même appui relancerait un saut
+                // à chaque image tant qu'elles restent ouvertes.
+                _lastGroundedAt = float.NegativeInfinity;
+                _lastJumpPressedAt = float.NegativeInfinity;
+            }
+
             _verticalVelocity += Gravity * Time.deltaTime;
 
             var motion = (transform.right * input.x + transform.forward * input.y) * (sprinting ? SprintSpeed : WalkSpeed);
@@ -176,7 +207,7 @@ namespace NotThatWay.Game
             var height = 54f;
             var area = new Rect(16f, Screen.height - height - 16f, Mathf.Min(760f, Screen.width - 32f), height);
             GUILayout.BeginArea(area, GUI.skin.box);
-            GUILayout.Label("ZQSD / WASD se déplacer   ·   Maj sprint   ·   Souris regarder", style);
+            GUILayout.Label("ZQSD / WASD se déplacer   ·   Maj sprint   ·   Espace sauter (marteler pour se décoincer)   ·   Souris regarder", style);
             GUILayout.Label($"Échap curseur ({(_cursorLocked ? "capturé" : "libre")})   ·   Tab panneau réseau   ·   F1 vue {(_thirdPerson ? "3e personne" : "1re personne")}", style);
             GUILayout.EndArea();
         }
