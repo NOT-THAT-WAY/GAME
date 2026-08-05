@@ -7,13 +7,16 @@ coexistent et se lancent avec les mêmes scripts.
 ## Ce que le test prouve, et ce qu'il ne prouve pas
 
 Prouve : la map Blender est importée à la bonne échelle, un personnage se déplace
-avec un `CharacterController`, et plusieurs joueurs se voient bouger via
-FishNet/Tugboat depuis des réseaux différents.
+avec un `CharacterController`, plusieurs joueurs se voient bouger via
+FishNet/Tugboat, les 17 objets pivot sont trouvés et une demande produit une
+orientation discrète partagée.
 
-Ne prouve pas : la rotation des pivots, l'autorité hôte, l'énergie, le trésor, le
-son. L'autorité de déplacement est **côté client** pour ce test ; le passage à
-l'autorité hôte est le sprint B de la [roadmap](ROADMAP.md) et se fera dans sa
-propre PR.
+Ne prouve pas : l'autorité hôte du joueur, la prédiction/réconciliation, une
+rotation ou une collision déterministe par tick, l'arrivée tardive, l'énergie,
+le trésor ou le son. Le déplacement reste **côté client** et le collider d'un
+pivot suit encore son animation locale par image. Ce profil est donc un smoke
+test historique, pas le modèle à étendre. Toute suite sur joueur, murs ou
+collisions suit [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.md).
 
 ## Contenu
 
@@ -50,14 +53,23 @@ Le `GridPitch` de `MazePlaytestBuild` duplique cette constante parce que la
 grille JSON ne la transporte pas. S'il s'écarte de `build_maze.py`, les
 apparitions tombent à côté des entrées.
 
+Cette duplication est une dette, pas une consigne : le futur schéma porte
+`cellPitchMm`, épaisseur/hauteur des murs, IDs et checksum. Son chargeur valide
+les murs verticaux/horizontaux et les pivots au lieu de ne lire que dimensions et
+points d'apparition.
+
 ## Collisions
 
-Le FBX embarque de la végétation et des props denses. Poser un MeshCollider sur
-tout ferait cuire des millions de triangles pour rien : l'import ne génère aucun
-collider, et `MazePlaytestBuild` en pose un sur les seuls objets qui arrêtent le
-joueur — `Murs_Statiques`, `Bras_Pivots`, `Pivot_*`, `Sol_Dalles`, `Sol_Sable`,
+Le FBX embarque de la végétation et des props denses. Pour ce smoke test,
+`MazePlaytestBuild` ajoute un `MeshCollider` sur les objets qui arrêtent le joueur
+— `Murs_Statiques`, `Bras_Pivots`, `Pivot_*`, `Sol_Dalles`, `Sol_Sable`,
 `Reperes_Gameplay` et `Props`. Seule `Vegetation` reste traversable : mousses,
-lierres et buissons doivent pouvoir être longés.
+lianes et buissons doivent pouvoir être longés.
+
+Cette collision issue des triangles et des noms du FBX est une dette connue. La
+cible M1 génère des primitives simples depuis la topologie JSON typée/versionnée,
+avec IDs et checksum stables. Ne pas ajouter une nouvelle règle gameplay, un
+spawn ou une validation réseau dépendant d'un nom de maillage ou de sa hiérarchie.
 
 Conséquence utile au diagnostic : **les lianes et la mousse n'arrêtent jamais un
 joueur**. Ce qui gêne dans un couloir, ce sont les `Props` — colonnes brisées,
@@ -71,18 +83,25 @@ de tour dans le sens où l'on appuie. Le sens vient du signe du couple `r x F`
 autour de la verticale, donc pousser près du totem ne tourne rien et pousser dans
 l'axe du bras non plus — il faut un bras de levier.
 
-Ce qui circule sur le réseau est **un octet d'orientation par pivot**, jamais le
-transform d'un mur image par image. L'hôte valide la demande — portée, temps de
-recharge — puis publie le nouvel état ; chaque machine rattrape l'angle affiché
-en local. Deux joueurs peuvent donc voir des angles intermédiaires différents
-sans jamais être en désaccord sur le labyrinthe.
+Le prototype fait circuler **un octet d'orientation par pivot**, jamais le
+transform image par image. L'hôte vérifie seulement l'index, un cooldown et une
+distance tolérante, puis chaque machine rattrape l'angle avec `Time.deltaTime` à
+partir de la réception. Cela prouve la convergence vers quatre orientations,
+mais pas l'autorité complète : le collider tourne avec le visuel local, donc deux
+joueurs peuvent rencontrer des murs à des poses intermédiaires différentes.
 
-Cela suppose que **chaque pivot soit un objet distinct dans le FBX**, totem et
-bras réunis, origine sur son nœud. `tools/maze-3d/build_maze.py` le garantit
-depuis qu'il ne fusionne plus les bras. Un export qui contiendrait encore
+La migration remplace cet octet seul par une transition contenant ID stable,
+états source/cible, `startTick`, `durationTicks` et `revision`. La pose logique et
+la collision sont échantillonnées au tick commun ; l'interpolation locale reste
+strictement visuelle.
+
+Le smoke test suppose encore que **chaque pivot soit un objet distinct dans le
+FBX**, totem et bras réunis, origine sur son nœud. `tools/maze-3d/build_maze.py` le
+garantit depuis qu'il ne fusionne plus les bras. Un export qui contiendrait encore
 `Bras_Pivots` fait échouer la génération de scène avec le message qui explique
 quoi ré-exporter — sans quoi on obtiendrait une map où faire tourner un pivot
-ferait tourner les dix-sept.
+ferait tourner les dix-sept. Ce garde d'import peut rester, mais les IDs et règles
+runtime doivent venir de la topologie, pas de ces noms.
 
 Les objets `Pivot_*` sont exclus des drapeaux statiques : un maillage marqué
 statique est figé dans le batching et ne tournerait jamais à l'écran. La génération échoue si aucun de
@@ -133,7 +152,7 @@ changent pas de comportement.
 | ZQSD / WASD / flèches | se déplacer |
 | Souris | regarder |
 | Maj | sprint |
-| Espace | sauter — marteler la touche pour se décoincer des gravats |
+| Espace | sauter — contournement provisoire des gravats, statut gameplay à décider |
 | Clic gauche maintenu + avancer | pousser un mur pivotant d'un quart de tour |
 | Échap | libérer ou recapturer le curseur |
 | Tab | masquer ou afficher le panneau réseau |
@@ -157,16 +176,22 @@ joindre à une PR qui touche la map.
 
 ## Verdict
 
-Le test réussit quand chaque participant voit les autres se déplacer dans les
-couloirs pendant plusieurs minutes, sans téléportation ni traversée de mur. Les
-logs sont dans `Logs/MazePlaytest/`.
+Le smoke test réussit quand chaque participant voit les autres se déplacer et la
+même orientation finale des pivots pendant plusieurs minutes. Les logs sont dans
+`Logs/MazePlaytest/`.
+
+Ne pas conclure « M1 autoritaire » à partir de ce verdict. Cette preuve exige la
+scène grise à deux joueurs, les transitions par tick, le snapshot d'arrivée
+tardive, `Replicate`/`Reconcile`, les checksums identiques et le profil réseau
+dégradé détaillés dans l'ADR 0004.
 
 En cas d'échec réseau, le diagnostic est le même que pour le test de connexion :
 voir [REMOTE_CONNECTION_TEST.md](REMOTE_CONNECTION_TEST.md).
 
 ## Masters Blender
 
-Les `.blend` d'origine ne sont pas dans ce dépôt : le contrat de dépôt interdit
-les masters éditables dans Git et le remote DVC n'est pas encore choisi (priorité
-P2 de la roadmap). Seuls les exports FBX consommés par Unity sont versionnés, via
-Git LFS. Ouvrir le coffre DVC avant de partager ou de modifier les masters.
+Les `.blend` d'origine ne sont pas dans ce dépôt : le contrat interdit les
+masters éditables dans Git et le remote DVC n'est pas encore choisi. Seuls les
+exports FBX consommés par Unity sont versionnés via Git LFS. L'ouverture du coffre
+est désormais P0 : suivre et restaurer les deux masters avant de les partager ou
+de les modifier.

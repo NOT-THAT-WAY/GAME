@@ -14,6 +14,20 @@ Le document maître est une bonne base de recherche et de risques. Il ne doit pa
 absolus techniques à nuancer, des données commerciales volatiles et au moins une
 affirmation Steam fausse.
 
+## Application dans la branche de suivi
+
+Cette branche transforme les conclusions en garde-fous sans prétendre avoir déjà
+refactoré le gameplay :
+
+- `CLAUDE.md` déclenche automatiquement le skill `network-gameplay` ;
+- l'ADR 0004 fixe topologie, IDs, ticks, transitions, snapshots, autorité joueur,
+  frontière de connexion et ordre de migration ;
+- les décisions produit encore ouvertes restent nommées comme gates au lieu
+  d'être choisies silencieusement ;
+- README, roadmap, playtest, assets, stack et CI reflètent l'état constaté ;
+- le validateur exige la présence du skill, de l'ADR et de leurs notions clés ;
+- les templates d'issue et de PR demandent les preuves réseau adaptées.
+
 ## Périmètre et instantané audité
 
 - source : `NOT-THAT-WAY-document-maitre.md`, copie locale fournie depuis
@@ -535,15 +549,16 @@ répartir ainsi :
 | hypothèses marché/licences | dossier recherche daté, sourcé, avec date de revalidation |
 | catalogue des risques | checklist liée aux ADR/tests, pas prose isolée |
 
-Ajouter un ADR sur la simulation réseau avant le refactor :
+La branche de suivi ajoute l'ADR suivant avant le refactor :
 
 ```text
 ADR 0004 — Topologie autoritaire, ticks et murs mobiles
 ```
 
-Il doit décider : IDs, format de snapshot, tick rate, ordre de simulation, état du
-pivot, règle de collision, autorité joueur, distinction logique/rendu et tests de
-réconciliation.
+Il fixe IDs, format de snapshot, ordre de simulation, état du pivot, autorité
+joueur, distinction logique/rendu et tests de réconciliation. Le taux de tick et
+la conséquence d'un mur sur un joueur y restent des gates explicites à fermer
+avant l'implémentation concernée.
 
 Mettre à jour ADR 0002 pour distinguer explicitement :
 
@@ -556,14 +571,15 @@ Mettre à jour ADR 0002 pour distinguer explicitement :
 
 Les noms sont indicatifs mais respectent les conventions du dépôt.
 
-1. `docs/update-project-state`
+1. `chore/network-gameplay-guardrails` — **présente branche**
    - corriger README, ASSETS, MAZE_PLAYTEST et ROADMAP ;
+   - ajouter l'ADR 0004, le skill Claude et les contrôles de dépôt ;
    - enregistrer les décisions ouvertes sans modifier le gameplay.
 2. `data/activate-asset-vault`
    - remote DVC, lots des deux masters, preuves de restauration Mac/Windows.
-3. `docs/network-simulation-adr`
-   - ADR 0004 et mise à jour ADR 0002 ;
-   - choisir hauteur, tick rate et règle de collision.
+3. gate produit de la première implémentation concernée
+   - choisir hauteur, tick rate, statut du saut et règle de collision ;
+   - amender l'ADR 0004 avec la preuve retenue.
 4. `feat/maze-topology-runtime`
    - parser typé, schéma/version/checksum, IDs stables, colliders simples ;
    - tests EditMode ; aucun MeshCollider gameplay.
@@ -582,8 +598,8 @@ Les noms sont indicatifs mais respectent les conventions du dépôt.
     - tests Unity puis compilation/build CI seulement après preuve manuelle et
       décision de licence.
 
-Les PR 4 à 8 peuvent être réordonnées légèrement par le pilote, mais le contrat
-ADR et la sauvegarde des masters doivent précéder les refactors destructifs.
+Les PR 4 à 8 peuvent être réordonnées légèrement par le pilote, mais les gates de
+l'ADR et la sauvegarde des masters doivent précéder les refactors destructifs.
 
 ## Ce qu'il faut explicitement différer
 

@@ -11,20 +11,20 @@ Le dépôt est au jalon **M0 — fondations**.
 - [x] dépôt privé, projet Unity URP et conventions de travail préparés ;
 - [x] versions Unity/FishNet figées et scène de connexion à trois générable ;
 - [x] scripts d'installation, diagnostic, assets et tests local/distant Mac/Windows ;
-- [x] séparation Git / Git LFS / coffre DVC externe / caches locaux ;
-- [ ] coffre d'assets à choisir au premier master lourd — ne bloque pas le setup ;
+- [x] séparation Git / Git LFS / masters DVC / caches locaux documentée ;
+- [ ] remote DVC à choisir maintenant : deux exports FBX existent déjà sans leurs masters partagés ;
 - [x] premier import Unity Mac et `packages-lock.json` mergé ;
 - [ ] ouverture propre sur le second Mac et build Windows IL2CPP ;
 - [ ] Zak, Sean et Nils visibles dans la même session depuis leurs trois réseaux ;
-- [ ] gate Wwise à ouvrir après le premier test distant — ne bloque pas le setup.
+- [ ] gate Wwise à ouvrir après la première preuve distante autoritaire — ne bloque pas le setup.
 
-La machine pilote peut déjà construire et lancer le test. La prochaine action utile est un **clone propre sur le second Mac et sur Windows**, puis le test distant à trois. Le gameplay vient juste après.
+La machine pilote peut construire le labyrinthe et lancer un smoke test où le joueur et les pivots sont visibles en réseau. Ce code est volontairement étiqueté prototype : déplacement client-authoritative, transition des colliders par image et collisions issues du FBX ne valident pas M1. Les prochaines actions sont le **clone propre sur le second Mac et Windows**, le test distant à trois, l'ouverture du coffre DVC, puis la migration décrite dans [l'ADR 0004](docs/adr/0004-authoritative-topology-and-ticks.md).
 
 Pour exécuter l'installation dans le bon ordre — d'abord sur le Mac pilote, ensuite sur l'autre Mac et Windows — suivre [ONBOARDING.md](docs/ONBOARDING.md).
 
 Avec Claude Code, lancer `claude` depuis la racine puis écrire `initialise l'environnement`. Le skill projet `setup-game` détecte Mac ou Windows, installe aussi le client Tailscale de test distant, exécute le bon setup et rend le verdict du doctor. La connexion Tailscale reste un écran interactif individuel ; aucune clé n'est partagée avec Claude.
 
-Pour intégrer Zak et Sean maintenant : Nils génère dans la console Tailscale deux liens **Invite external users** à usage unique avec le rôle Member, puis les envoie en privé. Le tailnet actuel est personnel et distinct de l'organisation GitHub. Après acceptation, chacun clone le repo et demande à Claude `initialise l'environnement pour jouer à distance`. Le coffre DVC peut attendre : aucun master n'est encore référencé.
+Pour intégrer Zak et Sean : Nils envoie en privé des invitations Tailscale individuelles, jamais une clé d'authentification. Le tailnet actuel est personnel et distinct de l'organisation GitHub ; comme le jeu vise un usage commercial, son propriétaire doit confirmer ou adopter un plan compatible avant le prochain playtest structuré ([conditions des offres Tailscale](https://tailscale.com/pricing)). Après acceptation, chacun clone le repo et demande à Claude `initialise l'environnement pour jouer à distance`. L'absence de remote DVC ne bloque pas ce setup, mais bloque désormais toute modification ou transmission des masters des FBX actuels.
 
 `main` refuse les pushes directs sur chaque clone initialisé grâce au hook partagé, et Claude a la même interdiction. Les branches suivent `feat/...`, `fix/...`, `art/...`, `audio/...`, `data/...`, `docs/...` ou `chore/...` ; le script `publish-task` pousse ensuite la branche et ouvre sa PR. Zak et Sean n'ont pas à administrer, relire ou merger les PR : ils livrent une branche testée et Nils gère seul l'intégration. Le dépôt privé reste utilisable gratuitement par toute l'équipe sans protection serveur absolue.
 
@@ -77,7 +77,7 @@ Les scripts sont idempotents. L'éditeur Unity reste une étape interactive parc
 
 ## Coffre d'assets hors GitHub
 
-État actuel : environ 164 Kio dans `GAME`, zéro objet LFS et zéro lot DVC. Le plan GitHub Free de l'organisation inclut 10 Gio de stockage LFS et 10 Gio de téléchargement mensuel ; le budget interne du prototype est limité à 2 Gio d'exports actifs. Cela suffit pour installer l'équipe et commencer. Le coffre des masters est reporté au premier gros fichier source ; voir [la stratégie d'assets](docs/ASSETS.md).
+État mesuré le 5 août 2026 : deux objets LFS — le labyrinthe d'environ 38 Mo et le personnage d'environ 101 Ko — et zéro pointeur DVC. Le budget interne du prototype reste limité à 2 Gio d'exports actifs. Les clones et builds restent possibles, mais les masters correspondants ne sont pas récupérables depuis ce dépôt : le coffre DVC est maintenant prioritaire avant leur prochaine modification ; voir [la stratégie d'assets](docs/ASSETS.md).
 
 Les masters lourds ne sont pas envoyés dans GitHub. Une fois l'URL privée communiquée par l'administrateur du stockage :
 
@@ -149,7 +149,7 @@ Voir [le protocole distant](docs/REMOTE_CONNECTION_TEST.md). Aucun serveur dédi
 | Réseau local | FishNet `4.7.2` + Tugboat | dans le projet |
 | Tests multi-instance | Multiplayer Play Mode `2.0.2` | dans le projet |
 | Réseau de développement distant | Tailscale, hors du build | setup Mac/Windows |
-| Masters lourds | DVC 3.x + stockage externe privé | scripts prêts, remote à choisir |
+| Masters lourds | DVC 3.x + stockage externe privé | gate P0, remote à choisir |
 | Assets de build | Git LFS + UnityYAMLMerge | configuré |
 | Audio | Wwise `2025.1.4` | après gate Mac/Windows |
 | Steam | Steamworks.NET `2025.164.1` + FishySteamworks `4.1.1` | après validation distante |
@@ -182,9 +182,11 @@ Le membre qui possède le PC prend la validation Windows. Les rôles pilote/bin�
 - [Assets hors GitHub](docs/ASSETS.md)
 - [Gestion des données](docs/DATA_MANAGEMENT.md)
 - [Stack et versions](docs/STACK.md)
+- [Architecture autoritaire : topologie, ticks, murs et joueur](docs/adr/0004-authoritative-topology-and-ticks.md)
+- [Audit du document maître du 5 août 2026](docs/audits/2026-08-05-document-maitre.md)
 - [Règles de contribution](CONTRIBUTING.md)
 - [Conception du jeu](https://github.com/NOT-THAT-WAY/brainstorm)
 
 ## Règle de priorité
 
-**Environnements identiques → données fiables → connexion distante → pivot jouable → réseau dégradé → audio/visuel → playtests.** Si le duel ne fonctionne pas en cubes gris, l'habillage ne le sauvera pas.
+**Environnements identiques → masters récupérables → connexion distante → topologie/collisions déterministes → murs et joueur par tick → réseau dégradé → audio/visuel → playtests.** Si le duel ne fonctionne pas dans la scène grise à un pivot, l'habillage 16x16 ne le sauvera pas.

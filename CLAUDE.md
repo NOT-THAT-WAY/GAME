@@ -13,6 +13,23 @@ Quand un utilisateur demande « initialise », « setup », « prépare la machi
 
 Le setup standard n'installe ni DVC, ni Wwise Authoring, ni SDK Steam et ne configure aucun secret. Ces étapes ont leurs propres jalons. Wwise Authoring est réservé à Nils ; les autres postes consomment l'intégration et les SoundBanks versionnées dans le dépôt. La connexion initiale Tailscale reste interactive et propre à chaque membre.
 
+## Gameplay réseau, mouvement et labyrinthe
+
+Pour toute demande qui touche un joueur, un mur ou pivot, une interaction, une collision, la grille/topologie, FishNet, la connexion ou un test réseau dégradé, utiliser immédiatement le skill `network-gameplay` et lire `docs/adr/0004-authoritative-topology-and-ticks.md` avant de modifier le projet.
+
+Règles non négociables :
+
+- le client envoie une intention ; l'hôte valide et simule l'état partagé sur des ticks FishNet ;
+- un mur mobile réplique un ID stable, ses états source/cible, `startTick`, `durationTicks` et une révision — jamais son transform à chaque image ;
+- `Time.time`, `Time.deltaTime` et l'heure d'arrivée locale ne pilotent que le cosmétique, jamais collision, cooldown, énergie ou résultat partagé ;
+- la topologie typée/versionnée produit les colliders et apparitions ; le FBX est visuel et ses noms/triangles ne sont pas une règle gameplay ;
+- le déplacement final utilise Input Actions et la prédiction/réconciliation FishNet (`Replicate`/`Reconcile`) ;
+- le serveur valide portée, contact/ligne de vue, direction, durée d'effort, énergie, cooldown, conflit et collision ;
+- toute arrivée tardive reçoit un snapshot avec version de schéma, checksum de map, tick et révisions ;
+- Tugboat et le futur lobby Steam se résolvent derrière un `ConnectionTarget`, sans transport concret dans le gameplay.
+
+Dette connue : `PlayerMotor`, `PivotDirector` et les `MeshCollider` créés par `MazePlaytestBuild` constituent un smoke test historique client-authoritative et piloté par image. Ne pas copier ni étendre cette architecture. La conséquence d'un mur qui se referme sur un joueur, le taux de tick, la hauteur du joueur et le statut du saut restent des décisions explicites à prendre, pas des valeurs à inventer.
+
 ## Git et collaboration
 
 - Inspecter la branche et `git status --short` avant toute modification.

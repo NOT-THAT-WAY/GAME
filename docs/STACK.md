@@ -13,14 +13,14 @@
 | Multiplayer Play Mode | `2.0.2` | plusieurs joueurs dans l'éditeur |
 | Multiplayer Tools | `2.2.10` | profils de latence/perte et métriques |
 | Tailscale | client stable auto-mis à jour | relie les postes distants pendant le développement, hors du build |
-| DVC | `3.x`, différé | pointeurs Git vers les masters au premier lot lourd |
+| DVC | `3.x`, gate à ouvrir | pointeurs Git vers les masters qui ont produit les deux FBX actuels |
 | Git LFS | version installée par la plateforme | binaires de runtime nécessaires au build uniquement |
 
 Toutes les versions sont exactes. Aucun membre ne clique sur « Update » isolément.
 
-DVC est borné au major 3 dans `config/toolchain.env`, mais n'est pas installé pendant l'onboarding tant qu'aucun master n'est référencé. Son remote n'est pas une dépendance du runtime : un développeur réseau peut compiler sans télécharger les sources Blender ou DAW qui ne sont pas utilisées par le build.
+DVC est borné au major 3 dans `config/toolchain.env` et reste hors de l'onboarding générique. Deux exports FBX sont désormais versionnés alors que leurs masters ne le sont pas : choisir et tester le remote est donc une gate P0 avant de modifier ou transmettre ces sources. Le remote n'est pas une dépendance du runtime ; un développeur réseau peut toujours compiler sans hydrater les sources Blender ou DAW.
 
-Tailscale n'est ni un package Unity ni un transport livré aux joueurs. Il fournit uniquement une interface réseau privée aux postes de développement afin que Tugboat fonctionne entre plusieurs lieux. Sa connexion utilise des comptes individuels et aucune clé d'authentification n'entre dans le dépôt.
+Tailscale n'est ni un package Unity ni un transport livré aux joueurs. Il fournit uniquement une interface réseau privée aux postes de développement afin que Tugboat fonctionne entre plusieurs lieux. Sa connexion utilise des comptes individuels, aucune clé d'authentification n'entre dans le dépôt, et le propriétaire confirme une offre compatible avec l'usage commercial visé avant le prochain playtest structuré.
 
 ## Éléments volontairement différés
 
@@ -60,7 +60,11 @@ Les valeurs `WWISE_ENABLED`, `STEAM_TRANSPORT_ENABLED` et `UNITY_CI_BUILDS_ENABL
 
 ## Architecture réseau de départ
 
-Le prototype utilise un listen-server à hôte autoritaire. L'hôte valide l'orientation discrète du pivot, les inputs, l'énergie, les collisions et plus tard le trésor. Les clients peuvent interpoler ou prédire les transitions, mais la grille logique demeure la source de vérité.
+Le produit utilise un listen-server à hôte autoritaire selon [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.md). Les clients transmettent des intentions ; l'hôte valide et simule joueurs, murs, énergie et collisions sur le tick FishNet. La topologie logique versionnée demeure la source de vérité, et les clients peuvent prédire/réconcilier ou interpoler sans modifier le résultat.
+
+Le code actuel est encore un smoke test : `PlayerMotor` est client-authoritative, `PivotDirector` anime localement transform et collider par image, et `MazePlaytestBuild` dépend de `MeshCollider` issus du FBX. Ne pas étendre ces chemins. La migration commence par une scène grise à un pivot, un schéma avec IDs/checksum, les transitions `startTick`/`durationTicks`/`revision`, puis `Replicate`/`Reconcile` pour le joueur.
+
+La connexion reçoit à terme un `ConnectionTarget` : adresse/port pour Tugboat aujourd'hui, lobby après la gate Steam. Le gameplay ne dépend pas du transport choisi.
 
 Profil réseau cible du premier playtest : environ `80 ms` RTT, `2 %` de perte et `20 ms` de jitter.
 

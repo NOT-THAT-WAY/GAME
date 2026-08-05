@@ -13,7 +13,7 @@ Exécuter le workflow ; ne pas se limiter à le réciter.
 2. Afficher la branche et `git status --short`. Ne jamais effacer des changements existants.
 3. Ne jamais changer les versions de `config/toolchain.env` pendant un setup.
 4. Ne pas installer Wwise Authoring, intégrer Wwise ou ajouter Steam. Wwise Authoring est réservé à Nils. Tailscale est autorisé comme outil de test distant, jamais comme dépendance du build.
-5. Ne pas installer DVC pendant l'onboarding actuel. Si un remote est décidé plus tard et que l'utilisateur fournit déjà son URL non secrète, installer l'option assets avec `--install-tools --with-assets` sur Mac ou `-InstallTools -WithAssets` sur Windows avant de le configurer. Ne jamais demander ni placer un token dans une commande, Git ou le chat.
+5. Ne pas installer DVC pendant l'onboarding générique. La gate est désormais urgente pour préserver les masters des FBX actuels, mais elle reste une tâche dédiée : si l'utilisateur fournit l'URL non secrète du remote décidé, installer l'option assets avec `--install-tools --with-assets` sur Mac ou `-InstallTools -WithAssets` sur Windows avant de le configurer. Ne jamais demander ni placer un token dans une commande, Git ou le chat.
 6. Ne pas committer ni pousser pendant le setup, sauf demande explicite distincte. Ne jamais pousser directement sur `main`.
 
 ## Détecter la plateforme
@@ -53,6 +53,6 @@ Exécuter le workflow ; ne pas se limiter à le réciter.
    - S'il manque sur le Mac pilote, indiquer que le premier import doit encore être fait sur une branche dédiée.
    - S'il manque sur la machine d'un autre membre, ne pas ouvrir Unity : le pilote doit d'abord merger le lockfile.
 2. Vérifier de nouveau `git status --short`.
-3. Résumer les erreurs réelles et les avertissements attendus. DVC, Wwise et Steam peuvent rester en avertissement avant leurs jalons. L'absence de remote DVC ne bloque pas l'onboarding tant qu'aucun pointeur `.dvc` n'existe.
+3. Résumer les erreurs réelles et les avertissements attendus. Wwise et Steam peuvent rester en avertissement avant leurs jalons. L'absence de remote DVC ne bloque pas l'onboarding d'un développeur, mais bloque toute modification ou transmission des masters qui ont produit les FBX actuels.
 4. Ne déclarer la machine intégrée que si le doctor affiche zéro erreur. Après le lockfile, une ouverture/fermeture de Unity doit aussi laisser Git propre.
-5. Quand la machine est intégrée, utiliser `remote-test` si les membres sont dans des lieux différents et `lan-test` uniquement sur le même réseau ; ne pas prétendre que le gameplay du duel existe déjà.
+5. Quand la machine est intégrée, utiliser `remote-test` si les membres sont dans des lieux différents et `lan-test` uniquement sur le même réseau ; présenter le labyrinthe/pivot actuel comme un smoke test, jamais comme la validation autoritaire du duel M1.
