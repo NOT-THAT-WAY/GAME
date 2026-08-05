@@ -154,12 +154,31 @@ changent pas de comportement.
 | Maj | sprint |
 | Espace | sauter — contournement provisoire des gravats, statut gameplay à décider |
 | Clic gauche maintenu + avancer | pousser un mur pivotant d'un quart de tour |
+| U | se dégager quand on est encastré dans un mur |
 | Échap | libérer ou recapturer le curseur |
 | Tab | masquer ou afficher le panneau réseau |
 | F1 | basculer 1re / 3e personne (vue de contrôle) |
 
 La vue de référence reste la première personne. La troisième personne est là pour
 vérifier le gabarit du personnage, pas pour jouer.
+
+`U` replace le joueur sur le centre d'une cellule voisine libre : une case
+d'abord, puis deux, puis trois. À chaque anneau, la cellule retenue est la plus
+proche qui ait du sol sous elle et de quoi tenir debout. Si les trois anneaux
+sont bouchés, le joueur repart de son entrée, seul point dont
+`MazePlaytestBuild` garantit le sol et le dégagement.
+
+Cette touche ne repousse **pas** le joueur hors du mur : `ComputePenetration` ne
+résout rien contre un `MeshCollider` non convexe, et les murs du labyrinthe en
+sont. La validation d'une cellule passe donc par un tir vers le sol et un
+`CheckCapsule`, qui fonctionnent contre une géométrie concave. Pour la même
+raison, le dégagement vise la grille au lieu de mémoriser la dernière position
+« sûre » : un test de chevauchement qui ne détecte rien enregistrerait comme sûre
+la position où l'on est encastré.
+
+`RespawnGridPitch` duplique le pas de grille pour la même raison que le
+`GridPitch` de `MazePlaytestBuild` : s'il s'en écarte, le dégagement vise entre
+deux couloirs.
 
 ## Vérifier sans lancer de partie
 
