@@ -15,7 +15,9 @@ python3 tools/blender-agent-studio/workflows/tools/studio_readiness_check.py
 ```
 
 Ces commandes détectent Blender, FFmpeg/ffprobe et écrivent uniquement la configuration ignorée du
-studio. Le coffre d'assets est optionnel. Pour réutiliser une source cataloguée, définir localement
+studio. FFmpeg vient du setup machine : `./scripts/setup-macos.sh --install-tools` sur Mac,
+`powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -InstallTools` sur Windows.
+Le doctor le signale en avertissement tant qu'il manque. Blender lui-même reste installé à la main. Le coffre d'assets est optionnel. Pour réutiliser une source cataloguée, définir localement
 `BLENDER_ASSET_VAULT` vers le coffre privé autorisé ; ne jamais ajouter les fichiers matérialisés à
 Git.
 

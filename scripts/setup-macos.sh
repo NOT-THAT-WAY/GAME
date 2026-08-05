@@ -85,7 +85,7 @@ if (( INSTALL_TOOLS == 1 )); then
     exit 1
   fi
 
-  brew install git git-lfs gh
+  brew install git git-lfs gh ffmpeg
   if (( WITH_ASSETS == 1 )); then
     brew install dvc
   fi

@@ -132,6 +132,8 @@ if (Test-Path $VsWhere) {
     if ($VsInstallation) { Write-Ok "Visual Studio Unity + C++ detecte" } else { Write-Fail "Visual Studio doit inclure Game development with Unity et Desktop development with C++" }
 } else { Write-Fail "Visual Studio 2022 non detecte" }
 
+if ((Test-Command "ffmpeg") -and (Test-Command "ffprobe")) { Write-Ok "FFmpeg et ffprobe presents (preuves animation/video du studio Blender)" } else { Write-Warn "FFmpeg ou ffprobe absent - requis pour les preuves animation/video du studio Blender; relancer setup-windows.ps1 -InstallTools" }
+
 $WwiseCandidates = @(
     "${env:ProgramFiles(x86)}\Audiokinetic\Launcher\WwiseLauncher.exe",
     "$env:ProgramFiles\Audiokinetic\Launcher\WwiseLauncher.exe"

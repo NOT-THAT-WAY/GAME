@@ -210,6 +210,12 @@ else
   warn "Tailscale absent ou déconnecté — requis uniquement pour le test à distance"
 fi
 
+if command -v ffmpeg >/dev/null 2>&1 && command -v ffprobe >/dev/null 2>&1; then
+  ok "FFmpeg et ffprobe présents (preuves animation/vidéo du studio Blender)"
+else
+  warn "FFmpeg ou ffprobe absent — requis pour les preuves animation/vidéo du studio Blender; relancer setup-macos.sh --install-tools"
+fi
+
 if [[ -d "/Applications/Wwise Launcher.app" ]] || [[ -d "/Applications/Audiokinetic/Wwise Launcher.app" ]]; then
   ok "Wwise Launcher présent (poste audio de Nils)"
 else
