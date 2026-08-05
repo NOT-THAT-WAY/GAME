@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "coordinate_system": "Blender world Z, meters",
+  "rail_and_carrier": {
+    "rail_top": 0.385,
+    "carrier_bottom_transport": 0.44,
+    "carrier_top_transport": 0.66,
+    "rail_to_carrier_clearance": 0.055,
+    "phone_bottom_transport": 0.726,
+    "carrier_to_phone_clearance": 0.066
+  },
+  "dais_transfer": {
+    "dais_top": 0.755,
+    "carrier_bottom_crossing": 1.04,
+    "carrier_over_dais_clearance": 0.285,
+    "phone_bottom_crossing": 1.326,
+    "phone_over_dais_clearance": 0.571
+  },
+  "landed_state": {
+    "carrier_bottom": 0.76,
+    "carrier_over_dais_clearance": 0.005,
+    "carrier_top": 0.98,
+    "phone_bottom": 1.046,
+    "carrier_to_phone_clearance": 0.066
+  },
+  "verdict": "positive clearance at transport, crossing and landed gates; carrier remains on dais and never retracts through solid geometry"
+}

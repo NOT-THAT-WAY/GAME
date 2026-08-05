@@ -1,0 +1,1272 @@
+1
+00:00:00,000 --> 00:00:29,980
+ Hello. In this tutorial I'm gonna show you my thought process when I animate my camera. I'm gonna use one of my earlier tutorials as an example. So here is the project for a tutorial I made last fall in 2025. It's called Squelch Snare and in this tutorial I show you how to create a squelch type sounding snare. But anyway, if I select the camera here, you can see all the keyframes for the camera. So here I have the dope sheet and the camera selected and if you want to go to the dope sheet,
+
+2
+00:00:29,980 --> 00:00:59,960
+ you can just select this and choose dope sheet. So here is essentially all the keyframes for the camera. So as you can see I have plenty of keyframes here. We can just scroll through the whole scene here. So it ends at 2700 frames and begins at 500 frames. So we can just check out the first keyframe here. Just to know here if I select to the left here, object transforms, you can see the actual transforming keyframes for the camera movements. So here is the X location.
+
+3
+00:00:59,960 --> 00:01:17,120
+ the Y location and the Z location. And down here if I click on this drop down, you can see the focal length and focus distance and f-stop. Which is if I go to the camera here to the right and go down to depth of field are these ones.
+
+4
+00:01:17,120 --> 00:01:32,460
+ And these are like just the keyframe, the focus, distance and the f-stop. So right now we're going to focus on object transforms only. So I'm going to close this drop down and you can just ignore the keyframes on the very bottom here and just focus on these three.
+
+5
+00:01:32,460 --> 00:01:48,460
+ When I begin my tutorials, I like to begin at the first frame with the keyframe. And just one note, is that I animate everything in 60fps, so depending on what frame range you're using, for example, if you're animating in 30fps, you would need to recalculate all the frames.
+
+6
+00:01:48,460 --> 00:02:00,460
+ So for example, 9 frames in 60fps would equal around 4 or 5 frames in 30fps, since 30fps is half of 60. So I will show everything in 60fps today.
+
+7
+00:02:00,460 --> 00:02:17,460
+ Anyway, on the first frame, we have the camera here. And if we scroll forward, you can see that I just keyframe it a bit back. So if we go from the very side here, and I move forward, you can see that the camera actually begins by moving backwards.
+
+8
+00:02:17,460 --> 00:02:26,460
+ And that's because I want to create an illusion that the camera gets momentum for them to go forward, as you can see.
+
+9
+00:02:26,460 --> 00:02:34,460
+ So the camera begins by moving backwards and then it shoots forward. Again.
+
+10
+00:02:34,460 --> 00:02:42,460
+ But what happens when it has come forward? It then moves a bit backwards. And doing this, I want to capture like a realistic feel to the camera.
+
+11
+00:02:42,460 --> 00:02:50,460
+ Because as if you were throwing a ball, for example, you would first move your hand backwards, and then move it forward, and then you would pick your hand up.
+
+12
+00:02:50,460 --> 00:03:02,460
+ So I want to reflect the momentum to make the camera movement feel realistic. Because for example, if the camera just stopped there, and never grabbed momentum back, it would feel more static and not as bouncy.
+
+13
+00:03:02,460 --> 00:03:09,460
+ So if I scroll through the whole motion here, you can see, first goes back, then forward, and then it falls back a bit.
+
+14
+00:03:11,460 --> 00:03:18,460
+ So that's essentially the whole philosophy behind my camera animations, and it's super standard in any type of animation.
+
+15
+00:03:18,460 --> 00:03:20,460
+ So we can see what happens next.
+
+16
+00:03:20,460 --> 00:03:22,460
+ So again, I scroll forward.
+
+17
+00:03:22,460 --> 00:03:28,460
+ And, as you can see, now the camera is almost like floating.
+
+18
+00:03:28,460 --> 00:03:34,460
+ The keyframe that makes it floating is actually this keyframe in the middle between those two.
+
+19
+00:03:34,460 --> 00:03:37,460
+ So we can try to delete this keyframe.
+
+20
+00:03:37,460 --> 00:03:45,460
+ If I select the Orbit Transform, and I select this keyframe, it will actually select all the axes down here.
+
+21
+00:03:45,460 --> 00:03:52,460
+ So if I select on the first row here, it will automatically select Z, Y, and X axes.
+
+22
+00:03:52,460 --> 00:03:58,460
+ So I select this, and press X to delete it, and now you can see that the camera actually stays in place.
+
+23
+00:03:58,460 --> 00:04:02,460
+ So we can watch this in real time, if you watch it on the left here.
+
+24
+00:04:05,460 --> 00:04:08,460
+ You can see that the camera stays completely still here.
+
+25
+00:04:08,460 --> 00:04:17,460
+ I didn't even want that, and that's why I added the keyframes here that we just deleted.
+
+26
+00:04:17,460 --> 00:04:20,460
+ So I'm going to undo it and get them back.
+
+27
+00:04:20,460 --> 00:04:22,460
+ Now we can watch it.
+
+28
+00:04:22,460 --> 00:04:28,460
+ So you can see, we just have some floating motion here.
+
+29
+00:04:28,460 --> 00:04:36,460
+ And if I delete it again, you can see it's very static.
+
+30
+00:04:36,460 --> 00:04:41,460
+ So what I'm essentially doing is that if I have a piece of my animation where the camera needs to be still,
+
+31
+00:04:41,460 --> 00:04:43,460
+ I will just create this type of floating motion.
+
+32
+00:04:43,460 --> 00:04:46,460
+ So what I do is that I go to the middle of the keyframes.
+
+33
+00:04:46,460 --> 00:04:50,460
+ So here's the first keyframe for the camera, and here's the second.
+
+34
+00:04:50,460 --> 00:04:55,460
+ You can just ignore this as I said, because it's for the f-stop and the focus animation.
+
+35
+00:04:55,460 --> 00:05:01,460
+ So this again, first keyframe and second keyframe.
+
+36
+00:05:01,460 --> 00:05:05,460
+ I put my cursor around the middle, and I select the camera.
+
+37
+00:05:05,460 --> 00:05:10,460
+ And then I just press G and Z, and move it down just a little bit.
+
+38
+00:05:11,460 --> 00:05:16,460
+ And then I press enter, and then I press K, and select location keyframe.
+
+39
+00:05:16,460 --> 00:05:20,460
+ And now I've created this almost floating type animation.
+
+40
+00:05:20,460 --> 00:05:26,460
+ So it goes down, and then up again to the original position.
+
+41
+00:05:26,460 --> 00:05:30,460
+ So we can see the full animation again.
+
+42
+00:05:33,460 --> 00:05:34,460
+ Very nice.
+
+43
+00:05:34,460 --> 00:05:35,460
+ But what happens next?
+
+44
+00:05:35,460 --> 00:05:41,460
+ Because now the camera is going to zoom in to the squelchner here.
+
+45
+00:05:41,460 --> 00:05:46,460
+ So again, we are having the same philosophy in mind, where the camera is going back a bit.
+
+46
+00:05:46,460 --> 00:05:48,460
+ And then it shoots forward.
+
+47
+00:05:48,460 --> 00:05:51,460
+ And then it bounces back.
+
+48
+00:05:51,460 --> 00:05:54,460
+ And then actually a bit forward again.
+
+49
+00:05:54,460 --> 00:05:58,460
+ So watch the camera closely as I scroll through these keyframes here.
+
+50
+00:05:58,460 --> 00:06:02,460
+ First, it's on its original position.
+
+51
+00:06:02,460 --> 00:06:07,460
+ Then it gathers momentum by going back.
+
+52
+00:06:07,460 --> 00:06:10,460
+ Then it shoots very fast forward.
+
+53
+00:06:10,460 --> 00:06:12,460
+ And then it bounces back.
+
+54
+00:06:12,460 --> 00:06:15,460
+ And then actually it bounces forward a bit again.
+
+55
+00:06:15,460 --> 00:06:21,460
+ So that's essentially the exact philosophy as I had here at the beginning.
+
+56
+00:06:22,460 --> 00:06:23,460
+ So watch it again.
+
+57
+00:06:23,460 --> 00:06:31,460
+ So we can watch the full sequence here.
+
+58
+00:06:31,460 --> 00:06:37,460
+ That's essentially me repeating this thing, but here.
+
+59
+00:06:37,460 --> 00:06:40,460
+ And you might recognize this here.
+
+60
+00:06:40,460 --> 00:06:44,460
+ Because in the middle here, we have the exact same thing as we have here.
+
+61
+00:06:45,460 --> 00:06:57,460
+ If I delete this, you can see that the camera, if I scroll here from 699 up to this keyframe.
+
+62
+00:06:57,460 --> 00:07:02,460
+ And if you watch the camera, you can see that the camera stands completely still.
+
+63
+00:07:02,460 --> 00:07:06,460
+ And I again wanted the floating motion that I had before here.
+
+64
+00:07:06,460 --> 00:07:10,460
+ So that's why I have had this keyframe in the middle here.
+
+65
+00:07:11,460 --> 00:07:14,460
+ So you can see, the camera move goes a bit down.
+
+66
+00:07:14,460 --> 00:07:18,460
+ Then it goes up.
+
+67
+00:07:18,460 --> 00:07:21,460
+ So if I delete it, I can show you how I did it.
+
+68
+00:07:21,460 --> 00:07:23,460
+ It's the exact same thing as I've shown you before.
+
+69
+00:07:23,460 --> 00:07:26,460
+ So I go to the middle of these two keyframes.
+
+70
+00:07:26,460 --> 00:07:29,460
+ The first one and the second one here.
+
+71
+00:07:30,460 --> 00:07:32,460
+ I select and put the cursor around the middle.
+
+72
+00:07:32,460 --> 00:07:34,460
+ Then I make sure the camera is selected.
+
+73
+00:07:34,460 --> 00:07:35,460
+ I press G and Z.
+
+74
+00:07:35,460 --> 00:07:39,460
+ And just move it down a little bit to create the floating motion.
+
+75
+00:07:39,460 --> 00:07:41,460
+ And then I have pressed enter.
+
+76
+00:07:41,460 --> 00:07:45,460
+ And press K and location to insert keyframe.
+
+77
+00:07:45,460 --> 00:07:49,460
+ So now you can see that the camera is going down and just up a little bit.
+
+78
+00:07:49,460 --> 00:07:51,460
+ Just to make the camera movement come alive.
+
+79
+00:07:52,460 --> 00:07:53,460
+ And what happens here.
+
+80
+00:07:53,460 --> 00:07:56,460
+ We can see the camera is actually moving forward a bit.
+
+81
+00:07:56,460 --> 00:07:57,460
+ So you can see.
+
+82
+00:07:57,460 --> 00:07:58,460
+ We see it again.
+
+83
+00:07:58,460 --> 00:08:00,460
+ Scrolling forward.
+
+84
+00:08:00,460 --> 00:08:03,460
+ Of course it goes toward the object.
+
+85
+00:08:03,460 --> 00:08:06,460
+ Before it shoots back.
+
+86
+00:08:06,460 --> 00:08:11,460
+ And then it goes towards the object a little bit again.
+
+87
+00:08:12,460 --> 00:08:17,460
+ And you might recognize that this is the exact same philosophy as I had here.
+
+88
+00:08:17,460 --> 00:08:18,460
+ And at the beginning.
+
+89
+00:08:18,460 --> 00:08:22,460
+ So again the camera is going towards the object to gather momentum.
+
+90
+00:08:22,460 --> 00:08:24,460
+ Then it shoots back.
+
+91
+00:08:24,460 --> 00:08:27,460
+ Then it catches its momentum by going forward a bit.
+
+92
+00:08:27,460 --> 00:08:30,460
+ Just like when you throw a ball.
+
+93
+00:08:30,460 --> 00:08:32,460
+ It's the exact same type of thinking.
+
+94
+00:08:32,460 --> 00:08:35,460
+ And again the camera is just floating here.
+
+95
+00:08:35,460 --> 00:08:37,460
+ As we did here.
+
+96
+00:08:37,460 --> 00:08:39,460
+ This keyframe makes the camera go up.
+
+97
+00:08:39,460 --> 00:08:40,460
+ And then down again.
+
+98
+00:08:41,460 --> 00:08:42,460
+ So yeah.
+
+99
+00:08:42,460 --> 00:08:45,460
+ That's essentially everything I make for my camera animations.
+
+100
+00:08:45,460 --> 00:08:47,460
+ Because as you can see.
+
+101
+00:08:47,460 --> 00:08:48,460
+ Here again.
+
+102
+00:08:48,460 --> 00:08:50,460
+ It goes forward.
+
+103
+00:08:50,460 --> 00:08:52,460
+ And then it shoots backwards.
+
+104
+00:08:52,460 --> 00:08:56,460
+ Goes forward.
+
+105
+00:08:56,460 --> 00:08:57,460
+ Shoots backwards.
+
+106
+00:08:57,460 --> 00:08:59,460
+ And then forward just a little bit.
+
+107
+00:08:59,460 --> 00:09:03,460
+ So you can think of it as the four keyframe rule.
+
+108
+00:09:03,460 --> 00:09:08,460
+ Where the actual important movement happens between second and third keyframe.
+
+109
+00:09:10,460 --> 00:09:15,460
+ But the movement and the momentum is gathered between the first and second keyframe.
+
+110
+00:09:15,460 --> 00:09:20,460
+ And the movement is ending between the third and fourth keyframe.
+
+111
+00:09:20,460 --> 00:09:25,460
+ So you can see the actual movement is happening between the second and the third.
+
+112
+00:09:26,460 --> 00:09:27,460
+ But the momentum is gathered.
+
+113
+00:09:27,460 --> 00:09:31,460
+ But the momentum is gathered between the first and the second one.
+
+114
+00:09:31,460 --> 00:09:35,460
+ And it's ending between the third and the fourth one.
+
+115
+00:09:35,460 --> 00:09:41,460
+ But what you would need to do when you change the location of the camera.
+
+116
+00:09:41,460 --> 00:09:45,460
+ And if you have depth of field selected as I have here to the right.
+
+117
+00:09:46,460 --> 00:09:50,460
+ What is important is the keyframe the focus distance and the f-stop together with the camera movements.
+
+118
+00:09:50,460 --> 00:09:52,460
+ So as I said before.
+
+119
+00:09:52,460 --> 00:09:54,460
+ Down here.
+
+120
+00:09:54,460 --> 00:09:56,460
+ We have the focus distance animation.
+
+121
+00:09:56,460 --> 00:10:00,460
+ And I have actually synced this up perfectly with the camera movement.
+
+122
+00:10:00,460 --> 00:10:05,460
+ So almost on every camera keyframe I have a keyframe for the focus distance.
+
+123
+00:10:06,460 --> 00:10:10,460
+ For example we can try to delete all the focus keyframe distances here.
+
+124
+00:10:10,460 --> 00:10:15,460
+ You will see that everything becomes blurry.
+
+125
+00:10:15,460 --> 00:10:19,460
+ What's happening is that the focus distance is not animated together with the focal length.
+
+126
+00:10:20,460 --> 00:10:23,460
+ So to fix that you would need to go to every keyframe here.
+
+127
+00:10:23,460 --> 00:10:26,460
+ So if I go to this keyframe, the second keyframe of the animation.
+
+128
+00:10:26,460 --> 00:10:28,460
+ I would then zoom in on the object.
+
+129
+00:10:28,460 --> 00:10:30,460
+ Make sure the camera was selected.
+
+130
+00:10:30,460 --> 00:10:33,460
+ And then go to the right here.
+
+131
+00:10:33,460 --> 00:10:38,460
+ And just scroll on the focus distance until I see that the object is in focus.
+
+132
+00:10:38,460 --> 00:10:42,460
+ So for example here I see that the object is in focus.
+
+133
+00:10:42,460 --> 00:10:45,460
+ When I'm satisfied with the focus, right there.
+
+134
+00:10:46,460 --> 00:10:51,460
+ I will then press hover over the focus distance and press I to insert the keyframe.
+
+135
+00:10:51,460 --> 00:10:54,460
+ And then I will go to the next keyframe of the camera.
+
+136
+00:10:54,460 --> 00:10:57,460
+ You can see that it's a bit blurry here.
+
+137
+00:10:57,460 --> 00:10:59,460
+ I want some more focus here.
+
+138
+00:10:59,460 --> 00:11:02,460
+ So then I would need to make sure the camera is selected.
+
+139
+00:11:02,460 --> 00:11:04,460
+ Go to the focus distance.
+
+140
+00:11:04,460 --> 00:11:07,460
+ Hold shift while scrolling to make fine adjustments.
+
+141
+00:11:07,460 --> 00:11:11,460
+ And now you can see that we are on focus here.
+
+142
+00:11:11,460 --> 00:11:14,460
+ You see, it's almost in focus.
+
+143
+00:11:15,460 --> 00:11:16,460
+ I think that would be enough.
+
+144
+00:11:16,460 --> 00:11:21,460
+ So then again I will hover over this and press I to insert the keyframe down here.
+
+145
+00:11:21,460 --> 00:11:25,460
+ And then I will just go to the next keyframe.
+
+146
+00:11:25,460 --> 00:11:27,460
+ Zoom in.
+
+147
+00:11:27,460 --> 00:11:30,460
+ And now you see that we are a bit out of focus here.
+
+148
+00:11:30,460 --> 00:11:33,460
+ You can see it on the pixel here.
+
+149
+00:11:33,460 --> 00:11:35,460
+ So I will go to the focus distance.
+
+150
+00:11:35,460 --> 00:11:38,460
+ And just scroll it.
+
+151
+00:11:38,460 --> 00:11:40,460
+ Make sure we are on focus.
+
+152
+00:11:40,460 --> 00:11:42,460
+ And now we have some sharp pixels here.
+
+153
+00:11:42,460 --> 00:11:45,460
+ So again hover over it and press I.
+
+154
+00:11:45,460 --> 00:11:47,460
+ And then go to the next keyframe.
+
+155
+00:11:47,460 --> 00:11:49,460
+ Make sure we are on focus.
+
+156
+00:11:49,460 --> 00:11:51,460
+ And I think we are fairly in focus here.
+
+157
+00:11:51,460 --> 00:11:55,460
+ So I will just hover over this and press I.
+
+158
+00:11:55,460 --> 00:11:58,460
+ Go to the next keyframe.
+
+159
+00:11:58,460 --> 00:12:00,460
+ Do the same thing.
+
+160
+00:12:01,460 --> 00:12:05,460
+ So that's essentially how you link up your focus distance with your focal length.
+
+161
+00:12:05,460 --> 00:12:07,460
+ And it's a tedious process.
+
+162
+00:12:07,460 --> 00:12:09,460
+ But I think it's worth it.
+
+163
+00:12:09,460 --> 00:12:11,460
+ And you are going to get faster on it when you get the hang of it.
+
+164
+00:12:11,460 --> 00:12:15,460
+ And the next thing I want to show you is how I get the camera to be synced with the objects on screen.
+
+165
+00:12:16,460 --> 00:12:17,460
+ So here you have the camera.
+
+166
+00:12:17,460 --> 00:12:20,460
+ But it's not actually looking towards the object here.
+
+167
+00:12:20,460 --> 00:12:23,460
+ Rather it's looking towards this empty object.
+
+168
+00:12:23,460 --> 00:12:25,460
+ As you can see here.
+
+169
+00:12:25,460 --> 00:12:28,460
+ So if I grab this empty object and move it around.
+
+170
+00:12:28,460 --> 00:12:34,460
+ You can see to the left here that the camera is changing where it looks depending on where I put this.
+
+171
+00:12:35,460 --> 00:12:37,460
+ What I have is that I have on the camera.
+
+172
+00:12:37,460 --> 00:12:39,460
+ And go to the constraints.
+
+173
+00:12:39,460 --> 00:12:40,460
+ I have a track to constraints.
+
+174
+00:12:40,460 --> 00:12:42,460
+ Where the empty is selected.
+
+175
+00:12:42,460 --> 00:12:46,460
+ So I can just close this down and do it again.
+
+176
+00:12:46,460 --> 00:12:48,460
+ So I go to add object constraints.
+
+177
+00:12:48,460 --> 00:12:51,460
+ And then I select track to.
+
+178
+00:12:51,460 --> 00:12:54,460
+ And then while the camera is selected.
+
+179
+00:12:54,460 --> 00:12:56,460
+ I go to the object.
+
+180
+00:12:56,460 --> 00:12:57,460
+ I want to track the camera to.
+
+181
+00:12:57,460 --> 00:12:59,460
+ So here I see the object.
+
+182
+00:12:59,460 --> 00:13:00,460
+ I want to track the camera to.
+
+183
+00:13:00,460 --> 00:13:02,460
+ It's an empty object.
+
+184
+00:13:03,460 --> 00:13:04,460
+ Just get an empty object by.
+
+185
+00:13:04,460 --> 00:13:07,460
+ Pressing shift A and search for an empty sphere.
+
+186
+00:13:07,460 --> 00:13:09,460
+ So select the camera.
+
+187
+00:13:09,460 --> 00:13:11,460
+ And then choose the drop down.
+
+188
+00:13:11,460 --> 00:13:13,460
+ And select the empty object.
+
+189
+00:13:13,460 --> 00:13:17,460
+ And what's good when you track the camera to empty objects.
+
+190
+00:13:17,460 --> 00:13:20,460
+ Is that the empty objects won't show up in the final render.
+
+191
+00:13:20,460 --> 00:13:22,460
+ So you can have this anywhere on the screen.
+
+192
+00:13:22,460 --> 00:13:24,460
+ And it won't show up in the render.
+
+193
+00:13:24,460 --> 00:13:25,460
+ It's invisible.
+
+194
+00:13:25,460 --> 00:13:28,460
+ Which makes it very good to utilize for your animations.
+
+195
+00:13:28,460 --> 00:13:31,460
+ And now I have the empty object selected here.
+
+196
+00:13:31,460 --> 00:13:32,460
+ You can barely see it.
+
+197
+00:13:32,460 --> 00:13:34,460
+ Because it's almost in the object here.
+
+198
+00:13:34,460 --> 00:13:35,460
+ As you can see.
+
+199
+00:13:35,460 --> 00:13:38,460
+ I have all these keyframes for the actual empty object.
+
+200
+00:13:38,460 --> 00:13:40,460
+ If we go to the first frame of the animation.
+
+201
+00:13:40,460 --> 00:13:42,460
+ Which is frame 500.
+
+202
+00:13:42,460 --> 00:13:45,460
+ You can see that the empty object is almost in the middle of the scene.
+
+203
+00:13:45,460 --> 00:13:46,460
+ And then we go forward a bit.
+
+204
+00:13:46,460 --> 00:13:49,460
+ We can see that it stays the same.
+
+205
+00:13:49,460 --> 00:13:51,460
+ Because when you have these lines going.
+
+206
+00:13:51,460 --> 00:13:53,460
+ Between keyframes.
+
+207
+00:13:53,460 --> 00:13:55,460
+ It means that the keyframes are identical.
+
+208
+00:13:55,460 --> 00:13:57,460
+ So these keyframes are identical.
+
+209
+00:13:57,460 --> 00:13:59,460
+ But here.
+
+210
+00:13:59,460 --> 00:14:01,460
+ We can see that.
+
+211
+00:14:01,460 --> 00:14:03,460
+ It's no lines between the keyframes.
+
+212
+00:14:03,460 --> 00:14:07,460
+ Which means that the movement of the sphere is changing.
+
+213
+00:14:07,460 --> 00:14:08,460
+ If you just zoom in here.
+
+214
+00:14:08,460 --> 00:14:10,460
+ You can see the empty object.
+
+215
+00:14:10,460 --> 00:14:13,460
+ And I'm going to scroll towards the next keyframe.
+
+216
+00:14:13,460 --> 00:14:15,460
+ And we can see how it changes its position.
+
+217
+00:14:16,460 --> 00:14:22,460
+ You can see that it goes a bit left.
+
+218
+00:14:22,460 --> 00:14:27,460
+ I can scale it up so you can see it better.
+
+219
+00:14:27,460 --> 00:14:29,460
+ This moves a bit left.
+
+220
+00:14:29,460 --> 00:14:32,460
+ And that's because at the beginning of the scene.
+
+221
+00:14:32,460 --> 00:14:36,460
+ I want the viewer to focus on the washing machine here.
+
+222
+00:14:36,460 --> 00:14:39,460
+ So you can see that it's almost in the center of the washing machine.
+
+223
+00:14:39,460 --> 00:14:40,460
+ But when I come up here.
+
+224
+00:14:40,460 --> 00:14:43,460
+ I want the viewer to focus in.
+
+225
+00:14:43,460 --> 00:14:44,460
+ On this audio file here.
+
+226
+00:14:44,460 --> 00:14:47,460
+ So that's why I need to change the position of the sphere.
+
+227
+00:14:47,460 --> 00:14:48,460
+ Because for example.
+
+228
+00:14:48,460 --> 00:14:51,460
+ If I didn't do the little tilt to the left here.
+
+229
+00:14:51,460 --> 00:14:53,460
+ It would just look like this.
+
+230
+00:14:53,460 --> 00:14:57,460
+ You see that it would look a bit off here to the left.
+
+231
+00:14:57,460 --> 00:14:59,460
+ But when I had this little change here.
+
+232
+00:14:59,460 --> 00:15:00,460
+ With the keyframes.
+
+233
+00:15:00,460 --> 00:15:03,460
+ You can see that the center of attention is the audio file here.
+
+234
+00:15:03,460 --> 00:15:05,460
+ Then we can go forward a bit.
+
+235
+00:15:05,460 --> 00:15:08,460
+ And you can see that we changed the position.
+
+236
+00:15:08,460 --> 00:15:10,460
+ To be in the middle again.
+
+237
+00:15:10,460 --> 00:15:13,460
+ Between these keyframes.
+
+238
+00:15:13,460 --> 00:15:19,460
+ And here you can see we have many keyframes.
+
+239
+00:15:19,460 --> 00:15:21,460
+ And what's going on here.
+
+240
+00:15:21,460 --> 00:15:22,460
+ We can watch it in real time.
+
+241
+00:15:22,460 --> 00:15:24,460
+ If you watch it on the left here.
+
+242
+00:15:27,460 --> 00:15:31,460
+ You can see that the frame is almost like bouncing up and down.
+
+243
+00:15:31,460 --> 00:15:39,460
+ And I got this effect by animating the object that the camera is tracked to.
+
+244
+00:15:39,460 --> 00:15:41,460
+ And here are the keyframes for that.
+
+245
+00:15:41,460 --> 00:15:43,460
+ So if I go to the front view.
+
+246
+00:15:43,460 --> 00:15:46,460
+ So we see exactly how it lines up.
+
+247
+00:15:46,460 --> 00:15:50,460
+ Here the object hasn't popped up from the washing machine.
+
+248
+00:15:50,460 --> 00:15:51,460
+ On the first keyframe here.
+
+249
+00:15:51,460 --> 00:15:53,460
+ You can see that it moves to the right here.
+
+250
+00:15:53,460 --> 00:15:57,460
+ To the center of the washing machine door.
+
+251
+00:15:57,460 --> 00:15:59,460
+ And then it goes up.
+
+252
+00:15:59,460 --> 00:16:02,460
+ Along with the object that pops up.
+
+253
+00:16:02,460 --> 00:16:04,460
+ So if I go back again.
+
+254
+00:16:04,460 --> 00:16:07,460
+ And I'm going to actually put this in local view.
+
+255
+00:16:07,460 --> 00:16:08,460
+ So you can see it better.
+
+256
+00:16:09,460 --> 00:16:12,460
+ So now I have selected the object that the camera is tracked to.
+
+257
+00:16:12,460 --> 00:16:14,460
+ So you can see it first goes to the right.
+
+258
+00:16:14,460 --> 00:16:15,460
+ And then.
+
+259
+00:16:15,460 --> 00:16:16,460
+ When the door opens.
+
+260
+00:16:16,460 --> 00:16:18,460
+ And the object here pops up.
+
+261
+00:16:18,460 --> 00:16:20,460
+ The empty object goes up with it.
+
+262
+00:16:20,460 --> 00:16:22,460
+ And then it falls down.
+
+263
+00:16:22,460 --> 00:16:23,460
+ Just as the object falls down.
+
+264
+00:16:23,460 --> 00:16:26,460
+ And then it falls back up.
+
+265
+00:16:26,460 --> 00:16:30,460
+ And then it stabilizes on its final keyframe.
+
+266
+00:16:31,460 --> 00:16:32,460
+ So if I scroll through it.
+
+267
+00:16:32,460 --> 00:16:34,460
+ You can see how it follows along.
+
+268
+00:16:34,460 --> 00:16:39,460
+ Again.
+
+269
+00:16:39,460 --> 00:16:43,460
+ And again.
+
+270
+00:16:43,460 --> 00:16:47,460
+ But there's a minor detail here.
+
+271
+00:16:47,460 --> 00:16:49,460
+ You would need to watch for.
+
+272
+00:16:49,460 --> 00:16:50,460
+ And maybe you already noticed it.
+
+273
+00:16:50,460 --> 00:16:52,460
+ But.
+
+274
+00:16:52,460 --> 00:16:54,460
+ You can see that the empty object here.
+
+275
+00:16:54,460 --> 00:16:56,460
+ It follows along with the object here.
+
+276
+00:16:56,460 --> 00:16:57,460
+ The green object.
+
+277
+00:16:57,460 --> 00:16:58,460
+ But.
+
+278
+00:16:58,460 --> 00:17:00,460
+ It's just a few frames behind.
+
+279
+00:17:01,460 --> 00:17:02,460
+ At this frame.
+
+280
+00:17:02,460 --> 00:17:03,460
+ This object.
+
+281
+00:17:03,460 --> 00:17:05,460
+ Is already going down again.
+
+282
+00:17:05,460 --> 00:17:07,460
+ But this object.
+
+283
+00:17:07,460 --> 00:17:09,460
+ Hasn't started to go down.
+
+284
+00:17:09,460 --> 00:17:10,460
+ Yet.
+
+285
+00:17:10,460 --> 00:17:12,460
+ So we're just a bit behind.
+
+286
+00:17:12,460 --> 00:17:20,460
+ And I wanted to create this effect.
+
+287
+00:17:20,460 --> 00:17:21,460
+ For like.
+
+288
+00:17:21,460 --> 00:17:22,460
+ For example.
+
+289
+00:17:22,460 --> 00:17:23,460
+ When.
+
+290
+00:17:23,460 --> 00:17:24,460
+ An actual.
+
+291
+00:17:24,460 --> 00:17:25,460
+ Camera man in real life.
+
+292
+00:17:25,460 --> 00:17:26,460
+ Follow an object.
+
+293
+00:17:26,460 --> 00:17:27,460
+ It's not.
+
+294
+00:17:27,460 --> 00:17:28,460
+ Exactly spot on.
+
+295
+00:17:28,460 --> 00:17:29,460
+ Because.
+
+296
+00:17:29,460 --> 00:17:30,460
+ You have a few.
+
+297
+00:17:30,460 --> 00:17:31,460
+ 20 seconds of reaction time.
+
+298
+00:17:31,460 --> 00:17:32,460
+ And.
+
+299
+00:17:32,460 --> 00:17:33,460
+ And I wanted to emulate.
+
+300
+00:17:33,460 --> 00:17:34,460
+ This type of realism.
+
+301
+00:17:34,460 --> 00:17:35,460
+ And.
+
+302
+00:17:35,460 --> 00:17:37,460
+ As you can probably imagine.
+
+303
+00:17:37,460 --> 00:17:38,460
+ It's a balance.
+
+304
+00:17:38,460 --> 00:17:39,460
+ To animate this.
+
+305
+00:17:39,460 --> 00:17:40,460
+ Empty object.
+
+306
+00:17:40,460 --> 00:17:41,460
+ That's.
+
+307
+00:17:41,460 --> 00:17:42,460
+ Tracked to the camera.
+
+308
+00:17:42,460 --> 00:17:43,460
+ It's a huge topic.
+
+309
+00:17:43,460 --> 00:17:44,460
+ And I will do more videos.
+
+310
+00:17:44,460 --> 00:17:45,460
+ In the near future.
+
+311
+00:17:45,460 --> 00:17:46,460
+ To cover.
+
+312
+00:17:46,460 --> 00:17:47,460
+ This.
+
+313
+00:17:47,460 --> 00:17:48,460
+ And please let me know.
+
+314
+00:17:48,460 --> 00:17:49,460
+ If you have any questions.
+
+315
+00:17:49,460 --> 00:17:50,460
+ About it.
+
+316
+00:17:50,460 --> 00:17:51,460
+ And I'll see you in the next video.
+
+317
+00:17:51,460 --> 00:17:52,460
+ And I'll see you in the next video.
+
+318
+00:17:52,460 --> 00:17:53,460
+ I'll see you in the next video.
+

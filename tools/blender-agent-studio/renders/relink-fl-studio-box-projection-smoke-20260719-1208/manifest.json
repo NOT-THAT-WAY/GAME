@@ -1,0 +1,24 @@
+{
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-projection-template/media/current/master.mp4",
+  "source_probe": {
+    "width": 1920,
+    "height": 1080,
+    "r_frame_rate": "30/1",
+    "duration": "13.533333"
+  },
+  "mapping": "single continuous camera projection",
+  "master_video": "${BLENDER_AGENT_STUDIO_ROOT}/renders/relink-fl-studio-box-projection-smoke-20260719-1208/master.mp4",
+  "controller_crop": "${BLENDER_AGENT_STUDIO_ROOT}/renders/relink-fl-studio-box-projection-smoke-20260719-1208/controller.mp4",
+  "projector": "USTUDIO_FL_PROJECTOR",
+  "timeline": {
+    "fps": 30,
+    "frames": [
+      1,
+      90
+    ],
+    "duration": 3.0
+  },
+  "loop": true,
+  "blend_saved": false,
+  "next_step": "Render gates with USTUDIO_MEDIA_, then Save As after validation"
+}

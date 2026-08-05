@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "campaign": "tutorial-synthesis-lab-2026-07-19",
+  "stage": 5,
+  "stage_name": "05-environment-shot",
+  "created_at": "2026-07-19T01:01:05.859811+00:00",
+  "blend_file": "projects/tutorial-synthesis-lab-2026-07-19/stages/05-environment-shot/05-environment-shot.blend",
+  "source_library": "asset_library/imported/drumboii-y2k-assets.blend",
+  "source_assets": [
+    "BLOB_SPEAKER",
+    "DRUMBOII_GAMEBOII",
+    "DRUMBOII_BLOB_BIKE",
+    "DRUMBOII_TRAFFIC_LIGHT"
+  ],
+  "frame_range": [
+    1,
+    240
+  ],
+  "fps": 24,
+  "resolution": [
+    640,
+    360
+  ],
+  "active_camera": "USTUDIO_CAM_BIKE",
+  "cameras": [
+    "USTUDIO_CAM_SPEAKER",
+    "USTUDIO_CAM_GAMEBOII",
+    "USTUDIO_CAM_BIKE"
+  ],
+  "snapshots": [
+    {
+      "frame": 145,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/05-environment-shot/snapshots/frame_0145.png",
+      "seconds": 0.542
+    },
+    {
+      "frame": 156,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/05-environment-shot/snapshots/frame_0156.png",
+      "seconds": 0.57
+    },
+    {
+      "frame": 192,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/05-environment-shot/snapshots/frame_0192.png",
+      "seconds": 0.527
+    },
+    {
+      "frame": 228,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/05-environment-shot/snapshots/frame_0228.png",
+      "seconds": 0.535
+    },
+    {
+      "frame": 240,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/05-environment-shot/snapshots/frame_0240.png",
+      "seconds": 0.643
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "scene": "TUTORIAL_SYNTHESIS_STAGE_05",
+    "stage": 5,
+    "objects": 176,
+    "materials": 74,
+    "cameras": [
+      "USTUDIO_CAM_SPEAKER",
+      "USTUDIO_CAM_GAMEBOII",
+      "USTUDIO_CAM_BIKE"
+    ],
+    "animated_roots": [
+      "USTUDIO_BLOB_SPEAKER_ROOT",
+      "USTUDIO_DRUMBOII_GAMEBOII_ROOT",
+      "USTUDIO_DRUMBOII_BLOB_BIKE_ROOT"
+    ],
+    "timeline_markers": [
+      {
+        "name": "USTUDIO_S0_STILL",
+        "frame": 1
+      },
+      {
+        "name": "USTUDIO_S1_ANTICIPATION",
+        "frame": 24
+      },
+      {
+        "name": "USTUDIO_S2_ACTION",
+        "frame": 54
+      },
+      {
+        "name": "USTUDIO_SPEAKER_REST",
+        "frame": 72
+      },
+      {
+        "name": "USTUDIO_CONVEYOR_START",
+        "frame": 73
+      },
+      {
+        "name": "USTUDIO_GAME_PEAK",
+        "frame": 108
+      },
+      {
+        "name": "USTUDIO_GAME_IMPACT",
+        "frame": 128
+      },
+      {
+        "name": "USTUDIO_GAME_REST",
+        "frame": 144
+      },
+      {
+        "name": "USTUDIO_ENV_START",
+        "frame": 145
+      },
+      {
+        "name": "USTUDIO_ENV_TRAVEL",
+        "frame": 192
+      },
+      {
+        "name": "USTUDIO_ENV_ARRIVAL",
+        "frame": 228
+      },
+      {
+        "name": "USTUDIO_FINAL_STILL",
+        "frame": 240
+      }
+    ]
+  },
+  "knowledge_sources": [
+    "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/analysis.json",
+    "knowledge/tutorials/beginner-blender-tutorial-2026/analysis.json",
+    "knowledge/tutorials/ray-ban-product-animation/analysis.json",
+    "knowledge/tutorials/factory-animation-polygon-runway/analysis.json",
+    "knowledge/tutorials/quick-animation-blender-4/analysis.json",
+    "knowledge/tutorials/wireless-pods-animation-polygon-runway/analysis.json"
+  ],
+  "principles_tested": [
+    "camera-first environment",
+    "negative corridor",
+    "controlled scatter",
+    "follow camera"
+  ]
+}

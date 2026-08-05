@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "drumboii-chains-movements-2026-07-31",
+  "title": "Chains and Movements — Drumboiii",
+  "status": "analyzed",
+  "source_name": "source-proxy.mp4",
+  "original_filename": "2026-07-31 12-21-55.mp4",
+  "external_original": "${ORIGINAL_MOVIES}/2026-07-31 12-21-55.mp4",
+  "original_sha256": "4b49609510c98160469fa38f8eaabdbf37744a2e77119cb4901920ce14d54d0b",
+  "source_policy": "L'original est une CAPTURE D'ECRAN 1920x1080 60 fps (1,7 Go) de la page Patreon, pas le fichier de l'auteur. Le depot ne garde qu'un proxy recadre sur la zone du lecteur : crop=992:558:412:231 sur le cadre 1920x1080, re-encode a 30 fps. Chrome de navigateur, colonne laterale Patreon et webcam de page sont donc exclus du proxy. L'original immuable reste hors depot.",
+  "publication": {
+    "platform": "Patreon",
+    "creator": "drumboii",
+    "post_title": "CHAINS AND MOVEMENTS",
+    "post_date_displayed": "23 juillet",
+    "post_description": "I show you how I create my chains and also how to give them simple movements that gives them life :)",
+    "captured": "2026-07-31",
+    "evidence": "frames/evidence-crops/_page_context.jpg"
+  },
+  "crop": {
+    "applied": true,
+    "ffmpeg_filter": "crop=992:558:412:231",
+    "reason": "Le lecteur video occupe x 411-1405, y 230-789 dans la capture. Bornes mesurees par seuillage du blanc de page et par variance temporelle sur trois frames (t=60/160/360).",
+    "player_native_resolution": [
+      992,
+      558
+    ],
+    "note": "992x558 est la resolution REELLE du contenu utile. Aucun upscale vers 720p n'a ete applique : monter a 1280 aurait fabrique une precision inexistante."
+  },
+  "created": "2026-07-31T12:37:00+02:00",
+  "updated": "2026-07-31T13:05:00+02:00",
+  "analysis_status": "completed",
+  "technical": {
+    "duration": 454.5,
+    "frame_interval_requested": 3.0,
+    "frame_interval_effective": 3.0,
+    "scene_threshold": 0.22,
+    "regular_frame_count": 152,
+    "scene_frame_count": 1,
+    "has_video": true,
+    "has_audio": true
+  },
+  "evidence": {
+    "source": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/source-proxy.mp4",
+    "probe": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/probe.json",
+    "frames_dir": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/frames/regular",
+    "scenes_dir": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/frames/scenes",
+    "contact_sheet": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/contact-sheet.jpg",
+    "audio": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/audio.wav",
+    "transcript": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/transcript.json",
+    "analysis": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/analysis.json",
+    "analysis_md": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/ANALYSIS.md",
+    "evidence_crops": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/frames/evidence-crops"
+  }
+}

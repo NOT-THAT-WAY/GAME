@@ -1,0 +1,87 @@
+{
+  "id": "iteration-manifest",
+  "name": "Initialiser une boucle agent bornée",
+  "icon": "↺",
+  "category": "agent & gate",
+  "mode": "MCP interactif",
+  "risk": "lecture",
+  "description": "Écrit le contrat d'une itération et décide continue_build, inspect_validate ou human_review sans modifier Blender.",
+  "script": "workflows/scripts/iteration_manifest.py",
+  "timeout": 60,
+  "produces_output": true,
+  "fields": [
+    {
+      "id": "goal",
+      "type": "text",
+      "label": "Objectif mesurable",
+      "default": ""
+    },
+    {
+      "id": "immutable",
+      "type": "text",
+      "label": "Invariants séparés par virgule",
+      "default": "proportions, logo, ports"
+    },
+    {
+      "id": "category",
+      "type": "select",
+      "label": "Catégorie active",
+      "options": [
+        "visibility",
+        "composition",
+        "exposure",
+        "silhouette",
+        "material",
+        "details",
+        "motion"
+      ],
+      "default": "composition"
+    },
+    {
+      "id": "attempt",
+      "type": "integer",
+      "label": "Tentative",
+      "default": 1,
+      "min": 1,
+      "max": 20
+    },
+    {
+      "id": "max_attempts",
+      "type": "integer",
+      "label": "Maximum",
+      "default": 3,
+      "min": 1,
+      "max": 10
+    },
+    {
+      "id": "improved",
+      "type": "boolean",
+      "label": "La passe précédente a amélioré",
+      "default": true
+    },
+    {
+      "id": "requires_human_taste",
+      "type": "boolean",
+      "label": "Choix de goût requis",
+      "default": false
+    },
+    {
+      "id": "threatens_invariant",
+      "type": "boolean",
+      "label": "Invariant menacé",
+      "default": false
+    }
+  ],
+  "execution": "mcp",
+  "mutates_scene": false,
+  "requires_confirmation": false,
+  "requires_working_copy": false,
+  "enabled_in_app": true,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "diagnostic",
+  "domains": [
+    "all"
+  ],
+  "maturity": "stable",
+  "scope": "generic-or-adaptable"
+}

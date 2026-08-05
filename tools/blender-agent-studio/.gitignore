@@ -1,0 +1,91 @@
+# OS and editors
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Python and tests
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Local Studio configuration and runtime state
+.studio.local.json
+app/.env
+!app/.env.example
+app/dist/
+data/jobs.jsonl
+renders/screenshots/
+*.log
+
+# Local asset vault and production workspaces
+# These folders are intentionally materialized per workstation and never shared by Git.
+local_assets/
+local_work/
+projects/work/
+renders/local/
+
+# Binary DCC sources, renders, caches and interchange files
+*.blend
+*.blend1
+*.blend2
+*.fbx
+*.glb
+*.gltf
+*.obj
+*.mtl
+*.stl
+*.ply
+*.abc
+*.usd
+*.usda
+*.usdc
+*.usdz
+*.vdb
+*.sbsar
+*.npy
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.exr
+*.hdr
+*.tif
+*.tiff
+*.tga
+*.bmp
+*.psd
+*.mp4
+*.mov
+*.m4v
+*.webm
+*.mkv
+*.wav
+*.mp3
+*.aif
+*.aiff
+*.flac
+*.ogg
+*.m4a
+*.aac
+*.zip
+*.7z
+
+# Blender and renderer caches
+blendcache_*/
+*.bphys
+*.fluid
+*.uni
+*.vdb
+
+# Temporary audit/build artifacts
+audit/*.tmp
+*.tmp
+*.part

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-07-21T03:05:39.065642+00:00",
+  "trial_id": "k3-edge-rise-reveal-fable-v001",
+  "stage": "final",
+  "package_valid": true,
+  "artistic_verdict": "reject",
+  "calculated_score": 49.0,
+  "expected_verdict": "reject",
+  "errors": [],
+  "warnings": [],
+  "video_probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 640,
+        "height": 360,
+        "avg_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      {
+        "codec_name": "aac",
+        "avg_frame_rate": "0/0",
+        "nb_frames": "517"
+      }
+    ],
+    "format": {
+      "duration": "12.000000"
+    }
+  }
+}

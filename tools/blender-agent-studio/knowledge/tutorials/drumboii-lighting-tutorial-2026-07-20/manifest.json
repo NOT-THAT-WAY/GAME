@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "id": "drumboii-lighting-tutorial-2026-07-20",
+  "title": "Blender Lighting Tutorial — Drumboiii",
+  "status": "analyzed_and_promoted",
+  "source_name": "source-proxy.mp4",
+  "original_filename": "Blender_Lighting_Tutoriel_Drumboiii.mp4",
+  "external_original": "${ORIGINAL_MOVIES}/CapCut/Blender_Lighting_Tutoriel_Drumboiii.mp4",
+  "original_sha256": "0f42827e0d04b001ab32d58304dbf869359a7b19b2857ee836fc02341c9affa4",
+  "source_policy": "720p analysis proxy in repo; immutable 1080p original retained externally",
+  "created": "2026-07-20T14:00:00+02:00",
+  "updated": "2026-07-20T16:46:22+02:00",
+  "analysis_status": "completed",
+  "technical": {
+    "duration": 448.865011,
+    "frame_interval_requested": 3.0,
+    "frame_interval_effective": 3.0,
+    "scene_threshold": 0.22,
+    "regular_frame_count": 150,
+    "scene_frame_count": 1,
+    "has_video": true,
+    "has_audio": true
+  },
+  "evidence": {
+    "source": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/source-proxy.mp4",
+    "probe": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/probe.json",
+    "frames_dir": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/frames/regular",
+    "scenes_dir": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/frames/scenes",
+    "contact_sheet": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/contact-sheet.jpg",
+    "audio": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/audio.wav",
+    "transcript": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/transcript.json"
+  }
+}

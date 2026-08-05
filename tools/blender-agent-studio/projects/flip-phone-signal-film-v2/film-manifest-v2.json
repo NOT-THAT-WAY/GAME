@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "title": "LAST SIGNAL \u2014 ONE LAST MESSAGE",
+  "logline": "A forgotten flip phone receives one final message and relights a silent observatory.",
+  "duration_seconds": 30,
+  "fps": 24,
+  "frame_range": [
+    1,
+    720
+  ],
+  "design": {
+    "object": "graphite ceramic, warm ivory keys, oxidized copper mechanics, teal display",
+    "set": "communication observatory with three sequential signal portals",
+    "palette": [
+      "#071018",
+      "#171D21",
+      "#D89A58",
+      "#27D7B5",
+      "#FF542C"
+    ],
+    "lighting": "warm directional key, teal rim, soft top, low ambient world",
+    "typography": "minimal off-white grotesk overlays; no text over mechanical action"
+  },
+  "acts": [
+    {
+      "frames": [
+        1,
+        144
+      ],
+      "name": "forgotten",
+      "function": "establish stillness and scan"
+    },
+    {
+      "frames": [
+        145,
+        288
+      ],
+      "name": "journey",
+      "function": "one constant-speed transfer"
+    },
+    {
+      "frames": [
+        289,
+        432
+      ],
+      "name": "message",
+      "function": "hold, hinge action, screen response"
+    },
+    {
+      "frames": [
+        433,
+        590
+      ],
+      "name": "restoration",
+      "function": "signal causes portals to light"
+    },
+    {
+      "frames": [
+        591,
+        720
+      ],
+      "name": "proof",
+      "function": "restrained lift and true final still"
+    }
+  ],
+  "motion_rules": [
+    "no parent and descendant animated for the same reveal",
+    "camera remains static during linear transport",
+    "cuts occur on holds",
+    "only one dominant movement per beat",
+    "final 24 frames are identical"
+  ],
+  "physical_contract": "knowledge/physics/object-contracts/drumboii-flip-phone.json",
+  "physical_validation_required": true,
+  "source_asset_modified": false
+}

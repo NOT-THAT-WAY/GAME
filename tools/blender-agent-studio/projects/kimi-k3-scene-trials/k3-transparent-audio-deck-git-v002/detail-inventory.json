@@ -1,0 +1,251 @@
+{
+  "sourceImage": "references/reference-hero.jpg",
+  "zonesDir": "diagnostics/img2threejs/detail-zones",
+  "detailInventory": {
+    "scanMethod": "grid-3x3",
+    "targetMinDetails": 12,
+    "details": [
+      {
+        "id": "detail-shell-bevel",
+        "kind": "bevel",
+        "description": "Broad clear chamfer around the rectangular shell catches a continuous rim highlight.",
+        "region": {
+          "x": 0.13,
+          "y": 0.17,
+          "width": 0.73,
+          "height": 0.62,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "outer shell silhouette and refraction",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "outer-shell.edge-bevel"
+        },
+        "evidenceRef": "references/reference-hero.jpg",
+        "confidence": 0.95
+      },
+      {
+        "id": "detail-corner-fasteners",
+        "kind": "fastener",
+        "description": "Repeated metal fasteners and clear bosses occupy the shell corners.",
+        "region": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1.0,
+          "height": 1.0,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "assembly readability",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "outer-shell.corner-fastener-system"
+        },
+        "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r2c0.png",
+        "confidence": 0.9
+      },
+      {
+        "id": "detail-upper-diaphragm",
+        "kind": "contour",
+        "description": "Upper circular assembly has a silver bezel, dark cone, inner ring, and central dome.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "primary identity",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "speaker-assembly.concentric-profile"
+        },
+        "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r0c1.png",
+        "confidence": 0.95
+      },
+      {
+        "id": "detail-lower-wheel",
+        "kind": "contour",
+        "description": "Lower dark wheel has a textured face, clear rim, and recessed central button.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "cassette-mechanism identity",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "transport-wheel.layered-wheel"
+        },
+        "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r1c1.png",
+        "confidence": 0.92
+      },
+      {
+        "id": "detail-red-control",
+        "kind": "decal",
+        "description": "Single saturated red rectangular control near the top edge.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "accent hierarchy",
+        "mapsTo": {
+          "type": "material.localOverrides",
+          "ref": "red-control.accent-red"
+        },
+        "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r0c2.png",
+        "confidence": 0.98
+      },
+      {
+        "id": "detail-side-button-strip",
+        "kind": "hole",
+        "description": "Right-side black inset strip contains three circular recessed controls or sockets.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "meso",
+        "affects": "right-side silhouette and function cues",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "side-control-strip.three-sockets"
+        },
+        "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r1c2.png",
+        "confidence": 0.88
+      },
+      {
+        "id": "detail-top-knurled-dial",
+        "kind": "ridge",
+        "description": "A dark rotary wheel protrudes from the top edge with repeated fine knurl ridges.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.0,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "top silhouette",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "top-dial.knurl-system"
+        },
+        "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r0c1.png",
+        "confidence": 0.78
+      },
+      {
+        "id": "detail-transport-slot",
+        "kind": "emissive",
+        "description": "Narrow red luminous or reflective slot sits behind the lower wheel.",
+        "region": {
+          "x": 0.3333,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "mechanism depth cue",
+        "mapsTo": {
+          "type": "material.localOverrides",
+          "ref": "transport-slot.red-emissive"
+        },
+        "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r1c1.png",
+        "confidence": 0.82
+      },
+      {
+        "id": "detail-clear-posts",
+        "kind": "fastener",
+        "description": "Clear circular standoffs and bosses layer the front plate over the internal panel.",
+        "region": {
+          "x": 0.22,
+          "y": 0.22,
+          "width": 0.52,
+          "height": 0.53,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "layered-shell depth",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "outer-shell.clear-standoff-system"
+        },
+        "evidenceRef": "references/reference-hero.jpg",
+        "confidence": 0.86
+      },
+      {
+        "id": "detail-panel-lines",
+        "kind": "linework",
+        "description": "Thin molded seams and angled clear channels break up the shell surface.",
+        "region": {
+          "x": 0.6667,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "transparent-shell readability",
+        "mapsTo": {
+          "type": "component.localFeatures",
+          "ref": "front-plate.molded-panel-lines"
+        },
+        "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r1c2.png",
+        "confidence": 0.74
+      },
+      {
+        "id": "detail-status-leds",
+        "kind": "emissive",
+        "description": "Tiny yellow and green status points appear near the lower mechanism.",
+        "region": {
+          "x": 0.58,
+          "y": 0.58,
+          "width": 0.08,
+          "height": 0.08,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "electronic detail",
+        "mapsTo": {
+          "type": "material.localOverrides",
+          "ref": "pcb.status-leds"
+        },
+        "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r2c1.png",
+        "confidence": 0.72
+      },
+      {
+        "id": "detail-red-dot-linework",
+        "kind": "linework",
+        "description": "A small red dot and fine black micro-label linework occupy the pale front panel.",
+        "region": {
+          "x": 0.0,
+          "y": 0.3333,
+          "width": 0.3333,
+          "height": 0.3333,
+          "units": "normalized"
+        },
+        "scale": "micro",
+        "affects": "graphic balance",
+        "mapsTo": {
+          "type": "material.localOverrides",
+          "ref": "inner-panel.micro-label"
+        },
+        "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r2c0.png",
+        "confidence": 0.83
+      }
+    ]
+  },
+  "authoringInstruction": "Filled by direct visual inspection. Every entry maps to a component.localFeatures or material.localOverrides field in the normalized ObjectSculptSpec."
+}

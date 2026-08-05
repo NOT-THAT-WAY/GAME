@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-fable-v001",
+  "camera": "K3_FABLE_CAM",
+  "camera_name": "K3_FABLE_CAM",
+  "single_continuous_shot": true,
+  "cuts": 0,
+  "parenting": "enfant de USTUDIO_BOX_FLOAT_ROOT (cadrage stable pendant la derive de la boite)",
+  "lens_mm_range": [
+    17.0,
+    38.0
+  ],
+  "aperture_fstop": 4.0,
+  "target": "K3_FABLE_CAM_TARGET, poitrine lissee avec 3 frames de retard, puis montee vers le haut des ecrans",
+  "focus": "K3_FABLE_CAM_FOCUS, poitrine sans retard",
+  "keys": [
+    {
+      "frame": 1,
+      "location": [
+        -1.95,
+        -1.62,
+        0.95
+      ],
+      "lens": 38.0
+    },
+    {
+      "frame": 57,
+      "location": [
+        -1.98,
+        -1.69,
+        0.99
+      ],
+      "lens": 37.0
+    },
+    {
+      "frame": 106,
+      "location": [
+        -1.9,
+        -2.02,
+        1.42
+      ],
+      "lens": 28.5
+    },
+    {
+      "frame": 160,
+      "location": [
+        -1.46,
+        -2.16,
+        1.85
+      ],
+      "lens": 26.0
+    },
+    {
+      "frame": 210,
+      "location": [
+        -1.0,
+        -2.36,
+        2.25
+      ],
+      "lens": 22.0
+    },
+    {
+      "frame": 251,
+      "location": [
+        -0.62,
+        -2.52,
+        2.56
+      ],
+      "lens": 19.5
+    },
+    {
+      "frame": 299,
+      "location": [
+        -0.35,
+        -2.62,
+        2.78
+      ],
+      "lens": 17.8
+    },
+    {
+      "frame": 330,
+      "location": [
+        -0.25,
+        -2.65,
+        2.85
+      ],
+      "lens": 17.1
+    },
+    {
+      "frame": 360,
+      "location": [
+        -0.25,
+        -2.65,
+        2.85
+      ],
+      "lens": 17.0
+    }
+  ],
+  "framing_check": {
+    "frames": [
+      {
+        "frame": 1,
+        "clearance_m": 0.5725,
+        "subject_height_fraction": 0.7883,
+        "lens_mm": 38.0
+      },
+      {
+        "frame": 20,
+        "clearance_m": 0.5755,
+        "subject_height_fraction": 0.7797,
+        "lens_mm": 37.96
+      },
+      {
+        "frame": 40,
+        "clearance_m": 0.5993,
+        "subject_height_fraction": 0.7686,
+        "lens_mm": 37.66
+      },
+      {
+        "frame": 60,
+        "clearance_m": 0.6666,
+        "subject_height_fraction": 0.7276,
+        "lens_mm": 36.79
+      },
+      {
+        "frame": 80,
+        "clearance_m": 0.8429,
+        "subject_height_fraction": 0.612,
+        "lens_mm": 33.59
+      },
+      {
+        "frame": 100,
+        "clearance_m": 1.0821,
+        "subject_height_fraction": 0.6809,
+        "lens_mm": 29.46
+      },
+      {
+        "frame": 120,
+        "clearance_m": 1.2746,
+        "subject_height_fraction": 0.5887,
+        "lens_mm": 27.13
+      },
+      {
+        "frame": 140,
+        "clearance_m": 1.4083,
+        "subject_height_fraction": 0.5122,
+        "lens_mm": 26.45
+      },
+      {
+        "frame": 160,
+        "clearance_m": 1.5344,
+        "subject_height_fraction": 0.5151,
+        "lens_mm": 26.0
+      },
+      {
+        "frame": 180,
+        "clearance_m": 1.6918,
+        "subject_height_fraction": 0.4369,
+        "lens_mm": 24.7
+      },
+      {
+        "frame": 200,
+        "clearance_m": 1.8718,
+        "subject_height_fraction": 0.3683,
+        "lens_mm": 22.88
+      },
+      {
+        "frame": 220,
+        "clearance_m": 1.9103,
+        "subject_height_fraction": 0.339,
+        "lens_mm": 21.23
+      },
+      {
+        "frame": 240,
+        "clearance_m": 1.9147,
+        "subject_height_fraction": 0.2939,
+        "lens_mm": 20.03
+      },
+      {
+        "frame": 260,
+        "clearance_m": 1.9411,
+        "subject_height_fraction": 0.2596,
+        "lens_mm": 19.12
+      },
+      {
+        "frame": 280,
+        "clearance_m": 1.9744,
+        "subject_height_fraction": 0.2588,
+        "lens_mm": 18.39
+      },
+      {
+        "frame": 300,
+        "clearance_m": 2.0062,
+        "subject_height_fraction": 0.2462,
+        "lens_mm": 17.77
+      },
+      {
+        "frame": 320,
+        "clearance_m": 2.0324,
+        "subject_height_fraction": 0.2329,
+        "lens_mm": 17.25
+      },
+      {
+        "frame": 340,
+        "clearance_m": 2.037,
+        "subject_height_fraction": 0.2273,
+        "lens_mm": 17.03
+      },
+      {
+        "frame": 360,
+        "clearance_m": 2.037,
+        "subject_height_fraction": 0.2274,
+        "lens_mm": 17.0
+      }
+    ],
+    "min_clearance": 0.5725,
+    "min_clearance_frame": 1,
+    "min_subject_height_fraction": 0.2269,
+    "subject_min_frame": 336,
+    "subject_out_of_frame": []
+  }
+}

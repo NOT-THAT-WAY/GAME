@@ -1,0 +1,31 @@
+{
+  "scene": "LAST_SIGNAL_MASTER",
+  "camera": "LS_CAM_HERO",
+  "engine": "BLENDER_EEVEE",
+  "marker_prefix": "LS_S",
+  "frames": [
+    1,
+    24,
+    120,
+    145,
+    288,
+    388,
+    432,
+    600,
+    704,
+    720
+  ],
+  "files": [
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film/gates-v3/frame_0001.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film/gates-v3/frame_0024.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film/gates-v3/frame_0120.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film/gates-v3/frame_0145.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film/gates-v3/frame_0288.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film/gates-v3/frame_0388.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film/gates-v3/frame_0432.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film/gates-v3/frame_0600.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film/gates-v3/frame_0704.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film/gates-v3/frame_0720.png"
+  ],
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film/Flip_Phone_Last_Signal.blend"
+}

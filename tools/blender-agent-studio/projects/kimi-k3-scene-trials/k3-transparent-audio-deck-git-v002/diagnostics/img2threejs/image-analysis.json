@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "source": "references/reference-hero.jpg",
+  "analysis_method": "img2threejs layered observation protocol",
+  "identification": {
+    "primary_type": "transparent cassette-inspired portable audio device",
+    "primary_domain": "object",
+    "form_language": [
+      "hard-surface",
+      "mechanical",
+      "transparent-like",
+      "layered-shell"
+    ],
+    "confidence": 0.94
+  },
+  "overall_form": {
+    "bounding_volume": "thin rounded cuboid with chamfered transparent perimeter",
+    "symmetry": "approximately bilateral outer chassis with intentionally asymmetric front mechanisms",
+    "shape_language": "geometric",
+    "estimated_dimensions_m": {
+      "width": 0.14,
+      "depth": 0.035,
+      "height": 0.235
+    },
+    "scale_basis": "portable hand-held audio device proportions; image supplies no metrology"
+  },
+  "decomposition": {
+    "macro": [
+      "transparent outer shell",
+      "frosted inner backing plate",
+      "speaker system",
+      "transport mechanism",
+      "control system"
+    ],
+    "meso": [
+      "front and rear clear plates",
+      "perimeter edge frame",
+      "upper speaker diaphragm and bezel",
+      "lower transport wheel and vertical rail",
+      "right-side three-control strip",
+      "top dial and red button",
+      "PCB and wire layer"
+    ],
+    "micro": [
+      "corner fastener and standoff cluster",
+      "moulded seams and recessed channels",
+      "three side sockets",
+      "small LEDs",
+      "generic printed label region"
+    ]
+  },
+  "relationships": [
+    {
+      "subject": "front clear plate",
+      "predicate": "overlaps",
+      "object": "frosted inner backing plate",
+      "contact_type": "spaced shell overlap"
+    },
+    {
+      "subject": "speaker assembly",
+      "predicate": "is embedded in",
+      "object": "upper front plate",
+      "contact_type": "recessed circular socket"
+    },
+    {
+      "subject": "transport rail",
+      "predicate": "supports",
+      "object": "lower transport wheel",
+      "contact_type": "nested mechanical overlap"
+    },
+    {
+      "subject": "corner fasteners",
+      "predicate": "clamp",
+      "object": "front and rear shell plates",
+      "contact_type": "through-fastener inference"
+    },
+    {
+      "subject": "side control strip",
+      "predicate": "is embedded in",
+      "object": "right shell edge",
+      "contact_type": "rectangular socket"
+    }
+  ],
+  "materials": [
+    {
+      "region": "outer shell and edge frame",
+      "material_family": "transparent polycarbonate-like dielectric",
+      "metalness": 0.0,
+      "roughness_estimate": [0.08, 0.2],
+      "transmission": "high",
+      "confidence": 0.82
+    },
+    {
+      "region": "inner backing",
+      "material_family": "frosted translucent polymer",
+      "metalness": 0.0,
+      "roughness_estimate": [0.35, 0.55],
+      "transmission": "medium",
+      "confidence": 0.78
+    },
+    {
+      "region": "speaker and transport wheel",
+      "material_family": "black rubber and glossy black polymer",
+      "metalness": 0.0,
+      "roughness_estimate": [0.18, 0.52],
+      "transmission": "opaque",
+      "confidence": 0.9
+    },
+    {
+      "region": "rails and fasteners",
+      "material_family": "brushed and polished metal",
+      "metalness": 1.0,
+      "roughness_estimate": [0.12, 0.38],
+      "transmission": "opaque",
+      "confidence": 0.82
+    }
+  ],
+  "colour_finish": {
+    "dominant": "low-saturation pale blue-grey, high value",
+    "secondary": "near-black, low value",
+    "accent": "saturated pink-red, mid-high value",
+    "finish_notes": [
+      "clear glossy shell with strong edge highlights",
+      "frosted satin backing",
+      "mixed gloss and rubber response on black mechanisms",
+      "small emissive red and yellow-green accents"
+    ]
+  },
+  "identity_features": [
+    "large upper-left circular speaker diaphragm",
+    "lower circular transport wheel attached to a tall black rail",
+    "transparent layered rounded chassis",
+    "pink-red top rectangular control",
+    "right-edge black strip with three circular controls",
+    "top knurled dial",
+    "corner screw and standoff system",
+    "visible PCB, wires and small LEDs through the shell"
+  ],
+  "complexity": {
+    "tier": "complex",
+    "scores_0_to_3": {
+      "silhouette_complexity": 1,
+      "component_count": 3,
+      "hierarchy_depth": 2,
+      "repetition_density": 2,
+      "material_layer_count": 3,
+      "local_detail_density": 3,
+      "occlusion_risk": 3,
+      "action_readiness_need": 2
+    },
+    "total": 19,
+    "reason": "The outer silhouette is simple, but transparent overlap exposes many nested parts, repeated hardware, multiple material responses and high hidden-side uncertainty."
+  },
+  "uncertainty": [
+    {
+      "region": "rear face",
+      "status": "hidden",
+      "handling": "conservative continuation only; no exact layout claim"
+    },
+    {
+      "region": "internal mechanical connectivity",
+      "status": "occluded and refracted",
+      "handling": "approximate layered assemblies without functional claim"
+    },
+    {
+      "region": "true shell thickness and cavity depth",
+      "status": "undetermined",
+      "handling": "estimate from portable-device scale and visible edge perspective"
+    },
+    {
+      "region": "brand text",
+      "status": "unreadable",
+      "handling": "use generic non-branding label"
+    },
+    {
+      "region": "floating pose and detached shadow",
+      "status": "presentation effect",
+      "handling": "not copied into the physical production scene; object remains supported"
+    }
+  ],
+  "suitability": {
+    "verdict": "conditional-pass",
+    "reason": "The visible-side hard-surface reconstruction is feasible, but transparency and the single hero view prevent exact hidden-side or manufacturing reconstruction."
+  }
+}

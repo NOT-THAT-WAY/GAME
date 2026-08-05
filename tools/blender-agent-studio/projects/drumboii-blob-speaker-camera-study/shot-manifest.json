@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-07-19T01:06:14+02:00",
+  "project": "projects/drumboii-blob-speaker-camera-study/Drumboii_Blob_Speaker_Camera_Study.blend",
+  "asset": {
+    "name": "BLOB_SPEAKER",
+    "library": "asset_library/imported/drumboii-y2k-assets.blend",
+    "collection": "PRODUCT_BLOB_SPEAKER",
+    "objects": [
+      "Blob Speaker"
+    ]
+  },
+  "tutorial_source": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/analysis.json",
+  "technique": {
+    "name": "Four-key momentum motif",
+    "camera_keys": [
+      {
+        "frame": 1,
+        "label": "K1_POSE"
+      },
+      {
+        "frame": 24,
+        "label": "K2_ANTICIPATION"
+      },
+      {
+        "frame": 96,
+        "label": "K3_MAIN_MOVE"
+      },
+      {
+        "frame": 132,
+        "label": "K4_SETTLE"
+      },
+      {
+        "frame": 144,
+        "label": "REST"
+      }
+    ],
+    "target_lag_frames": 4,
+    "track_to": "USTUDIO_TRACK_TO_DELAYED_TARGET",
+    "focus_object": "USTUDIO_FOCUS_TARGET",
+    "focus_strategy": "focus object plus keyed f-stop at every camera pose"
+  },
+  "scene": {
+    "name": "BLOB_SPEAKER_HERO",
+    "fps": 24,
+    "frame_range": [
+      1,
+      144
+    ],
+    "duration_seconds": 6.0,
+    "engine": "BLENDER_EEVEE",
+    "camera": "USTUDIO_HERO_CAMERA",
+    "bounds": {
+      "min": [
+        -0.3491020202636719,
+        -0.36482664942741394,
+        0.14000000059604645
+      ],
+      "max": [
+        0.3645329475402832,
+        0.4746232330799103,
+        1.0662665367126465
+      ],
+      "center": [
+        0.007715463638305664,
+        0.05489829182624817,
+        0.6031332612037659
+      ],
+      "radius": 0.7197083842286471
+    }
+  },
+  "outputs": {
+    "gate": "projects/drumboii-blob-speaker-camera-study/gate",
+    "preview": "projects/drumboii-blob-speaker-camera-study/camera-study-preview.mp4"
+  },
+  "saved": true
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/Pulsed_3D_model.blend",
+  "scene": "FLROOM",
+  "camera": "USTUDIO_DEMO_VIDEO_CAMERA",
+  "frames": [
+    1,
+    144
+  ],
+  "fps": 24,
+  "resolution": [
+    640,
+    640
+  ],
+  "frames_directory": "${BLENDER_AGENT_STUDIO_ROOT}/renders/capabilities-video-2026-07-19_151134/frames",
+  "features": [
+    "camera path",
+    "focal animation",
+    "product hover",
+    "animated rim lighting",
+    "agent phase markers"
+  ],
+  "saved": false
+}

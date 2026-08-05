@@ -1,0 +1,58 @@
+{
+  "snapshot_iso": "2026-06-10T10:14:50.200852+00:00",
+  "snapshot_folder": "2026-06-10-1014-NhRqyXGNbrQU-v2-nano-banana-pro-4k-seed720001",
+  "url_id": "NhRqyXGNbrQU",
+  "label": "v2-nano-banana-pro-4k-seed720001",
+  "output_file": "output.png",
+  "output_size_bytes": 17090824,
+  "url": "https://v3b.fal.media/files/b/0a9db8e1/NhRqyXGNbrQUeweNzr_ns_yWpCI29i.png",
+  "source_path": "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781086485175983000_0.png",
+  "prompt_snapshot": null,
+  "prompt_source": null,
+  "refs_manifest": [
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-01_hero-front-3q.jpeg",
+      "size_bytes": 6849624,
+      "sha256_8": "746b1de0"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-02_hero-back-internals.jpeg",
+      "size_bytes": 6875634,
+      "sha256_8": "9389d1c8"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-10_macro-bottom-port-usbc.jpeg",
+      "size_bytes": 7027883,
+      "sha256_8": "714cd903"
+    }
+  ],
+  "provider": "falai",
+  "model": "fal-ai/gemini-3-pro-image-preview/edit",
+  "cost_usd": 0.15,
+  "duration_sec": 82.11152815818787,
+  "seed": null,
+  "adapter_metadata": {
+    "output_urls": [
+      "https://v3b.fal.media/files/b/0a9db8e1/NhRqyXGNbrQUeweNzr_ns_yWpCI29i.png"
+    ],
+    "local_paths": [
+      "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781086485175983000_0.png"
+    ],
+    "raw_result": "{'images': [{'url': 'https://v3b.fal.media/files/b/0a9db8e1/NhRqyXGNbrQUeweNzr_ns_yWpCI29i.png', 'content_type': 'image/png', 'file_name': 'NhRqyXGNbrQUeweNzr_ns_yWpCI29i.png', 'file_size': None, 'width': None, 'height': None}], 'description': \"**Focusing on Device Edge**\\n\\nI'm concentrating on capturing the precise top edge of the purple handheld device. The aim is a straight-on perspective, with the camera positioned at the exact height of that edge, ensuring the entire device is framed withi...[truncated]",
+    "fal_model": "fal-ai/gemini-3-pro-image-preview/edit"
+  },
+  "extra": {
+    "spec": "audits_blender/pulsed-asset-prompts-v2.md (Sliz 2026-06-10)",
+    "doctrine": "v2 \u2014 prompt d\u00e9crit seulement le cadre, identit\u00e9 par refs, n\u00e9gatif court",
+    "kind": "preflight-reference-v2",
+    "provider": "falai",
+    "model": "fal-ai/gemini-3-pro-image-preview/edit",
+    "aspect_ratio": "16:9",
+    "resolution": "4K",
+    "output_format": "png",
+    "seed": 720001,
+    "image_id": "top-edge",
+    "intended_dest": "assets_blender/05_top_edge_canonical.png (NON copi\u00e9 \u2014 validation carte requise)",
+    "prompt": "Photorealistic product photography of the exact handheld device shown in the attached reference images \u2014 same shell, same proportions, same materials (glossy translucent amethyst-purple plastic with the internal PCB visible through it), same parting seam. Warm cream seamless background, soft drop shadow, consistent with the references. Do not add, remove, move or restyle any element of the device. No text overlays, no props, no people.\n\nStraight-on view of the TOP edge of the device, camera at edge height, centered, the full device width sharp in frame edge-to-edge with margin at both ends (deep focus, f/11, no perspective distortion). Same framing style as the attached bottom-edge reference photo, but showing the opposite (top) edge, which is PLAIN: only the horizontal parting seam running along it, a gently convex crown profile, and two very low-profile light-grey shell clips sitting flush on the seam at roughly one-third and two-thirds of the width, exactly as visible on the top silhouette of the attached back reference. Corner screw bosses and faint internal PCB connectors may show through the translucent purple plastic only. This edge carries no controls: do not add any button, switch, wheel, dial, knob, port, hole or marking on this edge."
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "lowrise-orbit",
+  "name": "Lowrise Orbit · sb-002",
+  "icon": "⌁",
+  "category": "animation validée",
+  "mode": "MCP interactif",
+  "risk": "écriture",
+  "description": "Recette validée: macro basse, rotation trois-quarts gauche en remontant, pull-back jusqu’au produit entier, repos frontal.",
+  "script": "workflows/scripts/camera_workflow.py",
+  "timeout": 120,
+  "warning": "Le cadrage partiel au départ est intentionnel et a été suivi shot-for-shot par Seedance.",
+  "provenance": "library/blender-choreography/shots/sb-002-lowrise-orbit.md",
+  "fields": [
+    {
+      "id": "target_collection",
+      "type": "text",
+      "label": "Collection cible (vide = sélection)",
+      "default": ""
+    },
+    {
+      "id": "pattern",
+      "type": "select",
+      "label": "Mouvement",
+      "options": [
+        "lowrise-orbit"
+      ],
+      "default": "lowrise-orbit"
+    },
+    {
+      "id": "duration",
+      "type": "number",
+      "label": "Durée (s)",
+      "default": 6,
+      "min": 3,
+      "max": 15,
+      "step": 0.5
+    },
+    {
+      "id": "intensity",
+      "type": "number",
+      "label": "Amplitude",
+      "default": 1,
+      "min": 0.5,
+      "max": 1.5,
+      "step": 0.05
+    }
+  ],
+  "execution": "mcp",
+  "mutates_scene": true,
+  "requires_confirmation": true,
+  "requires_working_copy": true,
+  "enabled_in_app": true,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "operation",
+  "domains": [
+    "cinematic"
+  ],
+  "maturity": "stable-specialized",
+  "scope": "generic-or-adaptable"
+}

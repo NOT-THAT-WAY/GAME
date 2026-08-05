@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "campaign": "tutorial-synthesis-lab-2026-07-19",
+  "stage": 4,
+  "stage_name": "04-mechanical-choreography",
+  "created_at": "2026-07-19T01:01:01.610643+00:00",
+  "blend_file": "projects/tutorial-synthesis-lab-2026-07-19/stages/04-mechanical-choreography/04-mechanical-choreography.blend",
+  "source_library": "asset_library/imported/drumboii-y2k-assets.blend",
+  "source_assets": [
+    "BLOB_SPEAKER",
+    "DRUMBOII_GAMEBOII"
+  ],
+  "frame_range": [
+    1,
+    144
+  ],
+  "fps": 24,
+  "resolution": [
+    640,
+    360
+  ],
+  "active_camera": "USTUDIO_CAM_GAMEBOII",
+  "cameras": [
+    "USTUDIO_CAM_SPEAKER",
+    "USTUDIO_CAM_GAMEBOII"
+  ],
+  "snapshots": [
+    {
+      "frame": 73,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/04-mechanical-choreography/snapshots/frame_0073.png",
+      "seconds": 0.48
+    },
+    {
+      "frame": 84,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/04-mechanical-choreography/snapshots/frame_0084.png",
+      "seconds": 0.472
+    },
+    {
+      "frame": 108,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/04-mechanical-choreography/snapshots/frame_0108.png",
+      "seconds": 0.491
+    },
+    {
+      "frame": 128,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/04-mechanical-choreography/snapshots/frame_0128.png",
+      "seconds": 0.461
+    },
+    {
+      "frame": 144,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/04-mechanical-choreography/snapshots/frame_0144.png",
+      "seconds": 0.473
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "scene": "TUTORIAL_SYNTHESIS_STAGE_04",
+    "stage": 4,
+    "objects": 82,
+    "materials": 52,
+    "cameras": [
+      "USTUDIO_CAM_SPEAKER",
+      "USTUDIO_CAM_GAMEBOII"
+    ],
+    "animated_roots": [
+      "USTUDIO_BLOB_SPEAKER_ROOT",
+      "USTUDIO_DRUMBOII_GAMEBOII_ROOT"
+    ],
+    "timeline_markers": [
+      {
+        "name": "USTUDIO_S0_STILL",
+        "frame": 1
+      },
+      {
+        "name": "USTUDIO_S1_ANTICIPATION",
+        "frame": 24
+      },
+      {
+        "name": "USTUDIO_S2_ACTION",
+        "frame": 54
+      },
+      {
+        "name": "USTUDIO_SPEAKER_REST",
+        "frame": 72
+      },
+      {
+        "name": "USTUDIO_CONVEYOR_START",
+        "frame": 73
+      },
+      {
+        "name": "USTUDIO_GAME_PEAK",
+        "frame": 108
+      },
+      {
+        "name": "USTUDIO_GAME_IMPACT",
+        "frame": 128
+      },
+      {
+        "name": "USTUDIO_GAME_REST",
+        "frame": 144
+      }
+    ]
+  },
+  "knowledge_sources": [
+    "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/analysis.json",
+    "knowledge/tutorials/beginner-blender-tutorial-2026/analysis.json",
+    "knowledge/tutorials/ray-ban-product-animation/analysis.json",
+    "knowledge/tutorials/factory-animation-polygon-runway/analysis.json",
+    "knowledge/tutorials/quick-animation-blender-4/analysis.json",
+    "knowledge/tutorials/wireless-pods-animation-polygon-runway/analysis.json"
+  ],
+  "principles_tested": [
+    "linear transport",
+    "bezier event",
+    "causal choreography",
+    "conveyor pitch"
+  ]
+}

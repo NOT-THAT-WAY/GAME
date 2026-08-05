@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "tutorial_id": "wireless-pods-animation-polygon-runway",
+  "model": "whisper.cpp large-v3-turbo + Codex visual/transcript synthesis",
+  "language": "en",
+  "analyzed_at": "2026-07-19T03:16:00+02:00",
+  "confidence": 0.95,
+  "summary": "Tutoriel produit complet autour d'écouteurs et de leur boîtier : modélisation low-poly/subdivision, duplication symétrique, séparation couvercle/corps, origine du couvercle placée sur l'axe de charnière, hiérarchie de parenting, animation sur 120 frames à 30 fps combinant rotation du produit, ouverture, sortie des écouteurs et retour, réglage précis des courbes, puis studio Cycles/HDRI, rim light, matériaux et animation de couleur.",
+  "evidence_quality": {"transcript": "usable", "visual": "strong", "regular_frames": 188, "scene_frames": 21, "contact_sheets": 4},
+  "chapters": [
+    {"start": 0, "end": 380, "title": "Modélisation d'un écouteur par subdivision", "evidence": ["transcript 00:00:00–00:06:20", "contact-sheets/frames_1_48.jpg"]},
+    {"start": 380, "end": 665, "title": "Boîtier, séparation du couvercle, charnière et parenting", "evidence": ["transcript 00:06:20–00:11:05", "contact-sheets/frames_49_96.jpg"]},
+    {"start": 665, "end": 870, "title": "Caméra, durée et rotation générale du produit", "evidence": ["transcript 00:11:05–00:14:30"]},
+    {"start": 870, "end": 1370, "title": "Ouverture du couvercle, envol et retour des écouteurs", "evidence": ["transcript 00:14:30–00:22:50", "contact-sheets/frames_97_144.jpg"]},
+    {"start": 1370, "end": 1570, "title": "Backdrop, HDRI, Cycles et rim light", "evidence": ["transcript 00:22:50–00:26:10"]},
+    {"start": 1570, "end": 1881, "title": "Matériaux, couleur animée et rendu", "evidence": ["transcript 00:26:10–00:31:21", "contact-sheets/frames_145_188.jpg"]}
+  ],
+  "techniques": [
+    {
+      "domain": "product-modeling",
+      "name": "Subdivision pilotée par silhouette",
+      "steps": ["Partir d'un volume simple subdivisé.", "Déplacer les loops pour obtenir le bombé principal.", "Extruder la tige depuis la coque.", "Ajouter seulement les loops nécessaires aux transitions.", "Dupliquer/mirer pour le second écouteur."],
+      "production_note": "La silhouette et la régularité du shading passent avant les petits détails."
+    },
+    {
+      "domain": "mechanical-rig",
+      "name": "Origine de couvercle sur l'axe de charnière",
+      "steps": ["Séparer le couvercle du corps.", "Sélectionner la géométrie de l'axe.", "Snap Cursor to Selected.", "Set Origin to 3D Cursor sur le couvercle.", "Tester une rotation locale avant tout keyframe."],
+      "evidence": ["transcript autour de 00:08:18"]
+    },
+    {
+      "domain": "hierarchy",
+      "name": "Parenting fonctionnel du produit",
+      "steps": ["Parenter les détails du couvercle au couvercle.", "Parenter les détails du corps au corps.", "Laisser les écouteurs autonomes pour l'envol.", "Parenter les groupes à un contrôle racine pour la rotation hero."],
+      "evidence": ["transcript 00:09:35–00:11:07"]
+    },
+    {
+      "domain": "animation",
+      "name": "Action en cascade sur 120 frames",
+      "steps": ["Établir la rotation globale du produit.", "Ouvrir le couvercle avec un départ et une arrivée nets.", "Faire sortir les écouteurs après le début de l'ouverture.", "Créer une suspension courte au sommet.", "Faire retomber les écouteurs avant la fermeture.", "Régler les poignées libres dans le Graph Editor pour continuité et impact."],
+      "production_note": "L'ordre causal doit rester lisible : ouverture → envol → retour → fermeture."
+    },
+    {
+      "domain": "lookdev",
+      "name": "Studio coloré animé",
+      "steps": ["Créer un backdrop simple.", "Utiliser un HDRI pour le niveau de réflexion global.", "Ajouter un spot/rim fort pour le contour.", "Séparer les matériaux blancs/noirs et détails.", "Animer la teinte du produit et du fond sur des valeurs contrôlées."],
+      "evidence": ["transcript 00:22:50–00:30:00"]
+    }
+  ],
+  "workflow_recipe": {
+    "name": "Hinged case product choreography",
+    "inputs": ["boîtier corps/couvercle", "axe de charnière", "objets contenus", "durée", "pose hero", "palette"],
+    "steps": ["Auditer séparation, origines et transforms.", "Placer l'origine du couvercle exactement sur l'axe mécanique.", "Construire une hiérarchie ROOT/body/lid/contents.", "Bloquer les états fermé, ouvert, contenu haut, contenu revenu, fermé final.", "Décaler les actions selon leur causalité.", "Régler une courbe par fonction dans le Graph Editor.", "Ajouter une rotation globale légère sans concurrencer l'ouverture.", "Valider en clay avant matériaux.", "Ajouter HDRI, rim light et variations colorées.", "Rendre des gates à chaque état mécanique."],
+    "gates": ["couvercle tourne sans translation parasite", "aucune collision contenu/couvercle", "objets reviennent exactement dans leurs logements", "fermeture après retour complet", "rotation globale ne masque pas l'ouverture", "rim light sépare la silhouette", "couleur animée conserve les détails"]
+  },
+  "reusable_assets": ["rig ROOT/body/lid/contents", "preset hinge origin", "action open-close", "action content-rise", "studio HDRI + rim", "palette animée"],
+  "risks": ["origine de couvercle approximative", "parenting réalisé après animation", "contenu parenté au couvercle", "courbes automatiques causant une réouverture", "rotation globale trop forte", "roughness trop basse sur toutes les surfaces", "variation de teinte non synchronisée entre produit et fond"]
+}

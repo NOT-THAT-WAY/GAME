@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "summary": {
+    "targetName": "Transparent Audio Deck Git Integration",
+    "suitability": "conditional",
+    "components": 22,
+    "materials": 13,
+    "repetitionSystems": 6
+  },
+  "validator": "third_party/img2threejs/forge/stage2_spec/validate_sculpt_spec.py --strict-quality",
+  "upstreamCommit": "8b53125081c3798cf95bd517b64be024515a1c8d"
+}

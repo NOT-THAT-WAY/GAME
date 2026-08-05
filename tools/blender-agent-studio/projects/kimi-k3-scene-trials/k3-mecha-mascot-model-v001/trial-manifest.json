@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-mecha-mascot-model-v001",
+  "created_at": "2026-07-21T02:54:27+02:00",
+  "status": "completed",
+  "source_blend": "Pulsed_3D_model.blend",
+  "source_blend_bytes": 307159,
+  "output_root": "projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v001",
+  "source_overwrite_allowed": false,
+  "trial_blend": "scene/trial.blend",
+  "preview": "renders/preview.mp4",
+  "validation": "validation-report.json",
+  "published_asset": "../../../asset_library/characters/mecha-mascot-v001.blend",
+  "published_glb": "../../../asset_library/characters/mecha-mascot-v001.glb"
+}

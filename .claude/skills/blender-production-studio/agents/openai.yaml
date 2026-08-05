@@ -1,0 +1,4 @@
+interface:
+  display_name: "Blender Production Studio"
+  short_description: "Create and validate Blender work for teams"
+  default_prompt: "Use $blender-production-studio to route, build, validate, and package this Blender task for its declared target."

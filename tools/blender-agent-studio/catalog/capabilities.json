@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "default_style_profile": "neutral-production",
+  "domains": [
+    {
+      "id": "scene-audit",
+      "maturity": "stable",
+      "execution": "read-only-mcp-or-batch",
+      "entrypoints": ["workflows/scripts/inspect_scene.py", "workflows/scripts/deep_audit_scene.py", "workflows/scripts/scene_spatial_graph.py"],
+      "final_gate": "evidence-backed diagnostic report"
+    },
+    {
+      "id": "asset-modeling",
+      "maturity": "stable-contract",
+      "execution": "isolated-batch-or-working-copy",
+      "entrypoints": ["workflows/tools/create_team_project.py", "workflows/tools/create_asset_build.py"],
+      "standard": "standards/ASSET_CREATION_STANDARD.md",
+      "final_gate": "geometry audit, identity views, export and independent reimport"
+    },
+    {
+      "id": "reference-to-3d-generation",
+      "maturity": "experimental-automation",
+      "execution": "isolated-batch",
+      "entrypoints": ["workflows/scripts/object_sculpt_spec_to_blender.py", "workflows/scripts/normalize_object_sculpt_spec_blender_recipe.py"],
+      "standard": "standards/GENERATIVE_REFERENCE_STANDARD.md",
+      "final_gate": "human identity review plus asset validation"
+    },
+    {
+      "id": "game-ready-assets",
+      "maturity": "stable-contract",
+      "execution": "isolated-project",
+      "entrypoints": ["workflows/tools/create_team_project.py", "workflows/tools/validate_team_project.py"],
+      "profiles": ["game-gltf", "game-unity", "game-unreal", "game-godot"],
+      "standard": "standards/GAME_ASSET_STANDARD.md",
+      "final_gate": "target-engine import report"
+    },
+    {
+      "id": "rigging-and-articulation",
+      "maturity": "preliminary-automation",
+      "execution": "working-copy",
+      "entrypoints": ["workflows/scripts/validate_articulated_object.py", "workflows/tools/create_team_project.py"],
+      "standard": "standards/RIG_ANIMATION_STANDARD.md",
+      "final_gate": "evaluated geometry, joint limits, weights, collision and clearance evidence"
+    },
+    {
+      "id": "animation-clips",
+      "maturity": "stable-contract",
+      "execution": "working-copy-or-batch",
+      "entrypoints": ["workflows/tools/create_team_project.py", "workflows/tools/validate_team_project.py"],
+      "profile": "rig-animation",
+      "standard": "standards/RIG_ANIMATION_STANDARD.md",
+      "final_gate": "playblast, contact proof, loop/root-motion checks and clip reimport"
+    },
+    {
+      "id": "cinematics-and-video",
+      "maturity": "stable",
+      "execution": "working-copy",
+      "entrypoints": ["workflows/tools/create_scene_trial.py", "workflows/scripts/build_camera_shot.py", "workflows/scripts/render_keyframes.py"],
+      "profile": "cinematic",
+      "standard": "standards/CINEMATIC_RENDER_STANDARD.md",
+      "final_gate": "physical validation, shot manifest, contact sheet, full preview and media probe"
+    },
+    {
+      "id": "lighting-and-lookdev",
+      "maturity": "stable",
+      "execution": "working-copy",
+      "entrypoints": ["workflows/scripts/studio_lighting.py", "workflows/scripts/drumboiii_lighting_gate.py"],
+      "standard": "standards/CINEMATIC_RENDER_STANDARD.md",
+      "final_gate": "attributable A/B lighting layers"
+    },
+    {
+      "id": "materials-and-textures",
+      "maturity": "stable-contract",
+      "execution": "working-copy",
+      "entrypoints": ["workflows/tools/create_team_project.py"],
+      "standard": "standards/MATERIAL_TEXTURE_STANDARD.md",
+      "final_gate": "neutral, grazing and target-context material review"
+    },
+    {
+      "id": "environments-and-procedural",
+      "maturity": "stable-contract",
+      "execution": "isolated-project",
+      "entrypoints": ["workflows/tools/create_team_project.py", "workflows/tools/validate_team_project.py"],
+      "profile": "environment",
+      "standard": "standards/ENVIRONMENT_PROCEDURAL_STANDARD.md",
+      "final_gate": "navigation, collisions, scatter exclusions and performance report"
+    },
+    {
+      "id": "asset-catalog-and-selective-retrieval",
+      "maturity": "stable",
+      "execution": "filesystem-tool",
+      "entrypoints": ["tools/build_asset_catalog.py", "tools/verify_asset_catalog.py", "tools/materialize_assets.py"],
+      "final_gate": "SHA-256 verified local materialization"
+    },
+    {
+      "id": "exports-and-delivery",
+      "maturity": "stable-glb-contract-other-formats",
+      "execution": "working-copy-or-batch",
+      "entrypoints": ["workflows/scripts/export_glb.py", "workflows/tools/build_delivery_manifest.py"],
+      "standard": "standards/DELIVERY_STANDARD.md",
+      "final_gate": "independent viewer or target-engine import"
+    },
+    {
+      "id": "tutorial-ingestion",
+      "maturity": "stable",
+      "execution": "filesystem-tool",
+      "entrypoints": ["app/backend/tutorial_pipeline.py"],
+      "final_gate": "source/evidence/transcript/analysis separation"
+    }
+  ]
+}

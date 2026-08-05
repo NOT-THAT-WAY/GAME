@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-08-04T19:18:27.655060+00:00",
+  "source_path_embedded": false,
+  "catalog_valid": true,
+  "source_vault_verified": true,
+  "unique_assets": 12115,
+  "regular_asset_paths": 12251,
+  "aliases": 5,
+  "families": 58,
+  "blender_scenes": 77,
+  "verified_source_paths": 12251,
+  "logical_bytes_omitted": 7820498266,
+  "errors": [],
+  "warnings": []
+}

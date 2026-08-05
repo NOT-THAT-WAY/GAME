@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-fable-v001",
+  "principle": "les ecrans du template sont la source principale ; les ajouts servent uniquement a detacher le corps blanc",
+  "lights": [
+    {
+      "name": "K3_FABLE_LIGHT_RIM",
+      "role": "rim froid depuis le mur arriere, decoupe la silhouette sur la rampe",
+      "energy_w": 55.0
+    },
+    {
+      "name": "K3_FABLE_LIGHT_FILL",
+      "role": "fill bas cote camera, empeche la silhouette de virer au noir",
+      "energy_w": 26.0
+    },
+    {
+      "name": "K3_FABLE_LIGHT_BOUNCE",
+      "role": "rebond chaud tres faible de la rampe, garde le volume du pearl",
+      "energy_w": 12.0
+    }
+  ],
+  "personal_idea": {
+    "name": "PIANO ROLL NOTES",
+    "description": "chaque pose de pied allume la cellule de note sous lui puis s'eteint ; la derniere reste allumee et le mur arriere repond par une note tenue pendant qu'il leve les yeux",
+    "note_count": 11,
+    "notes": [
+      {
+        "index": 0,
+        "frame": 143,
+        "side": "L",
+        "pos": [
+          -0.6093,
+          -0.3568,
+          0.9462
+        ]
+      },
+      {
+        "index": 1,
+        "frame": 167,
+        "side": "L",
+        "pos": [
+          -0.4444,
+          -0.1949,
+          1.1159
+        ]
+      },
+      {
+        "index": 2,
+        "frame": 191,
+        "side": "L",
+        "pos": [
+          -0.2893,
+          -0.03,
+          1.2886
+        ]
+      },
+      {
+        "index": 3,
+        "frame": 215,
+        "side": "L",
+        "pos": [
+          -0.1531,
+          0.1381,
+          1.4649
+        ]
+      },
+      {
+        "index": 4,
+        "frame": 239,
+        "side": "L",
+        "pos": [
+          -0.0734,
+          0.2933,
+          1.6275
+        ]
+      },
+      {
+        "index": 5,
+        "frame": 130,
+        "side": "R",
+        "pos": [
+          -0.5609,
+          -0.5118,
+          0.76
+        ]
+      },
+      {
+        "index": 6,
+        "frame": 155,
+        "side": "R",
+        "pos": [
+          -0.4238,
+          -0.3803,
+          0.9216
+        ]
+      },
+      {
+        "index": 7,
+        "frame": 179,
+        "side": "R",
+        "pos": [
+          -0.2592,
+          -0.2129,
+          1.097
+        ]
+      },
+      {
+        "index": 8,
+        "frame": 203,
+        "side": "R",
+        "pos": [
+          -0.1048,
+          -0.0385,
+          1.2798
+        ]
+      },
+      {
+        "index": 9,
+        "frame": 227,
+        "side": "R",
+        "pos": [
+          0.0284,
+          0.1533,
+          1.4808
+        ]
+      },
+      {
+        "index": 10,
+        "frame": 251,
+        "side": "R",
+        "pos": [
+          0.0719,
+          0.2842,
+          1.618
+        ]
+      }
+    ],
+    "answer_note": "K3_FABLE_NOTE_ANSWER, frames 296-360"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "validated_at": "2026-07-30T14:38:14.800046+00:00",
+  "blender_version": "5.1.1",
+  "source_glb": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-git-v002/scene/asset.glb",
+  "source_bytes": 3465664,
+  "object_count": 83,
+  "mesh_count": 77,
+  "empty_count": 6,
+  "material_count": 15,
+  "bounds_m": {
+    "min": [
+      -0.07,
+      -0.0312,
+      0.0
+    ],
+    "max": [
+      0.076,
+      0.0175,
+      0.2443
+    ],
+    "size": [
+      0.146,
+      0.0487,
+      0.2443
+    ]
+  },
+  "prefix_violations": [],
+  "checks": {
+    "minimum_mesh_count": true,
+    "named_root_present": true,
+    "positive_volume": true,
+    "prefix_preserved": true,
+    "materials_present": true,
+    "no_cameras_exported": true,
+    "no_lights_exported": true
+  },
+  "passed": true
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-kimi-v001",
+  "status": "completed",
+  "overall_score": 88.3,
+  "verdict": "ship",
+  "critical_failures": [],
+  "categories": {
+    "physics_affordance": {"weight": 20, "score": 92, "evidence": ["diagnostics/physical-validation.json", "gates/key-03-marche-playhead.png"], "notes": "drift 0.00005 m, penetration 0, swing clearance 0.026 m, torse 0.5-18.3 deg vs verticale monde ; assise genoux remontes justifiee par la geometrie mesuree (la pente surplombe le rim)"},
+    "causality_continuity": {"weight": 15, "score": 88, "evidence": ["gates/contact-sheet.jpg"], "notes": "chaine assis -> elan -> lever -> marche -> traversée playhead -> arret -> regard ; la traversee f203 suit le sweep reel mesure de la playhead"},
+    "composition_camera": {"weight": 15, "score": 84, "evidence": ["gates/key-04-reveal.png", "shot-manifest.json"], "notes": "plan continu intime->vaste, silhouette finale 13.7% du cadre ; contact de l'assise peu lisible de face (rim vu par la tranche)"},
+    "motion_rhythm": {"weight": 15, "score": 90, "evidence": ["renders/preview.mp4"], "notes": "pas sur les mesures (130/154/178/203/227/251/275/299), battement de pied sur les beats, hesitation au crossing, look-up conclu sur le downbeat 348 ; grille spectrale non confirmee a l'ecoute"},
+    "lighting": {"weight": 15, "score": 84, "evidence": ["gates/lighting-gate-manifest.json", "gates/04_SIDE_GLIMMER_B.png"], "notes": "ecrans comme source principale, bounce lime, backrim magenta, sweep synchronise, hero light finale ; personnage un peu terne dans les plans moyens"},
+    "materials_color_typography": {"weight": 10, "score": 85, "evidence": ["gates/key-01-assis.png"], "notes": "blanc pearl captant les ecrans, ramp d'emission vers le climax, pas de typographie"},
+    "technical_integrity": {"weight": 10, "score": 95, "evidence": ["diagnostics/scene-audit.json", "renders/preview.mp4"], "notes": "360 frames, zero frame noire (blackdetect), H.264+AAC 12.000 s, mesh asset inchange (6348+1986 verts), scripts reproductibles dans scene/"}
+  },
+  "automatic_caps": {
+    "critical_failure_max_score": 49,
+    "critical_failure_types": [
+      "collision_or_environment_traversal",
+      "impossible_articulation_or_wrong_affordance",
+      "unmotivated_drift_or_contact_slip",
+      "canonical_identity_broken",
+      "camera_or_geometry_clipping",
+      "corrupt_missing_or_glitched_frames"
+    ]
+  },
+  "thresholds": {"ship_min": 85, "revise_min": 70, "reject_max": 69}
+}

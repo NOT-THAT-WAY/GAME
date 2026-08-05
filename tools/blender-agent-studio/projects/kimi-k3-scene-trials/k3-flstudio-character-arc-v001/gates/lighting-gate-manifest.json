@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "workflow": "drumboiii-lighting-gate",
+  "source_tutorial": "drumboii-lighting-tutorial-2026-07-20",
+  "frame": 348,
+  "engine": "BLENDER_EEVEE",
+  "order": [
+    "SUN_REFLECTION",
+    "BACK_SHAPE",
+    "SIDE_GLIMMER_A",
+    "SIDE_GLIMMER_B",
+    "DETAIL_RETURN"
+  ],
+  "principle": "base environment, reflection sun, shape backlight, then only useful detail glimmers",
+  "renders": [
+    {
+      "stage": "00_BASE_WORLD",
+      "enabled": [],
+      "path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/00_BASE_WORLD.png"
+    },
+    {
+      "stage": "01_SUN_REFLECTION",
+      "enabled": [
+        "SUN_REFLECTION"
+      ],
+      "path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/01_SUN_REFLECTION.png"
+    },
+    {
+      "stage": "02_BACK_SHAPE",
+      "enabled": [
+        "SUN_REFLECTION",
+        "BACK_SHAPE"
+      ],
+      "path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/02_BACK_SHAPE.png"
+    },
+    {
+      "stage": "03_SIDE_GLIMMER_A",
+      "enabled": [
+        "SUN_REFLECTION",
+        "BACK_SHAPE",
+        "SIDE_GLIMMER_A"
+      ],
+      "path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/03_SIDE_GLIMMER_A.png"
+    },
+    {
+      "stage": "04_SIDE_GLIMMER_B",
+      "enabled": [
+        "SUN_REFLECTION",
+        "BACK_SHAPE",
+        "SIDE_GLIMMER_A",
+        "SIDE_GLIMMER_B"
+      ],
+      "path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/04_SIDE_GLIMMER_B.png"
+    },
+    {
+      "stage": "05_DETAIL_RETURN",
+      "enabled": [
+        "SUN_REFLECTION",
+        "BACK_SHAPE",
+        "SIDE_GLIMMER_A",
+        "SIDE_GLIMMER_B",
+        "DETAIL_RETURN"
+      ],
+      "path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/05_DETAIL_RETURN.png"
+    }
+  ],
+  "saved": false
+}

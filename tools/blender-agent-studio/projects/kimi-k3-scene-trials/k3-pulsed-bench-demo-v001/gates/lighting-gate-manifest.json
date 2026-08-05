@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "workflow": "drumboiii-lighting-gate",
+  "source_tutorial": "drumboii-lighting-tutorial-2026-07-20",
+  "frame": 120,
+  "engine": "CYCLES",
+  "order": [
+    "SUN_REFLECTION",
+    "BACK_SHAPE",
+    "SIDE_GLIMMER_A",
+    "SIDE_GLIMMER_B",
+    "DETAIL_RETURN"
+  ],
+  "principle": "base environment, reflection sun, shape backlight, then only useful detail glimmers",
+  "renders": [
+    {
+      "stage": "00_BASE_WORLD",
+      "enabled": [],
+      "path": "gates/lighting/00_BASE_WORLD.png"
+    },
+    {
+      "stage": "01_SUN_REFLECTION",
+      "enabled": [
+        "SUN_REFLECTION"
+      ],
+      "path": "gates/lighting/01_SUN_REFLECTION.png"
+    },
+    {
+      "stage": "02_BACK_SHAPE",
+      "enabled": [
+        "SUN_REFLECTION",
+        "BACK_SHAPE"
+      ],
+      "path": "gates/lighting/02_BACK_SHAPE.png"
+    },
+    {
+      "stage": "03_SIDE_GLIMMER_A",
+      "enabled": [
+        "SUN_REFLECTION",
+        "BACK_SHAPE",
+        "SIDE_GLIMMER_A"
+      ],
+      "path": "gates/lighting/03_SIDE_GLIMMER_A.png"
+    },
+    {
+      "stage": "04_SIDE_GLIMMER_B",
+      "enabled": [
+        "SUN_REFLECTION",
+        "BACK_SHAPE",
+        "SIDE_GLIMMER_A",
+        "SIDE_GLIMMER_B"
+      ],
+      "path": "gates/lighting/04_SIDE_GLIMMER_B.png"
+    },
+    {
+      "stage": "05_DETAIL_RETURN",
+      "enabled": [
+        "SUN_REFLECTION",
+        "BACK_SHAPE",
+        "SIDE_GLIMMER_A",
+        "SIDE_GLIMMER_B",
+        "DETAIL_RETURN"
+      ],
+      "path": "gates/lighting/05_DETAIL_RETURN.png"
+    }
+  ],
+  "saved": false,
+  "trial_id": "k3-pulsed-bench-demo-v001",
+  "layer_functions": {
+    "SUN_REFLECTION": "soleil oblique : dessine les reflets sur la coque translucide",
+    "BACK_SHAPE": "backlight dominant : separe le volume du fond et allume la tranche",
+    "SIDE_GLIMMER_A": "glimmer cote molette : revele les deux domes violets",
+    "SIDE_GLIMMER_B": "glimmer cote D-pad : rend lisibles les fleches embossees",
+    "DETAIL_RETURN": "retour frontal faible : redonne le PCB sous la coque"
+  }
+}

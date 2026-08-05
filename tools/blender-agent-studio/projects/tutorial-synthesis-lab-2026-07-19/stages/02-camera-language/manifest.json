@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "campaign": "tutorial-synthesis-lab-2026-07-19",
+  "stage": 2,
+  "stage_name": "02-camera-language",
+  "created_at": "2026-07-19T00:55:01.262852+00:00",
+  "blend_file": "projects/tutorial-synthesis-lab-2026-07-19/stages/02-camera-language/02-camera-language.blend",
+  "source_library": "asset_library/imported/drumboii-y2k-assets.blend",
+  "source_assets": [
+    "BLOB_SPEAKER"
+  ],
+  "frame_range": [
+    1,
+    72
+  ],
+  "fps": 24,
+  "resolution": [
+    640,
+    360
+  ],
+  "active_camera": "USTUDIO_CAM_SPEAKER",
+  "cameras": [
+    "USTUDIO_CAM_SPEAKER"
+  ],
+  "snapshots": [
+    {
+      "frame": 1,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/02-camera-language/snapshots/frame_0001.png",
+      "seconds": 0.395
+    },
+    {
+      "frame": 12,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/02-camera-language/snapshots/frame_0012.png",
+      "seconds": 0.35
+    },
+    {
+      "frame": 24,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/02-camera-language/snapshots/frame_0024.png",
+      "seconds": 0.375
+    },
+    {
+      "frame": 54,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/02-camera-language/snapshots/frame_0054.png",
+      "seconds": 0.442
+    },
+    {
+      "frame": 72,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/02-camera-language/snapshots/frame_0072.png",
+      "seconds": 0.261
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "scene": "TUTORIAL_SYNTHESIS_STAGE_02",
+    "stage": 2,
+    "objects": 15,
+    "materials": 15,
+    "cameras": [
+      "USTUDIO_CAM_SPEAKER"
+    ],
+    "animated_roots": [
+      "USTUDIO_BLOB_SPEAKER_ROOT"
+    ],
+    "timeline_markers": [
+      {
+        "name": "USTUDIO_S0_STILL",
+        "frame": 1
+      },
+      {
+        "name": "USTUDIO_S1_ANTICIPATION",
+        "frame": 24
+      },
+      {
+        "name": "USTUDIO_S2_ACTION",
+        "frame": 54
+      },
+      {
+        "name": "USTUDIO_SPEAKER_REST",
+        "frame": 72
+      }
+    ]
+  },
+  "knowledge_sources": [
+    "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/analysis.json",
+    "knowledge/tutorials/beginner-blender-tutorial-2026/analysis.json",
+    "knowledge/tutorials/ray-ban-product-animation/analysis.json",
+    "knowledge/tutorials/factory-animation-polygon-runway/analysis.json",
+    "knowledge/tutorials/quick-animation-blender-4/analysis.json",
+    "knowledge/tutorials/wireless-pods-animation-polygon-runway/analysis.json"
+  ],
+  "principles_tested": [
+    "four-pose camera",
+    "anticipation",
+    "delayed target",
+    "independent focus"
+  ]
+}

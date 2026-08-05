@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "status": "heuristic_requires_listening_gate",
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/master.mp4",
+  "method": {
+    "decode": "ffmpeg mono float32",
+    "sample_rate_hz": 22050,
+    "window": 2048,
+    "hop": 256,
+    "onset_feature": "positive spectral flux",
+    "bar_period_search_seconds": [
+      1.45,
+      1.75
+    ],
+    "meter_assumption": "4/4"
+  },
+  "results": {
+    "best_lag_hops": 139,
+    "bar_period_seconds": 1.6137868480725623,
+    "bpm_autocorrelation": 148.71852517985613,
+    "bpm_regression": 148.96858959011846,
+    "probable_bar_frames": [
+      9,
+      57,
+      106,
+      154,
+      203,
+      251,
+      299,
+      348,
+      396
+    ],
+    "probable_bar_times_seconds": [
+      0.278639,
+      1.880816,
+      3.494603,
+      5.10839,
+      6.722177,
+      8.324354,
+      9.938141,
+      11.551927,
+      13.165714
+    ],
+    "probable_bar_count_in_clip": 8
+  },
+  "proposed_compact_edit": {
+    "lead_in": [
+      1,
+      8
+    ],
+    "scene_1_awakening": [
+      9,
+      105
+    ],
+    "scene_2_pause": [
+      106,
+      202
+    ],
+    "scene_3_run": [
+      203,
+      298
+    ],
+    "scene_3_probable_impact": 251,
+    "scene_4_communion": [
+      299,
+      396
+    ],
+    "final_hold_and_media_wrap": [
+      397,
+      406
+    ]
+  },
+  "warnings": [
+    "Existing USTUDIO_MEDIA_* markers are media quartiles, not musical bars.",
+    "The master audio is not mounted in Blender's VSE in the source file.",
+    "Confirm every proposed bar/downbeat by ear in the working copy before animation."
+  ]
+}

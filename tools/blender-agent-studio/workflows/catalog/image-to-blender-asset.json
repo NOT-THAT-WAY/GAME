@@ -1,0 +1,74 @@
+{
+  "id": "image-to-blender-asset",
+  "name": "Image → Asset Blender",
+  "icon": "◈",
+  "category": "génération d’asset",
+  "mode": "Blender batch isolé",
+  "risk": "écriture isolée",
+  "description": "Transforme un ObjectSculptSpec enrichi d’un blenderRecipe en hiérarchie bpy, matériaux Principled, sockets, collider, .blend, .glb et gates multi-angles.",
+  "script": "workflows/scripts/object_sculpt_spec_to_blender.py",
+  "upstream": {
+    "id": "img2threejs",
+    "repository": "https://github.com/img2threejs/img2threejs.git",
+    "local_path": "third_party/img2threejs",
+    "tested_commit": "8b53125081c3798cf95bd517b64be024515a1c8d",
+    "test_command": "python3 -m unittest discover -s forge/tests",
+    "strict_validator": "forge/stage2_spec/validate_sculpt_spec.py"
+  },
+  "timeout": 3600,
+  "produces_output": true,
+  "warning": "Doit être exécuté avec --background --factory-startup dans projects/asset-builds/<id>; ne jamais l’injecter dans le .blend actif via MCP.",
+  "safety_notes": [
+    "L’app refuse ce workflow tant qu’un dispatcher batch isolé n’est pas disponible.",
+    "Valider la spec upstream avant Blender, puis réimporter le GLB livré."
+  ],
+  "fields": [
+    {
+      "id": "spec",
+      "type": "file",
+      "label": "ObjectSculptSpec JSON",
+      "required": true
+    },
+    {
+      "id": "trial_root",
+      "type": "directory",
+      "label": "Projet d’essai isolé",
+      "required": true
+    },
+    {
+      "id": "render_gates",
+      "type": "boolean",
+      "label": "Rendre les gates multi-angles",
+      "default": true
+    },
+    {
+      "id": "render_preview",
+      "type": "boolean",
+      "label": "Rendre la preview 8 secondes",
+      "default": false
+    }
+  ],
+  "produces": [
+    "object-sculpt-spec.json",
+    "scene/trial.blend",
+    "scene/asset.glb",
+    "gates/views/*.png",
+    "gates/lighting-gate-manifest.json",
+    "diagnostics/scene-audit.json",
+    "diagnostics/physical-validation.json",
+    "shot-manifest.json"
+  ],
+  "execution": "batch",
+  "mutates_scene": true,
+  "requires_confirmation": true,
+  "requires_working_copy": true,
+  "enabled_in_app": false,
+  "save_policy": "isolated_output_only",
+  "evidence_level": "operation",
+  "domains": [
+    "asset",
+    "game-asset"
+  ],
+  "maturity": "experimental",
+  "scope": "generic-or-adaptable"
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "asset-general",
+  "domain": "asset",
+  "blender_units": "meters",
+  "target": "reusable Blender and interchange asset",
+  "budgets_must_be_declared": ["triangles", "materials", "texture_sets", "texture_memory"],
+  "required_gates": [
+    "identity", "dimensions", "evaluated_geometry", "topology", "normals", "uv",
+    "materials", "pivot_and_axes", "physical_function", "export_reimport"
+  ],
+  "required_views": ["front", "side", "back", "three_quarter", "identity_detail"],
+  "default_formats": ["blend", "glb"],
+  "final_validator": "workflows/tools/validate_team_project.py"
+}

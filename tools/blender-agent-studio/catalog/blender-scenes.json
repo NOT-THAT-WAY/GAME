@@ -1,0 +1,1417 @@
+{
+  "schema_version": 1,
+  "blender_scenes": [
+    {
+      "path": "Pulsed_3D_model.backup-2026-06-10.blend",
+      "asset_id": "sha256:9659186eb6812648bf7a5e99de4def37de0393a3ab2675c80ca5a6228aa53a82",
+      "bytes": 96886,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "Scene",
+        "scenes": 1,
+        "objects": 3,
+        "meshes": 1,
+        "cameras": 1,
+        "lights": 1,
+        "frame_start": 1,
+        "frame_end": 250,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "Pulsed_3D_model.blend",
+      "asset_id": "sha256:30fcf25693bc55ef213a8fe713cdc597d76127b8a340ecfb91b040046d0a3236",
+      "bytes": 307159,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FLROOM",
+        "scenes": 2,
+        "objects": 24,
+        "meshes": 15,
+        "cameras": 3,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [
+          {
+            "name": "geometry_nodes_essentials.blend",
+            "path": "//../../../../Applications/Blender.app/Contents/Resources/5.1/datafiles/assets/nodes/geometry_nodes_essentials.blend",
+            "missing": false
+          },
+          {
+            "name": "geometry_nodes_essentials.blend.001",
+            "path": "//../../../../Applications/Blender.app/Contents/Resources/5.1/datafiles/assets/nodes/geometry_nodes_essentials.blend",
+            "missing": false
+          }
+        ],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "Pulsed_3D_model.blend1",
+      "asset_id": "sha256:6dd7dd815edfc97f51fa6c80cd910a5ff0e92a077e67244cf2210758e5bb1ffe",
+      "bytes": 309001,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "asset_library/characters/mecha-mascot-v001.blend",
+      "asset_id": "sha256:0bbba804501c5b9e7755a96e73b0a37afe5a4be4d1bdd9cdb5ab36039b9a65b5",
+      "bytes": 487597,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "MECHA_MASCOT_ASSET",
+        "scenes": 1,
+        "objects": 3,
+        "meshes": 2,
+        "cameras": 0,
+        "lights": 0,
+        "frame_start": 1,
+        "frame_end": 1,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "asset_library/characters/mecha-mascot-v002.blend",
+      "asset_id": "sha256:b66d5b688d154130ef8c8b35a5c0ac03ca9c626c4d9446c6116422872cfb82da",
+      "bytes": 443424,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "MECHA_MASCOT_ASSET",
+        "scenes": 1,
+        "objects": 3,
+        "meshes": 2,
+        "cameras": 0,
+        "lights": 0,
+        "frame_start": 1,
+        "frame_end": 1,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "asset_library/imported/drumboii-y2k-assets.blend",
+      "asset_id": "sha256:8f3c7be7a6774714e534501d2f0a51c04056894c8cb59b03cfcf5b053d09c8f0",
+      "bytes": 8955283,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "Scene",
+        "scenes": 1,
+        "objects": 95,
+        "meshes": 93,
+        "cameras": 1,
+        "lights": 0,
+        "frame_start": 1,
+        "frame_end": 250,
+        "fps": 60.0,
+        "engine": "BLENDER_WORKBENCH",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "asset_library/imported/drumboii-y2k-assets.blend1",
+      "asset_id": "sha256:e851059ff67a6a31f9bed62ca481054598455e1a3185ecb020b6846c5d97bf02",
+      "bytes": 8955281,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "asset_library/production/unrecorded-production-assets.blend",
+      "asset_id": "sha256:1339cf04bb2426017e43c4addbd2ec16652f318a8b4d73a41d859015e6bf929a",
+      "bytes": 96672,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "Scene",
+        "scenes": 1,
+        "objects": 11,
+        "meshes": 0,
+        "cameras": 2,
+        "lights": 3,
+        "frame_start": 1,
+        "frame_end": 250,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "asset_library/products/pulsed-assets.blend",
+      "asset_id": "sha256:b2bbea8dbffa7456031e89c81d005409cf20225c6e51ab235d57c9f5a101b462",
+      "bytes": 306501,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FLROOM",
+        "scenes": 2,
+        "objects": 24,
+        "meshes": 15,
+        "cameras": 3,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [
+          {
+            "name": "geometry_nodes_essentials.blend",
+            "path": "//../../../../../../Applications/Blender.app/Contents/Resources/5.1/datafiles/assets/nodes/geometry_nodes_essentials.blend",
+            "missing": false
+          },
+          {
+            "name": "geometry_nodes_essentials.blend.001",
+            "path": "//../../../../../../Applications/Blender.app/Contents/Resources/5.1/datafiles/assets/nodes/geometry_nodes_essentials.blend",
+            "missing": false
+          }
+        ],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/drumboii-blob-speaker-camera-study/Drumboii_Blob_Speaker_Camera_Study.blend",
+      "asset_id": "sha256:2bc5c29fd0756994668acb97270f2ed08154ec30be866611004de472f2209927",
+      "bytes": 638636,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "BLOB_SPEAKER_HERO",
+        "scenes": 1,
+        "objects": 13,
+        "meshes": 4,
+        "cameras": 1,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 144,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/drumboii-blob-speaker-camera-study/Drumboii_Blob_Speaker_Camera_Study.blend1",
+      "asset_id": "sha256:4c89ee509cc1c758cdc7358bb9e80239f8992a3874583321c851102edb545942",
+      "bytes": 638353,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/drumboii-gameboii-arcade-scene/Drumboii_Gameboii_Arcade_Scene.blend",
+      "asset_id": "sha256:1c074e58581f49ef8bca74f3603405d5a99287402578ab77a2292a1534e68899",
+      "bytes": 3142826,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "GAMEBOII_ARCADE_HERO",
+        "scenes": 1,
+        "objects": 63,
+        "meshes": 54,
+        "cameras": 1,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 120,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/drumboii-gameboii-arcade-scene/Drumboii_Gameboii_Arcade_Scene.blend1",
+      "asset_id": "sha256:b84366a47f43c6e8639acf5af20290aef726d1c38b46fe585f1b5a44c5b07b4a",
+      "bytes": 3141566,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/fl-studio-box-character-animation/FL_Studio_Box_Character_Anim.blend",
+      "asset_id": "sha256:12d979bf2fc95267fe3233ce2b20ffa73c75beba3a92618a1a3d20150d91079f",
+      "bytes": 209753,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+        "scenes": 1,
+        "objects": 99,
+        "meshes": 50,
+        "cameras": 5,
+        "lights": 13,
+        "frame_start": 1,
+        "frame_end": 406,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/fl-studio-box-character-animation/FL_Studio_Box_Character_Anim.blend1",
+      "asset_id": "sha256:f4662ead650c3890442d7d6ad1ef61f8c6ea2c9db9a75b30037b91814f47abb2",
+      "bytes": 227640,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/fl-studio-box-character-animation/FL_Studio_PianoRoll_Slope_Run_Codex.blend",
+      "asset_id": "sha256:30aaf5e1cd23db89e5da42ce3ef8669a4c7315df951927541f7f0a373d2015ab",
+      "bytes": 511293,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+        "scenes": 1,
+        "objects": 100,
+        "meshes": 55,
+        "cameras": 5,
+        "lights": 12,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/fl-studio-box-projection-template/FL_Studio_Box_Projection_Template.blend",
+      "asset_id": "sha256:8c00bbe0e216b71b2316f887da73831c96bdcfcaae0a8dc0a92f8cfbcd41420a",
+      "bytes": 125109,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_PROJECTION_TEMPLATE",
+        "scenes": 1,
+        "objects": 37,
+        "meshes": 28,
+        "cameras": 2,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 406,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/fl-studio-box-projection-template/FL_Studio_Box_Projection_Template.blend1",
+      "asset_id": "sha256:11c1637a96be4ec602c657407d73051e75d573e5ce6d98345db58f8d4f71e366",
+      "bytes": 115340,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+      "asset_id": "sha256:7f99a1f3e0663fb34df32eb9219a34c8b9f685973370ba94af8e88cf49bcbd46",
+      "bytes": 161303,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+        "scenes": 1,
+        "objects": 41,
+        "meshes": 28,
+        "cameras": 1,
+        "lights": 7,
+        "frame_start": 1,
+        "frame_end": 406,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend1",
+      "asset_id": "sha256:a5c70e9ac360b0b02e60f9f132bca5f8d600105834da3f1758a6578abdf1093b",
+      "bytes": 160808,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/fl-studio-box-template/FL_Studio_Box_Template.blend",
+      "asset_id": "sha256:74869ddc84e7a058c6dd6b71b42b7f5929c2aa1d39c901f68a951fbcb6745dd3",
+      "bytes": 117531,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_TEMPLATE",
+        "scenes": 1,
+        "objects": 36,
+        "meshes": 28,
+        "cameras": 1,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/fl-studio-box-template/FL_Studio_Box_Template.blend1",
+      "asset_id": "sha256:be543f9637984dcb9cc07a9a9f4786561629fcdd1f0551a90e50de841d187ae0",
+      "bytes": 117243,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/fl-studio-console-2026-07-19/FL_Studio_Box_V2.blend",
+      "asset_id": "sha256:b9231c72ec983e89ceabe48df6bdbc681e5d3d58dd8d17dd66d2861c54f0ade4",
+      "bytes": 117135,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_INSIDE_THE_BOX",
+        "scenes": 1,
+        "objects": 35,
+        "meshes": 28,
+        "cameras": 1,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/fl-studio-console-2026-07-19/FL_Studio_Box_V2.blend1",
+      "asset_id": "sha256:aa44be36d4761605e742d96c35359b675de72fab87c04e6117474685079e27fc",
+      "bytes": 117130,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/fl-studio-console-2026-07-19/FL_Studio_Console_Study.blend",
+      "asset_id": "sha256:9a8dde13d46944d3ec7a5a60205b840a64de2b2582a54984f65ebaa77d4ec96a",
+      "bytes": 657615,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_CONSOLE",
+        "scenes": 1,
+        "objects": 36,
+        "meshes": 30,
+        "cameras": 1,
+        "lights": 3,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 5
+      }
+    },
+    {
+      "path": "projects/fl-studio-console-2026-07-19/FL_Studio_Console_Study.blend1",
+      "asset_id": "sha256:1fbd719a57590408771780ce7644f74a0696721aefcab05b90a7ff1e7df540a5",
+      "bytes": 657484,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/fl-studio-console-2026-07-19/texture-runs/graphite-abs/FL_Studio_Box_graphite-abs.blend",
+      "asset_id": "sha256:31558f41769557504e16ee7d5c8adacf6ebc2c18c621d5f6d70356b03de637ae",
+      "bytes": 118874,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_GRAPHITE_ABS",
+        "scenes": 1,
+        "objects": 35,
+        "meshes": 28,
+        "cameras": 1,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/fl-studio-console-2026-07-19/texture-runs/graphite-abs/FL_Studio_Box_graphite-abs.blend1",
+      "asset_id": "sha256:5a25b0d38fa03e6015b347c59d91a47c58a7f2b984b024deb6308e9aff391247",
+      "bytes": 118872,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/fl-studio-console-2026-07-19/texture-runs/machined-gunmetal/FL_Studio_Box_machined-gunmetal.blend",
+      "asset_id": "sha256:bc7db72fcf8897b88a7b71d95844e74c800c9ed941255f1b1d28ab90e9c06491",
+      "bytes": 118900,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_MACHINED_GUNMETAL",
+        "scenes": 1,
+        "objects": 35,
+        "meshes": 28,
+        "cameras": 1,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/fl-studio-console-2026-07-19/texture-runs/machined-gunmetal/FL_Studio_Box_machined-gunmetal.blend1",
+      "asset_id": "sha256:0ddf44870265800263b81ac6b194cd4e37ef9749c40af18e0afa0a2f9b195cca",
+      "bytes": 119179,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/fl-studio-console-2026-07-19/texture-runs/pearl-polycarbonate/FL_Studio_Box_pearl-polycarbonate.blend",
+      "asset_id": "sha256:9bb500eb08a130023e2274160eed6ff8b88a5949b605c8b067701d0cf41cacc3",
+      "bytes": 118876,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_PEARL_POLYCARBONATE",
+        "scenes": 1,
+        "objects": 35,
+        "meshes": 28,
+        "cameras": 1,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/fl-studio-console-2026-07-19/texture-runs/pearl-polycarbonate/FL_Studio_Box_pearl-polycarbonate.blend1",
+      "asset_id": "sha256:754f45bf0720c01cfa4ac8de46185c8f2b09c9d6ac2b6cce74953b5c92a92b76",
+      "bytes": 118942,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/flip-phone-signal-film-v2/Flip_Phone_Last_Signal_V2.blend",
+      "asset_id": "sha256:08928efb732d02ae9848611bbdb7280f2d1499b2b682d2b36a6151ded7a91400",
+      "bytes": 4684784,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "LAST_SIGNAL_V2_MASTER",
+        "scenes": 1,
+        "objects": 107,
+        "meshes": 95,
+        "cameras": 4,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 720,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/flip-phone-signal-film-v2/Flip_Phone_Last_Signal_V2.blend1",
+      "asset_id": "sha256:8d7773a32f1409a4cf6463661d2b110b95740281145a44da4cef38145a08b71a",
+      "bytes": 4684640,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/flip-phone-signal-film/Flip_Phone_Last_Signal.blend",
+      "asset_id": "sha256:ac57874dc2e76379f30f665ed4445c8f7935477bcad089ae6d62e818b2ba6e36",
+      "bytes": 4621407,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "LAST_SIGNAL_MASTER",
+        "scenes": 1,
+        "objects": 176,
+        "meshes": 164,
+        "cameras": 5,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 720,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/flip-phone-signal-film/Flip_Phone_Last_Signal.blend1",
+      "asset_id": "sha256:7cbbf104b58da8f2ceafc4f62b6873cd4c89a6a18db677633b5a4973bd1f51be",
+      "bytes": 4620298,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/golem-de-gres/scene/golem.blend",
+      "asset_id": "sha256:abc26edf006980ec6458396479c60e8351a0964c50957f4744de766f28bf18c3",
+      "bytes": 151670,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "Scene",
+        "scenes": 1,
+        "objects": 12,
+        "meshes": 6,
+        "cameras": 2,
+        "lights": 3,
+        "frame_start": 1,
+        "frame_end": 250,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/golem-de-gres/scene/golem.blend1",
+      "asset_id": "sha256:5e5cd16113b3613f550f77cc8dceec5e8aa9f4fb29e194e54a07b1f055b23ee1",
+      "bytes": 151242,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/scene/trial.blend",
+      "asset_id": "sha256:8ed0ccdfbe17037442e83eb89c5fbe2dc44372db9aa522b74732b154981a0eca",
+      "bytes": 833943,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "K3_EDGE_RISE_REVEAL",
+        "scenes": 1,
+        "objects": 55,
+        "meshes": 30,
+        "cameras": 2,
+        "lights": 13,
+        "frame_start": 1,
+        "frame_end": 360,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/scene/trial.blend1",
+      "asset_id": "sha256:c3e3e56f1f0f45f3431930ec2532344905bd544ee9b5d15511bf27ab693393ca",
+      "bytes": 831554,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-fable-v001/FL_Studio_Box_Edge_Rise_Reveal_Fable.blend",
+      "asset_id": "sha256:3e3ba68a4b415b8b1254d3fcfedc8db8a3ccbe90d1ad691774053b88b9009f55",
+      "bytes": 1210486,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+        "scenes": 1,
+        "objects": 62,
+        "meshes": 42,
+        "cameras": 2,
+        "lights": 10,
+        "frame_start": 1,
+        "frame_end": 360,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-fable-v001/scene/trial.blend",
+      "asset_id": "sha256:3e3ba68a4b415b8b1254d3fcfedc8db8a3ccbe90d1ad691774053b88b9009f55",
+      "bytes": 1210486,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+        "scenes": 1,
+        "objects": 62,
+        "meshes": 42,
+        "cameras": 2,
+        "lights": 10,
+        "frame_start": 1,
+        "frame_end": 360,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-fable-v001/scene/trial.blend1",
+      "asset_id": "sha256:4a6ac093940c50ea94f5cb43f124b83803ed825788c2d87dd222ec77f124c26b",
+      "bytes": 1213719,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-kimi-v001/scene/trial.blend",
+      "asset_id": "sha256:6454b8f83e09bc5ca446aea88a789b280777fb7183f86eb544d3ad7685149983",
+      "bytes": 1032045,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+        "scenes": 1,
+        "objects": 51,
+        "meshes": 30,
+        "cameras": 2,
+        "lights": 11,
+        "frame_start": 1,
+        "frame_end": 360,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-kimi-v001/scene/trial.blend1",
+      "asset_id": "sha256:19c7f22e5800081e357490eec120b9771ca531d4fe46e20169103041b58fd61d",
+      "bytes": 628307,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/scene/trial.blend",
+      "asset_id": "sha256:12d979bf2fc95267fe3233ce2b20ffa73c75beba3a92618a1a3d20150d91079f",
+      "bytes": 209753,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+        "scenes": 1,
+        "objects": 99,
+        "meshes": 50,
+        "cameras": 5,
+        "lights": 13,
+        "frame_start": 1,
+        "frame_end": 406,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/scene/trial.blend1",
+      "asset_id": "sha256:2f84dc4ba233580f5ad8d8cd2f46d5d4656d537c38a3138cbe8190d780a0ce53",
+      "bytes": 210047,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v001/scene/trial.blend",
+      "asset_id": "sha256:ea5727d8e84eca16fda625f52bd97011a17b521b2c8115e6be219fbdedae6a48",
+      "bytes": 1975824,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "K3_MECHA_MASCOT_PRESENTATION",
+        "scenes": 1,
+        "objects": 16,
+        "meshes": 4,
+        "cameras": 1,
+        "lights": 5,
+        "frame_start": 1,
+        "frame_end": 144,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 1
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v001/scene/trial.blend1",
+      "asset_id": "sha256:963e9c79ee389b28ae56cacc47f5b85fb1daf330f833b6d5370e25c4cb1952c6",
+      "bytes": 1973881,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v002/scene/trial.blend",
+      "asset_id": "sha256:7f32de647c5bdf2f1edb8985a9036fe2e310614e92211d0bcc9a6f8fb887bbfc",
+      "bytes": 809469,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "K3_MECHA_MASCOT_PRESENTATION",
+        "scenes": 1,
+        "objects": 16,
+        "meshes": 4,
+        "cameras": 1,
+        "lights": 5,
+        "frame_start": 1,
+        "frame_end": 144,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 1
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v002/scene/trial.blend1",
+      "asset_id": "sha256:584b79f8a7d621bfe460fd6b7d2ab97e462c521b07fba2905226295863cb93fc",
+      "bytes": 809743,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/scene/trial.blend",
+      "asset_id": "sha256:30aaf5e1cd23db89e5da42ce3ef8669a4c7315df951927541f7f0a373d2015ab",
+      "bytes": 511293,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+        "scenes": 1,
+        "objects": 100,
+        "meshes": 55,
+        "cameras": 5,
+        "lights": 12,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/scene/trial.blend1",
+      "asset_id": "sha256:d2b5e85875c6efbc3fff9ee9dff1abc20f9737af30d4569d5ad07b04d706f694",
+      "bytes": 498795,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/FL_Studio_PianoRoll_Slope_Run_Fable.blend",
+      "asset_id": "sha256:d723750c2106ebe67214b1bc5642a0fe2c968bed498c6c4a750ead6319c7e691",
+      "bytes": 585550,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+        "scenes": 1,
+        "objects": 58,
+        "meshes": 29,
+        "cameras": 5,
+        "lights": 12,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/scene/trial.blend",
+      "asset_id": "sha256:d723750c2106ebe67214b1bc5642a0fe2c968bed498c6c4a750ead6319c7e691",
+      "bytes": 585550,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+        "scenes": 1,
+        "objects": 58,
+        "meshes": 29,
+        "cameras": 5,
+        "lights": 12,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/scene/trial.blend1",
+      "asset_id": "sha256:d8b8246cdcb5c0d7439e93737b032b6a86eca85b2b52121af04c3cc4738645fd",
+      "bytes": 584843,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-kimi-v001/FL_Studio_PianoRoll_Slope_Run_Kimi.blend",
+      "asset_id": "sha256:f4a9e2a08972eb4c28042054bcddd2849f053e9964305863f73238a338b0d5cc",
+      "bytes": 372943,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+        "scenes": 1,
+        "objects": 89,
+        "meshes": 55,
+        "cameras": 5,
+        "lights": 12,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-kimi-v001/scene/trial.blend",
+      "asset_id": "sha256:f4a9e2a08972eb4c28042054bcddd2849f053e9964305863f73238a338b0d5cc",
+      "bytes": 372943,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+        "scenes": 1,
+        "objects": 89,
+        "meshes": 55,
+        "cameras": 5,
+        "lights": 12,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 30.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-kimi-v001/scene/trial.blend1",
+      "asset_id": "sha256:48c4c21a649689a7470c3e3aa924d84868036cf9ca4102d3646dd50e26608819",
+      "bytes": 374666,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pulsed-bench-demo-v001/scene/trial.blend",
+      "asset_id": "sha256:9a27f71f57456b628eea5f690c9c3bf60d223b8517cb3df861ed1519032b9932",
+      "bytes": 569057,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "Scene",
+        "scenes": 1,
+        "objects": 196,
+        "meshes": 186,
+        "cameras": 1,
+        "lights": 5,
+        "frame_start": 1,
+        "frame_end": 144,
+        "fps": 24.0,
+        "engine": "CYCLES",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pulsed-bench-demo-v001/scene/trial.blend1",
+      "asset_id": "sha256:5e8b9a242c797fef1174ba8382a53ef919ee3fa9fab4744d567a0db1fffcc1ff",
+      "bytes": 569071,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-transparent-audio-deck-git-v002/scene/trial.blend",
+      "asset_id": "sha256:9b69a745004f9869ed497b526f903998821bb85d5ff24dd106c589f6a7b5ee5d",
+      "bytes": 431640,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "Scene",
+        "scenes": 1,
+        "objects": 94,
+        "meshes": 74,
+        "cameras": 1,
+        "lights": 5,
+        "frame_start": 1,
+        "frame_end": 192,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/scene/trial.blend",
+      "asset_id": "sha256:ef25de11cb267a40c69ccdd61c520bdf4941f1ef604991417d04b9b35f8830fe",
+      "bytes": 434484,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "Scene",
+        "scenes": 1,
+        "objects": 94,
+        "meshes": 74,
+        "cameras": 1,
+        "lights": 5,
+        "frame_start": 1,
+        "frame_end": 192,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/pulsed-model-v2/scene/pulsed_v2.blend",
+      "asset_id": "sha256:9ecf8bec58e5527c54eff3a27835b66c7ad7d2fdc82859e2d1fd21af863415bc",
+      "bytes": 569251,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "Scene",
+        "scenes": 1,
+        "objects": 185,
+        "meshes": 185,
+        "cameras": 0,
+        "lights": 0,
+        "frame_start": 1,
+        "frame_end": 250,
+        "fps": 24.0,
+        "engine": "CYCLES",
+        "libraries": [
+          {
+            "name": "geometry_nodes_essentials.blend",
+            "path": "//../../../../../../../Applications/Blender.app/Contents/Resources/5.1/datafiles/assets/nodes/geometry_nodes_essentials.blend",
+            "missing": false
+          },
+          {
+            "name": "geometry_nodes_essentials.blend.001",
+            "path": "//../../../../../../../Applications/Blender.app/Contents/Resources/5.1/datafiles/assets/nodes/geometry_nodes_essentials.blend",
+            "missing": false
+          }
+        ],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/pulsed-model-v2/scene/pulsed_v2.blend1",
+      "asset_id": "sha256:3182266836b024f50e951aba19dc0df7ffcdbff789d13707aba098326ebbb6b4",
+      "bytes": 568775,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/pulsed-model-v2/scene/pulsed_v2_anim.blend",
+      "asset_id": "sha256:353a5a25877d82d8c1d62ceaf47d90c74c7abd21068f8ba57fe33288919e4de4",
+      "bytes": 626886,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "Scene",
+        "scenes": 1,
+        "objects": 198,
+        "meshes": 189,
+        "cameras": 5,
+        "lights": 3,
+        "frame_start": 1,
+        "frame_end": 192,
+        "fps": 24.0,
+        "engine": "CYCLES",
+        "libraries": [
+          {
+            "name": "geometry_nodes_essentials.blend",
+            "path": "//../../../../../../../Applications/Blender.app/Contents/Resources/5.1/datafiles/assets/nodes/geometry_nodes_essentials.blend",
+            "missing": false
+          },
+          {
+            "name": "geometry_nodes_essentials.blend.001",
+            "path": "//../../../../../../../Applications/Blender.app/Contents/Resources/5.1/datafiles/assets/nodes/geometry_nodes_essentials.blend",
+            "missing": false
+          }
+        ],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/pulsed-model-v2/scene/pulsed_v2_anim.blend1",
+      "asset_id": "sha256:2b847cb7cc36b51fe9e78eaebbf1d035847337e0a96447d39b4cc9cfbe47dca5",
+      "bytes": 626918,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/01-clay-object-motion/01-clay-object-motion.blend",
+      "asset_id": "sha256:1323189c73ca1aad5c741fce9c528f4f6c5fb53cf43d324367370b6ddaae4c94",
+      "bytes": 604366,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "TUTORIAL_SYNTHESIS_STAGE_01",
+        "scenes": 1,
+        "objects": 12,
+        "meshes": 4,
+        "cameras": 1,
+        "lights": 3,
+        "frame_start": 1,
+        "frame_end": 72,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/02-camera-language/02-camera-language.blend",
+      "asset_id": "sha256:6476894b75545be77aca02f9df2ab019309c0d0c69b5d2419d6f56cf11edafc0",
+      "bytes": 607605,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "TUTORIAL_SYNTHESIS_STAGE_02",
+        "scenes": 1,
+        "objects": 15,
+        "meshes": 7,
+        "cameras": 1,
+        "lights": 3,
+        "frame_start": 1,
+        "frame_end": 72,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/02-camera-language/02-camera-language.blend1",
+      "asset_id": "sha256:565073913cdc8bed887b661e9e8ea60975c210d1c82ff4d2801915060d686fda",
+      "bytes": 607575,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/03-procedural-lookdev/03-procedural-lookdev.blend",
+      "asset_id": "sha256:aa102b4a1c38a2e4398274a078017f6ed6f7a124ee022d3e9fa3f44cda914f24",
+      "bytes": 614780,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "TUTORIAL_SYNTHESIS_STAGE_03",
+        "scenes": 1,
+        "objects": 17,
+        "meshes": 9,
+        "cameras": 1,
+        "lights": 3,
+        "frame_start": 1,
+        "frame_end": 72,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/04-mechanical-choreography/04-mechanical-choreography.blend",
+      "asset_id": "sha256:c535d3cd6ce557999eb667649fb7c5529929e09637fc20ae6fd88fe82a5beaba",
+      "bytes": 3651774,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "TUTORIAL_SYNTHESIS_STAGE_04",
+        "scenes": 1,
+        "objects": 82,
+        "meshes": 69,
+        "cameras": 2,
+        "lights": 4,
+        "frame_start": 1,
+        "frame_end": 144,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/04-mechanical-choreography/04-mechanical-choreography.blend1",
+      "asset_id": "sha256:eace61f2bb7279ed1121d0b547b01ad25b2d4a1dbdc2ac48e97b7002f56c6e5d",
+      "bytes": 3650564,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/05-environment-shot/05-environment-shot.blend",
+      "asset_id": "sha256:1302e570f13bca0bf7a86bc5a79b6ec320e90ceb7961eeb131429024cfab459f",
+      "bytes": 6398510,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "TUTORIAL_SYNTHESIS_STAGE_05",
+        "scenes": 1,
+        "objects": 176,
+        "meshes": 154,
+        "cameras": 3,
+        "lights": 7,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/05-environment-shot/05-environment-shot.blend1",
+      "asset_id": "sha256:46459374ae26038745f99d8037ab269c2475bc0ac33b0cf087ed63a310b9c838",
+      "bytes": 6385158,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    },
+    {
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/06-final-multishot/06-final-multishot.blend",
+      "asset_id": "sha256:2b81d7795c60155010a32d7a740f88a427ebabd6b9410647ad9e32be8b9c676a",
+      "bytes": 6408094,
+      "bundled": false,
+      "audit": {
+        "status": "ok",
+        "exit_code": 0,
+        "blender": "5.1.1",
+        "scene": "TUTORIAL_SYNTHESIS_STAGE_06",
+        "scenes": 1,
+        "objects": 176,
+        "meshes": 154,
+        "cameras": 3,
+        "lights": 7,
+        "frame_start": 1,
+        "frame_end": 240,
+        "fps": 24.0,
+        "engine": "BLENDER_EEVEE",
+        "libraries": [],
+        "missing_media": [],
+        "packed_files": 0
+      }
+    },
+    {
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/06-final-multishot/06-final-multishot.blend1",
+      "asset_id": "sha256:3c3ddebabbdd3c596e95fbe224d0abe26c73171011b46a98928b5f03787c334c",
+      "bytes": 6407793,
+      "bundled": false,
+      "audit": {
+        "status": "not_audited"
+      }
+    }
+  ]
+}

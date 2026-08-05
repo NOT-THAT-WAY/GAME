@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "id": "drumboii-camera-tutorial-2026-07-18",
+  "title": "Blender Camera Tutorial — Drumboiii",
+  "status": "ready_for_ai",
+  "source_name": "source-proxy.mp4",
+  "original_filename": "Blender_Camera_Tutoriel_Drumboiii.mp4",
+  "external_original": "${ORIGINAL_MOVIES}/CapCut/Blender_Camera_Tutoriel_Drumboiii.mp4",
+  "original_sha256": "6c2d745d418c52c845268363368706d4abda27776317438c747922ff0cae2cfd",
+  "source_policy": "720p analysis proxy in repo; immutable 1080p original retained externally",
+  "created": "2026-07-19T00:00:00+02:00",
+  "updated": "2026-07-19T00:45:32+02:00",
+  "analysis_status": "completed",
+  "technical": {
+    "duration": 1077.127007,
+    "frame_interval_requested": 5.0,
+    "frame_interval_effective": 5.0,
+    "scene_threshold": 0.28,
+    "regular_frame_count": 215,
+    "scene_frame_count": 2,
+    "has_video": true,
+    "has_audio": true
+  },
+  "evidence": {
+    "source": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/source-proxy.mp4",
+    "probe": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/probe.json",
+    "frames_dir": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/frames/regular",
+    "scenes_dir": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/frames/scenes",
+    "contact_sheet": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/contact-sheet.jpg",
+    "audio": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/audio.wav",
+    "transcript": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/transcript.json"
+  }
+}

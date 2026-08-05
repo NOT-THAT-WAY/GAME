@@ -1,0 +1,58 @@
+{
+  "snapshot_iso": "2026-06-10T10:29:26.949841+00:00",
+  "snapshot_folder": "2026-06-10-1029-r_EfOFVTI8sd-v2-nano-banana-pro-4k-seed720006",
+  "url_id": "r_EfOFVTI8sd",
+  "label": "v2-nano-banana-pro-4k-seed720006",
+  "output_file": "output.png",
+  "output_size_bytes": 17568832,
+  "url": "https://v3b.fal.media/files/b/0a9db937/r_EfOFVTI8sdn4XbDrQ3u_mt78uYmx.png",
+  "source_path": "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781087363778459000_0.png",
+  "prompt_snapshot": null,
+  "prompt_source": null,
+  "refs_manifest": [
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-02_hero-back-internals.jpeg",
+      "size_bytes": 6875634,
+      "sha256_8": "9389d1c8"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/_gen-runs/top-edge/runs/latest/output.png",
+      "size_bytes": 17090824,
+      "sha256_8": "9d177a82"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/_gen-runs/side-right/runs/latest/output.png",
+      "size_bytes": 16432283,
+      "sha256_8": "a2a74cf1"
+    }
+  ],
+  "provider": "falai",
+  "model": "fal-ai/gemini-3-pro-image-preview/edit",
+  "cost_usd": 0.15,
+  "duration_sec": 101.84297299385071,
+  "seed": null,
+  "adapter_metadata": {
+    "output_urls": [
+      "https://v3b.fal.media/files/b/0a9db937/r_EfOFVTI8sdn4XbDrQ3u_mt78uYmx.png"
+    ],
+    "local_paths": [
+      "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781087363778459000_0.png"
+    ],
+    "raw_result": "{'images': [{'url': 'https://v3b.fal.media/files/b/0a9db937/r_EfOFVTI8sdn4XbDrQ3u_mt78uYmx.png', 'content_type': 'image/png', 'file_name': 'r_EfOFVTI8sdn4XbDrQ3u_mt78uYmx.png', 'file_size': None, 'width': None, 'height': None}], 'description': \"**Developing Product Focus**\\n\\nI'm concentrating on capturing the precise purple translucent handheld device, ensuring the internal PCB is visible. The current iteration aims for a three-quarter view from above and behind, slightly to the right, to highl...[truncated]",
+    "fal_model": "fal-ai/gemini-3-pro-image-preview/edit"
+  },
+  "extra": {
+    "spec": "audits_blender/pulsed-asset-prompts-v2.md (Sliz 2026-06-10)",
+    "doctrine": "v2 \u2014 prompt d\u00e9crit seulement le cadre, identit\u00e9 par refs, n\u00e9gatif court",
+    "kind": "preflight-reference-v2",
+    "provider": "falai",
+    "model": "fal-ai/gemini-3-pro-image-preview/edit",
+    "aspect_ratio": "16:9",
+    "resolution": "4K",
+    "output_format": "png",
+    "seed": 720006,
+    "image_id": "hero-back-top",
+    "intended_dest": "assets_blender/hero-back-top-34.png (NON copi\u00e9 \u2014 validation carte requise)",
+    "prompt": "Photorealistic product photography of the exact handheld device shown in the attached reference images \u2014 same shell, same proportions, same materials (glossy translucent amethyst-purple plastic with the internal PCB visible through it), same parting seam. Warm cream seamless background, soft drop shadow, consistent with the references. Do not add, remove, move or restyle any element of the device. No text overlays, no props, no people.\n\nThree-quarter hero shot of the device seen from above and behind, slightly to the right: showing together the back shell with the PCB visible through the purple plastic, the plain top edge with its parting seam and two small flush shell clips (as in the attached top-edge reference), and the plain right side edge. Floating over the warm cream background, soft drop shadow, same hero style as the attached references."
+  }
+}

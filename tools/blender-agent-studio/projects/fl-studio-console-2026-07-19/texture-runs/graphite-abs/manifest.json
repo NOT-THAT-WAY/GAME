@@ -1,0 +1,35 @@
+{
+  "run": "graphite-abs",
+  "label": "Graphite Soft-Touch ABS",
+  "created_at": "2026-07-19T04:11:57.789275+02:00",
+  "source_blend": "projects/fl-studio-console-2026-07-19/FL_Studio_Box_V2.blend",
+  "blend": "projects/fl-studio-console-2026-07-19/texture-runs/graphite-abs/FL_Studio_Box_graphite-abs.blend",
+  "material": {
+    "shell_colors": [
+      [
+        0.018,
+        0.024,
+        0.034,
+        1
+      ],
+      [
+        0.105,
+        0.09,
+        0.115,
+        1
+      ]
+    ],
+    "metallic": 0.18,
+    "roughness": 0.38,
+    "noise_scale": 5.0,
+    "bump_strength": 0.075
+  },
+  "gate_frames": [
+    1,
+    60,
+    120,
+    180,
+    240
+  ],
+  "status": "completed"
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "asset_id": "__ASSET_ID__",
+  "status": "draft",
+  "objective": "__OBJECTIVE__",
+  "style_profile": "__STYLE_PROFILE__",
+  "reference_files": "__REFERENCE_FILES__",
+  "intended_use": "TO_DEFINE",
+  "camera_distance_range_m": [0.5, 5.0],
+  "delivery": {
+    "formats": ["blend"],
+    "real_world_scale_required": true,
+    "materials_required": true,
+    "uv_required": false,
+    "rig_required": false
+  },
+  "invariants": [
+    "canonical silhouette and proportions",
+    "real-world scale and declared units",
+    "no accidental self-intersection",
+    "no missing external dependency"
+  ]
+}

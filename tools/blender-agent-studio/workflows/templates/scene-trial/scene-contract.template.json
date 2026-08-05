@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "trial_id": "__TRIAL_ID__",
+  "status": "draft",
+  "coordinate_frame": {
+    "up": "+Z",
+    "user_side": "TO_DEFINE",
+    "front": "TO_DEFINE",
+    "right": "TO_DEFINE",
+    "units": "meters"
+  },
+  "objects": [
+    {
+      "name": "TO_INSPECT",
+      "semantic_role": "hero_subject",
+      "fixed_or_moving": "TO_DEFINE",
+      "parent": "TO_DEFINE",
+      "interaction_surfaces": [],
+      "support_surfaces": [],
+      "allowed_motion": [],
+      "forbidden_motion": ["teleport", "unmotivated_drift", "environment_intersection"]
+    }
+  ],
+  "joints": [],
+  "supports_and_contacts": [],
+  "collision_pairs": [],
+  "camera_corridor": {
+    "description": "TO_DEFINE",
+    "clearance_margin_m": 0.1,
+    "obstacles": [],
+    "validated": false
+  },
+  "shot_states": [
+    {"name": "S0_STILL", "time_seconds": 0.0, "object_state": "TO_DEFINE", "camera_state": "TO_DEFINE"},
+    {"name": "S1_ANTICIPATION", "time_seconds": 1.0, "object_state": "TO_DEFINE", "camera_state": "TO_DEFINE"},
+    {"name": "S2_ACTION", "time_seconds": 2.0, "object_state": "TO_DEFINE", "camera_state": "TO_DEFINE"},
+    {"name": "S3_IMPACT", "time_seconds": 5.0, "object_state": "TO_DEFINE", "camera_state": "TO_DEFINE"},
+    {"name": "S4_SETTLE", "time_seconds": 6.0, "object_state": "TO_DEFINE", "camera_state": "TO_DEFINE"},
+    {"name": "S5_STILL", "time_seconds": "__DURATION__", "object_state": "TO_DEFINE", "camera_state": "TO_DEFINE"}
+  ],
+  "validation": {
+    "evaluation_rules": "knowledge/SCENE_TRIAL_EVALUATION_RULES.md",
+    "physical_evidence_schema_version": 2,
+    "required_views": ["hero", "side", "top_or_rear_if_occluded"],
+    "sample_every_n_frames": 1,
+    "thresholds_locked_before_animation": true,
+    "default_thresholds_m": {
+      "max_environment_penetration": 0.002,
+      "max_planted_support_gap": 0.005,
+      "max_planted_drift": 0.005,
+      "min_swing_clearance": 0.01,
+      "min_camera_clearance": 0.08
+    },
+    "critical_failure_cap": 49
+  }
+}

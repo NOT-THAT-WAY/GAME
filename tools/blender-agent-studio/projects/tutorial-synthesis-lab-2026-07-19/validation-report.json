@@ -1,0 +1,850 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-07-19T13:22:28.222911+00:00",
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "final_preview": {
+    "path": "projects/tutorial-synthesis-lab-2026-07-19/final-preview.mp4",
+    "bytes": 594869,
+    "frame_count": 240
+  },
+  "tutorials": [
+    {
+      "id": "beginner-blender-tutorial-2026",
+      "folder": "beginner-blender-tutorial-2026",
+      "analysis_status": "completed",
+      "source_bytes": 852083462,
+      "missing": []
+    },
+    {
+      "id": "drumboii-camera-tutorial-2026-07-18",
+      "folder": "drumboii-camera-tutorial-2026-07-18",
+      "analysis_status": "completed",
+      "source_bytes": 55973600,
+      "missing": []
+    },
+    {
+      "id": "factory-animation-polygon-runway",
+      "folder": "factory-animation-polygon-runway",
+      "analysis_status": "completed",
+      "source_bytes": 120142968,
+      "missing": []
+    },
+    {
+      "id": "quick-animation-blender-4",
+      "folder": "quick-animation-blender-4",
+      "analysis_status": "completed",
+      "source_bytes": 305112584,
+      "missing": []
+    },
+    {
+      "id": "ray-ban-product-animation",
+      "folder": "ray-ban-product-animation",
+      "analysis_status": "completed",
+      "source_bytes": 199207433,
+      "missing": []
+    },
+    {
+      "id": "wireless-pods-animation-polygon-runway",
+      "folder": "wireless-pods-animation-polygon-runway",
+      "analysis_status": "completed",
+      "source_bytes": 133097823,
+      "missing": []
+    }
+  ],
+  "stages": [
+    {
+      "stage": 1,
+      "stage_name": "01-clay-object-motion",
+      "blend_bytes": 604366,
+      "snapshot_count": 5,
+      "image_metrics": [
+        {
+          "frame": 1,
+          "mean_luma": 136.994,
+          "extrema": [
+            0,
+            204
+          ]
+        },
+        {
+          "frame": 12,
+          "mean_luma": 136.994,
+          "extrema": [
+            0,
+            204
+          ]
+        },
+        {
+          "frame": 24,
+          "mean_luma": 138.017,
+          "extrema": [
+            0,
+            204
+          ]
+        },
+        {
+          "frame": 54,
+          "mean_luma": 142.101,
+          "extrema": [
+            0,
+            210
+          ]
+        },
+        {
+          "frame": 72,
+          "mean_luma": 136.636,
+          "extrema": [
+            0,
+            209
+          ]
+        }
+      ],
+      "adjacent_deltas": [
+        {
+          "from": 1,
+          "to": 12,
+          "mean_abs_delta": 0.0
+        },
+        {
+          "from": 12,
+          "to": 24,
+          "mean_abs_delta": 3.976
+        },
+        {
+          "from": 24,
+          "to": 54,
+          "mean_abs_delta": 11.447
+        },
+        {
+          "from": 54,
+          "to": 72,
+          "mean_abs_delta": 8.666
+        }
+      ],
+      "blender_validation": {
+        "passed": true,
+        "errors": [],
+        "scene": "TUTORIAL_SYNTHESIS_STAGE_01",
+        "stage": 1,
+        "objects": 12,
+        "materials": 15,
+        "cameras": [
+          "USTUDIO_CAM_SPEAKER"
+        ],
+        "animated_roots": [
+          "USTUDIO_BLOB_SPEAKER_ROOT"
+        ],
+        "timeline_markers": [
+          {
+            "name": "USTUDIO_S0_STILL",
+            "frame": 1
+          },
+          {
+            "name": "USTUDIO_S1_ANTICIPATION",
+            "frame": 24
+          },
+          {
+            "name": "USTUDIO_S2_ACTION",
+            "frame": 54
+          },
+          {
+            "name": "USTUDIO_SPEAKER_REST",
+            "frame": 72
+          }
+        ]
+      }
+    },
+    {
+      "stage": 2,
+      "stage_name": "02-camera-language",
+      "blend_bytes": 607605,
+      "snapshot_count": 5,
+      "image_metrics": [
+        {
+          "frame": 1,
+          "mean_luma": 51.502,
+          "extrema": [
+            0,
+            234
+          ]
+        },
+        {
+          "frame": 12,
+          "mean_luma": 51.502,
+          "extrema": [
+            0,
+            234
+          ]
+        },
+        {
+          "frame": 24,
+          "mean_luma": 47.499,
+          "extrema": [
+            0,
+            233
+          ]
+        },
+        {
+          "frame": 54,
+          "mean_luma": 65.089,
+          "extrema": [
+            0,
+            236
+          ]
+        },
+        {
+          "frame": 72,
+          "mean_luma": 83.642,
+          "extrema": [
+            0,
+            236
+          ]
+        }
+      ],
+      "adjacent_deltas": [
+        {
+          "from": 1,
+          "to": 12,
+          "mean_abs_delta": 0.0
+        },
+        {
+          "from": 12,
+          "to": 24,
+          "mean_abs_delta": 9.164
+        },
+        {
+          "from": 24,
+          "to": 54,
+          "mean_abs_delta": 45.913
+        },
+        {
+          "from": 54,
+          "to": 72,
+          "mean_abs_delta": 27.374
+        }
+      ],
+      "blender_validation": {
+        "passed": true,
+        "errors": [],
+        "scene": "TUTORIAL_SYNTHESIS_STAGE_02",
+        "stage": 2,
+        "objects": 15,
+        "materials": 15,
+        "cameras": [
+          "USTUDIO_CAM_SPEAKER"
+        ],
+        "animated_roots": [
+          "USTUDIO_BLOB_SPEAKER_ROOT"
+        ],
+        "timeline_markers": [
+          {
+            "name": "USTUDIO_S0_STILL",
+            "frame": 1
+          },
+          {
+            "name": "USTUDIO_S1_ANTICIPATION",
+            "frame": 24
+          },
+          {
+            "name": "USTUDIO_S2_ACTION",
+            "frame": 54
+          },
+          {
+            "name": "USTUDIO_SPEAKER_REST",
+            "frame": 72
+          }
+        ]
+      }
+    },
+    {
+      "stage": 3,
+      "stage_name": "03-procedural-lookdev",
+      "blend_bytes": 614780,
+      "snapshot_count": 5,
+      "image_metrics": [
+        {
+          "frame": 1,
+          "mean_luma": 49.262,
+          "extrema": [
+            0,
+            244
+          ]
+        },
+        {
+          "frame": 12,
+          "mean_luma": 49.262,
+          "extrema": [
+            0,
+            244
+          ]
+        },
+        {
+          "frame": 24,
+          "mean_luma": 46.897,
+          "extrema": [
+            0,
+            244
+          ]
+        },
+        {
+          "frame": 54,
+          "mean_luma": 61.623,
+          "extrema": [
+            0,
+            244
+          ]
+        },
+        {
+          "frame": 72,
+          "mean_luma": 69.945,
+          "extrema": [
+            0,
+            235
+          ]
+        }
+      ],
+      "adjacent_deltas": [
+        {
+          "from": 1,
+          "to": 12,
+          "mean_abs_delta": 0.0
+        },
+        {
+          "from": 12,
+          "to": 24,
+          "mean_abs_delta": 16.19
+        },
+        {
+          "from": 24,
+          "to": 54,
+          "mean_abs_delta": 44.863
+        },
+        {
+          "from": 54,
+          "to": 72,
+          "mean_abs_delta": 34.628
+        }
+      ],
+      "blender_validation": {
+        "passed": true,
+        "errors": [],
+        "scene": "TUTORIAL_SYNTHESIS_STAGE_03",
+        "stage": 3,
+        "objects": 17,
+        "materials": 19,
+        "cameras": [
+          "USTUDIO_CAM_SPEAKER"
+        ],
+        "animated_roots": [
+          "USTUDIO_BLOB_SPEAKER_ROOT"
+        ],
+        "timeline_markers": [
+          {
+            "name": "USTUDIO_S0_STILL",
+            "frame": 1
+          },
+          {
+            "name": "USTUDIO_S1_ANTICIPATION",
+            "frame": 24
+          },
+          {
+            "name": "USTUDIO_S2_ACTION",
+            "frame": 54
+          },
+          {
+            "name": "USTUDIO_SPEAKER_REST",
+            "frame": 72
+          }
+        ]
+      }
+    },
+    {
+      "stage": 4,
+      "stage_name": "04-mechanical-choreography",
+      "blend_bytes": 3651774,
+      "snapshot_count": 5,
+      "image_metrics": [
+        {
+          "frame": 73,
+          "mean_luma": 28.876,
+          "extrema": [
+            0,
+            244
+          ]
+        },
+        {
+          "frame": 84,
+          "mean_luma": 28.876,
+          "extrema": [
+            0,
+            244
+          ]
+        },
+        {
+          "frame": 108,
+          "mean_luma": 52.371,
+          "extrema": [
+            1,
+            227
+          ]
+        },
+        {
+          "frame": 128,
+          "mean_luma": 42.74,
+          "extrema": [
+            2,
+            224
+          ]
+        },
+        {
+          "frame": 144,
+          "mean_luma": 46.748,
+          "extrema": [
+            0,
+            232
+          ]
+        }
+      ],
+      "adjacent_deltas": [
+        {
+          "from": 73,
+          "to": 84,
+          "mean_abs_delta": 0.0
+        },
+        {
+          "from": 84,
+          "to": 108,
+          "mean_abs_delta": 47.296
+        },
+        {
+          "from": 108,
+          "to": 128,
+          "mean_abs_delta": 44.727
+        },
+        {
+          "from": 128,
+          "to": 144,
+          "mean_abs_delta": 22.097
+        }
+      ],
+      "blender_validation": {
+        "passed": true,
+        "errors": [],
+        "scene": "TUTORIAL_SYNTHESIS_STAGE_04",
+        "stage": 4,
+        "objects": 82,
+        "materials": 52,
+        "cameras": [
+          "USTUDIO_CAM_SPEAKER",
+          "USTUDIO_CAM_GAMEBOII"
+        ],
+        "animated_roots": [
+          "USTUDIO_BLOB_SPEAKER_ROOT",
+          "USTUDIO_DRUMBOII_GAMEBOII_ROOT"
+        ],
+        "timeline_markers": [
+          {
+            "name": "USTUDIO_S0_STILL",
+            "frame": 1
+          },
+          {
+            "name": "USTUDIO_S1_ANTICIPATION",
+            "frame": 24
+          },
+          {
+            "name": "USTUDIO_S2_ACTION",
+            "frame": 54
+          },
+          {
+            "name": "USTUDIO_SPEAKER_REST",
+            "frame": 72
+          },
+          {
+            "name": "USTUDIO_CONVEYOR_START",
+            "frame": 73
+          },
+          {
+            "name": "USTUDIO_GAME_PEAK",
+            "frame": 108
+          },
+          {
+            "name": "USTUDIO_GAME_IMPACT",
+            "frame": 128
+          },
+          {
+            "name": "USTUDIO_GAME_REST",
+            "frame": 144
+          }
+        ]
+      }
+    },
+    {
+      "stage": 5,
+      "stage_name": "05-environment-shot",
+      "blend_bytes": 6398510,
+      "snapshot_count": 5,
+      "image_metrics": [
+        {
+          "frame": 145,
+          "mean_luma": 96.86,
+          "extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "frame": 156,
+          "mean_luma": 96.86,
+          "extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "frame": 192,
+          "mean_luma": 86.604,
+          "extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "frame": 228,
+          "mean_luma": 64.078,
+          "extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "frame": 240,
+          "mean_luma": 64.078,
+          "extrema": [
+            0,
+            255
+          ]
+        }
+      ],
+      "adjacent_deltas": [
+        {
+          "from": 145,
+          "to": 156,
+          "mean_abs_delta": 0.0
+        },
+        {
+          "from": 156,
+          "to": 192,
+          "mean_abs_delta": 85.03
+        },
+        {
+          "from": 192,
+          "to": 228,
+          "mean_abs_delta": 81.221
+        },
+        {
+          "from": 228,
+          "to": 240,
+          "mean_abs_delta": 0.0
+        }
+      ],
+      "blender_validation": {
+        "passed": true,
+        "errors": [],
+        "scene": "TUTORIAL_SYNTHESIS_STAGE_05",
+        "stage": 5,
+        "objects": 176,
+        "materials": 74,
+        "cameras": [
+          "USTUDIO_CAM_SPEAKER",
+          "USTUDIO_CAM_GAMEBOII",
+          "USTUDIO_CAM_BIKE"
+        ],
+        "animated_roots": [
+          "USTUDIO_BLOB_SPEAKER_ROOT",
+          "USTUDIO_DRUMBOII_GAMEBOII_ROOT",
+          "USTUDIO_DRUMBOII_BLOB_BIKE_ROOT"
+        ],
+        "timeline_markers": [
+          {
+            "name": "USTUDIO_S0_STILL",
+            "frame": 1
+          },
+          {
+            "name": "USTUDIO_S1_ANTICIPATION",
+            "frame": 24
+          },
+          {
+            "name": "USTUDIO_S2_ACTION",
+            "frame": 54
+          },
+          {
+            "name": "USTUDIO_SPEAKER_REST",
+            "frame": 72
+          },
+          {
+            "name": "USTUDIO_CONVEYOR_START",
+            "frame": 73
+          },
+          {
+            "name": "USTUDIO_GAME_PEAK",
+            "frame": 108
+          },
+          {
+            "name": "USTUDIO_GAME_IMPACT",
+            "frame": 128
+          },
+          {
+            "name": "USTUDIO_GAME_REST",
+            "frame": 144
+          },
+          {
+            "name": "USTUDIO_ENV_START",
+            "frame": 145
+          },
+          {
+            "name": "USTUDIO_ENV_TRAVEL",
+            "frame": 192
+          },
+          {
+            "name": "USTUDIO_ENV_ARRIVAL",
+            "frame": 228
+          },
+          {
+            "name": "USTUDIO_FINAL_STILL",
+            "frame": 240
+          }
+        ]
+      }
+    },
+    {
+      "stage": 6,
+      "stage_name": "06-final-multishot",
+      "blend_bytes": 6408094,
+      "snapshot_count": 11,
+      "image_metrics": [
+        {
+          "frame": 1,
+          "mean_luma": 42.234,
+          "extrema": [
+            1,
+            251
+          ]
+        },
+        {
+          "frame": 24,
+          "mean_luma": 39.954,
+          "extrema": [
+            1,
+            251
+          ]
+        },
+        {
+          "frame": 54,
+          "mean_luma": 58.627,
+          "extrema": [
+            1,
+            251
+          ]
+        },
+        {
+          "frame": 72,
+          "mean_luma": 65.078,
+          "extrema": [
+            2,
+            239
+          ]
+        },
+        {
+          "frame": 73,
+          "mean_luma": 33.302,
+          "extrema": [
+            0,
+            251
+          ]
+        },
+        {
+          "frame": 108,
+          "mean_luma": 61.779,
+          "extrema": [
+            2,
+            241
+          ]
+        },
+        {
+          "frame": 144,
+          "mean_luma": 53.398,
+          "extrema": [
+            0,
+            243
+          ]
+        },
+        {
+          "frame": 145,
+          "mean_luma": 106.632,
+          "extrema": [
+            0,
+            255
+          ]
+        },
+        {
+          "frame": 192,
+          "mean_luma": 95.79,
+          "extrema": [
+            3,
+            255
+          ]
+        },
+        {
+          "frame": 228,
+          "mean_luma": 73.786,
+          "extrema": [
+            1,
+            255
+          ]
+        },
+        {
+          "frame": 240,
+          "mean_luma": 72.712,
+          "extrema": [
+            1,
+            255
+          ]
+        }
+      ],
+      "adjacent_deltas": [
+        {
+          "from": 1,
+          "to": 24,
+          "mean_abs_delta": 13.731
+        },
+        {
+          "from": 24,
+          "to": 54,
+          "mean_abs_delta": 47.511
+        },
+        {
+          "from": 54,
+          "to": 72,
+          "mean_abs_delta": 36.371
+        },
+        {
+          "from": 72,
+          "to": 73,
+          "mean_abs_delta": 56.573
+        },
+        {
+          "from": 73,
+          "to": 108,
+          "mean_abs_delta": 53.185
+        },
+        {
+          "from": 108,
+          "to": 144,
+          "mean_abs_delta": 62.307
+        },
+        {
+          "from": 144,
+          "to": 145,
+          "mean_abs_delta": 75.261
+        },
+        {
+          "from": 145,
+          "to": 192,
+          "mean_abs_delta": 86.972
+        },
+        {
+          "from": 192,
+          "to": 228,
+          "mean_abs_delta": 82.663
+        },
+        {
+          "from": 228,
+          "to": 240,
+          "mean_abs_delta": 3.844
+        }
+      ],
+      "blender_validation": {
+        "passed": true,
+        "errors": [],
+        "scene": "TUTORIAL_SYNTHESIS_STAGE_06",
+        "stage": 6,
+        "objects": 176,
+        "materials": 74,
+        "cameras": [
+          "USTUDIO_CAM_SPEAKER",
+          "USTUDIO_CAM_GAMEBOII",
+          "USTUDIO_CAM_BIKE"
+        ],
+        "animated_roots": [
+          "USTUDIO_BLOB_SPEAKER_ROOT",
+          "USTUDIO_DRUMBOII_GAMEBOII_ROOT",
+          "USTUDIO_DRUMBOII_BLOB_BIKE_ROOT"
+        ],
+        "timeline_markers": [
+          {
+            "name": "USTUDIO_SHOT_A_SPEAKER",
+            "frame": 1
+          },
+          {
+            "name": "USTUDIO_SHOT_B_GAMEBOII",
+            "frame": 73
+          },
+          {
+            "name": "USTUDIO_SHOT_C_BIKE",
+            "frame": 145
+          },
+          {
+            "name": "USTUDIO_S0_STILL",
+            "frame": 1
+          },
+          {
+            "name": "USTUDIO_S1_ANTICIPATION",
+            "frame": 24
+          },
+          {
+            "name": "USTUDIO_S2_ACTION",
+            "frame": 54
+          },
+          {
+            "name": "USTUDIO_SPEAKER_REST",
+            "frame": 72
+          },
+          {
+            "name": "USTUDIO_CONVEYOR_START",
+            "frame": 73
+          },
+          {
+            "name": "USTUDIO_GAME_PEAK",
+            "frame": 108
+          },
+          {
+            "name": "USTUDIO_GAME_IMPACT",
+            "frame": 128
+          },
+          {
+            "name": "USTUDIO_GAME_REST",
+            "frame": 144
+          },
+          {
+            "name": "USTUDIO_ENV_START",
+            "frame": 145
+          },
+          {
+            "name": "USTUDIO_ENV_TRAVEL",
+            "frame": 192
+          },
+          {
+            "name": "USTUDIO_ENV_ARRIVAL",
+            "frame": 228
+          },
+          {
+            "name": "USTUDIO_FINAL_STILL",
+            "frame": 240
+          }
+        ]
+      }
+    }
+  ]
+}

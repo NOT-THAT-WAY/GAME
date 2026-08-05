@@ -1,0 +1,1598 @@
+{
+  "source": "transcript-source.srt",
+  "format": "srt",
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 29.98,
+      "text": "Hello. In this tutorial I'm gonna show you my thought process when I animate my camera. I'm gonna use one of my earlier tutorials as an example. So here is the project for a tutorial I made last fall in 2025. It's called Squelch Snare and in this tutorial I show you how to create a squelch type sounding snare. But anyway, if I select the camera here, you can see all the keyframes for the camera. So here I have the dope sheet and the camera selected and if you want to go to the dope sheet,"
+    },
+    {
+      "start": 29.98,
+      "end": 59.96,
+      "text": "you can just select this and choose dope sheet. So here is essentially all the keyframes for the camera. So as you can see I have plenty of keyframes here. We can just scroll through the whole scene here. So it ends at 2700 frames and begins at 500 frames. So we can just check out the first keyframe here. Just to know here if I select to the left here, object transforms, you can see the actual transforming keyframes for the camera movements. So here is the X location."
+    },
+    {
+      "start": 59.96,
+      "end": 77.12,
+      "text": "the Y location and the Z location. And down here if I click on this drop down, you can see the focal length and focus distance and f-stop. Which is if I go to the camera here to the right and go down to depth of field are these ones."
+    },
+    {
+      "start": 77.12,
+      "end": 92.46000000000001,
+      "text": "And these are like just the keyframe, the focus, distance and the f-stop. So right now we're going to focus on object transforms only. So I'm going to close this drop down and you can just ignore the keyframes on the very bottom here and just focus on these three."
+    },
+    {
+      "start": 92.46000000000001,
+      "end": 108.46000000000001,
+      "text": "When I begin my tutorials, I like to begin at the first frame with the keyframe. And just one note, is that I animate everything in 60fps, so depending on what frame range you're using, for example, if you're animating in 30fps, you would need to recalculate all the frames."
+    },
+    {
+      "start": 108.46000000000001,
+      "end": 120.46,
+      "text": "So for example, 9 frames in 60fps would equal around 4 or 5 frames in 30fps, since 30fps is half of 60. So I will show everything in 60fps today."
+    },
+    {
+      "start": 120.46,
+      "end": 137.46,
+      "text": "Anyway, on the first frame, we have the camera here. And if we scroll forward, you can see that I just keyframe it a bit back. So if we go from the very side here, and I move forward, you can see that the camera actually begins by moving backwards."
+    },
+    {
+      "start": 137.46,
+      "end": 146.46,
+      "text": "And that's because I want to create an illusion that the camera gets momentum for them to go forward, as you can see."
+    },
+    {
+      "start": 146.46,
+      "end": 154.46,
+      "text": "So the camera begins by moving backwards and then it shoots forward. Again."
+    },
+    {
+      "start": 154.46,
+      "end": 162.46,
+      "text": "But what happens when it has come forward? It then moves a bit backwards. And doing this, I want to capture like a realistic feel to the camera."
+    },
+    {
+      "start": 162.46,
+      "end": 170.46,
+      "text": "Because as if you were throwing a ball, for example, you would first move your hand backwards, and then move it forward, and then you would pick your hand up."
+    },
+    {
+      "start": 170.46,
+      "end": 182.46,
+      "text": "So I want to reflect the momentum to make the camera movement feel realistic. Because for example, if the camera just stopped there, and never grabbed momentum back, it would feel more static and not as bouncy."
+    },
+    {
+      "start": 182.46,
+      "end": 189.46,
+      "text": "So if I scroll through the whole motion here, you can see, first goes back, then forward, and then it falls back a bit."
+    },
+    {
+      "start": 191.46,
+      "end": 198.46,
+      "text": "So that's essentially the whole philosophy behind my camera animations, and it's super standard in any type of animation."
+    },
+    {
+      "start": 198.46,
+      "end": 200.46,
+      "text": "So we can see what happens next."
+    },
+    {
+      "start": 200.46,
+      "end": 202.46,
+      "text": "So again, I scroll forward."
+    },
+    {
+      "start": 202.46,
+      "end": 208.46,
+      "text": "And, as you can see, now the camera is almost like floating."
+    },
+    {
+      "start": 208.46,
+      "end": 214.46,
+      "text": "The keyframe that makes it floating is actually this keyframe in the middle between those two."
+    },
+    {
+      "start": 214.46,
+      "end": 217.46,
+      "text": "So we can try to delete this keyframe."
+    },
+    {
+      "start": 217.46,
+      "end": 225.46,
+      "text": "If I select the Orbit Transform, and I select this keyframe, it will actually select all the axes down here."
+    },
+    {
+      "start": 225.46,
+      "end": 232.46,
+      "text": "So if I select on the first row here, it will automatically select Z, Y, and X axes."
+    },
+    {
+      "start": 232.46,
+      "end": 238.46,
+      "text": "So I select this, and press X to delete it, and now you can see that the camera actually stays in place."
+    },
+    {
+      "start": 238.46,
+      "end": 242.46,
+      "text": "So we can watch this in real time, if you watch it on the left here."
+    },
+    {
+      "start": 245.46,
+      "end": 248.46,
+      "text": "You can see that the camera stays completely still here."
+    },
+    {
+      "start": 248.46,
+      "end": 257.46,
+      "text": "I didn't even want that, and that's why I added the keyframes here that we just deleted."
+    },
+    {
+      "start": 257.46,
+      "end": 260.46,
+      "text": "So I'm going to undo it and get them back."
+    },
+    {
+      "start": 260.46,
+      "end": 262.46,
+      "text": "Now we can watch it."
+    },
+    {
+      "start": 262.46,
+      "end": 268.46,
+      "text": "So you can see, we just have some floating motion here."
+    },
+    {
+      "start": 268.46,
+      "end": 276.46,
+      "text": "And if I delete it again, you can see it's very static."
+    },
+    {
+      "start": 276.46,
+      "end": 281.46,
+      "text": "So what I'm essentially doing is that if I have a piece of my animation where the camera needs to be still,"
+    },
+    {
+      "start": 281.46,
+      "end": 283.46,
+      "text": "I will just create this type of floating motion."
+    },
+    {
+      "start": 283.46,
+      "end": 286.46,
+      "text": "So what I do is that I go to the middle of the keyframes."
+    },
+    {
+      "start": 286.46,
+      "end": 290.46,
+      "text": "So here's the first keyframe for the camera, and here's the second."
+    },
+    {
+      "start": 290.46,
+      "end": 295.46,
+      "text": "You can just ignore this as I said, because it's for the f-stop and the focus animation."
+    },
+    {
+      "start": 295.46,
+      "end": 301.46,
+      "text": "So this again, first keyframe and second keyframe."
+    },
+    {
+      "start": 301.46,
+      "end": 305.46,
+      "text": "I put my cursor around the middle, and I select the camera."
+    },
+    {
+      "start": 305.46,
+      "end": 310.46,
+      "text": "And then I just press G and Z, and move it down just a little bit."
+    },
+    {
+      "start": 311.46,
+      "end": 316.46,
+      "text": "And then I press enter, and then I press K, and select location keyframe."
+    },
+    {
+      "start": 316.46,
+      "end": 320.46,
+      "text": "And now I've created this almost floating type animation."
+    },
+    {
+      "start": 320.46,
+      "end": 326.46,
+      "text": "So it goes down, and then up again to the original position."
+    },
+    {
+      "start": 326.46,
+      "end": 330.46,
+      "text": "So we can see the full animation again."
+    },
+    {
+      "start": 333.46,
+      "end": 334.46,
+      "text": "Very nice."
+    },
+    {
+      "start": 334.46,
+      "end": 335.46,
+      "text": "But what happens next?"
+    },
+    {
+      "start": 335.46,
+      "end": 341.46,
+      "text": "Because now the camera is going to zoom in to the squelchner here."
+    },
+    {
+      "start": 341.46,
+      "end": 346.46,
+      "text": "So again, we are having the same philosophy in mind, where the camera is going back a bit."
+    },
+    {
+      "start": 346.46,
+      "end": 348.46,
+      "text": "And then it shoots forward."
+    },
+    {
+      "start": 348.46,
+      "end": 351.46,
+      "text": "And then it bounces back."
+    },
+    {
+      "start": 351.46,
+      "end": 354.46,
+      "text": "And then actually a bit forward again."
+    },
+    {
+      "start": 354.46,
+      "end": 358.46,
+      "text": "So watch the camera closely as I scroll through these keyframes here."
+    },
+    {
+      "start": 358.46,
+      "end": 362.46,
+      "text": "First, it's on its original position."
+    },
+    {
+      "start": 362.46,
+      "end": 367.46,
+      "text": "Then it gathers momentum by going back."
+    },
+    {
+      "start": 367.46,
+      "end": 370.46,
+      "text": "Then it shoots very fast forward."
+    },
+    {
+      "start": 370.46,
+      "end": 372.46,
+      "text": "And then it bounces back."
+    },
+    {
+      "start": 372.46,
+      "end": 375.46,
+      "text": "And then actually it bounces forward a bit again."
+    },
+    {
+      "start": 375.46,
+      "end": 381.46,
+      "text": "So that's essentially the exact philosophy as I had here at the beginning."
+    },
+    {
+      "start": 382.46,
+      "end": 383.46,
+      "text": "So watch it again."
+    },
+    {
+      "start": 383.46,
+      "end": 391.46,
+      "text": "So we can watch the full sequence here."
+    },
+    {
+      "start": 391.46,
+      "end": 397.46,
+      "text": "That's essentially me repeating this thing, but here."
+    },
+    {
+      "start": 397.46,
+      "end": 400.46,
+      "text": "And you might recognize this here."
+    },
+    {
+      "start": 400.46,
+      "end": 404.46,
+      "text": "Because in the middle here, we have the exact same thing as we have here."
+    },
+    {
+      "start": 405.46,
+      "end": 417.46,
+      "text": "If I delete this, you can see that the camera, if I scroll here from 699 up to this keyframe."
+    },
+    {
+      "start": 417.46,
+      "end": 422.46,
+      "text": "And if you watch the camera, you can see that the camera stands completely still."
+    },
+    {
+      "start": 422.46,
+      "end": 426.46,
+      "text": "And I again wanted the floating motion that I had before here."
+    },
+    {
+      "start": 426.46,
+      "end": 430.46,
+      "text": "So that's why I have had this keyframe in the middle here."
+    },
+    {
+      "start": 431.46,
+      "end": 434.46,
+      "text": "So you can see, the camera move goes a bit down."
+    },
+    {
+      "start": 434.46,
+      "end": 438.46,
+      "text": "Then it goes up."
+    },
+    {
+      "start": 438.46,
+      "end": 441.46,
+      "text": "So if I delete it, I can show you how I did it."
+    },
+    {
+      "start": 441.46,
+      "end": 443.46,
+      "text": "It's the exact same thing as I've shown you before."
+    },
+    {
+      "start": 443.46,
+      "end": 446.46,
+      "text": "So I go to the middle of these two keyframes."
+    },
+    {
+      "start": 446.46,
+      "end": 449.46,
+      "text": "The first one and the second one here."
+    },
+    {
+      "start": 450.46,
+      "end": 452.46,
+      "text": "I select and put the cursor around the middle."
+    },
+    {
+      "start": 452.46,
+      "end": 454.46,
+      "text": "Then I make sure the camera is selected."
+    },
+    {
+      "start": 454.46,
+      "end": 455.46,
+      "text": "I press G and Z."
+    },
+    {
+      "start": 455.46,
+      "end": 459.46,
+      "text": "And just move it down a little bit to create the floating motion."
+    },
+    {
+      "start": 459.46,
+      "end": 461.46,
+      "text": "And then I have pressed enter."
+    },
+    {
+      "start": 461.46,
+      "end": 465.46,
+      "text": "And press K and location to insert keyframe."
+    },
+    {
+      "start": 465.46,
+      "end": 469.46,
+      "text": "So now you can see that the camera is going down and just up a little bit."
+    },
+    {
+      "start": 469.46,
+      "end": 471.46,
+      "text": "Just to make the camera movement come alive."
+    },
+    {
+      "start": 472.46,
+      "end": 473.46,
+      "text": "And what happens here."
+    },
+    {
+      "start": 473.46,
+      "end": 476.46,
+      "text": "We can see the camera is actually moving forward a bit."
+    },
+    {
+      "start": 476.46,
+      "end": 477.46,
+      "text": "So you can see."
+    },
+    {
+      "start": 477.46,
+      "end": 478.46,
+      "text": "We see it again."
+    },
+    {
+      "start": 478.46,
+      "end": 480.46,
+      "text": "Scrolling forward."
+    },
+    {
+      "start": 480.46,
+      "end": 483.46,
+      "text": "Of course it goes toward the object."
+    },
+    {
+      "start": 483.46,
+      "end": 486.46,
+      "text": "Before it shoots back."
+    },
+    {
+      "start": 486.46,
+      "end": 491.46,
+      "text": "And then it goes towards the object a little bit again."
+    },
+    {
+      "start": 492.46,
+      "end": 497.46,
+      "text": "And you might recognize that this is the exact same philosophy as I had here."
+    },
+    {
+      "start": 497.46,
+      "end": 498.46,
+      "text": "And at the beginning."
+    },
+    {
+      "start": 498.46,
+      "end": 502.46,
+      "text": "So again the camera is going towards the object to gather momentum."
+    },
+    {
+      "start": 502.46,
+      "end": 504.46,
+      "text": "Then it shoots back."
+    },
+    {
+      "start": 504.46,
+      "end": 507.46,
+      "text": "Then it catches its momentum by going forward a bit."
+    },
+    {
+      "start": 507.46,
+      "end": 510.46,
+      "text": "Just like when you throw a ball."
+    },
+    {
+      "start": 510.46,
+      "end": 512.46,
+      "text": "It's the exact same type of thinking."
+    },
+    {
+      "start": 512.46,
+      "end": 515.46,
+      "text": "And again the camera is just floating here."
+    },
+    {
+      "start": 515.46,
+      "end": 517.46,
+      "text": "As we did here."
+    },
+    {
+      "start": 517.46,
+      "end": 519.46,
+      "text": "This keyframe makes the camera go up."
+    },
+    {
+      "start": 519.46,
+      "end": 520.46,
+      "text": "And then down again."
+    },
+    {
+      "start": 521.46,
+      "end": 522.46,
+      "text": "So yeah."
+    },
+    {
+      "start": 522.46,
+      "end": 525.46,
+      "text": "That's essentially everything I make for my camera animations."
+    },
+    {
+      "start": 525.46,
+      "end": 527.46,
+      "text": "Because as you can see."
+    },
+    {
+      "start": 527.46,
+      "end": 528.46,
+      "text": "Here again."
+    },
+    {
+      "start": 528.46,
+      "end": 530.46,
+      "text": "It goes forward."
+    },
+    {
+      "start": 530.46,
+      "end": 532.46,
+      "text": "And then it shoots backwards."
+    },
+    {
+      "start": 532.46,
+      "end": 536.46,
+      "text": "Goes forward."
+    },
+    {
+      "start": 536.46,
+      "end": 537.46,
+      "text": "Shoots backwards."
+    },
+    {
+      "start": 537.46,
+      "end": 539.46,
+      "text": "And then forward just a little bit."
+    },
+    {
+      "start": 539.46,
+      "end": 543.46,
+      "text": "So you can think of it as the four keyframe rule."
+    },
+    {
+      "start": 543.46,
+      "end": 548.46,
+      "text": "Where the actual important movement happens between second and third keyframe."
+    },
+    {
+      "start": 550.46,
+      "end": 555.46,
+      "text": "But the movement and the momentum is gathered between the first and second keyframe."
+    },
+    {
+      "start": 555.46,
+      "end": 560.46,
+      "text": "And the movement is ending between the third and fourth keyframe."
+    },
+    {
+      "start": 560.46,
+      "end": 565.46,
+      "text": "So you can see the actual movement is happening between the second and the third."
+    },
+    {
+      "start": 566.46,
+      "end": 567.46,
+      "text": "But the momentum is gathered."
+    },
+    {
+      "start": 567.46,
+      "end": 571.46,
+      "text": "But the momentum is gathered between the first and the second one."
+    },
+    {
+      "start": 571.46,
+      "end": 575.46,
+      "text": "And it's ending between the third and the fourth one."
+    },
+    {
+      "start": 575.46,
+      "end": 581.46,
+      "text": "But what you would need to do when you change the location of the camera."
+    },
+    {
+      "start": 581.46,
+      "end": 585.46,
+      "text": "And if you have depth of field selected as I have here to the right."
+    },
+    {
+      "start": 586.46,
+      "end": 590.46,
+      "text": "What is important is the keyframe the focus distance and the f-stop together with the camera movements."
+    },
+    {
+      "start": 590.46,
+      "end": 592.46,
+      "text": "So as I said before."
+    },
+    {
+      "start": 592.46,
+      "end": 594.46,
+      "text": "Down here."
+    },
+    {
+      "start": 594.46,
+      "end": 596.46,
+      "text": "We have the focus distance animation."
+    },
+    {
+      "start": 596.46,
+      "end": 600.46,
+      "text": "And I have actually synced this up perfectly with the camera movement."
+    },
+    {
+      "start": 600.46,
+      "end": 605.46,
+      "text": "So almost on every camera keyframe I have a keyframe for the focus distance."
+    },
+    {
+      "start": 606.46,
+      "end": 610.46,
+      "text": "For example we can try to delete all the focus keyframe distances here."
+    },
+    {
+      "start": 610.46,
+      "end": 615.46,
+      "text": "You will see that everything becomes blurry."
+    },
+    {
+      "start": 615.46,
+      "end": 619.46,
+      "text": "What's happening is that the focus distance is not animated together with the focal length."
+    },
+    {
+      "start": 620.46,
+      "end": 623.46,
+      "text": "So to fix that you would need to go to every keyframe here."
+    },
+    {
+      "start": 623.46,
+      "end": 626.46,
+      "text": "So if I go to this keyframe, the second keyframe of the animation."
+    },
+    {
+      "start": 626.46,
+      "end": 628.46,
+      "text": "I would then zoom in on the object."
+    },
+    {
+      "start": 628.46,
+      "end": 630.46,
+      "text": "Make sure the camera was selected."
+    },
+    {
+      "start": 630.46,
+      "end": 633.46,
+      "text": "And then go to the right here."
+    },
+    {
+      "start": 633.46,
+      "end": 638.46,
+      "text": "And just scroll on the focus distance until I see that the object is in focus."
+    },
+    {
+      "start": 638.46,
+      "end": 642.46,
+      "text": "So for example here I see that the object is in focus."
+    },
+    {
+      "start": 642.46,
+      "end": 645.46,
+      "text": "When I'm satisfied with the focus, right there."
+    },
+    {
+      "start": 646.46,
+      "end": 651.46,
+      "text": "I will then press hover over the focus distance and press I to insert the keyframe."
+    },
+    {
+      "start": 651.46,
+      "end": 654.46,
+      "text": "And then I will go to the next keyframe of the camera."
+    },
+    {
+      "start": 654.46,
+      "end": 657.46,
+      "text": "You can see that it's a bit blurry here."
+    },
+    {
+      "start": 657.46,
+      "end": 659.46,
+      "text": "I want some more focus here."
+    },
+    {
+      "start": 659.46,
+      "end": 662.46,
+      "text": "So then I would need to make sure the camera is selected."
+    },
+    {
+      "start": 662.46,
+      "end": 664.46,
+      "text": "Go to the focus distance."
+    },
+    {
+      "start": 664.46,
+      "end": 667.46,
+      "text": "Hold shift while scrolling to make fine adjustments."
+    },
+    {
+      "start": 667.46,
+      "end": 671.46,
+      "text": "And now you can see that we are on focus here."
+    },
+    {
+      "start": 671.46,
+      "end": 674.46,
+      "text": "You see, it's almost in focus."
+    },
+    {
+      "start": 675.46,
+      "end": 676.46,
+      "text": "I think that would be enough."
+    },
+    {
+      "start": 676.46,
+      "end": 681.46,
+      "text": "So then again I will hover over this and press I to insert the keyframe down here."
+    },
+    {
+      "start": 681.46,
+      "end": 685.46,
+      "text": "And then I will just go to the next keyframe."
+    },
+    {
+      "start": 685.46,
+      "end": 687.46,
+      "text": "Zoom in."
+    },
+    {
+      "start": 687.46,
+      "end": 690.46,
+      "text": "And now you see that we are a bit out of focus here."
+    },
+    {
+      "start": 690.46,
+      "end": 693.46,
+      "text": "You can see it on the pixel here."
+    },
+    {
+      "start": 693.46,
+      "end": 695.46,
+      "text": "So I will go to the focus distance."
+    },
+    {
+      "start": 695.46,
+      "end": 698.46,
+      "text": "And just scroll it."
+    },
+    {
+      "start": 698.46,
+      "end": 700.46,
+      "text": "Make sure we are on focus."
+    },
+    {
+      "start": 700.46,
+      "end": 702.46,
+      "text": "And now we have some sharp pixels here."
+    },
+    {
+      "start": 702.46,
+      "end": 705.46,
+      "text": "So again hover over it and press I."
+    },
+    {
+      "start": 705.46,
+      "end": 707.46,
+      "text": "And then go to the next keyframe."
+    },
+    {
+      "start": 707.46,
+      "end": 709.46,
+      "text": "Make sure we are on focus."
+    },
+    {
+      "start": 709.46,
+      "end": 711.46,
+      "text": "And I think we are fairly in focus here."
+    },
+    {
+      "start": 711.46,
+      "end": 715.46,
+      "text": "So I will just hover over this and press I."
+    },
+    {
+      "start": 715.46,
+      "end": 718.46,
+      "text": "Go to the next keyframe."
+    },
+    {
+      "start": 718.46,
+      "end": 720.46,
+      "text": "Do the same thing."
+    },
+    {
+      "start": 721.46,
+      "end": 725.46,
+      "text": "So that's essentially how you link up your focus distance with your focal length."
+    },
+    {
+      "start": 725.46,
+      "end": 727.46,
+      "text": "And it's a tedious process."
+    },
+    {
+      "start": 727.46,
+      "end": 729.46,
+      "text": "But I think it's worth it."
+    },
+    {
+      "start": 729.46,
+      "end": 731.46,
+      "text": "And you are going to get faster on it when you get the hang of it."
+    },
+    {
+      "start": 731.46,
+      "end": 735.46,
+      "text": "And the next thing I want to show you is how I get the camera to be synced with the objects on screen."
+    },
+    {
+      "start": 736.46,
+      "end": 737.46,
+      "text": "So here you have the camera."
+    },
+    {
+      "start": 737.46,
+      "end": 740.46,
+      "text": "But it's not actually looking towards the object here."
+    },
+    {
+      "start": 740.46,
+      "end": 743.46,
+      "text": "Rather it's looking towards this empty object."
+    },
+    {
+      "start": 743.46,
+      "end": 745.46,
+      "text": "As you can see here."
+    },
+    {
+      "start": 745.46,
+      "end": 748.46,
+      "text": "So if I grab this empty object and move it around."
+    },
+    {
+      "start": 748.46,
+      "end": 754.46,
+      "text": "You can see to the left here that the camera is changing where it looks depending on where I put this."
+    },
+    {
+      "start": 755.46,
+      "end": 757.46,
+      "text": "What I have is that I have on the camera."
+    },
+    {
+      "start": 757.46,
+      "end": 759.46,
+      "text": "And go to the constraints."
+    },
+    {
+      "start": 759.46,
+      "end": 760.46,
+      "text": "I have a track to constraints."
+    },
+    {
+      "start": 760.46,
+      "end": 762.46,
+      "text": "Where the empty is selected."
+    },
+    {
+      "start": 762.46,
+      "end": 766.46,
+      "text": "So I can just close this down and do it again."
+    },
+    {
+      "start": 766.46,
+      "end": 768.46,
+      "text": "So I go to add object constraints."
+    },
+    {
+      "start": 768.46,
+      "end": 771.46,
+      "text": "And then I select track to."
+    },
+    {
+      "start": 771.46,
+      "end": 774.46,
+      "text": "And then while the camera is selected."
+    },
+    {
+      "start": 774.46,
+      "end": 776.46,
+      "text": "I go to the object."
+    },
+    {
+      "start": 776.46,
+      "end": 777.46,
+      "text": "I want to track the camera to."
+    },
+    {
+      "start": 777.46,
+      "end": 779.46,
+      "text": "So here I see the object."
+    },
+    {
+      "start": 779.46,
+      "end": 780.46,
+      "text": "I want to track the camera to."
+    },
+    {
+      "start": 780.46,
+      "end": 782.46,
+      "text": "It's an empty object."
+    },
+    {
+      "start": 783.46,
+      "end": 784.46,
+      "text": "Just get an empty object by."
+    },
+    {
+      "start": 784.46,
+      "end": 787.46,
+      "text": "Pressing shift A and search for an empty sphere."
+    },
+    {
+      "start": 787.46,
+      "end": 789.46,
+      "text": "So select the camera."
+    },
+    {
+      "start": 789.46,
+      "end": 791.46,
+      "text": "And then choose the drop down."
+    },
+    {
+      "start": 791.46,
+      "end": 793.46,
+      "text": "And select the empty object."
+    },
+    {
+      "start": 793.46,
+      "end": 797.46,
+      "text": "And what's good when you track the camera to empty objects."
+    },
+    {
+      "start": 797.46,
+      "end": 800.46,
+      "text": "Is that the empty objects won't show up in the final render."
+    },
+    {
+      "start": 800.46,
+      "end": 802.46,
+      "text": "So you can have this anywhere on the screen."
+    },
+    {
+      "start": 802.46,
+      "end": 804.46,
+      "text": "And it won't show up in the render."
+    },
+    {
+      "start": 804.46,
+      "end": 805.46,
+      "text": "It's invisible."
+    },
+    {
+      "start": 805.46,
+      "end": 808.46,
+      "text": "Which makes it very good to utilize for your animations."
+    },
+    {
+      "start": 808.46,
+      "end": 811.46,
+      "text": "And now I have the empty object selected here."
+    },
+    {
+      "start": 811.46,
+      "end": 812.46,
+      "text": "You can barely see it."
+    },
+    {
+      "start": 812.46,
+      "end": 814.46,
+      "text": "Because it's almost in the object here."
+    },
+    {
+      "start": 814.46,
+      "end": 815.46,
+      "text": "As you can see."
+    },
+    {
+      "start": 815.46,
+      "end": 818.46,
+      "text": "I have all these keyframes for the actual empty object."
+    },
+    {
+      "start": 818.46,
+      "end": 820.46,
+      "text": "If we go to the first frame of the animation."
+    },
+    {
+      "start": 820.46,
+      "end": 822.46,
+      "text": "Which is frame 500."
+    },
+    {
+      "start": 822.46,
+      "end": 825.46,
+      "text": "You can see that the empty object is almost in the middle of the scene."
+    },
+    {
+      "start": 825.46,
+      "end": 826.46,
+      "text": "And then we go forward a bit."
+    },
+    {
+      "start": 826.46,
+      "end": 829.46,
+      "text": "We can see that it stays the same."
+    },
+    {
+      "start": 829.46,
+      "end": 831.46,
+      "text": "Because when you have these lines going."
+    },
+    {
+      "start": 831.46,
+      "end": 833.46,
+      "text": "Between keyframes."
+    },
+    {
+      "start": 833.46,
+      "end": 835.46,
+      "text": "It means that the keyframes are identical."
+    },
+    {
+      "start": 835.46,
+      "end": 837.46,
+      "text": "So these keyframes are identical."
+    },
+    {
+      "start": 837.46,
+      "end": 839.46,
+      "text": "But here."
+    },
+    {
+      "start": 839.46,
+      "end": 841.46,
+      "text": "We can see that."
+    },
+    {
+      "start": 841.46,
+      "end": 843.46,
+      "text": "It's no lines between the keyframes."
+    },
+    {
+      "start": 843.46,
+      "end": 847.46,
+      "text": "Which means that the movement of the sphere is changing."
+    },
+    {
+      "start": 847.46,
+      "end": 848.46,
+      "text": "If you just zoom in here."
+    },
+    {
+      "start": 848.46,
+      "end": 850.46,
+      "text": "You can see the empty object."
+    },
+    {
+      "start": 850.46,
+      "end": 853.46,
+      "text": "And I'm going to scroll towards the next keyframe."
+    },
+    {
+      "start": 853.46,
+      "end": 855.46,
+      "text": "And we can see how it changes its position."
+    },
+    {
+      "start": 856.46,
+      "end": 862.46,
+      "text": "You can see that it goes a bit left."
+    },
+    {
+      "start": 862.46,
+      "end": 867.46,
+      "text": "I can scale it up so you can see it better."
+    },
+    {
+      "start": 867.46,
+      "end": 869.46,
+      "text": "This moves a bit left."
+    },
+    {
+      "start": 869.46,
+      "end": 872.46,
+      "text": "And that's because at the beginning of the scene."
+    },
+    {
+      "start": 872.46,
+      "end": 876.46,
+      "text": "I want the viewer to focus on the washing machine here."
+    },
+    {
+      "start": 876.46,
+      "end": 879.46,
+      "text": "So you can see that it's almost in the center of the washing machine."
+    },
+    {
+      "start": 879.46,
+      "end": 880.46,
+      "text": "But when I come up here."
+    },
+    {
+      "start": 880.46,
+      "end": 883.46,
+      "text": "I want the viewer to focus in."
+    },
+    {
+      "start": 883.46,
+      "end": 884.46,
+      "text": "On this audio file here."
+    },
+    {
+      "start": 884.46,
+      "end": 887.46,
+      "text": "So that's why I need to change the position of the sphere."
+    },
+    {
+      "start": 887.46,
+      "end": 888.46,
+      "text": "Because for example."
+    },
+    {
+      "start": 888.46,
+      "end": 891.46,
+      "text": "If I didn't do the little tilt to the left here."
+    },
+    {
+      "start": 891.46,
+      "end": 893.46,
+      "text": "It would just look like this."
+    },
+    {
+      "start": 893.46,
+      "end": 897.46,
+      "text": "You see that it would look a bit off here to the left."
+    },
+    {
+      "start": 897.46,
+      "end": 899.46,
+      "text": "But when I had this little change here."
+    },
+    {
+      "start": 899.46,
+      "end": 900.46,
+      "text": "With the keyframes."
+    },
+    {
+      "start": 900.46,
+      "end": 903.46,
+      "text": "You can see that the center of attention is the audio file here."
+    },
+    {
+      "start": 903.46,
+      "end": 905.46,
+      "text": "Then we can go forward a bit."
+    },
+    {
+      "start": 905.46,
+      "end": 908.46,
+      "text": "And you can see that we changed the position."
+    },
+    {
+      "start": 908.46,
+      "end": 910.46,
+      "text": "To be in the middle again."
+    },
+    {
+      "start": 910.46,
+      "end": 913.46,
+      "text": "Between these keyframes."
+    },
+    {
+      "start": 913.46,
+      "end": 919.46,
+      "text": "And here you can see we have many keyframes."
+    },
+    {
+      "start": 919.46,
+      "end": 921.46,
+      "text": "And what's going on here."
+    },
+    {
+      "start": 921.46,
+      "end": 922.46,
+      "text": "We can watch it in real time."
+    },
+    {
+      "start": 922.46,
+      "end": 924.46,
+      "text": "If you watch it on the left here."
+    },
+    {
+      "start": 927.46,
+      "end": 931.46,
+      "text": "You can see that the frame is almost like bouncing up and down."
+    },
+    {
+      "start": 931.46,
+      "end": 939.46,
+      "text": "And I got this effect by animating the object that the camera is tracked to."
+    },
+    {
+      "start": 939.46,
+      "end": 941.46,
+      "text": "And here are the keyframes for that."
+    },
+    {
+      "start": 941.46,
+      "end": 943.46,
+      "text": "So if I go to the front view."
+    },
+    {
+      "start": 943.46,
+      "end": 946.46,
+      "text": "So we see exactly how it lines up."
+    },
+    {
+      "start": 946.46,
+      "end": 950.46,
+      "text": "Here the object hasn't popped up from the washing machine."
+    },
+    {
+      "start": 950.46,
+      "end": 951.46,
+      "text": "On the first keyframe here."
+    },
+    {
+      "start": 951.46,
+      "end": 953.46,
+      "text": "You can see that it moves to the right here."
+    },
+    {
+      "start": 953.46,
+      "end": 957.46,
+      "text": "To the center of the washing machine door."
+    },
+    {
+      "start": 957.46,
+      "end": 959.46,
+      "text": "And then it goes up."
+    },
+    {
+      "start": 959.46,
+      "end": 962.46,
+      "text": "Along with the object that pops up."
+    },
+    {
+      "start": 962.46,
+      "end": 964.46,
+      "text": "So if I go back again."
+    },
+    {
+      "start": 964.46,
+      "end": 967.46,
+      "text": "And I'm going to actually put this in local view."
+    },
+    {
+      "start": 967.46,
+      "end": 968.46,
+      "text": "So you can see it better."
+    },
+    {
+      "start": 969.46,
+      "end": 972.46,
+      "text": "So now I have selected the object that the camera is tracked to."
+    },
+    {
+      "start": 972.46,
+      "end": 974.46,
+      "text": "So you can see it first goes to the right."
+    },
+    {
+      "start": 974.46,
+      "end": 975.46,
+      "text": "And then."
+    },
+    {
+      "start": 975.46,
+      "end": 976.46,
+      "text": "When the door opens."
+    },
+    {
+      "start": 976.46,
+      "end": 978.46,
+      "text": "And the object here pops up."
+    },
+    {
+      "start": 978.46,
+      "end": 980.46,
+      "text": "The empty object goes up with it."
+    },
+    {
+      "start": 980.46,
+      "end": 982.46,
+      "text": "And then it falls down."
+    },
+    {
+      "start": 982.46,
+      "end": 983.46,
+      "text": "Just as the object falls down."
+    },
+    {
+      "start": 983.46,
+      "end": 986.46,
+      "text": "And then it falls back up."
+    },
+    {
+      "start": 986.46,
+      "end": 990.46,
+      "text": "And then it stabilizes on its final keyframe."
+    },
+    {
+      "start": 991.46,
+      "end": 992.46,
+      "text": "So if I scroll through it."
+    },
+    {
+      "start": 992.46,
+      "end": 994.46,
+      "text": "You can see how it follows along."
+    },
+    {
+      "start": 994.46,
+      "end": 999.46,
+      "text": "Again."
+    },
+    {
+      "start": 999.46,
+      "end": 1003.46,
+      "text": "And again."
+    },
+    {
+      "start": 1003.46,
+      "end": 1007.46,
+      "text": "But there's a minor detail here."
+    },
+    {
+      "start": 1007.46,
+      "end": 1009.46,
+      "text": "You would need to watch for."
+    },
+    {
+      "start": 1009.46,
+      "end": 1010.46,
+      "text": "And maybe you already noticed it."
+    },
+    {
+      "start": 1010.46,
+      "end": 1012.46,
+      "text": "But."
+    },
+    {
+      "start": 1012.46,
+      "end": 1014.46,
+      "text": "You can see that the empty object here."
+    },
+    {
+      "start": 1014.46,
+      "end": 1016.46,
+      "text": "It follows along with the object here."
+    },
+    {
+      "start": 1016.46,
+      "end": 1017.46,
+      "text": "The green object."
+    },
+    {
+      "start": 1017.46,
+      "end": 1018.46,
+      "text": "But."
+    },
+    {
+      "start": 1018.46,
+      "end": 1020.46,
+      "text": "It's just a few frames behind."
+    },
+    {
+      "start": 1021.46,
+      "end": 1022.46,
+      "text": "At this frame."
+    },
+    {
+      "start": 1022.46,
+      "end": 1023.46,
+      "text": "This object."
+    },
+    {
+      "start": 1023.46,
+      "end": 1025.46,
+      "text": "Is already going down again."
+    },
+    {
+      "start": 1025.46,
+      "end": 1027.46,
+      "text": "But this object."
+    },
+    {
+      "start": 1027.46,
+      "end": 1029.46,
+      "text": "Hasn't started to go down."
+    },
+    {
+      "start": 1029.46,
+      "end": 1030.46,
+      "text": "Yet."
+    },
+    {
+      "start": 1030.46,
+      "end": 1032.46,
+      "text": "So we're just a bit behind."
+    },
+    {
+      "start": 1032.46,
+      "end": 1040.46,
+      "text": "And I wanted to create this effect."
+    },
+    {
+      "start": 1040.46,
+      "end": 1041.46,
+      "text": "For like."
+    },
+    {
+      "start": 1041.46,
+      "end": 1042.46,
+      "text": "For example."
+    },
+    {
+      "start": 1042.46,
+      "end": 1043.46,
+      "text": "When."
+    },
+    {
+      "start": 1043.46,
+      "end": 1044.46,
+      "text": "An actual."
+    },
+    {
+      "start": 1044.46,
+      "end": 1045.46,
+      "text": "Camera man in real life."
+    },
+    {
+      "start": 1045.46,
+      "end": 1046.46,
+      "text": "Follow an object."
+    },
+    {
+      "start": 1046.46,
+      "end": 1047.46,
+      "text": "It's not."
+    },
+    {
+      "start": 1047.46,
+      "end": 1048.46,
+      "text": "Exactly spot on."
+    },
+    {
+      "start": 1048.46,
+      "end": 1049.46,
+      "text": "Because."
+    },
+    {
+      "start": 1049.46,
+      "end": 1050.46,
+      "text": "You have a few."
+    },
+    {
+      "start": 1050.46,
+      "end": 1051.46,
+      "text": "20 seconds of reaction time."
+    },
+    {
+      "start": 1051.46,
+      "end": 1052.46,
+      "text": "And."
+    },
+    {
+      "start": 1052.46,
+      "end": 1053.46,
+      "text": "And I wanted to emulate."
+    },
+    {
+      "start": 1053.46,
+      "end": 1054.46,
+      "text": "This type of realism."
+    },
+    {
+      "start": 1054.46,
+      "end": 1055.46,
+      "text": "And."
+    },
+    {
+      "start": 1055.46,
+      "end": 1057.46,
+      "text": "As you can probably imagine."
+    },
+    {
+      "start": 1057.46,
+      "end": 1058.46,
+      "text": "It's a balance."
+    },
+    {
+      "start": 1058.46,
+      "end": 1059.46,
+      "text": "To animate this."
+    },
+    {
+      "start": 1059.46,
+      "end": 1060.46,
+      "text": "Empty object."
+    },
+    {
+      "start": 1060.46,
+      "end": 1061.46,
+      "text": "That's."
+    },
+    {
+      "start": 1061.46,
+      "end": 1062.46,
+      "text": "Tracked to the camera."
+    },
+    {
+      "start": 1062.46,
+      "end": 1063.46,
+      "text": "It's a huge topic."
+    },
+    {
+      "start": 1063.46,
+      "end": 1064.46,
+      "text": "And I will do more videos."
+    },
+    {
+      "start": 1064.46,
+      "end": 1065.46,
+      "text": "In the near future."
+    },
+    {
+      "start": 1065.46,
+      "end": 1066.46,
+      "text": "To cover."
+    },
+    {
+      "start": 1066.46,
+      "end": 1067.46,
+      "text": "This."
+    },
+    {
+      "start": 1067.46,
+      "end": 1068.46,
+      "text": "And please let me know."
+    },
+    {
+      "start": 1068.46,
+      "end": 1069.46,
+      "text": "If you have any questions."
+    },
+    {
+      "start": 1069.46,
+      "end": 1070.46,
+      "text": "About it."
+    },
+    {
+      "start": 1070.46,
+      "end": 1071.46,
+      "text": "And I'll see you in the next video."
+    },
+    {
+      "start": 1071.46,
+      "end": 1072.46,
+      "text": "And I'll see you in the next video."
+    },
+    {
+      "start": 1072.46,
+      "end": 1073.46,
+      "text": "I'll see you in the next video."
+    }
+  ],
+  "text": "Hello. In this tutorial I'm gonna show you my thought process when I animate my camera. I'm gonna use one of my earlier tutorials as an example. So here is the project for a tutorial I made last fall in 2025. It's called Squelch Snare and in this tutorial I show you how to create a squelch type sounding snare. But anyway, if I select the camera here, you can see all the keyframes for the camera. So here I have the dope sheet and the camera selected and if you want to go to the dope sheet, you can just select this and choose dope sheet. So here is essentially all the keyframes for the camera. So as you can see I have plenty of keyframes here. We can just scroll through the whole scene here. So it ends at 2700 frames and begins at 500 frames. So we can just check out the first keyframe here. Just to know here if I select to the left here, object transforms, you can see the actual transforming keyframes for the camera movements. So here is the X location. the Y location and the Z location. And down here if I click on this drop down, you can see the focal length and focus distance and f-stop. Which is if I go to the camera here to the right and go down to depth of field are these ones. And these are like just the keyframe, the focus, distance and the f-stop. So right now we're going to focus on object transforms only. So I'm going to close this drop down and you can just ignore the keyframes on the very bottom here and just focus on these three. When I begin my tutorials, I like to begin at the first frame with the keyframe. And just one note, is that I animate everything in 60fps, so depending on what frame range you're using, for example, if you're animating in 30fps, you would need to recalculate all the frames. So for example, 9 frames in 60fps would equal around 4 or 5 frames in 30fps, since 30fps is half of 60. So I will show everything in 60fps today. Anyway, on the first frame, we have the camera here. And if we scroll forward, you can see that I just keyframe it a bit back. So if we go from the very side here, and I move forward, you can see that the camera actually begins by moving backwards. And that's because I want to create an illusion that the camera gets momentum for them to go forward, as you can see. So the camera begins by moving backwards and then it shoots forward. Again. But what happens when it has come forward? It then moves a bit backwards. And doing this, I want to capture like a realistic feel to the camera. Because as if you were throwing a ball, for example, you would first move your hand backwards, and then move it forward, and then you would pick your hand up. So I want to reflect the momentum to make the camera movement feel realistic. Because for example, if the camera just stopped there, and never grabbed momentum back, it would feel more static and not as bouncy. So if I scroll through the whole motion here, you can see, first goes back, then forward, and then it falls back a bit. So that's essentially the whole philosophy behind my camera animations, and it's super standard in any type of animation. So we can see what happens next. So again, I scroll forward. And, as you can see, now the camera is almost like floating. The keyframe that makes it floating is actually this keyframe in the middle between those two. So we can try to delete this keyframe. If I select the Orbit Transform, and I select this keyframe, it will actually select all the axes down here. So if I select on the first row here, it will automatically select Z, Y, and X axes. So I select this, and press X to delete it, and now you can see that the camera actually stays in place. So we can watch this in real time, if you watch it on the left here. You can see that the camera stays completely still here. I didn't even want that, and that's why I added the keyframes here that we just deleted. So I'm going to undo it and get them back. Now we can watch it. So you can see, we just have some floating motion here. And if I delete it again, you can see it's very static. So what I'm essentially doing is that if I have a piece of my animation where the camera needs to be still, I will just create this type of floating motion. So what I do is that I go to the middle of the keyframes. So here's the first keyframe for the camera, and here's the second. You can just ignore this as I said, because it's for the f-stop and the focus animation. So this again, first keyframe and second keyframe. I put my cursor around the middle, and I select the camera. And then I just press G and Z, and move it down just a little bit. And then I press enter, and then I press K, and select location keyframe. And now I've created this almost floating type animation. So it goes down, and then up again to the original position. So we can see the full animation again. Very nice. But what happens next? Because now the camera is going to zoom in to the squelchner here. So again, we are having the same philosophy in mind, where the camera is going back a bit. And then it shoots forward. And then it bounces back. And then actually a bit forward again. So watch the camera closely as I scroll through these keyframes here. First, it's on its original position. Then it gathers momentum by going back. Then it shoots very fast forward. And then it bounces back. And then actually it bounces forward a bit again. So that's essentially the exact philosophy as I had here at the beginning. So watch it again. So we can watch the full sequence here. That's essentially me repeating this thing, but here. And you might recognize this here. Because in the middle here, we have the exact same thing as we have here. If I delete this, you can see that the camera, if I scroll here from 699 up to this keyframe. And if you watch the camera, you can see that the camera stands completely still. And I again wanted the floating motion that I had before here. So that's why I have had this keyframe in the middle here. So you can see, the camera move goes a bit down. Then it goes up. So if I delete it, I can show you how I did it. It's the exact same thing as I've shown you before. So I go to the middle of these two keyframes. The first one and the second one here. I select and put the cursor around the middle. Then I make sure the camera is selected. I press G and Z. And just move it down a little bit to create the floating motion. And then I have pressed enter. And press K and location to insert keyframe. So now you can see that the camera is going down and just up a little bit. Just to make the camera movement come alive. And what happens here. We can see the camera is actually moving forward a bit. So you can see. We see it again. Scrolling forward. Of course it goes toward the object. Before it shoots back. And then it goes towards the object a little bit again. And you might recognize that this is the exact same philosophy as I had here. And at the beginning. So again the camera is going towards the object to gather momentum. Then it shoots back. Then it catches its momentum by going forward a bit. Just like when you throw a ball. It's the exact same type of thinking. And again the camera is just floating here. As we did here. This keyframe makes the camera go up. And then down again. So yeah. That's essentially everything I make for my camera animations. Because as you can see. Here again. It goes forward. And then it shoots backwards. Goes forward. Shoots backwards. And then forward just a little bit. So you can think of it as the four keyframe rule. Where the actual important movement happens between second and third keyframe. But the movement and the momentum is gathered between the first and second keyframe. And the movement is ending between the third and fourth keyframe. So you can see the actual movement is happening between the second and the third. But the momentum is gathered. But the momentum is gathered between the first and the second one. And it's ending between the third and the fourth one. But what you would need to do when you change the location of the camera. And if you have depth of field selected as I have here to the right. What is important is the keyframe the focus distance and the f-stop together with the camera movements. So as I said before. Down here. We have the focus distance animation. And I have actually synced this up perfectly with the camera movement. So almost on every camera keyframe I have a keyframe for the focus distance. For example we can try to delete all the focus keyframe distances here. You will see that everything becomes blurry. What's happening is that the focus distance is not animated together with the focal length. So to fix that you would need to go to every keyframe here. So if I go to this keyframe, the second keyframe of the animation. I would then zoom in on the object. Make sure the camera was selected. And then go to the right here. And just scroll on the focus distance until I see that the object is in focus. So for example here I see that the object is in focus. When I'm satisfied with the focus, right there. I will then press hover over the focus distance and press I to insert the keyframe. And then I will go to the next keyframe of the camera. You can see that it's a bit blurry here. I want some more focus here. So then I would need to make sure the camera is selected. Go to the focus distance. Hold shift while scrolling to make fine adjustments. And now you can see that we are on focus here. You see, it's almost in focus. I think that would be enough. So then again I will hover over this and press I to insert the keyframe down here. And then I will just go to the next keyframe. Zoom in. And now you see that we are a bit out of focus here. You can see it on the pixel here. So I will go to the focus distance. And just scroll it. Make sure we are on focus. And now we have some sharp pixels here. So again hover over it and press I. And then go to the next keyframe. Make sure we are on focus. And I think we are fairly in focus here. So I will just hover over this and press I. Go to the next keyframe. Do the same thing. So that's essentially how you link up your focus distance with your focal length. And it's a tedious process. But I think it's worth it. And you are going to get faster on it when you get the hang of it. And the next thing I want to show you is how I get the camera to be synced with the objects on screen. So here you have the camera. But it's not actually looking towards the object here. Rather it's looking towards this empty object. As you can see here. So if I grab this empty object and move it around. You can see to the left here that the camera is changing where it looks depending on where I put this. What I have is that I have on the camera. And go to the constraints. I have a track to constraints. Where the empty is selected. So I can just close this down and do it again. So I go to add object constraints. And then I select track to. And then while the camera is selected. I go to the object. I want to track the camera to. So here I see the object. I want to track the camera to. It's an empty object. Just get an empty object by. Pressing shift A and search for an empty sphere. So select the camera. And then choose the drop down. And select the empty object. And what's good when you track the camera to empty objects. Is that the empty objects won't show up in the final render. So you can have this anywhere on the screen. And it won't show up in the render. It's invisible. Which makes it very good to utilize for your animations. And now I have the empty object selected here. You can barely see it. Because it's almost in the object here. As you can see. I have all these keyframes for the actual empty object. If we go to the first frame of the animation. Which is frame 500. You can see that the empty object is almost in the middle of the scene. And then we go forward a bit. We can see that it stays the same. Because when you have these lines going. Between keyframes. It means that the keyframes are identical. So these keyframes are identical. But here. We can see that. It's no lines between the keyframes. Which means that the movement of the sphere is changing. If you just zoom in here. You can see the empty object. And I'm going to scroll towards the next keyframe. And we can see how it changes its position. You can see that it goes a bit left. I can scale it up so you can see it better. This moves a bit left. And that's because at the beginning of the scene. I want the viewer to focus on the washing machine here. So you can see that it's almost in the center of the washing machine. But when I come up here. I want the viewer to focus in. On this audio file here. So that's why I need to change the position of the sphere. Because for example. If I didn't do the little tilt to the left here. It would just look like this. You see that it would look a bit off here to the left. But when I had this little change here. With the keyframes. You can see that the center of attention is the audio file here. Then we can go forward a bit. And you can see that we changed the position. To be in the middle again. Between these keyframes. And here you can see we have many keyframes. And what's going on here. We can watch it in real time. If you watch it on the left here. You can see that the frame is almost like bouncing up and down. And I got this effect by animating the object that the camera is tracked to. And here are the keyframes for that. So if I go to the front view. So we see exactly how it lines up. Here the object hasn't popped up from the washing machine. On the first keyframe here. You can see that it moves to the right here. To the center of the washing machine door. And then it goes up. Along with the object that pops up. So if I go back again. And I'm going to actually put this in local view. So you can see it better. So now I have selected the object that the camera is tracked to. So you can see it first goes to the right. And then. When the door opens. And the object here pops up. The empty object goes up with it. And then it falls down. Just as the object falls down. And then it falls back up. And then it stabilizes on its final keyframe. So if I scroll through it. You can see how it follows along. Again. And again. But there's a minor detail here. You would need to watch for. And maybe you already noticed it. But. You can see that the empty object here. It follows along with the object here. The green object. But. It's just a few frames behind. At this frame. This object. Is already going down again. But this object. Hasn't started to go down. Yet. So we're just a bit behind. And I wanted to create this effect. For like. For example. When. An actual. Camera man in real life. Follow an object. It's not. Exactly spot on. Because. You have a few. 20 seconds of reaction time. And. And I wanted to emulate. This type of realism. And. As you can probably imagine. It's a balance. To animate this. Empty object. That's. Tracked to the camera. It's a huge topic. And I will do more videos. In the near future. To cover. This. And please let me know. If you have any questions. About it. And I'll see you in the next video. And I'll see you in the next video. I'll see you in the next video."
+}

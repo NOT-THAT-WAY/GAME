@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "asset_name": "Mecha Mascot",
+  "asset_collection": "K3_MECHA_MASCOT_ASSET",
+  "root": "K3_MECHA_MASCOT_ROOT",
+  "meshes": [
+    "K3_MECHA_BODY",
+    "K3_MECHA_HEAD"
+  ],
+  "material": "K3_MECHA_MAT_BODY",
+  "dimensions_hint_m": [
+    2.20851,
+    0.30149,
+    2.29403
+  ],
+  "front_axis": "-Y",
+  "up_axis": "+Z",
+  "ground_contact_z_m": 0.0,
+  "source_reference": "${ORIGINAL_DOWNLOADS}/Gemini_Generated_Image_7xkgwn7xkgwn7xkg.png",
+  "deformation_strategy": "parent future shared lattice and mesh modifiers below the root; keep final subdivision last"
+}

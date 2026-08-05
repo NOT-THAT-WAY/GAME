@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "pass_id": "structural-pass",
+  "status": "failed",
+  "latest_render": "gates/views/reference-aligned.png",
+  "reference": "references/reference-hero.jpg",
+  "checks": {
+    "silhouette_iou": 0.5901,
+    "required_silhouette_iou": 0.85,
+    "aspect_ratio_delta": 0.058,
+    "maximum_aspect_ratio_delta": 0.05,
+    "scale_delta": 0.0616,
+    "bilateral_symmetry_error": 0.0085
+  },
+  "failures": [
+    "silhouette IoU 0.590 is below the locked 0.85 threshold",
+    "aspect-ratio delta 0.058 exceeds the locked 0.05 threshold"
+  ],
+  "interpretation": [
+    "The source is a transparent object over a non-uniform background with a large detached cast shadow; the deterministic foreground mask includes appearance evidence that is not pure geometry.",
+    "The supported upright production view intentionally differs from the floating source pose. A separate diagnostic camera was aligned, but the locked threshold still failed.",
+    "The threshold was not weakened after failure. Structural-pass remains blocked even though the independent multi-angle degeneracy test passed."
+  ],
+  "independent_evidence": {
+    "strict_spec_validation": "passed with 22 components, 13 materials and 6 repetition systems",
+    "multi_angle_degeneracy": "passed; diagnostics/img2threejs/multi-angle-integrity.json",
+    "physical_validation": "passed; diagnostics/physical-validation.json"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+  "camera": "USTUDIO_CAM_SCENE4_COMMUNION",
+  "engine": "BLENDER_EEVEE",
+  "marker_prefix": "USTUDIO_MUSIC_",
+  "frames": [
+    9,
+    57,
+    106,
+    154,
+    203,
+    251,
+    299,
+    348,
+    396
+  ],
+  "files": [
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/camera-v2/frame_0009.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/camera-v2/frame_0057.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/camera-v2/frame_0106.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/camera-v2/frame_0154.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/camera-v2/frame_0203.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/camera-v2/frame_0251.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/camera-v2/frame_0299.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/camera-v2/frame_0348.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/gates/camera-v2/frame_0396.png"
+  ],
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/scene/trial.blend"
+}

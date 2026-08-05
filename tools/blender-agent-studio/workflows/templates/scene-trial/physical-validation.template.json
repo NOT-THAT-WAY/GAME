@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "trial_id": "__TRIAL_ID__",
+  "status": "draft",
+  "passed": false,
+  "method": {
+    "evaluated_geometry": true,
+    "modifiers_and_armature_applied_in_evaluation": true,
+    "coordinate_space": "TO_DEFINE",
+    "coordinate_space_source": "TO_DEFINE",
+    "moving_parent_evaluated_each_frame": false,
+    "distance_method": "signed distance or nearest evaluated surface",
+    "overlap_method": "evaluated mesh BVH or triangle overlap",
+    "frame_start": 1,
+    "frame_end": "TO_DEFINE",
+    "sample_frame_step": 1
+  },
+  "semantic_pairs": [
+    {
+      "subject": "TO_INSPECT",
+      "environment": "TO_INSPECT",
+      "relationship": "support_contact_or_forbidden_collision"
+    }
+  ],
+  "checks": {
+    "environment_penetration": {
+      "applicable": true,
+      "passed": false,
+      "value_m": null,
+      "operator": "<=",
+      "threshold_m": 0.002,
+      "worst_frame": null,
+      "frames_outside_threshold": null,
+      "evidence": []
+    },
+    "support_gap": {
+      "applicable": true,
+      "passed": false,
+      "value_m": null,
+      "operator": "<=",
+      "threshold_m": 0.005,
+      "worst_frame": null,
+      "frames_outside_threshold": null,
+      "evidence": []
+    },
+    "planted_contact_drift": {
+      "applicable": true,
+      "passed": false,
+      "value_m": null,
+      "operator": "<=",
+      "threshold_m": 0.005,
+      "worst_frame": null,
+      "frames_outside_threshold": null,
+      "evidence": []
+    },
+    "swing_clearance": {
+      "applicable": true,
+      "passed": false,
+      "value_m": null,
+      "operator": ">=",
+      "threshold_m": 0.01,
+      "worst_frame": null,
+      "frames_outside_threshold": null,
+      "evidence": []
+    },
+    "camera_clearance": {
+      "applicable": true,
+      "passed": false,
+      "value_m": null,
+      "operator": ">=",
+      "threshold_m": 0.08,
+      "worst_frame": null,
+      "frames_outside_threshold": null,
+      "evidence": []
+    }
+  },
+  "proof_views": [],
+  "critical_failures": [],
+  "limitations": []
+}

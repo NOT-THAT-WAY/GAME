@@ -1,0 +1,58 @@
+{
+  "id": "drumboiii-lighting-gate",
+  "name": "Gate lumière par couches — Drumboiii",
+  "icon": "◐",
+  "category": "lighting production",
+  "mode": "MCP interactif",
+  "risk": "rendu",
+  "description": "Rend la base, puis le soleil, le backlight et chaque glimmer cumulativement pour juger leur apport réel.",
+  "script": "workflows/scripts/drumboiii_lighting_gate.py",
+  "timeout": 900,
+  "produces_output": true,
+  "warning": "Nécessite le preset drumboiii-layered et une caméra active. Modifie temporairement hide_render et les réglages de preview.",
+  "fields": [
+    {
+      "id": "frame",
+      "type": "integer",
+      "label": "Frame à tester",
+      "default": 1,
+      "min": 1,
+      "max": 100000
+    },
+    {
+      "id": "resolution_percentage",
+      "type": "integer",
+      "label": "Résolution preview (%)",
+      "default": 35,
+      "min": 10,
+      "max": 100
+    },
+    {
+      "id": "samples",
+      "type": "integer",
+      "label": "Samples Cycles",
+      "default": 32,
+      "min": 1,
+      "max": 512
+    }
+  ],
+  "guide": [
+    "Comparer chaque image à la précédente, pas seulement le rendu final.",
+    "Le soleil doit dessiner les reflets; le backlight doit rendre le volume; les glimmers ne servent qu'aux détails.",
+    "Supprimer ou repositionner toute couche dont l'apport n'est pas lisible.",
+    "Après validation lumière, exécuter les gates caméra aux poses majeures."
+  ],
+  "execution": "mcp",
+  "mutates_scene": true,
+  "requires_confirmation": true,
+  "requires_working_copy": true,
+  "enabled_in_app": true,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "diagnostic",
+  "domains": [
+    "cinematic",
+    "still"
+  ],
+  "maturity": "stable-specialized",
+  "scope": "generic-or-adaptable"
+}

@@ -1,0 +1,20 @@
+services:
+  blender-studio:
+    build:
+      context: .
+    container_name: blender-team-studio
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8778:8778"
+    environment:
+      BLENDER_ROOT: /workspace
+      BLENDER_ROOT_HOST: ${BLENDER_ROOT_HOST:?Run python3 ../tools/bootstrap.py --configure}
+      BLENDER_MCP_HOST: host.docker.internal
+      BLENDER_MCP_PORT: "9876"
+      CATALOG_CACHE_TTL: "5"
+      STUDIO_USER: ${STUDIO_USER:-local-user}
+      DEFAULT_BLEND_RELATIVE: ${DEFAULT_BLEND_RELATIVE:-}
+      MAX_UPLOAD_BYTES: ${MAX_UPLOAD_BYTES:-2147483648}
+    volumes:
+      - ${BLENDER_ROOT_HOST:?Run python3 ../tools/bootstrap.py --configure}:/workspace:rw
+    init: true

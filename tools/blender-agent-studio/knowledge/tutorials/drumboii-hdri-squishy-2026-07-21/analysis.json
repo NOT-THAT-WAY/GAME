@@ -1,0 +1,47 @@
+{
+  "title": "Drumboiii HDRI Setup + Lattice for Squishy Movements",
+  "analysis_date": "2026-07-21",
+  "priority": "P1_HIGH_ART_DIRECTION",
+  "status": "observed_and_transcribed_not_yet_validated_on_project_asset",
+  "sources": [
+    {
+      "path": "${ORIGINAL_MOVIES}/Blender_HDRI_Tutoriel_Drumboiii.mp4",
+      "duration_seconds": 394.966667,
+      "resolution": "1920x1080",
+      "fps": 60,
+      "topics": [
+        "world_shader",
+        "hdri",
+        "is_camera_ray",
+        "procedural_sky",
+        "camera_focal_length"
+      ]
+    },
+    {
+      "path": "${ORIGINAL_MOVIES}/Blender_Squishy_Tutoriel_Drumboiii.mp4",
+      "duration_seconds": 352.833333,
+      "resolution": "1920x1080",
+      "fps": 60,
+      "topics": [
+        "scale_overshoot",
+        "lattice_modifier",
+        "overlapping_action",
+        "subdivision_surface"
+      ]
+    }
+  ],
+  "promoted_rules": [
+    "Separate HDRI lighting and reflections from the camera-visible background with Is Camera Ray.",
+    "Build procedural clouds from Noise plus ColorRamp and depth from Gradient plus ColorRamp.",
+    "Tune procedural sky scale against the final camera focal length.",
+    "Build squishy motion from scale overshoot plus a secondary animated Lattice.",
+    "Start the Lattice action slightly before or overlapping the primary pop.",
+    "Reserve high subdivision and final smoothing for the end of the workflow."
+  ],
+  "transfer_constraints": [
+    "Physical and identity gates remain higher authority than style.",
+    "Tutorial strengths and frame numbers are examples, not constants.",
+    "Multi-mesh assets require one shared Lattice modifier assignment per deformable mesh.",
+    "Global motion remains on a separate root control."
+  ]
+}

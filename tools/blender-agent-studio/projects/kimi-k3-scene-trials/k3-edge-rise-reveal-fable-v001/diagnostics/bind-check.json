@@ -1,0 +1,53 @@
+{
+  "arm_matrix_world_translation": [
+    0.0573,
+    0.0191,
+    1.3336
+  ],
+  "head_parent_type": "BONE",
+  "head_parent_bone": "HEAD",
+  "head_matrix_world_translation": [
+    0.0502,
+    0.0082,
+    2.0959
+  ],
+  "head_bounds": [
+    [
+      -0.0663,
+      -0.1037,
+      1.9793
+    ],
+    [
+      0.1668,
+      0.1201,
+      2.2125
+    ]
+  ],
+  "body_bounds": [
+    [
+      -0.4166,
+      -0.0527,
+      1.3327
+    ],
+    [
+      0.5183,
+      0.0748,
+      2.0755
+    ]
+  ],
+  "head_bone_head_local": [
+    0.0,
+    0.0,
+    1.52
+  ],
+  "head_bone_tail_local": [
+    0.0,
+    0.0,
+    2.075
+  ],
+  "expected_head_center_world": [
+    0.0502,
+    0.0082,
+    2.0959
+  ]
+}

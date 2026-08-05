@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "date": "2026-07-20",
+  "source_tutorial": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20",
+  "checks": {
+    "source_sha256_recorded": true,
+    "technical_probe_complete": true,
+    "transcript_segments": 195,
+    "regular_evidence_frames": 150,
+    "structured_analysis_valid_json": true,
+    "studio_preset_executes_in_blender_5_1": true,
+    "world_camera_ray_split_executes": true,
+    "five_light_roles_created": true,
+    "cumulative_gate_render_count": 6,
+    "gate_manifest_created": true,
+    "blend_saved_by_workflow": false,
+    "full_blender_smoke_suite": "Workflows Blender 5.1: OK"
+  },
+  "test_scene": "Pulsed_3D_model.blend / collection PULSED / frame 1",
+  "preview_engine": "BLENDER_EEVEE",
+  "world_input": "procedural sky plus neutral environment fallback; no external HDRI supplied",
+  "visual_evidence": "gates/contact-sheet.jpg"
+}

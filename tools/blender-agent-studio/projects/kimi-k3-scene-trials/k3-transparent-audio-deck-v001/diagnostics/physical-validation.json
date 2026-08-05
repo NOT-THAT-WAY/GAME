@@ -1,0 +1,85 @@
+{
+  "schema_version": 2,
+  "trial_id": "k3-transparent-audio-deck-v001",
+  "status": "completed",
+  "passed": true,
+  "method": {
+    "evaluated_geometry": true,
+    "modifiers_and_armature_applied_in_evaluation": true,
+    "coordinate_space": "Blender world, meters, +Z up, front -Y, right +X",
+    "coordinate_space_source": "scene-contract.json and ObjectSculptSpec.coordinateFrame",
+    "moving_parent_evaluated_each_frame": "not_applicable",
+    "distance_method": "evaluated world-space asset AABB against z=0 support; camera point-to-AABB clearance sampled every frame",
+    "overlap_method": "evaluated mesh vertices against support half-space; no other collision pairs",
+    "frame_start": 1,
+    "frame_end": 192,
+    "sample_frame_step": 1
+  },
+  "semantic_pairs": [
+    {
+      "subject": "K3_TAD_ROOT",
+      "environment": "K3_TAD_GROUND",
+      "relationship": "required support contact without penetration"
+    }
+  ],
+  "checks": {
+    "environment_penetration": {
+      "applicable": true,
+      "passed": true,
+      "value_m": 0.0,
+      "operator": "<=",
+      "threshold_m": 0.002,
+      "worst_frame": 1,
+      "frames_outside_threshold": 0,
+      "evidence": [
+        "gates/views/front.png",
+        "diagnostics/scene-audit.json"
+      ]
+    },
+    "support_gap": {
+      "applicable": true,
+      "passed": true,
+      "value_m": 0.0,
+      "operator": "<=",
+      "threshold_m": 0.005,
+      "worst_frame": 1,
+      "frames_outside_threshold": 0,
+      "evidence": [
+        "gates/views/front.png",
+        "diagnostics/scene-audit.json"
+      ]
+    },
+    "planted_contact_drift": {
+      "applicable": false,
+      "not_applicable_reason": "The asset stays static; only the camera moves."
+    },
+    "swing_clearance": {
+      "applicable": false,
+      "not_applicable_reason": "No articulated or swinging part is animated in this reconstruction trial."
+    },
+    "camera_clearance": {
+      "applicable": true,
+      "passed": true,
+      "value_m": 0.418083,
+      "operator": ">=",
+      "threshold_m": 0.08,
+      "worst_frame": 76,
+      "frames_outside_threshold": 0,
+      "evidence": [
+        "gates/preview-keyframes.jpg",
+        "shot-manifest.json"
+      ]
+    }
+  },
+  "proof_views": [
+    "gates/views/hero.png",
+    "gates/views/front.png",
+    "gates/views/right.png",
+    "gates/views/rear_three_quarter.png"
+  ],
+  "critical_failures": [],
+  "limitations": [
+    "Support and penetration use evaluated bounds for this static prop; the check is not a triangle-pair collision solver.",
+    "The rear and internal mechanical connectivity remain inferred from one reference view."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "id": "export-glb",
+  "name": "Exporter GLB versionné",
+  "icon": "⇩",
+  "category": "export",
+  "mode": "MCP interactif",
+  "risk": "écriture",
+  "description": "Exporte la scène ou une collection en GLB dans un dossier de job unique avec un manifeste de contrôle.",
+  "script": "workflows/scripts/export_glb.py",
+  "timeout": 600,
+  "warning": "Chaque job possède sa propre sortie. La sélection, le mode et les liens temporaires sont restaurés ; les parents nécessaires sont inclus, mais le GLB doit encore être réimporté avant validation finale.",
+  "fields": [
+    {
+      "id": "collection",
+      "type": "text",
+      "label": "Collection (vide = scène active)",
+      "default": "",
+      "help": "Vide exporte la scène active; sinon le nom doit correspondre à une collection existante."
+    },
+    {
+      "id": "apply_modifiers",
+      "type": "boolean",
+      "label": "Appliquer les modifiers",
+      "default": true
+    }
+  ],
+  "execution": "mcp",
+  "mutates_scene": true,
+  "requires_confirmation": true,
+  "requires_working_copy": true,
+  "enabled_in_app": true,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "operation",
+  "domains": [
+    "asset",
+    "game-asset",
+    "rig",
+    "animation",
+    "environment"
+  ],
+  "maturity": "stable",
+  "scope": "generic-or-adaptable"
+}

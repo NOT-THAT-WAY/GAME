@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-flstudio-character-arc-v001",
+  "status": "completed",
+  "overall_score": 88.85,
+  "verdict": "ship",
+  "critical_failures": [],
+  "categories": {
+    "physics_affordance": {
+      "weight": 20,
+      "score": 97,
+      "evidence": ["diagnostics/physical-validation.json", "gates/contact-sheet.jpg"],
+      "notes": "406 frames sampled; zero support, seat-contact or corridor error. The bridge is visible and structurally anchored."
+    },
+    "causality_continuity": {
+      "weight": 15,
+      "score": 88,
+      "evidence": ["brief.json", "renders/preview.mp4"],
+      "notes": "Discovery, contemplation, resistance and acceptance follow one playhead-driven cause across four cuts."
+    },
+    "composition_camera": {
+      "weight": 15,
+      "score": 86,
+      "evidence": ["shot-manifest.json", "gates/contact-sheet.jpg"],
+      "notes": "Four distinct cameras, independent targets and focus objects; final chase camera is structurally drift-free."
+    },
+    "motion_rhythm": {
+      "weight": 15,
+      "score": 84,
+      "evidence": ["renders/preview.mp4", "diagnostics/physical-validation.json"],
+      "notes": "Eight-bar edit, beat-foot gesture, impact at frame 251 and final recovery. Character motion remains deliberately graphic."
+    },
+    "lighting": {
+      "weight": 15,
+      "score": 85,
+      "evidence": ["gates/lighting-gate-manifest.json", "gates/contact-sheet.jpg"],
+      "notes": "Drumboiii ratios adapted by scale, canonical screen light preserved, playhead sweep reduced after two clipping corrections."
+    },
+    "materials_color_typography": {
+      "weight": 10,
+      "score": 82,
+      "evidence": ["gates/contact-sheet.jpg", "renders/preview-contact-sheet.jpg"],
+      "notes": "Pearl mannequin, transparent cyan bridge, lime/magenta accents and untouched diegetic FL Studio typography."
+    },
+    "technical_integrity": {
+      "weight": 10,
+      "score": 98,
+      "evidence": ["diagnostics/scene-audit.json", "diagnostics/physical-validation.json"],
+      "notes": "No missing media, 406 valid PNGs, decodable 406-frame H.264/AAC preview and unchanged source SHA-256."
+    }
+  },
+  "automatic_caps": {
+    "critical_failure_max_score": 49,
+    "critical_failure_types": [
+      "collision_or_environment_traversal",
+      "impossible_articulation_or_wrong_affordance",
+      "unmotivated_drift_or_contact_slip",
+      "canonical_identity_broken",
+      "camera_or_geometry_clipping",
+      "corrupt_missing_or_glitched_frames"
+    ]
+  },
+  "thresholds": {"ship_min": 85, "revise_min": 70, "reject_max": 69}
+}

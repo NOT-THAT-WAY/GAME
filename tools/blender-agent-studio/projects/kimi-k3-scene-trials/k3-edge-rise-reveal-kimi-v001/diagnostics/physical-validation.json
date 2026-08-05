@@ -1,0 +1,144 @@
+{
+ "frames": 360,
+ "drift": {
+  "L": 5e-05,
+  "R": 5e-05
+ },
+ "penetration_max": 0.0,
+ "swing_clearance_min": 0.02567,
+ "torso_angle_range": [
+  0.5,
+  18.3
+ ],
+ "cam_jump_max": 0.0376,
+ "cam_clearance_min": 2.085,
+ "gates": {
+  "1": {
+   "footL_z": 0.9567,
+   "footR_z": 0.9567,
+   "torso_deg": 3.9
+  },
+  "17": {
+   "footL_z": 0.9567,
+   "footR_z": 0.9784,
+   "torso_deg": 3.9
+  },
+  "33": {
+   "footL_z": 0.9567,
+   "footR_z": 0.9579,
+   "torso_deg": 3.9
+  },
+  "49": {
+   "footL_z": 0.9567,
+   "footR_z": 0.9772,
+   "torso_deg": 3.3
+  },
+  "57": {
+   "footL_z": 0.9567,
+   "footR_z": 0.959,
+   "torso_deg": 1.3
+  },
+  "68": {
+   "footL_z": 0.9567,
+   "footR_z": 0.9567,
+   "torso_deg": 9.2
+  },
+  "78": {
+   "footL_z": 0.9567,
+   "footR_z": 0.9567,
+   "torso_deg": 18.3
+  },
+  "90": {
+   "footL_z": 0.9568,
+   "footR_z": 0.9568,
+   "torso_deg": 11.8
+  },
+  "106": {
+   "footL_z": 0.9568,
+   "footR_z": 0.9568,
+   "torso_deg": 7.9
+  },
+  "130": {
+   "footL_z": 1.0201,
+   "footR_z": 0.9568,
+   "torso_deg": 10.5
+  },
+  "154": {
+   "footL_z": 1.0201,
+   "footR_z": 1.0746,
+   "torso_deg": 11.8
+  },
+  "178": {
+   "footL_z": 1.1231,
+   "footR_z": 1.0746,
+   "torso_deg": 11.8
+  },
+  "203": {
+   "footL_z": 1.1231,
+   "footR_z": 1.1715,
+   "torso_deg": 11.8
+  },
+  "227": {
+   "footL_z": 1.22,
+   "footR_z": 1.1715,
+   "torso_deg": 11.8
+  },
+  "251": {
+   "footL_z": 1.22,
+   "footR_z": 1.2684,
+   "torso_deg": 11.8
+  },
+  "275": {
+   "footL_z": 1.3169,
+   "footR_z": 1.2684,
+   "torso_deg": 11.8
+  },
+  "299": {
+   "footL_z": 1.3169,
+   "footR_z": 1.3653,
+   "torso_deg": 11.8
+  },
+  "320": {
+   "footL_z": 1.3169,
+   "footR_z": 1.3653,
+   "torso_deg": 5.2
+  },
+  "348": {
+   "footL_z": 1.3169,
+   "footR_z": 1.3653,
+   "torso_deg": 1.2
+  },
+  "360": {
+   "footL_z": 1.3169,
+   "footR_z": 1.3653,
+   "torso_deg": 1.2
+  }
+ },
+ "issues": [],
+ "_clr_frame": [
+  207,
+  "L",
+  0.0257
+ ],
+ "_drift_frame_L": [
+  81,
+  82,
+  0.0
+ ],
+ "_drift_frame_R": [
+  81,
+  82,
+  0.0
+ ],
+ "final_silhouette_pct": 13.7,
+ "checks": {
+  "drift_L<=0.005": true,
+  "drift_R<=0.005": true,
+  "penetration<=0.002": true,
+  "swing_clearance>=0.01": true,
+  "cam_jump<0.30": true,
+  "cam_clearance>=0.08": true,
+  "silhouette>=12%": true
+ },
+ "passed": true
+}

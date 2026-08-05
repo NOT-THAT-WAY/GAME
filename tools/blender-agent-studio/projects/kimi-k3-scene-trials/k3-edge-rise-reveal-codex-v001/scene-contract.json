@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-codex-v001",
+  "status": "completed",
+  "measurements": {
+    "box_interior_height_m": 4.42,
+    "floor_front_z_m": 0.88,
+    "floor_back_z_m": 2.63,
+    "floor_y_range_m": [-0.42, 1.25],
+    "front_rim_top_z_m": 0.76,
+    "character_source_height_m": 2.073016,
+    "character_scale": 0.43,
+    "character_final_height_m": 0.8914,
+    "character_to_interior_height_ratio": 0.2017
+  },
+  "coordinate_frame": {
+    "up": "+Z",
+    "user_side": "camera outside the open front at -Y",
+    "front": "character canonical -Y rotated 180 degrees to face box interior +Y",
+    "right": "+X",
+    "units": "meters"
+  },
+  "objects": [
+    {
+      "name": "K3_EDGE_CHARACTER_ROOT",
+      "source": "asset_library/characters/mecha-mascot-v002.blend::K3_MECHA_MASCOT_ASSET",
+      "semantic_role": "hero_subject",
+      "fixed_or_moving": "moving articulated rig",
+      "parent": null,
+      "interaction_surfaces": ["two rounded hand ends", "two rounded foot ends"],
+      "support_surfaces": ["front rim during seated push", "inclined piano-roll floor during standing and walk"],
+      "allowed_motion": ["root translation along +Y", "root rise caused by articulated push", "alternating leg swing", "arm support and recovery", "head pitch upward"],
+      "forbidden_motion": ["teleport", "unmotivated drift", "environment intersection", "whole-body turn in place", "vertical elevator stand", "foot slide during stance"],
+      "immutable": ["source mesh topology", "V2 proportions", "white material identity"]
+    },
+    {
+      "name": "K3_EDGE_CAMERA",
+      "semantic_role": "single_shot_camera",
+      "fixed_or_moving": "moving outward and upward only after short anticipation",
+      "parent": null,
+      "allowed_motion": ["small K2 dip", "dolly backward", "crane upward", "lens change 55 to 32 mm", "short recovery"],
+      "forbidden_motion": ["cut", "shell traversal", "unmotivated roll", "wobble"]
+    }
+  ],
+  "rig_additions": {
+    "required": true,
+    "reason": "L'asset V2 ne contient qu'un root Empty et deux meshes sans armature ni action.",
+    "mesh_topology_changed": false,
+    "additions": ["armature cinématique K3_EDGE_RIG", "poids de déformation procéduraux sur copie de travail", "bones pelvis/spine/head/arms/legs", "contrôles foot.L et foot.R alignés sur la pente", "targets techniques de contact"],
+    "source_asset_modified": false
+  },
+  "joints": [
+    {"name": "pelvis", "type": "ball_approximation", "limits_degrees": {"pitch": [-35, 28], "roll": [-12, 12], "yaw": [-10, 10]}},
+    {"name": "spine", "type": "ball_approximation", "limits_degrees": {"pitch": [-28, 24], "roll": [-10, 10], "yaw": [-12, 12]}},
+    {"name": "head", "type": "ball_approximation", "limits_degrees": {"pitch": [-18, 38], "roll": [-8, 8], "yaw": [-25, 25]}},
+    {"name": "shoulders", "type": "ball_approximation", "limits_degrees": {"sagittal": [-75, 80], "lateral": [-95, 95]}},
+    {"name": "elbows", "type": "hinge_approximation", "limits_degrees": [0, 125]},
+    {"name": "hips", "type": "ball_approximation", "limits_degrees": {"sagittal": [-75, 55], "lateral": [-20, 20]}},
+    {"name": "knees", "type": "hinge_approximation", "limits_degrees": [0, 125]}
+  ],
+  "supports_and_contacts": [
+    {"frames": [1, 60], "support": "USTUDIO_FRONT_BOTTOM_RIM", "contacts": ["pelvis/seat", "left/right hands during frames 49-73", "dangling foot beat does not claim ground contact"]},
+    {"frames": [61, 109], "support": "rim plus near floor", "contacts": ["hands carry then release load", "feet establish floor contact", "center of mass crosses above feet"]},
+    {"frames": [110, 157], "support": "USTUDIO_PIANO_ROLL_FLOOR", "contacts": ["both feet settle before gait"]},
+    {"frames": [158, 255], "support": "USTUDIO_PIANO_ROLL_FLOOR", "contacts": ["alternating stance foot has zero intended world velocity", "swing foot clears floor"]},
+    {"frames": [256, 360], "support": "USTUDIO_PIANO_ROLL_FLOOR", "contacts": ["both feet planted", "postural recovery only"]}
+  ],
+  "collision_pairs": [
+    {"moving": "K3_EDGE_CHARACTER", "static": "USTUDIO_FRONT_BOTTOM_RIM", "allowed": "seat and hand contact only", "forbidden": "torso or leg penetration"},
+    {"moving": "K3_EDGE_CHARACTER", "static": "USTUDIO_PIANO_ROLL_FLOOR", "allowed": "foot contact", "forbidden": "sub-floor penetration"},
+    {"moving": "K3_EDGE_CHARACTER", "static": "side walls and ceiling", "allowed": "none", "forbidden": "any overlap"},
+    {"moving": "K3_EDGE_CAMERA", "static": "box shell", "allowed": "none", "forbidden": "clip volume crossing shell"}
+  ],
+  "camera_corridor": {
+    "description": "Open-front corridor from approximately (1.15,-3.05,1.38) to (0,-8.1,4.15), always outside the front shell and aimed through the central opening.",
+    "clearance_margin_m": 0.12,
+    "obstacles": ["USTUDIO_FRONT_BOTTOM_RIM", "USTUDIO_FRONT_TOP_RIM", "USTUDIO_FRONT_LEFT_RIM", "USTUDIO_FRONT_RIGHT_RIM", "USTUDIO_FRONT_CORNER_*"],
+    "validated": true
+  },
+  "shot_states": [
+    {"name": "S0_SEATED", "frame": 1, "time_seconds": 0.0, "object_state": "seated on rim, one relaxed tempo tap", "camera_state": "close low 55 mm"},
+    {"name": "S1_ANTICIPATION", "frame": 61, "time_seconds": 2.0, "object_state": "torso forward and hands load rim", "camera_state": "small opposing dip"},
+    {"name": "S2_STAND", "frame": 110, "time_seconds": 3.633, "object_state": "hips rise over planted feet, hands unload", "camera_state": "travel backward begins"},
+    {"name": "S3_WALK", "frame": 207, "time_seconds": 6.867, "object_state": "alternating grounded stride", "camera_state": "dolly-crane reveals side panels"},
+    {"name": "S4_STOP", "frame": 256, "time_seconds": 8.5, "object_state": "both feet settle near center", "camera_state": "wide composition nearly established"},
+    {"name": "S5_LOOK", "frame": 304, "time_seconds": 10.1, "object_state": "head and sternum lift", "camera_state": "final elevation and focus recovery"},
+    {"name": "S6_CLIMAX", "frame": 353, "time_seconds": 11.733, "object_state": "playhead crosses body; small arm opening", "camera_state": "32 mm final wide, silhouette target >=12 percent"},
+    {"name": "S7_STILL", "frame": 360, "time_seconds": 11.967, "object_state": "stable contemplative hold", "camera_state": "motion stopped"}
+  ],
+  "validation": {
+    "required_views": ["hero_camera", "side_contact", "top_corridor"],
+    "sample_every_n_frames": 1,
+    "contact_tolerance_m": 0.025,
+    "stance_slip_tolerance_m": 0.02,
+    "final_silhouette_min_frame_height": 0.12,
+    "critical_failure_cap": 49
+  }
+}

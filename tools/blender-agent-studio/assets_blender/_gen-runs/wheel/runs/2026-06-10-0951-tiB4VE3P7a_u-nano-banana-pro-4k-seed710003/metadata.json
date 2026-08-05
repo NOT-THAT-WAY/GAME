@@ -1,0 +1,62 @@
+{
+  "snapshot_iso": "2026-06-10T09:51:30.888596+00:00",
+  "snapshot_folder": "2026-06-10-0951-tiB4VE3P7a_u-nano-banana-pro-4k-seed710003",
+  "url_id": "tiB4VE3P7a_u",
+  "label": "nano-banana-pro-4k-seed710003",
+  "output_file": "output.jpg",
+  "output_size_bytes": 2514821,
+  "url": "https://v3b.fal.media/files/b/0a9db856/tiB4VE3P7a_uEcUComiIP_MnLmss9z.jpg",
+  "source_path": "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781085089122997000_0.jpg",
+  "prompt_snapshot": null,
+  "prompt_source": null,
+  "refs_manifest": [
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-01_hero-front-3q.jpeg",
+      "size_bytes": 6849624,
+      "sha256_8": "746b1de0"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-02_hero-back-internals.jpeg",
+      "size_bytes": 6875634,
+      "sha256_8": "9389d1c8"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/03_side_clean_canonical.png",
+      "size_bytes": 434655,
+      "sha256_8": "c24954f9"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-03_macro-faceplate-screen-gain-dpad.jpeg",
+      "size_bytes": 7341506,
+      "sha256_8": "f86bab9a"
+    }
+  ],
+  "provider": "falai",
+  "model": "fal-ai/gemini-3-pro-image-preview/edit",
+  "cost_usd": 0.15,
+  "duration_sec": 72.60984587669373,
+  "seed": null,
+  "adapter_metadata": {
+    "output_urls": [
+      "https://v3b.fal.media/files/b/0a9db856/tiB4VE3P7a_uEcUComiIP_MnLmss9z.jpg"
+    ],
+    "local_paths": [
+      "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781085089122997000_0.jpg"
+    ],
+    "raw_result": "{'images': [{'url': 'https://v3b.fal.media/files/b/0a9db856/tiB4VE3P7a_uEcUComiIP_MnLmss9z.jpg', 'content_type': 'image/jpeg', 'file_name': 'tiB4VE3P7a_uEcUComiIP_MnLmss9z.jpg', 'file_size': None, 'width': 5056, 'height': 3392}], 'description': '**Focusing on Thumbwheel Detail**\\n\\nI\\'m currently concentrating on rendering a photorealistic macro view of the thumbwheel located on the \"Pulsed\" handheld device. My aim is to precisely capture the specific details provided in the user\\'s prompt and r...[truncated]",
+    "fal_model": "fal-ai/gemini-3-pro-image-preview/edit"
+  },
+  "extra": {
+    "spec": "blender-3d-preflight section 0.7 (Sliz 2026-06-10)",
+    "kind": "preflight-reference",
+    "provider": "falai",
+    "model": "fal-ai/gemini-3-pro-image-preview/edit",
+    "aspect_ratio": "3:2",
+    "resolution": "4K",
+    "output_format": "jpeg",
+    "seed": 710003,
+    "image_id": "wheel",
+    "intended_dest": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-11_macro-wheel.jpeg",
+    "prompt": "\"Pulsed\" \u2014 a handheld electronic device: landscape rounded-rectangle slab, approx 160 \u00d7 96 \u00d7 22 mm (Game Boy Advance-class proportions), made of glossy transparent amethyst-purple plastic (\"atomic clear purple\") with the dark internal PCB fully visible through the shell. Two-piece shell (front + back) with a visible horizontal parting seam running around the side walls, and transparent cylindrical screw bosses in the corners. Front face: a raised outer rim frames a recessed faceplate; embossed cursive \"Pulsed\" wordmark top-center; small embossed \"U.\" logo top-right; large dark switched-off rectangular screen recessed in a tray left-of-center; light-grey finely-knurled thumbwheel at top-left, sunk in a circular well and protruding slightly through the left edge; vertical gain slider right of the screen \u2014 a capsule-shaped recessed slot with a small white cylindrical knob and an embossed tick scale on its right; matte light-grey round button embossed \"SYNC\" bottom-left in a circular well; long horizontal slider with a white handle bottom-center; matte light-grey cross-shaped D-pad with four embossed triangular arrows and a central dome, set in a cross-shaped well, bottom-right. Bottom edge: centered metal USB-C port plus a trapezoid multi-pin expansion port to its right, each in a rounded cutout. Photorealistic product photography.\n\nMacro three-quarter close-up of the top-left corner of the device, focused on the thumbwheel: a light-grey finely-knurled cylindrical wheel (straight vertical knurling, like a classic handheld contrast wheel), sunk into a circular well of the recessed faceplate, its rim protruding about 2 mm through a slot in the left edge of the shell so it can be rolled with a thumb. Show clearly: the geometry of the circular well, the slot opening in the side edge, the wheel knurling, the shell parting seam on the side wall below, and the beginning of the embossed cursive \"Pulsed\" wordmark to the right. Shallow depth of field, same macro photography style as the attached close-up references.\n\nThis must be EXACTLY the same device as in the attached reference images \u2014 same proportions, same materials, same control layout, same embossed markings. Do not invent any additional buttons, ports, holes, logos, text or stickers. No Nintendo, Game Boy or any real-world branding. Screen stays off (dark teal-black). Warm cream seamless background, soft drop shadow, soft warm rim light, consistent with the references. No people, no props, no text overlays."
+  }
+}

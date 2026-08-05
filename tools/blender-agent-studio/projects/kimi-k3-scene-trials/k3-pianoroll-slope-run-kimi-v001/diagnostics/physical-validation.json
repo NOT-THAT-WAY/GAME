@@ -1,0 +1,3970 @@
+{
+ "slope_degrees_measured": 46.34,
+ "frames_evaluated": 240,
+ "root_height_error_max_m": 0.0,
+ "pelvis_h_range_m": [
+  0.15,
+  0.183
+ ],
+ "planted_drift_max_m": {
+  "L": 2e-05,
+  "R": 0.00493
+ },
+ "penetration_max_m": 0.0,
+ "swing_toe_clearance_min_m": 0.06038,
+ "torso_pitch_run_deg": {
+  "min": 19.18,
+  "max": 23.63
+ },
+ "cam_distance": {
+  "min": 0.9404,
+  "max": 0.9404,
+  "variation": 0.0
+ },
+ "cam_clearance_min_m": 0.5336,
+ "thresholds": {
+  "planted_drift_max_m": 0.005,
+  "penetration_max_m": 0.002,
+  "swing_toe_clearance_min_m": 0.01,
+  "root_height_error_max_m": 0.003,
+  "cam_distance_variation_m": 0.01,
+  "cam_clearance_min_m": 0.08
+ },
+ "per_frame": [
+  {
+   "frame": 1,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 15.79,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5495
+  },
+  {
+   "frame": 2,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 15.9,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5495
+  },
+  {
+   "frame": 3,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.0,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5495
+  },
+  {
+   "frame": 4,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.1,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5495
+  },
+  {
+   "frame": 5,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.18,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5495
+  },
+  {
+   "frame": 6,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.26,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5495
+  },
+  {
+   "frame": 7,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.32,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5495
+  },
+  {
+   "frame": 8,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.37,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5495
+  },
+  {
+   "frame": 9,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.4,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5495
+  },
+  {
+   "frame": 10,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.42,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5495
+  },
+  {
+   "frame": 11,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.42,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5495
+  },
+  {
+   "frame": 12,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.41,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5494
+  },
+  {
+   "frame": 13,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.37,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5494
+  },
+  {
+   "frame": 14,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.33,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5494
+  },
+  {
+   "frame": 15,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.26,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5494
+  },
+  {
+   "frame": 16,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0227,
+   "toe_R_h": 0.0528,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.19,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5494
+  },
+  {
+   "frame": 17,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1828,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0226,
+   "toe_R_h": 0.0527,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 15.6,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5493
+  },
+  {
+   "frame": 18,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1824,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0222,
+   "toe_R_h": 0.0523,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 15.74,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.549
+  },
+  {
+   "frame": 19,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1816,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 15.98,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5485
+  },
+  {
+   "frame": 20,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1806,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.3,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.548
+  },
+  {
+   "frame": 21,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1793,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 16.7,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5473
+  },
+  {
+   "frame": 22,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1778,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 17.17,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5465
+  },
+  {
+   "frame": 23,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1762,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 17.69,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5456
+  },
+  {
+   "frame": 24,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1744,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 18.26,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5446
+  },
+  {
+   "frame": 25,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1726,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 18.86,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5436
+  },
+  {
+   "frame": 26,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1706,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.5,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5426
+  },
+  {
+   "frame": 27,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1686,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.15,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5415
+  },
+  {
+   "frame": 28,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1665,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.81,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5405
+  },
+  {
+   "frame": 29,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1644,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.48,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5395
+  },
+  {
+   "frame": 30,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1624,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.13,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5385
+  },
+  {
+   "frame": 31,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1604,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.76,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5375
+  },
+  {
+   "frame": 32,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1586,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 23.36,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5366
+  },
+  {
+   "frame": 33,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1568,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 23.93,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5358
+  },
+  {
+   "frame": 34,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1552,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 24.44,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5351
+  },
+  {
+   "frame": 35,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1537,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 24.9,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5345
+  },
+  {
+   "frame": 36,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1524,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.29,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.534
+  },
+  {
+   "frame": 37,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1514,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.61,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5337
+  },
+  {
+   "frame": 38,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1506,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.84,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5336
+  },
+  {
+   "frame": 39,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1502,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.97,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5336
+  },
+  {
+   "frame": 40,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 26.0,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5338
+  },
+  {
+   "frame": 41,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.97,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5341
+  },
+  {
+   "frame": 42,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.94,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5344
+  },
+  {
+   "frame": 43,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.91,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5346
+  },
+  {
+   "frame": 44,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.88,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5348
+  },
+  {
+   "frame": 45,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.85,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.535
+  },
+  {
+   "frame": 46,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0295,
+   "toe_L_h": 0.0597,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.82,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5351
+  },
+  {
+   "frame": 47,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0365,
+   "toe_L_h": 0.0667,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.79,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5352
+  },
+  {
+   "frame": 48,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0426,
+   "toe_L_h": 0.0728,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.76,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5352
+  },
+  {
+   "frame": 49,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0474,
+   "toe_L_h": 0.0776,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 27.15,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5352
+  },
+  {
+   "frame": 50,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0506,
+   "toe_L_h": 0.0808,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 26.5,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5352
+  },
+  {
+   "frame": 51,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.052,
+   "toe_L_h": 0.0821,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.33,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5352
+  },
+  {
+   "frame": 52,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0514,
+   "toe_L_h": 0.0815,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 23.89,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5352
+  },
+  {
+   "frame": 53,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0489,
+   "toe_L_h": 0.0791,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.49,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5352
+  },
+  {
+   "frame": 54,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0448,
+   "toe_L_h": 0.0749,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.38,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5352
+  },
+  {
+   "frame": 55,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0392,
+   "toe_L_h": 0.0693,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.76,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5352
+  },
+  {
+   "frame": 56,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0325,
+   "toe_L_h": 0.0626,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.7,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5352
+  },
+  {
+   "frame": 57,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0251,
+   "toe_L_h": 0.0552,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.18,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5352
+  },
+  {
+   "frame": 58,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.92,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5405
+  },
+  {
+   "frame": 59,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.54,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5495
+  },
+  {
+   "frame": 60,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.87,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5585
+  },
+  {
+   "frame": 61,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0233,
+   "toe_R_h": 0.0534,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.82,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5674
+  },
+  {
+   "frame": 62,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0283,
+   "toe_R_h": 0.0584,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.39,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5764
+  },
+  {
+   "frame": 63,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0331,
+   "toe_R_h": 0.0632,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.68,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5854
+  },
+  {
+   "frame": 64,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0377,
+   "toe_R_h": 0.0678,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.88,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.5943
+  },
+  {
+   "frame": 65,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.042,
+   "toe_R_h": 0.0721,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.2,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.6033
+  },
+  {
+   "frame": 66,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.046,
+   "toe_R_h": 0.0762,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.79,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.6123
+  },
+  {
+   "frame": 67,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0499,
+   "toe_R_h": 0.08,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.77,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.6212
+  },
+  {
+   "frame": 68,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0535,
+   "toe_R_h": 0.0836,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.13,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.6302
+  },
+  {
+   "frame": 69,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0568,
+   "toe_R_h": 0.087,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.77,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.6392
+  },
+  {
+   "frame": 70,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0258,
+   "toe_L_h": 0.0559,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.51,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.6482
+  },
+  {
+   "frame": 71,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0333,
+   "toe_L_h": 0.0634,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.16,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.6571
+  },
+  {
+   "frame": 72,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.04,
+   "toe_L_h": 0.0702,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.53,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.6669
+  },
+  {
+   "frame": 73,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0456,
+   "toe_L_h": 0.0757,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.52,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.6769
+  },
+  {
+   "frame": 74,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0495,
+   "toe_L_h": 0.0797,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.13,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.687
+  },
+  {
+   "frame": 75,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0517,
+   "toe_L_h": 0.0818,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.45,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.697
+  },
+  {
+   "frame": 76,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0518,
+   "toe_L_h": 0.0819,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.66,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7071
+  },
+  {
+   "frame": 77,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0499,
+   "toe_L_h": 0.0801,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.96,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7171
+  },
+  {
+   "frame": 78,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0462,
+   "toe_L_h": 0.0763,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.52,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7197
+  },
+  {
+   "frame": 79,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0408,
+   "toe_L_h": 0.071,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.47,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7195
+  },
+  {
+   "frame": 80,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0342,
+   "toe_L_h": 0.0644,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.8,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7193
+  },
+  {
+   "frame": 81,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0268,
+   "toe_L_h": 0.0569,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.42,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.719
+  },
+  {
+   "frame": 82,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.025,
+   "toe_R_h": 0.0551,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.17,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7188
+  },
+  {
+   "frame": 83,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0325,
+   "toe_R_h": 0.0627,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.84,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7186
+  },
+  {
+   "frame": 84,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0394,
+   "toe_R_h": 0.0695,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.25,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7184
+  },
+  {
+   "frame": 85,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0451,
+   "toe_R_h": 0.0752,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.3,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7182
+  },
+  {
+   "frame": 86,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0492,
+   "toe_R_h": 0.0794,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.95,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.718
+  },
+  {
+   "frame": 87,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0515,
+   "toe_R_h": 0.0817,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.3,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7178
+  },
+  {
+   "frame": 88,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0519,
+   "toe_R_h": 0.082,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.52,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7176
+  },
+  {
+   "frame": 89,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0502,
+   "toe_R_h": 0.0804,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.81,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7175
+  },
+  {
+   "frame": 90,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0467,
+   "toe_R_h": 0.0768,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.35,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7173
+  },
+  {
+   "frame": 91,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0415,
+   "toe_R_h": 0.0716,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.26,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7172
+  },
+  {
+   "frame": 92,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0349,
+   "toe_R_h": 0.0651,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.56,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7171
+  },
+  {
+   "frame": 93,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0276,
+   "toe_R_h": 0.0577,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.17,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7169
+  },
+  {
+   "frame": 94,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0242,
+   "toe_L_h": 0.0543,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.93,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7168
+  },
+  {
+   "frame": 95,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0318,
+   "toe_L_h": 0.0619,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.63,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7167
+  },
+  {
+   "frame": 96,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0387,
+   "toe_L_h": 0.0689,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.08,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7166
+  },
+  {
+   "frame": 97,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0445,
+   "toe_L_h": 0.0747,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.17,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7166
+  },
+  {
+   "frame": 98,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0489,
+   "toe_L_h": 0.079,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.88,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7165
+  },
+  {
+   "frame": 99,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0514,
+   "toe_L_h": 0.0815,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.26,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7165
+  },
+  {
+   "frame": 100,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0519,
+   "toe_L_h": 0.0821,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.5,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7164
+  },
+  {
+   "frame": 101,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0505,
+   "toe_L_h": 0.0806,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.78,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7164
+  },
+  {
+   "frame": 102,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0471,
+   "toe_L_h": 0.0773,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.3,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7164
+  },
+  {
+   "frame": 103,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0421,
+   "toe_L_h": 0.0722,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.18,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7164
+  },
+  {
+   "frame": 104,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0357,
+   "toe_L_h": 0.0658,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.46,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7164
+  },
+  {
+   "frame": 105,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0284,
+   "toe_L_h": 0.0585,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.06,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7165
+  },
+  {
+   "frame": 106,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0234,
+   "toe_R_h": 0.0535,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.82,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7165
+  },
+  {
+   "frame": 107,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.031,
+   "toe_R_h": 0.0612,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.55,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7166
+  },
+  {
+   "frame": 108,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.038,
+   "toe_R_h": 0.0682,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.05,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7166
+  },
+  {
+   "frame": 109,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.044,
+   "toe_R_h": 0.0742,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.19,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7167
+  },
+  {
+   "frame": 110,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0485,
+   "toe_R_h": 0.0786,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.94,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7168
+  },
+  {
+   "frame": 111,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0512,
+   "toe_R_h": 0.0814,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.37,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7169
+  },
+  {
+   "frame": 112,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.052,
+   "toe_R_h": 0.0821,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.62,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.717
+  },
+  {
+   "frame": 113,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0507,
+   "toe_R_h": 0.0809,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.9,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7171
+  },
+  {
+   "frame": 114,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0475,
+   "toe_R_h": 0.0777,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.4,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7172
+  },
+  {
+   "frame": 115,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0427,
+   "toe_R_h": 0.0728,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.25,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7173
+  },
+  {
+   "frame": 116,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0364,
+   "toe_R_h": 0.0665,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.5,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7175
+  },
+  {
+   "frame": 117,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.08,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7176
+  },
+  {
+   "frame": 118,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0225,
+   "toe_L_h": 0.0527,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.84,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7177
+  },
+  {
+   "frame": 119,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0302,
+   "toe_L_h": 0.0604,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.59,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7179
+  },
+  {
+   "frame": 120,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0374,
+   "toe_L_h": 0.0675,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.13,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7181
+  },
+  {
+   "frame": 121,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0435,
+   "toe_L_h": 0.0736,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.33,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7183
+  },
+  {
+   "frame": 122,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0481,
+   "toe_L_h": 0.0783,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.13,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7184
+  },
+  {
+   "frame": 123,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.051,
+   "toe_L_h": 0.0812,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.59,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7186
+  },
+  {
+   "frame": 124,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.052,
+   "toe_L_h": 0.0821,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.86,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7188
+  },
+  {
+   "frame": 125,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0509,
+   "toe_L_h": 0.0811,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.13,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.719
+  },
+  {
+   "frame": 126,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.048,
+   "toe_L_h": 0.0781,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.61,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7193
+  },
+  {
+   "frame": 127,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0432,
+   "toe_L_h": 0.0734,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.43,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7195
+  },
+  {
+   "frame": 128,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0371,
+   "toe_L_h": 0.0672,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.64,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7197
+  },
+  {
+   "frame": 129,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0299,
+   "toe_L_h": 0.0601,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.2,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7199
+  },
+  {
+   "frame": 130,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0222,
+   "toe_L_h": 0.0524,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.96,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7202
+  },
+  {
+   "frame": 131,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0295,
+   "toe_R_h": 0.0596,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.73,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7204
+  },
+  {
+   "frame": 132,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0367,
+   "toe_R_h": 0.0668,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.3,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7207
+  },
+  {
+   "frame": 133,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0429,
+   "toe_R_h": 0.073,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.54,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7209
+  },
+  {
+   "frame": 134,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0477,
+   "toe_R_h": 0.0779,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.39,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7212
+  },
+  {
+   "frame": 135,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0508,
+   "toe_R_h": 0.081,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.89,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7214
+  },
+  {
+   "frame": 136,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.052,
+   "toe_R_h": 0.0821,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.17,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7217
+  },
+  {
+   "frame": 137,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0511,
+   "toe_R_h": 0.0813,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.45,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.722
+  },
+  {
+   "frame": 138,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0483,
+   "toe_R_h": 0.0785,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.9,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7222
+  },
+  {
+   "frame": 139,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0438,
+   "toe_R_h": 0.0739,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.68,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7225
+  },
+  {
+   "frame": 140,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0378,
+   "toe_R_h": 0.0679,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.86,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7228
+  },
+  {
+   "frame": 141,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0307,
+   "toe_R_h": 0.0608,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.39,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7231
+  },
+  {
+   "frame": 142,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.023,
+   "toe_R_h": 0.0532,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.15,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7234
+  },
+  {
+   "frame": 143,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0287,
+   "toe_L_h": 0.0588,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.93,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7236
+  },
+  {
+   "frame": 144,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.036,
+   "toe_L_h": 0.0661,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.53,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7239
+  },
+  {
+   "frame": 145,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0423,
+   "toe_L_h": 0.0724,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.82,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7242
+  },
+  {
+   "frame": 146,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0473,
+   "toe_L_h": 0.0774,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.71,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7245
+  },
+  {
+   "frame": 147,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0506,
+   "toe_L_h": 0.0807,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.24,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7248
+  },
+  {
+   "frame": 148,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0519,
+   "toe_L_h": 0.0821,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.54,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7251
+  },
+  {
+   "frame": 149,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0513,
+   "toe_L_h": 0.0815,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.81,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7254
+  },
+  {
+   "frame": 150,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0487,
+   "toe_L_h": 0.0789,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.23,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7257
+  },
+  {
+   "frame": 151,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0443,
+   "toe_L_h": 0.0745,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 19.98,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.726
+  },
+  {
+   "frame": 152,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0385,
+   "toe_L_h": 0.0686,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.12,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7263
+  },
+  {
+   "frame": 153,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0315,
+   "toe_L_h": 0.0616,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.62,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7266
+  },
+  {
+   "frame": 154,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0238,
+   "toe_L_h": 0.054,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.36,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7269
+  },
+  {
+   "frame": 155,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0279,
+   "toe_R_h": 0.058,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.15,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7272
+  },
+  {
+   "frame": 156,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0352,
+   "toe_R_h": 0.0654,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.79,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7275
+  },
+  {
+   "frame": 157,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0417,
+   "toe_R_h": 0.0718,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 23.11,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7279
+  },
+  {
+   "frame": 158,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0468,
+   "toe_R_h": 0.077,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 23.04,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7282
+  },
+  {
+   "frame": 159,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0503,
+   "toe_R_h": 0.0805,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.61,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7285
+  },
+  {
+   "frame": 160,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0519,
+   "toe_R_h": 0.082,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.92,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7288
+  },
+  {
+   "frame": 161,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0515,
+   "toe_R_h": 0.0816,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.18,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7291
+  },
+  {
+   "frame": 162,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0491,
+   "toe_R_h": 0.0792,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.59,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7293
+  },
+  {
+   "frame": 163,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0449,
+   "toe_R_h": 0.075,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.29,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7296
+  },
+  {
+   "frame": 164,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0391,
+   "toe_R_h": 0.0693,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.39,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7299
+  },
+  {
+   "frame": 165,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0322,
+   "toe_R_h": 0.0624,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.86,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7302
+  },
+  {
+   "frame": 166,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0246,
+   "toe_R_h": 0.0548,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.58,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7305
+  },
+  {
+   "frame": 167,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0271,
+   "toe_L_h": 0.0572,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.37,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7308
+  },
+  {
+   "frame": 168,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0345,
+   "toe_L_h": 0.0647,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 23.03,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7311
+  },
+  {
+   "frame": 169,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0411,
+   "toe_L_h": 0.0712,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 23.39,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7314
+  },
+  {
+   "frame": 170,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0464,
+   "toe_L_h": 0.0765,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 23.36,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7316
+  },
+  {
+   "frame": 171,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.05,
+   "toe_L_h": 0.0802,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.96,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7319
+  },
+  {
+   "frame": 172,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0518,
+   "toe_L_h": 0.082,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.29,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7322
+  },
+  {
+   "frame": 173,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0516,
+   "toe_L_h": 0.0818,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.54,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7324
+  },
+  {
+   "frame": 174,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0494,
+   "toe_L_h": 0.0796,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.92,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7327
+  },
+  {
+   "frame": 175,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0454,
+   "toe_L_h": 0.0755,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.59,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7329
+  },
+  {
+   "frame": 176,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0398,
+   "toe_L_h": 0.0699,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.64,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7332
+  },
+  {
+   "frame": 177,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.033,
+   "toe_L_h": 0.0631,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.07,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7334
+  },
+  {
+   "frame": 178,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.0254,
+   "toe_L_h": 0.0556,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.77,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7336
+  },
+  {
+   "frame": 179,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0243,
+   "toe_R_h": 0.0545,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.56,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7339
+  },
+  {
+   "frame": 180,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0284,
+   "toe_R_h": 0.0586,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 23.23,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7341
+  },
+  {
+   "frame": 181,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0324,
+   "toe_R_h": 0.0626,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 23.62,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7343
+  },
+  {
+   "frame": 182,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0362,
+   "toe_R_h": 0.0664,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 23.63,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7345
+  },
+  {
+   "frame": 183,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0398,
+   "toe_R_h": 0.0699,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 23.25,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7347
+  },
+  {
+   "frame": 184,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0429,
+   "toe_R_h": 0.0731,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.6,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7349
+  },
+  {
+   "frame": 185,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0457,
+   "toe_R_h": 0.0759,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.84,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7351
+  },
+  {
+   "frame": 186,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.048,
+   "toe_R_h": 0.0782,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.19,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7353
+  },
+  {
+   "frame": 187,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0498,
+   "toe_R_h": 0.08,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.82,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7354
+  },
+  {
+   "frame": 188,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0511,
+   "toe_R_h": 0.0813,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.82,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7356
+  },
+  {
+   "frame": 189,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0518,
+   "toe_R_h": 0.082,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.21,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7358
+  },
+  {
+   "frame": 190,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.052,
+   "toe_R_h": 0.0821,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.88,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7359
+  },
+  {
+   "frame": 191,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0515,
+   "toe_R_h": 0.0817,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.66,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.736
+  },
+  {
+   "frame": 192,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.15,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0505,
+   "toe_R_h": 0.0806,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 23.35,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7362
+  },
+  {
+   "frame": 193,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1504,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0489,
+   "toe_R_h": 0.0791,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 23.74,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7368
+  },
+  {
+   "frame": 194,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1514,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0468,
+   "toe_R_h": 0.077,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 23.72,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7384
+  },
+  {
+   "frame": 195,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.153,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0442,
+   "toe_R_h": 0.0744,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 23.27,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7407
+  },
+  {
+   "frame": 196,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1552,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0412,
+   "toe_R_h": 0.0714,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 22.5,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7438
+  },
+  {
+   "frame": 197,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1577,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0378,
+   "toe_R_h": 0.068,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 21.59,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7473
+  },
+  {
+   "frame": 198,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1604,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0342,
+   "toe_R_h": 0.0643,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.74,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7513
+  },
+  {
+   "frame": 199,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1634,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0302,
+   "toe_R_h": 0.0604,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 20.14,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7555
+  },
+  {
+   "frame": 200,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1665,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0261,
+   "toe_R_h": 0.0563,
+   "support": [
+    "L"
+   ],
+   "torso_vs_world_vertical_deg": 19.91,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7599
+  },
+  {
+   "frame": 201,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.1696,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.19,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7642
+  },
+  {
+   "frame": 202,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1726,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.02,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7684
+  },
+  {
+   "frame": 203,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1753,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.022,
+   "toe_R_h": 0.0521,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.85,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7723
+  },
+  {
+   "frame": 204,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1778,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0238,
+   "toe_R_h": 0.0539,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.7,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7758
+  },
+  {
+   "frame": 205,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.18,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.026,
+   "toe_R_h": 0.0561,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.57,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7787
+  },
+  {
+   "frame": 206,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1816,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0277,
+   "toe_R_h": 0.0578,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.47,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.781
+  },
+  {
+   "frame": 207,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.1826,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0288,
+   "toe_R_h": 0.0589,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.4,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7824
+  },
+  {
+   "frame": 208,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.37,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7829
+  },
+  {
+   "frame": 209,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 20.54,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7828
+  },
+  {
+   "frame": 210,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.0,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7827
+  },
+  {
+   "frame": 211,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 21.74,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7826
+  },
+  {
+   "frame": 212,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 22.69,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7825
+  },
+  {
+   "frame": 213,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 23.81,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7824
+  },
+  {
+   "frame": 214,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 25.07,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7823
+  },
+  {
+   "frame": 215,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 26.42,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7822
+  },
+  {
+   "frame": 216,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 27.8,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7821
+  },
+  {
+   "frame": 217,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 29.19,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7819
+  },
+  {
+   "frame": 218,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 30.53,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7818
+  },
+  {
+   "frame": 219,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 31.79,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7816
+  },
+  {
+   "frame": 220,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 32.91,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7814
+  },
+  {
+   "frame": 221,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 33.85,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7813
+  },
+  {
+   "frame": 222,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 34.58,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7811
+  },
+  {
+   "frame": 223,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 35.04,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7809
+  },
+  {
+   "frame": 224,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 35.19,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7807
+  },
+  {
+   "frame": 225,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 35.18,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7805
+  },
+  {
+   "frame": 226,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 35.16,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7803
+  },
+  {
+   "frame": 227,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 35.14,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7801
+  },
+  {
+   "frame": 228,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 35.13,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7798
+  },
+  {
+   "frame": 229,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 35.11,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7796
+  },
+  {
+   "frame": 230,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 35.09,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7794
+  },
+  {
+   "frame": 231,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 35.07,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7791
+  },
+  {
+   "frame": 232,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 35.05,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7789
+  },
+  {
+   "frame": 233,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 34.9,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7786
+  },
+  {
+   "frame": 234,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 34.54,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7784
+  },
+  {
+   "frame": 235,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 34.04,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7781
+  },
+  {
+   "frame": 236,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 33.47,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7779
+  },
+  {
+   "frame": 237,
+   "root_s": 0.2,
+   "root_h": -0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 32.9,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7776
+  },
+  {
+   "frame": 238,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 32.4,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7773
+  },
+  {
+   "frame": 239,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 32.04,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.777
+  },
+  {
+   "frame": 240,
+   "root_s": 0.2,
+   "root_h": 0.0,
+   "pelvis_h_normal": 0.183,
+   "ankle_L_h": 0.022,
+   "toe_L_h": 0.0521,
+   "ankle_R_h": 0.0291,
+   "toe_R_h": 0.0593,
+   "support": [
+    "L",
+    "R"
+   ],
+   "torso_vs_world_vertical_deg": 31.89,
+   "cam_dist": 0.9404,
+   "cam_clearance": 0.7768
+  }
+ ],
+ "checks_pass": {
+  "planted_drift": true,
+  "penetration": true,
+  "swing_clearance": true,
+  "root_height": true,
+  "cam_distance": true,
+  "cam_clearance": true,
+  "torso_run_in_15_25": true
+ },
+ "all_pass": true,
+ "passed": true
+}

@@ -1,0 +1,1933 @@
+{
+  "scene": {
+    "name": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+    "fps": 30,
+    "fps_base": 1.0,
+    "frame_start": 1,
+    "frame_end": 406,
+    "frame_current": 318,
+    "resolution": [
+      640,
+      360
+    ],
+    "engine": "BLENDER_EEVEE",
+    "camera": "USTUDIO_BOX_CAMERA",
+    "world": "USTUDIO_BOX_WORLD",
+    "unit_scale": 1.0,
+    "view_transform": "AgX",
+    "look": "AgX - Medium Low Contrast",
+    "exposure": 0.47999998927116394
+  },
+  "markers": [
+    {
+      "name": "USTUDIO_MEDIA_IN",
+      "frame": 1,
+      "camera": null
+    },
+    {
+      "name": "USTUDIO_MEDIA_QUARTER",
+      "frame": 102,
+      "camera": null
+    },
+    {
+      "name": "USTUDIO_MEDIA_MIDDLE",
+      "frame": 203,
+      "camera": null
+    },
+    {
+      "name": "USTUDIO_MEDIA_THREE_QUARTERS",
+      "frame": 305,
+      "camera": null
+    },
+    {
+      "name": "USTUDIO_MEDIA_OUT",
+      "frame": 406,
+      "camera": null
+    }
+  ],
+  "collections": {
+    "name": "Scene Collection",
+    "objects": [
+      "USTUDIO_BOX_FLOAT_ROOT",
+      "USTUDIO_FLOAT_SHADOW_KEY",
+      "USTUDIO_MEDIA_CONTROLLER",
+      "USTUDIO_SHADOW_TARGET",
+      "USTUDIO_SOFT_FILL",
+      "USTUDIO_SOFT_KEY"
+    ],
+    "children": [
+      {
+        "name": "BOX_SHELL",
+        "objects": [
+          "USTUDIO_BACK_SCREEN_BOTTOM",
+          "USTUDIO_BACK_SCREEN_TOP",
+          "USTUDIO_BACK_WALL",
+          "USTUDIO_BOTTOM_GREEN_LED",
+          "USTUDIO_CEILING",
+          "USTUDIO_FRONT_BOTTOM_RIM",
+          "USTUDIO_FRONT_CORNER_BL",
+          "USTUDIO_FRONT_CORNER_BR",
+          "USTUDIO_FRONT_CORNER_TL",
+          "USTUDIO_FRONT_CORNER_TR",
+          "USTUDIO_FRONT_LEFT_RIM",
+          "USTUDIO_FRONT_RIGHT_RIM",
+          "USTUDIO_FRONT_TOP_RIM",
+          "USTUDIO_GROUND",
+          "USTUDIO_LEFT_DEPTH_BOTTOM",
+          "USTUDIO_LEFT_DEPTH_TOP",
+          "USTUDIO_LEFT_PURPLE_LED",
+          "USTUDIO_RIGHT_DEPTH_BOTTOM",
+          "USTUDIO_RIGHT_DEPTH_TOP",
+          "USTUDIO_RIGHT_PURPLE_LED"
+        ],
+        "children": []
+      },
+      {
+        "name": "FL_STUDIO_INTERIOR",
+        "objects": [
+          "USTUDIO_BROWSER_LEFT_WALL",
+          "USTUDIO_CHANNEL_RACK_CASE",
+          "USTUDIO_CHANNEL_RACK_SURFACE",
+          "USTUDIO_MIXER_RIGHT_WALL",
+          "USTUDIO_PIANO_ROLL_FLOOR",
+          "USTUDIO_PLAYLIST_BACK_WALL"
+        ],
+        "children": []
+      },
+      {
+        "name": "PLAYBACK_MOTION",
+        "objects": [
+          "USTUDIO_CHANNEL_RACK_ROOT",
+          "USTUDIO_PLAYHEAD_BACK",
+          "USTUDIO_PLAYHEAD_FLOOR"
+        ],
+        "children": []
+      },
+      {
+        "name": "LIGHTING",
+        "objects": [
+          "USTUDIO_FRONT_FILL",
+          "USTUDIO_FRONT_KEY",
+          "USTUDIO_GREEN_BOUNCE",
+          "USTUDIO_INTERIOR_FILL"
+        ],
+        "children": []
+      },
+      {
+        "name": "CAMERA_RIG",
+        "objects": [
+          "USTUDIO_BOX_CAMERA",
+          "USTUDIO_BOX_TARGET"
+        ],
+        "children": []
+      }
+    ]
+  },
+  "objects": [
+    {
+      "name": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        1.3,
+        2.83
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        6.5,
+        0.16,
+        0.2
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_SCREEN_FRAME"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_BACK_SCREEN_TOP",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        1.3,
+        5.02
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        6.5,
+        0.16,
+        0.2
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_SCREEN_FRAME"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_BACK_WALL",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        1.58,
+        3.15
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        7.0,
+        0.36,
+        4.4
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_DARK_LINER"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_BOTTOM_GREEN_LED",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        -1.1,
+        0.4
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.44,
+        0.11,
+        0.11
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_PLAYBACK_GREEN"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_BOX_CAMERA",
+      "type": "CAMERA",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        -0.2604,
+        -18.5466,
+        4.9686
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "CAMERA_RIG"
+      ],
+      "hide_render": false,
+      "animated": true,
+      "lens": 43.639801025390625,
+      "sensor_width": 36.0,
+      "dof_use": true,
+      "dof_focus_object": "USTUDIO_BOX_TARGET",
+      "constraint_targets": [
+        {
+          "constraint": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_BOX_TARGET"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_BOX_TARGET"
+        }
+      ]
+    },
+    {
+      "name": "USTUDIO_BOX_FLOAT_ROOT",
+      "type": "EMPTY",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        0.0573,
+        0.0191,
+        1.3336
+      ],
+      "rotation_euler": [
+        0.0142,
+        -0.0094,
+        0.0095
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "Scene Collection"
+      ],
+      "hide_render": false,
+      "animated": true
+    },
+    {
+      "name": "USTUDIO_BOX_TARGET",
+      "type": "EMPTY",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        0.0492,
+        0.2697,
+        4.308
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "CAMERA_RIG"
+      ],
+      "hide_render": false,
+      "animated": true
+    },
+    {
+      "name": "USTUDIO_BROWSER_LEFT_WALL",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.92,
+        1.64,
+        4.0
+      ],
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_MOVIE_BROWSER"
+      ],
+      "vertices": 861
+    },
+    {
+      "name": "USTUDIO_CEILING",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        0.42,
+        5.3
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        8.1,
+        2.3,
+        0.36
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_DARK_LINER"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_CHANNEL_RACK_CASE",
+      "type": "MESH",
+      "parent": "USTUDIO_CHANNEL_RACK_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        0.12,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        -0.0349
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        3.56,
+        0.24,
+        1.04
+      ],
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_SCREEN_FRAME"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_CHANNEL_RACK_ROOT",
+      "type": "EMPTY",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        2.05,
+        -0.94,
+        1.25
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "PLAYBACK_MOTION"
+      ],
+      "hide_render": false,
+      "animated": false
+    },
+    {
+      "name": "USTUDIO_CHANNEL_RACK_SURFACE",
+      "type": "MESH",
+      "parent": "USTUDIO_CHANNEL_RACK_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        -2.05,
+        0.94,
+        -1.25
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        3.34,
+        0.0,
+        0.84
+      ],
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_MOVIE_CHANNEL_RACK"
+      ],
+      "vertices": 4
+    },
+    {
+      "name": "USTUDIO_FLOAT_SHADOW_KEY",
+      "type": "LIGHT",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        0.0,
+        -0.8,
+        8.5
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "Scene Collection"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "light_type": "AREA",
+      "energy": 760.0,
+      "color": [
+        0.88,
+        0.92,
+        1.0
+      ],
+      "shape": "DISK",
+      "size": 4.5,
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_SHADOW_TARGET"
+        }
+      ]
+    },
+    {
+      "name": "USTUDIO_FRONT_BOTTOM_RIM",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        -0.72,
+        0.42
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        9.1,
+        0.72,
+        0.68
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_BL",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        -4.3,
+        -0.78,
+        0.62
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1,
+        0.94,
+        1.1
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_BR",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        4.3,
+        -0.78,
+        0.62
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1,
+        0.94,
+        1.1
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_TL",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        -4.3,
+        -0.78,
+        5.52
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1,
+        0.94,
+        1.1
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_TR",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        4.3,
+        -0.78,
+        5.52
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1,
+        0.94,
+        1.1
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_FRONT_FILL",
+      "type": "LIGHT",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        4.0,
+        -4.2,
+        4.7
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "LIGHTING"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "light_type": "POINT",
+      "energy": 620.0,
+      "color": [
+        0.66,
+        0.8,
+        1.0
+      ]
+    },
+    {
+      "name": "USTUDIO_FRONT_KEY",
+      "type": "LIGHT",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        -3.8,
+        -5.0,
+        7.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "LIGHTING"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "light_type": "POINT",
+      "energy": 690.0,
+      "color": [
+        1.0,
+        0.88,
+        0.76
+      ]
+    },
+    {
+      "name": "USTUDIO_FRONT_LEFT_RIM",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        -4.5,
+        -0.72,
+        3.07
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.72,
+        0.72,
+        4.72
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_FRONT_RIGHT_RIM",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        4.5,
+        -0.72,
+        3.07
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.72,
+        0.72,
+        4.72
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_FRONT_TOP_RIM",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        -0.72,
+        5.72
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        9.1,
+        0.72,
+        0.68
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_GREEN_BOUNCE",
+      "type": "LIGHT",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        0.0,
+        -1.8,
+        0.55
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "LIGHTING"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "light_type": "POINT",
+      "energy": 75.0,
+      "color": [
+        0.42,
+        1.0,
+        0.16
+      ]
+    },
+    {
+      "name": "USTUDIO_GROUND",
+      "type": "MESH",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        0.0,
+        3.0,
+        -0.16
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        16.0,
+        14.0,
+        0.32
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_STAGE_FLOOR"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_INTERIOR_FILL",
+      "type": "LIGHT",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        0.0,
+        0.55,
+        4.9
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "LIGHTING"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "light_type": "POINT",
+      "energy": 590.0,
+      "color": [
+        0.82,
+        0.88,
+        1.0
+      ]
+    },
+    {
+      "name": "USTUDIO_LEFT_DEPTH_BOTTOM",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        -4.34,
+        0.32,
+        0.72
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.6,
+        2.2,
+        0.56
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_LEFT_DEPTH_TOP",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        -4.34,
+        0.38,
+        5.43
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.6,
+        2.3,
+        0.56
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_LEFT_PURPLE_LED",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        -4.52,
+        -1.1,
+        2.9
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.09,
+        0.11,
+        1.44
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_SIDE_PURPLE"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_MEDIA_CONTROLLER",
+      "type": "EMPTY",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "Scene Collection"
+      ],
+      "hide_render": true,
+      "animated": false
+    },
+    {
+      "name": "USTUDIO_MIXER_RIGHT_WALL",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.92,
+        1.64,
+        4.0
+      ],
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_MOVIE_MIXER"
+      ],
+      "vertices": 4
+    },
+    {
+      "name": "USTUDIO_PIANO_ROLL_FLOOR",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        7.56,
+        1.67,
+        1.75
+      ],
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_MOVIE_PIANO_ROLL"
+      ],
+      "vertices": 4
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_BACK",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        2.2045,
+        1.24,
+        3.91
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.052,
+        0.056,
+        1.76
+      ],
+      "collections": [
+        "PLAYBACK_MOTION"
+      ],
+      "hide_render": false,
+      "animated": true,
+      "materials": [
+        "M_PLAYHEAD_AUDIO_GLOW"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_FLOOR",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        2.9995,
+        0.34,
+        1.68
+      ],
+      "rotation_euler": [
+        0.8098,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.052,
+        2.44,
+        0.044
+      ],
+      "collections": [
+        "PLAYBACK_MOTION"
+      ],
+      "hide_render": true,
+      "animated": true,
+      "materials": [
+        "M_PLAYHEAD_AUDIO_GLOW"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_PLAYLIST_BACK_WALL",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        6.04,
+        0.0,
+        1.9
+      ],
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_MOVIE_PLAYLIST"
+      ],
+      "vertices": 4
+    },
+    {
+      "name": "USTUDIO_RIGHT_DEPTH_BOTTOM",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        4.34,
+        0.32,
+        0.72
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.6,
+        2.2,
+        0.56
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_RIGHT_DEPTH_TOP",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        4.34,
+        0.38,
+        5.43
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.6,
+        2.3,
+        0.56
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_RIGHT_PURPLE_LED",
+      "type": "MESH",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "parent_type": "OBJECT",
+      "location": [
+        4.52,
+        -1.1,
+        2.9
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.09,
+        0.11,
+        1.44
+      ],
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "materials": [
+        "M_SIDE_PURPLE"
+      ],
+      "vertices": 8
+    },
+    {
+      "name": "USTUDIO_SHADOW_TARGET",
+      "type": "EMPTY",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        0.0,
+        0.4,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "Scene Collection"
+      ],
+      "hide_render": false,
+      "animated": false
+    },
+    {
+      "name": "USTUDIO_SOFT_FILL",
+      "type": "LIGHT",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        4.8,
+        -4.5,
+        5.3
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "Scene Collection"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "light_type": "AREA",
+      "energy": 500.0,
+      "color": [
+        1.0,
+        0.2,
+        0.58
+      ],
+      "shape": "DISK",
+      "size": 5.0,
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_BOX_TARGET"
+        }
+      ]
+    },
+    {
+      "name": "USTUDIO_SOFT_KEY",
+      "type": "LIGHT",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        -4.6,
+        -5.8,
+        7.5
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collections": [
+        "Scene Collection"
+      ],
+      "hide_render": false,
+      "animated": false,
+      "light_type": "AREA",
+      "energy": 520.0,
+      "color": [
+        0.42,
+        1.0,
+        0.2
+      ],
+      "shape": "DISK",
+      "size": 5.5,
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_BOX_TARGET"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "name": "M_PLAYHEAD_AUDIO_GLOWAction.004",
+      "users": 1,
+      "fcurves": [
+        {
+          "slot": "NTShader Nodetree",
+          "data_path": "nodes[\"Principled BSDF\"].inputs[28].default_value",
+          "array_index": 0,
+          "keys": 136,
+          "range": [
+            1.0,
+            406.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USTUDIO_BOX_CAMERAAction.001",
+      "users": 2,
+      "fcurves": [
+        {
+          "slot": "OBUSTUDIO_BOX_CAMERA",
+          "data_path": "location",
+          "array_index": 0,
+          "keys": 9,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_BOX_CAMERA",
+          "data_path": "location",
+          "array_index": 1,
+          "keys": 9,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_BOX_CAMERA",
+          "data_path": "location",
+          "array_index": 2,
+          "keys": 9,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "CAUSTUDIO_BOX_CAMERA_DATA",
+          "data_path": "lens",
+          "array_index": 0,
+          "keys": 9,
+          "range": [
+            1.0,
+            406.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USTUDIO_BOX_FLOAT_ROOTAction",
+      "users": 1,
+      "fcurves": [
+        {
+          "slot": "OBUSTUDIO_BOX_FLOAT_ROOT",
+          "data_path": "location",
+          "array_index": 0,
+          "keys": 5,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_BOX_FLOAT_ROOT",
+          "data_path": "location",
+          "array_index": 1,
+          "keys": 5,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_BOX_FLOAT_ROOT",
+          "data_path": "location",
+          "array_index": 2,
+          "keys": 5,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_BOX_FLOAT_ROOT",
+          "data_path": "rotation_euler",
+          "array_index": 0,
+          "keys": 5,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_BOX_FLOAT_ROOT",
+          "data_path": "rotation_euler",
+          "array_index": 1,
+          "keys": 5,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_BOX_FLOAT_ROOT",
+          "data_path": "rotation_euler",
+          "array_index": 2,
+          "keys": 5,
+          "range": [
+            1.0,
+            406.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USTUDIO_BOX_TARGETAction",
+      "users": 1,
+      "fcurves": [
+        {
+          "slot": "OBUSTUDIO_BOX_TARGET",
+          "data_path": "location",
+          "array_index": 0,
+          "keys": 5,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_BOX_TARGET",
+          "data_path": "location",
+          "array_index": 1,
+          "keys": 5,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_BOX_TARGET",
+          "data_path": "location",
+          "array_index": 2,
+          "keys": 5,
+          "range": [
+            1.0,
+            406.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_BACKAction.005",
+      "users": 1,
+      "fcurves": [
+        {
+          "slot": "OBUSTUDIO_PLAYHEAD_BACK",
+          "data_path": "location",
+          "array_index": 0,
+          "keys": 4,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_PLAYHEAD_BACK",
+          "data_path": "location",
+          "array_index": 1,
+          "keys": 4,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_PLAYHEAD_BACK",
+          "data_path": "location",
+          "array_index": 2,
+          "keys": 4,
+          "range": [
+            1.0,
+            406.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_FLOORAction.004",
+      "users": 1,
+      "fcurves": [
+        {
+          "slot": "OBUSTUDIO_PLAYHEAD_FLOOR",
+          "data_path": "location",
+          "array_index": 0,
+          "keys": 4,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_PLAYHEAD_FLOOR",
+          "data_path": "location",
+          "array_index": 1,
+          "keys": 4,
+          "range": [
+            1.0,
+            406.0
+          ]
+        },
+        {
+          "slot": "OBUSTUDIO_PLAYHEAD_FLOOR",
+          "data_path": "location",
+          "array_index": 2,
+          "keys": 4,
+          "range": [
+            1.0,
+            406.0
+          ]
+        }
+      ]
+    }
+  ],
+  "materials": [
+    "M_BOX_DARK_LINER",
+    "M_BOX_WARM_GREY",
+    "M_MOVIE_BROWSER",
+    "M_MOVIE_CHANNEL_RACK",
+    "M_MOVIE_MIXER",
+    "M_MOVIE_PIANO_ROLL",
+    "M_MOVIE_PLAYLIST",
+    "M_PLAYBACK_GREEN",
+    "M_PLAYHEAD_AUDIO_GLOW",
+    "M_SCREEN_FRAME",
+    "M_SIDE_PURPLE",
+    "M_STAGE_FLOOR"
+  ],
+  "images": [
+    {
+      "name": "USTUDIO_KIT_BROWSER_ALL_INTRA.004",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/browser.mp4",
+      "size": [
+        214,
+        580
+      ]
+    },
+    {
+      "name": "USTUDIO_PLAYLIST_ALL_INTRA.004",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/playlist.mp4",
+      "size": [
+        900,
+        250
+      ]
+    },
+    {
+      "name": "USTUDIO_SEMANTIC_CHANNEL_RACK",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/controller.mp4",
+      "size": [
+        824,
+        170
+      ]
+    },
+    {
+      "name": "USTUDIO_SEMANTIC_MIXER",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/mixer.mp4",
+      "size": [
+        510,
+        490
+      ]
+    },
+    {
+      "name": "USTUDIO_SEMANTIC_PIANO_ROLL",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/piano-roll.mp4",
+      "size": [
+        900,
+        430
+      ]
+    }
+  ],
+  "worlds": [
+    {
+      "name": "USTUDIO_BOX_WORLD",
+      "use_nodes": true,
+      "nodes": [
+        {
+          "type": "BACKGROUND",
+          "name": "Background"
+        },
+        {
+          "type": "OUTPUT_WORLD",
+          "name": "World Output"
+        }
+      ]
+    }
+  ],
+  "workspaces": [
+    "Animation",
+    "Compositing",
+    "Geometry Nodes",
+    "Modeling",
+    "Rendering",
+    "Scripting",
+    "Sculpting",
+    "Shading",
+    "Texture Paint",
+    "USTUDIO Camera Lab",
+    "UV Editing"
+  ]
+}

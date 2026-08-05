@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "title": "LAST SIGNAL",
+  "source_asset": "DRUMBOII_FLIP_PHONE",
+  "source_library": "asset_library/imported/drumboii-y2k-assets.blend",
+  "duration_seconds": 30,
+  "fps": 24,
+  "frame_range": [
+    1,
+    720
+  ],
+  "acts": [
+    {
+      "frames": [
+        1,
+        144
+      ],
+      "name": "assembly",
+      "concepts": [
+        "reverse assembly reveal",
+        "stagger",
+        "camera anticipation"
+      ]
+    },
+    {
+      "frames": [
+        145,
+        288
+      ],
+      "name": "transport",
+      "concepts": [
+        "linear conveyor",
+        "tracking camera",
+        "negative corridor"
+      ]
+    },
+    {
+      "frames": [
+        289,
+        432
+      ],
+      "name": "activation",
+      "concepts": [
+        "hinge axis",
+        "causal choreography",
+        "focus pull",
+        "screen emission"
+      ]
+    },
+    {
+      "frames": [
+        433,
+        600
+      ],
+      "name": "signal city",
+      "concepts": [
+        "environment reveal",
+        "camera arc/crane",
+        "procedural FX"
+      ]
+    },
+    {
+      "frames": [
+        601,
+        720
+      ],
+      "name": "hero",
+      "concepts": [
+        "floating hold",
+        "settle",
+        "final still"
+      ]
+    }
+  ],
+  "collections": [
+    "SOURCE_ASSET_FLIP_PHONE",
+    "WORK_ASSET_FLIP_PHONE",
+    "ENVIRONMENT_LAST_SIGNAL",
+    "LIGHTS_LAST_SIGNAL",
+    "RIG_LAST_SIGNAL",
+    "FX_LAST_SIGNAL"
+  ],
+  "materials": [
+    "LS_MAT_PHONE_COBALT",
+    "LS_MAT_BUTTON_PEARL",
+    "LS_MAT_TEXT_CYAN",
+    "LS_MAT_HINGE_METAL",
+    "LS_MAT_SCREEN_SIGNAL",
+    "LS_MAT_FLOOR"
+  ],
+  "cameras": [
+    "LS_CAM_ASSEMBLY",
+    "LS_CAM_CONVEYOR",
+    "LS_CAM_ACTIVATION",
+    "LS_CAM_SIGNAL_CITY",
+    "LS_CAM_HERO"
+  ],
+  "saved_source_modified": false
+}

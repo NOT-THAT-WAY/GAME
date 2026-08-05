@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-flstudio-character-arc-v001",
+  "status": "approved_for_build",
+  "mode": "compact-four-scene-film",
+  "objective": "Un personnage minuscule découvre, contemple, fuit puis accepte l'univers FL Studio dans une continuité musicale de huit mesures.",
+  "source_blend": "projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+  "target_collection": "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK",
+  "duration_seconds": 13.5333,
+  "fps": 30,
+  "resolution": [640, 360],
+  "story": {
+    "premise": "Une figurine blanche s'éveille dans une boîte-interface dont le rythme est matérialisé par une playhead lumineuse.",
+    "cause": "Le premier balayage lumineux révèle le personnage et établit que l'interface réagit à la musique.",
+    "action": "Le personnage observe, tente de fuir le rythme, puis cesse de lutter et se synchronise avec lui.",
+    "result": "Au climax, le personnage se redresse et devient le point lumineux central d'un système qu'il accepte.",
+    "beats": [
+      {"frame": 1, "state": "still_initial", "cause": "noir respiré", "visible_result": "boîte et monde établis"},
+      {"frame": 9, "state": "awakening", "cause": "sweep dérivé de la playhead", "visible_result": "tête puis torse révélés"},
+      {"frame": 106, "state": "contemplation", "cause": "découverte achevée", "visible_result": "personnage assis sur le cadre"},
+      {"frame": 154, "state": "tempo_gesture", "cause": "rythme entendu", "visible_result": "pied qui bat sans glisser"},
+      {"frame": 203, "state": "run", "cause": "playhead revenue derrière lui", "visible_result": "course frontale contrôlée"},
+      {"frame": 251, "state": "impact", "cause": "downbeat probable", "visible_result": "flash lumineux, arrêt, épaules abaissées"},
+      {"frame": 299, "state": "acceptance", "cause": "lutte abandonnée", "visible_result": "main posée sur la passerelle-interface"},
+      {"frame": 348, "state": "rise", "cause": "montée musicale", "visible_result": "redressement avec intensité croissante"},
+      {"frame": 396, "state": "communion", "cause": "climax", "visible_result": "pose hero stable et orbite arrêtée"},
+      {"frame": 406, "state": "still_final", "cause": "énergie dissipée", "visible_result": "image finale stable"}
+    ]
+  },
+  "invariants": [
+    "template source jamais sauvegardé",
+    "identité et timing des cinq médias USTUDIO conservés",
+    "USTUDIO_PLAYHEAD_BACK réutilisée sans duplication géométrique",
+    "personnage toujours soutenu par une surface visible",
+    "aucune traversée de décor ou clipping caméra",
+    "aucun drift relatif pendant marche, assise ou course",
+    "aucune frame corrompue ou manquante"
+  ],
+  "camera": {
+    "style_source": "knowledge/tutorials/DRUMBOIII_DIRECTION.md",
+    "primary_move": "quatre gestes distincts mais causalement reliés : low push, macro reveal, frontal retreat, descending spiral",
+    "lens_mm_range": [18, 85],
+    "target_strategy": "un TARGET indépendant par caméra, parenté au repère pertinent",
+    "focus_strategy": "DOF explicite contrôlée sur le personnage à chaque pose hero",
+    "hero_pose_frames": [9, 57, 106, 154, 203, 251, 299, 348, 396],
+    "forbidden": ["drift sans cause", "wobble prolongé", "clipping", "orbite traversant coque ou passerelle"]
+  },
+  "lighting": {
+    "style_source": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/analysis.json",
+    "preset": "drumboiii-layered-adapted",
+    "world_strength": 0.22,
+    "required_layers": ["SUN_REFLECTION", "BACK_SHAPE", "SIDE_GLIMMER_A", "SIDE_GLIMMER_B", "DETAIL_RETURN"],
+    "gate_each_layer": true,
+    "forbidden": ["highlight clippé", "lampe sans fonction visuelle", "lumière cachant une erreur physique"]
+  },
+  "physics": {
+    "contract_files": ["scene-contract.json"],
+    "gravity_enabled_or_justified": true,
+    "supports": ["USTUDIO_INTERFACE_BRIDGE", "USTUDIO_BOTTOM_FRAME_SEAT"],
+    "colliders": ["USTUDIO_INTERFACE_BRIDGE", "USTUDIO_BOTTOM_FRAME"],
+    "joints": ["humanoid shoulders, elbows, hips, knees, neck and spine within anatomical pose ranges"],
+    "clearance_checks": ["character against ramp", "camera against shell", "limbs against bridge", "scene 2 legs against lower frame"],
+    "camera_corridor_clear": true
+  },
+  "materials_and_design": {
+    "dominant_color": "pearl white mannequin",
+    "secondary_color": "deep plum-black box",
+    "accent_color": "acid lime with hot magenta counterlight",
+    "material_roles": ["matte body catches screen color", "transparent bridge makes support legible", "emissive edge proves interface contact"],
+    "typography": {"used": true, "content": "FL Studio labels and channel names already present in the synchronized interface media", "font": "source interface typography", "legibility_gate": "diegetic type remains stable and unwarped; no redundant overlay title was added"}
+  },
+  "limits": {
+    "max_iterations_per_category": 3,
+    "allowed_output_root": "projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001",
+    "overwrite_source_blend": false,
+    "save_only_trial_copy": true
+  }
+}

@@ -1,0 +1,1473 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | OPENMP = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 4
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "${LEGACY_HELP_ROOT}/work/models/ggml-large-v3-turbo.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:07,000"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 7000
+			},
+			"text": " Hello! In this video I'm going to show you how I do my chain animations."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:07,000",
+				"to": "00:00:11,000"
+			},
+			"offsets": {
+				"from": 7000,
+				"to": 11000
+			},
+			"text": " I often use chains as decorations in my videos, often in the background."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:11,000",
+				"to": "00:00:15,000"
+			},
+			"offsets": {
+				"from": 11000,
+				"to": 15000
+			},
+			"text": " And today I'm going to show you two ways to do these types of animations."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:15,000",
+				"to": "00:00:18,000"
+			},
+			"offsets": {
+				"from": 15000,
+				"to": 18000
+			},
+			"text": " So to start off, I'm just going to create a little chain here."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:18,000",
+				"to": "00:00:21,000"
+			},
+			"offsets": {
+				"from": 18000,
+				"to": 21000
+			},
+			"text": " So I'm going to press Shift+A and add in a torus."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:21,000",
+				"to": "00:00:28,000"
+			},
+			"offsets": {
+				"from": 21000,
+				"to": 28000
+			},
+			"text": " And before I do anything, I'm going to press down to the left here and increase this to 0.35."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:28,000",
+				"to": "00:00:32,000"
+			},
+			"offsets": {
+				"from": 28000,
+				"to": 32000
+			},
+			"text": " Because I find that that thickness is perfect for a chain."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:32,000",
+				"to": "00:00:35,000"
+			},
+			"offsets": {
+				"from": 32000,
+				"to": 35000
+			},
+			"text": " I'm going to select it and press tab to go to edit mode."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:35,000",
+				"to": "00:00:40,000"
+			},
+			"offsets": {
+				"from": 35000,
+				"to": 40000
+			},
+			"text": " I'm going to go to x-ray and select all these vertices in the middle."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:40,000",
+				"to": "00:00:42,000"
+			},
+			"offsets": {
+				"from": 40000,
+				"to": 42000
+			},
+			"text": " Then bevel them, press Ctrl+B."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:42,000",
+				"to": "00:00:44,000"
+			},
+			"offsets": {
+				"from": 42000,
+				"to": 44000
+			},
+			"text": " So now we have perfect symmetry here."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:44,000",
+				"to": "00:00:49,000"
+			},
+			"offsets": {
+				"from": 44000,
+				"to": 49000
+			},
+			"text": " And we can select the right side, press G, X and drag it out. Something like that."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:49,000",
+				"to": "00:00:52,000"
+			},
+			"offsets": {
+				"from": 49000,
+				"to": 52000
+			},
+			"text": " And while I'm in edit mode, I'm going to press A to select all."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:52,000",
+				"to": "00:00:57,000"
+			},
+			"offsets": {
+				"from": 52000,
+				"to": 57000
+			},
+			"text": " Then press Shift+D and then X to move it forward on the X axis."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:57,000",
+				"to": "00:00:58,000"
+			},
+			"offsets": {
+				"from": 57000,
+				"to": 58000
+			},
+			"text": " And then press Enter."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:58,000",
+				"to": "00:01:04,000"
+			},
+			"offsets": {
+				"from": 58000,
+				"to": 64000
+			},
+			"text": " And while it's selected, I'm going to press R, X and then 90 degrees to rotate it 90 degrees."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:04,000",
+				"to": "00:01:06,000"
+			},
+			"offsets": {
+				"from": 64000,
+				"to": 66000
+			},
+			"text": " So now we have an instance of a chain here."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:06,000",
+				"to": "00:01:09,000"
+			},
+			"offsets": {
+				"from": 66000,
+				"to": 69000
+			},
+			"text": " What we can do now is to add an array."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:09,000",
+				"to": "00:01:11,000"
+			},
+			"offsets": {
+				"from": 69000,
+				"to": 71000
+			},
+			"text": " So I'm going to add an array modifier here."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:11,000",
+				"to": "00:01:14,000"
+			},
+			"offsets": {
+				"from": 71000,
+				"to": 74000
+			},
+			"text": " And as you can see, they are not really overlapping perfectly here."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:14,000",
+				"to": "00:01:20,000"
+			},
+			"offsets": {
+				"from": 74000,
+				"to": 80000
+			},
+			"text": " So I'm going to go to the offset X here and move it back when it looks like it's matching."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:20,000",
+				"to": "00:01:21,000"
+			},
+			"offsets": {
+				"from": 80000,
+				"to": 81000
+			},
+			"text": " So something like that maybe."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:21,000",
+				"to": "00:01:25,000"
+			},
+			"offsets": {
+				"from": 81000,
+				"to": 85000
+			},
+			"text": " I'm going to increase the count maybe to 24."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:25,000",
+				"to": "00:01:28,000"
+			},
+			"offsets": {
+				"from": 85000,
+				"to": 88000
+			},
+			"text": " But we need to attach this to a curve."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:28,000",
+				"to": "00:01:30,000"
+			},
+			"offsets": {
+				"from": 88000,
+				"to": 90000
+			},
+			"text": " So I'm going to just temporarily hide this."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:30,000",
+				"to": "00:01:35,000"
+			},
+			"offsets": {
+				"from": 90000,
+				"to": 95000
+			},
+			"text": " And now I'm going to search for Shift+A and a path."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:35,000",
+				"to": "00:01:36,000"
+			},
+			"offsets": {
+				"from": 95000,
+				"to": 96000
+			},
+			"text": " You can see we have a path here."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:36,000",
+				"to": "00:01:43,000"
+			},
+			"offsets": {
+				"from": 96000,
+				"to": 103000
+			},
+			"text": " And what we want to do is to press Tab to go into edit mode and make sure everything is selected by pressing A."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:43,000",
+				"to": "00:01:48,000"
+			},
+			"offsets": {
+				"from": 103000,
+				"to": 108000
+			},
+			"text": " And then we want to have the end here as the middle point where the cursor is."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:48,000",
+				"to": "00:02:00,000"
+			},
+			"offsets": {
+				"from": 108000,
+				"to": 120000
+			},
+			"text": " Press A to select everything, then G and X and move this to the right side until you see the last dot lining up in the middle."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:00,000",
+				"to": "00:02:09,000"
+			},
+			"offsets": {
+				"from": 120000,
+				"to": 129000
+			},
+			"text": " So you see here, the last dot is in the middle here, which means that the center of the origin point of the path is here,"
+		},
+		{
+			"timestamps": {
+				"from": "00:02:09,000",
+				"to": "00:02:12,000"
+			},
+			"offsets": {
+				"from": 129000,
+				"to": 132000
+			},
+			"text": " which will make everything easier to animate later on."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:12,000",
+				"to": "00:02:16,000"
+			},
+			"offsets": {
+				"from": 132000,
+				"to": 136000
+			},
+			"text": " And now we can unhide the tors here and we probably need to scale this down a bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:16,000",
+				"to": "00:02:19,000"
+			},
+			"offsets": {
+				"from": 136000,
+				"to": 139000
+			},
+			"text": " So I'm going to select it and press S and scale it down."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:19,000",
+				"to": "00:02:22,000"
+			},
+			"offsets": {
+				"from": 139000,
+				"to": 142000
+			},
+			"text": " And now we want to attach the chain to the curve."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:22,000",
+				"to": "00:02:25,000"
+			},
+			"offsets": {
+				"from": 142000,
+				"to": 145000
+			},
+			"text": " So I'm going to add a modifier and search for Curve."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:25,000",
+				"to": "00:02:27,000"
+			},
+			"offsets": {
+				"from": 145000,
+				"to": 147000
+			},
+			"text": " And then on the dropdown, I'm going to select the path."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:27,000",
+				"to": "00:02:33,000"
+			},
+			"offsets": {
+				"from": 147000,
+				"to": 153000
+			},
+			"text": " So now it's attached to the curve underneath here, as you can see I have selected here."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:33,000",
+				"to": "00:02:39,000"
+			},
+			"offsets": {
+				"from": 153000,
+				"to": 159000
+			},
+			"text": " So I'm going to select the curve, the path here, and probably we will need to make it a little bit longer."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:39,000",
+				"to": "00:02:41,000"
+			},
+			"offsets": {
+				"from": 159000,
+				"to": 161000
+			},
+			"text": " So I'm going to scale it."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:41,000",
+				"to": "00:02:43,000"
+			},
+			"offsets": {
+				"from": 161000,
+				"to": 163000
+			},
+			"text": " So you see, now it's lining up here."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:43,000",
+				"to": "00:02:46,000"
+			},
+			"offsets": {
+				"from": 163000,
+				"to": 166000
+			},
+			"text": " Yeah, so now we're going to just make a random shape."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:46,000",
+				"to": "00:02:51,000"
+			},
+			"offsets": {
+				"from": 166000,
+				"to": 171000
+			},
+			"text": " So I'm going to go to the side view here and I'm going to make sure the path is selected."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:51,000",
+				"to": "00:02:55,000"
+			},
+			"offsets": {
+				"from": 171000,
+				"to": 175000
+			},
+			"text": " Then go into edit mode and just start playing around with the vertices here."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:55,000",
+				"to": "00:03:03,000"
+			},
+			"offsets": {
+				"from": 175000,
+				"to": 183000
+			},
+			"text": " And it looks a bit flat, so I'm going to take this vertices and move it maybe on the y-axis here."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:03,000",
+				"to": "00:03:07,000"
+			},
+			"offsets": {
+				"from": 183000,
+				"to": 187000
+			},
+			"text": " Then take this one, press G, Y and move it to the other side."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:07,000",
+				"to": "00:03:10,000"
+			},
+			"offsets": {
+				"from": 187000,
+				"to": 190000
+			},
+			"text": " And press this one, G, Y and move it here."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:10,000",
+				"to": "00:03:15,000"
+			},
+			"offsets": {
+				"from": 190000,
+				"to": 195000
+			},
+			"text": " So now we have a nice type of shape here."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:15,000",
+				"to": "00:03:17,000"
+			},
+			"offsets": {
+				"from": 195000,
+				"to": 197000
+			},
+			"text": " So how do we animate this?"
+		},
+		{
+			"timestamps": {
+				"from": "00:03:17,000",
+				"to": "00:03:22,000"
+			},
+			"offsets": {
+				"from": 197000,
+				"to": 202000
+			},
+			"text": " Because as you can see here in my video, they are like floating around in my videos."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:22,000",
+				"to": "00:03:26,000"
+			},
+			"offsets": {
+				"from": 202000,
+				"to": 206000
+			},
+			"text": " And the first thing I'm going to show you how to do this is to use simple deforms."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:26,000",
+				"to": "00:03:31,000"
+			},
+			"offsets": {
+				"from": 206000,
+				"to": 211000
+			},
+			"text": " So make sure you have selected the chain, then add modifier and add a simple deform."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:31,000",
+				"to": "00:03:33,000"
+			},
+			"offsets": {
+				"from": 211000,
+				"to": 213000
+			},
+			"text": " We're going to animate this by using keyframes."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:33,000",
+				"to": "00:03:37,000"
+			},
+			"offsets": {
+				"from": 213000,
+				"to": 217000
+			},
+			"text": " So one thing to point out is that I animate in 60 FPS."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:37,000",
+				"to": "00:03:40,000"
+			},
+			"offsets": {
+				"from": 217000,
+				"to": 220000
+			},
+			"text": " So make sure you have selected 60 FPS for this animation."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:40,000",
+				"to": "00:03:45,000"
+			},
+			"offsets": {
+				"from": 220000,
+				"to": 225000
+			},
+			"text": " And we can make it a little bit longer, maybe frame 1 to 500."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:45,000",
+				"to": "00:03:49,000"
+			},
+			"offsets": {
+				"from": 225000,
+				"to": 229000
+			},
+			"text": " And now make sure you have selected the chain and go to modifiers."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:49,000",
+				"to": "00:03:52,000"
+			},
+			"offsets": {
+				"from": 229000,
+				"to": 232000
+			},
+			"text": " And make sure you have it on frame 1 here."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:52,000",
+				"to": "00:03:54,000"
+			},
+			"offsets": {
+				"from": 232000,
+				"to": 234000
+			},
+			"text": " What I want to do is animate this."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:54,000",
+				"to": "00:03:57,000"
+			},
+			"offsets": {
+				"from": 234000,
+				"to": 237000
+			},
+			"text": " We can use the twist here, for example, and axis X."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:57,000",
+				"to": "00:03:59,000"
+			},
+			"offsets": {
+				"from": 237000,
+				"to": 239000
+			},
+			"text": " And just animate it a little bit like this."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:59,000",
+				"to": "00:04:03,000"
+			},
+			"offsets": {
+				"from": 239000,
+				"to": 243000
+			},
+			"text": " So on frame 1, for example, I'm going to put -10."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:04,000",
+				"to": "00:04:10,000"
+			},
+			"offsets": {
+				"from": 244000,
+				"to": 250000
+			},
+			"text": " And then I like to go forward maybe like 50 frames we can try."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:10,000",
+				"to": "00:04:12,000"
+			},
+			"offsets": {
+				"from": 250000,
+				"to": 252000
+			},
+			"text": " And I'm going to put +10."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:12,000",
+				"to": "00:04:16,000"
+			},
+			"offsets": {
+				"from": 252000,
+				"to": 256000
+			},
+			"text": " And then I want to go to frame 100 here and press -10 again."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:16,000",
+				"to": "00:04:19,000"
+			},
+			"offsets": {
+				"from": 256000,
+				"to": 259000
+			},
+			"text": " And then I will just copy/paste everything like this."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:19,000",
+				"to": "00:04:26,000"
+			},
+			"offsets": {
+				"from": 259000,
+				"to": 266000
+			},
+			"text": " Because you can see the first frame here has the same value, -10, as the last frame here, -10."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:26,000",
+				"to": "00:04:34,000"
+			},
+			"offsets": {
+				"from": 266000,
+				"to": 274000
+			},
+			"text": " Which means that we can select all these and press command C and just copy it like this."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:34,000",
+				"to": "00:04:39,000"
+			},
+			"offsets": {
+				"from": 274000,
+				"to": 279000
+			},
+			"text": " So you see here, if you watch here while I'm scrolling forward, -10."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:39,000",
+				"to": "00:04:41,000"
+			},
+			"offsets": {
+				"from": 279000,
+				"to": 281000
+			},
+			"text": " Then we are on 10."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:41,000",
+				"to": "00:04:43,000"
+			},
+			"offsets": {
+				"from": 281000,
+				"to": 283000
+			},
+			"text": " Then we are -10."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:43,000",
+				"to": "00:04:45,000"
+			},
+			"offsets": {
+				"from": 283000,
+				"to": 285000
+			},
+			"text": " And 10, -10."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:45,000",
+				"to": "00:04:49,000"
+			},
+			"offsets": {
+				"from": 285000,
+				"to": 289000
+			},
+			"text": " Yeah, so as you can see now, it's just moving around."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:49,000",
+				"to": "00:04:52,000"
+			},
+			"offsets": {
+				"from": 289000,
+				"to": 292000
+			},
+			"text": " But it looks kind of static, I think."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:52,000",
+				"to": "00:04:56,000"
+			},
+			"offsets": {
+				"from": 292000,
+				"to": 296000
+			},
+			"text": " Which is why I always use two types of simple deforms."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:56,000",
+				"to": "00:04:58,000"
+			},
+			"offsets": {
+				"from": 296000,
+				"to": 298000
+			},
+			"text": " So now we are going to add in another one."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:58,000",
+				"to": "00:05:00,000"
+			},
+			"offsets": {
+				"from": 298000,
+				"to": 300000
+			},
+			"text": " But this time I'm going to use the y-axis."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:00,000",
+				"to": "00:05:02,000"
+			},
+			"offsets": {
+				"from": 300000,
+				"to": 302000
+			},
+			"text": " And we are going to do the same process."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:02,000",
+				"to": "00:05:06,000"
+			},
+			"offsets": {
+				"from": 302000,
+				"to": 306000
+			},
+			"text": " But this time I'm going to, on the first frame, use 10 degrees."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:06,000",
+				"to": "00:05:09,000"
+			},
+			"offsets": {
+				"from": 306000,
+				"to": 309000
+			},
+			"text": " And we can drop it down here so you see."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:09,000",
+				"to": "00:05:14,000"
+			},
+			"offsets": {
+				"from": 309000,
+				"to": 314000
+			},
+			"text": " And then on frame 50, you can see the first simple deform is on 10."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:14,000",
+				"to": "00:05:16,000"
+			},
+			"offsets": {
+				"from": 314000,
+				"to": 316000
+			},
+			"text": " But this one will be inverted to -10."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:16,000",
+				"to": "00:05:21,000"
+			},
+			"offsets": {
+				"from": 316000,
+				"to": 321000
+			},
+			"text": " And then again, 10 here on the second one while this is -10."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:21,000",
+				"to": "00:05:23,000"
+			},
+			"offsets": {
+				"from": 321000,
+				"to": 323000
+			},
+			"text": " And -10 here while this is 10."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:23,000",
+				"to": "00:05:26,000"
+			},
+			"offsets": {
+				"from": 323000,
+				"to": 326000
+			},
+			"text": " And then we will just copy this over here like that."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:26,000",
+				"to": "00:05:30,000"
+			},
+			"offsets": {
+				"from": 326000,
+				"to": 330000
+			},
+			"text": " But now you can see that the animation looks really static and ugly almost."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:30,000",
+				"to": "00:05:32,000"
+			},
+			"offsets": {
+				"from": 330000,
+				"to": 332000
+			},
+			"text": " And I don't really want that."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:32,000",
+				"to": "00:05:38,000"
+			},
+			"offsets": {
+				"from": 332000,
+				"to": 338000
+			},
+			"text": " So what I do is that I select, you can see here, the last deform, which is this one we added."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:38,000",
+				"to": "00:05:40,000"
+			},
+			"offsets": {
+				"from": 338000,
+				"to": 340000
+			},
+			"text": " I'm going to select all these keyframes."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:40,000",
+				"to": "00:05:45,000"
+			},
+			"offsets": {
+				"from": 340000,
+				"to": 345000
+			},
+			"text": " And then I'm going to move them back around 25."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:45,000",
+				"to": "00:05:48,000"
+			},
+			"offsets": {
+				"from": 345000,
+				"to": 348000
+			},
+			"text": " So now you can see that they are kind of overlapping."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:48,000",
+				"to": "00:05:53,000"
+			},
+			"offsets": {
+				"from": 348000,
+				"to": 353000
+			},
+			"text": " Because here are the keyframes for the first simple deform we made."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:53,000",
+				"to": "00:05:56,000"
+			},
+			"offsets": {
+				"from": 353000,
+				"to": 356000
+			},
+			"text": " And in between them we have the second deform keyframes."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:56,000",
+				"to": "00:05:59,000"
+			},
+			"offsets": {
+				"from": 356000,
+				"to": 359000
+			},
+			"text": " Which means that they will like be combined and overlap each other."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:59,000",
+				"to": "00:06:04,000"
+			},
+			"offsets": {
+				"from": 359000,
+				"to": 364000
+			},
+			"text": " And now you can see it looks much smoother."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:04,000",
+				"to": "00:06:08,000"
+			},
+			"offsets": {
+				"from": 364000,
+				"to": 368000
+			},
+			"text": " But this is pretty much everything I do for my chain animations."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:08,000",
+				"to": "00:06:11,000"
+			},
+			"offsets": {
+				"from": 368000,
+				"to": 371000
+			},
+			"text": " But there's actually a simpler way to do this."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:11,000",
+				"to": "00:06:14,000"
+			},
+			"offsets": {
+				"from": 371000,
+				"to": 374000
+			},
+			"text": " So we can get rid of these simple deforms here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:14,000",
+				"to": "00:06:16,000"
+			},
+			"offsets": {
+				"from": 374000,
+				"to": 376000
+			},
+			"text": " And now we have nothing again."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:16,000",
+				"to": "00:06:19,000"
+			},
+			"offsets": {
+				"from": 376000,
+				"to": 379000
+			},
+			"text": " Now we're going to add in just a new simple deform."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:19,000",
+				"to": "00:06:21,000"
+			},
+			"offsets": {
+				"from": 379000,
+				"to": 381000
+			},
+			"text": " And we're also going to add an empty object."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:21,000",
+				"to": "00:06:24,000"
+			},
+			"offsets": {
+				"from": 381000,
+				"to": 384000
+			},
+			"text": " So I'm going to press Shift + A and search for plain axis."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:24,000",
+				"to": "00:06:29,000"
+			},
+			"offsets": {
+				"from": 384000,
+				"to": 389000
+			},
+			"text": " And now we're going to use a driver to animate this axis with."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:29,000",
+				"to": "00:06:33,000"
+			},
+			"offsets": {
+				"from": 389000,
+				"to": 393000
+			},
+			"text": " And the driver is like you are typing in a constant animation."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:33,000",
+				"to": "00:06:36,000"
+			},
+			"offsets": {
+				"from": 393000,
+				"to": 396000
+			},
+			"text": " So instead of animating this with keyframes."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:36,000",
+				"to": "00:06:37,000"
+			},
+			"offsets": {
+				"from": 396000,
+				"to": 397000
+			},
+			"text": " We can type in a number."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:37,000",
+				"to": "00:06:41,000"
+			},
+			"offsets": {
+				"from": 397000,
+				"to": 401000
+			},
+			"text": " And it will like rotate into infinity."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:41,000",
+				"to": "00:06:44,000"
+			},
+			"offsets": {
+				"from": 401000,
+				"to": 404000
+			},
+			"text": " So I'm actually going to animate it on the Z axis here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:44,000",
+				"to": "00:06:46,000"
+			},
+			"offsets": {
+				"from": 404000,
+				"to": 406000
+			},
+			"text": " To do that you're going to press this."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:46,000",
+				"to": "00:06:49,000"
+			},
+			"offsets": {
+				"from": 406000,
+				"to": 409000
+			},
+			"text": " And then type in hashtag frame slash."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:49,000",
+				"to": "00:06:51,000"
+			},
+			"offsets": {
+				"from": 409000,
+				"to": 411000
+			},
+			"text": " And we're going to try 60."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:51,000",
+				"to": "00:06:54,000"
+			},
+			"offsets": {
+				"from": 411000,
+				"to": 414000
+			},
+			"text": " And you're going to see that it starts rotating."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:54,000",
+				"to": "00:06:56,000"
+			},
+			"offsets": {
+				"from": 414000,
+				"to": 416000
+			},
+			"text": " But we're not animating it."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:56,000",
+				"to": "00:06:58,000"
+			},
+			"offsets": {
+				"from": 416000,
+				"to": 418000
+			},
+			"text": " It's driving it automatically."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:58,000",
+				"to": "00:06:59,000"
+			},
+			"offsets": {
+				"from": 418000,
+				"to": 419000
+			},
+			"text": " The cool thing about this."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:59,000",
+				"to": "00:07:01,000"
+			},
+			"offsets": {
+				"from": 419000,
+				"to": 421000
+			},
+			"text": " Is that you can now go to the chain."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:01,000",
+				"to": "00:07:02,000"
+			},
+			"offsets": {
+				"from": 421000,
+				"to": 422000
+			},
+			"text": " And press this drop down."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:02,000",
+				"to": "00:07:04,000"
+			},
+			"offsets": {
+				"from": 422000,
+				"to": 424000
+			},
+			"text": " And select empty object."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:04,000",
+				"to": "00:07:06,000"
+			},
+			"offsets": {
+				"from": 424000,
+				"to": 426000
+			},
+			"text": " And if you press space now."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:06,000",
+				"to": "00:07:09,000"
+			},
+			"offsets": {
+				"from": 426000,
+				"to": 429000
+			},
+			"text": " You will see that it's rotating automatically."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:09,000",
+				"to": "00:07:11,000"
+			},
+			"offsets": {
+				"from": 429000,
+				"to": 431000
+			},
+			"text": " But you can see that it looks really intense."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:11,000",
+				"to": "00:07:13,000"
+			},
+			"offsets": {
+				"from": 431000,
+				"to": 433000
+			},
+			"text": " So you might want to turn down the angle here."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:13,000",
+				"to": "00:07:15,000"
+			},
+			"offsets": {
+				"from": 433000,
+				"to": 435000
+			},
+			"text": " To maybe something like 10."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:15,000",
+				"to": "00:07:18,000"
+			},
+			"offsets": {
+				"from": 435000,
+				"to": 438000
+			},
+			"text": " So yeah just a subtle little animation."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:18,000",
+				"to": "00:07:21,000"
+			},
+			"offsets": {
+				"from": 438000,
+				"to": 441000
+			},
+			"text": " And you can play around with the placement of this."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:21,000",
+				"to": "00:07:23,000"
+			},
+			"offsets": {
+				"from": 441000,
+				"to": 443000
+			},
+			"text": " Which will affect how the rotation is."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:23,000",
+				"to": "00:07:27,000"
+			},
+			"offsets": {
+				"from": 443000,
+				"to": 447000
+			},
+			"text": " Depending on both of its origin points."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:27,000",
+				"to": "00:07:29,000"
+			},
+			"offsets": {
+				"from": 447000,
+				"to": 449000
+			},
+			"text": " But yeah that's pretty much everything I do."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:29,000",
+				"to": "00:07:30,000"
+			},
+			"offsets": {
+				"from": 449000,
+				"to": 450000
+			},
+			"text": " For my chain animations."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:30,000",
+				"to": "00:07:32,000"
+			},
+			"offsets": {
+				"from": 450000,
+				"to": 452000
+			},
+			"text": " Let me know if you wonder anything down below."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:32,000",
+				"to": "00:07:34,000"
+			},
+			"offsets": {
+				"from": 452000,
+				"to": 454000
+			},
+			"text": " And I'll see you in the next video."
+		}
+	]
+}

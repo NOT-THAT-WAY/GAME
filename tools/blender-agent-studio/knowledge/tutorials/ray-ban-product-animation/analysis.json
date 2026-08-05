@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "tutorial_id": "ray-ban-product-animation",
+  "model": "whisper.cpp large-v3-turbo + Codex visual/transcript synthesis",
+  "language": "en",
+  "analyzed_at": "2026-07-19T03:10:00+02:00",
+  "confidence": 0.94,
+  "summary": "Décomposition d'un spot produit Ray-Ban Meta : modélisation symétrique depuis références, séparation des pièces fonctionnelles, matériaux verre/plastique, mise à l'échelle réelle, rig global par Empty, studio à deux points, caméra simple, puis reveal d'assemblage où les composants convergent vers leur pose finale, complété par une émission de particules et du motion blur.",
+  "evidence_quality": {
+    "transcript": "usable",
+    "visual": "strong",
+    "regular_frames": 272,
+    "scene_frames": 103,
+    "contact_sheets": 6
+  },
+  "chapters": [
+    {"start": 0, "end": 55, "title": "Résultat, objectifs et structure du spot", "evidence": ["transcript 00:00:00–00:00:55"]},
+    {"start": 55, "end": 845, "title": "Monture principale depuis référence et modélisation symétrique", "evidence": ["transcript 00:00:55–00:14:05", "contact-sheets/frames_1_48.jpg", "contact-sheets/frames_49_96.jpg"]},
+    {"start": 845, "end": 1435, "title": "Matériaux, verres, branches, détails et logo", "evidence": ["transcript 00:14:05–00:23:55", "contact-sheets/frames_97_144.jpg"]},
+    {"start": 1435, "end": 1715, "title": "Échelle réelle, parent global, table et éclairage studio", "evidence": ["transcript 00:23:55–00:28:35", "contact-sheets/frames_145_192.jpg"]},
+    {"start": 1715, "end": 1894, "title": "Plan caméra et interpolation", "evidence": ["transcript 00:28:35–00:31:34"]},
+    {"start": 1894, "end": 2395, "title": "Scène dédiée au break-apart et animation des composants", "evidence": ["transcript 00:31:34–00:39:55", "contact-sheets/frames_193_240.jpg"]},
+    {"start": 2395, "end": 2719, "title": "Particules, polish lumière, motion blur et rendu", "evidence": ["transcript 00:39:55–00:45:19", "contact-sheets/frames_241_272.jpg"]}
+  ],
+  "techniques": [
+    {
+      "domain": "modeling",
+      "name": "Produit démontable par pièces fonctionnelles",
+      "steps": ["Tracer la silhouette depuis une référence.", "Exploiter Mirror pour la symétrie.", "Créer et nommer séparément monture, verres, branches, logos et modules caméra.", "Conserver chaque pièce animable comme objet distinct."],
+      "production_note": "La séparation n'est pas seulement topologique : elle prépare directement le reveal d'assemblage."
+    },
+    {
+      "domain": "scene-rig",
+      "name": "Contrôle global par Empty",
+      "steps": ["Créer un Empty centré sur le produit.", "Parenter toutes les pièces avec Keep Transform.", "Utiliser l'Empty pour l'échelle réelle et les transformations globales.", "Réserver les transformations locales aux pièces du reveal."],
+      "evidence": ["transcript 00:23:55–00:24:40"]
+    },
+    {
+      "domain": "product-animation",
+      "name": "Reveal d'assemblage à rebours",
+      "steps": ["Créer une scène ou un shot séparé.", "Poser d'abord le produit assemblé comme état final.", "Créer les clés finales de toutes les pièces.", "Revenir au début et disperser translation/rotation pièce par pièce.", "Décaler légèrement les clés pour obtenir une cascade.", "Passer les courbes en Bézier puis régler les arrivées dans le Graph Editor."],
+      "production_note": "Construire depuis l'état final garantit que le produit se recompose exactement, sans drift."
+    },
+    {
+      "domain": "camera",
+      "name": "Caméra sobre pendant une animation objet complexe",
+      "steps": ["Cadrer un hero three-quarter.", "Employer un pan ou push léger.", "Synchroniser la caméra avec le moment de recomposition.", "Éviter un grand orbit qui brouillerait les trajectoires des pièces."],
+      "evidence": ["transcript 00:28:35–00:31:20"]
+    },
+    {
+      "domain": "effects",
+      "name": "Accent de particules au burst",
+      "steps": ["Placer un petit émetteur au centre du produit.", "Régler une émission courte autour du burst.", "Désactiver Show Emitter.", "Ajuster vitesse, gravité, aléatoire et seed.", "Activer le motion blur seulement après validation des trajectoires."],
+      "evidence": ["transcript 00:39:55–00:43:35"]
+    }
+  ],
+  "workflow_recipe": {
+    "name": "Hero product assembly reveal",
+    "inputs": ["collection produit propre", "liste des pièces animables", "pose hero finale", "durée", "ordre de convergence", "palette studio"],
+    "steps": ["Auditer dimensions, origine, nommage et séparation des pièces.", "Créer PRODUCT_ROOT et parenter sans modifier la pose.", "Créer un shot dédié et verrouiller la pose finale.", "Poser les clés finales avant les poses dispersées.", "Échelonner les arrivées par groupes visuels.", "Régler les F-Curves et éliminer collisions ou traversées.", "Ajouter seulement ensuite caméra, éclairage, particules et motion blur.", "Rendre des gates début/milieu/impact/hero."],
+    "gates": ["silhouette finale identique à l'asset source", "aucune pièce ne traverse la monture", "logos et verres restent orientés correctement", "lisibilité au moment le plus dispersé", "arrivée sans vibration", "motion blur sans effacement des détails identitaires"]
+  },
+  "reusable_assets": ["PRODUCT_ROOT rig", "studio deux points", "shot break-apart", "preset de gate début/burst/settle", "nomenclature par groupes de pièces"],
+  "risks": ["références photo non orthographiques", "échelle réelle appliquée trop tard", "origines incohérentes entre pièces", "Bézier automatique créant des collisions", "particules ajoutées avant que le mouvement principal soit validé"]
+}

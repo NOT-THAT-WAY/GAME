@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "drumboii-y2k-source-pack",
+  "title": "DRUMBOII Y2K — 5 piece pack + Blob Speaker",
+  "source_policy": "Original FBX files copied byte-for-byte; Blender library is a derived artifact",
+  "original_locations": [
+    "${ORIGINAL_DOWNLOADS}/DRUMBOII_5PIECE_3DMODELS_Y2K",
+    "${ORIGINAL_DOWNLOADS}/Blob Speaker.fbx"
+  ],
+  "files": [
+    {"path":"fbx/DRUMBOII_BLOB_BIKE.fbx","sha256":"31f0739ccca208c8961e0f5f4b6853ac6d555f81a691108b2cd6017f4ee8ab15"},
+    {"path":"fbx/DRUMBOII_CONE.fbx","sha256":"66c73c62504b667c696f08a92b1fc2b22c054a25c80b7a44649d0f58ba10fe5a"},
+    {"path":"fbx/DRUMBOII_FLIP_PHONE.fbx","sha256":"10e729f1bafc935544003d938575d903c288ac3e4bb7d473d911a7e6b77cab7d"},
+    {"path":"fbx/DRUMBOII_GAMEBOII.fbx","sha256":"93a84b6ec963d2e7edcb8e97f2fe1a0f5db7ec1b3a6c0c34ca1a7cd46394ece9"},
+    {"path":"fbx/DRUMBOII_TRAFFIC_LIGHT.fbx","sha256":"2953514ec72377017176faf32ab1acfeccd6d14ec74764e1d3658c2c9c2214d4"},
+    {"path":"fbx/BLOB_SPEAKER.fbx","sha256":"fc0f6b5568877dd78d3a6b793e6618c441099589db128e245204a3405f62e743"}
+  ]
+}

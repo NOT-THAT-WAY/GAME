@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "campaign": "tutorial-synthesis-lab-2026-07-19",
+  "date": "2026-07-19",
+  "blender_version": "5.1.1",
+  "source_library": "asset_library/imported/drumboii-y2k-assets.blend",
+  "tutorial_count": 6,
+  "stage_count": 6,
+  "development_snapshot_count": 36,
+  "final": {
+    "blend": "projects/tutorial-synthesis-lab-2026-07-19/stages/06-final-multishot/06-final-multishot.blend",
+    "preview": "projects/tutorial-synthesis-lab-2026-07-19/final-preview.mp4",
+    "frames": 240,
+    "fps": 24,
+    "duration_seconds": 10,
+    "preview_resolution": [480, 270],
+    "gate_resolution": [640, 360],
+    "objects": 176,
+    "materials": 74,
+    "cameras": 3
+  },
+  "validation": "projects/tutorial-synthesis-lab-2026-07-19/validation-report.json",
+  "journal": "projects/tutorial-synthesis-lab-2026-07-19/PRODUCTION_JOURNAL.md"
+}

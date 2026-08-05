@@ -1,0 +1,4324 @@
+{
+  "schema_version": 1,
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+  "source_sha256": "c0b9c1a32722e8ec3fe49037011c81e529379235c67aa2b64e59bbe1a20fee36",
+  "read_only": true,
+  "blender_version": "5.1.1",
+  "scene": {
+    "name": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+    "frame_start": 1,
+    "frame_end": 406,
+    "fps": 30.0,
+    "duration_seconds": 13.533333333333333,
+    "resolution": [
+      640,
+      360,
+      100
+    ],
+    "engine": "BLENDER_EEVEE",
+    "active_camera": "USTUDIO_BOX_CAMERA",
+    "units": {
+      "system": "METRIC",
+      "scale_length": 1.0,
+      "length_unit": "METERS"
+    },
+    "view": {
+      "transform": "AgX",
+      "look": "AgX - Medium Low Contrast",
+      "exposure": 0.47999998927116394
+    },
+    "custom_properties": {
+      "ustudio_project": "fl-studio-box-v2",
+      "ustudio_concept": "one deep box whose inner walls are FL Studio",
+      "ustudio_reference_analysis": "reference-analysis/output-1/contact-4fps.jpg",
+      "ustudio_v1_status": "rejected: front collage without room depth",
+      "ustudio_template": true,
+      "ustudio_template_version": 1,
+      "ustudio_media_status": "demo media — ready to relink",
+      "ustudio_media_slots": "{\"playlist\": {\"material\": \"M_MOVIE_PLAYLIST\", \"file\": \"playlist.mp4\", \"surface\": \"mur du fond\"}, \"browser\": {\"material\": \"M_MOVIE_BROWSER\", \"file\": \"browser.mp4\", \"surface\": \"paroi gauche\"}, \"mixer\": {\"material\": \"M_MOVIE_MIXER\", \"file\": \"mixer.mp4\", \"surface\": \"paroi droite\"}, \"piano_roll\": {\"material\": \"M_MOVIE_PIANO_ROLL\", \"file\": \"piano-roll.mp4\", \"surface\": \"plancher inclin\\u00e9\"}, \"channel_rack\": {\"material\": \"M_MOVIE_CHANNEL_RACK\", \"file\": \"controller.mp4\", \"surface\": \"module avant\"}}",
+      "ustudio_usage": "Run workflow relink-fl-studio-box-media, render gates, then save only after validation",
+      "ustudio_semantic_template": true,
+      "ustudio_mapping_mode": "five readable semantic crops from one synchronized master",
+      "ustudio_master_source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/master.mp4",
+      "ustudio_crop_contract": "{\"playlist\": \"crop=900:250:660:155\", \"browser\": \"crop=215:580:160:310\", \"mixer\": \"crop=510:490:1290:320\", \"piano_roll\": \"crop=900:430:380:380\", \"channel_rack\": \"crop=825:170:970:810\"}",
+      "ustudio_workspace": "USTUDIO Camera Lab",
+      "ustudio_workspace_layout": "left live rendered camera | center object+camera | bottom dope sheet | right outliner+properties",
+      "ustudio_browser_fix": "kit-list crop; all-intra; bilinear UV grid",
+      "ustudio_playhead_glow": "3D overlay synced to source reset plus audio envelope",
+      "ustudio_palette": "V6 pearl plum + acid lime left + hot magenta right + neutral support",
+      "ustudio_floor_playhead": "3D overlay disabled; source movie playhead only"
+    }
+  },
+  "markers": [
+    {
+      "name": "USTUDIO_MEDIA_IN",
+      "frame": 1,
+      "seconds": 0.0
+    },
+    {
+      "name": "USTUDIO_MEDIA_QUARTER",
+      "frame": 102,
+      "seconds": 3.366667
+    },
+    {
+      "name": "USTUDIO_MEDIA_MIDDLE",
+      "frame": 203,
+      "seconds": 6.733333
+    },
+    {
+      "name": "USTUDIO_MEDIA_THREE_QUARTERS",
+      "frame": 305,
+      "seconds": 10.133333
+    },
+    {
+      "name": "USTUDIO_MEDIA_OUT",
+      "frame": 406,
+      "seconds": 13.5
+    }
+  ],
+  "collections": {
+    "BOX_SHELL": {
+      "objects_direct": [
+        "USTUDIO_BACK_SCREEN_BOTTOM",
+        "USTUDIO_BACK_SCREEN_TOP",
+        "USTUDIO_BACK_WALL",
+        "USTUDIO_BOTTOM_GREEN_LED",
+        "USTUDIO_CEILING",
+        "USTUDIO_FRONT_BOTTOM_RIM",
+        "USTUDIO_FRONT_CORNER_BL",
+        "USTUDIO_FRONT_CORNER_BR",
+        "USTUDIO_FRONT_CORNER_TL",
+        "USTUDIO_FRONT_CORNER_TR",
+        "USTUDIO_FRONT_LEFT_RIM",
+        "USTUDIO_FRONT_RIGHT_RIM",
+        "USTUDIO_FRONT_TOP_RIM",
+        "USTUDIO_GROUND",
+        "USTUDIO_LEFT_DEPTH_BOTTOM",
+        "USTUDIO_LEFT_DEPTH_TOP",
+        "USTUDIO_LEFT_PURPLE_LED",
+        "USTUDIO_RIGHT_DEPTH_BOTTOM",
+        "USTUDIO_RIGHT_DEPTH_TOP",
+        "USTUDIO_RIGHT_PURPLE_LED"
+      ],
+      "children": [],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    "CAMERA_RIG": {
+      "objects_direct": [
+        "USTUDIO_BOX_CAMERA",
+        "USTUDIO_BOX_TARGET"
+      ],
+      "children": [],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    "FL_STUDIO_INTERIOR": {
+      "objects_direct": [
+        "USTUDIO_BROWSER_LEFT_WALL",
+        "USTUDIO_CHANNEL_RACK_CASE",
+        "USTUDIO_CHANNEL_RACK_SURFACE",
+        "USTUDIO_MIXER_RIGHT_WALL",
+        "USTUDIO_PIANO_ROLL_FLOOR",
+        "USTUDIO_PLAYLIST_BACK_WALL"
+      ],
+      "children": [],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    "LIGHTING": {
+      "objects_direct": [
+        "USTUDIO_FRONT_FILL",
+        "USTUDIO_FRONT_KEY",
+        "USTUDIO_GREEN_BOUNCE",
+        "USTUDIO_INTERIOR_FILL"
+      ],
+      "children": [],
+      "hide_viewport": false,
+      "hide_render": false
+    },
+    "PLAYBACK_MOTION": {
+      "objects_direct": [
+        "USTUDIO_CHANNEL_RACK_ROOT",
+        "USTUDIO_PLAYHEAD_BACK",
+        "USTUDIO_PLAYHEAD_FLOOR"
+      ],
+      "children": [],
+      "hide_viewport": false,
+      "hide_render": false
+    }
+  },
+  "objects": [
+    {
+      "name": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        0.0,
+        1.3,
+        2.83
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -0.019247,
+        1.323998,
+        3.993478
+      ],
+      "dimensions_world": [
+        6.5,
+        0.16,
+        0.2
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_SCREEN_FRAME"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_BACK_SCREEN_TOP",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        0.0,
+        1.3,
+        5.02
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        0.019203,
+        1.350418,
+        6.182981
+      ],
+      "dimensions_world": [
+        6.5,
+        0.16,
+        0.2
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_SCREEN_FRAME"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_BACK_WALL",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        0.0,
+        1.58,
+        3.15
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -0.011245,
+        1.607827,
+        4.309985
+      ],
+      "dimensions_world": [
+        7.0,
+        0.36,
+        4.4
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_DARK_LINER"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_BOTTOM_GREEN_LED",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        0.0,
+        -1.1,
+        0.4
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -0.082341,
+        -1.105052,
+        1.593346
+      ],
+      "dimensions_world": [
+        1.44,
+        0.11,
+        0.11
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_PLAYBACK_GREEN"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_BOX_CAMERA",
+      "type": "CAMERA",
+      "collections": [
+        "CAMERA_RIG"
+      ],
+      "parent": null,
+      "location": [
+        0.276426,
+        -19.156803,
+        5.25
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        0.276426,
+        -19.156803,
+        5.25
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_BOX_TARGET"
+        }
+      ],
+      "custom_properties": {},
+      "animation": {
+        "action": "USTUDIO_BOX_CAMERAAction.001",
+        "slot": "OBUSTUDIO_BOX_CAMERA",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "channels": [
+          {
+            "data_path": "location",
+            "array_index": 0,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 0.4,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 18.0,
+                "value": -0.1,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 120.0,
+                "value": 0.35,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 150.0,
+                "value": 0.22,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 220.0,
+                "value": 0.35,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 238.0,
+                "value": 0.55,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 330.0,
+                "value": -0.3,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 360.0,
+                "value": -0.18,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 0.4,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "location",
+            "array_index": 1,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": -20.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 18.0,
+                "value": -20.299999,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 120.0,
+                "value": -18.799999,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 150.0,
+                "value": -19.1,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 220.0,
+                "value": -19.200001,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 238.0,
+                "value": -19.5,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 330.0,
+                "value": -18.5,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 360.0,
+                "value": -18.799999,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": -20.0,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "location",
+            "array_index": 2,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 5.1,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 18.0,
+                "value": 5.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 120.0,
+                "value": 5.35,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 150.0,
+                "value": 5.25,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 220.0,
+                "value": 5.25,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 238.0,
+                "value": 5.35,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 330.0,
+                "value": 4.95,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 360.0,
+                "value": 5.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 5.1,
+                "interpolation": "BEZIER"
+              }
+            ]
+          }
+        ]
+      },
+      "camera": {
+        "lens_mm": 45.28400802612305,
+        "sensor_width_mm": 36.0,
+        "clip_start": 0.10000000149011612,
+        "clip_end": 1000.0,
+        "dof_enabled": true,
+        "focus_object": "USTUDIO_BOX_TARGET",
+        "fstop": 4.5,
+        "animation": {
+          "action": "USTUDIO_BOX_CAMERAAction.001",
+          "slot": "CAUSTUDIO_BOX_CAMERA_DATA",
+          "frame_range": [
+            1.0,
+            406.0
+          ],
+          "channels": [
+            {
+              "data_path": "lens",
+              "array_index": 0,
+              "keyframes": [
+                {
+                  "frame": 1.0,
+                  "value": 46.0,
+                  "interpolation": "BEZIER"
+                },
+                {
+                  "frame": 18.0,
+                  "value": 47.0,
+                  "interpolation": "BEZIER"
+                },
+                {
+                  "frame": 120.0,
+                  "value": 44.0,
+                  "interpolation": "BEZIER"
+                },
+                {
+                  "frame": 150.0,
+                  "value": 45.0,
+                  "interpolation": "BEZIER"
+                },
+                {
+                  "frame": 220.0,
+                  "value": 45.5,
+                  "interpolation": "BEZIER"
+                },
+                {
+                  "frame": 238.0,
+                  "value": 46.5,
+                  "interpolation": "BEZIER"
+                },
+                {
+                  "frame": 330.0,
+                  "value": 43.5,
+                  "interpolation": "BEZIER"
+                },
+                {
+                  "frame": 360.0,
+                  "value": 44.5,
+                  "interpolation": "BEZIER"
+                },
+                {
+                  "frame": 406.0,
+                  "value": 46.0,
+                  "interpolation": "BEZIER"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "USTUDIO_BOX_FLOAT_ROOT",
+      "type": "EMPTY",
+      "collections": [
+        "Scene Collection"
+      ],
+      "parent": null,
+      "location": [
+        -0.08,
+        -0.01,
+        1.18
+      ],
+      "rotation_euler_deg": [
+        -0.7,
+        1.0,
+        -0.5
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -0.08,
+        -0.01,
+        1.18
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": {
+        "action": "USTUDIO_BOX_FLOAT_ROOTAction",
+        "slot": "OBUSTUDIO_BOX_FLOAT_ROOT",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "channels": [
+          {
+            "data_path": "location",
+            "array_index": 0,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 0.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 102.0,
+                "value": 0.1,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 203.0,
+                "value": -0.08,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 305.0,
+                "value": 0.06,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 0.0,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "location",
+            "array_index": 1,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 0.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 102.0,
+                "value": 0.02,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 203.0,
+                "value": -0.01,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 305.0,
+                "value": 0.02,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 0.0,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "location",
+            "array_index": 2,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 1.2,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 102.0,
+                "value": 1.38,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 203.0,
+                "value": 1.18,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 305.0,
+                "value": 1.34,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 1.2,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "rotation_euler",
+            "array_index": 0,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": -0.017453,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 102.0,
+                "value": 0.017453,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 203.0,
+                "value": -0.012217,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 305.0,
+                "value": 0.015708,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": -0.017453,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "rotation_euler",
+            "array_index": 1,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 0.013963,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 102.0,
+                "value": -0.013963,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 203.0,
+                "value": 0.017453,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 305.0,
+                "value": -0.010472,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 0.013963,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "rotation_euler",
+            "array_index": 2,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": -0.010472,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 102.0,
+                "value": 0.013963,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 203.0,
+                "value": -0.008727,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 305.0,
+                "value": 0.010472,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": -0.010472,
+                "interpolation": "BEZIER"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_BOX_TARGET",
+      "type": "EMPTY",
+      "collections": [
+        "CAMERA_RIG"
+      ],
+      "parent": null,
+      "location": [
+        -0.058577,
+        0.240305,
+        4.201424
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -0.058577,
+        0.240305,
+        4.201424
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": {
+        "action": "USTUDIO_BOX_TARGETAction",
+        "slot": "OBUSTUDIO_BOX_TARGET",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "channels": [
+          {
+            "data_path": "location",
+            "array_index": 0,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 0.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 108.0,
+                "value": 0.08,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 209.0,
+                "value": -0.06,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 311.0,
+                "value": 0.05,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 0.0,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "location",
+            "array_index": 1,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 0.25,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 108.0,
+                "value": 0.27,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 209.0,
+                "value": 0.24,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 311.0,
+                "value": 0.27,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 0.25,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "location",
+            "array_index": 2,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 4.18,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 108.0,
+                "value": 4.34,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 209.0,
+                "value": 4.2,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 311.0,
+                "value": 4.31,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 4.18,
+                "interpolation": "BEZIER"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_BROWSER_LEFT_WALL",
+      "type": "MESH",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -0.08,
+        -0.01,
+        1.18
+      ],
+      "dimensions_world": [
+        0.92,
+        1.64,
+        4.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {
+        "ustudio_mapping": "stable bilinear 20x40 grid; isolated kit list"
+      },
+      "animation": null,
+      "materials": [
+        "M_MOVIE_BROWSER"
+      ],
+      "mesh": {
+        "vertices": 861,
+        "edges": 1660,
+        "polygons": 800,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_CEILING",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        0.0,
+        0.42,
+        5.3
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        0.016628,
+        0.473894,
+        6.473667
+      ],
+      "dimensions_world": [
+        8.1,
+        2.3,
+        0.36
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_DARK_LINER"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_CHANNEL_RACK_CASE",
+      "type": "MESH",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "parent": "USTUDIO_CHANNEL_RACK_ROOT",
+      "location": [
+        0.0,
+        0.12,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        -2.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        1.984576,
+        -0.832716,
+        2.403955
+      ],
+      "dimensions_world": [
+        3.56,
+        0.24,
+        1.04
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_SCREEN_FRAME"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_CHANNEL_RACK_ROOT",
+      "type": "EMPTY",
+      "collections": [
+        "PLAYBACK_MOTION"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        2.05,
+        -0.94,
+        1.25
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        1.983554,
+        -0.952702,
+        2.405421
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null
+    },
+    {
+      "name": "USTUDIO_CHANNEL_RACK_SURFACE",
+      "type": "MESH",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "parent": "USTUDIO_CHANNEL_RACK_ROOT",
+      "location": [
+        -2.05,
+        0.94,
+        -1.25
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -0.08,
+        -0.01,
+        1.18
+      ],
+      "dimensions_world": [
+        3.34,
+        0.0,
+        0.84
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_MOVIE_CHANNEL_RACK"
+      ],
+      "mesh": {
+        "vertices": 4,
+        "edges": 4,
+        "polygons": 1,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_FLOAT_SHADOW_KEY",
+      "type": "LIGHT",
+      "collections": [
+        "Scene Collection"
+      ],
+      "parent": null,
+      "location": [
+        0.0,
+        -0.8,
+        8.5
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        0.0,
+        -0.8,
+        8.5
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_SHADOW_TARGET"
+        }
+      ],
+      "custom_properties": {},
+      "animation": null,
+      "light": {
+        "light_type": "AREA",
+        "energy": 760.0,
+        "color": [
+          0.88,
+          0.92,
+          1.0
+        ],
+        "size": 4.5,
+        "shadow_soft_size": 0.0
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_BOTTOM_RIM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        0.0,
+        -0.72,
+        0.42
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -0.078755,
+        -0.724853,
+        1.6087
+      ],
+      "dimensions_world": [
+        9.1,
+        0.72,
+        0.68
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_BL",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        -4.3,
+        -0.78,
+        0.62
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -4.374936,
+        -0.744915,
+        1.884432
+      ],
+      "dimensions_world": [
+        1.1,
+        0.94,
+        1.1
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_BR",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        4.3,
+        -0.78,
+        0.62
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        4.223427,
+        -0.819952,
+        1.734342
+      ],
+      "dimensions_world": [
+        1.1,
+        0.94,
+        1.1
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_TL",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        -4.3,
+        -0.78,
+        5.52
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -4.288907,
+        -0.6858,
+        6.78332
+      ],
+      "dimensions_world": [
+        1.1,
+        0.94,
+        1.1
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_TR",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        4.3,
+        -0.78,
+        5.52
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        4.309456,
+        -0.760837,
+        6.63323
+      ],
+      "dimensions_world": [
+        1.1,
+        0.94,
+        1.1
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_FILL",
+      "type": "LIGHT",
+      "collections": [
+        "LIGHTING"
+      ],
+      "parent": null,
+      "location": [
+        4.0,
+        -4.2,
+        4.7
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        4.0,
+        -4.2,
+        4.7
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "light": {
+        "light_type": "POINT",
+        "energy": 620.0,
+        "color": [
+          0.66,
+          0.8,
+          1.0
+        ],
+        "size": null,
+        "shadow_soft_size": 3.200000047683716
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_KEY",
+      "type": "LIGHT",
+      "collections": [
+        "LIGHTING"
+      ],
+      "parent": null,
+      "location": [
+        -3.8,
+        -5.0,
+        7.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -3.8,
+        -5.0,
+        7.0
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "light": {
+        "light_type": "POINT",
+        "energy": 690.0,
+        "color": [
+          1.0,
+          0.88,
+          0.76
+        ],
+        "size": null,
+        "shadow_soft_size": 3.5
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_LEFT_RIM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        -4.5,
+        -0.72,
+        3.07
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -4.531372,
+        -0.65362,
+        4.336634
+      ],
+      "dimensions_world": [
+        0.72,
+        0.72,
+        4.72
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_RIGHT_RIM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        4.5,
+        -0.72,
+        3.07
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        4.466914,
+        -0.732146,
+        4.179563
+      ],
+      "dimensions_world": [
+        0.72,
+        0.72,
+        4.72
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_TOP_RIM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        0.0,
+        -0.72,
+        5.72
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        0.014297,
+        -0.660913,
+        6.907496
+      ],
+      "dimensions_world": [
+        9.1,
+        0.72,
+        0.68
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_GREEN_BOUNCE",
+      "type": "LIGHT",
+      "collections": [
+        "LIGHTING"
+      ],
+      "parent": null,
+      "location": [
+        0.0,
+        -1.8,
+        0.55
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        0.0,
+        -1.8,
+        0.55
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "light": {
+        "light_type": "POINT",
+        "energy": 75.0,
+        "color": [
+          0.42,
+          1.0,
+          0.16
+        ],
+        "size": null,
+        "shadow_soft_size": 2.200000047683716
+      }
+    },
+    {
+      "name": "USTUDIO_GROUND",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": null,
+      "location": [
+        0.0,
+        3.0,
+        -0.16
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        0.0,
+        3.0,
+        -0.16
+      ],
+      "dimensions_world": [
+        16.0,
+        14.0,
+        0.32
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_STAGE_FLOOR"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_INTERIOR_FILL",
+      "type": "LIGHT",
+      "collections": [
+        "LIGHTING"
+      ],
+      "parent": null,
+      "location": [
+        0.0,
+        0.55,
+        4.9
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        0.0,
+        0.55,
+        4.9
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "light": {
+        "light_type": "POINT",
+        "energy": 590.0,
+        "color": [
+          0.82,
+          0.88,
+          1.0
+        ],
+        "size": null,
+        "shadow_soft_size": 2.799999952316284
+      }
+    },
+    {
+      "name": "USTUDIO_LEFT_DEPTH_BOTTOM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        -4.34,
+        0.32,
+        0.72
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -4.403809,
+        0.356518,
+        1.971671
+      ],
+      "dimensions_world": [
+        0.6,
+        2.2,
+        0.56
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_LEFT_DEPTH_TOP",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        -4.34,
+        0.38,
+        5.43
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -4.320604,
+        0.473334,
+        6.679869
+      ],
+      "dimensions_world": [
+        0.6,
+        2.3,
+        0.56
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_LEFT_PURPLE_LED",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        -4.52,
+        -1.1,
+        2.9
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -4.557588,
+        -1.035454,
+        4.171663
+      ],
+      "dimensions_world": [
+        0.09,
+        0.11,
+        1.44
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_SIDE_PURPLE"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_MEDIA_CONTROLLER",
+      "type": "EMPTY",
+      "collections": [
+        "Scene Collection"
+      ],
+      "parent": null,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": true,
+      "constraints": [],
+      "custom_properties": {
+        "source_video": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/master.mp4",
+        "start_time": 0.0,
+        "duration": 13.533333,
+        "loop": true,
+        "slot_count": 5,
+        "instruction": "Use Blender Studio workflow: Adapter une vidéo — FL Studio Box",
+        "mapping_mode": "semantic panels",
+        "fps": 30
+      },
+      "animation": null
+    },
+    {
+      "name": "USTUDIO_MIXER_RIGHT_WALL",
+      "type": "MESH",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -0.08,
+        -0.01,
+        1.18
+      ],
+      "dimensions_world": [
+        0.92,
+        1.64,
+        4.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_MOVIE_MIXER"
+      ],
+      "mesh": {
+        "vertices": 4,
+        "edges": 4,
+        "polygons": 1,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_PIANO_ROLL_FLOOR",
+      "type": "MESH",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -0.08,
+        -0.01,
+        1.18
+      ],
+      "dimensions_world": [
+        7.56,
+        1.67,
+        1.75
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_MOVIE_PIANO_ROLL"
+      ],
+      "mesh": {
+        "vertices": 4,
+        "edges": 4,
+        "polygons": 1,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_BACK",
+      "type": "MESH",
+      "collections": [
+        "PLAYBACK_MOTION"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        0.084231,
+        1.24,
+        3.91
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        0.083419,
+        1.276299,
+        5.072496
+      ],
+      "dimensions_world": [
+        0.052,
+        0.056,
+        1.76
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {
+        "ustudio_sync": "source frames 1-397; wrap 398; audio-reactive emission",
+        "ustudio_status": "active — 3D audio-reactive overlay"
+      },
+      "animation": {
+        "action": "USTUDIO_PLAYHEAD_BACKAction.005",
+        "slot": "OBUSTUDIO_PLAYHEAD_BACK",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "channels": [
+          {
+            "data_path": "location",
+            "array_index": 0,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": -2.78,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 397.0,
+                "value": 2.78,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 398.0,
+                "value": -2.78,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": -2.667677,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "location",
+            "array_index": 1,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 1.24,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 397.0,
+                "value": 1.24,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 398.0,
+                "value": 1.24,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 1.24,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "location",
+            "array_index": 2,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 3.91,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 397.0,
+                "value": 3.91,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 398.0,
+                "value": 3.91,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 3.91,
+                "interpolation": "BEZIER"
+              }
+            ]
+          }
+        ]
+      },
+      "materials": [
+        "M_PLAYHEAD_AUDIO_GLOW"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_FLOOR",
+      "type": "MESH",
+      "collections": [
+        "PLAYBACK_MOTION"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        2.99954,
+        0.34,
+        1.68
+      ],
+      "rotation_euler_deg": [
+        46.400006,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dimensions_world": [
+        0.052,
+        2.44,
+        0.044
+      ],
+      "hide_viewport": true,
+      "hide_render": true,
+      "constraints": [],
+      "custom_properties": {
+        "ustudio_sync": "source frames 1-397; wrap 398; audio-reactive emission",
+        "ustudio_status": "disabled — real Piano Roll playhead remains in movie texture"
+      },
+      "animation": {
+        "action": "USTUDIO_PLAYHEAD_FLOORAction.004",
+        "slot": "OBUSTUDIO_PLAYHEAD_FLOOR",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "channels": [
+          {
+            "data_path": "location",
+            "array_index": 0,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": -3.45,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 397.0,
+                "value": 3.02,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 398.0,
+                "value": -3.45,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": -3.319293,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "location",
+            "array_index": 1,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 0.34,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 397.0,
+                "value": 0.34,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 398.0,
+                "value": 0.34,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 0.34,
+                "interpolation": "BEZIER"
+              }
+            ]
+          },
+          {
+            "data_path": "location",
+            "array_index": 2,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 1.68,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 397.0,
+                "value": 1.68,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 398.0,
+                "value": 1.68,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 1.68,
+                "interpolation": "BEZIER"
+              }
+            ]
+          }
+        ]
+      },
+      "materials": [
+        "M_PLAYHEAD_AUDIO_GLOW"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_PLAYLIST_BACK_WALL",
+      "type": "MESH",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -0.08,
+        -0.01,
+        1.18
+      ],
+      "dimensions_world": [
+        6.04,
+        0.0,
+        1.9
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_MOVIE_PLAYLIST"
+      ],
+      "mesh": {
+        "vertices": 4,
+        "edges": 4,
+        "polygons": 1,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_RIGHT_DEPTH_BOTTOM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        4.34,
+        0.32,
+        0.72
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        4.274539,
+        0.280783,
+        1.820184
+      ],
+      "dimensions_world": [
+        0.6,
+        2.2,
+        0.56
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_RIGHT_DEPTH_TOP",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        4.34,
+        0.38,
+        5.43
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        4.357743,
+        0.397599,
+        6.528382
+      ],
+      "dimensions_world": [
+        0.6,
+        2.3,
+        0.56
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_RIGHT_PURPLE_LED",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "location": [
+        4.52,
+        -1.1,
+        2.9
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        4.48069,
+        -1.11433,
+        4.013894
+      ],
+      "dimensions_world": [
+        0.09,
+        0.11,
+        1.44
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null,
+      "materials": [
+        "M_SIDE_PURPLE"
+      ],
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_SHADOW_TARGET",
+      "type": "EMPTY",
+      "collections": [
+        "Scene Collection"
+      ],
+      "parent": null,
+      "location": [
+        0.0,
+        0.4,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        0.0,
+        0.4,
+        0.0
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [],
+      "custom_properties": {},
+      "animation": null
+    },
+    {
+      "name": "USTUDIO_SOFT_FILL",
+      "type": "LIGHT",
+      "collections": [
+        "Scene Collection"
+      ],
+      "parent": null,
+      "location": [
+        4.8,
+        -4.5,
+        5.3
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        4.8,
+        -4.5,
+        5.3
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_BOX_TARGET"
+        }
+      ],
+      "custom_properties": {},
+      "animation": null,
+      "light": {
+        "light_type": "AREA",
+        "energy": 500.0,
+        "color": [
+          1.0,
+          0.2,
+          0.58
+        ],
+        "size": 5.0,
+        "shadow_soft_size": 0.0
+      }
+    },
+    {
+      "name": "USTUDIO_SOFT_KEY",
+      "type": "LIGHT",
+      "collections": [
+        "Scene Collection"
+      ],
+      "parent": null,
+      "location": [
+        -4.6,
+        -5.8,
+        7.5
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world_translation": [
+        -4.6,
+        -5.8,
+        7.5
+      ],
+      "dimensions_world": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_BOX_TARGET"
+        }
+      ],
+      "custom_properties": {},
+      "animation": null,
+      "light": {
+        "light_type": "AREA",
+        "energy": 520.0,
+        "color": [
+          0.42,
+          1.0,
+          0.2
+        ],
+        "size": 5.5,
+        "shadow_soft_size": 0.0
+      }
+    }
+  ],
+  "geometry": {
+    "shell_local_to_float_root": {
+      "min": [
+        -4.86,
+        -1.25,
+        0.07
+      ],
+      "max": [
+        4.86,
+        1.76,
+        6.07
+      ],
+      "dimensions": [
+        9.72,
+        3.01,
+        6.0
+      ],
+      "center": [
+        0.0,
+        0.255,
+        3.07
+      ]
+    },
+    "interior_panels_local_to_float_root": {
+      "min": [
+        -4.08,
+        -1.08,
+        0.73
+      ],
+      "max": [
+        4.08,
+        1.36,
+        5.05
+      ],
+      "dimensions": [
+        8.16,
+        2.44,
+        4.32
+      ],
+      "center": [
+        0.0,
+        0.14,
+        2.89
+      ]
+    },
+    "playback_local_to_float_root": {
+      "min": [
+        0.058231,
+        -1.195261,
+        -1.215377
+      ],
+      "max": [
+        0.137515,
+        1.268,
+        4.79
+      ],
+      "dimensions": [
+        0.079284,
+        2.463261,
+        6.005377
+      ],
+      "center": [
+        0.097873,
+        0.036369,
+        1.787311
+      ]
+    },
+    "piano_roll_floor": {
+      "vertices_local": [
+        [
+          -3.78,
+          -0.42,
+          0.88
+        ],
+        [
+          3.78,
+          -0.42,
+          0.88
+        ],
+        [
+          3.05,
+          1.25,
+          2.63
+        ],
+        [
+          -3.05,
+          1.25,
+          2.63
+        ]
+      ],
+      "normal_local": [
+        0.0,
+        -0.723449,
+        0.690377
+      ],
+      "slope_from_horizontal_deg": 46.340008,
+      "friction_coefficient_min_static": 1.047904,
+      "center_local": [
+        0.0,
+        0.415,
+        1.755
+      ]
+    },
+    "usable_center_height_m": 3.365,
+    "requested_character_height_range_m": [
+      0.224333,
+      0.3365
+    ]
+  },
+  "sampled_marker_states": {
+    "1": {
+      "USTUDIO_BOX_FLOAT_ROOT": {
+        "location_local": [
+          0.0,
+          0.0,
+          1.2
+        ],
+        "rotation_local_deg": [
+          -1.0,
+          0.8,
+          -0.6
+        ],
+        "location_world": [
+          0.0,
+          0.0,
+          1.2
+        ]
+      },
+      "USTUDIO_BOX_CAMERA": {
+        "location_local": [
+          0.4,
+          -20.0,
+          5.1
+        ],
+        "rotation_local_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "location_world": [
+          0.4,
+          -20.0,
+          5.1
+        ],
+        "lens_mm": 46.0,
+        "fstop": 4.5
+      },
+      "USTUDIO_BOX_TARGET": {
+        "location_local": [
+          0.0,
+          0.25,
+          4.18
+        ],
+        "rotation_local_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "location_world": [
+          0.0,
+          0.25,
+          4.18
+        ]
+      },
+      "USTUDIO_PLAYHEAD_BACK": {
+        "location_local": [
+          -2.78,
+          1.24,
+          3.91
+        ],
+        "rotation_local_deg": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "location_world": [
+          -2.7116,
+          1.336519,
+          5.1262
+        ]
+      },
+      "USTUDIO_PLAYHEAD_FLOOR": {
+        "location_local": [
+          2.99954,
+          0.34,
+          1.68
+        ],
+        "rotation_local_deg": [
+          46.400006,
+          -0.0,
+          0.0
+        ],
+        "location_world": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "102": {
+      "USTUDIO_BOX_FLOAT_ROOT": {
+        "location_local": [
+          0.1,
+          0.02,
+          1.38
+        ],
+        "rotation_local_deg": [
+          1.0,
+          -0.8,
+          0.8
+        ],
+        "location_world": [
+          0.1,
+          0.02,
+          1.38
+        ]
+      },
+      "USTUDIO_BOX_CAMERA": {
+        "location_local": [
+          0.312905,
+          -18.923651,
+          5.321148
+        ],
+        "rotation_local_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "location_world": [
+          0.312905,
+          -18.923651,
+          5.321148
+        ],
+        "lens_mm": 44.247303,
+        "fstop": 4.5
+      },
+      "USTUDIO_BOX_TARGET": {
+        "location_local": [
+          0.079274,
+          0.269818,
+          4.338547
+        ],
+        "rotation_local_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "location_world": [
+          0.079274,
+          0.269818,
+          4.338547
+        ]
+      },
+      "USTUDIO_PLAYHEAD_BACK": {
+        "location_local": [
+          -1.879448,
+          1.24,
+          3.91
+        ],
+        "rotation_local_deg": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "location_world": [
+          -1.85032,
+          1.164453,
+          5.284421
+        ]
+      },
+      "USTUDIO_PLAYHEAD_FLOOR": {
+        "location_local": [
+          2.99954,
+          0.34,
+          1.68
+        ],
+        "rotation_local_deg": [
+          46.400006,
+          -0.0,
+          0.0
+        ],
+        "location_world": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "203": {
+      "USTUDIO_BOX_FLOAT_ROOT": {
+        "location_local": [
+          -0.08,
+          -0.01,
+          1.18
+        ],
+        "rotation_local_deg": [
+          -0.7,
+          1.0,
+          -0.5
+        ],
+        "location_world": [
+          -0.08,
+          -0.01,
+          1.18
+        ]
+      },
+      "USTUDIO_BOX_CAMERA": {
+        "location_local": [
+          0.276426,
+          -19.156803,
+          5.25
+        ],
+        "rotation_local_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "location_world": [
+          0.276426,
+          -19.156803,
+          5.25
+        ],
+        "lens_mm": 45.284008,
+        "fstop": 4.5
+      },
+      "USTUDIO_BOX_TARGET": {
+        "location_local": [
+          -0.058577,
+          0.240305,
+          4.201424
+        ],
+        "rotation_local_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "location_world": [
+          -0.058577,
+          0.240305,
+          4.201424
+        ]
+      },
+      "USTUDIO_PLAYHEAD_BACK": {
+        "location_local": [
+          0.084231,
+          1.24,
+          3.91
+        ],
+        "rotation_local_deg": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "location_world": [
+          0.083419,
+          1.276299,
+          5.072496
+        ]
+      },
+      "USTUDIO_PLAYHEAD_FLOOR": {
+        "location_local": [
+          2.99954,
+          0.34,
+          1.68
+        ],
+        "rotation_local_deg": [
+          46.400006,
+          -0.0,
+          0.0
+        ],
+        "location_world": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "305": {
+      "USTUDIO_BOX_FLOAT_ROOT": {
+        "location_local": [
+          0.06,
+          0.02,
+          1.34
+        ],
+        "rotation_local_deg": [
+          0.9,
+          -0.6,
+          0.6
+        ],
+        "location_world": [
+          0.06,
+          0.02,
+          1.34
+        ]
+      },
+      "USTUDIO_BOX_CAMERA": {
+        "location_local": [
+          -0.145814,
+          -18.681395,
+          5.022558
+        ],
+        "rotation_local_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "location_world": [
+          -0.145814,
+          -18.681395,
+          5.022558
+        ],
+        "lens_mm": 44.044186,
+        "fstop": 4.5
+      },
+      "USTUDIO_BOX_TARGET": {
+        "location_local": [
+          0.048903,
+          0.269701,
+          4.308903
+        ],
+        "rotation_local_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "location_world": [
+          0.048903,
+          0.269701,
+          4.308903
+        ]
+      },
+      "USTUDIO_PLAYHEAD_BACK": {
+        "location_local": [
+          2.01915,
+          1.24,
+          3.91
+        ],
+        "rotation_local_deg": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "location_world": [
+          2.025447,
+          1.219079,
+          5.289924
+        ]
+      },
+      "USTUDIO_PLAYHEAD_FLOOR": {
+        "location_local": [
+          2.99954,
+          0.34,
+          1.68
+        ],
+        "rotation_local_deg": [
+          46.400006,
+          -0.0,
+          0.0
+        ],
+        "location_world": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "406": {
+      "USTUDIO_BOX_FLOAT_ROOT": {
+        "location_local": [
+          0.0,
+          0.0,
+          1.2
+        ],
+        "rotation_local_deg": [
+          -1.0,
+          0.8,
+          -0.6
+        ],
+        "location_world": [
+          0.0,
+          0.0,
+          1.2
+        ]
+      },
+      "USTUDIO_BOX_CAMERA": {
+        "location_local": [
+          0.4,
+          -20.0,
+          5.1
+        ],
+        "rotation_local_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "location_world": [
+          0.4,
+          -20.0,
+          5.1
+        ],
+        "lens_mm": 46.0,
+        "fstop": 4.5
+      },
+      "USTUDIO_BOX_TARGET": {
+        "location_local": [
+          0.0,
+          0.25,
+          4.18
+        ],
+        "rotation_local_deg": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "location_world": [
+          0.0,
+          0.25,
+          4.18
+        ]
+      },
+      "USTUDIO_PLAYHEAD_BACK": {
+        "location_local": [
+          -2.667677,
+          1.24,
+          3.91
+        ],
+        "rotation_local_deg": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "location_world": [
+          -2.599294,
+          1.335343,
+          5.124631
+        ]
+      },
+      "USTUDIO_PLAYHEAD_FLOOR": {
+        "location_local": [
+          2.99954,
+          0.34,
+          1.68
+        ],
+        "rotation_local_deg": [
+          46.400006,
+          -0.0,
+          0.0
+        ],
+        "location_world": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }
+  },
+  "images": [
+    {
+      "name": "USTUDIO_KIT_BROWSER_ALL_INTRA.004",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/browser.mp4",
+      "absolute_path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/browser.mp4",
+      "exists": true,
+      "size": [
+        214,
+        580
+      ]
+    },
+    {
+      "name": "USTUDIO_PLAYLIST_ALL_INTRA.004",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/playlist.mp4",
+      "absolute_path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/playlist.mp4",
+      "exists": true,
+      "size": [
+        900,
+        250
+      ]
+    },
+    {
+      "name": "USTUDIO_SEMANTIC_CHANNEL_RACK",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/controller.mp4",
+      "absolute_path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/controller.mp4",
+      "exists": true,
+      "size": [
+        824,
+        170
+      ]
+    },
+    {
+      "name": "USTUDIO_SEMANTIC_MIXER",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/mixer.mp4",
+      "absolute_path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/mixer.mp4",
+      "exists": true,
+      "size": [
+        510,
+        490
+      ]
+    },
+    {
+      "name": "USTUDIO_SEMANTIC_PIANO_ROLL",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/piano-roll.mp4",
+      "absolute_path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/piano-roll.mp4",
+      "exists": true,
+      "size": [
+        900,
+        430
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "M_BOX_DARK_LINER",
+      "movie_nodes": [],
+      "node_tree_animation": null
+    },
+    {
+      "name": "M_BOX_WARM_GREY",
+      "movie_nodes": [],
+      "node_tree_animation": null
+    },
+    {
+      "name": "M_MOVIE_BROWSER",
+      "movie_nodes": [
+        {
+          "node": "USTUDIO_FL_STUDIO_MOVIE",
+          "image": "USTUDIO_KIT_BROWSER_ALL_INTRA.004",
+          "frame_start": 1,
+          "frame_duration": 406,
+          "cyclic": true,
+          "auto_refresh": true
+        }
+      ],
+      "node_tree_animation": null
+    },
+    {
+      "name": "M_MOVIE_CHANNEL_RACK",
+      "movie_nodes": [
+        {
+          "node": "USTUDIO_FL_STUDIO_MOVIE",
+          "image": "USTUDIO_SEMANTIC_CHANNEL_RACK",
+          "frame_start": 1,
+          "frame_duration": 406,
+          "cyclic": true,
+          "auto_refresh": true
+        }
+      ],
+      "node_tree_animation": null
+    },
+    {
+      "name": "M_MOVIE_MIXER",
+      "movie_nodes": [
+        {
+          "node": "USTUDIO_FL_STUDIO_MOVIE",
+          "image": "USTUDIO_SEMANTIC_MIXER",
+          "frame_start": 1,
+          "frame_duration": 406,
+          "cyclic": true,
+          "auto_refresh": true
+        }
+      ],
+      "node_tree_animation": null
+    },
+    {
+      "name": "M_MOVIE_PIANO_ROLL",
+      "movie_nodes": [
+        {
+          "node": "USTUDIO_FL_STUDIO_MOVIE",
+          "image": "USTUDIO_SEMANTIC_PIANO_ROLL",
+          "frame_start": 1,
+          "frame_duration": 406,
+          "cyclic": true,
+          "auto_refresh": true
+        }
+      ],
+      "node_tree_animation": null
+    },
+    {
+      "name": "M_MOVIE_PLAYLIST",
+      "movie_nodes": [
+        {
+          "node": "USTUDIO_FL_STUDIO_MOVIE",
+          "image": "USTUDIO_PLAYLIST_ALL_INTRA.004",
+          "frame_start": 1,
+          "frame_duration": 406,
+          "cyclic": true,
+          "auto_refresh": true
+        }
+      ],
+      "node_tree_animation": null
+    },
+    {
+      "name": "M_PLAYBACK_GREEN",
+      "movie_nodes": [],
+      "node_tree_animation": null
+    },
+    {
+      "name": "M_PLAYHEAD_AUDIO_GLOW",
+      "movie_nodes": [],
+      "node_tree_animation": {
+        "action": "M_PLAYHEAD_AUDIO_GLOWAction.004",
+        "slot": "NTShader Nodetree",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "channels": [
+          {
+            "data_path": "nodes[\"Principled BSDF\"].inputs[28].default_value",
+            "array_index": 0,
+            "keyframes": [
+              {
+                "frame": 1.0,
+                "value": 4.503221,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 4.0,
+                "value": 4.503633,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 7.0,
+                "value": 4.503891,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 10.0,
+                "value": 4.913907,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 13.0,
+                "value": 6.96128,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 16.0,
+                "value": 8.364347,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 19.0,
+                "value": 8.581034,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 22.0,
+                "value": 10.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 25.0,
+                "value": 10.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 28.0,
+                "value": 9.727913,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 31.0,
+                "value": 8.077861,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 34.0,
+                "value": 8.564658,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 37.0,
+                "value": 8.747588,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 40.0,
+                "value": 9.789535,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 43.0,
+                "value": 8.164244,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 46.0,
+                "value": 8.297542,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 49.0,
+                "value": 7.669138,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 52.0,
+                "value": 6.273323,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 55.0,
+                "value": 6.839222,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 58.0,
+                "value": 7.800003,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 61.0,
+                "value": 8.283293,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 64.0,
+                "value": 10.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 67.0,
+                "value": 9.993165,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 70.0,
+                "value": 10.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 73.0,
+                "value": 10.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 76.0,
+                "value": 8.76754,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 79.0,
+                "value": 7.754468,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 82.0,
+                "value": 9.361789,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 85.0,
+                "value": 8.69523,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 88.0,
+                "value": 9.540957,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 91.0,
+                "value": 7.799881,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 94.0,
+                "value": 7.65929,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 97.0,
+                "value": 7.280965,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 100.0,
+                "value": 6.237949,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 103.0,
+                "value": 7.266592,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 106.0,
+                "value": 8.003639,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 109.0,
+                "value": 8.167157,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 112.0,
+                "value": 7.672439,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 115.0,
+                "value": 7.455613,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 118.0,
+                "value": 8.415258,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 121.0,
+                "value": 10.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 124.0,
+                "value": 9.326035,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 127.0,
+                "value": 8.978874,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 130.0,
+                "value": 8.02977,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 133.0,
+                "value": 7.584814,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 136.0,
+                "value": 8.715072,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 139.0,
+                "value": 7.62679,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 142.0,
+                "value": 7.886152,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 145.0,
+                "value": 8.050232,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 148.0,
+                "value": 6.824009,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 151.0,
+                "value": 6.686765,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 154.0,
+                "value": 7.128524,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 157.0,
+                "value": 8.728481,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 160.0,
+                "value": 10.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 163.0,
+                "value": 8.771423,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 166.0,
+                "value": 6.935689,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 169.0,
+                "value": 5.923265,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 172.0,
+                "value": 6.923681,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 175.0,
+                "value": 8.286485,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 178.0,
+                "value": 8.628176,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 181.0,
+                "value": 7.490535,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 184.0,
+                "value": 7.803176,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 187.0,
+                "value": 6.631455,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 190.0,
+                "value": 5.918222,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 193.0,
+                "value": 5.427161,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 196.0,
+                "value": 6.623484,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 199.0,
+                "value": 8.299689,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 202.0,
+                "value": 8.803919,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 205.0,
+                "value": 7.389135,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 208.0,
+                "value": 7.861843,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 211.0,
+                "value": 8.403688,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 214.0,
+                "value": 8.816619,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 217.0,
+                "value": 10.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 220.0,
+                "value": 9.927097,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 223.0,
+                "value": 9.674294,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 226.0,
+                "value": 7.846456,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 229.0,
+                "value": 8.104386,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 232.0,
+                "value": 9.361562,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 235.0,
+                "value": 8.610191,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 238.0,
+                "value": 8.295932,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 241.0,
+                "value": 8.42193,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 244.0,
+                "value": 7.00687,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 247.0,
+                "value": 6.289407,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 250.0,
+                "value": 7.108284,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 253.0,
+                "value": 8.000233,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 256.0,
+                "value": 9.257149,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 259.0,
+                "value": 10.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 262.0,
+                "value": 9.76897,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 265.0,
+                "value": 10.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 268.0,
+                "value": 9.498876,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 271.0,
+                "value": 7.844005,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 274.0,
+                "value": 8.976419,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 277.0,
+                "value": 8.75245,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 280.0,
+                "value": 9.439283,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 283.0,
+                "value": 8.828403,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 286.0,
+                "value": 7.914978,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 289.0,
+                "value": 7.891981,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 292.0,
+                "value": 6.651879,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 295.0,
+                "value": 6.341544,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 298.0,
+                "value": 8.091445,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 301.0,
+                "value": 9.017169,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 304.0,
+                "value": 7.768507,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 307.0,
+                "value": 7.548703,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 310.0,
+                "value": 8.120966,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 313.0,
+                "value": 10.0,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 316.0,
+                "value": 9.166567,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 319.0,
+                "value": 9.23329,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 322.0,
+                "value": 7.818884,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 325.0,
+                "value": 8.019424,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 328.0,
+                "value": 8.360355,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 331.0,
+                "value": 8.392339,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 334.0,
+                "value": 7.469696,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 337.0,
+                "value": 7.869639,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 340.0,
+                "value": 7.149133,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 343.0,
+                "value": 6.505926,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 346.0,
+                "value": 7.282071,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 349.0,
+                "value": 7.143878,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 352.0,
+                "value": 8.928031,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 355.0,
+                "value": 9.243632,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 358.0,
+                "value": 7.217983,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 361.0,
+                "value": 6.264611,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 364.0,
+                "value": 6.157386,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 367.0,
+                "value": 7.475781,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 370.0,
+                "value": 8.318302,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 373.0,
+                "value": 7.48808,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 376.0,
+                "value": 7.36683,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 379.0,
+                "value": 7.182289,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 382.0,
+                "value": 6.053521,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 385.0,
+                "value": 5.521053,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 388.0,
+                "value": 5.999457,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 391.0,
+                "value": 7.104591,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 394.0,
+                "value": 8.867806,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 397.0,
+                "value": 7.2051,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 400.0,
+                "value": 4.554009,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 403.0,
+                "value": 4.564474,
+                "interpolation": "BEZIER"
+              },
+              {
+                "frame": 406.0,
+                "value": 4.534235,
+                "interpolation": "BEZIER"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "M_SCREEN_FRAME",
+      "movie_nodes": [],
+      "node_tree_animation": null
+    },
+    {
+      "name": "M_SIDE_PURPLE",
+      "movie_nodes": [],
+      "node_tree_animation": null
+    },
+    {
+      "name": "M_STAGE_FLOOR",
+      "movie_nodes": [],
+      "node_tree_animation": null
+    }
+  ],
+  "actions": [
+    {
+      "name": "M_PLAYHEAD_AUDIO_GLOWAction.004",
+      "frame_range": [
+        1.0,
+        406.0
+      ],
+      "slots": [
+        "NTShader Nodetree"
+      ],
+      "users": 1
+    },
+    {
+      "name": "USTUDIO_BOX_CAMERAAction.001",
+      "frame_range": [
+        1.0,
+        406.0
+      ],
+      "slots": [
+        "OBUSTUDIO_BOX_CAMERA",
+        "CAUSTUDIO_BOX_CAMERA_DATA"
+      ],
+      "users": 2
+    },
+    {
+      "name": "USTUDIO_BOX_FLOAT_ROOTAction",
+      "frame_range": [
+        1.0,
+        406.0
+      ],
+      "slots": [
+        "OBUSTUDIO_BOX_FLOAT_ROOT"
+      ],
+      "users": 1
+    },
+    {
+      "name": "USTUDIO_BOX_TARGETAction",
+      "frame_range": [
+        1.0,
+        406.0
+      ],
+      "slots": [
+        "OBUSTUDIO_BOX_TARGET"
+      ],
+      "users": 1
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_BACKAction.005",
+      "frame_range": [
+        1.0,
+        406.0
+      ],
+      "slots": [
+        "OBUSTUDIO_PLAYHEAD_BACK"
+      ],
+      "users": 1
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_FLOORAction.004",
+      "frame_range": [
+        1.0,
+        406.0
+      ],
+      "slots": [
+        "OBUSTUDIO_PLAYHEAD_FLOOR"
+      ],
+      "users": 1
+    }
+  ]
+}

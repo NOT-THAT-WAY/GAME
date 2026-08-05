@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "cinematic",
+  "domain": "cinematic",
+  "blender_units": "meters",
+  "fps_must_be_declared": true,
+  "color_management_must_be_declared": true,
+  "required_gates": [
+    "physical", "clay_composition", "key_poses", "camera_corridor", "focus", "lighting_layers",
+    "material_response", "full_motion_preview", "contact_sheet", "ffprobe", "final_review"
+  ],
+  "required_evidence": ["scene-audit.json", "physical-validation.json", "shot-manifest.json", "media-probe.json"],
+  "final_validator": "workflows/tools/validate_team_project.py"
+}

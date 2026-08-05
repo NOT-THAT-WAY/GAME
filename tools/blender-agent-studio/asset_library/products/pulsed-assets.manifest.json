@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "version": "1.0.0",
+  "assets": [
+    {"name": "PULSED", "type": "collection", "catalog": "Products/Pulsed", "usage": "Append (Reuse Data) pour une copie locale ou Link pour une source centrale"},
+    {"name": "M_controls_grey", "type": "material", "catalog": "Materials/Pulsed"},
+    {"name": "M_internals", "type": "material", "catalog": "Materials/Pulsed"},
+    {"name": "M_pcb", "type": "material", "catalog": "Materials/Pulsed"},
+    {"name": "M_screen", "type": "material", "catalog": "Materials/Pulsed"},
+    {"name": "M_shell_purple", "type": "material", "catalog": "Materials/Pulsed"},
+    {"name": "M_shell_purple_front", "type": "material", "catalog": "Materials/Pulsed"},
+    {"name": "flroom_world", "type": "world", "catalog": "Worlds/Studio"}
+  ]
+}

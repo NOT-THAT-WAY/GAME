@@ -1,0 +1,11 @@
+{
+  "path": "references/reference-hero.jpg",
+  "type": "jpeg",
+  "bytes": 109423,
+  "width": 1199,
+  "height": 1592,
+  "aspectRatio": 0.753140703517588,
+  "technicalSuitability": "pass",
+  "warnings": [],
+  "note": "Technical metadata probe from permanent img2threejs clone; semantic suitability is recorded in image-analysis.json."
+}

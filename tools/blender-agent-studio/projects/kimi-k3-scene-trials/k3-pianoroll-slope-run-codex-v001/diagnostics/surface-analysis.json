@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "surface": "USTUDIO_PIANO_ROLL_FLOOR",
+  "reference": "USTUDIO_BOX_FLOAT_ROOT",
+  "vertices_local": [
+    [
+      -3.78,
+      -0.42,
+      0.88
+    ],
+    [
+      3.78,
+      -0.42,
+      0.88
+    ],
+    [
+      3.05,
+      1.25,
+      2.63
+    ],
+    [
+      -3.05,
+      1.25,
+      2.63
+    ]
+  ],
+  "surface_normal": [
+    0.0,
+    -0.72344941,
+    0.69037741
+  ],
+  "uphill_tangent": [
+    0.0,
+    0.69037735,
+    0.72344935
+  ],
+  "cross_slope_tangent": [
+    1.0,
+    0.0,
+    0.0
+  ],
+  "world_gravity": [
+    0.0,
+    0.0,
+    -9.81
+  ],
+  "slope_degrees": 46.340008,
+  "usable_length_m": 2.418967,
+  "run_start_m": 0.22,
+  "run_end_m": 2.168967,
+  "static_friction_min": 1.047904,
+  "authored_grip_coefficient": 1.25
+}

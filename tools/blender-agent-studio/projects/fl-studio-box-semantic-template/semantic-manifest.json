@@ -1,0 +1,44 @@
+{
+  "template": "projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+  "created_at": "2026-07-19T12:20:29.422452+02:00",
+  "mapping": "five isolated semantic panels, synchronized from one master video",
+  "source": "${ORIGINAL_MOVIES}/CapCut/fond fl test 1/fond fl test 1-1.mp4",
+  "slots": {
+    "playlist": {
+      "material": "M_MOVIE_PLAYLIST",
+      "filename": "playlist.mp4",
+      "crop": "crop=620:250:660:155"
+    },
+    "browser": {
+      "material": "M_MOVIE_BROWSER",
+      "filename": "browser.mp4",
+      "crop": "crop=235:870:145:125"
+    },
+    "mixer": {
+      "material": "M_MOVIE_MIXER",
+      "filename": "mixer.mp4",
+      "crop": "crop=510:490:1290:320"
+    },
+    "piano_roll": {
+      "material": "M_MOVIE_PIANO_ROLL",
+      "filename": "piano-roll.mp4",
+      "crop": "crop=900:430:380:380"
+    },
+    "channel_rack": {
+      "material": "M_MOVIE_CHANNEL_RACK",
+      "filename": "controller.mp4",
+      "crop": "crop=825:170:970:810"
+    }
+  },
+  "lighting": "soft neutral key/fill, brighter world, reduced green bounce, medium-low contrast",
+  "floating_rig": "USTUDIO_BOX_FLOAT_ROOT with delayed camera target and Drumboiii four-key camera gestures",
+  "timeline": {
+    "fps": 30,
+    "frames": [
+      1,
+      406
+    ],
+    "duration": 13.533333
+  },
+  "workflow": "relink-fl-studio-box-media"
+}

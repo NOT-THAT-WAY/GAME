@@ -1,0 +1,21 @@
+{
+  "job_id": "8338b08a-27fe-45bd-84ed-b1b5b4c9fb21",
+  "date": "2026-07-13",
+  "lane": "MCP Higgsfield",
+  "model": "seedance_2_0",
+  "mode": "fast",
+  "resolution": "720p",
+  "aspect_ratio": "9:16",
+  "duration_s": 6,
+  "generate_audio": false,
+  "cost_credits": 21,
+  "balance_after_three_runs": 737,
+  "prompt_file": "../../prompts/seedance-v2v-9x16-v3.md",
+  "declined_preset": "24bae836-2c4a-48e0-89b6-49fcc0b21612 (IN THE DARK)",
+  "diff_vs_run2": "VIDEO-FIRST (direction Sliz) : squelette sb-002-lowrise-orbit (retro-ingenierie du mouvement aime du run 2, objet ENTIER en fin) + 1 SEULE image ref (front ; side retiree = colonne verticale, back retiree = fond creme)",
+  "medias": [
+    {"ref": "01_canonical_front.png", "role": "image_references", "media_id": "4514c2bf-17a7-4061-b989-a4d8751c609a"},
+    {"ref": "09_blender_motion_skeleton_v2_6s.mp4", "role": "video_references", "media_id": "a161ac64-f20a-4207-84b3-512cbc8aeba6"}
+  ],
+  "motion_source": "blender-choreography/runs/sb-002-lowrise-orbit-2026-07-13/preview_sb002_6s.mp4 (shots/sb-002-lowrise-orbit.md, rig tools/rig_sb002.py)"
+}

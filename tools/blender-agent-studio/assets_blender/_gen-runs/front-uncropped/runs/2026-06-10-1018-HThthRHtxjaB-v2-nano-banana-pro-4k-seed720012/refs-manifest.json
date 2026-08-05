@@ -1,0 +1,12 @@
+[
+  {
+    "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/01_front_canonical.png",
+    "size_bytes": 758717,
+    "sha256_8": "6f1ce4d3"
+  },
+  {
+    "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-01_hero-front-3q.jpeg",
+    "size_bytes": 6849624,
+    "sha256_8": "746b1de0"
+  }
+]

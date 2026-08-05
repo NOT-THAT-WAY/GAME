@@ -1,0 +1,810 @@
+{
+  "schema_version": 1,
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/scene/trial.blend",
+  "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+  "frame": 235,
+  "camera": "K3_FABLE_CAM_MAIN",
+  "lens": 50.0,
+  "clip": [
+    0.019999999552965164,
+    100.0
+  ],
+  "resolution": [
+    640,
+    360,
+    100
+  ],
+  "collection": null,
+  "summary": {
+    "visible": 1,
+    "partial": 7,
+    "occluded": 3,
+    "off-frame": 17
+  },
+  "objects": [
+    {
+      "object": "USTUDIO_FRONT_TOP_RIM",
+      "verdict": "occluded",
+      "occluded_by": "USTUDIO_CEILING",
+      "frame_bounds": [
+        0.585343,
+        -2.199214,
+        1.586474,
+        2.388192
+      ],
+      "clipped_bounds": [
+        0.585343,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.414657,
+      "center_offset": [
+        0.585909,
+        -0.405511
+      ],
+      "depth_range": [
+        -3.475118,
+        5.060006
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_FRONT_BOTTOM_RIM",
+      "verdict": "partial",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.587113,
+        -0.698095,
+        1.563085,
+        2.542926
+      ],
+      "clipped_bounds": [
+        0.587113,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.412887,
+      "center_offset": [
+        0.575099,
+        0.422416
+      ],
+      "depth_range": [
+        -3.367912,
+        5.167212
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_FRONT_LEFT_RIM",
+      "verdict": "off-frame",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.516066,
+        -2.018237,
+        0.913977,
+        2.228766
+      ],
+      "clipped_bounds": [
+        0.516066,
+        0.0,
+        0.913977,
+        1.0
+      ],
+      "coverage": 0.397911,
+      "center_offset": [
+        0.215022,
+        -0.394735
+      ],
+      "depth_range": [
+        -3.742102,
+        -2.686956
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_FRONT_RIGHT_RIM",
+      "verdict": "off-frame",
+      "occluded_by": null,
+      "frame_bounds": [
+        1.315561,
+        -0.457165,
+        1.619194,
+        2.182802
+      ],
+      "clipped_bounds": [
+        1.315561,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        0.967378,
+        0.362819
+      ],
+      "depth_range": [
+        4.379051,
+        5.434197
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_FRONT_CORNER_TL",
+      "verdict": "off-frame",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.358924,
+        -3.053165,
+        0.924659,
+        -1.03297
+      ],
+      "clipped_bounds": [
+        0.358924,
+        0.0,
+        0.924659,
+        -1.03297
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        0.141791,
+        -2.543068
+      ],
+      "depth_range": [
+        -3.819214,
+        -2.399682
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_FRONT_CORNER_TR",
+      "verdict": "off-frame",
+      "occluded_by": "USTUDIO_CEILING",
+      "frame_bounds": [
+        1.313483,
+        1.671835,
+        1.738386,
+        2.765352
+      ],
+      "clipped_bounds": [
+        1.313483,
+        1.671835,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        1.025934,
+        1.718593
+      ],
+      "depth_range": [
+        3.940999,
+        5.360531
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_FRONT_CORNER_BL",
+      "verdict": "off-frame",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.352665,
+        1.457007,
+        0.936545,
+        3.197707
+      ],
+      "clipped_bounds": [
+        0.352665,
+        1.457007,
+        0.936545,
+        1.0
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        0.144605,
+        1.827357
+      ],
+      "depth_range": [
+        -3.720099,
+        -2.300567
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_FRONT_CORNER_BR",
+      "verdict": "off-frame",
+      "occluded_by": null,
+      "frame_bounds": [
+        1.299255,
+        -0.948426,
+        1.708735,
+        -0.069968
+      ],
+      "clipped_bounds": [
+        1.299255,
+        0.0,
+        1.0,
+        -0.069968
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        1.003995,
+        -1.009197
+      ],
+      "depth_range": [
+        4.040114,
+        5.459646
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_LEFT_DEPTH_TOP",
+      "verdict": "off-frame",
+      "occluded_by": "USTUDIO_BROWSER_LEFT_WALL",
+      "frame_bounds": [
+        0.632184,
+        -3.608679,
+        2.242131,
+        -1.345935
+      ],
+      "clipped_bounds": [
+        0.632184,
+        0.0,
+        1.0,
+        -1.345935
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        0.937157,
+        -2.977307
+      ],
+      "depth_range": [
+        -3.415786,
+        -1.872832
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_RIGHT_DEPTH_TOP",
+      "verdict": "off-frame",
+      "occluded_by": "USTUDIO_CEILING",
+      "frame_bounds": [
+        0.789705,
+        1.633344,
+        1.508111,
+        2.325405
+      ],
+      "clipped_bounds": [
+        0.789705,
+        1.633344,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        0.648908,
+        1.479374
+      ],
+      "depth_range": [
+        4.416615,
+        5.959569
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_LEFT_DEPTH_BOTTOM",
+      "verdict": "off-frame",
+      "occluded_by": "USTUDIO_PIANO_ROLL_FLOOR",
+      "frame_bounds": [
+        0.630982,
+        1.691227,
+        2.210758,
+        3.388091
+      ],
+      "clipped_bounds": [
+        0.630982,
+        1.691227,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        0.92087,
+        2.039659
+      ],
+      "depth_range": [
+        -3.324819,
+        -1.824919
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_RIGHT_DEPTH_BOTTOM",
+      "verdict": "off-frame",
+      "occluded_by": "USTUDIO_PIANO_ROLL_FLOOR",
+      "frame_bounds": [
+        0.81291,
+        -0.594906,
+        1.491177,
+        -0.082512
+      ],
+      "clipped_bounds": [
+        0.81291,
+        0.0,
+        1.0,
+        -0.082512
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        0.652043,
+        -0.838709
+      ],
+      "depth_range": [
+        4.507582,
+        6.007482
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_CEILING",
+      "verdict": "partial",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.652342,
+        -3.333672,
+        2.280457,
+        2.185347
+      ],
+      "clipped_bounds": [
+        0.652342,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.347658,
+      "center_offset": [
+        0.9664,
+        -1.074163
+      ],
+      "depth_range": [
+        -2.861526,
+        5.44501
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_BACK_WALL",
+      "verdict": "occluded",
+      "occluded_by": "USTUDIO_PLAYLIST_BACK_WALL",
+      "frame_bounds": [
+        0.68787,
+        -4.83247,
+        3.184406,
+        3.812253
+      ],
+      "clipped_bounds": [
+        0.68787,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.31213,
+      "center_offset": [
+        1.436138,
+        -1.010108
+      ],
+      "depth_range": [
+        -1.445577,
+        5.114866
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_BACK_SCREEN_TOP",
+      "verdict": "partial",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.776697,
+        -4.661829,
+        2.633021,
+        1.945729
+      ],
+      "clipped_bounds": [
+        0.776697,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.223303,
+      "center_offset": [
+        1.204859,
+        -1.85805
+      ],
+      "depth_range": [
+        -1.292832,
+        4.645374
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "verdict": "partial",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.774364,
+        -0.272695,
+        2.712274,
+        0.760837
+      ],
+      "clipped_bounds": [
+        0.774364,
+        0.0,
+        1.0,
+        0.760837
+      ],
+      "coverage": 0.171672,
+      "center_offset": [
+        1.243319,
+        -0.255929
+      ],
+      "depth_range": [
+        -1.248534,
+        4.689672
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_LEFT_PURPLE_LED",
+      "verdict": "off-frame",
+      "occluded_by": "USTUDIO_FRONT_LEFT_RIM",
+      "frame_bounds": [
+        0.546083,
+        -0.250601,
+        0.602232,
+        0.815508
+      ],
+      "clipped_bounds": [
+        0.546083,
+        0.0,
+        0.602232,
+        0.815508
+      ],
+      "coverage": 0.045789,
+      "center_offset": [
+        0.074157,
+        -0.217547
+      ],
+      "depth_range": [
+        -3.471587,
+        -3.313889
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_RIGHT_PURPLE_LED",
+      "verdict": "off-frame",
+      "occluded_by": "USTUDIO_FRONT_RIGHT_RIM",
+      "frame_bounds": [
+        1.555728,
+        0.364203,
+        1.609015,
+        1.12202
+      ],
+      "clipped_bounds": [
+        1.555728,
+        0.364203,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        1.082371,
+        0.243111
+      ],
+      "depth_range": [
+        4.68566,
+        4.843358
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_BOTTOM_GREEN_LED",
+      "verdict": "off-frame",
+      "occluded_by": "USTUDIO_FRONT_BOTTOM_RIM",
+      "frame_bounds": [
+        2.494989,
+        -83.723969,
+        34.248745,
+        -3.09717
+      ],
+      "clipped_bounds": [
+        2.494989,
+        0.0,
+        1.0,
+        -3.09717
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        17.871867,
+        -43.910569
+      ],
+      "depth_range": [
+        0.06197,
+        1.410938
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_GROUND",
+      "verdict": "occluded",
+      "occluded_by": "USTUDIO_PIANO_ROLL_FLOOR",
+      "frame_bounds": [
+        -0.025015,
+        -0.89658,
+        10.302715,
+        6.689203
+      ],
+      "clipped_bounds": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "coverage": 1.0,
+      "center_offset": [
+        4.63885,
+        2.396312
+      ],
+      "depth_range": [
+        -7.635452,
+        12.808873
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_PLAYLIST_BACK_WALL",
+      "verdict": "partial",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.762719,
+        -5.075857,
+        2.984669,
+        1.845483
+      ],
+      "clipped_bounds": [
+        0.762719,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.237281,
+      "center_offset": [
+        1.373694,
+        -2.115187
+      ],
+      "depth_range": [
+        -1.019759,
+        4.468869
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_BROWSER_LEFT_WALL",
+      "verdict": "off-frame",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.694238,
+        -4.690129,
+        2.693611,
+        3.877975
+      ],
+      "clipped_bounds": [
+        0.694238,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.305762,
+      "center_offset": [
+        1.193924,
+        -0.906077
+      ],
+      "depth_range": [
+        -2.720602,
+        -1.103463
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_MIXER_RIGHT_WALL",
+      "verdict": "partial",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.795521,
+        -0.392133,
+        1.395126,
+        2.179031
+      ],
+      "clipped_bounds": [
+        0.795521,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.204479,
+      "center_offset": [
+        0.595324,
+        0.393449
+      ],
+      "depth_range": [
+        3.812414,
+        5.429553
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_PIANO_ROLL_FLOOR",
+      "verdict": "partial",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.772513,
+        -0.372616,
+        2.146536,
+        2.997007
+      ],
+      "clipped_bounds": [
+        0.772513,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "coverage": 0.227487,
+      "center_offset": [
+        0.959525,
+        0.812196
+      ],
+      "depth_range": [
+        -2.426778,
+        5.149371
+      ],
+      "clip_near": true,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_CHANNEL_RACK_CASE",
+      "verdict": "off-frame",
+      "occluded_by": null,
+      "frame_bounds": [
+        1.497208,
+        -3.63187,
+        2.732391,
+        0.111972
+      ],
+      "clipped_bounds": [
+        1.497208,
+        0.0,
+        1.0,
+        0.111972
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        1.614799,
+        -2.259949
+      ],
+      "depth_range": [
+        1.045237,
+        4.334016
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_CHANNEL_RACK_SURFACE",
+      "verdict": "off-frame",
+      "occluded_by": "USTUDIO_CHANNEL_RACK_CASE",
+      "frame_bounds": [
+        1.636688,
+        -3.352497,
+        2.998933,
+        0.025995
+      ],
+      "clipped_bounds": [
+        1.636688,
+        0.0,
+        1.0,
+        0.025995
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        1.81781,
+        -2.163251
+      ],
+      "depth_range": [
+        1.062268,
+        4.09311
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "USTUDIO_PLAYHEAD_BACK",
+      "verdict": "off-frame",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.463372,
+        1.057429,
+        0.507302,
+        2.973963
+      ],
+      "clipped_bounds": [
+        0.463372,
+        1.057429,
+        0.507302,
+        1.0
+      ],
+      "coverage": 0.0,
+      "center_offset": [
+        -0.014663,
+        1.515696
+      ],
+      "depth_range": [
+        2.296182,
+        2.402814
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "K3_FABLE_RUNNER_MESH",
+      "verdict": "visible",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.347726,
+        0.037847,
+        0.648428,
+        0.562026
+      ],
+      "clipped_bounds": [
+        0.347726,
+        0.037847,
+        0.648428,
+        0.562026
+      ],
+      "coverage": 0.157621,
+      "center_offset": [
+        -0.001923,
+        -0.200063
+      ],
+      "depth_range": [
+        1.422618,
+        1.658175
+      ],
+      "clip_near": false,
+      "clip_far": false
+    }
+  ]
+}

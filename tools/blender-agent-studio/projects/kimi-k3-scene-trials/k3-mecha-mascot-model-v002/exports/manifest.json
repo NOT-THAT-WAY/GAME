@@ -1,0 +1,11 @@
+{
+  "file": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v002/exports/k3_mecha_mascot_asset.glb",
+  "bytes": 1769928,
+  "collection": "K3_MECHA_MASCOT_ASSET",
+  "objects": [
+    "K3_MECHA_MASCOT_ROOT",
+    "K3_MECHA_BODY",
+    "K3_MECHA_HEAD"
+  ],
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v002/scene/trial.blend"
+}

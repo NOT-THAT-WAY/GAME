@@ -1,0 +1,81 @@
+{
+  "id": "render-keyframes",
+  "name": "Gate de keyframes",
+  "icon": "▣",
+  "category": "rendu & gate",
+  "mode": "MCP interactif",
+  "risk": "écriture",
+  "description": "Rend les marqueurs du workflow (ou début/milieu/fin) dans un nouveau run, sans écraser une sortie précédente.",
+  "script": "workflows/scripts/render_keyframes.py",
+  "timeout": 1800,
+  "warning": "Le rendu peut prendre plusieurs minutes. La sortie est créée automatiquement dans renders/.",
+  "fields": [
+    {
+      "id": "marker_prefix",
+      "type": "text",
+      "label": "Préfixe marqueurs",
+      "default": "BAS_",
+      "help": "Utilise BAS_SHOT_<JOB> pour isoler un shot précis."
+    },
+    {
+      "id": "resolution_x",
+      "type": "integer",
+      "label": "Largeur",
+      "default": 720,
+      "min": 320,
+      "max": 2160
+    },
+    {
+      "id": "resolution_y",
+      "type": "integer",
+      "label": "Hauteur",
+      "default": 1280,
+      "min": 320,
+      "max": 2160
+    },
+    {
+      "id": "samples",
+      "type": "integer",
+      "label": "Samples",
+      "default": 32,
+      "min": 1,
+      "max": 256
+    },
+    {
+      "id": "engine",
+      "type": "select",
+      "label": "Moteur",
+      "options": [
+        "BLENDER_EEVEE_NEXT",
+        "BLENDER_EEVEE",
+        "CYCLES"
+      ],
+      "default": "BLENDER_EEVEE_NEXT"
+    }
+  ],
+  "guide": [
+    "Utiliser le préfixe du rig pour ne rendre que ses poses de contrôle.",
+    "Commencer en EEVEE à faible résolution avant un gate final plus lourd.",
+    "Comparer silhouette, identité, lumière, focale et continuité entre chaque frame.",
+    "Rejeter ou corriger le shot avant toute sauvegarde du fichier principal."
+  ],
+  "execution": "mcp",
+  "mutates_scene": true,
+  "requires_confirmation": true,
+  "requires_working_copy": true,
+  "enabled_in_app": true,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "operation",
+  "domains": [
+    "asset",
+    "game-asset",
+    "rig",
+    "animation",
+    "environment",
+    "procedural",
+    "cinematic",
+    "still"
+  ],
+  "maturity": "stable",
+  "scope": "generic-or-adaptable"
+}

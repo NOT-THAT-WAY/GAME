@@ -1,0 +1,14 @@
+# This is an Asset Catalog Definition file for Blender.
+#
+# Empty lines and lines starting with `#` will be ignored.
+# The first non-ignored line should be the version indicator.
+VERSION 1
+
+7b3e5ed6-6adb-4fe9-918f-4f7240cb1a31:Products/Pulsed:Pulsed
+b4c8a972-ddf5-49be-8f4c-4ee72639fc48:Materials/Pulsed:Pulsed Materials
+126d6c69-e05a-4a9f-9cde-ad27c6ea40be:Worlds/Studio:Studio Worlds
+ad1a0464-04f1-4a7a-9370-85d8081ff0c1:Rigs/Camera/Orbit:Orbit Camera Rigs
+f3d49d45-02ca-40ee-9489-a3a513844f4e:Rigs/Camera/Dolly:Dolly Camera Rigs
+f8cdacb9-d009-4bc2-8c61-d99776635626:Lighting/Studio/Product:Product Lighting Rigs
+fb2a13fe-2b45-4d99-9cdc-e0cd819f72df:Props/DRUMBOII Y2K:DRUMBOII Y2K Props
+78b89a7c-a662-4fc9-9b68-401d8b8f661a:Characters/Mascots:Character Mascots

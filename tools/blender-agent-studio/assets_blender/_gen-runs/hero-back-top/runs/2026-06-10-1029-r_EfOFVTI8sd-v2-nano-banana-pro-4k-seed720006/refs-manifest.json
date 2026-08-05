@@ -1,0 +1,17 @@
+[
+  {
+    "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-02_hero-back-internals.jpeg",
+    "size_bytes": 6875634,
+    "sha256_8": "9389d1c8"
+  },
+  {
+    "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/_gen-runs/top-edge/runs/latest/output.png",
+    "size_bytes": 17090824,
+    "sha256_8": "9d177a82"
+  },
+  {
+    "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/_gen-runs/side-right/runs/latest/output.png",
+    "size_bytes": 16432283,
+    "sha256_8": "a2a74cf1"
+  }
+]

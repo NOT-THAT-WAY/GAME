@@ -1,0 +1,26 @@
+{
+  "job_id": "f9bd3d7d-4d15-4074-bd4a-1fe59d271e15",
+  "date": "2026-07-13",
+  "lane": "MCP Higgsfield",
+  "model": "seedance_2_0",
+  "mode": "fast",
+  "resolution": "720p",
+  "aspect_ratio": "9:16",
+  "duration_s": 6,
+  "generate_audio": false,
+  "cost_credits": 21,
+  "balance_before": 800,
+  "prompt_file": "../../prompts/seedance-v2v-9x16.md",
+  "declined_preset": "24bae836-2c4a-48e0-89b6-49fcc0b21612 (IN THE DARK)",
+  "medias": [
+    {"ref": "01_canonical_front.png", "role": "image_references", "media_id": "4514c2bf-17a7-4061-b989-a4d8751c609a"},
+    {"ref": "02_canonical_back.png", "role": "image_references", "media_id": "ffe1c8d7-df23-4ba7-bd54-32da087f7ec3"},
+    {"ref": "03_canonical_side.png", "role": "image_references", "media_id": "b520c2ee-3953-4418-aca6-aef514a55ba0"},
+    {"ref": "04_sb_p1_macro-low.png", "role": "image_references", "media_id": "cba428d7-78f0-4ce0-ad1c-13c9d32b54db"},
+    {"ref": "05_sb_p2_hero-3q-low.png", "role": "image_references", "media_id": "c84cd1cb-3679-41c6-b68b-e690be714cb6"},
+    {"ref": "06_sb_p3_overhead.png", "role": "image_references", "media_id": "60c6e32d-338b-4a2e-89c2-a7198ecd9441"},
+    {"ref": "07_sb_p4_hero-rest.png", "role": "image_references", "media_id": "36fed175-d512-4de7-81e5-5b0077c7de91"},
+    {"ref": "08_blender_motion_skeleton_6s.mp4", "role": "video_references", "media_id": "5e8aa801-5a3d-4c99-a45f-d3021f868166", "note": "resolu cote serveur en video_input"}
+  ],
+  "motion_source": "blender-choreography/runs/sb-001-crane-2026-07-13/preview_sb001_6s.mp4 (choreo sb-001-crane, keyframes exacts)"
+}

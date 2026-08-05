@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/Pulsed_3D_model.blend",
+  "scene": "FLROOM",
+  "goal": "Produit centré, lisible, sans highlight blanc sur l'écran",
+  "immutable": [
+    "proportions",
+    "logo",
+    "ports",
+    "écran"
+  ],
+  "active_category": "composition",
+  "attempt": 3,
+  "max_attempts": 3,
+  "previous_improved": false,
+  "requires_human_taste": false,
+  "threatens_invariant": false,
+  "disposition": "inspect_validate",
+  "evidence": []
+}

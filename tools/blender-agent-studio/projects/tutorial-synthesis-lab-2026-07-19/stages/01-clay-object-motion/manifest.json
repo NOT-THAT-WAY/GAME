@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "campaign": "tutorial-synthesis-lab-2026-07-19",
+  "stage": 1,
+  "stage_name": "01-clay-object-motion",
+  "created_at": "2026-07-19T00:53:56.752014+00:00",
+  "blend_file": "projects/tutorial-synthesis-lab-2026-07-19/stages/01-clay-object-motion/01-clay-object-motion.blend",
+  "source_library": "asset_library/imported/drumboii-y2k-assets.blend",
+  "source_assets": [
+    "BLOB_SPEAKER"
+  ],
+  "frame_range": [
+    1,
+    72
+  ],
+  "fps": 24,
+  "resolution": [
+    640,
+    360
+  ],
+  "active_camera": "USTUDIO_CAM_SPEAKER",
+  "cameras": [
+    "USTUDIO_CAM_SPEAKER"
+  ],
+  "snapshots": [
+    {
+      "frame": 1,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/01-clay-object-motion/snapshots/frame_0001.png",
+      "seconds": 0.777
+    },
+    {
+      "frame": 12,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/01-clay-object-motion/snapshots/frame_0012.png",
+      "seconds": 0.292
+    },
+    {
+      "frame": 24,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/01-clay-object-motion/snapshots/frame_0024.png",
+      "seconds": 0.366
+    },
+    {
+      "frame": 54,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/01-clay-object-motion/snapshots/frame_0054.png",
+      "seconds": 0.372
+    },
+    {
+      "frame": 72,
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/stages/01-clay-object-motion/snapshots/frame_0072.png",
+      "seconds": 0.364
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "errors": [],
+    "scene": "TUTORIAL_SYNTHESIS_STAGE_01",
+    "stage": 1,
+    "objects": 12,
+    "materials": 15,
+    "cameras": [
+      "USTUDIO_CAM_SPEAKER"
+    ],
+    "animated_roots": [
+      "USTUDIO_BLOB_SPEAKER_ROOT"
+    ],
+    "timeline_markers": [
+      {
+        "name": "USTUDIO_S0_STILL",
+        "frame": 1
+      },
+      {
+        "name": "USTUDIO_S1_ANTICIPATION",
+        "frame": 24
+      },
+      {
+        "name": "USTUDIO_S2_ACTION",
+        "frame": 54
+      },
+      {
+        "name": "USTUDIO_SPEAKER_REST",
+        "frame": 72
+      }
+    ]
+  },
+  "knowledge_sources": [
+    "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/analysis.json",
+    "knowledge/tutorials/beginner-blender-tutorial-2026/analysis.json",
+    "knowledge/tutorials/ray-ban-product-animation/analysis.json",
+    "knowledge/tutorials/factory-animation-polygon-runway/analysis.json",
+    "knowledge/tutorials/quick-animation-blender-4/analysis.json",
+    "knowledge/tutorials/wireless-pods-animation-polygon-runway/analysis.json"
+  ],
+  "principles_tested": [
+    "immutable source asset",
+    "work root",
+    "still-action-settle",
+    "clay silhouette"
+  ]
+}

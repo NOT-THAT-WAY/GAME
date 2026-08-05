@@ -1,0 +1,973 @@
+{
+  "schema_version": 2,
+  "file": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v001/scene/trial.blend",
+  "blender_version": "5.1.1",
+  "saved": true,
+  "active_scene": "K3_MECHA_MASCOT_PRESENTATION",
+  "summary": {
+    "scenes": 1,
+    "objects": 16,
+    "meshes": 4,
+    "materials": 2,
+    "images": 1,
+    "missing_images": 0,
+    "asset_blocks": 2,
+    "external_libraries": 0,
+    "geometry_issue_objects": 0
+  },
+  "scenes": [
+    {
+      "name": "K3_MECHA_MASCOT_PRESENTATION",
+      "active": true,
+      "objects": 16,
+      "camera": "K3_MECHA_CAMERA",
+      "frame_range": [
+        1,
+        144
+      ],
+      "fps": 24.0,
+      "engine": "BLENDER_EEVEE",
+      "resolution": [
+        720,
+        720,
+        100
+      ],
+      "pixel_aspect": [
+        1.0,
+        1.0
+      ],
+      "film_transparent": false,
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v001/gates/views/side.png",
+      "file_format": "PNG",
+      "view_transform": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "exposure": 0.0,
+      "gamma": 1.0,
+      "units": {
+        "system": "METRIC",
+        "scale_length": 1.0,
+        "length_unit": "METERS"
+      },
+      "markers": [
+        {
+          "name": "K3_MECHA_K1_POSE",
+          "frame": 1
+        },
+        {
+          "name": "K3_MECHA_K2_ANTICIPATION",
+          "frame": 18
+        },
+        {
+          "name": "K3_MECHA_K3_TRAVEL",
+          "frame": 108
+        },
+        {
+          "name": "K3_MECHA_K4_RECOVERY",
+          "frame": 132
+        },
+        {
+          "name": "K3_MECHA_HOLD",
+          "frame": 144
+        }
+      ]
+    }
+  ],
+  "collections": [
+    {
+      "name": "K3_MECHA_MASCOT_ASSET",
+      "objects": 3,
+      "children": [],
+      "asset": true
+    },
+    {
+      "name": "K3_MECHA_PRESENTATION",
+      "objects": 6,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "K3_MECHA_REFERENCES",
+      "objects": 1,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING",
+      "objects": 6,
+      "children": [],
+      "asset": false
+    }
+  ],
+  "objects": [
+    {
+      "name": "K3_MECHA_BACKDROP",
+      "type": "MESH",
+      "collections": [
+        "K3_MECHA_PRESENTATION"
+      ],
+      "location": [
+        0.0,
+        6.0,
+        4.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        12.0,
+        0.1,
+        8.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "K3_MECHA_MAT_GROUND"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "semantic_role"
+      ],
+      "geometry": {
+        "mesh": "K3_MECHA_BACKDROP_MESH",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "K3_MECHA_BODY",
+      "type": "MESH",
+      "collections": [
+        "K3_MECHA_MASCOT_ASSET"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        2.20851,
+        0.30149,
+        1.74545
+      ],
+      "parent": "K3_MECHA_MASCOT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "K3_MECHA_FINAL_SUBDIVISION",
+          "type": "SUBSURF"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "K3_MECHA_MAT_BODY"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "deformation_ready",
+        "front_axis",
+        "recommended_secondary_deformer",
+        "semantic_role"
+      ],
+      "geometry": {
+        "mesh": "K3_MECHA_BODY_MESH",
+        "vertices": 7260,
+        "edges": 16060,
+        "polygons": 8802,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 3088,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "K3_MECHA_CAMERA",
+      "type": "CAMERA",
+      "collections": [
+        "K3_MECHA_PRESENTATION"
+      ],
+      "location": [
+        0.0,
+        -4.45,
+        0.08
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "K3_MECHA_CAMERA_RIG",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "K3_MECHA_TRACK_TARGET",
+          "type": "TRACK_TO",
+          "target": "K3_MECHA_CAMERA_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "camera": {
+        "type": "PERSP",
+        "lens": 56.0,
+        "sensor_width": 36.0,
+        "clip": [
+          0.05000000074505806,
+          100.0
+        ],
+        "dof": true,
+        "focus_object": "K3_MECHA_CAMERA_FOCUS"
+      }
+    },
+    {
+      "name": "K3_MECHA_CAMERA_FOCUS",
+      "type": "EMPTY",
+      "collections": [
+        "K3_MECHA_PRESENTATION"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        1.12
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": []
+    },
+    {
+      "name": "K3_MECHA_CAMERA_RIG",
+      "type": "EMPTY",
+      "collections": [
+        "K3_MECHA_PRESENTATION"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        1.08
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.17453
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "K3_MECHA_CAMERA_RIGAction",
+        "frame_range": [
+          1.0,
+          144.0
+        ],
+        "fcurves": 1,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "K3_MECHA_CAMERA_TARGET",
+      "type": "EMPTY",
+      "collections": [
+        "K3_MECHA_PRESENTATION"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        1.08
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": []
+    },
+    {
+      "name": "K3_MECHA_GROUND",
+      "type": "MESH",
+      "collections": [
+        "K3_MECHA_PRESENTATION"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.05
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        12.0,
+        12.0,
+        0.1
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "K3_MECHA_MAT_GROUND"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "semantic_role"
+      ],
+      "geometry": {
+        "mesh": "K3_MECHA_GROUND_MESH",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "K3_MECHA_HEAD",
+      "type": "MESH",
+      "collections": [
+        "K3_MECHA_MASCOT_ASSET"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        1.79979
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.55,
+        0.528,
+        0.55
+      ],
+      "parent": "K3_MECHA_MASCOT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "K3_MECHA_MAT_BODY"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "semantic_role",
+        "separate_for_future_animation"
+      ],
+      "geometry": {
+        "mesh": "K3_MECHA_HEAD_MESH",
+        "vertices": 1986,
+        "edges": 4032,
+        "polygons": 2048,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 128,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "K3_MECHA_MASCOT_ROOT",
+      "type": "EMPTY",
+      "collections": [
+        "K3_MECHA_MASCOT_ASSET"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [
+        "asset_name",
+        "front_axis",
+        "up_axis"
+      ]
+    },
+    {
+      "name": "K3_MECHA_REFERENCE_IMAGE",
+      "type": "EMPTY",
+      "collections": [
+        "K3_MECHA_REFERENCES"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": true,
+      "hidden_render": true,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [
+        "source_path"
+      ]
+    },
+    {
+      "name": "USTUDIO_LIGHTING_BACK_SHAPE",
+      "type": "LIGHT",
+      "collections": [
+        "USTUDIO_LIGHTING"
+      ],
+      "location": [
+        0.0,
+        4.30769,
+        4.11355
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_LIGHTING_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "AREA",
+        "energy": 1190.0,
+        "color": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_LIGHTING_DETAIL_RETURN",
+      "type": "LIGHT",
+      "collections": [
+        "USTUDIO_LIGHTING"
+      ],
+      "location": [
+        -1.53846,
+        -3.53846,
+        2.11355
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_LIGHTING_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "AREA",
+        "energy": 187.0,
+        "color": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_LIGHTING_SIDE_GLIMMER_A",
+      "type": "LIGHT",
+      "collections": [
+        "USTUDIO_LIGHTING"
+      ],
+      "location": [
+        -4.0,
+        0.92308,
+        2.72893
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_LIGHTING_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "AREA",
+        "energy": 374.0,
+        "color": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_LIGHTING_SIDE_GLIMMER_B",
+      "type": "LIGHT",
+      "collections": [
+        "USTUDIO_LIGHTING"
+      ],
+      "location": [
+        3.69231,
+        0.30769,
+        2.57508
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_LIGHTING_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "AREA",
+        "energy": 144.5,
+        "color": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_LIGHTING_SUN_REFLECTION",
+      "type": "LIGHT",
+      "collections": [
+        "USTUDIO_LIGHTING"
+      ],
+      "location": [
+        -4.61539,
+        2.30769,
+        2.88278
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_LIGHTING_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "SUN",
+        "energy": 0.8500000238418579,
+        "color": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_LIGHTING_TARGET",
+      "type": "EMPTY",
+      "collections": [
+        "USTUDIO_LIGHTING"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        1.03662
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": []
+    }
+  ],
+  "materials": [
+    {
+      "name": "K3_MECHA_MAT_BODY",
+      "users": 3,
+      "asset": true,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "K3_MECHA_MAT_GROUND",
+      "users": 2,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "name": "model 3D mecha.png",
+      "source": "FILE",
+      "filepath": "//../../../../../../Downloads/model 3D mecha.png",
+      "absolute_path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v001/scene/../../../../../../Downloads/model 3D mecha.png",
+      "packed": true,
+      "exists": true,
+      "size": [
+        1226,
+        1283
+      ],
+      "colorspace": "sRGB"
+    }
+  ],
+  "assets": [
+    {
+      "type": "collections",
+      "name": "K3_MECHA_MASCOT_ASSET",
+      "description": "Mecha Mascot — reusable soft humanoid figure from the supplied reference",
+      "author": "UNRECORDED",
+      "catalog_id": "00000000-0000-0000-0000-000000000000",
+      "tags": [
+        "character",
+        "mascot",
+        "squishy",
+        "organic",
+        "mecha"
+      ]
+    },
+    {
+      "type": "materials",
+      "name": "K3_MECHA_MAT_BODY",
+      "description": "Warm neutral material for the Mecha Mascot organic body",
+      "author": "UNRECORDED",
+      "catalog_id": "00000000-0000-0000-0000-000000000000",
+      "tags": []
+    }
+  ],
+  "external_libraries": [],
+  "issues": {
+    "missing_images": [],
+    "objects_with_unapplied_scale": [],
+    "unnamed_objects": [],
+    "geometry": {},
+    "scenes_without_camera": [],
+    "scenes_without_units": []
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "trial": "k3-pianoroll-slope-run-codex-v001",
+  "frames_sampled": 240,
+  "plant_samples": 340,
+  "swing_samples": 140,
+  "metrics": {
+    "slope_degrees": 46.340008,
+    "static_friction_min": 1.047904,
+    "authored_grip_coefficient": 1.25,
+    "max_sole_penetration_m": 6e-07,
+    "max_planted_drift_per_frame_m": 0.0,
+    "min_assessed_swing_clearance_m": 0.01224563,
+    "pelvis_surface_height_range_m": [
+      0.14799994,
+      0.14800018
+    ],
+    "measured_torso_lean_range_deg": [
+      7.99996,
+      22.00001
+    ],
+    "authored_torso_lean_range_deg": [
+      8.0,
+      22.0
+    ],
+    "camera_distance_range_m": [
+      1.27885261,
+      1.2819766
+    ],
+    "camera_surface_clearance_range_m": [
+      0.30675526,
+      0.32921243
+    ],
+    "camera_x_range_m": [
+      1.25,
+      1.25
+    ],
+    "camera_y_range_m": [
+      -0.27479386,
+      1.09030008
+    ],
+    "rendered_frame_count": 240,
+    "unique_render_hashes": 240
+  },
+  "checks": {
+    "slope_measured_46deg": true,
+    "grip_exceeds_static_minimum": true,
+    "sole_penetration_le_2mm": true,
+    "planted_foot_drift_le_5mm_per_frame": true,
+    "swing_clearance_ge_5mm": true,
+    "pelvis_surface_height_stable": true,
+    "torso_lean_world_8_to_22deg": true,
+    "camera_distance_variation_le_10mm": true,
+    "camera_corridor_clear": true,
+    "render_sequence_240_frames": true,
+    "render_frames_not_identical": true
+  },
+  "critical_failures": [],
+  "verdict": "pass"
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v001/scene/trial.blend",
+  "scene": "K3_MECHA_MASCOT_PRESENTATION",
+  "frame": 108,
+  "camera": "K3_MECHA_CAMERA",
+  "lens": 56.0,
+  "clip": [
+    0.05000000074505806,
+    100.0
+  ],
+  "resolution": [
+    720,
+    720,
+    100
+  ],
+  "collection": "K3_MECHA_MASCOT_ASSET",
+  "summary": {
+    "visible": 2,
+    "partial": 0,
+    "occluded": 0,
+    "off-frame": 0
+  },
+  "objects": [
+    {
+      "object": "K3_MECHA_BODY",
+      "verdict": "visible",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.113493,
+        0.090403,
+        0.902797,
+        0.749611
+      ],
+      "clipped_bounds": [
+        0.113493,
+        0.090403,
+        0.902797,
+        0.749611
+      ],
+      "coverage": 0.520316,
+      "center_offset": [
+        0.008145,
+        -0.079993
+      ],
+      "depth_range": [
+        4.098633,
+        4.810311
+      ],
+      "clip_near": false,
+      "clip_far": false
+    },
+    {
+      "object": "K3_MECHA_HEAD",
+      "verdict": "visible",
+      "occluded_by": null,
+      "frame_bounds": [
+        0.38329,
+        0.647436,
+        0.606046,
+        0.872979
+      ],
+      "clipped_bounds": [
+        0.38329,
+        0.647436,
+        0.606046,
+        0.872979
+      ],
+      "coverage": 0.050241,
+      "center_offset": [
+        -0.005332,
+        0.260208
+      ],
+      "depth_range": [
+        4.125145,
+        4.750417
+      ],
+      "clip_near": false,
+      "clip_far": false
+    }
+  ]
+}

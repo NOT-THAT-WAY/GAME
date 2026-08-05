@@ -1,0 +1,3765 @@
+{
+  "schema_version": 1,
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/scene/trial.blend",
+  "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+  "collection": "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK",
+  "truncated": false,
+  "objects": [
+    {
+      "name": "USTUDIO_SLOPE_RUN_RIG",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.099175,
+        0.019863,
+        1.379084
+      ],
+      "bounds_max": [
+        0.099175,
+        0.019863,
+        1.379084
+      ],
+      "center": [
+        0.099175,
+        0.019863,
+        1.379084
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.077908,
+        0.008151,
+        2.929645
+      ],
+      "bounds_max": [
+        0.077908,
+        0.008151,
+        2.929645
+      ],
+      "center": [
+        0.077908,
+        0.008151,
+        2.929645
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_CHEST",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.076094,
+        0.038918,
+        3.03002
+      ],
+      "bounds_max": [
+        0.076094,
+        0.038918,
+        3.03002
+      ],
+      "center": [
+        0.076094,
+        0.038918,
+        3.03002
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_NECK",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.075317,
+        0.052103,
+        3.073037
+      ],
+      "bounds_max": [
+        0.075317,
+        0.052103,
+        3.073037
+      ],
+      "center": [
+        0.075317,
+        0.052103,
+        3.073037
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_HEAD",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.074712,
+        0.062359,
+        3.106496
+      ],
+      "bounds_max": [
+        0.074712,
+        0.062359,
+        3.106496
+      ],
+      "center": [
+        0.074712,
+        0.062359,
+        3.106496
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_SHOULDER_L",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.023793,
+        0.043471,
+        3.046508
+      ],
+      "bounds_max": [
+        0.023793,
+        0.043471,
+        3.046508
+      ],
+      "center": [
+        0.023793,
+        0.043471,
+        3.046508
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.012327,
+        0.049226,
+        3.001942
+      ],
+      "bounds_max": [
+        0.012327,
+        0.049226,
+        3.001942
+      ],
+      "center": [
+        0.012327,
+        0.049226,
+        3.001942
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.024992,
+        0.061378,
+        2.941812
+      ],
+      "bounds_max": [
+        0.024992,
+        0.061378,
+        2.941812
+      ],
+      "center": [
+        0.024992,
+        0.061378,
+        2.941812
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_SHOULDER_R",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.127773,
+        0.044912,
+        3.047945
+      ],
+      "bounds_max": [
+        0.127773,
+        0.044912,
+        3.047945
+      ],
+      "center": [
+        0.127773,
+        0.044912,
+        3.047945
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.140447,
+        0.040716,
+        3.003533
+      ],
+      "bounds_max": [
+        0.140447,
+        0.040716,
+        3.003533
+      ],
+      "center": [
+        0.140447,
+        0.040716,
+        3.003533
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.129425,
+        0.030682,
+        2.942693
+      ],
+      "bounds_max": [
+        0.129425,
+        0.030682,
+        2.942693
+      ],
+      "center": [
+        0.129425,
+        0.030682,
+        2.942693
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.047913,
+        0.007736,
+        2.92923
+      ],
+      "bounds_max": [
+        0.047913,
+        0.007736,
+        2.92923
+      ],
+      "center": [
+        0.047913,
+        0.007736,
+        2.92923
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.046319,
+        0.019032,
+        2.888549
+      ],
+      "bounds_max": [
+        0.046319,
+        0.019032,
+        2.888549
+      ],
+      "center": [
+        0.046319,
+        0.019032,
+        2.888549
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_FOOT_L",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.045932,
+        0.025204,
+        2.765574
+      ],
+      "bounds_max": [
+        0.045932,
+        0.025204,
+        2.765574
+      ],
+      "center": [
+        0.045932,
+        0.025204,
+        2.765574
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.107902,
+        0.008567,
+        2.930059
+      ],
+      "bounds_max": [
+        0.107902,
+        0.008567,
+        2.930059
+      ],
+      "center": [
+        0.107902,
+        0.008567,
+        2.930059
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.10916,
+        0.063974,
+        2.928205
+      ],
+      "bounds_max": [
+        0.10916,
+        0.063974,
+        2.928205
+      ],
+      "center": [
+        0.10916,
+        0.063974,
+        2.928205
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_JOINT_FOOT_R",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_RUN_RIG",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.111626,
+        0.114258,
+        2.844056
+      ],
+      "bounds_max": [
+        0.111626,
+        0.114258,
+        2.844056
+      ],
+      "center": [
+        0.111626,
+        0.114258,
+        2.844056
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.031921,
+        -0.027129,
+        2.890443
+      ],
+      "bounds_max": [
+        0.123894,
+        0.043432,
+        2.968846
+      ],
+      "center": [
+        0.077908,
+        0.008151,
+        2.929645
+      ],
+      "dimensions": [
+        0.091973,
+        0.070561,
+        0.078403
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_CHEST",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_CHEST",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.022876,
+        0.000296,
+        2.976673
+      ],
+      "bounds_max": [
+        0.129311,
+        0.077539,
+        3.083366
+      ],
+      "center": [
+        0.076094,
+        0.038918,
+        3.03002
+      ],
+      "dimensions": [
+        0.106435,
+        0.077243,
+        0.106693
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_HEAD",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_HEAD",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.034587,
+        0.023057,
+        3.06131
+      ],
+      "bounds_max": [
+        0.114837,
+        0.10166,
+        3.151682
+      ],
+      "center": [
+        0.074712,
+        0.062359,
+        3.106496
+      ],
+      "dimensions": [
+        0.080251,
+        0.078602,
+        0.090372
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_SHOULDER_L",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.007353,
+        0.026973,
+        3.030014
+      ],
+      "bounds_max": [
+        0.040233,
+        0.059969,
+        3.063002
+      ],
+      "center": [
+        0.023793,
+        0.043471,
+        3.046508
+      ],
+      "dimensions": [
+        0.032879,
+        0.032996,
+        0.032989
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.004113,
+        0.032728,
+        2.985448
+      ],
+      "bounds_max": [
+        0.028766,
+        0.065724,
+        3.018436
+      ],
+      "center": [
+        0.012327,
+        0.049226,
+        3.001942
+      ],
+      "dimensions": [
+        0.032879,
+        0.032996,
+        0.032989
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.010607,
+        0.046943,
+        2.92738
+      ],
+      "bounds_max": [
+        0.039376,
+        0.075814,
+        2.956244
+      ],
+      "center": [
+        0.024992,
+        0.061378,
+        2.941812
+      ],
+      "dimensions": [
+        0.028769,
+        0.028871,
+        0.028865
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_SHOULDER_R",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.111333,
+        0.028415,
+        3.031451
+      ],
+      "bounds_max": [
+        0.144213,
+        0.06141,
+        3.06444
+      ],
+      "center": [
+        0.127773,
+        0.044912,
+        3.047945
+      ],
+      "dimensions": [
+        0.032879,
+        0.032996,
+        0.032989
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.124008,
+        0.024218,
+        2.987039
+      ],
+      "bounds_max": [
+        0.156887,
+        0.057214,
+        3.020027
+      ],
+      "center": [
+        0.140447,
+        0.040716,
+        3.003533
+      ],
+      "dimensions": [
+        0.032879,
+        0.032996,
+        0.032989
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.11504,
+        0.016246,
+        2.92826
+      ],
+      "bounds_max": [
+        0.14381,
+        0.045117,
+        2.957125
+      ],
+      "center": [
+        0.129425,
+        0.030682,
+        2.942693
+      ],
+      "dimensions": [
+        0.028769,
+        0.028871,
+        0.028865
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.031474,
+        -0.008762,
+        2.912736
+      ],
+      "bounds_max": [
+        0.064353,
+        0.024233,
+        2.945724
+      ],
+      "center": [
+        0.047913,
+        0.007736,
+        2.92923
+      ],
+      "dimensions": [
+        0.032879,
+        0.032996,
+        0.032989
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.029879,
+        0.002534,
+        2.872054
+      ],
+      "bounds_max": [
+        0.062758,
+        0.03553,
+        2.905043
+      ],
+      "center": [
+        0.046319,
+        0.019032,
+        2.888549
+      ],
+      "dimensions": [
+        0.032879,
+        0.032996,
+        0.032989
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.091462,
+        -0.007931,
+        2.913565
+      ],
+      "bounds_max": [
+        0.124341,
+        0.025065,
+        2.946553
+      ],
+      "center": [
+        0.107902,
+        0.008567,
+        2.930059
+      ],
+      "dimensions": [
+        0.032879,
+        0.032996,
+        0.032989
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.09272,
+        0.047477,
+        2.91171
+      ],
+      "bounds_max": [
+        0.1256,
+        0.080472,
+        2.944699
+      ],
+      "center": [
+        0.10916,
+        0.063974,
+        2.928205
+      ],
+      "dimensions": [
+        0.032879,
+        0.032996,
+        0.032989
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_TORSO",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.035,
+        -0.01784,
+        1.539833
+      ],
+      "bounds_max": [
+        0.035,
+        0.08124,
+        1.661351
+      ],
+      "center": [
+        0.0,
+        0.0317,
+        1.600592
+      ],
+      "dimensions": [
+        0.07,
+        0.09908,
+        0.121518
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_NECK",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.021,
+        0.027994,
+        1.644006
+      ],
+      "bounds_max": [
+        0.021,
+        0.092707,
+        1.733081
+      ],
+      "center": [
+        0.0,
+        0.060351,
+        1.688543
+      ],
+      "dimensions": [
+        0.042,
+        0.064713,
+        0.089075
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_UPPER_ARM_L",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.08311,
+        0.033861,
+        1.61795
+      ],
+      "bounds_max": [
+        -0.03289,
+        0.078356,
+        1.672801
+      ],
+      "center": [
+        -0.058,
+        0.056108,
+        1.645375
+      ],
+      "dimensions": [
+        0.050219,
+        0.044495,
+        0.054851
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_FOREARM_L",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.076638,
+        0.045632,
+        1.558233
+      ],
+      "bounds_max": [
+        -0.039362,
+        0.082657,
+        1.627518
+      ],
+      "center": [
+        -0.058,
+        0.064145,
+        1.592875
+      ],
+      "dimensions": [
+        0.037276,
+        0.037025,
+        0.069285
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_UPPER_ARM_R",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.03289,
+        0.028717,
+        1.61795
+      ],
+      "bounds_max": [
+        0.08311,
+        0.073213,
+        1.672801
+      ],
+      "center": [
+        0.058,
+        0.050965,
+        1.645375
+      ],
+      "dimensions": [
+        0.050219,
+        0.044495,
+        0.054851
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_FOREARM_R",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.039362,
+        0.024416,
+        1.558233
+      ],
+      "bounds_max": [
+        0.076638,
+        0.061441,
+        1.627518
+      ],
+      "center": [
+        0.058,
+        0.042929,
+        1.592875
+      ],
+      "dimensions": [
+        0.037276,
+        0.037025,
+        0.069285
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_THIGH_L",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.055229,
+        -0.007192,
+        1.504454
+      ],
+      "bounds_max": [
+        -0.006771,
+        0.048682,
+        1.556047
+      ],
+      "center": [
+        -0.031,
+        0.020745,
+        1.53025
+      ],
+      "dimensions": [
+        0.048458,
+        0.055874,
+        0.051593
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_SHIN_L",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.055025,
+        0.005036,
+        1.386042
+      ],
+      "bounds_max": [
+        -0.010975,
+        0.051112,
+        1.510563
+      ],
+      "center": [
+        -0.033,
+        0.028074,
+        1.448303
+      ],
+      "dimensions": [
+        0.04405,
+        0.046076,
+        0.124521
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_THIGH_R",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.011342,
+        0.013859,
+        1.529219
+      ],
+      "bounds_max": [
+        0.050658,
+        0.072363,
+        1.569288
+      ],
+      "center": [
+        0.031,
+        0.043111,
+        1.549253
+      ],
+      "dimensions": [
+        0.039316,
+        0.058505,
+        0.040069
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_SHIN_R",
+      "type": "MESH",
+      "role": "core",
+      "parent": null,
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.015901,
+        0.056675,
+        1.455023
+      ],
+      "bounds_max": [
+        0.050099,
+        0.13367,
+        1.555601
+      ],
+      "center": [
+        0.033,
+        0.095172,
+        1.505312
+      ],
+      "dimensions": [
+        0.034199,
+        0.076996,
+        0.100577
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_FOOT_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_FOOT_L",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.024294,
+        -0.00299,
+        2.735967
+      ],
+      "bounds_max": [
+        0.06757,
+        0.053398,
+        2.79518
+      ],
+      "center": [
+        0.045932,
+        0.025204,
+        2.765574
+      ],
+      "dimensions": [
+        0.043276,
+        0.056388,
+        0.059213
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_FOOT_L",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.023272,
+        0.008084,
+        2.732507
+      ],
+      "bounds_max": [
+        0.068576,
+        0.057031,
+        2.785086
+      ],
+      "center": [
+        0.045924,
+        0.032558,
+        2.758797
+      ],
+      "dimensions": [
+        0.045305,
+        0.048946,
+        0.052579
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_FOOT_R",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.089988,
+        0.086064,
+        2.81445
+      ],
+      "bounds_max": [
+        0.133264,
+        0.142452,
+        2.873663
+      ],
+      "center": [
+        0.111626,
+        0.114258,
+        2.844056
+      ],
+      "dimensions": [
+        0.043276,
+        0.056388,
+        0.059213
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_SLOPE_JOINT_FOOT_R",
+      "collections": [
+        "K3_PIANOROLL_SLOPE_RUN_CODEX_V001_WORK"
+      ],
+      "bounds_min": [
+        0.088966,
+        0.097138,
+        2.81099
+      ],
+      "bounds_max": [
+        0.134271,
+        0.146085,
+        2.863569
+      ],
+      "center": [
+        0.111618,
+        0.121611,
+        2.837279
+      ],
+      "dimensions": [
+        0.045305,
+        0.048946,
+        0.052579
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CAM_TARGET",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_CAMERAS"
+      ],
+      "bounds_min": [
+        0.07655,
+        0.019512,
+        3.016485
+      ],
+      "bounds_max": [
+        0.07655,
+        0.019512,
+        3.016485
+      ],
+      "center": [
+        0.07655,
+        0.019512,
+        3.016485
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CAM_FOCUS",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_CAMERAS"
+      ],
+      "bounds_min": [
+        0.076094,
+        0.038918,
+        3.03002
+      ],
+      "bounds_max": [
+        0.076094,
+        0.038918,
+        3.03002
+      ],
+      "center": [
+        0.076094,
+        0.038918,
+        3.03002
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CAM_MAIN",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_CAMERAS"
+      ],
+      "bounds_min": [
+        1.325953,
+        -0.032004,
+        3.128614
+      ],
+      "bounds_max": [
+        1.325953,
+        -0.032004,
+        3.128614
+      ],
+      "center": [
+        1.325953,
+        -0.032004,
+        3.128614
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_DIAG_PROFILE_TARGET",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_CAMERAS"
+      ],
+      "bounds_min": [
+        0.069128,
+        0.337389,
+        3.23469
+      ],
+      "bounds_max": [
+        0.069128,
+        0.337389,
+        3.23469
+      ],
+      "center": [
+        0.069128,
+        0.337389,
+        3.23469
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CAM_DIAG_PROFILE",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_CAMERAS"
+      ],
+      "bounds_min": [
+        2.668631,
+        0.373417,
+        3.270617
+      ],
+      "bounds_max": [
+        2.668631,
+        0.373417,
+        3.270617
+      ],
+      "center": [
+        2.668631,
+        0.373417,
+        3.270617
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_DIAG_TOP_TARGET",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_CAMERAS"
+      ],
+      "bounds_min": [
+        0.069128,
+        0.337389,
+        3.23469
+      ],
+      "bounds_max": [
+        0.069128,
+        0.337389,
+        3.23469
+      ],
+      "center": [
+        0.069128,
+        0.337389,
+        3.23469
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CAM_DIAG_TOP",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_CAMERAS"
+      ],
+      "bounds_min": [
+        0.284072,
+        -0.264155,
+        6.377848
+      ],
+      "bounds_max": [
+        0.284072,
+        -0.264155,
+        6.377848
+      ],
+      "center": [
+        0.284072,
+        -0.264155,
+        6.377848
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_DIAG_NORMAL_TARGET",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_CAMERAS"
+      ],
+      "bounds_min": [
+        0.069128,
+        0.337389,
+        3.23469
+      ],
+      "bounds_max": [
+        0.069128,
+        0.337389,
+        3.23469
+      ],
+      "center": [
+        0.069128,
+        0.337389,
+        3.23469
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_SLOPE_CAM_DIAG_NORMAL",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_CAMERAS"
+      ],
+      "bounds_min": [
+        0.07111,
+        -1.427463,
+        4.861126
+      ],
+      "bounds_max": [
+        0.07111,
+        -1.427463,
+        4.861126
+      ],
+      "center": [
+        0.07111,
+        -1.427463,
+        4.861126
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING_TARGET",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_LIGHTING"
+      ],
+      "bounds_min": [
+        0.066669,
+        0.364755,
+        3.385173
+      ],
+      "bounds_max": [
+        0.066669,
+        0.364755,
+        3.385173
+      ],
+      "center": [
+        0.066669,
+        0.364755,
+        3.385173
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING_SUN_REFLECTION",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_LIGHTING"
+      ],
+      "bounds_min": [
+        0.099175,
+        0.019863,
+        1.379084
+      ],
+      "bounds_max": [
+        0.099175,
+        0.019863,
+        1.379084
+      ],
+      "center": [
+        0.099175,
+        0.019863,
+        1.379084
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING_BACK_SHAPE",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_LIGHTING"
+      ],
+      "bounds_min": [
+        -0.757528,
+        0.953383,
+        4.534571
+      ],
+      "bounds_max": [
+        -0.757528,
+        0.953383,
+        4.534571
+      ],
+      "center": [
+        -0.757528,
+        0.953383,
+        4.534571
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING_SIDE_GLIMMER_A",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_LIGHTING"
+      ],
+      "bounds_min": [
+        1.270516,
+        -0.152861,
+        3.642516
+      ],
+      "bounds_max": [
+        1.270516,
+        -0.152861,
+        3.642516
+      ],
+      "center": [
+        1.270516,
+        -0.152861,
+        3.642516
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING_SIDE_GLIMMER_B",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_LIGHTING"
+      ],
+      "bounds_min": [
+        -1.034629,
+        0.113443,
+        3.715904
+      ],
+      "bounds_max": [
+        -1.034629,
+        0.113443,
+        3.715904
+      ],
+      "center": [
+        -1.034629,
+        0.113443,
+        3.715904
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING_DETAIL_RETURN",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_SLOPE_LIGHTING"
+      ],
+      "bounds_min": [
+        0.674311,
+        -0.71629,
+        3.924628
+      ],
+      "bounds_max": [
+        0.674311,
+        -0.71629,
+        3.924628
+      ],
+      "center": [
+        0.674311,
+        -0.71629,
+        3.924628
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    }
+  ],
+  "relations": [
+    {
+      "from": "USTUDIO_SLOPE_RUN_RIG",
+      "to": "USTUDIO_LIGHTING_SUN_REFLECTION",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "aabb_distance": 0.076034,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "aabb_distance": 0.057723,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "aabb_distance": 0.03,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "aabb_distance": 0.052963,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "aabb_distance": 0.03,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "aabb_distance": 0.063992,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.047029,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "aabb_distance": 0.078313,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "aabb_distance": 0.054676,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "aabb_distance": 0.075349,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "aabb_distance": 0.038005,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.013555,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "aabb_distance": 0.028892,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.013555,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.042023,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_JOINT_NECK",
+      "aabb_distance": 0.045,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_JOINT_SHOULDER_L",
+      "aabb_distance": 0.055027,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "aabb_distance": 0.070433,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_JOINT_SHOULDER_R",
+      "aabb_distance": 0.055027,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "aabb_distance": 0.069614,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "aabb_distance": 0.061174,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_HEAD",
+      "aabb_distance": 0.031291,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "aabb_distance": 0.035861,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "aabb_distance": 0.048724,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "aabb_distance": 0.035269,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "aabb_distance": 0.048945,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.023664,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_CHEST",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_NECK",
+      "to": "USTUDIO_SLOPE_JOINT_HEAD",
+      "aabb_distance": 0.035,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_NECK",
+      "to": "USTUDIO_SLOPE_JOINT_SHOULDER_L",
+      "aabb_distance": 0.058592,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_NECK",
+      "to": "USTUDIO_SLOPE_JOINT_SHOULDER_R",
+      "aabb_distance": 0.058592,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_NECK",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_NECK",
+      "to": "USTUDIO_SLOPE_CHAR_HEAD",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_NECK",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "aabb_distance": 0.036491,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_NECK",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "aabb_distance": 0.071751,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_NECK",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "aabb_distance": 0.037029,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_NECK",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "aabb_distance": 0.071978,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_NECK",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.065283,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_NECK",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.045,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HEAD",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.02313,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HEAD",
+      "to": "USTUDIO_SLOPE_CHAR_HEAD",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HEAD",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "aabb_distance": 0.055554,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HEAD",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "aabb_distance": 0.055774,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "aabb_distance": 0.046376,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "aabb_distance": 0.078086,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_CHAR_HEAD",
+      "aabb_distance": 0.018319,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "aabb_distance": 0.028072,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.065259,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.055027,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "to": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "aabb_distance": 0.062639,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "aabb_distance": 0.038896,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.01055,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CHAR_HEAD",
+      "aabb_distance": 0.063404,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "aabb_distance": 0.028072,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "aabb_distance": 0.045698,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.064433,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.072243,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.070433,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "to": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "aabb_distance": 0.059676,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "to": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "aabb_distance": 0.071309,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "aabb_distance": 0.019238,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.034861,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "aabb_distance": 0.043636,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.037706,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "aabb_distance": 0.045211,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.075743,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.067729,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_R",
+      "to": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "aabb_distance": 0.046376,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_R",
+      "to": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "aabb_distance": 0.079208,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_R",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_R",
+      "to": "USTUDIO_SLOPE_CHAR_HEAD",
+      "aabb_distance": 0.0186,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_R",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_R",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "aabb_distance": 0.027918,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_R",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.065259,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_SHOULDER_R",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.055027,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "to": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "aabb_distance": 0.062639,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "aabb_distance": 0.038434,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.011136,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CHAR_HEAD",
+      "aabb_distance": 0.063199,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "aabb_distance": 0.027918,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "aabb_distance": 0.046408,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.061245,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.061054,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.068558,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.069614,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "to": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "aabb_distance": 0.033345,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "to": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "aabb_distance": 0.041581,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "aabb_distance": 0.005531,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.033981,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "aabb_distance": 0.044346,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.065391,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "aabb_distance": 0.076563,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.007576,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.017225,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "to": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "aabb_distance": 0.042251,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "to": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "aabb_distance": 0.06,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.047443,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "aabb_distance": 0.064433,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "aabb_distance": 0.040126,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "aabb_distance": 0.067664,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "aabb_distance": 0.024187,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.043549,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.059892,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "to": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "aabb_distance": 0.075001,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "to": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "aabb_distance": 0.001895,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "aabb_distance": 0.048322,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "aabb_distance": 0.079371,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.024187,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.051612,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_L",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.05915,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_FOOT_L",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_FOOT_L",
+      "to": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "to": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "aabb_distance": 0.055453,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "to": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.046614,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "aabb_distance": 0.078539,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "aabb_distance": 0.061245,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "aabb_distance": 0.010485,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.043549,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "aabb_distance": 0.051612,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_HIP_R",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.03891,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "aabb_distance": 0.020543,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.048469,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "aabb_distance": 0.069783,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "aabb_distance": 0.061054,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "aabb_distance": 0.019753,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.059892,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "aabb_distance": 0.05915,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.03891,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "aabb_distance": 0.058845,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_R",
+      "aabb_distance": 0.072647,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_FOOT_R",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.075621,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_FOOT_R",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_JOINT_FOOT_R",
+      "to": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_CHEST",
+      "aabb_distance": 0.007827,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "aabb_distance": 0.061168,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "aabb_distance": 0.016899,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "aabb_distance": 0.003511,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "aabb_distance": 0.062605,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "aabb_distance": 0.018193,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.004045,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "aabb_distance": 0.045816,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_R",
+      "aabb_distance": 0.060055,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.047639,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_PELVIS",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.061174,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_HEAD",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "aabb_distance": 0.020429,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "aabb_distance": 0.019548,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.030949,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "aabb_distance": 0.07163,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.03012,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.031974,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_CHEST",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HEAD",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HEAD",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "aabb_distance": 0.043267,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HEAD",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HEAD",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "aabb_distance": 0.042289,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HEAD",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.044965,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HEAD",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.031291,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "aabb_distance": 0.011577,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "aabb_distance": 0.073769,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "aabb_distance": 0.071101,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.039467,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_SHOULDER_L",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.035861,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "aabb_distance": 0.029203,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.040712,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.074177,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.075833,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.049577,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_ELBOW_L",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.048724,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "aabb_distance": 0.075686,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.022709,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "aabb_distance": 0.025083,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.056494,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.053344,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "aabb_distance": 0.074513,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_L",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.075916,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "to": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "aabb_distance": 0.011424,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "aabb_distance": 0.074326,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.038899,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_SHOULDER_R",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.035269,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "aabb_distance": 0.029913,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.072564,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.040485,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.04234,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.04769,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_ELBOW_R",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.048945,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "aabb_distance": 0.050687,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "aabb_distance": 0.057205,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.002359,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "aabb_distance": 0.068246,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HAND_R",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.070747,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "aabb_distance": 0.007693,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.027109,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.036674,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "aabb_distance": 0.077504,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HIP_L",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.071804,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "to": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "aabb_distance": 0.029942,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.032938,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_L",
+      "aabb_distance": 0.076874,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "aabb_distance": 0.057404,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_KNEE_L",
+      "to": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_R",
+      "aabb_distance": 0.067487,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "to": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "aabb_distance": 0.022412,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "aabb_distance": 0.072891,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_HIP_R",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.071504,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "aabb_distance": 0.038456,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "to": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_R",
+      "aabb_distance": 0.050945,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_KNEE_R",
+      "to": "USTUDIO_SLOPE_CAM_TARGET",
+      "aabb_distance": 0.078719,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_TORSO",
+      "to": "USTUDIO_SLOPE_CHAR_NECK",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_TORSO",
+      "to": "USTUDIO_SLOPE_CHAR_UPPER_ARM_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_TORSO",
+      "to": "USTUDIO_SLOPE_CHAR_FOREARM_L",
+      "aabb_distance": 0.004362,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_TORSO",
+      "to": "USTUDIO_SLOPE_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_TORSO",
+      "to": "USTUDIO_SLOPE_CHAR_FOREARM_R",
+      "aabb_distance": 0.004362,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_TORSO",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_TORSO",
+      "to": "USTUDIO_SLOPE_CHAR_SHIN_L",
+      "aabb_distance": 0.02927,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_TORSO",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_TORSO",
+      "to": "USTUDIO_SLOPE_CHAR_SHIN_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_NECK",
+      "to": "USTUDIO_SLOPE_CHAR_UPPER_ARM_L",
+      "aabb_distance": 0.01189,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_NECK",
+      "to": "USTUDIO_SLOPE_CHAR_FOREARM_L",
+      "aabb_distance": 0.024678,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_NECK",
+      "to": "USTUDIO_SLOPE_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.01189,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_NECK",
+      "to": "USTUDIO_SLOPE_CHAR_FOREARM_R",
+      "aabb_distance": 0.024678,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_NECK",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_R",
+      "aabb_distance": 0.074718,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_SLOPE_CHAR_FOREARM_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_SLOPE_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.065781,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_SLOPE_CHAR_FOREARM_R",
+      "aabb_distance": 0.072252,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_L",
+      "aabb_distance": 0.061903,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_R",
+      "aabb_distance": 0.065761,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_SLOPE_CHAR_SHIN_R",
+      "aabb_distance": 0.079171,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOREARM_L",
+      "to": "USTUDIO_SLOPE_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.072252,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOREARM_L",
+      "to": "USTUDIO_SLOPE_CHAR_FOREARM_R",
+      "aabb_distance": 0.078724,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOREARM_L",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_L",
+      "aabb_distance": 0.002186,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOREARM_L",
+      "to": "USTUDIO_SLOPE_CHAR_SHIN_L",
+      "aabb_distance": 0.047669,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOREARM_L",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_R",
+      "aabb_distance": 0.050704,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOREARM_L",
+      "to": "USTUDIO_SLOPE_CHAR_SHIN_R",
+      "aabb_distance": 0.055325,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_SLOPE_CHAR_FOREARM_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_L",
+      "aabb_distance": 0.073519,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_R",
+      "aabb_distance": 0.048662,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_SLOPE_CHAR_SHIN_R",
+      "aabb_distance": 0.062349,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOREARM_R",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_L",
+      "aabb_distance": 0.046185,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOREARM_R",
+      "to": "USTUDIO_SLOPE_CHAR_SHIN_L",
+      "aabb_distance": 0.069327,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOREARM_R",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOREARM_R",
+      "to": "USTUDIO_SLOPE_CHAR_SHIN_R",
+      "aabb_distance": 0.002632,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_THIGH_L",
+      "to": "USTUDIO_SLOPE_CHAR_SHIN_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_THIGH_L",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_R",
+      "aabb_distance": 0.018113,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_THIGH_L",
+      "to": "USTUDIO_SLOPE_CHAR_SHIN_R",
+      "aabb_distance": 0.024039,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_SHIN_L",
+      "to": "USTUDIO_SLOPE_CHAR_THIGH_R",
+      "aabb_distance": 0.029087,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_SHIN_L",
+      "to": "USTUDIO_SLOPE_CHAR_SHIN_R",
+      "aabb_distance": 0.027445,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_THIGH_R",
+      "to": "USTUDIO_SLOPE_CHAR_SHIN_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOOT_L",
+      "to": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOOT_L",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "aabb_distance": 0.044056,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOOT_L",
+      "to": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_R",
+      "aabb_distance": 0.051195,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_L",
+      "to": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "aabb_distance": 0.046515,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_L",
+      "to": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_R",
+      "aabb_distance": 0.051917,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CHAR_FOOT_R",
+      "to": "USTUDIO_SLOPE_CHAR_GRIP_SOLE_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_CAM_TARGET",
+      "to": "USTUDIO_SLOPE_CAM_FOCUS",
+      "aabb_distance": 0.023664,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_DIAG_PROFILE_TARGET",
+      "to": "USTUDIO_SLOPE_DIAG_TOP_TARGET",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_DIAG_PROFILE_TARGET",
+      "to": "USTUDIO_SLOPE_DIAG_NORMAL_TARGET",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_SLOPE_DIAG_TOP_TARGET",
+      "to": "USTUDIO_SLOPE_DIAG_NORMAL_TARGET",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    }
+  ],
+  "summary": {
+    "objects": 59,
+    "relations": 282,
+    "roles": {
+      "core": 10,
+      "accessory": 34,
+      "control": 15,
+      "reference": 0
+    }
+  }
+}

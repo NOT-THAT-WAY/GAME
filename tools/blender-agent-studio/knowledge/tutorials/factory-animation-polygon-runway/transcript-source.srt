@@ -1,0 +1,936 @@
+1
+00:00:00,000 --> 00:00:15,350
+ Hey everyone, welcome to my new tutorial. Someone recently in the comments suggested to do a conveyor belt, you know, a
+
+2
+00:00:15,350 --> 00:00:22,450
+ factory belt animation tutorial and I really like the idea. So, you know, here it is, we're gonna make it. So, if you
+
+3
+00:00:22,450 --> 00:00:28,070
+ have suggestions like this, you know, just write it down in the comments. Sometimes I really like the idea and do it
+
+4
+00:00:28,070 --> 00:00:29,400
+ right away next week.
+
+5
+00:00:29,400 --> 00:00:36,090
+ So, this is what we are going to do today and I really hope you will enjoy this one. And if you do, please don't forget
+
+6
+00:00:36,090 --> 00:00:42,140
+ to leave that like. And if you're new to the world of 3D and Blender, be sure to check out my courses. I carefully
+
+7
+00:00:42,140 --> 00:00:47,700
+ designed them to take you from beginner skills through low-pull illustration all the way to full character illustration
+
+8
+00:00:47,700 --> 00:00:54,760
+ in the shortest time possible. And with the new one, you even get to create a fully textured environment. And right now,
+
+9
+00:00:54,760 --> 00:00:56,860
+ all the prices are text inclusive.
+
+10
+00:00:58,800 --> 00:01:04,300
+ So, no matter where you're from in the world, you get the same price. So, what you see on the website is what you get.
+
+11
+00:01:04,300 --> 00:01:10,760
+ No surprises in the checkout with your, you know, country specific taxes. So, if you're interested, please check out
+
+12
+00:01:10,760 --> 00:01:11,660
+ the link in the description.
+
+13
+00:01:11,800 --> 00:01:16,890
+ Now, let's jump right into empty Blender file. And first of all, let's leave the camera in place and just select
+
+14
+00:01:16,890 --> 00:01:23,770
+ everything else. Press X and delete. And first, I'll need a shape for the conveyor belt. So, let's press Shift A and we'll
+
+15
+00:01:23,770 --> 00:01:24,660
+ add a plane.
+
+16
+00:01:25,140 --> 00:01:32,340
+ Now, tab into the edit mode. Press R, then X and 90 to rotate this 90 degrees. Let's confirm. And now, we'll make it
+
+17
+00:01:32,340 --> 00:01:38,700
+ smaller. But first, I want the origin point to be at the bottom. So, press G, then Z and 1 to move this one meter up.
+
+18
+00:01:38,700 --> 00:01:39,780
+ And let's confirm.
+
+19
+00:01:40,000 --> 00:01:47,650
+ And now, we can press S, then X and scale it on X axis. And something like this should be okay. And now, we can drag a
+
+20
+00:01:47,650 --> 00:01:51,760
+ selection here to select these vertices. Press G, then Z and move this down.
+
+21
+00:01:52,000 --> 00:01:58,950
+ And now, let's press A to select everything. And press Ctrl B, then V or Ctrl Shift B. And just do a bevel like this
+
+22
+00:01:58,950 --> 00:02:04,820
+ and increase the number of segments with the mouse wheel to something like this. We can go more.
+
+23
+00:02:04,820 --> 00:02:12,800
+ And you can hold Shift for smaller increments. And do it so that these two in the middle barely touch. And now, we can
+
+24
+00:02:12,800 --> 00:02:15,520
+ select them, press M and merge them at center.
+
+25
+00:02:16,320 --> 00:02:24,260
+ So, they are connected. And now, we can just tab out, press right click and convert to curve. And basically, this will
+
+26
+00:02:24,260 --> 00:02:27,760
+ be the guide around which the conveyor belt will be moving.
+
+27
+00:02:27,760 --> 00:02:34,860
+ And now, we'll need, you know, the conveyor belt itself. So, let's press Shift A and we'll add another plane. Now, let's
+
+28
+00:02:34,860 --> 00:02:38,280
+ tab into the edit mode. Press S to make it smaller.
+
+29
+00:02:39,720 --> 00:02:46,680
+ Something like this. And now, on the x-axis. So, press S, then X and scale it down. Just like this. And now, tab out.
+
+30
+00:02:46,680 --> 00:02:50,280
+ And let's go into the modifiers panel. And let's add an array modifier.
+
+31
+00:02:50,280 --> 00:02:58,200
+ And let's set factor to something like 1.1. So, there's a gap in between. And now, we can increase the count.
+
+32
+00:02:58,200 --> 00:03:04,840
+ And to better see how this works on the curve, we can add another modifier. Let's add a curve modifier.
+
+33
+00:03:05,560 --> 00:03:12,740
+ And we'll use the eyedropper tool to select this curve right here. And you can see, this is not behaving properly
+
+34
+00:03:12,740 --> 00:03:15,080
+ because we didn't subdivide the belt.
+
+35
+00:03:15,080 --> 00:03:20,610
+ So, let's tab into the edit mode. And let's press Ctrl + R and create a few loop cuts. Increase with the mouse wheel to
+
+36
+00:03:20,610 --> 00:03:22,360
+ something like this.
+
+37
+00:03:22,360 --> 00:03:28,920
+ Now, right click to release. And now, if you tab out, you will see that this bends properly. And now, if you go back to
+
+38
+00:03:28,920 --> 00:03:33,880
+ the array, you can just increase the number of these parts.
+
+39
+00:03:33,880 --> 00:03:42,240
+ Now, we'll need to match this right here. Use like count of 17 or 16. This might totally vary for you, depending how
+
+40
+00:03:42,240 --> 00:03:43,480
+ large you did this.
+
+41
+00:03:43,480 --> 00:03:51,240
+ So, basically, just go until, you know, they start to overlap. And now, we'll go into the edit mode. Press A to select
+
+42
+00:03:51,240 --> 00:03:54,200
+ all and just scale it down on X axis a little bit.
+
+43
+00:03:54,200 --> 00:04:01,440
+ Then, tap out to check how it works. So, press S then X and scale it down. And you can see the gap is now large. So, we
+
+44
+00:04:01,440 --> 00:04:03,800
+ can scale it back up a little bit.
+
+45
+00:04:03,800 --> 00:04:12,180
+ And you really need to do these small adjustments. And I think this works just fine. So, this is not a precision method,
+
+46
+00:04:12,180 --> 00:04:13,400
+ but I think for illustration
+
+47
+00:04:13,400 --> 00:04:21,450
+ like this, this is more than enough. And basically, now, to make the conveyor belt move, we'll just move it on the X
+
+48
+00:04:21,450 --> 00:04:23,000
+ axis and it will behave like
+
+49
+00:04:23,000 --> 00:04:31,590
+ this. When you press G then X, it will move around that curve depending on the modifier. So, that's what we're going to
+
+50
+00:04:31,590 --> 00:04:38,600
+ do right now. And if you want to see it better, you can even add, you know, solidify modifier here and increase the
+
+51
+00:04:38,600 --> 00:04:41,400
+ thickness and go inside a little bit like this.
+
+52
+00:04:41,400 --> 00:04:51,150
+ But you can see this doesn't look too good. So, what you can do is move the solidify above the curve. That way, you
+
+53
+00:04:51,150 --> 00:04:56,120
+ will get bent, you know, with the solidify modifier included.
+
+54
+00:04:56,120 --> 00:05:04,600
+ And now, we need to make the animation of the movement. So, let's set the end frame to something like, I don't know, 90
+
+55
+00:05:04,600 --> 00:05:07,720
+ should be fine or 120. We'll see how it works.
+
+56
+00:05:07,720 --> 00:05:16,080
+ And we'll need to create first and last keyframe so that the belt makes one round and can start over. So, it loops. And
+
+57
+00:05:16,080 --> 00:05:18,440
+ for that, we'll need to do a little bit of a math.
+
+58
+00:05:18,440 --> 00:05:24,930
+ And since we didn't use any precision method or any precision numbers, we'll need to, you know, calculate that a little
+
+59
+00:05:24,930 --> 00:05:27,560
+ bit. But it shouldn't be too hard.
+
+60
+00:05:27,560 --> 00:05:34,400
+ So, first of all, let's create the first keyframe and let's press N for the side panel. And here in the item menu, I
+
+61
+00:05:34,400 --> 00:05:37,400
+ will set the X location keyframe on frame one.
+
+62
+00:05:37,400 --> 00:05:44,390
+ So, right click and insert single keyframe. So, there it is. And now, let's move to frame 120. And now, we'll need to
+
+63
+00:05:44,390 --> 00:05:47,480
+ figure out how far we need to move to make the full round.
+
+64
+00:05:47,480 --> 00:05:55,670
+ So, the best thing to do is to disable the curve modifier right now. Click this, you know, monitor icon right here. And
+
+65
+00:05:55,670 --> 00:05:58,520
+ here we have, you know, the full belt object.
+
+66
+00:05:58,520 --> 00:06:06,510
+ And right here on the dimensions, you can see that on the x-axis, it's 10.1 meters. And if you click inside, you will
+
+67
+00:06:06,510 --> 00:06:09,160
+ see, you know, some more precision number.
+
+68
+00:06:09,160 --> 00:06:17,110
+ So, this is the length we need to travel, but not entirely, because you can see the origin point is right here. So, we
+
+69
+00:06:17,110 --> 00:06:21,800
+ would need to subtract half of this width right here.
+
+70
+00:06:21,800 --> 00:06:29,400
+ And I think the better method would be to move the origin point right here, or rather, move this whole thing like this,
+
+71
+00:06:29,400 --> 00:06:31,640
+ so it sits, you know, on the zero.
+
+72
+00:06:31,640 --> 00:06:39,960
+ And to do that, we can disable the array modifier. And now, we can see the dimension on the x-axis of this one piece.
+
+73
+00:06:39,960 --> 00:06:42,360
+ And it's like that.
+
+74
+00:06:42,360 --> 00:06:49,480
+ So, we need to move this half of that. So, let's select this, press Ctrl+C to copy the number.
+
+75
+00:06:49,480 --> 00:06:57,880
+ And now, if we go to the edit mode, let's press A to select all. And now, here, where it says median, we can insert
+
+76
+00:06:57,880 --> 00:06:58,760
+ that number.
+
+77
+00:06:58,760 --> 00:07:06,280
+ So, let's click here, press Ctrl+V to paste it, but we'll divide it by two. So, slash and two, and let's hit enter.
+
+78
+00:07:06,280 --> 00:07:13,480
+ And this now sits perfectly on the axis. So, now, if we tap out, let's enable the array modifier once again.
+
+79
+00:07:14,680 --> 00:07:21,410
+ And now, we can see the dimension is still this number, but right now, the origin point is here. So, we can use this
+
+80
+00:07:21,410 --> 00:07:21,960
+ number.
+
+81
+00:07:21,960 --> 00:07:23,960
+ So, let's select it, press Ctrl+C.
+
+82
+00:07:26,360 --> 00:07:35,320
+ Now, make sure you're still on the frame 120. And let's enter that here. So, minus because we need to go to the
+
+83
+00:07:35,320 --> 00:07:35,640
+ negative direction.
+
+84
+00:07:35,640 --> 00:07:43,640
+ Press Ctrl+V and hit enter. And now, we'll right click and insert single keyframe. So, now, we have this movement right
+
+85
+00:07:43,640 --> 00:07:43,640
+ here.
+
+86
+00:07:43,640 --> 00:07:52,370
+ And right now, if you play it, you will see it accelerates and in the end, it decelerates. So, we'll press T here in
+
+87
+00:07:52,370 --> 00:07:55,000
+ the timeline and choose linear movement.
+
+88
+00:07:55,000 --> 00:08:02,120
+ And this way, it will just go in the constant pace. And now, if you enable curve modifier, you will have a perfectly
+
+89
+00:08:02,120 --> 00:08:03,720
+ looping conveyor belt animation.
+
+90
+00:08:04,280 --> 00:08:10,760
+ So, that's the first step. And now, let's, you know, create a little bit of the scene to support this.
+
+91
+00:08:10,760 --> 00:08:16,600
+ So, let's press Shift+A and we'll add a plane. Now, let's look from the front by pressing 1 on a numpad.
+
+92
+00:08:16,600 --> 00:08:24,520
+ Now, tab in, press R, then X and 90. Confirm. We can tab out, press G, then Z and move this up a little bit.
+
+93
+00:08:24,520 --> 00:08:29,160
+ So, it's here in the middle. Now, tab in, press S, then Z and scale it down.
+
+94
+00:08:29,160 --> 00:08:36,600
+ And we can better position this. Now, press S, then X and scale it up here.
+
+95
+00:08:37,720 --> 00:08:43,480
+ And press Ctrl+B, then V again to create a similar bevel like before.
+
+96
+00:08:43,480 --> 00:08:49,480
+ Something like this. And now, we can merge this at center again.
+
+97
+00:08:49,480 --> 00:08:56,200
+ And basically, press A and extrude this and add a mirror modifier.
+
+98
+00:08:56,200 --> 00:09:00,440
+ So, let's add that mirror modifier and we'll need to mirror this on the y-axis.
+
+99
+00:09:00,440 --> 00:09:06,360
+ And now, if you enable x-ray view right here, you can see, let's switch to the face select.
+
+100
+00:09:06,360 --> 00:09:11,800
+ You can see there's a face in there in the middle. So, press X and delete that and enable clipping.
+
+101
+00:09:11,800 --> 00:09:16,680
+ So, we have one solid object out of this, including the modifier.
+
+102
+00:09:16,680 --> 00:09:22,680
+ So, here's the conveyor belt and let's create like a box that will spit out some boxes.
+
+103
+00:09:22,680 --> 00:09:27,960
+ So, let's press Shift+A and let's add a plane, press G, then X, move it right here.
+
+104
+00:09:27,960 --> 00:09:32,600
+ Tab into the admin, make it smaller a little bit and extrude like this.
+
+105
+00:09:32,600 --> 00:09:37,320
+ And to make it look a little bit nicer, we can press 2 for edge select, select these two edges,
+
+106
+00:09:37,320 --> 00:09:42,280
+ press Ctrl+B and bevel them like this and maybe reduce the number of cuts here.
+
+107
+00:09:42,280 --> 00:09:49,720
+ And now, let's go back to the face select by pressing 3, select this face, press I and inset.
+
+108
+00:09:49,720 --> 00:09:53,880
+ Now, press 2 for edge select, select the bottom one, press G, then Z and move this up.
+
+109
+00:09:55,000 --> 00:10:02,360
+ So, it looks like this. And now, back to the face select, select this one, enable the x-ray again and
+
+110
+00:10:02,360 --> 00:10:08,920
+ extrude inside. Now, to make sure the normals are correct, let's press A and Shift+N to recalculate them.
+
+111
+00:10:09,560 --> 00:10:14,760
+ So, this is the base for our scene. Now, of course, you can create a lot of like supporting structure,
+
+112
+00:10:14,760 --> 00:10:19,400
+ like legs for the conveyor belt and stuff like that. I don't want to bother with that right now,
+
+113
+00:10:19,400 --> 00:10:25,400
+ I just want to move you and guide you through this animation to get some basic working result and then
+
+114
+00:10:25,400 --> 00:10:31,000
+ you can polish your scene on your own. You have all the other tutorials you can check out in my playlist,
+
+115
+00:10:31,000 --> 00:10:35,800
+ you will see the link in the description. There are a lot of tutorials that will help you, you know,
+
+116
+00:10:35,800 --> 00:10:41,080
+ with modeling and with lighting and stuff like that. So, this is purely focused on this animation
+
+117
+00:10:41,080 --> 00:10:46,520
+ and the modeling. So, let's now switch the x-ray off. So, let's now press Shift+A and let's create
+
+118
+00:10:46,520 --> 00:10:53,240
+ a cube. Now, tap into the edit mode, press G, then Z and 1. And again, this will be to place
+
+119
+00:10:53,240 --> 00:10:59,160
+ the origin at the bottom. Now, we can tap out and make it smaller like this and move it up so it sits
+
+120
+00:10:59,160 --> 00:11:05,080
+ on the conveyor belt. We can look from the front by pressing 1 on a numpad and place it like this.
+
+121
+00:11:05,640 --> 00:11:14,760
+ Make it larger. And we'll basically hurl this box out of this hole right here. It will go on the
+
+122
+00:11:14,760 --> 00:11:19,560
+ conveyor belt and fall down into some kind of hole. So, press G, then X, move it right here.
+
+123
+00:11:19,560 --> 00:11:25,560
+ Let's create the rest of the scene. So, let's press Shift+A and we'll add a plane. Now, tap into the
+
+124
+00:11:25,560 --> 00:11:32,760
+ edit mode and scale it up like this. And let's look from the camera if it's enough. And I think this looks
+
+125
+00:11:32,760 --> 00:11:40,280
+ quite okay. We can press R, then X twice to tilt the camera down a little bit and move it higher like
+
+126
+00:11:40,280 --> 00:11:47,960
+ this. And maybe on the local X axis. And let's bring it out a little bit.
+
+127
+00:11:50,200 --> 00:11:58,040
+ Okay. Something like this. And now, let's press Shift+A and we'll add another cube. Press G, then X and move
+
+128
+00:11:58,040 --> 00:12:04,360
+ it right here. Let's tap in and make it smaller on the X axis. And press G, then Z and move this down.
+
+129
+00:12:05,320 --> 00:12:11,800
+ And to make it look a little bit nicer, we can go for edge select, press Ctrl+A and click this edge on the
+
+130
+00:12:11,800 --> 00:12:18,200
+ side to select all of these around and press Ctrl+B to bevel. And now, we can hold Shift, select the
+
+131
+00:12:18,200 --> 00:12:23,080
+ background. And for what I'm about to do, you'll need to go edit preferences and have the bool tool
+
+132
+00:12:23,080 --> 00:12:32,440
+ add-on active. So search for bool. And just check the box, close the preferences. And now, if you hold
+
+133
+00:12:32,440 --> 00:12:40,040
+ Ctrl+A and hit minus on a numpad, you will create the hole. But for this to work, we'll need a solid
+
+134
+00:12:40,040 --> 00:12:45,640
+ object. So tap into the edit mode for the background and press E to extrude this down to create something
+
+135
+00:12:45,640 --> 00:12:53,160
+ like this. Maybe you can go even lower. And again, to make sure that the boolean works, press A,
+
+136
+00:12:53,160 --> 00:13:00,360
+ press Shift+N to recalculate normals and do the same here if you have trouble. So the final should look
+
+137
+00:13:00,360 --> 00:13:05,880
+ like this. And the box should go and fall into this. And the benefit of the boolean is that now you can
+
+138
+00:13:05,880 --> 00:13:15,160
+ grab this and move it around. So we can calibrate it for our conveyor belt needs. Something like this.
+
+139
+00:13:15,640 --> 00:13:22,360
+ And now let's go to the output settings and switch frame rate to something like 30. And we have our
+
+140
+00:13:22,360 --> 00:13:28,280
+ animation ready. So now the box will be hurled out here. So let's go to the frame 1 and let's insert
+
+141
+00:13:28,280 --> 00:13:36,360
+ single key frame on the x-axis. And let's move something like frame 15. Press G. Then X. Move it here.
+
+142
+00:13:36,360 --> 00:13:42,680
+ And right click and insert single key frame. And now we're just blocking out the animation. Don't worry
+
+143
+00:13:42,680 --> 00:13:47,800
+ about the timings. So now the box comes out and we'll need to make sure that it goes all the way here and
+
+144
+00:13:47,800 --> 00:13:53,480
+ falls down. So let's move to something like frame 60. And we'll need to modify this based on the
+
+145
+00:13:53,480 --> 00:13:58,520
+ proportions of your conveyor belt. So this will be different for me. It will be different for you a
+
+146
+00:13:58,520 --> 00:14:05,160
+ little bit. But I will show you how you can, you know, how you can approximately match the speed of the
+
+147
+00:14:05,160 --> 00:14:11,880
+ conveyor belt. So let's go to the frame 60. Press G. Then X. And we know we need to go, you know, somewhere
+
+148
+00:14:11,880 --> 00:14:19,480
+ here. And now this will start to fall, of course. So let's move the origin point right there on the edge.
+
+149
+00:14:19,480 --> 00:14:25,720
+ It should look like this. And let's right click and insert single key frame here.
+
+150
+00:14:25,720 --> 00:14:33,640
+ So now it goes like that. But we need this one key frame to be linear. So press T and switch it
+
+151
+00:14:33,640 --> 00:14:38,200
+ to linear. So now it moves with the constant speed. But you can see the conveyor belt is a little bit
+
+152
+00:14:38,200 --> 00:14:45,640
+ faster. If you go like this, you can see this edge, you know, getting away from the box. But it's close
+
+153
+00:14:45,640 --> 00:14:54,600
+ enough. So we just need to move this, you know, like five frames. And I think it's almost, almost done.
+
+154
+00:14:54,600 --> 00:15:02,200
+ Yeah, something like this is fine. So as you can see, I end up on frame 54. Again, this will be
+
+155
+00:15:02,200 --> 00:15:07,960
+ different for you, maybe. So just create that key frame, set this to linear, and then move this closer
+
+156
+00:15:07,960 --> 00:15:14,280
+ or further away, depending on how it sits on the conveyor belt. And now it will fall down. And this
+
+157
+00:15:14,280 --> 00:15:22,280
+ will be pretty quick. So something like frame 70 will need to be right here. So let's look from the
+
+158
+00:15:22,280 --> 00:15:27,400
+ side. And first of all, we'll move it on the x axis. So press G then X, move it somewhere here.
+
+159
+00:15:27,400 --> 00:15:34,600
+ And right click and insert single key frame. And then let's enable x ray view. And now let's go back to
+
+160
+00:15:34,600 --> 00:15:40,920
+ that frame before. And we'll right click and insert single key frame for the z axis, because we didn't
+
+161
+00:15:40,920 --> 00:15:48,440
+ create any so far. And now on the frame 70, we'll press G then Z, move it down like this, right click
+
+162
+00:15:48,440 --> 00:15:54,920
+ and insert single key frame. So now it does this movement, but it's not optimal, of course, but we'll
+
+163
+00:15:54,920 --> 00:16:01,320
+ modify that with curves. But so far, I'm basically interested to see the speed, the timing of the
+
+164
+00:16:01,320 --> 00:16:08,600
+ key frames. And this is quite okay, I guess. And one last thing I want to do is rotation. So let's go to
+
+165
+00:16:08,600 --> 00:16:14,360
+ the frame 54 again, or whatever frame you have. And in the rotation panel, let's right click and insert
+
+166
+00:16:14,360 --> 00:16:22,600
+ single key frame for the Y rotation. And right here, we'll rotate it like this. So at least like 180.
+
+167
+00:16:22,600 --> 00:16:30,840
+ You can basically insert 180 exactly and right click and insert single key frame. So the box will do
+
+168
+00:16:30,840 --> 00:16:39,000
+ thing like this. And now it's all about timings. So let's move like this. Let's expand the timeline.
+
+169
+00:16:39,000 --> 00:16:44,680
+ And now hovering over the timeline, I will press control tab to go to the graph editor and expand
+
+170
+00:16:44,680 --> 00:16:49,800
+ this. And we have these three tracks. And that's why I create single key frames. So I don't have all
+
+171
+00:16:49,800 --> 00:16:55,080
+ of the other tracks right here. And first of all, we'll need to adjust the movement on the x axis.
+
+172
+00:16:55,080 --> 00:17:02,520
+ And but I think the more troubling is the z axis movement, because right now it goes down too soon.
+
+173
+00:17:02,520 --> 00:17:09,160
+ So let's disable these two and let's leave the z location here. And right here, you can press a and
+
+174
+00:17:09,160 --> 00:17:15,960
+ period on a numpad to focus on your animation right here. And right here, the fall needs to be less
+
+175
+00:17:15,960 --> 00:17:22,520
+ southern. So we can select this handle and, you know, drag it up a little bit. And right here,
+
+176
+00:17:22,520 --> 00:17:26,520
+ you can see it's a little bit better. And we don't even need to go so far.
+
+177
+00:17:26,520 --> 00:17:36,280
+ Okay, I think this looks just fine. Let me see.
+
+178
+00:17:36,280 --> 00:17:44,840
+ Yeah, that's quite okay. Okay, and I think that's everything we need to do. Of course,
+
+179
+00:17:44,840 --> 00:17:50,920
+ you could go to the beginning of the animation for the x location channel. And try to play with this
+
+180
+00:17:50,920 --> 00:17:58,760
+ part of the animation where it kind of goes on the belt. And you can decide whether it should
+
+181
+00:17:58,760 --> 00:18:05,880
+ accelerate here. Or you know, if you want like a more sudden approach. Yeah, I think the beginning
+
+182
+00:18:05,880 --> 00:18:13,320
+ was just fine like this. That it kind of accelerates from it. So I will leave it like that. So that's for the
+
+183
+00:18:13,320 --> 00:18:20,360
+ animation. And now the last part I want to do, let's disable the x ray is to basically duplicate
+
+184
+00:18:20,360 --> 00:18:28,040
+ these boxes. So there are multiple of them. And the easiest way to do that is basically just to use
+
+185
+00:18:28,040 --> 00:18:34,840
+ all D to duplicate the box, right click to release in place. And now you can separate the animation,
+
+186
+00:18:34,840 --> 00:18:40,760
+ because now both of these cubes have same animation as you can see. And we want to have the object of
+
+187
+00:18:40,760 --> 00:18:45,640
+ the same data, but we want to separate the animation. So let's just go object. Let's go
+
+188
+00:18:45,640 --> 00:18:52,120
+ relations, make single user and object animation. And if you right click here, you can add to quick
+
+189
+00:18:52,120 --> 00:18:58,120
+ favorites. So then if you press Q, you will have the object animation item right here in the quick menu,
+
+190
+00:18:58,120 --> 00:19:05,240
+ like I have. So if you now click it and confirm, you will have separate animation data from that object.
+
+191
+00:19:05,240 --> 00:19:11,960
+ And you can just press A here in the timeline, press G then X and move it away like this. So you can see
+
+192
+00:19:11,960 --> 00:19:20,760
+ it moves away. So now these two cubes will be shifted in the timeline and we can move it even further away.
+
+193
+00:19:20,760 --> 00:19:28,520
+ And now we'll need two more. And that's for the beginning and the ending of the animation. So it can
+
+194
+00:19:28,520 --> 00:19:38,520
+ loop. So let's press Alt D again. And again, I'll press Q and separate that object animation. And now let me
+
+195
+00:19:38,520 --> 00:19:44,920
+ press Ctrl tap here. So I can better see the keyframes here and press G then X and move the keyframes all
+
+196
+00:19:44,920 --> 00:19:51,000
+ the way to the end. And now I'll press G then X and move them like minus 40 frames here. And now let's
+
+197
+00:19:51,000 --> 00:19:58,440
+ press Alt D again to duplicate this box. And again, press Q and separate the object animation. And I'll
+
+198
+00:19:58,440 --> 00:20:04,200
+ press G then X, move it to the beginning of the timeline to the frame one. And again, press G then X and
+
+199
+00:20:04,200 --> 00:20:16,600
+ minus 40. So now it should loop perfectly.
+
+200
+00:20:16,600 --> 00:20:25,800
+ Okay, I think this looks just fine. And now basically, you can just go ahead and make it look a little
+
+201
+00:20:25,800 --> 00:20:30,920
+ bit nicer. So you can select the cube. And since there are linked objects, you can just select these edges
+
+202
+00:20:30,920 --> 00:20:38,440
+ around, bevel them, you know, change the shape, and they will all look the same. But their animation
+
+203
+00:20:38,440 --> 00:20:43,960
+ will be shifted since we separated the animation data. And now you can just select the belt and add,
+
+204
+00:20:43,960 --> 00:20:49,480
+ for example, a bevel modifier, increase the segments, reduce the amount to something like this,
+
+205
+00:20:49,480 --> 00:20:57,480
+ and enable harden normals. Right click and shade auto smooth and increase to 180 degrees.
+
+206
+00:20:57,480 --> 00:21:03,560
+ So you have a nice smooth object right here. And you can do the same for these. So select other objects
+
+207
+00:21:03,560 --> 00:21:11,480
+ with the belt as last, click here and transfer to select it. And now we can right click and shade
+
+208
+00:21:11,480 --> 00:21:17,080
+ auto smooth. And of course, to make it work for the boolean, the boolean object needs to be smooth as
+
+209
+00:21:17,080 --> 00:21:24,200
+ well. So now you have a nice smooth animation. And of course, you need to manually add the bevels to the
+
+210
+00:21:24,200 --> 00:21:31,960
+ duplicated objects as well. So select those and copy the bevel there as well. And basically,
+
+211
+00:21:31,960 --> 00:21:39,160
+ that's all we need to do here. Let's look from the camera and play back the animation.
+
+212
+00:21:39,160 --> 00:21:46,120
+ So now I will just go ahead and, you know, finish this to a little scene.
+
+213
+00:21:47,080 --> 00:21:53,720
+ I will time lapse this process. So the video doesn't take too long. And you can watch and try to make
+
+214
+00:21:53,720 --> 00:21:58,920
+ something similar. Or as I said before, you know, you can go ahead and watch some tutorials to get some,
+
+215
+00:21:58,920 --> 00:22:12,760
+ you know, lighting tips and material tips. So I'll do that right now. And I'll see you on the other side.
+
+216
+00:22:12,760 --> 00:22:42,740
+ Thank you.
+
+217
+00:22:42,760 --> 00:23:12,740
+ Thank you.
+
+218
+00:23:12,760 --> 00:23:42,740
+ Thank you.
+
+219
+00:23:42,760 --> 00:24:12,740
+ Thank you.
+
+220
+00:24:12,760 --> 00:24:42,740
+ Thank you.
+
+221
+00:24:42,740 --> 00:25:12,720
+ Thank you.
+
+222
+00:25:12,720 --> 00:25:17,720
+ And I'll add a mission right here to make this a little bit more interesting.
+
+223
+00:25:17,720 --> 00:25:23,440
+ And now only thing left is to go to the output settings, choose your folder, switch to FFmpeg
+
+224
+00:25:23,440 --> 00:25:27,440
+ video and in the encoding, you know, switch to MP4.
+
+225
+00:25:27,440 --> 00:25:33,320
+ And now basically just go ahead, hit render, render animation, wait out your frames and
+
+226
+00:25:33,320 --> 00:25:35,060
+ you will have your animation ready.
+
+227
+00:25:35,520 --> 00:25:42,240
+ So that's it for today's video and I'll see you in the next video, I'll see you in the next video.
+
+228
+00:25:42,240 --> 00:25:46,640
+ And if you have any more suggestions, please leave them in the comments.
+
+229
+00:25:46,640 --> 00:25:51,420
+ And if you finish this animation and you want your feedback on it or you just want to flex
+
+230
+00:25:51,420 --> 00:25:53,700
+ it out, be sure to join our Discord.
+
+231
+00:25:53,700 --> 00:25:55,620
+ You will see the link in the description.
+
+232
+00:25:56,060 --> 00:25:59,280
+ And again, if you're new around here, please hit that subscribe.
+
+233
+00:25:59,280 --> 00:26:02,300
+ Thank you all for watching and have a wonderful day.
+
+234
+00:26:26,060 --> 00:26:27,060
+ Bye.
+

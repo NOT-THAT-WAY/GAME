@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "requires_owner_review",
+  "policy": "DISTRIBUTION_POLICY.md",
+  "families": [
+    {
+      "path": "knowledge/tutorials/**/source*",
+      "kind": "tutorial_media",
+      "redistribution_status": "unknown",
+      "action_before_public_release": "verify_in_source_vault; binaries_are_not_bundled"
+    },
+    {
+      "path": "assets_blender/**",
+      "kind": "visual_assets_and_generations",
+      "redistribution_status": "owner_review",
+      "action_before_public_release": "confirm_ownership_and_brand_constraints_before_materialization_or_sharing"
+    },
+    {
+      "path": "projects/**",
+      "kind": "production_files_and_renders",
+      "redistribution_status": "mixed",
+      "action_before_public_release": "review_project_manifests; binary_outputs_are_not_bundled"
+    },
+    {
+      "path": "third_party/**",
+      "kind": "upstream_code",
+      "redistribution_status": "per_component_license",
+      "action_before_public_release": "follow_catalog/third-party.json and preserve notices; no heavy submodules"
+    }
+  ]
+}

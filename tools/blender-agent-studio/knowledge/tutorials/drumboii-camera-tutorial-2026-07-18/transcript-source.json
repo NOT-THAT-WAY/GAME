@@ -1,0 +1,3530 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | OPENMP = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 4
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "${LEGACY_HELP_ROOT}/work/models/ggml-large-v3-turbo.bin",
+		"language": "auto",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:29,980"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 29980
+			},
+			"text": " Hello. In this tutorial I'm gonna show you my thought process when I animate my camera. I'm gonna use one of my earlier tutorials as an example. So here is the project for a tutorial I made last fall in 2025. It's called Squelch Snare and in this tutorial I show you how to create a squelch type sounding snare. But anyway, if I select the camera here, you can see all the keyframes for the camera. So here I have the dope sheet and the camera selected and if you want to go to the dope sheet,"
+		},
+		{
+			"timestamps": {
+				"from": "00:00:29,980",
+				"to": "00:00:59,960"
+			},
+			"offsets": {
+				"from": 29980,
+				"to": 59960
+			},
+			"text": " you can just select this and choose dope sheet. So here is essentially all the keyframes for the camera. So as you can see I have plenty of keyframes here. We can just scroll through the whole scene here. So it ends at 2700 frames and begins at 500 frames. So we can just check out the first keyframe here. Just to know here if I select to the left here, object transforms, you can see the actual transforming keyframes for the camera movements. So here is the X location."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:59,960",
+				"to": "00:01:17,120"
+			},
+			"offsets": {
+				"from": 59960,
+				"to": 77120
+			},
+			"text": " the Y location and the Z location. And down here if I click on this drop down, you can see the focal length and focus distance and f-stop. Which is if I go to the camera here to the right and go down to depth of field are these ones."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:17,120",
+				"to": "00:01:32,460"
+			},
+			"offsets": {
+				"from": 77120,
+				"to": 92460
+			},
+			"text": " And these are like just the keyframe, the focus, distance and the f-stop. So right now we're going to focus on object transforms only. So I'm going to close this drop down and you can just ignore the keyframes on the very bottom here and just focus on these three."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:32,460",
+				"to": "00:01:48,460"
+			},
+			"offsets": {
+				"from": 92460,
+				"to": 108460
+			},
+			"text": " When I begin my tutorials, I like to begin at the first frame with the keyframe. And just one note, is that I animate everything in 60fps, so depending on what frame range you're using, for example, if you're animating in 30fps, you would need to recalculate all the frames."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:48,460",
+				"to": "00:02:00,460"
+			},
+			"offsets": {
+				"from": 108460,
+				"to": 120460
+			},
+			"text": " So for example, 9 frames in 60fps would equal around 4 or 5 frames in 30fps, since 30fps is half of 60. So I will show everything in 60fps today."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:00,460",
+				"to": "00:02:17,460"
+			},
+			"offsets": {
+				"from": 120460,
+				"to": 137460
+			},
+			"text": " Anyway, on the first frame, we have the camera here. And if we scroll forward, you can see that I just keyframe it a bit back. So if we go from the very side here, and I move forward, you can see that the camera actually begins by moving backwards."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:17,460",
+				"to": "00:02:26,460"
+			},
+			"offsets": {
+				"from": 137460,
+				"to": 146460
+			},
+			"text": " And that's because I want to create an illusion that the camera gets momentum for them to go forward, as you can see."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:26,460",
+				"to": "00:02:34,460"
+			},
+			"offsets": {
+				"from": 146460,
+				"to": 154460
+			},
+			"text": " So the camera begins by moving backwards and then it shoots forward. Again."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:34,460",
+				"to": "00:02:42,460"
+			},
+			"offsets": {
+				"from": 154460,
+				"to": 162460
+			},
+			"text": " But what happens when it has come forward? It then moves a bit backwards. And doing this, I want to capture like a realistic feel to the camera."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:42,460",
+				"to": "00:02:50,460"
+			},
+			"offsets": {
+				"from": 162460,
+				"to": 170460
+			},
+			"text": " Because as if you were throwing a ball, for example, you would first move your hand backwards, and then move it forward, and then you would pick your hand up."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:50,460",
+				"to": "00:03:02,460"
+			},
+			"offsets": {
+				"from": 170460,
+				"to": 182460
+			},
+			"text": " So I want to reflect the momentum to make the camera movement feel realistic. Because for example, if the camera just stopped there, and never grabbed momentum back, it would feel more static and not as bouncy."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:02,460",
+				"to": "00:03:09,460"
+			},
+			"offsets": {
+				"from": 182460,
+				"to": 189460
+			},
+			"text": " So if I scroll through the whole motion here, you can see, first goes back, then forward, and then it falls back a bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:11,460",
+				"to": "00:03:18,460"
+			},
+			"offsets": {
+				"from": 191460,
+				"to": 198460
+			},
+			"text": " So that's essentially the whole philosophy behind my camera animations, and it's super standard in any type of animation."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:18,460",
+				"to": "00:03:20,460"
+			},
+			"offsets": {
+				"from": 198460,
+				"to": 200460
+			},
+			"text": " So we can see what happens next."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:20,460",
+				"to": "00:03:22,460"
+			},
+			"offsets": {
+				"from": 200460,
+				"to": 202460
+			},
+			"text": " So again, I scroll forward."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:22,460",
+				"to": "00:03:28,460"
+			},
+			"offsets": {
+				"from": 202460,
+				"to": 208460
+			},
+			"text": " And, as you can see, now the camera is almost like floating."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:28,460",
+				"to": "00:03:34,460"
+			},
+			"offsets": {
+				"from": 208460,
+				"to": 214460
+			},
+			"text": " The keyframe that makes it floating is actually this keyframe in the middle between those two."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:34,460",
+				"to": "00:03:37,460"
+			},
+			"offsets": {
+				"from": 214460,
+				"to": 217460
+			},
+			"text": " So we can try to delete this keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:37,460",
+				"to": "00:03:45,460"
+			},
+			"offsets": {
+				"from": 217460,
+				"to": 225460
+			},
+			"text": " If I select the Orbit Transform, and I select this keyframe, it will actually select all the axes down here."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:45,460",
+				"to": "00:03:52,460"
+			},
+			"offsets": {
+				"from": 225460,
+				"to": 232460
+			},
+			"text": " So if I select on the first row here, it will automatically select Z, Y, and X axes."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:52,460",
+				"to": "00:03:58,460"
+			},
+			"offsets": {
+				"from": 232460,
+				"to": 238460
+			},
+			"text": " So I select this, and press X to delete it, and now you can see that the camera actually stays in place."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:58,460",
+				"to": "00:04:02,460"
+			},
+			"offsets": {
+				"from": 238460,
+				"to": 242460
+			},
+			"text": " So we can watch this in real time, if you watch it on the left here."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:05,460",
+				"to": "00:04:08,460"
+			},
+			"offsets": {
+				"from": 245460,
+				"to": 248460
+			},
+			"text": " You can see that the camera stays completely still here."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:08,460",
+				"to": "00:04:17,460"
+			},
+			"offsets": {
+				"from": 248460,
+				"to": 257460
+			},
+			"text": " I didn't even want that, and that's why I added the keyframes here that we just deleted."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:17,460",
+				"to": "00:04:20,460"
+			},
+			"offsets": {
+				"from": 257460,
+				"to": 260460
+			},
+			"text": " So I'm going to undo it and get them back."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:20,460",
+				"to": "00:04:22,460"
+			},
+			"offsets": {
+				"from": 260460,
+				"to": 262460
+			},
+			"text": " Now we can watch it."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:22,460",
+				"to": "00:04:28,460"
+			},
+			"offsets": {
+				"from": 262460,
+				"to": 268460
+			},
+			"text": " So you can see, we just have some floating motion here."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:28,460",
+				"to": "00:04:36,460"
+			},
+			"offsets": {
+				"from": 268460,
+				"to": 276460
+			},
+			"text": " And if I delete it again, you can see it's very static."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:36,460",
+				"to": "00:04:41,460"
+			},
+			"offsets": {
+				"from": 276460,
+				"to": 281460
+			},
+			"text": " So what I'm essentially doing is that if I have a piece of my animation where the camera needs to be still,"
+		},
+		{
+			"timestamps": {
+				"from": "00:04:41,460",
+				"to": "00:04:43,460"
+			},
+			"offsets": {
+				"from": 281460,
+				"to": 283460
+			},
+			"text": " I will just create this type of floating motion."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:43,460",
+				"to": "00:04:46,460"
+			},
+			"offsets": {
+				"from": 283460,
+				"to": 286460
+			},
+			"text": " So what I do is that I go to the middle of the keyframes."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:46,460",
+				"to": "00:04:50,460"
+			},
+			"offsets": {
+				"from": 286460,
+				"to": 290460
+			},
+			"text": " So here's the first keyframe for the camera, and here's the second."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:50,460",
+				"to": "00:04:55,460"
+			},
+			"offsets": {
+				"from": 290460,
+				"to": 295460
+			},
+			"text": " You can just ignore this as I said, because it's for the f-stop and the focus animation."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:55,460",
+				"to": "00:05:01,460"
+			},
+			"offsets": {
+				"from": 295460,
+				"to": 301460
+			},
+			"text": " So this again, first keyframe and second keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:01,460",
+				"to": "00:05:05,460"
+			},
+			"offsets": {
+				"from": 301460,
+				"to": 305460
+			},
+			"text": " I put my cursor around the middle, and I select the camera."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:05,460",
+				"to": "00:05:10,460"
+			},
+			"offsets": {
+				"from": 305460,
+				"to": 310460
+			},
+			"text": " And then I just press G and Z, and move it down just a little bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:11,460",
+				"to": "00:05:16,460"
+			},
+			"offsets": {
+				"from": 311460,
+				"to": 316460
+			},
+			"text": " And then I press enter, and then I press K, and select location keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:16,460",
+				"to": "00:05:20,460"
+			},
+			"offsets": {
+				"from": 316460,
+				"to": 320460
+			},
+			"text": " And now I've created this almost floating type animation."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:20,460",
+				"to": "00:05:26,460"
+			},
+			"offsets": {
+				"from": 320460,
+				"to": 326460
+			},
+			"text": " So it goes down, and then up again to the original position."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:26,460",
+				"to": "00:05:30,460"
+			},
+			"offsets": {
+				"from": 326460,
+				"to": 330460
+			},
+			"text": " So we can see the full animation again."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:33,460",
+				"to": "00:05:34,460"
+			},
+			"offsets": {
+				"from": 333460,
+				"to": 334460
+			},
+			"text": " Very nice."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:34,460",
+				"to": "00:05:35,460"
+			},
+			"offsets": {
+				"from": 334460,
+				"to": 335460
+			},
+			"text": " But what happens next?"
+		},
+		{
+			"timestamps": {
+				"from": "00:05:35,460",
+				"to": "00:05:41,460"
+			},
+			"offsets": {
+				"from": 335460,
+				"to": 341460
+			},
+			"text": " Because now the camera is going to zoom in to the squelchner here."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:41,460",
+				"to": "00:05:46,460"
+			},
+			"offsets": {
+				"from": 341460,
+				"to": 346460
+			},
+			"text": " So again, we are having the same philosophy in mind, where the camera is going back a bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:46,460",
+				"to": "00:05:48,460"
+			},
+			"offsets": {
+				"from": 346460,
+				"to": 348460
+			},
+			"text": " And then it shoots forward."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:48,460",
+				"to": "00:05:51,460"
+			},
+			"offsets": {
+				"from": 348460,
+				"to": 351460
+			},
+			"text": " And then it bounces back."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:51,460",
+				"to": "00:05:54,460"
+			},
+			"offsets": {
+				"from": 351460,
+				"to": 354460
+			},
+			"text": " And then actually a bit forward again."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:54,460",
+				"to": "00:05:58,460"
+			},
+			"offsets": {
+				"from": 354460,
+				"to": 358460
+			},
+			"text": " So watch the camera closely as I scroll through these keyframes here."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:58,460",
+				"to": "00:06:02,460"
+			},
+			"offsets": {
+				"from": 358460,
+				"to": 362460
+			},
+			"text": " First, it's on its original position."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:02,460",
+				"to": "00:06:07,460"
+			},
+			"offsets": {
+				"from": 362460,
+				"to": 367460
+			},
+			"text": " Then it gathers momentum by going back."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:07,460",
+				"to": "00:06:10,460"
+			},
+			"offsets": {
+				"from": 367460,
+				"to": 370460
+			},
+			"text": " Then it shoots very fast forward."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:10,460",
+				"to": "00:06:12,460"
+			},
+			"offsets": {
+				"from": 370460,
+				"to": 372460
+			},
+			"text": " And then it bounces back."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:12,460",
+				"to": "00:06:15,460"
+			},
+			"offsets": {
+				"from": 372460,
+				"to": 375460
+			},
+			"text": " And then actually it bounces forward a bit again."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:15,460",
+				"to": "00:06:21,460"
+			},
+			"offsets": {
+				"from": 375460,
+				"to": 381460
+			},
+			"text": " So that's essentially the exact philosophy as I had here at the beginning."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:22,460",
+				"to": "00:06:23,460"
+			},
+			"offsets": {
+				"from": 382460,
+				"to": 383460
+			},
+			"text": " So watch it again."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:23,460",
+				"to": "00:06:31,460"
+			},
+			"offsets": {
+				"from": 383460,
+				"to": 391460
+			},
+			"text": " So we can watch the full sequence here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:31,460",
+				"to": "00:06:37,460"
+			},
+			"offsets": {
+				"from": 391460,
+				"to": 397460
+			},
+			"text": " That's essentially me repeating this thing, but here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:37,460",
+				"to": "00:06:40,460"
+			},
+			"offsets": {
+				"from": 397460,
+				"to": 400460
+			},
+			"text": " And you might recognize this here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:40,460",
+				"to": "00:06:44,460"
+			},
+			"offsets": {
+				"from": 400460,
+				"to": 404460
+			},
+			"text": " Because in the middle here, we have the exact same thing as we have here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:45,460",
+				"to": "00:06:57,460"
+			},
+			"offsets": {
+				"from": 405460,
+				"to": 417460
+			},
+			"text": " If I delete this, you can see that the camera, if I scroll here from 699 up to this keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:57,460",
+				"to": "00:07:02,460"
+			},
+			"offsets": {
+				"from": 417460,
+				"to": 422460
+			},
+			"text": " And if you watch the camera, you can see that the camera stands completely still."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:02,460",
+				"to": "00:07:06,460"
+			},
+			"offsets": {
+				"from": 422460,
+				"to": 426460
+			},
+			"text": " And I again wanted the floating motion that I had before here."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:06,460",
+				"to": "00:07:10,460"
+			},
+			"offsets": {
+				"from": 426460,
+				"to": 430460
+			},
+			"text": " So that's why I have had this keyframe in the middle here."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:11,460",
+				"to": "00:07:14,460"
+			},
+			"offsets": {
+				"from": 431460,
+				"to": 434460
+			},
+			"text": " So you can see, the camera move goes a bit down."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:14,460",
+				"to": "00:07:18,460"
+			},
+			"offsets": {
+				"from": 434460,
+				"to": 438460
+			},
+			"text": " Then it goes up."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:18,460",
+				"to": "00:07:21,460"
+			},
+			"offsets": {
+				"from": 438460,
+				"to": 441460
+			},
+			"text": " So if I delete it, I can show you how I did it."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:21,460",
+				"to": "00:07:23,460"
+			},
+			"offsets": {
+				"from": 441460,
+				"to": 443460
+			},
+			"text": " It's the exact same thing as I've shown you before."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:23,460",
+				"to": "00:07:26,460"
+			},
+			"offsets": {
+				"from": 443460,
+				"to": 446460
+			},
+			"text": " So I go to the middle of these two keyframes."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:26,460",
+				"to": "00:07:29,460"
+			},
+			"offsets": {
+				"from": 446460,
+				"to": 449460
+			},
+			"text": " The first one and the second one here."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:30,460",
+				"to": "00:07:32,460"
+			},
+			"offsets": {
+				"from": 450460,
+				"to": 452460
+			},
+			"text": " I select and put the cursor around the middle."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:32,460",
+				"to": "00:07:34,460"
+			},
+			"offsets": {
+				"from": 452460,
+				"to": 454460
+			},
+			"text": " Then I make sure the camera is selected."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:34,460",
+				"to": "00:07:35,460"
+			},
+			"offsets": {
+				"from": 454460,
+				"to": 455460
+			},
+			"text": " I press G and Z."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:35,460",
+				"to": "00:07:39,460"
+			},
+			"offsets": {
+				"from": 455460,
+				"to": 459460
+			},
+			"text": " And just move it down a little bit to create the floating motion."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:39,460",
+				"to": "00:07:41,460"
+			},
+			"offsets": {
+				"from": 459460,
+				"to": 461460
+			},
+			"text": " And then I have pressed enter."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:41,460",
+				"to": "00:07:45,460"
+			},
+			"offsets": {
+				"from": 461460,
+				"to": 465460
+			},
+			"text": " And press K and location to insert keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:45,460",
+				"to": "00:07:49,460"
+			},
+			"offsets": {
+				"from": 465460,
+				"to": 469460
+			},
+			"text": " So now you can see that the camera is going down and just up a little bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:49,460",
+				"to": "00:07:51,460"
+			},
+			"offsets": {
+				"from": 469460,
+				"to": 471460
+			},
+			"text": " Just to make the camera movement come alive."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:52,460",
+				"to": "00:07:53,460"
+			},
+			"offsets": {
+				"from": 472460,
+				"to": 473460
+			},
+			"text": " And what happens here."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:53,460",
+				"to": "00:07:56,460"
+			},
+			"offsets": {
+				"from": 473460,
+				"to": 476460
+			},
+			"text": " We can see the camera is actually moving forward a bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:56,460",
+				"to": "00:07:57,460"
+			},
+			"offsets": {
+				"from": 476460,
+				"to": 477460
+			},
+			"text": " So you can see."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:57,460",
+				"to": "00:07:58,460"
+			},
+			"offsets": {
+				"from": 477460,
+				"to": 478460
+			},
+			"text": " We see it again."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:58,460",
+				"to": "00:08:00,460"
+			},
+			"offsets": {
+				"from": 478460,
+				"to": 480460
+			},
+			"text": " Scrolling forward."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:00,460",
+				"to": "00:08:03,460"
+			},
+			"offsets": {
+				"from": 480460,
+				"to": 483460
+			},
+			"text": " Of course it goes toward the object."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:03,460",
+				"to": "00:08:06,460"
+			},
+			"offsets": {
+				"from": 483460,
+				"to": 486460
+			},
+			"text": " Before it shoots back."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:06,460",
+				"to": "00:08:11,460"
+			},
+			"offsets": {
+				"from": 486460,
+				"to": 491460
+			},
+			"text": " And then it goes towards the object a little bit again."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:12,460",
+				"to": "00:08:17,460"
+			},
+			"offsets": {
+				"from": 492460,
+				"to": 497460
+			},
+			"text": " And you might recognize that this is the exact same philosophy as I had here."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:17,460",
+				"to": "00:08:18,460"
+			},
+			"offsets": {
+				"from": 497460,
+				"to": 498460
+			},
+			"text": " And at the beginning."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:18,460",
+				"to": "00:08:22,460"
+			},
+			"offsets": {
+				"from": 498460,
+				"to": 502460
+			},
+			"text": " So again the camera is going towards the object to gather momentum."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:22,460",
+				"to": "00:08:24,460"
+			},
+			"offsets": {
+				"from": 502460,
+				"to": 504460
+			},
+			"text": " Then it shoots back."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:24,460",
+				"to": "00:08:27,460"
+			},
+			"offsets": {
+				"from": 504460,
+				"to": 507460
+			},
+			"text": " Then it catches its momentum by going forward a bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:27,460",
+				"to": "00:08:30,460"
+			},
+			"offsets": {
+				"from": 507460,
+				"to": 510460
+			},
+			"text": " Just like when you throw a ball."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:30,460",
+				"to": "00:08:32,460"
+			},
+			"offsets": {
+				"from": 510460,
+				"to": 512460
+			},
+			"text": " It's the exact same type of thinking."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:32,460",
+				"to": "00:08:35,460"
+			},
+			"offsets": {
+				"from": 512460,
+				"to": 515460
+			},
+			"text": " And again the camera is just floating here."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:35,460",
+				"to": "00:08:37,460"
+			},
+			"offsets": {
+				"from": 515460,
+				"to": 517460
+			},
+			"text": " As we did here."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:37,460",
+				"to": "00:08:39,460"
+			},
+			"offsets": {
+				"from": 517460,
+				"to": 519460
+			},
+			"text": " This keyframe makes the camera go up."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:39,460",
+				"to": "00:08:40,460"
+			},
+			"offsets": {
+				"from": 519460,
+				"to": 520460
+			},
+			"text": " And then down again."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:41,460",
+				"to": "00:08:42,460"
+			},
+			"offsets": {
+				"from": 521460,
+				"to": 522460
+			},
+			"text": " So yeah."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:42,460",
+				"to": "00:08:45,460"
+			},
+			"offsets": {
+				"from": 522460,
+				"to": 525460
+			},
+			"text": " That's essentially everything I make for my camera animations."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:45,460",
+				"to": "00:08:47,460"
+			},
+			"offsets": {
+				"from": 525460,
+				"to": 527460
+			},
+			"text": " Because as you can see."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:47,460",
+				"to": "00:08:48,460"
+			},
+			"offsets": {
+				"from": 527460,
+				"to": 528460
+			},
+			"text": " Here again."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:48,460",
+				"to": "00:08:50,460"
+			},
+			"offsets": {
+				"from": 528460,
+				"to": 530460
+			},
+			"text": " It goes forward."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:50,460",
+				"to": "00:08:52,460"
+			},
+			"offsets": {
+				"from": 530460,
+				"to": 532460
+			},
+			"text": " And then it shoots backwards."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:52,460",
+				"to": "00:08:56,460"
+			},
+			"offsets": {
+				"from": 532460,
+				"to": 536460
+			},
+			"text": " Goes forward."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:56,460",
+				"to": "00:08:57,460"
+			},
+			"offsets": {
+				"from": 536460,
+				"to": 537460
+			},
+			"text": " Shoots backwards."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:57,460",
+				"to": "00:08:59,460"
+			},
+			"offsets": {
+				"from": 537460,
+				"to": 539460
+			},
+			"text": " And then forward just a little bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:08:59,460",
+				"to": "00:09:03,460"
+			},
+			"offsets": {
+				"from": 539460,
+				"to": 543460
+			},
+			"text": " So you can think of it as the four keyframe rule."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:03,460",
+				"to": "00:09:08,460"
+			},
+			"offsets": {
+				"from": 543460,
+				"to": 548460
+			},
+			"text": " Where the actual important movement happens between second and third keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:10,460",
+				"to": "00:09:15,460"
+			},
+			"offsets": {
+				"from": 550460,
+				"to": 555460
+			},
+			"text": " But the movement and the momentum is gathered between the first and second keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:15,460",
+				"to": "00:09:20,460"
+			},
+			"offsets": {
+				"from": 555460,
+				"to": 560460
+			},
+			"text": " And the movement is ending between the third and fourth keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:20,460",
+				"to": "00:09:25,460"
+			},
+			"offsets": {
+				"from": 560460,
+				"to": 565460
+			},
+			"text": " So you can see the actual movement is happening between the second and the third."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:26,460",
+				"to": "00:09:27,460"
+			},
+			"offsets": {
+				"from": 566460,
+				"to": 567460
+			},
+			"text": " But the momentum is gathered."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:27,460",
+				"to": "00:09:31,460"
+			},
+			"offsets": {
+				"from": 567460,
+				"to": 571460
+			},
+			"text": " But the momentum is gathered between the first and the second one."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:31,460",
+				"to": "00:09:35,460"
+			},
+			"offsets": {
+				"from": 571460,
+				"to": 575460
+			},
+			"text": " And it's ending between the third and the fourth one."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:35,460",
+				"to": "00:09:41,460"
+			},
+			"offsets": {
+				"from": 575460,
+				"to": 581460
+			},
+			"text": " But what you would need to do when you change the location of the camera."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:41,460",
+				"to": "00:09:45,460"
+			},
+			"offsets": {
+				"from": 581460,
+				"to": 585460
+			},
+			"text": " And if you have depth of field selected as I have here to the right."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:46,460",
+				"to": "00:09:50,460"
+			},
+			"offsets": {
+				"from": 586460,
+				"to": 590460
+			},
+			"text": " What is important is the keyframe the focus distance and the f-stop together with the camera movements."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:50,460",
+				"to": "00:09:52,460"
+			},
+			"offsets": {
+				"from": 590460,
+				"to": 592460
+			},
+			"text": " So as I said before."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:52,460",
+				"to": "00:09:54,460"
+			},
+			"offsets": {
+				"from": 592460,
+				"to": 594460
+			},
+			"text": " Down here."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:54,460",
+				"to": "00:09:56,460"
+			},
+			"offsets": {
+				"from": 594460,
+				"to": 596460
+			},
+			"text": " We have the focus distance animation."
+		},
+		{
+			"timestamps": {
+				"from": "00:09:56,460",
+				"to": "00:10:00,460"
+			},
+			"offsets": {
+				"from": 596460,
+				"to": 600460
+			},
+			"text": " And I have actually synced this up perfectly with the camera movement."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:00,460",
+				"to": "00:10:05,460"
+			},
+			"offsets": {
+				"from": 600460,
+				"to": 605460
+			},
+			"text": " So almost on every camera keyframe I have a keyframe for the focus distance."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:06,460",
+				"to": "00:10:10,460"
+			},
+			"offsets": {
+				"from": 606460,
+				"to": 610460
+			},
+			"text": " For example we can try to delete all the focus keyframe distances here."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:10,460",
+				"to": "00:10:15,460"
+			},
+			"offsets": {
+				"from": 610460,
+				"to": 615460
+			},
+			"text": " You will see that everything becomes blurry."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:15,460",
+				"to": "00:10:19,460"
+			},
+			"offsets": {
+				"from": 615460,
+				"to": 619460
+			},
+			"text": " What's happening is that the focus distance is not animated together with the focal length."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:20,460",
+				"to": "00:10:23,460"
+			},
+			"offsets": {
+				"from": 620460,
+				"to": 623460
+			},
+			"text": " So to fix that you would need to go to every keyframe here."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:23,460",
+				"to": "00:10:26,460"
+			},
+			"offsets": {
+				"from": 623460,
+				"to": 626460
+			},
+			"text": " So if I go to this keyframe, the second keyframe of the animation."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:26,460",
+				"to": "00:10:28,460"
+			},
+			"offsets": {
+				"from": 626460,
+				"to": 628460
+			},
+			"text": " I would then zoom in on the object."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:28,460",
+				"to": "00:10:30,460"
+			},
+			"offsets": {
+				"from": 628460,
+				"to": 630460
+			},
+			"text": " Make sure the camera was selected."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:30,460",
+				"to": "00:10:33,460"
+			},
+			"offsets": {
+				"from": 630460,
+				"to": 633460
+			},
+			"text": " And then go to the right here."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:33,460",
+				"to": "00:10:38,460"
+			},
+			"offsets": {
+				"from": 633460,
+				"to": 638460
+			},
+			"text": " And just scroll on the focus distance until I see that the object is in focus."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:38,460",
+				"to": "00:10:42,460"
+			},
+			"offsets": {
+				"from": 638460,
+				"to": 642460
+			},
+			"text": " So for example here I see that the object is in focus."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:42,460",
+				"to": "00:10:45,460"
+			},
+			"offsets": {
+				"from": 642460,
+				"to": 645460
+			},
+			"text": " When I'm satisfied with the focus, right there."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:46,460",
+				"to": "00:10:51,460"
+			},
+			"offsets": {
+				"from": 646460,
+				"to": 651460
+			},
+			"text": " I will then press hover over the focus distance and press I to insert the keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:51,460",
+				"to": "00:10:54,460"
+			},
+			"offsets": {
+				"from": 651460,
+				"to": 654460
+			},
+			"text": " And then I will go to the next keyframe of the camera."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:54,460",
+				"to": "00:10:57,460"
+			},
+			"offsets": {
+				"from": 654460,
+				"to": 657460
+			},
+			"text": " You can see that it's a bit blurry here."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:57,460",
+				"to": "00:10:59,460"
+			},
+			"offsets": {
+				"from": 657460,
+				"to": 659460
+			},
+			"text": " I want some more focus here."
+		},
+		{
+			"timestamps": {
+				"from": "00:10:59,460",
+				"to": "00:11:02,460"
+			},
+			"offsets": {
+				"from": 659460,
+				"to": 662460
+			},
+			"text": " So then I would need to make sure the camera is selected."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:02,460",
+				"to": "00:11:04,460"
+			},
+			"offsets": {
+				"from": 662460,
+				"to": 664460
+			},
+			"text": " Go to the focus distance."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:04,460",
+				"to": "00:11:07,460"
+			},
+			"offsets": {
+				"from": 664460,
+				"to": 667460
+			},
+			"text": " Hold shift while scrolling to make fine adjustments."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:07,460",
+				"to": "00:11:11,460"
+			},
+			"offsets": {
+				"from": 667460,
+				"to": 671460
+			},
+			"text": " And now you can see that we are on focus here."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:11,460",
+				"to": "00:11:14,460"
+			},
+			"offsets": {
+				"from": 671460,
+				"to": 674460
+			},
+			"text": " You see, it's almost in focus."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:15,460",
+				"to": "00:11:16,460"
+			},
+			"offsets": {
+				"from": 675460,
+				"to": 676460
+			},
+			"text": " I think that would be enough."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:16,460",
+				"to": "00:11:21,460"
+			},
+			"offsets": {
+				"from": 676460,
+				"to": 681460
+			},
+			"text": " So then again I will hover over this and press I to insert the keyframe down here."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:21,460",
+				"to": "00:11:25,460"
+			},
+			"offsets": {
+				"from": 681460,
+				"to": 685460
+			},
+			"text": " And then I will just go to the next keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:25,460",
+				"to": "00:11:27,460"
+			},
+			"offsets": {
+				"from": 685460,
+				"to": 687460
+			},
+			"text": " Zoom in."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:27,460",
+				"to": "00:11:30,460"
+			},
+			"offsets": {
+				"from": 687460,
+				"to": 690460
+			},
+			"text": " And now you see that we are a bit out of focus here."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:30,460",
+				"to": "00:11:33,460"
+			},
+			"offsets": {
+				"from": 690460,
+				"to": 693460
+			},
+			"text": " You can see it on the pixel here."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:33,460",
+				"to": "00:11:35,460"
+			},
+			"offsets": {
+				"from": 693460,
+				"to": 695460
+			},
+			"text": " So I will go to the focus distance."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:35,460",
+				"to": "00:11:38,460"
+			},
+			"offsets": {
+				"from": 695460,
+				"to": 698460
+			},
+			"text": " And just scroll it."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:38,460",
+				"to": "00:11:40,460"
+			},
+			"offsets": {
+				"from": 698460,
+				"to": 700460
+			},
+			"text": " Make sure we are on focus."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:40,460",
+				"to": "00:11:42,460"
+			},
+			"offsets": {
+				"from": 700460,
+				"to": 702460
+			},
+			"text": " And now we have some sharp pixels here."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:42,460",
+				"to": "00:11:45,460"
+			},
+			"offsets": {
+				"from": 702460,
+				"to": 705460
+			},
+			"text": " So again hover over it and press I."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:45,460",
+				"to": "00:11:47,460"
+			},
+			"offsets": {
+				"from": 705460,
+				"to": 707460
+			},
+			"text": " And then go to the next keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:47,460",
+				"to": "00:11:49,460"
+			},
+			"offsets": {
+				"from": 707460,
+				"to": 709460
+			},
+			"text": " Make sure we are on focus."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:49,460",
+				"to": "00:11:51,460"
+			},
+			"offsets": {
+				"from": 709460,
+				"to": 711460
+			},
+			"text": " And I think we are fairly in focus here."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:51,460",
+				"to": "00:11:55,460"
+			},
+			"offsets": {
+				"from": 711460,
+				"to": 715460
+			},
+			"text": " So I will just hover over this and press I."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:55,460",
+				"to": "00:11:58,460"
+			},
+			"offsets": {
+				"from": 715460,
+				"to": 718460
+			},
+			"text": " Go to the next keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:11:58,460",
+				"to": "00:12:00,460"
+			},
+			"offsets": {
+				"from": 718460,
+				"to": 720460
+			},
+			"text": " Do the same thing."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:01,460",
+				"to": "00:12:05,460"
+			},
+			"offsets": {
+				"from": 721460,
+				"to": 725460
+			},
+			"text": " So that's essentially how you link up your focus distance with your focal length."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:05,460",
+				"to": "00:12:07,460"
+			},
+			"offsets": {
+				"from": 725460,
+				"to": 727460
+			},
+			"text": " And it's a tedious process."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:07,460",
+				"to": "00:12:09,460"
+			},
+			"offsets": {
+				"from": 727460,
+				"to": 729460
+			},
+			"text": " But I think it's worth it."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:09,460",
+				"to": "00:12:11,460"
+			},
+			"offsets": {
+				"from": 729460,
+				"to": 731460
+			},
+			"text": " And you are going to get faster on it when you get the hang of it."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:11,460",
+				"to": "00:12:15,460"
+			},
+			"offsets": {
+				"from": 731460,
+				"to": 735460
+			},
+			"text": " And the next thing I want to show you is how I get the camera to be synced with the objects on screen."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:16,460",
+				"to": "00:12:17,460"
+			},
+			"offsets": {
+				"from": 736460,
+				"to": 737460
+			},
+			"text": " So here you have the camera."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:17,460",
+				"to": "00:12:20,460"
+			},
+			"offsets": {
+				"from": 737460,
+				"to": 740460
+			},
+			"text": " But it's not actually looking towards the object here."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:20,460",
+				"to": "00:12:23,460"
+			},
+			"offsets": {
+				"from": 740460,
+				"to": 743460
+			},
+			"text": " Rather it's looking towards this empty object."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:23,460",
+				"to": "00:12:25,460"
+			},
+			"offsets": {
+				"from": 743460,
+				"to": 745460
+			},
+			"text": " As you can see here."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:25,460",
+				"to": "00:12:28,460"
+			},
+			"offsets": {
+				"from": 745460,
+				"to": 748460
+			},
+			"text": " So if I grab this empty object and move it around."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:28,460",
+				"to": "00:12:34,460"
+			},
+			"offsets": {
+				"from": 748460,
+				"to": 754460
+			},
+			"text": " You can see to the left here that the camera is changing where it looks depending on where I put this."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:35,460",
+				"to": "00:12:37,460"
+			},
+			"offsets": {
+				"from": 755460,
+				"to": 757460
+			},
+			"text": " What I have is that I have on the camera."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:37,460",
+				"to": "00:12:39,460"
+			},
+			"offsets": {
+				"from": 757460,
+				"to": 759460
+			},
+			"text": " And go to the constraints."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:39,460",
+				"to": "00:12:40,460"
+			},
+			"offsets": {
+				"from": 759460,
+				"to": 760460
+			},
+			"text": " I have a track to constraints."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:40,460",
+				"to": "00:12:42,460"
+			},
+			"offsets": {
+				"from": 760460,
+				"to": 762460
+			},
+			"text": " Where the empty is selected."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:42,460",
+				"to": "00:12:46,460"
+			},
+			"offsets": {
+				"from": 762460,
+				"to": 766460
+			},
+			"text": " So I can just close this down and do it again."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:46,460",
+				"to": "00:12:48,460"
+			},
+			"offsets": {
+				"from": 766460,
+				"to": 768460
+			},
+			"text": " So I go to add object constraints."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:48,460",
+				"to": "00:12:51,460"
+			},
+			"offsets": {
+				"from": 768460,
+				"to": 771460
+			},
+			"text": " And then I select track to."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:51,460",
+				"to": "00:12:54,460"
+			},
+			"offsets": {
+				"from": 771460,
+				"to": 774460
+			},
+			"text": " And then while the camera is selected."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:54,460",
+				"to": "00:12:56,460"
+			},
+			"offsets": {
+				"from": 774460,
+				"to": 776460
+			},
+			"text": " I go to the object."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:56,460",
+				"to": "00:12:57,460"
+			},
+			"offsets": {
+				"from": 776460,
+				"to": 777460
+			},
+			"text": " I want to track the camera to."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:57,460",
+				"to": "00:12:59,460"
+			},
+			"offsets": {
+				"from": 777460,
+				"to": 779460
+			},
+			"text": " So here I see the object."
+		},
+		{
+			"timestamps": {
+				"from": "00:12:59,460",
+				"to": "00:13:00,460"
+			},
+			"offsets": {
+				"from": 779460,
+				"to": 780460
+			},
+			"text": " I want to track the camera to."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:00,460",
+				"to": "00:13:02,460"
+			},
+			"offsets": {
+				"from": 780460,
+				"to": 782460
+			},
+			"text": " It's an empty object."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:03,460",
+				"to": "00:13:04,460"
+			},
+			"offsets": {
+				"from": 783460,
+				"to": 784460
+			},
+			"text": " Just get an empty object by."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:04,460",
+				"to": "00:13:07,460"
+			},
+			"offsets": {
+				"from": 784460,
+				"to": 787460
+			},
+			"text": " Pressing shift A and search for an empty sphere."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:07,460",
+				"to": "00:13:09,460"
+			},
+			"offsets": {
+				"from": 787460,
+				"to": 789460
+			},
+			"text": " So select the camera."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:09,460",
+				"to": "00:13:11,460"
+			},
+			"offsets": {
+				"from": 789460,
+				"to": 791460
+			},
+			"text": " And then choose the drop down."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:11,460",
+				"to": "00:13:13,460"
+			},
+			"offsets": {
+				"from": 791460,
+				"to": 793460
+			},
+			"text": " And select the empty object."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:13,460",
+				"to": "00:13:17,460"
+			},
+			"offsets": {
+				"from": 793460,
+				"to": 797460
+			},
+			"text": " And what's good when you track the camera to empty objects."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:17,460",
+				"to": "00:13:20,460"
+			},
+			"offsets": {
+				"from": 797460,
+				"to": 800460
+			},
+			"text": " Is that the empty objects won't show up in the final render."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:20,460",
+				"to": "00:13:22,460"
+			},
+			"offsets": {
+				"from": 800460,
+				"to": 802460
+			},
+			"text": " So you can have this anywhere on the screen."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:22,460",
+				"to": "00:13:24,460"
+			},
+			"offsets": {
+				"from": 802460,
+				"to": 804460
+			},
+			"text": " And it won't show up in the render."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:24,460",
+				"to": "00:13:25,460"
+			},
+			"offsets": {
+				"from": 804460,
+				"to": 805460
+			},
+			"text": " It's invisible."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:25,460",
+				"to": "00:13:28,460"
+			},
+			"offsets": {
+				"from": 805460,
+				"to": 808460
+			},
+			"text": " Which makes it very good to utilize for your animations."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:28,460",
+				"to": "00:13:31,460"
+			},
+			"offsets": {
+				"from": 808460,
+				"to": 811460
+			},
+			"text": " And now I have the empty object selected here."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:31,460",
+				"to": "00:13:32,460"
+			},
+			"offsets": {
+				"from": 811460,
+				"to": 812460
+			},
+			"text": " You can barely see it."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:32,460",
+				"to": "00:13:34,460"
+			},
+			"offsets": {
+				"from": 812460,
+				"to": 814460
+			},
+			"text": " Because it's almost in the object here."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:34,460",
+				"to": "00:13:35,460"
+			},
+			"offsets": {
+				"from": 814460,
+				"to": 815460
+			},
+			"text": " As you can see."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:35,460",
+				"to": "00:13:38,460"
+			},
+			"offsets": {
+				"from": 815460,
+				"to": 818460
+			},
+			"text": " I have all these keyframes for the actual empty object."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:38,460",
+				"to": "00:13:40,460"
+			},
+			"offsets": {
+				"from": 818460,
+				"to": 820460
+			},
+			"text": " If we go to the first frame of the animation."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:40,460",
+				"to": "00:13:42,460"
+			},
+			"offsets": {
+				"from": 820460,
+				"to": 822460
+			},
+			"text": " Which is frame 500."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:42,460",
+				"to": "00:13:45,460"
+			},
+			"offsets": {
+				"from": 822460,
+				"to": 825460
+			},
+			"text": " You can see that the empty object is almost in the middle of the scene."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:45,460",
+				"to": "00:13:46,460"
+			},
+			"offsets": {
+				"from": 825460,
+				"to": 826460
+			},
+			"text": " And then we go forward a bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:46,460",
+				"to": "00:13:49,460"
+			},
+			"offsets": {
+				"from": 826460,
+				"to": 829460
+			},
+			"text": " We can see that it stays the same."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:49,460",
+				"to": "00:13:51,460"
+			},
+			"offsets": {
+				"from": 829460,
+				"to": 831460
+			},
+			"text": " Because when you have these lines going."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:51,460",
+				"to": "00:13:53,460"
+			},
+			"offsets": {
+				"from": 831460,
+				"to": 833460
+			},
+			"text": " Between keyframes."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:53,460",
+				"to": "00:13:55,460"
+			},
+			"offsets": {
+				"from": 833460,
+				"to": 835460
+			},
+			"text": " It means that the keyframes are identical."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:55,460",
+				"to": "00:13:57,460"
+			},
+			"offsets": {
+				"from": 835460,
+				"to": 837460
+			},
+			"text": " So these keyframes are identical."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:57,460",
+				"to": "00:13:59,460"
+			},
+			"offsets": {
+				"from": 837460,
+				"to": 839460
+			},
+			"text": " But here."
+		},
+		{
+			"timestamps": {
+				"from": "00:13:59,460",
+				"to": "00:14:01,460"
+			},
+			"offsets": {
+				"from": 839460,
+				"to": 841460
+			},
+			"text": " We can see that."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:01,460",
+				"to": "00:14:03,460"
+			},
+			"offsets": {
+				"from": 841460,
+				"to": 843460
+			},
+			"text": " It's no lines between the keyframes."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:03,460",
+				"to": "00:14:07,460"
+			},
+			"offsets": {
+				"from": 843460,
+				"to": 847460
+			},
+			"text": " Which means that the movement of the sphere is changing."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:07,460",
+				"to": "00:14:08,460"
+			},
+			"offsets": {
+				"from": 847460,
+				"to": 848460
+			},
+			"text": " If you just zoom in here."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:08,460",
+				"to": "00:14:10,460"
+			},
+			"offsets": {
+				"from": 848460,
+				"to": 850460
+			},
+			"text": " You can see the empty object."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:10,460",
+				"to": "00:14:13,460"
+			},
+			"offsets": {
+				"from": 850460,
+				"to": 853460
+			},
+			"text": " And I'm going to scroll towards the next keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:13,460",
+				"to": "00:14:15,460"
+			},
+			"offsets": {
+				"from": 853460,
+				"to": 855460
+			},
+			"text": " And we can see how it changes its position."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:16,460",
+				"to": "00:14:22,460"
+			},
+			"offsets": {
+				"from": 856460,
+				"to": 862460
+			},
+			"text": " You can see that it goes a bit left."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:22,460",
+				"to": "00:14:27,460"
+			},
+			"offsets": {
+				"from": 862460,
+				"to": 867460
+			},
+			"text": " I can scale it up so you can see it better."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:27,460",
+				"to": "00:14:29,460"
+			},
+			"offsets": {
+				"from": 867460,
+				"to": 869460
+			},
+			"text": " This moves a bit left."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:29,460",
+				"to": "00:14:32,460"
+			},
+			"offsets": {
+				"from": 869460,
+				"to": 872460
+			},
+			"text": " And that's because at the beginning of the scene."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:32,460",
+				"to": "00:14:36,460"
+			},
+			"offsets": {
+				"from": 872460,
+				"to": 876460
+			},
+			"text": " I want the viewer to focus on the washing machine here."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:36,460",
+				"to": "00:14:39,460"
+			},
+			"offsets": {
+				"from": 876460,
+				"to": 879460
+			},
+			"text": " So you can see that it's almost in the center of the washing machine."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:39,460",
+				"to": "00:14:40,460"
+			},
+			"offsets": {
+				"from": 879460,
+				"to": 880460
+			},
+			"text": " But when I come up here."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:40,460",
+				"to": "00:14:43,460"
+			},
+			"offsets": {
+				"from": 880460,
+				"to": 883460
+			},
+			"text": " I want the viewer to focus in."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:43,460",
+				"to": "00:14:44,460"
+			},
+			"offsets": {
+				"from": 883460,
+				"to": 884460
+			},
+			"text": " On this audio file here."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:44,460",
+				"to": "00:14:47,460"
+			},
+			"offsets": {
+				"from": 884460,
+				"to": 887460
+			},
+			"text": " So that's why I need to change the position of the sphere."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:47,460",
+				"to": "00:14:48,460"
+			},
+			"offsets": {
+				"from": 887460,
+				"to": 888460
+			},
+			"text": " Because for example."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:48,460",
+				"to": "00:14:51,460"
+			},
+			"offsets": {
+				"from": 888460,
+				"to": 891460
+			},
+			"text": " If I didn't do the little tilt to the left here."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:51,460",
+				"to": "00:14:53,460"
+			},
+			"offsets": {
+				"from": 891460,
+				"to": 893460
+			},
+			"text": " It would just look like this."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:53,460",
+				"to": "00:14:57,460"
+			},
+			"offsets": {
+				"from": 893460,
+				"to": 897460
+			},
+			"text": " You see that it would look a bit off here to the left."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:57,460",
+				"to": "00:14:59,460"
+			},
+			"offsets": {
+				"from": 897460,
+				"to": 899460
+			},
+			"text": " But when I had this little change here."
+		},
+		{
+			"timestamps": {
+				"from": "00:14:59,460",
+				"to": "00:15:00,460"
+			},
+			"offsets": {
+				"from": 899460,
+				"to": 900460
+			},
+			"text": " With the keyframes."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:00,460",
+				"to": "00:15:03,460"
+			},
+			"offsets": {
+				"from": 900460,
+				"to": 903460
+			},
+			"text": " You can see that the center of attention is the audio file here."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:03,460",
+				"to": "00:15:05,460"
+			},
+			"offsets": {
+				"from": 903460,
+				"to": 905460
+			},
+			"text": " Then we can go forward a bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:05,460",
+				"to": "00:15:08,460"
+			},
+			"offsets": {
+				"from": 905460,
+				"to": 908460
+			},
+			"text": " And you can see that we changed the position."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:08,460",
+				"to": "00:15:10,460"
+			},
+			"offsets": {
+				"from": 908460,
+				"to": 910460
+			},
+			"text": " To be in the middle again."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:10,460",
+				"to": "00:15:13,460"
+			},
+			"offsets": {
+				"from": 910460,
+				"to": 913460
+			},
+			"text": " Between these keyframes."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:13,460",
+				"to": "00:15:19,460"
+			},
+			"offsets": {
+				"from": 913460,
+				"to": 919460
+			},
+			"text": " And here you can see we have many keyframes."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:19,460",
+				"to": "00:15:21,460"
+			},
+			"offsets": {
+				"from": 919460,
+				"to": 921460
+			},
+			"text": " And what's going on here."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:21,460",
+				"to": "00:15:22,460"
+			},
+			"offsets": {
+				"from": 921460,
+				"to": 922460
+			},
+			"text": " We can watch it in real time."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:22,460",
+				"to": "00:15:24,460"
+			},
+			"offsets": {
+				"from": 922460,
+				"to": 924460
+			},
+			"text": " If you watch it on the left here."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:27,460",
+				"to": "00:15:31,460"
+			},
+			"offsets": {
+				"from": 927460,
+				"to": 931460
+			},
+			"text": " You can see that the frame is almost like bouncing up and down."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:31,460",
+				"to": "00:15:39,460"
+			},
+			"offsets": {
+				"from": 931460,
+				"to": 939460
+			},
+			"text": " And I got this effect by animating the object that the camera is tracked to."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:39,460",
+				"to": "00:15:41,460"
+			},
+			"offsets": {
+				"from": 939460,
+				"to": 941460
+			},
+			"text": " And here are the keyframes for that."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:41,460",
+				"to": "00:15:43,460"
+			},
+			"offsets": {
+				"from": 941460,
+				"to": 943460
+			},
+			"text": " So if I go to the front view."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:43,460",
+				"to": "00:15:46,460"
+			},
+			"offsets": {
+				"from": 943460,
+				"to": 946460
+			},
+			"text": " So we see exactly how it lines up."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:46,460",
+				"to": "00:15:50,460"
+			},
+			"offsets": {
+				"from": 946460,
+				"to": 950460
+			},
+			"text": " Here the object hasn't popped up from the washing machine."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:50,460",
+				"to": "00:15:51,460"
+			},
+			"offsets": {
+				"from": 950460,
+				"to": 951460
+			},
+			"text": " On the first keyframe here."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:51,460",
+				"to": "00:15:53,460"
+			},
+			"offsets": {
+				"from": 951460,
+				"to": 953460
+			},
+			"text": " You can see that it moves to the right here."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:53,460",
+				"to": "00:15:57,460"
+			},
+			"offsets": {
+				"from": 953460,
+				"to": 957460
+			},
+			"text": " To the center of the washing machine door."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:57,460",
+				"to": "00:15:59,460"
+			},
+			"offsets": {
+				"from": 957460,
+				"to": 959460
+			},
+			"text": " And then it goes up."
+		},
+		{
+			"timestamps": {
+				"from": "00:15:59,460",
+				"to": "00:16:02,460"
+			},
+			"offsets": {
+				"from": 959460,
+				"to": 962460
+			},
+			"text": " Along with the object that pops up."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:02,460",
+				"to": "00:16:04,460"
+			},
+			"offsets": {
+				"from": 962460,
+				"to": 964460
+			},
+			"text": " So if I go back again."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:04,460",
+				"to": "00:16:07,460"
+			},
+			"offsets": {
+				"from": 964460,
+				"to": 967460
+			},
+			"text": " And I'm going to actually put this in local view."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:07,460",
+				"to": "00:16:08,460"
+			},
+			"offsets": {
+				"from": 967460,
+				"to": 968460
+			},
+			"text": " So you can see it better."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:09,460",
+				"to": "00:16:12,460"
+			},
+			"offsets": {
+				"from": 969460,
+				"to": 972460
+			},
+			"text": " So now I have selected the object that the camera is tracked to."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:12,460",
+				"to": "00:16:14,460"
+			},
+			"offsets": {
+				"from": 972460,
+				"to": 974460
+			},
+			"text": " So you can see it first goes to the right."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:14,460",
+				"to": "00:16:15,460"
+			},
+			"offsets": {
+				"from": 974460,
+				"to": 975460
+			},
+			"text": " And then."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:15,460",
+				"to": "00:16:16,460"
+			},
+			"offsets": {
+				"from": 975460,
+				"to": 976460
+			},
+			"text": " When the door opens."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:16,460",
+				"to": "00:16:18,460"
+			},
+			"offsets": {
+				"from": 976460,
+				"to": 978460
+			},
+			"text": " And the object here pops up."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:18,460",
+				"to": "00:16:20,460"
+			},
+			"offsets": {
+				"from": 978460,
+				"to": 980460
+			},
+			"text": " The empty object goes up with it."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:20,460",
+				"to": "00:16:22,460"
+			},
+			"offsets": {
+				"from": 980460,
+				"to": 982460
+			},
+			"text": " And then it falls down."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:22,460",
+				"to": "00:16:23,460"
+			},
+			"offsets": {
+				"from": 982460,
+				"to": 983460
+			},
+			"text": " Just as the object falls down."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:23,460",
+				"to": "00:16:26,460"
+			},
+			"offsets": {
+				"from": 983460,
+				"to": 986460
+			},
+			"text": " And then it falls back up."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:26,460",
+				"to": "00:16:30,460"
+			},
+			"offsets": {
+				"from": 986460,
+				"to": 990460
+			},
+			"text": " And then it stabilizes on its final keyframe."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:31,460",
+				"to": "00:16:32,460"
+			},
+			"offsets": {
+				"from": 991460,
+				"to": 992460
+			},
+			"text": " So if I scroll through it."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:32,460",
+				"to": "00:16:34,460"
+			},
+			"offsets": {
+				"from": 992460,
+				"to": 994460
+			},
+			"text": " You can see how it follows along."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:34,460",
+				"to": "00:16:39,460"
+			},
+			"offsets": {
+				"from": 994460,
+				"to": 999460
+			},
+			"text": " Again."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:39,460",
+				"to": "00:16:43,460"
+			},
+			"offsets": {
+				"from": 999460,
+				"to": 1003460
+			},
+			"text": " And again."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:43,460",
+				"to": "00:16:47,460"
+			},
+			"offsets": {
+				"from": 1003460,
+				"to": 1007460
+			},
+			"text": " But there's a minor detail here."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:47,460",
+				"to": "00:16:49,460"
+			},
+			"offsets": {
+				"from": 1007460,
+				"to": 1009460
+			},
+			"text": " You would need to watch for."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:49,460",
+				"to": "00:16:50,460"
+			},
+			"offsets": {
+				"from": 1009460,
+				"to": 1010460
+			},
+			"text": " And maybe you already noticed it."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:50,460",
+				"to": "00:16:52,460"
+			},
+			"offsets": {
+				"from": 1010460,
+				"to": 1012460
+			},
+			"text": " But."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:52,460",
+				"to": "00:16:54,460"
+			},
+			"offsets": {
+				"from": 1012460,
+				"to": 1014460
+			},
+			"text": " You can see that the empty object here."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:54,460",
+				"to": "00:16:56,460"
+			},
+			"offsets": {
+				"from": 1014460,
+				"to": 1016460
+			},
+			"text": " It follows along with the object here."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:56,460",
+				"to": "00:16:57,460"
+			},
+			"offsets": {
+				"from": 1016460,
+				"to": 1017460
+			},
+			"text": " The green object."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:57,460",
+				"to": "00:16:58,460"
+			},
+			"offsets": {
+				"from": 1017460,
+				"to": 1018460
+			},
+			"text": " But."
+		},
+		{
+			"timestamps": {
+				"from": "00:16:58,460",
+				"to": "00:17:00,460"
+			},
+			"offsets": {
+				"from": 1018460,
+				"to": 1020460
+			},
+			"text": " It's just a few frames behind."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:01,460",
+				"to": "00:17:02,460"
+			},
+			"offsets": {
+				"from": 1021460,
+				"to": 1022460
+			},
+			"text": " At this frame."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:02,460",
+				"to": "00:17:03,460"
+			},
+			"offsets": {
+				"from": 1022460,
+				"to": 1023460
+			},
+			"text": " This object."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:03,460",
+				"to": "00:17:05,460"
+			},
+			"offsets": {
+				"from": 1023460,
+				"to": 1025460
+			},
+			"text": " Is already going down again."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:05,460",
+				"to": "00:17:07,460"
+			},
+			"offsets": {
+				"from": 1025460,
+				"to": 1027460
+			},
+			"text": " But this object."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:07,460",
+				"to": "00:17:09,460"
+			},
+			"offsets": {
+				"from": 1027460,
+				"to": 1029460
+			},
+			"text": " Hasn't started to go down."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:09,460",
+				"to": "00:17:10,460"
+			},
+			"offsets": {
+				"from": 1029460,
+				"to": 1030460
+			},
+			"text": " Yet."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:10,460",
+				"to": "00:17:12,460"
+			},
+			"offsets": {
+				"from": 1030460,
+				"to": 1032460
+			},
+			"text": " So we're just a bit behind."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:12,460",
+				"to": "00:17:20,460"
+			},
+			"offsets": {
+				"from": 1032460,
+				"to": 1040460
+			},
+			"text": " And I wanted to create this effect."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:20,460",
+				"to": "00:17:21,460"
+			},
+			"offsets": {
+				"from": 1040460,
+				"to": 1041460
+			},
+			"text": " For like."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:21,460",
+				"to": "00:17:22,460"
+			},
+			"offsets": {
+				"from": 1041460,
+				"to": 1042460
+			},
+			"text": " For example."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:22,460",
+				"to": "00:17:23,460"
+			},
+			"offsets": {
+				"from": 1042460,
+				"to": 1043460
+			},
+			"text": " When."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:23,460",
+				"to": "00:17:24,460"
+			},
+			"offsets": {
+				"from": 1043460,
+				"to": 1044460
+			},
+			"text": " An actual."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:24,460",
+				"to": "00:17:25,460"
+			},
+			"offsets": {
+				"from": 1044460,
+				"to": 1045460
+			},
+			"text": " Camera man in real life."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:25,460",
+				"to": "00:17:26,460"
+			},
+			"offsets": {
+				"from": 1045460,
+				"to": 1046460
+			},
+			"text": " Follow an object."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:26,460",
+				"to": "00:17:27,460"
+			},
+			"offsets": {
+				"from": 1046460,
+				"to": 1047460
+			},
+			"text": " It's not."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:27,460",
+				"to": "00:17:28,460"
+			},
+			"offsets": {
+				"from": 1047460,
+				"to": 1048460
+			},
+			"text": " Exactly spot on."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:28,460",
+				"to": "00:17:29,460"
+			},
+			"offsets": {
+				"from": 1048460,
+				"to": 1049460
+			},
+			"text": " Because."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:29,460",
+				"to": "00:17:30,460"
+			},
+			"offsets": {
+				"from": 1049460,
+				"to": 1050460
+			},
+			"text": " You have a few."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:30,460",
+				"to": "00:17:31,460"
+			},
+			"offsets": {
+				"from": 1050460,
+				"to": 1051460
+			},
+			"text": " 20 seconds of reaction time."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:31,460",
+				"to": "00:17:32,460"
+			},
+			"offsets": {
+				"from": 1051460,
+				"to": 1052460
+			},
+			"text": " And."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:32,460",
+				"to": "00:17:33,460"
+			},
+			"offsets": {
+				"from": 1052460,
+				"to": 1053460
+			},
+			"text": " And I wanted to emulate."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:33,460",
+				"to": "00:17:34,460"
+			},
+			"offsets": {
+				"from": 1053460,
+				"to": 1054460
+			},
+			"text": " This type of realism."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:34,460",
+				"to": "00:17:35,460"
+			},
+			"offsets": {
+				"from": 1054460,
+				"to": 1055460
+			},
+			"text": " And."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:35,460",
+				"to": "00:17:37,460"
+			},
+			"offsets": {
+				"from": 1055460,
+				"to": 1057460
+			},
+			"text": " As you can probably imagine."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:37,460",
+				"to": "00:17:38,460"
+			},
+			"offsets": {
+				"from": 1057460,
+				"to": 1058460
+			},
+			"text": " It's a balance."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:38,460",
+				"to": "00:17:39,460"
+			},
+			"offsets": {
+				"from": 1058460,
+				"to": 1059460
+			},
+			"text": " To animate this."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:39,460",
+				"to": "00:17:40,460"
+			},
+			"offsets": {
+				"from": 1059460,
+				"to": 1060460
+			},
+			"text": " Empty object."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:40,460",
+				"to": "00:17:41,460"
+			},
+			"offsets": {
+				"from": 1060460,
+				"to": 1061460
+			},
+			"text": " That's."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:41,460",
+				"to": "00:17:42,460"
+			},
+			"offsets": {
+				"from": 1061460,
+				"to": 1062460
+			},
+			"text": " Tracked to the camera."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:42,460",
+				"to": "00:17:43,460"
+			},
+			"offsets": {
+				"from": 1062460,
+				"to": 1063460
+			},
+			"text": " It's a huge topic."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:43,460",
+				"to": "00:17:44,460"
+			},
+			"offsets": {
+				"from": 1063460,
+				"to": 1064460
+			},
+			"text": " And I will do more videos."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:44,460",
+				"to": "00:17:45,460"
+			},
+			"offsets": {
+				"from": 1064460,
+				"to": 1065460
+			},
+			"text": " In the near future."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:45,460",
+				"to": "00:17:46,460"
+			},
+			"offsets": {
+				"from": 1065460,
+				"to": 1066460
+			},
+			"text": " To cover."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:46,460",
+				"to": "00:17:47,460"
+			},
+			"offsets": {
+				"from": 1066460,
+				"to": 1067460
+			},
+			"text": " This."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:47,460",
+				"to": "00:17:48,460"
+			},
+			"offsets": {
+				"from": 1067460,
+				"to": 1068460
+			},
+			"text": " And please let me know."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:48,460",
+				"to": "00:17:49,460"
+			},
+			"offsets": {
+				"from": 1068460,
+				"to": 1069460
+			},
+			"text": " If you have any questions."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:49,460",
+				"to": "00:17:50,460"
+			},
+			"offsets": {
+				"from": 1069460,
+				"to": 1070460
+			},
+			"text": " About it."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:50,460",
+				"to": "00:17:51,460"
+			},
+			"offsets": {
+				"from": 1070460,
+				"to": 1071460
+			},
+			"text": " And I'll see you in the next video."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:51,460",
+				"to": "00:17:52,460"
+			},
+			"offsets": {
+				"from": 1071460,
+				"to": 1072460
+			},
+			"text": " And I'll see you in the next video."
+		},
+		{
+			"timestamps": {
+				"from": "00:17:52,460",
+				"to": "00:17:53,460"
+			},
+			"offsets": {
+				"from": 1072460,
+				"to": 1073460
+			},
+			"text": " I'll see you in the next video."
+		}
+	]
+}

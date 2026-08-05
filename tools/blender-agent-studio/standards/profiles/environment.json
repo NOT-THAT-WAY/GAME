@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "id": "environment",
+  "domain": "environment",
+  "blender_units": "meters",
+  "budgets_must_be_declared": ["triangles_per_zone", "instances", "materials", "lights", "texture_memory", "draw_calls"],
+  "required_gates": [
+    "metric_grid", "modular_connections", "navigation", "collision", "z_fighting", "lod_or_hlod",
+    "culling", "lighting_strategy", "scatter_exclusions", "performance_capture", "target_engine_import"
+  ],
+  "required_evidence": ["environment-audit.json", "performance-report.json", "navigation-report.json"],
+  "final_validator": "workflows/tools/validate_team_project.py"
+}

@@ -1,0 +1,21 @@
+{
+  "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+  "camera": "USTUDIO_BOX_CAMERA",
+  "engine": "BLENDER_EEVEE",
+  "marker_prefix": "USTUDIO_MEDIA_",
+  "frames": [
+    1,
+    102,
+    203,
+    305,
+    406
+  ],
+  "files": [
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-character-animation/gates/step0-source-marker-gate/frame_0001.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-character-animation/gates/step0-source-marker-gate/frame_0102.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-character-animation/gates/step0-source-marker-gate/frame_0203.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-character-animation/gates/step0-source-marker-gate/frame_0305.png",
+    "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-character-animation/gates/step0-source-marker-gate/frame_0406.png"
+  ],
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend"
+}

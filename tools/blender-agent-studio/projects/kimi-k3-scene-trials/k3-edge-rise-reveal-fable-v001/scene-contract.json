@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-fable-v001",
+  "status": "measured",
+  "coordinate_frame": {
+    "up": "+Z",
+    "user_side": "-Y (face ouverte de la boite)",
+    "front": "-Y",
+    "right": "+X",
+    "units": "meters",
+    "reference": "repere local de USTUDIO_BOX_FLOAT_ROOT ; tout l'interieur est rigide avec lui"
+  },
+  "measured_geometry": {
+    "interior_panel_height_m": 4.4,
+    "headroom_above_floor_center_m": 3.365,
+    "front_opening_x": [-4.14, 4.14],
+    "front_opening_z": [0.76, 5.38],
+    "seat_object": "USTUDIO_FRONT_BOTTOM_RIM",
+    "seat_top_z": 0.76,
+    "seat_depth_y": [-1.08, -0.36],
+    "floor_object": "USTUDIO_PIANO_ROLL_FLOOR",
+    "floor_slope_degrees": 46.34,
+    "floor_normal": [0.0, -0.723449, 0.690377],
+    "floor_front_edge": {"y": -0.42, "z": 0.88},
+    "step_up_lip_m": 0.12,
+    "playhead_center_crossings": [199.0, 399.0],
+    "evidence": "diagnostics/box-analysis.json"
+  },
+  "character": {
+    "asset": "asset_library/characters/mecha-mascot-v002.blend",
+    "asset_height_units": 2.075,
+    "scale_applied": 0.424,
+    "height_m": 0.8798,
+    "fraction_of_interior_height": 0.2,
+    "leg_length_m": 0.2273,
+    "arm_length_m": 0.4165,
+    "mesh_modified": false,
+    "rig_added": "16 bones (ROOT, SPINE, CHEST, HEAD, CLAV/UPPERARM/FOREARM L+R, THIGH/SHIN/FOOT L+R)",
+    "skin_method": "poids deterministes par distance aux segments d'os (le heat weighting de Blender a echoue)",
+    "evidence": "diagnostics/rig-report.json, diagnostics/weight-check.json"
+  },
+  "objects": [
+    {
+      "name": "K3_FABLE_MASCOT",
+      "semantic_role": "hero_subject",
+      "fixed_or_moving": "moving",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": ["semelles"],
+      "support_surfaces": ["USTUDIO_FRONT_BOTTOM_RIM", "USTUDIO_PIANO_ROLL_FLOOR"],
+      "allowed_motion": ["sit-to-stand", "marche montante", "rotation du cap", "regard"],
+      "forbidden_motion": ["teleport", "glissement du pied plante", "traversee du decor", "levitation"]
+    },
+    {
+      "name": "K3_FABLE_CAM",
+      "semantic_role": "hero_camera",
+      "fixed_or_moving": "moving",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": [],
+      "support_surfaces": [],
+      "allowed_motion": ["recul continu", "elevation", "elargissement de focale 38 a 17 mm"],
+      "forbidden_motion": ["coupe", "traversee du decor", "changement de sujet"]
+    }
+  ],
+  "joints": [
+    {"name": "ROOT", "type": "root", "note": "porte la position et le cap"},
+    {"name": "SPINE/CHEST", "type": "revolute", "note": "inclinaison du tronc, 38 degres au pic du sit-to-stand"},
+    {"name": "HEAD", "type": "revolute", "note": "balayage lateral pendant la marche, +52 degres au reveal final"},
+    {"name": "CLAV/UPPERARM/FOREARM", "type": "revolute", "note": "FK a axes explicites : abduction, balancement, flexion du coude"},
+    {"name": "THIGH/SHIN", "type": "revolute", "note": "IK analytique, genou pole selon la normale du sol"},
+    {"name": "FOOT", "type": "revolute", "note": "semelle alignee sur le plan du sol par rotation rigide"}
+  ],
+  "supports_and_contacts": [
+    {"support": "USTUDIO_FRONT_BOTTOM_RIM", "supported": "K3_FABLE_MASCOT",
+     "rule": "assise et deux premiers appuis ; aucun glissement"},
+    {"support": "USTUDIO_PIANO_ROLL_FLOOR", "supported": "K3_FABLE_MASCOT",
+     "rule": "huit appuis montants ; la semelle epouse le plan a 46,34 degres"}
+  ],
+  "collision_pairs": [
+    {"a": "K3_FABLE_MASCOT", "b": "USTUDIO_PIANO_ROLL_FLOOR", "rule": "penetration des semelles nulle"},
+    {"a": "K3_FABLE_CAM", "b": "tout le decor", "rule": "clearance minimale 0.08 m"}
+  ],
+  "locomotion_plan": {
+    "start_seated": {"x": -0.72, "y": -0.72, "pelvis_z": 0.835},
+    "feet_start": {"y": -0.56, "z": 0.76},
+    "path": "bezier quadratique (-0.72,-0.56) -> (0,0.10) -> (0,0.30), z suit la surface reelle",
+    "path_length_m": 1.5235,
+    "contacts": 10,
+    "step_len_m": 0.1448,
+    "cadence": "un appui toutes les 2 pulsations (24.2 frames)",
+    "arrival": {"x": 0.0, "y": 0.295}
+  },
+  "camera_corridor": {
+    "description": "cote -X puis recentrage, de (-1.95,-1.62,0.95) a (-0.25,-2.65,2.85), toujours devant l'ouverture",
+    "clearance_margin_m": 0.08,
+    "obstacles": ["USTUDIO_FRONT_BOTTOM_RIM", "USTUDIO_FRONT_CORNER_BL", "USTUDIO_BOTTOM_GREEN_LED"],
+    "validated": true
+  },
+  "shot_states": [
+    {"name": "S0_STILL", "time_seconds": 0.0, "object_state": "assis, pied qui bat", "camera_state": "proche, bas, trois-quarts dos, 38 mm"},
+    {"name": "S1_ANTICIPATION", "time_seconds": 1.91, "object_state": "mains chargees, tronc qui plonge", "camera_state": "immobile"},
+    {"name": "S2_ACTION", "time_seconds": 3.53, "object_state": "debout, pivote vers sa destination", "camera_state": "recul amorce, 28.5 mm"},
+    {"name": "S3_CLIMB", "time_seconds": 4.33, "object_state": "step-up puis montee", "camera_state": "recul et elevation continus"},
+    {"name": "S4_SETTLE", "time_seconds": 8.37, "object_state": "arret au centre", "camera_state": "19.5 mm"},
+    {"name": "S5_REVEAL", "time_seconds": 9.98, "object_state": "leve le regard", "camera_state": "17.8 mm, target monte vers les ecrans"},
+    {"name": "S6_STILL", "time_seconds": 12.0, "object_state": "immobile", "camera_state": "17 mm, arret complet"}
+  ],
+  "validation": {
+    "required_views": ["hero"],
+    "sample_every_n_frames": 1,
+    "critical_failure_cap": 49,
+    "thresholds": {
+      "planted_foot_drift_max_m": 0.005,
+      "sole_penetration_max_m": 0.0,
+      "camera_clearance_min_m": 0.08,
+      "subject_height_fraction_min": 0.12
+    }
+  }
+}

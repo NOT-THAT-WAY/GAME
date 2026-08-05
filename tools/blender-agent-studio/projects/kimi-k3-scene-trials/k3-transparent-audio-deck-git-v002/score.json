@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-transparent-audio-deck-git-v002",
+  "status": "completed",
+  "overall_score": 84.4,
+  "verdict": "revise",
+  "critical_failures": [],
+  "categories": {
+    "physics_affordance": {
+      "weight": 20,
+      "score": 95,
+      "evidence": [
+        "diagnostics/physical-validation.json",
+        "gates/views/front.png"
+      ],
+      "notes": "Support gap and penetration are both 0 m; camera clearance stays above 0.418 m across all 192 frames."
+    },
+    "causality_continuity": {
+      "weight": 15,
+      "score": 85,
+      "evidence": [
+        "shot-manifest.json",
+        "renders/preview.mp4"
+      ],
+      "notes": "The object stays fixed while one motivated camera arc reveals the volume."
+    },
+    "composition_camera": {
+      "weight": 15,
+      "score": 78,
+      "evidence": [
+        "gates/contact-sheet.jpg",
+        "gates/reference-aligned-comparison.png"
+      ],
+      "notes": "Multi-angle readability is good, but exact source framing and the floating diagonal pose are intentionally not reproduced in the physically validated shot."
+    },
+    "motion_rhythm": {
+      "weight": 15,
+      "score": 82,
+      "evidence": [
+        "renders/preview.mp4",
+        "gates/preview-keyframes.jpg"
+      ],
+      "notes": "Anticipation, travel, overshoot and recovery are present; this remains a restrained asset-review move."
+    },
+    "lighting": {
+      "weight": 15,
+      "score": 83,
+      "evidence": [
+        "gates/lighting-gate-manifest.json",
+        "gates/lighting/05_DETAIL_RETURN.png"
+      ],
+      "notes": "The six-stage layered gate proves each light. The rear inferred face remains brighter than ideal and is not used as a fidelity claim."
+    },
+    "materials_color_typography": {
+      "weight": 10,
+      "score": 74,
+      "evidence": [
+        "gates/reference-comparison.jpg",
+        "gates/views/hero.png"
+      ],
+      "notes": "Clear, frosted, black and red material roles read, but one stylized transparent image cannot provide exact PBR channels; the label is deliberately generic."
+    },
+    "technical_integrity": {
+      "weight": 10,
+      "score": 88,
+      "evidence": [
+        "diagnostics/integration-test.json",
+        "diagnostics/glb-reimport-validation.json"
+      ],
+      "notes": "Permanent-clone intake, strict spec, Blender batch, blend reopen, video probe and GLB re-import pass. The upstream structural Tier-1 gate remains blocked."
+    }
+  },
+  "automatic_caps": {
+    "critical_failure_max_score": 49,
+    "critical_failure_types": [
+      "collision_or_environment_traversal",
+      "levitation_or_missing_required_support",
+      "impossible_articulation_or_wrong_affordance",
+      "unmotivated_drift_or_contact_slip",
+      "canonical_identity_broken",
+      "camera_or_geometry_clipping",
+      "corrupt_missing_or_glitched_frames"
+    ]
+  },
+  "thresholds": {
+    "ship_min": 85,
+    "revise_min": 70,
+    "reject_max": 69
+  }
+}

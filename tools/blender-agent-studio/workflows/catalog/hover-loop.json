@@ -1,0 +1,85 @@
+{
+  "id": "hover-loop",
+  "name": "Lévitation en boucle (expérimental)",
+  "icon": "⌇",
+  "category": "animation objet",
+  "mode": "MCP interactif",
+  "risk": "écriture",
+  "description": "Ajoute un contrôle racine et une boucle parfaite. À utiliser seulement si une cause visible ou un contexte sans gravité est déjà contractualisé et prouvé.",
+  "script": "workflows/scripts/hover_loop.py",
+  "timeout": 120,
+  "warning": "Désactivé dans l’app : une lévitation sans cause ou support est un échec P0. Le script parente les objets racine et nécessite une revue physique manuelle.",
+  "safety_notes": [
+    "Déclarer la cause du hover dans le contrat physique avant exécution.",
+    "Ne jamais utiliser ce mouvement pour masquer un support ou une collision.",
+    "Produire une validation physique v2 après animation."
+  ],
+  "fields": [
+    {
+      "id": "cause",
+      "type": "select",
+      "label": "Cause physique/narrative",
+      "options": [
+        "visible_rig",
+        "magnetic_field",
+        "zero_gravity"
+      ],
+      "default": "visible_rig"
+    },
+    {
+      "id": "cause_evidence",
+      "type": "text",
+      "label": "Objet de preuve ou contract:<référence>",
+      "required": true,
+      "default": ""
+    },
+    {
+      "id": "collection",
+      "type": "text",
+      "label": "Cible (AUTO ou collection)",
+      "default": "AUTO",
+      "help": "AUTO choisit flroom_device_pivot ou choreo_device_pivot dans la scène active."
+    },
+    {
+      "id": "duration",
+      "type": "number",
+      "label": "Durée (s)",
+      "default": 10,
+      "min": 2,
+      "max": 30,
+      "step": 0.5
+    },
+    {
+      "id": "bob",
+      "type": "number",
+      "label": "Bob vertical",
+      "default": 0.7,
+      "min": 0,
+      "max": 5,
+      "step": 0.1
+    },
+    {
+      "id": "yaw",
+      "type": "number",
+      "label": "Yaw (degrés)",
+      "default": 6,
+      "min": 0,
+      "max": 30,
+      "step": 0.5
+    }
+  ],
+  "execution": "mcp",
+  "mutates_scene": true,
+  "requires_confirmation": true,
+  "requires_working_copy": true,
+  "enabled_in_app": false,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "operation",
+  "status": "experimental",
+  "domains": [
+    "animation",
+    "cinematic"
+  ],
+  "maturity": "experimental",
+  "scope": "generic-or-adaptable"
+}

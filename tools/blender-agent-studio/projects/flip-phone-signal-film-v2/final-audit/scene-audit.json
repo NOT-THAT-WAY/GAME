@@ -1,0 +1,7759 @@
+{
+  "schema_version": 2,
+  "file": "${BLENDER_AGENT_STUDIO_ROOT}/projects/flip-phone-signal-film-v2/Flip_Phone_Last_Signal_V2.blend",
+  "blender_version": "5.1.1",
+  "saved": true,
+  "active_scene": "LAST_SIGNAL_V2_MASTER",
+  "summary": {
+    "scenes": 1,
+    "objects": 107,
+    "meshes": 95,
+    "materials": 19,
+    "images": 0,
+    "missing_images": 0,
+    "asset_blocks": 0,
+    "external_libraries": 0,
+    "geometry_issue_objects": 40
+  },
+  "scenes": [
+    {
+      "name": "LAST_SIGNAL_V2_MASTER",
+      "active": true,
+      "objects": 107,
+      "camera": "LS2_CAM_DORMANT",
+      "frame_range": [
+        1,
+        720
+      ],
+      "fps": 24.0,
+      "engine": "BLENDER_EEVEE",
+      "resolution": [
+        960,
+        540,
+        100
+      ],
+      "pixel_aspect": [
+        1.0,
+        1.0
+      ],
+      "film_transparent": false,
+      "filepath": "/tmp/",
+      "file_format": "PNG",
+      "view_transform": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "exposure": 0.05000000074505806,
+      "gamma": 1.0,
+      "units": {
+        "system": "METRIC",
+        "scale_length": 1.0,
+        "length_unit": "METERS"
+      },
+      "markers": [
+        {
+          "name": "LS2_CUT_LS2_CAM_DORMANT",
+          "frame": 1
+        },
+        {
+          "name": "LS2_CUT_LS2_CAM_JOURNEY",
+          "frame": 145
+        },
+        {
+          "name": "LS2_CUT_LS2_CAM_MESSAGE",
+          "frame": 289
+        },
+        {
+          "name": "LS2_CUT_LS2_CAM_RESTORED",
+          "frame": 433
+        },
+        {
+          "name": "LS2_DORMANT",
+          "frame": 1
+        },
+        {
+          "name": "LS2_SCAN",
+          "frame": 96
+        },
+        {
+          "name": "LS2_JOURNEY",
+          "frame": 145
+        },
+        {
+          "name": "LS2_ARRIVAL",
+          "frame": 264
+        },
+        {
+          "name": "LS2_LISTEN",
+          "frame": 289
+        },
+        {
+          "name": "LS2_OPEN",
+          "frame": 350
+        },
+        {
+          "name": "LS2_MESSAGE",
+          "frame": 370
+        },
+        {
+          "name": "LS2_SIGNAL",
+          "frame": 433
+        },
+        {
+          "name": "LS2_LIFT",
+          "frame": 590
+        },
+        {
+          "name": "LS2_FINAL_STILL",
+          "frame": 696
+        },
+        {
+          "name": "LS2_END",
+          "frame": 720
+        }
+      ]
+    }
+  ],
+  "collections": [
+    {
+      "name": "LS2_FX",
+      "objects": 4,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "LS2_LIGHTS",
+      "objects": 4,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "LS2_OBSERVATORY",
+      "objects": 43,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "LS2_PRODUCT",
+      "objects": 25,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "LS2_RIG",
+      "objects": 7,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "LS2_SOURCE_FLIP_PHONE",
+      "objects": 24,
+      "children": [],
+      "asset": false
+    }
+  ],
+  "objects": [
+    {
+      "name": "!!",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.21676,
+        -0.01646,
+        -0.48733
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.20286,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.03413,
+        0.05633,
+        0.01436
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.016",
+        "vertices": 3416,
+        "edges": 6564,
+        "polygons": 3156,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 976,
+        "non_manifold_edges": 976,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 472,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "%%",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        -0.00035,
+        -0.01646,
+        -0.49715
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.10012,
+        0.05638,
+        0.01436
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.015",
+        "vertices": 5488,
+        "edges": 10572,
+        "polygons": 5088,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1568,
+        "non_manifold_edges": 1568,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 776,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "123",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        -0.21733,
+        -0.01646,
+        0.08608
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.09862,
+        0.05921,
+        0.0151
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.012",
+        "vertices": 3360,
+        "edges": 6462,
+        "polygons": 3108,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 960,
+        "non_manifold_edges": 960,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 468,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "456",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        -0.00035,
+        -0.01646,
+        0.08608
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.11615,
+        0.06038,
+        0.0151
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.013",
+        "vertices": 2996,
+        "edges": 5772,
+        "polygons": 2778,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 856,
+        "non_manifold_edges": 856,
+        "degenerate_faces": 2,
+        "ngons": 0,
+        "triangles": 424,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "789",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.21515,
+        -0.01646,
+        0.08608
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.11297,
+        0.06027,
+        0.0151
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.014",
+        "vertices": 4634,
+        "edges": 8937,
+        "polygons": 4303,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1324,
+        "non_manifold_edges": 1324,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 662,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "??",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        -0.20888,
+        -0.01646,
+        -0.48997
+      ],
+      "rotation_euler": [
+        1.5708,
+        0.36382,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.04724,
+        0.05641,
+        0.01436
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.011",
+        "vertices": 3388,
+        "edges": 6510,
+        "polygons": 3130,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 968,
+        "non_manifold_edges": 968,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 468,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "ABC",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        -0.21733,
+        -0.01646,
+        -0.06528
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.14989,
+        0.08369,
+        0.0216
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text",
+        "vertices": 5208,
+        "edges": 10038,
+        "polygons": 4832,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1488,
+        "non_manifold_edges": 1488,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 740,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "Buttons",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.00035,
+        -0.05608,
+        -0.03543
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.63856,
+        0.02503,
+        1.16652
+      ],
+      "parent": "Phone",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Buttons Blue",
+        "DRUMBOII_FLIP_PHONE_Buttons Under"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Cube.002",
+        "vertices": 13139,
+        "edges": 26174,
+        "polygons": 13036,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 204,
+        "non_manifold_edges": 204,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "Circle",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.0,
+        -0.00091,
+        0.34693
+      ],
+      "rotation_euler": [
+        1.5708,
+        0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.35305,
+        0.34527,
+        0.02653
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Button"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Torus.001",
+        "vertices": 576,
+        "edges": 1152,
+        "polygons": 576,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "DEF",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.00347,
+        -0.01646,
+        -0.06528
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.14308,
+        0.0847,
+        0.0216
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.004",
+        "vertices": 3318,
+        "edges": 6393,
+        "polygons": 3077,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 948,
+        "non_manifold_edges": 948,
+        "degenerate_faces": 3,
+        "ngons": 0,
+        "triangles": 470,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "GHI",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.21898,
+        -0.01646,
+        -0.06528
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.12679,
+        0.10755,
+        0.0216
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.001",
+        "vertices": 5110,
+        "edges": 9843,
+        "polygons": 4737,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1460,
+        "non_manifold_edges": 1460,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 722,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "Hinge",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.00035,
+        -0.09783,
+        0.68131
+      ],
+      "rotation_euler": [
+        1.62987,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.74029,
+        0.11978,
+        0.1191
+      ],
+      "parent": "Phone",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Phone Blue"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Cube.059",
+        "vertices": 1092,
+        "edges": 2176,
+        "polygons": 1088,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "JKL",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        -0.21733,
+        -0.01646,
+        -0.21213
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.10506,
+        0.10868,
+        0.0216
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.005",
+        "vertices": 1260,
+        "edges": 2400,
+        "polygons": 1150,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 360,
+        "non_manifold_edges": 360,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 160,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_!!",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.21676,
+        -0.01646,
+        -0.48733
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.20286,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.07508,
+        0.12392,
+        0.0316
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.002",
+        "vertices": 3416,
+        "edges": 6564,
+        "polygons": 3156,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 976,
+        "non_manifold_edges": 976,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 472,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_%%",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        -0.00035,
+        -0.01646,
+        -0.49715
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.22027,
+        0.12404,
+        0.0316
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.003",
+        "vertices": 5488,
+        "edges": 10572,
+        "polygons": 5088,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1568,
+        "non_manifold_edges": 1568,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 776,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_123",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        -0.21733,
+        -0.01646,
+        0.08608
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.21697,
+        0.13026,
+        0.03323
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.017",
+        "vertices": 3360,
+        "edges": 6462,
+        "polygons": 3108,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 960,
+        "non_manifold_edges": 960,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 468,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_456",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        -0.00035,
+        -0.01646,
+        0.08608
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.25552,
+        0.13285,
+        0.03323
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.018",
+        "vertices": 2996,
+        "edges": 5772,
+        "polygons": 2778,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 856,
+        "non_manifold_edges": 856,
+        "degenerate_faces": 2,
+        "ngons": 0,
+        "triangles": 424,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_789",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.21515,
+        -0.01646,
+        0.08608
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.24854,
+        0.13259,
+        0.03323
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.019",
+        "vertices": 4634,
+        "edges": 8937,
+        "polygons": 4303,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1324,
+        "non_manifold_edges": 1324,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 662,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_??",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        -0.20888,
+        -0.01646,
+        -0.48997
+      ],
+      "rotation_euler": [
+        1.5708,
+        0.36382,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.10394,
+        0.1241,
+        0.0316
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.020",
+        "vertices": 3388,
+        "edges": 6510,
+        "polygons": 3130,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 968,
+        "non_manifold_edges": 968,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 468,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_ABC",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        -0.21733,
+        -0.01646,
+        -0.06528
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.32975,
+        0.18411,
+        0.04751
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.021",
+        "vertices": 5208,
+        "edges": 10038,
+        "polygons": 4832,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1488,
+        "non_manifold_edges": 1488,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 740,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_ARCHIVE_00",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -3.8,
+        5.8,
+        1.2
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.5,
+        1.4,
+        2.4
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.035",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_ARCHIVE_01",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -1.0,
+        6.2,
+        1.5
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.5,
+        1.4,
+        3.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.036",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_ARCHIVE_02",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        2.0,
+        6.0,
+        1.8
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.5,
+        1.4,
+        3.6
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.037",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_ARCHIVE_03",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        4.4,
+        6.3,
+        1.4
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.5,
+        1.4,
+        2.8
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.038",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_ARCHIVE_04",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        7.5,
+        5.9,
+        2.1
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.5,
+        1.4,
+        4.2
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.039",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_ARCHIVE_05",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        10.0,
+        6.1,
+        1.35
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.5,
+        1.4,
+        2.7
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.040",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_ARCHIVE_FILL",
+      "type": "LIGHT",
+      "collections": [
+        "LS2_LIGHTS"
+      ],
+      "location": [
+        -8.0,
+        4.0,
+        5.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "LS2_CAMERA_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "AREA",
+        "energy": 450.0,
+        "color": [
+          0.22,
+          0.34,
+          0.62
+        ]
+      }
+    },
+    {
+      "name": "LS2_Buttons",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.00035,
+        -0.05608,
+        -0.03543
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.40483,
+        0.05506,
+        2.56634
+      ],
+      "parent": "LS2_Phone",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_WARM_IVORY"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Cube.001",
+        "vertices": 13139,
+        "edges": 26174,
+        "polygons": 13036,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 204,
+        "non_manifold_edges": 204,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_CAM_DORMANT",
+      "type": "CAMERA",
+      "collections": [
+        "LS2_RIG"
+      ],
+      "location": [
+        -5.8,
+        -10.4,
+        3.5
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "LS2_CAMERA_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": {
+        "action": "LS2_CAM_DORMANTAction",
+        "frame_range": [
+          1.0,
+          144.0
+        ],
+        "fcurves": 4,
+        "layers": 1,
+        "slots": 2
+      },
+      "custom_properties": [],
+      "camera": {
+        "type": "PERSP",
+        "lens": 56.0,
+        "sensor_width": 36.0,
+        "clip": [
+          0.10000000149011612,
+          1000.0
+        ],
+        "dof": true,
+        "focus_object": "LS2_CAMERA_FOCUS"
+      }
+    },
+    {
+      "name": "LS2_CAM_JOURNEY",
+      "type": "CAMERA",
+      "collections": [
+        "LS2_RIG"
+      ],
+      "location": [
+        -0.4,
+        -10.8,
+        3.7
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "LS2_CAMERA_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": {
+        "action": "LS2_CAM_JOURNEYAction",
+        "frame_range": [
+          145.0,
+          288.0
+        ],
+        "fcurves": 4,
+        "layers": 1,
+        "slots": 2
+      },
+      "custom_properties": [],
+      "camera": {
+        "type": "PERSP",
+        "lens": 52.0,
+        "sensor_width": 36.0,
+        "clip": [
+          0.10000000149011612,
+          1000.0
+        ],
+        "dof": true,
+        "focus_object": "LS2_CAMERA_FOCUS"
+      }
+    },
+    {
+      "name": "LS2_CAM_MESSAGE",
+      "type": "CAMERA",
+      "collections": [
+        "LS2_RIG"
+      ],
+      "location": [
+        5.5,
+        -8.4,
+        3.45
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "LS2_CAMERA_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": {
+        "action": "LS2_CAM_MESSAGEAction",
+        "frame_range": [
+          289.0,
+          432.0
+        ],
+        "fcurves": 4,
+        "layers": 1,
+        "slots": 2
+      },
+      "custom_properties": [],
+      "camera": {
+        "type": "PERSP",
+        "lens": 72.0,
+        "sensor_width": 36.0,
+        "clip": [
+          0.10000000149011612,
+          1000.0
+        ],
+        "dof": true,
+        "focus_object": "LS2_CAMERA_FOCUS"
+      }
+    },
+    {
+      "name": "LS2_CAM_RESTORED",
+      "type": "CAMERA",
+      "collections": [
+        "LS2_RIG"
+      ],
+      "location": [
+        1.0,
+        -11.6,
+        5.2
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "LS2_CAMERA_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": {
+        "action": "LS2_CAM_RESTOREDAction",
+        "frame_range": [
+          433.0,
+          720.0
+        ],
+        "fcurves": 4,
+        "layers": 1,
+        "slots": 2
+      },
+      "custom_properties": [],
+      "camera": {
+        "type": "PERSP",
+        "lens": 58.0,
+        "sensor_width": 36.0,
+        "clip": [
+          0.10000000149011612,
+          1000.0
+        ],
+        "dof": true,
+        "focus_object": "LS2_CAMERA_FOCUS"
+      }
+    },
+    {
+      "name": "LS2_CAMERA_FOCUS",
+      "type": "EMPTY",
+      "collections": [
+        "LS2_RIG"
+      ],
+      "location": [
+        0.0,
+        -0.08,
+        -0.3
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "LS2_PRODUCT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "LS2_CAMERA_FOCUSAction",
+        "frame_range": [
+          1.0,
+          482.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "LS2_CAMERA_TARGET",
+      "type": "EMPTY",
+      "collections": [
+        "LS2_RIG"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.3
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "LS2_PRODUCT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "LS2_CAMERA_TARGETAction",
+        "frame_range": [
+          1.0,
+          470.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "LS2_Circle",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.0,
+        -0.00091,
+        0.34693
+      ],
+      "rotation_euler": [
+        1.5708,
+        0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.7767,
+        0.7596,
+        0.05836
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_WARM_IVORY"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Torus.002",
+        "vertices": 576,
+        "edges": 1152,
+        "polygons": 576,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_DAIS",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        5.5,
+        0.0,
+        0.42
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        4.1,
+        4.1,
+        0.55
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cylinder",
+        "vertices": 192,
+        "edges": 288,
+        "polygons": 98,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 2,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_DAIS_INLAY",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        5.5,
+        0.0,
+        0.72
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        3.16,
+        3.16,
+        0.07
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_OXIDIZED_COPPER"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cylinder.001",
+        "vertices": 192,
+        "edges": 288,
+        "polygons": 98,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 2,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_DEF",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.00347,
+        -0.01646,
+        -0.06528
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.31477,
+        0.18635,
+        0.04751
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.022",
+        "vertices": 3318,
+        "edges": 6393,
+        "polygons": 3077,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 948,
+        "non_manifold_edges": 948,
+        "degenerate_faces": 3,
+        "ngons": 0,
+        "triangles": 470,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_FLOOR",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.28
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        26.0,
+        14.0,
+        0.56
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_FLOOR"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_GHI",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.21898,
+        -0.01646,
+        -0.06528
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.27893,
+        0.23661,
+        0.04751
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.023",
+        "vertices": 5110,
+        "edges": 9843,
+        "polygons": 4737,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1460,
+        "non_manifold_edges": 1460,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 722,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_HELLO_TYPE",
+      "type": "FONT",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.0,
+        -0.061,
+        0.066
+      ],
+      "rotation_euler": [
+        1.5708,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "dimensions": [
+        0.00141,
+        0.00034,
+        1e-05
+      ],
+      "parent": "LS2_Screen.001",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": {
+        "action": "LS2_HELLO_TYPEAction",
+        "frame_range": [
+          366.0,
+          720.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "LS2_Hinge",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.00035,
+        -0.09783,
+        0.68131
+      ],
+      "rotation_euler": [
+        0.02417,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.62863,
+        0.26352,
+        0.26202
+      ],
+      "parent": "LS2_Phone",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_OXIDIZED_COPPER"
+      ],
+      "animation": {
+        "action": "LS2_HingeAction",
+        "frame_range": [
+          1.0,
+          720.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Cube.005",
+        "vertices": 1092,
+        "edges": 2176,
+        "polygons": 1088,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_JKL",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        -0.21733,
+        -0.01646,
+        -0.21213
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.23113,
+        0.23909,
+        0.04751
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.024",
+        "vertices": 1260,
+        "edges": 2400,
+        "polygons": 1150,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 360,
+        "non_manifold_edges": 360,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 160,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_KEY_WARM",
+      "type": "LIGHT",
+      "collections": [
+        "LS2_LIGHTS"
+      ],
+      "location": [
+        -2.0,
+        -7.0,
+        7.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "LS2_CAMERA_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "AREA",
+        "energy": 950.0,
+        "color": [
+          1.0,
+          0.52,
+          0.28
+        ]
+      }
+    },
+    {
+      "name": "LS2_MNO",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.00347,
+        -0.01646,
+        -0.21213
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.43047,
+        0.13093,
+        0.04751
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.025",
+        "vertices": 3640,
+        "edges": 7008,
+        "polygons": 3372,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1040,
+        "non_manifold_edges": 1040,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 512,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_Phone",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.0,
+        0.08542,
+        -0.24854
+      ],
+      "rotation_euler": [
+        -0.72928,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.6707,
+        0.62668,
+        3.27251
+      ],
+      "parent": "LS2_PRODUCT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_GRAPHITE_CERAMIC"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Cube.006",
+        "vertices": 7968,
+        "edges": 15932,
+        "polygons": 7966,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PORTAL_0_SIDE_-1",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -6.85,
+        4.65,
+        2.8
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.3,
+        0.36,
+        5.6
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_PORTAL_0"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.026",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PORTAL_0_SIDE_1",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -4.15,
+        4.65,
+        2.8
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.3,
+        0.36,
+        5.6
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_PORTAL_0"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.027",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PORTAL_0_TOP",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -5.5,
+        4.65,
+        5.5
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        3.0,
+        0.36,
+        0.3
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_PORTAL_0"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.028",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PORTAL_1_SIDE_-1",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -1.35,
+        4.65,
+        2.8
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.3,
+        0.36,
+        5.6
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_PORTAL_1"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.029",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PORTAL_1_SIDE_1",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        1.35,
+        4.65,
+        2.8
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.3,
+        0.36,
+        5.6
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_PORTAL_1"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.030",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PORTAL_1_TOP",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        0.0,
+        4.65,
+        5.5
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        3.0,
+        0.36,
+        0.3
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_PORTAL_1"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.031",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PORTAL_2_SIDE_-1",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        4.15,
+        4.65,
+        2.8
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.3,
+        0.36,
+        5.6
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_PORTAL_2"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.032",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PORTAL_2_SIDE_1",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        6.85,
+        4.65,
+        2.8
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.3,
+        0.36,
+        5.6
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_PORTAL_2"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.033",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PORTAL_2_TOP",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        5.5,
+        4.65,
+        5.5
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        3.0,
+        0.36,
+        0.3
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_PORTAL_2"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.034",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PQR",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.21898,
+        -0.01646,
+        -0.21213
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.3411,
+        0.1834,
+        0.04751
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.026",
+        "vertices": 2954,
+        "edges": 5691,
+        "polygons": 2739,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 844,
+        "non_manifold_edges": 844,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 418,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PRODUCT_CARRIER",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -5.4,
+        0.0,
+        0.55
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.44,
+        2.06,
+        0.22
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_OXIDIZED_COPPER"
+      ],
+      "animation": {
+        "action": "LS2_PRODUCT_CARRIERAction",
+        "frame_range": [
+          1.0,
+          720.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.024",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PRODUCT_CARRIER_INLAY",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -5.4,
+        -0.88,
+        0.68
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.0,
+        0.07,
+        0.05
+      ],
+      "parent": "LS2_PRODUCT_CARRIER",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_TEAL_SIGNAL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.025",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_PRODUCT_ROOT",
+      "type": "EMPTY",
+      "collections": [
+        "LS2_RIG"
+      ],
+      "location": [
+        -5.4,
+        0.0,
+        2.7
+      ],
+      "rotation_euler": [
+        -0.03491,
+        0.02618,
+        -0.08727
+      ],
+      "scale": [
+        2.2,
+        2.2,
+        2.2
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "LS2_PRODUCT_ROOTAction",
+        "frame_range": [
+          1.0,
+          720.0
+        ],
+        "fcurves": 6,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "LS2_RAIL",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -1.4,
+        0.0,
+        0.16
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        12.6,
+        2.5,
+        0.24
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.001",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_00",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -7.4,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_OXIDIZED_COPPER"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.002",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_01",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -6.85,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.003",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_02",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -6.3,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.004",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_03",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -5.75,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.005",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_04",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -5.2,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_OXIDIZED_COPPER"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.006",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_05",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -4.65,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.007",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_06",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -4.1,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.008",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_07",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -3.55,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.009",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_08",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -3.0,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_OXIDIZED_COPPER"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.010",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_09",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -2.45,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.011",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_10",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -1.9,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.012",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_11",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -1.35,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.013",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_12",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -0.8,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_OXIDIZED_COPPER"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.014",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_13",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        -0.25,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.015",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_14",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        0.3,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.016",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_15",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        0.85,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.017",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_16",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        1.4,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_OXIDIZED_COPPER"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.018",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_17",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        1.95,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.019",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_18",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        2.5,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.020",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_19",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        3.05,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.021",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_20",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        3.6,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_OXIDIZED_COPPER"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.022",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RAIL_TIE_21",
+      "type": "MESH",
+      "collections": [
+        "LS2_OBSERVATORY"
+      ],
+      "location": [
+        4.15,
+        0.0,
+        0.34
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.36,
+        2.2,
+        0.09
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_STRUCTURE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.023",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_RIM_TEAL",
+      "type": "LIGHT",
+      "collections": [
+        "LS2_LIGHTS"
+      ],
+      "location": [
+        8.0,
+        3.0,
+        7.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "LS2_CAMERA_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "AREA",
+        "energy": 1250.0,
+        "color": [
+          0.12,
+          1.0,
+          0.82
+        ]
+      }
+    },
+    {
+      "name": "LS2_SCANNER",
+      "type": "MESH",
+      "collections": [
+        "LS2_FX"
+      ],
+      "location": [
+        -7.0,
+        -1.18,
+        2.2
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "dimensions": [
+        7e-05,
+        8e-05,
+        0.0036
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "LS2_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_TEAL_SIGNAL"
+      ],
+      "animation": {
+        "action": "LS2_SCANNERAction",
+        "frame_range": [
+          100.0,
+          154.0
+        ],
+        "fcurves": 6,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.041",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_Screen.001",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.0,
+        0.53192,
+        0.4219
+      ],
+      "rotation_euler": [
+        -0.91926,
+        0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.66836,
+        0.33599,
+        2.86097
+      ],
+      "parent": "LS2_Hinge",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_GRAPHITE_CERAMIC"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Cube.007",
+        "vertices": 9770,
+        "edges": 19536,
+        "polygons": 9768,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_Screen2",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.0,
+        -0.05626,
+        0.0657
+      ],
+      "rotation_euler": [
+        1.57186,
+        -0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.26292,
+        1.94696,
+        0.0
+      ],
+      "parent": "LS2_Screen.001",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_TEAL"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_ableton_fån_tst_1.002",
+        "vertices": 81,
+        "edges": 144,
+        "polygons": 64,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 32,
+        "non_manifold_edges": 32,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_Screws",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        -0.0,
+        -0.0586,
+        -0.47613
+      ],
+      "rotation_euler": [
+        0.68385,
+        1.53802,
+        2.17172
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.10609,
+        1.17895,
+        0.14878
+      ],
+      "parent": "LS2_Screen.001",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_OXIDIZED_COPPER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Sphere.001",
+        "vertices": 1196,
+        "edges": 2230,
+        "polygons": 1042,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 64,
+        "ngons": 70,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_Screws2",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.00035,
+        0.13747,
+        -0.44124
+      ],
+      "rotation_euler": [
+        1.56554,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.75191,
+        0.10438,
+        0.04827
+      ],
+      "parent": "LS2_Phone",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_OXIDIZED_COPPER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Sphere.002",
+        "vertices": 1196,
+        "edges": 2230,
+        "polygons": 1042,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 64,
+        "ngons": 70,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_Screws3",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.00035,
+        0.13747,
+        0.01444
+      ],
+      "rotation_euler": [
+        1.56554,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.75191,
+        0.10438,
+        0.04827
+      ],
+      "parent": "LS2_Phone",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_OXIDIZED_COPPER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Sphere.003",
+        "vertices": 1196,
+        "edges": 2230,
+        "polygons": 1042,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 64,
+        "ngons": 70,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_SIGNAL_RING_0",
+      "type": "MESH",
+      "collections": [
+        "LS2_FX"
+      ],
+      "location": [
+        5.5,
+        0.15,
+        2.75
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "dimensions": [
+        0.00386,
+        0.00386,
+        5e-05
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_TEAL_SIGNAL"
+      ],
+      "animation": {
+        "action": "LS2_SIGNAL_RING_0Action",
+        "frame_range": [
+          406.0,
+          482.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Torus",
+        "vertices": 720,
+        "edges": 1440,
+        "polygons": 720,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_SIGNAL_RING_1",
+      "type": "MESH",
+      "collections": [
+        "LS2_FX"
+      ],
+      "location": [
+        5.5,
+        0.15,
+        2.75
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "dimensions": [
+        0.00556,
+        0.00556,
+        5e-05
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_AMBER_SIGNAL"
+      ],
+      "animation": {
+        "action": "LS2_SIGNAL_RING_1Action",
+        "frame_range": [
+          428.0,
+          508.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Torus.001",
+        "vertices": 720,
+        "edges": 1440,
+        "polygons": 720,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_SIGNAL_RING_2",
+      "type": "MESH",
+      "collections": [
+        "LS2_FX"
+      ],
+      "location": [
+        5.5,
+        0.15,
+        2.75
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "dimensions": [
+        0.00736,
+        0.00736,
+        5e-05
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_TEAL_SIGNAL"
+      ],
+      "animation": {
+        "action": "LS2_SIGNAL_RING_2Action",
+        "frame_range": [
+          450.0,
+          534.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Torus.002",
+        "vertices": 720,
+        "edges": 1440,
+        "polygons": 720,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_STU",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        -0.21733,
+        -0.01646,
+        -0.36214
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.28459,
+        0.16456,
+        0.04751
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.027",
+        "vertices": 3472,
+        "edges": 6678,
+        "polygons": 3212,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 992,
+        "non_manifold_edges": 992,
+        "degenerate_faces": 2,
+        "ngons": 0,
+        "triangles": 484,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_TOP_SOFT",
+      "type": "LIGHT",
+      "collections": [
+        "LS2_LIGHTS"
+      ],
+      "location": [
+        3.0,
+        0.0,
+        10.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "LS2_CAMERA_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "AREA",
+        "energy": 700.0,
+        "color": [
+          0.56,
+          0.68,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "LS2_VW",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.00347,
+        -0.01646,
+        -0.36214
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.30466,
+        0.12875,
+        0.04751
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.028",
+        "vertices": 280,
+        "edges": 528,
+        "polygons": 252,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 80,
+        "non_manifold_edges": 80,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "LS2_XYZ",
+      "type": "MESH",
+      "collections": [
+        "LS2_PRODUCT"
+      ],
+      "location": [
+        0.21898,
+        -0.01646,
+        -0.36214
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.35924,
+        0.18125,
+        0.04751
+      ],
+      "parent": "LS2_Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "LS2_MAT_SCREEN_LETTER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.029",
+        "vertices": 392,
+        "edges": 738,
+        "polygons": 352,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 112,
+        "non_manifold_edges": 112,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 44,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "MNO",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.00347,
+        -0.01646,
+        -0.21213
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.19567,
+        0.05951,
+        0.0216
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.006",
+        "vertices": 3640,
+        "edges": 7008,
+        "polygons": 3372,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1040,
+        "non_manifold_edges": 1040,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 512,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "Phone",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.0,
+        0.08542,
+        -0.24854
+      ],
+      "rotation_euler": [
+        -0.72928,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.75941,
+        0.28485,
+        1.48751
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Phone Blue"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Cube.003",
+        "vertices": 7968,
+        "edges": 15932,
+        "polygons": 7966,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "PQR",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.21898,
+        -0.01646,
+        -0.21213
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.15505,
+        0.08337,
+        0.0216
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.007",
+        "vertices": 2954,
+        "edges": 5691,
+        "polygons": 2739,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 844,
+        "non_manifold_edges": 844,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 418,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "Screen.001",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.0,
+        0.53192,
+        0.4219
+      ],
+      "rotation_euler": [
+        -0.91926,
+        0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.75835,
+        0.15272,
+        1.30044
+      ],
+      "parent": "Hinge",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Phone Blue"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Cube.004",
+        "vertices": 9770,
+        "edges": 19536,
+        "polygons": 9768,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "Screen2",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.0,
+        -0.05626,
+        0.0657
+      ],
+      "rotation_euler": [
+        1.57186,
+        -0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.57405,
+        0.88498,
+        0.0
+      ],
+      "parent": "Screen.001",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Screen.001"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_ableton_fån_tst_1.001",
+        "vertices": 81,
+        "edges": 144,
+        "polygons": 64,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 32,
+        "non_manifold_edges": 32,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "Screws",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        -0.0,
+        -0.0586,
+        -0.47613
+      ],
+      "rotation_euler": [
+        0.68385,
+        1.53802,
+        2.17172
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.04822,
+        0.53589,
+        0.06763
+      ],
+      "parent": "Screen.001",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Screws"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Sphere.019",
+        "vertices": 1196,
+        "edges": 2230,
+        "polygons": 1042,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 64,
+        "ngons": 70,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "Screws2",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.00035,
+        0.13747,
+        -0.44124
+      ],
+      "rotation_euler": [
+        1.56554,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.34178,
+        0.04744,
+        0.02194
+      ],
+      "parent": "Phone",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Screws"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Sphere.017",
+        "vertices": 1196,
+        "edges": 2230,
+        "polygons": 1042,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 64,
+        "ngons": 70,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "Screws3",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.00035,
+        0.13747,
+        0.01444
+      ],
+      "rotation_euler": [
+        1.56554,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.34178,
+        0.04744,
+        0.02194
+      ],
+      "parent": "Phone",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Screws"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Sphere.018",
+        "vertices": 1196,
+        "edges": 2230,
+        "polygons": 1042,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 64,
+        "ngons": 70,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "STU",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        -0.21733,
+        -0.01646,
+        -0.36214
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.12936,
+        0.0748,
+        0.0216
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.010",
+        "vertices": 3472,
+        "edges": 6678,
+        "polygons": 3212,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 992,
+        "non_manifold_edges": 992,
+        "degenerate_faces": 2,
+        "ngons": 0,
+        "triangles": 484,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "VW",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.00347,
+        -0.01646,
+        -0.36214
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.13848,
+        0.05852,
+        0.0216
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.009",
+        "vertices": 280,
+        "edges": 528,
+        "polygons": 252,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 80,
+        "non_manifold_edges": 80,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "XYZ",
+      "type": "MESH",
+      "collections": [
+        "LS2_SOURCE_FLIP_PHONE"
+      ],
+      "location": [
+        0.21898,
+        -0.01646,
+        -0.36214
+      ],
+      "rotation_euler": [
+        1.5708,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.16329,
+        0.08239,
+        0.0216
+      ],
+      "parent": "Buttons",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "DRUMBOII_FLIP_PHONE_Text"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_source_fbx"
+      ],
+      "geometry": {
+        "mesh": "DRUMBOII_FLIP_PHONE_Text.008",
+        "vertices": 392,
+        "edges": 738,
+        "polygons": 352,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 112,
+        "non_manifold_edges": 112,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 44,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    }
+  ],
+  "materials": [
+    {
+      "name": "DRUMBOII_FLIP_PHONE_Button",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "DRUMBOII_FLIP_PHONE_Buttons Blue",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "DRUMBOII_FLIP_PHONE_Buttons Under",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "DRUMBOII_FLIP_PHONE_Phone Blue",
+      "users": 3,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "DRUMBOII_FLIP_PHONE_Screen.001",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "DRUMBOII_FLIP_PHONE_Screws",
+      "users": 3,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "DRUMBOII_FLIP_PHONE_Text",
+      "users": 15,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "LS2_MAT_AMBER_SIGNAL",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "LS2_MAT_FLOOR",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "label": ""
+        },
+        {
+          "name": "Bump",
+          "type": "ShaderNodeBump",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "LS2_MAT_GRAPHITE_CERAMIC",
+      "users": 2,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "label": ""
+        },
+        {
+          "name": "Bump",
+          "type": "ShaderNodeBump",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "LS2_MAT_OXIDIZED_COPPER",
+      "users": 12,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "label": ""
+        },
+        {
+          "name": "Bump",
+          "type": "ShaderNodeBump",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "LS2_MAT_PORTAL_0",
+      "users": 3,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "LS2_MAT_PORTAL_1",
+      "users": 3,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "LS2_MAT_PORTAL_2",
+      "users": 3,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "LS2_MAT_SCREEN_LETTER",
+      "users": 16,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "LS2_MAT_SCREEN_TEAL",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "LS2_MAT_STRUCTURE",
+      "users": 24,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "label": ""
+        },
+        {
+          "name": "Bump",
+          "type": "ShaderNodeBump",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "LS2_MAT_TEAL_SIGNAL",
+      "users": 4,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "LS2_MAT_WARM_IVORY",
+      "users": 2,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    }
+  ],
+  "images": [],
+  "assets": [],
+  "external_libraries": [],
+  "issues": {
+    "missing_images": [],
+    "objects_with_unapplied_scale": [
+      "LS2_SCANNER",
+      "LS2_SIGNAL_RING_0",
+      "LS2_SIGNAL_RING_1",
+      "LS2_SIGNAL_RING_2"
+    ],
+    "unnamed_objects": [],
+    "geometry": {
+      "!!": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 976,
+        "non_manifold_edges": 976,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 472,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "%%": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1568,
+        "non_manifold_edges": 1568,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 776,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "123": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 960,
+        "non_manifold_edges": 960,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 468,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "456": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 856,
+        "non_manifold_edges": 856,
+        "degenerate_faces": 2,
+        "ngons": 0,
+        "triangles": 424,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "789": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1324,
+        "non_manifold_edges": 1324,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 662,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "??": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 968,
+        "non_manifold_edges": 968,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 468,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "ABC": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1488,
+        "non_manifold_edges": 1488,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 740,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "Buttons": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 204,
+        "non_manifold_edges": 204,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "DEF": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 948,
+        "non_manifold_edges": 948,
+        "degenerate_faces": 3,
+        "ngons": 0,
+        "triangles": 470,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "GHI": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1460,
+        "non_manifold_edges": 1460,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 722,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "JKL": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 360,
+        "non_manifold_edges": 360,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 160,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_!!": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 976,
+        "non_manifold_edges": 976,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 472,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_%%": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1568,
+        "non_manifold_edges": 1568,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 776,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_123": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 960,
+        "non_manifold_edges": 960,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 468,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_456": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 856,
+        "non_manifold_edges": 856,
+        "degenerate_faces": 2,
+        "ngons": 0,
+        "triangles": 424,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_789": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1324,
+        "non_manifold_edges": 1324,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 662,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_??": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 968,
+        "non_manifold_edges": 968,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 468,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_ABC": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1488,
+        "non_manifold_edges": 1488,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 740,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_Buttons": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 204,
+        "non_manifold_edges": 204,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_DEF": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 948,
+        "non_manifold_edges": 948,
+        "degenerate_faces": 3,
+        "ngons": 0,
+        "triangles": 470,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_GHI": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1460,
+        "non_manifold_edges": 1460,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 722,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_JKL": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 360,
+        "non_manifold_edges": 360,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 160,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_MNO": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1040,
+        "non_manifold_edges": 1040,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 512,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_PQR": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 844,
+        "non_manifold_edges": 844,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 418,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_Screen2": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 32,
+        "non_manifold_edges": 32,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_Screws": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 64,
+        "ngons": 70,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_Screws2": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 64,
+        "ngons": 70,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_Screws3": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 64,
+        "ngons": 70,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_STU": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 992,
+        "non_manifold_edges": 992,
+        "degenerate_faces": 2,
+        "ngons": 0,
+        "triangles": 484,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_VW": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 80,
+        "non_manifold_edges": 80,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "LS2_XYZ": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 112,
+        "non_manifold_edges": 112,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 44,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "MNO": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 1040,
+        "non_manifold_edges": 1040,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 512,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "PQR": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 844,
+        "non_manifold_edges": 844,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 418,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "Screen2": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 32,
+        "non_manifold_edges": 32,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "Screws": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 64,
+        "ngons": 70,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "Screws2": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 64,
+        "ngons": 70,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "Screws3": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 64,
+        "ngons": 70,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "STU": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 992,
+        "non_manifold_edges": 992,
+        "degenerate_faces": 2,
+        "ngons": 0,
+        "triangles": 484,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "VW": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 80,
+        "non_manifold_edges": 80,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "XYZ": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 112,
+        "non_manifold_edges": 112,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 44,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    "scenes_without_camera": [],
+    "scenes_without_units": []
+  }
+}

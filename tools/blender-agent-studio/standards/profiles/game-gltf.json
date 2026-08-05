@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "id": "game-gltf",
+  "domain": "game-asset",
+  "blender_units": "meters",
+  "target": "engine-neutral glTF 2.0",
+  "target_axes": {"up": "Y", "forward": "-Z", "verification": "independent glTF viewer and target engine"},
+  "budgets_must_be_declared": ["triangles_per_lod", "materials", "texture_memory", "bones", "bone_influences"],
+  "required_gates": [
+    "scale", "orientation", "pivot", "lod", "collision", "uv", "tangents",
+    "materials", "skeleton_and_clips_if_present", "gltf_reimport", "target_engine_import"
+  ],
+  "default_formats": ["glb"],
+  "final_validator": "workflows/tools/validate_team_project.py"
+}

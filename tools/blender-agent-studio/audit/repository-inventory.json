@@ -1,0 +1,871 @@
+{
+  "schema_version": 1,
+  "root": ".",
+  "totals": {
+    "files": 810,
+    "bytes": 18801754,
+    "symlinks": 0
+  },
+  "extensions": {
+    ".json": 416,
+    ".md": 193,
+    ".py": 164,
+    ".srt": 8,
+    "[none]": 6,
+    ".sh": 6,
+    ".txt": 5,
+    ".yml": 2,
+    ".yaml": 1,
+    ".toml": 1,
+    ".example": 1,
+    ".swift": 1,
+    ".plist": 1,
+    ".js": 1,
+    ".html": 1,
+    ".css": 1,
+    ".jsonl": 1,
+    ".csv": 1
+  },
+  "largest_files": [
+    {
+      "path": "catalog/assets.json",
+      "bytes": 8721546
+    },
+    {
+      "path": "knowledge/tutorials/beginner-blender-tutorial-2026/transcript-source.json",
+      "bytes": 1024582
+    },
+    {
+      "path": "knowledge/tutorials/beginner-blender-tutorial-2026/transcript.json",
+      "bytes": 877537
+    },
+    {
+      "path": "knowledge/tutorials/beginner-blender-tutorial-2026/transcript-source.srt",
+      "bytes": 434261
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pulsed-bench-demo-v001/diagnostics/scene-audit.json",
+      "bytes": 263246
+    },
+    {
+      "path": "projects/flip-phone-signal-film/final-audit/scene-audit.json",
+      "bytes": 257317
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/object-sculpt-spec.json",
+      "bytes": 219190
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-transparent-audio-deck-git-v002/object-sculpt-spec.json",
+      "bytes": 218851
+    },
+    {
+      "path": "knowledge/tutorials/ray-ban-product-animation/transcript-source.json",
+      "bytes": 207187
+    },
+    {
+      "path": "projects/flip-phone-signal-film/review-v1/motion-analysis.json",
+      "bytes": 187851
+    },
+    {
+      "path": "projects/flip-phone-signal-film-v2/final-review/motion-analysis-v2.json",
+      "bytes": 183551
+    },
+    {
+      "path": "projects/flip-phone-signal-film-v2/final-audit/scene-audit.json",
+      "bytes": 163077
+    },
+    {
+      "path": "knowledge/tutorials/ray-ban-product-animation/transcript.json",
+      "bytes": 150293
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/diagnostics/scene-audit.json",
+      "bytes": 129588
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/diagnostics/physical-validation.json",
+      "bytes": 127856
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/diagnostics/scene-audit.json",
+      "bytes": 126585
+    },
+    {
+      "path": "blender_mcp_addon.py",
+      "bytes": 118487
+    },
+    {
+      "path": "vendor/blender-mcp/addon.py",
+      "bytes": 118487
+    },
+    {
+      "path": "backups/addons/blender_mcp_addon-legacy-2026-07-18.py",
+      "bytes": 112941
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-fable-v001/diagnostics/physical-validation.json",
+      "bytes": 111229
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/diagnostics/spatial/scene-spatial-graph.json",
+      "bytes": 108322
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-fable-v001/diagnostics/scene-audit.json",
+      "bytes": 97666
+    },
+    {
+      "path": "projects/fl-studio-box-character-animation/analysis/step0-scene-structure.json",
+      "bytes": 95755
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/diagnostics/film-motion.json",
+      "bytes": 91660
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/diagnostics/scene-spatial-graph.json",
+      "bytes": 85966
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/diagnostics/scene-audit.json",
+      "bytes": 78149
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/diagnostics/scene-audit.json",
+      "bytes": 75378
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-kimi-v001/diagnostics/physical-validation.json",
+      "bytes": 74121
+    },
+    {
+      "path": "knowledge/tutorials/ray-ban-product-animation/transcript-source.srt",
+      "bytes": 74012
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/diagnostics/motion-plan.json",
+      "bytes": 72489
+    },
+    {
+      "path": "knowledge/tutorials/wireless-pods-animation-polygon-runway/transcript.json",
+      "bytes": 70820
+    },
+    {
+      "path": "knowledge/tutorials/wireless-pods-animation-polygon-runway/transcript-source.json",
+      "bytes": 69213
+    },
+    {
+      "path": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/transcript-source.json",
+      "bytes": 66912
+    },
+    {
+      "path": "asset_library/imported/drumboii-y2k-assets.manifest.json",
+      "bytes": 62197
+    },
+    {
+      "path": "asset_sources/drumboii-y2k/audit.json",
+      "bytes": 62197
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/diagnostics/self-review-motion.json",
+      "bytes": 61285
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/diagnostics/deep-audit/scene-audit.json",
+      "bytes": 60156
+    },
+    {
+      "path": "projects/fl-studio-box-character-animation/diagnostics/deep-audit/scene-audit.json",
+      "bytes": 60153
+    },
+    {
+      "path": "knowledge/tutorials/factory-animation-polygon-runway/transcript-source.json",
+      "bytes": 58793
+    },
+    {
+      "path": "knowledge/tutorials/factory-animation-polygon-runway/transcript.json",
+      "bytes": 58408
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/diagnostics/spatial/scene-spatial-graph.json",
+      "bytes": 54100
+    },
+    {
+      "path": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/transcript.json",
+      "bytes": 54012
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-transparent-audio-deck-git-v002/diagnostics/img2threejs/object-sculpt-spec-upstream-starter.json",
+      "bytes": 49748
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/diagnostics/scene-spatial-graph.json",
+      "bytes": 47685
+    },
+    {
+      "path": "workflows/scripts/build_golem_de_gres.py",
+      "bytes": 43430
+    },
+    {
+      "path": "workflows/scripts/object_sculpt_spec_to_blender.py",
+      "bytes": 42897
+    },
+    {
+      "path": "catalog/blender-scenes.json",
+      "bytes": 42762
+    },
+    {
+      "path": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/transcript-source.json",
+      "bytes": 38164
+    },
+    {
+      "path": "projects/fl-studio-box-character-animation/diagnostics/spatial/scene-spatial-graph.json",
+      "bytes": 37760
+    },
+    {
+      "path": "projects/fl-studio-box-character-animation/analysis/template-structure.json",
+      "bytes": 35740
+    },
+    {
+      "path": "knowledge/tutorials/wireless-pods-animation-polygon-runway/transcript-source.srt",
+      "bytes": 35010
+    },
+    {
+      "path": "workflows/tools/create_tutorial_synthesis_campaign.py",
+      "bytes": 34526
+    },
+    {
+      "path": "app/backend/main.py",
+      "bytes": 34209
+    },
+    {
+      "path": "app/static/app.js",
+      "bytes": 32463
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/build_film.py",
+      "bytes": 29555
+    },
+    {
+      "path": "knowledge/tutorials/factory-animation-polygon-runway/transcript-source.srt",
+      "bytes": 28907
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-fable-v001/diagnostics/motion-plan.json",
+      "bytes": 28712
+    },
+    {
+      "path": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/transcript-source.json",
+      "bytes": 28619
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001/iterations/build_scene.py",
+      "bytes": 27572
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-fable-v001/scripts/animate.py",
+      "bytes": 27423
+    },
+    {
+      "path": "knowledge/tutorials/drumboii-camera-tutorial-2026-07-18/transcript-source.srt",
+      "bytes": 26615
+    },
+    {
+      "path": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/transcript.json",
+      "bytes": 26596
+    },
+    {
+      "path": "renders/agent-workflow-demo-2026-07-19_150706/01-spatial/scene-spatial-graph.json",
+      "bytes": 26526
+    },
+    {
+      "path": "renders/agent-workflow-demo-2026-07-19_150728/01-spatial/scene-spatial-graph.json",
+      "bytes": 26526
+    },
+    {
+      "path": "renders/agent-workflow-demo-2026-07-19_150809/01-spatial/scene-spatial-graph.json",
+      "bytes": 26526
+    },
+    {
+      "path": "renders/agent-workflow-demo-2026-07-19_150833/01-spatial/scene-spatial-graph.json",
+      "bytes": 26526
+    },
+    {
+      "path": "workflows/scripts/normalize_object_sculpt_spec_blender_recipe.py",
+      "bytes": 25813
+    },
+    {
+      "path": "audit/blend-open-report.json",
+      "bytes": 25053
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/scripts/build_character.py",
+      "bytes": 24307
+    },
+    {
+      "path": "catalog/asset-families.json",
+      "bytes": 24167
+    },
+    {
+      "path": "projects/fl-studio-box-character-animation/analysis/template-keyframes-bounds.json",
+      "bytes": 23897
+    },
+    {
+      "path": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/transcript.json",
+      "bytes": 23456
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/build_slope_run.py",
+      "bytes": 23406
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-transparent-audio-deck-git-v002/pre-spec-assessment.json",
+      "bytes": 22023
+    },
+    {
+      "path": "workflows/tools/create_flip_phone_signal_film.py",
+      "bytes": 20966
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-fable-v001/diagnostics/skeleton-fit.json",
+      "bytes": 20952
+    },
+    {
+      "path": "workflows/scripts/create_mecha_mascot_asset.py",
+      "bytes": 20879
+    },
+    {
+      "path": "workflows/tools/create_flip_phone_signal_film_v2.py",
+      "bytes": 19729
+    },
+    {
+      "path": "audit/repository-inventory.json",
+      "bytes": 19678
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-transparent-audio-deck-v001/pre-spec-assessment.json",
+      "bytes": 19491
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v002/diagnostics/scene-audit.json",
+      "bytes": 19464
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v001/diagnostics/scene-audit.json",
+      "bytes": 19388
+    },
+    {
+      "path": "knowledge/tutorials/drumboii-chains-movements-2026-07-31/analysis.json",
+      "bytes": 18946
+    },
+    {
+      "path": "projects/tutorial-synthesis-lab-2026-07-19/validation-report.json",
+      "bytes": 17750
+    },
+    {
+      "path": "workflows/tools/validate_kimi_scene_trial.py",
+      "bytes": 17681
+    },
+    {
+      "path": "workflows/tools/validate_scene_trial.py",
+      "bytes": 17670
+    },
+    {
+      "path": "projects/golem-de-gres/golem-trace.json",
+      "bytes": 16454
+    },
+    {
+      "path": "projects/fl-studio-box-character-animation/scripts/build_scenes.py",
+      "bytes": 16104
+    },
+    {
+      "path": "workflows/tools/create_gameboii_arcade_scene.py",
+      "bytes": 15649
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/diagnostics/view/scene-view-diagnostics.json",
+      "bytes": 15404
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-kimi-v001/scene/animate_runner.py",
+      "bytes": 15401
+    },
+    {
+      "path": "projects/fl-studio-box-character-animation/diagnostics/view/scene-view-diagnostics.json",
+      "bytes": 15114
+    },
+    {
+      "path": "knowledge/tutorials/beginner-blender-tutorial-2026/analysis.json",
+      "bytes": 15064
+    },
+    {
+      "path": "audits/pulsed-3d-preflight.md",
+      "bytes": 14407
+    },
+    {
+      "path": "workflows/tools/create_blob_speaker_camera_study.py",
+      "bytes": 14299
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-pulsed-bench-demo-v001/build_trial.py",
+      "bytes": 14260
+    },
+    {
+      "path": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-fable-v001/diagnostics/box-analysis.json",
+      "bytes": 13968
+    },
+    {
+      "path": "app/static/style.css",
+      "bytes": 13659
+    },
+    {
+      "path": "tools/build_asset_catalog.py",
+      "bytes": 13544
+    },
+    {
+      "path": "vendor/blender-mcp/README.md",
+      "bytes": 13415
+    }
+  ],
+  "symlinks": [],
+  "broken_symlinks": 0,
+  "json_errors": [],
+  "python_errors": [],
+  "active_personal_absolute_paths": [],
+  "catalog": [
+    {
+      "id": "arc-crane-vertigo",
+      "execution": "mcp",
+      "mutates_scene": true,
+      "requires_confirmation": true,
+      "enabled_in_app": true,
+      "evidence_level": "operation",
+      "domains": [
+        "cinematic"
+      ],
+      "maturity": "stable-specialized",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "build-camera-shot",
+      "execution": "mcp",
+      "mutates_scene": true,
+      "requires_confirmation": true,
+      "enabled_in_app": true,
+      "evidence_level": "operation",
+      "domains": [
+        "cinematic",
+        "still"
+      ],
+      "maturity": "stable",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "create-mecha-mascot-asset",
+      "execution": "batch",
+      "mutates_scene": true,
+      "requires_confirmation": true,
+      "enabled_in_app": false,
+      "evidence_level": "operation",
+      "domains": [
+        "asset"
+      ],
+      "maturity": "project-derived",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "deep-audit-scene",
+      "execution": "mcp",
+      "mutates_scene": false,
+      "requires_confirmation": false,
+      "enabled_in_app": true,
+      "evidence_level": "diagnostic",
+      "domains": [
+        "all"
+      ],
+      "maturity": "stable",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "drumboiii-lighting-gate",
+      "execution": "mcp",
+      "mutates_scene": true,
+      "requires_confirmation": true,
+      "enabled_in_app": true,
+      "evidence_level": "diagnostic",
+      "domains": [
+        "cinematic",
+        "still"
+      ],
+      "maturity": "stable-specialized",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "export-glb",
+      "execution": "mcp",
+      "mutates_scene": true,
+      "requires_confirmation": true,
+      "enabled_in_app": true,
+      "evidence_level": "operation",
+      "domains": [
+        "asset",
+        "game-asset",
+        "rig",
+        "animation",
+        "environment"
+      ],
+      "maturity": "stable",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "hover-loop",
+      "execution": "mcp",
+      "mutates_scene": true,
+      "requires_confirmation": true,
+      "enabled_in_app": false,
+      "evidence_level": "operation",
+      "domains": [
+        "animation",
+        "cinematic"
+      ],
+      "maturity": "experimental",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "image-to-blender-asset",
+      "execution": "batch",
+      "mutates_scene": true,
+      "requires_confirmation": true,
+      "enabled_in_app": false,
+      "evidence_level": "operation",
+      "domains": [
+        "asset",
+        "game-asset"
+      ],
+      "maturity": "experimental",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "inspect-scene",
+      "execution": "mcp",
+      "mutates_scene": false,
+      "requires_confirmation": false,
+      "enabled_in_app": true,
+      "evidence_level": "diagnostic",
+      "domains": [
+        "all"
+      ],
+      "maturity": "stable",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "iteration-manifest",
+      "execution": "mcp",
+      "mutates_scene": false,
+      "requires_confirmation": false,
+      "enabled_in_app": true,
+      "evidence_level": "diagnostic",
+      "domains": [
+        "all"
+      ],
+      "maturity": "stable",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "lowrise-orbit",
+      "execution": "mcp",
+      "mutates_scene": true,
+      "requires_confirmation": true,
+      "enabled_in_app": true,
+      "evidence_level": "operation",
+      "domains": [
+        "cinematic"
+      ],
+      "maturity": "stable-specialized",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "product-orbit",
+      "execution": "mcp",
+      "mutates_scene": true,
+      "requires_confirmation": true,
+      "enabled_in_app": true,
+      "evidence_level": "operation",
+      "domains": [
+        "asset",
+        "cinematic",
+        "still"
+      ],
+      "maturity": "stable",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "relink-fl-studio-box-media",
+      "execution": "mcp",
+      "mutates_scene": true,
+      "requires_confirmation": true,
+      "enabled_in_app": false,
+      "evidence_level": "operation",
+      "domains": [
+        "cinematic"
+      ],
+      "maturity": "historical",
+      "scope": "historical-project-specific",
+      "script_exists": true
+    },
+    {
+      "id": "render-keyframes",
+      "execution": "mcp",
+      "mutates_scene": true,
+      "requires_confirmation": true,
+      "enabled_in_app": true,
+      "evidence_level": "operation",
+      "domains": [
+        "asset",
+        "game-asset",
+        "rig",
+        "animation",
+        "environment",
+        "procedural",
+        "cinematic",
+        "still"
+      ],
+      "maturity": "stable",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "scene-spatial-graph",
+      "execution": "mcp",
+      "mutates_scene": false,
+      "requires_confirmation": false,
+      "enabled_in_app": true,
+      "evidence_level": "diagnostic",
+      "domains": [
+        "all"
+      ],
+      "maturity": "stable",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "scene-view-diagnostics",
+      "execution": "mcp",
+      "mutates_scene": false,
+      "requires_confirmation": false,
+      "enabled_in_app": true,
+      "evidence_level": "diagnostic",
+      "domains": [
+        "all"
+      ],
+      "maturity": "stable",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "studio-lighting",
+      "execution": "mcp",
+      "mutates_scene": true,
+      "requires_confirmation": true,
+      "enabled_in_app": true,
+      "evidence_level": "operation",
+      "domains": [
+        "asset",
+        "game-asset",
+        "environment",
+        "cinematic",
+        "still"
+      ],
+      "maturity": "stable",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    },
+    {
+      "id": "validate-articulated-object",
+      "execution": "mcp",
+      "mutates_scene": false,
+      "requires_confirmation": false,
+      "enabled_in_app": true,
+      "evidence_level": "preliminary",
+      "domains": [
+        "asset",
+        "game-asset",
+        "rig"
+      ],
+      "maturity": "preliminary",
+      "scope": "generic-or-adaptable",
+      "script_exists": true
+    }
+  ],
+  "nested_git_directories": [],
+  "duplicate_groups": [
+    {
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size": 1,
+      "paths": [
+        "app/backend/__init__.py",
+        "renders/.gitkeep"
+      ]
+    },
+    {
+      "sha256": "07780cdb7eeeea288b8d92e401f11b6e1e389fb0c35e640b43d63c049fe09c34",
+      "size": 62197,
+      "paths": [
+        "asset_library/imported/drumboii-y2k-assets.manifest.json",
+        "asset_sources/drumboii-y2k/audit.json"
+      ]
+    },
+    {
+      "sha256": "b63f6e4c7ec6dcade48da8e8ec4e38070be649b65e4e7d03f9159dbbe4c3c01c",
+      "size": 524,
+      "paths": [
+        "assets_blender/_gen-runs/bottom-edge/runs/2026-06-10-0953-yrXtUWa76eEE-nano-banana-pro-4k-seed710004/refs-manifest.json",
+        "assets_blender/_gen-runs/top-edge/runs/2026-06-10-0949-QbCi-viDBt2p-nano-banana-pro-4k-seed710002/refs-manifest.json",
+        "assets_blender/_gen-runs/top-edge/runs/2026-06-10-1014-NhRqyXGNbrQU-v2-nano-banana-pro-4k-seed720001/refs-manifest.json"
+      ]
+    },
+    {
+      "sha256": "da5cf713225c3dcd20b76872ad1608d96579321b70c2ed4b5af2e192af2ee115",
+      "size": 322,
+      "paths": [
+        "assets_blender/_gen-runs/front-uncropped/runs/2026-06-10-1016-jKxsPR5zm9uJ-v2-nano-banana-pro-4k-seed720002/refs-manifest.json",
+        "assets_blender/_gen-runs/front-uncropped/runs/2026-06-10-1018-HThthRHtxjaB-v2-nano-banana-pro-4k-seed720012/refs-manifest.json"
+      ]
+    },
+    {
+      "sha256": "ce7643418cf1a65a796e71d0b1fdf69e71f2d31af16649faf4420e49c92814d8",
+      "size": 502,
+      "paths": [
+        "assets_blender/_gen-runs/side-right/runs/2026-06-10-0943-lgzd4me9bZBz-nano-banana-pro-4k-seed710001/refs-manifest.json",
+        "assets_blender/_gen-runs/side-right/runs/2026-06-10-0945-nMXedD7Mp0p6-nano-banana-pro-4k-seed710011/refs-manifest.json",
+        "assets_blender/_gen-runs/side-right/runs/2026-06-10-0947-qyPJgBu9y_32-nano-banana-pro-4k-seed710021/refs-manifest.json"
+      ]
+    },
+    {
+      "sha256": "bba60831f5f89a74deda0294b131668a086cf46eb35a6a01abbd0d21d9e92630",
+      "size": 118487,
+      "paths": [
+        "blender_mcp_addon.py",
+        "vendor/blender-mcp/addon.py"
+      ]
+    },
+    {
+      "sha256": "68d9b6708d9fac0c375653e779023c5d7d954ec1d74a2d1a080f154d00229b9c",
+      "size": 1634,
+      "paths": [
+        "projects/fl-studio-box-character-animation/CREATED_OBJECTS.md",
+        "projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/CREATED_OBJECTS.md"
+      ]
+    },
+    {
+      "sha256": "822687fae8a95445a4ae309f2059868f7411e8785823b803b33345c85c1bd7b6",
+      "size": 3561,
+      "paths": [
+        "projects/fl-studio-box-character-animation/FINAL_REVIEW.md",
+        "projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/FINAL_REVIEW.md"
+      ]
+    },
+    {
+      "sha256": "397ab6ad2dccf9176a4cc1da895efac6443f2388bb9b0e3db25a2fc5e8d408c9",
+      "size": 1078,
+      "paths": [
+        "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-fable-v001/scripts/render_frames.py",
+        "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/scripts/render_frames.py"
+      ]
+    },
+    {
+      "sha256": "83e7818ab1733de300574f88bee85471ca0687de6f3c777cb11124d02a9277b1",
+      "size": 605,
+      "paths": [
+        "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-fable-v001/scripts/run_workflow.py",
+        "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001/scripts/run_workflow.py"
+      ]
+    },
+    {
+      "sha256": "6cfc66800ce708a3e9166b790dd15e933d5d796848de5b53d6acfd3bb5de644d",
+      "size": 2133,
+      "paths": [
+        "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/lighting-gate-manifest.json",
+        "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-codex-v001/gates/lighting-v1/lighting-gate-manifest.json"
+      ]
+    },
+    {
+      "sha256": "af36e9c959cad449d387c06f5cdcf61b9fbec7dc17d4c53cb71bf559e6dd2f52",
+      "size": 487,
+      "paths": [
+        "renders/agent-workflow-demo-2026-07-19_150706/01-spatial/02-camera/03-iteration-continue/04-iteration-stop/iteration-manifest.json",
+        "renders/agent-workflow-demo-2026-07-19_150728/04-iteration-stop/iteration-manifest.json",
+        "renders/agent-workflow-demo-2026-07-19_150809/04-iteration-stop/iteration-manifest.json",
+        "renders/agent-workflow-demo-2026-07-19_150833/04-iteration-stop/iteration-manifest.json"
+      ]
+    },
+    {
+      "sha256": "4e59b4e6ea34130eb5baae6200c7e118c2464233925bb41128ec5182acd63632",
+      "size": 484,
+      "paths": [
+        "renders/agent-workflow-demo-2026-07-19_150706/01-spatial/02-camera/03-iteration-continue/iteration-manifest.json",
+        "renders/agent-workflow-demo-2026-07-19_150728/03-iteration-continue/iteration-manifest.json",
+        "renders/agent-workflow-demo-2026-07-19_150809/03-iteration-continue/iteration-manifest.json",
+        "renders/agent-workflow-demo-2026-07-19_150833/03-iteration-continue/iteration-manifest.json"
+      ]
+    },
+    {
+      "sha256": "1bdab6b27d9a60d0286533241bb9b37ba194c221ab73ac5ef39b974608e9bb93",
+      "size": 8008,
+      "paths": [
+        "renders/agent-workflow-demo-2026-07-19_150706/01-spatial/02-camera/scene-view-diagnostics.json",
+        "renders/agent-workflow-demo-2026-07-19_150728/02-camera/scene-view-diagnostics.json",
+        "renders/agent-workflow-demo-2026-07-19_150809/02-camera/scene-view-diagnostics.json",
+        "renders/agent-workflow-demo-2026-07-19_150833/02-camera/scene-view-diagnostics.json"
+      ]
+    },
+    {
+      "sha256": "21f17776ac2c2a6d73281aa6a606e73dd0389fde6825563396075835a2465f2b",
+      "size": 26526,
+      "paths": [
+        "renders/agent-workflow-demo-2026-07-19_150706/01-spatial/scene-spatial-graph.json",
+        "renders/agent-workflow-demo-2026-07-19_150728/01-spatial/scene-spatial-graph.json",
+        "renders/agent-workflow-demo-2026-07-19_150809/01-spatial/scene-spatial-graph.json",
+        "renders/agent-workflow-demo-2026-07-19_150833/01-spatial/scene-spatial-graph.json"
+      ]
+    },
+    {
+      "sha256": "fcbb2510108880b6140bfa711f3ea33b138e1e1e434889426f1c481ba7142e5c",
+      "size": 2033,
+      "paths": [
+        "workflows/templates/kimi-scene-trial/physical-validation.template.json",
+        "workflows/templates/scene-trial/physical-validation.template.json"
+      ]
+    },
+    {
+      "sha256": "32012f104455db0630558cd1ef6d2da63f3cdb748c66260b2c6dcb07a9b17419",
+      "size": 1991,
+      "paths": [
+        "workflows/templates/kimi-scene-trial/scene-contract.template.json",
+        "workflows/templates/scene-trial/scene-contract.template.json"
+      ]
+    },
+    {
+      "sha256": "ffeca395307ed401abc92a9777948fbc15c51cc9349af026aef6b550873abcaa",
+      "size": 1226,
+      "paths": [
+        "workflows/templates/kimi-scene-trial/score.template.json",
+        "workflows/templates/scene-trial/score.template.json"
+      ]
+    }
+  ],
+  "duplicate_potential_savings_bytes": 303835
+}

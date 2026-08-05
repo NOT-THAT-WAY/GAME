@@ -1,0 +1,80 @@
+{
+  "id": "product-orbit",
+  "name": "Orbit produit 360°",
+  "icon": "↻",
+  "category": "animation caméra",
+  "mode": "MCP interactif",
+  "risk": "écriture",
+  "description": "Crée un rig caméra non destructif autour du produit, avec départ et arrivée immobiles et un tour continu paramétrable.",
+  "script": "workflows/scripts/camera_workflow.py",
+  "timeout": 120,
+  "warning": "Ajoute ou met à jour les objets BAS_CAMERA_* et change la caméra active. Le .blend n’est pas sauvegardé automatiquement.",
+  "fields": [
+    {
+      "id": "target_collection",
+      "type": "text",
+      "label": "Collection cible (vide = sélection)",
+      "default": ""
+    },
+    {
+      "id": "pattern",
+      "type": "select",
+      "label": "Mouvement",
+      "options": [
+        "orbit-360"
+      ],
+      "default": "orbit-360"
+    },
+    {
+      "id": "duration",
+      "type": "number",
+      "label": "Durée (s)",
+      "default": 6,
+      "min": 2,
+      "max": 30,
+      "step": 0.5
+    },
+    {
+      "id": "distance_multiplier",
+      "type": "number",
+      "label": "Distance / rayon évalué",
+      "default": 4,
+      "min": 1.2,
+      "max": 12,
+      "step": 0.1
+    },
+    {
+      "id": "lens",
+      "type": "number",
+      "label": "Focale (mm)",
+      "default": 70,
+      "min": 18,
+      "max": 200,
+      "step": 1
+    },
+    {
+      "id": "direction",
+      "type": "select",
+      "label": "Direction",
+      "options": [
+        "gauche",
+        "droite"
+      ],
+      "default": "gauche"
+    }
+  ],
+  "execution": "mcp",
+  "mutates_scene": true,
+  "requires_confirmation": true,
+  "requires_working_copy": true,
+  "enabled_in_app": true,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "operation",
+  "domains": [
+    "asset",
+    "cinematic",
+    "still"
+  ],
+  "maturity": "stable",
+  "scope": "generic-or-adaptable"
+}

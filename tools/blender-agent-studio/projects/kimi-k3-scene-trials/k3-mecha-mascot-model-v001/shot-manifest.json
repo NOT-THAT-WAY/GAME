@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-mecha-mascot-model-v001",
+  "camera": "K3_MECHA_CAMERA",
+  "target": "K3_MECHA_CAMERA_TARGET",
+  "focus": "K3_MECHA_CAMERA_FOCUS",
+  "lens_mm": 56.0,
+  "duration_seconds": 6.0,
+  "fps": 24,
+  "movement": "short studio arc with K1 pose, K2 opposite anticipation, K3 travel, K4 recovery and hold",
+  "keyframes": [
+    1,
+    18,
+    108,
+    132,
+    144
+  ],
+  "resolution": [
+    720,
+    720
+  ],
+  "view_transform": "AgX"
+}

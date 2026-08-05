@@ -1,0 +1,1178 @@
+{
+  "source": "transcript-source.srt",
+  "format": "srt",
+  "language": "en",
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 15.35,
+      "text": "Hey everyone, welcome to my new tutorial. Someone recently in the comments suggested to do a conveyor belt, you know, a"
+    },
+    {
+      "start": 15.35,
+      "end": 22.45,
+      "text": "factory belt animation tutorial and I really like the idea. So, you know, here it is, we're gonna make it. So, if you"
+    },
+    {
+      "start": 22.45,
+      "end": 28.07,
+      "text": "have suggestions like this, you know, just write it down in the comments. Sometimes I really like the idea and do it"
+    },
+    {
+      "start": 28.07,
+      "end": 29.4,
+      "text": "right away next week."
+    },
+    {
+      "start": 29.4,
+      "end": 36.09,
+      "text": "So, this is what we are going to do today and I really hope you will enjoy this one. And if you do, please don't forget"
+    },
+    {
+      "start": 36.09,
+      "end": 42.14,
+      "text": "to leave that like. And if you're new to the world of 3D and Blender, be sure to check out my courses. I carefully"
+    },
+    {
+      "start": 42.14,
+      "end": 47.7,
+      "text": "designed them to take you from beginner skills through low-pull illustration all the way to full character illustration"
+    },
+    {
+      "start": 47.7,
+      "end": 54.76,
+      "text": "in the shortest time possible. And with the new one, you even get to create a fully textured environment. And right now,"
+    },
+    {
+      "start": 54.76,
+      "end": 56.86,
+      "text": "all the prices are text inclusive."
+    },
+    {
+      "start": 58.8,
+      "end": 64.3,
+      "text": "So, no matter where you're from in the world, you get the same price. So, what you see on the website is what you get."
+    },
+    {
+      "start": 64.3,
+      "end": 70.76,
+      "text": "No surprises in the checkout with your, you know, country specific taxes. So, if you're interested, please check out"
+    },
+    {
+      "start": 70.76,
+      "end": 71.66,
+      "text": "the link in the description."
+    },
+    {
+      "start": 71.8,
+      "end": 76.89,
+      "text": "Now, let's jump right into empty Blender file. And first of all, let's leave the camera in place and just select"
+    },
+    {
+      "start": 76.89,
+      "end": 83.77,
+      "text": "everything else. Press X and delete. And first, I'll need a shape for the conveyor belt. So, let's press Shift A and we'll"
+    },
+    {
+      "start": 83.77,
+      "end": 84.66,
+      "text": "add a plane."
+    },
+    {
+      "start": 85.14,
+      "end": 92.34,
+      "text": "Now, tab into the edit mode. Press R, then X and 90 to rotate this 90 degrees. Let's confirm. And now, we'll make it"
+    },
+    {
+      "start": 92.34,
+      "end": 98.7,
+      "text": "smaller. But first, I want the origin point to be at the bottom. So, press G, then Z and 1 to move this one meter up."
+    },
+    {
+      "start": 98.7,
+      "end": 99.78,
+      "text": "And let's confirm."
+    },
+    {
+      "start": 100.0,
+      "end": 107.65,
+      "text": "And now, we can press S, then X and scale it on X axis. And something like this should be okay. And now, we can drag a"
+    },
+    {
+      "start": 107.65,
+      "end": 111.75999999999999,
+      "text": "selection here to select these vertices. Press G, then Z and move this down."
+    },
+    {
+      "start": 112.0,
+      "end": 118.95,
+      "text": "And now, let's press A to select everything. And press Ctrl B, then V or Ctrl Shift B. And just do a bevel like this"
+    },
+    {
+      "start": 118.95,
+      "end": 124.82,
+      "text": "and increase the number of segments with the mouse wheel to something like this. We can go more."
+    },
+    {
+      "start": 124.82,
+      "end": 132.8,
+      "text": "And you can hold Shift for smaller increments. And do it so that these two in the middle barely touch. And now, we can"
+    },
+    {
+      "start": 132.8,
+      "end": 135.52,
+      "text": "select them, press M and merge them at center."
+    },
+    {
+      "start": 136.32,
+      "end": 144.26,
+      "text": "So, they are connected. And now, we can just tab out, press right click and convert to curve. And basically, this will"
+    },
+    {
+      "start": 144.26,
+      "end": 147.76,
+      "text": "be the guide around which the conveyor belt will be moving."
+    },
+    {
+      "start": 147.76,
+      "end": 154.86,
+      "text": "And now, we'll need, you know, the conveyor belt itself. So, let's press Shift A and we'll add another plane. Now, let's"
+    },
+    {
+      "start": 154.86,
+      "end": 158.28,
+      "text": "tab into the edit mode. Press S to make it smaller."
+    },
+    {
+      "start": 159.72,
+      "end": 166.68,
+      "text": "Something like this. And now, on the x-axis. So, press S, then X and scale it down. Just like this. And now, tab out."
+    },
+    {
+      "start": 166.68,
+      "end": 170.28,
+      "text": "And let's go into the modifiers panel. And let's add an array modifier."
+    },
+    {
+      "start": 170.28,
+      "end": 178.2,
+      "text": "And let's set factor to something like 1.1. So, there's a gap in between. And now, we can increase the count."
+    },
+    {
+      "start": 178.2,
+      "end": 184.84,
+      "text": "And to better see how this works on the curve, we can add another modifier. Let's add a curve modifier."
+    },
+    {
+      "start": 185.56,
+      "end": 192.74,
+      "text": "And we'll use the eyedropper tool to select this curve right here. And you can see, this is not behaving properly"
+    },
+    {
+      "start": 192.74,
+      "end": 195.08,
+      "text": "because we didn't subdivide the belt."
+    },
+    {
+      "start": 195.08,
+      "end": 200.61,
+      "text": "So, let's tab into the edit mode. And let's press Ctrl + R and create a few loop cuts. Increase with the mouse wheel to"
+    },
+    {
+      "start": 200.61,
+      "end": 202.36,
+      "text": "something like this."
+    },
+    {
+      "start": 202.36,
+      "end": 208.92000000000002,
+      "text": "Now, right click to release. And now, if you tab out, you will see that this bends properly. And now, if you go back to"
+    },
+    {
+      "start": 208.92000000000002,
+      "end": 213.88,
+      "text": "the array, you can just increase the number of these parts."
+    },
+    {
+      "start": 213.88,
+      "end": 222.24,
+      "text": "Now, we'll need to match this right here. Use like count of 17 or 16. This might totally vary for you, depending how"
+    },
+    {
+      "start": 222.24,
+      "end": 223.48,
+      "text": "large you did this."
+    },
+    {
+      "start": 223.48,
+      "end": 231.24,
+      "text": "So, basically, just go until, you know, they start to overlap. And now, we'll go into the edit mode. Press A to select"
+    },
+    {
+      "start": 231.24,
+      "end": 234.2,
+      "text": "all and just scale it down on X axis a little bit."
+    },
+    {
+      "start": 234.2,
+      "end": 241.44,
+      "text": "Then, tap out to check how it works. So, press S then X and scale it down. And you can see the gap is now large. So, we"
+    },
+    {
+      "start": 241.44,
+      "end": 243.8,
+      "text": "can scale it back up a little bit."
+    },
+    {
+      "start": 243.8,
+      "end": 252.18,
+      "text": "And you really need to do these small adjustments. And I think this works just fine. So, this is not a precision method,"
+    },
+    {
+      "start": 252.18,
+      "end": 253.4,
+      "text": "but I think for illustration"
+    },
+    {
+      "start": 253.4,
+      "end": 261.45,
+      "text": "like this, this is more than enough. And basically, now, to make the conveyor belt move, we'll just move it on the X"
+    },
+    {
+      "start": 261.45,
+      "end": 263.0,
+      "text": "axis and it will behave like"
+    },
+    {
+      "start": 263.0,
+      "end": 271.59,
+      "text": "this. When you press G then X, it will move around that curve depending on the modifier. So, that's what we're going to"
+    },
+    {
+      "start": 271.59,
+      "end": 278.6,
+      "text": "do right now. And if you want to see it better, you can even add, you know, solidify modifier here and increase the"
+    },
+    {
+      "start": 278.6,
+      "end": 281.4,
+      "text": "thickness and go inside a little bit like this."
+    },
+    {
+      "start": 281.4,
+      "end": 291.15,
+      "text": "But you can see this doesn't look too good. So, what you can do is move the solidify above the curve. That way, you"
+    },
+    {
+      "start": 291.15,
+      "end": 296.12,
+      "text": "will get bent, you know, with the solidify modifier included."
+    },
+    {
+      "start": 296.12,
+      "end": 304.6,
+      "text": "And now, we need to make the animation of the movement. So, let's set the end frame to something like, I don't know, 90"
+    },
+    {
+      "start": 304.6,
+      "end": 307.72,
+      "text": "should be fine or 120. We'll see how it works."
+    },
+    {
+      "start": 307.72,
+      "end": 316.08,
+      "text": "And we'll need to create first and last keyframe so that the belt makes one round and can start over. So, it loops. And"
+    },
+    {
+      "start": 316.08,
+      "end": 318.44,
+      "text": "for that, we'll need to do a little bit of a math."
+    },
+    {
+      "start": 318.44,
+      "end": 324.93,
+      "text": "And since we didn't use any precision method or any precision numbers, we'll need to, you know, calculate that a little"
+    },
+    {
+      "start": 324.93,
+      "end": 327.56,
+      "text": "bit. But it shouldn't be too hard."
+    },
+    {
+      "start": 327.56,
+      "end": 334.4,
+      "text": "So, first of all, let's create the first keyframe and let's press N for the side panel. And here in the item menu, I"
+    },
+    {
+      "start": 334.4,
+      "end": 337.4,
+      "text": "will set the X location keyframe on frame one."
+    },
+    {
+      "start": 337.4,
+      "end": 344.39,
+      "text": "So, right click and insert single keyframe. So, there it is. And now, let's move to frame 120. And now, we'll need to"
+    },
+    {
+      "start": 344.39,
+      "end": 347.48,
+      "text": "figure out how far we need to move to make the full round."
+    },
+    {
+      "start": 347.48,
+      "end": 355.67,
+      "text": "So, the best thing to do is to disable the curve modifier right now. Click this, you know, monitor icon right here. And"
+    },
+    {
+      "start": 355.67,
+      "end": 358.52,
+      "text": "here we have, you know, the full belt object."
+    },
+    {
+      "start": 358.52,
+      "end": 366.51,
+      "text": "And right here on the dimensions, you can see that on the x-axis, it's 10.1 meters. And if you click inside, you will"
+    },
+    {
+      "start": 366.51,
+      "end": 369.16,
+      "text": "see, you know, some more precision number."
+    },
+    {
+      "start": 369.16,
+      "end": 377.11,
+      "text": "So, this is the length we need to travel, but not entirely, because you can see the origin point is right here. So, we"
+    },
+    {
+      "start": 377.11,
+      "end": 381.8,
+      "text": "would need to subtract half of this width right here."
+    },
+    {
+      "start": 381.8,
+      "end": 389.4,
+      "text": "And I think the better method would be to move the origin point right here, or rather, move this whole thing like this,"
+    },
+    {
+      "start": 389.4,
+      "end": 391.64,
+      "text": "so it sits, you know, on the zero."
+    },
+    {
+      "start": 391.64,
+      "end": 399.96,
+      "text": "And to do that, we can disable the array modifier. And now, we can see the dimension on the x-axis of this one piece."
+    },
+    {
+      "start": 399.96,
+      "end": 402.36,
+      "text": "And it's like that."
+    },
+    {
+      "start": 402.36,
+      "end": 409.48,
+      "text": "So, we need to move this half of that. So, let's select this, press Ctrl+C to copy the number."
+    },
+    {
+      "start": 409.48,
+      "end": 417.88,
+      "text": "And now, if we go to the edit mode, let's press A to select all. And now, here, where it says median, we can insert"
+    },
+    {
+      "start": 417.88,
+      "end": 418.76,
+      "text": "that number."
+    },
+    {
+      "start": 418.76,
+      "end": 426.28,
+      "text": "So, let's click here, press Ctrl+V to paste it, but we'll divide it by two. So, slash and two, and let's hit enter."
+    },
+    {
+      "start": 426.28,
+      "end": 433.48,
+      "text": "And this now sits perfectly on the axis. So, now, if we tap out, let's enable the array modifier once again."
+    },
+    {
+      "start": 434.68,
+      "end": 441.41,
+      "text": "And now, we can see the dimension is still this number, but right now, the origin point is here. So, we can use this"
+    },
+    {
+      "start": 441.41,
+      "end": 441.96,
+      "text": "number."
+    },
+    {
+      "start": 441.96,
+      "end": 443.96,
+      "text": "So, let's select it, press Ctrl+C."
+    },
+    {
+      "start": 446.36,
+      "end": 455.32,
+      "text": "Now, make sure you're still on the frame 120. And let's enter that here. So, minus because we need to go to the"
+    },
+    {
+      "start": 455.32,
+      "end": 455.64,
+      "text": "negative direction."
+    },
+    {
+      "start": 455.64,
+      "end": 463.64,
+      "text": "Press Ctrl+V and hit enter. And now, we'll right click and insert single keyframe. So, now, we have this movement right"
+    },
+    {
+      "start": 463.64,
+      "end": 463.64,
+      "text": "here."
+    },
+    {
+      "start": 463.64,
+      "end": 472.37,
+      "text": "And right now, if you play it, you will see it accelerates and in the end, it decelerates. So, we'll press T here in"
+    },
+    {
+      "start": 472.37,
+      "end": 475.0,
+      "text": "the timeline and choose linear movement."
+    },
+    {
+      "start": 475.0,
+      "end": 482.12,
+      "text": "And this way, it will just go in the constant pace. And now, if you enable curve modifier, you will have a perfectly"
+    },
+    {
+      "start": 482.12,
+      "end": 483.72,
+      "text": "looping conveyor belt animation."
+    },
+    {
+      "start": 484.28,
+      "end": 490.76,
+      "text": "So, that's the first step. And now, let's, you know, create a little bit of the scene to support this."
+    },
+    {
+      "start": 490.76,
+      "end": 496.6,
+      "text": "So, let's press Shift+A and we'll add a plane. Now, let's look from the front by pressing 1 on a numpad."
+    },
+    {
+      "start": 496.6,
+      "end": 504.52,
+      "text": "Now, tab in, press R, then X and 90. Confirm. We can tab out, press G, then Z and move this up a little bit."
+    },
+    {
+      "start": 504.52,
+      "end": 509.16,
+      "text": "So, it's here in the middle. Now, tab in, press S, then Z and scale it down."
+    },
+    {
+      "start": 509.16,
+      "end": 516.6,
+      "text": "And we can better position this. Now, press S, then X and scale it up here."
+    },
+    {
+      "start": 517.72,
+      "end": 523.48,
+      "text": "And press Ctrl+B, then V again to create a similar bevel like before."
+    },
+    {
+      "start": 523.48,
+      "end": 529.48,
+      "text": "Something like this. And now, we can merge this at center again."
+    },
+    {
+      "start": 529.48,
+      "end": 536.2,
+      "text": "And basically, press A and extrude this and add a mirror modifier."
+    },
+    {
+      "start": 536.2,
+      "end": 540.44,
+      "text": "So, let's add that mirror modifier and we'll need to mirror this on the y-axis."
+    },
+    {
+      "start": 540.44,
+      "end": 546.36,
+      "text": "And now, if you enable x-ray view right here, you can see, let's switch to the face select."
+    },
+    {
+      "start": 546.36,
+      "end": 551.8,
+      "text": "You can see there's a face in there in the middle. So, press X and delete that and enable clipping."
+    },
+    {
+      "start": 551.8,
+      "end": 556.68,
+      "text": "So, we have one solid object out of this, including the modifier."
+    },
+    {
+      "start": 556.68,
+      "end": 562.68,
+      "text": "So, here's the conveyor belt and let's create like a box that will spit out some boxes."
+    },
+    {
+      "start": 562.68,
+      "end": 567.96,
+      "text": "So, let's press Shift+A and let's add a plane, press G, then X, move it right here."
+    },
+    {
+      "start": 567.96,
+      "end": 572.6,
+      "text": "Tab into the admin, make it smaller a little bit and extrude like this."
+    },
+    {
+      "start": 572.6,
+      "end": 577.32,
+      "text": "And to make it look a little bit nicer, we can press 2 for edge select, select these two edges,"
+    },
+    {
+      "start": 577.32,
+      "end": 582.28,
+      "text": "press Ctrl+B and bevel them like this and maybe reduce the number of cuts here."
+    },
+    {
+      "start": 582.28,
+      "end": 589.72,
+      "text": "And now, let's go back to the face select by pressing 3, select this face, press I and inset."
+    },
+    {
+      "start": 589.72,
+      "end": 593.88,
+      "text": "Now, press 2 for edge select, select the bottom one, press G, then Z and move this up."
+    },
+    {
+      "start": 595.0,
+      "end": 602.36,
+      "text": "So, it looks like this. And now, back to the face select, select this one, enable the x-ray again and"
+    },
+    {
+      "start": 602.36,
+      "end": 608.92,
+      "text": "extrude inside. Now, to make sure the normals are correct, let's press A and Shift+N to recalculate them."
+    },
+    {
+      "start": 609.56,
+      "end": 614.76,
+      "text": "So, this is the base for our scene. Now, of course, you can create a lot of like supporting structure,"
+    },
+    {
+      "start": 614.76,
+      "end": 619.4,
+      "text": "like legs for the conveyor belt and stuff like that. I don't want to bother with that right now,"
+    },
+    {
+      "start": 619.4,
+      "end": 625.4,
+      "text": "I just want to move you and guide you through this animation to get some basic working result and then"
+    },
+    {
+      "start": 625.4,
+      "end": 631.0,
+      "text": "you can polish your scene on your own. You have all the other tutorials you can check out in my playlist,"
+    },
+    {
+      "start": 631.0,
+      "end": 635.8,
+      "text": "you will see the link in the description. There are a lot of tutorials that will help you, you know,"
+    },
+    {
+      "start": 635.8,
+      "end": 641.08,
+      "text": "with modeling and with lighting and stuff like that. So, this is purely focused on this animation"
+    },
+    {
+      "start": 641.08,
+      "end": 646.52,
+      "text": "and the modeling. So, let's now switch the x-ray off. So, let's now press Shift+A and let's create"
+    },
+    {
+      "start": 646.52,
+      "end": 653.24,
+      "text": "a cube. Now, tap into the edit mode, press G, then Z and 1. And again, this will be to place"
+    },
+    {
+      "start": 653.24,
+      "end": 659.16,
+      "text": "the origin at the bottom. Now, we can tap out and make it smaller like this and move it up so it sits"
+    },
+    {
+      "start": 659.16,
+      "end": 665.08,
+      "text": "on the conveyor belt. We can look from the front by pressing 1 on a numpad and place it like this."
+    },
+    {
+      "start": 665.64,
+      "end": 674.76,
+      "text": "Make it larger. And we'll basically hurl this box out of this hole right here. It will go on the"
+    },
+    {
+      "start": 674.76,
+      "end": 679.56,
+      "text": "conveyor belt and fall down into some kind of hole. So, press G, then X, move it right here."
+    },
+    {
+      "start": 679.56,
+      "end": 685.56,
+      "text": "Let's create the rest of the scene. So, let's press Shift+A and we'll add a plane. Now, tap into the"
+    },
+    {
+      "start": 685.56,
+      "end": 692.76,
+      "text": "edit mode and scale it up like this. And let's look from the camera if it's enough. And I think this looks"
+    },
+    {
+      "start": 692.76,
+      "end": 700.28,
+      "text": "quite okay. We can press R, then X twice to tilt the camera down a little bit and move it higher like"
+    },
+    {
+      "start": 700.28,
+      "end": 707.96,
+      "text": "this. And maybe on the local X axis. And let's bring it out a little bit."
+    },
+    {
+      "start": 710.2,
+      "end": 718.04,
+      "text": "Okay. Something like this. And now, let's press Shift+A and we'll add another cube. Press G, then X and move"
+    },
+    {
+      "start": 718.04,
+      "end": 724.36,
+      "text": "it right here. Let's tap in and make it smaller on the X axis. And press G, then Z and move this down."
+    },
+    {
+      "start": 725.32,
+      "end": 731.8,
+      "text": "And to make it look a little bit nicer, we can go for edge select, press Ctrl+A and click this edge on the"
+    },
+    {
+      "start": 731.8,
+      "end": 738.2,
+      "text": "side to select all of these around and press Ctrl+B to bevel. And now, we can hold Shift, select the"
+    },
+    {
+      "start": 738.2,
+      "end": 743.08,
+      "text": "background. And for what I'm about to do, you'll need to go edit preferences and have the bool tool"
+    },
+    {
+      "start": 743.08,
+      "end": 752.44,
+      "text": "add-on active. So search for bool. And just check the box, close the preferences. And now, if you hold"
+    },
+    {
+      "start": 752.44,
+      "end": 760.04,
+      "text": "Ctrl+A and hit minus on a numpad, you will create the hole. But for this to work, we'll need a solid"
+    },
+    {
+      "start": 760.04,
+      "end": 765.64,
+      "text": "object. So tap into the edit mode for the background and press E to extrude this down to create something"
+    },
+    {
+      "start": 765.64,
+      "end": 773.16,
+      "text": "like this. Maybe you can go even lower. And again, to make sure that the boolean works, press A,"
+    },
+    {
+      "start": 773.16,
+      "end": 780.36,
+      "text": "press Shift+N to recalculate normals and do the same here if you have trouble. So the final should look"
+    },
+    {
+      "start": 780.36,
+      "end": 785.88,
+      "text": "like this. And the box should go and fall into this. And the benefit of the boolean is that now you can"
+    },
+    {
+      "start": 785.88,
+      "end": 795.16,
+      "text": "grab this and move it around. So we can calibrate it for our conveyor belt needs. Something like this."
+    },
+    {
+      "start": 795.64,
+      "end": 802.36,
+      "text": "And now let's go to the output settings and switch frame rate to something like 30. And we have our"
+    },
+    {
+      "start": 802.36,
+      "end": 808.28,
+      "text": "animation ready. So now the box will be hurled out here. So let's go to the frame 1 and let's insert"
+    },
+    {
+      "start": 808.28,
+      "end": 816.36,
+      "text": "single key frame on the x-axis. And let's move something like frame 15. Press G. Then X. Move it here."
+    },
+    {
+      "start": 816.36,
+      "end": 822.68,
+      "text": "And right click and insert single key frame. And now we're just blocking out the animation. Don't worry"
+    },
+    {
+      "start": 822.68,
+      "end": 827.8,
+      "text": "about the timings. So now the box comes out and we'll need to make sure that it goes all the way here and"
+    },
+    {
+      "start": 827.8,
+      "end": 833.48,
+      "text": "falls down. So let's move to something like frame 60. And we'll need to modify this based on the"
+    },
+    {
+      "start": 833.48,
+      "end": 838.52,
+      "text": "proportions of your conveyor belt. So this will be different for me. It will be different for you a"
+    },
+    {
+      "start": 838.52,
+      "end": 845.16,
+      "text": "little bit. But I will show you how you can, you know, how you can approximately match the speed of the"
+    },
+    {
+      "start": 845.16,
+      "end": 851.88,
+      "text": "conveyor belt. So let's go to the frame 60. Press G. Then X. And we know we need to go, you know, somewhere"
+    },
+    {
+      "start": 851.88,
+      "end": 859.48,
+      "text": "here. And now this will start to fall, of course. So let's move the origin point right there on the edge."
+    },
+    {
+      "start": 859.48,
+      "end": 865.72,
+      "text": "It should look like this. And let's right click and insert single key frame here."
+    },
+    {
+      "start": 865.72,
+      "end": 873.64,
+      "text": "So now it goes like that. But we need this one key frame to be linear. So press T and switch it"
+    },
+    {
+      "start": 873.64,
+      "end": 878.2,
+      "text": "to linear. So now it moves with the constant speed. But you can see the conveyor belt is a little bit"
+    },
+    {
+      "start": 878.2,
+      "end": 885.64,
+      "text": "faster. If you go like this, you can see this edge, you know, getting away from the box. But it's close"
+    },
+    {
+      "start": 885.64,
+      "end": 894.6,
+      "text": "enough. So we just need to move this, you know, like five frames. And I think it's almost, almost done."
+    },
+    {
+      "start": 894.6,
+      "end": 902.2,
+      "text": "Yeah, something like this is fine. So as you can see, I end up on frame 54. Again, this will be"
+    },
+    {
+      "start": 902.2,
+      "end": 907.96,
+      "text": "different for you, maybe. So just create that key frame, set this to linear, and then move this closer"
+    },
+    {
+      "start": 907.96,
+      "end": 914.28,
+      "text": "or further away, depending on how it sits on the conveyor belt. And now it will fall down. And this"
+    },
+    {
+      "start": 914.28,
+      "end": 922.28,
+      "text": "will be pretty quick. So something like frame 70 will need to be right here. So let's look from the"
+    },
+    {
+      "start": 922.28,
+      "end": 927.4,
+      "text": "side. And first of all, we'll move it on the x axis. So press G then X, move it somewhere here."
+    },
+    {
+      "start": 927.4,
+      "end": 934.6,
+      "text": "And right click and insert single key frame. And then let's enable x ray view. And now let's go back to"
+    },
+    {
+      "start": 934.6,
+      "end": 940.92,
+      "text": "that frame before. And we'll right click and insert single key frame for the z axis, because we didn't"
+    },
+    {
+      "start": 940.92,
+      "end": 948.44,
+      "text": "create any so far. And now on the frame 70, we'll press G then Z, move it down like this, right click"
+    },
+    {
+      "start": 948.44,
+      "end": 954.92,
+      "text": "and insert single key frame. So now it does this movement, but it's not optimal, of course, but we'll"
+    },
+    {
+      "start": 954.92,
+      "end": 961.32,
+      "text": "modify that with curves. But so far, I'm basically interested to see the speed, the timing of the"
+    },
+    {
+      "start": 961.32,
+      "end": 968.6,
+      "text": "key frames. And this is quite okay, I guess. And one last thing I want to do is rotation. So let's go to"
+    },
+    {
+      "start": 968.6,
+      "end": 974.36,
+      "text": "the frame 54 again, or whatever frame you have. And in the rotation panel, let's right click and insert"
+    },
+    {
+      "start": 974.36,
+      "end": 982.6,
+      "text": "single key frame for the Y rotation. And right here, we'll rotate it like this. So at least like 180."
+    },
+    {
+      "start": 982.6,
+      "end": 990.84,
+      "text": "You can basically insert 180 exactly and right click and insert single key frame. So the box will do"
+    },
+    {
+      "start": 990.84,
+      "end": 999.0,
+      "text": "thing like this. And now it's all about timings. So let's move like this. Let's expand the timeline."
+    },
+    {
+      "start": 999.0,
+      "end": 1004.68,
+      "text": "And now hovering over the timeline, I will press control tab to go to the graph editor and expand"
+    },
+    {
+      "start": 1004.68,
+      "end": 1009.8,
+      "text": "this. And we have these three tracks. And that's why I create single key frames. So I don't have all"
+    },
+    {
+      "start": 1009.8,
+      "end": 1015.08,
+      "text": "of the other tracks right here. And first of all, we'll need to adjust the movement on the x axis."
+    },
+    {
+      "start": 1015.08,
+      "end": 1022.52,
+      "text": "And but I think the more troubling is the z axis movement, because right now it goes down too soon."
+    },
+    {
+      "start": 1022.52,
+      "end": 1029.16,
+      "text": "So let's disable these two and let's leave the z location here. And right here, you can press a and"
+    },
+    {
+      "start": 1029.16,
+      "end": 1035.96,
+      "text": "period on a numpad to focus on your animation right here. And right here, the fall needs to be less"
+    },
+    {
+      "start": 1035.96,
+      "end": 1042.52,
+      "text": "southern. So we can select this handle and, you know, drag it up a little bit. And right here,"
+    },
+    {
+      "start": 1042.52,
+      "end": 1046.52,
+      "text": "you can see it's a little bit better. And we don't even need to go so far."
+    },
+    {
+      "start": 1046.52,
+      "end": 1056.28,
+      "text": "Okay, I think this looks just fine. Let me see."
+    },
+    {
+      "start": 1056.28,
+      "end": 1064.84,
+      "text": "Yeah, that's quite okay. Okay, and I think that's everything we need to do. Of course,"
+    },
+    {
+      "start": 1064.84,
+      "end": 1070.92,
+      "text": "you could go to the beginning of the animation for the x location channel. And try to play with this"
+    },
+    {
+      "start": 1070.92,
+      "end": 1078.76,
+      "text": "part of the animation where it kind of goes on the belt. And you can decide whether it should"
+    },
+    {
+      "start": 1078.76,
+      "end": 1085.88,
+      "text": "accelerate here. Or you know, if you want like a more sudden approach. Yeah, I think the beginning"
+    },
+    {
+      "start": 1085.88,
+      "end": 1093.32,
+      "text": "was just fine like this. That it kind of accelerates from it. So I will leave it like that. So that's for the"
+    },
+    {
+      "start": 1093.32,
+      "end": 1100.36,
+      "text": "animation. And now the last part I want to do, let's disable the x ray is to basically duplicate"
+    },
+    {
+      "start": 1100.36,
+      "end": 1108.04,
+      "text": "these boxes. So there are multiple of them. And the easiest way to do that is basically just to use"
+    },
+    {
+      "start": 1108.04,
+      "end": 1114.84,
+      "text": "all D to duplicate the box, right click to release in place. And now you can separate the animation,"
+    },
+    {
+      "start": 1114.84,
+      "end": 1120.76,
+      "text": "because now both of these cubes have same animation as you can see. And we want to have the object of"
+    },
+    {
+      "start": 1120.76,
+      "end": 1125.64,
+      "text": "the same data, but we want to separate the animation. So let's just go object. Let's go"
+    },
+    {
+      "start": 1125.64,
+      "end": 1132.12,
+      "text": "relations, make single user and object animation. And if you right click here, you can add to quick"
+    },
+    {
+      "start": 1132.12,
+      "end": 1138.12,
+      "text": "favorites. So then if you press Q, you will have the object animation item right here in the quick menu,"
+    },
+    {
+      "start": 1138.12,
+      "end": 1145.24,
+      "text": "like I have. So if you now click it and confirm, you will have separate animation data from that object."
+    },
+    {
+      "start": 1145.24,
+      "end": 1151.96,
+      "text": "And you can just press A here in the timeline, press G then X and move it away like this. So you can see"
+    },
+    {
+      "start": 1151.96,
+      "end": 1160.76,
+      "text": "it moves away. So now these two cubes will be shifted in the timeline and we can move it even further away."
+    },
+    {
+      "start": 1160.76,
+      "end": 1168.52,
+      "text": "And now we'll need two more. And that's for the beginning and the ending of the animation. So it can"
+    },
+    {
+      "start": 1168.52,
+      "end": 1178.52,
+      "text": "loop. So let's press Alt D again. And again, I'll press Q and separate that object animation. And now let me"
+    },
+    {
+      "start": 1178.52,
+      "end": 1184.92,
+      "text": "press Ctrl tap here. So I can better see the keyframes here and press G then X and move the keyframes all"
+    },
+    {
+      "start": 1184.92,
+      "end": 1191.0,
+      "text": "the way to the end. And now I'll press G then X and move them like minus 40 frames here. And now let's"
+    },
+    {
+      "start": 1191.0,
+      "end": 1198.44,
+      "text": "press Alt D again to duplicate this box. And again, press Q and separate the object animation. And I'll"
+    },
+    {
+      "start": 1198.44,
+      "end": 1204.2,
+      "text": "press G then X, move it to the beginning of the timeline to the frame one. And again, press G then X and"
+    },
+    {
+      "start": 1204.2,
+      "end": 1216.6,
+      "text": "minus 40. So now it should loop perfectly."
+    },
+    {
+      "start": 1216.6,
+      "end": 1225.8,
+      "text": "Okay, I think this looks just fine. And now basically, you can just go ahead and make it look a little"
+    },
+    {
+      "start": 1225.8,
+      "end": 1230.92,
+      "text": "bit nicer. So you can select the cube. And since there are linked objects, you can just select these edges"
+    },
+    {
+      "start": 1230.92,
+      "end": 1238.44,
+      "text": "around, bevel them, you know, change the shape, and they will all look the same. But their animation"
+    },
+    {
+      "start": 1238.44,
+      "end": 1243.96,
+      "text": "will be shifted since we separated the animation data. And now you can just select the belt and add,"
+    },
+    {
+      "start": 1243.96,
+      "end": 1249.48,
+      "text": "for example, a bevel modifier, increase the segments, reduce the amount to something like this,"
+    },
+    {
+      "start": 1249.48,
+      "end": 1257.48,
+      "text": "and enable harden normals. Right click and shade auto smooth and increase to 180 degrees."
+    },
+    {
+      "start": 1257.48,
+      "end": 1263.56,
+      "text": "So you have a nice smooth object right here. And you can do the same for these. So select other objects"
+    },
+    {
+      "start": 1263.56,
+      "end": 1271.48,
+      "text": "with the belt as last, click here and transfer to select it. And now we can right click and shade"
+    },
+    {
+      "start": 1271.48,
+      "end": 1277.08,
+      "text": "auto smooth. And of course, to make it work for the boolean, the boolean object needs to be smooth as"
+    },
+    {
+      "start": 1277.08,
+      "end": 1284.2,
+      "text": "well. So now you have a nice smooth animation. And of course, you need to manually add the bevels to the"
+    },
+    {
+      "start": 1284.2,
+      "end": 1291.96,
+      "text": "duplicated objects as well. So select those and copy the bevel there as well. And basically,"
+    },
+    {
+      "start": 1291.96,
+      "end": 1299.16,
+      "text": "that's all we need to do here. Let's look from the camera and play back the animation."
+    },
+    {
+      "start": 1299.16,
+      "end": 1306.12,
+      "text": "So now I will just go ahead and, you know, finish this to a little scene."
+    },
+    {
+      "start": 1307.08,
+      "end": 1313.72,
+      "text": "I will time lapse this process. So the video doesn't take too long. And you can watch and try to make"
+    },
+    {
+      "start": 1313.72,
+      "end": 1318.92,
+      "text": "something similar. Or as I said before, you know, you can go ahead and watch some tutorials to get some,"
+    },
+    {
+      "start": 1318.92,
+      "end": 1332.76,
+      "text": "you know, lighting tips and material tips. So I'll do that right now. And I'll see you on the other side."
+    },
+    {
+      "start": 1332.76,
+      "end": 1362.74,
+      "text": "Thank you."
+    },
+    {
+      "start": 1362.76,
+      "end": 1392.74,
+      "text": "Thank you."
+    },
+    {
+      "start": 1392.76,
+      "end": 1422.74,
+      "text": "Thank you."
+    },
+    {
+      "start": 1422.76,
+      "end": 1452.74,
+      "text": "Thank you."
+    },
+    {
+      "start": 1452.76,
+      "end": 1482.74,
+      "text": "Thank you."
+    },
+    {
+      "start": 1482.74,
+      "end": 1512.72,
+      "text": "Thank you."
+    },
+    {
+      "start": 1512.72,
+      "end": 1517.72,
+      "text": "And I'll add a mission right here to make this a little bit more interesting."
+    },
+    {
+      "start": 1517.72,
+      "end": 1523.44,
+      "text": "And now only thing left is to go to the output settings, choose your folder, switch to FFmpeg"
+    },
+    {
+      "start": 1523.44,
+      "end": 1527.44,
+      "text": "video and in the encoding, you know, switch to MP4."
+    },
+    {
+      "start": 1527.44,
+      "end": 1533.32,
+      "text": "And now basically just go ahead, hit render, render animation, wait out your frames and"
+    },
+    {
+      "start": 1533.32,
+      "end": 1535.06,
+      "text": "you will have your animation ready."
+    },
+    {
+      "start": 1535.52,
+      "end": 1542.24,
+      "text": "So that's it for today's video and I'll see you in the next video, I'll see you in the next video."
+    },
+    {
+      "start": 1542.24,
+      "end": 1546.64,
+      "text": "And if you have any more suggestions, please leave them in the comments."
+    },
+    {
+      "start": 1546.64,
+      "end": 1551.42,
+      "text": "And if you finish this animation and you want your feedback on it or you just want to flex"
+    },
+    {
+      "start": 1551.42,
+      "end": 1553.7,
+      "text": "it out, be sure to join our Discord."
+    },
+    {
+      "start": 1553.7,
+      "end": 1555.62,
+      "text": "You will see the link in the description."
+    },
+    {
+      "start": 1556.06,
+      "end": 1559.28,
+      "text": "And again, if you're new around here, please hit that subscribe."
+    },
+    {
+      "start": 1559.28,
+      "end": 1562.3,
+      "text": "Thank you all for watching and have a wonderful day."
+    },
+    {
+      "start": 1586.06,
+      "end": 1587.06,
+      "text": "Bye."
+    }
+  ],
+  "text": "Hey everyone, welcome to my new tutorial. Someone recently in the comments suggested to do a conveyor belt, you know, a factory belt animation tutorial and I really like the idea. So, you know, here it is, we're gonna make it. So, if you have suggestions like this, you know, just write it down in the comments. Sometimes I really like the idea and do it right away next week. So, this is what we are going to do today and I really hope you will enjoy this one. And if you do, please don't forget to leave that like. And if you're new to the world of 3D and Blender, be sure to check out my courses. I carefully designed them to take you from beginner skills through low-pull illustration all the way to full character illustration in the shortest time possible. And with the new one, you even get to create a fully textured environment. And right now, all the prices are text inclusive. So, no matter where you're from in the world, you get the same price. So, what you see on the website is what you get. No surprises in the checkout with your, you know, country specific taxes. So, if you're interested, please check out the link in the description. Now, let's jump right into empty Blender file. And first of all, let's leave the camera in place and just select everything else. Press X and delete. And first, I'll need a shape for the conveyor belt. So, let's press Shift A and we'll add a plane. Now, tab into the edit mode. Press R, then X and 90 to rotate this 90 degrees. Let's confirm. And now, we'll make it smaller. But first, I want the origin point to be at the bottom. So, press G, then Z and 1 to move this one meter up. And let's confirm. And now, we can press S, then X and scale it on X axis. And something like this should be okay. And now, we can drag a selection here to select these vertices. Press G, then Z and move this down. And now, let's press A to select everything. And press Ctrl B, then V or Ctrl Shift B. And just do a bevel like this and increase the number of segments with the mouse wheel to something like this. We can go more. And you can hold Shift for smaller increments. And do it so that these two in the middle barely touch. And now, we can select them, press M and merge them at center. So, they are connected. And now, we can just tab out, press right click and convert to curve. And basically, this will be the guide around which the conveyor belt will be moving. And now, we'll need, you know, the conveyor belt itself. So, let's press Shift A and we'll add another plane. Now, let's tab into the edit mode. Press S to make it smaller. Something like this. And now, on the x-axis. So, press S, then X and scale it down. Just like this. And now, tab out. And let's go into the modifiers panel. And let's add an array modifier. And let's set factor to something like 1.1. So, there's a gap in between. And now, we can increase the count. And to better see how this works on the curve, we can add another modifier. Let's add a curve modifier. And we'll use the eyedropper tool to select this curve right here. And you can see, this is not behaving properly because we didn't subdivide the belt. So, let's tab into the edit mode. And let's press Ctrl + R and create a few loop cuts. Increase with the mouse wheel to something like this. Now, right click to release. And now, if you tab out, you will see that this bends properly. And now, if you go back to the array, you can just increase the number of these parts. Now, we'll need to match this right here. Use like count of 17 or 16. This might totally vary for you, depending how large you did this. So, basically, just go until, you know, they start to overlap. And now, we'll go into the edit mode. Press A to select all and just scale it down on X axis a little bit. Then, tap out to check how it works. So, press S then X and scale it down. And you can see the gap is now large. So, we can scale it back up a little bit. And you really need to do these small adjustments. And I think this works just fine. So, this is not a precision method, but I think for illustration like this, this is more than enough. And basically, now, to make the conveyor belt move, we'll just move it on the X axis and it will behave like this. When you press G then X, it will move around that curve depending on the modifier. So, that's what we're going to do right now. And if you want to see it better, you can even add, you know, solidify modifier here and increase the thickness and go inside a little bit like this. But you can see this doesn't look too good. So, what you can do is move the solidify above the curve. That way, you will get bent, you know, with the solidify modifier included. And now, we need to make the animation of the movement. So, let's set the end frame to something like, I don't know, 90 should be fine or 120. We'll see how it works. And we'll need to create first and last keyframe so that the belt makes one round and can start over. So, it loops. And for that, we'll need to do a little bit of a math. And since we didn't use any precision method or any precision numbers, we'll need to, you know, calculate that a little bit. But it shouldn't be too hard. So, first of all, let's create the first keyframe and let's press N for the side panel. And here in the item menu, I will set the X location keyframe on frame one. So, right click and insert single keyframe. So, there it is. And now, let's move to frame 120. And now, we'll need to figure out how far we need to move to make the full round. So, the best thing to do is to disable the curve modifier right now. Click this, you know, monitor icon right here. And here we have, you know, the full belt object. And right here on the dimensions, you can see that on the x-axis, it's 10.1 meters. And if you click inside, you will see, you know, some more precision number. So, this is the length we need to travel, but not entirely, because you can see the origin point is right here. So, we would need to subtract half of this width right here. And I think the better method would be to move the origin point right here, or rather, move this whole thing like this, so it sits, you know, on the zero. And to do that, we can disable the array modifier. And now, we can see the dimension on the x-axis of this one piece. And it's like that. So, we need to move this half of that. So, let's select this, press Ctrl+C to copy the number. And now, if we go to the edit mode, let's press A to select all. And now, here, where it says median, we can insert that number. So, let's click here, press Ctrl+V to paste it, but we'll divide it by two. So, slash and two, and let's hit enter. And this now sits perfectly on the axis. So, now, if we tap out, let's enable the array modifier once again. And now, we can see the dimension is still this number, but right now, the origin point is here. So, we can use this number. So, let's select it, press Ctrl+C. Now, make sure you're still on the frame 120. And let's enter that here. So, minus because we need to go to the negative direction. Press Ctrl+V and hit enter. And now, we'll right click and insert single keyframe. So, now, we have this movement right here. And right now, if you play it, you will see it accelerates and in the end, it decelerates. So, we'll press T here in the timeline and choose linear movement. And this way, it will just go in the constant pace. And now, if you enable curve modifier, you will have a perfectly looping conveyor belt animation. So, that's the first step. And now, let's, you know, create a little bit of the scene to support this. So, let's press Shift+A and we'll add a plane. Now, let's look from the front by pressing 1 on a numpad. Now, tab in, press R, then X and 90. Confirm. We can tab out, press G, then Z and move this up a little bit. So, it's here in the middle. Now, tab in, press S, then Z and scale it down. And we can better position this. Now, press S, then X and scale it up here. And press Ctrl+B, then V again to create a similar bevel like before. Something like this. And now, we can merge this at center again. And basically, press A and extrude this and add a mirror modifier. So, let's add that mirror modifier and we'll need to mirror this on the y-axis. And now, if you enable x-ray view right here, you can see, let's switch to the face select. You can see there's a face in there in the middle. So, press X and delete that and enable clipping. So, we have one solid object out of this, including the modifier. So, here's the conveyor belt and let's create like a box that will spit out some boxes. So, let's press Shift+A and let's add a plane, press G, then X, move it right here. Tab into the admin, make it smaller a little bit and extrude like this. And to make it look a little bit nicer, we can press 2 for edge select, select these two edges, press Ctrl+B and bevel them like this and maybe reduce the number of cuts here. And now, let's go back to the face select by pressing 3, select this face, press I and inset. Now, press 2 for edge select, select the bottom one, press G, then Z and move this up. So, it looks like this. And now, back to the face select, select this one, enable the x-ray again and extrude inside. Now, to make sure the normals are correct, let's press A and Shift+N to recalculate them. So, this is the base for our scene. Now, of course, you can create a lot of like supporting structure, like legs for the conveyor belt and stuff like that. I don't want to bother with that right now, I just want to move you and guide you through this animation to get some basic working result and then you can polish your scene on your own. You have all the other tutorials you can check out in my playlist, you will see the link in the description. There are a lot of tutorials that will help you, you know, with modeling and with lighting and stuff like that. So, this is purely focused on this animation and the modeling. So, let's now switch the x-ray off. So, let's now press Shift+A and let's create a cube. Now, tap into the edit mode, press G, then Z and 1. And again, this will be to place the origin at the bottom. Now, we can tap out and make it smaller like this and move it up so it sits on the conveyor belt. We can look from the front by pressing 1 on a numpad and place it like this. Make it larger. And we'll basically hurl this box out of this hole right here. It will go on the conveyor belt and fall down into some kind of hole. So, press G, then X, move it right here. Let's create the rest of the scene. So, let's press Shift+A and we'll add a plane. Now, tap into the edit mode and scale it up like this. And let's look from the camera if it's enough. And I think this looks quite okay. We can press R, then X twice to tilt the camera down a little bit and move it higher like this. And maybe on the local X axis. And let's bring it out a little bit. Okay. Something like this. And now, let's press Shift+A and we'll add another cube. Press G, then X and move it right here. Let's tap in and make it smaller on the X axis. And press G, then Z and move this down. And to make it look a little bit nicer, we can go for edge select, press Ctrl+A and click this edge on the side to select all of these around and press Ctrl+B to bevel. And now, we can hold Shift, select the background. And for what I'm about to do, you'll need to go edit preferences and have the bool tool add-on active. So search for bool. And just check the box, close the preferences. And now, if you hold Ctrl+A and hit minus on a numpad, you will create the hole. But for this to work, we'll need a solid object. So tap into the edit mode for the background and press E to extrude this down to create something like this. Maybe you can go even lower. And again, to make sure that the boolean works, press A, press Shift+N to recalculate normals and do the same here if you have trouble. So the final should look like this. And the box should go and fall into this. And the benefit of the boolean is that now you can grab this and move it around. So we can calibrate it for our conveyor belt needs. Something like this. And now let's go to the output settings and switch frame rate to something like 30. And we have our animation ready. So now the box will be hurled out here. So let's go to the frame 1 and let's insert single key frame on the x-axis. And let's move something like frame 15. Press G. Then X. Move it here. And right click and insert single key frame. And now we're just blocking out the animation. Don't worry about the timings. So now the box comes out and we'll need to make sure that it goes all the way here and falls down. So let's move to something like frame 60. And we'll need to modify this based on the proportions of your conveyor belt. So this will be different for me. It will be different for you a little bit. But I will show you how you can, you know, how you can approximately match the speed of the conveyor belt. So let's go to the frame 60. Press G. Then X. And we know we need to go, you know, somewhere here. And now this will start to fall, of course. So let's move the origin point right there on the edge. It should look like this. And let's right click and insert single key frame here. So now it goes like that. But we need this one key frame to be linear. So press T and switch it to linear. So now it moves with the constant speed. But you can see the conveyor belt is a little bit faster. If you go like this, you can see this edge, you know, getting away from the box. But it's close enough. So we just need to move this, you know, like five frames. And I think it's almost, almost done. Yeah, something like this is fine. So as you can see, I end up on frame 54. Again, this will be different for you, maybe. So just create that key frame, set this to linear, and then move this closer or further away, depending on how it sits on the conveyor belt. And now it will fall down. And this will be pretty quick. So something like frame 70 will need to be right here. So let's look from the side. And first of all, we'll move it on the x axis. So press G then X, move it somewhere here. And right click and insert single key frame. And then let's enable x ray view. And now let's go back to that frame before. And we'll right click and insert single key frame for the z axis, because we didn't create any so far. And now on the frame 70, we'll press G then Z, move it down like this, right click and insert single key frame. So now it does this movement, but it's not optimal, of course, but we'll modify that with curves. But so far, I'm basically interested to see the speed, the timing of the key frames. And this is quite okay, I guess. And one last thing I want to do is rotation. So let's go to the frame 54 again, or whatever frame you have. And in the rotation panel, let's right click and insert single key frame for the Y rotation. And right here, we'll rotate it like this. So at least like 180. You can basically insert 180 exactly and right click and insert single key frame. So the box will do thing like this. And now it's all about timings. So let's move like this. Let's expand the timeline. And now hovering over the timeline, I will press control tab to go to the graph editor and expand this. And we have these three tracks. And that's why I create single key frames. So I don't have all of the other tracks right here. And first of all, we'll need to adjust the movement on the x axis. And but I think the more troubling is the z axis movement, because right now it goes down too soon. So let's disable these two and let's leave the z location here. And right here, you can press a and period on a numpad to focus on your animation right here. And right here, the fall needs to be less southern. So we can select this handle and, you know, drag it up a little bit. And right here, you can see it's a little bit better. And we don't even need to go so far. Okay, I think this looks just fine. Let me see. Yeah, that's quite okay. Okay, and I think that's everything we need to do. Of course, you could go to the beginning of the animation for the x location channel. And try to play with this part of the animation where it kind of goes on the belt. And you can decide whether it should accelerate here. Or you know, if you want like a more sudden approach. Yeah, I think the beginning was just fine like this. That it kind of accelerates from it. So I will leave it like that. So that's for the animation. And now the last part I want to do, let's disable the x ray is to basically duplicate these boxes. So there are multiple of them. And the easiest way to do that is basically just to use all D to duplicate the box, right click to release in place. And now you can separate the animation, because now both of these cubes have same animation as you can see. And we want to have the object of the same data, but we want to separate the animation. So let's just go object. Let's go relations, make single user and object animation. And if you right click here, you can add to quick favorites. So then if you press Q, you will have the object animation item right here in the quick menu, like I have. So if you now click it and confirm, you will have separate animation data from that object. And you can just press A here in the timeline, press G then X and move it away like this. So you can see it moves away. So now these two cubes will be shifted in the timeline and we can move it even further away. And now we'll need two more. And that's for the beginning and the ending of the animation. So it can loop. So let's press Alt D again. And again, I'll press Q and separate that object animation. And now let me press Ctrl tap here. So I can better see the keyframes here and press G then X and move the keyframes all the way to the end. And now I'll press G then X and move them like minus 40 frames here. And now let's press Alt D again to duplicate this box. And again, press Q and separate the object animation. And I'll press G then X, move it to the beginning of the timeline to the frame one. And again, press G then X and minus 40. So now it should loop perfectly. Okay, I think this looks just fine. And now basically, you can just go ahead and make it look a little bit nicer. So you can select the cube. And since there are linked objects, you can just select these edges around, bevel them, you know, change the shape, and they will all look the same. But their animation will be shifted since we separated the animation data. And now you can just select the belt and add, for example, a bevel modifier, increase the segments, reduce the amount to something like this, and enable harden normals. Right click and shade auto smooth and increase to 180 degrees. So you have a nice smooth object right here. And you can do the same for these. So select other objects with the belt as last, click here and transfer to select it. And now we can right click and shade auto smooth. And of course, to make it work for the boolean, the boolean object needs to be smooth as well. So now you have a nice smooth animation. And of course, you need to manually add the bevels to the duplicated objects as well. So select those and copy the bevel there as well. And basically, that's all we need to do here. Let's look from the camera and play back the animation. So now I will just go ahead and, you know, finish this to a little scene. I will time lapse this process. So the video doesn't take too long. And you can watch and try to make something similar. Or as I said before, you know, you can go ahead and watch some tutorials to get some, you know, lighting tips and material tips. So I'll do that right now. And I'll see you on the other side. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. And I'll add a mission right here to make this a little bit more interesting. And now only thing left is to go to the output settings, choose your folder, switch to FFmpeg video and in the encoding, you know, switch to MP4. And now basically just go ahead, hit render, render animation, wait out your frames and you will have your animation ready. So that's it for today's video and I'll see you in the next video, I'll see you in the next video. And if you have any more suggestions, please leave them in the comments. And if you finish this animation and you want your feedback on it or you just want to flex it out, be sure to join our Discord. You will see the link in the description. And again, if you're new around here, please hit that subscribe. Thank you all for watching and have a wonderful day. Bye."
+}

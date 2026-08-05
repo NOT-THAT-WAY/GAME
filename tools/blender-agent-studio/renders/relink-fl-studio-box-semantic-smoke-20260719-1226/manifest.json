@@ -1,0 +1,29 @@
+{
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/master.mp4",
+  "source_probe": {
+    "width": 1920,
+    "height": 1080,
+    "r_frame_rate": "30/1",
+    "duration": "13.533333"
+  },
+  "source_fps": 30.0,
+  "mapping": "five readable semantic crops from one synchronized master",
+  "generated_slots": {
+    "playlist": "${BLENDER_AGENT_STUDIO_ROOT}/renders/relink-fl-studio-box-semantic-smoke-20260719-1226/playlist.mp4",
+    "browser": "${BLENDER_AGENT_STUDIO_ROOT}/renders/relink-fl-studio-box-semantic-smoke-20260719-1226/browser.mp4",
+    "mixer": "${BLENDER_AGENT_STUDIO_ROOT}/renders/relink-fl-studio-box-semantic-smoke-20260719-1226/mixer.mp4",
+    "piano_roll": "${BLENDER_AGENT_STUDIO_ROOT}/renders/relink-fl-studio-box-semantic-smoke-20260719-1226/piano-roll.mp4",
+    "channel_rack": "${BLENDER_AGENT_STUDIO_ROOT}/renders/relink-fl-studio-box-semantic-smoke-20260719-1226/controller.mp4"
+  },
+  "timeline": {
+    "fps": 30,
+    "frames": [
+      1,
+      90
+    ],
+    "duration": 3.0
+  },
+  "loop": true,
+  "blend_saved": false,
+  "next_step": "Check all five panels, render USTUDIO_MEDIA_ gates, then Save As"
+}

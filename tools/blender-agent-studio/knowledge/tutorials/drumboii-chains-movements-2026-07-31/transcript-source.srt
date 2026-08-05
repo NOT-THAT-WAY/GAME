@@ -1,0 +1,524 @@
+1
+00:00:00,000 --> 00:00:07,000
+ Hello! In this video I'm going to show you how I do my chain animations.
+
+2
+00:00:07,000 --> 00:00:11,000
+ I often use chains as decorations in my videos, often in the background.
+
+3
+00:00:11,000 --> 00:00:15,000
+ And today I'm going to show you two ways to do these types of animations.
+
+4
+00:00:15,000 --> 00:00:18,000
+ So to start off, I'm just going to create a little chain here.
+
+5
+00:00:18,000 --> 00:00:21,000
+ So I'm going to press Shift+A and add in a torus.
+
+6
+00:00:21,000 --> 00:00:28,000
+ And before I do anything, I'm going to press down to the left here and increase this to 0.35.
+
+7
+00:00:28,000 --> 00:00:32,000
+ Because I find that that thickness is perfect for a chain.
+
+8
+00:00:32,000 --> 00:00:35,000
+ I'm going to select it and press tab to go to edit mode.
+
+9
+00:00:35,000 --> 00:00:40,000
+ I'm going to go to x-ray and select all these vertices in the middle.
+
+10
+00:00:40,000 --> 00:00:42,000
+ Then bevel them, press Ctrl+B.
+
+11
+00:00:42,000 --> 00:00:44,000
+ So now we have perfect symmetry here.
+
+12
+00:00:44,000 --> 00:00:49,000
+ And we can select the right side, press G, X and drag it out. Something like that.
+
+13
+00:00:49,000 --> 00:00:52,000
+ And while I'm in edit mode, I'm going to press A to select all.
+
+14
+00:00:52,000 --> 00:00:57,000
+ Then press Shift+D and then X to move it forward on the X axis.
+
+15
+00:00:57,000 --> 00:00:58,000
+ And then press Enter.
+
+16
+00:00:58,000 --> 00:01:04,000
+ And while it's selected, I'm going to press R, X and then 90 degrees to rotate it 90 degrees.
+
+17
+00:01:04,000 --> 00:01:06,000
+ So now we have an instance of a chain here.
+
+18
+00:01:06,000 --> 00:01:09,000
+ What we can do now is to add an array.
+
+19
+00:01:09,000 --> 00:01:11,000
+ So I'm going to add an array modifier here.
+
+20
+00:01:11,000 --> 00:01:14,000
+ And as you can see, they are not really overlapping perfectly here.
+
+21
+00:01:14,000 --> 00:01:20,000
+ So I'm going to go to the offset X here and move it back when it looks like it's matching.
+
+22
+00:01:20,000 --> 00:01:21,000
+ So something like that maybe.
+
+23
+00:01:21,000 --> 00:01:25,000
+ I'm going to increase the count maybe to 24.
+
+24
+00:01:25,000 --> 00:01:28,000
+ But we need to attach this to a curve.
+
+25
+00:01:28,000 --> 00:01:30,000
+ So I'm going to just temporarily hide this.
+
+26
+00:01:30,000 --> 00:01:35,000
+ And now I'm going to search for Shift+A and a path.
+
+27
+00:01:35,000 --> 00:01:36,000
+ You can see we have a path here.
+
+28
+00:01:36,000 --> 00:01:43,000
+ And what we want to do is to press Tab to go into edit mode and make sure everything is selected by pressing A.
+
+29
+00:01:43,000 --> 00:01:48,000
+ And then we want to have the end here as the middle point where the cursor is.
+
+30
+00:01:48,000 --> 00:02:00,000
+ Press A to select everything, then G and X and move this to the right side until you see the last dot lining up in the middle.
+
+31
+00:02:00,000 --> 00:02:09,000
+ So you see here, the last dot is in the middle here, which means that the center of the origin point of the path is here,
+
+32
+00:02:09,000 --> 00:02:12,000
+ which will make everything easier to animate later on.
+
+33
+00:02:12,000 --> 00:02:16,000
+ And now we can unhide the tors here and we probably need to scale this down a bit.
+
+34
+00:02:16,000 --> 00:02:19,000
+ So I'm going to select it and press S and scale it down.
+
+35
+00:02:19,000 --> 00:02:22,000
+ And now we want to attach the chain to the curve.
+
+36
+00:02:22,000 --> 00:02:25,000
+ So I'm going to add a modifier and search for Curve.
+
+37
+00:02:25,000 --> 00:02:27,000
+ And then on the dropdown, I'm going to select the path.
+
+38
+00:02:27,000 --> 00:02:33,000
+ So now it's attached to the curve underneath here, as you can see I have selected here.
+
+39
+00:02:33,000 --> 00:02:39,000
+ So I'm going to select the curve, the path here, and probably we will need to make it a little bit longer.
+
+40
+00:02:39,000 --> 00:02:41,000
+ So I'm going to scale it.
+
+41
+00:02:41,000 --> 00:02:43,000
+ So you see, now it's lining up here.
+
+42
+00:02:43,000 --> 00:02:46,000
+ Yeah, so now we're going to just make a random shape.
+
+43
+00:02:46,000 --> 00:02:51,000
+ So I'm going to go to the side view here and I'm going to make sure the path is selected.
+
+44
+00:02:51,000 --> 00:02:55,000
+ Then go into edit mode and just start playing around with the vertices here.
+
+45
+00:02:55,000 --> 00:03:03,000
+ And it looks a bit flat, so I'm going to take this vertices and move it maybe on the y-axis here.
+
+46
+00:03:03,000 --> 00:03:07,000
+ Then take this one, press G, Y and move it to the other side.
+
+47
+00:03:07,000 --> 00:03:10,000
+ And press this one, G, Y and move it here.
+
+48
+00:03:10,000 --> 00:03:15,000
+ So now we have a nice type of shape here.
+
+49
+00:03:15,000 --> 00:03:17,000
+ So how do we animate this?
+
+50
+00:03:17,000 --> 00:03:22,000
+ Because as you can see here in my video, they are like floating around in my videos.
+
+51
+00:03:22,000 --> 00:03:26,000
+ And the first thing I'm going to show you how to do this is to use simple deforms.
+
+52
+00:03:26,000 --> 00:03:31,000
+ So make sure you have selected the chain, then add modifier and add a simple deform.
+
+53
+00:03:31,000 --> 00:03:33,000
+ We're going to animate this by using keyframes.
+
+54
+00:03:33,000 --> 00:03:37,000
+ So one thing to point out is that I animate in 60 FPS.
+
+55
+00:03:37,000 --> 00:03:40,000
+ So make sure you have selected 60 FPS for this animation.
+
+56
+00:03:40,000 --> 00:03:45,000
+ And we can make it a little bit longer, maybe frame 1 to 500.
+
+57
+00:03:45,000 --> 00:03:49,000
+ And now make sure you have selected the chain and go to modifiers.
+
+58
+00:03:49,000 --> 00:03:52,000
+ And make sure you have it on frame 1 here.
+
+59
+00:03:52,000 --> 00:03:54,000
+ What I want to do is animate this.
+
+60
+00:03:54,000 --> 00:03:57,000
+ We can use the twist here, for example, and axis X.
+
+61
+00:03:57,000 --> 00:03:59,000
+ And just animate it a little bit like this.
+
+62
+00:03:59,000 --> 00:04:03,000
+ So on frame 1, for example, I'm going to put -10.
+
+63
+00:04:04,000 --> 00:04:10,000
+ And then I like to go forward maybe like 50 frames we can try.
+
+64
+00:04:10,000 --> 00:04:12,000
+ And I'm going to put +10.
+
+65
+00:04:12,000 --> 00:04:16,000
+ And then I want to go to frame 100 here and press -10 again.
+
+66
+00:04:16,000 --> 00:04:19,000
+ And then I will just copy/paste everything like this.
+
+67
+00:04:19,000 --> 00:04:26,000
+ Because you can see the first frame here has the same value, -10, as the last frame here, -10.
+
+68
+00:04:26,000 --> 00:04:34,000
+ Which means that we can select all these and press command C and just copy it like this.
+
+69
+00:04:34,000 --> 00:04:39,000
+ So you see here, if you watch here while I'm scrolling forward, -10.
+
+70
+00:04:39,000 --> 00:04:41,000
+ Then we are on 10.
+
+71
+00:04:41,000 --> 00:04:43,000
+ Then we are -10.
+
+72
+00:04:43,000 --> 00:04:45,000
+ And 10, -10.
+
+73
+00:04:45,000 --> 00:04:49,000
+ Yeah, so as you can see now, it's just moving around.
+
+74
+00:04:49,000 --> 00:04:52,000
+ But it looks kind of static, I think.
+
+75
+00:04:52,000 --> 00:04:56,000
+ Which is why I always use two types of simple deforms.
+
+76
+00:04:56,000 --> 00:04:58,000
+ So now we are going to add in another one.
+
+77
+00:04:58,000 --> 00:05:00,000
+ But this time I'm going to use the y-axis.
+
+78
+00:05:00,000 --> 00:05:02,000
+ And we are going to do the same process.
+
+79
+00:05:02,000 --> 00:05:06,000
+ But this time I'm going to, on the first frame, use 10 degrees.
+
+80
+00:05:06,000 --> 00:05:09,000
+ And we can drop it down here so you see.
+
+81
+00:05:09,000 --> 00:05:14,000
+ And then on frame 50, you can see the first simple deform is on 10.
+
+82
+00:05:14,000 --> 00:05:16,000
+ But this one will be inverted to -10.
+
+83
+00:05:16,000 --> 00:05:21,000
+ And then again, 10 here on the second one while this is -10.
+
+84
+00:05:21,000 --> 00:05:23,000
+ And -10 here while this is 10.
+
+85
+00:05:23,000 --> 00:05:26,000
+ And then we will just copy this over here like that.
+
+86
+00:05:26,000 --> 00:05:30,000
+ But now you can see that the animation looks really static and ugly almost.
+
+87
+00:05:30,000 --> 00:05:32,000
+ And I don't really want that.
+
+88
+00:05:32,000 --> 00:05:38,000
+ So what I do is that I select, you can see here, the last deform, which is this one we added.
+
+89
+00:05:38,000 --> 00:05:40,000
+ I'm going to select all these keyframes.
+
+90
+00:05:40,000 --> 00:05:45,000
+ And then I'm going to move them back around 25.
+
+91
+00:05:45,000 --> 00:05:48,000
+ So now you can see that they are kind of overlapping.
+
+92
+00:05:48,000 --> 00:05:53,000
+ Because here are the keyframes for the first simple deform we made.
+
+93
+00:05:53,000 --> 00:05:56,000
+ And in between them we have the second deform keyframes.
+
+94
+00:05:56,000 --> 00:05:59,000
+ Which means that they will like be combined and overlap each other.
+
+95
+00:05:59,000 --> 00:06:04,000
+ And now you can see it looks much smoother.
+
+96
+00:06:04,000 --> 00:06:08,000
+ But this is pretty much everything I do for my chain animations.
+
+97
+00:06:08,000 --> 00:06:11,000
+ But there's actually a simpler way to do this.
+
+98
+00:06:11,000 --> 00:06:14,000
+ So we can get rid of these simple deforms here.
+
+99
+00:06:14,000 --> 00:06:16,000
+ And now we have nothing again.
+
+100
+00:06:16,000 --> 00:06:19,000
+ Now we're going to add in just a new simple deform.
+
+101
+00:06:19,000 --> 00:06:21,000
+ And we're also going to add an empty object.
+
+102
+00:06:21,000 --> 00:06:24,000
+ So I'm going to press Shift + A and search for plain axis.
+
+103
+00:06:24,000 --> 00:06:29,000
+ And now we're going to use a driver to animate this axis with.
+
+104
+00:06:29,000 --> 00:06:33,000
+ And the driver is like you are typing in a constant animation.
+
+105
+00:06:33,000 --> 00:06:36,000
+ So instead of animating this with keyframes.
+
+106
+00:06:36,000 --> 00:06:37,000
+ We can type in a number.
+
+107
+00:06:37,000 --> 00:06:41,000
+ And it will like rotate into infinity.
+
+108
+00:06:41,000 --> 00:06:44,000
+ So I'm actually going to animate it on the Z axis here.
+
+109
+00:06:44,000 --> 00:06:46,000
+ To do that you're going to press this.
+
+110
+00:06:46,000 --> 00:06:49,000
+ And then type in hashtag frame slash.
+
+111
+00:06:49,000 --> 00:06:51,000
+ And we're going to try 60.
+
+112
+00:06:51,000 --> 00:06:54,000
+ And you're going to see that it starts rotating.
+
+113
+00:06:54,000 --> 00:06:56,000
+ But we're not animating it.
+
+114
+00:06:56,000 --> 00:06:58,000
+ It's driving it automatically.
+
+115
+00:06:58,000 --> 00:06:59,000
+ The cool thing about this.
+
+116
+00:06:59,000 --> 00:07:01,000
+ Is that you can now go to the chain.
+
+117
+00:07:01,000 --> 00:07:02,000
+ And press this drop down.
+
+118
+00:07:02,000 --> 00:07:04,000
+ And select empty object.
+
+119
+00:07:04,000 --> 00:07:06,000
+ And if you press space now.
+
+120
+00:07:06,000 --> 00:07:09,000
+ You will see that it's rotating automatically.
+
+121
+00:07:09,000 --> 00:07:11,000
+ But you can see that it looks really intense.
+
+122
+00:07:11,000 --> 00:07:13,000
+ So you might want to turn down the angle here.
+
+123
+00:07:13,000 --> 00:07:15,000
+ To maybe something like 10.
+
+124
+00:07:15,000 --> 00:07:18,000
+ So yeah just a subtle little animation.
+
+125
+00:07:18,000 --> 00:07:21,000
+ And you can play around with the placement of this.
+
+126
+00:07:21,000 --> 00:07:23,000
+ Which will affect how the rotation is.
+
+127
+00:07:23,000 --> 00:07:27,000
+ Depending on both of its origin points.
+
+128
+00:07:27,000 --> 00:07:29,000
+ But yeah that's pretty much everything I do.
+
+129
+00:07:29,000 --> 00:07:30,000
+ For my chain animations.
+
+130
+00:07:30,000 --> 00:07:32,000
+ Let me know if you wonder anything down below.
+
+131
+00:07:32,000 --> 00:07:34,000
+ And I'll see you in the next video.
+

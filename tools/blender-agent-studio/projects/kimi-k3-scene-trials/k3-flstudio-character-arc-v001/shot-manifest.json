@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "camera": "USTUDIO_CAM_SCENE1_AWAKENING",
+  "camera_names": [
+    "USTUDIO_CAM_SCENE1_AWAKENING",
+    "USTUDIO_CAM_SCENE2_PAUSE",
+    "USTUDIO_CAM_SCENE3_RUN",
+    "USTUDIO_CAM_SCENE4_COMMUNION"
+  ],
+  "cuts": [
+    {
+      "frame": 1,
+      "camera": "USTUDIO_CAM_SCENE1_AWAKENING"
+    },
+    {
+      "frame": 106,
+      "camera": "USTUDIO_CAM_SCENE2_PAUSE"
+    },
+    {
+      "frame": 203,
+      "camera": "USTUDIO_CAM_SCENE3_RUN"
+    },
+    {
+      "frame": 299,
+      "camera": "USTUDIO_CAM_SCENE4_COMMUNION"
+    }
+  ],
+  "style": "Drumboiii K1 pose, K2 anticipation, K3 travel, K4 recovery",
+  "saved": true
+}

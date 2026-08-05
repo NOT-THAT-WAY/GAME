@@ -1,0 +1,6131 @@
+{
+  "schema_version": 2,
+  "file": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/scene/trial.blend",
+  "blender_version": "5.1.1",
+  "saved": false,
+  "active_scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+  "summary": {
+    "scenes": 1,
+    "objects": 99,
+    "meshes": 50,
+    "materials": 16,
+    "images": 5,
+    "missing_images": 0,
+    "asset_blocks": 0,
+    "external_libraries": 0,
+    "geometry_issue_objects": 5
+  },
+  "scenes": [
+    {
+      "name": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+      "active": true,
+      "objects": 99,
+      "camera": "USTUDIO_CAM_SCENE1_AWAKENING",
+      "frame_range": [
+        1,
+        406
+      ],
+      "fps": 30.0,
+      "engine": "BLENDER_EEVEE",
+      "resolution": [
+        640,
+        360,
+        100
+      ],
+      "pixel_aspect": [
+        1.0,
+        1.0
+      ],
+      "film_transparent": false,
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/palette-v6-gate/frame_0406.png",
+      "file_format": "PNG",
+      "view_transform": "AgX",
+      "look": "AgX - Medium High Contrast",
+      "exposure": 0.15000000596046448,
+      "gamma": 1.0,
+      "units": {
+        "system": "METRIC",
+        "scale_length": 1.0,
+        "length_unit": "METERS"
+      },
+      "markers": [
+        {
+          "name": "USTUDIO_MEDIA_IN",
+          "frame": 1
+        },
+        {
+          "name": "USTUDIO_MEDIA_QUARTER",
+          "frame": 102
+        },
+        {
+          "name": "USTUDIO_MEDIA_MIDDLE",
+          "frame": 203
+        },
+        {
+          "name": "USTUDIO_MEDIA_THREE_QUARTERS",
+          "frame": 305
+        },
+        {
+          "name": "USTUDIO_MEDIA_OUT",
+          "frame": 406
+        },
+        {
+          "name": "USTUDIO_MUSIC_BAR_01",
+          "frame": 9
+        },
+        {
+          "name": "USTUDIO_MUSIC_BAR_02",
+          "frame": 57
+        },
+        {
+          "name": "USTUDIO_MUSIC_BAR_03",
+          "frame": 106
+        },
+        {
+          "name": "USTUDIO_MUSIC_BAR_04",
+          "frame": 154
+        },
+        {
+          "name": "USTUDIO_MUSIC_BAR_05",
+          "frame": 203
+        },
+        {
+          "name": "USTUDIO_MUSIC_BAR_06",
+          "frame": 251
+        },
+        {
+          "name": "USTUDIO_MUSIC_BAR_07",
+          "frame": 299
+        },
+        {
+          "name": "USTUDIO_MUSIC_BAR_08",
+          "frame": 348
+        },
+        {
+          "name": "USTUDIO_MUSIC_BAR_09",
+          "frame": 396
+        },
+        {
+          "name": "USTUDIO_MUSIC_DROP",
+          "frame": 251
+        },
+        {
+          "name": "USTUDIO_SCENE_AWAKENING",
+          "frame": 9
+        },
+        {
+          "name": "USTUDIO_SCENE_PAUSE",
+          "frame": 106
+        },
+        {
+          "name": "USTUDIO_SCENE_RUN",
+          "frame": 203
+        },
+        {
+          "name": "USTUDIO_SCENE_COMMUNION",
+          "frame": 299
+        },
+        {
+          "name": "USTUDIO_SCENE_FINAL_HOLD",
+          "frame": 397
+        },
+        {
+          "name": "USTUDIO_CUT_SCENE1",
+          "frame": 1
+        },
+        {
+          "name": "USTUDIO_CUT_SCENE2",
+          "frame": 106
+        },
+        {
+          "name": "USTUDIO_CUT_SCENE3",
+          "frame": 203
+        },
+        {
+          "name": "USTUDIO_CUT_SCENE4",
+          "frame": 299
+        }
+      ]
+    }
+  ],
+  "collections": [
+    {
+      "name": "BOX_SHELL",
+      "objects": 20,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "CAMERA_RIG",
+      "objects": 2,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "FL_STUDIO_INTERIOR",
+      "objects": 6,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK",
+      "objects": 38,
+      "children": [
+        "USTUDIO_CHARACTER_LIGHTING",
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "asset": false
+    },
+    {
+      "name": "LIGHTING",
+      "objects": 4,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "PLAYBACK_MOTION",
+      "objects": 3,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "USTUDIO_CHARACTER_CAMERAS",
+      "objects": 13,
+      "children": [],
+      "asset": false
+    },
+    {
+      "name": "USTUDIO_CHARACTER_LIGHTING",
+      "objects": 7,
+      "children": [],
+      "asset": false
+    }
+  ],
+  "objects": [
+    {
+      "name": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        0.0,
+        1.3,
+        2.83
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        6.5,
+        0.16,
+        0.2
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_SCREEN_FRAME"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.015",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_BACK_SCREEN_TOP",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        0.0,
+        1.3,
+        5.02
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        6.5,
+        0.16,
+        0.2
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_SCREEN_FRAME"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.014",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_BACK_WALL",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        0.0,
+        1.58,
+        3.15
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        7.0,
+        0.36,
+        4.4
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_DARK_LINER"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.013",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_BOTTOM_GREEN_LED",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        0.0,
+        -1.1,
+        0.4
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.44,
+        0.11,
+        0.11
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_PLAYBACK_GREEN"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.021",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_BOX_CAMERA",
+      "type": "CAMERA",
+      "collections": [
+        "CAMERA_RIG"
+      ],
+      "location": [
+        0.17203,
+        -20.13678,
+        5.05441
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_BOX_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_BOX_CAMERAAction.001",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "fcurves": 4,
+        "layers": 1,
+        "slots": 2
+      },
+      "custom_properties": [],
+      "camera": {
+        "type": "PERSP",
+        "lens": 46.4559326171875,
+        "sensor_width": 36.0,
+        "clip": [
+          0.10000000149011612,
+          1000.0
+        ],
+        "dof": true,
+        "focus_object": "USTUDIO_BOX_TARGET"
+      }
+    },
+    {
+      "name": "USTUDIO_BOX_FLOAT_ROOT",
+      "type": "EMPTY",
+      "collections": [
+        "Scene Collection"
+      ],
+      "location": [
+        0.00178,
+        0.00036,
+        1.20321
+      ],
+      "rotation_euler": [
+        -0.01683,
+        0.01346,
+        -0.01004
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_BOX_FLOAT_ROOTAction",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "fcurves": 6,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_BOX_TARGET",
+      "type": "EMPTY",
+      "collections": [
+        "CAMERA_RIG"
+      ],
+      "location": [
+        0.00127,
+        0.25032,
+        4.18255
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_BOX_TARGETAction",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_BROWSER_LEFT_WALL",
+      "type": "MESH",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.92,
+        1.64,
+        4.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_MOVIE_BROWSER"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_mapping"
+      ],
+      "geometry": {
+        "mesh": "USTUDIO_BROWSER_LEFT_WALL_GRID_MESH",
+        "vertices": 861,
+        "edges": 1660,
+        "polygons": 800,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 120,
+        "non_manifold_edges": 120,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CAM_SCENE1_AWAKENING",
+      "type": "CAMERA",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.06,
+        -0.72,
+        1.985
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "USTUDIO_CAM_SCENE1_AWAKENING_TRACK",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_TARGET_SCENE1_AWAKENING"
+        }
+      ],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CAM_SCENE1_AWAKENINGAction",
+        "frame_range": [
+          1.0,
+          105.0
+        ],
+        "fcurves": 4,
+        "layers": 1,
+        "slots": 2
+      },
+      "custom_properties": [],
+      "camera": {
+        "type": "PERSP",
+        "lens": 17.77203369140625,
+        "sensor_width": 36.0,
+        "clip": [
+          0.004999999888241291,
+          100.0
+        ],
+        "dof": true,
+        "focus_object": "USTUDIO_FOCUS_SCENE1_AWAKENING"
+      }
+    },
+    {
+      "name": "USTUDIO_CAM_SCENE2_PAUSE",
+      "type": "CAMERA",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.1,
+        -2.1,
+        2.08
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "USTUDIO_CAM_SCENE2_PAUSE_TRACK",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_TARGET_SCENE2_PAUSE"
+        }
+      ],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CAM_SCENE2_PAUSEAction",
+        "frame_range": [
+          106.0,
+          202.0
+        ],
+        "fcurves": 4,
+        "layers": 1,
+        "slots": 2
+      },
+      "custom_properties": [],
+      "camera": {
+        "type": "PERSP",
+        "lens": 55.0,
+        "sensor_width": 36.0,
+        "clip": [
+          0.009999999776482582,
+          100.0
+        ],
+        "dof": true,
+        "focus_object": "USTUDIO_FOCUS_SCENE2_PAUSE"
+      }
+    },
+    {
+      "name": "USTUDIO_CAM_SCENE3_RUN",
+      "type": "CAMERA",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.0,
+        -1.25,
+        0.165
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHARACTER_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "USTUDIO_CAM_SCENE3_RUN_TRACK",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_TARGET_SCENE3_RUN"
+        }
+      ],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CAM_SCENE3_RUNAction.001",
+        "frame_range": [
+          203.0,
+          298.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": [
+        "ustudio_drift_rule",
+        "ustudio_shake_max_m"
+      ],
+      "camera": {
+        "type": "PERSP",
+        "lens": 48.0,
+        "sensor_width": 36.0,
+        "clip": [
+          0.00800000037997961,
+          100.0
+        ],
+        "dof": true,
+        "focus_object": "USTUDIO_FOCUS_SCENE3_RUN"
+      }
+    },
+    {
+      "name": "USTUDIO_CAM_SCENE4_COMMUNION",
+      "type": "CAMERA",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.0,
+        -1.02,
+        2.45
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "USTUDIO_CAM_SCENE4_COMMUNION_TRACK",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_TARGET_SCENE4_COMMUNION"
+        }
+      ],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CAM_SCENE4_COMMUNIONAction",
+        "frame_range": [
+          299.0,
+          406.0
+        ],
+        "fcurves": 4,
+        "layers": 1,
+        "slots": 2
+      },
+      "custom_properties": [],
+      "camera": {
+        "type": "PERSP",
+        "lens": 35.0,
+        "sensor_width": 36.0,
+        "clip": [
+          0.00800000037997961,
+          100.0
+        ],
+        "dof": true,
+        "focus_object": "USTUDIO_FOCUS_SCENE4_COMMUNION"
+      }
+    },
+    {
+      "name": "USTUDIO_CEILING",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        0.0,
+        0.42,
+        5.3
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        8.1,
+        2.3,
+        0.36
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_DARK_LINER"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.012",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHANNEL_RACK_CASE",
+      "type": "MESH",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "location": [
+        0.0,
+        0.12,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        -0.03491
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        3.56,
+        0.24,
+        1.04
+      ],
+      "parent": "USTUDIO_CHANNEL_RACK_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_SCREEN_FRAME"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.016",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHANNEL_RACK_ROOT",
+      "type": "EMPTY",
+      "collections": [
+        "PLAYBACK_MOTION"
+      ],
+      "location": [
+        2.05,
+        -0.94,
+        1.25
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHANNEL_RACK_SURFACE",
+      "type": "MESH",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "location": [
+        -2.05,
+        0.94,
+        -1.25
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        3.34,
+        0.0,
+        0.84
+      ],
+      "parent": "USTUDIO_CHANNEL_RACK_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_MOVIE_CHANNEL_RACK"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "USTUDIO_CHANNEL_RACK_SURFACE_MESH",
+        "vertices": 4,
+        "edges": 4,
+        "polygons": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 4,
+        "non_manifold_edges": 4,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_FOOT_L",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        -0.018,
+        -0.003
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.014,
+        0.032,
+        0.014
+      ],
+      "dimensions": [
+        0.028,
+        0.064,
+        0.028
+      ],
+      "parent": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.023",
+        "vertices": 146,
+        "edges": 304,
+        "polygons": 160,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_FOOT_R",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        -0.018,
+        -0.003
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.014,
+        0.032,
+        0.014
+      ],
+      "dimensions": [
+        0.028,
+        0.064,
+        0.028
+      ],
+      "parent": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.029",
+        "vertices": 146,
+        "edges": 304,
+        "polygons": 160,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_FOREARM_L",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.028
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.013,
+        0.013,
+        0.0345
+      ],
+      "dimensions": [
+        0.026,
+        0.026,
+        0.069
+      ],
+      "parent": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.019",
+        "vertices": 146,
+        "edges": 304,
+        "polygons": 160,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_FOREARM_R",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.028
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.013,
+        0.013,
+        0.0345
+      ],
+      "dimensions": [
+        0.026,
+        0.026,
+        0.069
+      ],
+      "parent": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.025",
+        "vertices": 146,
+        "edges": 304,
+        "polygons": 160,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_HAND_L",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        -0.002,
+        -0.007
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.015,
+        0.012,
+        0.019
+      ],
+      "dimensions": [
+        0.03,
+        0.024,
+        0.038
+      ],
+      "parent": "USTUDIO_CHAR_RIG_WRIST_L",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.020",
+        "vertices": 222,
+        "edges": 460,
+        "polygons": 240,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 40,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_HAND_R",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        -0.002,
+        -0.007
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.015,
+        0.012,
+        0.019
+      ],
+      "dimensions": [
+        0.03,
+        0.024,
+        0.038
+      ],
+      "parent": "USTUDIO_CHAR_RIG_WRIST_R",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.026",
+        "vertices": 222,
+        "edges": 460,
+        "polygons": 240,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 40,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_HEAD",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        -0.002,
+        0.03
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.041,
+        0.038,
+        0.046
+      ],
+      "dimensions": [
+        0.082,
+        0.076,
+        0.092
+      ],
+      "parent": "USTUDIO_CHAR_RIG_NECK",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.017",
+        "vertices": 222,
+        "edges": 460,
+        "polygons": 240,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 40,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_PELVIS",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.046,
+        0.032,
+        0.035
+      ],
+      "dimensions": [
+        0.092,
+        0.064,
+        0.07
+      ],
+      "parent": "USTUDIO_CHAR_RIG_HIPS",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.015",
+        "vertices": 222,
+        "edges": 460,
+        "polygons": 240,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 40,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.061
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_KNEE_L",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.061
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_KNEE_R",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.062
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.062
+      ],
+      "rotation_euler": [
+        0.20944,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CHAR_RIG_ELBOW_RAction.001",
+        "frame_range": [
+          299.0,
+          299.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_HIP_L",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        -0.029,
+        0.0,
+        -0.012
+      ],
+      "rotation_euler": [
+        -1.53589,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_HIPS",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CHAR_RIG_HIP_LAction.001",
+        "frame_range": [
+          106.0,
+          396.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_HIP_R",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.029,
+        0.0,
+        -0.012
+      ],
+      "rotation_euler": [
+        -1.53589,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_HIPS",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CHAR_RIG_HIP_RAction.001",
+        "frame_range": [
+          106.0,
+          396.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_HIPS",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.145
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHARACTER_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CHAR_RIG_HIPSAction.001",
+        "frame_range": [
+          106.0,
+          396.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_KNEE_L",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.066
+      ],
+      "rotation_euler": [
+        1.53589,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_HIP_L",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CHAR_RIG_KNEE_LAction.001",
+        "frame_range": [
+          106.0,
+          396.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_KNEE_R",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.066
+      ],
+      "rotation_euler": [
+        1.53589,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_HIP_R",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CHAR_RIG_KNEE_RAction.001",
+        "frame_range": [
+          106.0,
+          396.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_NECK",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.105
+      ],
+      "rotation_euler": [
+        0.48869,
+        0.0,
+        -0.20944
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_TORSO",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CHAR_RIG_NECKAction.001",
+        "frame_range": [
+          9.0,
+          396.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        -0.052,
+        0.0,
+        0.075
+      ],
+      "rotation_euler": [
+        0.08727,
+        0.0,
+        0.13963
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_TORSO",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CHAR_RIG_SHOULDER_LAction.001",
+        "frame_range": [
+          9.0,
+          396.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.052,
+        0.0,
+        0.075
+      ],
+      "rotation_euler": [
+        0.08727,
+        0.0,
+        -0.13963
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_TORSO",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CHAR_RIG_SHOULDER_RAction.001",
+        "frame_range": [
+          9.0,
+          396.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_TORSO",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.015
+      ],
+      "rotation_euler": [
+        0.2618,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_HIPS",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CHAR_RIG_TORSOAction.001",
+        "frame_range": [
+          9.0,
+          396.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_WRIST_L",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.055
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_WRIST_R",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.055
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_CHAR_SHIN_L",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.031
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.016,
+        0.016,
+        0.0405
+      ],
+      "dimensions": [
+        0.032,
+        0.032,
+        0.081
+      ],
+      "parent": "USTUDIO_CHAR_RIG_KNEE_L",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.022",
+        "vertices": 146,
+        "edges": 304,
+        "polygons": 160,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_SHIN_R",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.031
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.016,
+        0.016,
+        0.0405
+      ],
+      "dimensions": [
+        0.032,
+        0.032,
+        0.081
+      ],
+      "parent": "USTUDIO_CHAR_RIG_KNEE_R",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.028",
+        "vertices": 146,
+        "edges": 304,
+        "polygons": 160,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_THIGH_L",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.033
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.019,
+        0.019,
+        0.045
+      ],
+      "dimensions": [
+        0.038,
+        0.038,
+        0.09
+      ],
+      "parent": "USTUDIO_CHAR_RIG_HIP_L",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.021",
+        "vertices": 146,
+        "edges": 304,
+        "polygons": 160,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_THIGH_R",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.033
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.019,
+        0.019,
+        0.045
+      ],
+      "dimensions": [
+        0.038,
+        0.038,
+        0.09
+      ],
+      "parent": "USTUDIO_CHAR_RIG_HIP_R",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.027",
+        "vertices": 146,
+        "edges": 304,
+        "polygons": 160,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_TORSO",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.05
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.055,
+        0.035,
+        0.072
+      ],
+      "dimensions": [
+        0.11,
+        0.07,
+        0.144
+      ],
+      "parent": "USTUDIO_CHAR_RIG_TORSO",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.016",
+        "vertices": 222,
+        "edges": 460,
+        "polygons": 240,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 40,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_UPPER_ARM_L",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.031
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.015,
+        0.015,
+        0.039
+      ],
+      "dimensions": [
+        0.03,
+        0.03,
+        0.078
+      ],
+      "parent": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.018",
+        "vertices": 146,
+        "edges": 304,
+        "polygons": 160,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHAR_UPPER_ARM_R",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        -0.031
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.015,
+        0.015,
+        0.039
+      ],
+      "dimensions": [
+        0.03,
+        0.03,
+        0.078
+      ],
+      "parent": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_CHARACTER_PEARL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Sphere.024",
+        "vertices": 146,
+        "edges": 304,
+        "polygons": 160,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 32,
+        "negative_determinant": false,
+        "unapplied_scale": true,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_CHARACTER_ROOT",
+      "type": "EMPTY",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        0.0,
+        0.14,
+        1.945
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_CHARACTER_ROOTAction.001",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "fcurves": 6,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": [
+        "ustudio_height_m",
+        "ustudio_role",
+        "ustudio_support"
+      ]
+    },
+    {
+      "name": "USTUDIO_FLOAT_SHADOW_KEY",
+      "type": "LIGHT",
+      "collections": [
+        "Scene Collection"
+      ],
+      "location": [
+        0.0,
+        -0.8,
+        8.5
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_SHADOW_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_preserved_reason"
+      ],
+      "light": {
+        "type": "AREA",
+        "energy": 760.0,
+        "color": [
+          0.88,
+          0.92,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_FOCUS_SCENE1_AWAKENING",
+      "type": "EMPTY",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.0,
+        0.14,
+        2.07
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_FOCUS_SCENE1_AWAKENINGAction.001",
+        "frame_range": [
+          1.0,
+          105.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_FOCUS_SCENE2_PAUSE",
+      "type": "EMPTY",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.04,
+        -1.08,
+        2.1
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_FOCUS_SCENE2_PAUSEAction.001",
+        "frame_range": [
+          106.0,
+          202.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_FOCUS_SCENE3_RUN",
+      "type": "EMPTY",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.155
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHARACTER_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_FOCUS_SCENE3_RUNAction.001",
+        "frame_range": [
+          203.0,
+          298.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "type": "EMPTY",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.0,
+        0.16,
+        2.05
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_FOCUS_SCENE4_COMMUNIONAction.001",
+        "frame_range": [
+          299.0,
+          406.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_FRONT_BOTTOM_RIM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        0.0,
+        -0.72,
+        0.42
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        9.1,
+        0.72,
+        0.68
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.001",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_BL",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        -4.3,
+        -0.78,
+        0.62
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1,
+        0.94,
+        1.1
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.006",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_BR",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        4.3,
+        -0.78,
+        0.62
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1,
+        0.94,
+        1.1
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.007",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_TL",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        -4.3,
+        -0.78,
+        5.52
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1,
+        0.94,
+        1.1
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.004",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_CORNER_TR",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        4.3,
+        -0.78,
+        5.52
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        1.1,
+        0.94,
+        1.1
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.005",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_FILL",
+      "type": "LIGHT",
+      "collections": [
+        "LIGHTING"
+      ],
+      "location": [
+        4.0,
+        -4.2,
+        4.7
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_preserved_reason"
+      ],
+      "light": {
+        "type": "POINT",
+        "energy": 620.0,
+        "color": [
+          0.66,
+          0.8,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_KEY",
+      "type": "LIGHT",
+      "collections": [
+        "LIGHTING"
+      ],
+      "location": [
+        -3.8,
+        -5.0,
+        7.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_preserved_reason"
+      ],
+      "light": {
+        "type": "POINT",
+        "energy": 690.0,
+        "color": [
+          1.0,
+          0.88,
+          0.76
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_LEFT_RIM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        -4.5,
+        -0.72,
+        3.07
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.72,
+        0.72,
+        4.72
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.002",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_RIGHT_RIM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        4.5,
+        -0.72,
+        3.07
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.72,
+        0.72,
+        4.72
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.003",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_FRONT_TOP_RIM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        0.0,
+        -0.72,
+        5.72
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        9.1,
+        0.72,
+        0.68
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_GREEN_BOUNCE",
+      "type": "LIGHT",
+      "collections": [
+        "LIGHTING"
+      ],
+      "location": [
+        0.0,
+        -1.8,
+        0.55
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_preserved_reason"
+      ],
+      "light": {
+        "type": "POINT",
+        "energy": 75.0,
+        "color": [
+          0.42,
+          1.0,
+          0.16
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_GROUND",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        0.0,
+        3.0,
+        -0.16
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        16.0,
+        14.0,
+        0.32
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_STAGE_FLOOR"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.022",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        -0.05112,
+        0.1697,
+        0.5696
+      ],
+      "rotation_euler": [
+        -0.01553,
+        0.01003,
+        -0.01044
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        6.5,
+        0.86,
+        0.07
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_INTERFACE_BRIDGE_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_INTERFACE_GLASS"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_role",
+        "ustudio_top_z_local"
+      ],
+      "geometry": {
+        "mesh": "Cube.030",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_01",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        -2.90788,
+        -0.06714,
+        0.1723
+      ],
+      "rotation_euler": [
+        -0.01553,
+        0.01003,
+        -0.01044
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.08,
+        0.08,
+        0.88
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_01_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_INTERFACE_LIME"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_role"
+      ],
+      "geometry": {
+        "mesh": "Cube.033",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_02",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        2.79152,
+        -0.12663,
+        0.11511
+      ],
+      "rotation_euler": [
+        -0.01553,
+        0.01003,
+        -0.01044
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.08,
+        0.08,
+        0.88
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_02_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_INTERFACE_MAGENTA"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_role"
+      ],
+      "geometry": {
+        "mesh": "Cube.034",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_03",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        -2.90253,
+        0.45277,
+        0.16422
+      ],
+      "rotation_euler": [
+        -0.01553,
+        0.01003,
+        -0.01044
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.08,
+        0.08,
+        0.88
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_03_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_INTERFACE_LIME"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_role"
+      ],
+      "geometry": {
+        "mesh": "Cube.035",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_04",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        2.79687,
+        0.39328,
+        0.10704
+      ],
+      "rotation_euler": [
+        -0.01553,
+        0.01003,
+        -0.01044
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.08,
+        0.08,
+        0.88
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_04_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_INTERFACE_MAGENTA"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_role"
+      ],
+      "geometry": {
+        "mesh": "Cube.036",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE_EDGE_L",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        -3.22033,
+        0.20348,
+        0.64639
+      ],
+      "rotation_euler": [
+        -0.01553,
+        0.01003,
+        -0.01044
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.045,
+        0.88,
+        0.045
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_INTERFACE_BRIDGE_EDGE_L_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_INTERFACE_LIME"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_role"
+      ],
+      "geometry": {
+        "mesh": "Cube.031",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE_EDGE_R",
+      "type": "MESH",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "location": [
+        3.119,
+        0.13731,
+        0.58278
+      ],
+      "rotation_euler": [
+        -0.01553,
+        0.01003,
+        -0.01044
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.045,
+        0.88,
+        0.045
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_INTERFACE_BRIDGE_EDGE_R_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_USTUDIO_INTERFACE_MAGENTA"
+      ],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_role"
+      ],
+      "geometry": {
+        "mesh": "Cube.032",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_INTERIOR_FILL",
+      "type": "LIGHT",
+      "collections": [
+        "LIGHTING"
+      ],
+      "location": [
+        0.0,
+        0.55,
+        4.9
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_preserved_reason"
+      ],
+      "light": {
+        "type": "POINT",
+        "energy": 590.0,
+        "color": [
+          0.82,
+          0.88,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_LEFT_DEPTH_BOTTOM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        -4.34,
+        0.32,
+        0.72
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.6,
+        2.2,
+        0.56
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.010",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_LEFT_DEPTH_TOP",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        -4.34,
+        0.38,
+        5.43
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.6,
+        2.3,
+        0.56
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.008",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_LEFT_PURPLE_LED",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        -4.52,
+        -1.1,
+        2.9
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.09,
+        0.11,
+        1.44
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_SIDE_PURPLE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.019",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_LIGHTING_BACK_SHAPE",
+      "type": "LIGHT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "location": [
+        0.0,
+        0.95,
+        2.75
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "USTUDIO_LIGHTING_BACK_SHAPE_TRACK",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_LIGHTING_CHARACTER_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "AREA",
+        "energy": 150.0,
+        "color": [
+          0.92,
+          0.96,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "type": "EMPTY",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "location": [
+        0.0,
+        0.16,
+        2.05
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_LIGHTING_CHARACTER_TARGETAction.001",
+        "frame_range": [
+          299.0,
+          406.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_LIGHTING_DETAIL_RETURN",
+      "type": "LIGHT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "location": [
+        0.25,
+        -0.85,
+        2.42
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "USTUDIO_LIGHTING_DETAIL_RETURN_TRACK",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_LIGHTING_CHARACTER_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "AREA",
+        "energy": 24.0,
+        "color": [
+          0.72,
+          0.82,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_LIGHTING_SIDE_GLIMMER_A",
+      "type": "LIGHT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "location": [
+        -1.2,
+        -0.35,
+        2.35
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "USTUDIO_LIGHTING_SIDE_GLIMMER_A_TRACK",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_LIGHTING_CHARACTER_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "AREA",
+        "energy": 47.0,
+        "color": [
+          0.45,
+          1.0,
+          0.08
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_LIGHTING_SIDE_GLIMMER_B",
+      "type": "LIGHT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "location": [
+        1.15,
+        -0.25,
+        2.28
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "USTUDIO_LIGHTING_SIDE_GLIMMER_B_TRACK",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_LIGHTING_CHARACTER_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "AREA",
+        "energy": 18.0,
+        "color": [
+          1.0,
+          0.07,
+          0.55
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_LIGHTING_SUN_REFLECTION",
+      "type": "LIGHT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.55851,
+        -0.31416,
+        -0.73304
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [],
+      "light": {
+        "type": "SUN",
+        "energy": 0.699999988079071,
+        "color": [
+          0.82,
+          0.9,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_MEDIA_CONTROLLER",
+      "type": "EMPTY",
+      "collections": [
+        "Scene Collection"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": true,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [
+        "duration",
+        "fps",
+        "instruction",
+        "loop",
+        "mapping_mode",
+        "slot_count",
+        "source_video",
+        "start_time"
+      ]
+    },
+    {
+      "name": "USTUDIO_MIXER_RIGHT_WALL",
+      "type": "MESH",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.92,
+        1.64,
+        4.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_MOVIE_MIXER"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "USTUDIO_MIXER_RIGHT_WALL_MESH",
+        "vertices": 4,
+        "edges": 4,
+        "polygons": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 4,
+        "non_manifold_edges": 4,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_PIANO_ROLL_FLOOR",
+      "type": "MESH",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        7.56,
+        1.67,
+        1.75
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_MOVIE_PIANO_ROLL"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "USTUDIO_PIANO_ROLL_FLOOR_MESH",
+        "vertices": 4,
+        "edges": 4,
+        "polygons": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 4,
+        "non_manifold_edges": 4,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "type": "EMPTY",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.0,
+        0.16,
+        2.1
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_PIVOT_SCENE4_COMMUNIONAction.001",
+        "frame_range": [
+          299.0,
+          406.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": [
+        "ustudio_corridor"
+      ]
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_BACK",
+      "type": "MESH",
+      "collections": [
+        "PLAYBACK_MOTION"
+      ],
+      "location": [
+        -2.77328,
+        1.24,
+        3.91
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.052,
+        0.056,
+        1.76
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_PLAYHEAD_AUDIO_GLOW"
+      ],
+      "animation": {
+        "action": "USTUDIO_PLAYHEAD_BACKAction.005",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": [
+        "ustudio_status",
+        "ustudio_sync"
+      ],
+      "geometry": {
+        "mesh": "Cube.017",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_FLOOR",
+      "type": "MESH",
+      "collections": [
+        "PLAYBACK_MOTION"
+      ],
+      "location": [
+        2.99954,
+        0.34,
+        1.68
+      ],
+      "rotation_euler": [
+        0.80983,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.052,
+        2.44,
+        0.044
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": true,
+      "hidden_render": true,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_PLAYHEAD_AUDIO_GLOW"
+      ],
+      "animation": {
+        "action": "USTUDIO_PLAYHEAD_FLOORAction.004",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": [
+        "ustudio_status",
+        "ustudio_sync"
+      ],
+      "geometry": {
+        "mesh": "Cube.018",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_REVEAL_LIGHT",
+      "type": "LIGHT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "location": [
+        -2.19659,
+        0.55,
+        2.65
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "USTUDIO_PLAYHEAD_REVEAL_LIGHT_TRACK",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_LIGHTING_CHARACTER_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_PLAYHEAD_REVEAL_LIGHT_DATA.001Action",
+        "frame_range": [
+          1.0,
+          406.0
+        ],
+        "fcurves": 4,
+        "layers": 1,
+        "slots": 2
+      },
+      "custom_properties": [
+        "ustudio_source"
+      ],
+      "light": {
+        "type": "AREA",
+        "energy": 2.0,
+        "color": [
+          0.3,
+          1.0,
+          0.04
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_PLAYLIST_BACK_WALL",
+      "type": "MESH",
+      "collections": [
+        "FL_STUDIO_INTERIOR"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        6.04,
+        0.0,
+        1.9
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [
+        "M_MOVIE_PLAYLIST"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "USTUDIO_PLAYLIST_BACK_WALL_MESH",
+        "vertices": 4,
+        "edges": 4,
+        "polygons": 1,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 4,
+        "non_manifold_edges": 4,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_RIGHT_DEPTH_BOTTOM",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        4.34,
+        0.32,
+        0.72
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.6,
+        2.2,
+        0.56
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.011",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_RIGHT_DEPTH_TOP",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        4.34,
+        0.38,
+        5.43
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.6,
+        2.3,
+        0.56
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_BOX_WARM_GREY"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.009",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_RIGHT_PURPLE_LED",
+      "type": "MESH",
+      "collections": [
+        "BOX_SHELL"
+      ],
+      "location": [
+        4.52,
+        -1.1,
+        2.9
+      ],
+      "rotation_euler": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.09,
+        0.11,
+        1.44
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [
+        {
+          "name": "USTUDIO_BEVEL",
+          "type": "BEVEL"
+        }
+      ],
+      "constraints": [],
+      "materials": [
+        "M_SIDE_PURPLE"
+      ],
+      "animation": null,
+      "custom_properties": [],
+      "geometry": {
+        "mesh": "Cube.020",
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "shape_keys": []
+      },
+      "geometry_diagnostics": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    {
+      "name": "USTUDIO_SHADOW_TARGET",
+      "type": "EMPTY",
+      "collections": [
+        "Scene Collection"
+      ],
+      "location": [
+        0.0,
+        0.4,
+        0.0
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": null,
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_SOFT_FILL",
+      "type": "LIGHT",
+      "collections": [
+        "Scene Collection"
+      ],
+      "location": [
+        4.8,
+        -4.5,
+        5.3
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_BOX_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_preserved_reason"
+      ],
+      "light": {
+        "type": "AREA",
+        "energy": 500.0,
+        "color": [
+          1.0,
+          0.2,
+          0.58
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_SOFT_KEY",
+      "type": "LIGHT",
+      "collections": [
+        "Scene Collection"
+      ],
+      "location": [
+        -4.6,
+        -5.8,
+        7.5
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [
+        {
+          "name": "Track To",
+          "type": "TRACK_TO",
+          "target": "USTUDIO_BOX_TARGET"
+        }
+      ],
+      "materials": [],
+      "animation": null,
+      "custom_properties": [
+        "ustudio_preserved_reason"
+      ],
+      "light": {
+        "type": "AREA",
+        "energy": 520.0,
+        "color": [
+          0.42,
+          1.0,
+          0.2
+        ]
+      }
+    },
+    {
+      "name": "USTUDIO_TARGET_SCENE1_AWAKENING",
+      "type": "EMPTY",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.0,
+        0.14,
+        2.07
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_TARGET_SCENE1_AWAKENINGAction.001",
+        "frame_range": [
+          1.0,
+          105.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_TARGET_SCENE2_PAUSE",
+      "type": "EMPTY",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.04,
+        -1.08,
+        2.1
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_TARGET_SCENE2_PAUSEAction.001",
+        "frame_range": [
+          106.0,
+          202.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_TARGET_SCENE3_RUN",
+      "type": "EMPTY",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.0,
+        0.0,
+        0.155
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_CHARACTER_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_TARGET_SCENE3_RUNAction.001",
+        "frame_range": [
+          203.0,
+          298.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    },
+    {
+      "name": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "type": "EMPTY",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "location": [
+        0.0,
+        0.16,
+        2.05
+      ],
+      "rotation_euler": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "modifiers": [],
+      "constraints": [],
+      "materials": [],
+      "animation": {
+        "action": "USTUDIO_TARGET_SCENE4_COMMUNIONAction.001",
+        "frame_range": [
+          299.0,
+          406.0
+        ],
+        "fcurves": 3,
+        "layers": 1,
+        "slots": 1
+      },
+      "custom_properties": []
+    }
+  ],
+  "materials": [
+    {
+      "name": "M_BOX_DARK_LINER",
+      "users": 2,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_BOX_WARM_GREY",
+      "users": 12,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_MOVIE_BROWSER",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        },
+        {
+          "name": "USTUDIO_FL_STUDIO_MOVIE",
+          "type": "ShaderNodeTexImage",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_MOVIE_CHANNEL_RACK",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        },
+        {
+          "name": "USTUDIO_FL_STUDIO_MOVIE",
+          "type": "ShaderNodeTexImage",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_MOVIE_MIXER",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        },
+        {
+          "name": "USTUDIO_FL_STUDIO_MOVIE",
+          "type": "ShaderNodeTexImage",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_MOVIE_PIANO_ROLL",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        },
+        {
+          "name": "USTUDIO_FL_STUDIO_MOVIE",
+          "type": "ShaderNodeTexImage",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_MOVIE_PLAYLIST",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        },
+        {
+          "name": "USTUDIO_FL_STUDIO_MOVIE",
+          "type": "ShaderNodeTexImage",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_PLAYBACK_GREEN",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_PLAYHEAD_AUDIO_GLOW",
+      "users": 2,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_SCREEN_FRAME",
+      "users": 3,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_SIDE_PURPLE",
+      "users": 2,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_STAGE_FLOOR",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_USTUDIO_CHARACTER_PEARL",
+      "users": 15,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_USTUDIO_INTERFACE_GLASS",
+      "users": 1,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_USTUDIO_INTERFACE_LIME",
+      "users": 3,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "name": "M_USTUDIO_INTERFACE_MAGENTA",
+      "users": 3,
+      "asset": false,
+      "blend_method": "DITHERED",
+      "nodes": [
+        {
+          "name": "Principled BSDF",
+          "type": "ShaderNodeBsdfPrincipled",
+          "label": ""
+        },
+        {
+          "name": "Material Output",
+          "type": "ShaderNodeOutputMaterial",
+          "label": ""
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "name": "USTUDIO_KIT_BROWSER_ALL_INTRA.004",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/browser.mp4",
+      "absolute_path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/browser.mp4",
+      "packed": false,
+      "exists": true,
+      "size": [
+        214,
+        580
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "name": "USTUDIO_PLAYLIST_ALL_INTRA.004",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/playlist.mp4",
+      "absolute_path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/playlist.mp4",
+      "packed": false,
+      "exists": true,
+      "size": [
+        900,
+        250
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "name": "USTUDIO_SEMANTIC_CHANNEL_RACK",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/controller.mp4",
+      "absolute_path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/controller.mp4",
+      "packed": false,
+      "exists": true,
+      "size": [
+        824,
+        170
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "name": "USTUDIO_SEMANTIC_MIXER",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/mixer.mp4",
+      "absolute_path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/mixer.mp4",
+      "packed": false,
+      "exists": true,
+      "size": [
+        510,
+        490
+      ],
+      "colorspace": "sRGB"
+    },
+    {
+      "name": "USTUDIO_SEMANTIC_PIANO_ROLL",
+      "source": "MOVIE",
+      "filepath": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/piano-roll.mp4",
+      "absolute_path": "${BLENDER_AGENT_STUDIO_ROOT}/projects/fl-studio-box-semantic-template/media/current/piano-roll.mp4",
+      "packed": false,
+      "exists": true,
+      "size": [
+        900,
+        430
+      ],
+      "colorspace": "sRGB"
+    }
+  ],
+  "assets": [],
+  "external_libraries": [],
+  "issues": {
+    "missing_images": [],
+    "objects_with_unapplied_scale": [
+      "USTUDIO_CHAR_FOOT_L",
+      "USTUDIO_CHAR_FOOT_R",
+      "USTUDIO_CHAR_FOREARM_L",
+      "USTUDIO_CHAR_FOREARM_R",
+      "USTUDIO_CHAR_HAND_L",
+      "USTUDIO_CHAR_HAND_R",
+      "USTUDIO_CHAR_HEAD",
+      "USTUDIO_CHAR_PELVIS",
+      "USTUDIO_CHAR_SHIN_L",
+      "USTUDIO_CHAR_SHIN_R",
+      "USTUDIO_CHAR_THIGH_L",
+      "USTUDIO_CHAR_THIGH_R",
+      "USTUDIO_CHAR_TORSO",
+      "USTUDIO_CHAR_UPPER_ARM_L",
+      "USTUDIO_CHAR_UPPER_ARM_R"
+    ],
+    "unnamed_objects": [],
+    "geometry": {
+      "USTUDIO_BROWSER_LEFT_WALL": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 120,
+        "non_manifold_edges": 120,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "USTUDIO_CHANNEL_RACK_SURFACE": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 4,
+        "non_manifold_edges": 4,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "USTUDIO_MIXER_RIGHT_WALL": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 4,
+        "non_manifold_edges": 4,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "USTUDIO_PIANO_ROLL_FLOOR": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 4,
+        "non_manifold_edges": 4,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      },
+      "USTUDIO_PLAYLIST_BACK_WALL": {
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "boundary_edges": 4,
+        "non_manifold_edges": 4,
+        "degenerate_faces": 0,
+        "ngons": 0,
+        "triangles": 0,
+        "negative_determinant": false,
+        "unapplied_scale": false,
+        "missing_uv": false,
+        "missing_material": false
+      }
+    },
+    "scenes_without_camera": [],
+    "scenes_without_units": []
+  }
+}

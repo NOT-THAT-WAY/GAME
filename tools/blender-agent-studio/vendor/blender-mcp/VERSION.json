@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/ahujasid/blender-mcp",
+  "commit": "6641189231caf3752302ae20591bc87fda85fc4e",
+  "commit_date": "2026-07-14T16:05:33+05:30",
+  "package_version": "1.6.0",
+  "addon_sha256": "bba60831f5f89a74deda0294b131668a086cf46eb35a6a01abbd0d21d9e92630",
+  "reviewed": "2026-07-18",
+  "notes": "Vendored from the official upstream repository. Arbitrary Python execution remains an intentional MCP capability; keep the socket loopback-only."
+}

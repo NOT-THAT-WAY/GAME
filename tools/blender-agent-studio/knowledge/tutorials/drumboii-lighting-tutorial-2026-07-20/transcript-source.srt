@@ -1,0 +1,780 @@
+1
+00:00:00,000 --> 00:00:08,000
+ Hello! In this video I'm going to show you how I think about lightning when I do my videos in Blender.
+
+2
+00:00:08,000 --> 00:00:12,000
+ And I'm going to use one of my scenes from one of my videos here.
+
+3
+00:00:12,000 --> 00:00:20,000
+ And I'm going to walk you through the process of how I set up my different types of lightning to achieve what I think is a satisfying look.
+
+4
+00:00:20,000 --> 00:00:24,000
+ So a bit quick here, I use Cycles.
+
+5
+00:00:24,000 --> 00:00:29,000
+ So right now I have zero lights on, so you can't see anything.
+
+6
+00:00:29,000 --> 00:00:34,000
+ And to my left I have the camera view. Here I have the scene view.
+
+7
+00:00:34,000 --> 00:00:36,000
+ And here are my different groups.
+
+8
+00:00:36,000 --> 00:00:41,000
+ As you can see I have disabled the lightning for now and the camera.
+
+9
+00:00:41,000 --> 00:00:43,000
+ And here I have all the stuff.
+
+10
+00:00:43,000 --> 00:00:45,000
+ So yeah.
+
+11
+00:00:45,000 --> 00:00:50,000
+ The first thing I'm going to do is to go to the world shader tab.
+
+12
+00:00:50,000 --> 00:00:53,000
+ And I have this setup here.
+
+13
+00:00:53,000 --> 00:00:58,000
+ And I have another video on my Patreon where I show you how I do this setup.
+
+14
+00:00:58,000 --> 00:01:01,000
+ Actually, but a bit fast here.
+
+15
+00:01:01,000 --> 00:01:05,000
+ I can show you that I have the sky setup which controls the sky background.
+
+16
+00:01:05,000 --> 00:01:07,000
+ Go into mix shader.
+
+17
+00:01:07,000 --> 00:01:11,000
+ And then I have an HDRI here which is going to give all the lightning.
+
+18
+00:01:11,000 --> 00:01:17,000
+ And then I have a light path in camera array to combine the lightning with the sky background.
+
+19
+00:01:17,000 --> 00:01:21,000
+ As you can see the background strength from the HDRI is set to zero.
+
+20
+00:01:21,000 --> 00:01:24,000
+ And we can try to set it to one.
+
+21
+00:01:24,000 --> 00:01:32,000
+ One is its default value which means that we have the default amount of light coming from the HDRI into the scene.
+
+22
+00:01:32,000 --> 00:01:36,000
+ And as you can see we get some pretty cool results right away.
+
+23
+00:01:36,000 --> 00:01:41,000
+ But in my opinion the lightning here looks a bit dull.
+
+24
+00:01:41,000 --> 00:01:46,000
+ It's not really giving much life to the mesh and the structure in the scene.
+
+25
+00:01:46,000 --> 00:01:51,000
+ You can see it's not really that interesting reflections and everything looks like flat almost.
+
+26
+00:01:51,000 --> 00:01:56,000
+ So that's why I often want to add more lightning and not only use an HDRI.
+
+27
+00:01:56,000 --> 00:02:03,000
+ So what I usually do here is that I set the strength of the HDRI texture to maybe 0.5 or 0.7.
+
+28
+00:02:03,000 --> 00:02:07,000
+ Maybe we can go to 0.7 here I think.
+
+29
+00:02:07,000 --> 00:02:11,000
+ And you can see now it looks really dull and not really that nice at all.
+
+30
+00:02:11,000 --> 00:02:19,000
+ But I find it that around 0.7 or 0.5 gives me a good foundation to add more lightning on.
+
+31
+00:02:19,000 --> 00:02:22,000
+ Without overexposureing it with light.
+
+32
+00:02:22,000 --> 00:02:26,000
+ So the next thing we can do is to activate the light group here.
+
+33
+00:02:26,000 --> 00:02:29,000
+ And the first thing I want to show you is the sun.
+
+34
+00:02:29,000 --> 00:02:33,000
+ So I'm gonna activate the sun or you can see where I have placed it.
+
+35
+00:02:33,000 --> 00:02:35,000
+ So the sun is over here and you can see if I disable it.
+
+36
+00:02:35,000 --> 00:02:37,000
+ If you look here and then I add it again.
+
+37
+00:02:37,000 --> 00:02:40,000
+ You can see that we instantly get some more cool reflections to the scene.
+
+38
+00:02:40,000 --> 00:02:44,000
+ And I usually want to add the sun to almost a 90 degrees angle.
+
+39
+00:02:44,000 --> 00:02:46,000
+ So I don't want it to be straight down.
+
+40
+00:02:46,000 --> 00:02:49,000
+ I don't want it to be right forward but just about there.
+
+41
+00:02:49,000 --> 00:02:50,000
+ Maybe like 70 degrees.
+
+42
+00:02:50,000 --> 00:02:58,000
+ And I don't want it to be straight forward either because you can see if I have it pointing straight forward towards the scene.
+
+43
+00:02:58,000 --> 00:03:01,000
+ You can see it's not really adding that much.
+
+44
+00:03:01,000 --> 00:03:05,000
+ But if I tilt it just a bit I can control the reflections.
+
+45
+00:03:05,000 --> 00:03:08,000
+ You can see now we get more reflections on the mesh here.
+
+46
+00:03:08,000 --> 00:03:11,000
+ Which makes everything look more depth and interesting.
+
+47
+00:03:11,000 --> 00:03:13,000
+ So I'm gonna leave it maybe here.
+
+48
+00:03:13,000 --> 00:03:16,000
+ And you can see it already looks better.
+
+49
+00:03:16,000 --> 00:03:19,000
+ Then I'm gonna activate this area lamp here.
+
+50
+00:03:19,000 --> 00:03:23,000
+ And this lamp is background lightning.
+
+51
+00:03:23,000 --> 00:03:27,000
+ And it's a subtle change but I feel like it makes everything come alive.
+
+52
+00:03:27,000 --> 00:03:28,000
+ So you can see here.
+
+53
+00:03:28,000 --> 00:03:30,000
+ Here is the area lamp.
+
+54
+00:03:30,000 --> 00:03:32,000
+ And it's pointing from the back.
+
+55
+00:03:32,000 --> 00:03:34,000
+ And you can see the camera is here.
+
+56
+00:03:34,000 --> 00:03:39,000
+ So camera is looking this way and the lightning is looking back at the camera.
+
+57
+00:03:39,000 --> 00:03:42,000
+ And if you look here over here to the left.
+
+58
+00:03:42,000 --> 00:03:44,000
+ I will disable the backlight.
+
+59
+00:03:44,000 --> 00:03:46,000
+ You can see everything becomes dark.
+
+60
+00:03:46,000 --> 00:03:48,000
+ And then now I'm getting it back.
+
+61
+00:03:48,000 --> 00:03:52,000
+ You can see it gets some like lightning coming from the top here.
+
+62
+00:03:52,000 --> 00:03:53,000
+ And also the bottom.
+
+63
+00:03:53,000 --> 00:03:55,000
+ So you see here is with the backlight.
+
+64
+00:03:55,000 --> 00:03:56,000
+ And now it's off.
+
+65
+00:03:56,000 --> 00:03:58,000
+ You can see everything becomes very flat.
+
+66
+00:03:58,000 --> 00:04:01,000
+ And now it's back.
+
+67
+00:04:01,000 --> 00:04:03,000
+ Same thing if you look over here.
+
+68
+00:04:03,000 --> 00:04:06,000
+ I deactivate it.
+
+69
+00:04:06,000 --> 00:04:07,000
+ It's a bit flat here.
+
+70
+00:04:07,000 --> 00:04:10,000
+ And now it's getting back.
+
+71
+00:04:10,000 --> 00:04:13,000
+ Just a little bit of lightning on the sides here.
+
+72
+00:04:13,000 --> 00:04:18,000
+ Which I think adds a lot of realism in the end.
+
+73
+00:04:18,000 --> 00:04:21,000
+ And then we can go to this lightning here to the right.
+
+74
+00:04:21,000 --> 00:04:23,000
+ And see what it does.
+
+75
+00:04:23,000 --> 00:04:25,000
+ So I have it placed over here.
+
+76
+00:04:25,000 --> 00:04:29,000
+ And I don't think it's doing really that much at all.
+
+77
+00:04:29,000 --> 00:04:33,000
+ Also of course you can see the strength down here.
+
+78
+00:04:33,000 --> 00:04:37,000
+ But it's probably just adding a little bit of detail.
+
+79
+00:04:37,000 --> 00:04:40,000
+ We can try to deactivate it.
+
+80
+00:04:40,000 --> 00:04:43,000
+ It's not really doing that much.
+
+81
+00:04:43,000 --> 00:04:48,000
+ But maybe just a little bit of details.
+
+82
+00:04:48,000 --> 00:04:50,000
+ If I add it back.
+
+83
+00:04:50,000 --> 00:04:51,000
+ Remove it back.
+
+84
+00:04:51,000 --> 00:04:54,000
+ You can see for example here on the chain.
+
+85
+00:04:54,000 --> 00:04:57,000
+ It just adds a little bit of like glimmer here.
+
+86
+00:04:57,000 --> 00:04:58,000
+ So I remove it.
+
+87
+00:04:58,000 --> 00:04:59,000
+ Now.
+
+88
+00:04:59,000 --> 00:05:01,000
+ Now I'm getting it back.
+
+89
+00:05:01,000 --> 00:05:02,000
+ So yeah.
+
+90
+00:05:02,000 --> 00:05:05,000
+ It's just those like fine tuning details.
+
+91
+00:05:05,000 --> 00:05:08,000
+ That this area lamp adds.
+
+92
+00:05:08,000 --> 00:05:11,000
+ We can go to the third area lamp here.
+
+93
+00:05:11,000 --> 00:05:13,000
+ You can see it's here.
+
+94
+00:05:13,000 --> 00:05:14,000
+ Over here.
+
+95
+00:05:14,000 --> 00:05:15,000
+ It's.
+
+96
+00:05:15,000 --> 00:05:16,000
+ We had.
+
+97
+00:05:16,000 --> 00:05:17,000
+ We had.
+
+98
+00:05:17,000 --> 00:05:18,000
+ The backlight here.
+
+99
+00:05:18,000 --> 00:05:20,000
+ Was at 1400 power.
+
+100
+00:05:20,000 --> 00:05:23,000
+ And this one was like a third of it.
+
+101
+00:05:23,000 --> 00:05:25,000
+ And now the third one.
+
+102
+00:05:25,000 --> 00:05:27,000
+ Is even less.
+
+103
+00:05:27,000 --> 00:05:29,000
+ So it's not really that strong at all.
+
+104
+00:05:29,000 --> 00:05:30,000
+ But probably.
+
+105
+00:05:30,000 --> 00:05:33,000
+ It's just adding a little bit of like detail.
+
+106
+00:05:33,000 --> 00:05:35,000
+ From the side here.
+
+107
+00:05:35,000 --> 00:05:42,000
+ You can see it's pointing to the side of the mesh here.
+
+108
+00:05:42,000 --> 00:05:43,000
+ So we can try it.
+
+109
+00:05:43,000 --> 00:05:44,000
+ If we look here.
+
+110
+00:05:44,000 --> 00:05:45,000
+ From the side.
+
+111
+00:05:45,000 --> 00:05:47,000
+ We can try to remove it.
+
+112
+00:05:47,000 --> 00:05:49,000
+ And now it's back.
+
+113
+00:05:49,000 --> 00:05:50,000
+ And.
+
+114
+00:05:50,000 --> 00:05:51,000
+ Yeah.
+
+115
+00:05:51,000 --> 00:05:52,000
+ You.
+
+116
+00:05:52,000 --> 00:05:53,000
+ You probably wouldn't even notice it.
+
+117
+00:05:53,000 --> 00:05:54,000
+ If I didn't have this.
+
+118
+00:05:54,000 --> 00:05:55,000
+ But.
+
+119
+00:05:55,000 --> 00:05:56,000
+ Probably just adds.
+
+120
+00:05:56,000 --> 00:05:58,000
+ A little bit of more detail.
+
+121
+00:05:58,000 --> 00:05:59,000
+ Again.
+
+122
+00:05:59,000 --> 00:06:00,000
+ You.
+
+123
+00:06:00,000 --> 00:06:02,000
+ Maybe you can see it on the chains here.
+
+124
+00:06:02,000 --> 00:06:04,000
+ So if I deactivate it.
+
+125
+00:06:04,000 --> 00:06:05,000
+ And add it.
+
+126
+00:06:05,000 --> 00:06:10,000
+ With just a little bit more light.
+
+127
+00:06:10,000 --> 00:06:11,000
+ And now.
+
+128
+00:06:11,000 --> 00:06:13,000
+ We're adding in the final.
+
+129
+00:06:13,000 --> 00:06:14,000
+ Area lamp here.
+
+130
+00:06:14,000 --> 00:06:15,000
+ We can see.
+
+131
+00:06:15,000 --> 00:06:17,000
+ And it's over here.
+
+132
+00:06:17,000 --> 00:06:19,000
+ You can see it's pointing to the other.
+
+133
+00:06:19,000 --> 00:06:20,000
+ In the other direction here.
+
+134
+00:06:20,000 --> 00:06:21,000
+ And.
+
+135
+00:06:21,000 --> 00:06:22,000
+ It's only.
+
+136
+00:06:22,000 --> 00:06:23,000
+ It's 20 power.
+
+137
+00:06:23,000 --> 00:06:24,000
+ So.
+
+138
+00:06:24,000 --> 00:06:25,000
+ I would probably try.
+
+139
+00:06:25,000 --> 00:06:27,000
+ Increasing the strength here.
+
+140
+00:06:27,000 --> 00:06:28,000
+ Maybe do.
+
+141
+00:06:28,000 --> 00:06:29,000
+ 220.
+
+142
+00:06:29,000 --> 00:06:30,000
+ Yeah.
+
+143
+00:06:30,000 --> 00:06:32,000
+ Now we get some more details.
+
+144
+00:06:32,000 --> 00:06:33,000
+ So we see.
+
+145
+00:06:33,000 --> 00:06:34,000
+ Now we get some more.
+
+146
+00:06:34,000 --> 00:06:35,000
+ Details over here.
+
+147
+00:06:35,000 --> 00:06:36,000
+ To the left.
+
+148
+00:06:36,000 --> 00:06:37,000
+ If I remove it.
+
+149
+00:06:37,000 --> 00:06:38,000
+ If I.
+
+150
+00:06:38,000 --> 00:06:39,000
+ If I remove the.
+
+151
+00:06:39,000 --> 00:06:40,000
+ This area lamp.
+
+152
+00:06:40,000 --> 00:06:41,000
+ You see.
+
+153
+00:06:41,000 --> 00:06:42,000
+ It's kind of dark here.
+
+154
+00:06:42,000 --> 00:06:43,000
+ And now it's back.
+
+155
+00:06:43,000 --> 00:06:45,000
+ Now we get more details.
+
+156
+00:06:45,000 --> 00:06:46,000
+ So yeah.
+
+157
+00:06:46,000 --> 00:06:47,000
+ This.
+
+158
+00:06:47,000 --> 00:06:48,000
+ That's essentially everything I do.
+
+159
+00:06:48,000 --> 00:06:49,000
+ When I.
+
+160
+00:06:49,000 --> 00:06:50,000
+ Light my scenes.
+
+161
+00:06:50,000 --> 00:06:51,000
+ So.
+
+162
+00:06:51,000 --> 00:06:52,000
+ Again.
+
+163
+00:06:52,000 --> 00:06:53,000
+ The first step.
+
+164
+00:06:53,000 --> 00:06:54,000
+ Is to add this.
+
+165
+00:06:54,000 --> 00:06:55,000
+ HRI.
+
+166
+00:06:55,000 --> 00:06:56,000
+ And not put strength to max.
+
+167
+00:06:56,000 --> 00:06:57,000
+ Because if.
+
+168
+00:06:57,000 --> 00:06:58,000
+ If we would.
+
+169
+00:06:58,000 --> 00:06:59,000
+ Max it now.
+
+170
+00:06:59,000 --> 00:07:00,000
+ When we have.
+
+171
+00:07:00,000 --> 00:07:01,000
+ All.
+
+172
+00:07:01,000 --> 00:07:02,000
+ This lighting also.
+
+173
+00:07:02,000 --> 00:07:03,000
+ You can see that it would.
+
+174
+00:07:03,000 --> 00:07:04,000
+ Become.
+
+175
+00:07:04,000 --> 00:07:05,000
+ Almost overexposed.
+
+176
+00:07:05,000 --> 00:07:06,000
+ But yeah.
+
+177
+00:07:06,000 --> 00:07:07,000
+ You could probably use this too.
+
+178
+00:07:07,000 --> 00:07:08,000
+ Controlled fine tune details.
+
+179
+00:07:08,000 --> 00:07:10,000
+ With my own lightning.
+
+180
+00:07:10,000 --> 00:07:11,000
+ About 0.7.
+
+181
+00:07:11,000 --> 00:07:12,000
+ And then you have this.
+
+182
+00:07:12,000 --> 00:07:13,000
+ Sun here.
+
+183
+00:07:13,000 --> 00:07:14,000
+ It's a.
+
+184
+00:07:14,000 --> 00:07:15,000
+ Almost 90 degrees angle.
+
+185
+00:07:15,000 --> 00:07:16,000
+ Pointing.
+
+186
+00:07:16,000 --> 00:07:17,000
+ A bit.
+
+187
+00:07:17,000 --> 00:07:18,000
+ To the right.
+
+188
+00:07:18,000 --> 00:07:19,000
+ And then I have.
+
+189
+00:07:19,000 --> 00:07:20,000
+ Those.
+
+190
+00:07:20,000 --> 00:07:21,000
+ Area lamps over here.
+
+191
+00:07:21,000 --> 00:07:22,000
+ So yeah.
+
+192
+00:07:22,000 --> 00:07:23,000
+ That's everything I do.
+
+193
+00:07:23,000 --> 00:07:24,000
+ When I light my scenes.
+
+194
+00:07:24,000 --> 00:07:25,000
+ Thank you for watching.
+
+195
+00:07:25,000 --> 00:07:26,000
+ And see you in my next video.
+

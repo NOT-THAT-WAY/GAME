@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "camera": "USTUDIO_SLOPE_CAM_MAIN",
+  "camera_names": [
+    "USTUDIO_SLOPE_CAM_MAIN",
+    "USTUDIO_SLOPE_CAM_DIAG_PROFILE",
+    "USTUDIO_SLOPE_CAM_DIAG_TOP",
+    "USTUDIO_SLOPE_CAM_DIAG_NORMAL"
+  ],
+  "lens_range_mm": [
+    54,
+    60
+  ],
+  "target": "USTUDIO_SLOPE_CAM_TARGET",
+  "focus": "USTUDIO_SLOPE_CAM_FOCUS",
+  "move": "K1 pose, K2 opposite anticipation, K3 uphill track, K4 recovery",
+  "distance_range_m": [
+    1.278853,
+    1.281977
+  ],
+  "saved": true
+}

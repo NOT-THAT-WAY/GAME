@@ -1,0 +1,470 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-fable-v001",
+  "frame_of_reference": "USTUDIO_BOX_FLOAT_ROOT local space, meters",
+  "measured_at_frame": 1,
+  "surface_object": "USTUDIO_PIANO_ROLL_FLOOR",
+  "parent_chain_of_surface": [
+    "USTUDIO_PIANO_ROLL_FLOOR",
+    "USTUDIO_BOX_FLOAT_ROOT"
+  ],
+  "vertex_count": 4,
+  "vertices_local_root": [
+    [
+      -3.78,
+      -0.42,
+      0.88
+    ],
+    [
+      3.78,
+      -0.42,
+      0.88
+    ],
+    [
+      3.05,
+      1.25,
+      2.63
+    ],
+    [
+      -3.05,
+      1.25,
+      2.63
+    ]
+  ],
+  "plane_origin": [
+    0.0,
+    0.415,
+    1.755
+  ],
+  "SURFACE_NORMAL": [
+    0.0,
+    -0.723449,
+    0.690377
+  ],
+  "UPHILL_TANGENT": [
+    -0.0,
+    0.690377,
+    0.723449
+  ],
+  "CROSS_SLOPE_TANGENT": [
+    -1.0,
+    -0.0,
+    0.0
+  ],
+  "WORLD_GRAVITY": [
+    0.0,
+    0.0,
+    -9.81
+  ],
+  "gravity_note": "gravité monde -Z ; le float root oscille d'environ ±1°, la verticale locale reste la référence de posture à cette tolérance près",
+  "slope_angle_degrees": 46.34,
+  "planarity_error_m": 0.0,
+  "usable_length_uphill_m": 2.418967,
+  "usable_width_cross_m": 7.56,
+  "limits_plane_coords": {
+    "s_min_bottom": -1.209483,
+    "s_max_top": 1.209483,
+    "t_min": -3.78,
+    "t_max": 3.78
+  },
+  "corners_local_root": {
+    "bottom_left": [
+      3.78,
+      -0.42,
+      0.88
+    ],
+    "bottom_right": [
+      -3.78,
+      -0.42,
+      0.88
+    ],
+    "top_left": [
+      3.78,
+      1.25,
+      2.63
+    ],
+    "top_right": [
+      -3.78,
+      1.25,
+      2.63
+    ]
+  },
+  "clearances_m": {
+    "along_normal_from_center": {
+      "hit": false
+    },
+    "along_local_up_from_center": {
+      "hit": true,
+      "object": "USTUDIO_CEILING",
+      "distance": 3.365
+    },
+    "cross_positive_from_center": {
+      "hit": false
+    },
+    "cross_negative_from_center": {
+      "hit": false
+    },
+    "uphill_beyond_top": {
+      "hit": true,
+      "object": "USTUDIO_BACK_SCREEN_BOTTOM",
+      "distance": 0.1616
+    },
+    "downhill_beyond_bottom": {
+      "hit": true,
+      "object": "USTUDIO_FRONT_BOTTOM_RIM",
+      "distance": 0.1889
+    },
+    "along_normal_from_top_quarter": {
+      "hit": false
+    },
+    "along_normal_from_bottom_quarter": {
+      "hit": false
+    }
+  },
+  "static_friction_required_no_grip": 1.0479,
+  "grip_contract": {
+    "property": "ustudio_grip_surface",
+    "declared_friction_coefficient": 1.25,
+    "minimum_required": 1.0479,
+    "margin": 0.2021,
+    "visible_cause": "semelles grip lime avec pulse d'émission au contact uniquement"
+  },
+  "context_bounds_local_root": {
+    "USTUDIO_BACK_SCREEN_BOTTOM": {
+      "min": [
+        -3.25,
+        1.22,
+        2.73
+      ],
+      "max": [
+        3.25,
+        1.38,
+        2.93
+      ]
+    },
+    "USTUDIO_BACK_SCREEN_TOP": {
+      "min": [
+        -3.25,
+        1.22,
+        4.92
+      ],
+      "max": [
+        3.25,
+        1.38,
+        5.12
+      ]
+    },
+    "USTUDIO_BACK_WALL": {
+      "min": [
+        -3.5,
+        1.4,
+        0.95
+      ],
+      "max": [
+        3.5,
+        1.76,
+        5.35
+      ]
+    },
+    "USTUDIO_BOTTOM_GREEN_LED": {
+      "min": [
+        -0.72,
+        -1.155,
+        0.345
+      ],
+      "max": [
+        0.72,
+        -1.045,
+        0.455
+      ]
+    },
+    "USTUDIO_BROWSER_LEFT_WALL": {
+      "min": [
+        -4.08,
+        -0.36,
+        1.05
+      ],
+      "max": [
+        -3.16,
+        1.28,
+        5.05
+      ]
+    },
+    "USTUDIO_CEILING": {
+      "min": [
+        -4.05,
+        -0.73,
+        5.12
+      ],
+      "max": [
+        4.05,
+        1.57,
+        5.48
+      ]
+    },
+    "USTUDIO_CHANNEL_RACK_CASE": {
+      "min": [
+        0.2669,
+        -1.002,
+        0.73
+      ],
+      "max": [
+        3.8331,
+        -0.638,
+        1.77
+      ]
+    },
+    "USTUDIO_CHANNEL_RACK_SURFACE": {
+      "min": [
+        0.38,
+        -1.08,
+        0.83
+      ],
+      "max": [
+        3.72,
+        -1.08,
+        1.67
+      ]
+    },
+    "USTUDIO_FRONT_BOTTOM_RIM": {
+      "min": [
+        -4.55,
+        -1.08,
+        0.08
+      ],
+      "max": [
+        4.55,
+        -0.36,
+        0.76
+      ]
+    },
+    "USTUDIO_FRONT_CORNER_BL": {
+      "min": [
+        -4.85,
+        -1.25,
+        0.07
+      ],
+      "max": [
+        -3.75,
+        -0.31,
+        1.17
+      ]
+    },
+    "USTUDIO_FRONT_CORNER_BR": {
+      "min": [
+        3.75,
+        -1.25,
+        0.07
+      ],
+      "max": [
+        4.85,
+        -0.31,
+        1.17
+      ]
+    },
+    "USTUDIO_FRONT_CORNER_TL": {
+      "min": [
+        -4.85,
+        -1.25,
+        4.97
+      ],
+      "max": [
+        -3.75,
+        -0.31,
+        6.07
+      ]
+    },
+    "USTUDIO_FRONT_CORNER_TR": {
+      "min": [
+        3.75,
+        -1.25,
+        4.97
+      ],
+      "max": [
+        4.85,
+        -0.31,
+        6.07
+      ]
+    },
+    "USTUDIO_FRONT_LEFT_RIM": {
+      "min": [
+        -4.86,
+        -1.08,
+        0.71
+      ],
+      "max": [
+        -4.14,
+        -0.36,
+        5.43
+      ]
+    },
+    "USTUDIO_FRONT_RIGHT_RIM": {
+      "min": [
+        4.14,
+        -1.08,
+        0.71
+      ],
+      "max": [
+        4.86,
+        -0.36,
+        5.43
+      ]
+    },
+    "USTUDIO_FRONT_TOP_RIM": {
+      "min": [
+        -4.55,
+        -1.08,
+        5.38
+      ],
+      "max": [
+        4.55,
+        -0.36,
+        6.06
+      ]
+    },
+    "USTUDIO_GROUND": {
+      "min": [
+        -8.0867,
+        -4.0601,
+        -1.702
+      ],
+      "max": [
+        8.0619,
+        10.1063,
+        -0.9135
+      ]
+    },
+    "USTUDIO_LEFT_DEPTH_BOTTOM": {
+      "min": [
+        -4.64,
+        -0.78,
+        0.44
+      ],
+      "max": [
+        -4.04,
+        1.42,
+        1.0
+      ]
+    },
+    "USTUDIO_LEFT_DEPTH_TOP": {
+      "min": [
+        -4.64,
+        -0.77,
+        5.15
+      ],
+      "max": [
+        -4.04,
+        1.53,
+        5.71
+      ]
+    },
+    "USTUDIO_LEFT_PURPLE_LED": {
+      "min": [
+        -4.565,
+        -1.155,
+        2.18
+      ],
+      "max": [
+        -4.475,
+        -1.045,
+        3.62
+      ]
+    },
+    "USTUDIO_MIXER_RIGHT_WALL": {
+      "min": [
+        3.16,
+        -0.36,
+        1.05
+      ],
+      "max": [
+        4.08,
+        1.28,
+        5.05
+      ]
+    },
+    "USTUDIO_PIANO_ROLL_FLOOR": {
+      "min": [
+        -3.78,
+        -0.42,
+        0.88
+      ],
+      "max": [
+        3.78,
+        1.25,
+        2.63
+      ]
+    },
+    "USTUDIO_PLAYHEAD_BACK": {
+      "min": [
+        -2.806,
+        1.212,
+        3.03
+      ],
+      "max": [
+        -2.754,
+        1.268,
+        4.79
+      ]
+    },
+    "USTUDIO_PLAYHEAD_FLOOR": {
+      "min": [
+        -0.0223,
+        -1.1995,
+        -1.2432
+      ],
+      "max": [
+        0.0558,
+        1.2413,
+        -1.1562
+      ]
+    },
+    "USTUDIO_PLAYLIST_BACK_WALL": {
+      "min": [
+        -3.02,
+        1.36,
+        2.96
+      ],
+      "max": [
+        3.02,
+        1.36,
+        4.86
+      ]
+    },
+    "USTUDIO_RIGHT_DEPTH_BOTTOM": {
+      "min": [
+        4.04,
+        -0.78,
+        0.44
+      ],
+      "max": [
+        4.64,
+        1.42,
+        1.0
+      ]
+    },
+    "USTUDIO_RIGHT_DEPTH_TOP": {
+      "min": [
+        4.04,
+        -0.77,
+        5.15
+      ],
+      "max": [
+        4.64,
+        1.53,
+        5.71
+      ]
+    },
+    "USTUDIO_RIGHT_PURPLE_LED": {
+      "min": [
+        4.475,
+        -1.155,
+        2.18
+      ],
+      "max": [
+        4.565,
+        -1.045,
+        3.62
+      ]
+    }
+  }
+}

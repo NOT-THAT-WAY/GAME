@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-mecha-mascot-model-v002",
+  "status": "completed",
+  "mode": "micro-scene",
+  "objective": "Reconstruire Mecha Mascot avec des jambes plus longues, plus fines et presque parallèles selon la nouvelle planche de poses, sans écraser la V1.",
+  "source_blend": "asset_library/characters/mecha-mascot-v001.blend",
+  "target_collection": "K3_MECHA_MASCOT_ASSET",
+  "duration_seconds": 6,
+  "fps": 24,
+  "resolution": [720, 720],
+  "story": {
+    "premise": "La V1 révèle des jambes trop courtes et trop écartées face à la nouvelle planche de poses.",
+    "cause": "La nouvelle référence précise la morphologie neutre et la longueur réelle des jambes.",
+    "action": "Le bassin est resserré et les jambes sont reconstruites plus longues, plus fines et presque parallèles.",
+    "result": "La V2 conserve l'identité souple mais devient mieux proportionnée et plus facile à poser.",
+    "beats": [
+      {"time_seconds": 0.0, "state": "still_initial", "cause": "état établi", "visible_result": "sujet et contexte lisibles"},
+      {"time_seconds": 0.75, "state": "anticipation", "cause": "départ caméra", "visible_result": "contre-arc court"},
+      {"time_seconds": 1.5, "state": "action", "cause": "élan établi", "visible_result": "révélation du nouveau ratio bassin-jambes"},
+      {"time_seconds": 5.0, "state": "impact", "cause": "fin de l'action", "visible_result": "conséquence visible"},
+      {"time_seconds": 6.0, "state": "settle", "cause": "dissipation de l'énergie", "visible_result": "recovery court"},
+      {"time_seconds": 6, "state": "still_final", "cause": "action terminée", "visible_result": "résultat stable"}
+    ]
+  },
+  "invariants": [
+    "proportions et identité canonique du sujet",
+    "aucune traversée ou collision non intentionnelle",
+    "orientation et affordance humaines correctes",
+    "aucun drift relatif pendant un contact mécanique",
+    "aucune frame corrompue ou manquante"
+  ],
+  "camera": {
+    "style_source": "knowledge/tutorials/DRUMBOIII_DIRECTION.md",
+    "primary_move": "Arc studio court K1-K4 identique au gate V1 pour comparer les proportions.",
+    "lens_mm_range": [50, 60],
+    "target_strategy": "TARGET indépendant, points d'attention nommés",
+    "focus_strategy": "FOCUS explicite contrôlé aux poses hero",
+    "hero_poses_seconds": [0.0, 0.75, 4.5, 6.0],
+    "forbidden": ["drift sans cause", "wobble prolongé", "clipping", "mouvement complexe concurrent de l'objet"]
+  },
+  "lighting": {
+    "style_source": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/analysis.json",
+    "preset": "drumboiii-layered",
+    "world_strength": 0.7,
+    "required_layers": ["SUN_REFLECTION", "BACK_SHAPE", "SIDE_GLIMMER_A", "SIDE_GLIMMER_B", "DETAIL_RETURN"],
+    "gate_each_layer": true,
+    "forbidden": ["highlight clippé sur détail canonique", "lampe sans fonction visuelle nommée", "lumière utilisée pour cacher une erreur de géométrie"]
+  },
+  "physics": {
+    "contract_files": [],
+    "gravity_enabled_or_justified": true,
+    "supports": ["K3_MECHA_GROUND"],
+    "colliders": ["K3_MECHA_BODY", "K3_MECHA_GROUND"],
+    "joints": [],
+    "clearance_checks": ["deux pieds à z=0", "aucune géométrie sous le sol", "écart des pieds inférieur à la V1"],
+    "camera_corridor_clear": true
+  },
+  "materials_and_design": {
+    "dominant_color": "ivoire chaud mat",
+    "secondary_color": "gris anthracite studio",
+    "accent_color": "aucun",
+    "material_roles": ["K3_MECHA_MAT_BODY: corps neutre", "K3_MECHA_MAT_GROUND: support"],
+    "typography": {"used": false, "content": "", "font": "", "legibility_gate": "not_applicable"}
+  },
+  "limits": {
+    "max_iterations_per_category": 3,
+    "allowed_output_root": "projects/kimi-k3-scene-trials/k3-mecha-mascot-model-v002",
+    "overwrite_source_blend": false,
+    "save_only_trial_copy": true
+  }
+}

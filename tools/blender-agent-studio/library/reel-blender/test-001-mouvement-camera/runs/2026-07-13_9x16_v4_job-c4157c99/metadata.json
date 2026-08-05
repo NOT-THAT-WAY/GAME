@@ -1,0 +1,20 @@
+{
+  "job_id": "c4157c99-a87a-4a6d-acdc-0ad9574b05bd",
+  "date": "2026-07-13",
+  "lane": "MCP Higgsfield",
+  "model": "seedance_2_0 (fast)",
+  "resolution": "720p",
+  "aspect_ratio": "9:16",
+  "duration_s": 6,
+  "generate_audio": false,
+  "cost_credits": 21,
+  "balance_after": 710,
+  "prompt_file": "../../prompts/seedance-v2v-9x16-v4-sb003-sceneA.md",
+  "declined_preset": "24bae836-2c4a-48e0-89b6-49fcc0b21612 (IN THE DARK)",
+  "diff_vs_run3": "squelette sb-003-arc-crane-vertigo (grammaire caméra) + image ref = SCÈNE A test-002 (gate Sliz) à la place de la front nue ; top key retiré du PRELUDE ; interdits spot/beam en ANTI-PRIORS",
+  "medias": [
+    {"ref": "11_scene_ref_A_levitation.png", "role": "image_references", "media_id": "job 8c6161f1-9abe-45ff-ad78-83e47ba39cdf (NB scene A)"},
+    {"ref": "10_blender_motion_skeleton_v3_sb003_6s.mp4", "role": "video_references", "media_id": "0e164849-868c-48f9-865e-69b13e9ff69f"}
+  ],
+  "motion_source": "blender-choreography/runs/sb-003-arc-crane-vertigo-2026-07-13/preview_sb003_6s.mp4 (shots/sb-003-arc-crane-vertigo.md, rig tools/rig_sb003.py)"
+}

@@ -1,0 +1,2177 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | OPENMP = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 4
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "${LEGACY_HELP_ROOT}/work/models/ggml-large-v3-turbo.bin",
+		"language": "auto",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:08,000"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 8000
+			},
+			"text": " Hello! In this video I'm going to show you how I think about lightning when I do my videos in Blender."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:08,000",
+				"to": "00:00:12,000"
+			},
+			"offsets": {
+				"from": 8000,
+				"to": 12000
+			},
+			"text": " And I'm going to use one of my scenes from one of my videos here."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:12,000",
+				"to": "00:00:20,000"
+			},
+			"offsets": {
+				"from": 12000,
+				"to": 20000
+			},
+			"text": " And I'm going to walk you through the process of how I set up my different types of lightning to achieve what I think is a satisfying look."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:20,000",
+				"to": "00:00:24,000"
+			},
+			"offsets": {
+				"from": 20000,
+				"to": 24000
+			},
+			"text": " So a bit quick here, I use Cycles."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:24,000",
+				"to": "00:00:29,000"
+			},
+			"offsets": {
+				"from": 24000,
+				"to": 29000
+			},
+			"text": " So right now I have zero lights on, so you can't see anything."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:29,000",
+				"to": "00:00:34,000"
+			},
+			"offsets": {
+				"from": 29000,
+				"to": 34000
+			},
+			"text": " And to my left I have the camera view. Here I have the scene view."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:34,000",
+				"to": "00:00:36,000"
+			},
+			"offsets": {
+				"from": 34000,
+				"to": 36000
+			},
+			"text": " And here are my different groups."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:36,000",
+				"to": "00:00:41,000"
+			},
+			"offsets": {
+				"from": 36000,
+				"to": 41000
+			},
+			"text": " As you can see I have disabled the lightning for now and the camera."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:41,000",
+				"to": "00:00:43,000"
+			},
+			"offsets": {
+				"from": 41000,
+				"to": 43000
+			},
+			"text": " And here I have all the stuff."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:43,000",
+				"to": "00:00:45,000"
+			},
+			"offsets": {
+				"from": 43000,
+				"to": 45000
+			},
+			"text": " So yeah."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:45,000",
+				"to": "00:00:50,000"
+			},
+			"offsets": {
+				"from": 45000,
+				"to": 50000
+			},
+			"text": " The first thing I'm going to do is to go to the world shader tab."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:50,000",
+				"to": "00:00:53,000"
+			},
+			"offsets": {
+				"from": 50000,
+				"to": 53000
+			},
+			"text": " And I have this setup here."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:53,000",
+				"to": "00:00:58,000"
+			},
+			"offsets": {
+				"from": 53000,
+				"to": 58000
+			},
+			"text": " And I have another video on my Patreon where I show you how I do this setup."
+		},
+		{
+			"timestamps": {
+				"from": "00:00:58,000",
+				"to": "00:01:01,000"
+			},
+			"offsets": {
+				"from": 58000,
+				"to": 61000
+			},
+			"text": " Actually, but a bit fast here."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:01,000",
+				"to": "00:01:05,000"
+			},
+			"offsets": {
+				"from": 61000,
+				"to": 65000
+			},
+			"text": " I can show you that I have the sky setup which controls the sky background."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:05,000",
+				"to": "00:01:07,000"
+			},
+			"offsets": {
+				"from": 65000,
+				"to": 67000
+			},
+			"text": " Go into mix shader."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:07,000",
+				"to": "00:01:11,000"
+			},
+			"offsets": {
+				"from": 67000,
+				"to": 71000
+			},
+			"text": " And then I have an HDRI here which is going to give all the lightning."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:11,000",
+				"to": "00:01:17,000"
+			},
+			"offsets": {
+				"from": 71000,
+				"to": 77000
+			},
+			"text": " And then I have a light path in camera array to combine the lightning with the sky background."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:17,000",
+				"to": "00:01:21,000"
+			},
+			"offsets": {
+				"from": 77000,
+				"to": 81000
+			},
+			"text": " As you can see the background strength from the HDRI is set to zero."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:21,000",
+				"to": "00:01:24,000"
+			},
+			"offsets": {
+				"from": 81000,
+				"to": 84000
+			},
+			"text": " And we can try to set it to one."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:24,000",
+				"to": "00:01:32,000"
+			},
+			"offsets": {
+				"from": 84000,
+				"to": 92000
+			},
+			"text": " One is its default value which means that we have the default amount of light coming from the HDRI into the scene."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:32,000",
+				"to": "00:01:36,000"
+			},
+			"offsets": {
+				"from": 92000,
+				"to": 96000
+			},
+			"text": " And as you can see we get some pretty cool results right away."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:36,000",
+				"to": "00:01:41,000"
+			},
+			"offsets": {
+				"from": 96000,
+				"to": 101000
+			},
+			"text": " But in my opinion the lightning here looks a bit dull."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:41,000",
+				"to": "00:01:46,000"
+			},
+			"offsets": {
+				"from": 101000,
+				"to": 106000
+			},
+			"text": " It's not really giving much life to the mesh and the structure in the scene."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:46,000",
+				"to": "00:01:51,000"
+			},
+			"offsets": {
+				"from": 106000,
+				"to": 111000
+			},
+			"text": " You can see it's not really that interesting reflections and everything looks like flat almost."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:51,000",
+				"to": "00:01:56,000"
+			},
+			"offsets": {
+				"from": 111000,
+				"to": 116000
+			},
+			"text": " So that's why I often want to add more lightning and not only use an HDRI."
+		},
+		{
+			"timestamps": {
+				"from": "00:01:56,000",
+				"to": "00:02:03,000"
+			},
+			"offsets": {
+				"from": 116000,
+				"to": 123000
+			},
+			"text": " So what I usually do here is that I set the strength of the HDRI texture to maybe 0.5 or 0.7."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:03,000",
+				"to": "00:02:07,000"
+			},
+			"offsets": {
+				"from": 123000,
+				"to": 127000
+			},
+			"text": " Maybe we can go to 0.7 here I think."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:07,000",
+				"to": "00:02:11,000"
+			},
+			"offsets": {
+				"from": 127000,
+				"to": 131000
+			},
+			"text": " And you can see now it looks really dull and not really that nice at all."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:11,000",
+				"to": "00:02:19,000"
+			},
+			"offsets": {
+				"from": 131000,
+				"to": 139000
+			},
+			"text": " But I find it that around 0.7 or 0.5 gives me a good foundation to add more lightning on."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:19,000",
+				"to": "00:02:22,000"
+			},
+			"offsets": {
+				"from": 139000,
+				"to": 142000
+			},
+			"text": " Without overexposureing it with light."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:22,000",
+				"to": "00:02:26,000"
+			},
+			"offsets": {
+				"from": 142000,
+				"to": 146000
+			},
+			"text": " So the next thing we can do is to activate the light group here."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:26,000",
+				"to": "00:02:29,000"
+			},
+			"offsets": {
+				"from": 146000,
+				"to": 149000
+			},
+			"text": " And the first thing I want to show you is the sun."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:29,000",
+				"to": "00:02:33,000"
+			},
+			"offsets": {
+				"from": 149000,
+				"to": 153000
+			},
+			"text": " So I'm gonna activate the sun or you can see where I have placed it."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:33,000",
+				"to": "00:02:35,000"
+			},
+			"offsets": {
+				"from": 153000,
+				"to": 155000
+			},
+			"text": " So the sun is over here and you can see if I disable it."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:35,000",
+				"to": "00:02:37,000"
+			},
+			"offsets": {
+				"from": 155000,
+				"to": 157000
+			},
+			"text": " If you look here and then I add it again."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:37,000",
+				"to": "00:02:40,000"
+			},
+			"offsets": {
+				"from": 157000,
+				"to": 160000
+			},
+			"text": " You can see that we instantly get some more cool reflections to the scene."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:40,000",
+				"to": "00:02:44,000"
+			},
+			"offsets": {
+				"from": 160000,
+				"to": 164000
+			},
+			"text": " And I usually want to add the sun to almost a 90 degrees angle."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:44,000",
+				"to": "00:02:46,000"
+			},
+			"offsets": {
+				"from": 164000,
+				"to": 166000
+			},
+			"text": " So I don't want it to be straight down."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:46,000",
+				"to": "00:02:49,000"
+			},
+			"offsets": {
+				"from": 166000,
+				"to": 169000
+			},
+			"text": " I don't want it to be right forward but just about there."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:49,000",
+				"to": "00:02:50,000"
+			},
+			"offsets": {
+				"from": 169000,
+				"to": 170000
+			},
+			"text": " Maybe like 70 degrees."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:50,000",
+				"to": "00:02:58,000"
+			},
+			"offsets": {
+				"from": 170000,
+				"to": 178000
+			},
+			"text": " And I don't want it to be straight forward either because you can see if I have it pointing straight forward towards the scene."
+		},
+		{
+			"timestamps": {
+				"from": "00:02:58,000",
+				"to": "00:03:01,000"
+			},
+			"offsets": {
+				"from": 178000,
+				"to": 181000
+			},
+			"text": " You can see it's not really adding that much."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:01,000",
+				"to": "00:03:05,000"
+			},
+			"offsets": {
+				"from": 181000,
+				"to": 185000
+			},
+			"text": " But if I tilt it just a bit I can control the reflections."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:05,000",
+				"to": "00:03:08,000"
+			},
+			"offsets": {
+				"from": 185000,
+				"to": 188000
+			},
+			"text": " You can see now we get more reflections on the mesh here."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:08,000",
+				"to": "00:03:11,000"
+			},
+			"offsets": {
+				"from": 188000,
+				"to": 191000
+			},
+			"text": " Which makes everything look more depth and interesting."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:11,000",
+				"to": "00:03:13,000"
+			},
+			"offsets": {
+				"from": 191000,
+				"to": 193000
+			},
+			"text": " So I'm gonna leave it maybe here."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:13,000",
+				"to": "00:03:16,000"
+			},
+			"offsets": {
+				"from": 193000,
+				"to": 196000
+			},
+			"text": " And you can see it already looks better."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:16,000",
+				"to": "00:03:19,000"
+			},
+			"offsets": {
+				"from": 196000,
+				"to": 199000
+			},
+			"text": " Then I'm gonna activate this area lamp here."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:19,000",
+				"to": "00:03:23,000"
+			},
+			"offsets": {
+				"from": 199000,
+				"to": 203000
+			},
+			"text": " And this lamp is background lightning."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:23,000",
+				"to": "00:03:27,000"
+			},
+			"offsets": {
+				"from": 203000,
+				"to": 207000
+			},
+			"text": " And it's a subtle change but I feel like it makes everything come alive."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:27,000",
+				"to": "00:03:28,000"
+			},
+			"offsets": {
+				"from": 207000,
+				"to": 208000
+			},
+			"text": " So you can see here."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:28,000",
+				"to": "00:03:30,000"
+			},
+			"offsets": {
+				"from": 208000,
+				"to": 210000
+			},
+			"text": " Here is the area lamp."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:30,000",
+				"to": "00:03:32,000"
+			},
+			"offsets": {
+				"from": 210000,
+				"to": 212000
+			},
+			"text": " And it's pointing from the back."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:32,000",
+				"to": "00:03:34,000"
+			},
+			"offsets": {
+				"from": 212000,
+				"to": 214000
+			},
+			"text": " And you can see the camera is here."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:34,000",
+				"to": "00:03:39,000"
+			},
+			"offsets": {
+				"from": 214000,
+				"to": 219000
+			},
+			"text": " So camera is looking this way and the lightning is looking back at the camera."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:39,000",
+				"to": "00:03:42,000"
+			},
+			"offsets": {
+				"from": 219000,
+				"to": 222000
+			},
+			"text": " And if you look here over here to the left."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:42,000",
+				"to": "00:03:44,000"
+			},
+			"offsets": {
+				"from": 222000,
+				"to": 224000
+			},
+			"text": " I will disable the backlight."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:44,000",
+				"to": "00:03:46,000"
+			},
+			"offsets": {
+				"from": 224000,
+				"to": 226000
+			},
+			"text": " You can see everything becomes dark."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:46,000",
+				"to": "00:03:48,000"
+			},
+			"offsets": {
+				"from": 226000,
+				"to": 228000
+			},
+			"text": " And then now I'm getting it back."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:48,000",
+				"to": "00:03:52,000"
+			},
+			"offsets": {
+				"from": 228000,
+				"to": 232000
+			},
+			"text": " You can see it gets some like lightning coming from the top here."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:52,000",
+				"to": "00:03:53,000"
+			},
+			"offsets": {
+				"from": 232000,
+				"to": 233000
+			},
+			"text": " And also the bottom."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:53,000",
+				"to": "00:03:55,000"
+			},
+			"offsets": {
+				"from": 233000,
+				"to": 235000
+			},
+			"text": " So you see here is with the backlight."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:55,000",
+				"to": "00:03:56,000"
+			},
+			"offsets": {
+				"from": 235000,
+				"to": 236000
+			},
+			"text": " And now it's off."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:56,000",
+				"to": "00:03:58,000"
+			},
+			"offsets": {
+				"from": 236000,
+				"to": 238000
+			},
+			"text": " You can see everything becomes very flat."
+		},
+		{
+			"timestamps": {
+				"from": "00:03:58,000",
+				"to": "00:04:01,000"
+			},
+			"offsets": {
+				"from": 238000,
+				"to": 241000
+			},
+			"text": " And now it's back."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:01,000",
+				"to": "00:04:03,000"
+			},
+			"offsets": {
+				"from": 241000,
+				"to": 243000
+			},
+			"text": " Same thing if you look over here."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:03,000",
+				"to": "00:04:06,000"
+			},
+			"offsets": {
+				"from": 243000,
+				"to": 246000
+			},
+			"text": " I deactivate it."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:06,000",
+				"to": "00:04:07,000"
+			},
+			"offsets": {
+				"from": 246000,
+				"to": 247000
+			},
+			"text": " It's a bit flat here."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:07,000",
+				"to": "00:04:10,000"
+			},
+			"offsets": {
+				"from": 247000,
+				"to": 250000
+			},
+			"text": " And now it's getting back."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:10,000",
+				"to": "00:04:13,000"
+			},
+			"offsets": {
+				"from": 250000,
+				"to": 253000
+			},
+			"text": " Just a little bit of lightning on the sides here."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:13,000",
+				"to": "00:04:18,000"
+			},
+			"offsets": {
+				"from": 253000,
+				"to": 258000
+			},
+			"text": " Which I think adds a lot of realism in the end."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:18,000",
+				"to": "00:04:21,000"
+			},
+			"offsets": {
+				"from": 258000,
+				"to": 261000
+			},
+			"text": " And then we can go to this lightning here to the right."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:21,000",
+				"to": "00:04:23,000"
+			},
+			"offsets": {
+				"from": 261000,
+				"to": 263000
+			},
+			"text": " And see what it does."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:23,000",
+				"to": "00:04:25,000"
+			},
+			"offsets": {
+				"from": 263000,
+				"to": 265000
+			},
+			"text": " So I have it placed over here."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:25,000",
+				"to": "00:04:29,000"
+			},
+			"offsets": {
+				"from": 265000,
+				"to": 269000
+			},
+			"text": " And I don't think it's doing really that much at all."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:29,000",
+				"to": "00:04:33,000"
+			},
+			"offsets": {
+				"from": 269000,
+				"to": 273000
+			},
+			"text": " Also of course you can see the strength down here."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:33,000",
+				"to": "00:04:37,000"
+			},
+			"offsets": {
+				"from": 273000,
+				"to": 277000
+			},
+			"text": " But it's probably just adding a little bit of detail."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:37,000",
+				"to": "00:04:40,000"
+			},
+			"offsets": {
+				"from": 277000,
+				"to": 280000
+			},
+			"text": " We can try to deactivate it."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:40,000",
+				"to": "00:04:43,000"
+			},
+			"offsets": {
+				"from": 280000,
+				"to": 283000
+			},
+			"text": " It's not really doing that much."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:43,000",
+				"to": "00:04:48,000"
+			},
+			"offsets": {
+				"from": 283000,
+				"to": 288000
+			},
+			"text": " But maybe just a little bit of details."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:48,000",
+				"to": "00:04:50,000"
+			},
+			"offsets": {
+				"from": 288000,
+				"to": 290000
+			},
+			"text": " If I add it back."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:50,000",
+				"to": "00:04:51,000"
+			},
+			"offsets": {
+				"from": 290000,
+				"to": 291000
+			},
+			"text": " Remove it back."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:51,000",
+				"to": "00:04:54,000"
+			},
+			"offsets": {
+				"from": 291000,
+				"to": 294000
+			},
+			"text": " You can see for example here on the chain."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:54,000",
+				"to": "00:04:57,000"
+			},
+			"offsets": {
+				"from": 294000,
+				"to": 297000
+			},
+			"text": " It just adds a little bit of like glimmer here."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:57,000",
+				"to": "00:04:58,000"
+			},
+			"offsets": {
+				"from": 297000,
+				"to": 298000
+			},
+			"text": " So I remove it."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:58,000",
+				"to": "00:04:59,000"
+			},
+			"offsets": {
+				"from": 298000,
+				"to": 299000
+			},
+			"text": " Now."
+		},
+		{
+			"timestamps": {
+				"from": "00:04:59,000",
+				"to": "00:05:01,000"
+			},
+			"offsets": {
+				"from": 299000,
+				"to": 301000
+			},
+			"text": " Now I'm getting it back."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:01,000",
+				"to": "00:05:02,000"
+			},
+			"offsets": {
+				"from": 301000,
+				"to": 302000
+			},
+			"text": " So yeah."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:02,000",
+				"to": "00:05:05,000"
+			},
+			"offsets": {
+				"from": 302000,
+				"to": 305000
+			},
+			"text": " It's just those like fine tuning details."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:05,000",
+				"to": "00:05:08,000"
+			},
+			"offsets": {
+				"from": 305000,
+				"to": 308000
+			},
+			"text": " That this area lamp adds."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:08,000",
+				"to": "00:05:11,000"
+			},
+			"offsets": {
+				"from": 308000,
+				"to": 311000
+			},
+			"text": " We can go to the third area lamp here."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:11,000",
+				"to": "00:05:13,000"
+			},
+			"offsets": {
+				"from": 311000,
+				"to": 313000
+			},
+			"text": " You can see it's here."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:13,000",
+				"to": "00:05:14,000"
+			},
+			"offsets": {
+				"from": 313000,
+				"to": 314000
+			},
+			"text": " Over here."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:14,000",
+				"to": "00:05:15,000"
+			},
+			"offsets": {
+				"from": 314000,
+				"to": 315000
+			},
+			"text": " It's."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:15,000",
+				"to": "00:05:16,000"
+			},
+			"offsets": {
+				"from": 315000,
+				"to": 316000
+			},
+			"text": " We had."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:16,000",
+				"to": "00:05:17,000"
+			},
+			"offsets": {
+				"from": 316000,
+				"to": 317000
+			},
+			"text": " We had."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:17,000",
+				"to": "00:05:18,000"
+			},
+			"offsets": {
+				"from": 317000,
+				"to": 318000
+			},
+			"text": " The backlight here."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:18,000",
+				"to": "00:05:20,000"
+			},
+			"offsets": {
+				"from": 318000,
+				"to": 320000
+			},
+			"text": " Was at 1400 power."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:20,000",
+				"to": "00:05:23,000"
+			},
+			"offsets": {
+				"from": 320000,
+				"to": 323000
+			},
+			"text": " And this one was like a third of it."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:23,000",
+				"to": "00:05:25,000"
+			},
+			"offsets": {
+				"from": 323000,
+				"to": 325000
+			},
+			"text": " And now the third one."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:25,000",
+				"to": "00:05:27,000"
+			},
+			"offsets": {
+				"from": 325000,
+				"to": 327000
+			},
+			"text": " Is even less."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:27,000",
+				"to": "00:05:29,000"
+			},
+			"offsets": {
+				"from": 327000,
+				"to": 329000
+			},
+			"text": " So it's not really that strong at all."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:29,000",
+				"to": "00:05:30,000"
+			},
+			"offsets": {
+				"from": 329000,
+				"to": 330000
+			},
+			"text": " But probably."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:30,000",
+				"to": "00:05:33,000"
+			},
+			"offsets": {
+				"from": 330000,
+				"to": 333000
+			},
+			"text": " It's just adding a little bit of like detail."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:33,000",
+				"to": "00:05:35,000"
+			},
+			"offsets": {
+				"from": 333000,
+				"to": 335000
+			},
+			"text": " From the side here."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:35,000",
+				"to": "00:05:42,000"
+			},
+			"offsets": {
+				"from": 335000,
+				"to": 342000
+			},
+			"text": " You can see it's pointing to the side of the mesh here."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:42,000",
+				"to": "00:05:43,000"
+			},
+			"offsets": {
+				"from": 342000,
+				"to": 343000
+			},
+			"text": " So we can try it."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:43,000",
+				"to": "00:05:44,000"
+			},
+			"offsets": {
+				"from": 343000,
+				"to": 344000
+			},
+			"text": " If we look here."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:44,000",
+				"to": "00:05:45,000"
+			},
+			"offsets": {
+				"from": 344000,
+				"to": 345000
+			},
+			"text": " From the side."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:45,000",
+				"to": "00:05:47,000"
+			},
+			"offsets": {
+				"from": 345000,
+				"to": 347000
+			},
+			"text": " We can try to remove it."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:47,000",
+				"to": "00:05:49,000"
+			},
+			"offsets": {
+				"from": 347000,
+				"to": 349000
+			},
+			"text": " And now it's back."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:49,000",
+				"to": "00:05:50,000"
+			},
+			"offsets": {
+				"from": 349000,
+				"to": 350000
+			},
+			"text": " And."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:50,000",
+				"to": "00:05:51,000"
+			},
+			"offsets": {
+				"from": 350000,
+				"to": 351000
+			},
+			"text": " Yeah."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:51,000",
+				"to": "00:05:52,000"
+			},
+			"offsets": {
+				"from": 351000,
+				"to": 352000
+			},
+			"text": " You."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:52,000",
+				"to": "00:05:53,000"
+			},
+			"offsets": {
+				"from": 352000,
+				"to": 353000
+			},
+			"text": " You probably wouldn't even notice it."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:53,000",
+				"to": "00:05:54,000"
+			},
+			"offsets": {
+				"from": 353000,
+				"to": 354000
+			},
+			"text": " If I didn't have this."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:54,000",
+				"to": "00:05:55,000"
+			},
+			"offsets": {
+				"from": 354000,
+				"to": 355000
+			},
+			"text": " But."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:55,000",
+				"to": "00:05:56,000"
+			},
+			"offsets": {
+				"from": 355000,
+				"to": 356000
+			},
+			"text": " Probably just adds."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:56,000",
+				"to": "00:05:58,000"
+			},
+			"offsets": {
+				"from": 356000,
+				"to": 358000
+			},
+			"text": " A little bit of more detail."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:58,000",
+				"to": "00:05:59,000"
+			},
+			"offsets": {
+				"from": 358000,
+				"to": 359000
+			},
+			"text": " Again."
+		},
+		{
+			"timestamps": {
+				"from": "00:05:59,000",
+				"to": "00:06:00,000"
+			},
+			"offsets": {
+				"from": 359000,
+				"to": 360000
+			},
+			"text": " You."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:00,000",
+				"to": "00:06:02,000"
+			},
+			"offsets": {
+				"from": 360000,
+				"to": 362000
+			},
+			"text": " Maybe you can see it on the chains here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:02,000",
+				"to": "00:06:04,000"
+			},
+			"offsets": {
+				"from": 362000,
+				"to": 364000
+			},
+			"text": " So if I deactivate it."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:04,000",
+				"to": "00:06:05,000"
+			},
+			"offsets": {
+				"from": 364000,
+				"to": 365000
+			},
+			"text": " And add it."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:05,000",
+				"to": "00:06:10,000"
+			},
+			"offsets": {
+				"from": 365000,
+				"to": 370000
+			},
+			"text": " With just a little bit more light."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:10,000",
+				"to": "00:06:11,000"
+			},
+			"offsets": {
+				"from": 370000,
+				"to": 371000
+			},
+			"text": " And now."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:11,000",
+				"to": "00:06:13,000"
+			},
+			"offsets": {
+				"from": 371000,
+				"to": 373000
+			},
+			"text": " We're adding in the final."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:13,000",
+				"to": "00:06:14,000"
+			},
+			"offsets": {
+				"from": 373000,
+				"to": 374000
+			},
+			"text": " Area lamp here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:14,000",
+				"to": "00:06:15,000"
+			},
+			"offsets": {
+				"from": 374000,
+				"to": 375000
+			},
+			"text": " We can see."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:15,000",
+				"to": "00:06:17,000"
+			},
+			"offsets": {
+				"from": 375000,
+				"to": 377000
+			},
+			"text": " And it's over here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:17,000",
+				"to": "00:06:19,000"
+			},
+			"offsets": {
+				"from": 377000,
+				"to": 379000
+			},
+			"text": " You can see it's pointing to the other."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:19,000",
+				"to": "00:06:20,000"
+			},
+			"offsets": {
+				"from": 379000,
+				"to": 380000
+			},
+			"text": " In the other direction here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:20,000",
+				"to": "00:06:21,000"
+			},
+			"offsets": {
+				"from": 380000,
+				"to": 381000
+			},
+			"text": " And."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:21,000",
+				"to": "00:06:22,000"
+			},
+			"offsets": {
+				"from": 381000,
+				"to": 382000
+			},
+			"text": " It's only."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:22,000",
+				"to": "00:06:23,000"
+			},
+			"offsets": {
+				"from": 382000,
+				"to": 383000
+			},
+			"text": " It's 20 power."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:23,000",
+				"to": "00:06:24,000"
+			},
+			"offsets": {
+				"from": 383000,
+				"to": 384000
+			},
+			"text": " So."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:24,000",
+				"to": "00:06:25,000"
+			},
+			"offsets": {
+				"from": 384000,
+				"to": 385000
+			},
+			"text": " I would probably try."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:25,000",
+				"to": "00:06:27,000"
+			},
+			"offsets": {
+				"from": 385000,
+				"to": 387000
+			},
+			"text": " Increasing the strength here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:27,000",
+				"to": "00:06:28,000"
+			},
+			"offsets": {
+				"from": 387000,
+				"to": 388000
+			},
+			"text": " Maybe do."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:28,000",
+				"to": "00:06:29,000"
+			},
+			"offsets": {
+				"from": 388000,
+				"to": 389000
+			},
+			"text": " 220."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:29,000",
+				"to": "00:06:30,000"
+			},
+			"offsets": {
+				"from": 389000,
+				"to": 390000
+			},
+			"text": " Yeah."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:30,000",
+				"to": "00:06:32,000"
+			},
+			"offsets": {
+				"from": 390000,
+				"to": 392000
+			},
+			"text": " Now we get some more details."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:32,000",
+				"to": "00:06:33,000"
+			},
+			"offsets": {
+				"from": 392000,
+				"to": 393000
+			},
+			"text": " So we see."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:33,000",
+				"to": "00:06:34,000"
+			},
+			"offsets": {
+				"from": 393000,
+				"to": 394000
+			},
+			"text": " Now we get some more."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:34,000",
+				"to": "00:06:35,000"
+			},
+			"offsets": {
+				"from": 394000,
+				"to": 395000
+			},
+			"text": " Details over here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:35,000",
+				"to": "00:06:36,000"
+			},
+			"offsets": {
+				"from": 395000,
+				"to": 396000
+			},
+			"text": " To the left."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:36,000",
+				"to": "00:06:37,000"
+			},
+			"offsets": {
+				"from": 396000,
+				"to": 397000
+			},
+			"text": " If I remove it."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:37,000",
+				"to": "00:06:38,000"
+			},
+			"offsets": {
+				"from": 397000,
+				"to": 398000
+			},
+			"text": " If I."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:38,000",
+				"to": "00:06:39,000"
+			},
+			"offsets": {
+				"from": 398000,
+				"to": 399000
+			},
+			"text": " If I remove the."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:39,000",
+				"to": "00:06:40,000"
+			},
+			"offsets": {
+				"from": 399000,
+				"to": 400000
+			},
+			"text": " This area lamp."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:40,000",
+				"to": "00:06:41,000"
+			},
+			"offsets": {
+				"from": 400000,
+				"to": 401000
+			},
+			"text": " You see."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:41,000",
+				"to": "00:06:42,000"
+			},
+			"offsets": {
+				"from": 401000,
+				"to": 402000
+			},
+			"text": " It's kind of dark here."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:42,000",
+				"to": "00:06:43,000"
+			},
+			"offsets": {
+				"from": 402000,
+				"to": 403000
+			},
+			"text": " And now it's back."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:43,000",
+				"to": "00:06:45,000"
+			},
+			"offsets": {
+				"from": 403000,
+				"to": 405000
+			},
+			"text": " Now we get more details."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:45,000",
+				"to": "00:06:46,000"
+			},
+			"offsets": {
+				"from": 405000,
+				"to": 406000
+			},
+			"text": " So yeah."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:46,000",
+				"to": "00:06:47,000"
+			},
+			"offsets": {
+				"from": 406000,
+				"to": 407000
+			},
+			"text": " This."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:47,000",
+				"to": "00:06:48,000"
+			},
+			"offsets": {
+				"from": 407000,
+				"to": 408000
+			},
+			"text": " That's essentially everything I do."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:48,000",
+				"to": "00:06:49,000"
+			},
+			"offsets": {
+				"from": 408000,
+				"to": 409000
+			},
+			"text": " When I."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:49,000",
+				"to": "00:06:50,000"
+			},
+			"offsets": {
+				"from": 409000,
+				"to": 410000
+			},
+			"text": " Light my scenes."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:50,000",
+				"to": "00:06:51,000"
+			},
+			"offsets": {
+				"from": 410000,
+				"to": 411000
+			},
+			"text": " So."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:51,000",
+				"to": "00:06:52,000"
+			},
+			"offsets": {
+				"from": 411000,
+				"to": 412000
+			},
+			"text": " Again."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:52,000",
+				"to": "00:06:53,000"
+			},
+			"offsets": {
+				"from": 412000,
+				"to": 413000
+			},
+			"text": " The first step."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:53,000",
+				"to": "00:06:54,000"
+			},
+			"offsets": {
+				"from": 413000,
+				"to": 414000
+			},
+			"text": " Is to add this."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:54,000",
+				"to": "00:06:55,000"
+			},
+			"offsets": {
+				"from": 414000,
+				"to": 415000
+			},
+			"text": " HRI."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:55,000",
+				"to": "00:06:56,000"
+			},
+			"offsets": {
+				"from": 415000,
+				"to": 416000
+			},
+			"text": " And not put strength to max."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:56,000",
+				"to": "00:06:57,000"
+			},
+			"offsets": {
+				"from": 416000,
+				"to": 417000
+			},
+			"text": " Because if."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:57,000",
+				"to": "00:06:58,000"
+			},
+			"offsets": {
+				"from": 417000,
+				"to": 418000
+			},
+			"text": " If we would."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:58,000",
+				"to": "00:06:59,000"
+			},
+			"offsets": {
+				"from": 418000,
+				"to": 419000
+			},
+			"text": " Max it now."
+		},
+		{
+			"timestamps": {
+				"from": "00:06:59,000",
+				"to": "00:07:00,000"
+			},
+			"offsets": {
+				"from": 419000,
+				"to": 420000
+			},
+			"text": " When we have."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:00,000",
+				"to": "00:07:01,000"
+			},
+			"offsets": {
+				"from": 420000,
+				"to": 421000
+			},
+			"text": " All."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:01,000",
+				"to": "00:07:02,000"
+			},
+			"offsets": {
+				"from": 421000,
+				"to": 422000
+			},
+			"text": " This lighting also."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:02,000",
+				"to": "00:07:03,000"
+			},
+			"offsets": {
+				"from": 422000,
+				"to": 423000
+			},
+			"text": " You can see that it would."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:03,000",
+				"to": "00:07:04,000"
+			},
+			"offsets": {
+				"from": 423000,
+				"to": 424000
+			},
+			"text": " Become."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:04,000",
+				"to": "00:07:05,000"
+			},
+			"offsets": {
+				"from": 424000,
+				"to": 425000
+			},
+			"text": " Almost overexposed."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:05,000",
+				"to": "00:07:06,000"
+			},
+			"offsets": {
+				"from": 425000,
+				"to": 426000
+			},
+			"text": " But yeah."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:06,000",
+				"to": "00:07:07,000"
+			},
+			"offsets": {
+				"from": 426000,
+				"to": 427000
+			},
+			"text": " You could probably use this too."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:07,000",
+				"to": "00:07:08,000"
+			},
+			"offsets": {
+				"from": 427000,
+				"to": 428000
+			},
+			"text": " Controlled fine tune details."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:08,000",
+				"to": "00:07:10,000"
+			},
+			"offsets": {
+				"from": 428000,
+				"to": 430000
+			},
+			"text": " With my own lightning."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:10,000",
+				"to": "00:07:11,000"
+			},
+			"offsets": {
+				"from": 430000,
+				"to": 431000
+			},
+			"text": " About 0.7."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:11,000",
+				"to": "00:07:12,000"
+			},
+			"offsets": {
+				"from": 431000,
+				"to": 432000
+			},
+			"text": " And then you have this."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:12,000",
+				"to": "00:07:13,000"
+			},
+			"offsets": {
+				"from": 432000,
+				"to": 433000
+			},
+			"text": " Sun here."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:13,000",
+				"to": "00:07:14,000"
+			},
+			"offsets": {
+				"from": 433000,
+				"to": 434000
+			},
+			"text": " It's a."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:14,000",
+				"to": "00:07:15,000"
+			},
+			"offsets": {
+				"from": 434000,
+				"to": 435000
+			},
+			"text": " Almost 90 degrees angle."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:15,000",
+				"to": "00:07:16,000"
+			},
+			"offsets": {
+				"from": 435000,
+				"to": 436000
+			},
+			"text": " Pointing."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:16,000",
+				"to": "00:07:17,000"
+			},
+			"offsets": {
+				"from": 436000,
+				"to": 437000
+			},
+			"text": " A bit."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:17,000",
+				"to": "00:07:18,000"
+			},
+			"offsets": {
+				"from": 437000,
+				"to": 438000
+			},
+			"text": " To the right."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:18,000",
+				"to": "00:07:19,000"
+			},
+			"offsets": {
+				"from": 438000,
+				"to": 439000
+			},
+			"text": " And then I have."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:19,000",
+				"to": "00:07:20,000"
+			},
+			"offsets": {
+				"from": 439000,
+				"to": 440000
+			},
+			"text": " Those."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:20,000",
+				"to": "00:07:21,000"
+			},
+			"offsets": {
+				"from": 440000,
+				"to": 441000
+			},
+			"text": " Area lamps over here."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:21,000",
+				"to": "00:07:22,000"
+			},
+			"offsets": {
+				"from": 441000,
+				"to": 442000
+			},
+			"text": " So yeah."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:22,000",
+				"to": "00:07:23,000"
+			},
+			"offsets": {
+				"from": 442000,
+				"to": 443000
+			},
+			"text": " That's everything I do."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:23,000",
+				"to": "00:07:24,000"
+			},
+			"offsets": {
+				"from": 443000,
+				"to": 444000
+			},
+			"text": " When I light my scenes."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:24,000",
+				"to": "00:07:25,000"
+			},
+			"offsets": {
+				"from": 444000,
+				"to": 445000
+			},
+			"text": " Thank you for watching."
+		},
+		{
+			"timestamps": {
+				"from": "00:07:25,000",
+				"to": "00:07:26,000"
+			},
+			"offsets": {
+				"from": 445000,
+				"to": 446000
+			},
+			"text": " And see you in my next video."
+		}
+	]
+}

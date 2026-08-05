@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-codex-v001",
+  "status": "completed",
+  "mode": "micro-scene",
+  "objective": "Un petit être blanc se lève du bord, marche dans un logiciel de musique géant et contemple ses écrans en un plan continu.",
+  "source_blend": "projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+  "character_asset": "asset_library/characters/mecha-mascot-v002.blend",
+  "target_collection": "K3_EDGE_CHARACTER",
+  "duration_seconds": 12,
+  "frame_range": [1, 360],
+  "fps": 30,
+  "resolution": [640, 360],
+  "audio": {
+    "source": "projects/fl-studio-box-semantic-template/media/current/master.mp4",
+    "measured_bpm": 148.0,
+    "beat_period_frames": 12.162,
+    "downbeat_frames": [12, 61, 110, 158, 207, 256, 304, 353],
+    "sync_strategy": "Les frontières majeures et les contacts de marche tombent sur la grille mesurée; le playhead 3D croise la silhouette à la frame 353."
+  },
+  "story": {
+    "premise": "Un humanoïde blanc curieux et calme habite l'ouverture d'une boîte géante dont les murs sont les fenêtres animées de FL Studio.",
+    "cause": "La pulsation des écrans et le balayage lumineux l'incitent à quitter le bord.",
+    "action": "Il pousse des mains, se lève avec transfert de poids, avance sur quatre foulées et huit contacts alternés puis s'immobilise.",
+    "result": "Il lève lentement la tête au centre, petite silhouette blanche lisible dans l'immensité lumineuse du logiciel.",
+    "temperament": "curieux, posé, émerveillé sans emphase; la curiosité se lit dans le torse légèrement en avant puis dans l'ouverture finale des épaules",
+    "personal_idea": "Au dernier downbeat, la playhead traverse exactement son corps blanc, qui capte brièvement une bande acid-lime; il ouvre très légèrement les avant-bras comme pour sentir la lumière.",
+    "beats": [
+      {"frame": 1, "time_seconds": 0.0, "state": "seated_still", "cause": "état établi", "visible_result": "assis sur le bord, dos caméra, un pied bat la pulsation"},
+      {"frame": 61, "time_seconds": 2.0, "state": "stand_anticipation", "cause": "downbeat", "visible_result": "torse en avant, mains chargées sur le bord, pieds recherchent le sol"},
+      {"frame": 110, "time_seconds": 3.633, "state": "standing", "cause": "poussée mains et jambes", "visible_result": "bassin au-dessus des appuis sans translation verticale mécanique"},
+      {"frame": 158, "time_seconds": 5.233, "state": "walk_start", "cause": "équilibre retrouvé", "visible_result": "premier transfert de poids vers le centre"},
+      {"frame": 207, "time_seconds": 6.867, "state": "walk_mid", "cause": "cadence de 148 BPM", "visible_result": "contacts alternés sans glissement"},
+      {"frame": 256, "time_seconds": 8.5, "state": "walk_stop", "cause": "arrivée au centre", "visible_result": "pas de freinage et recovery corporel"},
+      {"frame": 304, "time_seconds": 10.1, "state": "contemplate", "cause": "écrans dominants révélés", "visible_result": "tête et sternum montent lentement"},
+      {"frame": 353, "time_seconds": 11.733, "state": "playhead_climax", "cause": "downbeat final", "visible_result": "balayage lumineux sur la silhouette et ouverture subtile des bras"},
+      {"frame": 360, "time_seconds": 11.967, "state": "still_final", "cause": "énergie absorbée", "visible_result": "pose stable, silhouette au moins 12 % du cadre"}
+    ]
+  },
+  "invariants": [
+    "asset V2 uniquement, mesh et proportions canoniques préservés",
+    "échelle globale 0.43, environ un cinquième de la hauteur intérieure",
+    "un seul plan continu sans coupe",
+    "aucune traversée ou collision non intentionnelle",
+    "contacts des pieds et des mains sans glissement",
+    "aucune rotation ou translation en bloc qui remplace la biomécanique",
+    "silhouette finale au moins 12 % de la hauteur du cadre",
+    "aucune frame corrompue, noire ou manquante"
+  ],
+  "camera": {
+    "style_source": "knowledge/tutorials/DRUMBOIII_DIRECTION.md",
+    "primary_move": "dolly-crane continu: léger dip d'anticipation puis recul, élévation et élargissement, recovery court",
+    "lens_mm_range": [32, 55],
+    "target_strategy": "K3_EDGE_CAMERA_TARGET indépendant; retard discret après les changements de posture",
+    "focus_strategy": "K3_EDGE_CAMERA_FOCUS explicite, f/4.5, contrôlé aux frames 1, 61, 110, 256, 304, 353 et 360",
+    "hero_poses_frames": [1, 61, 110, 207, 256, 304, 353, 360],
+    "forbidden": ["drift sans cause", "wobble prolongé", "clipping", "collision avec la coque", "mouvement complexe concurrent de l'action"]
+  },
+  "lighting": {
+    "style_source": "knowledge/tutorials/DRUMBOIII_DIRECTION.md",
+    "preset": "drumboiii-layered recalibré sur l'humanoïde",
+    "world_strength": 0.55,
+    "primary_source": "panneaux FL Studio émissifs et grandes sources colorées calées sur leurs parois",
+    "required_layers": ["SUN_REFLECTION", "BACK_SHAPE", "SIDE_GLIMMER_A", "SIDE_GLIMMER_B", "DETAIL_RETURN"],
+    "gate_each_layer": true,
+    "forbidden": ["highlight clippé sur le corps blanc", "lampe sans fonction visuelle nommée", "lumière utilisée pour cacher une erreur de pose"]
+  },
+  "physics": {
+    "contract_files": ["scene-contract.json"],
+    "gravity_enabled_or_justified": "animation cinématique contrôlée; gravité traduite par centre de masse, appuis et trajectoires articulées",
+    "supports": ["USTUDIO_FRONT_BOTTOM_RIM", "USTUDIO_PIANO_ROLL_FLOOR"],
+    "colliders": ["USTUDIO_FRONT_BOTTOM_RIM", "USTUDIO_PIANO_ROLL_FLOOR", "USTUDIO_FRONT_LEFT_RIM", "USTUDIO_FRONT_RIGHT_RIM", "USTUDIO_CEILING"],
+    "joints": ["pelvis", "spine", "head", "upper/lower arms", "upper/lower legs"],
+    "clearance_checks": ["feet-to-floor each frame", "hands-to-rim during push", "body-to-shell", "camera corridor to shell"],
+    "camera_corridor_clear": true
+  },
+  "materials_and_design": {
+    "dominant_color": "prune sombre de la coque et des écrans",
+    "secondary_color": "cyan-magenta d'interface",
+    "accent_color": "acid lime de la playhead",
+    "material_roles": ["corps blanc chaud récepteur de couleur", "interfaces vidéo émissives", "coque prune nacrée", "playhead acid-lime"],
+    "typography": {"used": true, "content": "typographie FL Studio déjà contenue dans les panneaux vidéo", "font": "source vidéo inchangée", "legibility_gate": "playlist, browser, mixer et piano roll reconnaissables au reveal final"}
+  },
+  "limits": {
+    "max_iterations_per_category": 3,
+    "allowed_output_root": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-codex-v001",
+    "overwrite_source_blend": false,
+    "save_only_trial_copy": true
+  }
+}

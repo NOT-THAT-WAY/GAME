@@ -1,0 +1,508 @@
+{
+  "targetName": "Transparent Audio Deck Git Integration",
+  "sourceImage": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-git-v002/references/reference-hero.jpg",
+  "preSpecAssessment": {
+    "objectClass": {
+      "primaryType": "transparent cassette-inspired portable audio device",
+      "primaryDomain": "object",
+      "formLanguage": [
+        "hard-surface",
+        "mechanical",
+        "transparent-like",
+        "geometric"
+      ],
+      "structureKind": [
+        "compound object",
+        "layered shell",
+        "modular assembly",
+        "repeated hardware"
+      ],
+      "motionPotential": [
+        "static prop",
+        "whole-object transform",
+        "detachable",
+        "explodable"
+      ],
+      "materialFamilies": [
+        "polycarbonate",
+        "frosted plastic",
+        "rubber",
+        "painted plastic",
+        "metal",
+        "printed circuit board"
+      ],
+      "notes": "Visual classification only. The exact product identity and mechanism are not confirmed. Reconstruct the visible design language and mark hidden-side geometry as inferred."
+    },
+    "complexity": {
+      "tier": "complex",
+      "scores": {
+        "silhouetteComplexity": 1,
+        "componentCount": 3,
+        "hierarchyDepth": 2,
+        "repetitionDensity": 2,
+        "materialLayerCount": 3,
+        "localDetailDensity": 3,
+        "occlusionRisk": 3,
+        "actionReadinessNeed": 2
+      },
+      "estimatedCounts": {
+        "macroComponents": 4,
+        "mesoComponents": 13,
+        "microFeatureGroups": 12,
+        "materialLayers": 8,
+        "repetitionSystems": 3
+      },
+      "reasoning": [
+        "The outer silhouette is a beveled rectangular cuboid, but transparency exposes a dense internal mechanism.",
+        "Identity depends on two offset circular systems, the cassette-like vertical transport, the clear layered shell, the red top control, the right-side three-button strip, and repeated corner fasteners.",
+        "A single three-quarter image supports the visible front and right side but not exact rear geometry, cavity depth, or functional connectivity."
+      ]
+    },
+    "specDepthDecision": {
+      "requiredDepth": "complex",
+      "minimumComponentLevels": [
+        "macro",
+        "meso",
+        "micro"
+      ],
+      "needsRepetitionSystems": true,
+      "needsMaterialLocalOverrides": true,
+      "needsMultipleReviewViews": true,
+      "needsActionReadyHierarchy": true,
+      "rationale": "Choose simple/moderate/complex/ultra-complex from observed structure, not from a hardcoded domain."
+    },
+    "unknownsToResolveBeforeImplementation": [
+      "Exact product identity and intended audio function are undetermined.",
+      "Rear shell layout and rear-facing ports are hidden.",
+      "Exact body dimensions are unavailable; use 235 x 140 x 35 mm as an explicitly inferred presentation scale.",
+      "The large upper circular assembly may be a speaker, reel, or control; model it as a speaker-like diaphragm without claiming function.",
+      "The lower circular assembly and vertical transport are partially occluded; reproduce their visible layering rather than inventing a complete tape mechanism.",
+      "Transparent-shell thickness and optical absorption are inferred from highlights and must be tuned by render review."
+    ],
+    "detailInventory": {
+      "scanMethod": "grid-3x3",
+      "targetMinDetails": 12,
+      "note": "Enumerate every identity-defining small detail before authoring the spec. Each detail must map to a component.localFeatures entry or material.localOverrides entry, never prose only. Use forge/stage1_intake/build_detail_inventory.py to scan zones.",
+      "details": [
+        {
+          "id": "detail-shell-bevel",
+          "kind": "bevel",
+          "description": "Broad clear chamfer around the rectangular shell catches a continuous rim highlight.",
+          "region": "full-object",
+          "scale": "meso",
+          "affects": "outer shell silhouette and refraction",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "outer-shell.edge-bevel"
+          },
+          "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r1c1.png",
+          "confidence": 0.95
+        },
+        {
+          "id": "detail-corner-fasteners",
+          "kind": "fastener",
+          "description": "Repeated metal fasteners and clear bosses occupy the shell corners.",
+          "region": "shell-corners",
+          "scale": "micro",
+          "affects": "assembly readability",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "outer-shell.corner-fastener-system"
+          },
+          "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r2c0.png",
+          "confidence": 0.9
+        },
+        {
+          "id": "detail-upper-diaphragm",
+          "kind": "contour",
+          "description": "Upper circular assembly has a silver bezel, dark cone, inner ring, and central dome.",
+          "region": "front-upper-left",
+          "scale": "meso",
+          "affects": "primary identity",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "speaker-assembly.concentric-profile"
+          },
+          "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r0c1.png",
+          "confidence": 0.95
+        },
+        {
+          "id": "detail-lower-wheel",
+          "kind": "contour",
+          "description": "Lower dark wheel has a textured face, clear rim, and recessed central button.",
+          "region": "front-lower-middle",
+          "scale": "meso",
+          "affects": "cassette-mechanism identity",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "transport-wheel.layered-wheel"
+          },
+          "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r1c1.png",
+          "confidence": 0.92
+        },
+        {
+          "id": "detail-red-control",
+          "kind": "decal",
+          "description": "Single saturated red rectangular control near the top edge.",
+          "region": "front-upper-right",
+          "scale": "micro",
+          "affects": "accent hierarchy",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "red-control.accent-red"
+          },
+          "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r0c2.png",
+          "confidence": 0.98
+        },
+        {
+          "id": "detail-side-button-strip",
+          "kind": "hole",
+          "description": "Right-side black inset strip contains three circular recessed controls or sockets.",
+          "region": "right-side-upper",
+          "scale": "meso",
+          "affects": "right-side silhouette and function cues",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "side-control-strip.three-sockets"
+          },
+          "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r1c2.png",
+          "confidence": 0.88
+        },
+        {
+          "id": "detail-top-knurled-dial",
+          "kind": "ridge",
+          "description": "A dark rotary wheel protrudes from the top edge with repeated fine knurl ridges.",
+          "region": "top-left",
+          "scale": "micro",
+          "affects": "top silhouette",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "top-dial.knurl-system"
+          },
+          "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r0c1.png",
+          "confidence": 0.78
+        },
+        {
+          "id": "detail-transport-slot",
+          "kind": "emissive",
+          "description": "Narrow red luminous or reflective slot sits behind the lower wheel.",
+          "region": "front-center",
+          "scale": "micro",
+          "affects": "mechanism depth cue",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "transport-slot.red-emissive"
+          },
+          "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r1c1.png",
+          "confidence": 0.82
+        },
+        {
+          "id": "detail-clear-posts",
+          "kind": "fastener",
+          "description": "Clear circular standoffs and bosses layer the front plate over the internal panel.",
+          "region": "front-perimeter",
+          "scale": "micro",
+          "affects": "layered-shell depth",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "outer-shell.clear-standoff-system"
+          },
+          "evidenceRef": "references/reference-hero.jpg",
+          "confidence": 0.86
+        },
+        {
+          "id": "detail-panel-lines",
+          "kind": "linework",
+          "description": "Thin molded seams and angled clear channels break up the shell surface.",
+          "region": "front-right",
+          "scale": "micro",
+          "affects": "transparent-shell readability",
+          "mapsTo": {
+            "type": "component.localFeatures",
+            "ref": "front-plate.molded-panel-lines"
+          },
+          "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r1c2.png",
+          "confidence": 0.74
+        },
+        {
+          "id": "detail-status-leds",
+          "kind": "emissive",
+          "description": "Tiny yellow and green status points appear near the lower mechanism.",
+          "region": "front-lower-right",
+          "scale": "micro",
+          "affects": "electronic detail",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "pcb.status-leds"
+          },
+          "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r2c1.png",
+          "confidence": 0.72
+        },
+        {
+          "id": "detail-red-dot-linework",
+          "kind": "linework",
+          "description": "A small red dot and fine black micro-label linework occupy the pale front panel.",
+          "region": "front-lower-left",
+          "scale": "micro",
+          "affects": "graphic balance",
+          "mapsTo": {
+            "type": "material.localOverrides",
+            "ref": "inner-panel.micro-label"
+          },
+          "evidenceRef": "diagnostics/img2threejs/detail-zones/zone-r2c0.png",
+          "confidence": 0.83
+        }
+      ]
+    },
+    "anatomy": {
+      "applies": false,
+      "styleHeads": 0.0,
+      "proportions": {
+        "headUnit": 0.0,
+        "torso": 0.0,
+        "legs": 0.0,
+        "shoulderWidth": 0.0,
+        "hipWidth": 0.0
+      },
+      "pose": {
+        "type": "unassessed",
+        "jointAngles": {}
+      },
+      "faceLandmarks": {
+        "eyeLine": 0.0,
+        "eyeSpacing": 0.0,
+        "noseBase": 0.0,
+        "mouthLine": 0.0,
+        "hairline": 0.0
+      },
+      "features": [],
+      "confidence": 0.0,
+      "note": "Only meaningful when objectClass.primaryDomain is character or hybrid. Set applies=true and fill from forge/stage1_intake/extract_landmarks.py. See grimoire/character/reconstruction.md and grimoire/character/likeness_maximization.md."
+    },
+    "sourceImage": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-transparent-audio-deck-git-v002/references/reference-hero.jpg"
+  },
+  "qualityContract": {
+    "qualityBar": "complex",
+    "definitionOfDone": [
+      "The asset reads immediately as the reference's transparent cassette-inspired audio device from the hero view and remains volumetric from front, right three-quarter, and rear three-quarter views.",
+      "The clear layered shell, upper diaphragm, lower transport wheel, vertical mechanism, red control, side three-socket strip, top dial, corner hardware, and internal electronics are separate named parts.",
+      "Hidden-side details are conservative inferred continuations, never presented as exact product geometry.",
+      "The asset exports as a named, explodable Blender hierarchy with sockets, collider proxies, trial.blend, asset.glb, and multi-angle evidence."
+    ],
+    "minimumSpecDepth": {
+      "macroComponents": 3,
+      "mesoComponents": 8,
+      "microFeatureGroups": 5,
+      "materialLayers": 3,
+      "repetitionSystems": 1,
+      "reviewViewpoints": 4
+    },
+    "featureGroups": [
+      {
+        "id": "overall-silhouette",
+        "name": "Overall silhouette and proportions",
+        "required": true,
+        "qualityCriteria": [
+          "Bounding shape, dominant curves, negative spaces, and scale relationships are explicitly described."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model reads as a generic placeholder instead of the reference object",
+          "major proportions are guessed without evidence"
+        ]
+      },
+      {
+        "id": "primary-structure",
+        "name": "Primary structure and hierarchy",
+        "required": true,
+        "qualityCriteria": [
+          "Major parts, joints, seams, contact points, and parent-child relationships are named before code generation."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "large visible parts are merged into one mesh",
+          "component hierarchy is too shallow for the observed complexity"
+        ]
+      },
+      {
+        "id": "attachment-joint-correctness",
+        "name": "Attachment and joint correctness",
+        "required": true,
+        "qualityCriteria": [
+          "Every visible child appendage, branch, limb, handle, connector, tube, cable, horn, wing, leg, or hinged part has an attachment contract with parent socket, localStart/localEnd, contact type, embed/overlap, and gap tolerance."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "child part root floats away from the parent",
+          "branch/limb/tube is centered in space instead of pivoting from its root",
+          "parent-child transform mixes world and local coordinates"
+        ]
+      },
+      {
+        "id": "surface-material-response",
+        "name": "Surface material response",
+        "required": true,
+        "qualityCriteria": [
+          "Albedo zones, roughness, normal/bump/displacement intent, cavity dirt, edge wear, and local overrides are specified where visible.",
+          "Important materials define independent albedo, roughness, height/normal, and AO responses instead of reusing one texture for unrelated PBR channels.",
+          "Surface response is decomposed into macro, meso, and micro frequency bands with scale and amplitude tied to object scale."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "surface looks like flat plastic",
+          "local material variation is missing or not tied to image evidence"
+        ]
+      },
+      {
+        "id": "reference-lookdev",
+        "name": "Reference color, material, and lighting response",
+        "required": true,
+        "qualityCriteria": [
+          "Material-pass names the reference-derived albedo palette, roughness variation, tactile normal/bump/displacement response, and local masks.",
+          "When a source image is available, run reference PBR extraction and require confidence >= 0.7 before treating maps as implementation-ready.",
+          "Lighting-pass names key/fill/rim or environment light, exposure, tone mapping, background, and contact shadow behavior.",
+          "Neutral, grazing-angle, and reference-matched renders prove that surface relief survives relighting and is not painted into albedo."
+        ],
+        "evidenceRefs": [
+          "full-object"
+        ],
+        "failureModes": [
+          "model has acceptable shape but reads as flat shaded or plastic",
+          "colors are a generic average instead of reference-observed local color zones",
+          "lighting is evenly ambient and cannot reproduce the source value range"
+        ]
+      }
+    ],
+    "visualDeltaChecks": [
+      "silhouette and negative-space delta",
+      "component hierarchy depth delta",
+      "repetition density and distribution delta",
+      "material albedo/roughness/normal response delta",
+      "local feature placement and scale delta"
+    ],
+    "antiShallowSpecRules": [
+      "Do not proceed to code if qualityContract.qualityBar is unassessed.",
+      "Do not proceed to code if the spec only contains a root component for a moderate or complex object.",
+      "Do not proceed to code if required featureGroups are not represented by componentTree, materials, or repetitionSystems.",
+      "Do not proceed to code if visible local features are described only in prose and not attached to components/materials/evidenceRefs.",
+      "Do not proceed past structural-pass if attached child parts lack attachment.parentSocket, localStart, localEnd, embedDepth/overlap, and gapTolerance.",
+      "Do not pass material look-dev when albedo is reused as roughness, height, normal, or AO.",
+      "Do not pass material look-dev without macro, meso, and micro surface frequency bands for close-up materials.",
+      "Do not pass reference-fidelity material look-dev from a source image without usable referencePbr maps or an explicit documented limitation.",
+      "Do not patch a spec with extracted PBR maps when extraction confidence is below the target threshold unless the user explicitly accepts lower fidelity.",
+      "Do not place adjacent separate-geometry parts below 0.02 world-unit seam overlap (source: grimoire/build/geometry_patterns.md).",
+      "Do not satisfy raised or recessed relief, fasteners, or grip structure with a map alone when the feature affects form; use geometry or displacement (source: grimoire/build/geometry_patterns.md)."
+    ]
+  },
+  "authoringInstruction": "Fill observed object class, complexity reasoning, featureGroups, visualDeltaChecks, and unknowns before generating or implementing ObjectSculptSpec.",
+  "localSpecSearch": {
+    "collection": "core_3d",
+    "query": "Transparent Audio Deck Git Integration transparent polycarbonate layered shell speaker diaphragm mechanical assembly fastener repetition hard surface glass transmission roughness IOR",
+    "index": {
+      "status": "hit",
+      "reason": "current",
+      "fingerprint": "6857e5ab528b42ac12f4f411f862610a0bffce8e47aee3610a7603c318072fe8"
+    },
+    "matches": [
+      {
+        "record_id": "core.pbr-opacity-alpha",
+        "file_path": "docs/raw/img2threejs-skill-dataset.json",
+        "heading": null,
+        "key_path": "categories.material_pbr[8]",
+        "score": 6.173944048162,
+        "snippets": [
+          "... làm kênh dữ liệu, không phải độ trong suốt. Recognition cues: Standard opacity: soft edge fade or full transparency in glass/plastic parts; CS2-specific: alpha channel of the base color texture instead encodes a Wearness Mask, not visual ..."
+        ],
+        "source_refs": [
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.material_pbr[8]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation"
+          }
+        ]
+      },
+      {
+        "record_id": "core.pbr-roughness",
+        "file_path": "grimoire/glossary/3d_vocabulary.md",
+        "heading": "Material And PBR",
+        "key_path": null,
+        "score": 4.20187819032,
+        "snippets": [
+          "Roughness is microfacet scatter: high roughness reads matte and low roughness reads glossy. Recognition cues: low roughness reads as a sharp, mirror-like, tight specular highlight; high roughness reads as a blurry, wide, dim highlight and matte ..."
+        ],
+        "source_refs": [
+          {
+            "path": "grimoire/glossary/3d_vocabulary.md",
+            "heading": "Material And PBR",
+            "key_path": null
+          },
+          {
+            "path": "grimoire/intake/image_analysis.md",
+            "heading": "Layer 5 — Materials & surface (PBR)",
+            "key_path": null
+          },
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.material_pbr[1]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "grimoire/glossary/3d_vocabulary.md"
+          },
+          {
+            "kind": "notebooklm-research",
+            "ref": "notebooklm:4b03c2f9-8393-411f-b5b4-039ab9532843",
+            "note": "Validated generic schema vocabulary; numeric claims remain backed by local source_refs."
+          },
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation — merged recognition cues + Three.js target instead of duplicating this entity."
+          }
+        ]
+      },
+      {
+        "record_id": "core.description-honest-uncertainty-single-image-limits-convention",
+        "file_path": "docs/raw/img2threejs-skill-dataset.json",
+        "heading": null,
+        "key_path": "categories.description_conventions[6]",
+        "score": 3.986222861816,
+        "snippets": [
+          "... định' thay vì bịa ra chi tiết trông hợp lý nhưng không thấy trong ảnh tham chiếu. Recognition cues: Any attribute for a surface not visible in the reference image should be flagged explicitly rather than filled with a guessed value; This is ..."
+        ],
+        "source_refs": [
+          {
+            "path": "docs/raw/img2threejs-skill-dataset.json",
+            "heading": null,
+            "key_path": "categories.description_conventions[6]"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "kind": "source",
+            "ref": "docs/raw/img2threejs-skill-dataset.json",
+            "note": "img2threejs NotebookLM research distillation"
+          }
+        ]
+      }
+    ]
+  }
+}

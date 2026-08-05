@@ -1,0 +1,4729 @@
+{
+  "schema_version": 1,
+  "source": "${BLENDER_AGENT_STUDIO_ROOT}/projects/kimi-k3-scene-trials/k3-flstudio-character-arc-v001/scene/trial.blend",
+  "scene": "FL_STUDIO_BOX_SEMANTIC_TEMPLATE",
+  "collection": "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK",
+  "truncated": false,
+  "objects": [
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -3.25,
+        -0.25,
+        1.875
+      ],
+      "bounds_max": [
+        3.25,
+        0.61,
+        1.945
+      ],
+      "center": [
+        0.0,
+        0.18,
+        1.91
+      ],
+      "dimensions": [
+        6.5,
+        0.86,
+        0.07
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE_EDGE_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -3.1925,
+        -0.26,
+        1.9325
+      ],
+      "bounds_max": [
+        -3.1475,
+        0.62,
+        1.9775
+      ],
+      "center": [
+        -3.17,
+        0.18,
+        1.955
+      ],
+      "dimensions": [
+        0.045,
+        0.88,
+        0.045
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE_EDGE_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        3.1475,
+        -0.26,
+        1.9325
+      ],
+      "bounds_max": [
+        3.1925,
+        0.62,
+        1.9775
+      ],
+      "center": [
+        3.17,
+        0.18,
+        1.955
+      ],
+      "dimensions": [
+        0.045,
+        0.88,
+        0.045
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_01",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -2.89,
+        -0.12,
+        1.04
+      ],
+      "bounds_max": [
+        -2.81,
+        -0.04,
+        1.92
+      ],
+      "center": [
+        -2.85,
+        -0.08,
+        1.48
+      ],
+      "dimensions": [
+        0.08,
+        0.08,
+        0.88
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_02",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        2.81,
+        -0.12,
+        1.04
+      ],
+      "bounds_max": [
+        2.89,
+        -0.04,
+        1.92
+      ],
+      "center": [
+        2.85,
+        -0.08,
+        1.48
+      ],
+      "dimensions": [
+        0.08,
+        0.08,
+        0.88
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_03",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -2.89,
+        0.4,
+        1.04
+      ],
+      "bounds_max": [
+        -2.81,
+        0.48,
+        1.92
+      ],
+      "center": [
+        -2.85,
+        0.44,
+        1.48
+      ],
+      "dimensions": [
+        0.08,
+        0.08,
+        0.88
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_04",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        2.81,
+        0.4,
+        1.04
+      ],
+      "bounds_max": [
+        2.89,
+        0.48,
+        1.92
+      ],
+      "center": [
+        2.85,
+        0.44,
+        1.48
+      ],
+      "dimensions": [
+        0.08,
+        0.08,
+        0.88
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHARACTER_ROOT",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.03742,
+        0.149462,
+        3.28554
+      ],
+      "bounds_max": [
+        0.03742,
+        0.149462,
+        3.28554
+      ],
+      "center": [
+        0.03742,
+        0.149462,
+        3.28554
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_HIPS",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHARACTER_ROOT",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.036467,
+        0.147986,
+        3.380524
+      ],
+      "bounds_max": [
+        0.036467,
+        0.147986,
+        3.380524
+      ],
+      "center": [
+        0.036467,
+        0.147986,
+        3.380524
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_TORSO",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_HIPS",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.036316,
+        0.147753,
+        3.395522
+      ],
+      "bounds_max": [
+        0.036316,
+        0.147753,
+        3.395522
+      ],
+      "center": [
+        0.036316,
+        0.147753,
+        3.395522
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_NECK",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_TORSO",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.024926,
+        0.082701,
+        3.477152
+      ],
+      "bounds_max": [
+        0.024926,
+        0.082701,
+        3.477152
+      ],
+      "center": [
+        0.024926,
+        0.082701,
+        3.477152
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_PELVIS",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_HIPS",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.010214,
+        0.114975,
+        3.344568
+      ],
+      "bounds_max": [
+        0.083147,
+        0.180997,
+        3.416481
+      ],
+      "center": [
+        0.036467,
+        0.147986,
+        3.380524
+      ],
+      "dimensions": [
+        0.093361,
+        0.066022,
+        0.071913
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_TORSO",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_TORSO",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.035465,
+        0.036306,
+        3.356001
+      ],
+      "bounds_max": [
+        0.09725,
+        0.197246,
+        3.512785
+      ],
+      "center": [
+        0.030892,
+        0.116776,
+        3.434393
+      ],
+      "dimensions": [
+        0.132716,
+        0.160941,
+        0.156785
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_HEAD",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_NECK",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.025646,
+        -0.002731,
+        3.429745
+      ],
+      "bounds_max": [
+        0.071347,
+        0.116005,
+        3.554249
+      ],
+      "center": [
+        0.022851,
+        0.056637,
+        3.491997
+      ],
+      "dimensions": [
+        0.096993,
+        0.118736,
+        0.124503
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_TORSO",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.023118,
+        0.109789,
+        3.453446
+      ],
+      "bounds_max": [
+        -0.023118,
+        0.109789,
+        3.453446
+      ],
+      "center": [
+        -0.023118,
+        0.109789,
+        3.453446
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.006371,
+        0.160861,
+        3.42254
+      ],
+      "bounds_max": [
+        -0.006371,
+        0.160861,
+        3.42254
+      ],
+      "center": [
+        -0.006371,
+        0.160861,
+        3.42254
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_WRIST_L",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.008485,
+        0.206167,
+        3.395123
+      ],
+      "bounds_max": [
+        0.008485,
+        0.206167,
+        3.395123
+      ],
+      "center": [
+        0.008485,
+        0.206167,
+        3.395123
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_UPPER_ARM_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.04424,
+        0.091181,
+        3.402807
+      ],
+      "bounds_max": [
+        0.014751,
+        0.179469,
+        3.47318
+      ],
+      "center": [
+        -0.014745,
+        0.135325,
+        3.437993
+      ],
+      "dimensions": [
+        0.058991,
+        0.088288,
+        0.070374
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_FOREARM_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.02456,
+        0.145091,
+        3.377738
+      ],
+      "bounds_max": [
+        0.026944,
+        0.222761,
+        3.439427
+      ],
+      "center": [
+        0.001192,
+        0.183926,
+        3.408582
+      ],
+      "dimensions": [
+        0.051504,
+        0.077669,
+        0.061688
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_HAND_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_WRIST_L",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.013339,
+        0.184649,
+        3.367258
+      ],
+      "bounds_max": [
+        0.032574,
+        0.237677,
+        3.412643
+      ],
+      "center": [
+        0.009617,
+        0.211163,
+        3.389951
+      ],
+      "dimensions": [
+        0.045913,
+        0.053028,
+        0.045385
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_HIP_L",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_HIPS",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.00759,
+        0.147874,
+        3.368231
+      ],
+      "bounds_max": [
+        0.00759,
+        0.147874,
+        3.368231
+      ],
+      "center": [
+        0.00759,
+        0.147874,
+        3.368231
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_KNEE_L",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_HIP_L",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.011624,
+        0.099551,
+        3.323458
+      ],
+      "bounds_max": [
+        0.011624,
+        0.099551,
+        3.323458
+      ],
+      "center": [
+        0.011624,
+        0.099551,
+        3.323458
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_KNEE_L",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.014682,
+        0.14263,
+        3.280377
+      ],
+      "bounds_max": [
+        0.014682,
+        0.14263,
+        3.280377
+      ],
+      "center": [
+        0.014682,
+        0.14263,
+        3.280377
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_THIGH_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_HIP_L",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.013075,
+        0.077651,
+        3.299922
+      ],
+      "bounds_max": [
+        0.03229,
+        0.169775,
+        3.391766
+      ],
+      "center": [
+        0.009607,
+        0.123713,
+        3.345844
+      ],
+      "dimensions": [
+        0.045365,
+        0.092124,
+        0.091844
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_SHIN_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_KNEE_L",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.005807,
+        0.081368,
+        3.260428
+      ],
+      "bounds_max": [
+        0.032163,
+        0.161519,
+        3.342701
+      ],
+      "center": [
+        0.013178,
+        0.121444,
+        3.301564
+      ],
+      "dimensions": [
+        0.037969,
+        0.08015,
+        0.082273
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_FOOT_L",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        -0.000705,
+        0.099335,
+        3.23208
+      ],
+      "bounds_max": [
+        0.032634,
+        0.164675,
+        3.299113
+      ],
+      "center": [
+        0.015965,
+        0.132005,
+        3.265596
+      ],
+      "dimensions": [
+        0.033339,
+        0.065339,
+        0.067033
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_TORSO",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.079479,
+        0.092786,
+        3.454212
+      ],
+      "bounds_max": [
+        0.079479,
+        0.092786,
+        3.454212
+      ],
+      "center": [
+        0.079479,
+        0.092786,
+        3.454212
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.085882,
+        0.103909,
+        3.393555
+      ],
+      "bounds_max": [
+        0.085882,
+        0.103909,
+        3.393555
+      ],
+      "center": [
+        0.085882,
+        0.103909,
+        3.393555
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_WRIST_R",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.091858,
+        0.124793,
+        3.343026
+      ],
+      "bounds_max": [
+        0.091858,
+        0.124793,
+        3.343026
+      ],
+      "center": [
+        0.091858,
+        0.124793,
+        3.343026
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_UPPER_ARM_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.063191,
+        0.075791,
+        3.381546
+      ],
+      "bounds_max": [
+        0.10217,
+        0.120904,
+        3.466221
+      ],
+      "center": [
+        0.082681,
+        0.098348,
+        3.423883
+      ],
+      "dimensions": [
+        0.038979,
+        0.045113,
+        0.084675
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_FOREARM_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.072064,
+        0.08872,
+        3.329919
+      ],
+      "bounds_max": [
+        0.105785,
+        0.140362,
+        3.405743
+      ],
+      "center": [
+        0.088924,
+        0.114541,
+        3.367831
+      ],
+      "dimensions": [
+        0.03372,
+        0.051641,
+        0.075824
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_HAND_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_WRIST_R",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.075441,
+        0.106483,
+        3.31235
+      ],
+      "bounds_max": [
+        0.109739,
+        0.144726,
+        3.359307
+      ],
+      "center": [
+        0.09259,
+        0.125604,
+        3.335829
+      ],
+      "dimensions": [
+        0.034298,
+        0.038244,
+        0.046957
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_HIP_R",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_HIPS",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.065584,
+        0.148471,
+        3.368822
+      ],
+      "bounds_max": [
+        0.065584,
+        0.148471,
+        3.368822
+      ],
+      "center": [
+        0.065584,
+        0.148471,
+        3.368822
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_KNEE_R",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_HIP_R",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.063458,
+        0.100084,
+        3.323986
+      ],
+      "bounds_max": [
+        0.063458,
+        0.100084,
+        3.323986
+      ],
+      "center": [
+        0.063458,
+        0.100084,
+        3.323986
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_CHAR_RIG_KNEE_R",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.060394,
+        0.143099,
+        3.280843
+      ],
+      "bounds_max": [
+        0.060394,
+        0.143099,
+        3.280843
+      ],
+      "center": [
+        0.060394,
+        0.143099,
+        3.280843
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_THIGH_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_HIP_R",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.04313,
+        0.078151,
+        3.300806
+      ],
+      "bounds_max": [
+        0.085912,
+        0.170404,
+        3.392003
+      ],
+      "center": [
+        0.064521,
+        0.124277,
+        3.346404
+      ],
+      "dimensions": [
+        0.042782,
+        0.092252,
+        0.091197
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_SHIN_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_KNEE_R",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.043352,
+        0.08186,
+        3.261193
+      ],
+      "bounds_max": [
+        0.080449,
+        0.162028,
+        3.34293
+      ],
+      "center": [
+        0.061901,
+        0.121944,
+        3.302061
+      ],
+      "dimensions": [
+        0.037097,
+        0.080168,
+        0.081737
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CHAR_FOOT_R",
+      "type": "MESH",
+      "role": "accessory",
+      "parent": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "collections": [
+        "K3_FLSTUDIO_CHARACTER_ARC_V001_WORK"
+      ],
+      "bounds_min": [
+        0.043866,
+        0.099736,
+        3.232764
+      ],
+      "bounds_max": [
+        0.075397,
+        0.165171,
+        3.29932
+      ],
+      "center": [
+        0.059631,
+        0.132454,
+        3.266042
+      ],
+      "dimensions": [
+        0.03153,
+        0.065435,
+        0.066556
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_TARGET_SCENE1_AWAKENING",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        0.035371,
+        0.12597,
+        3.510193
+      ],
+      "bounds_max": [
+        0.035371,
+        0.12597,
+        3.510193
+      ],
+      "center": [
+        0.035371,
+        0.12597,
+        3.510193
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FOCUS_SCENE1_AWAKENING",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        0.035371,
+        0.12597,
+        3.510193
+      ],
+      "bounds_max": [
+        0.035371,
+        0.12597,
+        3.510193
+      ],
+      "center": [
+        0.035371,
+        0.12597,
+        3.510193
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CAM_SCENE1_AWAKENING",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        0.023186,
+        -0.46157,
+        3.335915
+      ],
+      "bounds_max": [
+        0.023186,
+        -0.46157,
+        3.335915
+      ],
+      "center": [
+        0.023186,
+        -0.46157,
+        3.335915
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_TARGET_SCENE2_PAUSE",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        0.0,
+        0.1,
+        4.08
+      ],
+      "bounds_max": [
+        0.0,
+        0.1,
+        4.08
+      ],
+      "center": [
+        0.0,
+        0.1,
+        4.08
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FOCUS_SCENE2_PAUSE",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": null,
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        0.0,
+        0.1,
+        4.08
+      ],
+      "bounds_max": [
+        0.0,
+        0.1,
+        4.08
+      ],
+      "center": [
+        0.0,
+        0.1,
+        4.08
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CAM_SCENE2_PAUSE",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": null,
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        0.0,
+        -15.0,
+        4.18
+      ],
+      "bounds_max": [
+        0.0,
+        -15.0,
+        4.18
+      ],
+      "center": [
+        0.0,
+        -15.0,
+        4.18
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_TARGET_SCENE3_RUN",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        1.735687,
+        0.16453,
+        3.457842
+      ],
+      "bounds_max": [
+        1.735687,
+        0.16453,
+        3.457842
+      ],
+      "center": [
+        1.735687,
+        0.16453,
+        3.457842
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FOCUS_SCENE3_RUN",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        1.735687,
+        0.16453,
+        3.457842
+      ],
+      "bounds_max": [
+        1.735687,
+        0.16453,
+        3.457842
+      ],
+      "center": [
+        1.735687,
+        0.16453,
+        3.457842
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CAM_SCENE3_RUN",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        2.987334,
+        -0.002745,
+        3.477805
+      ],
+      "bounds_max": [
+        2.987334,
+        -0.002745,
+        3.477805
+      ],
+      "center": [
+        2.987334,
+        -0.002745,
+        3.477805
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        0.035865,
+        0.147054,
+        3.440514
+      ],
+      "bounds_max": [
+        0.035865,
+        0.147054,
+        3.440514
+      ],
+      "center": [
+        0.035865,
+        0.147054,
+        3.440514
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        0.036366,
+        0.147831,
+        3.390522
+      ],
+      "bounds_max": [
+        0.036366,
+        0.147831,
+        3.390522
+      ],
+      "center": [
+        0.036366,
+        0.147831,
+        3.390522
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "type": "EMPTY",
+      "role": "accessory",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        0.036366,
+        0.147831,
+        3.390522
+      ],
+      "bounds_max": [
+        0.036366,
+        0.147831,
+        3.390522
+      ],
+      "center": [
+        0.036366,
+        0.147831,
+        3.390522
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_CAM_SCENE4_COMMUNION",
+      "type": "CAMERA",
+      "role": "control",
+      "parent": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "collections": [
+        "USTUDIO_CHARACTER_CAMERAS"
+      ],
+      "bounds_min": [
+        0.021929,
+        -0.910824,
+        5.874358
+      ],
+      "bounds_max": [
+        0.021929,
+        -0.910824,
+        5.874358
+      ],
+      "center": [
+        0.021929,
+        -0.910824,
+        5.874358
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "type": "EMPTY",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "bounds_min": [
+        0.036366,
+        0.147831,
+        3.390522
+      ],
+      "bounds_max": [
+        0.036366,
+        0.147831,
+        3.390522
+      ],
+      "center": [
+        0.036366,
+        0.147831,
+        3.390522
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING_BACK_SHAPE",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "bounds_min": [
+        0.021099,
+        0.926821,
+        4.102591
+      ],
+      "bounds_max": [
+        0.021099,
+        0.926821,
+        4.102591
+      ],
+      "center": [
+        0.021099,
+        0.926821,
+        4.102591
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING_SIDE_GLIMMER_A",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "bounds_min": [
+        -1.161195,
+        -0.379076,
+        3.67037
+      ],
+      "bounds_max": [
+        -1.161195,
+        -0.379076,
+        3.67037
+      ],
+      "center": [
+        -1.161195,
+        -0.379076,
+        3.67037
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING_SIDE_GLIMMER_B",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "bounds_min": [
+        1.188217,
+        -0.253849,
+        3.62588
+      ],
+      "bounds_max": [
+        1.188217,
+        -0.253849,
+        3.62588
+      ],
+      "center": [
+        1.188217,
+        -0.253849,
+        3.62588
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING_DETAIL_RETURN",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "bounds_min": [
+        0.293169,
+        -0.865171,
+        3.747425
+      ],
+      "bounds_max": [
+        0.293169,
+        -0.865171,
+        3.747425
+      ],
+      "center": [
+        0.293169,
+        -0.865171,
+        3.747425
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_LIGHTING_SUN_REFLECTION",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "bounds_min": [
+        0.058604,
+        0.019701,
+        1.338404
+      ],
+      "bounds_max": [
+        0.058604,
+        0.019701,
+        1.338404
+      ],
+      "center": [
+        0.058604,
+        0.019701,
+        1.338404
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    },
+    {
+      "name": "USTUDIO_PLAYHEAD_REVEAL_LIGHT",
+      "type": "LIGHT",
+      "role": "control",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "collections": [
+        "USTUDIO_CHARACTER_LIGHTING"
+      ],
+      "bounds_min": [
+        -0.473671,
+        0.523304,
+        3.99134
+      ],
+      "bounds_max": [
+        -0.473671,
+        0.523304,
+        3.99134
+      ],
+      "center": [
+        -0.473671,
+        0.523304,
+        3.99134
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "hidden_render": false
+    }
+  ],
+  "relations": [
+    {
+      "from": "USTUDIO_INTERFACE_BRIDGE",
+      "to": "USTUDIO_INTERFACE_BRIDGE_EDGE_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_INTERFACE_BRIDGE",
+      "to": "USTUDIO_INTERFACE_BRIDGE_EDGE_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_INTERFACE_BRIDGE",
+      "to": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_01",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_INTERFACE_BRIDGE",
+      "to": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_02",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_INTERFACE_BRIDGE",
+      "to": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_03",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_INTERFACE_BRIDGE",
+      "to": "USTUDIO_INTERFACE_BRIDGE_ANCHOR_04",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_PELVIS",
+      "aabb_distance": 0.059027,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_TORSO",
+      "aabb_distance": 0.070461,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_RIG_KNEE_L",
+      "aabb_distance": 0.06778,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "aabb_distance": 0.024297,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.015269,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.005257,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_FOOT_L",
+      "aabb_distance": 0.004786,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.057031,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.046763,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.067781,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "aabb_distance": 0.024297,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.016298,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.005932,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHARACTER_ROOT",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.006447,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_RIG_TORSO",
+      "aabb_distance": 0.015,
+      "relation": "near",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_PELVIS",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_TORSO",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_HEAD",
+      "aabb_distance": 0.058698,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "aabb_distance": 0.06137,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_RIG_WRIST_L",
+      "aabb_distance": 0.06619,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_UPPER_ARM_L",
+      "aabb_distance": 0.031114,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_FOREARM_L",
+      "aabb_distance": 0.009523,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_HAND_L",
+      "aabb_distance": 0.036869,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_RIG_HIP_L",
+      "aabb_distance": 0.031385,
+      "relation": "near",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_RIG_KNEE_L",
+      "aabb_distance": 0.078865,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.004177,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.038067,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "aabb_distance": 0.067486,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_RIG_WRIST_R",
+      "aabb_distance": 0.070797,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.038061,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.036405,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.044495,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.031385,
+      "relation": "near",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.078865,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.006663,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.03822,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.06,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.01,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.01,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIPS",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.01,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_PELVIS",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_TORSO",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_HEAD",
+      "aabb_distance": 0.046682,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "aabb_distance": 0.052193,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_RIG_WRIST_L",
+      "aabb_distance": 0.064706,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_UPPER_ARM_L",
+      "aabb_distance": 0.022763,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_FOREARM_L",
+      "aabb_distance": 0.009373,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_HAND_L",
+      "aabb_distance": 0.037085,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_RIG_HIP_L",
+      "aabb_distance": 0.039623,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.005506,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.052984,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "aabb_distance": 0.066203,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_RIG_WRIST_R",
+      "aabb_distance": 0.079799,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.037989,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.036504,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.053398,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.039623,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.007669,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.053061,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.045,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.005,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.005,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_TORSO",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.005,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_NECK",
+      "to": "USTUDIO_CHAR_PELVIS",
+      "aabb_distance": 0.068721,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_NECK",
+      "to": "USTUDIO_CHAR_TORSO",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_NECK",
+      "to": "USTUDIO_CHAR_HEAD",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_NECK",
+      "to": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "aabb_distance": 0.060033,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_NECK",
+      "to": "USTUDIO_CHAR_UPPER_ARM_L",
+      "aabb_distance": 0.013829,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_NECK",
+      "to": "USTUDIO_CHAR_FOREARM_L",
+      "aabb_distance": 0.072909,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_NECK",
+      "to": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "aabb_distance": 0.060033,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_NECK",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.039795,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_NECK",
+      "to": "USTUDIO_TARGET_SCENE1_AWAKENING",
+      "aabb_distance": 0.055435,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_NECK",
+      "to": "USTUDIO_FOCUS_SCENE1_AWAKENING",
+      "aabb_distance": 0.055435,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_NECK",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.074855,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_TORSO",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_HEAD",
+      "aabb_distance": 0.013265,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "aabb_distance": 0.039495,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "aabb_distance": 0.006059,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_RIG_WRIST_L",
+      "aabb_distance": 0.02517,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_UPPER_ARM_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_FOREARM_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_HAND_L",
+      "aabb_distance": 0.003652,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_RIG_HIP_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_RIG_KNEE_L",
+      "aabb_distance": 0.026144,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "aabb_distance": 0.06419,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.001867,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_FOOT_L",
+      "aabb_distance": 0.045455,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "aabb_distance": 0.043772,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "aabb_distance": 0.011399,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_RIG_WRIST_R",
+      "aabb_distance": 0.008847,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.025403,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "aabb_distance": 0.063724,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.001638,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.045248,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.024033,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_PELVIS",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_HEAD",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_RIG_WRIST_L",
+      "aabb_distance": 0.00892,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_UPPER_ARM_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_FOREARM_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_HAND_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_RIG_HIP_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_RIG_KNEE_L",
+      "aabb_distance": 0.032543,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "aabb_distance": 0.075624,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.0133,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_FOOT_L",
+      "aabb_distance": 0.056888,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_RIG_WRIST_R",
+      "aabb_distance": 0.012975,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.032015,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "aabb_distance": 0.075157,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.013071,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.056681,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_TARGET_SCENE1_AWAKENING",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_FOCUS_SCENE1_AWAKENING",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_TORSO",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "aabb_distance": 0.045431,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_UPPER_ARM_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_FOREARM_L",
+      "aabb_distance": 0.029086,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_HAND_L",
+      "aabb_distance": 0.070742,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_RIG_HIP_L",
+      "aabb_distance": 0.06928,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.037979,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "aabb_distance": 0.008132,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "aabb_distance": 0.039,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.024013,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.070557,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.069034,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.037743,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_TARGET_SCENE1_AWAKENING",
+      "aabb_distance": 0.009965,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_FOCUS_SCENE1_AWAKENING",
+      "aabb_distance": 0.009965,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.031049,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.05051,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.05051,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HEAD",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.05051,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "aabb_distance": 0.062,
+      "relation": "near",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "to": "USTUDIO_CHAR_UPPER_ARM_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "to": "USTUDIO_CHAR_FOREARM_L",
+      "aabb_distance": 0.037984,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.062492,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_SHOULDER_L",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.070957,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "to": "USTUDIO_CHAR_RIG_WRIST_L",
+      "aabb_distance": 0.055,
+      "relation": "near",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "to": "USTUDIO_CHAR_UPPER_ARM_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "to": "USTUDIO_CHAR_FOREARM_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "to": "USTUDIO_CHAR_HAND_L",
+      "aabb_distance": 0.025764,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "to": "USTUDIO_CHAR_RIG_HIP_L",
+      "aabb_distance": 0.05756,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.030774,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.079841,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.058163,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.047933,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.054968,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.054968,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_L",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.054968,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_L",
+      "to": "USTUDIO_CHAR_UPPER_ARM_L",
+      "aabb_distance": 0.027781,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_L",
+      "to": "USTUDIO_CHAR_FOREARM_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_L",
+      "to": "USTUDIO_CHAR_HAND_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_L",
+      "to": "USTUDIO_CHAR_RIG_HIP_L",
+      "aabb_distance": 0.064203,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_L",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.036546,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_L",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.068859,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_L",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.04989,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_L",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.076734,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_L",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.079399,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_L",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.06482,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_L",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.06482,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_L",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.06482,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_FOREARM_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_HAND_L",
+      "aabb_distance": 0.00518,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_RIG_HIP_L",
+      "aabb_distance": 0.034576,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_RIG_KNEE_L",
+      "aabb_distance": 0.079349,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.01104,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.060106,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "aabb_distance": 0.064729,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "aabb_distance": 0.07173,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.04844,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.057314,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.074669,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.061147,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.030366,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.066357,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_TARGET_SCENE1_AWAKENING",
+      "aabb_distance": 0.042369,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_FOCUS_SCENE1_AWAKENING",
+      "aabb_distance": 0.042369,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.021114,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.024862,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.024862,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_L",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.024862,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_HAND_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_RIG_HIP_L",
+      "aabb_distance": 0.009508,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_RIG_KNEE_L",
+      "aabb_distance": 0.070854,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.035037,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_FOOT_L",
+      "aabb_distance": 0.078625,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "aabb_distance": 0.075594,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "aabb_distance": 0.0719,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_RIG_WRIST_R",
+      "aabb_distance": 0.07636,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.043576,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.045368,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.051883,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.039656,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.079045,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.016186,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.038482,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_TARGET_SCENE1_AWAKENING",
+      "aabb_distance": 0.073787,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_FOCUS_SCENE1_AWAKENING",
+      "aabb_distance": 0.073787,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.008987,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.009423,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.009423,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_L",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.009423,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_CHAR_RIG_HIP_L",
+      "aabb_distance": 0.036774,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.014874,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.033735,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_CHAR_FOOT_L",
+      "aabb_distance": 0.071012,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.070717,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.059337,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.059115,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.048975,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.01773,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.034925,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.071572,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.046914,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.037013,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.037013,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_L",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.037013,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_CHAR_RIG_KNEE_L",
+      "aabb_distance": 0.066,
+      "relation": "near",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.02553,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_CHAR_FOOT_L",
+      "aabb_distance": 0.069118,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.063215,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.06491,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.068507,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.058,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.03554,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.043807,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.077876,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.077621,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.036401,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.036401,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_L",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.036401,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_L",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "aabb_distance": 0.061,
+      "relation": "near",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_L",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_L",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_L",
+      "to": "USTUDIO_CHAR_FOOT_L",
+      "aabb_distance": 0.024345,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_L",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.077674,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_L",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.060784,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_L",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.064192,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_L",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.051839,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_L",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "aabb_distance": 0.078044,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_L",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.031505,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_L",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.031728,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_L",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.040277,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "to": "USTUDIO_CHAR_THIGH_L",
+      "aabb_distance": 0.019545,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "to": "USTUDIO_CHAR_FOOT_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.075844,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.068658,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.078044,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "aabb_distance": 0.045717,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.035023,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.02867,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_L",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.029185,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_SHIN_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_FOOT_L",
+      "aabb_distance": 0.000809,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "aabb_distance": 0.078271,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "aabb_distance": 0.053622,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_RIG_WRIST_R",
+      "aabb_distance": 0.059569,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.030901,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.039775,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.043151,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.033294,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.031168,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "aabb_distance": 0.033968,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.01084,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.011063,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.011592,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.048878,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.004077,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.004077,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_L",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.004077,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_CHAR_FOOT_L",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "aabb_distance": 0.073972,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_CHAR_RIG_WRIST_R",
+      "aabb_distance": 0.059696,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.049716,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.039901,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.043278,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.042418,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.031295,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "aabb_distance": 0.028231,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.010967,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.011189,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.011703,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.048006,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.048006,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_L",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.048006,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOOT_L",
+      "to": "USTUDIO_CHAR_RIG_WRIST_R",
+      "aabb_distance": 0.073728,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOOT_L",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.050037,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOOT_L",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.044807,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOOT_L",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.077104,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOOT_L",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.039608,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOOT_L",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "aabb_distance": 0.02776,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOOT_L",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.010631,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOOT_L",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.010718,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOOT_L",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.011232,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "to": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "aabb_distance": 0.062,
+      "relation": "near",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.048469,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.062209,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "to": "USTUDIO_TARGET_SCENE1_AWAKENING",
+      "aabb_distance": 0.078617,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "to": "USTUDIO_FOCUS_SCENE1_AWAKENING",
+      "aabb_distance": 0.078617,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_SHOULDER_R",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.070957,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "to": "USTUDIO_CHAR_RIG_WRIST_R",
+      "aabb_distance": 0.055,
+      "relation": "near",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.034344,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.054858,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.073193,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.001552,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.050916,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.066258,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.066258,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ELBOW_R",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.066258,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_R",
+      "to": "USTUDIO_CHAR_UPPER_ARM_R",
+      "aabb_distance": 0.038715,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_R",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_R",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_R",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.043776,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_R",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.042186,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_R",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "aabb_distance": 0.072054,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_R",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.005947,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_R",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.01141,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_R",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.046704,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_R",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.07659,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_R",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.07659,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_WRIST_R",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.07659,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_CHAR_FOREARM_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.022238,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.030361,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.057559,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.038616,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_TARGET_SCENE1_AWAKENING",
+      "aabb_distance": 0.05228,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_FOCUS_SCENE1_AWAKENING",
+      "aabb_distance": 0.05228,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.037823,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.038008,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.038008,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_UPPER_ARM_R",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.038008,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_R",
+      "to": "USTUDIO_CHAR_HAND_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_R",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.01038,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_R",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.010453,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_R",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "aabb_distance": 0.050518,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_R",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_R",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_R",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.030599,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_R",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.050638,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_R",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.036471,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_R",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.036471,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_FOREARM_R",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.036471,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_R",
+      "to": "USTUDIO_CHAR_RIG_HIP_R",
+      "aabb_distance": 0.014202,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_R",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.013584,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_R",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "aabb_distance": 0.034915,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_R",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_R",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_R",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.01303,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_R",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.050108,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_R",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.050108,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_HAND_R",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.050108,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_R",
+      "to": "USTUDIO_CHAR_RIG_KNEE_R",
+      "aabb_distance": 0.066,
+      "relation": "near",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_R",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_R",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.025892,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_R",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.069502,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_R",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.077621,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_R",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.036401,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_R",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.036401,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_HIP_R",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.036401,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_R",
+      "to": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "aabb_distance": 0.061,
+      "relation": "near",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_R",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_R",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_KNEE_R",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.024667,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "to": "USTUDIO_CHAR_THIGH_R",
+      "aabb_distance": 0.019962,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_RIG_ANKLE_R",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": true
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_R",
+      "to": "USTUDIO_CHAR_SHIN_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_R",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.001486,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_R",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.049052,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_R",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.006763,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_R",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.006763,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_THIGH_R",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.006763,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_R",
+      "to": "USTUDIO_CHAR_FOOT_R",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_R",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.048103,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_R",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.048103,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_CHAR_SHIN_R",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.048103,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_TARGET_SCENE1_AWAKENING",
+      "to": "USTUDIO_FOCUS_SCENE1_AWAKENING",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_TARGET_SCENE1_AWAKENING",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.072801,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FOCUS_SCENE1_AWAKENING",
+      "to": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "aabb_distance": 0.072801,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_TARGET_SCENE2_PAUSE",
+      "to": "USTUDIO_FOCUS_SCENE2_PAUSE",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_TARGET_SCENE3_RUN",
+      "to": "USTUDIO_FOCUS_SCENE3_RUN",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "to": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "aabb_distance": 0.05,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.05,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_PIVOT_SCENE4_COMMUNION",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.05,
+      "relation": "near",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "to": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_TARGET_SCENE4_COMMUNION",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    },
+    {
+      "from": "USTUDIO_FOCUS_SCENE4_COMMUNION",
+      "to": "USTUDIO_LIGHTING_CHARACTER_TARGET",
+      "aabb_distance": 0.0,
+      "relation": "overlap_or_contact",
+      "parented": false
+    }
+  ],
+  "summary": {
+    "objects": 58,
+    "relations": 424,
+    "roles": {
+      "core": 0,
+      "accessory": 26,
+      "control": 32,
+      "reference": 0
+    }
+  }
+}

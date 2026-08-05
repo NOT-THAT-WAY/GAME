@@ -21,12 +21,16 @@ PROJECT_CHANGESET="$(sed -n 's/^m_EditorVersionWithRevision: .*(\([^)]*\)).*/\1/
 [[ -f .claude/skills/git-task/SKILL.md ]]
 [[ -f .claude/skills/remote-test/SKILL.md ]]
 [[ -f .claude/skills/network-gameplay/SKILL.md ]]
+[[ -f .claude/skills/blender-production-studio/SKILL.md ]]
+[[ -f .agents/skills/blender-production-studio/SKILL.md ]]
 [[ -f docs/adr/0004-authoritative-topology-and-ticks.md ]]
 grep -Fq 'name: setup-game' .claude/skills/setup-game/SKILL.md
 grep -Fq 'name: lan-test' .claude/skills/lan-test/SKILL.md
 grep -Fq 'name: git-task' .claude/skills/git-task/SKILL.md
 grep -Fq 'name: remote-test' .claude/skills/remote-test/SKILL.md
 grep -Fq 'name: network-gameplay' .claude/skills/network-gameplay/SKILL.md
+grep -Fq 'name: blender-production-studio' .claude/skills/blender-production-studio/SKILL.md
+grep -Fq 'tools/blender-agent-studio' .claude/skills/blender-production-studio/SKILL.md
 grep -Fq 'skill `network-gameplay`' CLAUDE.md
 
 for NETWORK_RULE in \
@@ -180,7 +184,15 @@ if [[ -n "$LARGE_NON_LFS" ]]; then
   exit 1
 fi
 
-FORBIDDEN_TRACKED="$(git ls-files | awk 'BEGIN{IGNORECASE=1} /(^|\/)(Library|Temp|Obj|Logs|UserSettings|Build|Builds)(\/|$)/ {print}')"
+# The embedded Blender studio has documentation folders named `library/` and `renders/`.
+# Restrict this Unity-generated-path guard to the GAME tree and normalize case explicitly so
+# macOS/BSD awk and Ubuntu awk enforce the same rule.
+FORBIDDEN_TRACKED="$(git ls-files | awk '
+  {
+    path=tolower($0)
+    if (path !~ /^tools\/blender-agent-studio\// && path ~ /(^|\/)(library|temp|obj|logs|usersettings|build|builds)(\/|$)/) print
+  }
+')"
 if [[ -n "$FORBIDDEN_TRACKED" ]]; then
   printf 'Generated Unity paths are tracked:\n%s\n' "$FORBIDDEN_TRACKED" >&2
   exit 1

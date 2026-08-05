@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "object_class": "clamshell_flip_phone",
+  "asset": "DRUMBOII_FLIP_PHONE",
+  "canonical_frame": {
+    "up": "+Z",
+    "user_side": "-Y",
+    "right": "+X",
+    "upright_required": true
+  },
+  "semantics": {
+    "fixed_base": "LS2_Phone",
+    "moving_link": "LS2_Hinge",
+    "information_surface": "LS2_Screen2",
+    "interaction_surface": "LS2_Buttons",
+    "closed_relation": "the exterior shell faces the user and completely covers the keypad; larger angles are forbidden because the cap penetrates and emerges behind the keypad",
+    "open_relation": "screen and keypad face the same user side and both are usable",
+    "affordance": "hold lower body, raise screen half toward the viewer, read screen, operate keypad"
+  },
+  "joint": {
+    "object": "LS2_Hinge",
+    "type": "revolute",
+    "axis": "X",
+    "reference_open_degrees": 93.3848,
+    "delta_limits_degrees": [0.0, 140.0],
+    "closed_delta_degrees": 140.0,
+    "opening_main_action": {
+      "start_frame": 310,
+      "end_frame": 350,
+      "monotonic": "decreasing"
+    },
+    "states": [
+      {"frame": 1, "name": "closed", "expected_delta_degrees": 140.0, "tolerance_degrees": 0.5},
+      {"frame": 288, "name": "closed_hold", "expected_delta_degrees": 140.0, "tolerance_degrees": 0.5},
+      {"frame": 310, "name": "opening_anticipation", "expected_delta_degrees": 140.0, "tolerance_degrees": 0.5},
+      {"frame": 350, "name": "open", "expected_delta_degrees": 0.0, "tolerance_degrees": 0.5},
+      {"frame": 378, "name": "open_settle", "expected_delta_degrees": 0.0, "tolerance_degrees": 0.5}
+    ]
+  },
+  "clearance_rules": [
+    {"name": "phone_on_carrier", "frames": [1, 144, 236, 248, 264, 276], "upper_collection": "LS2_PRODUCT", "lower_object": "LS2_PRODUCT_CARRIER", "min": 0.04, "max": 0.09},
+    {"name": "carrier_above_rail", "frames": [1, 144, 236], "upper_object": "LS2_PRODUCT_CARRIER", "lower_prefix": "LS2_RAIL_TIE_", "min": 0.03, "max": 0.09},
+    {"name": "carrier_crosses_above_dais", "frames": [256, 264], "upper_object": "LS2_PRODUCT_CARRIER", "lower_objects": ["LS2_DAIS", "LS2_DAIS_INLAY"], "min": 0.25, "max": 0.40},
+    {"name": "carrier_landed_on_dais", "frames": [276, 288, 350, 432], "upper_object": "LS2_PRODUCT_CARRIER", "lower_objects": ["LS2_DAIS", "LS2_DAIS_INLAY"], "min": 0.0, "max": 0.02}
+  ],
+  "visual_gates": {
+    "required_frames": [1, 288, 310, 330, 350, 378],
+    "required_questions": [
+      "Is the cap folded toward the keypad in the closed state?",
+      "Does the screen rise toward the user rather than behind the body?",
+      "Are screen and keypad simultaneously visible in the open state?",
+      "Is the hinge pivot stationary?",
+      "Does every solid maintain non-negative clearance?"
+    ]
+  }
+}

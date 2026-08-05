@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-07-20T19:49:59.809940+00:00",
+  "trial_id": "k3-flstudio-character-arc-v001",
+  "stage": "final",
+  "package_valid": true,
+  "artistic_verdict": "ship",
+  "calculated_score": 88.85,
+  "expected_verdict": "ship",
+  "errors": [],
+  "warnings": [],
+  "video_probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 640,
+        "height": 360,
+        "avg_frame_rate": "30/1",
+        "nb_frames": "406"
+      },
+      {
+        "codec_name": "aac",
+        "avg_frame_rate": "0/0",
+        "nb_frames": "583"
+      }
+    ],
+    "format": {
+      "duration": "13.533333"
+    }
+  }
+}

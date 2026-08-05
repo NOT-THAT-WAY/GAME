@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "version": "1.0.0",
+  "file": "asset_library/production/unrecorded-production-assets.blend",
+  "blender_version": "5.1.1",
+  "assets": [
+    {
+      "name": "USTUDIO_RIG_ORBIT",
+      "type": "collection",
+      "catalog": "Rigs/Camera/Orbit",
+      "usage": "Append (Reuse Data) puis déplacer ROOT"
+    },
+    {
+      "name": "USTUDIO_RIG_DOLLY",
+      "type": "collection",
+      "catalog": "Rigs/Camera/Dolly",
+      "usage": "Append (Reuse Data) puis animer CAMERA"
+    },
+    {
+      "name": "USTUDIO_LIGHTS_PRODUCT_3PT",
+      "type": "collection",
+      "catalog": "Lighting/Studio/Product",
+      "usage": "Append puis régler énergie, taille et couleur"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-edge-rise-reveal-fable-v001",
+  "status": "in_progress",
+  "mode": "micro-scene",
+  "participant": "fable",
+  "title": "Le réveil du bord",
+  "objective": "Un mecha mascot assis sur le bord se leve, marche vers le centre du sol et contemple les murs-ecrans, en un seul plan de l'intime vers le vaste",
+  "source_blend": "projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+  "character_asset": "asset_library/characters/mecha-mascot-v002.blend",
+  "target_collection": "K3_EDGE_RISE_REVEAL_FABLE_V001_WORK",
+  "duration_seconds": 12,
+  "fps": 30,
+  "resolution": [640, 360],
+  "story": {
+    "premise": "Un petit humanoïde blanc vit dans une boîte géante qui est un logiciel de musique. Il est assis sur le bord inférieur, face à l'intérieur, un pied qui bat le tempo.",
+    "cause": "La musique tourne ; il finit par répondre au tempo qu'il bat.",
+    "action": "Il se lève par un vrai sit-to-stand (mains en appui sur le bord, tronc qui plonge puis se redresse), monte la marche de 0,131 m qui sépare le bord du sol, puis gravit la rampe du Piano Roll en dix appuis calés sur les pulsations, la tête balayant les murs-écrans.",
+    "result": "Il s'arrête au centre du sol, se stabilise, puis lève lentement le regard vers le haut des écrans pendant que la caméra achève de reculer et de s'élever.",
+    "beats": [
+      {"time_seconds": 0.0, "state": "still_initial", "cause": "état établi", "visible_result": "assis sur le bord, dos trois-quarts, pied qui bat le tempo"},
+      {"time_seconds": 1.91, "state": "anticipation", "cause": "downbeat frame 57", "visible_result": "les mains chargent le bord, le tronc plonge vers l'avant"},
+      {"time_seconds": 3.53, "state": "action", "cause": "downbeat frame 106", "visible_result": "debout sur le bord, il pivote vers sa destination"},
+      {"time_seconds": 4.33, "state": "impact", "cause": "downbeat frame 130", "visible_result": "premier pas, puis step-up sur la rampe"},
+      {"time_seconds": 8.37, "state": "settle", "cause": "downbeat frame 251", "visible_result": "le pied arrière rejoint, il s'immobilise au centre"},
+      {"time_seconds": 9.98, "state": "reveal", "cause": "downbeat frame 299", "visible_result": "il lève le regard, la caméra finit large sur l'immensité lumineuse"},
+      {"time_seconds": 12.0, "state": "still_final", "cause": "action terminée", "visible_result": "silhouette blanche immobile à 23 % de la hauteur du cadre"}
+    ]
+  },
+  "invariants": [
+    "asset personnage utilisé tel quel : aucun vertex déplacé, seuls des vertex groups ajoutés",
+    "template décor jamais modifié, travail dans scene/trial.blend",
+    "un seul plan continu, aucune coupe",
+    "aucun pied qui glisse pendant sa phase plantée",
+    "aucun sol horizontal inventé : le sol est la rampe mesurée à 46,34° et le bord à z=0,76",
+    "la caméra ne traverse jamais le décor",
+    "silhouette lisible au plan final"
+  ],
+  "camera": {
+    "style_source": "knowledge/tutorials/DRUMBOIII_DIRECTION.md",
+    "primary_move": "un seul plan continu : proche/bas trois-quarts dos, puis recul + élévation + élargissement jusqu'au plan large",
+    "lens_mm_range": [17, 38],
+    "target_strategy": "TARGET indépendant sur la poitrine lissée, 3 frames de retard, puis montée vers le haut des écrans",
+    "focus_strategy": "FOCUS indépendant sur la poitrine, f/4",
+    "hero_poses_seconds": [0.0, 3.53, 8.37, 12.0],
+    "forbidden": ["coupe", "traversée du décor", "personnage minuscule au plan final", "wobble"]
+  },
+  "lighting": {
+    "style_source": "les écrans du template sont la source principale",
+    "preset": "screens-first",
+    "required_layers": ["RIM", "FILL", "BOUNCE"],
+    "forbidden": ["silhouette qui vire au noir", "lumière qui écrase les écrans", "source sans fonction nommée"]
+  },
+  "physics": {
+    "contract_files": ["diagnostics/box-analysis.json", "diagnostics/physical-validation.json"],
+    "gravity_enabled_or_justified": true,
+    "supports": ["USTUDIO_FRONT_BOTTOM_RIM (z=0,76)", "USTUDIO_PIANO_ROLL_FLOOR (46,34°)"],
+    "colliders": ["rampe", "cadre inférieur", "parois"],
+    "joints": ["bassin", "colonne", "tête", "clavicules", "épaules", "coudes", "hanches", "genoux", "chevilles", "pieds"],
+    "clearance_checks": [
+      "drift du pied planté ≤ 0,005 m",
+      "pénétration des semelles = 0",
+      "au moins un pied planté à chaque frame",
+      "clearance caméra/décor ≥ 0,08 m"
+    ],
+    "camera_corridor_clear": true
+  },
+  "materials_and_design": {
+    "dominant_color": "blanc pearl du mascot",
+    "secondary_color": "violets et verts des écrans FL Studio",
+    "accent_color": "vert lime des notes déclenchées",
+    "material_roles": ["mascot pearl inchangé", "notes émissives transparentes hors déclenchement"],
+    "typography": {"used": false, "content": "", "font": "", "legibility_gate": "not_applicable"}
+  },
+  "personal_idea": "PIANO ROLL NOTES : chaque pose de pied allume la cellule de note sous lui, et au climax le mur arrière répond par une note tenue pendant qu'il lève les yeux",
+  "audio": {
+    "source": "projects/fl-studio-box-semantic-template/media/current/master.mp4",
+    "mounted_in_vse": true,
+    "beat_frames": 12.1,
+    "downbeat_frames": [9, 57, 106, 154, 203, 251, 299, 348]
+  },
+  "limits": {
+    "max_iterations_per_category": 3,
+    "allowed_output_root": "projects/kimi-k3-scene-trials/k3-edge-rise-reveal-fable-v001",
+    "overwrite_source_blend": false,
+    "save_only_trial_copy": true
+  }
+}

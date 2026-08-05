@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pulsed-bench-demo-v001",
+  "camera": "K3_PULSED_BENCH_V001_CAMERA",
+  "camera_name": "K3_PULSED_BENCH_V001_CAMERA",
+  "target": "K3_PULSED_BENCH_V001_TARGET",
+  "focus": "K3_PULSED_BENCH_V001_FOCUS",
+  "lens_mm": 58.0,
+  "dof": {
+    "enabled": true,
+    "focus_object": "K3_PULSED_BENCH_V001_FOCUS",
+    "f_stop": 4.0
+  },
+  "frame_start": 1,
+  "frame_end": 144,
+  "fps": 24,
+  "duration_seconds": 6.0,
+  "resolution": [
+    960,
+    540
+  ],
+  "engine": "CYCLES",
+  "samples": 64,
+  "view_transform": "AgX",
+  "camera_poses": [
+    {
+      "frame": 1,
+      "role": "K1_pose",
+      "camera_location_m": [
+        0.02,
+        -0.36,
+        0.128
+      ]
+    },
+    {
+      "frame": 26,
+      "role": "K2_anticipation",
+      "camera_location_m": [
+        -0.055,
+        -0.395,
+        0.116
+      ]
+    },
+    {
+      "frame": 120,
+      "role": "K3_travel",
+      "camera_location_m": [
+        0.17,
+        -0.298,
+        0.286
+      ]
+    },
+    {
+      "frame": 144,
+      "role": "K4_recovery",
+      "camera_location_m": [
+        0.14,
+        -0.312,
+        0.258
+      ]
+    }
+  ],
+  "move": "arc unique montant, 4 poses Drumboiii : pose, anticipation opposee, travel, recovery",
+  "outputs": {
+    "preview": "renders/preview.mp4",
+    "contact_sheet": "gates/contact-sheet.jpg",
+    "lighting_gate": "gates/lighting-gate-manifest.json",
+    "physical_validation": "diagnostics/physical-validation.json"
+  }
+}

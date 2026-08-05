@@ -1,0 +1,74 @@
+{
+  "id": "relink-fl-studio-box-media",
+  "name": "Découper une vidéo — FL Studio Box",
+  "icon": "▤",
+  "category": "media & compositing",
+  "mode": "MCP interactif",
+  "risk": "écriture non sauvegardée",
+  "description": "Isole playlist, browser, mixer, piano roll et channel rack depuis un master synchronisé, puis les place lisiblement dans la boîte.",
+  "script": "workflows/scripts/map_fl_studio_semantic_panels.py",
+  "timeout": 900,
+  "warning": "Ouvrir d'abord FL_Studio_Box_Semantic_Template.blend. Le preset suppose une interface FL Studio organisée comme la vidéo de référence. Le workflow ne sauvegarde jamais le .blend.",
+  "fields": [
+    {
+      "id": "source_video",
+      "type": "text",
+      "label": "Vidéo dans le repo",
+      "default": "projects/fl-studio-box-semantic-template/incoming/fl-studio-source.mp4",
+      "help": "Capture FL Studio complète, chemin relatif à la racine Blender."
+    },
+    {
+      "id": "start_time",
+      "type": "number",
+      "label": "Début en secondes",
+      "default": 0,
+      "min": 0,
+      "max": 600
+    },
+    {
+      "id": "duration",
+      "type": "number",
+      "label": "Durée utilisée",
+      "default": 10,
+      "min": 1,
+      "max": 60
+    },
+    {
+      "id": "timeline_fps",
+      "type": "select",
+      "label": "FPS timeline",
+      "options": [
+        "24",
+        "30",
+        "60"
+      ],
+      "default": "30"
+    },
+    {
+      "id": "loop",
+      "type": "boolean",
+      "label": "Boucler les panneaux",
+      "default": true
+    }
+  ],
+  "guide": [
+    "Utiliser une capture FL Studio complète et propre en 16:9, sans la boîte déjà générée autour.",
+    "Placer la vidéo dans projects/fl-studio-box-semantic-template/incoming/.",
+    "Ouvrir FL_Studio_Box_Semantic_Template.blend et lancer ce workflow.",
+    "Vérifier séparément la playlist, le browser, le mixer, le piano roll et le channel rack.",
+    "Lancer Gate de keyframes avec le préfixe USTUDIO_MEDIA_.",
+    "Sauvegarder sous un nouveau nom uniquement après validation."
+  ],
+  "execution": "mcp",
+  "mutates_scene": true,
+  "requires_confirmation": true,
+  "requires_working_copy": true,
+  "enabled_in_app": false,
+  "save_policy": "never_save_blend_automatically",
+  "evidence_level": "operation",
+  "domains": [
+    "cinematic"
+  ],
+  "maturity": "historical",
+  "scope": "historical-project-specific"
+}

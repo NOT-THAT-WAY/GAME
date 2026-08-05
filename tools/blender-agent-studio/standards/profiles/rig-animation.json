@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "id": "rig-animation",
+  "domain": "animation",
+  "blender_units": "meters",
+  "fps_must_be_declared": true,
+  "required_gates": [
+    "skeleton_hierarchy", "bone_axes", "bind_pose", "weights", "joint_limits", "deformation_extremes",
+    "contacts", "clip_ranges", "loop_seams", "root_motion", "baked_export", "reimported_clips"
+  ],
+  "required_evidence": ["skeleton-audit.json", "weights-audit.json", "clip-manifest.json", "playblast-probe.json"],
+  "final_validator": "workflows/tools/validate_team_project.py"
+}

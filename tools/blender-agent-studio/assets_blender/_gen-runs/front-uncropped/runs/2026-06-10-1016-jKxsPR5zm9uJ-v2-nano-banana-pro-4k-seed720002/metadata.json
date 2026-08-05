@@ -1,0 +1,53 @@
+{
+  "snapshot_iso": "2026-06-10T10:16:16.020471+00:00",
+  "snapshot_folder": "2026-06-10-1016-jKxsPR5zm9uJ-v2-nano-banana-pro-4k-seed720002",
+  "url_id": "jKxsPR5zm9uJ",
+  "label": "v2-nano-banana-pro-4k-seed720002",
+  "output_file": "output.png",
+  "output_size_bytes": 18096499,
+  "url": "https://v3b.fal.media/files/b/0a9db8eb/jKxsPR5zm9uJ-_jvJVYFT_dZnUHmM6.png",
+  "source_path": "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781086572013067000_0.png",
+  "prompt_snapshot": null,
+  "prompt_source": null,
+  "refs_manifest": [
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/01_front_canonical.png",
+      "size_bytes": 758717,
+      "sha256_8": "6f1ce4d3"
+    },
+    {
+      "path": "${LEGACY_VISUAL_AI_HUB_ROOT}/assets/assets_blender/close-ups/closeup-01_hero-front-3q.jpeg",
+      "size_bytes": 6849624,
+      "sha256_8": "746b1de0"
+    }
+  ],
+  "provider": "falai",
+  "model": "fal-ai/gemini-3-pro-image-preview/edit",
+  "cost_usd": 0.15,
+  "duration_sec": 63.91071105003357,
+  "seed": null,
+  "adapter_metadata": {
+    "output_urls": [
+      "https://v3b.fal.media/files/b/0a9db8eb/jKxsPR5zm9uJ-_jvJVYFT_dZnUHmM6.png"
+    ],
+    "local_paths": [
+      "${LEGACY_MEDIA_GEN_ROOT}/media_gen/outputs/falai/1781086572013067000_0.png"
+    ],
+    "raw_result": "{'images': [{'url': 'https://v3b.fal.media/files/b/0a9db8eb/jKxsPR5zm9uJ-_jvJVYFT_dZnUHmM6.png', 'content_type': 'image/png', 'file_name': 'jKxsPR5zm9uJ-_jvJVYFT_dZnUHmM6.png', 'file_size': None, 'width': None, 'height': None}], 'description': \"**Crafting Visual Representation**\\n\\nI'm focusing on generating a photorealistic, frontal product shot of the specified translucent purple handheld device. The aim is to frame it fully against a warm cream background with a soft drop shadow for a clean p...[truncated]",
+    "fal_model": "fal-ai/gemini-3-pro-image-preview/edit"
+  },
+  "extra": {
+    "spec": "audits_blender/pulsed-asset-prompts-v2.md (Sliz 2026-06-10)",
+    "doctrine": "v2 \u2014 prompt d\u00e9crit seulement le cadre, identit\u00e9 par refs, n\u00e9gatif court",
+    "kind": "preflight-reference-v2",
+    "provider": "falai",
+    "model": "fal-ai/gemini-3-pro-image-preview/edit",
+    "aspect_ratio": "3:2",
+    "resolution": "4K",
+    "output_format": "png",
+    "seed": 720002,
+    "image_id": "front-uncropped",
+    "intended_dest": "assets_blender/00_front_uncropped.png (NON copi\u00e9 \u2014 validation carte requise)",
+    "prompt": "Photorealistic product photography of the exact handheld device shown in the attached reference images \u2014 same shell, same proportions, same materials (glossy translucent amethyst-purple plastic with the internal PCB visible through it), same parting seam. Warm cream seamless background, soft drop shadow, consistent with the references. Do not add, remove, move or restyle any element of the device. No text overlays, no props, no people.\n\nPerfectly frontal, head-on view of the device, camera axis exactly perpendicular to the front face, centered, long telephoto lens look (no perspective distortion). The ENTIRE device fits in frame with at least 12% empty background margin on all four sides, so the complete outer silhouette and all four rounded corners are fully visible. Front face layout, controls and markings exactly as in the attached front reference image. Device floating, soft drop shadow below."
+  }
+}

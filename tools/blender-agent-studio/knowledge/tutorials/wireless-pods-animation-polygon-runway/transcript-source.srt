@@ -1,0 +1,1072 @@
+1
+00:00:00,000 --> 00:00:10,810
+ Hey everyone, welcome to my new tutorial. Today we are going to create this cool product animation and I really hope
+
+2
+00:00:10,810 --> 00:00:15,150
+ you will enjoy this one and if you do, please don't forget to leave that like and if you're new around here, hit that
+
+3
+00:00:15,150 --> 00:00:15,780
+ subscribe.
+
+4
+00:00:15,780 --> 00:00:21,390
+ Now let's jump right into empty blender file and first of all, let's select the light, press X and delete and we'll
+
+5
+00:00:21,390 --> 00:00:27,680
+ actually use the cube here. So let's select it and let's press ctrl 2 to add subdivision surface modifier and let's
+
+6
+00:00:27,680 --> 00:00:29,460
+ scale it down a little bit.
+
+7
+00:00:29,460 --> 00:00:35,070
+ So press S and scale it down because this is two meters wide, which is quite a lot for an earphone, but I won't be
+
+8
+00:00:35,070 --> 00:00:36,740
+ doing like an exact proportions here.
+
+9
+00:00:36,740 --> 00:00:41,940
+ I just want to make it a little bit smaller like this. Okay, now let's press ctrl A and apply the scale.
+
+10
+00:00:41,940 --> 00:00:48,470
+ And now before we tap into the edit mode, let's go to the modifiers panel and let's apply that subdivision modifier and
+
+11
+00:00:48,470 --> 00:00:56,880
+ let's tap into the edit mode now, press S then Y and scale it on Y axis to create that shape.
+
+12
+00:00:57,680 --> 00:01:06,260
+ Maybe a little bit more like this. I think that'll be okay. Now let's look from the front by pressing one on the non-pad
+
+13
+00:01:06,260 --> 00:01:13,520
+ and let's select this vertex right here and press O to enable proportional editing right here and press G then X and
+
+14
+00:01:13,520 --> 00:01:18,740
+ start moving it and then reduce the fall of radius if it's too large with the mouse wheel.
+
+15
+00:01:18,740 --> 00:01:29,250
+ So now let's press O to disable proportional editing and let's enable X-ray view and let's select those vertices right
+
+16
+00:01:29,250 --> 00:01:32,560
+ here you will see it's selected on the other side as well.
+
+17
+00:01:32,560 --> 00:01:39,970
+ Press G then X and move it slightly back so it doesn't get in the way and now press K for knife tool, click here and
+
+18
+00:01:39,970 --> 00:01:47,000
+ press A for angle snap and C to enable cut through and you can see it enabled right here.
+
+19
+00:01:47,000 --> 00:01:55,010
+ So now let's just click here and confirm with enter and now we can select all of these vertices here press X and delete
+
+20
+00:01:55,010 --> 00:02:01,440
+ those alt click this loop and press F to fill now let's modify the shape even further.
+
+21
+00:02:01,440 --> 00:02:09,440
+ So press G then X and move it outside a little bit so we get more of this like a raindrop shape and now we want to extrude
+
+22
+00:02:09,440 --> 00:02:13,880
+ the rest of the shape.
+
+23
+00:02:13,880 --> 00:02:20,190
+ I will go like this here if you feel like this is too fast for you or you don't understand some core concepts make sure
+
+24
+00:02:20,190 --> 00:02:25,860
+ to check out my courses I carefully design them to take you from beginner skills through low-pull illustration all the
+
+25
+00:02:25,860 --> 00:02:31,400
+ way to full character illustration textured environments and much more and I build the courses as creative projects
+
+26
+00:02:31,400 --> 00:02:37,840
+ each with its own style and every time there's a new technique or something needs explaining we stop for a while and
+
+27
+00:02:37,840 --> 00:02:42,540
+ you get an in-depth explanation but in the end you still get a full project result.
+
+28
+00:02:42,540 --> 00:02:50,430
+ So if you're interested please check out the link in the description so let's step back in now let's deactivate the x-ray
+
+29
+00:02:50,430 --> 00:02:57,420
+ view and we'll need to figure out the way how to do that so let's press 3 for face select and select all these faces
+
+30
+00:02:57,420 --> 00:03:05,780
+ right here and hold shift to add to selection on to select all of these and some of these on top as well and now let's
+
+31
+00:03:05,780 --> 00:03:12,460
+ press I to insert just a tiny bit like this and now I'll use loop tools
+
+32
+00:03:12,460 --> 00:03:22,060
+ add-on if you don't have it active go to edit preferences and in the extensions search for loop tools and you can see I
+
+33
+00:03:22,060 --> 00:03:27,580
+ have it installed right here but you should probably have it right there and you just click install button and the loop
+
+34
+00:03:27,580 --> 00:03:33,240
+ tools will be active and then you can just right click and in the loop tools menu choose circle
+
+35
+00:03:33,240 --> 00:03:46,850
+ and now let's rotate this way and move it outside like this and a little bit down okay I think that's a good start and
+
+36
+00:03:46,850 --> 00:03:54,010
+ now press x and delete all of these faces we just want this opening right here and to better see what we are doing let's
+
+37
+00:03:54,010 --> 00:03:55,240
+ add some subdivision surface
+
+38
+00:03:55,240 --> 00:04:03,160
+ so let's go here and add subdivision surface modifier with two levels of subdivision and now press 2 for edge select
+
+39
+00:04:03,160 --> 00:04:11,820
+ alt-click this loop and we can make it smaller of course something like this and rotate it a little bit from the angle
+
+40
+00:04:11,820 --> 00:04:15,240
+ and basically you will kind of need to eyeball this
+
+41
+00:04:15,240 --> 00:04:24,840
+ you don't want to go too far from the earphone something like this should be okay and we're basically checking for all
+
+42
+00:04:24,840 --> 00:04:33,240
+ sides here how the shape is coming up and now let's press E then Z and extrude this down now let's look from this side
+
+43
+00:04:33,240 --> 00:04:38,850
+ and press R to rotate and press R to rotate and we want to rotate this so we get as close to the flat surface as
+
+44
+00:04:38,850 --> 00:04:40,240
+ possible doesn't need to be perfect
+
+45
+00:04:40,240 --> 00:04:48,690
+ and now press S to scale it down like this and let's update the rotation a little bit here and there maybe move it
+
+46
+00:04:48,690 --> 00:04:52,240
+ outside a little bit I think this looks fine
+
+47
+00:04:52,240 --> 00:05:01,430
+ so now we can press S then Z and 0 to make it completely flat and now we can just press E then Z and extrude it down
+
+48
+00:05:01,430 --> 00:05:02,240
+ just like this
+
+49
+00:05:02,240 --> 00:05:10,850
+ just like this okay and now let's press F to fill control B to bevel and let's increase number of cuts with the mouse
+
+50
+00:05:10,850 --> 00:05:13,240
+ wheel so we get some support loops
+
+51
+00:05:13,240 --> 00:05:20,650
+ like this and now let's press ctrl R and create one more loop so we get some better shading and we can press ctrl R
+
+52
+00:05:20,650 --> 00:05:23,240
+ again here to add more geometry there
+
+53
+00:05:23,240 --> 00:05:31,240
+ so now let's step out and let's right click and shade smooth and see how the shape looks
+
+54
+00:05:31,240 --> 00:05:39,240
+ I think this is just fine but it needs some tweaks so you'll need to go in and kind of move some of these vertices
+
+55
+00:05:39,240 --> 00:05:42,240
+ around so we get a little bit more round connection around here
+
+56
+00:05:42,240 --> 00:05:50,480
+ so for example you can select this one and bring it outside like this and you will see on the subdivided surface how
+
+57
+00:05:50,480 --> 00:06:00,240
+ the curve change but then you probably need to go around and play with those other ones as well so it plays nicely
+
+58
+00:06:00,240 --> 00:06:00,240
+ together
+
+59
+00:06:00,240 --> 00:06:07,240
+ okay
+
+60
+00:06:07,240 --> 00:06:16,260
+ yeah but I think overall it looks great so let's step back in press 3 for face select select the front face here and
+
+61
+00:06:16,260 --> 00:06:28,710
+ press I to insert E to extrude E to extrude again and I to inset again so we get a little bit sharper transition back
+
+62
+00:06:28,710 --> 00:06:29,240
+ there
+
+63
+00:06:29,240 --> 00:06:39,470
+ okay yeah I think I like this so let's look from the front and press G to move it to the side here off center and now
+
+64
+00:06:39,470 --> 00:06:48,950
+ we can press Alt D and then X to move another one here and then press S then X and minus one so we flip it to the other
+
+65
+00:06:48,950 --> 00:06:57,790
+ side press G then X to move it somewhere here and we can move this one closer and now we'll create the docking station
+
+66
+00:06:57,790 --> 00:06:58,240
+ for those so let's
+
+67
+00:06:58,240 --> 00:07:05,240
+ okay so let's press shift a and let's add a cube tab into the edit mode and just scale it down like this we can enable
+
+68
+00:07:05,240 --> 00:07:05,240
+ x-ray view so we better see what's happening there
+
+69
+00:07:05,240 --> 00:07:12,240
+ we'll probably need something like this here and then press S then Z scale it down okay maybe G then Z and move it down
+
+70
+00:07:12,240 --> 00:07:12,240
+ a little bit like this and now of course from the side here so let's press 7 on the numpad to look from the top press S
+
+71
+00:07:12,240 --> 00:07:12,240
+ then Y and scale it and now let's press CTRL B to create the bevel and press C to enable clamp and now increase number
+
+72
+00:07:12,240 --> 00:07:12,240
+ of cuts with the mouse and now increase number of cuts with the mouse
+
+73
+00:07:12,240 --> 00:07:19,920
+ then Z, scale it down. Okay, maybe G, then Z and move it down a little bit like this. And now of
+
+74
+00:07:19,920 --> 00:07:24,040
+ course from the side here. So let's press 7 on the numpad to look from the top. Press S then Y
+
+75
+00:07:24,040 --> 00:07:32,980
+ and scale it. And now let's press ctrl B to create the bevel and press C to enable clamp.
+
+76
+00:07:32,980 --> 00:07:40,840
+ And now increase number of cuts with the mouse wheel to something more smooth like this.
+
+77
+00:07:41,400 --> 00:07:47,560
+ And now since we are overlapping with some of the vertices, let's press A and M to merge and choose
+
+78
+00:07:47,560 --> 00:07:53,280
+ by distance. Now let's look from the front again and let's press ctrl R and create a loop cut
+
+79
+00:07:53,280 --> 00:08:00,040
+ right here. There will be the place where we basically split this into two parts. So let's
+
+80
+00:08:00,040 --> 00:08:05,060
+ press 1 for vertex select, hold shift and select all of these other vertices. Make sure you're in
+
+81
+00:08:05,060 --> 00:08:12,720
+ the X-ray mode. So you select everything and press P and separate selection. Now let's tab out and let's
+
+82
+00:08:12,720 --> 00:08:18,400
+ select this part right here. Tab into the edit mode and we'll press 2 for edge select, select this edge,
+
+83
+00:08:18,400 --> 00:08:26,220
+ hold shift S and snap cursor to select it. And now we can tab out, right click and set origin to the 3D
+
+84
+00:08:26,220 --> 00:08:33,760
+ cursor. So this way, if you press R then X, you will be able to just flip this like that. And now let's
+
+85
+00:08:33,760 --> 00:08:38,720
+ toggle the X-ray again. Now let's finish with our objects. So tab into the edit mode. Alt click this loop,
+
+86
+00:08:38,720 --> 00:08:46,380
+ press F to fill, I to inset, a little bit like this and E to extrude down. I won't go into details and
+
+87
+00:08:46,380 --> 00:08:52,320
+ create like this curved encasing for those. I would probably go and do that using booleans or something
+
+88
+00:08:52,320 --> 00:08:57,660
+ like that. But here for the simple animation, very stylized. I think this will be more than enough.
+
+89
+00:08:57,660 --> 00:09:06,780
+ And then I will tab out and add a bell modifier with two segments here. And let's reduce the amount
+
+90
+00:09:06,780 --> 00:09:12,540
+ to something like this. And now if you press control two, you will add subdivision surface modifier and you
+
+91
+00:09:12,540 --> 00:09:17,580
+ will see the bell modifier creates those support loops. So you get those nice sharp edges. Right click
+
+92
+00:09:17,580 --> 00:09:24,060
+ and shade smooth. And let's do the same thing here. So tab into the edit mode, alt click this loop, press F,
+
+93
+00:09:24,060 --> 00:09:35,100
+ I to inset and E to extrude. Somewhere here. And now we can tab out, alt shift, select the main one
+
+94
+00:09:35,740 --> 00:09:56,620
+ and press control P and parent to object. And now let's select this one, press H to hide and select
+
+95
+00:09:56,620 --> 00:10:03,020
+ these two by holding shift. And the main case is last and press control P and parent them as well.
+
+96
+00:10:03,020 --> 00:10:09,020
+ So now if we take this, we can move the whole thing. And now just to make this a little bit more
+
+97
+00:10:09,020 --> 00:10:14,540
+ interesting, let's press alt H to unhide. And with the cursor still there, let's press shift A and
+
+98
+00:10:14,540 --> 00:10:21,260
+ let's add a cylinder. And I will modify the vertices to 12, tab into the edit mode and just scale it down
+
+99
+00:10:21,260 --> 00:10:24,860
+ using S and then press R then Y.
+
+100
+00:10:27,340 --> 00:10:32,540
+ Enter 90 and confirm to rotate these 90 degrees and press S then X to scale it up.
+
+101
+00:10:32,540 --> 00:10:37,500
+ So we'll just basically create the hinge. And now we can press three, four phase select, select this
+
+102
+00:10:37,500 --> 00:10:42,060
+ phase, hold shift, select the other one, press control B and create the bevel and reduce number
+
+103
+00:10:42,060 --> 00:10:48,300
+ of cuts with the mouse wheel. So we have only two loops there like this and press control R and create
+
+104
+00:10:48,300 --> 00:10:55,340
+ few cuts in the middle here to have like more evened out shading. Now tab out right click and shade smooth.
+
+105
+00:10:55,340 --> 00:11:00,460
+ And this will be our hinge. So press G then Y and move it inside a little bit.
+
+106
+00:11:00,460 --> 00:11:07,500
+ Maybe we can make it even smaller like this. So it's just a tiny detail and let's hold shift,
+
+107
+00:11:07,500 --> 00:11:11,100
+ select the main part and press control P and parent to object.
+
+108
+00:11:11,100 --> 00:11:15,580
+ So now we're ready. So let's hit zero on a numpad for camera view. And this is too far.
+
+109
+00:11:15,580 --> 00:11:20,780
+ So the easiest way to position camera is to press N for the side panel. And in the view options,
+
+110
+00:11:20,780 --> 00:11:25,820
+ you can enable camera to view. So now you can use your viewport controls to position your camera.
+
+111
+00:11:25,820 --> 00:11:33,500
+ And I'm interested in an angle like this. And don't forget to disable that. You can right click and
+
+112
+00:11:33,500 --> 00:11:39,260
+ add to quick favorites. So then if you press Q, you can have the lock camera to view right there.
+
+113
+00:11:39,260 --> 00:11:43,500
+ And now with the side panel still open, let's go to the item menu and leave it open. We'll need this.
+
+114
+00:11:43,500 --> 00:11:51,660
+ And let's create some animations. So I want this to be 120 frames long. And in the output settings,
+
+115
+00:11:51,660 --> 00:11:59,020
+ let's modify this to 30 FPS. And first of all, I want to create the rotation with the main body. And I
+
+116
+00:11:59,020 --> 00:12:04,540
+ want to rotate this around Z axis. So let's right click here and insert single keyframe. And the reason
+
+117
+00:12:04,540 --> 00:12:10,460
+ why I'm doing it this way will be clear to you in a few moments. So let me select this here, press Shift
+
+118
+00:12:10,460 --> 00:12:19,020
+ D and duplicate it to the other side. Now let's go to frame 30. And I want to rotate this full circle.
+
+119
+00:12:19,020 --> 00:12:26,860
+ So 360. Let's confirm and right click and insert single keyframe. So it's not very simple rotation
+
+120
+00:12:26,860 --> 00:12:32,860
+ animation, but I want this object to kind of spool up to the other side before the actual rotation. So
+
+121
+00:12:32,860 --> 00:12:43,740
+ on the frame 10 or nine, something really close. I want to reset this back to zero and go few negative
+
+122
+00:12:43,740 --> 00:12:49,740
+ degrees. So I don't know, maybe something like minus 30 and let's right click and insert single keyframe.
+
+123
+00:12:49,740 --> 00:12:54,460
+ And this is basically the blockout for the animation, but I want this to continue rotating a little bit
+
+124
+00:12:54,460 --> 00:13:03,260
+ and then, you know, start again in this movement. So I will basically just select this keyframe right
+
+125
+00:13:03,260 --> 00:13:11,740
+ here, press Shift D and duplicate it right there to the end of the animation plus one frame. So 121.
+
+126
+00:13:12,940 --> 00:13:18,940
+ And now if we make this a little bit larger and hit Ctrl Tab here, you will get into the graph editor and
+
+127
+00:13:18,940 --> 00:13:26,860
+ you can use Ctrl and middle mouse button to kind of scale this in and out like this. And now I want to
+
+128
+00:13:26,860 --> 00:13:36,140
+ change this animation curve to be kind of a little bit more snappy. So first of all, here, I want this
+
+129
+00:13:36,140 --> 00:13:42,140
+ movement to be a little bit more sudden. So let's move the handle right there. And here, let's select this
+
+130
+00:13:42,140 --> 00:13:47,580
+ keyframe and press V and I want to change this to free. So this will allow me to move just one handle
+
+131
+00:13:47,580 --> 00:13:55,980
+ like this. And now this keyframe, I want to move down a little bit. So if you remember, this is 360 frames,
+
+132
+00:13:55,980 --> 00:14:03,340
+ but I want to end on the frame. So I will press G then Y here and move this slightly down like this,
+
+133
+00:14:03,340 --> 00:14:12,060
+ and then adjust the handle. So it's more smooth there. So we'll get this kind of
+
+134
+00:14:12,060 --> 00:14:20,300
+ movement. And you will see the whole rotation happens here. But then the finish is very smooth and
+
+135
+00:14:20,300 --> 00:14:29,820
+ continues until the end. Maybe we can bring this a little bit lower and make this handle shorter.
+
+136
+00:14:33,660 --> 00:14:40,300
+ Okay, I really like this. And then what I want to happen is for the lid to open. And you know, those
+
+137
+00:14:40,300 --> 00:14:46,780
+ spots to fly out for a little bit and then, you know, folding back down with the lid closing in a
+
+138
+00:14:46,780 --> 00:14:54,540
+ sudden movement. So let's go to like frame 15, for example. And let's insert the X rotation here for
+
+139
+00:14:55,180 --> 00:15:07,260
+ the lid part. Insert single keyframe. And then on a frame 25, let's rotate this like that. So I don't
+
+140
+00:15:07,260 --> 00:15:14,860
+ know, minus 170 doesn't need to go all the way to 180. Right click and insert single keyframe. And again,
+
+141
+00:15:14,860 --> 00:15:19,180
+ at this stage, we're just blocking out the animation. Let's select this frame right here,
+
+142
+00:15:19,180 --> 00:15:25,820
+ press Shift D, then X to lock it on the X axis. And let's just move it here on frame 60. Remember,
+
+143
+00:15:25,820 --> 00:15:30,060
+ this is the keyframe. These are only the handles. And now basically, we just need to select this one
+
+144
+00:15:30,060 --> 00:15:35,820
+ here, press Shift D, press X to lock it and do the same thing and move it to frame 70. So this is the
+
+145
+00:15:35,820 --> 00:15:42,300
+ movement locking place. But again, I want to make this a little bit more snappy. So let's select this
+
+146
+00:15:42,300 --> 00:15:49,660
+ keyframe right there, press V and choose free and now modify the handle. So it's more steep here.
+
+147
+00:15:49,660 --> 00:15:56,540
+ And let's do the same thing right here. So it kind of, you know, shuts the lid with a sudden movement.
+
+148
+00:15:56,540 --> 00:16:04,220
+ So press V choose free and do it right there as well. But again, I want this movement to be sudden
+
+149
+00:16:04,220 --> 00:16:09,260
+ in the beginning and then continue a little bit as the animation goes on. So let's select this one,
+
+150
+00:16:09,260 --> 00:16:17,980
+ press G then Y and move it back here. So we create this kind of curve right there. And now if you play
+
+151
+00:16:17,980 --> 00:16:25,900
+ back, we'll open and continue the movement a little bit and then shuts down suddenly. And now let's press
+
+152
+00:16:25,900 --> 00:16:32,860
+ H to hide this object in the viewport. And let's select this one, this left one, I want this to move
+
+153
+00:16:32,860 --> 00:16:40,700
+ first. So let's move. I don't know, like frame 15 is fine. And let's right click and insert Z location
+
+154
+00:16:40,700 --> 00:16:46,380
+ insert single keyframe there. And then we'll move to frame 30 because we want to leave the lid a little
+
+155
+00:16:46,380 --> 00:16:54,460
+ bit of a time to open so it doesn't like fly through. So on frame 30, we should be somewhere here, for
+
+156
+00:16:54,460 --> 00:17:00,220
+ example, right click and insert single keyframe. And if this is close together, you can of course use
+
+157
+00:17:00,220 --> 00:17:06,540
+ Ctrl and middle mouse button to zoom on it. But if you press period on a numpad, it will zoom just right
+
+158
+00:17:06,540 --> 00:17:12,380
+ in. And now let's do the same thing as before. But it will happen a little bit sooner. So around frame
+
+159
+00:17:12,380 --> 00:17:18,540
+ 50 and 60. So let's select this one, press Shift D, then X, move it to frame 50. And then this one
+
+160
+00:17:19,500 --> 00:17:27,420
+ right here. And again, we'll select these two, press V and choose free. And now make them a little bit more
+
+161
+00:17:27,420 --> 00:17:35,500
+ steep, like this. And again, I want this to be like a continuous movement right there. So let's select
+
+162
+00:17:35,500 --> 00:17:44,860
+ this one, press G, then Y and move it down slightly like this. So it will fly up and continue the movement
+
+163
+00:17:44,860 --> 00:17:53,580
+ until it kind of falls down in a sudden movement. Okay, and now I want to do the same thing on the
+
+164
+00:17:53,580 --> 00:18:01,020
+ other one. So let's move to frame like 25. Select this one. And let's right click and insert single
+
+165
+00:18:01,020 --> 00:18:06,700
+ keyframe here. But I won't do that all over again. Let's just select this one, select all of the keyframes,
+
+166
+00:18:06,700 --> 00:18:13,900
+ press Ctrl C. And now let's select this one and press Ctrl V. I will paste the movement on the Z axis.
+
+167
+00:18:13,900 --> 00:18:20,380
+ So we will get the same thing. But one difference I want to do here is to select these two
+
+168
+00:18:20,380 --> 00:18:28,540
+ with the handles as well and press G, then Y and move them higher up. So this one will fly higher.
+
+169
+00:18:28,540 --> 00:18:34,860
+ And here we can adjust for the curves. So let's zoom on it. And we can readjust the handles.
+
+170
+00:18:35,660 --> 00:18:40,700
+ So it matches the value range. Okay.
+
+171
+00:18:40,700 --> 00:18:47,660
+ Now let's press Alt H in the viewport and let's play back the whole animation.
+
+172
+00:18:47,660 --> 00:18:55,100
+ Okay, I think we'll need to figure out the timing a little bit better. I think
+
+173
+00:18:55,100 --> 00:19:01,980
+ the shift between those two is a little bit too late. So let's just move them five frames within each other.
+
+174
+00:19:04,860 --> 00:19:11,660
+ And I think the rotation might need a little bit of a help. I think we need to be higher up here with the rotation.
+
+175
+00:19:11,660 --> 00:19:25,740
+ Okay, and these might go a little bit sooner. So let's select both of those.
+
+176
+00:19:25,740 --> 00:19:28,540
+ Select all keyframes, press G, then X and just move it
+
+177
+00:19:31,260 --> 00:19:32,300
+ to the left a little bit to the left a little bit.
+
+178
+00:19:32,300 --> 00:19:38,780
+ Okay, and now closing the lid should match
+
+179
+00:19:38,780 --> 00:19:48,540
+ the fall of the earphones. So here it should be already closed. So either we can make this longer
+
+180
+00:19:48,540 --> 00:19:54,380
+ or we can bring this a little bit sooner. So let's just bring this right here.
+
+181
+00:19:57,740 --> 00:20:01,100
+ Maybe even sooner.
+
+182
+00:20:01,100 --> 00:20:05,580
+ Okay.
+
+183
+00:20:05,580 --> 00:20:12,940
+ And maybe readjust the curve a little bit so it's more fluent.
+
+184
+00:20:17,500 --> 00:20:25,180
+ Nice. I really like this. So now the reason why I only why I'm only doing these keyframes on certain
+
+185
+00:20:25,180 --> 00:20:31,180
+ channels. First of all, it's much easier to see, you know, when you have just one animation curve.
+
+186
+00:20:31,180 --> 00:20:36,140
+ But other than that, I can still modify the rotation on Y and on X.
+
+187
+00:20:36,940 --> 00:20:42,380
+ And this will still work. So you can still reposition your object. You don't have any
+
+188
+00:20:42,380 --> 00:20:46,620
+ location keyframes, so you can move it around and it will still, you know, animate.
+
+189
+00:20:46,620 --> 00:20:53,580
+ And you can change all of those values except the one that is always already keyframes. So yeah,
+
+190
+00:20:53,580 --> 00:20:58,540
+ let's let's do a little bit of this rotation. I think it gives the scene a little bit more dynamic
+
+191
+00:20:59,900 --> 00:21:04,860
+ like this. And now I want to animate the camera a little bit because when they fly up, I think this
+
+192
+00:21:04,860 --> 00:21:10,540
+ breaks the composition a little bit. And I think a little bit of a camera handshake should look nicely
+
+193
+00:21:10,540 --> 00:21:17,340
+ here. So let's select the camera and let's just right click and insert keyframes on rotation. Let's
+
+194
+00:21:17,340 --> 00:21:24,700
+ press control tab here and let's go back here to the timeline. And now let's press shift D and duplicate it
+
+195
+00:21:24,700 --> 00:21:33,260
+ to the other side. And now let's make some keyframes in between. So we can enable recording and press R
+
+196
+00:21:33,260 --> 00:21:41,100
+ twice and hold shift for smaller increments and do very small adjustments with the camera rotation. R twice
+
+197
+00:21:41,100 --> 00:21:52,300
+ and hold shift. But remember, really small adjustments. And now here, when it's up, we can go a little bit
+
+198
+00:21:52,300 --> 00:22:02,300
+ higher. So it's centered here. And then when it goes down, you can press R twice and go back here like this,
+
+199
+00:22:03,100 --> 00:22:12,620
+ and then finish with, you know, some slight movements. Okay. And now don't forget to disable this. That could
+
+200
+00:22:12,620 --> 00:22:20,620
+ cause a lot of mess if you, you know, keep moving things around with auto keying on. Okay. Works nicely,
+
+201
+00:22:20,620 --> 00:22:25,740
+ but I think we need to go higher up a little bit sooner. So maybe just delete this keyframe right there.
+
+202
+00:22:26,540 --> 00:22:36,460
+ So we kind of follow the scene a little bit better and then maybe move this a little bit later. Now
+
+203
+00:22:36,460 --> 00:22:42,220
+ let's hold shift reset cursor to world origin. Let's press shift A. We'll add a plane. Press R then X to
+
+204
+00:22:42,220 --> 00:22:49,820
+ rotate it towards the camera like this and then R Z. Okay. And then press G and shift Z to move on X and
+
+205
+00:22:49,820 --> 00:23:00,940
+ Y axis. Let's make it larger. So this will be our backdrop like this. And now I'll use, you know, some,
+
+206
+00:23:00,940 --> 00:23:13,420
+ some HDRI from Polyhaven. Let me bring in this one and let me switch to shader editor right there and to the
+
+207
+00:23:13,420 --> 00:23:21,740
+ world settings and you will see the HDRI right here. So let's set up some rendering. I will switch to cycles
+
+208
+00:23:21,740 --> 00:23:29,900
+ enable GPU and the noising and something like 64 frames for the animation should be fine. Let's press
+
+209
+00:23:29,900 --> 00:23:37,820
+ control B to limit the preview only for the camera and let's preview the rendered. Um, first I want to check
+
+210
+00:23:37,820 --> 00:23:46,460
+ the rotation here of the lighting. I think I want the windows to be on the left side here. So
+
+211
+00:23:46,460 --> 00:23:57,340
+ something like this should work nicely. And now I want to reduce the strength because I want only,
+
+212
+00:23:57,340 --> 00:24:00,220
+ I want this for only reflections and reduce the warmth
+
+213
+00:24:02,300 --> 00:24:09,020
+ like this. So we get a little bit of a blue light, maybe a little bit of a thing there. The HDRIs in
+
+214
+00:24:09,020 --> 00:24:15,100
+ this form come from Polyhaven. When you have the pay that on, uh, I'm in no way affiliated. I just use it
+
+215
+00:24:15,100 --> 00:24:22,860
+ like this. You are free to go to Polyhaven, download the same HDRI and create this setup on your own. Um,
+
+216
+00:24:22,860 --> 00:24:28,780
+ this is how it looks right here. Um, but it's just super convenient, you know, to have this
+
+217
+00:24:30,220 --> 00:24:36,540
+ as a drag and drop into your scene. So that's why I purchased the add on. And by the way, it's like
+
+218
+00:24:36,540 --> 00:24:42,380
+ super cheap for the value you're getting. So, um, yeah, definitely get it if you can. So I'll press
+
+219
+00:24:42,380 --> 00:24:49,980
+ control B here to limit this again and let's press shift a and I'll add some area light to add additional
+
+220
+00:24:49,980 --> 00:24:58,140
+ lighting, make it larger for some soft shadows and increase the power like that. And for some additional
+
+221
+00:24:58,140 --> 00:25:06,460
+ reflections, I will pressure a and add spotlight. Press G then Z move it up here. And now press period on a
+
+222
+00:25:06,460 --> 00:25:12,780
+ keyboard to switch to 3d cursor for the pivot point, or you can do it right here and then press R twice
+
+223
+00:25:12,780 --> 00:25:20,220
+ to rotate this around from the side here and do this really strong, like 500
+
+224
+00:25:22,060 --> 00:25:34,220
+ and find some nice rim light here. Something like this. Now we can select the object, create a new
+
+225
+00:25:34,220 --> 00:25:42,380
+ material, and this will be the white one. And let's decrease the roughness almost all the way to zero.
+
+226
+00:25:42,380 --> 00:25:48,540
+ And you will see those reflections from the HDRI. So this is why I used it in the first place here.
+
+227
+00:25:48,540 --> 00:25:55,740
+ And here in the back, we can make this metal. So let's increase the metallic all the way.
+
+228
+00:25:55,740 --> 00:26:02,860
+ Reduce the roughness a little bit and maybe reduce the brightness. But I think this is fine.
+
+229
+00:26:02,860 --> 00:26:08,780
+ So now if we play back the animation, let me bring up the timeline here.
+
+230
+00:26:10,380 --> 00:26:17,900
+ Let's scrub through the animation. This should be the same white material there.
+
+231
+00:26:17,900 --> 00:26:24,700
+ And if I tab in with this still selected, I can press Ctrl + on a numpad
+
+232
+00:26:27,580 --> 00:26:35,980
+ and create a new material and hit assign and create a new one there. That will be black with full roughness.
+
+233
+00:26:35,980 --> 00:26:43,980
+ Okay, looks quite nice, I think. And now with the background, we can create a new material there
+
+234
+00:26:43,980 --> 00:26:51,740
+ and maybe play with the brightness. Or you can, you know, subdivide this, add some displacement,
+
+235
+00:26:51,740 --> 00:26:55,020
+ do like wavy texture or something. Should be really nice.
+
+236
+00:26:55,020 --> 00:27:03,820
+ Okay, I really like that. Now, to make this a little bit more funky, we can do some color shifts there.
+
+237
+00:27:03,820 --> 00:27:11,260
+ So let me switch the material to object mode in the shader editor. And let me bring this up a little bit.
+
+238
+00:27:12,620 --> 00:27:21,180
+ Like that. And let's press shift a and let's search for hue saturation value. And let's find some nice color like this.
+
+239
+00:27:21,180 --> 00:27:28,140
+ Okay, and let's set the hue to zero and just plug it right here.
+
+240
+00:27:28,140 --> 00:27:39,660
+ Okay, they'll give us this color right there. And on frame zero, we can right click and insert keyframe on the hue.
+
+241
+00:27:39,660 --> 00:27:46,700
+ And then on 121, we can change this to one, right click and insert keyframe. But remember,
+
+242
+00:27:46,700 --> 00:27:52,380
+ this will be Bezier animation. And to see those keyframes here, you need to have the node selected.
+
+243
+00:27:52,380 --> 00:27:59,820
+ So now you can see those right there. You can hold shift, select them, press T and choose linear interpolation.
+
+244
+00:27:59,820 --> 00:28:09,180
+ So they'll change the colors much more in a much more fluent way. So we have this, you know, funky color change there.
+
+245
+00:28:09,660 --> 00:28:16,540
+ And I really don't like how I left this open. So we can either bring this lower down,
+
+246
+00:28:16,540 --> 00:28:21,260
+ or we can change the angle. So we can just play with this rotation here.
+
+247
+00:28:23,260 --> 00:28:25,260
+ So it's not, you know, visible.
+
+248
+00:28:25,260 --> 00:28:37,500
+ Of course, you're more than welcome to go in, you know, and model the inside. So it looks better.
+
+249
+00:28:37,500 --> 00:28:44,940
+ Okay, and I would like to do the same thing on the background here. So let's select this node right
+
+250
+00:28:44,940 --> 00:28:51,500
+ here, press Ctrl C, and I will select the background and press Ctrl V here. But now we don't have the keyframes
+
+251
+00:28:51,500 --> 00:28:57,500
+ there because we moved it to another object. So let's go to frame one. And let's set the hue to zero.
+
+252
+00:28:58,380 --> 00:29:06,540
+ And right click and insert keyframe. And again, 121. Let's set this to one. Right click and insert keyframe.
+
+253
+00:29:06,540 --> 00:29:11,980
+ And we can plug it here to the background. So now the background will change as well. But it's a little
+
+254
+00:29:11,980 --> 00:29:19,740
+ bit too strong for my taste. So I think I will just go ahead and reduce the saturation here in the main color.
+
+255
+00:29:22,060 --> 00:29:31,420
+ And maybe increase the value a little bit. So this will give us like a more pastel color look. So now the
+
+256
+00:29:31,420 --> 00:29:36,940
+ final thing I want to do here is to give this a little bit more punch. So first of all, in the render
+
+257
+00:29:36,940 --> 00:29:44,620
+ settings, make sure you enable motion blur. And in the color management, we can enable higher contrast
+
+258
+00:29:44,620 --> 00:29:53,340
+ settings like this and play with the exposure. But you can enable curves as well. And and set the bright
+
+259
+00:29:53,340 --> 00:30:00,780
+ tones somewhere here and then bring down the darker parts. So now if you move this, you will see the
+
+260
+00:30:00,780 --> 00:30:12,380
+ contrast is more punchy. As you move this lower, you get this darker shades in the shadows. Okay,
+
+261
+00:30:12,380 --> 00:30:18,940
+ and maybe we can add a little bit more saturation to the background. Okay.
+
+262
+00:30:18,940 --> 00:30:30,060
+ Yeah, it looks quite nice. So of course, now you can play around with some more lights. For example,
+
+263
+00:30:30,060 --> 00:30:36,540
+ you can try to duplicate this one and create, you know, some more reflections from different angles. But
+
+264
+00:30:36,540 --> 00:30:41,660
+ yeah, otherwise, I really like the final animation. So when you're satisfied, you can just go
+
+265
+00:30:41,660 --> 00:30:49,100
+ to the output settings, switch this to ffmpeg, encoding, choose mp4, choose your folder,
+
+266
+00:30:49,100 --> 00:30:55,180
+ and then go render, render animation, wait out your frames, and your animation will be ready. So I
+
+267
+00:30:55,180 --> 00:31:00,620
+ really hope you enjoyed this one. And again, if you did, please leave that like. And if you're a new
+
+268
+00:31:00,620 --> 00:31:07,500
+ round here, hit that subscribe. Thank you all for watching and have a wonderful day.
+

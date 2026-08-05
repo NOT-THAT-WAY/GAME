@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-kimi-v001",
+  "status": "ready",
+  "coordinate_frame": {
+    "up": "+Z",
+    "user_side": "-Y (ouverture frontale de la boîte)",
+    "front": "-Y",
+    "right": "+X",
+    "units": "meters",
+    "surface_frame": {
+      "SURFACE_NORMAL": "normale mesurée de USTUDIO_PIANO_ROLL_FLOOR (diagnostics/surface-analysis.json)",
+      "UPHILL_TANGENT": "axe montant mesuré, projection de +Z monde sur le plan",
+      "CROSS_SLOPE_TANGENT": "axe transversal mesuré (≈ X monde)",
+      "WORLD_GRAVITY": "(0, 0, -9.81), jamais confondue avec la normale"
+    }
+  },
+  "objects": [
+    {
+      "name": "USTUDIO_PIANO_ROLL_FLOOR",
+      "semantic_role": "support_surface",
+      "fixed_or_moving": "moving_with_float_root",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": ["face supérieure inclinée (~46° mesurés)"],
+      "support_surfaces": ["semelles du personnage via grip lime"],
+      "allowed_motion": ["suivre USTUDIO_BOX_FLOAT_ROOT"],
+      "forbidden_motion": ["teleport", "unmotivated_drift", "environment_intersection"],
+      "grip_contract": {
+        "property": "ustudio_grip_surface",
+        "friction_coefficient": 1.25,
+        "minimum_required": 1.05,
+        "visible_cause": "semelles à grip lime + pulse lumineux uniquement au contact"
+      }
+    },
+    {
+      "name": "K3_RUNNER_RIG",
+      "semantic_role": "hero_subject",
+      "fixed_or_moving": "moving",
+      "parent": "USTUDIO_BOX_FLOAT_ROOT",
+      "interaction_surfaces": ["semelles L/R"],
+      "support_surfaces": ["USTUDIO_PIANO_ROLL_FLOOR"],
+      "allowed_motion": ["course montante le long de UPHILL_TANGENT", "poses debout"],
+      "forbidden_motion": ["teleport", "unmotivated_drift", "environment_intersection", "glissement du pied planté > 0.005 m", "pénétration > 0.002 m", "hyperextension de genou", "inversion de pied"]
+    }
+  ],
+  "joints": [
+    {"name": "hips/spine/chest/neck/head", "type": "revolute_chain", "limits": "humaines plausibles"},
+    {"name": "shoulder/elbow", "type": "revolute_chain", "limits": "humaines plausibles"},
+    {"name": "hip/knee/ankle", "type": "revolute_chain", "limits": "genou 0..150°, pas d'hyperextension"}
+  ],
+  "supports_and_contacts": [
+    {"support": "USTUDIO_PIANO_ROLL_FLOOR", "contact": "semelles", "rule": "coplanaire au plan, drift planté ≤ 0.005 m, clearance swing ≥ 0.01 m suivant SURFACE_NORMAL"}
+  ],
+  "collision_pairs": [
+    ["K3_RUNNER_*", "USTUDIO_PIANO_ROLL_FLOOR"],
+    ["K3_RUNNER_*", "USTUDIO_BACK_WALL"],
+    ["K3_RUNNER_*", "USTUDIO_CEILING"],
+    ["K3_CAM_*", "BOX_SHELL + FL_STUDIO_INTERIOR"]
+  ],
+  "camera_corridor": {
+    "description": "tracking latéral trois-quarts côté +X intérieur, parallèle à UPHILL_TANGENT, restant à l'intérieur de la boîte",
+    "clearance_margin_m": 0.08,
+    "obstacles": ["USTUDIO_MIXER_RIGHT_WALL", "USTUDIO_BROWSER_LEFT_WALL", "USTUDIO_BACK_WALL", "USTUDIO_CEILING", "USTUDIO_FRONT_BOTTOM_RIM"],
+    "validated": false
+  },
+  "shot_states": [
+    {"name": "S0_STILL", "time_seconds": 0.0, "object_state": "debout en bas de pente, respiration, lit la pente", "camera_state": "K1 pose latérale établissant la diagonale"},
+    {"name": "S1_ANTICIPATION", "time_seconds": 1.1, "object_state": "transfert du poids vers l'amont, flexion", "camera_state": "K2 courte anticipation opposée"},
+    {"name": "S2_ACTION", "time_seconds": 1.9, "object_state": "premier appui fort puis course montante sur la grille audio", "camera_state": "K3 tracking montant à distance constante"},
+    {"name": "S3_IMPACT", "time_seconds": 6.4, "object_state": "fin de course au sommet, avant le bord supérieur", "camera_state": "fin de K3"},
+    {"name": "S4_SETTLE", "time_seconds": 7.0, "object_state": "décélération, récupération, mains vers les genoux", "camera_state": "K4 recovery"},
+    {"name": "S5_STILL", "time_seconds": 8, "object_state": "pose finale stable, regard vers le sommet", "camera_state": "arrêt complet sans wobble"}
+  ],
+  "validation": {
+    "required_views": ["hero", "side", "top_or_rear_if_occluded"],
+    "sample_every_n_frames": 1,
+    "critical_failure_cap": 49
+  }
+}

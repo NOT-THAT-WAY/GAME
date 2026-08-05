@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "ray-ban-product-animation",
+  "title": "Blender Product Animation — Ray-Ban Commercial",
+  "status": "ready_for_ai",
+  "source_name": "source.mp4",
+  "original_filename": "Blender Product Animation Tutorial How I Made a Ray-Ban Commercial-2.mp4",
+  "original_sha256": "07a8b33c4633ab19caebe16381d47a33679ae169fb59d1e6ac8002033340abf9",
+  "source_policy": "Original conservé dans _incoming/04-new-tutorials; lien symbolique sans duplication",
+  "created": "2026-07-19T02:25:00+02:00",
+  "updated": "2026-07-19T03:20:00+02:00",
+  "analysis_status": "completed",
+  "technical": {
+    "duration": 2719.252562,
+    "frame_interval_requested": 10.0,
+    "frame_interval_effective": 10.0,
+    "scene_threshold": 0.26,
+    "regular_frame_count": 272,
+    "scene_frame_count": 103,
+    "has_video": true,
+    "has_audio": true
+  },
+  "evidence": {
+    "source": "knowledge/tutorials/_incoming/04-new-tutorials/Blender Product Animation Tutorial How I Made a Ray-Ban Commercial-2.mp4",
+    "probe": "knowledge/tutorials/ray-ban-product-animation/probe.json",
+    "frames_dir": "knowledge/tutorials/ray-ban-product-animation/frames/regular",
+    "scenes_dir": "knowledge/tutorials/ray-ban-product-animation/frames/scenes",
+    "contact_sheet": "knowledge/tutorials/ray-ban-product-animation/contact-sheet.jpg",
+    "audio": "knowledge/tutorials/ray-ban-product-animation/audio.wav",
+    "transcript": "knowledge/tutorials/ray-ban-product-animation/transcript.json",
+    "analysis": "knowledge/tutorials/ray-ban-product-animation/analysis.json",
+    "analysis_markdown": "knowledge/tutorials/ray-ban-product-animation/ANALYSIS.md"
+  }
+}

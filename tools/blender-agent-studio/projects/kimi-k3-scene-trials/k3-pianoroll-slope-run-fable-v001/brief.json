@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "trial_id": "k3-pianoroll-slope-run-fable-v001",
+  "status": "in_progress",
+  "mode": "micro-scene",
+  "participant": "fable",
+  "objective": "Un humanoïde monte la pente réelle du Piano Roll avec biomécanique, adhérence et caméra adaptées",
+  "source_blend": "projects/fl-studio-box-semantic-template/FL_Studio_Box_Semantic_Template.blend",
+  "target_collection": "FL_STUDIO_INTERIOR",
+  "duration_seconds": 8,
+  "fps": 30,
+  "resolution": [640, 360],
+  "story": {
+    "premise": "Un petit coureur pearl se tient au pied de la rampe du Piano Roll, dans la boîte FL Studio flottante.",
+    "cause": "La musique du master pulse : la rampe lumineuse défile et appelle la montée.",
+    "action": "Le coureur monte la pente réelle du Piano Roll en course adaptée : pas courts, cadence sur les pulsations, torse penché vers l'amont, semelles grip lime coplanaires au plan.",
+    "result": "Il décélère près du haut de la rampe et se stabilise en pose d'arrivée, encore incliné dans la pente, sans glisser.",
+    "beats": [
+      {"time_seconds": 0.0, "state": "still_initial", "cause": "état établi au pied de la rampe", "visible_result": "pente et coureur lisibles, respiration"},
+      {"time_seconds": 0.53, "state": "weight_shift", "cause": "transfert du poids vers l'avant", "visible_result": "bascule du bassin vers l'amont"},
+      {"time_seconds": 1.07, "state": "anticipation", "cause": "compression avant le premier appui", "visible_result": "genou levé, bras armés"},
+      {"time_seconds": 1.87, "state": "action", "cause": "premier appui fort sur le downbeat frame 57", "visible_result": "course montante calée sur les pulsations"},
+      {"time_seconds": 6.73, "state": "impact", "cause": "décélération sur le downbeat frame 203", "visible_result": "pas raccourcis, torse qui se redresse"},
+      {"time_seconds": 7.3, "state": "settle", "cause": "dissipation de l'énergie", "visible_result": "récupération, micro-rebond amorti"},
+      {"time_seconds": 8, "state": "still_final", "cause": "action terminée", "visible_result": "pose finale stable sur la pente, marge au bord supérieur"}
+    ]
+  },
+  "invariants": [
+    "proportions et identité canonique du sujet",
+    "aucune traversée ou collision non intentionnelle",
+    "orientation et affordance humaines correctes",
+    "aucun drift relatif pendant un contact mécanique",
+    "aucune frame corrompue ou manquante",
+    "le template source reste intact, travail uniquement dans scene/trial.blend",
+    "aucun sol horizontal invisible : la seule surface de support est la rampe du Piano Roll",
+    "les semelles restent coplanaires au plan pendant chaque contact",
+    "le torse répond à la gravité monde, jamais simplement tourné selon la normale du plan"
+  ],
+  "camera": {
+    "style_source": "knowledge/tutorials/DRUMBOIII_DIRECTION.md",
+    "primary_move": "tracking latéral trois-quarts montant, parallèle au tangent amont de la rampe, distance constante au coureur",
+    "lens_mm_range": [50, 65],
+    "target_strategy": "TARGET indépendant sur le coureur avec retard de 1 à 3 frames",
+    "focus_strategy": "FOCUS explicite sur le coureur, contrôlé aux poses hero",
+    "hero_poses_seconds": [0.0, 1.87, 6.73, 8],
+    "forbidden": [
+      "drift sans cause",
+      "wobble prolongé",
+      "clipping",
+      "roll copié depuis la pente",
+      "cadrage qui aplatit la pente en horizontale ou verticale",
+      "cacher les contacts des pieds"
+    ]
+  },
+  "lighting": {
+    "style_source": "knowledge/tutorials/drumboii-lighting-tutorial-2026-07-20/analysis.json",
+    "preset": "drumboiii-layered",
+    "world_strength": 0.6,
+    "required_layers": ["SUN_REFLECTION", "BACK_SHAPE", "SIDE_GLIMMER_A", "SIDE_GLIMMER_B", "DETAIL_RETURN"],
+    "gate_each_layer": true,
+    "forbidden": [
+      "highlight clippé sur détail canonique",
+      "lampe sans fonction visuelle nommée",
+      "lumière utilisée pour cacher une erreur de géométrie",
+      "émission permanente sous les pieds comme fausse preuve de contact"
+    ]
+  },
+  "physics": {
+    "contract_files": ["diagnostics/surface-analysis.json"],
+    "gravity_enabled_or_justified": true,
+    "gravity_rule": "gravité monde verticale ; la montée sur pente d'environ 46 degrés est autorisée par des semelles grip lime déclarées ustudio_grip_surface, coefficient d'adhérence contractuel 1.25",
+    "supports": ["USTUDIO_PIANO_ROLL_FLOOR"],
+    "colliders": ["parois de la boîte", "plafond", "cadre du Piano Roll"],
+    "joints": ["bassin", "colonne", "tête", "épaules", "coudes", "hanches", "genoux", "chevilles", "pieds"],
+    "clearance_checks": [
+      "drift tangent pied planté inférieur ou égal à 0.005 m",
+      "pénétration sous le plan inférieure ou égale à 0.002 m",
+      "clearance pointe de pied en swing supérieure ou égale à 0.01 m selon la normale",
+      "marge 0.15 m aux deux extrémités de la surface",
+      "clearance caméra contre le décor supérieure ou égale à 0.08 m"
+    ],
+    "camera_corridor_clear": true
+  },
+  "materials_and_design": {
+    "dominant_color": "blanc pearl mat du coureur",
+    "secondary_color": "palette écran du Piano Roll existant",
+    "accent_color": "lime des semelles grip, contre-accent magenta lumière",
+    "material_roles": [
+      "coureur pearl mat sans visage",
+      "semelles grip lime avec pulse au contact uniquement",
+      "surfaces du template inchangées"
+    ],
+    "typography": {"used": false, "content": "", "font": "", "legibility_gate": "not_applicable"}
+  },
+  "audio": {
+    "source": "projects/fl-studio-box-semantic-template/media/current/master.mp4",
+    "mounted_in_vse": true,
+    "beat_grid_bpm": 148.7,
+    "downbeat_frames": [9, 57, 106, 154, 203],
+    "footfalls_follow_detected_pulses": true
+  },
+  "limits": {
+    "max_iterations_per_category": 3,
+    "allowed_output_root": "projects/kimi-k3-scene-trials/k3-pianoroll-slope-run-fable-v001",
+    "overwrite_source_blend": false,
+    "save_only_trial_copy": true
+  }
+}
