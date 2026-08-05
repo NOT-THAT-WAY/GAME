@@ -9,14 +9,17 @@ coexistent et se lancent avec les mêmes scripts.
 Prouve : la map Blender est importée à la bonne échelle, un personnage se déplace
 avec un `CharacterController`, plusieurs joueurs se voient bouger via
 FishNet/Tugboat, les 17 objets pivot sont trouvés et une demande produit une
-orientation discrète partagée.
+orientation discrète partagée. Le profil importe aussi le clone riggé « boule »,
+joue son clip Punch, fait valider portée/cône/ligne de vue par l'hôte, applique un
+recul à la cible et fait marcher un bot d'entraînement piloté par l'hôte.
 
 Ne prouve pas : l'autorité hôte du joueur, la prédiction/réconciliation, une
 rotation ou une collision déterministe par tick, l'arrivée tardive, l'énergie,
-le trésor ou le son. Le déplacement reste **côté client** et le collider d'un
-pivot suit encore son animation locale par image. Ce profil est donc un smoke
-test historique, pas le modèle à étendre. Toute suite sur joueur, murs ou
-collisions suit [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.md).
+les dégâts/KO, le trésor ou le son. Le déplacement et le recul d'un joueur restent
+**côté client**, les cooldowns du punch utilisent encore le temps du prototype,
+et le collider d'un pivot suit son animation locale par image. Ce profil est donc
+un smoke test historique, pas le modèle de combat M1. Toute suite sur joueur,
+murs ou collisions suit [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.md).
 
 ## Contenu
 
@@ -24,13 +27,16 @@ collisions suit [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.md).
 |---|---|---|
 | Labyrinthe | `Assets/_Project/Maze/Maze16x16.fbx` | `tools/maze-3d/build_maze.py` du dépôt de préproduction |
 | Grille logique | `Assets/_Project/Maze/MazeGrid16x16.json` | `tools/maze-forge/maps/maze_16_16x16.json` (seed 1704) |
-| Personnage | `Assets/_Project/Player/PersoBoule.fbx` | espèce « boule » du character creator |
+| Personnage jouable + punch | `Assets/_Project/Player/PersoBouleRigged.fbx` | studio Blender `player-punch-rig-v001`, export validé sur `art/player-punch-rig` |
 | Déplacement | `Assets/_Project/Runtime/Player/PlayerMotor.cs` | — |
+| Punch | `Assets/_Project/Runtime/Player/PlayerPunch.cs` | intention cliente, validation hôte, animation et recul |
+| Bot d'entraînement | `Assets/_Project/Runtime/Player/SimpleBot.cs` | marche et recul simulés par l'hôte |
 | Générateur de scène | `Assets/_Project/Editor/MazePlaytestBuild.cs` | — |
 
-La scène `MazePlaytest.unity` et le prefab joueur ne sont **pas** versionnés : ils
-sont régénérés par `MazePlaytestBuild` dans `Assets/_GeneratedLocal/`, comme la
-scène du test de connexion. Personne n'a donc à revendiquer la scène.
+La scène `MazePlaytest.unity`, les prefabs joueur/bot et le contrôleur Animator ne
+sont **pas** versionnés : ils sont régénérés par `MazePlaytestBuild` dans
+`Assets/_GeneratedLocal/`, comme la scène du test de connexion. Personne n'a donc
+à revendiquer la scène.
 
 ## Échelle et orientation
 
@@ -43,7 +49,8 @@ Les FBX sortent de Blender avec la convention Unity (`axis_forward=-Z`,
   `axis_forward=-Z` fait pivoter la scène d'un demi-tour, **les deux** axes du
   plan changent de signe ;
 - les **quatre** entrées sont côté **+Z**, le trésor côté **-Z** ;
-- personnage 1,40 m, origine aux pieds, yeux à 1,05 m.
+- collider joueur 1,40 m, origine aux pieds, yeux à 1,05 m ; le clone riggé mesure
+  1,34 m à l'export, dans la tolérance du prototype déclarée par le studio.
 
 Ces cotes sont celles du tableau d'échelle physique du concept : elles ne se
 règlent pas ici. Le pas de 2,75 m est la conséquence des deux premières valeurs,
@@ -116,6 +123,9 @@ ouvertes vers l'intérieur et le générateur sème des gravats jusque dans les
 couloirs : la position et l'orientation sont donc mesurées sur la géométrie, pas
 déduites de la grille. `MazePlaytestBuild` refuse de produire la scène si une
 apparition n'a pas de sol, chevauche un collider ou n'a pas un pas de dégagement.
+Le bot apparaît deux mètres devant la première entrée validée et avance dans le
+couloir dès que le serveur démarre ; il tourne devant un obstacle et recule
+brièvement lorsqu'un punch le touche. L'hôte peut donc tester `F` immédiatement.
 
 ### Une seule machine
 
@@ -154,6 +164,7 @@ changent pas de comportement.
 | Maj | sprint |
 | Espace | sauter — contournement provisoire des gravats, statut gameplay à décider |
 | Clic gauche maintenu + avancer | pousser un mur pivotant d'un quart de tour |
+| F | donner un coup de poing au joueur ou au bot devant soi |
 | U | se dégager quand on est encastré dans un mur |
 | Échap | libérer ou recapturer le curseur |
 | Tab | masquer ou afficher le panneau réseau |
@@ -195,9 +206,10 @@ joindre à une PR qui touche la map.
 
 ## Verdict
 
-Le smoke test réussit quand chaque participant voit les autres se déplacer et la
-même orientation finale des pivots pendant plusieurs minutes. Les logs sont dans
-`Logs/MazePlaytest/`.
+Le smoke test réussit quand chaque participant voit les autres se déplacer, voit
+le même punch, reçoit le recul après un coup validé par l'hôte, peut faire reculer
+le bot et voit la même orientation finale des pivots pendant plusieurs minutes.
+Les logs sont dans `Logs/MazePlaytest/`.
 
 Ne pas conclure « M1 autoritaire » à partir de ce verdict. Cette preuve exige la
 scène grise à deux joueurs, les transitions par tick, le snapshot d'arrivée
@@ -209,8 +221,9 @@ voir [REMOTE_CONNECTION_TEST.md](REMOTE_CONNECTION_TEST.md).
 
 ## Masters Blender
 
-Les `.blend` d'origine ne sont pas dans ce dépôt : le contrat interdit les
-masters éditables dans Git et le remote DVC n'est pas encore choisi. Seuls les
-exports FBX consommés par Unity sont versionnés via Git LFS. L'ouverture du coffre
-est désormais P0 : suivre et restaurer les deux masters avant de les partager ou
-de les modifier.
+Les `.blend` d'origine ne sont pas dans Git : le contrat interdit les masters
+éditables dans le dépôt et le remote DVC n'est pas encore choisi. Le master du
+clone riggé reste dans `tools/blender-agent-studio/local_work/player-punch-rig-v001/`,
+ignoré par Git ; ses preuves textuelles sont conservées sur `art/player-punch-rig`.
+Seuls les exports FBX consommés par Unity sont versionnés via Git LFS. L'ouverture
+du coffre est désormais P0 avant de partager ou modifier un master.

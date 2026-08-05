@@ -10,6 +10,7 @@ using FishNet.Managing.Object;
 using FishNet.Object;
 using FishNet.Transporting.Tugboat;
 using UnityEditor;
+using UnityEditor.Animations;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEditor.SceneManagement;
@@ -30,9 +31,11 @@ namespace NotThatWay.Game.Editor
         private const string PrefabsPath = GeneratedDirectory + "/MazePlaytestPrefabs.asset";
         private const string PlayerPrefabPath = GeneratedDirectory + "/MazePlayer.prefab";
         private const string PivotDirectorPrefabPath = GeneratedDirectory + "/PivotDirector.prefab";
+        private const string BotPrefabPath = GeneratedDirectory + "/MazeBot.prefab";
+        private const string PunchAnimatorPath = GeneratedDirectory + "/MazePunchAnimator.controller";
         private const string MazeModelPath = "Assets/_Project/Maze/Maze16x16.fbx";
         private const string MazeGridPath = "Assets/_Project/Maze/MazeGrid16x16.json";
-        private const string PlayerModelPath = "Assets/_Project/Player/PersoBoule.fbx";
+        private const string PlayerModelPath = "Assets/_Project/Player/PersoBouleRigged.fbx";
         private const string PreviewDirectory = "Logs/MazePlaytest";
 
         // Gabarit du personnage produit par build_character.py : 1,40 m, origine
@@ -41,6 +44,8 @@ namespace NotThatWay.Game.Editor
         private const float PlayerRadius = 0.45f;
         private const float EyeHeight = 1.05f;
         private const float SpawnHeight = 0.2f;
+        private const int PlayerTriangleBudget = 6000;
+        private const int PlayerBoneBudget = 16;
 
         // Cotes du design, reprises de tools/maze-3d/build_maze.py : couloir 2,50 m
         // et murs de 0,25 m d'épaisseur, donc un pas de grille de 2,75 m. La grille
@@ -72,10 +77,12 @@ namespace NotThatWay.Game.Editor
             var layout = ReadLayout();
             var playerPrefab = CreatePlayerPrefab();
             var pivotDirectorPrefab = CreatePivotDirectorPrefab();
+            var botPrefab = CreateBotPrefab();
             var prefabCollection = LoadOrCreatePrefabCollection();
             prefabCollection.Clear();
             prefabCollection.AddObject(playerPrefab, true);
             prefabCollection.AddObject(pivotDirectorPrefab, true);
+            prefabCollection.AddObject(botPrefab, true);
             EditorUtility.SetDirty(prefabCollection);
 
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
@@ -99,6 +106,21 @@ namespace NotThatWay.Game.Editor
             var serializedSpawner = new SerializedObject(spawner);
             serializedSpawner.FindProperty("_playerPrefab").objectReferenceValue = playerPrefab;
             serializedSpawner.ApplyModifiedPropertiesWithoutUndo();
+
+            // Cible immédiatement testable : deux mètres devant la première
+            // apparition, dans le passage que VerifySpawns vient de déclarer libre.
+            // FindFreeSpot garde une marge de capsule si un prop frôle l'axe.
+            var botDirection = spawns[0].forward;
+            var botSpot = FindFreeSpot(
+                spawns[0].position + botDirection * 2f,
+                botDirection, layout.Entrances[0]);
+            var botSpawner = networkRoot.AddComponent<SimpleBotSpawner>();
+            var serializedBotSpawner = new SerializedObject(botSpawner);
+            serializedBotSpawner.FindProperty("_botPrefab").objectReferenceValue = botPrefab;
+            serializedBotSpawner.FindProperty("_spawnPosition").vector3Value = botSpot;
+            serializedBotSpawner.FindProperty("_spawnRotation").quaternionValue =
+                Quaternion.LookRotation(botDirection, Vector3.up);
+            serializedBotSpawner.ApplyModifiedPropertiesWithoutUndo();
 
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene, ScenePath))
@@ -152,6 +174,19 @@ namespace NotThatWay.Game.Editor
             RenderFrom(spawn.position + Vector3.up * EyeHeight, spawn.rotation, 70f, "apercu-entree.png");
 
             Debug.Log($"[GAME-MAZE] Preview images written to {Path.GetFullPath(PreviewDirectory)}.");
+        }
+
+        /// <summary>
+        /// Gate d'intégration d'un nouvel export joueur : force Unity à repasser le
+        /// ModelImporter, puis reconstruit et rend la scène avec le résultat réel.
+        /// </summary>
+        [MenuItem("GAME/Maze Playtest/Reimport Player + Render Preview")]
+        public static void ReimportPlayerAndRenderPreview()
+        {
+            AssetDatabase.ImportAsset(
+                PlayerModelPath,
+                ImportAssetOptions.ForceUpdate | ImportAssetOptions.ForceSynchronousImport);
+            RenderPreview();
         }
 
         private static void RenderFrom(Vector3 position, Quaternion rotation, float fieldOfView, string fileName)
@@ -243,6 +278,15 @@ namespace NotThatWay.Game.Editor
                 visual.name = "Visual";
                 visual.transform.SetParent(root.transform, false);
 
+                var animator = visual.GetComponentInChildren<Animator>(true);
+                if (animator == null)
+                    animator = visual.AddComponent<Animator>();
+
+                ValidateRiggedPlayerVisual(visual);
+                animator.runtimeAnimatorController = CreatePunchAnimatorController(visual);
+                animator.applyRootMotion = false;
+                animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+
                 var pivot = new GameObject("CameraPivot");
                 pivot.transform.SetParent(root.transform, false);
                 pivot.transform.localPosition = new Vector3(0f, EyeHeight, 0f);
@@ -275,11 +319,198 @@ namespace NotThatWay.Game.Editor
                 serializedMotor.FindProperty("_visual").objectReferenceValue = visual.transform;
                 serializedMotor.ApplyModifiedPropertiesWithoutUndo();
 
+                root.AddComponent<PlayerPunch>();
+
                 var saved = PrefabUtility.SaveAsPrefabAsset(root, PlayerPrefabPath);
                 if (saved == null)
                     throw new InvalidOperationException($"Unable to save {PlayerPrefabPath}.");
 
-                return saved.GetComponent<NetworkObject>();
+                return FinalizeNetworkPrefab(saved.GetComponent<NetworkObject>());
+            }
+            finally
+            {
+                UnityEngine.Object.DestroyImmediate(root);
+            }
+        }
+
+        /// <summary>
+        /// Contrôleur minimal : pose de repos vide, clip Punch déclenché par le
+        /// paramètre homonyme, puis retour automatique au repos. Le fichier vit
+        /// avec les autres sorties locales régénérables de la scène.
+        /// </summary>
+        private static AnimatorController CreatePunchAnimatorController(GameObject visual)
+        {
+            var clips = new List<AnimationClip>();
+            foreach (var asset in AssetDatabase.LoadAllAssetRepresentationsAtPath(PlayerModelPath))
+            {
+                if (asset is AnimationClip clip && !clip.name.StartsWith("__preview__", StringComparison.Ordinal))
+                    clips.Add(clip);
+            }
+
+            AnimationClip punchClip = null;
+            foreach (var clip in clips)
+            {
+                if (clip.name == "Punch")
+                {
+                    punchClip = clip;
+                    break;
+                }
+            }
+
+            if (punchClip == null && clips.Count == 1)
+                punchClip = clips[0];
+
+            if (punchClip == null)
+            {
+                var names = new List<string>(clips.Count);
+                foreach (var clip in clips)
+                    names.Add(clip.name);
+
+                throw new InvalidOperationException(
+                    $"Clip Punch introuvable dans {PlayerModelPath}. Clips importés: {string.Join(", ", names)}.");
+            }
+
+            if (punchClip.length < 0.7f || punchClip.length > 0.9f)
+            {
+                throw new InvalidOperationException(
+                    $"Durée Punch inattendue: {punchClip.length:F3} s (attendu 20 images à 24 fps, environ 0,8 s).");
+            }
+
+            var bindings = AnimationUtility.GetCurveBindings(punchClip);
+            if (bindings.Length == 0)
+                throw new InvalidOperationException($"Le clip {punchClip.name} ne contient aucune courbe Unity.");
+
+            foreach (var binding in bindings)
+            {
+                if (binding.type != typeof(Transform) || string.IsNullOrEmpty(binding.path))
+                    continue;
+                if (visual.transform.Find(binding.path) == null)
+                    throw new InvalidOperationException(
+                        $"Binding Punch introuvable dans le prefab importé: {binding.path} ({binding.propertyName}).");
+            }
+
+            if (AssetDatabase.LoadAssetAtPath<AnimatorController>(PunchAnimatorPath) != null)
+                AssetDatabase.DeleteAsset(PunchAnimatorPath);
+
+            var controller = AnimatorController.CreateAnimatorControllerAtPath(PunchAnimatorPath);
+            controller.AddParameter("Punch", AnimatorControllerParameterType.Trigger);
+
+            var stateMachine = controller.layers[0].stateMachine;
+            var idle = stateMachine.AddState("Idle");
+            var punch = stateMachine.AddState("Punch");
+            punch.motion = punchClip;
+            stateMachine.defaultState = idle;
+
+            var enterPunch = stateMachine.AddAnyStateTransition(punch);
+            enterPunch.hasExitTime = false;
+            enterPunch.duration = 0.03f;
+            enterPunch.canTransitionToSelf = false;
+            enterPunch.AddCondition(AnimatorConditionMode.If, 0f, "Punch");
+
+            var leavePunch = punch.AddTransition(idle);
+            leavePunch.hasExitTime = true;
+            leavePunch.exitTime = 1f;
+            leavePunch.duration = 0.06f;
+
+            EditorUtility.SetDirty(controller);
+            Debug.Log(
+                $"[GAME-PUNCH] Clip Unity « {punchClip.name} » importé: {punchClip.length:F3} s, " +
+                $"{punchClip.frameRate:F0} fps, {bindings.Length} courbes résolues, loop={punchClip.isLooping}.");
+            return controller;
+        }
+
+        private static void ValidateRiggedPlayerVisual(GameObject visual)
+        {
+            var renderers = visual.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+            if (renderers.Length == 0)
+                throw new InvalidOperationException($"{PlayerModelPath} ne contient aucun SkinnedMeshRenderer.");
+
+            var bounds = renderers[0].bounds;
+            var bones = new HashSet<Transform>();
+            ulong triangles = 0;
+            foreach (var renderer in renderers)
+            {
+                bounds.Encapsulate(renderer.bounds);
+                foreach (var bone in renderer.bones)
+                {
+                    if (bone != null)
+                        bones.Add(bone);
+                }
+
+                var mesh = renderer.sharedMesh;
+                if (mesh == null)
+                    continue;
+
+                for (var subMesh = 0; subMesh < mesh.subMeshCount; subMesh++)
+                    triangles += mesh.GetIndexCount(subMesh) / 3;
+            }
+
+            if (bounds.size.y < 1.3f || bounds.size.y > 1.45f)
+                throw new InvalidOperationException(
+                    $"Hauteur Unity du joueur: {bounds.size.y:F3} m, hors contrat [1,30 ; 1,45] m.");
+            if (triangles > PlayerTriangleBudget)
+                throw new InvalidOperationException(
+                    $"Budget joueur dépassé: {triangles} triangles > {PlayerTriangleBudget}.");
+            if (bones.Count == 0 || bones.Count > PlayerBoneBudget)
+                throw new InvalidOperationException(
+                    $"Budget squelette invalide: {bones.Count} bones, attendu 1..{PlayerBoneBudget}.");
+
+            Debug.Log(
+                $"[GAME-PUNCH] Import Unity validé: {renderers.Length} meshes skinnés, " +
+                $"{triangles} triangles, {bones.Count} bones, hauteur {bounds.size.y:F3} m.");
+        }
+
+        /// <summary>
+        /// Clone réseau simple du personnage : l'hôte le déplace avec
+        /// <see cref="SimpleBot"/> et NetworkTransform réplique sa pose racine.
+        /// </summary>
+        private static NetworkObject CreateBotPrefab()
+        {
+            var model = AssetDatabase.LoadAssetAtPath<GameObject>(PlayerModelPath);
+            if (model == null)
+                throw new InvalidOperationException($"Modèle de personnage introuvable: {PlayerModelPath}.");
+
+            var root = new GameObject("MazeBot");
+            try
+            {
+                var controller = root.AddComponent<CharacterController>();
+                controller.height = PlayerHeight;
+                controller.radius = PlayerRadius;
+                controller.center = new Vector3(0f, PlayerHeight / 2f, 0f);
+                controller.slopeLimit = 45f;
+                controller.stepOffset = 0.3f;
+                controller.skinWidth = 0.03f;
+
+                var visual = (GameObject)PrefabUtility.InstantiatePrefab(model);
+                visual.name = "Visual";
+                visual.transform.SetParent(root.transform, false);
+
+                var animator = visual.GetComponentInChildren<Animator>(true);
+                if (animator != null)
+                {
+                    animator.runtimeAnimatorController = null;
+                    animator.applyRootMotion = false;
+                }
+
+                root.AddComponent<NetworkObject>();
+
+                var networkTransform = root.AddComponent<NetworkTransform>();
+                var serializedTransform = new SerializedObject(networkTransform);
+                serializedTransform.FindProperty("_componentConfiguration").enumValueIndex =
+                    (int)NetworkTransform.ComponentConfigurationType.CharacterController;
+                serializedTransform.FindProperty("_clientAuthoritative").boolValue = false;
+                serializedTransform.ApplyModifiedPropertiesWithoutUndo();
+
+                var bot = root.AddComponent<SimpleBot>();
+                var serializedBot = new SerializedObject(bot);
+                serializedBot.FindProperty("_visual").objectReferenceValue = visual.transform;
+                serializedBot.ApplyModifiedPropertiesWithoutUndo();
+
+                var saved = PrefabUtility.SaveAsPrefabAsset(root, BotPrefabPath);
+                if (saved == null)
+                    throw new InvalidOperationException($"Unable to save {BotPrefabPath}.");
+
+                return FinalizeNetworkPrefab(saved.GetComponent<NetworkObject>());
             }
             finally
             {
@@ -436,7 +667,7 @@ namespace NotThatWay.Game.Editor
                 if (saved == null)
                     throw new InvalidOperationException($"Unable to save {PivotDirectorPrefabPath}.");
 
-                return saved.GetComponent<NetworkObject>();
+                return FinalizeNetworkPrefab(saved.GetComponent<NetworkObject>());
             }
             finally
             {
@@ -453,6 +684,54 @@ namespace NotThatWay.Game.Editor
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Les prefabs de cette scène utilisent une collection FishNet locale, pas
+        /// la collection globale régénérée par le package. On reproduit donc ici
+        /// son hash FNV-1 stable basé sur chemin + nom avant le build.
+        /// </summary>
+        private static NetworkObject FinalizeNetworkPrefab(NetworkObject networkObject)
+        {
+            if (networkObject == null)
+                throw new InvalidOperationException("Prefab réseau généré sans NetworkObject.");
+
+            var pathAndName =
+                $"{AssetDatabase.GetAssetPath(networkObject.gameObject)}{networkObject.gameObject.name}"
+                    .Trim()
+                    .ToLowerInvariant();
+            var normalized = string.Empty;
+            foreach (var character in pathAndName)
+            {
+                if ((character >= 'a' && character <= 'z') || (character >= '0' && character <= '9'))
+                    normalized += character;
+            }
+
+            var hash = StableHashU64(normalized);
+            if (hash == 0)
+                throw new InvalidOperationException($"Hash FishNet nul pour {pathAndName}.");
+
+            networkObject.SetAssetPathHash(hash);
+            EditorUtility.SetDirty(networkObject);
+            return networkObject;
+        }
+
+        private static ulong StableHashU64(string value)
+        {
+            const ulong offsetBasis = 14695981039346656037;
+            const ulong prime = 1099511628211;
+
+            unchecked
+            {
+                var hash = offsetBasis;
+                foreach (var character in value)
+                {
+                    hash *= prime;
+                    hash ^= character;
+                }
+
+                return hash;
+            }
         }
 
         private static Transform[] CreateSpawnPoints(MazeLayout layout)
@@ -483,7 +762,7 @@ namespace NotThatWay.Game.Editor
         /// colonnes brisées et des jarres jusque dans les couloirs : le centre exact
         /// d'une cellule n'est pas garanti libre, et ça change à chaque graine de map.
         /// </summary>
-        private static Vector3 FindFreeSpot(Vector3 center, Vector3 inward, Vector2Int entrance)
+        private static Vector3 FindFreeSpot(Vector3 center, Vector3 inward, Vector2Int cell)
         {
             var sideways = Vector3.Cross(Vector3.up, inward);
             // Le couloir fait 2,50 m : au-delà de 0,9 m d'écart on sortirait du passage.
@@ -500,7 +779,7 @@ namespace NotThatWay.Game.Editor
             }
 
             throw new InvalidOperationException(
-                $"Aucun emplacement libre dans la cellule d'entrée {entrance.x},{entrance.y} : le décor l'obstrue entièrement.");
+                $"Aucun emplacement libre dans la cellule {cell.x},{cell.y} : le décor l'obstrue entièrement.");
         }
 
         /// <summary>

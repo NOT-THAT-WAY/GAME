@@ -1,4 +1,5 @@
 using System;
+using FishNet.Connection;
 using FishNet.Object;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -80,6 +81,10 @@ namespace NotThatWay.Game
 
         private const float UnstickFeedbackSeconds = 2f;
 
+        // Amortissement du knockback reçu d'un coup de poing : l'impulsion de
+        // départ (~4,5 m/s) s'éteint en une fraction de seconde.
+        private const float KnockbackDecay = 10f;
+
         private static readonly Vector3 FirstPersonOffset = Vector3.zero;
         private static readonly Vector3 ThirdPersonOffset = new(0f, 0.55f, -3.4f);
 
@@ -100,6 +105,7 @@ namespace NotThatWay.Game
         private bool _thirdPerson;
         private bool _cursorLocked;
         private Vector3 _spawnPosition;
+        private Vector3 _knockback;
         private string _unstickFeedback = string.Empty;
         private float _unstickFeedbackUntil = float.NegativeInfinity;
 
@@ -430,8 +436,41 @@ namespace NotThatWay.Game
             _verticalVelocity += Gravity * Time.deltaTime;
 
             var motion = (transform.right * input.x + transform.forward * input.y) * (sprinting ? SprintSpeed : WalkSpeed);
+            motion += _knockback;
             motion.y = _verticalVelocity;
             _controller.Move(motion * Time.deltaTime);
+
+            _knockback = Vector3.MoveTowards(_knockback, Vector3.zero, KnockbackDecay * Time.deltaTime);
+        }
+
+        /// <summary>
+        /// Distribue depuis l'hôte une impulsion au propriétaire de ce joueur.
+        /// Le smoke test reste client-authoritative : l'hôte valide le coup, puis
+        /// le client victime applique lui-même le déplacement temporaire.
+        /// </summary>
+        public void ApplyKnockbackFromServer(Vector3 velocity)
+        {
+            if (!IsServerStarted || !Owner.IsValid)
+                return;
+
+            // En host mode, serveur et propriétaire partagent cette instance :
+            // appliquer directement évite un aller-retour TargetRpc inutile.
+            if (Owner.IsLocalClient)
+                ApplyKnockback(velocity);
+            else
+                ApplyKnockbackTargetRpc(Owner, velocity);
+        }
+
+        [TargetRpc]
+        private void ApplyKnockbackTargetRpc(NetworkConnection connection, Vector3 velocity)
+        {
+            ApplyKnockback(velocity);
+        }
+
+        private void ApplyKnockback(Vector3 velocity)
+        {
+            velocity.y = 0f;
+            _knockback = velocity;
         }
 
         private void ApplyCameraMode()
@@ -461,11 +500,12 @@ namespace NotThatWay.Game
                 return;
 
             var style = new GUIStyle(GUI.skin.label) { fontSize = 14, wordWrap = true };
-            var height = 96f;
+            var height = 118f;
             var area = new Rect(16f, Screen.height - height - 16f, Mathf.Min(760f, Screen.width - 32f), height);
             GUILayout.BeginArea(area, GUI.skin.box);
             GUILayout.Label("ZQSD / WASD se déplacer   ·   Maj sprint   ·   Espace sauter (marteler pour se décoincer)   ·   Souris regarder", style);
             GUILayout.Label($"Clic gauche maintenu + avancer contre un pivot turquoise = pousser{(_pushedWall != null ? $"  [{_pushProgress * 100f:F0} %]" : "")}", style);
+            GUILayout.Label("F — coup de poing (joueur ou bot devant, à bout de bras)", style);
             GUILayout.Label($"Échap curseur ({(_cursorLocked ? "capturé" : "libre")})   ·   Tab panneau réseau   ·   F1 vue {(_thirdPerson ? "3e personne" : "1re personne")}", style);
             GUILayout.Label($"U se dégager d'un mur{(Time.time < _unstickFeedbackUntil ? $"   —   {_unstickFeedback}" : "")}", style);
             GUILayout.EndArea();
