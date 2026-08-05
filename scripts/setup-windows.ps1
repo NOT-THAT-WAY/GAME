@@ -41,6 +41,7 @@ if ($InstallTools) {
     Install-WingetPackage "Git.Git"
     Install-WingetPackage "GitHub.GitLFS"
     Install-WingetPackage "GitHub.cli"
+    Install-WingetPackage "Gyan.FFmpeg"
     if ($WithAssets) { Install-WingetPackage "Iterative.DVC" }
     Install-WingetPackage "Unity.UnityHub"
     if ($RemotePlay) { Install-WingetPackage "Tailscale.Tailscale" }
