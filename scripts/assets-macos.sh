@@ -8,7 +8,7 @@ REMOTE_NAME="assets"
 usage() {
   cat <<'EOF'
 Usage:
-  ./scripts/assets-macos.sh configure <remote-url> [--endpoint <url>] [--profile <name>]
+  ./scripts/assets-macos.sh configure <remote-url> [--endpoint <url>] [--region <name>] [--profile <name>]
   ./scripts/assets-macos.sh pull [target]
   ./scripts/assets-macos.sh push [target]
   ./scripts/assets-macos.sh track <ExternalAssets/Discipline/AssetId>
@@ -52,6 +52,7 @@ case "$ACTION" in
     REMOTE_URL="$1"
     shift
     ENDPOINT_URL=""
+    REGION=""
     PROFILE=""
 
     while (( $# > 0 )); do
@@ -59,6 +60,11 @@ case "$ACTION" in
         --endpoint)
           (( $# >= 2 )) || fail "--endpoint attend une URL."
           ENDPOINT_URL="$2"
+          shift 2
+          ;;
+        --region)
+          (( $# >= 2 )) || fail "--region attend un nom."
+          REGION="$2"
           shift 2
           ;;
         --profile)
@@ -73,6 +79,13 @@ case "$ACTION" in
     dvc remote add --local --force --default "$REMOTE_NAME" "$REMOTE_URL"
     if [[ -n "$ENDPOINT_URL" ]]; then
       dvc remote modify --local "$REMOTE_NAME" endpointurl "$ENDPOINT_URL"
+    fi
+    # Un endpoint S3-compatible ne dérive pas sa région de l'URL comme le fait AWS.
+    # Cloudflare R2 attend la valeur littérale `auto`; d'autres fournisseurs exigent une
+    # région nommée. Sans elle, le client S3 échoue à la signature, pas à la connexion,
+    # ce qui produit une erreur trompeuse au premier push.
+    if [[ -n "$REGION" ]]; then
+      dvc remote modify --local "$REMOTE_NAME" region "$REGION"
     fi
     if [[ -n "$PROFILE" ]]; then
       dvc remote modify --local "$REMOTE_NAME" profile "$PROFILE"

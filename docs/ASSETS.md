@@ -8,7 +8,21 @@ L'organisation GitHub est sur le plan Free : elle inclut actuellement [**10 Gio 
 
 Le remote DVC n'a pas encore de capacité partagée car aucun fournisseur n'est configuré. Les masters Blender qui ont produit les deux FBX sont absents : le choix du coffre n'est donc plus différable avant leur prochaine modification ou transmission. Cela ne bloque pas l'installation d'un développeur qui consomme seulement les exports. Comparer les fournisseurs au moment de la gate, sans inscrire dans le dépôt une promesse de prix volatile.
 
-La gate DVC réussit lorsque les deux masters sont enregistrés comme lots séparés, poussés dans un remote privé versionné, restaurés sur Mac et Windows, et reliés aux lignes `ART-MAZE-001` et `ART-PERSO-001` du [registre](assets/ASSET_REGISTER.md). Aucun master ne doit être envoyé dans Git/LFS pour aller plus vite.
+La gate DVC réussit lorsque les masters sont enregistrés comme lots séparés, poussés dans un remote privé versionné, restaurés sur Mac et Windows, et reliés à leur ligne du [registre](assets/ASSET_REGISTER.md). Aucun master ne doit être envoyé dans Git/LFS pour aller plus vite.
+
+## Couverture du coffre — état au 6 août 2026
+
+Le fournisseur est décidé : bucket Cloudflare R2 `ntw-assets`, préfixe `game/` pour ce dépôt. Le coffre **n'est pas complet** et ne doit pas être déclaré tel.
+
+| Master | Présent sur le Mac pilote | État |
+|---|---|---|
+| `ART-PERSO-PUNCH-001` | oui — `tools/blender-agent-studio/local_work/player-punch-rig-v001/` (16 Mo) | prêt à devenir le premier lot |
+| `ART-MAZE-001` | **non** | **non sécurisé** — en attente de Sean |
+| `ART-PERSO-001` | **non** | **non sécurisé** — en attente de Sean |
+
+Les deux masters absents ne sont récupérables sur aucune machine de l'équipe à ce jour : le script `tools/maze-3d/build_maze.py` cité par le registre n'existe pas dans le dépôt, et aucun `.blend` de labyrinthe ou de personnage « boule » n'est présent. Tant que Sean ne les a pas transmis, ou que leur statut n'a pas été formellement requalifié — par exemple « regénérable par script, master non conservé » avec le script versionné à l'appui — la perte de sa machine reste une perte sèche de ces deux sources.
+
+Deux vérifications restent ouvertes avant de déclarer le coffre conforme à l'[ADR 0003](adr/0003-asset-sources.md), qui exige « versioning objet et sauvegarde séparée » : confirmer que R2 fournit le versioning objet sur ce bucket, et désigner la deuxième copie. Si R2 ne le permet pas, c'est une ligne d'ADR à amender explicitement dans une PR dédiée, pas à ignorer.
 
 ## Quatre niveaux, une vérité par niveau
 
@@ -42,7 +56,10 @@ macOS :
 
 ```bash
 ./scripts/setup-macos.sh --install-tools --with-assets
-./scripts/assets-macos.sh configure "s3://game-assets-production/dvc"
+./scripts/assets-macos.sh configure "s3://ntw-assets/game" \
+  --endpoint "https://<ID_DE_COMPTE>.r2.cloudflarestorage.com" \
+  --region "auto" \
+  --profile "game-assets"
 ./scripts/assets-macos.sh pull
 ```
 
@@ -50,11 +67,14 @@ Windows :
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -InstallTools -WithAssets
-.\scripts\assets-windows.ps1 -Action Configure -RemoteUrl "s3://game-assets-production/dvc"
+.\scripts\assets-windows.ps1 -Action Configure -RemoteUrl "s3://ntw-assets/game" `
+  -EndpointUrl "https://<ID_DE_COMPTE>.r2.cloudflarestorage.com" `
+  -Region "auto" `
+  -Profile "game-assets"
 .\scripts\assets-windows.ps1 -Action Pull
 ```
 
-Pour un fournisseur compatible S3 qui exige un endpoint spécifique, ajouter `--endpoint` sur Mac ou `-EndpointUrl` sur Windows. La configuration est écrite dans `.dvc/config.local`, explicitement ignoré par Git.
+`--region auto` est obligatoire sur R2 : un endpoint S3-compatible ne déduit pas sa région, et l'absence de valeur fait échouer la signature de la requête, pas la connexion. La configuration entière est écrite dans `.dvc/config.local`, explicitement ignoré par Git — y compris l'endpoint, parce que `GAME` est un dépôt public et qu'un identifiant de compte publié reste dans l'historique. Nils transmet l'endpoint et la méthode d'authentification par le canal privé de l'équipe.
 
 ## Ajouter ou modifier un lot
 

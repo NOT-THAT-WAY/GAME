@@ -1,0 +1,12 @@
+# Ce fichier existe pour que ExternalAssets/ soit présent après un clone, avant même
+# le premier lot. Git ne sait pas suivre un dossier vide.
+#
+# Ne pas ajouter de règle large ici. Elle masquerait les pointeurs `.dvc`, les README
+# de lot et les recettes de regénération, qui doivent rester visibles dans Git.
+#
+# Les exclusions du contenu lourd sont écrites par DVC lui-même : `dvc add` ajoute le
+# lot à `ExternalAssets/<Discipline>/.gitignore`. Ce sont ces fichiers générés qu'il
+# faut committer, pas une règle globale.
+#
+# Le garde-fou reste `scripts/validate-repository.sh`, qui n'autorise sous
+# ExternalAssets/ que les pointeurs `.dvc` et les `.gitignore` générés.

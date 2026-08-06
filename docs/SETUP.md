@@ -42,22 +42,19 @@ cd GAME
 ./scripts/setup-macos.sh --all --remote-play
 ```
 
-Avec un remote déjà choisi, la même commande peut tout configurer :
-
-```bash
-./scripts/setup-macos.sh --all --remote-play --with-assets --asset-remote "REMPLACER_PAR_URL_DVC"
-```
-
-Pour un service S3-compatible :
+Le coffre de l'équipe est un bucket Cloudflare R2. Nils communique l'endpoint par le canal privé ; il n'est pas écrit dans le dépôt :
 
 ```bash
 ./scripts/setup-macos.sh --all \
   --remote-play \
   --with-assets \
-  --asset-remote "s3://<bucket>/game" \
-  --asset-endpoint "https://<endpoint>" \
+  --asset-remote "s3://ntw-assets/game" \
+  --asset-endpoint "https://<ID_DE_COMPTE>.r2.cloudflarestorage.com" \
+  --asset-region "auto" \
   --asset-profile "game-assets"
 ```
+
+`--asset-region` n'est pas optionnel sur R2 : un endpoint S3-compatible ne déduit pas sa région, et la valeur attendue par Cloudflare est littéralement `auto`. Sans elle, l'échec survient à la signature de la requête, pas à la connexion, et le message d'erreur ne désigne pas la cause.
 
 Le script :
 
@@ -103,8 +100,9 @@ powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 `
   -All `
   -RemotePlay `
   -WithAssets `
-  -AssetRemote "s3://<bucket>/game" `
-  -AssetEndpoint "https://<endpoint>" `
+  -AssetRemote "s3://ntw-assets/game" `
+  -AssetEndpoint "https://<ID_DE_COMPTE>.r2.cloudflarestorage.com" `
+  -AssetRegion "auto" `
   -AssetProfile "game-assets"
 ```
 
@@ -122,9 +120,17 @@ powershell -ExecutionPolicy Bypass -File .\scripts\doctor-windows.ps1 -RemotePla
 Chaque membre reçoit son propre accès avec le minimum de droits. Les clés ne doivent pas être passées comme arguments des scripts, car l'historique du terminal peut les conserver.
 
 - utiliser le profil local du fournisseur ou ses variables d'environnement ;
-- l'URL et les options non sensibles sont stockées dans `.dvc/config.local` ;
-- ce fichier est ignoré par Git ;
+- l'URL, l'endpoint et la région sont stockés dans `.dvc/config.local` ;
+- ce fichier est ignoré par Git, et `scripts/validate-repository.sh` refuse un commit qui le suivrait ;
 - ne jamais copier le dossier `.dvc/cache` entre membres comme méthode principale de partage.
+
+`GAME` est un dépôt **public**. C'est la raison pour laquelle la définition du remote reste locale : même l'endpoint, qui n'est pas un secret, désignerait publiquement la cible du coffre et resterait dans l'historique Git après tout correctif. Les identifiants R2 déposés comme secrets d'organisation servent aux workflows GitHub Actions ; ils ne configurent aucun poste de développement.
+
+Pour les clés R2 elles-mêmes, préférer un profil AWS local plutôt que `dvc remote modify --local … access_key_id`, afin qu'aucune clé n'apparaisse dans l'historique du terminal :
+
+```bash
+aws configure --profile game-assets   # ou éditer ~/.aws/credentials à la main
+```
 
 Le responsable réalise un test de restauration sur un clone propre avant d'y déposer des masters irremplaçables.
 

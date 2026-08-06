@@ -8,6 +8,7 @@ param(
     [switch]$All,
     [string]$AssetRemote,
     [string]$AssetEndpoint,
+    [string]$AssetRegion,
     [string]$AssetProfile
 )
 
@@ -73,6 +74,7 @@ if ($AssetRemote) {
         RemoteUrl = $AssetRemote
     }
     if ($AssetEndpoint) { $AssetArguments["EndpointUrl"] = $AssetEndpoint }
+    if ($AssetRegion) { $AssetArguments["Region"] = $AssetRegion }
     if ($AssetProfile) { $AssetArguments["Profile"] = $AssetProfile }
     & (Join-Path $PSScriptRoot "assets-windows.ps1") @AssetArguments
 }
