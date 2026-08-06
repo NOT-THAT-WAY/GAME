@@ -40,7 +40,10 @@ switch ($Action) {
     "Ip" { Write-Output $TailscaleIp }
     "Ping" {
         if (-not $PeerAddress) { throw "L'action Ping attend -PeerAddress HOST_IP." }
-        & $TailscaleCli ping --c 1 --timeout 5s $PeerAddress
+        # --until-direct=false comme sur macOS: un lien relaye par DERP suffit a
+        # prouver que l'hote repond. Sans ce drapeau, tailscale n'accepte qu'une
+        # connexion directe et un poste derriere un NAT strict serait declare muet.
+        & $TailscaleCli ping --c 1 --until-direct=false --timeout 5s $PeerAddress
         if ($LASTEXITCODE -ne 0) { throw "La machine Tailscale $PeerAddress ne repond pas." }
     }
 }

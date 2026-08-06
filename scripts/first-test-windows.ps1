@@ -6,7 +6,8 @@ param(
     [string]$Address,
     [ValidateRange(1, 65535)]
     [int]$Port = 7770,
-    [string]$Name = $env:USERNAME,
+    # Resolu plus bas comme sur macOS: identite Git d'abord, machine ensuite.
+    [string]$Name,
     [switch]$SkipBuild,
     [switch]$BuildOnly,
     # Nomme TestProfile pour ne pas masquer la variable automatique $PROFILE ;
@@ -17,6 +18,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+. (Join-Path $PSScriptRoot "shared-validators.ps1")
 $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $ToolchainPath = Join-Path $RepoRoot "config\toolchain.env"
 $Toolchain = @{}
@@ -45,8 +47,18 @@ if ([string]::IsNullOrWhiteSpace($Address)) { $Address = "127.0.0.1" }
 if (-not (Test-Path $UnityEditor)) { throw "Unity $UnityVersion introuvable. Relancez setup-windows.ps1." }
 
 Set-Location $RepoRoot
+
+# Parite avec first-test-macos.sh, qui prend le nom du joueur dans l'identite Git
+# afin que le roster affiche la meme personne quelle que soit la plateforme.
+if ([string]::IsNullOrWhiteSpace($Name)) { $Name = (& git config --get user.name 2>$null) -join "" }
+if ([string]::IsNullOrWhiteSpace($Name)) { $Name = $env:USERNAME }
+if ([string]::IsNullOrWhiteSpace($Name)) { $Name = $env:COMPUTERNAME }
+
 & (Join-Path $PSScriptRoot "doctor-windows.ps1")
 if ($LASTEXITCODE -ne 0) { throw "Le diagnostic Windows doit passer avant le test." }
+
+# Parite avec first-test-macos.sh: le contrat du depot est verifie avant de builder.
+Invoke-SharedValidator "scripts/validate-repository.sh"
 
 New-Item -ItemType Directory -Force -Path $LogDirectory | Out-Null
 if (-not $SkipBuild) {

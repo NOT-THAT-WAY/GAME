@@ -8,14 +8,15 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+. (Join-Path $PSScriptRoot "shared-validators.ps1")
 $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $BranchName = "$Type/$Name"
 
-if ($BranchName.Length -gt 80 -or $BranchName -notmatch '^(feat|fix|art|audio|data|docs|chore)/[a-z0-9]+(-[a-z0-9]+)*$') {
-    throw "Nom invalide: $BranchName. Exemple attendu: feat/player-movement"
-}
-
 Set-Location $RepoRoot
+# Parite avec start-task.sh: la regle de nommage vient du validateur partage, pas
+# d'une copie locale qui derive des que le contrat de branche change.
+Invoke-SharedValidator "scripts/validate-branch-name.sh" @($BranchName)
+
 $Changes = (& git status --porcelain) -join "`n"
 if ($LASTEXITCODE -ne 0) { throw "Impossible de lire l'etat Git." }
 if ($Changes) { throw "Le depot contient des changements. Committez-les ou traitez-les avant de changer de tache.`n$Changes" }

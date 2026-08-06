@@ -175,7 +175,11 @@ else
   fi
 fi
 
-FORBIDDEN_TRACKED="$(git ls-files | awk 'BEGIN{IGNORECASE=1} /(^|\/)(Library|Temp|Obj|Logs|UserSettings|Build|Builds)(\/|$)/ {print}' | head -n 5)"
+# Les caches Unity ne sont ignorés qu'à la racine du dépôt; la liste suit celle de
+# .gitignore. Ancrer sur '^' et retirer IGNORECASE (une extension gawk absente du awk
+# BSD de macOS, donc silencieusement inactive ici) évite de confondre un dossier
+# légitime comme tools/blender-agent-studio/library/ avec un cache.
+FORBIDDEN_TRACKED="$(git ls-files | awk '/^([Ll]ibrary|[Tt]emp|[Oo]bj|[Bb]uild|[Bb]uilds|[Ll]ogs|[Uu]ser[Ss]ettings)\// {print}' | head -n 5)"
 if [[ -z "$FORBIDDEN_TRACKED" ]]; then
   ok "Aucun cache Unity suivi par Git"
 else
