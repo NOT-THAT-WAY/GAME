@@ -6,7 +6,9 @@ param(
     [string]$Address,
     [ValidateRange(1, 65535)]
     [int]$Port = 7770,
-    [string]$Name = $env:USERNAME,
+    # Sans valeur imposee ici, first-test-windows.ps1 applique le meme defaut que
+    # macOS (identite Git). Un defaut local le masquerait systematiquement.
+    [string]$Name,
     [switch]$SkipBuild,
     [switch]$BuildOnly,
     [Alias("Profile")]
@@ -31,9 +33,9 @@ if ($Role -eq "Host") {
 $ConnectionArguments = @{
     Role = $Role
     Port = $Port
-    Name = $Name
     TestProfile = $TestProfile
 }
+if ($Name) { $ConnectionArguments["Name"] = $Name }
 if ($Address) { $ConnectionArguments["Address"] = $Address }
 if ($SkipBuild) { $ConnectionArguments["SkipBuild"] = $true }
 if ($BuildOnly) { $ConnectionArguments["BuildOnly"] = $true }

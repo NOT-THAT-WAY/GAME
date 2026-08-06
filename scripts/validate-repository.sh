@@ -79,7 +79,11 @@ if [[ "$EXPECTED_CHANGESET" != "$PROJECT_CHANGESET" ]]; then
   exit 1
 fi
 
-if command -v python3 >/dev/null 2>&1; then
+# Windows livre un raccourci python3 vers le Microsoft Store qui satisfait
+# `command -v` mais sort en code 49 sans jamais exécuter de code. Vérifier que
+# l'interpréteur démarre réellement, sinon les replis jq/PowerShell ci-dessous
+# ne sont jamais atteints sur une machine Windows sans Python.
+if command -v python3 >/dev/null 2>&1 && python3 -c '' >/dev/null 2>&1; then
   python3 scripts/validate-unity-contract.py
 elif command -v jq >/dev/null 2>&1; then
   jq empty Packages/manifest.json

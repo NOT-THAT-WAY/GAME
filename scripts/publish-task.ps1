@@ -5,24 +5,25 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+. (Join-Path $PSScriptRoot "shared-validators.ps1")
 $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 Set-Location $RepoRoot
 
 $BranchName = (& git branch --show-current) -join ""
 if ($LASTEXITCODE -ne 0 -or -not $BranchName) { throw "Branche Git introuvable." }
-if ($BranchName -notmatch '^(feat|fix|art|audio|data|docs|chore)/[a-z0-9]+(-[a-z0-9]+)*$') {
-    throw "Nom de branche invalide: $BranchName"
-}
 
-$BranchType = $BranchName.Split('/')[0]
-$EscapedType = [regex]::Escape($BranchType)
-if ($Title -notmatch "^$EscapedType(\([a-z0-9][a-z0-9._-]*\))?:\s.+") {
-    throw "La branche '$BranchName' attend un titre commencant par '$BranchType`: '."
-}
+# Parite avec publish-task.sh: branche et titre passent par le validateur partage,
+# celui-la meme que la CI applique a la pull request.
+Invoke-SharedValidator "scripts/validate-pr-policy.sh" @($BranchName, $Title)
 
 $Changes = (& git status --porcelain) -join "`n"
 if ($LASTEXITCODE -ne 0) { throw "Impossible de lire l'etat Git." }
 if ($Changes) { throw "Le depot contient des changements non committes.`n$Changes" }
+
+# Parite avec publish-task.sh: le contrat du depot est verifie avant le push. Le
+# hook pre-push le fait aussi, mais il reste inactif tant que le setup n'a pas pose
+# core.hooksPath, et la CI ne repond qu'apres la publication.
+Invoke-SharedValidator "scripts/validate-repository.sh"
 
 & git push -u origin $BranchName
 if ($LASTEXITCODE -ne 0) { throw "Le push a echoue." }

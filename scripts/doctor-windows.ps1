@@ -4,6 +4,7 @@ param(
 )
 
 $ErrorActionPreference = "Continue"
+. (Join-Path $PSScriptRoot "shared-validators.ps1")
 $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $ToolchainPath = Join-Path $RepoRoot "config\toolchain.env"
 $Toolchain = @{}
@@ -44,6 +45,16 @@ if (Test-Command "git-lfs") {
     $LfsVersion = (& git lfs version 2>$null)
     Write-Ok $LfsVersion
 } else { Write-Fail "Git LFS absent" }
+
+# Les hooks partages, les validateurs de branche/PR et le contrat du depot sont des
+# scripts shell. macOS a bash d'office; sur Windows il vient de Git for Windows, et
+# sans lui aucune de ces regles ne s'applique localement.
+try {
+    $BashPath = Resolve-Bash
+    Write-Ok "bash disponible pour les validateurs partages ($BashPath)"
+} catch {
+    Write-Fail "bash introuvable - hooks et validateurs partages inoperants (fourni par Git for Windows)"
+}
 
 if (Test-Command "dvc") {
     $DvcVersion = (& dvc --version 2>$null) -join ""
@@ -91,23 +102,40 @@ if (Test-Command "git") {
     $LfsAttribute = (& git check-attr filter -- Assets/_Project/Test.png 2>$null) -join " "
     if ($LfsAttribute -match ': lfs$') { Write-Ok "Regles Git LFS actives" } else { Write-Fail "Les regles Git LFS ne s'appliquent pas" }
 
-    $Forbidden = & git ls-files | Where-Object { $_ -match '(^|/)(Library|Temp|Obj|Logs|UserSettings|Build|Builds)(/|$)' } | Select-Object -First 5
+    # Les caches Unity ne sont ignores qu'a la racine du depot; la liste suit celle
+    # de .gitignore. Ancrer sur '^' et comparer avec -cmatch evite de confondre un
+    # dossier legitime comme tools/blender-agent-studio/library/ avec un cache.
+    $Forbidden = & git ls-files | Where-Object { $_ -cmatch '^([Ll]ibrary|[Tt]emp|[Oo]bj|[Bb]uild|[Bb]uilds|[Ll]ogs|[Uu]ser[Ss]ettings)/' } | Select-Object -First 5
     if ($Forbidden) { Write-Fail "Caches Unity suivis par Git: $($Forbidden -join ', ')" } else { Write-Ok "Aucun cache Unity suivi par Git" }
 
     $MergeDriver = (& git config --local --get merge.unityyamlmerge.driver 2>$null) -join ""
     if ($MergeDriver) { Write-Ok "UnityYAMLMerge configure dans ce depot" } elseif ($SmartMerge) { Write-Warn "Relancer setup-windows.ps1 pour configurer Smart Merge" } else { Write-Warn "Smart Merge sera configure apres l'installation Unity" }
 
+    # Parite avec doctor-macos.sh: un core.hooksPath configure mais dont les hooks
+    # manquent est une panne silencieuse des gardes-fous, donc une erreur. Windows
+    # n'a pas de bit d'execution, Test-Path y est l'equivalent du test -x macOS.
     $HooksPath = (& git config --local --get core.hooksPath 2>$null) -join ""
-    if ($HooksPath -eq ".githooks" -and (Test-Path ".githooks\pre-commit") -and (Test-Path ".githooks\pre-push")) { Write-Ok "Gardes-fous commit/push et hook Git LFS actifs" } else { Write-Warn "Gardes-fous Git inactifs; relancer setup-windows.ps1" }
+    if ($HooksPath -eq ".githooks") {
+        if ((Test-Path ".githooks\pre-commit") -and (Test-Path ".githooks\pre-push")) {
+            Write-Ok "Gardes-fous commit/push et hook Git LFS actifs"
+        } else {
+            Write-Fail "Hooks partages absents alors que core.hooksPath les designe"
+        }
+    } else {
+        Write-Warn "Gardes-fous Git inactifs; relancer setup-windows.ps1"
+    }
 
     if (Test-Path ".dvc\config") { Write-Ok "Projet DVC initialise" } else { Write-Fail "Configuration .dvc\config absente" }
-    if (Test-Command "dvc") {
-        $DvcRemotes = (& dvc remote list 2>$null) -join "`n"
-        if ($LASTEXITCODE -eq 0 -and $DvcRemotes -match '(?m)^assets\s') {
-            Write-Ok "Remote externe 'assets' configure localement"
-        } else {
-            if ($DvcPointers.Count -gt 0) { Write-Fail "Des assets DVC existent mais le remote 'assets' n'est pas configure" } else { Write-Warn "Remote externe 'assets' non configure - aucun master n'est encore requis" }
-        }
+
+    # Parite avec doctor-macos.sh: rendre un verdict meme quand DVC est absent,
+    # sinon un poste sans DVC mais avec des masters references ne dit rien du remote.
+    $DvcRemotes = if (Test-Command "dvc") { (& dvc remote list 2>$null) -join "`n" } else { "" }
+    if ($DvcRemotes -match '(?m)^assets\s') {
+        Write-Ok "Remote externe 'assets' configure localement"
+    } elseif ($DvcPointers.Count -gt 0) {
+        Write-Fail "Des assets DVC existent mais le remote 'assets' n'est pas configure"
+    } else {
+        Write-Warn "Remote externe 'assets' non configure - aucun master n'est encore requis"
     }
 
     $GitName = (& git config --get user.name 2>$null) -join ""
