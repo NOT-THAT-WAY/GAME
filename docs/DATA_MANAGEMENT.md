@@ -8,7 +8,7 @@ Cette politique évite que GitHub, le coffre d'assets, les postes locaux et les 
 |---|---|---|---|
 | code, réglages, scènes, prefabs, documentation | GitHub privé | branches + PR | historique Git |
 | binaires nécessaires à Unity/Wwise | Git LFS, avec budget surveillé | clone/pull Git | tant que référencés par une release supportée |
-| masters art/audio/IA et références lourdes | remote DVC privé | `dvc pull/push` | versioning objet + sauvegarde séparée |
+| masters art/audio/IA et références lourdes | remote DVC privé — bucket Cloudflare R2 `ntw-assets`, préfixe `game/` | `dvc pull/push` | versioning objet + sauvegarde séparée |
 | SoundBanks runtime approuvées | Git LFS sous `Assets/StreamingAssets/Audio/GeneratedSoundBanks/` | clone/pull Git | tant que la version du jeu les référence |
 | `Library`, caches, builds locaux, SoundBanks intermédiaires | poste local | jamais | supprimables/reconstructibles |
 | builds de test et logs partagés | artefacts de release/CI dédiés plus tard | lien à durée limitée | 30 à 90 jours selon utilité |
@@ -48,6 +48,16 @@ Une migration de format ou de schéma se fait dans une PR dédiée, avec une not
 Éviter les valeurs de gameplay copiées dans plusieurs prefabs. Une valeur partagée possède un propriétaire et un emplacement canonique ; le code consomme cette donnée sans la dupliquer. Les IDs fonctionnels restent stables même si le nom affiché ou le fichier change.
 
 La première version ne construit ni backend de compte ni base de données : aucune donnée persistante n'est nécessaire au test LAN. Ces frontières permettent d'en ajouter plus tard sans mélanger sauvegardes, configuration et état réseau.
+
+## Coffre d'assets
+
+Le remote DVC s'appelle `assets` sur toutes les machines ; `doctor-macos.sh` et `doctor-windows.ps1` refusent tout autre nom dès qu'un pointeur existe. Sa définition — URL, endpoint, région, profil — vit dans `.dvc/config.local`, jamais dans Git : `GAME` est un dépôt public, et un endpoint publié désigne la cible du coffre de façon irréversible. Les clés passent par un profil local, pas par la ligne de commande.
+
+Les secrets d'organisation `R2_ACCESS_KEY_ID` et `R2_SECRET_ACCESS_KEY`, avec les variables `R2_ENDPOINT` et `R2_BUCKET`, servent uniquement aux workflows GitHub Actions. Ils ne configurent aucun poste et ne déplacent aucun asset.
+
+L'ordre est contraint : `dvc add`, puis `dvc push`, puis `git commit` du pointeur, puis `git push`. Publier un pointeur avant que le contenu soit dans le coffre produit une référence que personne ne peut résoudre. `scripts/assets-*.sh` le rappelle après chaque `push`.
+
+L'état de couverture du coffre — quels masters sont réellement sécurisés et lesquels ne le sont pas — est tenu dans [ASSETS.md](ASSETS.md).
 
 ## Travail local
 

@@ -4,6 +4,7 @@ param(
     [string]$Action = "Status",
     [string]$RemoteUrl,
     [string]$EndpointUrl,
+    [string]$Region,
     [string]$Profile,
     [string]$Path
 )
@@ -39,6 +40,9 @@ switch ($Action) {
         if (-not $RemoteUrl) { throw "-RemoteUrl est requis pour Configure." }
         Invoke-Dvc @("remote", "add", "--local", "--force", "--default", $RemoteName, $RemoteUrl)
         if ($EndpointUrl) { Invoke-Dvc @("remote", "modify", "--local", $RemoteName, "endpointurl", $EndpointUrl) }
+        # Voir le commentaire equivalent dans assets-macos.sh: un endpoint S3-compatible
+        # ne deduit pas sa region. Cloudflare R2 attend la valeur litterale `auto`.
+        if ($Region) { Invoke-Dvc @("remote", "modify", "--local", $RemoteName, "region", $Region) }
         if ($Profile) { Invoke-Dvc @("remote", "modify", "--local", $RemoteName, "profile", $Profile) }
         Write-Host "Remote DVC '$RemoteName' configure localement. Aucun credential n'est ajoute a Git."
     }

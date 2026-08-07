@@ -89,13 +89,19 @@ Les masters lourds ne sont pas envoyés dans GitHub. Une fois l'URL privée comm
 
 ```bash
 ./scripts/setup-macos.sh --install-tools --with-assets
-./scripts/assets-macos.sh configure "REMPLACER_PAR_URL_DVC"
+./scripts/assets-macos.sh configure "s3://ntw-assets/game" \
+  --endpoint "https://<ID_DE_COMPTE>.r2.cloudflarestorage.com" \
+  --region "auto" \
+  --profile "game-assets"
 ./scripts/assets-macos.sh pull
 ```
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1 -InstallTools -WithAssets
-.\scripts\assets-windows.ps1 -Action Configure -RemoteUrl "REMPLACER_PAR_URL_DVC"
+.\scripts\assets-windows.ps1 -Action Configure -RemoteUrl "s3://ntw-assets/game" `
+  -EndpointUrl "https://<ID_DE_COMPTE>.r2.cloudflarestorage.com" `
+  -Region "auto" `
+  -Profile "game-assets"
 .\scripts\assets-windows.ps1 -Action Pull
 ```
 

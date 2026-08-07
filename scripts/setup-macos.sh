@@ -15,6 +15,7 @@ REMOTE_PLAY=0
 WITH_ASSETS=0
 ASSET_REMOTE=""
 ASSET_ENDPOINT=""
+ASSET_REGION=""
 ASSET_PROFILE=""
 
 find_smart_merge() {
@@ -40,7 +41,7 @@ has_vscode_extension() {
 }
 
 usage() {
-  printf 'Usage: %s [--install-tools] [--open-unity] [--remote-play] [--with-assets] [--all] [--asset-remote URL] [--asset-endpoint URL] [--asset-profile NAME]\n' "$0"
+  printf 'Usage: %s [--install-tools] [--open-unity] [--remote-play] [--with-assets] [--all] [--asset-remote URL] [--asset-endpoint URL] [--asset-region NAME] [--asset-profile NAME]\n' "$0"
 }
 
 while (( $# > 0 )); do
@@ -59,6 +60,11 @@ while (( $# > 0 )); do
     --asset-endpoint)
       (( $# >= 2 )) || { printf '%s\n' '--asset-endpoint attend une URL.' >&2; exit 2; }
       ASSET_ENDPOINT="$2"
+      shift
+      ;;
+    --asset-region)
+      (( $# >= 2 )) || { printf '%s\n' '--asset-region attend un nom.' >&2; exit 2; }
+      ASSET_REGION="$2"
       shift
       ;;
     --asset-profile)
@@ -138,6 +144,9 @@ if [[ -n "$ASSET_REMOTE" ]]; then
   ASSET_ARGUMENTS=(configure "$ASSET_REMOTE")
   if [[ -n "$ASSET_ENDPOINT" ]]; then
     ASSET_ARGUMENTS+=(--endpoint "$ASSET_ENDPOINT")
+  fi
+  if [[ -n "$ASSET_REGION" ]]; then
+    ASSET_ARGUMENTS+=(--region "$ASSET_REGION")
   fi
   if [[ -n "$ASSET_PROFILE" ]]; then
     ASSET_ARGUMENTS+=(--profile "$ASSET_PROFILE")
