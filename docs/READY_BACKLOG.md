@@ -278,7 +278,8 @@ Travail Codex :
 
 Preuve : même suite verte en batch sur Mac et Windows, puis test volontairement cassé observé rouge.
 
-État local du 9 août 2026 : compilation Mac verte, `5/5` EditMode et `1/1` PlayMode, wrappers,
+État local du 9 août 2026 : compilation Mac verte, `26/26` EditMode (dont `5/5` fondation) et
+`1/1` PlayMode, wrappers,
 `test-run.json`, manifests de player build Mac/Windows et documentation présents. Un rouge volontaire
 `4/5` a aussi été observé localement. Restent la reproduction depuis un SHA propre, la revue des
 artifacts et la preuve Windows ; elles ne sont pas remplacées par le résultat Mac sale.
@@ -362,9 +363,8 @@ séparées, puis propose une agrégation signée sans priorité liée au `Client
 
 ### TOP-01 — Introduire le schéma de topologie v1
 
-- **Statut** : fixtures préparées ; types, parseur strict, IDs, canonicalisation et checksum
-  `READY-CODEX`. `DEC-01` ne bloque que les réglages de simulation séparés.
-- **Branche** : `data/maze-topology-schema-v1`
+- **Statut** : `IMPLEMENTED-LOCAL`; preuve Windows du checksum encore attendue.
+- **Branche** : `feat/m1-minimal-skeleton`
 - **Pilote / binôme / testeur** : Zak / Nils / Sean
 - **Estimation** : 2–3 j
 - **Claims** : nouveaux types purs sous `Assets/_Project/Runtime/Maze/Topology/`, schéma/données,
@@ -378,13 +378,15 @@ de l’éditeur ne devient pas la nouvelle source.
 Preuve : mêmes bytes canoniques et checksum sur Mac/Windows ; fixtures valides/invalides ; migration
 de `MazeGrid16x16.json` sans dépendre des noms ou de l’ordre du FBX.
 
-Préparation locale du 9 août 2026 : huit fixtures et leur manifest sont prêts pour JSON strict,
-version, doublons d’ID, référence pivot et bornes edge/spawn. Connectivité et checksum restent
-explicitement différés ; aucun parseur runtime ni choix DEC n’est anticipé.
+État local du 9 août 2026 : types runtime, parseur strict sans parse partiel, checksum obligatoire
+au runtime, références bijectives, états/occupations cohérents, limites de ressources et migration
+reproductible du 16×16 implémentés. Le générateur legacy lit la topologie v1 signée et a régénéré
+sa scène avec quatre spawns orientés par les arêtes libres. Preuve Mac : `26/26` EditMode,
+checksum fixture `b78a…e580`, checksum 16×16 `36a8…528a`. Connectivité reste dans TOP-02.
 
 ### TOP-02 — Générer collisions et connectivité depuis le schéma
 
-- **Statut** : specs de colliders et sweep `READY-CODEX` après TOP-01 ; verdict de connectivité
+- **Statut** : primitives, occupation d’arêtes et sweep `IN-PROGRESS`; verdict de connectivité
   bloqué uniquement par DEC-02
 - **Branche** : `feat/topology-colliders`
 - **Pilote / binôme / testeur** : Zak / Sean / Nils
@@ -400,7 +402,7 @@ de référence, cas de fermeture impossible refusé de façon déterministe.
 
 ### GRY-01 — Livrer la scène grise à un pivot et deux joueurs
 
-- **Statut** : `BLOCKED` par TOP-01 ; design Sean et outillage Codex ensuite
+- **Statut** : `READY-CODEX`; TOP-01 est disponible, aucune dépendance Blender/DVC
 - **Branche** : `feat/pivot-graybox`
 - **Pilote / binôme / testeur** : Sean / Zak / Nils
 - **Estimation** : 1–2 j

@@ -6,11 +6,14 @@
     "schema-version",
     "stable-ids",
     "references",
-    "grid-bounds"
+    "grid-bounds",
+    "state-geometry",
+    "initial-edge-and-opening-occupancy",
+    "resource-limits",
+    "canonical-bytes-and-checksum"
   ],
   "deferred": [
     "connectivity-policy",
-    "canonical-bytes-and-checksum",
     "tick-and-physics",
     "player-canonical-shape",
     "energy-and-contestation",

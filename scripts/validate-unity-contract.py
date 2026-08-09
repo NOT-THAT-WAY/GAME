@@ -60,6 +60,7 @@ expected_packages = {
     "com.unity.inputsystem": toolchain["INPUT_SYSTEM_VERSION"],
     "com.unity.multiplayer.playmode": toolchain["MULTIPLAYER_PLAYMODE_VERSION"],
     "com.unity.multiplayer.tools": toolchain["MULTIPLAYER_TOOLS_VERSION"],
+    "com.unity.nuget.newtonsoft-json": toolchain["NEWTONSOFT_JSON_VERSION"],
     "com.unity.render-pipelines.universal": toolchain["URP_VERSION"],
 }
 for package, expected_version in expected_packages.items():

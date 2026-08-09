@@ -9,11 +9,11 @@ namespace NotThatWay.Game
     /// carrée et un mur fait un pas de long, donc aucune pose intermédiaire n'est
     /// possible.
     ///
-    /// Tout ce que porte ce composant vient de la topologie typée
-    /// `MazeGrid16x16.json` et non du FBX : l'identifiant, l'arête d'origine et le
-    /// collider. Le maillage n'est qu'un habillage découpé sur la même grille ; ni
-    /// son nom, ni ses triangles, ni sa place dans la hiérarchie ne définissent une
-    /// règle ou un identifiant réseau (ADR 0004).
+    /// L'arête d'origine et le collider viennent de la topologie v1, pas du FBX.
+    /// Attention : <see cref="Id"/> reste l'ancien rang contigu attendu par
+    /// <see cref="MovableWallDirector"/> ; ce n'est pas le <c>wallId</c> canonique et
+    /// aucun nouveau protocole ne doit le réutiliser. Le maillage n'est qu'un
+    /// habillage découpé sur la même grille (ADR 0004).
     ///
     /// Les index reprennent ceux de la grille : la famille 0 est une arête
     /// verticale `vwalls[x][y]`, qui va du nœud <c>(x, y)</c> au nœud

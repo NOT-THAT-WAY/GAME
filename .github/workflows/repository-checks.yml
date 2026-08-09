@@ -78,6 +78,9 @@ jobs:
       - name: Validate topology fixture contract
         run: python3 ./tests/topology-fixtures/test-fixtures.py
 
+      - name: Validate reproducible 16x16 topology migration
+        run: ./scripts/migrate-maze-topology-v1.py --check
+
       - name: Parse Windows scripts
         shell: pwsh
         run: |

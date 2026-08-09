@@ -23,7 +23,7 @@
       "pivotId": 100,
       "initialStateId": 0,
       "states": [
-        {"stateId": 0, "edge": {"axis": "horizontal", "x": 0, "y": 1}, "quarterTurns": 1}
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 0, "y": 1}, "quarterTurns": 0}
       ]
     }
   ],

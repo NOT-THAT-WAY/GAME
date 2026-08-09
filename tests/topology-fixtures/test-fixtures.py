@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import copy
+import importlib.util
 import json
 import unittest
 from pathlib import Path
@@ -8,6 +10,18 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 FIXTURES = REPO_ROOT / "Assets" / "_Project" / "Tests" / "Fixtures" / "Topology"
+LEGACY_TOPOLOGY = REPO_ROOT / "Assets" / "_Project" / "Maze" / "MazeGrid16x16.json"
+MIGRATED_TOPOLOGY = REPO_ROOT / "Assets" / "_Project" / "Maze" / "MazeTopology16x16.v1.json"
+
+
+def load_migration_module():
+    script = REPO_ROOT / "scripts" / "migrate-maze-topology-v1.py"
+    spec = importlib.util.spec_from_file_location("migrate_maze_topology_v1", script)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load {script}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def reject_duplicate_members(pairs):
@@ -74,13 +88,45 @@ class TopologyFixtureContractTests(unittest.TestCase):
         self.assertTrue(
             {
                 "connectivity-policy",
-                "canonical-bytes-and-checksum",
                 "tick-and-physics",
                 "player-canonical-shape",
                 "energy-and-contestation",
                 "round-rule",
             }.issubset(deferred)
         )
+        self.assertIn("canonical-bytes-and-checksum", self.manifest["contractScope"])
+
+
+class TopologyMigrationContractTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.migration = load_migration_module()
+        cls.legacy = strict_load(LEGACY_TOPOLOGY)
+
+    def test_migration_matches_the_tracked_runtime_document(self) -> None:
+        self.assertEqual(strict_load(MIGRATED_TOPOLOGY), self.migration.migrate(copy.deepcopy(self.legacy)))
+
+    def test_migration_rejects_bool_and_fractional_grid_values(self) -> None:
+        boolean_width = copy.deepcopy(self.legacy)
+        boolean_width["meta"]["width"] = True
+        with self.assertRaisesRegex(ValueError, "meta.width"):
+            self.migration.migrate(boolean_width)
+
+        fractional_wall = copy.deepcopy(self.legacy)
+        fractional_wall["vwalls"][0][0] = 1.5
+        with self.assertRaisesRegex(ValueError, "vwalls"):
+            self.migration.migrate(fractional_wall)
+
+    def test_migration_rejects_negative_coordinates_and_duplicate_directions(self) -> None:
+        negative_node = copy.deepcopy(self.legacy)
+        negative_node["pivots"][0]["node"][0] = -1
+        with self.assertRaisesRegex(ValueError, "node"):
+            self.migration.migrate(negative_node)
+
+        duplicate_arm = copy.deepcopy(self.legacy)
+        duplicate_arm["pivots"][0]["arms"][1] = duplicate_arm["pivots"][0]["arms"][0]
+        with self.assertRaisesRegex(ValueError, "unique"):
+            self.migration.migrate(duplicate_arm)
 
 
 if __name__ == "__main__":

@@ -56,7 +56,8 @@ automatique et le parcours humain reste court : voir [la checklist](FIRST_HUMAN_
   workspace local ignoré.
 - Les assemblies et wrappers EditMode/PlayMode existent localement ; leur exécution CI et leur
   reproduction Windows ne sont pas encore acquises.
-- La topologie runtime n’est pas encore versionnée/checksummée comme contrat autoritaire.
+- La topologie runtime v1 est versionnée/checksummée sur Mac ; la reproduction Windows et son
+  branchement au futur snapshot réseau restent à prouver.
 - Les colliders du décor dépendent encore en partie du FBX et de `MeshCollider`.
 - Les murs et le joueur utilisent encore du temps local ou une autorité cliente.
 - La boucle de manche, les métriques de playtest et les réglages joueur ne sont pas définis.

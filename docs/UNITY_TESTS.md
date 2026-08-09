@@ -5,8 +5,9 @@ Cette fondation exécute séparément les tests EditMode et PlayMode avec Unity
 trouve les tests et qu'un test PlayMode peut réellement avancer d'une frame. Elle ne
 prouve pas encore le réseau, la scène 16x16, les colliders ni l'architecture M1.
 
-État local au 9 août 2026 : Mac vert avec `5/5` EditMode et `1/1` PlayMode. La reproduction
-Windows et l’activation d’une CI Unity restent à faire ; elles ne sont pas déduites de ce résultat.
+État local au 9 août 2026 : Mac vert avec `26/26` EditMode (fondation, provenance et topologie) et
+`1/1` PlayMode. La reproduction Windows et l’activation d’une CI Unity restent à faire ; elles ne
+sont pas déduites de ce résultat.
 
 ## Prérequis
 
@@ -98,10 +99,12 @@ ignorées par Git ; joindre le XML et le log à la preuve du ticket ou à l'arti
 - `Assets/_Project/Tests/PlayMode/` : comportements qui exigent le cycle de vie
   Unity, une frame, de la physique ou plus tard une fixture réseau minimale.
 
-Les payloads préparatoires de `TOP-01` sont sous
-`Assets/_Project/Tests/Fixtures/Topology/`. Leur manifest couvre parsing JSON strict, version, IDs,
-références et bornes. Il nomme explicitement comme différés connectivité, checksum, tick, gabarit,
-énergie et manche ; ces fixtures ne servent donc pas à trancher une décision de design par défaut.
+Les payloads de `TOP-01` sont sous `Assets/_Project/Tests/Fixtures/Topology/`. Leur manifest couvre
+JSON strict, version, IDs, références bijectives, bornes, états géométriques, occupation initiale,
+limites de ressources, bytes canoniques et checksum runtime obligatoire. Connectivité, tick,
+gabarit, énergie et manche restent explicitement différés : ces fixtures ne tranchent aucune règle
+de design par défaut. La migration 16×16 possède en plus une commande `--check` qui refuse toute
+dérive entre sa source historique et le document v1 versionné.
 
 Les tests EditMode et PlayMode sont dans deux assemblies distinctes. Elles référencent
 `Game.Runtime`, mais aucun test de fondation ne modifie une scène, un prefab, un FBX,

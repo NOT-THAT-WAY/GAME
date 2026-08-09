@@ -26,11 +26,12 @@ murs ou collisions suit [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.m
 | Élément | Chemin | Origine |
 |---|---|---|
 | Labyrinthe | `Assets/_Project/Maze/Maze16x16.fbx` | `tools/maze-3d/build_maze.py` du dépôt de préproduction |
-| Grille logique | `Assets/_Project/Maze/MazeGrid16x16.json` | `tools/maze-forge/maps/maze_16_16x16.json` (seed 1704) |
+| Topologie runtime | `Assets/_Project/Maze/MazeTopology16x16.v1.json` | migration reproductible de `MazeGrid16x16.json` par `scripts/migrate-maze-topology-v1.py` |
+| Grille source historique | `Assets/_Project/Maze/MazeGrid16x16.json` | `tools/maze-forge/maps/maze_16_16x16.json` (seed 1704), non consommée directement par Unity |
 | Personnage jouable + punch | `Assets/_Project/Player/PersoBouleRigged.fbx` | studio Blender `player-punch-rig-v001`, export validé sur `art/player-punch-rig` |
 | Déplacement | `Assets/_Project/Runtime/Player/PlayerMotor.cs` | — |
 | Punch | `Assets/_Project/Runtime/Player/PlayerPunch.cs` | intention cliente, validation hôte, animation et recul |
-| Murs mobiles | `Assets/_Project/Runtime/Maze/MovableWall.cs`, `MovableWallDirector.cs` | découpés depuis `MazeGrid16x16.json`, état discret répliqué |
+| Murs mobiles legacy | `Assets/_Project/Runtime/Maze/MovableWall.cs`, `MovableWallDirector.cs` | découpés depuis la topologie v1, ancien état discret répliqué |
 | Bot d'entraînement | `Assets/_Project/Runtime/Player/SimpleBot.cs` | marche et recul simulés par l'hôte |
 | Générateur de scène | `Assets/_Project/Editor/MazePlaytestBuild.cs` | — |
 
@@ -57,14 +58,12 @@ Ces cotes sont celles du tableau d'échelle physique du concept : elles ne se
 règlent pas ici. Le pas de 2,75 m est la conséquence des deux premières valeurs,
 pas un réglage indépendant.
 
-Le `GridPitch` de `MazePlaytestBuild` duplique cette constante parce que la
-grille JSON ne la transporte pas. S'il s'écarte de `build_maze.py`, les
-apparitions tombent à côté des entrées.
-
-Cette duplication est une dette, pas une consigne : le futur schéma porte
-`cellPitchMm`, épaisseur/hauteur des murs, IDs et checksum. Son chargeur valide
-les murs verticaux/horizontaux et les pivots au lieu de ne lire que dimensions et
-points d'apparition.
+Le schéma v1 transporte maintenant `cellPitchMm`, épaisseur/hauteur des murs, IDs, orientations de
+spawn et checksum. Le `GridPitch` du générateur historique reste temporairement dupliqué, mais
+`MazePlaytestBuild` refuse désormais la scène si cette constante diverge de la topologie. Le chargeur
+runtime exige le checksum et valide murs, pivots, références bijectives, états, occupations et bornes
+avant toute génération. Les orientations de spawn sont choisies pendant la migration selon les
+arêtes réellement libres, puis consommées sans recalcul depuis le FBX.
 
 ## Collisions
 
@@ -76,7 +75,7 @@ longés.
 
 **Les murs statiques font exception depuis les murs mobiles** : ils ne
 reçoivent plus de `MeshCollider` mais une `BoxCollider` aux cotes du design —
-2,75 m de long, 0,25 m d'épaisseur, hauteur relevée sur le maillage découpé. Leur
+2,75 m de long, 0,25 m d'épaisseur et 3,00 m de haut selon la topologie signée. Leur
 collision vient donc de la topologie typée et non des triangles sculptés.
 
 La collision restante, issue des triangles et des noms du FBX, est une dette
@@ -150,10 +149,11 @@ vous prend au passage.
 
 Le FBX sort tous les murs statiques dans **un seul maillage fusionné**
 (`Murs_Statiques`) : aucun d'eux ne pouvait bouger seul. `SplitStaticWalls` le
-redécoupe en un objet par arête de `MazeGrid16x16.json`, chaque triangle
-rejoignant l'arête dont son barycentre est le plus proche. Identifiant, case
-d'origine et collider viennent tous de la grille typée ; le
-maillage sculpté n'est plus qu'un habillage, conformément à l'ADR 0004. La
+redécoupe en un objet par arête de `MazeTopology16x16.v1.json`, chaque triangle
+rejoignant l'arête dont son barycentre est le plus proche. Case d'origine et collider viennent de la
+topologie typée ; l'ancien director attribue encore un index local contigu au lieu du `wallId` v1.
+Ce chemin reste donc un smoke legacy à remplacer par le modèle graybox. Le maillage sculpté n'est
+qu'un habillage, conformément à l'ADR 0004. La
 génération avertit si une arête pleine déclarée par le JSON ne reçoit aucun
 triangle, ce qui signalerait un FBX désaccordé de la grille.
 

@@ -42,15 +42,15 @@ deux sources d’un même effort signé ; ils ne doivent pas rester deux simulat
 | Domaine | Acquis | Manque réel | Conséquence |
 |---|---|---|---|
 | Toolchain | Unity/FishNet/URP/Input System figés ; validation statique verte | preuve Windows de la baseline | développement Mac possible, sortie M0 impossible |
-| Builds/tests | build Mac courant réussi ; `5/5` EditMode et `1/1` PlayMode ; rouge volontaire détecté | tests de domaine, Windows, SHA propre et CI Unity | le runner est prouvé, pas le gameplay M1 |
+| Builds/tests | build Mac courant réussi ; `26/26` EditMode et `1/1` PlayMode ; rouge volontaire détecté | collisions/tick, Windows, SHA propre et CI Unity | topologie prouvée sur Mac, pas encore le gameplay M1 |
 | HT-00 | caméra, mouvement, saut, punch et bot touché sans crash | aucune rotation de mur/pivot prouvée ; ancien binaire sans provenance ferme | conserver `INCOMPLETE`, ne pas forcer un faux PASS |
 | Gameplay | map, joueur, pivots et murs forment un smoke intégré | temps par frame, autorité cliente, deux systèmes muraux, téléport `U` | ne plus étendre les classes legacy |
-| Topologie | JSON 16×16 et fixtures strictes préparées | types runtime, parseur, validation, IDs, canonicalisation, checksum | première vraie PR d’architecture |
+| Topologie | schéma v1, parseur strict, validation, IDs, canonicalisation, checksum et migration 16×16 verts sur Mac | checksum Windows et intégration snapshot | TOP-02/graybox peuvent démarrer |
 | Collision | une partie des murs statiques reçoit des boîtes | le build annonce encore 21 `MeshCollider` ; pivots, props et restes dépendent du FBX/mesh ; arc non déterministe | graybox primitive avant réintégration |
 | Réseau | Tugboat local et roster historique fonctionnels | tick, snapshot, late join, reconcile et preuve distante à trois | aucun claim M1 réseau |
 | GitHub | workflow statique vert sur le SHA distant | dépôt public sans licence, ruleset désactivé, `main` non protégé, trois Admin, issues périmées | G0 reste rouge |
 | DVC/assets | R2 choisi ; un master riggé existe localement | aucun pointeur/push/restore ; deux masters absents ; droits à confirmer | graybox autorisée, modification durable des masters bloquée |
-| Preuves | manifests de build et rapports expurgés préparés | les logs réseau ne prouvent pas leur commit : `--commit` peut réétiqueter un ancien log | durcir la provenance avant NET-00 |
+| Preuves | identité runtime, bundle complet et rapports liés aux manifests verts sur Mac | parse/build Windows puis vraie session multi-machine | ancien log désormais `INCOMPLETE` |
 
 Le rapport réseau historique à un participant est seulement une preuve du filtre d’anonymisation.
 Il ne constitue ni une preuve du commit courant, ni une preuve multi-machine. Le prochain format doit
@@ -225,8 +225,8 @@ Seulement après la sortie technique et humaine du mur :
 | DEC-02 | recommandation prête | humain avant validation connectivité | garantie zone de duel |
 | DEC-03 | recommandation prête | humain avant `INT-01` | effort, énergie, égalité |
 | DEC-04 | recommandation prête | G3 avant manche M2 | objectif/reset |
-| TOP-01A | `READY-CODEX` | aucune décision produit | types, JSON strict, IDs, références, bornes |
-| TOP-01B | après TOP-01A | aucune décision de feel | canonicalisation, checksum, migration 16×16 |
+| TOP-01A | `IMPLEMENTED-LOCAL` | preuve Windows restante | types, JSON strict, IDs, références, bornes |
+| TOP-01B | `IMPLEMENTED-LOCAL` | preuve Windows restante | canonicalisation, checksum, migration 16×16 |
 | TOP-02 | après TOP-01 et DEC-02 pour la connectivité | politique mur/joueur avant intégration physique | colliders, arc balayé, graphe |
 | GRY-01 | après specs collision | aucune dépendance Blender/DVC | arène 2×2 déterministe |
 | ART-01 | après graybox stable | revue humaine de lisibilité | primitives lisibles puis seulement blockout éventuel |
