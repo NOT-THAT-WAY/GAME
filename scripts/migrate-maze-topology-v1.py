@@ -328,19 +328,27 @@ def migrate(legacy: dict[str, Any]) -> dict[str, Any]:
                 pivot_id, home_direction = pivot_edges[key]
                 node = next(pivot["node"] for pivot in pivots if pivot["pivotId"] == pivot_id)
                 node_pair = [node["x"], node["y"]]
+                states = []
+                for quarter_turns in range(4):
+                    state_edge = edge_for_direction(node_pair, rotate(home_direction, quarter_turns))
+                    if not edge_is_in_bounds(state_edge, width, height):
+                        raise ValueError(
+                            f"rotated pivot state leaves the grid: pivot={pivot_id} "
+                            f"quarterTurns={quarter_turns} edge={state_edge}"
+                        )
+                    states.append(
+                        {
+                            "stateId": quarter_turns,
+                            "edge": state_edge,
+                            "quarterTurns": quarter_turns,
+                        }
+                    )
                 walls.append(
                     {
                         "wallId": wall_id,
                         "pivotId": pivot_id,
                         "initialStateId": 0,
-                        "states": [
-                            {
-                                "stateId": quarter_turns,
-                                "edge": edge_for_direction(node_pair, rotate(home_direction, quarter_turns)),
-                                "quarterTurns": quarter_turns,
-                            }
-                            for quarter_turns in range(4)
-                        ],
+                        "states": states,
                     }
                 )
     if consumed_pivot_edges != set(pivot_edges):

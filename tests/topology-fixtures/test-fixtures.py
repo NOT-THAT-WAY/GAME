@@ -128,6 +128,18 @@ class TopologyMigrationContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "unique"):
             self.migration.migrate(duplicate_arm)
 
+    def test_migration_rejects_a_rotated_pivot_pose_outside_the_grid(self) -> None:
+        border_pivot = {
+            "meta": {"width": 1, "height": 1},
+            "vwalls": [[2], [1]],
+            "hwalls": [[1, 1]],
+            "pivots": [{"node": [0, 0], "orientation": 0, "arms": ["N"]}],
+            "entrances": [],
+        }
+
+        with self.assertRaisesRegex(ValueError, "rotated pivot state leaves the grid"):
+            self.migration.migrate(border_pivot)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -68,8 +68,8 @@ arêtes réellement libres, puis consommées sans recalcul depuis le FBX.
 ## Collisions
 
 Le FBX embarque de la végétation et des props denses. Pour ce smoke test,
-`MazePlaytestBuild` ajoute un `MeshCollider` sur les objets qui arrêtent le joueur
-— `Pivot_*`, `Sol_Dalles`, `Sol_Sable`, `Reperes_Gameplay` et `Props`. Seule
+`MazePlaytestBuild` ajoute encore un `MeshCollider` aux ensembles de décor qui arrêtent le joueur
+— `Sol_Dalles`, `Sol_Sable`, `Reperes_Gameplay` et `Props`. Seule
 `Vegetation` reste traversable : mousses, lianes et buissons doivent pouvoir être
 longés.
 
@@ -77,6 +77,11 @@ longés.
 reçoivent plus de `MeshCollider` mais une `BoxCollider` aux cotes du design —
 2,75 m de long, 0,25 m d'épaisseur et 3,00 m de haut selon la topologie signée. Leur
 collision vient donc de la topologie typée et non des triangles sculptés.
+
+Les 17 objets `Pivot_*` ne portent plus de `MeshCollider` : leurs 46 bras reçoivent chacun une
+`BoxCollider` de 2,75 × 0,25 × 3,00 m, liée au `wallId` et au `pivotId` canoniques puis enfantée au
+pivot visuel. Les quatre `MeshCollider` restants appartiennent au décor/sol du smoke historique ;
+ils ne définissent ni une arête, ni un état, ni une décision réseau.
 
 La collision restante, issue des triangles et des noms du FBX, est une dette
 connue. La cible M1 génère des primitives simples depuis la topologie JSON

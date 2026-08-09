@@ -46,7 +46,7 @@ deux sources d’un même effort signé ; ils ne doivent pas rester deux simulat
 | HT-00 | caméra, mouvement, saut, punch et bot touché sans crash | aucune rotation de mur/pivot prouvée ; ancien binaire sans provenance ferme | conserver `INCOMPLETE`, ne pas forcer un faux PASS |
 | Gameplay | map, joueur, pivots et murs forment un smoke intégré | temps par frame, autorité cliente, deux systèmes muraux, téléport `U` | ne plus étendre les classes legacy |
 | Topologie | schéma v1, parseur strict, validation, IDs, canonicalisation, checksum et migration 16×16 verts sur Mac | checksum Windows et intégration snapshot | TOP-02/graybox peuvent démarrer |
-| Collision | une partie des murs statiques reçoit des boîtes | le build annonce encore 21 `MeshCollider` ; pivots, props et restes dépendent du FBX/mesh ; arc non déterministe | graybox primitive avant réintégration |
+| Collision | murs statiques et 46 bras de 17 pivots reçoivent des boîtes topologiques | 4 `MeshCollider` décor/sol restent dans le smoke FBX ; arc non déterministe | graybox primitive avant réintégration |
 | Réseau | Tugboat local et roster historique fonctionnels | tick, snapshot, late join, reconcile et preuve distante à trois | aucun claim M1 réseau |
 | GitHub | workflow statique vert sur le SHA distant | dépôt public sans licence, ruleset désactivé, `main` non protégé, trois Admin, issues périmées | G0 reste rouge |
 | DVC/assets | R2 choisi ; un master riggé existe localement | aucun pointeur/push/restore ; deux masters absents ; droits à confirmer | graybox autorisée, modification durable des masters bloquée |

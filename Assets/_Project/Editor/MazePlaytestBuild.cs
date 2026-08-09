@@ -571,13 +571,18 @@ namespace NotThatWay.Game.Editor
 
                 var isPivot = child.name.StartsWith(PivotPrefix, StringComparison.Ordinal);
                 if (isPivot)
+                {
                     pivots.Add(child);
+                    foreach (var legacyCollider in child.GetComponentsInChildren<Collider>(true))
+                        UnityEngine.Object.DestroyImmediate(legacyCollider);
+                }
                 else
                     // Un objet statique ne peut pas bouger : les pivots en sont exclus,
                     // sinon le batching fige leur maillage à l'orientation de départ.
                     GameObjectUtility.SetStaticEditorFlags(child.gameObject, StaticEditorFlags.BatchingStatic | StaticEditorFlags.OccluderStatic | StaticEditorFlags.OccludeeStatic);
 
-                if (!BlocksThePlayer(child.name) || !child.TryGetComponent<MeshFilter>(out var meshFilter) || meshFilter.sharedMesh == null)
+                if (isPivot || !BlocksThePlayer(child.name) ||
+                    !child.TryGetComponent<MeshFilter>(out var meshFilter) || meshFilter.sharedMesh == null)
                     continue;
 
                 child.gameObject.AddComponent<MeshCollider>();
@@ -594,18 +599,53 @@ namespace NotThatWay.Game.Editor
             if (pivots.Count == 0)
                 throw new InvalidOperationException($"Aucun objet « {PivotPrefix}… » dans {MazeModelPath} : la map ne contient pas de mur pivotant.");
 
-            // Ordre de nom : les trois machines numérotent les pivots pareil sans
-            // s'échanger la carte, et l'index suffit à désigner un pivot sur le réseau.
-            pivots.Sort((left, right) => string.CompareOrdinal(left.name, right.name));
+            if (pivots.Count != layout.Topology.Pivots.Count)
+            {
+                throw new InvalidOperationException(
+                    $"Le FBX contient {pivots.Count} pivots, la topologie signee en declare {layout.Topology.Pivots.Count}.");
+            }
+
+            var unmatchedPivots = new List<TopologyPivot>(layout.Topology.Pivots);
+            var topologyByVisual = new Dictionary<Transform, TopologyPivot>();
+            foreach (var visual in pivots)
+            {
+                TopologyPivot nearest = null;
+                var nearestDistance = float.PositiveInfinity;
+                foreach (var candidate in unmatchedPivots)
+                {
+                    var distance = Vector3.Distance(visual.position, NodeToUnity(candidate.Node, layout));
+                    if (distance >= nearestDistance)
+                        continue;
+                    nearest = candidate;
+                    nearestDistance = distance;
+                }
+                if (nearest == null || nearestDistance > 0.1f)
+                {
+                    throw new InvalidOperationException(
+                        $"Le pivot visuel {visual.name} n'a aucun pivot topologique a moins de 0,10 m.");
+                }
+                topologyByVisual.Add(visual, nearest);
+                unmatchedPivots.Remove(nearest);
+            }
+
+            // L'index legacy est au moins dérivé de l'ID canonique, plus d'un nom FBX.
+            pivots.Sort((left, right) =>
+                topologyByVisual[left].PivotId.CompareTo(topologyByVisual[right].PivotId));
+            var pivotBoxColliders = 0;
             for (var index = 0; index < pivots.Count; index++)
             {
+                var topologyPivot = topologyByVisual[pivots[index]];
+                pivotBoxColliders += AddCanonicalPivotColliders(pivots[index], topologyPivot, layout);
                 var wall = pivots[index].gameObject.AddComponent<PivotWall>();
                 var serializedWall = new SerializedObject(wall);
                 serializedWall.FindProperty("_index").intValue = index;
+                serializedWall.FindProperty("_pivotId").intValue = topologyPivot.PivotId;
                 serializedWall.ApplyModifiedPropertiesWithoutUndo();
             }
 
-            Debug.Log($"[GAME-MAZE] {colliders} MeshCollider(s) posé(s), {pivots.Count} pivot(s) mobile(s) indexé(s), {movableWalls} mur(s) mobile(s) découpé(s).");
+            Debug.Log(
+                $"[GAME-MAZE] {colliders} MeshCollider(s) decoratifs, {pivotBoxColliders} BoxCollider(s) " +
+                $"canoniques sur {pivots.Count} pivot(s), {movableWalls} mur(s) legacy decoupe(s).");
 
             // Soleil venant du sud (côté des entrées) pour que la face abordée par les
             // joueurs soit éclairée et non à contre-jour.
@@ -1018,6 +1058,43 @@ namespace NotThatWay.Game.Editor
             return MovableWallDirector.SlotCenter(family, x, y, layout.Width, layout.Height);
         }
 
+        private static Vector3 NodeToUnity(TopologyPoint node, MazeLayout layout)
+        {
+            return new Vector3(
+                -(node.X - layout.Width / 2f) * GridPitch,
+                0f,
+                -(node.Y - layout.Height / 2f) * GridPitch);
+        }
+
+        private static int AddCanonicalPivotColliders(
+            Transform visual,
+            TopologyPivot pivot,
+            MazeLayout layout)
+        {
+            var count = 0;
+            foreach (var wallId in pivot.WallIds)
+            {
+                var wall = layout.Topology.Walls.Find(candidate => candidate.WallId == wallId);
+                if (wall == null)
+                    throw new InvalidOperationException($"Mur canonique {wallId} introuvable pour le pivot {pivot.PivotId}.");
+                var initial = wall.States.Find(state => state.StateId == wall.InitialStateId);
+                var family = initial.Edge.Axis == TopologyEdge.VerticalAxis ? 0 : 1;
+                var center = SlotCenterToUnity(family, initial.Edge.X, initial.Edge.Y, layout);
+
+                var collision = new GameObject($"Collision_Wall_{wall.WallId}");
+                collision.transform.SetPositionAndRotation(
+                    center + Vector3.up * (layout.WallHeight * 0.5f),
+                    Quaternion.identity);
+                collision.transform.SetParent(visual, true);
+                var box = collision.AddComponent<BoxCollider>();
+                box.size = family == 0
+                    ? new Vector3(WallThickness, layout.WallHeight, GridPitch)
+                    : new Vector3(GridPitch, layout.WallHeight, WallThickness);
+                count++;
+            }
+            return count;
+        }
+
         /// <summary>Arête du pourtour de la map, qui ferme le labyrinthe et ne pivote pas.</summary>
         private static bool IsPerimeterSlot(int family, int x, int y, MazeLayout layout)
         {
@@ -1281,10 +1358,11 @@ namespace NotThatWay.Game.Editor
         private readonly struct MazeLayout
         {
             public MazeLayout(
-                int width, int height, float wallHeight, List<Vector2Int> entrances,
+                TopologyDocument topology, int width, int height, float wallHeight, List<Vector2Int> entrances,
                 List<int> spawnIds, List<int> spawnYawQuarterTurns,
                 int[,] verticalWalls, int[,] horizontalWalls)
             {
+                Topology = topology;
                 Width = width;
                 Height = height;
                 WallHeight = wallHeight;
@@ -1295,6 +1373,7 @@ namespace NotThatWay.Game.Editor
                 HorizontalWalls = horizontalWalls;
             }
 
+            public TopologyDocument Topology { get; }
             public int Width { get; }
             public int Height { get; }
             public float WallHeight { get; }
@@ -1367,6 +1446,7 @@ namespace NotThatWay.Game.Editor
                 throw new InvalidOperationException($"Aucun spawn declare dans {MazeGridPath}.");
 
             return new MazeLayout(
+                topology,
                 width,
                 height,
                 topology.Dimensions.WallHeightMm / 1000f,

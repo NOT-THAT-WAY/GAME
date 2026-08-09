@@ -128,11 +128,13 @@ namespace NotThatWay.Game.Tests.EditMode
             var trimmed = source.TrimEnd();
             var trailingComma = trimmed.Substring(0, trimmed.Length - 1) + ",\n}";
             const string singleQuoted = "{'schemaVersion':1}";
+            var hexadecimal = source.Replace("\"schemaVersion\": 1", "\"schemaVersion\": 0x1");
             var oversized = source + new string(' ', TopologyParser.MaximumJsonBytes);
 
             var commentResult = TopologyParser.Parse(commented);
             var commaResult = TopologyParser.Parse(trailingComma);
             var singleQuoteResult = TopologyParser.Parse(singleQuoted);
+            var hexadecimalResult = TopologyParser.Parse(hexadecimal);
             var oversizedResult = TopologyParser.Parse(oversized);
 
             Assert.That(commentResult.IsValid, Is.False);
@@ -143,6 +145,8 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(commaResult.Issues.Select(issue => issue.Code), Does.Contain(TopologyIssueCodes.JsonInvalid));
             Assert.That(singleQuoteResult.IsValid, Is.False);
             Assert.That(singleQuoteResult.Issues.Select(issue => issue.Code), Does.Contain(TopologyIssueCodes.JsonInvalid));
+            Assert.That(hexadecimalResult.IsValid, Is.False);
+            Assert.That(hexadecimalResult.Issues.Select(issue => issue.Code), Does.Contain(TopologyIssueCodes.JsonInvalid));
             Assert.That(oversizedResult.IsValid, Is.False);
             Assert.That(oversizedResult.Issues.Select(issue => issue.Code), Does.Contain(TopologyIssueCodes.JsonTooLarge));
         }

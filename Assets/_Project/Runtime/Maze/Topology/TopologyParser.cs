@@ -17,6 +17,9 @@ namespace NotThatWay.Game.Topology
         private static readonly Regex ChecksumPattern =
             new Regex("^[0-9a-f]{64}$", RegexOptions.CultureInvariant);
 
+        private static readonly Regex RfcNumberPattern =
+            new Regex("^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$", RegexOptions.CultureInvariant);
+
         public static TopologyParseResult Parse(string json)
         {
             return ParseInternal(json, false);
@@ -58,6 +61,11 @@ namespace NotThatWay.Game.Topology
             if (ContainsComment(json))
             {
                 Add(issues, TopologyIssueCodes.JsonCommentForbidden, "$", "Les commentaires JSON sont interdits.");
+                return Invalid(issues);
+            }
+            if (ContainsNonRfcLiteral(json))
+            {
+                Add(issues, TopologyIssueCodes.JsonInvalid, "$", "Extension lexicale JSON non conforme a la RFC.");
                 return Invalid(issues);
             }
             if (TryFindDuplicateProperty(json, out var duplicatePath))
@@ -504,6 +512,49 @@ namespace NotThatWay.Game.Topology
             catch (JsonReaderException)
             {
                 // Le parse principal rendra l'erreur syntaxique stable `json_invalid`.
+            }
+            return false;
+        }
+
+        private static bool ContainsNonRfcLiteral(string json)
+        {
+            for (var index = 0; index < json.Length; index++)
+            {
+                var character = json[index];
+                if (character == '"')
+                {
+                    index++;
+                    var escaped = false;
+                    while (index < json.Length)
+                    {
+                        character = json[index];
+                        if (escaped)
+                            escaped = false;
+                        else if (character == '\\')
+                            escaped = true;
+                        else if (character == '"')
+                            break;
+                        index++;
+                    }
+                    continue;
+                }
+
+                if (char.IsWhiteSpace(character) || character is '{' or '}' or '[' or ']' or ':' or ',')
+                    continue;
+
+                var start = index;
+                while (index + 1 < json.Length)
+                {
+                    var next = json[index + 1];
+                    if (char.IsWhiteSpace(next) || next is '{' or '}' or '[' or ']' or ':' or ',')
+                        break;
+                    index++;
+                }
+
+                var literal = json.Substring(start, index - start + 1);
+                if (literal != "true" && literal != "false" && literal != "null" &&
+                    !RfcNumberPattern.IsMatch(literal))
+                    return true;
             }
             return false;
         }
