@@ -237,6 +237,17 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(issues.Select(issue => issue.Code), Does.Contain(TopologyIssueCodes.WallStateCountInvalid));
         }
 
+        [Test]
+        public void Dimensions_RejectPhysicalMetricsBeyondTheRuntimeContract()
+        {
+            var document = ParseValidDocument();
+            document.Dimensions.CellPitchMm = int.MaxValue;
+
+            var issues = TopologyValidator.Validate(document);
+
+            Assert.That(issues.Select(issue => issue.Code), Does.Contain(TopologyIssueCodes.DimensionsInvalid));
+        }
+
         private static TopologyParseResult ParseFixture(string fileName)
         {
             return TopologyParser.Parse(File.ReadAllText(Path.Combine(FixtureDirectory, fileName)));

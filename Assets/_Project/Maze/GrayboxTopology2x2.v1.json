@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "topologyId": "graybox-duel-2x2-v1",
+  "dimensions": {
+    "widthCells": 2,
+    "heightCells": 2,
+    "cellPitchMm": 2750,
+    "wallThicknessMm": 250,
+    "wallHeightMm": 3000
+  },
+  "openings": [
+    {"openingId": 300, "edge": {"axis": "horizontal", "x": 0, "y": 0}},
+    {"openingId": 301, "edge": {"axis": "horizontal", "x": 1, "y": 0}}
+  ],
+  "walls": [
+    {
+      "wallId": 10,
+      "pivotId": 100,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 1, "y": 0}, "quarterTurns": 0},
+        {"stateId": 1, "edge": {"axis": "horizontal", "x": 0, "y": 1}, "quarterTurns": 1}
+      ]
+    },
+    {
+      "wallId": 1000,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 0, "y": 0}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1001,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 0, "y": 1}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1002,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 2, "y": 0}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1003,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 2, "y": 1}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1004,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 0, "y": 2}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1005,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 1, "y": 2}, "quarterTurns": 0}
+      ]
+    }
+  ],
+  "pivots": [
+    {"pivotId": 100, "node": {"x": 1, "y": 1}, "wallIds": [10]}
+  ],
+  "spawns": [
+    {"spawnId": 200, "cell": {"x": 0, "y": 0}, "yawQuarterTurns": 0},
+    {"spawnId": 201, "cell": {"x": 1, "y": 0}, "yawQuarterTurns": 0}
+  ],
+  "checksum": "031f7dfb01b8308cdc1c773842a6e1a31a2d293bc82cbcfb1fa06b7af94d03aa"
+}

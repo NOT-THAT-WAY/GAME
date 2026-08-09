@@ -8,6 +8,7 @@ namespace NotThatWay.Game.Topology
     public static class TopologyValidator
     {
         private const int MaximumGridSide = 1024;
+        private const int MaximumMetricMillimeters = 100_000;
         private const int MaximumWallStates = 4;
         private const int MaximumWallsPerPivot = 4;
 
@@ -124,10 +125,10 @@ namespace NotThatWay.Game.Topology
 
             var valid = dimensions.WidthCells is >= 1 and <= MaximumGridSide &&
                         dimensions.HeightCells is >= 1 and <= MaximumGridSide &&
-                        dimensions.CellPitchMm > 0 &&
-                        dimensions.WallThicknessMm > 0 &&
+                        dimensions.CellPitchMm is > 0 and <= MaximumMetricMillimeters &&
+                        dimensions.WallThicknessMm is > 0 and <= MaximumMetricMillimeters &&
                         dimensions.WallThicknessMm < dimensions.CellPitchMm &&
-                        dimensions.WallHeightMm > 0;
+                        dimensions.WallHeightMm is > 0 and <= MaximumMetricMillimeters;
             if (!valid)
                 Add(issues, TopologyIssueCodes.DimensionsInvalid, "$.dimensions", "Dimensions hors contrat.");
             return valid;

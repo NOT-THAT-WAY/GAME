@@ -386,8 +386,8 @@ checksum fixture `b78a…e580`, checksum 16×16 `36a8…528a`. Connectivité res
 
 ### TOP-02 — Générer collisions et connectivité depuis le schéma
 
-- **Statut** : primitives, occupation d’arêtes et sweep `IN-PROGRESS`; verdict de connectivité
-  bloqué uniquement par DEC-02
+- **Statut** : `IMPLEMENTED-LOCAL` pour primitives, occupation, graphe, sweep et fixture M1 ;
+  intégration de la politique de refus attend le modèle de transition
 - **Branche** : `feat/topology-colliders`
 - **Pilote / binôme / testeur** : Zak / Sean / Nils
 - **Estimation** : 1,5–2,5 j
@@ -400,9 +400,16 @@ occupation des arêtes et chemins minimum. Les requêtes utilisent des layers ex
 Preuve : test de correspondance schéma/colliders, zéro collider gameplay issu du FBX dans la scène
 de référence, cas de fermeture impossible refusé de façon déterministe.
 
+État local du 9 août 2026 : `TopologyRuntimeMap` copie le document signé vers un modèle immuable ;
+géométrie millimétrique, occupation d'arêtes, BFS, périmètre et quart de disque balayé sont testés.
+La fixture 2×2 garde ses deux spawns reliés en `3` puis `1` arête. La gate atomique refuse destination
+occupée, rupture de connectivité et joueur dans l'arc sans muter l'état. Le PlayMode génère un sol et
+sept `BoxCollider`, aucun `MeshCollider`, change l'état du mur 10, répète trois resets exacts et
+compare deux hiérarchies générées indépendamment.
+
 ### GRY-01 — Livrer la scène grise à un pivot et deux joueurs
 
-- **Statut** : `READY-CODEX`; TOP-01 est disponible, aucune dépendance Blender/DVC
+- **Statut** : collision/topologie primitive `IMPLEMENTED-LOCAL`; joueurs, HUD et réseau à brancher
 - **Branche** : `feat/pivot-graybox`
 - **Pilote / binôme / testeur** : Sean / Zak / Nils
 - **Estimation** : 1–2 j

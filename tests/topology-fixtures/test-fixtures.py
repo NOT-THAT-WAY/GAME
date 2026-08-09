@@ -12,6 +12,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 FIXTURES = REPO_ROOT / "Assets" / "_Project" / "Tests" / "Fixtures" / "Topology"
 LEGACY_TOPOLOGY = REPO_ROOT / "Assets" / "_Project" / "Maze" / "MazeGrid16x16.json"
 MIGRATED_TOPOLOGY = REPO_ROOT / "Assets" / "_Project" / "Maze" / "MazeTopology16x16.v1.json"
+GRAYBOX_TOPOLOGY = REPO_ROOT / "Assets" / "_Project" / "Maze" / "GrayboxTopology2x2.v1.json"
 
 
 def load_migration_module():
@@ -105,6 +106,15 @@ class TopologyMigrationContractTests(unittest.TestCase):
 
     def test_migration_matches_the_tracked_runtime_document(self) -> None:
         self.assertEqual(strict_load(MIGRATED_TOPOLOGY), self.migration.migrate(copy.deepcopy(self.legacy)))
+
+    def test_graybox_checksum_and_cardinality_are_stable(self) -> None:
+        graybox = strict_load(GRAYBOX_TOPOLOGY)
+        self.assertEqual("031f7dfb01b8308cdc1c773842a6e1a31a2d293bc82cbcfb1fa06b7af94d03aa", graybox["checksum"])
+        self.assertEqual(graybox["checksum"], self.migration.checksum(graybox))
+        self.assertEqual((2, 2), (graybox["dimensions"]["widthCells"], graybox["dimensions"]["heightCells"]))
+        self.assertEqual(7, len(graybox["walls"]))
+        self.assertEqual(1, len(graybox["pivots"]))
+        self.assertEqual(2, len(graybox["spawns"]))
 
     def test_migration_rejects_bool_and_fractional_grid_values(self) -> None:
         boolean_width = copy.deepcopy(self.legacy)
