@@ -1,6 +1,7 @@
 using FishNet.Object;
+using NotThatWay.Game.Input;
+using NotThatWay.Game.PlayerSimulation;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace NotThatWay.Game
 {
@@ -16,6 +17,7 @@ namespace NotThatWay.Game
     /// après la migration décrite par l'ADR 0004.
     /// </summary>
     [RequireComponent(typeof(PlayerMotor))]
+    [RequireComponent(typeof(PlayerInputSource))]
     public sealed class PlayerPunch : NetworkBehaviour
     {
         // Le clip fait 20 images à 24 i/s (~0,83 s) : le cooldown couvre l'action
@@ -42,6 +44,7 @@ namespace NotThatWay.Game
         private const float ChestHeight = 0.7f;
 
         private PlayerMotor _motor;
+        private PlayerInputSource _inputSource;
         private Animator _animator;
         private MovableWallDirector _wallDirector;
         // Le host possède la même instance côté client et côté serveur. Deux
@@ -54,6 +57,7 @@ namespace NotThatWay.Game
         private void Awake()
         {
             _motor = GetComponent<PlayerMotor>();
+            _inputSource = GetComponent<PlayerInputSource>();
             _animator = GetComponentInChildren<Animator>(true);
         }
 
@@ -62,11 +66,10 @@ namespace NotThatWay.Game
             if (!IsOwner)
                 return;
 
-            // Le clic gauche maintenu sert déjà à pousser un pivot : la frappe prend
-            // le bouton droit, libre. Lecture directe de la souris comme le reste du
-            // prototype ; les Input Actions partagées arrivent avec M1 (ADR 0004).
-            var mouse = Mouse.current;
-            if (mouse == null || !mouse.rightButton.wasPressedThisFrame)
+            var pressed = _inputSource != null
+                ? _inputSource.CurrentFrame.PressedButtons
+                : PlayerCommandButtons.None;
+            if ((pressed & PlayerCommandButtons.PunchPressed) == 0)
                 return;
 
             // Filtre local sur le même tempo que le serveur : inutile de faire

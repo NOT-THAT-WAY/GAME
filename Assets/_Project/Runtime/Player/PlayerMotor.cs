@@ -1,8 +1,9 @@
 using System;
 using FishNet.Connection;
 using FishNet.Object;
+using NotThatWay.Game.Input;
+using NotThatWay.Game.PlayerSimulation;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 namespace NotThatWay.Game
@@ -14,13 +15,13 @@ namespace NotThatWay.Game
     /// volontairement pas anticipée ici.
     /// </summary>
     [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(PlayerInputSource))]
     public sealed class PlayerMotor : NetworkBehaviour
     {
         private const float WalkSpeed = 4.2f;
         private const float SprintSpeed = 7.0f;
         private const float Gravity = -22f;
         private const float GroundedVelocity = -3f;
-        private const float LookSensitivity = 0.12f;
         private const float MaxPitch = 85f;
 
         // 5,5 m/s sous une gravité de 22 m/s² donnent une pointe à 0,69 m, soit la
@@ -111,6 +112,7 @@ namespace NotThatWay.Game
         [SerializeField] private Transform _visual;
 
         private CharacterController _controller;
+        private PlayerInputSource _inputSource;
         private Renderer[] _visualRenderers = Array.Empty<Renderer>();
         private bool[] _visibleInFirstPerson = Array.Empty<bool>();
         private ConnectionSmokeTest _sessionPanel;
@@ -139,6 +141,7 @@ namespace NotThatWay.Game
         {
             _humanSmokeTest = HumanSmokeTestMode.IsEnabled;
             _controller = GetComponent<CharacterController>();
+            _inputSource = GetComponent<PlayerInputSource>();
             if (_visual == null)
                 return;
 
@@ -168,6 +171,8 @@ namespace NotThatWay.Game
         public override void OnStartClient()
         {
             base.OnStartClient();
+            if (_inputSource != null)
+                _inputSource.enabled = IsOwner;
             if (!IsOwner)
                 return;
 
@@ -201,7 +206,21 @@ namespace NotThatWay.Game
         public override void OnStopClient()
         {
             base.OnStopClient();
+            if (_inputSource != null)
+                _inputSource.enabled = false;
             if (IsOwner)
+                SetCursorLocked(false);
+        }
+
+        public override void OnOwnershipClient(NetworkConnection previousOwner)
+        {
+            base.OnOwnershipClient(previousOwner);
+            if (_inputSource != null)
+            {
+                _inputSource.ResetBufferedInput();
+                _inputSource.enabled = IsOwner;
+            }
+            if (!IsOwner)
                 SetCursorLocked(false);
         }
 
@@ -388,8 +407,7 @@ namespace NotThatWay.Game
                 "wall_contact",
                 $"id={_pushedMovableWall.Id} distance={hit.distance:F2}");
 
-            var keyboard = Keyboard.current;
-            if (keyboard == null || !(keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed))
+            if (_inputSource == null || _inputSource.CurrentFrame.MoveY <= 0.5f)
                 return;
 
             if (Time.time < _nextWallPushIntentAt)
@@ -411,10 +429,9 @@ namespace NotThatWay.Game
         /// </summary>
         private void ApplyPush()
         {
-            var mouse = Mouse.current;
-            var keyboard = Keyboard.current;
-            var pushing = mouse != null && mouse.leftButton.isPressed
-                && keyboard != null && (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed);
+            var frame = _inputSource != null ? _inputSource.CurrentFrame : default;
+            var pushing = (frame.HeldButtons & PlayerCommandButtons.InteractHeld) != 0 &&
+                frame.MoveY > 0.5f;
 
             if (pushing)
                 HumanSmokeTestMode.LogEventOnce("pivot_input_local", "pivot_input");
@@ -494,27 +511,11 @@ namespace NotThatWay.Game
 
         private void ReadToggles()
         {
-            var keyboard = Keyboard.current;
-            if (keyboard == null)
+            if (_inputSource == null)
                 return;
 
-            if (keyboard.escapeKey.wasPressedThisFrame)
+            if (_inputSource.PausePressedThisFrame)
                 SetCursorLocked(!_cursorLocked);
-
-            // Le panneau réseau donne des informations et occupe une grande partie
-            // de l'écran. En HT-00 il reste inaccessible, même si le participant
-            // découvre Tab par hasard ; le mode normal conserve son comportement.
-            if (!_humanSmokeTest && keyboard.tabKey.wasPressedThisFrame && _sessionPanel != null)
-                _sessionPanel.enabled = !_sessionPanel.enabled;
-
-            if (keyboard.f1Key.wasPressedThisFrame)
-            {
-                _thirdPerson = !_thirdPerson;
-                ApplyCameraMode();
-            }
-
-            if (keyboard.uKey.wasPressedThisFrame)
-                ApplyUnstick();
         }
 
         private void ApplyLook()
@@ -522,12 +523,11 @@ namespace NotThatWay.Game
             if (!_cursorLocked)
                 return;
 
-            var mouse = Mouse.current;
-            if (mouse == null)
+            if (_inputSource == null)
                 return;
 
-            // Le delta souris est déjà exprimé par image : pas de Time.deltaTime.
-            var delta = mouse.delta.ReadValue() * LookSensitivity;
+            var frame = _inputSource.CurrentFrame;
+            var delta = new Vector2(frame.LookYawDegrees, frame.LookPitchDegrees);
             if (!_smokeLookLogged && delta.sqrMagnitude > 0.0001f)
             {
                 _smokeLookLogged = true;
@@ -542,23 +542,11 @@ namespace NotThatWay.Game
 
         private void ApplyMove()
         {
-            var keyboard = Keyboard.current;
-            var input = Vector2.zero;
-            var sprinting = false;
-
-            if (keyboard != null)
-            {
-                // Les touches de l'Input System sont repérées par position physique :
-                // wKey/aKey correspondent à Z/Q sur un clavier AZERTY.
-                if (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed) input.y += 1f;
-                if (keyboard.sKey.isPressed || keyboard.downArrowKey.isPressed) input.y -= 1f;
-                if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed) input.x += 1f;
-                if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed) input.x -= 1f;
-                sprinting = keyboard.leftShiftKey.isPressed || keyboard.rightShiftKey.isPressed;
-
-                if (keyboard.spaceKey.wasPressedThisFrame)
-                    _lastJumpPressedAt = Time.time;
-            }
+            var frame = _inputSource != null ? _inputSource.CurrentFrame : default;
+            var input = new Vector2(frame.MoveX, frame.MoveY);
+            var sprinting = (frame.HeldButtons & PlayerCommandButtons.SprintHeld) != 0;
+            if ((frame.PressedButtons & PlayerCommandButtons.JumpPressed) != 0)
+                _lastJumpPressedAt = Time.time;
 
             input = Vector2.ClampMagnitude(input, 1f);
             if (!_smokeMovementLogged && input.sqrMagnitude > 0.01f)
@@ -672,14 +660,13 @@ namespace NotThatWay.Game
             var height = 118f;
             var area = new Rect(16f, Screen.height - height - 16f, Mathf.Min(760f, Screen.width - 32f), height);
             GUILayout.BeginArea(area, GUI.skin.box);
-            GUILayout.Label("ZQSD / WASD se déplacer   ·   Maj sprint   ·   Espace sauter (marteler pour se décoincer)   ·   Souris regarder", style);
-            GUILayout.Label($"Clic gauche maintenu + avancer contre un pivot turquoise = pousser{(_pushedWall != null ? $"  [{_pushProgress * 100f:F0} %]" : "")}", style);
+            GUILayout.Label("ZQSD / WASD / stick se déplacer   ·   Maj / stick press sprint   ·   Espace / A sauter   ·   Souris / stick regarder", style);
+            GUILayout.Label($"Clic gauche / E / gâchette + avancer contre un pivot = pousser{(_pushedWall != null ? $"  [{_pushProgress * 100f:F0} %]" : "")}", style);
             var wallEffort = _pushedMovableWall != null && _wallDirector != null
                 ? $"  [{_wallDirector.EffortFor(_pushedMovableWall.Id) * 100f:F0} %]"
                 : "";
-            GUILayout.Label($"Avancer contre un mur = le pousser, c'est lourd{wallEffort}   ·   clic droit = coup de poing (3 coups enchaînés ouvrent un mur)", style);
-            GUILayout.Label($"Échap curseur ({(_cursorLocked ? "capturé" : "libre")})   ·   Tab panneau réseau   ·   F1 vue {(_thirdPerson ? "3e personne" : "1re personne")}", style);
-            GUILayout.Label($"U se dégager d'un mur{(Time.time < _unstickFeedbackUntil ? $"   —   {_unstickFeedback}" : "")}", style);
+            GUILayout.Label($"Avancer contre un mur = le pousser{wallEffort}   ·   clic droit / F / épaule droite = coup de poing", style);
+            GUILayout.Label($"Échap / Menu : curseur ({(_cursorLocked ? "capturé" : "libre")})", style);
             GUILayout.EndArea();
         }
 
@@ -694,8 +681,8 @@ namespace NotThatWay.Game
 
             GUILayout.BeginArea(area, GUI.skin.box);
             GUILayout.Label("SMOKE TEST : déplacement · pivot · mur mobile · punch bot", style);
-            GUILayout.Label("ZQSD / WASD / flèches : bouger   ·   Souris : regarder   ·   Espace : sauter   ·   Échap : curseur", style);
-            GUILayout.Label("Pivot : clic gauche + avancer   ·   Mur : avancer ou clic droit   ·   U : se dégager", style);
+            GUILayout.Label("ZQSD / WASD / stick : bouger   ·   Souris / stick : regarder   ·   Espace / A : sauter", style);
+            GUILayout.Label("Pivot : Interagir + avancer   ·   Mur : avancer ou Punch   ·   Échap / Menu : curseur", style);
 
             if (_pushedWall != null)
                 GUILayout.Label($"Le pivot résiste… effort {_pushProgress * 100f:F0} %", style);

@@ -29,6 +29,7 @@ murs ou collisions suit [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.m
 | Topologie runtime | `Assets/_Project/Maze/MazeTopology16x16.v1.json` | migration reproductible de `MazeGrid16x16.json` par `scripts/migrate-maze-topology-v1.py` |
 | Grille source historique | `Assets/_Project/Maze/MazeGrid16x16.json` | `tools/maze-forge/maps/maze_16_16x16.json` (seed 1704), non consommée directement par Unity |
 | Personnage jouable + punch | `Assets/_Project/Player/PersoBouleRigged.fbx` | studio Blender `player-punch-rig-v001`, export validé sur `art/player-punch-rig` |
+| Contrôles | `Assets/_Project/Input/GameControls.inputactions` | actions Player/UI, clavier-souris et manette |
 | Déplacement | `Assets/_Project/Runtime/Player/PlayerMotor.cs` | — |
 | Punch | `Assets/_Project/Runtime/Player/PlayerPunch.cs` | intention cliente, validation hôte, animation et recul |
 | Murs mobiles legacy | `Assets/_Project/Runtime/Maze/MovableWall.cs`, `MovableWallDirector.cs` | découpés depuis la topologie v1, ancien état discret répliqué |
@@ -147,8 +148,9 @@ donné de biais.
 joueur ou un bot occupe l'arête d'arrivée, la poussée est refusée — pas de KO,
 pas de déplacement forcé. L'ADR 0004 laisse cette conséquence ouverte ; c'est le
 choix explicite du prototype, à trancher pour de bon en M1. Un battant peut en
-revanche frôler quelqu'un pendant sa course : `U` sert à se dégager si le mur
-vous prend au passage.
+revanche frôler quelqu'un pendant sa course. La touche de téléportation `U` a été
+retirée : si ce smoke legacy coince un joueur, arrêter l'essai et conserver le log
+au lieu de masquer le défaut. La graybox M1 refuse déjà tout l'arc balayé.
 
 ### Découpe depuis la grille
 
@@ -273,20 +275,16 @@ changent pas de comportement.
 
 | Touche | Effet |
 |---|---|
-| ZQSD / WASD / flèches | se déplacer |
-| Souris | regarder |
-| Maj | sprint |
-| Espace | sauter — contournement provisoire des gravats, statut gameplay à décider |
-| Clic gauche maintenu + avancer | pousser un mur pivotant d'un quart de tour |
-| Clic droit | coup de poing : joueur ou bot devant soi, sinon le mur touché est ébranlé — trois coups enchaînés l'ouvrent |
+| ZQSD / WASD / flèches ou stick gauche | se déplacer |
+| Souris ou stick droit | regarder |
+| Maj ou clic stick gauche | sprint |
+| Espace ou bouton Sud | sauter — contournement provisoire des gravats, statut gameplay à décider |
+| Clic gauche / E / gâchette droite maintenu + avancer | pousser un mur pivotant d'un quart de tour |
+| Clic droit / F / épaule droite | coup de poing : joueur ou bot devant soi, sinon le mur touché est ébranlé — trois coups enchaînés l'ouvrent |
 | Avancer contre un mur | le pousser à l'épaule : il cède au bout d'environ 3 s, et retombe si on lâche |
-| U | se dégager quand on est encastré dans un mur |
-| Échap | libérer ou recapturer le curseur |
-| Tab | masquer ou afficher le panneau réseau |
-| F1 | basculer 1re / 3e personne (vue de contrôle) |
+| Échap ou Menu | libérer ou recapturer le curseur |
 
-La vue de référence reste la première personne. La troisième personne est là pour
-vérifier le gabarit du personnage, pas pour jouer.
+La vue jouable de référence reste la première personne.
 
 En première personne, le porteur voit ses propres avant-bras et ses poings ; le
 corps et les pieds ne gardent que leur ombre, la caméra étant placée à hauteur des
@@ -294,24 +292,6 @@ yeux, à l'intérieur du volume du corps. Sans cette exception, un coup de poing
 donnait aucun retour à l'écran tant qu'il ne touchait personne. La sélection se
 fait sur le nom des meshes de l'export (`Forearm`, `Fist`) et ne concerne que le
 rendu : aucune règle gameplay n'en dépend.
-
-`U` replace le joueur sur le centre d'une cellule voisine libre : une case
-d'abord, puis deux, puis trois. À chaque anneau, la cellule retenue est la plus
-proche qui ait du sol sous elle et de quoi tenir debout. Si les trois anneaux
-sont bouchés, le joueur repart de son entrée, seul point dont
-`MazePlaytestBuild` garantit le sol et le dégagement.
-
-Cette touche ne repousse **pas** le joueur hors du mur : `ComputePenetration` ne
-résout rien contre un `MeshCollider` non convexe, et les murs du labyrinthe en
-sont. La validation d'une cellule passe donc par un tir vers le sol et un
-`CheckCapsule`, qui fonctionnent contre une géométrie concave. Pour la même
-raison, le dégagement vise la grille au lieu de mémoriser la dernière position
-« sûre » : un test de chevauchement qui ne détecte rien enregistrerait comme sûre
-la position où l'on est encastré.
-
-`RespawnGridPitch` duplique le pas de grille pour la même raison que le
-`GridPitch` de `MazePlaytestBuild` : s'il s'en écarte, le dégagement vise entre
-deux couloirs.
 
 ## Vérifier sans lancer de partie
 

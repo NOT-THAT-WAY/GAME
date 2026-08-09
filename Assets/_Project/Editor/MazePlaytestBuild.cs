@@ -7,6 +7,7 @@ using FishNet.Managing;
 using FishNet.Managing.Object;
 using FishNet.Object;
 using FishNet.Transporting.Tugboat;
+using NotThatWay.Game.Input;
 using NotThatWay.Game.Topology;
 using UnityEditor;
 using UnityEditor.Animations;
@@ -14,6 +15,7 @@ using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 namespace NotThatWay.Game.Editor
@@ -36,6 +38,7 @@ namespace NotThatWay.Game.Editor
         private const string MazeModelPath = "Assets/_Project/Maze/Maze16x16.fbx";
         private const string MazeGridPath = "Assets/_Project/Maze/MazeTopology16x16.v1.json";
         private const string PlayerModelPath = "Assets/_Project/Player/PersoBouleRigged.fbx";
+        private const string GameControlsPath = "Assets/_Project/Input/GameControls.inputactions";
         private const string PreviewDirectory = "Logs/MazePlaytest";
 
         // Gabarit du personnage produit par build_character.py : 1,40 m, origine
@@ -322,6 +325,16 @@ namespace NotThatWay.Game.Editor
                 cameraObject.SetActive(false);
 
                 root.AddComponent<NetworkObject>();
+
+                var controls = AssetDatabase.LoadAssetAtPath<InputActionAsset>(GameControlsPath);
+                if (!GameControlsContract.TryValidate(controls, out var controlsError))
+                {
+                    throw new InvalidOperationException(
+                        $"Invalid player controls at {GameControlsPath}: {controlsError}.");
+                }
+                var inputSource = root.AddComponent<PlayerInputSource>();
+                inputSource.enabled = false;
+                inputSource.Configure(controls);
 
                 // Déclarer le CharacterController au NetworkTransform : FishNet ne le
                 // laisse actif que sur la copie contrôlée, les copies distantes sont

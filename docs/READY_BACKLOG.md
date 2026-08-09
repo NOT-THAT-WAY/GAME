@@ -462,7 +462,7 @@ snapshot round-trip identiques.
 
 État local du 9 août 2026 : machine à deux poses avec IDs non denses, effort signé borné par source,
 agrégation indépendante de l'ordre, gate atomique, progression Q16, codec v1 et restauration late
-join implémentés. Les gates Mac comptent `57/57` EditMode ; l'adaptateur FishNet reste WALL-01.
+join implémentés. Les gates Mac comptent `70/70` EditMode après INP-01 ; l'adaptateur FishNet reste WALL-01.
 
 ### WALL-01 — Adaptateur FishNet, validation et arrivée tardive
 
@@ -482,9 +482,9 @@ sans divergence ; requêtes abusives de fixture refusées et journalisées sans 
 
 ### INP-01 — Passer aux Input Actions
 
-- **Statut** : actions de base et schemes clavier/manette `READY-CODEX` ; statut du saut et
-  sémantique finale tap/hold bloqués par DEC-01 ; parallèle à TICK-01
-- **Branche** : `feat/input-actions`
+- **Statut** : `IMPLEMENTED-LOCAL` pour asset, schemes, source frame→tick, commande compacte et
+  pont du smoke legacy ; statut durable du saut et sémantique finale tap/hold restent sous DEC-01
+- **Branche** : `feat/m1-minimal-skeleton`
 - **Pilote / binôme / testeur** : Sean / Zak / Nils
 - **Codex** : asset d’actions, adaptateur de commande, tests de bindings.
 - **Estimation** : 0,5–1 j
@@ -495,6 +495,13 @@ Clavier/souris et manette ; aucune logique réseau ne lit directement `Keyboard.
 `Mouse.current`.
 
 Preuve : bindings fonctionnels dans deux instances, focus souris maîtrisé, commande compacte testée.
+
+État local du 9 août 2026 : asset Player/UI validé, clavier/souris et manette virtuels, sources
+restreintes à des devices distincts, fronts conservés une seule fois et souris/stick séparés par
+unités. `PlayerMotor` et `PlayerPunch` ne lisent plus directement les devices ; le générateur de
+scène sérialise la source désactivée, activée ensuite uniquement pour le propriétaire. Une gate
+statique interdit le retour des lectures directes. Reste à prouver une manette physique et deux
+processus lors du test humain ; `Pause` est local et absent du payload réseau.
 
 ### PLY-01 — Extraire la simulation pure du joueur
 

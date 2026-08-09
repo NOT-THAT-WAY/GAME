@@ -162,6 +162,34 @@ if matrix_match:
         "3D physics collision matrix does not match the gameplay layer contract",
     )
 
+runtime_root = ROOT / "Assets/_Project/Runtime"
+runtime_sources = list(runtime_root.rglob("*.cs"))
+for forbidden_read in ("Keyboard.current", "Mouse.current", "Gamepad.current"):
+    offenders = [
+        path.relative_to(ROOT).as_posix()
+        for path in runtime_sources
+        if forbidden_read in path.read_text(encoding="utf-8")
+    ]
+    require(
+        not offenders,
+        f"direct device read {forbidden_read!r} bypasses Input Actions: {offenders}",
+    )
+
+player_simulation_root = runtime_root / "Player/Simulation"
+for source in player_simulation_root.glob("*.cs"):
+    text = source.read_text(encoding="utf-8")
+    for forbidden_dependency in (
+        "using UnityEngine",
+        "using FishNet",
+        "Time.time",
+        "Time.deltaTime",
+        "Time.fixedDeltaTime",
+    ):
+        require(
+            forbidden_dependency not in text,
+            f"pure player simulation uses {forbidden_dependency!r}: {source.relative_to(ROOT)}",
+        )
+
 if toolchain["WWISE_ENABLED"] == "0":
     require(
         not any(name.lower().startswith("com.audiokinetic") for name in manifest_dependencies),

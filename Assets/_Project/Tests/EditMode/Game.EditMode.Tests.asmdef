@@ -2,7 +2,9 @@
   "name": "Game.EditMode.Tests",
   "rootNamespace": "NotThatWay.Game.Tests.EditMode",
   "references": [
-    "Game.Runtime"
+    "Game.Runtime",
+    "Unity.InputSystem",
+    "Unity.InputSystem.TestFramework"
   ],
   "includePlatforms": [
     "Editor"
