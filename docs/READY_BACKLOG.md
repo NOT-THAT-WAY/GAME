@@ -462,7 +462,7 @@ snapshot round-trip identiques.
 
 État local du 9 août 2026 : machine à deux poses avec IDs non denses, effort signé borné par source,
 agrégation indépendante de l'ordre, gate atomique, progression Q16, codec v1 et restauration late
-join implémentés. Les gates Mac comptent `70/70` EditMode après INP-01 ; l'adaptateur FishNet reste WALL-01.
+join implémentés. Les gates Mac comptent `86/86` EditMode après PLY-01 ; l'adaptateur FishNet reste WALL-01.
 
 ### WALL-01 — Adaptateur FishNet, validation et arrivée tardive
 
@@ -505,8 +505,9 @@ processus lors du test humain ; `Pause` est local et absent du payload réseau.
 
 ### PLY-01 — Extraire la simulation pure du joueur
 
-- **Statut** : `BLOCKED` par DEC-01, TOP-02, TST-01
-- **Branche** : `feat/player-simulation-model`
+- **Statut** : `IMPLEMENTED-LOCAL` pour le modèle pur paramétré ; valeurs canoniques, preuve Windows
+  et adaptateur physique restent à fermer
+- **Branche** : `feat/m1-minimal-skeleton`
 - **Pilote / binôme / testeur** : Zak / Nils / Sean
 - **Codex** : état/commande/simulation et tests.
 - **Estimation** : 1–2 j
@@ -517,9 +518,17 @@ ordre de tick explicite. Séparer caméra/interpolation de la décision de colli
 
 Preuve : séquences déterministes, bords de collision et reset testés, aucune dépendance au framerate.
 
+État local du 9 août 2026 : état entièrement réconciliable, configuration sans preset caché,
+mouvement/yaw/sprint, gravité, saut désactivable, fenêtres coyote/buffer, knockback, collision injectée
+une fois par tick, restauration et wrap sont couverts. Payloads forgés, ticks non contigus, réentrance
+et exceptions de collision sont refusés atomiquement. La gate Mac compte `86/86` EditMode ; voir
+`docs/PLAYER_SIMULATION_MODEL.md`. PLY-02 doit encore fournir `CharacterController`, DTO FishNet,
+prédiction, replay et réconciliation.
+
 ### PLY-02 — Brancher prédiction et réconciliation FishNet
 
-- **Statut** : `BLOCKED` par PLY-01, INP-01 et GRY-01
+- **Statut** : `READY-CODEX` pour l’adaptateur local après PLY-01, INP-01 et GRY-01 ; preuve distribuée
+  encore bloquée par les décisions PhysX/tick et les machines de QA
 - **Branche** : `feat/predicted-player-motor`
 - **Pilote / binôme / testeur** : Zak / Nils / Sean
 - **Codex** : `Replicate`/`Reconcile`, instrumentation et tests.

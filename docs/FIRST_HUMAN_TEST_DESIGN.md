@@ -27,8 +27,8 @@ Durée cible : **3 à 5 minutes**.
 2. Sauter une fois.
 3. Faire tourner un pivot avec clic gauche + avancer, ou déplacer un mur en avançant/clic droit.
 4. Donner un coup de poing au bot.
-5. Utiliser `U` seulement si le personnage est coincé.
-6. Fermer le jeu.
+5. Fermer le jeu. Si le personnage reste coincé, arrêter immédiatement et signaler le blocage ;
+   aucune touche de déblocage ne fait partie du test.
 
 Inutile de tester toutes les entrées, tous les murs, plusieurs résolutions, le réseau distant ou
 l’équilibrage pendant HT-00.
@@ -59,3 +59,19 @@ caméra, déplacement, saut, punch et impact bot sont prouvés ; aucun changemen
 mur n’apparaît dans le log malgré l’action opérateur. Ce n’est pas converti artificiellement en
 `PASS`. Le suivi ajoute des marqueurs d’intention/contact/requête/refus afin d’isoler la chaîne en
 une prochaine exécution, sans modifier les règles ni imposer une nouvelle session immédiatement.
+
+## HT-M1 — quatre quêtes seulement
+
+Ce parcours remplace HT-00 lorsque le squelette autoritaire est prêt. Les commandes et l’objectif
+sont annoncés directement ; il n’ajoute ni indice, ni variante, ni questionnaire. Reconnexion,
+payloads invalides et profils réseau sont vérifiés automatiquement avant de solliciter les joueurs.
+
+| Ordre | Quête | Risque isolé | PASS / FAIL |
+|---|---|---|---|
+| 1 | Chaque joueur rejoint la zone opposée. | Traversabilité de l’arène. | PASS si les deux arrivent sans blocage ni reset ; sinon FAIL. |
+| 2 | Un joueur fait passer seul le mur de A à B. | Transition autoritaire. | PASS si B est exact et identique sur les deux instances ; sinon FAIL. |
+| 3 | Un joueur occupe l’arc pendant que l’autre tente de tourner le mur. | Protection du volume balayé. | PASS si le mur refuse sans déplacer ni coincer le joueur ; sinon FAIL. |
+| 4 | Les joueurs appliquent au même tick un effort opposé égal pour conserver A. | Conflit déterministe. | PASS si les efforts s’annulent et si les deux instances restent en A ; sinon FAIL. |
+
+Un seul échec arrête la session : il devient le prochain correctif technique. Le ressenti de jeu ne
+sera évalué qu’après ces quatre résultats binaires.

@@ -42,7 +42,7 @@ deux sources d’un même effort signé ; ils ne doivent pas rester deux simulat
 | Domaine | Acquis | Manque réel | Conséquence |
 |---|---|---|---|
 | Toolchain | Unity/FishNet/URP/Input System figés ; validation statique verte | preuve Windows de la baseline | développement Mac possible, sortie M0 impossible |
-| Builds/tests | build Mac courant réussi ; `70/70` EditMode et `4/4` PlayMode ; rouge volontaire détecté | joueur/réseau, Windows, SHA propre et CI Unity | topologie, graybox, modèle tick du mur et commandes Input prouvés sur Mac, pas encore le duel M1 |
+| Builds/tests | build Mac courant réussi ; `86/86` EditMode et `4/4` PlayMode ; rouge volontaire détecté | adaptateurs réseau, Windows, SHA propre et CI Unity | topologie, graybox, modèles tick mur/joueur et commandes Input prouvés sur Mac, pas encore le duel M1 |
 | HT-00 | caméra, mouvement, saut, punch et bot touché sans crash | aucune rotation de mur/pivot prouvée ; ancien binaire sans provenance ferme | conserver `INCOMPLETE`, ne pas forcer un faux PASS |
 | Gameplay | map, joueur, pivots et murs forment un smoke intégré | temps par frame, autorité cliente, deux systèmes muraux, téléport `U` | ne plus étendre les classes legacy |
 | Topologie | schéma v1, parseur strict, validation, IDs, canonicalisation, checksum et migration 16×16 verts sur Mac | checksum Windows et intégration snapshot | TOP-02/graybox peuvent démarrer |
@@ -234,7 +234,7 @@ Seulement après la sortie technique et humaine du mur :
 | TICK-01B/WALL-01 | après DEC-01, TOP-02, GRY-01 | choix physique/mur-joueur | adaptateur FishNet et late join |
 | INP-01A | `IMPLEMENTED-LOCAL` | preuve manette physique restante | schemes clavier/manette, source isolée et commande |
 | INP-01B | après DEC-01 | statut saut/tap/hold | action map canonique |
-| PLY-01 | après DEC-01 et TOP-02 | gabarit/ordre de simulation | modèle joueur pur |
+| PLY-01 | `IMPLEMENTED-LOCAL`, valeurs finales après DEC-01 | preuve Windows et adaptateur physique | modèle joueur pur paramétré |
 | PLY-02 | après PLY-01, INP-01, GRY-01 | mur logique disponible | prédiction/réconciliation |
 | INT-01 | après DEC-03, WALL-01, PLY-02 | règles d’effort | interaction autoritaire unique |
 | CON-01A | `READY-CODEX` | aucune pour valeur/parseur purs | `ConnectionTarget` et tests sans branchement runtime |

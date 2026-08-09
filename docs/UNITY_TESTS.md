@@ -5,11 +5,11 @@ Cette fondation exécute séparément les tests EditMode et PlayMode avec Unity
 trouve les tests et qu'un test PlayMode peut réellement avancer d'une frame. Elle ne
 prouve pas encore le réseau, la scène 16x16, les colliders ni l'architecture M1.
 
-État local au 9 août 2026 : Mac vert avec `70/70` EditMode (fondation, provenance, topologie,
-géométrie/connectivité, transitions, modèle de mur par tick et Input Actions/commande joueur) et
-`4/4` PlayMode (runner, arène primitive, génération déterministe et cycle de vie Input). La reproduction Windows et
-l’activation d’une CI Unity restent à faire ; elles ne
-sont pas déduites de ce résultat.
+État local au 9 août 2026 : Mac vert avec `86/86` EditMode (fondation, provenance, topologie,
+géométrie/connectivité, transitions, modèles purs du mur et du joueur par tick, puis Input
+Actions/commande joueur) et `4/4` PlayMode (runner, arène primitive, génération déterministe et cycle
+de vie Input). La reproduction Windows et l’activation d’une CI Unity restent à faire ; elles ne sont
+pas déduites de ce résultat.
 
 ## Prérequis
 

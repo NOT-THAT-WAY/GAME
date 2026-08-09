@@ -24,6 +24,10 @@ La validation réelle Windows reste à effectuer sur le PC de l’équipe.
 Suivre seulement la checklist de [FIRST_HUMAN_TEST_DESIGN.md](FIRST_HUMAN_TEST_DESIGN.md), puis fermer
 le jeu. Les commandes sont affichées ; aucune fiche d’étude n’est à remplir.
 
+Le futur test autoritaire HT-M1 se limite aux quatre quêtes binaires listées dans ce même document.
+Ne pas l’exécuter tant que son build à deux instances et ses préconditions automatisées ne sont pas
+verts.
+
 ## Résultat
 
 Le log privé contient les marqueurs `[GAME-SMOKE]`. Après fermeture, le verdict est produit par :
