@@ -23,7 +23,7 @@ Commun aux trois postes :
 - Unity Hub et Unity `6000.3.20f1` ;
 - un éditeur C# avec son intégration Unity ;
 - Tailscale pour le réseau privé de développement lorsque chacun travaille depuis chez soi ;
-- accès individuel au GitHub privé.
+- accès individuel au dépôt GitHub ; appartenance à l'organisation requise seulement pour pousser.
 
 Sur les Mac Apple Silicon, le script installe Visual Studio Code et l'extension Unity de Microsoft, puis ouvre l'éditeur Unity Apple Silicon attendu. Un seul Mac a besoin du module Windows Build Support (Mono) si l'équipe veut produire un build de fumée non officiel depuis macOS.
 

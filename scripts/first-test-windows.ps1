@@ -31,12 +31,16 @@ $UnityEditor = if ($env:GAME_UNITY_EDITOR) { $env:GAME_UNITY_EDITOR } else { $De
 if ($TestProfile -eq "Maze") {
     $BuildMethod = "NotThatWay.Game.Editor.MazePlaytestBuild.BuildWindows"
     $BuildPath = Join-Path $RepoRoot "Builds\MazePlaytest\Windows\GAME-Maze-Playtest.exe"
+    $BuildRelativePath = "Builds/MazePlaytest/Windows/GAME-Maze-Playtest.exe"
     $LogDirectory = Join-Path $RepoRoot "Logs\MazePlaytest"
+    $BuildLogRelativePath = "Logs/MazePlaytest/build-windows.log"
     $ProfileLabel = "labyrinthe jouable"
 } else {
     $BuildMethod = "NotThatWay.Game.Editor.ConnectionTestBuild.BuildWindows"
     $BuildPath = Join-Path $RepoRoot "Builds\ConnectionTest\Windows\GAME-Connection-Test.exe"
+    $BuildRelativePath = "Builds/ConnectionTest/Windows/GAME-Connection-Test.exe"
     $LogDirectory = Join-Path $RepoRoot "Logs\ConnectionTest"
+    $BuildLogRelativePath = "Logs/ConnectionTest/build-windows.log"
     $ProfileLabel = "test de connexion"
 }
 
@@ -61,19 +65,97 @@ if ($LASTEXITCODE -ne 0) { throw "Le diagnostic Windows doit passer avant le tes
 Invoke-SharedValidator "scripts/validate-repository.sh"
 
 New-Item -ItemType Directory -Force -Path $LogDirectory | Out-Null
+$BuildLog = Join-Path $RepoRoot $BuildLogRelativePath
+$BuildManifestPath = Join-Path (Split-Path -Parent $BuildPath) "build-manifest.json"
+$GitCommit = ((& git rev-parse HEAD 2>$null) -join "").Trim()
+if ([string]::IsNullOrWhiteSpace($GitCommit)) { $GitCommit = "unknown" }
+$DirtyWorktree = -not [string]::IsNullOrWhiteSpace(((& git status --porcelain=v1 2>$null) -join "`n"))
+$BuildStartedAtUtc = [DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ")
+
+function Write-BuildManifest {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Result,
+        [Parameter(Mandatory = $true)]
+        [int]$ExitCode,
+        [Parameter(Mandatory = $true)]
+        [string]$Provenance,
+        [switch]$IncludeArtifact
+    )
+
+    $BinaryHash = $null
+    $BinarySize = $null
+    if ($IncludeArtifact) {
+        if (-not (Test-Path -LiteralPath $BuildPath -PathType Leaf)) {
+            throw "Binaire absent au moment de produire le manifeste: $BuildPath"
+        }
+        $BinaryHash = (Get-FileHash -LiteralPath $BuildPath -Algorithm SHA256).Hash.ToLowerInvariant()
+        $BinarySize = (Get-Item -LiteralPath $BuildPath).Length
+    }
+
+    $Manifest = [ordered]@{
+        schemaVersion = 1
+        kind = "unity-player-build"
+        profile = $TestProfile.ToLowerInvariant()
+        platform = "windows"
+        buildTarget = "StandaloneWindows64"
+        developmentBuild = $true
+        scriptingBackendPolicy = "il2cpp-forced"
+        startedAtUtc = $BuildStartedAtUtc
+        finishedAtUtc = if ($Result -eq "building") { $null } else { [DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ") }
+        sourceGitCommit = $GitCommit
+        sourceDirtyWorktree = $DirtyWorktree
+        unityVersion = $UnityVersion
+        buildMethod = $BuildMethod
+        buildPath = $BuildRelativePath
+        binaryPath = $BuildRelativePath
+        binarySha256 = $BinaryHash
+        binarySizeBytes = $BinarySize
+        buildLog = $BuildLogRelativePath
+        provenance = $Provenance
+        result = $Result
+        exitCode = $ExitCode
+    }
+
+    New-Item -ItemType Directory -Force -Path (Split-Path -Parent $BuildManifestPath) | Out-Null
+    $Manifest | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $BuildManifestPath -Encoding utf8
+}
+
 if (-not $SkipBuild) {
-    $BuildLog = Join-Path $LogDirectory "build-windows.log"
     Write-Host "Build Windows IL2CPP du $ProfileLabel..."
+    Write-BuildManifest -Result "building" -ExitCode 0 -Provenance "current-run"
     & $UnityEditor `
         -batchmode `
         -quit `
         -projectPath $RepoRoot `
         -executeMethod $BuildMethod `
         -logFile $BuildLog
-    if ($LASTEXITCODE -ne 0) { throw "Le build Unity a echoue. Voir $BuildLog" }
+    $BuildExitCode = $LASTEXITCODE
+    if ($BuildExitCode -ne 0) {
+        Write-BuildManifest -Result "failed" -ExitCode $BuildExitCode -Provenance "current-run"
+        throw "Le build Unity a echoue. Voir $BuildLog"
+    }
 }
 
-if (-not (Test-Path $BuildPath)) { throw "Build absent: $BuildPath" }
+if (-not (Test-Path -LiteralPath $BuildPath -PathType Leaf)) {
+    if (-not $SkipBuild) {
+        Write-BuildManifest -Result "failed" -ExitCode 1 -Provenance "artifact-invalid"
+    }
+    throw "Build absent: $BuildPath"
+}
+
+if (-not $SkipBuild) {
+    try {
+        Write-BuildManifest -Result "passed" -ExitCode 0 -Provenance "current-run" -IncludeArtifact
+    } catch {
+        Write-BuildManifest -Result "failed" -ExitCode 1 -Provenance "artifact-hash-failed"
+        throw
+    }
+    Write-Host "Manifeste: $BuildManifestPath"
+} elseif (-not (Test-Path -LiteralPath $BuildManifestPath -PathType Leaf)) {
+    Write-Warning "Build reutilise sans manifeste de provenance: $BuildPath"
+}
+
 if ($BuildOnly) {
     Write-Host "Build pret: $BuildPath"
     exit 0

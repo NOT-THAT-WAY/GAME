@@ -8,14 +8,17 @@ La cible joueur initiale est **Windows x86_64 IL2CPP**. Le développement se fai
 
 Le dépôt est au jalon **M0 — fondations**.
 
-- [x] dépôt privé, projet Unity URP et conventions de travail préparés ;
+- [ ] gouvernance GitHub à fermer : dépôt actuellement public, sans licence ni protection de `main` ;
+- [x] projet Unity URP et conventions de travail préparés ;
 - [x] versions Unity/FishNet figées et scène de connexion à trois générable ;
 - [x] scripts d'installation, diagnostic, assets et tests local/distant Mac/Windows ;
 - [x] séparation Git / Git LFS / masters DVC / caches locaux documentée ;
-- [ ] remote DVC à choisir maintenant : deux exports FBX existent déjà sans leurs masters partagés ;
+- [x] fournisseur DVC choisi et scripts R2 préparés ;
+- [ ] premier master à pousser/restaurer et deux masters absents à récupérer ou requalifier ;
 - [x] premier import Unity Mac et `packages-lock.json` mergé ;
 - [ ] ouverture propre sur le second Mac et build Windows IL2CPP ;
 - [ ] Zak, Sean et Nils visibles dans la même session depuis leurs trois réseaux ;
+- [x] HT-00 : première observation humaine locale exécutée sans crash ; interaction labyrinthe encore non prouvée ;
 - [ ] gate Wwise à ouvrir après la première preuve distante autoritaire — ne bloque pas le setup.
 
 La machine pilote peut construire le labyrinthe et lancer un smoke test où le joueur et les pivots sont visibles en réseau. Ce code est volontairement étiqueté prototype : déplacement client-authoritative, transition des colliders par image et collisions issues du FBX ne valident pas M1. Les prochaines actions sont le **clone propre sur le second Mac et Windows**, le test distant à trois, l'ouverture du coffre DVC, puis la migration décrite dans [l'ADR 0004](docs/adr/0004-authoritative-topology-and-ticks.md).
@@ -30,9 +33,9 @@ l'inventaire vérifiable. Claude découvre automatiquement
 
 Avec Claude Code, lancer `claude` depuis la racine puis écrire `initialise l'environnement`. Le skill projet `setup-game` détecte Mac ou Windows, installe aussi le client Tailscale de test distant, exécute le bon setup et rend le verdict du doctor. La connexion Tailscale reste un écran interactif individuel ; aucune clé n'est partagée avec Claude.
 
-Pour intégrer Zak et Sean : Nils envoie en privé des invitations Tailscale individuelles, jamais une clé d'authentification. Le tailnet actuel est personnel et distinct de l'organisation GitHub ; comme le jeu vise un usage commercial, son propriétaire doit confirmer ou adopter un plan compatible avant le prochain playtest structuré ([conditions des offres Tailscale](https://tailscale.com/pricing)). Après acceptation, chacun clone le repo et demande à Claude `initialise l'environnement pour jouer à distance`. L'absence de remote DVC ne bloque pas ce setup, mais bloque désormais toute modification ou transmission des masters des FBX actuels.
+Pour intégrer Zak et Sean : Nils envoie en privé des invitations Tailscale individuelles, jamais une clé d'authentification. Le tailnet actuel est personnel et distinct de l'organisation GitHub ; comme le jeu vise un usage commercial, son propriétaire doit confirmer ou adopter un plan compatible avant le prochain playtest structuré ([conditions des offres Tailscale](https://tailscale.com/pricing)). Après acceptation, chacun clone le repo et demande à Claude `initialise l'environnement pour jouer à distance`. L'absence d'un lot DVC réellement poussé et restaurable ne bloque pas ce setup, mais bloque désormais toute modification ou transmission des masters des FBX actuels.
 
-`main` refuse les pushes directs sur chaque clone initialisé grâce au hook partagé, et Claude a la même interdiction. Les branches suivent `feat/...`, `fix/...`, `art/...`, `audio/...`, `data/...`, `docs/...` ou `chore/...` ; le script `publish-task` pousse ensuite la branche et ouvre sa PR. Zak et Sean n'ont pas à administrer, relire ou merger les PR : ils livrent une branche testée et Nils gère seul l'intégration. Le dépôt privé reste utilisable gratuitement par toute l'équipe sans protection serveur absolue.
+`main` refuse les pushes directs sur chaque clone initialisé grâce au hook partagé, et Claude a la même interdiction. Les branches suivent `feat/...`, `fix/...`, `art/...`, `audio/...`, `data/...`, `docs/...` ou `chore/...` ; le script `publish-task` pousse ensuite la branche et ouvre sa PR. Zak et Sean n'ont pas à administrer ou merger les PR : ils livrent une branche testée et Nils gère l'intégration actuelle. Le dépôt étant public, une protection serveur et des rôles moins permissifs font désormais partie de la gate G0 du [plan maître](docs/EXECUTION_PLAN.md).
 
 ## Installation rapide
 
@@ -83,7 +86,7 @@ Les scripts sont idempotents. L'éditeur Unity reste une étape interactive parc
 
 ## Coffre d'assets hors GitHub
 
-État mesuré le 5 août 2026 : deux objets LFS — le labyrinthe d'environ 38 Mo et le personnage d'environ 101 Ko — et zéro pointeur DVC. Le budget interne du prototype reste limité à 2 Gio d'exports actifs. Les clones et builds restent possibles, mais les masters correspondants ne sont pas récupérables depuis ce dépôt : le coffre DVC est maintenant prioritaire avant leur prochaine modification ; voir [la stratégie d'assets](docs/ASSETS.md).
+État mesuré le 9 août 2026 : trois objets LFS — le labyrinthe, le personnage de base et son clone riggé — et zéro pointeur DVC. Le budget interne du prototype reste limité à 2 Gio d'exports actifs. Les clones et builds restent possibles, mais deux masters sont absents et le troisième n'est pas encore restaurable depuis R2 : la première sauvegarde DVC reste prioritaire avant leur prochaine modification ; voir [la stratégie d'assets](docs/ASSETS.md).
 
 Les masters lourds ne sont pas envoyés dans GitHub. Une fois l'URL privée communiquée par l'administrateur du stockage :
 
@@ -109,7 +112,7 @@ GitHub garde seulement les pointeurs DVC, les exports nécessaires au jeu et les
 
 | Donnée | Emplacement |
 |---|---|
-| code, scènes, réglages, documentation | GitHub privé |
+| code, scènes, réglages, documentation | GitHub public actuellement ; décision G0 en attente |
 | PNG/FBX/WAV nécessaires au build | Git LFS, avec budget |
 | Blender/PSD/sessions DAW/sources brutes | remote DVC privé |
 | secrets et preuves nominatives | gestionnaire dédié |
@@ -161,7 +164,7 @@ Voir [le protocole distant](docs/REMOTE_CONNECTION_TEST.md). Aucun serveur dédi
 | Réseau local | FishNet `4.7.2` + Tugboat | dans le projet |
 | Tests multi-instance | Multiplayer Play Mode `2.0.2` | dans le projet |
 | Réseau de développement distant | Tailscale, hors du build | setup Mac/Windows |
-| Masters lourds | DVC 3.x + stockage externe privé | gate P0, remote à choisir |
+| Masters lourds | DVC 3.x + Cloudflare R2 privé | remote choisi, premier push/restore en attente |
 | Assets de build | Git LFS + UnityYAMLMerge | configuré |
 | Audio | Wwise `2025.1.4` | après gate Mac/Windows |
 | Steam | Steamworks.NET `2025.164.1` + FishySteamworks `4.1.1` | après validation distante |
@@ -182,6 +185,13 @@ Le membre qui possède le PC prend la validation Windows. Les rôles pilote/bin�
 
 ## Documentation
 
+- [Plan maître, gates, charge et ordre d’exécution](docs/EXECUTION_PLAN.md)
+- [Backlog détaillé prêt à distribuer en issues/PR](docs/READY_BACKLOG.md)
+- [Workpacks prémâchés par pôle et ownership des fichiers](docs/POLE_WORKPACKS.md)
+- [Matrice de tests, rotations et preuves attendues](docs/TEST_OWNERSHIP_MATRIX.md)
+- [Plan de fermeture de l’audit jusqu’au premier duel M1](docs/AUDIT_CLOSURE_PLAN.md)
+- [Smoke test humain minimum HT-00](docs/FIRST_HUMAN_TEST_DESIGN.md)
+- [Lancement et collecte locale de HT-00](docs/FIRST_HUMAN_TEST_RUNBOOK.md)
 - [Contrat du jeu, permissions et interdictions](docs/PROJECT_RULES.md)
 - [CI et builds Mac/Windows](docs/CI_BUILDS.md)
 - [Roadmap et priorités](docs/ROADMAP.md)
@@ -194,6 +204,8 @@ Le membre qui possède le PC prend la validation Windows. Les rôles pilote/bin�
 - [Travail à trois](docs/WORKFLOW.md)
 - [Assets hors GitHub](docs/ASSETS.md)
 - [Gestion des données](docs/DATA_MANAGEMENT.md)
+- [Rapports DVC et Blender→Unity validables](docs/EVIDENCE_REPORTS.md)
+- [Options DEC-01 à DEC-04 avant M1/M2](docs/DECISION_PACKET_M1_M2.md)
 - [Stack et versions](docs/STACK.md)
 - [Architecture autoritaire : topologie, ticks, murs et joueur](docs/adr/0004-authoritative-topology-and-ticks.md)
 - [Audit du document maître du 5 août 2026](docs/audits/2026-08-05-document-maitre.md)
@@ -202,4 +214,7 @@ Le membre qui possède le PC prend la validation Windows. Les rôles pilote/bin�
 
 ## Règle de priorité
 
-**Environnements identiques → masters récupérables → connexion distante → topologie/collisions déterministes → murs et joueur par tick → réseau dégradé → audio/visuel → playtests.** Si le duel ne fonctionne pas dans la scène grise à un pivot, l'habillage 16x16 ne le sauvera pas.
+HT-00 reste consigné `INCOMPLETE` et ne bloque pas M1. Deux pistes avancent désormais ensemble :
+**baseline propre, machines et masters récupérables**, puis preuve distante ; et **provenance des
+builds → topologie typée → scène grise à un mur → murs et joueur par tick → réseau dégradé → premier
+duel humain**. La map 16×16 revient ensuite comme test d’intégration, pas comme banc de diagnostic.

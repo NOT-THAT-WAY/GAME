@@ -1,12 +1,31 @@
 # Roadmap opérationnelle
 
+Le séquençage complet, les dépendances, les estimations et les responsabilités sont maintenus dans
+le [plan maître d’exécution](EXECUTION_PLAN.md). Les fiches directement transformables en issues se
+trouvent dans le [backlog prêt à distribuer](READY_BACKLOG.md). Cette page reste la vue courte de la
+position et des prochaines gates.
+
+Les détails fichier par fichier sont dans les [workpacks par pôle](POLE_WORKPACKS.md) et la rotation
+des preuves dans la [matrice de tests](TEST_OWNERSHIP_MATRIX.md).
+Les choix encore humains sont préparés dans le
+[dossier DEC-01 à DEC-04](DECISION_PACKET_M1_M2.md), avec recommandations et tests minimaux.
+Le séquençage vérifié après HT-00, y compris les dépendances assouplies et la fermeture de chaque
+dette de l’audit, est dans le [plan de fermeture de l’audit](AUDIT_CLOSURE_PLAN.md).
+
 ## Position actuelle
 
-Le premier import Unity, un build Mac du labyrinthe et un test local hôte/client sont validés. Le profil distant Tailscale est automatisé, mais il n'existe pas encore de preuve produite par les trois machines ; le projet reste donc en **M0 — fondations**.
+Le premier import Unity, un build Mac du labyrinthe et un test local hôte/client sont validés. Un
+premier smoke humain sans crash a aussi validé caméra, déplacement, saut et combat ; l’interaction
+labyrinthe reste à isoler avec la télémétrie désormais intégrée. Le profil distant Tailscale est
+automatisé, mais il n'existe pas encore de preuve produite par les trois machines ; le projet reste
+donc en **M0 — fondations**.
 
 La map 16x16, le joueur et les 17 pivots forment un smoke test utile, pas encore l'architecture M1 : déplacement client-authoritative, murs interpolés par image et collisions issues du FBX. [L'audit du 5 août](audits/2026-08-05-document-maitre.md) et [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.md) fixent la migration à effectuer avant d'étendre le gameplay réseau.
 
-Deux FBX sous LFS dépendent déjà de masters absents du dépôt. DVC ne bloque pas le clone ou le runtime, mais son remote devient P0 avant toute nouvelle modification ou transmission de ces masters. Wwise et Steam restent derrière leurs gates.
+Trois FBX sous LFS existent : deux masters sont absents et le master du clone riggé reste seulement
+dans un workspace local ignoré. Le fournisseur R2 est choisi, mais aucun lot DVC n'a encore été
+poussé puis restauré. Cela ne bloque pas le clone ou le runtime, mais bloque toute nouvelle
+modification ou transmission de ces masters. Wwise et Steam restent derrière leurs gates.
 
 ## Priorités immédiates
 
@@ -16,10 +35,12 @@ Déjà terminé : premier import Unity, lockfile et migrations déterministes vi
 
 | Priorité | Lot | Affinité pilote | Binôme | Preuve attendue |
 |---:|---|---|---|---|
+| P0 | livrer la préparation locale et durcir la provenance build/log | Nils | Zak | SHA propre, bundle manifesté, logs liés au build réel |
+| P0 | fermer visibilité/licence/protection/rôles GitHub | Nils | Zak | décision écrite, `main` protégé, droits réduits |
 | P0 | ouverture propre sur le second Mac | Sean | Nils | doctor vert et aucun diff après ouverture/fermeture |
 | P0 | validation Windows IL2CPP | propriétaire du PC / Zak | Nils | exécutable lancé, log archivé dans l'issue |
 | P0 | connexion distante à trois via Tailscale + Tugboat | Zak | les deux autres | Zak, Sean, Nils visibles dans le roster depuis trois réseaux |
-| P0 | choisir et activer le remote DVC privé | Nils | Zak | masters des deux FBX suivis ; pull/push/restauration Mac + Windows |
+| P0 | pousser/restaurer le premier lot DVC et récupérer les sources absentes | Nils | Sean + Zak | hashes identiques après restauration Mac + Windows |
 | P1 | schéma de topologie typé, IDs et checksum | Zak | Nils | parsing/tests EditMode ; mêmes données et collisions sur deux OS |
 | P1 | scène grise déterministe à un pivot/deux joueurs | Sean | Zak | collision issue du schéma ; aucune dépendance au FBX 16x16 |
 | P1 | murs autoritaires par tick et arrivée tardive | Zak | Sean | transition/révision/snapshot identiques à 30/60/120 FPS |
@@ -29,7 +50,12 @@ Déjà terminé : premier import Unity, lockfile et migrations déterministes vi
 
 Le testeur externe du lot n'est ni son pilote ni son binôme. Les chapeaux tournent au lot suivant.
 
-Le dépôt privé gratuit utilise le contrat local partagé : pas de push direct vers `main`, préfixe de branche contrôlé, PR et CI. Une protection serveur absolue pourra être ajoutée plus tard, mais elle n'est pas nécessaire pour démarrer à trois.
+HT-00 reste enregistré `INCOMPLETE` sans bloquer M1. Son prochain passage est optionnel pour maintenir
+la démo legacy ; le prochain test humain prioritaire porte sur la graybox autoritaire.
+
+Le dépôt est actuellement public et `main` n'est pas protégé côté serveur. Le hook local, les
+préfixes de branche, les PR et la CI restent utiles mais ne suffisent pas : la visibilité/licence,
+le ruleset et la réduction des trois rôles Admin constituent désormais la gate G0.
 
 ## M0 — définition de terminé
 

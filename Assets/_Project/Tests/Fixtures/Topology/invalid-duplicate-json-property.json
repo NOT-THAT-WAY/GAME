@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "topologyId": "fixture-duplicate-json-property",
+  "dimensions": {
+    "widthCells": 2,
+    "widthCells": 3,
+    "heightCells": 1,
+    "cellPitchMm": 2750,
+    "wallThicknessMm": 250,
+    "wallHeightMm": 3000
+  },
+  "openings": [],
+  "walls": [],
+  "pivots": [],
+  "spawns": []
+}

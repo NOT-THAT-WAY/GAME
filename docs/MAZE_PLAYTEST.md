@@ -230,6 +230,19 @@ immédiatement.
 ./scripts/first-test-macos.sh client --profile maze --address 127.0.0.1 --name "Test" --skip-build
 ```
 
+### Smoke test humain minimum
+
+HT-00 masque le panneau réseau, affiche directement les commandes utiles et ajoute des marqueurs de
+log sans changer le gameplay. Après avoir produit le build, lancer :
+
+```bash
+./scripts/human-test-macos.sh
+```
+
+La checklist minimale est dans [FIRST_HUMAN_TEST_DESIGN.md](FIRST_HUMAN_TEST_DESIGN.md) et son
+[runbook](FIRST_HUMAN_TEST_RUNBOOK.md). Après fermeture, `scripts/human-test-report.py` produit le
+verdict depuis le log. Le gameplay et les limites réseau décrites ici restent identiques.
+
 ### Réseaux différents (le cas de l'équipe)
 
 L'hôte :

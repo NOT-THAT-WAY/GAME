@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "topologyId": "fixture-unknown-json-member",
+  "dimensions": {
+    "widthCells": 2,
+    "heightCells": 1,
+    "cellPitchMm": 2750,
+    "wallThicknessMm": 250,
+    "wallHeightMm": 3000,
+    "designerNote": "this member must not be silently ignored"
+  },
+  "openings": [],
+  "walls": [],
+  "pivots": [],
+  "spawns": []
+}

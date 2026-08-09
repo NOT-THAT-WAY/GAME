@@ -49,6 +49,7 @@ namespace NotThatWay.Game
         // propre requête serveur.
         private float _nextLocalPunchAllowedAt = float.NegativeInfinity;
         private float _nextServerPunchAllowedAt = float.NegativeInfinity;
+        private bool _smokePunchLogged;
 
         private void Awake()
         {
@@ -102,6 +103,13 @@ namespace NotThatWay.Game
             var victimBot = (SimpleBot)null;
             FindVictim(out victimPlayer, out victimBot);
 
+            if (!_smokePunchLogged)
+            {
+                _smokePunchLogged = true;
+                var target = victimPlayer != null ? "player" : victimBot != null ? "bot" : "environment_or_empty";
+                HumanSmokeTestMode.LogEvent("punch", $"target={target}");
+            }
+
             PlayPunchObserversRpc();
 
             var direction = transform.forward;
@@ -139,6 +147,10 @@ namespace NotThatWay.Game
             if (wall == null)
                 return;
 
+            HumanSmokeTestMode.LogEventOnce(
+                "wall_punch_contact_local",
+                "wall_punch_contact",
+                $"id={wall.Id} distance={hit.distance:F2}");
             _wallDirector.TryPunch(wall, transform.position, transform.forward, hit.point);
         }
 

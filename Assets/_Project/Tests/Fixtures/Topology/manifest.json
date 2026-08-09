@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "topology-fixture-manifest",
+  "contractScope": [
+    "strict-json",
+    "schema-version",
+    "stable-ids",
+    "references",
+    "grid-bounds"
+  ],
+  "deferred": [
+    "connectivity-policy",
+    "canonical-bytes-and-checksum",
+    "tick-and-physics",
+    "player-canonical-shape",
+    "energy-and-contestation",
+    "round-rule"
+  ],
+  "cases": [
+    {
+      "id": "valid-minimal",
+      "file": "valid-minimal.json",
+      "expectedIssueCodes": []
+    },
+    {
+      "id": "unsupported-schema-version",
+      "file": "invalid-unsupported-schema-version.json",
+      "expectedIssueCodes": ["schema_version_unsupported"]
+    },
+    {
+      "id": "duplicate-wall-id",
+      "file": "invalid-duplicate-wall-id.json",
+      "expectedIssueCodes": ["wall_id_duplicate"]
+    },
+    {
+      "id": "broken-pivot-reference",
+      "file": "invalid-broken-pivot-reference.json",
+      "expectedIssueCodes": ["pivot_reference_missing"]
+    },
+    {
+      "id": "edge-out-of-bounds",
+      "file": "invalid-edge-out-of-bounds.json",
+      "expectedIssueCodes": ["edge_out_of_bounds"]
+    },
+    {
+      "id": "spawn-out-of-bounds",
+      "file": "invalid-spawn-out-of-bounds.json",
+      "expectedIssueCodes": ["spawn_out_of_bounds"]
+    },
+    {
+      "id": "duplicate-json-property",
+      "file": "invalid-duplicate-json-property.json",
+      "expectedIssueCodes": ["json_property_duplicate"]
+    },
+    {
+      "id": "unknown-json-member",
+      "file": "invalid-unknown-json-member.json",
+      "expectedIssueCodes": ["json_member_unknown"]
+    }
+  ]
+}

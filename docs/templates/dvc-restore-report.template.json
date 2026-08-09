@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "kind": "dvc-restore-report",
+  "testId": "DVC-03",
+  "sessionId": "UNRESOLVED",
+  "startedAtUtc": "UNRESOLVED",
+  "finishedAtUtc": "UNRESOLVED",
+  "sourceGitCommit": "UNRESOLVED",
+  "sourceDirtyWorktree": null,
+  "platform": "UNRESOLVED",
+  "machineAlias": "UNRESOLVED",
+  "dvcVersion": "UNRESOLVED",
+  "remoteAlias": "assets",
+  "cachePreparation": {
+    "mode": "empty-cache",
+    "proof": "UNRESOLVED"
+  },
+  "pull": {
+    "target": "UNRESOLVED",
+    "exitCode": null,
+    "log": "UNRESOLVED"
+  },
+  "artifacts": [
+    {
+      "path": "UNRESOLVED",
+      "expectedSha256": "UNRESOLVED",
+      "actualSha256": "UNRESOLVED",
+      "bytes": null
+    }
+  ],
+  "storageControls": {
+    "objectVersioning": "UNRESOLVED",
+    "secondCopy": "UNRESOLVED",
+    "evidence": []
+  },
+  "result": "BLOCKED",
+  "blockers": [
+    "UNRESOLVED"
+  ],
+  "failures": [],
+  "limits": []
+}

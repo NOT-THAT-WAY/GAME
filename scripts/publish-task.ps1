@@ -1,7 +1,8 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true, Position = 0)]
-    [string]$Title
+    [string]$Title,
+    [string]$BodyFile
 )
 
 $ErrorActionPreference = "Stop"
@@ -16,6 +17,12 @@ if ($LASTEXITCODE -ne 0 -or -not $BranchName) { throw "Branche Git introuvable."
 # celui-la meme que la CI applique a la pull request.
 Invoke-SharedValidator "scripts/validate-pr-policy.sh" @($BranchName, $Title)
 
+$ResolvedBodyFile = $null
+if ($BodyFile) {
+    $ResolvedBodyFile = (Resolve-Path -LiteralPath $BodyFile).Path
+    Invoke-SharedValidator "scripts/validate-pr-body.sh" @($ResolvedBodyFile)
+}
+
 $Changes = (& git status --porcelain) -join "`n"
 if ($LASTEXITCODE -ne 0) { throw "Impossible de lire l'etat Git." }
 if ($Changes) { throw "Le depot contient des changements non committes.`n$Changes" }
@@ -25,22 +32,34 @@ if ($Changes) { throw "Le depot contient des changements non committes.`n$Change
 # core.hooksPath, et la CI ne repond qu'apres la publication.
 Invoke-SharedValidator "scripts/validate-repository.sh"
 
-& git push -u origin $BranchName
-if ($LASTEXITCODE -ne 0) { throw "Le push a echoue." }
-
 $Gh = Get-Command gh -ErrorAction SilentlyContinue
+$GhAuthenticated = $false
+$ExistingUrl = ""
 if ($Gh) {
     & gh auth status *> $null
     if ($LASTEXITCODE -eq 0) {
-        $ExistingUrl = (& gh pr view $BranchName --json url --jq .url 2>$null) -join ""
-        if ($LASTEXITCODE -eq 0 -and $ExistingUrl) {
-            Write-Host "PR deja ouverte: $ExistingUrl"
-        } else {
-            & gh pr create --base main --head $BranchName --title $Title --body-file .github/PULL_REQUEST_TEMPLATE.md
-            if ($LASTEXITCODE -ne 0) { throw "Impossible de creer la PR." }
+        $GhAuthenticated = $true
+        $ExistingUrl = ((& gh pr view $BranchName --json url --jq .url 2>$null) -join "").Trim()
+        if (-not $ExistingUrl -and -not $ResolvedBodyFile -and
+            ([Console]::IsInputRedirected -or [Console]::IsOutputRedirected)) {
+            throw "Une nouvelle PR non interactive exige -BodyFile FICHIER. En terminal interactif, gh ouvre la saisie du corps."
         }
-        exit 0
     }
+}
+
+& git push -u origin $BranchName
+if ($LASTEXITCODE -ne 0) { throw "Le push a echoue." }
+
+if ($GhAuthenticated) {
+    if ($ExistingUrl) {
+        Write-Host "PR deja ouverte: $ExistingUrl"
+    } else {
+        $CreateArguments = @("pr", "create", "--base", "main", "--head", $BranchName, "--title", $Title)
+        if ($ResolvedBodyFile) { $CreateArguments += @("--body-file", $ResolvedBodyFile) }
+        & gh @CreateArguments
+        if ($LASTEXITCODE -ne 0) { throw "Impossible de creer la PR." }
+    }
+    exit 0
 }
 
 $RemoteUrl = (& git remote get-url origin) -join ""

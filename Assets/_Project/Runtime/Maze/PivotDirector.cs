@@ -111,7 +111,13 @@ namespace NotThatWay.Game
         public void RequestPush(int index, bool positiveTorque, NetworkConnection sender = null)
         {
             if (index < 0 || index >= _pivots.Length || index >= _orientations.Count)
+            {
+                HumanSmokeTestMode.LogEventOnce(
+                    "pivot_rejected_server_invalid_index",
+                    "pivot_rejected_server",
+                    $"reason=invalid_index index={index}");
                 return;
+            }
 
             if (Time.time < _nextPushAllowedAt[index])
                 return;
@@ -119,15 +125,30 @@ namespace NotThatWay.Game
             // L'hôte ne fait tourner que ce que le demandeur pouvait atteindre.
             var pusher = sender?.FirstObject;
             if (pusher == null)
+            {
+                HumanSmokeTestMode.LogEventOnce(
+                    "pivot_rejected_server_no_pusher",
+                    "pivot_rejected_server",
+                    "reason=no_pusher");
                 return;
+            }
 
             var offset = pusher.transform.position - _pivots[index].position;
             offset.y = 0f;
             if (offset.magnitude > PushReach + ServerReachTolerance)
+            {
+                HumanSmokeTestMode.LogEventOnce(
+                    "pivot_rejected_server_out_of_reach",
+                    "pivot_rejected_server",
+                    $"reason=out_of_reach distance={offset.magnitude:F2}");
                 return;
+            }
 
             _nextPushAllowedAt[index] = Time.time + PushCooldown;
             _orientations[index] = (byte)((_orientations[index] + (positiveTorque ? 1 : 3)) % 4);
+            HumanSmokeTestMode.LogEvent(
+                "pivot_turned",
+                $"index={index} orientation={_orientations[index]}");
         }
     }
 }

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "topologyId": "fixture-spawn-out-of-bounds",
+  "dimensions": {
+    "widthCells": 2,
+    "heightCells": 1,
+    "cellPitchMm": 2750,
+    "wallThicknessMm": 250,
+    "wallHeightMm": 3000
+  },
+  "openings": [],
+  "walls": [],
+  "pivots": [],
+  "spawns": [
+    {"spawnId": 200, "cell": {"x": 2, "y": 0}, "yawQuarterTurns": 0}
+  ]
+}

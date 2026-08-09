@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "topologyId": "fixture-duplicate-wall-id",
+  "dimensions": {
+    "widthCells": 2,
+    "heightCells": 1,
+    "cellPitchMm": 2750,
+    "wallThicknessMm": 250,
+    "wallHeightMm": 3000
+  },
+  "openings": [],
+  "walls": [
+    {
+      "wallId": 10,
+      "pivotId": 100,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 1, "y": 0}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 10,
+      "pivotId": 100,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 0, "y": 1}, "quarterTurns": 1}
+      ]
+    }
+  ],
+  "pivots": [
+    {"pivotId": 100, "node": {"x": 1, "y": 1}, "wallIds": [10]}
+  ],
+  "spawns": []
+}

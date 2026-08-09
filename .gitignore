@@ -31,6 +31,8 @@
 .vs/
 .idea/
 .vscode/
+__pycache__/
+*.py[cod]
 *.csproj
 *.sln
 *.slnx

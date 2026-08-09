@@ -4,15 +4,24 @@ set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 BRANCH_NAME="${1:-}"
 PR_TITLE="${2:-}"
+PR_AUTHOR="${3:-}"
 
 if [[ -z "$BRANCH_NAME" || -z "$PR_TITLE" ]]; then
-  printf 'Usage: %s BRANCHE "TYPE: titre de la PR"\n' "$0" >&2
+  printf 'Usage: %s BRANCHE "TYPE: titre de la PR" [AUTEUR]\n' "$0" >&2
   exit 2
 fi
 
-"$SCRIPT_DIR/validate-branch-name.sh" "$BRANCH_NAME"
-BRANCH_TYPE="${BRANCH_NAME#refs/heads/}"
-BRANCH_TYPE="${BRANCH_TYPE%%/*}"
+NORMALIZED_BRANCH="${BRANCH_NAME#refs/heads/}"
+if [[ "$NORMALIZED_BRANCH" =~ ^dependabot/(github[-_]actions)/[a-zA-Z0-9._/-]+$ ]]; then
+  if [[ "$PR_AUTHOR" != "dependabot[bot]" ]]; then
+    printf 'Le préfixe dependabot/ est réservé à dependabot[bot].\n' >&2
+    exit 1
+  fi
+  BRANCH_TYPE="chore"
+else
+  "$SCRIPT_DIR/validate-branch-name.sh" "$NORMALIZED_BRANCH"
+  BRANCH_TYPE="${NORMALIZED_BRANCH%%/*}"
+fi
 
 if [[ ! "$PR_TITLE" =~ ^${BRANCH_TYPE}(\([a-z0-9][a-z0-9._-]*\))?:[[:space:]].+ ]]; then
   cat >&2 <<EOF

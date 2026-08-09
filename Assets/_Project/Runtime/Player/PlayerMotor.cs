@@ -126,6 +126,10 @@ namespace NotThatWay.Game
         private float _lastJumpPressedAt = float.NegativeInfinity;
         private bool _thirdPerson;
         private bool _cursorLocked;
+        private bool _humanSmokeTest;
+        private bool _smokeLookLogged;
+        private bool _smokeMovementLogged;
+        private bool _smokeJumpLogged;
         private Vector3 _spawnPosition;
         private Vector3 _knockback;
         private string _unstickFeedback = string.Empty;
@@ -133,6 +137,7 @@ namespace NotThatWay.Game
 
         private void Awake()
         {
+            _humanSmokeTest = HumanSmokeTestMode.IsEnabled;
             _controller = GetComponent<CharacterController>();
             if (_visual == null)
                 return;
@@ -171,6 +176,14 @@ namespace NotThatWay.Game
                 spectator.gameObject.SetActive(false);
 
             _sessionPanel = FindFirstObjectByType<ConnectionSmokeTest>(FindObjectsInactive.Include);
+            if (_humanSmokeTest)
+            {
+                if (_sessionPanel != null)
+                    _sessionPanel.enabled = false;
+
+                var panelState = _sessionPanel != null ? "hidden" : "absent";
+                HumanSmokeTestMode.LogEvent("ready", $"network_panel={panelState} gameplay=unchanged");
+            }
             _pivotDirector = FindFirstObjectByType<PivotDirector>(FindObjectsInactive.Include);
             _wallDirector = FindFirstObjectByType<MovableWallDirector>(FindObjectsInactive.Include);
             if (_camera != null)
@@ -370,6 +383,11 @@ namespace NotThatWay.Game
             if (_pushedMovableWall == null || hit.distance > WallPushReach)
                 return;
 
+            HumanSmokeTestMode.LogEventOnce(
+                "wall_contact_local",
+                "wall_contact",
+                $"id={_pushedMovableWall.Id} distance={hit.distance:F2}");
+
             var keyboard = Keyboard.current;
             if (keyboard == null || !(keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed))
                 return;
@@ -378,6 +396,10 @@ namespace NotThatWay.Game
                 return;
 
             _nextWallPushIntentAt = Time.time + WallPushIntentInterval;
+            HumanSmokeTestMode.LogEventOnce(
+                "wall_request_local",
+                "wall_request",
+                $"id={_pushedMovableWall.Id}");
             _wallDirector.RequestWallPush(_pushedMovableWall.Id);
         }
 
@@ -394,6 +416,9 @@ namespace NotThatWay.Game
             var pushing = mouse != null && mouse.leftButton.isPressed
                 && keyboard != null && (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed);
 
+            if (pushing)
+                HumanSmokeTestMode.LogEventOnce("pivot_input_local", "pivot_input");
+
             if (!pushing || _pivotDirector == null)
             {
                 _pushedWall = null;
@@ -406,6 +431,10 @@ namespace NotThatWay.Game
             var chest = transform.TransformPoint(_controller.center);
             if (!Physics.Raycast(chest, transform.forward, out var hit, PivotDirector.PushReach))
             {
+                HumanSmokeTestMode.LogEventOnce(
+                    "pivot_target_miss_no_hit",
+                    "pivot_target_miss",
+                    "reason=no_collider_in_reach");
                 _pushedWall = null;
                 _pushProgress = 0f;
                 return;
@@ -414,10 +443,19 @@ namespace NotThatWay.Game
             var wall = hit.collider.GetComponentInParent<PivotWall>();
             if (wall == null)
             {
+                HumanSmokeTestMode.LogEventOnce(
+                    "pivot_target_miss_wrong_collider",
+                    "pivot_target_miss",
+                    $"reason=wrong_collider name={hit.collider.name}");
                 _pushedWall = null;
                 _pushProgress = 0f;
                 return;
             }
+
+            HumanSmokeTestMode.LogEventOnce(
+                "pivot_contact_local",
+                "pivot_contact",
+                $"index={wall.Index} distance={hit.distance:F2}");
 
             // Changer de mur en cours de poussée remet l'effort à zéro.
             if (wall != _pushedWall)
@@ -439,8 +477,18 @@ namespace NotThatWay.Game
 
             var torque = Vector3.Cross(lever, push).y;
             if (Mathf.Abs(torque) < MinimumTorque)
+            {
+                HumanSmokeTestMode.LogEventOnce(
+                    "pivot_low_torque_local",
+                    "pivot_rejected_local",
+                    $"reason=low_torque value={torque:F2}");
                 return;
+            }
 
+            HumanSmokeTestMode.LogEventOnce(
+                "pivot_request_local",
+                "pivot_request",
+                $"index={wall.Index} torque={torque:F2}");
             _pivotDirector.RequestPush(wall.Index, torque > 0f);
         }
 
@@ -453,7 +501,10 @@ namespace NotThatWay.Game
             if (keyboard.escapeKey.wasPressedThisFrame)
                 SetCursorLocked(!_cursorLocked);
 
-            if (keyboard.tabKey.wasPressedThisFrame && _sessionPanel != null)
+            // Le panneau réseau donne des informations et occupe une grande partie
+            // de l'écran. En HT-00 il reste inaccessible, même si le participant
+            // découvre Tab par hasard ; le mode normal conserve son comportement.
+            if (!_humanSmokeTest && keyboard.tabKey.wasPressedThisFrame && _sessionPanel != null)
                 _sessionPanel.enabled = !_sessionPanel.enabled;
 
             if (keyboard.f1Key.wasPressedThisFrame)
@@ -477,6 +528,11 @@ namespace NotThatWay.Game
 
             // Le delta souris est déjà exprimé par image : pas de Time.deltaTime.
             var delta = mouse.delta.ReadValue() * LookSensitivity;
+            if (!_smokeLookLogged && delta.sqrMagnitude > 0.0001f)
+            {
+                _smokeLookLogged = true;
+                HumanSmokeTestMode.LogEvent("look");
+            }
             transform.Rotate(0f, delta.x, 0f, Space.Self);
 
             _pitch = Mathf.Clamp(_pitch - delta.y, -MaxPitch, MaxPitch);
@@ -505,6 +561,11 @@ namespace NotThatWay.Game
             }
 
             input = Vector2.ClampMagnitude(input, 1f);
+            if (!_smokeMovementLogged && input.sqrMagnitude > 0.01f)
+            {
+                _smokeMovementLogged = true;
+                HumanSmokeTestMode.LogEvent("movement");
+            }
 
             if (_controller.isGrounded)
             {
@@ -516,6 +577,11 @@ namespace NotThatWay.Game
             if (Time.time - _lastGroundedAt <= CoyoteTime && Time.time - _lastJumpPressedAt <= JumpBufferTime)
             {
                 _verticalVelocity = JumpSpeed;
+                if (!_smokeJumpLogged)
+                {
+                    _smokeJumpLogged = true;
+                    HumanSmokeTestMode.LogEvent("jump");
+                }
 
                 // Consommer les deux fenêtres, sinon le même appui relancerait un saut
                 // à chaque image tant qu'elles restent ouvertes.
@@ -597,6 +663,12 @@ namespace NotThatWay.Game
                 return;
 
             var style = new GUIStyle(GUI.skin.label) { fontSize = 14, wordWrap = true };
+            if (_humanSmokeTest)
+            {
+                DrawHumanSmokeTestHud(style);
+                return;
+            }
+
             var height = 118f;
             var area = new Rect(16f, Screen.height - height - 16f, Mathf.Min(760f, Screen.width - 32f), height);
             GUILayout.BeginArea(area, GUI.skin.box);
@@ -608,6 +680,28 @@ namespace NotThatWay.Game
             GUILayout.Label($"Avancer contre un mur = le pousser, c'est lourd{wallEffort}   ·   clic droit = coup de poing (3 coups enchaînés ouvrent un mur)", style);
             GUILayout.Label($"Échap curseur ({(_cursorLocked ? "capturé" : "libre")})   ·   Tab panneau réseau   ·   F1 vue {(_thirdPerson ? "3e personne" : "1re personne")}", style);
             GUILayout.Label($"U se dégager d'un mur{(Time.time < _unstickFeedbackUntil ? $"   —   {_unstickFeedback}" : "")}", style);
+            GUILayout.EndArea();
+        }
+
+        private void DrawHumanSmokeTestHud(GUIStyle style)
+        {
+            var wallEffort = _pushedMovableWall != null && _wallDirector != null
+                ? _wallDirector.EffortFor(_pushedMovableWall.Id)
+                : 0f;
+            var hasEffort = _pushedWall != null || wallEffort > 0f;
+            var height = hasEffort ? 116f : 94f;
+            var area = new Rect(16f, Screen.height - height - 16f, Mathf.Min(760f, Screen.width - 32f), height);
+
+            GUILayout.BeginArea(area, GUI.skin.box);
+            GUILayout.Label("SMOKE TEST : déplacement · pivot · mur mobile · punch bot", style);
+            GUILayout.Label("ZQSD / WASD / flèches : bouger   ·   Souris : regarder   ·   Espace : sauter   ·   Échap : curseur", style);
+            GUILayout.Label("Pivot : clic gauche + avancer   ·   Mur : avancer ou clic droit   ·   U : se dégager", style);
+
+            if (_pushedWall != null)
+                GUILayout.Label($"Le pivot résiste… effort {_pushProgress * 100f:F0} %", style);
+            else if (wallEffort > 0f)
+                GUILayout.Label($"Le mur résiste… effort {wallEffort * 100f:F0} %", style);
+
             GUILayout.EndArea();
         }
     }
