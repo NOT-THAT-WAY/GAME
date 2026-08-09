@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using NotThatWay.Game.Simulation;
 using NotThatWay.Game.Topology;
 using UnityEngine;
 
@@ -119,6 +120,30 @@ namespace NotThatWay.Game
         internal void ApplyAuthoritativeState(int wallId, int stateId)
         {
             ApplyAuthoritativeStateWithoutSync(wallId, stateId);
+            Physics.SyncTransforms();
+        }
+
+        /// <summary>
+        /// Pose le collider d'un mur au tick logique demandé. Pendant la transition,
+        /// l'état d'occupation reste la pose source ; au dernier échantillon il
+        /// bascule atomiquement sur la destination.
+        /// </summary>
+        internal void ApplyAuthoritativePose(
+            int wallId,
+            int logicalStateId,
+            WallPoseSample pose)
+        {
+            if (Map == null)
+                throw new InvalidOperationException("L'arene n'est pas construite.");
+            var wall = Map.GetWall(wallId);
+            wall.GetState(logicalStateId);
+            if (pose.FromStateId != logicalStateId && pose.ToStateId != logicalStateId)
+                throw new ArgumentException("Pose incohérente avec l'état logique.", nameof(pose));
+
+            _wallViews[wallId].ApplyPose(pose);
+            _wallStates[wallId] = pose.IsTransitioning
+                ? logicalStateId
+                : pose.ToStateId;
             Physics.SyncTransforms();
         }
 

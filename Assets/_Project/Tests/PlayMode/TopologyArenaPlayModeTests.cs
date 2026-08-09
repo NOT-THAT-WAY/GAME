@@ -2,6 +2,7 @@ using System.Collections;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using NotThatWay.Game.Simulation;
 using NotThatWay.Game.Topology;
 using NUnit.Framework;
 using UnityEngine;
@@ -74,6 +75,15 @@ namespace NotThatWay.Game.Tests.PlayMode
                 Assert.That(wall.transform.localPosition, Is.EqualTo(initialPosition));
                 Assert.That(wall.transform.localScale, Is.EqualTo(initialScale));
 
+                var midpoint = new WallTransition(10, 0, 1, 100u, 4u, 1u).Sample(102u);
+                arena.ApplyAuthoritativePose(10, 0, midpoint);
+                Assert.That(wall.StateId, Is.EqualTo(0));
+                Assert.That(wall.transform.localPosition.x, Is.EqualTo(-0.9723f).Within(0.002f));
+                Assert.That(wall.transform.localPosition.z, Is.EqualTo(-0.9723f).Within(0.002f));
+                Assert.That(wall.transform.eulerAngles.y, Is.EqualTo(45f).Within(0.01f));
+                Assert.That(wall.transform.localScale, Is.EqualTo(new Vector3(0.25f, 3f, 2.75f)));
+                arena.ApplyAuthoritativeState(10, 0);
+
                 var forward = arena.TryGrayboxTransitionWall(
                     10,
                     1,
@@ -106,7 +116,8 @@ namespace NotThatWay.Game.Tests.PlayMode
                     Assert.That(accepted.Allowed, Is.True, accepted.RejectionCode);
                     Assert.That(wall.StateId, Is.EqualTo(1));
                     Assert.That(wall.transform.localPosition, Is.EqualTo(new Vector3(-1.375f, 1.5f, 0f)));
-                    Assert.That(wall.transform.localScale, Is.EqualTo(new Vector3(2.75f, 3f, 0.25f)));
+                    Assert.That(wall.transform.localScale, Is.EqualTo(new Vector3(0.25f, 3f, 2.75f)));
+                    Assert.That(wall.transform.eulerAngles.y, Is.EqualTo(90f).Within(0.001f));
                     Assert.That(TopologyConnectivity.AreAllSpawnsConnected(arena.Map, arena.WallStates), Is.True);
 
                     arena.ResetToInitialStates();

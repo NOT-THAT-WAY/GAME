@@ -24,6 +24,11 @@ namespace NotThatWay.Game
     public sealed class ConnectionSmokeTest : MonoBehaviour
     {
         private const ushort DefaultPort = 7770;
+        [SerializeField] private string _header = "GAME — premier test réseau";
+        [SerializeField] private string _successCriterion =
+            "Succès = les trois noms apparaissent dans cette liste.";
+        [SerializeField] private bool _collapseWhenAuthenticated;
+
         private readonly Dictionary<int, string> _serverParticipants = new();
 
         private NetworkManager _networkManager;
@@ -34,6 +39,21 @@ namespace NotThatWay.Game
         private string _lastMessage = "Choisir Host sur une machine, puis Client sur les autres.";
         private ushort _port = DefaultPort;
         private bool _starting;
+        private bool _networkPanelExpanded;
+
+        public void ConfigureDisplay(
+            string header,
+            string successCriterion,
+            bool collapseWhenAuthenticated)
+        {
+            if (string.IsNullOrWhiteSpace(header))
+                throw new ArgumentException("Titre réseau vide.", nameof(header));
+            if (string.IsNullOrWhiteSpace(successCriterion))
+                throw new ArgumentException("Critère réseau vide.", nameof(successCriterion));
+            _header = header.Trim();
+            _successCriterion = successCriterion.Trim();
+            _collapseWhenAuthenticated = collapseWhenAuthenticated;
+        }
 
         private IEnumerator Start()
         {
@@ -211,15 +231,27 @@ namespace NotThatWay.Game
 
         private void OnGUI()
         {
-            const float width = 620f;
-            var height = Mathf.Min(560f, Screen.height - 32f);
-            GUILayout.BeginArea(new Rect(16f, 16f, Mathf.Min(width, Screen.width - 32f), height), GUI.skin.box);
-            GUILayout.Label("GAME — premier test réseau", HeaderStyle());
-            GUILayout.Space(8f);
-
             var server = _networkManager != null && _networkManager.ServerManager.Started;
             var client = _networkManager != null && _networkManager.ClientManager.Started;
             var authenticated = client && _networkManager.ClientManager.Connection.IsAuthenticated;
+            if (_collapseWhenAuthenticated && authenticated && !_networkPanelExpanded)
+            {
+                GUILayout.BeginArea(
+                    new Rect(16f, 16f, Mathf.Min(250f, Screen.width - 32f), 72f),
+                    GUI.skin.box);
+                GUILayout.Label("M1 — réseau connecté");
+                if (GUILayout.Button("RÉSEAU"))
+                    _networkPanelExpanded = true;
+                GUILayout.EndArea();
+                return;
+            }
+
+            const float width = 620f;
+            var height = Mathf.Min(560f, Screen.height - 32f);
+            GUILayout.BeginArea(new Rect(16f, 16f, Mathf.Min(width, Screen.width - 32f), height), GUI.skin.box);
+            GUILayout.Label(_header, HeaderStyle());
+            GUILayout.Space(8f);
+
             GUILayout.Label($"Serveur: {(server ? "STARTED" : "stopped")}   Client: {(authenticated ? "AUTHENTICATED" : client ? "starting" : "stopped")}");
             if (server)
                 GUILayout.Label($"Connexions serveur: {_networkManager.ServerManager.Clients.Count}");
@@ -253,7 +285,9 @@ namespace NotThatWay.Game
             GUILayout.Label("Participants reçus du serveur", HeaderStyle());
             GUILayout.TextArea(_roster, GUILayout.MinHeight(100f));
             GUILayout.Space(8f);
-            GUILayout.Label("Succès = les trois noms apparaissent dans cette liste.");
+            GUILayout.Label(_successCriterion);
+            if (_collapseWhenAuthenticated && authenticated && GUILayout.Button("MASQUER"))
+                _networkPanelExpanded = false;
             GUILayout.EndArea();
         }
 

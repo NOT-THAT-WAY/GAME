@@ -254,7 +254,8 @@ namespace NotThatWay.Game.Simulation
 
         public WallSnapshot CaptureSnapshot() => new(_state, _lastProcessedTick);
 
-        public WallSnapshotApplyStatus TryApplySnapshot(WallSnapshot snapshot)
+        /// <summary>Évalue un snapshot sans muter la machine.</summary>
+        public WallSnapshotApplyStatus PreviewSnapshot(WallSnapshot snapshot)
         {
             if (_isAdvancing)
             {
@@ -295,12 +296,19 @@ namespace NotThatWay.Game.Simulation
                     return WallSnapshotApplyStatus.Stale;
                 if (tickOrder == 0)
                     return WallSnapshotApplyStatus.Duplicate;
-
-                _lastProcessedTick = snapshot.CapturedTick;
                 return WallSnapshotApplyStatus.Applied;
             }
 
-            _state = candidate;
+            return WallSnapshotApplyStatus.Applied;
+        }
+
+        public WallSnapshotApplyStatus TryApplySnapshot(WallSnapshot snapshot)
+        {
+            var status = PreviewSnapshot(snapshot);
+            if (status != WallSnapshotApplyStatus.Applied)
+                return status;
+
+            _state = snapshot.ToWallState();
             _lastProcessedTick = snapshot.CapturedTick;
             return WallSnapshotApplyStatus.Applied;
         }

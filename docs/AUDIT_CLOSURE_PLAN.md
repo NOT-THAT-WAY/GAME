@@ -1,8 +1,8 @@
 # Plan de fermeture de l’audit — du smoke 16×16 au premier duel M1
 
-> Baseline vérifiée : `main` à `6b565f0`, 9 août 2026. Le workspace courant est sale et contient
-> notamment une suppression utilisateur stagée. Les preuves locales qui en sont issues restent des
-> preuves de développement, pas des preuves distribuables attachées à un SHA propre.
+> Baseline de travail vérifiée le 9 août 2026 sur `feat/m1-minimal-skeleton`. Les preuves
+> `IMPLEMENTED-LOCAL` ci-dessous doivent rester liées au commit embarqué, au fingerprint complet du
+> bundle et au manifest de leur exécution ; elles ne remplacent pas la preuve Windows/distribuée.
 
 Ce document resserre le [plan maître](EXECUTION_PLAN.md) autour du prochain résultat jouable. Il ne
 remplace ni le [backlog détaillé](READY_BACKLOG.md), ni la [matrice QA](TEST_OWNERSHIP_MATRIX.md) : il
@@ -42,15 +42,15 @@ deux sources d’un même effort signé ; ils ne doivent pas rester deux simulat
 | Domaine | Acquis | Manque réel | Conséquence |
 |---|---|---|---|
 | Toolchain | Unity/FishNet/URP/Input System figés ; validation statique verte | preuve Windows de la baseline | développement Mac possible, sortie M0 impossible |
-| Builds/tests | build Mac courant réussi ; `86/86` EditMode et `4/4` PlayMode ; rouge volontaire détecté | adaptateurs réseau, Windows, SHA propre et CI Unity | topologie, graybox, modèles tick mur/joueur et commandes Input prouvés sur Mac, pas encore le duel M1 |
+| Builds/tests | `98/98` EditMode, `5/5` PlayMode, build Development M1 et trois scénarios multiprocessus Mac | Windows, réseau dégradé/distant et CI Unity | squelette M1 local prouvé ; aucune extrapolation multiplateforme |
 | HT-00 | caméra, mouvement, saut, punch et bot touché sans crash | aucune rotation de mur/pivot prouvée ; ancien binaire sans provenance ferme | conserver `INCOMPLETE`, ne pas forcer un faux PASS |
-| Gameplay | map, joueur, pivots et murs forment un smoke intégré | temps par frame, autorité cliente, deux systèmes muraux, téléport `U` | ne plus étendre les classes legacy |
-| Topologie | schéma v1, parseur strict, validation, IDs, canonicalisation, checksum et migration 16×16 verts sur Mac | checksum Windows et intégration snapshot | TOP-02/graybox peuvent démarrer |
-| Collision | murs statiques et 46 bras de 17 pivots reçoivent des boîtes topologiques | 4 `MeshCollider` décor/sol restent dans le smoke FBX ; arc non déterministe | graybox primitive avant réintégration |
-| Réseau | Tugboat local et roster historique fonctionnels | tick, snapshot, late join, reconcile et preuve distante à trois | aucun claim M1 réseau |
+| Gameplay | graybox 2×2, deux joueurs prédits, mur autoritaire et interaction `E` forment le squelette M1 | punch, énergie, manche/reset et réintégration 16×16 | tester le noyau avant d’étendre le labyrinthe |
+| Topologie | schéma strict, checksum, graphe, sweep, fixture 2×2 et enveloppe snapshot compatibles | checksum Windows et migration runtime 16×16 | contrat M1 exploitable localement |
+| Collision | M1 génère sept `BoxCollider`, zéro mesh gameplay, et refuse l’arc occupé atomiquement | meshes legacy hors M1, profils dégradés et cas prolongés | mur isolé testable sans ambiguïté FBX |
+| Réseau | 60 Hz TimeManager, `Replicate/Reconcile`, snapshots fiables, opposition, refus et remplacement tardif verts en loopback | Windows, réseau réel/dégradé, reconnexion, late join en mouvement, soak | claim limité au M1 local multiprocessus |
 | GitHub | workflow statique vert sur le SHA distant | dépôt public sans licence, ruleset désactivé, `main` non protégé, trois Admin, issues périmées | G0 reste rouge |
 | DVC/assets | R2 choisi ; un master riggé existe localement | aucun pointeur/push/restore ; deux masters absents ; droits à confirmer | graybox autorisée, modification durable des masters bloquée |
-| Preuves | identité runtime, bundle complet et rapports liés aux manifests verts sur Mac | parse/build Windows puis vraie session multi-machine | ancien log désormais `INCOMPLETE` |
+| Preuves | identité embarquée, hash binaire, fingerprint bundle et manifest par suite locale | build propre final, Windows puis vraie session multi-machine | gate locale reproductible, preuve distribuée encore ouverte |
 
 Le rapport réseau historique à un participant est seulement une preuve du filtre d’anonymisation.
 Il ne constitue ni une preuve du commit courant, ni une preuve multi-machine. Le prochain format doit
@@ -227,20 +227,20 @@ Seulement après la sortie technique et humaine du mur :
 | DEC-04 | recommandation prête | G3 avant manche M2 | objectif/reset |
 | TOP-01A | `IMPLEMENTED-LOCAL` | preuve Windows restante | types, JSON strict, IDs, références, bornes |
 | TOP-01B | `IMPLEMENTED-LOCAL` | preuve Windows restante | canonicalisation, checksum, migration 16×16 |
-| TOP-02 | après TOP-01 et DEC-02 pour la connectivité | politique mur/joueur avant intégration physique | colliders, arc balayé, graphe |
-| GRY-01 | après specs collision | aucune dépendance Blender/DVC | arène 2×2 déterministe |
+| TOP-02 | `IMPLEMENTED-LOCAL` pour M1 | preuve Windows et réintégration 16×16 | colliders, arc balayé, graphe |
+| GRY-01 | `IMPLEMENTED-LOCAL` | lisibilité humaine et reset de manche ultérieur | arène 2×2 déterministe |
 | ART-01 | après graybox stable | revue humaine de lisibilité | primitives lisibles puis seulement blockout éventuel |
 | TICK-01A | après TOP-01A | aucune fréquence concrète | modèle paramétré, snapshot, wrap, tests |
-| TICK-01B/WALL-01 | après DEC-01, TOP-02, GRY-01 | choix physique/mur-joueur | adaptateur FishNet et late join |
+| TICK-01B/WALL-01 | `IMPLEMENTED-LOCAL` avec baseline M1 | réseau dégradé, reconnexion, Windows, soak | adaptateur FishNet et late join |
 | INP-01A | `IMPLEMENTED-LOCAL` | preuve manette physique restante | schemes clavier/manette, source isolée et commande |
 | INP-01B | après DEC-01 | statut saut/tap/hold | action map canonique |
 | PLY-01 | `IMPLEMENTED-LOCAL`, valeurs finales après DEC-01 | preuve Windows et adaptateur physique | modèle joueur pur paramétré |
-| PLY-02 | après PLY-01, INP-01, GRY-01 | mur logique disponible | prédiction/réconciliation |
-| INT-01 | après DEC-03, WALL-01, PLY-02 | règles d’effort | interaction autoritaire unique |
+| PLY-02 | `IMPLEMENTED-LOCAL` | profils dégradés, Windows, métriques de correction | prédiction/réconciliation |
+| INT-01 | `PARTIAL-LOCAL` | punch, énergie et règle finale DEC-03 | interaction `E` et effort signé autoritaires |
 | CON-01A | `READY-CODEX` | aucune pour valeur/parseur purs | `ConnectionTarget` et tests sans branchement runtime |
 | CON-01B | après preuve Tugboat NET-00 | comportement actuel gelé | adaptateur/bootstrap Tugboat, sans Steam concret |
 | INTG-01 | après WALL-01 et PLY-02 | modèle M1 vert | map 16×16 comme intégration secondaire |
-| QA-01 | après INT-01 et INTG-01 | builds propres Mac/Windows | matrice distribuée M1 |
+| QA-01 | harness Mac `IMPLEMENTED-LOCAL` | build propre, Windows et matrice distribuée | trois scénarios automatiques + quatre quêtes humaines |
 | CI-01 | après preuve Windows et politique secrets/licence | runner Unity choisi | compilation/tests Unity CI |
 
 ### M2 et travaux conditionnels

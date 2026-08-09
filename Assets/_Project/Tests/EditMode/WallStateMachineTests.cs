@@ -379,6 +379,15 @@ namespace NotThatWay.Game.Tests.EditMode
             machine.AdvanceTick(44u, Array.Empty<WallEffortIntent>(), Allow);
             machine.AdvanceTick(45u, Array.Empty<WallEffortIntent>(), Allow);
 
+            var stateBeforePreview = machine.State;
+            var tickBeforePreview = machine.LastProcessedTick;
+            Assert.That(
+                machine.PreviewSnapshot(activeSnapshot),
+                Is.EqualTo(WallSnapshotApplyStatus.Stale));
+            Assert.That(machine.State, Is.EqualTo(stateBeforePreview));
+            Assert.That(machine.LastProcessedTick, Is.EqualTo(tickBeforePreview),
+                "La validation atomique ne doit pas muter la machine avant commit.");
+
             Assert.That(
                 machine.TryApplySnapshot(activeSnapshot),
                 Is.EqualTo(WallSnapshotApplyStatus.Stale));

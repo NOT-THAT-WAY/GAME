@@ -409,8 +409,10 @@ compare deux hiérarchies générées indépendamment.
 
 ### GRY-01 — Livrer la scène grise à un pivot et deux joueurs
 
-- **Statut** : collision/topologie primitive `IMPLEMENTED-LOCAL`; joueurs, HUD et réseau à brancher
-- **Branche** : `feat/pivot-graybox`
+- **Statut** : `IMPLEMENTED-LOCAL` par générateur : arène 2×2, deux spawns, joueur prédit, mur
+  autoritaire, diagnostics et build Development ; lisibilité humaine et reset en-process restent à
+  décider
+- **Branche** : `feat/m1-minimal-skeleton`
 - **Pilote / binôme / testeur** : Sean / Zak / Nils
 - **Estimation** : 1–2 j
 - **Claims** : petite scène/prefabs ou générateur déterministe, donnée de fixture, HUD debug, tests
@@ -462,12 +464,15 @@ snapshot round-trip identiques.
 
 État local du 9 août 2026 : machine à deux poses avec IDs non denses, effort signé borné par source,
 agrégation indépendante de l'ordre, gate atomique, progression Q16, codec v1 et restauration late
-join implémentés. Les gates Mac comptent `86/86` EditMode après PLY-01 ; l'adaptateur FishNet reste WALL-01.
+join implémentés. La suite Mac courante inclut ce modèle dans `98/98` EditMode ; son adaptateur est
+désormais exercé par WALL-01.
 
 ### WALL-01 — Adaptateur FishNet, validation et arrivée tardive
 
-- **Statut** : `BLOCKED` par TICK-01 et GRY-01
-- **Branche** : `feat/pivot-authoritative-network`
+- **Statut** : `IMPLEMENTED-LOCAL` pour le mur M1 unique, le host, le snapshot fiable événementiel,
+  le replay, le refus d’occupation, l’opposition et le late join stable ; réseau dégradé, reconnexion,
+  late join en mouvement, durée et Windows restent à prouver
+- **Branche** : `feat/m1-minimal-skeleton`
 - **Pilote / binôme / testeur** : Zak / Sean / Nils
 - **Codex** : refactor réseau, tests PlayMode, instrumentation.
 - **Estimation** : 3–4,5 j
@@ -479,6 +484,13 @@ pivots/murs actuels au lieu de prolonger les deux.
 
 Preuve : client tardif entrant au milieu d’une rotation voit immédiatement le bon état ; 10 minutes
 sans divergence ; requêtes abusives de fixture refusées et journalisées sans spam.
+
+État local du 9 août 2026 : le serveur recalcule cible, portée, côté et arc depuis ses joueurs,
+avance le collider en `PreTick`, puis les joueurs en `Tick`. Les snapshots portent schéma, checksum,
+tick rate et fingerprint des réglages ; la garde host précède toute mutation, un `TargetRpc` fiable
+rafraîchit chaque nouvel observer et l’horloge live ne recule pas. Le flux fiable est limité aux
+changements et à un heartbeat par seconde. Trois scénarios deux-processus et un remplacement client
+sont automatisés par `scripts/m1-network-tests-macos.sh`.
 
 ### INP-01 — Passer aux Input Actions
 
@@ -521,15 +533,15 @@ Preuve : séquences déterministes, bords de collision et reset testés, aucune 
 État local du 9 août 2026 : état entièrement réconciliable, configuration sans preset caché,
 mouvement/yaw/sprint, gravité, saut désactivable, fenêtres coyote/buffer, knockback, collision injectée
 une fois par tick, restauration et wrap sont couverts. Payloads forgés, ticks non contigus, réentrance
-et exceptions de collision sont refusés atomiquement. La gate Mac compte `86/86` EditMode ; voir
-`docs/PLAYER_SIMULATION_MODEL.md`. PLY-02 doit encore fournir `CharacterController`, DTO FishNet,
-prédiction, replay et réconciliation.
+et exceptions de collision sont refusés atomiquement. Voir `docs/PLAYER_SIMULATION_MODEL.md` ;
+PLY-02 fournit maintenant l’adaptateur physique et FishNet local, mais pas encore sa preuve dégradée.
 
 ### PLY-02 — Brancher prédiction et réconciliation FishNet
 
-- **Statut** : `READY-CODEX` pour l’adaptateur local après PLY-01, INP-01 et GRY-01 ; preuve distribuée
-  encore bloquée par les décisions PhysX/tick et les machines de QA
-- **Branche** : `feat/predicted-player-motor`
+- **Statut** : `IMPLEMENTED-LOCAL` pour `CharacterController`, DTO, `Replicate`/`Reconcile`, forwarding,
+  prefab prédit et deux processus loopback ; latence/perte/jitter, Windows et bornes de correction
+  restent à fermer
+- **Branche** : `feat/m1-minimal-skeleton`
 - **Pilote / binôme / testeur** : Zak / Nils / Sean
 - **Codex** : `Replicate`/`Reconcile`, instrumentation et tests.
 - **Estimation** : 3–5 j
@@ -542,9 +554,15 @@ gameplay. Conserver un outil debug serveur explicitement hors build release si n
 Preuve : profil `80 ms / 2 % / 20 ms`, corrections bornées et visibles dans les métriques, aucune
 position acceptée sur simple affirmation cliente.
 
+État local du 9 août 2026 : aucun `NetworkTransform` ne porte le joueur M1. Le propriétaire envoie
+une commande compacte, le serveur mémorise seulement la commande effectivement simulée, et le
+reconcile restaure position, rotation, vitesses, fenêtres et tick logique. La source automatique de
+QA emprunte exactement ce chemin réseau et n’est autorisée que dans un build Development.
+
 ### INT-01 — Unifier push, punch, énergie et contestation
 
-- **Statut** : `BLOCKED` par DEC-03, WALL-01 et PLY-02
+- **Statut** : `PARTIAL-LOCAL` pour `InteractHeld`, effort signé, portée/côté serveur et égalité ;
+  punch, énergie, cooldown et règle finale restent bloqués par DEC-03
 - **Branche** : `feat/authoritative-pivot-interactions`
 - **Pilote / binôme / testeur** : Sean / Zak / Nils
 - **Codex** : modèle de règles, serveur, UI debug et tests.
@@ -588,8 +606,10 @@ triangles FBX ; connectivité et spawns validés avant build.
 
 ### QA-01 — Exécuter la matrice de sortie M1
 
-- **Statut** : `BLOCKED` par INT-01 et INTG-01
-- **Branche** : `chore/m1-network-proof-harness` pour l’outillage ; preuves dans l’issue.
+- **Statut** : harness loopback Mac `IMPLEMENTED-LOCAL` pour trois scénarios binaires et late join
+  stable ; matrice distribuée toujours bloquée par Windows, réseau réel/dégradé, INT-01 complet et
+  INTG-01
+- **Branche** : `feat/m1-minimal-skeleton` pour le harness local ; preuves distribuées dans l’issue.
 - **Pilote / binôme / testeur** : Nils / Zak / Sean
 - **Codex** : harness, comparaison de logs et rapport automatique.
 - **Estimation** : 1–2 j plus disponibilité des machines
@@ -754,19 +774,20 @@ rejouer, incidents et limites. Verdict obligatoire :
 
 ## File de travail immédiate
 
-Sans attendre les décisions de game design, le prochain lot peut être distribué ainsi :
+Après la gate M1 locale et les quatre quêtes humaines, le prochain lot peut être distribué ainsi :
 
 | Voie | Pilote | Travail immédiat | Codex |
 |---|---|---|---|
-| A — dépôt | Nils | GOV-01 et rebasage issues | GOV-02 puis textes GOV-04 |
-| B — machines | Zak | ENV-02 puis NET-00 | diagnostic logs/scripts |
-| C — art/data | Sean + Nils | ENV-01, DVC-01, recherche DVC-02 | manifests, hashes, registre |
-| D — qualité | Zak | relire TST-01 et la provenance des preuves | durcir build/log puis implémenter TOP-01A |
+| A — dépôt | Nils | GOV-01, protection et tri des issues | GOV-02 puis textes GOV-04 |
+| B — machines | Zak | build/test Windows puis profil `80 ms / 2 % / 20 ms` | scripts, comparaison et diagnostic logs |
+| C — art/data | Sean + Nils | lisibilité du pivot puis DVC-01/DVC-02 | contrat d’export, manifests et hashes |
+| D — qualité | Zak | reproduire la gate propre et la reconnexion | durcir le harness puis préparer INTG-01 |
 
-La première nouvelle règle de gameplay n’est ouverte qu’après la décision qu’elle concerne.
-`PROV-01`, `TOP-01A/B`, le modèle de transition paramétré et les Input Actions de base sont du
-travail d’infrastructure réversible ; ils peuvent précéder DEC-01. `TOP-02` et `GRY-01` suivent,
-sans prolonger les deux systèmes legacy du prototype.
+Le noyau réversible `TOP-02/GRY-01/TICK-01/WALL-01/PLY-02` est maintenant codé localement sans
+prolonger les deux systèmes legacy. Le test humain ne doit juger que mouvement, opposition visuelle,
+pivot synchronisé et refus d’occupation. Ensuite : corriger uniquement un défaut bloquant observé,
+puis fermer Windows/réseau dégradé/reconnexion avant `INTG-01`; punch, énergie et manche attendent
+toujours leurs décisions de game design.
 
 ## Définition de terminé commune
 
