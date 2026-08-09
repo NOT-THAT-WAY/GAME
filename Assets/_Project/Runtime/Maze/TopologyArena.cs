@@ -16,8 +16,16 @@ namespace NotThatWay.Game
     [DisallowMultipleComponent]
     public sealed class TopologyArena : MonoBehaviour
     {
+        private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
+        private static readonly int LegacyColorId = Shader.PropertyToID("_Color");
+        private static readonly int EmissionColorId = Shader.PropertyToID("_EmissionColor");
+
         [SerializeField] private TextAsset _topologyAsset;
         [SerializeField] private bool _buildOnAwake = true;
+
+        [Header("Rendu — cosmétique, aucune règle gameplay")]
+        [SerializeField] private Material _surfaceMaterial;
+        [SerializeField] private Material _accentMaterial;
 
         private readonly Dictionary<int, TopologyWallView> _wallViews = new();
         private readonly Dictionary<int, int> _wallStates = new();
@@ -42,6 +50,17 @@ namespace NotThatWay.Game
             _buildOnAwake = buildOnAwake;
         }
 
+        /// <summary>
+        /// Déclare les deux matériaux du rendu graybox. Sans eux, les primitives
+        /// gardent le matériau par défaut du pipeline, que URP 17 ne fournit plus
+        /// dans un player : l'arène sortirait entièrement en magenta.
+        /// </summary>
+        public void ConfigureMaterials(Material surfaceMaterial, Material accentMaterial)
+        {
+            _surfaceMaterial = surfaceMaterial;
+            _accentMaterial = accentMaterial;
+        }
+
         public void BuildFromConfiguredAsset()
         {
             if (_topologyAsset == null)
@@ -59,6 +78,15 @@ namespace NotThatWay.Game
                 throw new InvalidOperationException(first == null
                     ? "Topologie runtime invalide."
                     : $"Topologie runtime invalide: {first.Code}@{first.Path}.");
+            }
+
+            // Hors éditeur, aucun matériau de repli n'existe : le signaler dans le
+            // log du player est le seul moyen de voir la panne sans la regarder.
+            if ((_surfaceMaterial == null || _accentMaterial == null) && !Application.isEditor)
+            {
+                Debug.LogError(
+                    "[GAME-ARENA] Matériaux explicites absents : le rendu de l'arène sera magenta.",
+                    this);
             }
 
             ClearGenerated();
@@ -211,7 +239,7 @@ namespace NotThatWay.Game
                 (float)((double)map.Dimensions.WidthCells * map.Dimensions.CellPitchMm / 1000d),
                 floorThickness,
                 (float)((double)map.Dimensions.HeightCells * map.Dimensions.CellPitchMm / 1000d));
-            SetColor(floor, new Color(0.19f, 0.21f, 0.24f));
+            Paint(floor, _surfaceMaterial, new Color(0.19f, 0.21f, 0.24f));
         }
 
         private void CreateWalls(TopologyRuntimeMap map)
@@ -226,9 +254,10 @@ namespace NotThatWay.Game
                 wallObject.transform.SetParent(wallRoot, false);
                 var view = wallObject.AddComponent<TopologyWallView>();
                 view.Initialize(map, wall);
-                SetColor(wallObject, wall.IsMobile
-                    ? new Color(0.10f, 0.78f, 0.88f)
-                    : new Color(0.48f, 0.52f, 0.58f));
+                if (wall.IsMobile)
+                    Paint(wallObject, _accentMaterial, new Color(0.10f, 0.78f, 0.88f), 0.30f);
+                else
+                    Paint(wallObject, _surfaceMaterial, new Color(0.48f, 0.52f, 0.58f));
                 _wallViews.Add(wall.WallId, view);
                 _wallStates.Add(wall.WallId, wall.InitialStateId);
             }
@@ -248,7 +277,7 @@ namespace NotThatWay.Game
                 marker.transform.localPosition = point + Vector3.up * 0.05f;
                 marker.transform.localScale = new Vector3(0.45f, 0.05f, 0.45f);
                 DisableCollider(marker);
-                SetColor(marker, new Color(1f, 0.55f, 0.05f));
+                Paint(marker, _accentMaterial, new Color(1f, 0.55f, 0.05f), 0.60f);
             }
         }
 
@@ -268,11 +297,17 @@ namespace NotThatWay.Game
                 marker.layer = GameplayLayers.VisualOnly;
                 marker.transform.SetParent(point, false);
                 marker.transform.localPosition = Vector3.up * 0.025f;
-                marker.transform.localScale = new Vector3(0.35f, 0.025f, 0.35f);
+                // Un pad large se lit d'un bout à l'autre de l'arène : la quête
+                // humaine demande de rejoindre celui d'en face, pas de le chercher.
+                marker.transform.localScale = new Vector3(1.6f, 0.025f, 1.6f);
                 DisableCollider(marker);
-                SetColor(marker, spawn.SpawnId % 2 == 0
-                    ? new Color(0.30f, 0.95f, 0.35f)
-                    : new Color(0.95f, 0.25f, 0.45f));
+                Paint(
+                    marker,
+                    _accentMaterial,
+                    spawn.SpawnId % 2 == 0
+                        ? new Color(0.30f, 0.95f, 0.35f)
+                        : new Color(0.95f, 0.25f, 0.45f),
+                    0.90f);
             }
         }
 
@@ -298,16 +333,33 @@ namespace NotThatWay.Game
                 collider.enabled = false;
         }
 
-        private static void SetColor(GameObject value, Color color)
+        /// <summary>
+        /// Applique le matériau explicite puis la couleur par instance. Le matériau
+        /// porte le shader et le mot-clé d'émission ; le bloc de propriétés ne fait
+        /// que teinter, sans créer d'instance de matériau.
+        /// </summary>
+        private static void Paint(
+            GameObject value,
+            Material material,
+            Color color,
+            float emissionScale = 0f)
         {
-            if (value.TryGetComponent<Renderer>(out var renderer))
-            {
-                var properties = new MaterialPropertyBlock();
-                renderer.GetPropertyBlock(properties);
-                properties.SetColor("_BaseColor", color);
-                properties.SetColor("_Color", color);
-                renderer.SetPropertyBlock(properties);
-            }
+            if (!value.TryGetComponent<Renderer>(out var renderer))
+                return;
+
+            // GameObject.CreatePrimitive attribue le matériau par défaut du pipeline
+            // actif. URP 17 ne l'expose plus hors éditeur : sans matériau explicite
+            // sérialisé dans la scène, tout le graybox sort en magenta dans le build.
+            if (material != null)
+                renderer.sharedMaterial = material;
+
+            var properties = new MaterialPropertyBlock();
+            renderer.GetPropertyBlock(properties);
+            properties.SetColor(BaseColorId, color);
+            properties.SetColor(LegacyColorId, color);
+            if (emissionScale > 0f)
+                properties.SetColor(EmissionColorId, color * emissionScale);
+            renderer.SetPropertyBlock(properties);
         }
 
         private void ValidateTopologyTransform()

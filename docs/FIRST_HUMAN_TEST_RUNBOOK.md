@@ -26,6 +26,25 @@ le jeu. Les commandes sont affichées ; aucune fiche d’étude n’est à rempl
 
 ## HT-M1 — mur autoritaire minimal
 
+HT-M1 est un **banc technique**, pas une tranche du jeu. Il montre une arène 2×2 générée depuis la
+topologie graybox pour mesurer déplacement prédit, autorité serveur et un seul mur pivotant. Le
+labyrinthe 16×16 reste le banc de rendu ; l'annoncer autrement fausse l'avis demandé. Le personnage
+et l'éclairage sont ceux du projet uniquement pour que l'image soit lisible, pas pour juger la
+direction artistique.
+
+Avant d'envoyer un build à un humain, produire et regarder les captures :
+
+```bash
+./scripts/m1-preview-macos.sh           # scène, personnages, vue première personne
+./scripts/m1-preview-macos.sh --player  # capture de l'exécutable macOS déjà compilé
+```
+
+Elles sont écrites dans `Logs/M1Playtest/`, et `m1-human-test-macos.sh --build` les régénère puis
+les copie dans la session. Un banc qui compile, passe ses tests et écrit ses logs peut sortir
+entièrement en magenta : URP ne fournit plus de matériau par défaut hors éditeur, donc tout objet
+doit porter un matériau explicite. La génération de scène refuse désormais tout matériau hors URP,
+mais la capture reste le seul contrôle qui voit réellement l'image.
+
 La gate locale doit être verte avant de demander un avis humain :
 
 ```bash
@@ -40,6 +59,15 @@ Lancer ensuite les deux fenêtres visibles :
 ```bash
 ./scripts/m1-human-test-macos.sh
 ```
+
+Pour le smoke réseau à trois connexions simultanées, lancer à la place :
+
+```bash
+./scripts/m1-human-test-macos.sh --players 3
+```
+
+La topologie reste un duel à deux spawns canoniques. Le build M1 réserve un troisième emplacement
+gris distinct uniquement pour ce test réseau afin de ne pas superposer deux contrôleurs.
 
 Faire uniquement ces quatre quêtes, sans indice en jeu ni questionnaire :
 
