@@ -42,7 +42,7 @@ deux sources d’un même effort signé ; ils ne doivent pas rester deux simulat
 | Domaine | Acquis | Manque réel | Conséquence |
 |---|---|---|---|
 | Toolchain | Unity/FishNet/URP/Input System figés ; validation statique verte | preuve Windows de la baseline | développement Mac possible, sortie M0 impossible |
-| Builds/tests | build Mac courant réussi ; `37/37` EditMode et `3/3` PlayMode ; rouge volontaire détecté | tick/joueur/réseau, Windows, SHA propre et CI Unity | topologie et graybox primitive prouvées sur Mac, pas encore le duel M1 |
+| Builds/tests | build Mac courant réussi ; `57/57` EditMode et `3/3` PlayMode ; rouge volontaire détecté | joueur/réseau, Windows, SHA propre et CI Unity | topologie, graybox et modèle tick du mur prouvés sur Mac, pas encore le duel M1 |
 | HT-00 | caméra, mouvement, saut, punch et bot touché sans crash | aucune rotation de mur/pivot prouvée ; ancien binaire sans provenance ferme | conserver `INCOMPLETE`, ne pas forcer un faux PASS |
 | Gameplay | map, joueur, pivots et murs forment un smoke intégré | temps par frame, autorité cliente, deux systèmes muraux, téléport `U` | ne plus étendre les classes legacy |
 | Topologie | schéma v1, parseur strict, validation, IDs, canonicalisation, checksum et migration 16×16 verts sur Mac | checksum Windows et intégration snapshot | TOP-02/graybox peuvent démarrer |

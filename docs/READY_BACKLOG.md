@@ -445,9 +445,9 @@ humaine validée et master restaurable. Aucun asset lourd du studio n’entre di
 
 ### TICK-01 — Modèle pur du mur par tick
 
-- **Statut** : modèle paramétré `READY-CODEX` après TOP-01 et TST-01 ; taux concret, ordre PhysX et
-  politique mur/joueur bloqués par DEC-01
-- **Branche** : `feat/pivot-tick-model`
+- **Statut** : `IMPLEMENTED-LOCAL` pour le modèle paramétré, le codec snapshot, le wrap et les tests ;
+  taux concret, ordre PhysX et politique mur/joueur restent bloqués par DEC-01
+- **Branche** : `feat/m1-minimal-skeleton`
 - **Pilote / binôme / testeur** : Zak / Sean / Nils
 - **Codex** : implémentation et tests déterministes.
 - **Estimation** : 1,5–2,5 j
@@ -459,6 +459,10 @@ en ticks si applicables. La pose logique est calculée depuis état + tick, jama
 
 Preuve : même suite d’états à 30/60/120 FPS de rendu ; révision ancienne refusée ; sérialisation et
 snapshot round-trip identiques.
+
+État local du 9 août 2026 : machine à deux poses avec IDs non denses, effort signé borné par source,
+agrégation indépendante de l'ordre, gate atomique, progression Q16, codec v1 et restauration late
+join implémentés. Les gates Mac comptent `57/57` EditMode ; l'adaptateur FishNet reste WALL-01.
 
 ### WALL-01 — Adaptateur FishNet, validation et arrivée tardive
 
