@@ -245,6 +245,8 @@ namespace NotThatWay.Game.Editor
         private static void Build(BuildTarget target, string outputPath, bool forceIl2Cpp)
         {
             CreateScene();
+            var platform = target == BuildTarget.StandaloneOSX ? "macos" : "windows";
+            BuildIdentityWriter.WriteForBuild("maze", platform);
             Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outputPath)) ?? "Builds");
 
             var options = new BuildPlayerOptions

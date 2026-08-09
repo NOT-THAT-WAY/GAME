@@ -66,6 +66,9 @@ jobs:
       - name: Validate player build manifests
         run: ./tests/build-manifests/test-manifest-contract.sh
 
+      - name: Validate complete player bundle fingerprints
+        run: python3 ./tests/build-manifests/test-fingerprint.py
+
       - name: Validate evidence report contracts
         run: python3 ./tests/evidence/test-report.py
 

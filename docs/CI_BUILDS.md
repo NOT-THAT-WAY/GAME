@@ -3,15 +3,17 @@
 ## Ce qui est actif maintenant
 
 La CI actuelle est volontairement légère et sans secret Unity. Un seul contrôle,
-`repository-checks`, exécute trois étapes sur Ubuntu :
+`repository-checks`, exécute les familles d’étapes suivantes sur Ubuntu :
 
 | Étape | Ce qu'elle prouve | Quand |
 |---|---|---|
 | Validate branch and pull request title | branche et titre de PR conformes | pull request |
 | Validate repository contract | versions, métadonnées Unity, LFS/DVC, fichiers interdits et présence du contrat réseau/skill Claude | toujours |
+| Validate tooling contracts | wrappers humains/Unity, workflow, manifests et rapports expurgés testés sans licence Unity | toujours |
+| Validate data fixtures | topologie JSON et empreinte canonique des bundles | toujours |
 | Parse Windows scripts | tous les scripts `.ps1` sont analysables par PowerShell | toujours |
 
-Les trois étaient trois jobs séparés, dont un sous Windows. GitHub facture chaque
+Ces contrôles étaient auparavant répartis dans trois jobs, dont un sous Windows. GitHub facture chaque
 job à la minute supérieure et double le tarif Windows : trente secondes de
 travail réel coûtaient 4 minutes par pull request. Les regrouper ramène le coût à
 1 minute par exécution, sans rien retirer aux contrôles. `pwsh` étant préinstallé

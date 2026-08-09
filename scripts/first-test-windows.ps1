@@ -67,10 +67,66 @@ Invoke-SharedValidator "scripts/validate-repository.sh"
 New-Item -ItemType Directory -Force -Path $LogDirectory | Out-Null
 $BuildLog = Join-Path $RepoRoot $BuildLogRelativePath
 $BuildManifestPath = Join-Path (Split-Path -Parent $BuildPath) "build-manifest.json"
+$BuildFingerprintPath = Join-Path (Split-Path -Parent $BuildPath) "build-bundle-fingerprint.json"
+$BundleRoot = Split-Path -Parent $BuildPath
+$BundleRelativePath = $BuildRelativePath -replace '/[^/]+$', ''
 $GitCommit = ((& git rev-parse HEAD 2>$null) -join "").Trim()
 if ([string]::IsNullOrWhiteSpace($GitCommit)) { $GitCommit = "unknown" }
 $DirtyWorktree = -not [string]::IsNullOrWhiteSpace(((& git status --porcelain=v1 2>$null) -join "`n"))
 $BuildStartedAtUtc = [DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ")
+
+function Get-Sha256Text([string]$Value) {
+    $Algorithm = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        $Bytes = [System.Text.UTF8Encoding]::new($false).GetBytes($Value)
+        return ([BitConverter]::ToString($Algorithm.ComputeHash($Bytes))).Replace("-", "").ToLowerInvariant()
+    } finally {
+        $Algorithm.Dispose()
+    }
+}
+
+$NormalizedProfile = $TestProfile.ToLowerInvariant()
+$BuildSetSeed = "schema=1|commit=$GitCommit|profile=$NormalizedProfile|unity=$UnityVersion"
+if ($DirtyWorktree) { $BuildSetSeed += "|dirty=true|started=$BuildStartedAtUtc" }
+$BuildSetId = Get-Sha256Text $BuildSetSeed
+$BuildId = Get-Sha256Text "$BuildSetId|platform=windows|started=$BuildStartedAtUtc"
+
+function New-BundleFingerprint {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Root,
+        [string[]]$ExcludedRelativePaths = @()
+    )
+
+    $ResolvedRoot = (Resolve-Path -LiteralPath $Root).Path.TrimEnd('\', '/')
+    $Records = @()
+    foreach ($File in Get-ChildItem -LiteralPath $ResolvedRoot -Recurse -File) {
+        $RelativePath = $File.FullName.Substring($ResolvedRoot.Length).TrimStart('\', '/').Replace('\', '/')
+        if ($ExcludedRelativePaths -contains $RelativePath) { continue }
+        $Records += [pscustomobject][ordered]@{
+            relativePath = $RelativePath
+            sizeBytes = [long]$File.Length
+            sha256 = (Get-FileHash -LiteralPath $File.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+        }
+    }
+    $Records = @($Records | Sort-Object -Property relativePath)
+    $Canonical = [System.Text.StringBuilder]::new()
+    [long]$TotalBytes = 0
+    foreach ($Record in $Records) {
+        [void]$Canonical.Append($Record.relativePath).Append("`t").Append($Record.sizeBytes).Append("`t").Append($Record.sha256).Append("`n")
+        $TotalBytes += $Record.sizeBytes
+    }
+
+    return [ordered]@{
+        schemaVersion = 1
+        kind = "unity-build-bundle-fingerprint"
+        algorithm = "sha256-relative-path-size-content-v1"
+        fileCount = $Records.Count
+        totalBytes = $TotalBytes
+        bundleManifestSha256 = Get-Sha256Text $Canonical.ToString()
+        files = $Records
+    }
+}
 
 function Write-BuildManifest {
     param(
@@ -85,18 +141,25 @@ function Write-BuildManifest {
 
     $BinaryHash = $null
     $BinarySize = $null
+    $BundleFingerprint = $null
     if ($IncludeArtifact) {
         if (-not (Test-Path -LiteralPath $BuildPath -PathType Leaf)) {
             throw "Binaire absent au moment de produire le manifeste: $BuildPath"
         }
         $BinaryHash = (Get-FileHash -LiteralPath $BuildPath -Algorithm SHA256).Hash.ToLowerInvariant()
         $BinarySize = (Get-Item -LiteralPath $BuildPath).Length
+        $BundleFingerprint = New-BundleFingerprint `
+            -Root $BundleRoot `
+            -ExcludedRelativePaths @("build-manifest.json", "build-bundle-fingerprint.json")
+        $BundleFingerprint | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $BuildFingerprintPath -Encoding utf8
     }
 
     $Manifest = [ordered]@{
-        schemaVersion = 1
+        schemaVersion = 2
         kind = "unity-player-build"
-        profile = $TestProfile.ToLowerInvariant()
+        buildId = $BuildId
+        buildSetId = $BuildSetId
+        profile = $NormalizedProfile
         platform = "windows"
         buildTarget = "StandaloneWindows64"
         developmentBuild = $true
@@ -108,6 +171,9 @@ function Write-BuildManifest {
         unityVersion = $UnityVersion
         buildMethod = $BuildMethod
         buildPath = $BuildRelativePath
+        bundlePath = $BundleRelativePath
+        bundleFingerprintPath = "$BundleRelativePath/build-bundle-fingerprint.json"
+        bundleFingerprint = $BundleFingerprint
         binaryPath = $BuildRelativePath
         binarySha256 = $BinaryHash
         binarySizeBytes = $BinarySize
@@ -118,12 +184,20 @@ function Write-BuildManifest {
     }
 
     New-Item -ItemType Directory -Force -Path (Split-Path -Parent $BuildManifestPath) | Out-Null
-    $Manifest | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $BuildManifestPath -Encoding utf8
+    $Manifest | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $BuildManifestPath -Encoding utf8
 }
 
 if (-not $SkipBuild) {
     Write-Host "Build Windows IL2CPP du $ProfileLabel..."
     Write-BuildManifest -Result "building" -ExitCode 0 -Provenance "current-run"
+    $env:GAME_BUILD_ID = $BuildId
+    $env:GAME_BUILD_SET_ID = $BuildSetId
+    $env:GAME_BUILD_PROFILE = $NormalizedProfile
+    $env:GAME_BUILD_PLATFORM = "windows"
+    $env:GAME_SOURCE_GIT_COMMIT = $GitCommit
+    $env:GAME_SOURCE_DIRTY_WORKTREE = $DirtyWorktree.ToString().ToLowerInvariant()
+    $env:GAME_BUILD_STARTED_AT_UTC = $BuildStartedAtUtc
+    $env:GAME_UNITY_VERSION = $UnityVersion
     & $UnityEditor `
         -batchmode `
         -quit `

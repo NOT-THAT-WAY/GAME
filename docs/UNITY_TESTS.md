@@ -61,12 +61,20 @@ Les wrappers de player build produisent séparément un `build-manifest.json` à
 - `Builds/ConnectionTest/<plateforme>/build-manifest.json` ;
 - `Builds/MazePlaytest/<plateforme>/build-manifest.json`.
 
-Ce manifeste décrit le binaire réellement lancé : commit source, worktree sale/propre, version Unity,
-cible, profil, méthode de build, hash SHA-256 et taille du binaire. Le wrapper écrit d’abord l’état
-`building`, puis `passed` seulement après présence et hash du binaire. Ainsi, l’échec d’une
+Ce manifeste de schéma 2 décrit le player réellement lancé : `buildId`, `buildSetId`, commit source,
+worktree sale/propre, version Unity, cible, profil, méthode de build, hash SHA-256 et taille du
+lanceur. Un `build-bundle-fingerprint.json` inventorie en plus tous les fichiers de l’application
+macOS ou du dossier Windows avec chemins relatifs, tailles et hashes ; son manifeste canonique est
+lui-même hashé. Le wrapper écrit d’abord l’état `building`, puis `passed` seulement après présence et
+empreinte du bundle. Ainsi, l’échec d’une
 reconstruction ne laisse pas un ancien manifeste vert accolé à un artifact potentiellement obsolète.
 `--skip-build` / `-SkipBuild` ne réattribue jamais un ancien binaire au commit courant : le manifeste
 existant est conservé, ou un avertissement signale que sa provenance manque.
+
+Avant compilation, le même contrat est injecté sous `Resources` puis annoncé une fois au démarrage
+par `[GAME-BUILD]`. Le rapport réseau compare ce marqueur au manifeste de chaque plateforme. Un log
+ancien, un build sale, un mélange de builds ou une empreinte modifiée reste `INCOMPLETE` même si un
+SHA plus récent est fourni manuellement à l’outil.
 
 Par défaut, chaque exécution écrit dans un dossier horodaté sous
 `Logs/Tests/macos/` ou `Logs/Tests/windows/`. Pour une sortie déterminée par un outil

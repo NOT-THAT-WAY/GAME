@@ -285,7 +285,7 @@ artifacts et la preuve Windows ; elles ne sont pas remplacées par le résultat 
 
 ### PROV-01 — Lier chaque preuve au build réellement exécuté
 
-- **Statut** : `READY-CODEX`
+- **Statut** : `IMPLEMENTED-LOCAL`; EditMode et contrats Mac verts, parse/build Windows encore à prouver
 - **Branche** : `chore/runtime-build-provenance`
 - **Pilote / binôme / testeur** : Nils / Zak / Sean
 - **Estimation** : 0,5–1,5 j
@@ -300,6 +300,11 @@ log. Les smokes développeur peuvent déclarer un arbre sale ; une preuve de gat
 
 Preuve : un ancien log ou deux builds différents donnent `INCOMPLETE`, trois logs du même build propre
 sont acceptés, et aucune donnée machine/réseau n’entre dans la sortie expurgée.
+
+État local du 9 août 2026 : identité runtime et writer de build présents, manifests schéma 2 et
+empreinte récursive du bundle implémentés sur Mac/Windows, rapport lié aux manifests. Tests locaux :
+`8/8` EditMode, `11/11` rapport réseau et `3/3` fingerprint. Restent le parseur CI PowerShell puis un
+vrai build Windows IL2CPP au même commit qu’un build Mac propre.
 
 ### DEC-01 — Fermer les décisions M1 de l’ADR 0004
 

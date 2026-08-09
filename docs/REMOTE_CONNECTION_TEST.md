@@ -105,6 +105,8 @@ python3 scripts/network-log-report.py \
   --output-dir Logs/NetworkReports/net-m0-rotation-a \
   --expected-participants 3 \
   --require-reconnection \
+  --manifest macos:Builds/ConnectionTest/macOS/build-manifest.json \
+  --manifest windows:Builds/ConnectionTest/Windows/build-manifest.json \
   --log host:macos:Logs/ConnectionTest/player-host-<date>.log \
   --log client:macos:Logs/ConnectionTest/player-client-<date>.log \
   --log client:windows:Logs/ConnectionTest/player-client-<date>.log
@@ -115,7 +117,9 @@ allowlistés et des compteurs ; noms, IP, machines, chemins et contenu brut sont
 chaque log privé reste dans le rapport afin que le témoin puisse vérifier quel fichier a été analysé.
 Un rapport ne passe que si les trois logs sont distincts, si chacun est authentifié, si le log hôte
 atteint le roster attendu et, quand demandé, si une déconnexion est suivie d’une reconnexion dans ce
-même log.
+même log. Chaque plateforme doit aussi fournir son manifeste `passed` : l’identité embarquée de tous
+les logs doit correspondre à ces manifests, au commit attendu, au même `buildSetId` et à un arbre
+source propre. `--commit` est donc une attente vérifiée, jamais une étiquette ajoutée après coup.
 
 ## Dépannage
 
