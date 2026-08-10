@@ -1,8 +1,9 @@
 using System;
 using FishNet.Connection;
 using FishNet.Object;
+using NotThatWay.Game.Input;
+using NotThatWay.Game.PlayerSimulation;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 namespace NotThatWay.Game
@@ -14,13 +15,13 @@ namespace NotThatWay.Game
     /// volontairement pas anticipée ici.
     /// </summary>
     [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(PlayerInputSource))]
     public sealed class PlayerMotor : NetworkBehaviour
     {
         private const float WalkSpeed = 4.2f;
         private const float SprintSpeed = 7.0f;
         private const float Gravity = -22f;
         private const float GroundedVelocity = -3f;
-        private const float LookSensitivity = 0.12f;
         private const float MaxPitch = 85f;
 
         // 5,5 m/s sous une gravité de 22 m/s² donnent une pointe à 0,69 m, soit la
@@ -111,6 +112,7 @@ namespace NotThatWay.Game
         [SerializeField] private Transform _visual;
 
         private CharacterController _controller;
+        private PlayerInputSource _inputSource;
         private Renderer[] _visualRenderers = Array.Empty<Renderer>();
         private bool[] _visibleInFirstPerson = Array.Empty<bool>();
         private ConnectionSmokeTest _sessionPanel;
@@ -126,6 +128,10 @@ namespace NotThatWay.Game
         private float _lastJumpPressedAt = float.NegativeInfinity;
         private bool _thirdPerson;
         private bool _cursorLocked;
+        private bool _humanSmokeTest;
+        private bool _smokeLookLogged;
+        private bool _smokeMovementLogged;
+        private bool _smokeJumpLogged;
         private Vector3 _spawnPosition;
         private Vector3 _knockback;
         private string _unstickFeedback = string.Empty;
@@ -133,7 +139,9 @@ namespace NotThatWay.Game
 
         private void Awake()
         {
+            _humanSmokeTest = HumanSmokeTestMode.IsEnabled;
             _controller = GetComponent<CharacterController>();
+            _inputSource = GetComponent<PlayerInputSource>();
             if (_visual == null)
                 return;
 
@@ -163,6 +171,8 @@ namespace NotThatWay.Game
         public override void OnStartClient()
         {
             base.OnStartClient();
+            if (_inputSource != null)
+                _inputSource.enabled = IsOwner;
             if (!IsOwner)
                 return;
 
@@ -171,6 +181,14 @@ namespace NotThatWay.Game
                 spectator.gameObject.SetActive(false);
 
             _sessionPanel = FindFirstObjectByType<ConnectionSmokeTest>(FindObjectsInactive.Include);
+            if (_humanSmokeTest)
+            {
+                if (_sessionPanel != null)
+                    _sessionPanel.enabled = false;
+
+                var panelState = _sessionPanel != null ? "hidden" : "absent";
+                HumanSmokeTestMode.LogEvent("ready", $"network_panel={panelState} gameplay=unchanged");
+            }
             _pivotDirector = FindFirstObjectByType<PivotDirector>(FindObjectsInactive.Include);
             _wallDirector = FindFirstObjectByType<MovableWallDirector>(FindObjectsInactive.Include);
             if (_camera != null)
@@ -188,7 +206,21 @@ namespace NotThatWay.Game
         public override void OnStopClient()
         {
             base.OnStopClient();
+            if (_inputSource != null)
+                _inputSource.enabled = false;
             if (IsOwner)
+                SetCursorLocked(false);
+        }
+
+        public override void OnOwnershipClient(NetworkConnection previousOwner)
+        {
+            base.OnOwnershipClient(previousOwner);
+            if (_inputSource != null)
+            {
+                _inputSource.ResetBufferedInput();
+                _inputSource.enabled = IsOwner;
+            }
+            if (!IsOwner)
                 SetCursorLocked(false);
         }
 
@@ -370,14 +402,22 @@ namespace NotThatWay.Game
             if (_pushedMovableWall == null || hit.distance > WallPushReach)
                 return;
 
-            var keyboard = Keyboard.current;
-            if (keyboard == null || !(keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed))
+            HumanSmokeTestMode.LogEventOnce(
+                "wall_contact_local",
+                "wall_contact",
+                $"id={_pushedMovableWall.Id} distance={hit.distance:F2}");
+
+            if (_inputSource == null || _inputSource.CurrentFrame.MoveY <= 0.5f)
                 return;
 
             if (Time.time < _nextWallPushIntentAt)
                 return;
 
             _nextWallPushIntentAt = Time.time + WallPushIntentInterval;
+            HumanSmokeTestMode.LogEventOnce(
+                "wall_request_local",
+                "wall_request",
+                $"id={_pushedMovableWall.Id}");
             _wallDirector.RequestWallPush(_pushedMovableWall.Id);
         }
 
@@ -389,10 +429,12 @@ namespace NotThatWay.Game
         /// </summary>
         private void ApplyPush()
         {
-            var mouse = Mouse.current;
-            var keyboard = Keyboard.current;
-            var pushing = mouse != null && mouse.leftButton.isPressed
-                && keyboard != null && (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed);
+            var frame = _inputSource != null ? _inputSource.CurrentFrame : default;
+            var pushing = (frame.HeldButtons & PlayerCommandButtons.InteractHeld) != 0 &&
+                frame.MoveY > 0.5f;
+
+            if (pushing)
+                HumanSmokeTestMode.LogEventOnce("pivot_input_local", "pivot_input");
 
             if (!pushing || _pivotDirector == null)
             {
@@ -406,6 +448,10 @@ namespace NotThatWay.Game
             var chest = transform.TransformPoint(_controller.center);
             if (!Physics.Raycast(chest, transform.forward, out var hit, PivotDirector.PushReach))
             {
+                HumanSmokeTestMode.LogEventOnce(
+                    "pivot_target_miss_no_hit",
+                    "pivot_target_miss",
+                    "reason=no_collider_in_reach");
                 _pushedWall = null;
                 _pushProgress = 0f;
                 return;
@@ -414,10 +460,19 @@ namespace NotThatWay.Game
             var wall = hit.collider.GetComponentInParent<PivotWall>();
             if (wall == null)
             {
+                HumanSmokeTestMode.LogEventOnce(
+                    "pivot_target_miss_wrong_collider",
+                    "pivot_target_miss",
+                    $"reason=wrong_collider name={hit.collider.name}");
                 _pushedWall = null;
                 _pushProgress = 0f;
                 return;
             }
+
+            HumanSmokeTestMode.LogEventOnce(
+                "pivot_contact_local",
+                "pivot_contact",
+                $"index={wall.Index} distance={hit.distance:F2}");
 
             // Changer de mur en cours de poussée remet l'effort à zéro.
             if (wall != _pushedWall)
@@ -439,31 +494,28 @@ namespace NotThatWay.Game
 
             var torque = Vector3.Cross(lever, push).y;
             if (Mathf.Abs(torque) < MinimumTorque)
+            {
+                HumanSmokeTestMode.LogEventOnce(
+                    "pivot_low_torque_local",
+                    "pivot_rejected_local",
+                    $"reason=low_torque value={torque:F2}");
                 return;
+            }
 
+            HumanSmokeTestMode.LogEventOnce(
+                "pivot_request_local",
+                "pivot_request",
+                $"index={wall.Index} torque={torque:F2}");
             _pivotDirector.RequestPush(wall.Index, torque > 0f);
         }
 
         private void ReadToggles()
         {
-            var keyboard = Keyboard.current;
-            if (keyboard == null)
+            if (_inputSource == null)
                 return;
 
-            if (keyboard.escapeKey.wasPressedThisFrame)
+            if (_inputSource.PausePressedThisFrame)
                 SetCursorLocked(!_cursorLocked);
-
-            if (keyboard.tabKey.wasPressedThisFrame && _sessionPanel != null)
-                _sessionPanel.enabled = !_sessionPanel.enabled;
-
-            if (keyboard.f1Key.wasPressedThisFrame)
-            {
-                _thirdPerson = !_thirdPerson;
-                ApplyCameraMode();
-            }
-
-            if (keyboard.uKey.wasPressedThisFrame)
-                ApplyUnstick();
         }
 
         private void ApplyLook()
@@ -471,12 +523,16 @@ namespace NotThatWay.Game
             if (!_cursorLocked)
                 return;
 
-            var mouse = Mouse.current;
-            if (mouse == null)
+            if (_inputSource == null)
                 return;
 
-            // Le delta souris est déjà exprimé par image : pas de Time.deltaTime.
-            var delta = mouse.delta.ReadValue() * LookSensitivity;
+            var frame = _inputSource.CurrentFrame;
+            var delta = new Vector2(frame.LookYawDegrees, frame.LookPitchDegrees);
+            if (!_smokeLookLogged && delta.sqrMagnitude > 0.0001f)
+            {
+                _smokeLookLogged = true;
+                HumanSmokeTestMode.LogEvent("look");
+            }
             transform.Rotate(0f, delta.x, 0f, Space.Self);
 
             _pitch = Mathf.Clamp(_pitch - delta.y, -MaxPitch, MaxPitch);
@@ -486,25 +542,18 @@ namespace NotThatWay.Game
 
         private void ApplyMove()
         {
-            var keyboard = Keyboard.current;
-            var input = Vector2.zero;
-            var sprinting = false;
-
-            if (keyboard != null)
-            {
-                // Les touches de l'Input System sont repérées par position physique :
-                // wKey/aKey correspondent à Z/Q sur un clavier AZERTY.
-                if (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed) input.y += 1f;
-                if (keyboard.sKey.isPressed || keyboard.downArrowKey.isPressed) input.y -= 1f;
-                if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed) input.x += 1f;
-                if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed) input.x -= 1f;
-                sprinting = keyboard.leftShiftKey.isPressed || keyboard.rightShiftKey.isPressed;
-
-                if (keyboard.spaceKey.wasPressedThisFrame)
-                    _lastJumpPressedAt = Time.time;
-            }
+            var frame = _inputSource != null ? _inputSource.CurrentFrame : default;
+            var input = new Vector2(frame.MoveX, frame.MoveY);
+            var sprinting = (frame.HeldButtons & PlayerCommandButtons.SprintHeld) != 0;
+            if ((frame.PressedButtons & PlayerCommandButtons.JumpPressed) != 0)
+                _lastJumpPressedAt = Time.time;
 
             input = Vector2.ClampMagnitude(input, 1f);
+            if (!_smokeMovementLogged && input.sqrMagnitude > 0.01f)
+            {
+                _smokeMovementLogged = true;
+                HumanSmokeTestMode.LogEvent("movement");
+            }
 
             if (_controller.isGrounded)
             {
@@ -516,6 +565,11 @@ namespace NotThatWay.Game
             if (Time.time - _lastGroundedAt <= CoyoteTime && Time.time - _lastJumpPressedAt <= JumpBufferTime)
             {
                 _verticalVelocity = JumpSpeed;
+                if (!_smokeJumpLogged)
+                {
+                    _smokeJumpLogged = true;
+                    HumanSmokeTestMode.LogEvent("jump");
+                }
 
                 // Consommer les deux fenêtres, sinon le même appui relancerait un saut
                 // à chaque image tant qu'elles restent ouvertes.
@@ -597,17 +651,44 @@ namespace NotThatWay.Game
                 return;
 
             var style = new GUIStyle(GUI.skin.label) { fontSize = 14, wordWrap = true };
+            if (_humanSmokeTest)
+            {
+                DrawHumanSmokeTestHud(style);
+                return;
+            }
+
             var height = 118f;
             var area = new Rect(16f, Screen.height - height - 16f, Mathf.Min(760f, Screen.width - 32f), height);
             GUILayout.BeginArea(area, GUI.skin.box);
-            GUILayout.Label("ZQSD / WASD se déplacer   ·   Maj sprint   ·   Espace sauter (marteler pour se décoincer)   ·   Souris regarder", style);
-            GUILayout.Label($"Clic gauche maintenu + avancer contre un pivot turquoise = pousser{(_pushedWall != null ? $"  [{_pushProgress * 100f:F0} %]" : "")}", style);
+            GUILayout.Label("ZQSD / WASD / stick se déplacer   ·   Maj / stick press sprint   ·   Espace / A sauter   ·   Souris / stick regarder", style);
+            GUILayout.Label($"Clic gauche / E / gâchette + avancer contre un pivot = pousser{(_pushedWall != null ? $"  [{_pushProgress * 100f:F0} %]" : "")}", style);
             var wallEffort = _pushedMovableWall != null && _wallDirector != null
                 ? $"  [{_wallDirector.EffortFor(_pushedMovableWall.Id) * 100f:F0} %]"
                 : "";
-            GUILayout.Label($"Avancer contre un mur = le pousser, c'est lourd{wallEffort}   ·   clic droit = coup de poing (3 coups enchaînés ouvrent un mur)", style);
-            GUILayout.Label($"Échap curseur ({(_cursorLocked ? "capturé" : "libre")})   ·   Tab panneau réseau   ·   F1 vue {(_thirdPerson ? "3e personne" : "1re personne")}", style);
-            GUILayout.Label($"U se dégager d'un mur{(Time.time < _unstickFeedbackUntil ? $"   —   {_unstickFeedback}" : "")}", style);
+            GUILayout.Label($"Avancer contre un mur = le pousser{wallEffort}   ·   clic droit / F / épaule droite = coup de poing", style);
+            GUILayout.Label($"Échap / Menu : curseur ({(_cursorLocked ? "capturé" : "libre")})", style);
+            GUILayout.EndArea();
+        }
+
+        private void DrawHumanSmokeTestHud(GUIStyle style)
+        {
+            var wallEffort = _pushedMovableWall != null && _wallDirector != null
+                ? _wallDirector.EffortFor(_pushedMovableWall.Id)
+                : 0f;
+            var hasEffort = _pushedWall != null || wallEffort > 0f;
+            var height = hasEffort ? 116f : 94f;
+            var area = new Rect(16f, Screen.height - height - 16f, Mathf.Min(760f, Screen.width - 32f), height);
+
+            GUILayout.BeginArea(area, GUI.skin.box);
+            GUILayout.Label("SMOKE TEST : déplacement · pivot · mur mobile · punch bot", style);
+            GUILayout.Label("ZQSD / WASD / stick : bouger   ·   Souris / stick : regarder   ·   Espace / A : sauter", style);
+            GUILayout.Label("Pivot : Interagir + avancer   ·   Mur : avancer ou Punch   ·   Échap / Menu : curseur", style);
+
+            if (_pushedWall != null)
+                GUILayout.Label($"Le pivot résiste… effort {_pushProgress * 100f:F0} %", style);
+            else if (wallEffort > 0f)
+                GUILayout.Label($"Le mur résiste… effort {wallEffort * 100f:F0} %", style);
+
             GUILayout.EndArea();
         }
     }

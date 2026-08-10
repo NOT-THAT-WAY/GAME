@@ -6,7 +6,7 @@ Cette politique évite que GitHub, le coffre d'assets, les postes locaux et les 
 
 | Donnée | Source de vérité | Partage | Conservation |
 |---|---|---|---|
-| code, réglages, scènes, prefabs, documentation | GitHub privé | branches + PR | historique Git |
+| code, réglages, scènes, prefabs, documentation | GitHub public actuellement ; décision de visibilité/licence en gate G0 | branches + PR | historique Git |
 | binaires nécessaires à Unity/Wwise | Git LFS, avec budget surveillé | clone/pull Git | tant que référencés par une release supportée |
 | masters art/audio/IA et références lourdes | remote DVC privé — bucket Cloudflare R2 `ntw-assets`, préfixe `game/` | `dvc pull/push` | versioning objet + sauvegarde séparée |
 | SoundBanks runtime approuvées | Git LFS sous `Assets/StreamingAssets/Audio/GeneratedSoundBanks/` | clone/pull Git | tant que la version du jeu les référence |
@@ -15,6 +15,10 @@ Cette politique évite que GitHub, le coffre d'assets, les postes locaux et les 
 | secrets, tokens, clés Steam/cloud/Tailscale | gestionnaire de secrets ou variables locales | accès nominatif | rotation et révocation |
 | licences, factures, contrats, preuves nominatives | espace administratif privé | accès restreint | selon obligations ; Git ne garde qu'une référence |
 | retours et télémétrie de playtest | espace de recherche restreint | données minimisées/pseudonymisées | durée définie avant collecte |
+
+Les logs réseau bruts restent locaux ou dans un artifact privé court. La seule sortie partageable est
+produite par `scripts/network-log-report.py`, qui conserve des événements allowlistés et des hashes de
+source sans recopier noms, IP, machines ou chemins.
 
 ## Principes obligatoires
 
@@ -58,6 +62,8 @@ Les secrets d'organisation `R2_ACCESS_KEY_ID` et `R2_SECRET_ACCESS_KEY`, avec le
 L'ordre est contraint : `dvc add`, puis `dvc push`, puis `git commit` du pointeur, puis `git push`. Publier un pointeur avant que le contenu soit dans le coffre produit une référence que personne ne peut résoudre. `scripts/assets-*.sh` le rappelle après chaque `push`.
 
 L'état de couverture du coffre — quels masters sont réellement sécurisés et lesquels ne le sont pas — est tenu dans [ASSETS.md](ASSETS.md).
+Les restaurations et imports moteur sont consignés avec les
+[rapports de preuve structurés](EVIDENCE_REPORTS.md).
 
 ## Travail local
 

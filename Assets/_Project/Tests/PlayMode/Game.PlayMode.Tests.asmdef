@@ -1,0 +1,21 @@
+{
+  "name": "Game.PlayMode.Tests",
+  "rootNamespace": "NotThatWay.Game.Tests.PlayMode",
+  "references": [
+    "Game.Runtime",
+    "Unity.InputSystem",
+    "Unity.InputSystem.TestFramework"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

@@ -2,15 +2,25 @@
 
 ## Capacité disponible au départ
 
-Mesure du 5 août 2026 : le dépôt contient **deux objets Git LFS**, `Maze16x16.fbx` d'environ **38 Mo** et `PersoBoule.fbx` d'environ **101 Ko**, et ne référence encore aucun lot DVC. Les deux autres machines peuvent cloner et construire le projet avec ces exports, mais elles ne peuvent pas régénérer leurs sources.
+Mesure du 9 août 2026 : le dépôt contient **trois objets Git LFS** — `Maze16x16.fbx`,
+`PersoBoule.fbx` et `PersoBouleRigged.fbx` — et ne référence encore aucun lot DVC. Les deux autres
+machines peuvent cloner et construire le projet avec ces exports, mais elles ne peuvent pas encore
+restaurer leurs sources depuis le coffre.
 
 L'organisation GitHub est sur le plan Free : elle inclut actuellement [**10 Gio de stockage Git LFS** et **10 Gio de téléchargement LFS par mois**](https://docs.github.com/en/billing/concepts/product-billing/git-lfs), avec une [limite de **2 Gio par fichier**](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage). Ce quota couvre les exports nécessaires au build, pas les `.blend`, PSD, sessions DAW ou prises brutes. Comme deux nouveaux clones retéléchargent chacun les objets LFS, l'équipe garde un budget interne de **2 Gio maximum d'exports actifs** pendant le prototype et vérifie la page Billing avant tout gros lot.
 
-Le remote DVC n'a pas encore de capacité partagée car aucun fournisseur n'est configuré. Les masters Blender qui ont produit les deux FBX sont absents : le choix du coffre n'est donc plus différable avant leur prochaine modification ou transmission. Cela ne bloque pas l'installation d'un développeur qui consomme seulement les exports. Comparer les fournisseurs au moment de la gate, sans inscrire dans le dépôt une promesse de prix volatile.
+Le fournisseur et la cible sont décidés : Cloudflare R2, bucket `ntw-assets`, préfixe `game/`.
+Aucun lot n'a toutefois été poussé puis restauré. Deux masters Blender sont absents ; le master du
+clone riggé existe seulement dans un workspace local ignoré. Cela ne bloque pas l'installation d'un
+développeur qui consomme les exports, mais bloque leur prochaine modification ou transmission.
 
 La gate DVC réussit lorsque les masters sont enregistrés comme lots séparés, poussés dans un remote privé versionné, restaurés sur Mac et Windows, et reliés à leur ligne du [registre](assets/ASSET_REGISTER.md). Aucun master ne doit être envoyé dans Git/LFS pour aller plus vite.
 
-## Couverture du coffre — état au 6 août 2026
+Les preuves utilisent les [modèles DVC et Blender→Unity](EVIDENCE_REPORTS.md), puis
+`scripts/validate-evidence-report.py` avant revue. Le validateur ne remplace pas les fichiers privés
+cités ; il empêche seulement un rapport incomplet ou contradictoire de devenir `PASS`.
+
+## Couverture du coffre — état au 9 août 2026
 
 Le fournisseur est décidé : bucket Cloudflare R2 `ntw-assets`, préfixe `game/` pour ce dépôt. Le coffre **n'est pas complet** et ne doit pas être déclaré tel.
 
@@ -44,7 +54,7 @@ Le remote n'est jamais monté comme dossier Unity. Chaque machine possède une c
 
 ## Critères du remote commun
 
-Avant de choisir un fournisseur, vérifier : bucket privé par défaut, chiffrement en transit et au repos, versioning objet, comptes individuels avec MFA, droits sans suppression permanente pour le travail quotidien, journal d'accès, alerte de budget, coût de sortie acceptable et export complet possible. Garder une deuxième sauvegarde dans un compte ou support distinct.
+Avant de déclarer R2 conforme, vérifier : bucket privé par défaut, chiffrement en transit et au repos, versioning objet, comptes individuels avec MFA, droits sans suppression permanente pour le travail quotidien, journal d'accès, alerte de budget, coût de sortie acceptable et export complet possible. Garder une deuxième sauvegarde dans un compte ou support distinct.
 
 Pour la croissance, une API S3-compatible évite de lier les scripts à un fournisseur. Google Drive peut dépanner au prototype, mais ne doit pas devenir un dossier synchronisé contenant le projet Unity.
 
@@ -152,4 +162,5 @@ Un plugin doit fournir les binaires nécessaires à l'éditeur Mac Apple Silicon
 - interdire la suppression permanente aux comptes courants ;
 - journaliser qui possède l'accès et le révoquer au départ d'un membre.
 
-Voir aussi [la politique de gestion des données](DATA_MANAGEMENT.md).
+Voir aussi [la politique de gestion des données](DATA_MANAGEMENT.md) et les
+[rapports de preuve structurés](EVIDENCE_REPORTS.md).

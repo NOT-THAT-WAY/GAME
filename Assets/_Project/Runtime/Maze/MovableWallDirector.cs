@@ -351,27 +351,53 @@ namespace NotThatWay.Game
         public void RequestWallPush(int wallId, NetworkConnection sender = null)
         {
             if (wallId < 0 || wallId >= _walls.Length || wallId >= _poses.Count)
+            {
+                HumanSmokeTestMode.LogEventOnce(
+                    "wall_rejected_server_invalid_id",
+                    "wall_rejected_server",
+                    $"reason=invalid_id id={wallId}");
                 return;
+            }
 
             if (Time.time < _nextSwingAllowedAt[wallId])
                 return;
 
             var pusher = sender?.FirstObject;
             if (pusher == null)
+            {
+                HumanSmokeTestMode.LogEventOnce(
+                    "wall_rejected_server_no_pusher",
+                    "wall_rejected_server",
+                    "reason=no_pusher");
                 return;
+            }
 
             var position = pusher.transform.position;
             var forward = pusher.transform.forward;
 
             // Contact à l'épaule, et non à bout de bras : on doit être sur le mur.
-            if (DistanceToWall(position, SlotCenter(SlotOf(_poses[wallId])), SlotAxis(FamilyOf(SlotOf(_poses[wallId])))) > PushReach)
+            var distance = DistanceToWall(
+                position,
+                SlotCenter(SlotOf(_poses[wallId])),
+                SlotAxis(FamilyOf(SlotOf(_poses[wallId]))));
+            if (distance > PushReach)
+            {
+                HumanSmokeTestMode.LogEventOnce(
+                    "wall_rejected_server_out_of_reach",
+                    "wall_rejected_server",
+                    $"reason=out_of_reach distance={distance:F2}");
                 return;
+            }
 
             // Le joueur doit pousser vers quelque part : marcher le long d'un mur ne
             // le fait pas céder, seulement marcher dedans.
             if (!TryResolveTarget(wallId, forward, position, true, out var target))
             {
                 _pushTarget[wallId] = -1;
+                HumanSmokeTestMode.LogEventOnce(
+                    "wall_rejected_server_no_target",
+                    "wall_rejected_server",
+                    $"reason=no_free_target id={wallId}");
                 return;
             }
 
@@ -383,6 +409,10 @@ namespace NotThatWay.Game
             }
 
             _pushIntentAt[wallId] = Time.time;
+            HumanSmokeTestMode.LogEventOnce(
+                "wall_push_started_server",
+                "wall_push_started",
+                $"id={wallId} target={target}");
         }
 
         /// <summary>
@@ -546,16 +576,40 @@ namespace NotThatWay.Game
             var wall = _walls[id];
 
             if (_occupied.Contains(target))
+            {
+                HumanSmokeTestMode.LogEventOnce(
+                    "wall_turn_rejected_occupied",
+                    "wall_turn_rejected",
+                    $"reason=occupied target={target}");
                 return false;
+            }
 
             if (!IsAnchoredToHome(wall, target))
+            {
+                HumanSmokeTestMode.LogEventOnce(
+                    "wall_turn_rejected_anchor",
+                    "wall_turn_rejected",
+                    $"reason=anchor id={id} target={target}");
                 return false;
+            }
 
             if (!IsClearOfPlayers(SlotCenter(target), SlotAxis(FamilyOf(target))))
+            {
+                HumanSmokeTestMode.LogEventOnce(
+                    "wall_turn_rejected_player",
+                    "wall_turn_rejected",
+                    $"reason=player_clearance id={id} target={target}");
                 return false;
+            }
 
             if (!TryFindHinge(slot, target, out var hinge))
+            {
+                HumanSmokeTestMode.LogEventOnce(
+                    "wall_turn_rejected_hinge",
+                    "wall_turn_rejected",
+                    $"reason=no_hinge id={id} target={target}");
                 return false;
+            }
 
             // Le sens de rotation se relit sur la géométrie et non sur le signe de
             // grille : les deux axes du plan sont retournés à l'export du FBX.
@@ -565,6 +619,7 @@ namespace NotThatWay.Game
             _occupied.Add(target);
             _poses[id] = Pack(target, TurnsOf(pose) + turn);
             _nextSwingAllowedAt[id] = Time.time + SwingCooldown;
+            HumanSmokeTestMode.LogEvent("wall_turned", $"id={id} target={target}");
             return true;
         }
 

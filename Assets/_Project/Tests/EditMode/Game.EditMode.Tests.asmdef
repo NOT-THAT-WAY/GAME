@@ -1,0 +1,23 @@
+{
+  "name": "Game.EditMode.Tests",
+  "rootNamespace": "NotThatWay.Game.Tests.EditMode",
+  "references": [
+    "Game.Runtime",
+    "Unity.InputSystem",
+    "Unity.InputSystem.TestFramework"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

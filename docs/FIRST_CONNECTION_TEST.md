@@ -46,7 +46,10 @@ Le premier build Windows est IL2CPP et peut être long. Les suivants peuvent ré
 
 ## Succès
 
-Les trois fenêtres affichent `AUTHENTICATED` et les trois noms. Noter dans l'issue de test : commit, OS, rôle, IP privée, durée et résultat. Ne jamais publier l'IP dans une issue publique.
+Les trois fenêtres affichent `AUTHENTICATED` et les trois noms. Noter dans l’issue : commit, OS,
+rôle, durée et résultat. L’adresse privée reste uniquement dans la commande locale ; elle n’entre ni
+dans l’issue ni dans une capture. Pour joindre un extrait, utiliser `scripts/network-log-report.py`
+comme décrit dans [le protocole distant](REMOTE_CONNECTION_TEST.md).
 
 ## Si la connexion échoue
 

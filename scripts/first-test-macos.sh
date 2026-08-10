@@ -77,13 +77,17 @@ case "$PROFILE" in
   connection)
     BUILD_METHOD="NotThatWay.Game.Editor.ConnectionTestBuild.BuildMac"
     BUILD_PATH="$REPO_ROOT/Builds/ConnectionTest/macOS/GAME-Connection-Test.app"
+    BUILD_RELATIVE_PATH="Builds/ConnectionTest/macOS/GAME-Connection-Test.app"
     LOG_DIRECTORY="$REPO_ROOT/Logs/ConnectionTest"
+    BUILD_LOG_RELATIVE_PATH="Logs/ConnectionTest/build-macos.log"
     PROFILE_LABEL="test de connexion"
     ;;
   maze)
     BUILD_METHOD="NotThatWay.Game.Editor.MazePlaytestBuild.BuildMac"
     BUILD_PATH="$REPO_ROOT/Builds/MazePlaytest/macOS/GAME-Maze-Playtest.app"
+    BUILD_RELATIVE_PATH="Builds/MazePlaytest/macOS/GAME-Maze-Playtest.app"
     LOG_DIRECTORY="$REPO_ROOT/Logs/MazePlaytest"
+    BUILD_LOG_RELATIVE_PATH="Logs/MazePlaytest/build-macos.log"
     PROFILE_LABEL="labyrinthe jouable"
     ;;
   *) fail "Le profil doit être connection ou maze." ;;
@@ -100,18 +104,133 @@ cd -- "$REPO_ROOT"
 "$SCRIPT_DIR/doctor-macos.sh"
 "$SCRIPT_DIR/validate-repository.sh"
 
+BUILD_BINARY="$BUILD_PATH/Contents/MacOS/GAME"
+BUILD_MANIFEST_PATH="$(dirname -- "$BUILD_PATH")/build-manifest.json"
+BUILD_FINGERPRINT_PATH="$(dirname -- "$BUILD_PATH")/build-bundle-fingerprint.json"
+BUILD_LOG="$REPO_ROOT/$BUILD_LOG_RELATIVE_PATH"
+GIT_COMMIT="$(git rev-parse HEAD 2>/dev/null || printf 'unknown')"
+if [[ -n "$(git status --porcelain=v1 2>/dev/null || true)" ]]; then
+  DIRTY_WORKTREE=true
+else
+  DIRTY_WORKTREE=false
+fi
+BUILD_STARTED_AT_UTC="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+BUILD_SET_SEED="schema=1|commit=$GIT_COMMIT|profile=$PROFILE|unity=$UNITY_VERSION"
+if [[ "$DIRTY_WORKTREE" == "true" ]]; then
+  BUILD_SET_SEED="$BUILD_SET_SEED|dirty=true|started=$BUILD_STARTED_AT_UTC"
+fi
+BUILD_SET_ID="$(printf '%s' "$BUILD_SET_SEED" | shasum -a 256 | awk '{print $1}')"
+BUILD_ID="$(printf '%s' "$BUILD_SET_ID|platform=macos|started=$BUILD_STARTED_AT_UTC" | shasum -a 256 | awk '{print $1}')"
+
+write_build_manifest() {
+  local result="$1"
+  local exit_code="$2"
+  local provenance="$3"
+  local include_artifact="$4"
+  local finished_at_json=null
+  local binary_hash_json=null
+  local binary_size_json=null
+  local bundle_fingerprint_json=null
+  local binary_hash
+  local binary_size
+
+  if [[ "$result" != "building" ]]; then
+    finished_at_json="\"$(date -u '+%Y-%m-%dT%H:%M:%SZ')\""
+  fi
+
+  if [[ "$include_artifact" == "1" ]]; then
+    [[ -x "$BUILD_BINARY" ]] || return 1
+    binary_hash="$(shasum -a 256 "$BUILD_BINARY" 2>/dev/null | awk '{print $1}')"
+    [[ "$binary_hash" =~ ^[0-9a-f]{64}$ ]] || return 1
+    binary_size="$(wc -c < "$BUILD_BINARY" | tr -d '[:space:]')"
+    [[ "$binary_size" =~ ^[0-9]+$ ]] || return 1
+    binary_hash_json="\"$binary_hash\""
+    binary_size_json="$binary_size"
+    if ! "$SCRIPT_DIR/build-bundle-fingerprint.py" \
+      --root "$BUILD_PATH" \
+      --output "$BUILD_FINGERPRINT_PATH"; then
+      return 1
+    fi
+    bundle_fingerprint_json="$(< "$BUILD_FINGERPRINT_PATH")"
+  fi
+
+  mkdir -p "$(dirname -- "$BUILD_MANIFEST_PATH")"
+  cat > "$BUILD_MANIFEST_PATH" <<EOF
+{
+  "schemaVersion": 2,
+  "kind": "unity-player-build",
+  "buildId": "$BUILD_ID",
+  "buildSetId": "$BUILD_SET_ID",
+  "profile": "$PROFILE",
+  "platform": "macos",
+  "buildTarget": "StandaloneOSX",
+  "developmentBuild": true,
+  "scriptingBackendPolicy": "project-default",
+  "startedAtUtc": "$BUILD_STARTED_AT_UTC",
+  "finishedAtUtc": $finished_at_json,
+  "sourceGitCommit": "$GIT_COMMIT",
+  "sourceDirtyWorktree": $DIRTY_WORKTREE,
+  "unityVersion": "$UNITY_VERSION",
+  "buildMethod": "$BUILD_METHOD",
+  "buildPath": "$BUILD_RELATIVE_PATH",
+  "bundlePath": "$BUILD_RELATIVE_PATH",
+  "bundleFingerprintPath": "$(dirname -- "$BUILD_RELATIVE_PATH")/build-bundle-fingerprint.json",
+  "bundleFingerprint": $bundle_fingerprint_json,
+  "binaryPath": "$BUILD_RELATIVE_PATH/Contents/MacOS/GAME",
+  "binarySha256": $binary_hash_json,
+  "binarySizeBytes": $binary_size_json,
+  "buildLog": "$BUILD_LOG_RELATIVE_PATH",
+  "provenance": "$provenance",
+  "result": "$result",
+  "exitCode": $exit_code
+}
+EOF
+}
+
 if (( SKIP_BUILD == 0 )); then
   mkdir -p "$LOG_DIRECTORY"
   printf 'Build macOS du %s...\n' "$PROFILE_LABEL"
+  write_build_manifest "building" 0 "current-run" 0
+  set +e
+  GAME_BUILD_ID="$BUILD_ID" \
+  GAME_BUILD_SET_ID="$BUILD_SET_ID" \
+  GAME_BUILD_PROFILE="$PROFILE" \
+  GAME_BUILD_PLATFORM="macos" \
+  GAME_SOURCE_GIT_COMMIT="$GIT_COMMIT" \
+  GAME_SOURCE_DIRTY_WORKTREE="$DIRTY_WORKTREE" \
+  GAME_BUILD_STARTED_AT_UTC="$BUILD_STARTED_AT_UTC" \
+  GAME_UNITY_VERSION="$UNITY_VERSION" \
   "$UNITY_EDITOR" \
     -batchmode \
     -quit \
     -projectPath "$REPO_ROOT" \
     -executeMethod "$BUILD_METHOD" \
-    -logFile "$LOG_DIRECTORY/build-macos.log"
+    -logFile "$BUILD_LOG"
+  BUILD_EXIT_CODE=$?
+  set -e
+  if (( BUILD_EXIT_CODE != 0 )); then
+    write_build_manifest "failed" "$BUILD_EXIT_CODE" "current-run" 0
+    fail "Le build Unity a échoué. Voir $BUILD_LOG"
+  fi
 fi
 
-[[ -d "$BUILD_PATH" ]] || fail "Build absent: $BUILD_PATH"
+if [[ ! -d "$BUILD_PATH" || ! -x "$BUILD_BINARY" ]]; then
+  if (( SKIP_BUILD == 0 )); then
+    write_build_manifest "failed" 1 "artifact-invalid" 0
+  fi
+  fail "Build absent ou binaire non exécutable: $BUILD_PATH"
+fi
+
+if (( SKIP_BUILD == 0 )); then
+  if ! write_build_manifest "passed" 0 "current-run" 1; then
+    write_build_manifest "failed" 1 "artifact-hash-failed" 0
+    fail "Impossible de calculer le hash du binaire construit."
+  fi
+  printf 'Manifeste: %s\n' "$BUILD_MANIFEST_PATH"
+elif [[ ! -f "$BUILD_MANIFEST_PATH" ]]; then
+  printf 'Avertissement: build réutilisé sans manifeste de provenance: %s\n' "$BUILD_PATH" >&2
+fi
+
 if (( BUILD_ONLY == 1 )); then
   printf 'Build prêt: %s\n' "$BUILD_PATH"
   exit 0

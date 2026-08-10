@@ -3,8 +3,8 @@ name: Repository checks
 # Un seul job, sur Ubuntu, volontairement.
 #
 # GitHub facture chaque job à la minute supérieure et applique un multiplicateur
-# par plateforme : Ubuntu x1, Windows x2, macOS x10. Les trois contrôles de ce
-# dépôt durent ensemble une trentaine de secondes, mais découpés en trois jobs
+# par plateforme : Ubuntu x1, Windows x2, macOS x10. Les contrôles statiques de ce
+# dépôt durent ensemble moins d’une minute, mais découpés en plusieurs jobs
 # dont un sous Windows ils coûtaient 4 minutes par pull request — 104 minutes
 # facturées pour 14 minutes de calcul réel. Le gaspillage venait du découpage,
 # pas du nombre de pull requests : les regrouper ramène le coût à 1 minute par
@@ -48,10 +48,38 @@ jobs:
         env:
           HEAD_BRANCH: ${{ github.head_ref }}
           PR_TITLE: ${{ github.event.pull_request.title }}
-        run: ./scripts/validate-pr-policy.sh "$HEAD_BRANCH" "$PR_TITLE"
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+        run: ./scripts/validate-pr-policy.sh "$HEAD_BRANCH" "$PR_TITLE" "$PR_AUTHOR"
 
       - name: Validate repository contract
         run: ./scripts/validate-repository.sh
+
+      - name: Validate human smoke tooling
+        run: ./tests/human-test/test-wrapper-contract.sh
+
+      - name: Validate workflow tooling
+        run: ./tests/workflow/test-policy-contract.sh
+
+      - name: Validate Unity test wrappers
+        run: ./tests/unity-tests/test-wrapper-contract.sh
+
+      - name: Validate player build manifests
+        run: ./tests/build-manifests/test-manifest-contract.sh
+
+      - name: Validate complete player bundle fingerprints
+        run: python3 ./tests/build-manifests/test-fingerprint.py
+
+      - name: Validate evidence report contracts
+        run: python3 ./tests/evidence/test-report.py
+
+      - name: Validate redacted network report
+        run: python3 ./tests/network-logs/test-report.py
+
+      - name: Validate topology fixture contract
+        run: python3 ./tests/topology-fixtures/test-fixtures.py
+
+      - name: Validate reproducible 16x16 topology migration
+        run: ./scripts/migrate-maze-topology-v1.py --check
 
       - name: Parse Windows scripts
         shell: pwsh

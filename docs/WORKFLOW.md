@@ -41,14 +41,18 @@ Claude Code reçoit la même règle dans `CLAUDE.md` et le skill `git-task`. Une
 Le titre de PR reprend le même type : `feat/player-movement` devient par exemple `feat: add player movement`. Après le commit :
 
 ```bash
-./scripts/publish-task.sh "feat: add player movement"
+./scripts/publish-task.sh "feat: add player movement" --body-file /chemin/vers/pr-body.md
 ```
 
 ```powershell
-.\scripts\publish-task.ps1 "feat: add player movement"
+.\scripts\publish-task.ps1 "feat: add player movement" -BodyFile C:\chemin\pr-body.md
 ```
 
 Le contrôle `repository-checks` répète ces validations dans GitHub. Sans protection serveur payante, l'équipe garde la règle simple : Zak et Sean publient une PR verte et Nils la relit, la teste au niveau de risque adapté, puis décide du squash merge. Une revue de Zak ou Sean peut être demandée pour leur expertise, mais elle n'est jamais obligatoire et ils n'ont pas à gérer l'interface des PR.
+
+Le fichier donné à `--body-file` / `-BodyFile` doit remplacer les textes indicatifs du template. Sans
+fichier, `gh` ouvre la saisie interactive ; une exécution non interactive refuse de créer une PR
+vide. Les PR Dependabot GitHub Actions utilisent le type borné `chore(deps)`.
 
 La matrice complète de ce qui est permis, coordonné, différé ou interdit se trouve dans [PROJECT_RULES.md](PROJECT_RULES.md). Les limites de la CI et l'ordre d'activation des builds automatisés se trouvent dans [CI_BUILDS.md](CI_BUILDS.md).
 

@@ -10,6 +10,7 @@ EXPECTED_CHANGESET="$(sed -n 's/^UNITY_CHANGESET=//p' config/toolchain.env)"
 EXPECTED_INPUT_SYSTEM="$(sed -n 's/^INPUT_SYSTEM_VERSION=//p' config/toolchain.env)"
 EXPECTED_MULTIPLAYER_PLAYMODE="$(sed -n 's/^MULTIPLAYER_PLAYMODE_VERSION=//p' config/toolchain.env)"
 EXPECTED_MULTIPLAYER_TOOLS="$(sed -n 's/^MULTIPLAYER_TOOLS_VERSION=//p' config/toolchain.env)"
+EXPECTED_NEWTONSOFT_JSON="$(sed -n 's/^NEWTONSOFT_JSON_VERSION=//p' config/toolchain.env)"
 PROJECT_UNITY="$(sed -n 's/^m_EditorVersion: //p' ProjectSettings/ProjectVersion.txt)"
 PROJECT_CHANGESET="$(sed -n 's/^m_EditorVersionWithRevision: .*(\([^)]*\)).*/\1/p' ProjectSettings/ProjectVersion.txt)"
 
@@ -85,6 +86,7 @@ fi
 # ne sont jamais atteints sur une machine Windows sans Python.
 if command -v python3 >/dev/null 2>&1 && python3 -c '' >/dev/null 2>&1; then
   python3 scripts/validate-unity-contract.py
+  python3 scripts/migrate-maze-topology-v1.py --check
 elif command -v jq >/dev/null 2>&1; then
   jq empty Packages/manifest.json
   jq empty Packages/packages-lock.json
@@ -103,6 +105,7 @@ grep -Fq '"com.unity.render-pipelines.universal": "17.3.0"' Packages/manifest.js
 grep -Fq "\"com.unity.inputsystem\": \"$EXPECTED_INPUT_SYSTEM\"" Packages/manifest.json
 grep -Fq "\"com.unity.multiplayer.playmode\": \"$EXPECTED_MULTIPLAYER_PLAYMODE\"" Packages/manifest.json
 grep -Fq "\"com.unity.multiplayer.tools\": \"$EXPECTED_MULTIPLAYER_TOOLS\"" Packages/manifest.json
+grep -Fq "\"com.unity.nuget.newtonsoft-json\": \"$EXPECTED_NEWTONSOFT_JSON\"" Packages/manifest.json
 grep -Fq 'm_SerializationMode: 2' ProjectSettings/EditorSettings.asset
 grep -Fq 'm_Mode: Visible Meta Files' ProjectSettings/VersionControlSettings.asset
 grep -Fq 'companyName: NOT THAT WAY' ProjectSettings/ProjectSettings.asset

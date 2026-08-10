@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "topologyId": "fixture-edge-out-of-bounds",
+  "dimensions": {
+    "widthCells": 2,
+    "heightCells": 1,
+    "cellPitchMm": 2750,
+    "wallThicknessMm": 250,
+    "wallHeightMm": 3000
+  },
+  "openings": [],
+  "walls": [
+    {
+      "wallId": 10,
+      "pivotId": 100,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 3, "y": 0}, "quarterTurns": 0}
+      ]
+    }
+  ],
+  "pivots": [
+    {"pivotId": 100, "node": {"x": 1, "y": 1}, "wallIds": [10]}
+  ],
+  "spawns": []
+}

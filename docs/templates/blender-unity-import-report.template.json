@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "kind": "blender-unity-import-report",
+  "sessionId": "UNRESOLVED",
+  "startedAtUtc": "UNRESOLVED",
+  "finishedAtUtc": "UNRESOLVED",
+  "sourceGitCommit": "UNRESOLVED",
+  "sourceDirtyWorktree": null,
+  "machineAlias": "UNRESOLVED",
+  "projectId": "UNRESOLVED-v001",
+  "assetId": "UNRESOLVED",
+  "source": {
+    "masterStatus": "UNRESOLVED",
+    "masterSha256": "UNRESOLVED",
+    "blenderVersion": "UNRESOLVED",
+    "rightsStatus": "UNRESOLVED"
+  },
+  "export": {
+    "path": "UNRESOLVED",
+    "format": "fbx",
+    "sha256": "UNRESOLVED",
+    "bytes": null,
+    "settingsEvidence": "UNRESOLVED",
+    "independentReimport": {
+      "status": "BLOCKED",
+      "evidence": []
+    }
+  },
+  "unityImport": {
+    "performed": false,
+    "unityVersion": "6000.3.20f1",
+    "platform": "UNRESOLVED",
+    "assetPath": "UNRESOLVED",
+    "assetSha256": "UNRESOLVED",
+    "importerLog": "UNRESOLVED",
+    "importerWarnings": [],
+    "targetImportEvidence": [],
+    "measurements": {}
+  },
+  "artifactComparison": {
+    "mode": "UNRESOLVED",
+    "derivationEvidence": []
+  },
+  "gates": {
+    "unity_scale": {"status": "BLOCKED", "evidence": [], "notes": ""},
+    "unity_orientation": {"status": "BLOCKED", "evidence": [], "notes": ""},
+    "pivot": {"status": "BLOCKED", "evidence": [], "notes": ""},
+    "lod_group": {"status": "BLOCKED", "evidence": [], "notes": ""},
+    "colliders": {"status": "BLOCKED", "evidence": [], "notes": ""},
+    "uv_and_lightmap": {"status": "BLOCKED", "evidence": [], "notes": ""},
+    "materials": {"status": "BLOCKED", "evidence": [], "notes": ""},
+    "avatar_or_skeleton_if_present": {"status": "BLOCKED", "evidence": [], "notes": ""},
+    "animation_clips_if_present": {"status": "BLOCKED", "evidence": [], "notes": ""},
+    "unity_import_report": {"status": "BLOCKED", "evidence": [], "notes": ""}
+  },
+  "criticalFailures": [],
+  "technicalResult": "BLOCKED",
+  "deliveryDisposition": "BLOCKED",
+  "humanReview": {
+    "status": "pending",
+    "reviewerAlias": "UNRESOLVED"
+  },
+  "blockers": [
+    "UNRESOLVED"
+  ],
+  "failures": [],
+  "limits": []
+}

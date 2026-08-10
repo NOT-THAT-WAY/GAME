@@ -13,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - GameplayWorld
+  - Player
+  - InteractionQuery
+  - VisualOnly
   - 
   - 
   - 
@@ -74,4 +74,3 @@ TagManager:
   - 
   - 
   - 
-

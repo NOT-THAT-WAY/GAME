@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "topologyId": "graybox-duel-2x2-v1",
+  "dimensions": {
+    "widthCells": 6,
+    "heightCells": 6,
+    "cellPitchMm": 2750,
+    "wallThicknessMm": 250,
+    "wallHeightMm": 3000
+  },
+  "openings": [],
+  "walls": [
+    {
+      "wallId": 10,
+      "pivotId": 100,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 3, "y": 2}, "quarterTurns": 0},
+        {"stateId": 1, "edge": {"axis": "horizontal", "x": 2, "y": 3}, "quarterTurns": 1}
+      ]
+    },
+    {
+      "wallId": 1000,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 0, "y": 0}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1001,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 0, "y": 1}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1002,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 0, "y": 2}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1003,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 0, "y": 3}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1004,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 0, "y": 4}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1005,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 0, "y": 5}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1006,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 6, "y": 0}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1007,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 6, "y": 1}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1008,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 6, "y": 2}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1009,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 6, "y": 3}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1010,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 6, "y": 4}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1011,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "vertical", "x": 6, "y": 5}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1012,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 0, "y": 0}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1013,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 1, "y": 0}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1014,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 2, "y": 0}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1015,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 3, "y": 0}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1016,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 4, "y": 0}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1017,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 5, "y": 0}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1018,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 0, "y": 6}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1019,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 1, "y": 6}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1020,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 2, "y": 6}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1021,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 3, "y": 6}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1022,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 4, "y": 6}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1023,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 5, "y": 6}, "quarterTurns": 0}
+      ]
+    }
+  ],
+  "pivots": [
+    {"pivotId": 100, "node": {"x": 3, "y": 3}, "wallIds": [10]}
+  ],
+  "spawns": [
+    {"spawnId": 200, "cell": {"x": 2, "y": 2}, "yawQuarterTurns": 0},
+    {"spawnId": 201, "cell": {"x": 3, "y": 2}, "yawQuarterTurns": 0}
+  ],
+  "checksum": "b21e351222f20d1e3433de8f4d7db25535ff6a66edaef0b6e58b2228e4e0bc4e"
+}

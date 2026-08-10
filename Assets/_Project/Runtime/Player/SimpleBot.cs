@@ -38,6 +38,7 @@ namespace NotThatWay.Game
         private float _staggeredUntil = float.NegativeInfinity;
         private float _turnDirection = 1f;
         private bool _turning;
+        private bool _smokeHitLogged;
 
         private void Awake()
         {
@@ -73,6 +74,11 @@ namespace NotThatWay.Game
             velocity.y = 0f;
             _knockback = velocity;
             _staggeredUntil = Time.time + StaggerSeconds;
+            if (!_smokeHitLogged)
+            {
+                _smokeHitLogged = true;
+                HumanSmokeTestMode.LogEvent("bot_hit");
+            }
         }
 
         /// <summary>

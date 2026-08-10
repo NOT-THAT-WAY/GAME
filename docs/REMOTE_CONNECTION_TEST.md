@@ -93,7 +93,33 @@ Les wrappers valident deux niveaux :
 1. le client atteint l'hôte via `tailscale ping` ;
 2. FishNet/Tugboat authentifie les trois joueurs sur UDP `7770`.
 
-Les trois fenêtres doivent afficher `AUTHENTICATED` et le roster Zak/Sean/Nils. Noter le commit, les OS, les rôles et le résultat dans l'issue privée sans copier les IP ni les logs bruts.
+Les trois fenêtres doivent afficher `AUTHENTICATED` et le roster Zak/Sean/Nils. Noter le commit, les OS, les rôles et le résultat synthétique dans l'issue sans copier les IP ni les logs bruts ; conserver toute preuve nominative dans le canal privé prévu.
+
+Après fermeture des trois jeux, le coordinateur produit l’extrait partageable depuis les logs reçus
+par canal privé :
+
+```bash
+python3 scripts/network-log-report.py \
+  --commit "$(git rev-parse HEAD)" \
+  --session-id net-m0-rotation-a \
+  --output-dir Logs/NetworkReports/net-m0-rotation-a \
+  --expected-participants 3 \
+  --require-reconnection \
+  --manifest macos:Builds/ConnectionTest/macOS/build-manifest.json \
+  --manifest windows:Builds/ConnectionTest/Windows/build-manifest.json \
+  --log host:macos:Logs/ConnectionTest/player-host-<date>.log \
+  --log client:macos:Logs/ConnectionTest/player-client-<date>.log \
+  --log client:windows:Logs/ConnectionTest/player-client-<date>.log
+```
+
+Partager seulement `network-report.md` ou `network-report.json`. Le script ne copie que des événements
+allowlistés et des compteurs ; noms, IP, machines, chemins et contenu brut sont exclus. Le hash de
+chaque log privé reste dans le rapport afin que le témoin puisse vérifier quel fichier a été analysé.
+Un rapport ne passe que si les trois logs sont distincts, si chacun est authentifié, si le log hôte
+atteint le roster attendu et, quand demandé, si une déconnexion est suivie d’une reconnexion dans ce
+même log. Chaque plateforme doit aussi fournir son manifeste `passed` : l’identité embarquée de tous
+les logs doit correspondre à ces manifests, au commit attendu, au même `buildSetId` et à un arbre
+source propre. `--commit` est donc une attente vérifiée, jamais une étiquette ajoutée après coup.
 
 ## Dépannage
 
@@ -105,4 +131,5 @@ Les trois fenêtres doivent afficher `AUTHENTICATED` et le roster Zak/Sean/Nils.
 6. Lire `Logs/ConnectionTest/` localement.
 7. Inverser temporairement l'hôte pour distinguer un problème de machine d'un problème de transport.
 
-Si Tailscale fonctionne mais Tugboat échoue, conserver les logs localement et ouvrir une issue `fix/` avec le commit, l'OS et le rôle, sans identifiant réseau personnel.
+Si Tailscale fonctionne mais Tugboat échoue, conserver les logs localement et ouvrir une issue `fix/`
+avec le commit, l’OS, le rôle et le rapport expurgé, sans identifiant réseau personnel.

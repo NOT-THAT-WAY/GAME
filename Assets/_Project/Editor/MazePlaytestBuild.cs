@@ -1,20 +1,21 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.Text.RegularExpressions;
 using FishNet.Component.Spawning;
 using FishNet.Component.Transforming;
 using FishNet.Managing;
 using FishNet.Managing.Object;
 using FishNet.Object;
 using FishNet.Transporting.Tugboat;
+using NotThatWay.Game.Input;
+using NotThatWay.Game.Topology;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 namespace NotThatWay.Game.Editor
@@ -35,8 +36,9 @@ namespace NotThatWay.Game.Editor
         private const string BotPrefabPath = GeneratedDirectory + "/MazeBot.prefab";
         private const string PunchAnimatorPath = GeneratedDirectory + "/MazePunchAnimator.controller";
         private const string MazeModelPath = "Assets/_Project/Maze/Maze16x16.fbx";
-        private const string MazeGridPath = "Assets/_Project/Maze/MazeGrid16x16.json";
+        private const string MazeGridPath = "Assets/_Project/Maze/MazeTopology16x16.v1.json";
         private const string PlayerModelPath = "Assets/_Project/Player/PersoBouleRigged.fbx";
+        private const string GameControlsPath = "Assets/_Project/Input/GameControls.inputactions";
         private const string PreviewDirectory = "Logs/MazePlaytest";
 
         // Gabarit du personnage produit par build_character.py : 1,40 m, origine
@@ -76,12 +78,12 @@ namespace NotThatWay.Game.Editor
         // objet par arête de la grille JSON, ce qui rend chaque mur frappable.
         private const string StaticWallsObject = "Murs_Statiques";
 
-        // Épaisseur d'un mur, du design repris par GridPitch. La hauteur, elle,
-        // est relevée sur le maillage découpé : le décor est sculpté et une valeur
-        // écrite ici mentirait sur la géométrie réelle.
+        // Épaisseur d'un mur, du design repris par GridPitch. La hauteur de collision
+        // vient désormais de la topologie signée, jamais des bosses du mesh sculpté.
         private const float WallThickness = 0.25f;
 
-        // États d'arête de MazeGrid16x16.json, recopiés de sa clé `meta.edge_states`.
+        // Adaptateur temporaire des etats typés de MazeTopology16x16.v1.json vers
+        // les trois valeurs encore consommees par le generateur historique.
         private const int EmptyWallState = 0;
         private const int StaticWallState = 1;
         private const int PivotWallState = 2;
@@ -245,6 +247,8 @@ namespace NotThatWay.Game.Editor
         private static void Build(BuildTarget target, string outputPath, bool forceIl2Cpp)
         {
             CreateScene();
+            var platform = target == BuildTarget.StandaloneOSX ? "macos" : "windows";
+            BuildIdentityWriter.WriteForBuild("maze", platform);
             Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outputPath)) ?? "Builds");
 
             var options = new BuildPlayerOptions
@@ -321,6 +325,16 @@ namespace NotThatWay.Game.Editor
                 cameraObject.SetActive(false);
 
                 root.AddComponent<NetworkObject>();
+
+                var controls = AssetDatabase.LoadAssetAtPath<InputActionAsset>(GameControlsPath);
+                if (!GameControlsContract.TryValidate(controls, out var controlsError))
+                {
+                    throw new InvalidOperationException(
+                        $"Invalid player controls at {GameControlsPath}: {controlsError}.");
+                }
+                var inputSource = root.AddComponent<PlayerInputSource>();
+                inputSource.enabled = false;
+                inputSource.Configure(controls);
 
                 // Déclarer le CharacterController au NetworkTransform : FishNet ne le
                 // laisse actif que sur la copie contrôlée, les copies distantes sont
@@ -570,13 +584,18 @@ namespace NotThatWay.Game.Editor
 
                 var isPivot = child.name.StartsWith(PivotPrefix, StringComparison.Ordinal);
                 if (isPivot)
+                {
                     pivots.Add(child);
+                    foreach (var legacyCollider in child.GetComponentsInChildren<Collider>(true))
+                        UnityEngine.Object.DestroyImmediate(legacyCollider);
+                }
                 else
                     // Un objet statique ne peut pas bouger : les pivots en sont exclus,
                     // sinon le batching fige leur maillage à l'orientation de départ.
                     GameObjectUtility.SetStaticEditorFlags(child.gameObject, StaticEditorFlags.BatchingStatic | StaticEditorFlags.OccluderStatic | StaticEditorFlags.OccludeeStatic);
 
-                if (!BlocksThePlayer(child.name) || !child.TryGetComponent<MeshFilter>(out var meshFilter) || meshFilter.sharedMesh == null)
+                if (isPivot || !BlocksThePlayer(child.name) ||
+                    !child.TryGetComponent<MeshFilter>(out var meshFilter) || meshFilter.sharedMesh == null)
                     continue;
 
                 child.gameObject.AddComponent<MeshCollider>();
@@ -593,18 +612,53 @@ namespace NotThatWay.Game.Editor
             if (pivots.Count == 0)
                 throw new InvalidOperationException($"Aucun objet « {PivotPrefix}… » dans {MazeModelPath} : la map ne contient pas de mur pivotant.");
 
-            // Ordre de nom : les trois machines numérotent les pivots pareil sans
-            // s'échanger la carte, et l'index suffit à désigner un pivot sur le réseau.
-            pivots.Sort((left, right) => string.CompareOrdinal(left.name, right.name));
+            if (pivots.Count != layout.Topology.Pivots.Count)
+            {
+                throw new InvalidOperationException(
+                    $"Le FBX contient {pivots.Count} pivots, la topologie signee en declare {layout.Topology.Pivots.Count}.");
+            }
+
+            var unmatchedPivots = new List<TopologyPivot>(layout.Topology.Pivots);
+            var topologyByVisual = new Dictionary<Transform, TopologyPivot>();
+            foreach (var visual in pivots)
+            {
+                TopologyPivot nearest = null;
+                var nearestDistance = float.PositiveInfinity;
+                foreach (var candidate in unmatchedPivots)
+                {
+                    var distance = Vector3.Distance(visual.position, NodeToUnity(candidate.Node, layout));
+                    if (distance >= nearestDistance)
+                        continue;
+                    nearest = candidate;
+                    nearestDistance = distance;
+                }
+                if (nearest == null || nearestDistance > 0.1f)
+                {
+                    throw new InvalidOperationException(
+                        $"Le pivot visuel {visual.name} n'a aucun pivot topologique a moins de 0,10 m.");
+                }
+                topologyByVisual.Add(visual, nearest);
+                unmatchedPivots.Remove(nearest);
+            }
+
+            // L'index legacy est au moins dérivé de l'ID canonique, plus d'un nom FBX.
+            pivots.Sort((left, right) =>
+                topologyByVisual[left].PivotId.CompareTo(topologyByVisual[right].PivotId));
+            var pivotBoxColliders = 0;
             for (var index = 0; index < pivots.Count; index++)
             {
+                var topologyPivot = topologyByVisual[pivots[index]];
+                pivotBoxColliders += AddCanonicalPivotColliders(pivots[index], topologyPivot, layout);
                 var wall = pivots[index].gameObject.AddComponent<PivotWall>();
                 var serializedWall = new SerializedObject(wall);
                 serializedWall.FindProperty("_index").intValue = index;
+                serializedWall.FindProperty("_pivotId").intValue = topologyPivot.PivotId;
                 serializedWall.ApplyModifiedPropertiesWithoutUndo();
             }
 
-            Debug.Log($"[GAME-MAZE] {colliders} MeshCollider(s) posé(s), {pivots.Count} pivot(s) mobile(s) indexé(s), {movableWalls} mur(s) mobile(s) découpé(s).");
+            Debug.Log(
+                $"[GAME-MAZE] {colliders} MeshCollider(s) decoratifs, {pivotBoxColliders} BoxCollider(s) " +
+                $"canoniques sur {pivots.Count} pivot(s), {movableWalls} mur(s) legacy decoupe(s).");
 
             // Soleil venant du sud (côté des entrées) pour que la face abordée par les
             // joueurs soit éclairée et non à contre-jour.
@@ -818,14 +872,13 @@ namespace NotThatWay.Game.Editor
                 wallObject.AddComponent<MeshFilter>().sharedMesh = wallMesh;
                 wallObject.AddComponent<MeshRenderer>().sharedMaterials = materials;
 
-                // Cotes du design pour la collision, hauteur relevée sur le maillage :
-                // les pierres sculptées ne doivent pas décider où le joueur s'arrête.
-                var bounds = wallMesh.bounds;
+                // Cotes du contrat de topologie : le mesh sculpté reste un habillage
+                // et ne décide d'aucune limite physique.
                 var box = wallObject.AddComponent<BoxCollider>();
-                box.center = new Vector3(0f, bounds.center.y, 0f);
+                box.center = new Vector3(0f, layout.WallHeight * 0.5f, 0f);
                 box.size = bucket.Family == 0
-                    ? new Vector3(WallThickness, bounds.size.y, GridPitch)
-                    : new Vector3(GridPitch, bounds.size.y, WallThickness);
+                    ? new Vector3(WallThickness, layout.WallHeight, GridPitch)
+                    : new Vector3(GridPitch, layout.WallHeight, WallThickness);
 
                 if (IsPerimeterSlot(bucket.Family, bucket.X, bucket.Y, layout))
                 {
@@ -870,7 +923,7 @@ namespace NotThatWay.Game.Editor
             {
                 Debug.LogWarning(
                     $"[GAME-MUR] {expected - movableWalls} arête(s) pleine(s) de la grille n'ont reçu aucun triangle : " +
-                    "un mur déclaré par MazeGrid16x16.json est absent du FBX, il ne sera ni visible ni frappable.");
+                    "un mur declare par MazeTopology16x16.v1.json est absent du FBX, il ne sera ni visible ni frappable.");
             }
 
             return movableWalls;
@@ -1018,6 +1071,43 @@ namespace NotThatWay.Game.Editor
             return MovableWallDirector.SlotCenter(family, x, y, layout.Width, layout.Height);
         }
 
+        private static Vector3 NodeToUnity(TopologyPoint node, MazeLayout layout)
+        {
+            return new Vector3(
+                -(node.X - layout.Width / 2f) * GridPitch,
+                0f,
+                -(node.Y - layout.Height / 2f) * GridPitch);
+        }
+
+        private static int AddCanonicalPivotColliders(
+            Transform visual,
+            TopologyPivot pivot,
+            MazeLayout layout)
+        {
+            var count = 0;
+            foreach (var wallId in pivot.WallIds)
+            {
+                var wall = layout.Topology.Walls.Find(candidate => candidate.WallId == wallId);
+                if (wall == null)
+                    throw new InvalidOperationException($"Mur canonique {wallId} introuvable pour le pivot {pivot.PivotId}.");
+                var initial = wall.States.Find(state => state.StateId == wall.InitialStateId);
+                var family = initial.Edge.Axis == TopologyEdge.VerticalAxis ? 0 : 1;
+                var center = SlotCenterToUnity(family, initial.Edge.X, initial.Edge.Y, layout);
+
+                var collision = new GameObject($"Collision_Wall_{wall.WallId}");
+                collision.transform.SetPositionAndRotation(
+                    center + Vector3.up * (layout.WallHeight * 0.5f),
+                    Quaternion.identity);
+                collision.transform.SetParent(visual, true);
+                var box = collision.AddComponent<BoxCollider>();
+                box.size = family == 0
+                    ? new Vector3(WallThickness, layout.WallHeight, GridPitch)
+                    : new Vector3(GridPitch, layout.WallHeight, WallThickness);
+                count++;
+            }
+            return count;
+        }
+
         /// <summary>Arête du pourtour de la map, qui ferme le labyrinthe et ne pivote pas.</summary>
         private static bool IsPerimeterSlot(int family, int x, int y, MazeLayout layout)
         {
@@ -1140,15 +1230,20 @@ namespace NotThatWay.Game.Editor
             // Les colliders du décor existent déjà : on peut interroger la géométrie.
             Physics.SyncTransforms();
 
-            foreach (var entrance in layout.Entrances)
+            for (var index = 0; index < layout.Entrances.Count; index++)
             {
+                var entrance = layout.Entrances[index];
                 // Dans la cellule du seuil, et non dehors : le sable extérieur est
                 // parsemé de props et le joueur y apparaîtrait le nez sur une colonne.
-                var inward = InwardDirection(entrance, layout);
-                var position = FindFreeSpot(CellCenterToUnity(entrance, layout) + Vector3.up * SpawnHeight, inward, entrance);
-                var point = new GameObject($"Spawn_Cell_{entrance.x}_{entrance.y}").transform;
+                var declaredForward = SpawnDirection(layout.SpawnYawQuarterTurns[index]);
+                var position = FindFreeSpot(
+                    CellCenterToUnity(entrance, layout) + Vector3.up * SpawnHeight,
+                    declaredForward,
+                    entrance);
+                var point = new GameObject(
+                    $"Spawn_{layout.SpawnIds[index]}_Cell_{entrance.x}_{entrance.y}").transform;
                 point.SetParent(root, false);
-                point.SetPositionAndRotation(position, Quaternion.LookRotation(ClearestDirection(position, inward), Vector3.up));
+                point.SetPositionAndRotation(position, Quaternion.LookRotation(declaredForward, Vector3.up));
                 spawns.Add(point);
             }
 
@@ -1233,6 +1328,11 @@ namespace NotThatWay.Game.Editor
                 $"L'entrée {entrance.x},{entrance.y} n'est sur aucun bord de la grille {layout.Width}x{layout.Height}.");
         }
 
+        private static Vector3 SpawnDirection(int yawQuarterTurns)
+        {
+            return Quaternion.Euler(0f, yawQuarterTurns * 90f, 0f) * Vector3.back;
+        }
+
         /// <summary>
         /// Centre d'une cellule, avec la même formule que le générateur Blender :
         /// un nœud vaut `(i - largeur / 2) * pas`, un centre de cellule ajoute un
@@ -1271,21 +1371,28 @@ namespace NotThatWay.Game.Editor
         private readonly struct MazeLayout
         {
             public MazeLayout(
-                int width, int height, List<Vector2Int> entrances, Vector2Int treasure,
+                TopologyDocument topology, int width, int height, float wallHeight, List<Vector2Int> entrances,
+                List<int> spawnIds, List<int> spawnYawQuarterTurns,
                 int[,] verticalWalls, int[,] horizontalWalls)
             {
+                Topology = topology;
                 Width = width;
                 Height = height;
+                WallHeight = wallHeight;
                 Entrances = entrances;
-                Treasure = treasure;
+                SpawnIds = spawnIds;
+                SpawnYawQuarterTurns = spawnYawQuarterTurns;
                 VerticalWalls = verticalWalls;
                 HorizontalWalls = horizontalWalls;
             }
 
+            public TopologyDocument Topology { get; }
             public int Width { get; }
             public int Height { get; }
+            public float WallHeight { get; }
             public List<Vector2Int> Entrances { get; }
-            public Vector2Int Treasure { get; }
+            public List<int> SpawnIds { get; }
+            public List<int> SpawnYawQuarterTurns { get; }
 
             /// <summary>Arêtes portées par un nœud en x, longues d'une cellule en y : `[largeur + 1, hauteur]`.</summary>
             public int[,] VerticalWalls { get; }
@@ -1295,122 +1402,72 @@ namespace NotThatWay.Game.Editor
         }
 
         /// <summary>
-        /// Lecture de `MazeGrid16x16.json` : dimensions, entrées, trésor et les deux
-        /// tables d'arêtes. Ce sont ces tables, et non les noms d'objets du FBX, qui
-        /// décident où sont les murs, lesquels peuvent coulisser et lesquels tiennent
-        /// un bras de pivot.
+        /// Adapte la topologie runtime stricte vers les deux tables d'aretes encore
+        /// consommees par le generateur visuel historique. Le parseur regex precedent
+        /// n'est plus une autorite : IDs, dimensions, references et checksum passent
+        /// tous par <see cref="TopologyParser"/> avant de toucher la scene.
         /// </summary>
         private static MazeLayout ReadLayout()
         {
             if (!File.Exists(MazeGridPath))
                 throw new InvalidOperationException($"Grille du labyrinthe introuvable: {MazeGridPath}.");
 
-            var json = File.ReadAllText(MazeGridPath);
-            var entrances = ReadCells(ExtractBracketBlock(json, "entrances"));
-            var treasureCells = ReadCells(ExtractBracketBlock(json, "treasure"));
+            var parsed = TopologyParser.ParseVerified(File.ReadAllText(MazeGridPath));
+            if (!parsed.IsValid)
+            {
+                var first = parsed.Issues[0];
+                throw new InvalidOperationException(
+                    $"Topologie invalide dans {MazeGridPath}: {first.Code} a {first.Path}.");
+            }
 
+            var topology = parsed.Document;
+            if (topology.Dimensions.CellPitchMm != Mathf.RoundToInt(GridPitch * 1000f) ||
+                topology.Dimensions.WallThicknessMm != Mathf.RoundToInt(WallThickness * 1000f))
+            {
+                throw new InvalidOperationException(
+                    $"Les dimensions de {MazeGridPath} divergent encore des cotes du generateur historique.");
+            }
+
+            var width = topology.Dimensions.WidthCells;
+            var height = topology.Dimensions.HeightCells;
+            var verticalWalls = new int[width + 1, height];
+            var horizontalWalls = new int[width, height + 1];
+            foreach (var wall in topology.Walls)
+            {
+                var initial = wall.States.Find(state => state.StateId == wall.InitialStateId);
+                var grid = initial.Edge.Axis == TopologyEdge.VerticalAxis ? verticalWalls : horizontalWalls;
+                if (grid[initial.Edge.X, initial.Edge.Y] != EmptyWallState)
+                {
+                    throw new InvalidOperationException(
+                        $"Deux murs initiaux occupent l'arete {initial.Edge.Axis}:{initial.Edge.X},{initial.Edge.Y}.");
+                }
+                grid[initial.Edge.X, initial.Edge.Y] = wall.PivotId.HasValue ? PivotWallState : StaticWallState;
+            }
+
+            var orderedSpawns = new List<TopologySpawn>(topology.Spawns);
+            orderedSpawns.Sort((left, right) => left.SpawnId.CompareTo(right.SpawnId));
+            var entrances = new List<Vector2Int>(orderedSpawns.Count);
+            var spawnIds = new List<int>(orderedSpawns.Count);
+            var spawnYawQuarterTurns = new List<int>(orderedSpawns.Count);
+            foreach (var spawn in orderedSpawns)
+            {
+                entrances.Add(new Vector2Int(spawn.Cell.X, spawn.Cell.Y));
+                spawnIds.Add(spawn.SpawnId);
+                spawnYawQuarterTurns.Add(spawn.YawQuarterTurns);
+            }
             if (entrances.Count == 0)
-                throw new InvalidOperationException($"Aucune entrée déclarée dans {MazeGridPath}.");
-            if (treasureCells.Count != 1)
-                throw new InvalidOperationException($"Cellule de trésor illisible dans {MazeGridPath}.");
-
-            var width = ReadInt(json, "width");
-            var height = ReadInt(json, "height");
+                throw new InvalidOperationException($"Aucun spawn declare dans {MazeGridPath}.");
 
             return new MazeLayout(
+                topology,
                 width,
                 height,
+                topology.Dimensions.WallHeightMm / 1000f,
                 entrances,
-                treasureCells[0],
-                ReadIntGrid(json, "vwalls", width + 1, height),
-                ReadIntGrid(json, "hwalls", width, height + 1));
-        }
-
-        /// <summary>
-        /// Table d'arêtes du JSON, vérifiée aux dimensions attendues : une grille mal
-        /// formée poserait des murs ailleurs que le décor, et la map serait
-        /// silencieusement injouable.
-        /// </summary>
-        private static int[,] ReadIntGrid(string json, string key, int columns, int rows)
-        {
-            var block = ExtractBracketBlock(json, key);
-            var parsed = new List<int[]>();
-
-            foreach (Match match in Regex.Matches(block, @"\[([^\[\]]*)\]"))
-            {
-                var values = new List<int>();
-                foreach (var piece in match.Groups[1].Value.Split(','))
-                {
-                    var trimmed = piece.Trim();
-                    if (trimmed.Length > 0)
-                        values.Add(int.Parse(trimmed, CultureInfo.InvariantCulture));
-                }
-
-                if (values.Count > 0)
-                    parsed.Add(values.ToArray());
-            }
-
-            if (parsed.Count != columns)
-                throw new InvalidOperationException($"\"{key}\" fait {parsed.Count} colonnes dans {MazeGridPath}, {columns} attendues.");
-
-            var grid = new int[columns, rows];
-            for (var column = 0; column < columns; column++)
-            {
-                if (parsed[column].Length != rows)
-                    throw new InvalidOperationException($"\"{key}\" colonne {column} fait {parsed[column].Length} entrées dans {MazeGridPath}, {rows} attendues.");
-
-                for (var row = 0; row < rows; row++)
-                    grid[column, row] = parsed[column][row];
-            }
-
-            return grid;
-        }
-
-        private static string ExtractBracketBlock(string json, string key)
-        {
-            var keyIndex = json.IndexOf($"\"{key}\"", StringComparison.Ordinal);
-            if (keyIndex < 0)
-                throw new InvalidOperationException($"Clé \"{key}\" absente de {MazeGridPath}.");
-
-            var start = json.IndexOf('[', keyIndex);
-            if (start < 0)
-                throw new InvalidOperationException($"Clé \"{key}\" sans tableau dans {MazeGridPath}.");
-
-            var depth = 0;
-            for (var index = start; index < json.Length; index++)
-            {
-                if (json[index] == '[')
-                    depth++;
-                else if (json[index] == ']' && --depth == 0)
-                    return json.Substring(start, index - start + 1);
-            }
-
-            throw new InvalidOperationException($"Tableau \"{key}\" non terminé dans {MazeGridPath}.");
-        }
-
-        private static List<Vector2Int> ReadCells(string block)
-        {
-            var cells = new List<Vector2Int>();
-            foreach (Match match in Regex.Matches(block, @"\[\s*(-?\d+)\s*,\s*(-?\d+)\s*\]"))
-            {
-                cells.Add(new Vector2Int(
-                    int.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture),
-                    int.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture)));
-            }
-
-            return cells;
-        }
-
-        private static int ReadInt(string json, string key) =>
-            (int)Math.Round(ReadFloat(json, key));
-
-        private static float ReadFloat(string json, string key)
-        {
-            var match = Regex.Match(json, $"\"{Regex.Escape(key)}\"\\s*:\\s*(-?[0-9]+(?:\\.[0-9]+)?)");
-            if (!match.Success)
-                throw new InvalidOperationException($"Clé \"{key}\" absente ou non numérique dans {MazeGridPath}.");
-
-            return float.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
+                spawnIds,
+                spawnYawQuarterTurns,
+                verticalWalls,
+                horizontalWalls);
         }
     }
 }

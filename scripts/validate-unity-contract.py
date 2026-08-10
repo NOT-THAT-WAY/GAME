@@ -60,6 +60,7 @@ expected_packages = {
     "com.unity.inputsystem": toolchain["INPUT_SYSTEM_VERSION"],
     "com.unity.multiplayer.playmode": toolchain["MULTIPLAYER_PLAYMODE_VERSION"],
     "com.unity.multiplayer.tools": toolchain["MULTIPLAYER_TOOLS_VERSION"],
+    "com.unity.nuget.newtonsoft-json": toolchain["NEWTONSOFT_JSON_VERSION"],
     "com.unity.render-pipelines.universal": toolchain["URP_VERSION"],
 }
 for package, expected_version in expected_packages.items():
@@ -116,6 +117,78 @@ require("BuildOptions.Development" in build_code, "connection proof must remain 
 
 editor_build_settings = read("ProjectSettings/EditorBuildSettings.asset")
 require("Assets/Scenes/SampleScene.unity" in editor_build_settings, "bootstrap scene missing")
+
+tag_manager_lines = read("ProjectSettings/TagManager.asset").splitlines()
+layers_start = tag_manager_lines.index("  layers:") + 1
+layers_end = tag_manager_lines.index("  m_SortingLayers:")
+layer_names = [line[4:] for line in tag_manager_lines[layers_start:layers_end]]
+required_layers = {
+    8: "GameplayWorld",
+    9: "Player",
+    10: "InteractionQuery",
+    11: "VisualOnly",
+}
+for index, expected_name in required_layers.items():
+    require(
+        len(layer_names) > index and layer_names[index] == expected_name,
+        f"Unity layer {index} must be {expected_name!r}",
+    )
+
+
+def should_layers_collide(first: int, second: int) -> bool:
+    world = 8
+    player = 9
+    query_only = {10, 11}
+    if first in query_only or second in query_only:
+        return False
+    if first == world or second == world:
+        return {first, second} == {world, player}
+    if first == player or second == player:
+        return first == player and second == player
+    return True
+
+
+expected_collision_matrix = b"".join(
+    sum(1 << second for second in range(32) if should_layers_collide(first, second))
+    .to_bytes(4, byteorder="little")
+    for first in range(32)
+).hex()
+dynamics_settings = read("ProjectSettings/DynamicsManager.asset")
+matrix_match = re.search(r"^  m_LayerCollisionMatrix: ([0-9a-f]+)$", dynamics_settings, re.MULTILINE)
+require(bool(matrix_match), "3D physics collision matrix missing")
+if matrix_match:
+    require(
+        matrix_match.group(1) == expected_collision_matrix,
+        "3D physics collision matrix does not match the gameplay layer contract",
+    )
+
+runtime_root = ROOT / "Assets/_Project/Runtime"
+runtime_sources = list(runtime_root.rglob("*.cs"))
+for forbidden_read in ("Keyboard.current", "Mouse.current", "Gamepad.current"):
+    offenders = [
+        path.relative_to(ROOT).as_posix()
+        for path in runtime_sources
+        if forbidden_read in path.read_text(encoding="utf-8")
+    ]
+    require(
+        not offenders,
+        f"direct device read {forbidden_read!r} bypasses Input Actions: {offenders}",
+    )
+
+player_simulation_root = runtime_root / "Player/Simulation"
+for source in player_simulation_root.glob("*.cs"):
+    text = source.read_text(encoding="utf-8")
+    for forbidden_dependency in (
+        "using UnityEngine",
+        "using FishNet",
+        "Time.time",
+        "Time.deltaTime",
+        "Time.fixedDeltaTime",
+    ):
+        require(
+            forbidden_dependency not in text,
+            f"pure player simulation uses {forbidden_dependency!r}: {source.relative_to(ROOT)}",
+        )
 
 if toolchain["WWISE_ENABLED"] == "0":
     require(

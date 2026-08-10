@@ -26,11 +26,13 @@ murs ou collisions suit [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.m
 | Élément | Chemin | Origine |
 |---|---|---|
 | Labyrinthe | `Assets/_Project/Maze/Maze16x16.fbx` | `tools/maze-3d/build_maze.py` du dépôt de préproduction |
-| Grille logique | `Assets/_Project/Maze/MazeGrid16x16.json` | `tools/maze-forge/maps/maze_16_16x16.json` (seed 1704) |
+| Topologie runtime | `Assets/_Project/Maze/MazeTopology16x16.v1.json` | migration reproductible de `MazeGrid16x16.json` par `scripts/migrate-maze-topology-v1.py` |
+| Grille source historique | `Assets/_Project/Maze/MazeGrid16x16.json` | `tools/maze-forge/maps/maze_16_16x16.json` (seed 1704), non consommée directement par Unity |
 | Personnage jouable + punch | `Assets/_Project/Player/PersoBouleRigged.fbx` | studio Blender `player-punch-rig-v001`, export validé sur `art/player-punch-rig` |
+| Contrôles | `Assets/_Project/Input/GameControls.inputactions` | actions Player/UI, clavier-souris et manette |
 | Déplacement | `Assets/_Project/Runtime/Player/PlayerMotor.cs` | — |
 | Punch | `Assets/_Project/Runtime/Player/PlayerPunch.cs` | intention cliente, validation hôte, animation et recul |
-| Murs mobiles | `Assets/_Project/Runtime/Maze/MovableWall.cs`, `MovableWallDirector.cs` | découpés depuis `MazeGrid16x16.json`, état discret répliqué |
+| Murs mobiles legacy | `Assets/_Project/Runtime/Maze/MovableWall.cs`, `MovableWallDirector.cs` | découpés depuis la topologie v1, ancien état discret répliqué |
 | Bot d'entraînement | `Assets/_Project/Runtime/Player/SimpleBot.cs` | marche et recul simulés par l'hôte |
 | Générateur de scène | `Assets/_Project/Editor/MazePlaytestBuild.cs` | — |
 
@@ -57,27 +59,30 @@ Ces cotes sont celles du tableau d'échelle physique du concept : elles ne se
 règlent pas ici. Le pas de 2,75 m est la conséquence des deux premières valeurs,
 pas un réglage indépendant.
 
-Le `GridPitch` de `MazePlaytestBuild` duplique cette constante parce que la
-grille JSON ne la transporte pas. S'il s'écarte de `build_maze.py`, les
-apparitions tombent à côté des entrées.
-
-Cette duplication est une dette, pas une consigne : le futur schéma porte
-`cellPitchMm`, épaisseur/hauteur des murs, IDs et checksum. Son chargeur valide
-les murs verticaux/horizontaux et les pivots au lieu de ne lire que dimensions et
-points d'apparition.
+Le schéma v1 transporte maintenant `cellPitchMm`, épaisseur/hauteur des murs, IDs, orientations de
+spawn et checksum. Le `GridPitch` du générateur historique reste temporairement dupliqué, mais
+`MazePlaytestBuild` refuse désormais la scène si cette constante diverge de la topologie. Le chargeur
+runtime exige le checksum et valide murs, pivots, références bijectives, états, occupations et bornes
+avant toute génération. Les orientations de spawn sont choisies pendant la migration selon les
+arêtes réellement libres, puis consommées sans recalcul depuis le FBX.
 
 ## Collisions
 
 Le FBX embarque de la végétation et des props denses. Pour ce smoke test,
-`MazePlaytestBuild` ajoute un `MeshCollider` sur les objets qui arrêtent le joueur
-— `Pivot_*`, `Sol_Dalles`, `Sol_Sable`, `Reperes_Gameplay` et `Props`. Seule
+`MazePlaytestBuild` ajoute encore un `MeshCollider` aux ensembles de décor qui arrêtent le joueur
+— `Sol_Dalles`, `Sol_Sable`, `Reperes_Gameplay` et `Props`. Seule
 `Vegetation` reste traversable : mousses, lianes et buissons doivent pouvoir être
 longés.
 
 **Les murs statiques font exception depuis les murs mobiles** : ils ne
 reçoivent plus de `MeshCollider` mais une `BoxCollider` aux cotes du design —
-2,75 m de long, 0,25 m d'épaisseur, hauteur relevée sur le maillage découpé. Leur
+2,75 m de long, 0,25 m d'épaisseur et 3,00 m de haut selon la topologie signée. Leur
 collision vient donc de la topologie typée et non des triangles sculptés.
+
+Les 17 objets `Pivot_*` ne portent plus de `MeshCollider` : leurs 46 bras reçoivent chacun une
+`BoxCollider` de 2,75 × 0,25 × 3,00 m, liée au `wallId` et au `pivotId` canoniques puis enfantée au
+pivot visuel. Les quatre `MeshCollider` restants appartiennent au décor/sol du smoke historique ;
+ils ne définissent ni une arête, ni un état, ni une décision réseau.
 
 La collision restante, issue des triangles et des noms du FBX, est une dette
 connue. La cible M1 génère des primitives simples depuis la topologie JSON
@@ -143,17 +148,19 @@ donné de biais.
 joueur ou un bot occupe l'arête d'arrivée, la poussée est refusée — pas de KO,
 pas de déplacement forcé. L'ADR 0004 laisse cette conséquence ouverte ; c'est le
 choix explicite du prototype, à trancher pour de bon en M1. Un battant peut en
-revanche frôler quelqu'un pendant sa course : `U` sert à se dégager si le mur
-vous prend au passage.
+revanche frôler quelqu'un pendant sa course. La touche de téléportation `U` a été
+retirée : si ce smoke legacy coince un joueur, arrêter l'essai et conserver le log
+au lieu de masquer le défaut. La graybox M1 refuse déjà tout l'arc balayé.
 
 ### Découpe depuis la grille
 
 Le FBX sort tous les murs statiques dans **un seul maillage fusionné**
 (`Murs_Statiques`) : aucun d'eux ne pouvait bouger seul. `SplitStaticWalls` le
-redécoupe en un objet par arête de `MazeGrid16x16.json`, chaque triangle
-rejoignant l'arête dont son barycentre est le plus proche. Identifiant, case
-d'origine et collider viennent tous de la grille typée ; le
-maillage sculpté n'est plus qu'un habillage, conformément à l'ADR 0004. La
+redécoupe en un objet par arête de `MazeTopology16x16.v1.json`, chaque triangle
+rejoignant l'arête dont son barycentre est le plus proche. Case d'origine et collider viennent de la
+topologie typée ; l'ancien director attribue encore un index local contigu au lieu du `wallId` v1.
+Ce chemin reste donc un smoke legacy à remplacer par le modèle graybox. Le maillage sculpté n'est
+qu'un habillage, conformément à l'ADR 0004. La
 génération avertit si une arête pleine déclarée par le JSON ne reçoit aucun
 triangle, ce qui signalerait un FBX désaccordé de la grille.
 
@@ -230,6 +237,19 @@ immédiatement.
 ./scripts/first-test-macos.sh client --profile maze --address 127.0.0.1 --name "Test" --skip-build
 ```
 
+### Smoke test humain minimum
+
+HT-00 masque le panneau réseau, affiche directement les commandes utiles et ajoute des marqueurs de
+log sans changer le gameplay. Après avoir produit le build, lancer :
+
+```bash
+./scripts/human-test-macos.sh
+```
+
+La checklist minimale est dans [FIRST_HUMAN_TEST_DESIGN.md](FIRST_HUMAN_TEST_DESIGN.md) et son
+[runbook](FIRST_HUMAN_TEST_RUNBOOK.md). Après fermeture, `scripts/human-test-report.py` produit le
+verdict depuis le log. Le gameplay et les limites réseau décrites ici restent identiques.
+
 ### Réseaux différents (le cas de l'équipe)
 
 L'hôte :
@@ -255,20 +275,16 @@ changent pas de comportement.
 
 | Touche | Effet |
 |---|---|
-| ZQSD / WASD / flèches | se déplacer |
-| Souris | regarder |
-| Maj | sprint |
-| Espace | sauter — contournement provisoire des gravats, statut gameplay à décider |
-| Clic gauche maintenu + avancer | pousser un mur pivotant d'un quart de tour |
-| Clic droit | coup de poing : joueur ou bot devant soi, sinon le mur touché est ébranlé — trois coups enchaînés l'ouvrent |
+| ZQSD / WASD / flèches ou stick gauche | se déplacer |
+| Souris ou stick droit | regarder |
+| Maj ou clic stick gauche | sprint |
+| Espace ou bouton Sud | sauter — contournement provisoire des gravats, statut gameplay à décider |
+| Clic gauche / E / gâchette droite maintenu + avancer | pousser un mur pivotant d'un quart de tour |
+| Clic droit / F / épaule droite | coup de poing : joueur ou bot devant soi, sinon le mur touché est ébranlé — trois coups enchaînés l'ouvrent |
 | Avancer contre un mur | le pousser à l'épaule : il cède au bout d'environ 3 s, et retombe si on lâche |
-| U | se dégager quand on est encastré dans un mur |
-| Échap | libérer ou recapturer le curseur |
-| Tab | masquer ou afficher le panneau réseau |
-| F1 | basculer 1re / 3e personne (vue de contrôle) |
+| Échap ou Menu | libérer ou recapturer le curseur |
 
-La vue de référence reste la première personne. La troisième personne est là pour
-vérifier le gabarit du personnage, pas pour jouer.
+La vue jouable de référence reste la première personne.
 
 En première personne, le porteur voit ses propres avant-bras et ses poings ; le
 corps et les pieds ne gardent que leur ombre, la caméra étant placée à hauteur des
@@ -276,24 +292,6 @@ yeux, à l'intérieur du volume du corps. Sans cette exception, un coup de poing
 donnait aucun retour à l'écran tant qu'il ne touchait personne. La sélection se
 fait sur le nom des meshes de l'export (`Forearm`, `Fist`) et ne concerne que le
 rendu : aucune règle gameplay n'en dépend.
-
-`U` replace le joueur sur le centre d'une cellule voisine libre : une case
-d'abord, puis deux, puis trois. À chaque anneau, la cellule retenue est la plus
-proche qui ait du sol sous elle et de quoi tenir debout. Si les trois anneaux
-sont bouchés, le joueur repart de son entrée, seul point dont
-`MazePlaytestBuild` garantit le sol et le dégagement.
-
-Cette touche ne repousse **pas** le joueur hors du mur : `ComputePenetration` ne
-résout rien contre un `MeshCollider` non convexe, et les murs du labyrinthe en
-sont. La validation d'une cellule passe donc par un tir vers le sol et un
-`CheckCapsule`, qui fonctionnent contre une géométrie concave. Pour la même
-raison, le dégagement vise la grille au lieu de mémoriser la dernière position
-« sûre » : un test de chevauchement qui ne détecte rien enregistrerait comme sûre
-la position où l'on est encastré.
-
-`RespawnGridPitch` duplique le pas de grille pour la même raison que le
-`GridPitch` de `MazePlaytestBuild` : s'il s'en écarte, le dégagement vise entre
-deux couloirs.
 
 ## Vérifier sans lancer de partie
 

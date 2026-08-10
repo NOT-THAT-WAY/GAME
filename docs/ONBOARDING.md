@@ -4,7 +4,7 @@ Cette procédure est la référence pour le premier démarrage. On prépare **d'
 
 ## Ce qui est déjà prêt
 
-- le repo privé `NOT-THAT-WAY/GAME` et la branche `main` ;
+- le repo `NOT-THAT-WAY/GAME`, actuellement public, et la branche `main` ;
 - Unity `6000.3.20f1`, URP et FishNet déclarés ;
 - les scripts Mac/Windows ;
 - Git LFS pour les binaires de build ;

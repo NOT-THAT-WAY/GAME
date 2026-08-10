@@ -3,7 +3,8 @@
   "rootNamespace": "NotThatWay.Game.Editor",
   "references": [
     "Game.Runtime",
-    "FishNet.Runtime"
+    "FishNet.Runtime",
+    "Unity.InputSystem"
   ],
   "includePlatforms": [
     "Editor"

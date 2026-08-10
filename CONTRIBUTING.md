@@ -69,13 +69,16 @@ Le titre de PR reprend le type de la branche. Après le commit :
 
 ```bash
 # macOS
-./scripts/publish-task.sh "feat: add player movement"
+./scripts/publish-task.sh "feat: add player movement" --body-file /chemin/vers/pr-body.md
 
 # Windows PowerShell
-.\scripts\publish-task.ps1 "feat: add player movement"
+.\scripts\publish-task.ps1 "feat: add player movement" -BodyFile C:\chemin\pr-body.md
 ```
 
-Le script vérifie le nom, refuse les changements non commités, pousse la branche et crée la PR avec GitHub CLI. Sans session `gh`, il donne le lien exact à ouvrir. La CI contrôle de nouveau le nom de branche et le titre de PR.
+Le script vérifie le nom et le corps, refuse les changements non commités, pousse la branche et crée
+la PR avec GitHub CLI. Sans fichier de corps, `gh` ouvre l’édition interactive ; un contexte non
+interactif exige `--body-file` / `-BodyFile`. Sans session `gh`, le script donne le lien exact à
+ouvrir. La CI contrôle de nouveau le nom de branche, le titre et les contrats de workflow.
 
 Une PR indique le résultat, les fichiers/lots touchés et les tests réalisés. Une tâche est terminée seulement lorsqu'un autre membre peut la tester depuis un clone ou une mise à jour propre.
 
