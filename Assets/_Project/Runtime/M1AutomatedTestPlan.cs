@@ -12,13 +12,14 @@ namespace NotThatWay.Game
             int playerCount,
             int serverConnectionCount,
             bool hasWall,
-            int wallStateId,
+            int wallAngleMilliDegrees,
             uint wallRevision,
-            int signedEffort,
-            bool isTransitioning,
-            uint completedTransitions,
-            uint rejectedTransitions,
-            uint opposedEffortTicks,
+            int angularVelocityMilliDegreesPerTick,
+            long cumulativeRotationMilliDegrees,
+            uint quarterTurns,
+            uint reversals,
+            uint opposedTicks,
+            uint sweptPushes,
             uint snapshots,
             uint targetSnapshots,
             uint observerSnapshots,
@@ -29,13 +30,14 @@ namespace NotThatWay.Game
             PlayerCount = playerCount;
             ServerConnectionCount = serverConnectionCount;
             HasWall = hasWall;
-            WallStateId = wallStateId;
+            WallAngleMilliDegrees = wallAngleMilliDegrees;
             WallRevision = wallRevision;
-            SignedEffort = signedEffort;
-            IsTransitioning = isTransitioning;
-            CompletedTransitions = completedTransitions;
-            RejectedTransitions = rejectedTransitions;
-            OpposedEffortTicks = opposedEffortTicks;
+            AngularVelocityMilliDegreesPerTick = angularVelocityMilliDegreesPerTick;
+            CumulativeRotationMilliDegrees = cumulativeRotationMilliDegrees;
+            QuarterTurns = quarterTurns;
+            Reversals = reversals;
+            OpposedTicks = opposedTicks;
+            SweptPushes = sweptPushes;
             Snapshots = snapshots;
             TargetSnapshots = targetSnapshots;
             ObserverSnapshots = observerSnapshots;
@@ -47,18 +49,24 @@ namespace NotThatWay.Game
         public int PlayerCount { get; }
         public int ServerConnectionCount { get; }
         public bool HasWall { get; }
-        public int WallStateId { get; }
+        public int WallAngleMilliDegrees { get; }
         public uint WallRevision { get; }
-        public int SignedEffort { get; }
-        public bool IsTransitioning { get; }
-        public uint CompletedTransitions { get; }
-        public uint RejectedTransitions { get; }
-        public uint OpposedEffortTicks { get; }
+        public int AngularVelocityMilliDegreesPerTick { get; }
+
+        /// <summary>Rotation signée accumulée depuis le démarrage de l'autorité.</summary>
+        public long CumulativeRotationMilliDegrees { get; }
+
+        public uint QuarterTurns { get; }
+        public uint Reversals { get; }
+        public uint OpposedTicks { get; }
+        public uint SweptPushes { get; }
         public uint Snapshots { get; }
         public uint TargetSnapshots { get; }
         public uint ObserverSnapshots { get; }
         public uint InvalidSnapshots { get; }
         public uint HistoryMisses { get; }
+
+        public long AbsoluteRotationMilliDegrees => Math.Abs(CumulativeRotationMilliDegrees);
     }
 
     /// <summary>Contrat de verdict pour les scénarios M1 lancés en deux processus.</summary>
@@ -70,13 +78,15 @@ namespace NotThatWay.Game
             double evaluateAfterReadySeconds,
             double quitAfterSeconds,
             double readinessTimeoutSeconds,
-            int expectedWallState,
-            long expectedWallRevision,
             int expectedPlayers,
             int expectedServerConnections,
-            uint minimumCompletedTransitions,
-            uint minimumRejectedTransitions,
-            uint minimumOpposedEffortTicks,
+            long minimumRotationMilliDegrees,
+            long maximumRotationMilliDegrees,
+            long minimumRevision,
+            uint minimumQuarterTurns,
+            uint minimumReversals,
+            uint minimumOpposedTicks,
+            uint minimumSweptPushes,
             uint minimumSnapshots,
             uint minimumTargetSnapshots)
         {
@@ -85,13 +95,15 @@ namespace NotThatWay.Game
             EvaluateAfterReadySeconds = evaluateAfterReadySeconds;
             QuitAfterSeconds = quitAfterSeconds;
             ReadinessTimeoutSeconds = readinessTimeoutSeconds;
-            ExpectedWallState = expectedWallState;
-            ExpectedWallRevision = expectedWallRevision;
             ExpectedPlayers = expectedPlayers;
             ExpectedServerConnections = expectedServerConnections;
-            MinimumCompletedTransitions = minimumCompletedTransitions;
-            MinimumRejectedTransitions = minimumRejectedTransitions;
-            MinimumOpposedEffortTicks = minimumOpposedEffortTicks;
+            MinimumRotationMilliDegrees = minimumRotationMilliDegrees;
+            MaximumRotationMilliDegrees = maximumRotationMilliDegrees;
+            MinimumRevision = minimumRevision;
+            MinimumQuarterTurns = minimumQuarterTurns;
+            MinimumReversals = minimumReversals;
+            MinimumOpposedTicks = minimumOpposedTicks;
+            MinimumSweptPushes = minimumSweptPushes;
             MinimumSnapshots = minimumSnapshots;
             MinimumTargetSnapshots = minimumTargetSnapshots;
         }
@@ -101,13 +113,15 @@ namespace NotThatWay.Game
         public double EvaluateAfterReadySeconds { get; }
         public double QuitAfterSeconds { get; }
         public double ReadinessTimeoutSeconds { get; }
-        public int ExpectedWallState { get; }
-        public long ExpectedWallRevision { get; }
         public int ExpectedPlayers { get; }
         public int ExpectedServerConnections { get; }
-        public uint MinimumCompletedTransitions { get; }
-        public uint MinimumRejectedTransitions { get; }
-        public uint MinimumOpposedEffortTicks { get; }
+        public long MinimumRotationMilliDegrees { get; }
+        public long MaximumRotationMilliDegrees { get; }
+        public long MinimumRevision { get; }
+        public uint MinimumQuarterTurns { get; }
+        public uint MinimumReversals { get; }
+        public uint MinimumOpposedTicks { get; }
+        public uint MinimumSweptPushes { get; }
         public uint MinimumSnapshots { get; }
         public uint MinimumTargetSnapshots { get; }
         public bool Enabled => QuitAfterSeconds > 0d;
@@ -147,13 +161,15 @@ namespace NotThatWay.Game
                 "--m1-evaluate-after-ready-seconds",
                 "--m1-auto-quit-seconds",
                 "--m1-readiness-timeout-seconds",
-                "--m1-expect-wall-state",
-                "--m1-expect-wall-revision",
                 "--m1-expect-players",
                 "--m1-expect-connections",
-                "--m1-expect-completed-min",
-                "--m1-expect-rejected-min",
+                "--m1-expect-rotation-min-mdeg",
+                "--m1-expect-rotation-max-mdeg",
+                "--m1-expect-revision-min",
+                "--m1-expect-quarter-turns-min",
+                "--m1-expect-reversals-min",
                 "--m1-expect-opposed-ticks-min",
+                "--m1-expect-swept-pushes-min",
                 "--m1-expect-snapshots-min",
                 "--m1-expect-target-snapshots-min"
             };
@@ -249,18 +265,6 @@ namespace NotThatWay.Game
                 error = "run_id_invalid";
                 return false;
             }
-            if (!TryInt(values, "--m1-expect-wall-state", -1, out var wallState) ||
-                wallState < -1 || wallState > 1)
-            {
-                error = "wall_state_invalid";
-                return false;
-            }
-            if (!TryLong(values, "--m1-expect-wall-revision", -1L, out var revision) ||
-                revision < -1L || revision > uint.MaxValue)
-            {
-                error = "wall_revision_invalid";
-                return false;
-            }
             if (!TryInt(values, "--m1-expect-players", -1, out var players) ||
                 players < -1 || players > 16)
             {
@@ -273,9 +277,30 @@ namespace NotThatWay.Game
                 error = "connections_invalid";
                 return false;
             }
-            if (!TryUint(values, "--m1-expect-completed-min", out var completed) ||
-                !TryUint(values, "--m1-expect-rejected-min", out var rejected) ||
+
+            const long maximumTurns = 100L * 360_000L;
+            if (!TryLong(values, "--m1-expect-rotation-min-mdeg", -1L, out var rotationMinimum) ||
+                rotationMinimum < -1L || rotationMinimum > maximumTurns)
+            {
+                error = "rotation_min_invalid";
+                return false;
+            }
+            if (!TryLong(values, "--m1-expect-rotation-max-mdeg", -1L, out var rotationMaximum) ||
+                rotationMaximum < -1L || rotationMaximum > maximumTurns)
+            {
+                error = "rotation_max_invalid";
+                return false;
+            }
+            if (!TryLong(values, "--m1-expect-revision-min", -1L, out var revisionMinimum) ||
+                revisionMinimum < -1L || revisionMinimum > uint.MaxValue)
+            {
+                error = "revision_min_invalid";
+                return false;
+            }
+            if (!TryUint(values, "--m1-expect-quarter-turns-min", out var quarterTurns) ||
+                !TryUint(values, "--m1-expect-reversals-min", out var reversals) ||
                 !TryUint(values, "--m1-expect-opposed-ticks-min", out var opposed) ||
+                !TryUint(values, "--m1-expect-swept-pushes-min", out var sweptPushes) ||
                 !TryUint(values, "--m1-expect-snapshots-min", out var snapshots) ||
                 !TryUint(values, "--m1-expect-target-snapshots-min", out var targetSnapshots))
             {
@@ -289,13 +314,15 @@ namespace NotThatWay.Game
                 evaluateSeconds,
                 quitSeconds,
                 timeoutSeconds,
-                wallState,
-                revision,
                 players,
                 connections,
-                completed,
-                rejected,
+                rotationMinimum,
+                rotationMaximum,
+                revisionMinimum,
+                quarterTurns,
+                reversals,
                 opposed,
+                sweptPushes,
                 snapshots,
                 targetSnapshots);
             return true;
@@ -315,33 +342,41 @@ namespace NotThatWay.Game
                 $"connections={observation.ServerConnectionCount}!={ExpectedServerConnections}",
                 failures);
 
-            var requiresWall = ExpectedWallState >= 0 || ExpectedWallRevision >= 0 ||
-                               MinimumCompletedTransitions > 0u || MinimumRejectedTransitions > 0u ||
-                               MinimumOpposedEffortTicks > 0u;
+            var requiresWall = MinimumRotationMilliDegrees >= 0L ||
+                               MaximumRotationMilliDegrees >= 0L ||
+                               MinimumRevision >= 0L ||
+                               MinimumQuarterTurns > 0u || MinimumReversals > 0u ||
+                               MinimumOpposedTicks > 0u || MinimumSweptPushes > 0u;
             AddFailure(requiresWall && !observation.HasWall, "wall_unavailable", failures);
             AddFailure(
-                ExpectedWallState >= 0 && observation.WallStateId != ExpectedWallState,
-                $"wall_state={observation.WallStateId}!={ExpectedWallState}",
+                MinimumRotationMilliDegrees >= 0L &&
+                observation.AbsoluteRotationMilliDegrees < MinimumRotationMilliDegrees,
+                $"rotation={observation.AbsoluteRotationMilliDegrees}<{MinimumRotationMilliDegrees}",
                 failures);
             AddFailure(
-                ExpectedWallRevision >= 0 && observation.WallRevision != (uint)ExpectedWallRevision,
-                $"wall_revision={observation.WallRevision}!={ExpectedWallRevision}",
-                failures);
-            AddFailure(requiresWall && observation.SignedEffort != 0,
-                $"signedEffort={observation.SignedEffort}", failures);
-            AddFailure(requiresWall && observation.IsTransitioning,
-                "wall_transitioning", failures);
-            AddFailure(
-                observation.CompletedTransitions < MinimumCompletedTransitions,
-                $"completed={observation.CompletedTransitions}<{MinimumCompletedTransitions}",
+                MaximumRotationMilliDegrees >= 0L &&
+                observation.AbsoluteRotationMilliDegrees > MaximumRotationMilliDegrees,
+                $"rotation={observation.AbsoluteRotationMilliDegrees}>{MaximumRotationMilliDegrees}",
                 failures);
             AddFailure(
-                observation.RejectedTransitions < MinimumRejectedTransitions,
-                $"rejected={observation.RejectedTransitions}<{MinimumRejectedTransitions}",
+                MinimumRevision >= 0L && observation.WallRevision < (uint)MinimumRevision,
+                $"revision={observation.WallRevision}<{MinimumRevision}",
                 failures);
             AddFailure(
-                observation.OpposedEffortTicks < MinimumOpposedEffortTicks,
-                $"opposedTicks={observation.OpposedEffortTicks}<{MinimumOpposedEffortTicks}",
+                observation.QuarterTurns < MinimumQuarterTurns,
+                $"quarterTurns={observation.QuarterTurns}<{MinimumQuarterTurns}",
+                failures);
+            AddFailure(
+                observation.Reversals < MinimumReversals,
+                $"reversals={observation.Reversals}<{MinimumReversals}",
+                failures);
+            AddFailure(
+                observation.OpposedTicks < MinimumOpposedTicks,
+                $"opposedTicks={observation.OpposedTicks}<{MinimumOpposedTicks}",
+                failures);
+            AddFailure(
+                observation.SweptPushes < MinimumSweptPushes,
+                $"sweptPushes={observation.SweptPushes}<{MinimumSweptPushes}",
                 failures);
             AddFailure(
                 observation.Snapshots < MinimumSnapshots,

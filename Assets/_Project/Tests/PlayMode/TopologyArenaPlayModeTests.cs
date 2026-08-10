@@ -96,13 +96,9 @@ namespace NotThatWay.Game.Tests.PlayMode
                 var box = view.GetComponent<BoxCollider>();
                 var found = false;
                 var results = new Collider[8];
-                for (var elapsed = 0u; elapsed <= 90u && !found; elapsed++)
+                for (var angle = 0; angle <= 90000 && !found; angle += 1000)
                 {
-                    var progress = (ushort)((ulong)elapsed * ushort.MaxValue / 90u);
-                    arena.ApplyAuthoritativePose(
-                        10,
-                        0,
-                        new WallPoseSample(0, 1, elapsed, 90u, progress, elapsed < 90u));
+                    arena.ApplyAuthoritativePose(10, WallPoseSample.Stable(angle));
 
                     var scale = view.transform.lossyScale;
                     var halfExtents = new Vector3(
@@ -195,9 +191,10 @@ namespace NotThatWay.Game.Tests.PlayMode
                 Assert.That(wall.transform.localPosition, Is.EqualTo(initialPosition));
                 Assert.That(wall.transform.localScale, Is.EqualTo(initialScale));
 
-                var midpoint = new WallTransition(10, 0, 1, 100u, 4u, 1u).Sample(102u);
-                arena.ApplyAuthoritativePose(10, 0, midpoint);
-                Assert.That(wall.StateId, Is.EqualTo(0));
+                // Le battant est libre : une pose intermédiaire n'est plus un
+                // couple d'états mais un angle, et le collider la suit exactement.
+                arena.ApplyAuthoritativePose(10, WallPoseSample.Stable(45000));
+                Assert.That(wall.AngleMilliDegrees, Is.EqualTo(45000));
                 Assert.That(wall.transform.localPosition.x, Is.EqualTo(-0.9723f).Within(0.002f));
                 Assert.That(wall.transform.localPosition.z, Is.EqualTo(-0.9723f).Within(0.002f));
                 Assert.That(wall.transform.eulerAngles.y, Is.EqualTo(45f).Within(0.01f));
@@ -235,7 +232,12 @@ namespace NotThatWay.Game.Tests.PlayMode
                         new[] { new TopologyCircleObstacle(201, 1375, -1375, 450) });
                     Assert.That(accepted.Allowed, Is.True, accepted.RejectionCode);
                     Assert.That(wall.StateId, Is.EqualTo(1));
-                    Assert.That(wall.transform.localPosition, Is.EqualTo(new Vector3(-1.375f, 1.5f, 0f)));
+                    Assert.That(wall.AngleMilliDegrees, Is.EqualTo(90000));
+                    // La pose déclarée est désormais atteinte par rotation autour du
+                    // gond : la comparaison garde la tolérance d'un quaternion.
+                    Assert.That(wall.transform.localPosition.x, Is.EqualTo(-1.375f).Within(0.0005f));
+                    Assert.That(wall.transform.localPosition.y, Is.EqualTo(1.5f).Within(0.0005f));
+                    Assert.That(wall.transform.localPosition.z, Is.EqualTo(0f).Within(0.0005f));
                     Assert.That(wall.transform.localScale, Is.EqualTo(new Vector3(0.25f, 3f, 2.75f)));
                     Assert.That(wall.transform.eulerAngles.y, Is.EqualTo(90f).Within(0.001f));
                     Assert.That(TopologyConnectivity.AreAllSpawnsConnected(arena.Map, arena.WallStates), Is.True);

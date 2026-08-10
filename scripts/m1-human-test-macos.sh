@@ -188,17 +188,19 @@ printf '\nM1 lancé à %s joueurs. Logs: %s\n\n' "$PLAYERS" "$RESULTS_DIRECTORY"
 if (( PLAYERS == 3 )); then
   printf '%s\n' \
     'Quête 1 — fenêtre par fenêtre, déplacer chaque joueur puis le rapprocher du centre. PASS si les trois répondent sans blocage/reset et leurs mouvements sont visibles à distance.' \
-    'Quête 2 — côté pad rouge, au contact et face au mur cyan, donner trois coups au rythme du bras. PASS si deux ne suffisent pas et si le troisième le fait basculer sur les trois fenêtres.' \
-    'Quête 3 — contourner le mur par le couloir nord puis maintenir E. PASS si la jauge progresse et si le mur revient à la verticale ; depuis le sud il ne doit pas repartir.' \
-    'Quête 4 — laisser un joueur immobile dans l arc pendant qu un autre pousse. PASS si le mur l écarte sans le traverser ni le coincer.' \
+    'Quête 2 — au contact du mur cyan, maintenir E et marcher avec lui. PASS si le battant part au premier appui, sans temps mort, et tourne tant que la main reste dessus, sur les trois fenêtres.' \
+    'Quête 3 — repasser sur l autre face du battant et maintenir E. PASS si le mur repart dans l autre sens, depuis n importe quel angle du tour.' \
+    'Quête 4 — deux joueurs de part et d autre du battant, chacun maintient E. PASS si le mur se fige quand les leviers se valent et repart du côté de celui qui s éloigne du gond ; l indicateur affiche le levier en pour-cent.' \
+    'Quête 5 — laisser un joueur immobile dans la trajectoire pendant qu un autre pousse. PASS si le battant l écarte sans le traverser ni le coincer.' \
     '' \
-    'Fermer les trois fenêtres dès ces quatre verdicts obtenus.'
+    'Fermer les trois fenêtres dès ces cinq verdicts obtenus.'
 else
   printf '%s\n' \
     'Quête 1 — fenêtre par fenêtre, chacun rejoint le pad coloré opposé. PASS si aucun blocage/reset.' \
-    'Quête 2 — côté pad rouge, au contact et face au mur cyan, donner trois coups au rythme du bras. PASS si deux ne suffisent pas et si le troisième le fait basculer sur les deux fenêtres.' \
-    'Quête 3 — contourner le mur par le couloir nord puis maintenir E. PASS si la jauge progresse et si le mur revient à la verticale ; depuis le sud il ne doit pas repartir.' \
-    'Quête 4 — rester immobile dans l arc pendant que l autre pousse. PASS si le mur écarte le joueur sans le traverser ni le coincer.' \
+    'Quête 2 — au contact du mur cyan, maintenir E et marcher avec lui. PASS si le battant part au premier appui, sans temps mort, et tourne tant que la main reste dessus.' \
+    'Quête 3 — repasser sur l autre face du battant et maintenir E. PASS si le mur repart dans l autre sens, depuis n importe quel angle du tour.' \
+    'Quête 4 — face à face de part et d autre du battant, chacun maintient E. PASS si le mur se fige quand les leviers se valent et repart du côté de celui qui s éloigne du gond ; l indicateur affiche le levier en pour-cent.' \
+    'Quête 5 — rester immobile dans la trajectoire pendant que l autre pousse. PASS si le battant écarte le joueur sans le traverser ni le coincer.' \
     '' \
-    'Fermer les deux fenêtres dès ces quatre verdicts obtenus.'
+    'Fermer les deux fenêtres dès ces cinq verdicts obtenus.'
 fi

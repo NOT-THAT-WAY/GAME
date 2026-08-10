@@ -1,4 +1,5 @@
 using System;
+using NotThatWay.Game.Simulation;
 using UnityEngine;
 
 namespace NotThatWay.Game.Topology
@@ -173,6 +174,147 @@ namespace NotThatWay.Game.Topology
         }
     }
 
+    /// <summary>
+    /// Mesure entière d'un contact entre un disque et le battant à un angle
+    /// quelconque. Aucune décision n'est prise ici : la règle de jeu lit ces trois
+    /// nombres et en déduit portée, sens et puissance.
+    /// </summary>
+    public readonly struct TopologyBladeContact
+    {
+        internal TopologyBladeContact(bool withinReach, int lateralSign, int contactPermille)
+        {
+            WithinReach = withinReach;
+            LateralSign = lateralSign;
+            ContactPermille = contactPermille;
+        }
+
+        /// <summary>Le disque touche le battant, gond et bout compris.</summary>
+        public bool WithinReach { get; }
+
+        /// <summary>
+        /// Côté occupé par le disque : +1 du côté vers lequel une rotation positive
+        /// emmène le battant, -1 de l'autre, 0 exactement dans son plan.
+        /// </summary>
+        public int LateralSign { get; }
+
+        /// <summary>Abscisse du contact, 0 au gond et 1000 au bout du battant.</summary>
+        public int ContactPermille { get; }
+    }
+
+    /// <summary>
+    /// Battant libre vu comme un segment issu de son gond. L'angle est en
+    /// milli-degrés et la trigonométrie est entière : le même verdict de contact
+    /// sous Mono et sous Windows IL2CPP, quel que soit l'angle.
+    /// </summary>
+    public readonly struct TopologyBladeSpec
+    {
+        /// <summary>Échelle de l'abscisse de contact, alignée sur le pour-mille du couple.</summary>
+        public const int ContactScale = WallSimulationSettings.PermilleScale;
+
+        private readonly long _pivotX2Mm;
+        private readonly long _pivotZ2Mm;
+        private readonly int _baseDirection;
+
+        internal TopologyBladeSpec(
+            int wallId,
+            long pivotX2Mm,
+            long pivotZ2Mm,
+            int baseDirection,
+            int lengthMm,
+            int thicknessMm)
+        {
+            WallId = wallId;
+            _pivotX2Mm = pivotX2Mm;
+            _pivotZ2Mm = pivotZ2Mm;
+            _baseDirection = baseDirection;
+            LengthMm = lengthMm;
+            ThicknessMm = thicknessMm;
+        }
+
+        public int WallId { get; }
+        public TopologyPointMm PivotMm => new(_pivotX2Mm / 2d, 0d, _pivotZ2Mm / 2d);
+        public int LengthMm { get; }
+        public int ThicknessMm { get; }
+
+        /// <summary>Direction canonique du battant à l'angle zéro (0=N, 1=E, 2=S, 3=O).</summary>
+        public int BaseDirection => _baseDirection;
+
+        /// <summary>Direction unitaire du battant en Q16, gond vers bout.</summary>
+        public void UnitDirection(int angleMilliDegrees, out int unitXQ16, out int unitZQ16)
+        {
+            FixedTrigonometry.SinCos(angleMilliDegrees, out var sin, out var cos);
+            CardinalDirection(_baseDirection, out var baseX, out var baseZ);
+            unitXQ16 = baseX * cos + baseZ * sin;
+            unitZQ16 = -baseX * sin + baseZ * cos;
+        }
+
+        public TopologyBladeContact Probe(
+            int angleMilliDegrees,
+            int centerXMm,
+            int centerZMm,
+            int radiusMm,
+            int reachMm)
+        {
+            if (radiusMm < 0)
+                throw new ArgumentOutOfRangeException(nameof(radiusMm));
+            if (reachMm < 0)
+                throw new ArgumentOutOfRangeException(nameof(reachMm));
+
+            UnitDirection(angleMilliDegrees, out var unitX, out var unitZ);
+            var dx2 = 2L * centerXMm - _pivotX2Mm;
+            var dz2 = 2L * centerZMm - _pivotZ2Mm;
+            var alongQ16 = dx2 * unitX + dz2 * unitZ;
+            var lateralQ16 = unitZ * dx2 - unitX * dz2;
+
+            var maximumAlongQ16 = 2L * LengthMm * FixedTrigonometry.Scale;
+            var clampedAlongQ16 = alongQ16 < 0L
+                ? 0L
+                : alongQ16 > maximumAlongQ16
+                    ? maximumAlongQ16
+                    : alongQ16;
+            var overshootQ16 = alongQ16 - clampedAlongQ16;
+
+            // Épaisseur déjà doublée : la demi-épaisseur en unités doublées vaut
+            // exactement ThicknessMm, sans division ni arrondi.
+            var padding2 = ThicknessMm + 2L * ((long)radiusMm + reachMm);
+            var paddingQ16 = padding2 * FixedTrigonometry.Scale;
+            var distanceSquared = (decimal)overshootQ16 * overshootQ16 +
+                                  (decimal)lateralQ16 * lateralQ16;
+            var withinReach = distanceSquared <= (decimal)paddingQ16 * paddingQ16;
+
+            var contactPermille = (int)(ContactScale * clampedAlongQ16 / maximumAlongQ16);
+            return new TopologyBladeContact(
+                withinReach,
+                lateralQ16 > 0L ? 1 : lateralQ16 < 0L ? -1 : 0,
+                contactPermille);
+        }
+
+        private static void CardinalDirection(int direction, out int x, out int z)
+        {
+            switch (direction)
+            {
+                case 0:
+                    x = 0;
+                    z = 1;
+                    return;
+                case 1:
+                    x = 1;
+                    z = 0;
+                    return;
+                case 2:
+                    x = 0;
+                    z = -1;
+                    return;
+                case 3:
+                    x = -1;
+                    z = 0;
+                    return;
+                default:
+                    throw new InvalidOperationException($"Direction canonique invalide: {direction}.");
+            }
+        }
+    }
+
     /// <summary>Conversion canonique grille (+X,+Y) vers monde Unity (+X,+Z).</summary>
     public static class TopologyGeometry
     {
@@ -223,6 +365,47 @@ namespace NotThatWay.Game.Topology
                 state.Edge,
                 new TopologyPointMm(centerX, dimensions.WallHeightMm * 0.5d, centerZ),
                 size);
+        }
+
+        /// <summary>
+        /// Battant libre d'un mur mobile. L'angle zéro est sa pose initiale déclarée
+        /// dans la topologie : la donnée signée reste la seule origine du référentiel,
+        /// jamais un transform de scène ni un nom d'objet.
+        /// </summary>
+        public static TopologyBladeSpec Blade(TopologyRuntimeMap map, int wallId)
+        {
+            if (map == null)
+                throw new ArgumentNullException(nameof(map));
+            var wall = map.GetWall(wallId);
+            if (!wall.PivotId.HasValue)
+                throw new ArgumentException($"Le mur {wallId} est statique.", nameof(wallId));
+
+            var pivot = map.GetPivot(wall.PivotId.Value);
+            var origin = wall.GetState(wall.InitialStateId);
+            var pitch = map.Dimensions.CellPitchMm;
+            return new TopologyBladeSpec(
+                wallId,
+                (2L * pivot.NodeX - map.Dimensions.WidthCells) * pitch,
+                (2L * pivot.NodeY - map.Dimensions.HeightCells) * pitch,
+                DirectionAtPivot(origin.Edge, pivot),
+                pitch,
+                map.Dimensions.WallThicknessMm);
+        }
+
+        /// <summary>
+        /// Angle canonique d'une pose déclarée, relatif à la pose initiale. Il sert
+        /// à poser l'angle de départ et à décrire une pose dans un diagnostic.
+        /// </summary>
+        public static int StateAngleMilliDegrees(TopologyRuntimeMap map, int wallId, int stateId)
+        {
+            if (map == null)
+                throw new ArgumentNullException(nameof(map));
+            var wall = map.GetWall(wallId);
+            var origin = wall.GetState(wall.InitialStateId);
+            var state = wall.GetState(stateId);
+            return FixedTrigonometry.Normalize(
+                (long)(state.QuarterTurns - origin.QuarterTurns) *
+                FixedTrigonometry.QuarterTurnMilliDegrees);
         }
 
         public static TopologySweepSpec QuarterTurnSweep(

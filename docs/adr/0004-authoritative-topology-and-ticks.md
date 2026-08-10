@@ -1,6 +1,10 @@
 # ADR 0004 — Topologie, ticks et gameplay sous autorité de l'hôte
 
-**Statut : accepté — 2026-08-05**
+**Statut : accepté — 2026-08-05**, amendé le 2026-08-10 par
+[l'ADR 0005](0005-continuous-wall-rotation.md) sur la seule forme du segment répliqué d'un mur
+mobile : un battant libre réplique désormais un angle, une vitesse angulaire, un tick d'ancrage et
+une révision, au lieu d'un couple de poses et d'une durée. L'interdiction de diffuser un transform
+par image et tout le reste de cet ADR restent en vigueur.
 
 ## Contexte
 

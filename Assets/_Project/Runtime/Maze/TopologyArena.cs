@@ -152,28 +152,20 @@ namespace NotThatWay.Game
         }
 
         /// <summary>
-        /// Pose le collider d'un mur au tick logique demandé. Pendant la transition,
-        /// l'état d'occupation reste la pose source ; au dernier échantillon il
-        /// bascule atomiquement sur la destination.
+        /// Pose le collider d'un battant à l'angle autoritaire du tick. Un mur libre
+        /// n'occupe plus d'arête déclarée : la carte d'occupation discrète, réservée
+        /// au graybox et à ses tests, n'est donc pas touchée ici.
         /// </summary>
-        internal void ApplyAuthoritativePose(
-            int wallId,
-            int logicalStateId,
-            WallPoseSample pose)
+        internal void ApplyAuthoritativePose(int wallId, WallPoseSample pose)
         {
             if (Map == null)
                 throw new InvalidOperationException("L'arene n'est pas construite.");
-            var wall = Map.GetWall(wallId);
-            wall.GetState(logicalStateId);
-            if (pose.FromStateId != logicalStateId && pose.ToStateId != logicalStateId)
-                throw new ArgumentException("Pose incohérente avec l'état logique.", nameof(pose));
-
             _wallViews[wallId].ApplyPose(pose);
-            _wallStates[wallId] = pose.IsTransitioning
-                ? logicalStateId
-                : pose.ToStateId;
             Physics.SyncTransforms();
         }
+
+        /// <summary>Angle courant d'un battant, en milli-degrés depuis sa pose initiale.</summary>
+        public int GetWallAngleMilliDegrees(int wallId) => GetWallView(wallId).AngleMilliDegrees;
 
         private void ApplyAuthoritativeStateWithoutSync(int wallId, int stateId)
         {

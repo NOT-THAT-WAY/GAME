@@ -18,7 +18,6 @@ namespace NotThatWay.Game
     {
         public const uint CooldownTicks = 48u;
         public const uint WallImpulseTicks = 40u;
-        public const int ChainedPunchesToOpen = 3;
     }
 
     internal static class M1PunchTargeting
@@ -260,40 +259,42 @@ namespace NotThatWay.Game
         }
 
         /// <summary>
-        /// Retour local du pousseur. Il ne donne aucune consigne de test : il
-        /// affiche seulement l'effort observé pendant l'action et rejoue la règle
-        /// pure sur la position locale. L'hôte reste seul à décider.
+        /// Retour local du pousseur. Sans lui, le bras de levier est invisible : un
+        /// joueur collé au gond conclut que la touche ne répond pas alors qu'il
+        /// applique 30 % de la puissance. L'indicateur rejoue la règle pure sur la
+        /// position locale et lit l'angle de l'état observé ; il ne décide rien.
         /// </summary>
         private void OnGUI()
         {
-            if (!IsOwner || !TryDescribePush(out var label, out var progress))
+            if (!IsOwner || !TryDescribeWall(out var headline, out var status, out var leverage))
                 return;
 
-            const float width = 340f;
-            const float height = 54f;
+            const float width = 380f;
+            const float height = 74f;
             var area = new Rect(
                 (Screen.width - width) * 0.5f,
                 Screen.height - height - 24f,
                 width,
                 height);
             GUILayout.BeginArea(area, GUI.skin.box);
-            GUILayout.Label(label);
+            GUILayout.Label(headline);
             var bar = GUILayoutUtility.GetRect(width - 16f, 12f);
             GUI.Box(bar, GUIContent.none);
-            if (progress > 0f)
+            if (leverage > 0f)
             {
                 GUI.Box(
-                    new Rect(bar.x, bar.y, bar.width * Mathf.Clamp01(progress), bar.height),
+                    new Rect(bar.x, bar.y, bar.width * Mathf.Clamp01(leverage), bar.height),
                     GUIContent.none);
             }
-
+            GUILayout.Label(status);
             GUILayout.EndArea();
         }
 
-        private bool TryDescribePush(out string label, out float progress)
+        private bool TryDescribeWall(out string headline, out string status, out float leverage)
         {
-            label = null;
-            progress = 0f;
+            headline = null;
+            status = null;
+            leverage = 0f;
             if (_wallDirector == null)
                 _wallDirector = FindFirstObjectByType<M1AuthoritativeWallDirector>();
             if (_arena == null)
@@ -301,16 +302,9 @@ namespace NotThatWay.Game
             if (_wallDirector == null || _arena == null || _arena.Map == null)
                 return false;
 
-            var threshold = _wallDirector.EffortThreshold;
-            if (threshold <= 0 || !_pushing)
-                return false;
             var state = _wallDirector.ObservedState;
-            if (state.IsTransitioning)
-            {
-                label = "MUR — en mouvement";
-                progress = 1f;
-                return true;
-            }
+            if (state.WallId == 0)
+                return false;
 
             var local = _arena.transform.InverseTransformPoint(transform.position);
             var controller = _motor.CharacterController;
@@ -321,19 +315,33 @@ namespace NotThatWay.Game
             var decision = M1WallInteractionRules.Evaluate(
                 _arena.Map,
                 _wallDirector.WallId,
-                state.StateId,
+                state.AngleMilliDegrees,
                 Millimeters(local.x),
                 Millimeters(local.z),
                 Mathf.CeilToInt(radius * 1000f) + 1,
-                _wallDirector.ReachFromCapsuleMm);
+                _wallDirector.ReachFromCapsuleMm,
+                _wallDirector.MinimumLeveragePermille);
             if (!decision.Allowed)
                 return false;
 
-            var towardOther = state.StateId == _wallDirector.NegativeStateId ? 1 : -1;
-            progress = Mathf.Abs(state.SignedEffort) / (float)threshold;
-            label = decision.EffortSign == towardOther
-                ? $"MUR — poussée {progress * 100f:F0} %"
-                : "MUR — effort opposé";
+            leverage = decision.LeveragePermille / (float)WallSimulationSettings.PermilleScale;
+            headline = $"MUR — levier {leverage * 100f:F0} %";
+
+            var velocity = state.AngularVelocityMilliDegreesPerTick;
+            if (velocity == 0)
+            {
+                status = _pushing
+                    ? "bloqué — quelqu'un pousse aussi fort en face"
+                    : decision.ContactPermille < 500
+                        ? "MAINTENIR E — plus loin du gond, plus de force"
+                        : "MAINTENIR E — le mur s'écarte de vous";
+                return true;
+            }
+
+            var degreesPerSecond = Mathf.Abs(velocity) * TimeManager.TickRate / 1000f;
+            status = Mathf.Sign(velocity) == decision.Direction
+                ? $"{degreesPerSecond:F0} °/s — il s'écarte de vous"
+                : $"{degreesPerSecond:F0} °/s — il revient sur vous";
             return true;
         }
 

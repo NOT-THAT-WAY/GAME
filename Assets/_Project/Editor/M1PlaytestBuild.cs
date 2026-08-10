@@ -119,6 +119,7 @@ namespace NotThatWay.Game.Editor
                 true);
             networkRoot.AddComponent<M1PlaytestDiagnostics>();
             networkRoot.AddComponent<M1ScreenshotProbe>();
+            networkRoot.AddComponent<M1ControlsOverlay>();
 
             var spawner = networkRoot.AddComponent<PlayerSpawner>();
             spawner.Spawns = spawns;
@@ -420,16 +421,13 @@ namespace NotThatWay.Game.Editor
                 var serializedDirector = new SerializedObject(director);
                 SetInt(serializedDirector, "_tickCallbacks", 1); // PreTick.
                 SetInt(serializedDirector, "_wallId", 10);
-                // Porte lourde : 90 ticks d'appui continu (1,5 s à 60 Hz) pour
-                // atteindre le seuil, puis 90 ticks (1,5 s) de bascule, soit trois
-                // secondes entre l'appui et la porte ouverte. Réglage décidé après
-                // essai humain : 0,5 s paraissait expédié, 3,0 s injouable.
-                SetInt(serializedDirector, "_effortThreshold", 360);
-                SetInt(serializedDirector, "_maximumEffortPerSourcePerTick", 4);
-                SetInt(serializedDirector, "_effortDecayPerTick", 2);
-                SetInt(serializedDirector, "_rejectedEffortRetention", 0);
-                SetLong(serializedDirector, "_transitionDurationTicks", 90L);
-                SetInt(serializedDirector, "_effortPerHeldTick", 4);
+                // Battant libre : la vitesse suit le bras de levier, sans seuil à
+                // charger ni palier. À 60 Hz, 900 milli-degrés par tick font un
+                // quart de tour en 1,7 s au bout du battant et en 5,6 s contre le
+                // gond — lourd et immédiat, jamais bloqué dans une pose.
+                SetInt(serializedDirector, "_maximumAngularSpeedMilliDegreesPerTick", 900);
+                SetInt(serializedDirector, "_minimumLeveragePermille", 300);
+                SetLong(serializedDirector, "_maximumExtrapolationTicks", 180L);
                 SetInt(serializedDirector, "_reachFromCapsuleMm", 900);
                 serializedDirector.ApplyModifiedPropertiesWithoutUndo();
 

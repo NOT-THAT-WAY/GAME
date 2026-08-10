@@ -13,65 +13,49 @@ namespace NotThatWay.Game.Simulation
     }
 
     /// <summary>
-    /// Snapshot autonome d'un mur. Son codec binaire est explicitement versionné,
-    /// little-endian via BinaryWriter et n'encode aucun flottant ni ID dense.
+    /// Snapshot autonome d'un battant : le segment de mouvement en cours, jamais un
+    /// transform. Son codec binaire est explicitement versionné, little-endian via
+    /// BinaryWriter, et n'encode aucun flottant ni ID dense.
     /// </summary>
     public readonly struct WallSnapshot : IEquatable<WallSnapshot>
     {
-        public const byte FormatVersion = 1;
+        public const byte FormatVersion = 2;
 
-        public WallSnapshot(WallState state, uint capturedTick)
+        public WallSnapshot(WallState state)
         {
             if (state.WallId <= 0)
                 throw new ArgumentException("État de mur non initialisé.", nameof(state));
-            if (state.ActiveTransition.HasValue)
-            {
-                var transition = state.ActiveTransition.Value;
-                if (TickMath.IsOlder(capturedTick, transition.StartTick) || transition.IsComplete(capturedTick))
-                {
-                    throw new ArgumentException(
-                        "Un snapshot actif doit être capturé pendant sa transition.",
-                        nameof(capturedTick));
-                }
-            }
 
             WallId = state.WallId;
-            StateId = state.StateId;
+            AngleMilliDegrees = state.AngleMilliDegrees;
+            AngularVelocityMilliDegreesPerTick = state.AngularVelocityMilliDegreesPerTick;
+            AnchorTick = state.AnchorTick;
             Revision = state.Revision;
-            CapturedTick = capturedTick;
-            SignedEffort = state.SignedEffort;
-            ActiveTransition = state.ActiveTransition;
         }
 
         public int WallId { get; }
-        public int StateId { get; }
+        public int AngleMilliDegrees { get; }
+        public int AngularVelocityMilliDegreesPerTick { get; }
+        public uint AnchorTick { get; }
         public uint Revision { get; }
-        public uint CapturedTick { get; }
-        public int SignedEffort { get; }
-        public WallTransition? ActiveTransition { get; }
-        public bool IsTransitioning => ActiveTransition.HasValue;
+        public bool IsRotating => AngularVelocityMilliDegreesPerTick != 0;
+
+        /// <summary>
+        /// L'ancrage du segment est aussi le tick de capture : l'historique client
+        /// n'a pas besoin d'une seconde horloge pour replacer la pose.
+        /// </summary>
+        public uint CapturedTick => AnchorTick;
 
         public byte[] ToBytes()
         {
-            using var stream = new MemoryStream(48);
+            using var stream = new MemoryStream(24);
             using var writer = new BinaryWriter(stream);
             writer.Write(FormatVersion);
             writer.Write(WallId);
-            writer.Write(StateId);
+            writer.Write(AngleMilliDegrees);
+            writer.Write(AngularVelocityMilliDegreesPerTick);
+            writer.Write(AnchorTick);
             writer.Write(Revision);
-            writer.Write(CapturedTick);
-            writer.Write(SignedEffort);
-            writer.Write((byte)(ActiveTransition.HasValue ? 1 : 0));
-            if (ActiveTransition.HasValue)
-            {
-                var transition = ActiveTransition.Value;
-                writer.Write(transition.WallId);
-                writer.Write(transition.FromStateId);
-                writer.Write(transition.ToStateId);
-                writer.Write(transition.StartTick);
-                writer.Write(transition.DurationTicks);
-                writer.Write(transition.Revision);
-            }
             writer.Flush();
             return stream.ToArray();
         }
@@ -99,38 +83,22 @@ namespace NotThatWay.Game.Simulation
                 }
 
                 var wallId = reader.ReadInt32();
-                var stateId = reader.ReadInt32();
+                var angleMilliDegrees = reader.ReadInt32();
+                var angularVelocity = reader.ReadInt32();
+                var anchorTick = reader.ReadUInt32();
                 var revision = reader.ReadUInt32();
-                var capturedTick = reader.ReadUInt32();
-                var signedEffort = reader.ReadInt32();
-                var transitionFlag = reader.ReadByte();
-                if (transitionFlag > 1)
-                {
-                    rejectionCode = WallSnapshotDecodeCodes.PayloadMalformed;
-                    return false;
-                }
-
-                WallTransition? transition = null;
-                if (transitionFlag == 1)
-                {
-                    transition = new WallTransition(
-                        reader.ReadInt32(),
-                        reader.ReadInt32(),
-                        reader.ReadInt32(),
-                        reader.ReadUInt32(),
-                        reader.ReadUInt32(),
-                        reader.ReadUInt32());
-                }
-
                 if (stream.Position != stream.Length)
                 {
                     rejectionCode = WallSnapshotDecodeCodes.PayloadTrailingBytes;
                     return false;
                 }
 
-                snapshot = new WallSnapshot(
-                    new WallState(wallId, stateId, revision, signedEffort, transition),
-                    capturedTick);
+                snapshot = new WallSnapshot(new WallState(
+                    wallId,
+                    angleMilliDegrees,
+                    angularVelocity,
+                    anchorTick,
+                    revision));
                 rejectionCode = WallSnapshotDecodeCodes.None;
                 return true;
             }
@@ -146,20 +114,24 @@ namespace NotThatWay.Game.Simulation
             }
         }
 
-        internal WallState ToWallState() =>
-            new(WallId, StateId, Revision, SignedEffort, ActiveTransition);
+        internal WallState ToWallState() => new(
+            WallId,
+            AngleMilliDegrees,
+            AngularVelocityMilliDegreesPerTick,
+            AnchorTick,
+            Revision);
 
         public bool Equals(WallSnapshot other) =>
             WallId == other.WallId &&
-            StateId == other.StateId &&
-            Revision == other.Revision &&
-            CapturedTick == other.CapturedTick &&
-            SignedEffort == other.SignedEffort &&
-            Nullable.Equals(ActiveTransition, other.ActiveTransition);
+            AngleMilliDegrees == other.AngleMilliDegrees &&
+            AngularVelocityMilliDegreesPerTick == other.AngularVelocityMilliDegreesPerTick &&
+            AnchorTick == other.AnchorTick &&
+            Revision == other.Revision;
 
         public override bool Equals(object value) => value is WallSnapshot other && Equals(other);
+
         public override int GetHashCode() => HashCode.Combine(
-            WallId, StateId, Revision, CapturedTick, SignedEffort, ActiveTransition);
+            WallId, AngleMilliDegrees, AngularVelocityMilliDegreesPerTick, AnchorTick, Revision);
     }
 
     public enum WallSnapshotApplyStatus : byte

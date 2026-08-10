@@ -12,13 +12,22 @@ namespace NotThatWay.Game
         [SerializeField] private int _wallId;
         [SerializeField] private int _pivotId = -1;
         [SerializeField] private int _stateId;
+        [SerializeField] private int _angleMilliDegrees;
 
         private TopologyRuntimeMap _map;
         private RuntimeWallDefinition _definition;
+        private Vector3 _bladePivotPosition;
+        private Vector3 _bladeAnchorPosition;
+        private Vector3 _bladeScale;
+        private float _bladeAnchorYaw;
 
         public int WallId => _wallId;
         public int? PivotId => _pivotId > 0 ? _pivotId : null;
         public int StateId => _stateId;
+
+        /// <summary>Angle courant du battant, nul pour un mur statique.</summary>
+        public int AngleMilliDegrees => _angleMilliDegrees;
+
         public bool IsMobile => _definition?.IsMobile ?? _pivotId > 0;
 
         internal void Initialize(TopologyRuntimeMap map, RuntimeWallDefinition definition)
@@ -27,6 +36,23 @@ namespace NotThatWay.Game
             _definition = definition ?? throw new ArgumentNullException(nameof(definition));
             _wallId = definition.WallId;
             _pivotId = definition.PivotId ?? -1;
+
+            if (definition.IsMobile)
+            {
+                // Le repère du battant est figé une fois : sa pose initiale déclarée
+                // est l'angle zéro, et chaque tick n'y applique qu'une rotation.
+                var anchor = TopologyGeometry.WallBox(map, _wallId, definition.InitialStateId);
+                var anchorState = definition.GetState(definition.InitialStateId);
+                var pivot = map.GetPivot(definition.PivotId.Value);
+                _bladePivotPosition = TopologyGeometry.NodeMm(map, pivot.NodeX, pivot.NodeY).Meters;
+                _bladePivotPosition.y = anchor.CenterMeters.y;
+                _bladeAnchorPosition = anchor.CenterMeters;
+                _bladeAnchorYaw = anchorState.QuarterTurns * 90f;
+                _bladeScale = UnrotatedScale(anchor, anchorState.QuarterTurns);
+                ApplyRotation(0);
+                return;
+            }
+
             ApplyState(definition.InitialStateId);
         }
 
@@ -34,51 +60,43 @@ namespace NotThatWay.Game
         {
             if (_map == null || _definition == null)
                 throw new InvalidOperationException("Le mur doit etre initialise avant de recevoir un etat.");
-            ApplyPose(WallPoseSample.Stable(stateId));
-        }
-
-        internal void ApplyPose(WallPoseSample pose)
-        {
-            if (_map == null || _definition == null)
-                throw new InvalidOperationException("Le mur doit etre initialise avant de recevoir une pose.");
-
-            var from = _definition.GetState(pose.FromStateId);
-            var to = _definition.GetState(pose.ToStateId);
-            var fromSpec = TopologyGeometry.WallBox(_map, _wallId, pose.FromStateId);
-            var toSpec = TopologyGeometry.WallBox(_map, _wallId, pose.ToStateId);
-            var progress = pose.ProgressQ16 / (float)TickMath.CompleteProgressQ16;
-
-            if (pose.FromStateId == pose.ToStateId)
+            if (_definition.IsMobile)
             {
-                transform.localPosition = fromSpec.CenterMeters;
-                transform.localRotation = Quaternion.Euler(0f, from.QuarterTurns * 90f, 0f);
-                transform.localScale = UnrotatedScale(fromSpec, from.QuarterTurns);
-                _stateId = pose.FromStateId;
+                ApplyRotation(TopologyGeometry.StateAngleMilliDegrees(_map, _wallId, stateId));
+                _stateId = stateId;
                 return;
             }
 
-            if (!_definition.PivotId.HasValue)
-                throw new InvalidOperationException($"Le mur statique {_wallId} ne peut pas transiter.");
-            var delta = (to.QuarterTurns - from.QuarterTurns + 4) % 4;
-            if (delta != 1 && delta != 3)
-                throw new InvalidOperationException("Une transition graybox doit être un quart de tour.");
-            var signedQuarterTurn = delta == 1 ? 1f : -1f;
-            var pivot = _map.GetPivot(_definition.PivotId.Value);
-            var pivotPosition = TopologyGeometry.NodeMm(_map, pivot.NodeX, pivot.NodeY).Meters;
-            pivotPosition.y = fromSpec.CenterMeters.y;
-            var rotationDelta = Quaternion.Euler(0f, signedQuarterTurn * 90f * progress, 0f);
+            var state = _definition.GetState(stateId);
+            var spec = TopologyGeometry.WallBox(_map, _wallId, stateId);
+            transform.localPosition = spec.CenterMeters;
+            transform.localRotation = Quaternion.Euler(0f, state.QuarterTurns * 90f, 0f);
+            transform.localScale = UnrotatedScale(spec, state.QuarterTurns);
+            _stateId = stateId;
+        }
 
-            transform.localPosition = pivotPosition +
-                                      rotationDelta * (fromSpec.CenterMeters - pivotPosition);
-            transform.localRotation = Quaternion.Euler(
-                0f,
-                (from.QuarterTurns + signedQuarterTurn * progress) * 90f,
-                0f);
-            transform.localScale = Vector3.Lerp(
-                UnrotatedScale(fromSpec, from.QuarterTurns),
-                UnrotatedScale(toSpec, to.QuarterTurns),
-                progress);
-            _stateId = pose.IsTransitioning ? pose.FromStateId : pose.ToStateId;
+        internal void ApplyPose(WallPoseSample pose) => ApplyRotation(pose.AngleMilliDegrees);
+
+        /// <summary>
+        /// Pose le battant à l'angle autoritaire du tick. La rotation est cosmétique
+        /// et collisionnelle à la fois : le BoxCollider suit le même transform, donc
+        /// la même donnée entière, jamais une interpolation d'image.
+        /// </summary>
+        internal void ApplyRotation(int angleMilliDegrees)
+        {
+            if (_map == null || _definition == null)
+                throw new InvalidOperationException("Le mur doit etre initialise avant de recevoir une pose.");
+            if (!_definition.IsMobile)
+                throw new InvalidOperationException($"Le mur statique {_wallId} ne peut pas tourner.");
+
+            var normalized = FixedTrigonometry.Normalize(angleMilliDegrees);
+            var degrees = normalized / 1000f;
+            var rotation = Quaternion.Euler(0f, degrees, 0f);
+            transform.localPosition = _bladePivotPosition +
+                                      rotation * (_bladeAnchorPosition - _bladePivotPosition);
+            transform.localRotation = Quaternion.Euler(0f, _bladeAnchorYaw + degrees, 0f);
+            transform.localScale = _bladeScale;
+            _angleMilliDegrees = normalized;
         }
 
         private static Vector3 UnrotatedScale(TopologyWallBoxSpec spec, int quarterTurns)

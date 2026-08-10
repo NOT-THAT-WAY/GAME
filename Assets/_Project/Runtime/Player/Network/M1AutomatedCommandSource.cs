@@ -10,7 +10,13 @@ namespace NotThatWay.Game.PlayerNetwork
         None = 0,
         ClearSweep = 1,
         InteractAfter120 = 2,
-        InteractAfter180 = 3
+        InteractAfter180 = 3,
+
+        /// <summary>Accompagne le battant vers l'ouest en poussant.</summary>
+        PushLeft = 4,
+
+        /// <summary>Accompagne le battant vers l'est en poussant.</summary>
+        PushRight = 5
     }
 
     /// <summary>
@@ -45,6 +51,10 @@ namespace NotThatWay.Game.PlayerNetwork
                         return "interact-120";
                     case M1AutomatedPlayerProfile.InteractAfter180:
                         return "interact-180";
+                    case M1AutomatedPlayerProfile.PushLeft:
+                        return "push-left";
+                    case M1AutomatedPlayerProfile.PushRight:
+                        return "push-right";
                     default:
                         return "none";
                 }
@@ -69,6 +79,10 @@ namespace NotThatWay.Game.PlayerNetwork
                     return InteractDuring(simulationTick, 120u, uint.MaxValue);
                 case M1AutomatedPlayerProfile.InteractAfter180:
                     return InteractDuring(simulationTick, 180u, uint.MaxValue);
+                case M1AutomatedPlayerProfile.PushLeft:
+                    return ApproachAndPush(simulationTick, -127, FollowYawCentidegrees);
+                case M1AutomatedPlayerProfile.PushRight:
+                    return ApproachAndPush(simulationTick, 127, -FollowYawCentidegrees);
                 default:
                     return new PlayerCommand(
                         simulationTick, 0, 0, 0, 0, PlayerCommandButtons.None);
@@ -131,6 +145,12 @@ namespace NotThatWay.Game.PlayerNetwork
                 case "interact-180":
                     profile = M1AutomatedPlayerProfile.InteractAfter180;
                     break;
+                case "push-left":
+                    profile = M1AutomatedPlayerProfile.PushLeft;
+                    break;
+                case "push-right":
+                    profile = M1AutomatedPlayerProfile.PushRight;
+                    break;
                 default:
                     error = "profile_unknown";
                     return false;
@@ -138,6 +158,36 @@ namespace NotThatWay.Game.PlayerNetwork
 
             source = new M1AutomatedCommandSource(profile);
             return true;
+        }
+
+        /// <summary>
+        /// Vitesse de lacet, en centi-degrés par tick, qui suit un battant poussé à
+        /// mi-longueur au réglage du banc. Elle fait tourner la direction de poussée
+        /// avec la porte : sans elle, le pousseur reste face à sa position de départ
+        /// et perd le contact au bout de quelques dizaines de degrés.
+        /// </summary>
+        private const short FollowYawCentidegrees = 58;
+
+        /// <summary>
+        /// Marche latérale continue, lacet asservi et appui maintenu. Un pousseur
+        /// immobile perd le contact dès que le battant s'écarte de lui, exactement
+        /// comme une vraie porte : accompagner la course fait partie du geste, donc
+        /// du scénario. Le sens est lié à la disposition des apparitions du graybox.
+        /// </summary>
+        private static PlayerCommand ApproachAndPush(
+            uint simulationTick,
+            sbyte strafe,
+            short yawPerTick)
+        {
+            const uint approachTicks = 90u;
+            var pushing = !TickMath.IsOlder(simulationTick, approachTicks);
+            return new PlayerCommand(
+                simulationTick,
+                strafe,
+                0,
+                pushing ? yawPerTick : (short)0,
+                0,
+                pushing ? PlayerCommandButtons.InteractHeld : PlayerCommandButtons.None);
         }
 
         private static PlayerCommand InteractDuring(

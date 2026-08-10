@@ -14,31 +14,33 @@ namespace NotThatWay.Game.Simulation
             return checked(tickRate * PredictionWindowSeconds + SafetyMarginTicks);
         }
 
-        public static bool ShouldBroadcast(bool stateChanged, uint logicalTick, ushort tickRate)
+        /// <summary>
+        /// Un battant libre change d'angle à chaque tick : diffuser ce changement
+        /// reviendrait à synchroniser un transform. Seul un changement de segment —
+        /// donc de vitesse — sort du battement périodique.
+        /// </summary>
+        public static bool ShouldBroadcast(bool segmentChanged, uint logicalTick, ushort tickRate)
         {
             if (tickRate == 0)
                 throw new ArgumentOutOfRangeException(nameof(tickRate));
-            return stateChanged || logicalTick % tickRate == 0u;
+            return segmentChanged || logicalTick % tickRate == 0u;
         }
 
         public static ulong ComputeSimulationFingerprint(
             WallSimulationSettings settings,
-            int effortPerHeldTick,
             int reachFromCapsuleMm)
         {
             settings.Validate();
-            if (effortPerHeldTick <= 0 || reachFromCapsuleMm < 0)
-                throw new ArgumentOutOfRangeException(nameof(effortPerHeldTick));
+            if (reachFromCapsuleMm < 0)
+                throw new ArgumentOutOfRangeException(nameof(reachFromCapsuleMm));
 
             const ulong offset = 14695981039346656037UL;
             const ulong prime = 1099511628211UL;
             var hash = offset;
-            Add(unchecked((uint)settings.EffortThreshold));
-            Add(unchecked((uint)settings.MaximumEffortPerSourcePerTick));
-            Add(unchecked((uint)settings.EffortDecayPerTick));
-            Add(unchecked((uint)settings.RejectedEffortRetention));
-            Add(settings.TransitionDurationTicks);
-            Add(unchecked((uint)effortPerHeldTick));
+            Add(unchecked((uint)settings.MaximumAngularSpeedMilliDegreesPerTick));
+            Add(unchecked((uint)settings.MinimumLeveragePermille));
+            Add(unchecked((uint)WallSimulationSettings.LeverageQuantumPermille));
+            Add(settings.MaximumExtrapolationTicks);
             Add(unchecked((uint)reachFromCapsuleMm));
             return hash;
 

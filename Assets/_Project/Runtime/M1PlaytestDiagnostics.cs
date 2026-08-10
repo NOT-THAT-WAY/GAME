@@ -119,8 +119,9 @@ namespace NotThatWay.Game
                 FindObjectsInactive.Exclude,
                 FindObjectsSortMode.None);
             var wallState = wall != null && wall.HasObservedState
-                ? $"{wall.ObservedState.StateId}:{wall.ObservedState.Revision}:" +
-                  $"{wall.ObservedState.SignedEffort}:{wall.ObservedState.IsTransitioning}"
+                ? $"{wall.ObservedState.AngleMilliDegrees}mdeg:" +
+                  $"{wall.ObservedState.Revision}:" +
+                  $"{wall.ObservedState.AngularVelocityMilliDegreesPerTick}mdeg/t"
                 : "unavailable";
             Debug.Log(
                 $"[GAME-M1] {marker} server={_networkManager.ServerManager.Started} " +
@@ -189,10 +190,12 @@ namespace NotThatWay.Game
                 $"[GAME-M1-RESULT] {(passed ? "PASS" : "FAIL")} " +
                 $"name={_automatedPlan.Name} run={_automatedPlan.RunId} reason={reason} " +
                 $"players={observation.PlayerCount} connections={observation.ServerConnectionCount} " +
-                $"wall={state.StateId}:{state.Revision}:{state.SignedEffort}:" +
-                $"{state.IsTransitioning} completed={observation.CompletedTransitions} " +
-                $"rejected={observation.RejectedTransitions} " +
-                $"opposedTicks={observation.OpposedEffortTicks} snapshots={observation.Snapshots} " +
+                $"wall={state.AngleMilliDegrees}mdeg:{state.Revision}:" +
+                $"{state.AngularVelocityMilliDegreesPerTick}mdeg/t " +
+                $"rotation={observation.CumulativeRotationMilliDegrees}mdeg " +
+                $"quarterTurns={observation.QuarterTurns} reversals={observation.Reversals} " +
+                $"opposedTicks={observation.OpposedTicks} " +
+                $"sweptPushes={observation.SweptPushes} snapshots={observation.Snapshots} " +
                 $"targetSnapshots={observation.TargetSnapshots} " +
                 $"observerSnapshots={observation.ObserverSnapshots} " +
                 $"invalidSnapshots={observation.InvalidSnapshots} " +
@@ -217,13 +220,14 @@ namespace NotThatWay.Game
                 players.Length,
                 serverConnections,
                 wall != null && wall.HasObservedState,
-                state.StateId,
+                state.AngleMilliDegrees,
                 state.Revision,
-                state.SignedEffort,
-                state.IsTransitioning,
-                wall?.CompletedTransitionCount ?? 0u,
-                wall?.RejectedTransitionCount ?? 0u,
-                wall?.OpposedEffortTickCount ?? 0u,
+                state.AngularVelocityMilliDegreesPerTick,
+                wall?.CumulativeRotationMilliDegrees ?? 0L,
+                wall?.QuarterTurnCount ?? 0u,
+                wall?.ReversalCount ?? 0u,
+                wall?.OpposedTorqueTickCount ?? 0u,
+                wall?.SweptPushCount ?? 0u,
                 wall?.SnapshotCount ?? 0u,
                 wall?.TargetSnapshotCount ?? 0u,
                 wall?.ObserverSnapshotCount ?? 0u,

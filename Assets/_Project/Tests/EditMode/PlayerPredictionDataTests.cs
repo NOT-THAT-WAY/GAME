@@ -155,6 +155,40 @@ namespace NotThatWay.Game.Tests.EditMode
                 "Le seuil d'une porte lourde se compte en secondes : l'appui doit " +
                 "rester tenu, une fenêtre fixe le manquerait.");
 
+            // Un pousseur immobile perd le contact dès que le battant s'écarte :
+            // le profil d'accompagnement marche en même temps qu'il pousse.
+            Assert.That(
+                M1AutomatedCommandSource.TryParseArguments(
+                    new[] { "GAME", "--m1-auto-player=push-left" },
+                    out var follower,
+                    out error),
+                Is.True,
+                error);
+            Assert.That(follower.Name, Is.EqualTo("push-left"));
+            Assert.That(follower.CreateCommand(0u).MoveX, Is.EqualTo(-127));
+            Assert.That(
+                follower.CreateCommand(89u).Has(PlayerCommandButtons.InteractHeld),
+                Is.False);
+            Assert.That(follower.CreateCommand(89u).LookYaw, Is.Zero);
+            Assert.That(
+                follower.CreateCommand(90u).Has(PlayerCommandButtons.InteractHeld),
+                Is.True);
+            Assert.That(
+                follower.CreateCommand(90u).LookYaw,
+                Is.EqualTo(58),
+                "Le lacet suit la porte : sans lui le pousseur perd le contact.");
+            Assert.That(follower.CreateCommand(600u).MoveX, Is.EqualTo(-127));
+
+            Assert.That(
+                M1AutomatedCommandSource.TryParseArguments(
+                    new[] { "GAME", "--m1-auto-player=push-right" },
+                    out var mirrored,
+                    out error),
+                Is.True,
+                error);
+            Assert.That(mirrored.CreateCommand(120u).MoveX, Is.EqualTo(127));
+            Assert.That(mirrored.CreateCommand(120u).LookYaw, Is.EqualTo(-58));
+
             Assert.That(
                 M1AutomatedCommandSource.TryParseArguments(
                     new[] { "GAME", "--m1-auto-player=unknown" },

@@ -2,187 +2,224 @@ using System;
 
 namespace NotThatWay.Game.Simulation
 {
+    /// <summary>
+    /// Réglages du couple continu d'un battant. Tout est exprimé en ticks et en
+    /// milli-degrés : la simulation ignore la fréquence d'affichage, le deltaTime
+    /// et PhysX.
+    /// </summary>
     public readonly struct WallSimulationSettings : IEquatable<WallSimulationSettings>
     {
-        public WallSimulationSettings(
-            int effortThreshold,
-            int maximumEffortPerSourcePerTick,
-            int effortDecayPerTick,
-            int rejectedEffortRetention,
-            uint transitionDurationTicks)
-        {
-            if (effortThreshold <= 0)
-                throw new ArgumentOutOfRangeException(nameof(effortThreshold));
-            if (maximumEffortPerSourcePerTick <= 0)
-                throw new ArgumentOutOfRangeException(nameof(maximumEffortPerSourcePerTick));
-            if (effortDecayPerTick < 0 || effortDecayPerTick > effortThreshold)
-                throw new ArgumentOutOfRangeException(nameof(effortDecayPerTick));
-            if (rejectedEffortRetention < 0 || rejectedEffortRetention >= effortThreshold)
-                throw new ArgumentOutOfRangeException(nameof(rejectedEffortRetention));
-            TickMath.ValidateDuration(transitionDurationTicks);
+        /// <summary>Un levier vaut 1000 pour mille au bout du battant.</summary>
+        public const int PermilleScale = 1000;
 
-            EffortThreshold = effortThreshold;
-            MaximumEffortPerSourcePerTick = maximumEffortPerSourcePerTick;
-            EffortDecayPerTick = effortDecayPerTick;
-            RejectedEffortRetention = rejectedEffortRetention;
-            TransitionDurationTicks = transitionDurationTicks;
+        /// <summary>
+        /// Pas de quantification du couple net. Sans lui, le moindre pas de côté du
+        /// pousseur change la vitesse d'un milli-degré, donc ouvre un segment, donc
+        /// diffuse un snapshot : le battant se synchroniserait à chaque tick, ce que
+        /// le contrat réseau interdit. Quinze paliers entre le gond et le bout
+        /// restent imperceptibles à l'œil et stables sur le réseau.
+        /// </summary>
+        public const int LeverageQuantumPermille = 50;
+
+        public WallSimulationSettings(
+            int maximumAngularSpeedMilliDegreesPerTick,
+            int minimumLeveragePermille,
+            uint maximumExtrapolationTicks)
+        {
+            if (maximumAngularSpeedMilliDegreesPerTick <= 0 ||
+                maximumAngularSpeedMilliDegreesPerTick > FixedTrigonometry.QuarterTurnMilliDegrees)
+            {
+                throw new ArgumentOutOfRangeException(nameof(maximumAngularSpeedMilliDegreesPerTick));
+            }
+            if (minimumLeveragePermille < 0 || minimumLeveragePermille > PermilleScale)
+                throw new ArgumentOutOfRangeException(nameof(minimumLeveragePermille));
+            TickMath.ValidateDuration(maximumExtrapolationTicks);
+
+            MaximumAngularSpeedMilliDegreesPerTick = maximumAngularSpeedMilliDegreesPerTick;
+            MinimumLeveragePermille = minimumLeveragePermille;
+            MaximumExtrapolationTicks = maximumExtrapolationTicks;
         }
 
-        public int EffortThreshold { get; }
-        public int MaximumEffortPerSourcePerTick { get; }
-        public int EffortDecayPerTick { get; }
-        public int RejectedEffortRetention { get; }
-        public uint TransitionDurationTicks { get; }
+        /// <summary>Vitesse atteinte par une poussée seule au bout du battant.</summary>
+        public int MaximumAngularSpeedMilliDegreesPerTick { get; }
+
+        /// <summary>Part de puissance conservée au contact du gond.</summary>
+        public int MinimumLeveragePermille { get; }
+
+        /// <summary>
+        /// Borne l'avance libre d'un client entre deux snapshots. Le battement
+        /// serveur étant plus court, cette borne ne sert qu'à empêcher un segment
+        /// perdu de faire tourner le mur indéfiniment chez un observateur.
+        /// </summary>
+        public uint MaximumExtrapolationTicks { get; }
 
         public void Validate()
         {
-            if (EffortThreshold <= 0)
-                throw new ArgumentOutOfRangeException(nameof(EffortThreshold));
-            if (MaximumEffortPerSourcePerTick <= 0)
-                throw new ArgumentOutOfRangeException(nameof(MaximumEffortPerSourcePerTick));
-            if (EffortDecayPerTick < 0 || EffortDecayPerTick > EffortThreshold)
-                throw new ArgumentOutOfRangeException(nameof(EffortDecayPerTick));
-            if (RejectedEffortRetention < 0 || RejectedEffortRetention >= EffortThreshold)
-                throw new ArgumentOutOfRangeException(nameof(RejectedEffortRetention));
-            TickMath.ValidateDuration(TransitionDurationTicks);
+            if (MaximumAngularSpeedMilliDegreesPerTick <= 0 ||
+                MaximumAngularSpeedMilliDegreesPerTick > FixedTrigonometry.QuarterTurnMilliDegrees)
+            {
+                throw new ArgumentOutOfRangeException(nameof(MaximumAngularSpeedMilliDegreesPerTick));
+            }
+            if (MinimumLeveragePermille < 0 || MinimumLeveragePermille > PermilleScale)
+                throw new ArgumentOutOfRangeException(nameof(MinimumLeveragePermille));
+            TickMath.ValidateDuration(MaximumExtrapolationTicks);
+        }
+
+        /// <summary>
+        /// Vitesse produite par un couple net, borné à ±1000 pour mille puis
+        /// quantifié. La division entière tronque vers zéro : même verdict sur
+        /// toute plateforme.
+        /// </summary>
+        public int VelocityFromNetLeverage(int netLeveragePermille)
+        {
+            var clamped = netLeveragePermille < -PermilleScale
+                ? -PermilleScale
+                : netLeveragePermille > PermilleScale
+                    ? PermilleScale
+                    : netLeveragePermille;
+            var quantized = QuantizeLeverage(clamped);
+            return (int)((long)quantized * MaximumAngularSpeedMilliDegreesPerTick / PermilleScale);
+        }
+
+        /// <summary>
+        /// Arrondi entier au palier le plus proche, symétrique autour de zéro.
+        /// </summary>
+        public static int QuantizeLeverage(int netLeveragePermille)
+        {
+            var sign = netLeveragePermille < 0 ? -1 : 1;
+            var magnitude = netLeveragePermille < 0
+                ? -(long)netLeveragePermille
+                : netLeveragePermille;
+            var steps = (magnitude + LeverageQuantumPermille / 2) / LeverageQuantumPermille;
+            return (int)(sign * steps * LeverageQuantumPermille);
         }
 
         public bool Equals(WallSimulationSettings other) =>
-            EffortThreshold == other.EffortThreshold &&
-            MaximumEffortPerSourcePerTick == other.MaximumEffortPerSourcePerTick &&
-            EffortDecayPerTick == other.EffortDecayPerTick &&
-            RejectedEffortRetention == other.RejectedEffortRetention &&
-            TransitionDurationTicks == other.TransitionDurationTicks;
+            MaximumAngularSpeedMilliDegreesPerTick == other.MaximumAngularSpeedMilliDegreesPerTick &&
+            MinimumLeveragePermille == other.MinimumLeveragePermille &&
+            MaximumExtrapolationTicks == other.MaximumExtrapolationTicks;
 
         public override bool Equals(object value) => value is WallSimulationSettings other && Equals(other);
+
         public override int GetHashCode() => HashCode.Combine(
-            EffortThreshold,
-            MaximumEffortPerSourcePerTick,
-            EffortDecayPerTick,
-            RejectedEffortRetention,
-            TransitionDurationTicks);
+            MaximumAngularSpeedMilliDegreesPerTick,
+            MinimumLeveragePermille,
+            MaximumExtrapolationTicks);
     }
 
-    public readonly struct WallEffortIntent
+    /// <summary>
+    /// Intention de couple d'une source pour un tick. Le sens vaut ±1 et le levier
+    /// dit à quelle distance du gond la poussée s'applique ; l'addition des deux
+    /// produit la contre-poussée sans règle supplémentaire.
+    /// </summary>
+    public readonly struct WallTorqueIntent
     {
-        public WallEffortIntent(int wallId, int sourceId, int signedEffort)
+        public WallTorqueIntent(int wallId, int sourceId, int direction, int leveragePermille)
         {
             if (wallId <= 0)
                 throw new ArgumentOutOfRangeException(nameof(wallId));
             if (sourceId < 0)
                 throw new ArgumentOutOfRangeException(nameof(sourceId));
+            if (direction != -1 && direction != 1)
+                throw new ArgumentOutOfRangeException(nameof(direction));
+            if (leveragePermille < 0 || leveragePermille > WallSimulationSettings.PermilleScale)
+                throw new ArgumentOutOfRangeException(nameof(leveragePermille));
+
             WallId = wallId;
             SourceId = sourceId;
-            SignedEffort = signedEffort;
+            Direction = direction;
+            LeveragePermille = leveragePermille;
         }
 
         public int WallId { get; }
         public int SourceId { get; }
-        public int SignedEffort { get; }
+        public int Direction { get; }
+        public int LeveragePermille { get; }
+        public int SignedLeveragePermille => Direction * LeveragePermille;
     }
 
+    /// <summary>
+    /// État partagé d'un battant libre. Il ne transporte jamais un transform : un
+    /// segment de mouvement — angle d'ancrage, tick d'ancrage, vitesse angulaire,
+    /// révision — suffit à rejouer la pose de n'importe quel tick.
+    /// </summary>
     public readonly struct WallState : IEquatable<WallState>
     {
-        public WallState(int wallId, int stateId, uint revision = 0u)
-            : this(wallId, stateId, revision, 0, null)
+        public WallState(int wallId, int angleMilliDegrees, uint anchorTick, uint revision = 0u)
+            : this(wallId, angleMilliDegrees, 0, anchorTick, revision)
         {
         }
 
-        internal WallState(
+        public WallState(
             int wallId,
-            int stateId,
-            uint revision,
-            int signedEffort,
-            WallTransition? activeTransition)
+            int angleMilliDegrees,
+            int angularVelocityMilliDegreesPerTick,
+            uint anchorTick,
+            uint revision)
         {
             if (wallId <= 0)
                 throw new ArgumentOutOfRangeException(nameof(wallId));
-            if (stateId < 0)
-                throw new ArgumentOutOfRangeException(nameof(stateId));
-            if (activeTransition.HasValue)
-            {
-                var transition = activeTransition.Value;
-                if (transition.WallId != wallId || transition.FromStateId != stateId ||
-                    transition.Revision != revision || signedEffort != 0)
-                {
-                    throw new ArgumentException("Transition active incohérente avec l'état du mur.");
-                }
-            }
+            if (angleMilliDegrees < 0 || angleMilliDegrees >= FixedTrigonometry.FullTurnMilliDegrees)
+                throw new ArgumentOutOfRangeException(nameof(angleMilliDegrees));
+            if (Math.Abs(angularVelocityMilliDegreesPerTick) > FixedTrigonometry.QuarterTurnMilliDegrees)
+                throw new ArgumentOutOfRangeException(nameof(angularVelocityMilliDegreesPerTick));
 
             WallId = wallId;
-            StateId = stateId;
+            AngleMilliDegrees = angleMilliDegrees;
+            AngularVelocityMilliDegreesPerTick = angularVelocityMilliDegreesPerTick;
+            AnchorTick = anchorTick;
             Revision = revision;
-            SignedEffort = signedEffort;
-            ActiveTransition = activeTransition;
         }
 
         public int WallId { get; }
-        public int StateId { get; }
-        public uint Revision { get; }
-        public int SignedEffort { get; }
-        public WallTransition? ActiveTransition { get; }
-        public bool IsTransitioning => ActiveTransition.HasValue;
 
-        public WallPoseSample SamplePose(uint tick) => ActiveTransition.HasValue
-            ? ActiveTransition.Value.Sample(tick)
-            : WallPoseSample.Stable(StateId);
+        /// <summary>Angle du battant au tick d'ancrage, dans [0, 360000).</summary>
+        public int AngleMilliDegrees { get; }
+
+        public int AngularVelocityMilliDegreesPerTick { get; }
+        public uint AnchorTick { get; }
+        public uint Revision { get; }
+        public bool IsRotating => AngularVelocityMilliDegreesPerTick != 0;
+
+        /// <summary>
+        /// Pose logique d'un tick. En amont de l'ancrage la pose reste l'ancrage :
+        /// un replay ne doit jamais inventer un passé que l'autorité n'a pas envoyé.
+        /// </summary>
+        public WallPoseSample SamplePose(uint tick, uint maximumExtrapolationTicks)
+        {
+            TickMath.ValidateDuration(maximumExtrapolationTicks);
+            var elapsed = TickMath.Elapsed(AnchorTick, tick);
+            if (elapsed > maximumExtrapolationTicks)
+                elapsed = maximumExtrapolationTicks;
+            var angle = FixedTrigonometry.Normalize(
+                AngleMilliDegrees + (long)AngularVelocityMilliDegreesPerTick * elapsed);
+            return new WallPoseSample(
+                angle,
+                AngularVelocityMilliDegreesPerTick,
+                elapsed,
+                IsRotating);
+        }
+
+        /// <summary>
+        /// Deux états appartiennent au même segment quand leur sens et leur vitesse
+        /// coïncident : entre deux snapshots d'un même segment, un client extrapole
+        /// sans qu'aucun conflit de révision ne soit légitime.
+        /// </summary>
+        public bool SharesSegment(WallState other) =>
+            WallId == other.WallId &&
+            Revision == other.Revision &&
+            AngularVelocityMilliDegreesPerTick == other.AngularVelocityMilliDegreesPerTick;
 
         public bool Equals(WallState other) =>
             WallId == other.WallId &&
-            StateId == other.StateId &&
-            Revision == other.Revision &&
-            SignedEffort == other.SignedEffort &&
-            Nullable.Equals(ActiveTransition, other.ActiveTransition);
+            AngleMilliDegrees == other.AngleMilliDegrees &&
+            AngularVelocityMilliDegreesPerTick == other.AngularVelocityMilliDegreesPerTick &&
+            AnchorTick == other.AnchorTick &&
+            Revision == other.Revision;
 
         public override bool Equals(object value) => value is WallState other && Equals(other);
+
         public override int GetHashCode() => HashCode.Combine(
-            WallId, StateId, Revision, SignedEffort, ActiveTransition);
-    }
-
-    public readonly struct WallTransitionRequest
-    {
-        public WallTransitionRequest(
-            int wallId,
-            int fromStateId,
-            int toStateId,
-            uint startTick,
-            uint durationTicks,
-            uint nextRevision)
-        {
-            WallId = wallId;
-            FromStateId = fromStateId;
-            ToStateId = toStateId;
-            StartTick = startTick;
-            DurationTicks = durationTicks;
-            NextRevision = nextRevision;
-        }
-
-        public int WallId { get; }
-        public int FromStateId { get; }
-        public int ToStateId { get; }
-        public uint StartTick { get; }
-        public uint DurationTicks { get; }
-        public uint NextRevision { get; }
-    }
-
-    public readonly struct WallTransitionGateDecision
-    {
-        private WallTransitionGateDecision(bool allowed, string rejectionCode)
-        {
-            Allowed = allowed;
-            RejectionCode = rejectionCode;
-        }
-
-        public bool Allowed { get; }
-        public string RejectionCode { get; }
-
-        public static WallTransitionGateDecision Accept() => new(true, string.Empty);
-
-        public static WallTransitionGateDecision Reject(string rejectionCode)
-        {
-            if (string.IsNullOrWhiteSpace(rejectionCode))
-                throw new ArgumentException("Un refus doit porter un code stable.", nameof(rejectionCode));
-            return new WallTransitionGateDecision(false, rejectionCode);
-        }
+            WallId, AngleMilliDegrees, AngularVelocityMilliDegreesPerTick, AnchorTick, Revision);
     }
 }

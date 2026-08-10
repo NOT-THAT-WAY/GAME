@@ -32,10 +32,10 @@ for required in \
   'Assertion failed' \
   'Exception:' \
   'Roster updated \([3-9][0-9]* participant' \
-  'balanced_opposition' \
+  'torque_opposed' \
   'swept_player_pushed' \
-  'completed_pose_clear' \
-  'completed_pose_overlap'; do
+  'rotation_started' \
+  'quarter_turn'; do
   grep -Fq -- "$required" "$NETWORK_WRAPPER" || fail "network wrapper missing $required"
 done
 
@@ -46,6 +46,7 @@ for required in \
   'Quête 2' \
   'Quête 3' \
   'Quête 4' \
+  'Quête 5' \
   'Fermer les deux fenêtres' \
   'Fermer les trois fenêtres'; do
   grep -Fq -- "$required" "$HUMAN_WRAPPER" || fail "human wrapper missing $required"

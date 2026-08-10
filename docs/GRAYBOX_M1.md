@@ -11,14 +11,12 @@ fausse l'avis de la personne qui le lance.
 - copie runtime immuable des dimensions, IDs, états, pivots, ouvertures et spawns ;
 - neuf murs à `BoxCollider`, dont `wallId=10` mobile autour de `pivotId=100` ;
 - aucun FBX et aucun `MeshCollider` ;
-- deux poses à 90°, calculées depuis les millimètres de la topologie ;
-- état A : trajet entre spawns en trois arêtes ; état B : trajet direct en une arête ;
-- spawns reliés et périmètre entièrement fermé dans les deux états : aucune arête d'enceinte
-  n'est ouverte, donc aucun joueur ne peut quitter le sol de l'arène ;
-- volume balayé conservateur en arithmétique entière pour produire le même verdict sous Mono et
-  Windows IL2CPP, y compris aux tangences ;
-- transition atomique : destination occupée, rupture de connectivité ou périmètre ouvert produisent
-  un code stable sans modifier l'état ni le collider ;
+- battant libre sur 360° : son angle est un entier en milli-degrés dont l'origine est la pose
+  initiale déclarée dans la topologie ; les deux poses déclarées ne sont plus que des repères ;
+- spawns reliés et périmètre entièrement fermé : aucune arête d'enceinte n'est ouverte, donc aucun
+  joueur ne peut quitter le sol de l'arène, quel que soit l'angle du battant ;
+- trigonométrie entière (CORDIC en micro-degrés vers Q16) pour que côté, bras de levier et contact
+  produisent le même verdict sous Mono et sous Windows IL2CPP, y compris aux tangences ;
 - reset exact vers les états initiaux ;
 - collisions sol/murs isolées sur `GameplayWorld` (layer 8), joueurs sur `Player` (layer 9) ;
   seuls monde↔joueur et joueur↔joueur produisent des contacts parmi ces layers, tandis que
@@ -34,26 +32,36 @@ historique retournée du FBX 16×16 ne s'applique pas à cette scène.
 
 Ces valeurs et ces sens sont des décisions prises avec l'équipe, pas des constantes héritées.
 
-- **Sens de poussée déduit de la géométrie** : le mur s'éloigne toujours de celui qui pousse. Le
-  signe d'effort vient de la pose de destination, jamais d'un axe codé en dur ; depuis l'autre
-  demi-espace, un joueur retient le mur au lieu de l'attirer sur lui. Sans cette règle, le trajet
-  retour n'était atteignable qu'en se plaçant dans l'arc balayé, ce que le garde refuse — la porte
-  ne s'ouvrait donc qu'une fois.
-- **Porte lourde** : seuil d'effort 360, soit 90 ticks (1,5 s à 60 Hz) d'appui continu, puis 90
-  ticks (1,5 s) de bascule — trois secondes entre l'appui et la porte ouverte. L'effort redescend de
-  2 par tick dès qu'on lâche.
-- **Jauge de poussée** : pendant l'action, le pousseur voit localement sa progression ou la mention
-  d'un effort opposé. Ce retour d'état n'affiche ni commandes, ni objectif, ni direction à suivre.
-- **Le mur écarte, il ne traverse pas** : la politique `M1PushDuel` autorise le balayage d'un joueur
-  et maintient une vitesse tangentielle légèrement supérieure à celle du battant, plafonnée à
-  3,5 m/s, afin que la capsule prenne de l'avance au lieu de finir dans la pose d'arrivée. Chaque
-  échantillon corrige vers cette cible au lieu d'empiler des impulsions. Seule la pose d'arrivée reste interdite
-  d'occupation (`destination_pose_occupied`) : une porte ne se matérialise jamais dans un corps.
+- **Sens déduit de la face occupée** : le battant s'éloigne toujours de celui qui pousse. Le signe
+  vient du côté du plan où se trouve le pousseur, calculé à l'angle courant — donc valable sur les
+  360°, sans pose ni état de destination. Repasser derrière le battant suffit à inverser le sens.
+- **Aucun seuil, aucune latence** : le couple net du tick donne directement la vitesse angulaire.
+  Le premier tick d'appui déplace déjà le battant, et le relâcher l'arrête au même tick — pas
+  d'inertie, donc pas de dérive après la main levée.
+- **Bras de levier au prorata** : 300 pour mille de puissance au contact du gond, 1000 au bout du
+  battant, interpolés linéairement sur l'abscisse du contact. À 60 Hz et 900 milli-degrés par tick,
+  un quart de tour prend 1,7 s au bout et 5,6 s contre le gond.
+- **Contre-poussée par addition** : les couples signés des sources s'additionnent, chaque source
+  étant bornée à la pleine puissance et la somme à la vitesse nominale. Deux leviers égaux et
+  opposés figent le battant ; celui qui s'éloigne du gond reprend la main à la différence exacte.
+- **Couple quantifié par paliers de 50 pour mille** : sans ce pas, le moindre pas de côté du
+  pousseur changerait la vitesse d'un milli-degré, ouvrirait un segment et diffuserait un snapshot —
+  le battant se synchroniserait à chaque tick, ce que le contrat réseau interdit.
+- **Indicateur de levier** : au contact, le pousseur voit localement son levier en pour-cent, la
+  vitesse du battant et, en cas d'égalité, la mention d'une poussée opposée. Ce retour rejoue la
+  règle pure sur la position locale et ne décide rien.
+- **Le battant écarte, il ne traverse pas** : l'hôte mesure le recouvrement sur le segment
+  déterministe du battant et maintient une vitesse tangentielle plafonnée à 3,5 m/s, afin que la
+  capsule prenne de l'avance. Celui qui pousse en est exclu : ses mains sont sur la porte par choix.
 - **Le poing pousse aussi** : un rayon serveur doit réellement toucher le battant dans l'axe du
-  joueur. Chaque impact verse 40 ticks d'effort avec un cooldown de 48 ticks ; avec le decay, deux
-  coups restent sous le seuil et le troisième coup enchaîné l'atteint.
+  joueur. Chaque impact verse le même couple qu'un appui pendant 40 ticks, avec un cooldown de
+  48 ticks ; le sens et le levier sont figés au moment de l'impact.
+- **Accompagner la porte fait partie du geste** : un pousseur immobile perd le contact dès que le
+  battant s'écarte, exactement comme une vraie porte. Les profils automatisés `push-left` et
+  `push-right` marchent et pivotent avec elle pour le reproduire.
 - La politique conservatrice `GrayboxDuel`, qui refuse toute transition dès qu'un obstacle est dans
-  l'arc, reste celle du graybox pur et des tests de modèle.
+  l'arc, reste celle du graybox à deux poses et de ses tests de modèle ; le banc jouable ne
+  l'utilise plus.
 
 ## Rendu du banc
 
@@ -73,6 +81,8 @@ Le rendu ne change aucune règle, mais un banc illisible ne produit pas d'avis e
   fait sur les noms de l'export et ne concerne que le rendu.
 - La pose bras tendus pendant la poussée est le clip `Punch` figé sur son image d'extension, en
   attendant une animation dédiée produite sous Blender.
+- `M1ControlsOverlay` rappelle en permanence les commandes en bas à gauche, repliable par bouton :
+  un testeur qui cherche la touche ne teste plus le réseau. Aucune lecture clavier directe.
 - `M1PlayerAppearance` teinte chaque personnage d'après l'identifiant de connexion partagé par le
   serveur, donc identique sur toutes les fenêtres, et masque le corps de son porteur en vue
   première personne en gardant son ombre.
@@ -87,8 +97,11 @@ Le rendu ne change aucune règle, mais un banc illisible ne produit pas d'avis e
 ## Ce qui n'est pas encore revendiqué
 
 - le profil à 60 Hz reste une valeur de mesure M1, pas un réglage produit accepté ;
-- aucune conséquence mur/joueur autre qu'un code de refus paramétrable ;
-- aucun preset produit d'effort, d'énergie ou de cooldown choisi ;
+- la vitesse nominale, le levier minimal et le pas de quantification sont des réglages de banc, pas
+  des valeurs produit validées ;
+- rien n'arrête le battant : aucun mur statique, aucune butée, aucune conséquence sur un joueur
+  coincé entre le battant et l'enceinte ;
+- aucun preset produit d'énergie ou de cooldown choisi ;
 - aucune preuve visuelle Windows/IL2CPP ni essai réseau distant, dégradé ou de longue durée ;
 - aucune réintégration de ce socle dans le labyrinthe 16×16 ;
 - aucun verdict humain sur la taille, la lisibilité ou le feel.
@@ -106,5 +119,13 @@ python3 tests/topology-fixtures/test-fixtures.py
 ```
 
 La gate PlayMode exige exactement un sol et neuf colliders de mur actifs, tous des `BoxCollider`,
-et vérifie qu'une pose intermédiaire du battant recouvre bien la capsule d'un joueur planté dans
-l'arc — c'est ce recouvrement qui déclenche la poussée autoritaire.
+et vérifie qu'un angle intermédiaire du battant recouvre bien la capsule d'un joueur planté dans
+sa trajectoire — c'est ce recouvrement qui déclenche la poussée autoritaire.
+
+Les trois scénarios réseau prouvent respectivement : la rotation continue avec un joueur écarté
+(`occupancy`), la contre-poussée qui fige le battant (`opposition`), et l'arrivée tardive qui
+reçoit le segment arrêté avec sa révision (`latejoin`).
+
+```bash
+./scripts/m1-network-tests-macos.sh all --build
+```

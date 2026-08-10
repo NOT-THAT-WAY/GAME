@@ -15,67 +15,75 @@ using UnityEngine;
 namespace NotThatWay.Game
 {
     /// <summary>
-    /// Adaptateur WALL-01 du banc M1. Le serveur dérive cible, côté, portée et
-    /// occupation depuis ses propres joueurs, avance la machine pure, puis diffuse
-    /// un snapshot autonome. Aucun transform ni wallId ne vient d'un client.
+    /// Adaptateur WALL-01 du banc M1. Le battant tourne librement sur 360 degrés :
+    /// le serveur dérive contact, côté et bras de levier depuis ses propres joueurs,
+    /// somme les couples opposés, avance l'intégrateur pur d'un tick, puis diffuse
+    /// le segment de mouvement. Aucun transform ni wallId ne vient d'un client.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class M1AuthoritativeWallDirector : TickNetworkBehaviour
     {
-        private const byte SnapshotSchemaVersion = 2;
+        private const byte SnapshotSchemaVersion = 3;
 
         [Header("Mur canonique M1")]
         [SerializeField] private int _wallId = 10;
-        [SerializeField, Min(1)] private int _effortThreshold = 120;
-        [SerializeField, Min(1)] private int _maximumEffortPerSourcePerTick = 4;
-        [SerializeField, Min(0)] private int _effortDecayPerTick = 2;
-        [SerializeField, Min(0)] private int _rejectedEffortRetention;
-        [SerializeField, Min(1)] private uint _transitionDurationTicks = 30u;
+
+        /// <summary>
+        /// Vitesse d'un pousseur seul au bout du battant. À 60 ticks par seconde,
+        /// 900 milli-degrés par tick font un quart de tour en 1,7 s au bout et en
+        /// 5,6 s contre le gond : lourd, mais jamais immobile.
+        /// </summary>
+        [SerializeField, Min(1)] private int _maximumAngularSpeedMilliDegreesPerTick = 900;
+
+        [SerializeField, Range(0, 1000)] private int _minimumLeveragePermille = 300;
+        [SerializeField, Min(1)] private uint _maximumExtrapolationTicks = 180u;
 
         [Header("Validation serveur M1")]
-        [SerializeField, Min(1)] private int _effortPerHeldTick = 4;
         [SerializeField, Min(0)] private int _reachFromCapsuleMm = 900;
 
         private readonly List<PredictedPlayerMotor> _serverPlayers = new(4);
-        private readonly List<WallEffortIntent> _intents = new(4);
-        private readonly List<TopologyCircleObstacle> _obstacles = new(4);
+        private readonly List<WallTorqueIntent> _intents = new(4);
         private readonly Dictionary<int, uint> _lastConsumedPlayerTick = new();
         private WallSnapshotHistory _history;
 
         private TopologyArena _arena;
         private RuntimeWallDefinition _wallDefinition;
+        private TopologyBladeSpec _blade;
         private WallSimulationSettings _settings;
-        private WallStateMachine _serverMachine;
-        private WallStateMachine _clientMachine;
+        private WallRotationMachine _serverMachine;
+        private WallRotationMachine _clientMachine;
         private PredictionManager _predictionManager;
         private WallLiveTickClock _liveClock;
         private WallSnapshotTimelineSample _latestTimeline;
         private bool _hasLatestTimeline;
         private ulong _simulationFingerprint;
-        private int _negativeStateId;
-        private int _positiveStateId;
-        private int _lastGateBlockingId;
         private uint _snapshotCount;
         private uint _invalidSnapshotCount;
         private uint _historyMissCount;
         private uint _rejectedInteractionCount;
-        private uint _completedTransitionCount;
-        private uint _rejectedTransitionCount;
-        private uint _opposedEffortTickCount;
+        private uint _rotatingTickCount;
+        private uint _segmentCount;
+        private uint _reversalCount;
+        private uint _quarterTurnCount;
+        private uint _opposedTorqueTickCount;
         private uint _targetSnapshotCount;
         private uint _observerSnapshotCount;
-        private int _lastMidTransitionBlockingId;
+        private long _cumulativeRotationMilliDegrees;
+        private long _lastQuarterIndex;
+        private bool _wasOpposed;
+        private int _lastMidRotationBlockingId;
 
         // La porte écarte, elle ne catapulte pas : la vitesse tangentielle est
         // bornée, et l'échantillon vaut un tick sur deux pour ne pas noyer le
-        // propriétaire distant sous les RPC pendant les 90 ticks de bascule.
+        // propriétaire distant sous les RPC pendant toute la rotation.
         private const float MaximumPushSpeedMetersPerSecond = 3.5f;
         private const float ClearanceSpeedMetersPerSecond = 1f;
         private const uint PushSampleIntervalTicks = 2u;
         private uint _sweptPushCount;
 
-        // Quarante ticks d'impulsion avec un cooldown de quarante-huit ticks :
-        // deux coups restent sous le seuil malgré le decay, le troisième ouvre.
+        // Une frappe verse son couple pendant quarante ticks au lieu de l'appui
+        // continu : le battant bouge visiblement à chaque coup sans qu'un client
+        // puisse désigner son mur ni son sens.
         private readonly Dictionary<int, PunchImpulse> _punchImpulses = new(4);
         private readonly Dictionary<int, PunchImpulse> _pendingPunchImpulses = new(4);
         private readonly List<int> _expiredPunchSources = new(4);
@@ -91,18 +99,22 @@ namespace NotThatWay.Game
         public uint InvalidSnapshotCount => _invalidSnapshotCount;
         public uint HistoryMissCount => _historyMissCount;
         public uint RejectedInteractionCount => _rejectedInteractionCount;
-        public uint CompletedTransitionCount => _completedTransitionCount;
-        public uint RejectedTransitionCount => _rejectedTransitionCount;
-        public uint OpposedEffortTickCount => _opposedEffortTickCount;
+        public uint RotatingTickCount => _rotatingTickCount;
+        public uint SegmentCount => _segmentCount;
+        public uint ReversalCount => _reversalCount;
+        public uint QuarterTurnCount => _quarterTurnCount;
+        public uint OpposedTorqueTickCount => _opposedTorqueTickCount;
         public uint SweptPushCount => _sweptPushCount;
+        public long CumulativeRotationMilliDegrees => _cumulativeRotationMilliDegrees;
 
-        // Exposé pour l'indicateur local du pousseur : il rejoue la règle pure
-        // sur sa propre position pour savoir pourquoi rien ne bouge. L'hôte
-        // reste seul juge de l'effort réellement compté.
+        // Exposé pour l'indicateur local du pousseur : il rejoue la règle pure sur
+        // sa propre position pour savoir dans quel sens et avec quelle puissance il
+        // agit. L'hôte reste seul juge du couple réellement compté.
         public int WallId => _wallId;
-        public int EffortThreshold => _effortThreshold;
         public int ReachFromCapsuleMm => _reachFromCapsuleMm;
-        public int NegativeStateId => _negativeStateId;
+        public int MinimumLeveragePermille => _minimumLeveragePermille;
+        public int MaximumAngularSpeedMilliDegreesPerTick => _maximumAngularSpeedMilliDegreesPerTick;
+        public uint MaximumExtrapolationTicks => _maximumExtrapolationTicks;
         public uint TargetSnapshotCount => _targetSnapshotCount;
         public uint ObserverSnapshotCount => _observerSnapshotCount;
 
@@ -121,21 +133,22 @@ namespace NotThatWay.Game
         {
             base.OnStartServer();
             ResolveContract();
-            _serverMachine = new WallStateMachine(
-                _settings,
-                _wallId,
-                _negativeStateId,
-                _positiveStateId,
-                _wallDefinition.InitialStateId,
-                0u);
+            _serverMachine = new WallRotationMachine(_settings, _wallId, 0, 0u);
             _lastConsumedPlayerTick.Clear();
-            _completedTransitionCount = 0u;
-            _rejectedTransitionCount = 0u;
-            _opposedEffortTickCount = 0u;
+            _rotatingTickCount = 0u;
+            _segmentCount = 0u;
+            _reversalCount = 0u;
+            _quarterTurnCount = 0u;
+            _opposedTorqueTickCount = 0u;
+            _cumulativeRotationMilliDegrees = 0L;
+            _lastQuarterIndex = 0L;
+            _wasOpposed = false;
             ApplyState(_serverMachine.State, _serverMachine.LastProcessedTick);
             Debug.Log(
                 $"[GAME-M1-WALL] authority_ready wall={_wallId} " +
-                $"states={_negativeStateId},{_positiveStateId} tickRate={TimeManager.TickRate}.");
+                $"maxSpeedMdegPerTick={_maximumAngularSpeedMilliDegreesPerTick} " +
+                $"minLeveragePermille={_minimumLeveragePermille} " +
+                $"reachMm={_reachFromCapsuleMm} tickRate={TimeManager.TickRate}.");
         }
 
         public override void OnSpawnServer(NetworkConnection connection)
@@ -225,41 +238,14 @@ namespace NotThatWay.Game
                 return;
 
             CollectServerIntents();
-            ObserveIntentComposition();
-            _lastGateBlockingId = 0;
             var logicalTick = TickMath.Next(_serverMachine.LastProcessedTick);
-            var result = _serverMachine.AdvanceTick(logicalTick, _intents, EvaluateTransition);
+            var result = _serverMachine.AdvanceTick(logicalTick, _intents);
             ApplyState(result.Current, logicalTick);
             PushSweptPlayers(result.Current, logicalTick);
-
-            if ((result.Events & WallTickEvents.TransitionStarted) != 0)
-            {
-                var transition = result.Current.ActiveTransition.Value;
-                Debug.Log(
-                    $"[GAME-M1-WALL] transition_started wall={_wallId} " +
-                    $"from={transition.FromStateId} to={transition.ToStateId} " +
-                    $"logicalTick={logicalTick} revision={result.Current.Revision}.");
-            }
-            if ((result.Events & WallTickEvents.TransitionRejected) != 0)
-            {
-                _rejectedTransitionCount++;
-                Debug.Log(
-                    $"[GAME-M1-WALL] transition_rejected wall={_wallId} " +
-                    $"reason={result.RejectionCode} blockingId={_lastGateBlockingId} " +
-                    $"logicalTick={logicalTick}.");
-            }
-            if ((result.Events & WallTickEvents.TransitionCompleted) != 0)
-            {
-                _completedTransitionCount++;
-                ValidateCompletedPoseClear(result.Current.StateId, logicalTick);
-                Debug.Log(
-                    $"[GAME-M1-WALL] transition_completed wall={_wallId} " +
-                    $"state={result.Current.StateId} logicalTick={logicalTick} " +
-                    $"revision={result.Current.Revision}.");
-            }
+            ObserveRotation(result, logicalTick);
 
             if (WallSnapshotReceiverPolicy.ShouldBroadcast(
-                    result.Changed,
+                    result.SegmentChanged,
                     logicalTick,
                     TimeManager.TickRate))
             {
@@ -275,11 +261,85 @@ namespace NotThatWay.Game
             }
         }
 
+        /// <summary>
+        /// Diagnostics du battant. Aucun de ces compteurs ne modifie l'état partagé :
+        /// ils rendent lisible dans le journal ce que le tick a décidé.
+        /// </summary>
+        private void ObserveRotation(WallTickResult result, uint logicalTick)
+        {
+            var velocity = result.Current.AngularVelocityMilliDegreesPerTick;
+            if (velocity != 0)
+                _rotatingTickCount++;
+            _cumulativeRotationMilliDegrees += velocity;
+
+            if ((result.Events & WallTickEvents.SegmentChanged) != 0)
+            {
+                _segmentCount++;
+                if ((result.Events & WallTickEvents.RotationStarted) != 0)
+                {
+                    Debug.Log(
+                        $"[GAME-M1-WALL] rotation_started wall={_wallId} " +
+                        $"direction={Math.Sign(velocity)} netPermille={result.NetLeveragePermille} " +
+                        $"velocityMdeg={velocity} angleMdeg={result.Current.AngleMilliDegrees} " +
+                        $"sources={result.ContributingSourceCount} logicalTick={logicalTick} " +
+                        $"revision={result.Current.Revision}.");
+                }
+                else if ((result.Events & WallTickEvents.RotationStopped) != 0)
+                {
+                    Debug.Log(
+                        $"[GAME-M1-WALL] rotation_stopped wall={_wallId} " +
+                        $"angleMdeg={result.Current.AngleMilliDegrees} " +
+                        $"cumulativeMdeg={_cumulativeRotationMilliDegrees} " +
+                        $"logicalTick={logicalTick} revision={result.Current.Revision}.");
+                }
+                else if ((result.Events & WallTickEvents.DirectionReversed) != 0)
+                {
+                    _reversalCount++;
+                    Debug.Log(
+                        $"[GAME-M1-WALL] direction_reversed wall={_wallId} " +
+                        $"direction={Math.Sign(velocity)} netPermille={result.NetLeveragePermille} " +
+                        $"angleMdeg={result.Current.AngleMilliDegrees} logicalTick={logicalTick} " +
+                        $"revision={result.Current.Revision}.");
+                }
+            }
+
+            var opposed = (result.Events & WallTickEvents.TorqueOpposed) != 0;
+            if (opposed)
+            {
+                _opposedTorqueTickCount++;
+                if (!_wasOpposed)
+                {
+                    Debug.Log(
+                        $"[GAME-M1-WALL] torque_opposed wall={_wallId} " +
+                        $"sources={result.ContributingSourceCount} " +
+                        $"netPermille={result.NetLeveragePermille} " +
+                        $"angleMdeg={result.Current.AngleMilliDegrees} logicalTick={logicalTick}.");
+                }
+            }
+            _wasOpposed = opposed;
+
+            // Un quart de tour franchi est la preuve lisible qu'un battant libre
+            // dépasse ses deux poses historiques ; quatre d'affilée dans le même
+            // sens valent un tour complet.
+            var quarterIndex = _cumulativeRotationMilliDegrees /
+                               FixedTrigonometry.QuarterTurnMilliDegrees;
+            if (quarterIndex != _lastQuarterIndex)
+            {
+                _lastQuarterIndex = quarterIndex;
+                _quarterTurnCount++;
+                Debug.Log(
+                    $"[GAME-M1-WALL] quarter_turn wall={_wallId} quarterIndex={quarterIndex} " +
+                    $"angleMdeg={result.Current.AngleMilliDegrees} " +
+                    $"cumulativeMdeg={_cumulativeRotationMilliDegrees} logicalTick={logicalTick}.");
+            }
+        }
+
         private void CollectServerIntents()
         {
             _intents.Clear();
             PredictedPlayerMotor.CopyServerInstances(_serverPlayers);
             _serverPlayers.Sort((left, right) => left.ObjectId.CompareTo(right.ObjectId));
+            var angle = _serverMachine.State.AngleMilliDegrees;
             for (var index = 0; index < _serverPlayers.Count; index++)
             {
                 var player = _serverPlayers[index];
@@ -298,34 +358,19 @@ namespace NotThatWay.Game
 
                 if (!command.Has(PlayerCommandButtons.InteractHeld))
                     continue;
-                var state = _serverMachine.State;
-                if (state.IsTransitioning)
-                    continue;
 
-                var localPosition = _arena.transform.InverseTransformPoint(player.transform.position);
-                var controller = player.CharacterController;
-                var scale = player.transform.lossyScale;
-                var radiusMeters = controller == null
-                    ? 0.4f
-                    : controller.radius * Mathf.Max(Mathf.Abs(scale.x), Mathf.Abs(scale.z));
-                var decision = M1WallInteractionRules.Evaluate(
-                    _arena.Map,
-                    _wallId,
-                    state.StateId,
-                    QuantizeMillimeters(localPosition.x),
-                    QuantizeMillimeters(localPosition.z),
-                    QuantizeRadiusMillimeters(radiusMeters),
-                    _reachFromCapsuleMm);
+                var decision = EvaluateContact(angle, player.transform.position, RadiusOf(player));
                 if (!decision.Allowed)
                 {
                     _rejectedInteractionCount++;
                     continue;
                 }
 
-                _intents.Add(new WallEffortIntent(
+                _intents.Add(new WallTorqueIntent(
                     _wallId,
                     player.ObjectId,
-                    decision.EffortSign * _effortPerHeldTick));
+                    decision.Direction,
+                    decision.LeveragePermille));
                 _punchImpulses.Remove(player.ObjectId);
             }
 
@@ -333,34 +378,55 @@ namespace NotThatWay.Game
         }
 
         /// <summary>
-        /// Un coup de poing verse une impulsion bornée par le même plafond par
-        /// source et par tick que la poussée continue. La durée partagée avec le
-        /// cooldown garantit que deux coups ne suffisent pas et que trois coups
-        /// enchaînés atteignent le seuil.
+        /// Rejoue la règle pure sur une position monde. Le quantifieur reste ici :
+        /// la règle, elle, ne connaît que des millimètres entiers.
+        /// </summary>
+        private M1WallInteractionDecision EvaluateContact(
+            int angleMilliDegrees,
+            Vector3 worldPosition,
+            float radiusMeters)
+        {
+            var local = _arena.transform.InverseTransformPoint(worldPosition);
+            return M1WallInteractionRules.Evaluate(
+                _arena.Map,
+                _wallId,
+                angleMilliDegrees,
+                QuantizeMillimeters(local.x),
+                QuantizeMillimeters(local.z),
+                QuantizeRadiusMillimeters(radiusMeters),
+                _reachFromCapsuleMm,
+                _minimumLeveragePermille);
+        }
+
+        private static float RadiusOf(PredictedPlayerMotor player)
+        {
+            var controller = player.CharacterController;
+            var scale = player.transform.lossyScale;
+            return controller == null
+                ? 0.4f
+                : controller.radius * Mathf.Max(Mathf.Abs(scale.x), Mathf.Abs(scale.z));
+        }
+
+        /// <summary>
+        /// Un coup de poing verse le même couple qu'un appui, pendant une durée
+        /// bornée. Le sens et le levier sont figés au moment de l'impact : le
+        /// battant continue donc de tourner un instant après le coup.
         /// </summary>
         public bool TryRegisterPunchImpulse(int sourceId, Vector3 worldPosition, float radiusMeters)
         {
             if (!IsServerStarted || _serverMachine == null || _arena?.Map == null)
                 return false;
 
-            var state = _serverMachine.State;
-            if (state.IsTransitioning)
-                return false;
-
-            var localPosition = _arena.transform.InverseTransformPoint(worldPosition);
-            var decision = M1WallInteractionRules.Evaluate(
-                _arena.Map,
-                _wallId,
-                state.StateId,
-                QuantizeMillimeters(localPosition.x),
-                QuantizeMillimeters(localPosition.z),
-                QuantizeRadiusMillimeters(radiusMeters),
-                _reachFromCapsuleMm);
+            var decision = EvaluateContact(
+                _serverMachine.State.AngleMilliDegrees,
+                worldPosition,
+                radiusMeters);
             if (!decision.Allowed)
                 return false;
 
             _punchImpulses[sourceId] = new PunchImpulse(
-                decision.EffortSign,
+                decision.Direction,
+                decision.LeveragePermille,
                 M1PunchTuning.WallImpulseTicks);
             return true;
         }
@@ -374,10 +440,11 @@ namespace NotThatWay.Game
             foreach (var entry in _punchImpulses)
             {
                 var impulse = entry.Value;
-                _intents.Add(new WallEffortIntent(
+                _intents.Add(new WallTorqueIntent(
                     _wallId,
                     entry.Key,
-                    impulse.Sign * _effortPerHeldTick));
+                    impulse.Direction,
+                    impulse.LeveragePermille));
                 if (impulse.RemainingTicks <= 1u)
                     _expiredPunchSources.Add(entry.Key);
                 else
@@ -393,175 +460,49 @@ namespace NotThatWay.Game
 
         private readonly struct PunchImpulse
         {
-            public PunchImpulse(int sign, uint remainingTicks)
+            public PunchImpulse(int direction, int leveragePermille, uint remainingTicks)
             {
-                Sign = sign;
+                Direction = direction;
+                LeveragePermille = leveragePermille;
                 RemainingTicks = remainingTicks;
             }
 
-            public int Sign { get; }
+            public int Direction { get; }
+            public int LeveragePermille { get; }
             public uint RemainingTicks { get; }
 
-            public PunchImpulse Consumed() => new(Sign, RemainingTicks - 1u);
-        }
-
-        private WallTransitionGateDecision EvaluateTransition(WallTransitionRequest request)
-        {
-            BuildServerObstacles();
-            var decision = TopologyTransitionGuard.Evaluate(
-                _arena.Map,
-                _arena.WallStates,
-                request.WallId,
-                request.ToStateId,
-                TopologyTransitionPolicy.M1PushDuel,
-                _obstacles);
-            _lastGateBlockingId = decision.BlockingId;
-            return decision.Allowed
-                ? WallTransitionGateDecision.Accept()
-                : WallTransitionGateDecision.Reject(decision.RejectionCode);
-        }
-
-        private void ObserveIntentComposition()
-        {
-            var hasNegative = false;
-            var hasPositive = false;
-            for (var index = 0; index < _intents.Count; index++)
-            {
-                hasNegative |= _intents[index].SignedEffort < 0;
-                hasPositive |= _intents[index].SignedEffort > 0;
-            }
-            if (hasNegative && hasPositive)
-            {
-                long netEffort = 0L;
-                for (var index = 0; index < _intents.Count; index++)
-                    netEffort += _intents[index].SignedEffort;
-                if (netEffort != 0L)
-                    return;
-
-                _opposedEffortTickCount++;
-                if (_opposedEffortTickCount == 1u)
-                {
-                    Debug.Log(
-                        $"[GAME-M1-WALL] balanced_opposition wall={_wallId} " +
-                        $"sources={_intents.Count} netEffort=0 logicalTick={AuthoritativeTick}.",
-                        this);
-                }
-            }
-        }
-
-        private void BuildServerObstacles()
-        {
-            _obstacles.Clear();
-            PredictedPlayerMotor.CopyServerInstances(_serverPlayers);
-            _serverPlayers.Sort((left, right) => left.ObjectId.CompareTo(right.ObjectId));
-            for (var index = 0; index < _serverPlayers.Count; index++)
-            {
-                var player = _serverPlayers[index];
-                if (player.ObjectId < 0)
-                    continue;
-                var controller = player.CharacterController;
-                var scale = player.transform.lossyScale;
-                var radius = controller == null
-                    ? 0.4f
-                    : controller.radius * Mathf.Max(Mathf.Abs(scale.x), Mathf.Abs(scale.z));
-                _obstacles.Add(_arena.CreateObstacleFromWorld(
-                    player.ObjectId,
-                    player.transform.position,
-                    radius));
-            }
+            public PunchImpulse Consumed() =>
+                new(Direction, LeveragePermille, RemainingTicks - 1u);
         }
 
         /// <summary>
-        /// Preuve runtime de la post-condition physique : une transition terminée
-        /// ne doit laisser aucune capsule dans le volume stable du battant. Le log
-        /// est consommé par le scénario réseau d'occupation.
-        /// </summary>
-        private void ValidateCompletedPoseClear(int stateId, uint logicalTick)
-        {
-            BuildServerObstacles();
-            var destination = TopologyGeometry.WallBox(_arena.Map, _wallId, stateId);
-            var hasBlockingPlayer = false;
-            var blockingId = 0;
-            var blockingCenterXMm = 0;
-            var blockingCenterZMm = 0;
-            var blockingRadiusMm = 0;
-            for (var index = 0; index < _obstacles.Count; index++)
-            {
-                var obstacle = _obstacles[index];
-                if (!destination.IntersectsCircle(
-                        obstacle.CenterXMm,
-                        obstacle.CenterZMm,
-                        obstacle.RadiusMm))
-                {
-                    continue;
-                }
-
-                if (!hasBlockingPlayer || obstacle.ObstacleId < blockingId)
-                {
-                    blockingId = obstacle.ObstacleId;
-                    blockingCenterXMm = obstacle.CenterXMm;
-                    blockingCenterZMm = obstacle.CenterZMm;
-                    blockingRadiusMm = obstacle.RadiusMm;
-                }
-                hasBlockingPlayer = true;
-            }
-
-            if (hasBlockingPlayer)
-            {
-                Debug.LogError(
-                    $"[GAME-M1-WALL] completed_pose_overlap wall={_wallId} " +
-                    $"state={stateId} playerId={blockingId} " +
-                    $"playerMm={blockingCenterXMm},{blockingCenterZMm} " +
-                    $"radiusMm={blockingRadiusMm} logicalTick={logicalTick}.",
-                    this);
-                return;
-            }
-
-            Debug.Log(
-                $"[GAME-M1-WALL] completed_pose_clear wall={_wallId} state={stateId} " +
-                $"logicalTick={logicalTick}.",
-                this);
-        }
-
-        /// <summary>
-        /// La porte écarte ce qu'elle balaie. L'hôte mesure le recouvrement réel
-        /// de la pose du tick et injecte une vitesse tangentielle par le même
-        /// chemin autoritaire que le recul d'un coup : le propriétaire la prédit,
-        /// la réconciliation corrige. Le mur, lui, ne s'arrête jamais — sa pose
-        /// reste une fonction du tick.
+        /// La porte écarte ce qu'elle balaie. L'hôte mesure le recouvrement de la
+        /// pose du tick sur le segment déterministe du battant, puis injecte une
+        /// vitesse tangentielle par le même chemin autoritaire que le recul d'un
+        /// coup : le propriétaire la prédit, la réconciliation corrige. Le battant,
+        /// lui, ne s'arrête jamais — sa pose reste une fonction du tick.
         /// </summary>
         private void PushSweptPlayers(WallState state, uint logicalTick)
         {
-            if (!state.ActiveTransition.HasValue)
+            if (!state.IsRotating)
             {
-                _lastMidTransitionBlockingId = 0;
+                _lastMidRotationBlockingId = 0;
                 return;
             }
             if (logicalTick % PushSampleIntervalTicks != 0u)
                 return;
 
-            var transition = state.ActiveTransition.Value;
             var map = _arena.Map;
-            var pivotLocal = TopologyGeometry
-                .QuarterTurnSweep(map, _wallId, transition.FromStateId, transition.ToStateId)
-                .PivotMm.Meters;
-            var progress = state.SamplePose(logicalTick).ProgressQ16 /
-                           (float)TickMath.CompleteProgressQ16;
-            var fromDirection = FlatDirection(
-                TopologyGeometry.WallBox(map, _wallId, transition.FromStateId).CenterMeters -
-                pivotLocal);
-            var toDirection = FlatDirection(
-                TopologyGeometry.WallBox(map, _wallId, transition.ToStateId).CenterMeters -
-                pivotLocal);
-            var turnSign = Mathf.Sign(Vector3.Cross(fromDirection, toDirection).y);
-            var bladeDirection = Quaternion.Euler(0f, turnSign * 90f * progress, 0f) * fromDirection;
-
-            // Le battant est un segment issu du gond : longueur d'arête et
-            // demi-épaisseur viennent de la topologie, pas d'une requête physique
-            // dont le résultat dépendrait du moteur et de la plateforme.
+            var pivotLocal = _blade.PivotMm.Meters;
+            _blade.UnitDirection(state.AngleMilliDegrees, out var unitXQ16, out var unitZQ16);
+            var bladeDirection = new Vector3(
+                unitXQ16 / (float)FixedTrigonometry.Scale,
+                0f,
+                unitZQ16 / (float)FixedTrigonometry.Scale);
             var bladeLength = map.Dimensions.CellPitchMm / 1000f;
             var halfThickness = map.Dimensions.WallThicknessMm / 2000f;
-            var angularSpeed = SignedAngularSpeed(transition, pivotLocal);
+            var angularSpeed = state.AngularVelocityMilliDegreesPerTick *
+                               TimeManager.TickRate * 0.001f * Mathf.Deg2Rad;
 
             PredictedPlayerMotor.CopyServerInstances(_serverPlayers);
             var pushedThisSample = false;
@@ -571,24 +512,23 @@ namespace NotThatWay.Game
                 if (motor == null)
                     continue;
 
+                // Celui qui pousse n'est pas balayé : ses mains sont sur le battant
+                // par choix. Lui injecter la vitesse tangentielle le catapulterait
+                // sur le côté au lieu de le laisser accompagner la porte.
+                if (IsPushing(motor.ObjectId))
+                    continue;
+
                 var radial = FlatVector(
                     _arena.transform.InverseTransformPoint(motor.transform.position) - pivotLocal);
-                var controller = motor.CharacterController;
-                var scale = motor.transform.lossyScale;
-                var radius = controller == null
-                    ? 0.4f
-                    : controller.radius * Mathf.Max(Mathf.Abs(scale.x), Mathf.Abs(scale.z));
-
-                var along = Mathf.Clamp(Vector3.Dot(radial, bladeDirection), 0f, bladeLength);
-                var lateral = (radial - bladeDirection * along).magnitude;
-                if (lateral > halfThickness + radius)
-                    continue;
                 if (radial.sqrMagnitude < 0.0001f)
                     continue;
 
-                var surfaceVelocity = Vector3.Cross(
-                    new Vector3(0f, angularSpeed, 0f),
-                    radial);
+                var along = Mathf.Clamp(Vector3.Dot(radial, bladeDirection), 0f, bladeLength);
+                var lateral = (radial - bladeDirection * along).magnitude;
+                if (lateral > halfThickness + RadiusOf(motor))
+                    continue;
+
+                var surfaceVelocity = Vector3.Cross(new Vector3(0f, angularSpeed, 0f), radial);
                 var targetSpeed = Mathf.Min(
                     MaximumPushSpeedMetersPerSecond,
                     surfaceVelocity.magnitude + ClearanceSpeedMetersPerSecond);
@@ -598,41 +538,31 @@ namespace NotThatWay.Game
                 _sweptPushCount++;
                 pushedThisSample = true;
 
-                if (motor.ObjectId == _lastMidTransitionBlockingId)
+                if (motor.ObjectId == _lastMidRotationBlockingId)
                     continue;
-                _lastMidTransitionBlockingId = motor.ObjectId;
+                _lastMidRotationBlockingId = motor.ObjectId;
                 Debug.Log(
                     $"[GAME-M1-WALL] swept_player_pushed wall={_wallId} " +
                     $"playerId={motor.ObjectId} speed={localVelocity.magnitude:F2} " +
-                    $"logicalTick={logicalTick}.");
+                    $"angleMdeg={state.AngleMilliDegrees} logicalTick={logicalTick}.");
             }
 
             if (!pushedThisSample)
-                _lastMidTransitionBlockingId = 0;
+                _lastMidRotationBlockingId = 0;
+        }
+
+        private bool IsPushing(int sourceId)
+        {
+            for (var index = 0; index < _intents.Count; index++)
+            {
+                if (_intents[index].SourceId == sourceId)
+                    return true;
+            }
+
+            return false;
         }
 
         private static Vector3 FlatVector(Vector3 value) => new(value.x, 0f, value.z);
-
-        private static Vector3 FlatDirection(Vector3 value) => FlatVector(value).normalized;
-
-        /// <summary>
-        /// Sens et vitesse de rotation déduits des deux poses : la pose d'arrivée
-        /// donne le sens, la durée de transition donne la cadence.
-        /// </summary>
-        private float SignedAngularSpeed(WallTransition transition, Vector3 pivotLocal)
-        {
-            var from = TopologyGeometry
-                .WallBox(_arena.Map, _wallId, transition.FromStateId).CenterMeters - pivotLocal;
-            var to = TopologyGeometry
-                .WallBox(_arena.Map, _wallId, transition.ToStateId).CenterMeters - pivotLocal;
-            from.y = 0f;
-            to.y = 0f;
-            var sign = Mathf.Sign(Vector3.Cross(from.normalized, to.normalized).y);
-            var durationSeconds = (float)(transition.DurationTicks * TimeManager.TickDelta);
-            return durationSeconds <= 0f
-                ? 0f
-                : sign * (Mathf.PI * 0.5f) / durationSeconds;
-        }
 
         [ObserversRpc(BufferLast = true, ExcludeServer = true)]
         private void ReceiveSnapshotObserversRpc(
@@ -745,17 +675,13 @@ namespace NotThatWay.Game
                 return;
             }
 
-            WallStateMachine candidateMachine = null;
+            WallRotationMachine candidateMachine = null;
             WallSnapshotApplyStatus applyStatus;
             if (_clientMachine == null)
             {
                 try
                 {
-                    candidateMachine = WallStateMachine.FromSnapshot(
-                        _settings,
-                        _negativeStateId,
-                        _positiveStateId,
-                        snapshot);
+                    candidateMachine = WallRotationMachine.FromSnapshot(_settings, snapshot);
                     applyStatus = WallSnapshotApplyStatus.Applied;
                 }
                 catch (ArgumentException)
@@ -811,8 +737,8 @@ namespace NotThatWay.Game
             {
                 Debug.Log(
                     $"[GAME-M1-WALL] first_snapshot wall={_wallId} " +
-                    $"state={snapshot.StateId} revision={snapshot.Revision} " +
-                    $"capturedTick={snapshot.CapturedTick} transitioning={snapshot.IsTransitioning} " +
+                    $"angleMdeg={snapshot.AngleMilliDegrees} revision={snapshot.Revision} " +
+                    $"capturedTick={snapshot.CapturedTick} rotating={snapshot.IsRotating} " +
                     $"source={source} serverTick={serverTransportTick} " +
                     $"liveTick={_liveClock.Tick} checksum={topologyChecksum}.",
                     this);
@@ -853,13 +779,16 @@ namespace NotThatWay.Game
 
         private void ApplyTimeline(WallSnapshotTimelineSample sample, uint serverTransportTick)
         {
-            ApplyState(sample.Snapshot.ToWallState(), sample.ProjectLogicalTick(serverTransportTick));
+            ApplyState(
+                sample.Snapshot.ToWallState(),
+                sample.ProjectLogicalTick(serverTransportTick));
         }
 
         private void ApplyState(WallState state, uint logicalTick)
         {
-            var pose = state.SamplePose(logicalTick);
-            _arena.ApplyAuthoritativePose(_wallId, state.StateId, pose);
+            _arena.ApplyAuthoritativePose(
+                _wallId,
+                state.SamplePose(logicalTick, _settings.MaximumExtrapolationTicks));
         }
 
         private void RejectSnapshot(string reason)
@@ -887,30 +816,20 @@ namespace NotThatWay.Game
                 throw new InvalidOperationException("TopologyArena M1 construite introuvable.");
 
             _wallDefinition = _arena.Map.GetWall(_wallId);
-            if (!_wallDefinition.IsMobile || _wallDefinition.States.Count != 2)
+            if (!_wallDefinition.IsMobile)
             {
                 throw new InvalidOperationException(
-                    $"Le mur M1 {_wallId} doit être mobile et posséder exactement deux états.");
+                    $"Le mur M1 {_wallId} doit être mobile et déclarer un gond.");
             }
 
-            _negativeStateId = _wallDefinition.States[0].StateId;
-            _positiveStateId = _wallDefinition.States[1].StateId;
+            _blade = TopologyGeometry.Blade(_arena.Map, _wallId);
             _settings = new WallSimulationSettings(
-                _effortThreshold,
-                _maximumEffortPerSourcePerTick,
-                _effortDecayPerTick,
-                _rejectedEffortRetention,
-                _transitionDurationTicks);
+                _maximumAngularSpeedMilliDegreesPerTick,
+                _minimumLeveragePermille,
+                _maximumExtrapolationTicks);
             _simulationFingerprint = WallSnapshotReceiverPolicy.ComputeSimulationFingerprint(
                 _settings,
-                _effortPerHeldTick,
                 _reachFromCapsuleMm);
-            if (_effortPerHeldTick <= 0 ||
-                _effortPerHeldTick > _maximumEffortPerSourcePerTick)
-            {
-                throw new InvalidOperationException(
-                    "L'effort M1 par tick doit être positif et borné par source.");
-            }
         }
 
         private void EnsureClientHistory()
@@ -933,9 +852,10 @@ namespace NotThatWay.Game
             if (!string.Equals(source, "target", StringComparison.Ordinal))
                 return;
             Debug.Log(
-                $"[GAME-M1-WALL] target_snapshot wall={_wallId} state={snapshot.StateId} " +
-                $"revision={snapshot.Revision} capturedTick={snapshot.CapturedTick} " +
-                $"transitioning={snapshot.IsTransitioning} serverTick={serverTransportTick} " +
+                $"[GAME-M1-WALL] target_snapshot wall={_wallId} " +
+                $"angleMdeg={snapshot.AngleMilliDegrees} revision={snapshot.Revision} " +
+                $"capturedTick={snapshot.CapturedTick} rotating={snapshot.IsRotating} " +
+                $"serverTick={serverTransportTick} " +
                 $"record={recordStatus.ToString().ToLowerInvariant()}.",
                 this);
         }
