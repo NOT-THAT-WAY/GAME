@@ -15,6 +15,7 @@ namespace NotThatWay.Game.Topology
         public const string ConnectivityWouldBreakDuelRegion = "connectivity_would_break_duel_region";
         public const string PerimeterWouldOpen = "perimeter_would_open";
         public const string PlayerInSweptArc = "player_in_swept_arc";
+        public const string DestinationPoseOccupied = "destination_pose_occupied";
     }
 
     public readonly struct TopologyTransitionPolicy
@@ -22,19 +23,32 @@ namespace NotThatWay.Game.Topology
         public TopologyTransitionPolicy(
             bool requireSpawnConnectivity,
             bool requireClosedPerimeter,
-            bool rejectSweepObstacles)
+            bool rejectSweepObstacles,
+            bool rejectDestinationObstacles = false)
         {
             RequireSpawnConnectivity = requireSpawnConnectivity;
             RequireClosedPerimeter = requireClosedPerimeter;
             RejectSweepObstacles = rejectSweepObstacles;
+            RejectDestinationObstacles = rejectDestinationObstacles;
         }
 
         public bool RequireSpawnConnectivity { get; }
         public bool RequireClosedPerimeter { get; }
         public bool RejectSweepObstacles { get; }
+        public bool RejectDestinationObstacles { get; }
 
-        /// <summary>Preset de preuve M1, pas une décision implicite pour la map 16x16.</summary>
+        /// <summary>
+        /// Preset conservateur : tout obstacle dans l'arc interdit la transition.
+        /// Sert au graybox pur et aux tests du modèle, pas au banc jouable.
+        /// </summary>
         public static TopologyTransitionPolicy GrayboxDuel => new(true, true, true);
+
+        /// <summary>
+        /// Preset du banc M1 : la porte balaie et pousse ce qui se trouve sur son
+        /// passage, mais ne se referme jamais dans un joueur. Seule la pose de
+        /// destination reste interdite d'occupation.
+        /// </summary>
+        public static TopologyTransitionPolicy M1PushDuel => new(true, true, false, true);
     }
 
     /// <summary>Disque horizontal déjà quantifié dans l'espace local de la topologie.</summary>
@@ -168,6 +182,32 @@ namespace NotThatWay.Game.Topology
                 if (hasBlockingObstacle)
                     return TopologyTransitionDecision.Reject(
                         TopologyTransitionRejectionCodes.PlayerInSweptArc,
+                        blockingObstacleId);
+            }
+            else if (policy.RejectDestinationObstacles)
+            {
+                // Un mur peut balayer quelqu'un, jamais se matérialiser dans son
+                // volume : seule la pose d'arrivée reste interdite d'occupation.
+                var destination = TopologyGeometry.WallBox(map, wallId, targetStateId);
+                var hasBlockingObstacle = false;
+                var blockingObstacleId = 0;
+                foreach (var obstacle in obstacles)
+                {
+                    if (!destination.IntersectsCircle(
+                            obstacle.CenterXMm,
+                            obstacle.CenterZMm,
+                            obstacle.RadiusMm))
+                    {
+                        continue;
+                    }
+
+                    if (!hasBlockingObstacle || obstacle.ObstacleId < blockingObstacleId)
+                        blockingObstacleId = obstacle.ObstacleId;
+                    hasBlockingObstacle = true;
+                }
+                if (hasBlockingObstacle)
+                    return TopologyTransitionDecision.Reject(
+                        TopologyTransitionRejectionCodes.DestinationPoseOccupied,
                         blockingObstacleId);
             }
 

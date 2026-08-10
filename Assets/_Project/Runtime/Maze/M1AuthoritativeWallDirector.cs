@@ -66,6 +66,20 @@ namespace NotThatWay.Game
         private uint _observerSnapshotCount;
         private int _lastMidTransitionBlockingId;
 
+        // La porte écarte, elle ne catapulte pas : la vitesse tangentielle est
+        // bornée, et l'échantillon vaut un tick sur deux pour ne pas noyer le
+        // propriétaire distant sous les RPC pendant les 90 ticks de bascule.
+        private const float MaximumPushSpeedMetersPerSecond = 3.5f;
+        private const float ClearanceSpeedMetersPerSecond = 1f;
+        private const uint PushSampleIntervalTicks = 2u;
+        private uint _sweptPushCount;
+
+        // Quarante ticks d'impulsion avec un cooldown de quarante-huit ticks :
+        // deux coups restent sous le seuil malgré le decay, le troisième ouvre.
+        private readonly Dictionary<int, PunchImpulse> _punchImpulses = new(4);
+        private readonly Dictionary<int, PunchImpulse> _pendingPunchImpulses = new(4);
+        private readonly List<int> _expiredPunchSources = new(4);
+
         public bool IsReady => _arena != null && _wallDefinition != null;
         public WallState AuthoritativeState => _serverMachine?.State ?? default;
         public uint AuthoritativeTick => _serverMachine?.LastProcessedTick ?? 0u;
@@ -80,6 +94,15 @@ namespace NotThatWay.Game
         public uint CompletedTransitionCount => _completedTransitionCount;
         public uint RejectedTransitionCount => _rejectedTransitionCount;
         public uint OpposedEffortTickCount => _opposedEffortTickCount;
+        public uint SweptPushCount => _sweptPushCount;
+
+        // Exposé pour l'indicateur local du pousseur : il rejoue la règle pure
+        // sur sa propre position pour savoir pourquoi rien ne bouge. L'hôte
+        // reste seul juge de l'effort réellement compté.
+        public int WallId => _wallId;
+        public int EffortThreshold => _effortThreshold;
+        public int ReachFromCapsuleMm => _reachFromCapsuleMm;
+        public int NegativeStateId => _negativeStateId;
         public uint TargetSnapshotCount => _targetSnapshotCount;
         public uint ObserverSnapshotCount => _observerSnapshotCount;
 
@@ -207,7 +230,7 @@ namespace NotThatWay.Game
             var logicalTick = TickMath.Next(_serverMachine.LastProcessedTick);
             var result = _serverMachine.AdvanceTick(logicalTick, _intents, EvaluateTransition);
             ApplyState(result.Current, logicalTick);
-            ObserveMidTransitionOccupancy(result.Current);
+            PushSweptPlayers(result.Current, logicalTick);
 
             if ((result.Events & WallTickEvents.TransitionStarted) != 0)
             {
@@ -228,6 +251,7 @@ namespace NotThatWay.Game
             if ((result.Events & WallTickEvents.TransitionCompleted) != 0)
             {
                 _completedTransitionCount++;
+                ValidateCompletedPoseClear(result.Current.StateId, logicalTick);
                 Debug.Log(
                     $"[GAME-M1-WALL] transition_completed wall={_wallId} " +
                     $"state={result.Current.StateId} logicalTick={logicalTick} " +
@@ -302,7 +326,83 @@ namespace NotThatWay.Game
                     _wallId,
                     player.ObjectId,
                     decision.EffortSign * _effortPerHeldTick));
+                _punchImpulses.Remove(player.ObjectId);
             }
+
+            AppendPunchIntents();
+        }
+
+        /// <summary>
+        /// Un coup de poing verse une impulsion bornée par le même plafond par
+        /// source et par tick que la poussée continue. La durée partagée avec le
+        /// cooldown garantit que deux coups ne suffisent pas et que trois coups
+        /// enchaînés atteignent le seuil.
+        /// </summary>
+        public bool TryRegisterPunchImpulse(int sourceId, Vector3 worldPosition, float radiusMeters)
+        {
+            if (!IsServerStarted || _serverMachine == null || _arena?.Map == null)
+                return false;
+
+            var state = _serverMachine.State;
+            if (state.IsTransitioning)
+                return false;
+
+            var localPosition = _arena.transform.InverseTransformPoint(worldPosition);
+            var decision = M1WallInteractionRules.Evaluate(
+                _arena.Map,
+                _wallId,
+                state.StateId,
+                QuantizeMillimeters(localPosition.x),
+                QuantizeMillimeters(localPosition.z),
+                QuantizeRadiusMillimeters(radiusMeters),
+                _reachFromCapsuleMm);
+            if (!decision.Allowed)
+                return false;
+
+            _punchImpulses[sourceId] = new PunchImpulse(
+                decision.EffortSign,
+                M1PunchTuning.WallImpulseTicks);
+            return true;
+        }
+
+        private void AppendPunchIntents()
+        {
+            if (_punchImpulses.Count == 0)
+                return;
+
+            _expiredPunchSources.Clear();
+            foreach (var entry in _punchImpulses)
+            {
+                var impulse = entry.Value;
+                _intents.Add(new WallEffortIntent(
+                    _wallId,
+                    entry.Key,
+                    impulse.Sign * _effortPerHeldTick));
+                if (impulse.RemainingTicks <= 1u)
+                    _expiredPunchSources.Add(entry.Key);
+                else
+                    _pendingPunchImpulses[entry.Key] = impulse.Consumed();
+            }
+
+            foreach (var pair in _pendingPunchImpulses)
+                _punchImpulses[pair.Key] = pair.Value;
+            _pendingPunchImpulses.Clear();
+            for (var index = 0; index < _expiredPunchSources.Count; index++)
+                _punchImpulses.Remove(_expiredPunchSources[index]);
+        }
+
+        private readonly struct PunchImpulse
+        {
+            public PunchImpulse(int sign, uint remainingTicks)
+            {
+                Sign = sign;
+                RemainingTicks = remainingTicks;
+            }
+
+            public int Sign { get; }
+            public uint RemainingTicks { get; }
+
+            public PunchImpulse Consumed() => new(Sign, RemainingTicks - 1u);
         }
 
         private WallTransitionGateDecision EvaluateTransition(WallTransitionRequest request)
@@ -313,7 +413,7 @@ namespace NotThatWay.Game
                 _arena.WallStates,
                 request.WallId,
                 request.ToStateId,
-                TopologyTransitionPolicy.GrayboxDuel,
+                TopologyTransitionPolicy.M1PushDuel,
                 _obstacles);
             _lastGateBlockingId = decision.BlockingId;
             return decision.Allowed
@@ -371,36 +471,167 @@ namespace NotThatWay.Game
             }
         }
 
-        private void ObserveMidTransitionOccupancy(WallState state)
+        /// <summary>
+        /// Preuve runtime de la post-condition physique : une transition terminée
+        /// ne doit laisser aucune capsule dans le volume stable du battant. Le log
+        /// est consommé par le scénario réseau d'occupation.
+        /// </summary>
+        private void ValidateCompletedPoseClear(int stateId, uint logicalTick)
+        {
+            BuildServerObstacles();
+            var destination = TopologyGeometry.WallBox(_arena.Map, _wallId, stateId);
+            var hasBlockingPlayer = false;
+            var blockingId = 0;
+            var blockingCenterXMm = 0;
+            var blockingCenterZMm = 0;
+            var blockingRadiusMm = 0;
+            for (var index = 0; index < _obstacles.Count; index++)
+            {
+                var obstacle = _obstacles[index];
+                if (!destination.IntersectsCircle(
+                        obstacle.CenterXMm,
+                        obstacle.CenterZMm,
+                        obstacle.RadiusMm))
+                {
+                    continue;
+                }
+
+                if (!hasBlockingPlayer || obstacle.ObstacleId < blockingId)
+                {
+                    blockingId = obstacle.ObstacleId;
+                    blockingCenterXMm = obstacle.CenterXMm;
+                    blockingCenterZMm = obstacle.CenterZMm;
+                    blockingRadiusMm = obstacle.RadiusMm;
+                }
+                hasBlockingPlayer = true;
+            }
+
+            if (hasBlockingPlayer)
+            {
+                Debug.LogError(
+                    $"[GAME-M1-WALL] completed_pose_overlap wall={_wallId} " +
+                    $"state={stateId} playerId={blockingId} " +
+                    $"playerMm={blockingCenterXMm},{blockingCenterZMm} " +
+                    $"radiusMm={blockingRadiusMm} logicalTick={logicalTick}.",
+                    this);
+                return;
+            }
+
+            Debug.Log(
+                $"[GAME-M1-WALL] completed_pose_clear wall={_wallId} state={stateId} " +
+                $"logicalTick={logicalTick}.",
+                this);
+        }
+
+        /// <summary>
+        /// La porte écarte ce qu'elle balaie. L'hôte mesure le recouvrement réel
+        /// de la pose du tick et injecte une vitesse tangentielle par le même
+        /// chemin autoritaire que le recul d'un coup : le propriétaire la prédit,
+        /// la réconciliation corrige. Le mur, lui, ne s'arrête jamais — sa pose
+        /// reste une fonction du tick.
+        /// </summary>
+        private void PushSweptPlayers(WallState state, uint logicalTick)
         {
             if (!state.ActiveTransition.HasValue)
             {
                 _lastMidTransitionBlockingId = 0;
                 return;
             }
+            if (logicalTick % PushSampleIntervalTicks != 0u)
+                return;
 
             var transition = state.ActiveTransition.Value;
-            BuildServerObstacles();
-            var decision = TopologyTransitionGuard.Evaluate(
-                _arena.Map,
-                _arena.WallStates,
-                transition.WallId,
-                transition.ToStateId,
-                TopologyTransitionPolicy.GrayboxDuel,
-                _obstacles);
-            if (decision.Allowed)
-            {
-                _lastMidTransitionBlockingId = 0;
-                return;
-            }
-            if (decision.BlockingId == _lastMidTransitionBlockingId)
-                return;
+            var map = _arena.Map;
+            var pivotLocal = TopologyGeometry
+                .QuarterTurnSweep(map, _wallId, transition.FromStateId, transition.ToStateId)
+                .PivotMm.Meters;
+            var progress = state.SamplePose(logicalTick).ProgressQ16 /
+                           (float)TickMath.CompleteProgressQ16;
+            var fromDirection = FlatDirection(
+                TopologyGeometry.WallBox(map, _wallId, transition.FromStateId).CenterMeters -
+                pivotLocal);
+            var toDirection = FlatDirection(
+                TopologyGeometry.WallBox(map, _wallId, transition.ToStateId).CenterMeters -
+                pivotLocal);
+            var turnSign = Mathf.Sign(Vector3.Cross(fromDirection, toDirection).y);
+            var bladeDirection = Quaternion.Euler(0f, turnSign * 90f * progress, 0f) * fromDirection;
 
-            _lastMidTransitionBlockingId = decision.BlockingId;
-            Debug.LogWarning(
-                $"[GAME-M1-WALL] sweep_entered_during_transition wall={_wallId} " +
-                $"blockingId={decision.BlockingId} policy=continue logicalTick={AuthoritativeTick}.",
-                this);
+            // Le battant est un segment issu du gond : longueur d'arête et
+            // demi-épaisseur viennent de la topologie, pas d'une requête physique
+            // dont le résultat dépendrait du moteur et de la plateforme.
+            var bladeLength = map.Dimensions.CellPitchMm / 1000f;
+            var halfThickness = map.Dimensions.WallThicknessMm / 2000f;
+            var angularSpeed = SignedAngularSpeed(transition, pivotLocal);
+
+            PredictedPlayerMotor.CopyServerInstances(_serverPlayers);
+            var pushedThisSample = false;
+            for (var index = 0; index < _serverPlayers.Count; index++)
+            {
+                var motor = _serverPlayers[index];
+                if (motor == null)
+                    continue;
+
+                var radial = FlatVector(
+                    _arena.transform.InverseTransformPoint(motor.transform.position) - pivotLocal);
+                var controller = motor.CharacterController;
+                var scale = motor.transform.lossyScale;
+                var radius = controller == null
+                    ? 0.4f
+                    : controller.radius * Mathf.Max(Mathf.Abs(scale.x), Mathf.Abs(scale.z));
+
+                var along = Mathf.Clamp(Vector3.Dot(radial, bladeDirection), 0f, bladeLength);
+                var lateral = (radial - bladeDirection * along).magnitude;
+                if (lateral > halfThickness + radius)
+                    continue;
+                if (radial.sqrMagnitude < 0.0001f)
+                    continue;
+
+                var surfaceVelocity = Vector3.Cross(
+                    new Vector3(0f, angularSpeed, 0f),
+                    radial);
+                var targetSpeed = Mathf.Min(
+                    MaximumPushSpeedMetersPerSecond,
+                    surfaceVelocity.magnitude + ClearanceSpeedMetersPerSecond);
+                var localVelocity = surfaceVelocity.normalized * targetSpeed;
+                motor.ApplyPushVelocityFromServer(
+                    _arena.transform.TransformDirection(localVelocity));
+                _sweptPushCount++;
+                pushedThisSample = true;
+
+                if (motor.ObjectId == _lastMidTransitionBlockingId)
+                    continue;
+                _lastMidTransitionBlockingId = motor.ObjectId;
+                Debug.Log(
+                    $"[GAME-M1-WALL] swept_player_pushed wall={_wallId} " +
+                    $"playerId={motor.ObjectId} speed={localVelocity.magnitude:F2} " +
+                    $"logicalTick={logicalTick}.");
+            }
+
+            if (!pushedThisSample)
+                _lastMidTransitionBlockingId = 0;
+        }
+
+        private static Vector3 FlatVector(Vector3 value) => new(value.x, 0f, value.z);
+
+        private static Vector3 FlatDirection(Vector3 value) => FlatVector(value).normalized;
+
+        /// <summary>
+        /// Sens et vitesse de rotation déduits des deux poses : la pose d'arrivée
+        /// donne le sens, la durée de transition donne la cadence.
+        /// </summary>
+        private float SignedAngularSpeed(WallTransition transition, Vector3 pivotLocal)
+        {
+            var from = TopologyGeometry
+                .WallBox(_arena.Map, _wallId, transition.FromStateId).CenterMeters - pivotLocal;
+            var to = TopologyGeometry
+                .WallBox(_arena.Map, _wallId, transition.ToStateId).CenterMeters - pivotLocal;
+            from.y = 0f;
+            to.y = 0f;
+            var sign = Mathf.Sign(Vector3.Cross(from.normalized, to.normalized).y);
+            var durationSeconds = (float)(transition.DurationTicks * TimeManager.TickDelta);
+            return durationSeconds <= 0f
+                ? 0f
+                : sign * (Mathf.PI * 0.5f) / durationSeconds;
         }
 
         [ObserversRpc(BufferLast = true, ExcludeServer = true)]

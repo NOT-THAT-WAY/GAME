@@ -21,6 +21,43 @@ namespace NotThatWay.Game.PlayerSimulation
         public override int GetHashCode() => HorizontalVelocityDelta.GetHashCode();
     }
 
+    /// <summary>
+    /// Convertit une vitesse de poussée cible en correction d'impulsion. Seule la
+    /// composante projetée sur la direction cible est remplacée : répéter la même
+    /// poussée maintient la vitesse au lieu de l'additionner sans limite.
+    /// </summary>
+    internal static class PlayerPushVelocity
+    {
+        public static PlayerVector3 CorrectionToTarget(
+            PlayerVector3 currentVelocity,
+            PlayerVector3 pendingCorrection,
+            PlayerVector3 targetVelocity)
+        {
+            PlayerState.EnsureHorizontal(currentVelocity, nameof(currentVelocity));
+            PlayerState.EnsureHorizontal(pendingCorrection, nameof(pendingCorrection));
+            PlayerState.EnsureHorizontal(targetVelocity, nameof(targetVelocity));
+
+            var targetMagnitude = targetVelocity.HorizontalMagnitude;
+            if (targetMagnitude <= 0d)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(targetVelocity),
+                    "La vitesse de poussée cible doit être non nulle.");
+            }
+
+            var directionX = targetVelocity.X / targetMagnitude;
+            var directionZ = targetVelocity.Z / targetMagnitude;
+            var effectiveVelocity = currentVelocity + pendingCorrection;
+            var projectedVelocity = effectiveVelocity.X * directionX +
+                                    effectiveVelocity.Z * directionZ;
+            var correctionMagnitude = targetMagnitude - projectedVelocity;
+            return new PlayerVector3(
+                directionX * correctionMagnitude,
+                0d,
+                directionZ * correctionMagnitude);
+        }
+    }
+
     [Flags]
     public enum PlayerTickEvents : byte
     {

@@ -188,17 +188,17 @@ printf '\nM1 lancé à %s joueurs. Logs: %s\n\n' "$PLAYERS" "$RESULTS_DIRECTORY"
 if (( PLAYERS == 3 )); then
   printf '%s\n' \
     'Quête 1 — fenêtre par fenêtre, déplacer chaque joueur puis le rapprocher du centre. PASS si les trois répondent sans blocage/reset et leurs mouvements sont visibles à distance.' \
-    'Quête 2 — côté pad rouge, près du pivot orange, maintenir E 2 s. PASS si le mur cyan devient horizontal sur les trois fenêtres.' \
-    'Quête 3 — au même endroit, maintenir encore E 2 s. PASS si le mur revient vertical sur les trois fenêtres.' \
-    'Quête 4 — garder le pousseur immobile, placer le troisième joueur sur le pad vert puis maintenir E 2 s. PASS si le mur reste vertical et personne n est déplacé/coincé.' \
+    'Quête 2 — côté pad rouge, au contact et face au mur cyan, donner trois coups au rythme du bras. PASS si deux ne suffisent pas et si le troisième le fait basculer sur les trois fenêtres.' \
+    'Quête 3 — contourner le mur par le couloir nord puis maintenir E. PASS si la jauge progresse et si le mur revient à la verticale ; depuis le sud il ne doit pas repartir.' \
+    'Quête 4 — laisser un joueur immobile dans l arc pendant qu un autre pousse. PASS si le mur l écarte sans le traverser ni le coincer.' \
     '' \
     'Fermer les trois fenêtres dès ces quatre verdicts obtenus.'
 else
   printf '%s\n' \
     'Quête 1 — fenêtre par fenêtre, chacun rejoint le pad coloré opposé. PASS si aucun blocage/reset.' \
-    'Quête 2 — côté pad rouge, près du pivot orange, maintenir E 2 s. PASS si le mur cyan devient horizontal sur les deux fenêtres.' \
-    'Quête 3 — au même endroit, maintenir encore E 2 s. PASS si le mur revient vertical sur les deux fenêtres.' \
-    'Quête 4 — sans déplacer ce pousseur, placer l autre joueur sur le pad vert puis répéter E 2 s. PASS si le mur reste vertical et personne n est déplacé/coincé.' \
+    'Quête 2 — côté pad rouge, au contact et face au mur cyan, donner trois coups au rythme du bras. PASS si deux ne suffisent pas et si le troisième le fait basculer sur les deux fenêtres.' \
+    'Quête 3 — contourner le mur par le couloir nord puis maintenir E. PASS si la jauge progresse et si le mur revient à la verticale ; depuis le sud il ne doit pas repartir.' \
+    'Quête 4 — rester immobile dans l arc pendant que l autre pousse. PASS si le mur écarte le joueur sans le traverser ni le coincer.' \
     '' \
     'Fermer les deux fenêtres dès ces quatre verdicts obtenus.'
 fi

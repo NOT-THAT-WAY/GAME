@@ -383,6 +383,45 @@ namespace NotThatWay.Game.Tests.EditMode
         }
 
         [Test]
+        public void PushVelocityCorrection_MaintainsATargetWithoutAccumulatingImpulses()
+        {
+            var target = new PlayerVector3(3.5d, 0d, 0d);
+            var fromRest = PlayerPushVelocity.CorrectionToTarget(
+                PlayerVector3.Zero,
+                PlayerVector3.Zero,
+                target);
+            Assert.That(fromRest, Is.EqualTo(target));
+
+            var afterDecay = new PlayerVector3(3.2d, 0d, 1.25d);
+            var queued = new PlayerVector3(0.1d, 0d, 0d);
+            var maintenance = PlayerPushVelocity.CorrectionToTarget(afterDecay, queued, target);
+            Assert.That(maintenance.X, Is.EqualTo(0.2d).Within(Tolerance));
+            Assert.That(maintenance.Z, Is.Zero.Within(Tolerance));
+
+            var effective = afterDecay + queued + maintenance;
+            Assert.That(effective.X, Is.EqualTo(3.5d).Within(Tolerance));
+            Assert.That(effective.Z, Is.EqualTo(1.25d).Within(Tolerance),
+                "La correction tangentielle ne doit pas effacer une force perpendiculaire.");
+            Assert.That(
+                PlayerPushVelocity.CorrectionToTarget(effective, PlayerVector3.Zero, target),
+                Is.EqualTo(PlayerVector3.Zero),
+                "Répéter le même échantillon ne doit ajouter aucune vitesse.");
+
+            var alreadyTooFast = PlayerPushVelocity.CorrectionToTarget(
+                new PlayerVector3(10d, 0d, 0d),
+                PlayerVector3.Zero,
+                target);
+            Assert.That(alreadyTooFast.X, Is.EqualTo(-6.5d).Within(Tolerance),
+                "La composante tangentielle doit aussi être ramenée sous le plafond.");
+            Assert.That(
+                () => PlayerPushVelocity.CorrectionToTarget(
+                    PlayerVector3.Zero,
+                    PlayerVector3.Zero,
+                    PlayerVector3.Zero),
+                Throws.TypeOf<ArgumentOutOfRangeException>());
+        }
+
+        [Test]
         public void RestoreState_ReplacesEveryReconciledFieldAndTickOrigin()
         {
             var simulation = new PlayerStateMachine(Config(jumpEnabled: true), InitialState());

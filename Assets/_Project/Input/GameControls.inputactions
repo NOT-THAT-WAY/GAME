@@ -77,6 +77,15 @@
           "processors": "",
           "interactions": "",
           "initialStateCheck": false
+        },
+        {
+          "name": "ToggleView",
+          "type": "Button",
+          "id": "9cba80fb-d5cc-4a79-9639-b2eafa3c0c43",
+          "expectedControlType": "Button",
+          "processors": "",
+          "interactions": "",
+          "initialStateCheck": false
         }
       ],
       "bindings": [
@@ -363,6 +372,28 @@
           "processors": "",
           "groups": "Gamepad",
           "action": "Pause",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "1fe231d2-b1b0-448f-b6cf-9e1d16cc851f",
+          "path": "<Keyboard>/f1",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "ToggleView",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "bfcdeb22-4427-45e4-8d99-5202a23e8648",
+          "path": "<Gamepad>/dpad/up",
+          "interactions": "",
+          "processors": "",
+          "groups": "Gamepad",
+          "action": "ToggleView",
           "isComposite": false,
           "isPartOfComposite": false
         }

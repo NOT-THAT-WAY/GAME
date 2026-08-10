@@ -19,6 +19,7 @@ namespace NotThatWay.Game.Input
         public const string Punch = "Punch";
         public const string Jump = "Jump";
         public const string Pause = "Pause";
+        public const string ToggleView = "ToggleView";
 
         private static readonly ActionRequirement[] Requirements =
         {
@@ -30,6 +31,7 @@ namespace NotThatWay.Game.Input
             new(PlayerMap, Punch, InputActionType.Button, "Button", true, true),
             new(PlayerMap, Jump, InputActionType.Button, "Button", true, true),
             new(PlayerMap, Pause, InputActionType.Button, "Button", true, true),
+            new(PlayerMap, ToggleView, InputActionType.Button, "Button", true, true),
             new(UiMap, "Navigate", InputActionType.PassThrough, "Vector2", true, true),
             new(UiMap, "Submit", InputActionType.Button, "Button", true, true),
             new(UiMap, "Cancel", InputActionType.Button, "Button", true, true),

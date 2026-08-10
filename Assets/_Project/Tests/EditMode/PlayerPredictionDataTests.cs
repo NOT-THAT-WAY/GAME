@@ -151,8 +151,9 @@ namespace NotThatWay.Game.Tests.EditMode
                 Is.True);
             Assert.That(
                 pusher.CreateCommand(165u).Has(PlayerCommandButtons.InteractHeld),
-                Is.False,
-                "Le scénario d'occupation ne doit produire qu'une tentative bornée.");
+                Is.True,
+                "Le seuil d'une porte lourde se compte en secondes : l'appui doit " +
+                "rester tenu, une fenêtre fixe le manquerait.");
 
             Assert.That(
                 M1AutomatedCommandSource.TryParseArguments(

@@ -226,7 +226,7 @@ verify_log() {
     fail "identité build hors profil M1 macOS: $log_file" || return 1
   rg -q "\[GAME-M1-RESULT\] PASS name=${expected_name} run=${RUN_ID} reason=ok" "$log_file" ||
     fail "verdict PASS absent: $expected_name" || return 1
-  if rg -q 'snapshot_rejected|history_miss|\[GAME-M1-RESULT\] FAIL' "$log_file" ||
+  if rg -q 'snapshot_rejected|history_miss|completed_pose_overlap|\[GAME-M1-RESULT\] FAIL' "$log_file" ||
      rg -q '(^|[[:space:]])[A-Za-z_][A-Za-z0-9_.]*Exception:' "$log_file" ||
      rg -qi 'Native Crash|Crash!!!|Assertion failed|\[GAME-CONNECTION\] ERREUR:|Tugboat.*(failed|failure|timed out|timeout)' "$log_file"; then
     fail "erreur runtime détectée: $log_file" || return 1
@@ -252,28 +252,32 @@ run_occupancy() {
   launch_player occupancy-host "$directory/host.log" \
     --game-role host --game-port "$port" --game-name M1_OCC_HOST \
     --m1-auto-player none --m1-test-name occupancy-host --m1-run-id "$RUN_ID" \
-    --m1-evaluate-after-ready-seconds 6 --m1-auto-quit-seconds 8 \
-    --m1-expect-wall-state 0 --m1-expect-players 2 --m1-expect-connections 2 \
-    --m1-expect-rejected-min 1
+    --m1-evaluate-after-ready-seconds 13 --m1-auto-quit-seconds 16 \
+    --m1-expect-wall-state 1 --m1-expect-players 2 --m1-expect-connections 2 \
+    --m1-expect-completed-min 1
   local host_pid="$LAUNCHED_PID"
   wait_for_log "$directory/host.log" 'Roster updated \(1 participant\(s\)\)' "$host_pid" 10 ||
     { fail 'host occupancy non prêt'; return 1; }
   launch_player occupancy-client "$directory/client.log" \
     --game-role client --game-address 127.0.0.1 --game-port "$port" --game-name M1_OCC_CLIENT \
     --m1-auto-player interact-120 --m1-test-name occupancy-client --m1-run-id "$RUN_ID" \
-    --m1-evaluate-after-ready-seconds 6 --m1-auto-quit-seconds 8 \
-    --m1-expect-wall-state 0 --m1-expect-players 2 \
+    --m1-evaluate-after-ready-seconds 10 --m1-auto-quit-seconds 13 \
+    --m1-expect-wall-state 1 --m1-expect-players 2 \
     --m1-expect-snapshots-min 1 --m1-expect-target-snapshots-min 1
   local client_pid="$LAUNCHED_PID"
   local client_status=0 host_status=0
-  wait_for_process "$client_pid" 20 || client_status=$?
-  wait_for_process "$host_pid" 5 || host_status=$?
+  wait_for_process "$client_pid" 25 || client_status=$?
+  wait_for_process "$host_pid" 8 || host_status=$?
   (( client_status == 0 && host_status == 0 )) || return 1
   verify_log "$directory/host.log" occupancy-host || return 1
   verify_log "$directory/client.log" occupancy-client || return 1
   verify_same_build "$directory/host.log" "$directory/client.log" || return 1
-  rg -q 'transition_rejected wall=10 reason=player_in_swept_arc' "$directory/host.log" || return 1
-  ! rg -q 'transition_started|transition_completed' "$directory/host.log" || return 1
+  # Le host reste dans l'arc : la porte doit l'écarter et finir sa course, sans
+  # jamais se refermer dans son volume.
+  rg -q 'swept_player_pushed wall=10' "$directory/host.log" || return 1
+  rg -q 'completed_pose_clear wall=10 state=1' "$directory/host.log" || return 1
+  rg -q 'transition_completed wall=10 state=1' "$directory/host.log" || return 1
+  ! rg -q 'transition_rejected' "$directory/host.log" || return 1
 }
 
 run_opposition() {
@@ -314,7 +318,7 @@ run_latejoin() {
   launch_player latejoin-host "$directory/host.log" \
     --game-role host --game-port "$port" --game-name M1_LATE_HOST \
     --m1-auto-player clear-sweep --m1-test-name latejoin-host --m1-run-id "$RUN_ID" \
-    --m1-evaluate-after-ready-seconds 12 --m1-auto-quit-seconds 16 \
+    --m1-evaluate-after-ready-seconds 18 --m1-auto-quit-seconds 24 \
     --m1-expect-wall-state 1 --m1-expect-players 2 --m1-expect-connections 2 \
     --m1-expect-completed-min 1
   local host_pid="$LAUNCHED_PID"
@@ -325,14 +329,14 @@ run_latejoin() {
   launch_player latejoin-pusher "$directory/pusher.log" \
     --game-role client --game-address 127.0.0.1 --game-port "$port" --game-name M1_PUSHER \
     --m1-auto-player interact-120 --m1-test-name latejoin-pusher --m1-run-id "$RUN_ID" \
-    --m1-evaluate-after-ready-seconds 4 --m1-auto-quit-seconds 5 \
+    --m1-evaluate-after-ready-seconds 9 --m1-auto-quit-seconds 10 \
     --m1-expect-wall-state 1 --m1-expect-players 2 --m1-expect-snapshots-min 1 \
     --m1-expect-target-snapshots-min 1
   local pusher_pid="$LAUNCHED_PID"
-  wait_for_log "$directory/host.log" 'transition_completed wall=10 state=1' "$host_pid" 8 ||
+  wait_for_log "$directory/host.log" 'transition_completed wall=10 state=1' "$host_pid" 16 ||
     { fail 'transition A vers B absente'; return 1; }
   local pusher_status=0
-  wait_for_process "$pusher_pid" 15 || pusher_status=$?
+  wait_for_process "$pusher_pid" 20 || pusher_status=$?
   (( pusher_status == 0 )) || { fail 'pusher latejoin en échec'; return 1; }
   wait_for_new_log_match \
     "$directory/host.log" \
@@ -345,7 +349,7 @@ run_latejoin() {
   launch_player latejoin-observer "$directory/late.log" \
     --game-role client --game-address 127.0.0.1 --game-port "$port" --game-name M1_LATE_CLIENT \
     --m1-auto-player none --m1-test-name latejoin-observer --m1-run-id "$RUN_ID" \
-    --m1-evaluate-after-ready-seconds 4 --m1-auto-quit-seconds 10 \
+    --m1-evaluate-after-ready-seconds 4 --m1-auto-quit-seconds 14 \
     --m1-expect-wall-state 1 --m1-expect-players 2 \
     --m1-expect-snapshots-min 1 --m1-expect-target-snapshots-min 1
   local late_pid="$LAUNCHED_PID"
@@ -356,16 +360,19 @@ run_latejoin() {
     "$host_pid" \
     5 || { fail 'remplacement latejoin non confirmé'; return 1; }
   local host_status=0 late_status=0
-  wait_for_process "$host_pid" 15 || host_status=$?
+  wait_for_process "$host_pid" 25 || host_status=$?
   wait_for_process "$late_pid" 5 || late_status=$?
   (( host_status == 0 && late_status == 0 )) || return 1
   verify_log "$directory/host.log" latejoin-host || return 1
   verify_log "$directory/pusher.log" latejoin-pusher || return 1
   verify_log "$directory/late.log" latejoin-observer || return 1
   verify_same_build "$directory/host.log" "$directory/pusher.log" "$directory/late.log" || return 1
-  rg -q 'target_snapshot wall=10 state=1 revision=31 .*transitioning=False .*record=(added|duplicate)\.' "$directory/late.log" || return 1
+  # 90 ticks d'effort font 90 révisions, la bascule en ajoute une : le
+  # compte reste déterministe et vérifiable à l'unité près.
+  rg -q 'target_snapshot wall=10 state=1 revision=91 .*transitioning=False .*record=(added|duplicate)\.' "$directory/late.log" || return 1
   ! rg -q 'Roster updated \([3-9][0-9]* participant\(s\)\)' "$directory/host.log" || return 1
-  ! rg -q 'sweep_entered_during_transition|transition_rejected' "$directory/host.log" || return 1
+  # Le host dégage l'arc avant la bascule : personne ne doit être écarté.
+  ! rg -q 'swept_player_pushed|transition_rejected' "$directory/host.log" || return 1
 }
 
 printf 'M1 network suite — run=%s results=%s\n' "$RUN_ID" "$RESULTS_DIRECTORY"

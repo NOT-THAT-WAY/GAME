@@ -21,8 +21,14 @@ namespace NotThatWay.Game.Tests.EditMode
                 map, 10, 0, -1375, -1375, 451, 900);
             var tooFar = M1WallInteractionRules.Evaluate(
                 map, 10, 0, 5000, -1375, 451, 900);
-            var reverseSide = M1WallInteractionRules.Evaluate(
-                map, 10, 1, 500, -800, 451, 900);
+
+            // Pose B : le mur pointe à l'ouest et son retour balaie le sud. On
+            // le renvoie donc vers A depuis le nord, jamais depuis le sud où le
+            // pousseur se placerait devant le battant.
+            var northOfPoseB = M1WallInteractionRules.Evaluate(
+                map, 10, 1, -1375, 800, 451, 900);
+            var southOfPoseB = M1WallInteractionRules.Evaluate(
+                map, 10, 1, -1375, -800, 451, 900);
 
             Assert.That(safeRight.Allowed, Is.True);
             Assert.That(safeRight.EffortSign, Is.EqualTo(1));
@@ -30,12 +36,71 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(sweptLeft.EffortSign, Is.EqualTo(-1));
             Assert.That(tooFar.Allowed, Is.False);
             Assert.That(tooFar.Rejection, Is.EqualTo(M1WallInteractionRejection.OutOfReach));
-            Assert.That(reverseSide.Allowed, Is.True);
-            Assert.That(reverseSide.EffortSign, Is.EqualTo(-1));
+            Assert.That(northOfPoseB.Allowed, Is.True);
+            Assert.That(
+                northOfPoseB.EffortSign,
+                Is.EqualTo(-1),
+                "Depuis le nord, le mur repart vers le sud : le trajet retour doit être possible.");
+            Assert.That(southOfPoseB.Allowed, Is.True);
+            Assert.That(
+                southOfPoseB.EffortSign,
+                Is.EqualTo(1),
+                "Depuis l'arc balayé, on retient le mur au lieu de le ramener sur soi.");
 
             var staticWall = M1WallInteractionRules.Evaluate(
                 map, 1000, 0, -2750, -1375, 451, 900);
             Assert.That(staticWall.Rejection, Is.EqualTo(M1WallInteractionRejection.WallStatic));
+        }
+
+        [Test]
+        public void PunchCadence_RequiresThreeChainedPunchesToStartTheWall()
+        {
+            const int wallId = 10;
+            const int effortPerTick = 4;
+            var settings = new WallSimulationSettings(
+                effortThreshold: 360,
+                maximumEffortPerSourcePerTick: effortPerTick,
+                effortDecayPerTick: 2,
+                rejectedEffortRetention: 0,
+                transitionDurationTicks: 90u);
+            var machine = new WallStateMachine(settings, wallId, 0, 1, 0, 0u);
+            var firstPunchTick = 1u;
+            var secondPunchTick = firstPunchTick + M1PunchTuning.CooldownTicks;
+            var thirdPunchTick = secondPunchTick + M1PunchTuning.CooldownTicks;
+            var transitionTick = 0u;
+
+            for (var tick = firstPunchTick;
+                 tick < thirdPunchTick + M1PunchTuning.WallImpulseTicks;
+                 tick++)
+            {
+                var impulseActive = PunchImpulseActive(tick, firstPunchTick) ||
+                                    PunchImpulseActive(tick, secondPunchTick) ||
+                                    PunchImpulseActive(tick, thirdPunchTick);
+                var intents = impulseActive
+                    ? new[] { new WallEffortIntent(wallId, 77, effortPerTick) }
+                    : Array.Empty<WallEffortIntent>();
+                var result = machine.AdvanceTick(
+                    tick,
+                    intents,
+                    _ => WallTransitionGateDecision.Accept());
+
+                if (tick == thirdPunchTick - 1u)
+                {
+                    Assert.That(machine.State.IsTransitioning, Is.False,
+                        "Deux coups ne doivent jamais suffire à ouvrir le mur.");
+                    Assert.That(machine.State.SignedEffort, Is.EqualTo(288));
+                }
+
+                if ((result.Events & WallTickEvents.TransitionStarted) == 0)
+                    continue;
+                transitionTick = tick;
+                break;
+            }
+
+            Assert.That(M1PunchTuning.ChainedPunchesToOpen, Is.EqualTo(3));
+            Assert.That(transitionTick, Is.EqualTo(114u));
+            Assert.That(machine.State.IsTransitioning, Is.True);
+            Assert.That(machine.State.SignedEffort, Is.Zero);
         }
 
         [Test]
@@ -189,5 +254,8 @@ namespace NotThatWay.Game.Tests.EditMode
                 issues.Count == 0 ? string.Empty : issues[0].Code);
             return map;
         }
+
+        private static bool PunchImpulseActive(uint tick, uint startTick) =>
+            tick >= startTick && tick - startTick < M1PunchTuning.WallImpulseTicks;
     }
 }

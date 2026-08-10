@@ -15,6 +15,124 @@ namespace NotThatWay.Game.Tests.PlayMode
         private const string GrayboxPath = "Assets/_Project/Maze/GrayboxTopology2x2.v1.json";
 
         [UnityTest]
+        public IEnumerator PunchRay_OnlyResolvesTheMobileWallInFrontOfThePlayer()
+        {
+            var root = new GameObject("PunchRayTest");
+            try
+            {
+                var arena = root.AddComponent<TopologyArena>();
+                arena.BuildFromJson(File.ReadAllText(GrayboxPath));
+                yield return null;
+                Physics.SyncTransforms();
+
+                var origin = new Vector3(1.375f, 0.7f, -1.375f);
+                var worldMask = 1 << GameplayLayers.World;
+                Assert.That(
+                    Physics.Raycast(
+                        origin,
+                        Vector3.left,
+                        out var towardWall,
+                        2f,
+                        worldMask,
+                        QueryTriggerInteraction.Ignore),
+                    Is.True);
+                Assert.That(
+                    M1PunchTargeting.TryResolveWallCollider(
+                        towardWall.collider,
+                        10,
+                        out var mobileWall),
+                    Is.True);
+                Assert.That(mobileWall, Is.EqualTo(arena.GetWallView(10)));
+
+                Assert.That(
+                    Physics.Raycast(
+                        origin,
+                        Vector3.right,
+                        out var awayFromWall,
+                        2f,
+                        worldMask,
+                        QueryTriggerInteraction.Ignore),
+                    Is.True,
+                    "Le rayon opposé doit rencontrer l'enceinte statique, pas le battant.");
+                Assert.That(
+                    M1PunchTargeting.TryResolveWallCollider(
+                        awayFromWall.collider,
+                        10,
+                        out _),
+                    Is.False,
+                    "Un coup dos au battant ne doit jamais verser d'effort au mur mobile.");
+            }
+            finally
+            {
+                Object.DestroyImmediate(root);
+            }
+        }
+
+        /// <summary>
+        /// Le mur qui balaie doit réellement recouvrir la capsule d'un joueur
+        /// planté dans l'arc : c'est ce recouvrement, mesuré à mi-course, qui
+        /// déclenche la poussée autoritaire du banc M1.
+        /// </summary>
+        [UnityTest]
+        public IEnumerator MidTransitionPose_OverlapsAPlayerStandingInTheSweptArc()
+        {
+            var root = new GameObject("SweepOverlapTest");
+            var player = new GameObject("SweepOverlapPlayer") { layer = GameplayLayers.Player };
+            try
+            {
+                var arena = root.AddComponent<TopologyArena>();
+                arena.BuildFromJson(File.ReadAllText(GrayboxPath));
+                yield return null;
+
+                var controller = player.AddComponent<CharacterController>();
+                controller.height = 1.4f;
+                controller.radius = 0.4f;
+                controller.center = new Vector3(0f, 0.7f, 0f);
+                // Centre de la cellule (0,0), c'est-à-dire le quart balayé.
+                player.transform.position = new Vector3(-1.375f, 0f, -1.375f);
+                Physics.SyncTransforms();
+
+                var view = arena.GetWallView(10);
+                var box = view.GetComponent<BoxCollider>();
+                var found = false;
+                var results = new Collider[8];
+                for (var elapsed = 0u; elapsed <= 90u && !found; elapsed++)
+                {
+                    var progress = (ushort)((ulong)elapsed * ushort.MaxValue / 90u);
+                    arena.ApplyAuthoritativePose(
+                        10,
+                        0,
+                        new WallPoseSample(0, 1, elapsed, 90u, progress, elapsed < 90u));
+
+                    var scale = view.transform.lossyScale;
+                    var halfExtents = new Vector3(
+                        Mathf.Abs(box.size.x * scale.x),
+                        Mathf.Abs(box.size.y * scale.y),
+                        Mathf.Abs(box.size.z * scale.z)) * 0.5f;
+                    var count = Physics.OverlapBoxNonAlloc(
+                        view.transform.TransformPoint(box.center),
+                        halfExtents,
+                        results,
+                        view.transform.rotation,
+                        1 << GameplayLayers.Player,
+                        QueryTriggerInteraction.Ignore);
+                    for (var index = 0; index < count; index++)
+                        found |= results[index] == controller;
+                }
+
+                Assert.That(
+                    found,
+                    Is.True,
+                    "La pose intermédiaire du mur doit recouvrir un joueur resté dans l'arc.");
+            }
+            finally
+            {
+                Object.DestroyImmediate(player);
+                Object.DestroyImmediate(root);
+            }
+        }
+
+        [UnityTest]
         public IEnumerator Graybox_IsBuiltFromCanonicalPrimitiveCollidersAndResetsExactly()
         {
             var root = new GameObject("TopologyArenaPlayModeTest");
@@ -25,15 +143,15 @@ namespace NotThatWay.Game.Tests.PlayMode
                 yield return null;
 
                 Assert.That(arena.Map.Checksum,
-                    Is.EqualTo("031f7dfb01b8308cdc1c773842a6e1a31a2d293bc82cbcfb1fa06b7af94d03aa"));
-                Assert.That(arena.WallCount, Is.EqualTo(7));
+                    Is.EqualTo("2f5f3b1148408d643cad9793fb59d511948bc4f1e252898cf375affd98c13365"));
+                Assert.That(arena.WallCount, Is.EqualTo(9));
                 Assert.That(arena.HasOnlyPrimitiveGameplayColliders(), Is.True);
                 Assert.That(arena.GeneratedRoot.GetComponentsInChildren<MeshCollider>(true), Is.Empty);
                 var enabledColliders = arena.GeneratedRoot.GetComponentsInChildren<Collider>(true)
                     .Where(value => value.enabled)
                     .ToArray();
-                Assert.That(enabledColliders, Has.Length.EqualTo(8),
-                    "Un sol et sept murs doivent être les seuls colliders actifs.");
+                Assert.That(enabledColliders, Has.Length.EqualTo(10),
+                    "Un sol et neuf murs doivent être les seuls colliders actifs.");
                 Assert.That(enabledColliders.All(value => value.gameObject.layer == GameplayLayers.World), Is.True);
                 Assert.That(
                     arena.GeneratedRoot.GetComponentsInChildren<Collider>(true)
@@ -55,7 +173,9 @@ namespace NotThatWay.Game.Tests.PlayMode
                 var ids = arena.GeneratedRoot.GetComponentsInChildren<TopologyWallView>(true)
                     .Select(value => value.WallId)
                     .ToArray();
-                Assert.That(ids, Is.EqualTo(new[] { 10, 1000, 1001, 1002, 1003, 1004, 1005 }));
+                Assert.That(
+                    ids,
+                    Is.EqualTo(new[] { 10, 1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007 }));
 
                 var wall = arena.GetWallView(10);
                 var initialPosition = wall.transform.localPosition;

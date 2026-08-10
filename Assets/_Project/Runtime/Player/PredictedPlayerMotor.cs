@@ -269,10 +269,46 @@ namespace NotThatWay.Game
                 ApplyKnockbackTargetRpc(Owner, velocity);
         }
 
+        /// <summary>
+        /// Maintient la composante tangentielle du recul à une vitesse cible. À
+        /// la différence d'un coup de poing, l'appui continu d'un battant ne doit
+        /// pas empiler une nouvelle impulsion complète à chaque échantillon.
+        /// </summary>
+        public void ApplyPushVelocityFromServer(Vector3 targetVelocity)
+        {
+            if (!IsServerStarted || !Owner.IsValid)
+                return;
+
+            targetVelocity.y = 0f;
+            var currentVelocity = _simulation?.State.KnockbackVelocity ?? PlayerVector3.Zero;
+            var correction = PlayerPushVelocity.CorrectionToTarget(
+                currentVelocity,
+                _pendingKnockbackVelocityDelta,
+                UnityCharacterControllerWorld.ToDomain(targetVelocity));
+            var unityCorrection = new Vector3(
+                (float)correction.X,
+                0f,
+                (float)correction.Z);
+            if (unityCorrection.sqrMagnitude <= 0.000001f)
+                return;
+
+            QueueKnockback(unityCorrection);
+            if (!Owner.IsLocalClient)
+                ApplyPushCorrectionTargetRpc(Owner, unityCorrection);
+        }
+
         [TargetRpc]
         private void ApplyKnockbackTargetRpc(NetworkConnection connection, Vector3 velocity)
         {
             QueueKnockback(velocity);
+        }
+
+        [TargetRpc]
+        private void ApplyPushCorrectionTargetRpc(
+            NetworkConnection connection,
+            Vector3 velocityCorrection)
+        {
+            QueueKnockback(velocityCorrection);
         }
 
         private void QueueKnockback(Vector3 velocity)

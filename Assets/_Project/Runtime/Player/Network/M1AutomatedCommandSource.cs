@@ -63,8 +63,10 @@ namespace NotThatWay.Game.PlayerNetwork
                         0,
                         0,
                         PlayerCommandButtons.None);
+                // Appui maintenu jusqu'à la fin : le seuil d'effort d'une porte
+                // lourde se compte en secondes, une fenêtre fixe le manquerait.
                 case M1AutomatedPlayerProfile.InteractAfter120:
-                    return InteractDuring(simulationTick, 120u, 45u);
+                    return InteractDuring(simulationTick, 120u, uint.MaxValue);
                 case M1AutomatedPlayerProfile.InteractAfter180:
                     return InteractDuring(simulationTick, 180u, uint.MaxValue);
                 default:

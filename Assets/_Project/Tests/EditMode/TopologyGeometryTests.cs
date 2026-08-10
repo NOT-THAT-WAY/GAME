@@ -22,10 +22,12 @@ namespace NotThatWay.Game.Tests.EditMode
 
             Assert.That(created, Is.True, FormatIssues(issues));
             Assert.That(map.TopologyId, Is.EqualTo("graybox-duel-2x2-v1"));
-            Assert.That(map.Checksum, Is.EqualTo("031f7dfb01b8308cdc1c773842a6e1a31a2d293bc82cbcfb1fa06b7af94d03aa"));
-            Assert.That(map.Walls, Has.Count.EqualTo(7));
+            Assert.That(map.Checksum, Is.EqualTo("2f5f3b1148408d643cad9793fb59d511948bc4f1e252898cf375affd98c13365"));
+            Assert.That(map.Walls, Has.Count.EqualTo(9));
             Assert.That(map.Pivots, Has.Count.EqualTo(1));
-            Assert.That(map.Openings.Select(value => value.OpeningId), Is.EqualTo(new[] { 300, 301 }));
+            // Enceinte close : plus aucune arête de périmètre ouverte, donc aucun
+            // moyen de quitter le sol de l'arène pendant un test humain.
+            Assert.That(map.Openings, Is.Empty);
             Assert.That(map.Spawns.Select(value => value.SpawnId), Is.EqualTo(new[] { 200, 201 }));
             Assert.That(map.Walls, Is.Not.InstanceOf<List<RuntimeWallDefinition>>());
         }
@@ -111,7 +113,7 @@ namespace NotThatWay.Game.Tests.EditMode
             var states = map.CreateInitialWallStates();
 
             states[10] = 1;
-            Assert.That(TopologyConnectivity.BuildOccupiedEdges(map, states), Has.Count.EqualTo(7));
+            Assert.That(TopologyConnectivity.BuildOccupiedEdges(map, states), Has.Count.EqualTo(9));
 
             states.Remove(1005);
             Assert.That(
@@ -245,6 +247,42 @@ namespace NotThatWay.Game.Tests.EditMode
                 new[] { new TopologyCircleObstacle(201, 1375, -1375, 450) });
             Assert.That(accepted.Allowed, Is.True, accepted.RejectionCode);
             Assert.That(states[10], Is.EqualTo(0), "La décision ne devient état qu'après commit autoritaire.");
+        }
+
+        [Test]
+        public void M1PushPolicy_AllowsTheSweepButRejectsAnOccupiedDestination()
+        {
+            var map = LoadMap();
+            var states = map.CreateInitialWallStates();
+
+            var sweptOnly = TopologyTransitionGuard.Evaluate(
+                map,
+                states,
+                10,
+                1,
+                TopologyTransitionPolicy.M1PushDuel,
+                new[] { new TopologyCircleObstacle(201, -1375, -1375, 450) });
+            Assert.That(sweptOnly.Allowed, Is.True, sweptOnly.RejectionCode);
+            Assert.That(states[10], Is.EqualTo(0));
+
+            var destinationOccupied = TopologyTransitionGuard.Evaluate(
+                map,
+                states,
+                10,
+                1,
+                TopologyTransitionPolicy.M1PushDuel,
+                new[]
+                {
+                    new TopologyCircleObstacle(300, -1375, 0, 450),
+                    new TopologyCircleObstacle(200, -1375, 0, 450)
+                });
+            Assert.That(destinationOccupied.Allowed, Is.False);
+            Assert.That(
+                destinationOccupied.RejectionCode,
+                Is.EqualTo(TopologyTransitionRejectionCodes.DestinationPoseOccupied));
+            Assert.That(destinationOccupied.BlockingId, Is.EqualTo(200));
+            Assert.That(states[10], Is.EqualTo(0),
+                "Le preset jouable ne doit pas muter la topologie pendant sa décision.");
         }
 
         [Test]

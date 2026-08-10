@@ -28,6 +28,7 @@ namespace NotThatWay.Game.Input
         private InputAction _punch;
         private InputAction _jump;
         private InputAction _pause;
+        private InputAction _toggleView;
         private InputDevice[] _restrictedDevices;
         private Vector2 _latestStick;
         private bool _subscribedToInputUpdates;
@@ -35,6 +36,9 @@ namespace NotThatWay.Game.Input
 
         public bool IsReady => _runtimeAsset != null && _playerMap != null && _playerMap.enabled;
         public bool PausePressedThisFrame { get; private set; }
+
+        /// <summary>Bascule de vue : purement locale, jamais dans une commande répliquée.</summary>
+        public bool ViewTogglePressedThisFrame { get; private set; }
         public PlayerInputSample CurrentFrame { get; private set; }
 
         public void Configure(InputActionAsset sourceAsset)
@@ -107,6 +111,7 @@ namespace NotThatWay.Game.Input
             _latestStick = Vector2.zero;
             CurrentFrame = default;
             PausePressedThisFrame = false;
+            ViewTogglePressedThisFrame = false;
         }
 
         private void OnEnable()
@@ -138,6 +143,7 @@ namespace NotThatWay.Game.Input
                 pressed |= PlayerCommandButtons.PunchPressed;
 
             PausePressedThisFrame = _pause.WasPressedThisFrame();
+            ViewTogglePressedThisFrame = _toggleView.WasPressedThisFrame();
             var pointerYaw = pointer.x * _pointerDegreesPerPixel;
             var pointerPitch = pointer.y * _pointerDegreesPerPixel;
             CurrentFrame = new PlayerInputSample(
@@ -202,6 +208,7 @@ namespace NotThatWay.Game.Input
             _punch = _playerMap.FindAction(GameControlsContract.Punch, true);
             _jump = _playerMap.FindAction(GameControlsContract.Jump, true);
             _pause = _playerMap.FindAction(GameControlsContract.Pause, true);
+            _toggleView = _playerMap.FindAction(GameControlsContract.ToggleView, true);
             _playerMap.Enable();
             InputSystem.onAfterUpdate += HandleAfterInputUpdate;
             _subscribedToInputUpdates = true;

@@ -8,10 +8,7 @@
     "wallThicknessMm": 250,
     "wallHeightMm": 3000
   },
-  "openings": [
-    {"openingId": 300, "edge": {"axis": "horizontal", "x": 0, "y": 0}},
-    {"openingId": 301, "edge": {"axis": "horizontal", "x": 1, "y": 0}}
-  ],
+  "openings": [],
   "walls": [
     {
       "wallId": 10,
@@ -63,6 +60,20 @@
       "states": [
         {"stateId": 0, "edge": {"axis": "horizontal", "x": 1, "y": 2}, "quarterTurns": 0}
       ]
+    },
+    {
+      "wallId": 1006,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 0, "y": 0}, "quarterTurns": 0}
+      ]
+    },
+    {
+      "wallId": 1007,
+      "initialStateId": 0,
+      "states": [
+        {"stateId": 0, "edge": {"axis": "horizontal", "x": 1, "y": 0}, "quarterTurns": 0}
+      ]
     }
   ],
   "pivots": [
@@ -72,5 +83,5 @@
     {"spawnId": 200, "cell": {"x": 0, "y": 0}, "yawQuarterTurns": 0},
     {"spawnId": 201, "cell": {"x": 1, "y": 0}, "yawQuarterTurns": 0}
   ],
-  "checksum": "031f7dfb01b8308cdc1c773842a6e1a31a2d293bc82cbcfb1fa06b7af94d03aa"
+  "checksum": "2f5f3b1148408d643cad9793fb59d511948bc4f1e252898cf375affd98c13365"
 }

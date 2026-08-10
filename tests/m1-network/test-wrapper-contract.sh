@@ -33,7 +33,9 @@ for required in \
   'Exception:' \
   'Roster updated \([3-9][0-9]* participant' \
   'balanced_opposition' \
-  'player_in_swept_arc'; do
+  'swept_player_pushed' \
+  'completed_pose_clear' \
+  'completed_pose_overlap'; do
   grep -Fq -- "$required" "$NETWORK_WRAPPER" || fail "network wrapper missing $required"
 done
 

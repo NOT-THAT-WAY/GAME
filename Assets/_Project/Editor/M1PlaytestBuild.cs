@@ -11,6 +11,7 @@ using FishNet.Transporting.Tugboat;
 using NotThatWay.Game.Input;
 using NotThatWay.Game.Topology;
 using UnityEditor;
+using UnityEditor.Animations;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEditor.SceneManagement;
@@ -39,6 +40,13 @@ namespace NotThatWay.Game.Editor
         private const string GameControlsPath = "Assets/_Project/Input/GameControls.inputactions";
         private const string PlayerModelPath = "Assets/_Project/Player/PersoBouleRigged.fbx";
         private const string PreviewDirectory = "Logs/M1Playtest";
+        private const string GeneratedAnimatorPath = GeneratedDirectory + "/M1PlayerAnimator.controller";
+
+        // Image du clip Punch où les bras sont tendus : la pose de poussée y est
+        // figée en attendant une animation dédiée.
+        private const float PushPoseNormalizedTime = 0.45f;
+        private const string PunchParameter = "Punch";
+        private const string PushParameter = "Push";
 
         // URP 17 n'expose plus de matériau par défaut hors éditeur. Chaque objet
         // rendu du banc doit donc porter un matériau explicite construit ici.
@@ -175,28 +183,34 @@ namespace NotThatWay.Game.Editor
 
             try
             {
-                var aerial = new Vector3(span * 0.75f, span * 1.35f, -span * 1.15f);
+                // L'enceinte est close et haute de 3 m : une vue rasante ne
+                // montrerait que le dos d'un mur. Le contrôle se fait de haut.
+                var aerial = new Vector3(span * 0.55f, span * 2.4f, -span * 0.85f);
                 RenderFrom(
                     aerial,
                     Quaternion.LookRotation((Vector3.up * 0.6f - aerial).normalized, Vector3.up),
-                    55f,
+                    50f,
                     "apercu-aerien.png");
 
-                // Vue de contrôle du duel : les deux personnages, le pivot orange
-                // et le mur mobile cyan dans le même cadre.
-                var duel = new Vector3(-span * 0.85f, 2.6f, -span * 1.05f);
-                var target = TopologyGeometry.NodeMm(map, 1, 1).Meters + Vector3.up * 0.8f;
+                // L'enceinte est close sur 3 m : toute vue oblique cache une
+                // moitié de l'arène derrière un mur. Le plan zénithal montre les
+                // deux pads, le pivot orange et la pose du mur mobile d'un coup.
+                var plan = TopologyGeometry.NodeMm(map, 1, 1).Meters + Vector3.up * span * 1.9f;
                 RenderFrom(
-                    duel,
-                    Quaternion.LookRotation((target - duel).normalized, Vector3.up),
-                    60f,
+                    plan,
+                    Quaternion.LookRotation(Vector3.down, Vector3.forward),
+                    45f,
                     "apercu-duel.png");
 
                 // En jeu, M1PlayerAppearance masque le corps de son porteur : la
                 // capture première personne doit montrer la même chose, sinon elle
                 // valide une image que personne ne verra.
                 foreach (var renderer in previews[0].GetComponentsInChildren<Renderer>(true))
+                {
+                    if (M1PlayerAppearance.IsFirstPersonPart(renderer))
+                        continue;
                     renderer.shadowCastingMode = ShadowCastingMode.ShadowsOnly;
+                }
                 var eye = previews[0].transform.position + Vector3.up * EyeHeight;
                 RenderFrom(eye, previews[0].transform.rotation, 70f, "apercu-premiere-personne.png");
             }
@@ -369,9 +383,12 @@ namespace NotThatWay.Game.Editor
                 var motor = root.AddComponent<PredictedPlayerMotor>();
                 ConfigureMotor(motor, cameraPivot.transform, camera);
 
+                root.AddComponent<M1PlayerActions>();
+
                 var appearance = root.AddComponent<M1PlayerAppearance>();
                 var serializedAppearance = new SerializedObject(appearance);
                 SetObject(serializedAppearance, "_body", presentation.transform);
+                SetObject(serializedAppearance, "_camera", camera);
                 serializedAppearance.ApplyModifiedPropertiesWithoutUndo();
 
                 var saved = PrefabUtility.SaveAsPrefabAsset(root, GeneratedPlayerPrefabPath);
@@ -403,11 +420,15 @@ namespace NotThatWay.Game.Editor
                 var serializedDirector = new SerializedObject(director);
                 SetInt(serializedDirector, "_tickCallbacks", 1); // PreTick.
                 SetInt(serializedDirector, "_wallId", 10);
-                SetInt(serializedDirector, "_effortThreshold", 120);
+                // Porte lourde : 90 ticks d'appui continu (1,5 s à 60 Hz) pour
+                // atteindre le seuil, puis 90 ticks (1,5 s) de bascule, soit trois
+                // secondes entre l'appui et la porte ouverte. Réglage décidé après
+                // essai humain : 0,5 s paraissait expédié, 3,0 s injouable.
+                SetInt(serializedDirector, "_effortThreshold", 360);
                 SetInt(serializedDirector, "_maximumEffortPerSourcePerTick", 4);
                 SetInt(serializedDirector, "_effortDecayPerTick", 2);
                 SetInt(serializedDirector, "_rejectedEffortRetention", 0);
-                SetLong(serializedDirector, "_transitionDurationTicks", 30L);
+                SetLong(serializedDirector, "_transitionDurationTicks", 90L);
                 SetInt(serializedDirector, "_effortPerHeldTick", 4);
                 SetInt(serializedDirector, "_reachFromCapsuleMm", 900);
                 serializedDirector.ApplyModifiedPropertiesWithoutUndo();
@@ -548,7 +569,9 @@ namespace NotThatWay.Game.Editor
                 typeof(Camera),
                 typeof(AudioListener),
                 typeof(SpectatorCamera));
-            cameraObject.transform.position = new Vector3(0f, width * 1.2f, -width * 1.1f);
+            // Angle assez haut pour voir par-dessus l'enceinte close de 3 m : la
+            // caméra d'attente doit montrer l'arène, pas le dos d'un mur.
+            cameraObject.transform.position = new Vector3(0f, width * 1.7f, -width * 0.95f);
             cameraObject.transform.rotation = Quaternion.LookRotation(
                 (Vector3.up * 0.8f - cameraObject.transform.position).normalized,
                 Vector3.up);
@@ -618,15 +641,89 @@ namespace NotThatWay.Game.Editor
             foreach (var collider in visual.GetComponentsInChildren<Collider>(true))
                 UnityEngine.Object.DestroyImmediate(collider, true);
 
-            var animator = visual.GetComponentInChildren<Animator>(true);
-            if (animator != null)
-            {
-                animator.applyRootMotion = false;
-                animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
-            }
+            var animator = visual.GetComponentInChildren<Animator>(true) ??
+                           visual.AddComponent<Animator>();
+            animator.applyRootMotion = false;
+            animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+            animator.runtimeAnimatorController = CreatePlayerAnimatorController();
 
             ValidatePlayerVisual(visual);
             return visual;
+        }
+
+        /// <summary>
+        /// Contrôleur minimal du banc : repos vide, coup de poing déclenché par
+        /// son trigger, et pose de poussée obtenue en figeant le même clip sur son
+        /// image bras tendus. L'animation dédiée viendra de Blender ; d'ici là ce
+        /// gel donne un retour visuel honnête sans inventer d'os.
+        /// </summary>
+        private static AnimatorController CreatePlayerAnimatorController()
+        {
+            var clip = LoadPunchClip();
+            if (AssetDatabase.LoadAssetAtPath<AnimatorController>(GeneratedAnimatorPath) != null)
+                AssetDatabase.DeleteAsset(GeneratedAnimatorPath);
+
+            var controller = AnimatorController.CreateAnimatorControllerAtPath(GeneratedAnimatorPath);
+            controller.AddParameter(PunchParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(PushParameter, AnimatorControllerParameterType.Bool);
+
+            var stateMachine = controller.layers[0].stateMachine;
+            var idle = stateMachine.AddState("Idle");
+            var punch = stateMachine.AddState("Punch");
+            punch.motion = clip;
+            var push = stateMachine.AddState("Push");
+            push.motion = clip;
+            push.speed = 0f;
+            push.cycleOffset = PushPoseNormalizedTime;
+            stateMachine.defaultState = idle;
+
+            var enterPunch = stateMachine.AddAnyStateTransition(punch);
+            enterPunch.hasExitTime = false;
+            enterPunch.duration = 0.03f;
+            enterPunch.canTransitionToSelf = false;
+            enterPunch.AddCondition(AnimatorConditionMode.If, 0f, PunchParameter);
+
+            var leavePunch = punch.AddTransition(idle);
+            leavePunch.hasExitTime = true;
+            leavePunch.exitTime = 1f;
+            leavePunch.duration = 0.06f;
+
+            var enterPush = idle.AddTransition(push);
+            enterPush.hasExitTime = false;
+            enterPush.duration = 0.18f;
+            enterPush.AddCondition(AnimatorConditionMode.If, 0f, PushParameter);
+
+            var leavePush = push.AddTransition(idle);
+            leavePush.hasExitTime = false;
+            leavePush.duration = 0.18f;
+            leavePush.AddCondition(AnimatorConditionMode.IfNot, 0f, PushParameter);
+
+            EditorUtility.SetDirty(controller);
+            return controller;
+        }
+
+        private static AnimationClip LoadPunchClip()
+        {
+            AnimationClip single = null;
+            var count = 0;
+            foreach (var asset in AssetDatabase.LoadAllAssetRepresentationsAtPath(PlayerModelPath))
+            {
+                if (asset is not AnimationClip clip ||
+                    clip.name.StartsWith("__preview__", StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                count++;
+                if (clip.name == "Punch")
+                    return clip;
+                single = clip;
+            }
+
+            return count == 1 && single != null
+                ? single
+                : throw new InvalidOperationException(
+                    $"Clip Punch introuvable dans {PlayerModelPath} ({count} clips importés).");
         }
 
         private static void ValidatePlayerVisual(GameObject visual)
@@ -959,7 +1056,9 @@ namespace NotThatWay.Game.Editor
             if (playerObject.layer != GameplayLayers.Player ||
                 playerObject.GetComponent<CharacterController>() == null ||
                 playerObject.GetComponent<PlayerInputSource>() == null ||
-                playerObject.GetComponent<PredictedPlayerMotor>() == null)
+                playerObject.GetComponent<PredictedPlayerMotor>() == null ||
+                playerObject.GetComponent<M1PlayerActions>() == null ||
+                playerObject.GetComponent<M1PlayerAppearance>() == null)
             {
                 throw new InvalidOperationException("Contrat du prefab joueur M1 incomplet.");
             }

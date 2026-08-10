@@ -41,6 +41,55 @@ namespace NotThatWay.Game.Topology
         public TopologyPointMm SizeMm { get; }
         public Vector3 CenterMeters => CenterMm.Meters;
         public Vector3 SizeMeters => SizeMm.Meters;
+
+        /// <summary>
+        /// Test horizontal exact d'un disque contre la pose, en coordonnées
+        /// doublées : le même verdict sous Mono et sous Windows IL2CPP, tangences
+        /// comprises.
+        /// </summary>
+        public bool IntersectsCircle(int centerXMm, int centerZMm, int radiusMm)
+        {
+            if (radiusMm < 0)
+                throw new ArgumentOutOfRangeException(nameof(radiusMm));
+
+            var boxX2 = Doubled(CenterMm.X);
+            var boxZ2 = Doubled(CenterMm.Z);
+            var sizeX = Whole(SizeMm.X);
+            var sizeZ = Whole(SizeMm.Z);
+            var outsideX2 = OutsideDistance(2L * centerXMm, boxX2 - sizeX, boxX2 + sizeX);
+            var outsideZ2 = OutsideDistance(2L * centerZMm, boxZ2 - sizeZ, boxZ2 + sizeZ);
+            var radius2 = 2L * radiusMm;
+            return (decimal)outsideX2 * outsideX2 + (decimal)outsideZ2 * outsideZ2 <=
+                   (decimal)radius2 * radius2;
+        }
+
+        private static long OutsideDistance(long value, long minimum, long maximum)
+        {
+            if (value < minimum)
+                return minimum - value;
+            return value > maximum ? value - maximum : 0L;
+        }
+
+        private static long Doubled(double value)
+        {
+            var doubled = value * 2d;
+            if (double.IsNaN(doubled) || double.IsInfinity(doubled) ||
+                Math.Truncate(doubled) != doubled)
+            {
+                throw new InvalidOperationException("Coordonnée topologique non demi-entière.");
+            }
+            return (long)doubled;
+        }
+
+        private static long Whole(double value)
+        {
+            if (double.IsNaN(value) || double.IsInfinity(value) || value < 0d ||
+                Math.Truncate(value) != value)
+            {
+                throw new InvalidOperationException("Dimension topologique non entière.");
+            }
+            return (long)value;
+        }
     }
 
     public readonly struct TopologySweepSpec

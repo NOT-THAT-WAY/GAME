@@ -51,8 +51,8 @@ La gate locale doit être verte avant de demander un avis humain :
 ./scripts/m1-network-tests-macos.sh all --build
 ```
 
-Elle exécute en vrais processus l’occupation de l’arc, l’opposition égale, le pivot A→B et le
-remplacement par un client tardif. Elle ne remplace ni Windows, ni un réseau dégradé.
+Elle exécute en vrais processus l’écartement d’un joueur resté dans l’arc, l’opposition égale, le
+pivot A→B et le remplacement par un client tardif. Elle ne remplace ni Windows, ni un réseau dégradé.
 
 Lancer ensuite les deux fenêtres visibles :
 
@@ -69,16 +69,40 @@ Pour le smoke réseau à trois connexions simultanées, lancer à la place :
 La topologie reste un duel à deux spawns canoniques. Le build M1 réserve un troisième emplacement
 gris distinct uniquement pour ce test réseau afin de ne pas superposer deux contrôleurs.
 
+### Commandes
+
+Les donner oralement ou garder cette fiche à côté du jeu. Aucun panneau de commandes ni objectif
+n'est injecté dans le player : le banc mesure les actions prévues, pas la découverte d'un tutoriel.
+
+| Action | Clavier / souris | Manette |
+| --- | --- | --- |
+| Se déplacer | `ZQSD` (`WASD`) | stick gauche |
+| Regarder | souris | stick droit |
+| Courir | `Maj` | L3 |
+| **Pousser le mur cyan** | **maintenir `E`** ou clic gauche | gâchette droite |
+| Frapper | `F` ou clic droit | R1 |
+| Vue 1re / 3e personne | `F1` | croix haut |
+| Libérer le curseur | `Échap` | Start |
+
+La porte s'éloigne toujours de celui qui pousse : il faut se placer **du côté opposé à sa course**,
+au contact et tourné vers elle. L'effort est validé par le serveur tick par tick et demande environ
+**une seconde et demie** de contact continu ; il redescend si on lâche. Pendant l'action, une jauge
+affiche uniquement l'effort autoritaire ou un effort opposé. Trois coups de poing orientés vers le
+battant et enchaînés au rythme du bras l'ouvrent également ; deux ne suffisent pas. Le saut n'est pas
+branché sur ce banc.
+
 Faire uniquement ces quatre quêtes, sans indice en jeu ni questionnaire :
 
 1. fenêtre par fenêtre, chacun rejoint le pad coloré opposé ; PASS si aucun blocage ou reset n’est
    nécessaire ;
-2. côté pad rouge, près du pivot orange, maintenir `E` deux secondes ; PASS si le mur cyan devient
-   horizontal sur les deux fenêtres ;
-3. sans changer de position, maintenir encore `E` deux secondes ; PASS si le mur revient vertical
-   sur les deux fenêtres ;
-4. sans déplacer ce pousseur, placer l’autre joueur sur le pad vert puis répéter `E` deux secondes ;
-   PASS si le mur reste vertical et personne n’est déplacé ou coincé.
+2. côté pad rouge, au contact et face au mur cyan, donner trois coups au rythme du bras ; PASS si
+   deux coups ne l'ouvrent pas, si les trois impacts sont visibles et si le mur bascule sur les deux fenêtres ;
+3. contourner le mur par le couloir nord et maintenir `E` depuis ce côté ; PASS si la jauge progresse
+   immédiatement et si le mur revient à
+   la verticale sur les deux fenêtres. Depuis le côté sud, il ne repart pas : la porte ne se pousse
+   jamais vers soi ;
+4. laisser un joueur immobile dans l’arc de balayage pendant que l’autre pousse ; PASS si le mur
+   l’écarte sans le traverser ni le coincer, et termine sa course.
 
 Fermer les deux instances après ces quatre verdicts. Le late join et l’opposition exacte au même
 tick sont déjà automatisés : inutile d’essayer de les reproduire entre deux fenêtres macOS.

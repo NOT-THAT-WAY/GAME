@@ -10,7 +10,9 @@ namespace NotThatWay.Game.Simulation
         WallStatic = 2,
         StateMissing = 3,
         OutOfReach = 4,
-        CenterOnWallPlane = 5
+        CenterOnWallPlane = 5,
+        SweepSideUndetermined = 6,
+        StatePairUnsupported = 7
     }
 
     public readonly struct M1WallInteractionDecision
@@ -82,7 +84,16 @@ namespace NotThatWay.Game.Simulation
             if (!wall.TryGetState(stateId, out var state))
                 return M1WallInteractionDecision.Reject(M1WallInteractionRejection.StateMissing);
 
+            // Le modèle M1 n'admet qu'un aller-retour entre deux poses : c'est ce
+            // couple qui définit le sens « le mur s'éloigne du pousseur ».
+            if (wall.States.Count != 2)
+                return M1WallInteractionDecision.Reject(M1WallInteractionRejection.StatePairUnsupported);
+            var negativeStateId = wall.States[0].StateId;
+            var positiveStateId = wall.States[1].StateId;
+            var destinationStateId = stateId == negativeStateId ? positiveStateId : negativeStateId;
+
             var box = TopologyGeometry.WallBox(map, wallId, stateId);
+            var destinationBox = TopologyGeometry.WallBox(map, wallId, destinationStateId);
             var centerX2 = CheckedTwice(box.CenterMm.X);
             var centerZ2 = CheckedTwice(box.CenterMm.Z);
             var sizeX = CheckedInteger(box.SizeMm.X);
@@ -98,19 +109,35 @@ namespace NotThatWay.Game.Simulation
             if (distanceSquared > (decimal)maximumGap2 * maximumGap2)
                 return M1WallInteractionDecision.Reject(M1WallInteractionRejection.OutOfReach);
 
-            var signedSide = state.Edge.Axis == TopologyAxis.Vertical
-                ? playerX2 - centerX2
-                : playerZ2 - centerZ2;
+            var vertical = state.Edge.Axis == TopologyAxis.Vertical;
+            var signedSide = vertical ? playerX2 - centerX2 : playerZ2 - centerZ2;
             if (signedSide == 0)
             {
                 return M1WallInteractionDecision.Reject(
                     M1WallInteractionRejection.CenterOnWallPlane);
             }
 
-            // Dans la fixture M1, le côté +X pousse A→B et le côté -Z pousse
-            // B→A. Deux joueurs placés de part et d'autre produisent donc des
-            // efforts opposés sans qu'un ClientId serve de tie-break.
-            return M1WallInteractionDecision.Accept(signedSide > 0 ? 1 : -1);
+            // Côté vers lequel la pose de destination s'écarte du plan courant :
+            // c'est le demi-espace que le mur va balayer.
+            var destinationSide = vertical
+                ? CheckedTwice(destinationBox.CenterMm.X) - centerX2
+                : CheckedTwice(destinationBox.CenterMm.Z) - centerZ2;
+            if (destinationSide == 0)
+            {
+                return M1WallInteractionDecision.Reject(
+                    M1WallInteractionRejection.SweepSideUndetermined);
+            }
+
+            // Règle de la porte : le mur s'éloigne toujours de celui qui pousse.
+            // Depuis le demi-espace opposé à la destination, l'effort va vers
+            // cette destination ; depuis l'autre, il retient le mur. Le signe est
+            // donc déduit de la géométrie des deux poses, jamais d'un axe figé —
+            // sans quoi le trajet retour n'est atteignable que depuis l'arc
+            // balayé, c'est-à-dire en se mettant soi-même devant le battant.
+            var towardDestination = destinationStateId == positiveStateId ? 1 : -1;
+            var pushesAway = signedSide > 0 != destinationSide > 0;
+            return M1WallInteractionDecision.Accept(
+                pushesAway ? towardDestination : -towardDestination);
         }
 
         private static long OutsideDistance(long value, long minimum, long maximum)
