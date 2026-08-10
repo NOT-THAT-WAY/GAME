@@ -17,7 +17,10 @@ hash le binaire et écrit la session sous `Logs/HumanTest/<session-id>/`.
 .\scripts\human-test-windows.ps1 -Build
 ```
 
-La validation réelle Windows reste à effectuer sur le PC de l’équipe.
+Ce chemin construit en IL2CPP, donc il ne se connecte pas aujourd’hui : le serveur éjecte son propre
+client local sur le handshake de version FishNet. Le constat, ses preuves et le build Mono de secours
+sont dans [WINDOWS_IL2CPP_BLOCKER.md](WINDOWS_IL2CPP_BLOCKER.md). Toute mesure Windows obtenue par ce
+repli doit être annoncée comme une mesure Mono.
 
 ## Test
 

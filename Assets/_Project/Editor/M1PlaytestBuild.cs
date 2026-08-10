@@ -305,7 +305,7 @@ namespace NotThatWay.Game.Editor
             Build(
                 BuildTarget.StandaloneOSX,
                 "Builds/M1Playtest/macOS/GAME-M1-Playtest.app",
-                false);
+                null);
         }
 
         [MenuItem("GAME/M1 Playtest/Build Windows")]
@@ -314,7 +314,24 @@ namespace NotThatWay.Game.Editor
             Build(
                 BuildTarget.StandaloneWindows64,
                 "Builds/M1Playtest/Windows/GAME-M1-Playtest.exe",
-                true);
+                ScriptingImplementation.IL2CPP);
+        }
+
+        /// <summary>
+        /// Repli de secours tant que le player Windows IL2CPP se fait éjecter par
+        /// son propre serveur sur le handshake de version FishNet
+        /// (docs/WINDOWS_IL2CPP_BLOCKER.md). Sortie séparée pour ne pas écraser le
+        /// build de la cible officielle, et backend forcé ici plutôt que lu dans
+        /// les réglages du projet : la machine qui construit ne doit ni fournir ni
+        /// conserver le basculement.
+        /// </summary>
+        [MenuItem("GAME/M1 Playtest/Build Windows (Mono)")]
+        public static void BuildWindowsMono()
+        {
+            Build(
+                BuildTarget.StandaloneWindows64,
+                "Builds/M1PlaytestMono/Windows/GAME-M1-Playtest.exe",
+                ScriptingImplementation.Mono2x);
         }
 
         private static NetworkObject CreatePlayerPrefab(InputActionAsset controls)
@@ -1099,7 +1116,10 @@ namespace NotThatWay.Game.Editor
             return map;
         }
 
-        private static void Build(BuildTarget target, string outputPath, bool forceIl2Cpp)
+        private static void Build(
+            BuildTarget target,
+            string outputPath,
+            ScriptingImplementation? forcedBackend)
         {
             using var physicsModeScope = new PhysicsSimulationModeScope();
             CreateScene();
@@ -1120,8 +1140,8 @@ namespace NotThatWay.Game.Editor
             var previousBackend = PlayerSettings.GetScriptingBackend(namedTarget);
             try
             {
-                if (forceIl2Cpp)
-                    PlayerSettings.SetScriptingBackend(namedTarget, ScriptingImplementation.IL2CPP);
+                if (forcedBackend.HasValue)
+                    PlayerSettings.SetScriptingBackend(namedTarget, forcedBackend.Value);
 
                 var report = BuildPipeline.BuildPlayer(options);
                 if (report.summary.result != BuildResult.Succeeded)
@@ -1129,8 +1149,11 @@ namespace NotThatWay.Game.Editor
             }
             finally
             {
-                if (forceIl2Cpp && PlayerSettings.GetScriptingBackend(namedTarget) != previousBackend)
+                if (forcedBackend.HasValue &&
+                    PlayerSettings.GetScriptingBackend(namedTarget) != previousBackend)
+                {
                     PlayerSettings.SetScriptingBackend(namedTarget, previousBackend);
+                }
             }
 
             Debug.Log($"[GAME-M1] Build ready: {Path.GetFullPath(outputPath)}");
