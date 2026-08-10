@@ -86,6 +86,24 @@
           "processors": "",
           "interactions": "",
           "initialStateCheck": false
+        },
+        {
+          "name": "Zoom",
+          "type": "PassThrough",
+          "id": "2340f053-0bda-4438-bfc9-b5062142bc5e",
+          "expectedControlType": "Axis",
+          "processors": "",
+          "interactions": "",
+          "initialStateCheck": false
+        },
+        {
+          "name": "ZoomStick",
+          "type": "Value",
+          "id": "e91325d1-a324-44db-80bd-7958fa80b4b8",
+          "expectedControlType": "Axis",
+          "processors": "",
+          "interactions": "",
+          "initialStateCheck": true
         }
       ],
       "bindings": [
@@ -394,6 +412,28 @@
           "processors": "",
           "groups": "Gamepad",
           "action": "ToggleView",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "b634cc49-8456-4318-b971-2565e302acbb",
+          "path": "<Mouse>/scroll/y",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "Zoom",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "39fc073f-d20f-4d4e-bb5f-dbf7fd54dbad",
+          "path": "<Gamepad>/dpad/x",
+          "interactions": "",
+          "processors": "",
+          "groups": "Gamepad",
+          "action": "ZoomStick",
           "isComposite": false,
           "isPartOfComposite": false
         }

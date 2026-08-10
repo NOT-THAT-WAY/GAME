@@ -17,6 +17,14 @@ namespace NotThatWay.Game.Input
         [SerializeField, Min(0f)] private float _pointerDegreesPerPixel = 0.12f;
         [SerializeField, Min(0f)] private float _stickDegreesPerSecond = 180f;
 
+        // Zoom caméra troisième personne : purement cosmétique (voir
+        // ZoomInputThisFrame). La molette livre déjà un delta intégré par frame,
+        // donc sa sensibilité s'applique telle quelle ; la croix manette est un
+        // état continu et doit passer par dt pour ne pas zoomer plus vite à
+        // haut framerate, exactement comme _stickDegreesPerSecond pour le regard.
+        [SerializeField, Min(0f)] private float _scrollZoomSensitivity = 0.05f;
+        [SerializeField, Min(0f)] private float _zoomStickUnitsPerSecond = 0.3f;
+
         private readonly PlayerCommandAccumulator _accumulator = new();
         private InputActionAsset _runtimeAsset;
         private InputActionMap _playerMap;
@@ -29,6 +37,8 @@ namespace NotThatWay.Game.Input
         private InputAction _jump;
         private InputAction _pause;
         private InputAction _toggleView;
+        private InputAction _zoom;
+        private InputAction _zoomStick;
         private InputDevice[] _restrictedDevices;
         private Vector2 _latestStick;
         private bool _subscribedToInputUpdates;
@@ -39,6 +49,20 @@ namespace NotThatWay.Game.Input
 
         /// <summary>Bascule de vue : purement locale, jamais dans une commande répliquée.</summary>
         public bool ViewTogglePressedThisFrame { get; private set; }
+
+        /// <summary>
+        /// Delta de zoom caméra pour cette frame, déjà exprimé en unités de
+        /// facteur de bras (voir M1ThirdPersonSpringArm.ApplyZoomInput), qui s'ajoute
+        /// au facteur : négatif raccourcit le bras donc rapproche la caméra, positif
+        /// l'éloigne. C'est pour cela que le signe de la molette est inversé plus
+        /// bas — vers l'avant rapproche. Combine molette (délai déjà
+        /// intégré, lu tel quel) et croix manette (état continu, mis à l'échelle
+        /// par dt) — même construction que CurrentFrame.LookYaw pour LookPointer
+        /// et LookStick. Strictement local : ne passe jamais par l'accumulateur
+        /// de PlayerCommand, donc jamais répliqué ni prédit (ADR 0004).
+        /// </summary>
+        public float ZoomInputThisFrame { get; private set; }
+
         public PlayerInputSample CurrentFrame { get; private set; }
 
         public void Configure(InputActionAsset sourceAsset)
@@ -112,6 +136,7 @@ namespace NotThatWay.Game.Input
             CurrentFrame = default;
             PausePressedThisFrame = false;
             ViewTogglePressedThisFrame = false;
+            ZoomInputThisFrame = 0f;
         }
 
         private void OnEnable()
@@ -144,6 +169,15 @@ namespace NotThatWay.Game.Input
 
             PausePressedThisFrame = _pause.WasPressedThisFrame();
             ViewTogglePressedThisFrame = _toggleView.WasPressedThisFrame();
+
+            // Molette vers l'avant (delta positif) rapproche la caméra, donc le
+            // signe s'inverse ; la croix manette suit la même convention et doit
+            // être ramenée à un delta par frame via dt, comme le stick de regard.
+            var zoomStickValue = _zoomStick.ReadValue<float>();
+            ZoomInputThisFrame =
+                -_zoom.ReadValue<float>() * _scrollZoomSensitivity -
+                zoomStickValue * _zoomStickUnitsPerSecond * Time.unscaledDeltaTime;
+
             var pointerYaw = pointer.x * _pointerDegreesPerPixel;
             var pointerPitch = pointer.y * _pointerDegreesPerPixel;
             CurrentFrame = new PlayerInputSample(
@@ -209,6 +243,8 @@ namespace NotThatWay.Game.Input
             _jump = _playerMap.FindAction(GameControlsContract.Jump, true);
             _pause = _playerMap.FindAction(GameControlsContract.Pause, true);
             _toggleView = _playerMap.FindAction(GameControlsContract.ToggleView, true);
+            _zoom = _playerMap.FindAction(GameControlsContract.Zoom, true);
+            _zoomStick = _playerMap.FindAction(GameControlsContract.ZoomStick, true);
             _playerMap.Enable();
             InputSystem.onAfterUpdate += HandleAfterInputUpdate;
             _subscribedToInputUpdates = true;
@@ -240,6 +276,9 @@ namespace NotThatWay.Game.Input
             _punch = null;
             _jump = null;
             _pause = null;
+            _toggleView = null;
+            _zoom = null;
+            _zoomStick = null;
         }
     }
 }

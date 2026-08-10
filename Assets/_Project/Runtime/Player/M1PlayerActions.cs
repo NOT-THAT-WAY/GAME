@@ -17,17 +17,71 @@ namespace NotThatWay.Game
     internal static class M1PunchTuning
     {
         public const uint CooldownTicks = 48u;
-        public const uint WallImpulseTicks = 15u;
 
         /// <summary>
-        /// Un coup ne verse qu'une fraction du levier d'un appui continu : mesuré
-        /// sans atténuation, un seul coup à pleine puissance versait jusqu'à 36°
-        /// de rotation (40 ticks × 900 mdeg), jugé excessif par le testeur. La
-        /// réduction se combine avec <see cref="WallImpulseTicks"/> : c'est le
-        /// couple appliqué à chaque tick de la fenêtre qui est réduit, pas la
-        /// durée de la fenêtre elle-même.
+        /// Un coup verse son couple pendant cette fenêtre de ticks. Avec
+        /// <see cref="PunchTorqueScalePermille"/> = 1000 (atténuation neutre) et
+        /// le battant réglé à 400 mdeg/tick, un coup au bout du battant (levier
+        /// plein, 1000‰) vaut 45 × 400 = 18 000 mdeg = 18°, soit un cinquième de
+        /// tour (90° / 5) : demande explicite du testeur pour qu'une vingtaine de
+        /// coups fassent un tour complet, après que le premier réglage (3°) a été
+        /// jugé trop faible. Au gond (levier plancher 400‰), le même coup vaut
+        /// 45 × 160 = 7 200 mdeg = 7,2°. La fenêtre reste sous
+        /// <see cref="CooldownTicks"/> (marge de 3 ticks) : deux impulsions d'une
+        /// même source ne se chevauchent jamais, voir
+        /// <c>M1AuthoritativeWallDirector.TryRegisterPunchImpulse</c> et
+        /// <c>M1PunchTorqueTests</c>.
         /// </summary>
-        public const int PunchTorqueScalePermille = 500;
+        public const uint WallImpulseTicks = 45u;
+
+        /// <summary>
+        /// Facteur d'atténuation du levier d'un coup par rapport à un appui
+        /// continu. Remonté de 500 à 1000 (atténuation neutre) : demande
+        /// explicite du testeur après avoir jugé le premier réglage (3° par coup)
+        /// trop timide. La constante et son point d'application
+        /// (<c>ScalePunchLeverage</c>, appliqué serveur dans
+        /// <c>M1AuthoritativeWallDirector.TryRegisterPunchImpulse</c>) restent en
+        /// place même neutralisés : c'est le bouton de réglage si le ressenti
+        /// change encore.
+        /// </summary>
+        public const int PunchTorqueScalePermille = 1000;
+    }
+
+    /// <summary>
+    /// Réglage du retour tactile d'une poussée contre le battant : « appuyer
+    /// contre une porte lourde doit repousser un peu ». Le déplacement d'un
+    /// rebond est exprimé en pour-mille du déplacement que produit un coup de
+    /// poing plutôt qu'en mètres par seconde codés en dur, pour que la relation
+    /// quadratique entre vitesse et déplacement reste visible dans le réglage.
+    /// </summary>
+    internal static class M1WallBounceTuning
+    {
+        /// <summary>
+        /// Référence de calcul, alignée sur le champ <c>_knockbackSpeed</c> de
+        /// <see cref="M1PlayerActions"/> (4,5 m/s). Avec la décélération par
+        /// défaut de <c>PredictedPlayerMotor._knockbackDecay</c> (10 m/s²), un
+        /// coup de poing déplace le joueur de v² / (2a) = 4,5² / 20 ≈ 1,01 m.
+        /// </summary>
+        public const float PunchKnockbackSpeedMetersPerSecond = 4.5f;
+
+        /// <summary>
+        /// Déplacement du rebond, en pour-mille du déplacement d'un coup de
+        /// poing. 100 = 10 %.
+        /// </summary>
+        public const int WallBounceDisplacementPermille = 100;
+
+        /// <summary>
+        /// Dérive la vitesse de rebond depuis un déplacement cible. Le
+        /// déplacement varie comme le carré de la vitesse (v² / (2a)), donc
+        /// atteindre une fraction <paramref name="displacementPermille"/> / 1000
+        /// du déplacement d'un coup de poing exige un facteur
+        /// sqrt(displacementPermille / 1000) sur la vitesse de référence — pas
+        /// une simple règle de trois — pour que doubler le pour-mille double
+        /// bien le déplacement plutôt que la vitesse.
+        /// </summary>
+        public static float Speed(int displacementPermille) =>
+            PunchKnockbackSpeedMetersPerSecond *
+            Mathf.Sqrt(displacementPermille / (float)WallSimulationSettings.PermilleScale);
     }
 
     internal static class M1PunchTargeting
@@ -62,6 +116,8 @@ namespace NotThatWay.Game
         [SerializeField, Min(1)] private uint _punchCooldownTicks = M1PunchTuning.CooldownTicks;
         [SerializeField, Min(0f)] private float _punchRangeMeters = 2f;
         [SerializeField, Min(0f)] private float _punchHalfAngleDegrees = 30f;
+        // Garder synchronisé avec M1WallBounceTuning.PunchKnockbackSpeedMetersPerSecond :
+        // le rebond de contact dérive son déplacement de celui d'un coup de poing.
         [SerializeField, Min(0f)] private float _knockbackSpeed = 4.5f;
         [SerializeField, Min(0f)] private float _chestHeightMeters = 0.7f;
 

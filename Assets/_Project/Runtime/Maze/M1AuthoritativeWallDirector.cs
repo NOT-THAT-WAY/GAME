@@ -46,6 +46,15 @@ namespace NotThatWay.Game
         private readonly List<PredictedPlayerMotor> _serverPlayers = new(4);
         private readonly List<WallTorqueIntent> _intents = new(4);
         private readonly Dictionary<int, uint> _lastConsumedPlayerTick = new();
+
+        // Front montant de la poussée : vrai tant que la dernière commande connue
+        // de ce joueur était une poussée acceptée par le serveur. Le rebond ne se
+        // déclenche que sur la transition faux → vrai, jamais à chaque tick d'un
+        // appui maintenu.
+        private readonly Dictionary<int, bool> _wasPushAccepted = new();
+
+        // Garde-fou défensif : voir WallBounceCooldownTicks ci-dessous.
+        private readonly Dictionary<int, uint> _lastWallBounceTick = new();
         private WallSnapshotHistory _history;
 
         private TopologyArena _arena;
@@ -83,9 +92,21 @@ namespace NotThatWay.Game
         private const uint PushSampleIntervalTicks = 2u;
         private uint _sweptPushCount;
 
-        // Une frappe verse un couple atténué (M1PunchTuning.PunchTorqueScalePermille)
-        // pendant quinze ticks au lieu de l'appui continu : le battant bouge
-        // visiblement à chaque coup, sans balancer une fraction de tour, et sans
+        /// <summary>
+        /// Garde-fou défensif contre un front montant répété si le contact se
+        /// perdait puis se regagnait de façon intermittente pendant un appui
+        /// continu. Non attendu en pratique : le rebond ne déplace le pousseur
+        /// que d'environ 0,10 m (voir M1WallBounceTuning) contre une portée de
+        /// contact de 900 mm, donc le contact ne se rompt pas et il n'y a pas de
+        /// nouveau front montant. Le cooldown reste en ticks, jamais en secondes.
+        /// </summary>
+        private const uint WallBounceCooldownTicks = 10u;
+        private uint _wallBounceCount;
+
+        // Une frappe verse un couple (M1PunchTuning.PunchTorqueScalePermille, neutre
+        // à 1000‰) pendant quarante-cinq ticks au lieu de l'appui continu : au bout
+        // du battant, un coup vaut un cinquième de tour (18°), au gond 7,2° — le
+        // testeur veut qu'une vingtaine de coups fassent un tour complet — et sans
         // qu'un client puisse désigner son mur ni son sens.
         private readonly Dictionary<int, PunchImpulse> _punchImpulses = new(4);
         private readonly Dictionary<int, PunchImpulse> _pendingPunchImpulses = new(4);
@@ -108,6 +129,7 @@ namespace NotThatWay.Game
         public uint QuarterTurnCount => _quarterTurnCount;
         public uint OpposedTorqueTickCount => _opposedTorqueTickCount;
         public uint SweptPushCount => _sweptPushCount;
+        public uint WallBounceCount => _wallBounceCount;
         public long CumulativeRotationMilliDegrees => _cumulativeRotationMilliDegrees;
 
         // Exposé pour l'indicateur local du pousseur : il rejoue la règle pure sur
@@ -138,6 +160,9 @@ namespace NotThatWay.Game
             ResolveContract();
             _serverMachine = new WallRotationMachine(_settings, _wallId, 0, 0u);
             _lastConsumedPlayerTick.Clear();
+            _wasPushAccepted.Clear();
+            _lastWallBounceTick.Clear();
+            _wallBounceCount = 0u;
             _rotatingTickCount = 0u;
             _segmentCount = 0u;
             _reversalCount = 0u;
@@ -176,6 +201,8 @@ namespace NotThatWay.Game
         {
             _serverMachine = null;
             _lastConsumedPlayerTick.Clear();
+            _wasPushAccepted.Clear();
+            _lastWallBounceTick.Clear();
             base.OnStopServer();
         }
 
@@ -360,14 +387,33 @@ namespace NotThatWay.Game
                 _lastConsumedPlayerTick[player.ObjectId] = command.Tick;
 
                 if (!command.Has(PlayerCommandButtons.InteractHeld))
+                {
+                    _wasPushAccepted[player.ObjectId] = false;
                     continue;
+                }
 
                 var decision = EvaluateContact(angle, player.transform.position, RadiusOf(player));
                 if (!decision.Allowed)
                 {
                     _rejectedInteractionCount++;
+                    // Volontairement, le drapeau n'est PAS remis à faux ici : il
+                    // suit la session d'appui, pas le contact. Le rebond écarte le
+                    // pousseur, donc le contact peut se rompre une frame ; le
+                    // réarmer ici relancerait un rebond, qui romprait à nouveau le
+                    // contact — le pousseur rebondirait en boucle au lieu de
+                    // pousser. Seul le relâchement du bouton réarme.
                     continue;
                 }
+
+                // Front montant : la poussée de ce joueur n'était pas acceptée au
+                // tick précédent. Le rebond ne se déclenche qu'ici, pas à chaque
+                // tick d'un appui maintenu — sinon 60 impulsions par seconde
+                // catapulteraient le pousseur au lieu d'un simple retour tactile.
+                var wasPushing = _wasPushAccepted.TryGetValue(player.ObjectId, out var previouslyAccepted) &&
+                                  previouslyAccepted;
+                _wasPushAccepted[player.ObjectId] = true;
+                if (!wasPushing)
+                    TryApplyWallBounce(player, angle, decision.Direction);
 
                 _intents.Add(new WallTorqueIntent(
                     _wallId,
@@ -399,6 +445,53 @@ namespace NotThatWay.Game
                 QuantizeRadiusMillimeters(radiusMeters),
                 _reachFromCapsuleMm,
                 _minimumLeveragePermille);
+        }
+
+        /// <summary>
+        /// Retour tactile d'une porte lourde : au front montant d'une poussée
+        /// acceptée, l'hôte injecte un recul horizontal le long de la normale du
+        /// battant, du battant vers le pousseur — jamais une direction fournie
+        /// par un client, toujours recalculée ici depuis la géométrie
+        /// autoritaire du tick. Le même chemin d'autorité que le coup de poing
+        /// (<see cref="PredictedPlayerMotor.ApplyKnockbackFromServer"/>) : le
+        /// serveur décide, le propriétaire prédit, la réconciliation corrige.
+        /// </summary>
+        private void TryApplyWallBounce(PredictedPlayerMotor player, int angleMilliDegrees, int direction)
+        {
+            var serverTick = TimeManager.Tick;
+            if (_lastWallBounceTick.TryGetValue(player.ObjectId, out var lastBounceTick) &&
+                !TickMath.HasElapsed(lastBounceTick, WallBounceCooldownTicks, serverTick))
+            {
+                return;
+            }
+            _lastWallBounceTick[player.ObjectId] = serverTick;
+
+            var localNormal = ContactNormalTowardPusher(angleMilliDegrees, direction);
+            var worldVelocity = _arena.transform.TransformDirection(localNormal) *
+                                 M1WallBounceTuning.Speed(M1WallBounceTuning.WallBounceDisplacementPermille);
+            player.ApplyKnockbackFromServer(worldVelocity);
+            _wallBounceCount++;
+            Debug.Log(
+                $"[GAME-M1-WALL] contact_bounce wall={_wallId} playerId={player.ObjectId} " +
+                $"speedMps={worldVelocity.magnitude:F2} angleMdeg={angleMilliDegrees} " +
+                $"logicalTick={serverTick}.");
+        }
+
+        /// <summary>
+        /// Normale du battant, du battant vers le pousseur, en espace local de
+        /// l'arène. C'est la rotation à 90° de la direction gond→bout
+        /// (<see cref="TopologyBladeSpec.UnitDirection"/>) : <paramref
+        /// name="direction"/> vaut l'opposé du côté occupé par le pousseur (voir
+        /// <see cref="M1WallInteractionRules.Evaluate"/>, qui retourne
+        /// <c>-contact.LateralSign</c>), donc son signe suffit à choisir le bon
+        /// côté sans nouveau calcul de géométrie.
+        /// </summary>
+        private Vector3 ContactNormalTowardPusher(int angleMilliDegrees, int direction)
+        {
+            _blade.UnitDirection(angleMilliDegrees, out var unitXQ16, out var unitZQ16);
+            var normalX = unitZQ16 / (float)FixedTrigonometry.Scale;
+            var normalZ = -unitXQ16 / (float)FixedTrigonometry.Scale;
+            return new Vector3(-direction * normalX, 0f, -direction * normalZ);
         }
 
         private static float RadiusOf(PredictedPlayerMotor player)

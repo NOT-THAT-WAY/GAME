@@ -16,7 +16,20 @@ namespace NotThatWay.Game.PlayerNetwork
         PushLeft = 4,
 
         /// <summary>Accompagne le battant vers l'est en poussant.</summary>
-        PushRight = 5
+        PushRight = 5,
+
+        /// <summary>
+        /// Pousse vers l'ouest sans accompagner ni relâcher. Destiné au face à
+        /// face : quand les couples s'opposent, le battant est figé, donc il n'y
+        /// a pas de battant qui s'écarte à suivre et aucun glissement à craindre.
+        /// Le pousseur garde la pleine amplitude, ce qui lui permet de revenir au
+        /// contact après le rebond — un profil d'accompagnement, lui, se fait
+        /// écarter radialement et ne sait pas se rattraper.
+        /// </summary>
+        PressLeft = 6,
+
+        /// <summary>Symétrique de <see cref="PressLeft"/>, vers l'est.</summary>
+        PressRight = 7
     }
 
     /// <summary>
@@ -55,6 +68,10 @@ namespace NotThatWay.Game.PlayerNetwork
                         return "push-left";
                     case M1AutomatedPlayerProfile.PushRight:
                         return "push-right";
+                    case M1AutomatedPlayerProfile.PressLeft:
+                        return "press-left";
+                    case M1AutomatedPlayerProfile.PressRight:
+                        return "press-right";
                     default:
                         return "none";
                 }
@@ -83,6 +100,10 @@ namespace NotThatWay.Game.PlayerNetwork
                     return ApproachAndPush(simulationTick, -127, FollowYawCentidegrees);
                 case M1AutomatedPlayerProfile.PushRight:
                     return ApproachAndPush(simulationTick, 127, -FollowYawCentidegrees);
+                case M1AutomatedPlayerProfile.PressLeft:
+                    return ApproachAndPress(simulationTick, -127);
+                case M1AutomatedPlayerProfile.PressRight:
+                    return ApproachAndPress(simulationTick, 127);
                 default:
                     return new PlayerCommand(
                         simulationTick, 0, 0, 0, 0, PlayerCommandButtons.None);
@@ -148,6 +169,12 @@ namespace NotThatWay.Game.PlayerNetwork
                 case "push-left":
                     profile = M1AutomatedPlayerProfile.PushLeft;
                     break;
+                case "press-left":
+                    profile = M1AutomatedPlayerProfile.PressLeft;
+                    break;
+                case "press-right":
+                    profile = M1AutomatedPlayerProfile.PressRight;
+                    break;
                 case "push-right":
                     profile = M1AutomatedPlayerProfile.PushRight;
                     break;
@@ -201,6 +228,28 @@ namespace NotThatWay.Game.PlayerNetwork
         /// comme une vraie porte : accompagner la course fait partie du geste, donc
         /// du scénario. Le sens est lié à la disposition des apparitions du graybox.
         /// </summary>
+        /// <summary>
+        /// Marche latérale continue à pleine amplitude et appui jamais relâché.
+        /// Sert au face à face : les deux couples s'annulent, le battant reste
+        /// figé, donc rien ne s'écarte et l'amplitude réduite de
+        /// <see cref="ApproachAndPush"/> n'a pas lieu d'être. La pleine amplitude
+        /// est même nécessaire ici : le rebond de contact écarte le pousseur à
+        /// 1,42 m/s, il faut pouvoir revenir plus vite que ça pour reprendre
+        /// l'appui.
+        /// </summary>
+        private static PlayerCommand ApproachAndPress(uint simulationTick, sbyte strafe)
+        {
+            const uint approachTicks = 90u;
+            var pressing = !TickMath.IsOlder(simulationTick, approachTicks);
+            return new PlayerCommand(
+                simulationTick,
+                strafe,
+                0,
+                0,
+                0,
+                pressing ? PlayerCommandButtons.InteractHeld : PlayerCommandButtons.None);
+        }
+
         private static PlayerCommand ApproachAndPush(
             uint simulationTick,
             sbyte strafe,

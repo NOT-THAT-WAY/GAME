@@ -21,6 +21,14 @@ namespace NotThatWay.Game.Input
         public const string Pause = "Pause";
         public const string ToggleView = "ToggleView";
 
+        // Le zoom molette suit exactement le schéma de Look : un delta déjà
+        // intégré côté souris (PassThrough, comme LookPointer) et un état continu
+        // côté manette qu'il faut multiplier par dt pour rester indépendant du
+        // framerate (Value, comme LookStick). Purement cosmétique et local
+        // (ADR 0004) : jamais dans PlayerCommand, voir PlayerInputSource.
+        public const string Zoom = "Zoom";
+        public const string ZoomStick = "ZoomStick";
+
         private static readonly ActionRequirement[] Requirements =
         {
             new(PlayerMap, Move, InputActionType.Value, "Vector2", true, true),
@@ -32,6 +40,8 @@ namespace NotThatWay.Game.Input
             new(PlayerMap, Jump, InputActionType.Button, "Button", true, true),
             new(PlayerMap, Pause, InputActionType.Button, "Button", true, true),
             new(PlayerMap, ToggleView, InputActionType.Button, "Button", true, true),
+            new(PlayerMap, Zoom, InputActionType.PassThrough, "Axis", true, false),
+            new(PlayerMap, ZoomStick, InputActionType.Value, "Axis", false, true),
             new(UiMap, "Navigate", InputActionType.PassThrough, "Vector2", true, true),
             new(UiMap, "Submit", InputActionType.Button, "Button", true, true),
             new(UiMap, "Cancel", InputActionType.Button, "Button", true, true),

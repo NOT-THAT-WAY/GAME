@@ -179,6 +179,153 @@ namespace NotThatWay.Game.Tests.PlayMode
             }
         }
 
+        [Test]
+        public void ApplyZoomInput_ClampsToBothExtremesEvenWithADisproportionateSingleInput()
+        {
+            var springArm = new M1ThirdPersonSpringArm();
+
+            // Une seule rafale, bien plus grande que tout l'écart [75 %, 100 %] :
+            // le genre de valeur qu'un trackpad peut envoyer d'un coup. Clamp
+            // doit absorber ça en un seul appel, jamais de dépassement
+            // transitoire ni de besoin d'appels supplémentaires pour rattraper.
+            // Le delta s'ajoute au facteur de bras : négatif raccourcit donc
+            // rapproche. C'est PlayerInputSource qui inverse la molette pour que
+            // « vers l'avant » rapproche.
+            springArm.ApplyZoomInput(-1000f);
+            Assert.That(
+                springArm.ZoomFactor,
+                Is.EqualTo(M1ThirdPersonSpringArm.MinimumZoomFactor).Within(0.0005f),
+                "Une rafale de zoom avant démesurée doit s'arrêter pile à la borne basse.");
+
+            springArm.ApplyZoomInput(1000f);
+            Assert.That(
+                springArm.ZoomFactor,
+                Is.EqualTo(M1ThirdPersonSpringArm.MaximumZoomFactor).Within(0.0005f),
+                "Une rafale de zoom arrière démesurée doit s'arrêter pile à la borne haute.");
+        }
+
+        [UnityTest]
+        public IEnumerator Resolve_AtMaximumZoomSettlesToSeventyFivePercentOfTheRestDistanceWithNoWallInTheWay()
+        {
+            var anchor = new GameObject("SpringArmAnchorZoomNoWall");
+            try
+            {
+                anchor.transform.position = new Vector3(0f, 1.05f, 0f);
+                Physics.SyncTransforms();
+
+                var springArm = new M1ThirdPersonSpringArm();
+                springArm.ApplyZoomInput(-1f);
+                Assert.That(
+                    springArm.ZoomFactor,
+                    Is.EqualTo(M1ThirdPersonSpringArm.MinimumZoomFactor).Within(0.0005f));
+
+                // Champ vide : rien ne clampe en dessous du plafond de zoom, donc
+                // la distance résolue doit converger exactement sur 75 % de la
+                // longueur réelle du bras. C'est ≈3,444 m, pas exactement les
+                // 3,4 m de la seule composante Z citée dans la demande : l'offset
+                // a aussi 0,55 m de hauteur, mise à l'échelle avec le reste
+                // comme le fait déjà le raccourcissement anti-mur (zoom et
+                // anti-mur reconstruisent tous deux la même direction unitaire
+                // fois une distance).
+                var restDistance = RestLocalOffset.magnitude;
+                var expectedDistance = restDistance * M1ThirdPersonSpringArm.MinimumZoomFactor;
+                var lastDistance = 0f;
+
+                for (var frame = 0; frame < 10; frame++)
+                {
+                    yield return null;
+                    lastDistance = springArm.Resolve(anchor.transform, RestLocalOffset, Time.deltaTime).magnitude;
+
+                    Assert.That(
+                        lastDistance,
+                        Is.LessThanOrEqualTo(expectedDistance + 0.0005f),
+                        "Le zoom est un plafond : la caméra ne doit jamais aller au-delà.");
+                    Assert.That(
+                        lastDistance,
+                        Is.GreaterThanOrEqualTo(M1ThirdPersonSpringArm.MinimumDistanceMeters - 0.0005f));
+                }
+
+                Assert.That(lastDistance, Is.EqualTo(expectedDistance).Within(0.01f));
+            }
+            finally
+            {
+                Object.DestroyImmediate(anchor);
+            }
+        }
+
+        [UnityTest]
+        public IEnumerator Resolve_WallClampStaysTheSameRegardlessOfHowMuchTheUserHasZoomed()
+        {
+            // Mur nettement plus proche que même le plafond de zoom maximal
+            // (75 % de ≈3,444 m ≈ 2,583 m) : si le zoom court-circuitait
+            // l'anti-mur, le résultat différerait entre zoom normal et zoom
+            // maximal. Il ne doit pas différer — c'est le mur qui décide,
+            // jamais le zoom, quel que soit le facteur en cours.
+            var wallPosition = new Vector3(0f, 1.05f, -1.8f);
+            var wallSize = new Vector3(5f, 5f, 0.4f);
+            var zoomCeiling = RestLocalOffset.magnitude * M1ThirdPersonSpringArm.MinimumZoomFactor;
+
+            var anchorNormal = new GameObject("SpringArmAnchorWallNormalZoom");
+            var wallNormal = CreateWorldWall("WallCloserThanZoomCeilingNormal", wallPosition, wallSize);
+            var distanceAtNormalZoom = 0f;
+            try
+            {
+                anchorNormal.transform.position = new Vector3(0f, 1.05f, 0f);
+                Physics.SyncTransforms();
+
+                var springArm = new M1ThirdPersonSpringArm();
+                for (var frame = 0; frame < 10; frame++)
+                {
+                    yield return null;
+                    distanceAtNormalZoom = springArm
+                        .Resolve(anchorNormal.transform, RestLocalOffset, Time.deltaTime)
+                        .magnitude;
+                }
+            }
+            finally
+            {
+                Object.DestroyImmediate(anchorNormal);
+                Object.DestroyImmediate(wallNormal);
+            }
+
+            var anchorZoomed = new GameObject("SpringArmAnchorWallMaximumZoom");
+            var wallZoomed = CreateWorldWall("WallCloserThanZoomCeilingZoomed", wallPosition, wallSize);
+            var distanceAtMaximumZoom = 0f;
+            try
+            {
+                anchorZoomed.transform.position = new Vector3(0f, 1.05f, 0f);
+                Physics.SyncTransforms();
+
+                var springArm = new M1ThirdPersonSpringArm();
+                springArm.ApplyZoomInput(-1f);
+                Assert.That(
+                    springArm.ZoomFactor,
+                    Is.EqualTo(M1ThirdPersonSpringArm.MinimumZoomFactor).Within(0.0005f));
+
+                for (var frame = 0; frame < 10; frame++)
+                {
+                    yield return null;
+                    distanceAtMaximumZoom = springArm
+                        .Resolve(anchorZoomed.transform, RestLocalOffset, Time.deltaTime)
+                        .magnitude;
+                }
+            }
+            finally
+            {
+                Object.DestroyImmediate(anchorZoomed);
+                Object.DestroyImmediate(wallZoomed);
+            }
+
+            Assert.That(
+                distanceAtNormalZoom,
+                Is.LessThan(zoomCeiling - 0.3f),
+                "Le mur doit être franchement en dessous du plafond de zoom pour que ce test prouve quelque chose.");
+            Assert.That(
+                distanceAtMaximumZoom,
+                Is.EqualTo(distanceAtNormalZoom).Within(0.005f),
+                "Le zoom ne doit jamais court-circuiter l'anti-mur : même mur, même distance de contact.");
+        }
+
         private static GameObject CreateWorldWall(string name, Vector3 position, Vector3 size)
         {
             var wall = GameObject.CreatePrimitive(PrimitiveType.Cube);

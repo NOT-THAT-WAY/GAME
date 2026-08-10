@@ -31,10 +31,13 @@ namespace NotThatWay.Game
             { "Courir", "Maj · L3" },
             { "Pousser le mur", "MAINTENIR E (clic gauche · RT) : il part" },
             { "", "au premier appui et s'écarte de vous" },
-            { "Force de poussée", "100 % au bout du battant, 30 % au gond" },
+            // Doit suivre _minimumLeveragePermille du director : un panneau qui
+            // annonce une force que la règle n'applique pas fausse le playtest.
+            { "Force de poussée", "100 % au bout du battant, 40 % au gond" },
             { "Contre-pousser", "passer sur l'autre face et maintenir E" },
             { "Frapper", "F ou clic droit · R1 — pousse le mur aussi" },
             { "Vue 1re / 3e personne", "F1 · croix haut" },
+            { "Zoomer (3e personne)", "molette · croix gauche/droite" },
             { "Libérer le curseur", "Échap" }
         };
 

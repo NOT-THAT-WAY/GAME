@@ -49,13 +49,47 @@ namespace NotThatWay.Game
         /// </summary>
         public const float ExtendSharpnessPerSecond = 10f;
 
+        /// <summary>
+        /// Zoom maximal demandé par le testeur : la caméra peut se rapprocher
+        /// jusqu'à 25 % de moins que sa distance de repos, jamais plus.
+        /// </summary>
+        public const float MinimumZoomFactor = 0.75f;
+
+        /// <summary>Distance de repos pleine, sans aucun zoom appliqué.</summary>
+        public const float MaximumZoomFactor = 1f;
+
         private float _currentDistanceMeters = -1f;
+        private float _zoomFactor = MaximumZoomFactor;
 
         /// <summary>
         /// Vrai quand le bras est resté sous <see cref="CloseOcclusionThresholdMeters"/>
         /// après le dernier <see cref="Resolve"/>.
         /// </summary>
         public bool IsCloseOcclusionActive { get; private set; }
+
+        /// <summary>
+        /// Facteur courant appliqué à la longueur de repos du bras, toujours
+        /// dans [<see cref="MinimumZoomFactor"/>, <see cref="MaximumZoomFactor"/>].
+        /// Exposé pour les tests et pour un futur indicateur de zoom à l'écran.
+        /// </summary>
+        public float ZoomFactor => _zoomFactor;
+
+        /// <summary>
+        /// Applique l'entrée de zoom de la frame (molette ou croix manette,
+        /// déjà convertie en delta de facteur par <c>PlayerInputSource</c>).
+        /// <see cref="Mathf.Clamp"/> absorbe en un seul appel toute rafale
+        /// démesurée (trackpad) : le facteur ne peut jamais sortir de
+        /// [<see cref="MinimumZoomFactor"/>, <see cref="MaximumZoomFactor"/>],
+        /// quelle que soit l'amplitude de <paramref name="zoomFactorDelta"/>.
+        /// Ne touche jamais <see cref="_currentDistanceMeters"/> : c'est
+        /// <see cref="Resolve"/> qui recombine zoom et anti-mur à la prochaine
+        /// frame. Survit volontairement à <see cref="Reset"/> — la bascule
+        /// 1re/3e personne ne doit pas remettre le zoom à zéro.
+        /// </summary>
+        public void ApplyZoomInput(float zoomFactorDelta)
+        {
+            _zoomFactor = Mathf.Clamp(_zoomFactor + zoomFactorDelta, MinimumZoomFactor, MaximumZoomFactor);
+        }
 
         /// <summary>
         /// Calcule la position locale (relative à <paramref name="anchor"/>) de
@@ -69,7 +103,7 @@ namespace NotThatWay.Game
             if (anchor == null)
             {
                 Reset();
-                return restLocalOffset;
+                return restLocalOffset * _zoomFactor;
             }
 
             var restDistance = restLocalOffset.magnitude;
@@ -83,13 +117,22 @@ namespace NotThatWay.Game
             var localDirection = restLocalOffset / restDistance;
             var worldDirection = anchor.TransformDirection(localDirection);
 
-            var targetDistance = restDistance;
+            // Le zoom n'est qu'un plafond sur la longueur de repos, jamais un
+            // nouvel offset : la sonde anti-mur travaille toujours en dessous de
+            // ce plafond, jamais au-dessus, donc un mur raccourcit toujours plus
+            // que ne le ferait le zoom seul. Max avec la distance plancher :
+            // même si _zoomFactor descendait un jour sous ce qu'il faut pour
+            // rester au-dessus du plancher, le zoom ne doit jamais pouvoir
+            // l'enfoncer.
+            var zoomedRestDistance = Mathf.Max(MinimumDistanceMeters, restDistance * _zoomFactor);
+
+            var targetDistance = zoomedRestDistance;
             if (Physics.SphereCast(
                     anchor.position,
                     SphereCastRadiusMeters,
                     worldDirection,
                     out var hit,
-                    restDistance,
+                    zoomedRestDistance,
                     1 << GameplayLayers.World,
                     QueryTriggerInteraction.Ignore))
             {

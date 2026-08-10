@@ -4,13 +4,18 @@ using NUnit.Framework;
 namespace NotThatWay.Game.Tests.EditMode
 {
     /// <summary>
-    /// Verrouille la rotation produite par un coup de poing après l'étape 3 de
-    /// <c>docs/M1_WALL_HANDOFF.md</c> : sans atténuation, un seul coup à pleine
-    /// puissance versait jusqu'à 36° (40 ticks × 900 mdeg), jugé excessif par le
-    /// testeur. Avec le battant alourdi de l'étape 2 (400 mdeg/tick, levier
-    /// plancher 400 pour mille) et l'atténuation de coup de l'étape 3
-    /// (<see cref="M1PunchTuning.PunchTorqueScalePermille"/>, 15 ticks au lieu
-    /// de 40), la cible est ≈3°. Ce test rejoue l'impulsion sur le modèle pur
+    /// Verrouille la rotation produite par un coup de poing. Un premier réglage
+    /// (atténuation 500‰, 15 ticks, cible ≈3°) a été jugé trop timide par le
+    /// testeur, qui veut désormais qu'un coup au bout du battant vaille un
+    /// cinquième de tour (18°), pour qu'une vingtaine de coups fassent un tour
+    /// complet. Avec le battant à 400 mdeg/tick (levier plancher 400 pour
+    /// mille), la vitesse d'un coup passe par
+    /// <see cref="WallSimulationSettings.VelocityFromNetLeverage"/>, dont le
+    /// levier est borné à 1000 pour mille : 400 mdeg/tick est donc la vitesse
+    /// maximale atteignable, et balayer 18 000 mdeg exige au minimum 45 ticks à
+    /// pleine puissance — d'où <see cref="M1PunchTuning.WallImpulseTicks"/> = 45
+    /// et une atténuation neutre (<see cref="M1PunchTuning.PunchTorqueScalePermille"/>
+    /// = 1000). Ce test rejoue l'impulsion sur le modèle pur
     /// <see cref="WallRotationMachine"/>, sans FishNet ni director : c'est ce que
     /// <c>M1AuthoritativeWallDirector.TryRegisterPunchImpulse</c> verse à la
     /// machine, pas la façon dont il y arrive.
@@ -54,23 +59,23 @@ namespace NotThatWay.Game.Tests.EditMode
         }
 
         [Test]
-        public void PunchTorqueScale_SweepsThreeDegreesAtTheTip()
+        public void PunchTorqueScale_SweepsEighteenDegreesAtTheTip()
         {
-            // Contact au bout du battant : levier plein (1000 pour mille) avant
-            // atténuation. 15 ticks × (1000 × 500‰ atténué, quantifié à 500‰) ×
-            // 400 mdeg/tick / 1000 = 15 × 200 = 3 000 mdeg, soit 3° — la cible de
-            // l'étape 3 du handoff M1 (« un à-coup lisible, pas une bourrasque »).
-            Assert.That(SweepPunch(1000), Is.EqualTo(3000));
+            // Contact au bout du battant : levier plein (1000 pour mille), atténuation
+            // neutre (1000‰) donc levier net inchangé = 1000‰ = vitesse maximale.
+            // 45 ticks × 400 mdeg/tick = 18 000 mdeg, soit 18° = 1/5 de tour — demande
+            // explicite du testeur pour qu'une vingtaine de coups fassent un tour
+            // complet.
+            Assert.That(SweepPunch(1000), Is.EqualTo(18000));
         }
 
         [Test]
-        public void PunchTorqueScale_SweepsLessAtTheHinge()
+        public void PunchTorqueScale_SweepsSevenPointTwoDegreesAtTheHinge()
         {
-            // Contact au gond : levier plancher de l'étape 2 (400 pour mille)
-            // avant atténuation. 15 ticks × (400 × 500‰ atténué = 200‰) ×
-            // 400 mdeg/tick / 1000 = 15 × 80 = 1 200 mdeg, soit 1,2° : le même
-            // coup, mais au bras de levier minimal.
-            Assert.That(SweepPunch(MinimumLeverage), Is.EqualTo(1200));
+            // Contact au gond : levier plancher (400 pour mille), atténuation neutre.
+            // 45 ticks × (400‰ × 400 mdeg/tick / 1000) = 45 ticks × 160 mdeg/tick =
+            // 7 200 mdeg, soit 7,2° : le même coup, mais au bras de levier minimal.
+            Assert.That(SweepPunch(MinimumLeverage), Is.EqualTo(7200));
         }
     }
 }

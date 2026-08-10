@@ -299,11 +299,34 @@ grep -cE "direction_reversed|torque_opposed" Logs/HumanTest/M1-*/host.log
 | --- | --- | --- |
 | 1 | Grille 2×2 → 6×6, `cellPitchMm` inchangé. Arène 16,5 m, périmètre fermé de 24 murs, pivot au nœud central, spawns dans les deux cellules qui encadrent le battant. Nouveau checksum `b21e3512…` | 3 scénarios réseau, fixtures 11/11 |
 | 2 | `_maximumAngularSpeedMilliDegreesPerTick` 900 → 400, `_minimumLeveragePermille` 300 → 400, alignés entre le prefab et les défauts du director | scénarios réseau |
-| 3 | `WallImpulseTicks` 40 → 15 et `PunchTorqueScalePermille = 500`, appliqué serveur dans `TryRegisterPunchImpulse`. Un coup vaut 3° au bout, 1,2° au gond | `M1PunchTorqueTests`, valeurs figées en dur |
+| 3 | `WallImpulseTicks` 40 → **45** et `PunchTorqueScalePermille = 1000`, appliqué serveur dans `TryRegisterPunchImpulse`. Un coup vaut **18°** au bout, 7,2° au gond | `M1PunchTorqueTests`, valeurs figées en dur |
 | 4 (partiel) | `M1ThirdPersonSpringArm` : SphereCast 0,25 m contre le layer `World`, distance minimale 1,2 m, rentrée instantanée / sortie lissée en `1 - e^(-10·dt)`, corps en `ShadowsOnly` quand le bras est très court | 3 tests PlayMode, dont un `Physics.Linecast` ancrage→caméra frame par frame |
 
 `MaximumPushSpeedMetersPerSecond` reste à 3,5 : au nouveau réglage le bout du battant fait 1,15 m/s
 contre 2,15 m/s pour la poussée subie, la marge de dégagement augmente au lieu de se réduire.
+
+Le coup à 18° vient d'une demande explicite du testeur — 1/5 de 90°, donc 20 coups pour un tour — qui
+révise sa propre consigne précédente (« le coup de poing balance trop »). Contrainte du modèle à
+connaître avant de rejouer ce nombre : le levier est borné à 1000 pour mille, donc un coup ne peut pas
+dépasser la vitesse maximale du battant. 18 000 mdeg exigent **45 ticks au minimum**, ce n'est pas un
+choix de confort. L'impulsion passe juste sous le cooldown de 48 ticks, ce qui évite que deux coups du
+même joueur se chevauchent et perdent du couple par écrêtage.
+
+### Ajouts de la même passe
+
+| Ajout | Détail |
+| --- | --- |
+| Rebond au contact | Pousser un mur repousse le pousseur de 0,101 m, soit 10 % du déplacement d'une frappe. Le déplacement variant au **carré** de la vitesse, cela fait `4,5 × √0,1 ≈ 1,42` m/s, pas 0,45 — un test fige `Speed(200) = Speed(100) × √2` pour empêcher qu'on le relinéarise |
+| Zoom caméra | Molette et croix manette, via Input Action (jamais `Mouse.current`), facteur borné à [75 %, 100 %] de la longueur de repos du bras. Purement local : jamais dans `PlayerCommand`, jamais répliqué |
+
+Le rebond se déclenche **une seule fois par session d'appui**, au front montant, et le drapeau ne
+retombe qu'au relâchement du bouton — surtout pas sur une perte de contact, puisque c'est le rebond
+lui-même qui la provoque. Réarmer sur le contact fait rebondir en boucle au lieu de pousser.
+
+Conséquence sur l'instrument : les bots `interact-180` d'`opposition` restaient **immobiles** et ne
+pouvaient plus revenir au contact après un rebond. Deux profils `press-left` / `press-right` les
+remplacent : pleine amplitude, appui jamais relâché. Le battant étant figé par les couples opposés,
+il n'y a rien à accompagner et donc aucun glissement à craindre, contrairement à `push-*`.
 
 ### Le piège qui a coûté cinq cycles de build
 

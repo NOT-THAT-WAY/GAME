@@ -110,6 +110,14 @@ namespace NotThatWay.Game
             if (anchor == null)
                 return;
 
+            // Molette/manette : purement local, jamais dans une commande
+            // répliquée (ADR 0004). N'est appliqué qu'en vue troisième
+            // personne, seule vue où le bras à ressort existe ; le facteur
+            // résultant survit malgré tout à une bascule vers la vue
+            // subjective, voir M1ThirdPersonSpringArm.ApplyZoomInput.
+            if (_inputSource != null)
+                _thirdPersonSpringArm.ApplyZoomInput(_inputSource.ZoomInputThisFrame);
+
             var wasCloseOcclusionActive = _thirdPersonSpringArm.IsCloseOcclusionActive;
             _camera.transform.localPosition = _thirdPersonSpringArm.Resolve(
                 anchor,

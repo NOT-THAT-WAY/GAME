@@ -299,7 +299,7 @@ run_opposition() {
   mkdir -p "$directory"
   launch_player opposition-host "$directory/host.log" \
     --game-role host --game-port "$port" --game-name M1_OPP_HOST \
-    --m1-auto-player interact-180 --m1-test-name opposition-host --m1-run-id "$RUN_ID" \
+    --m1-auto-player press-right --m1-test-name opposition-host --m1-run-id "$RUN_ID" \
     --m1-evaluate-after-ready-seconds 6 --m1-auto-quit-seconds 11 \
     --m1-expect-players 2 --m1-expect-connections 2 \
     --m1-expect-opposed-ticks-min 60 --m1-expect-rotation-max-mdeg 30000
@@ -308,7 +308,7 @@ run_opposition() {
     { fail 'host opposition non prêt'; return 1; }
   launch_player opposition-client "$directory/client.log" \
     --game-role client --game-address 127.0.0.1 --game-port "$port" --game-name M1_OPP_CLIENT \
-    --m1-auto-player interact-180 --m1-test-name opposition-client --m1-run-id "$RUN_ID" \
+    --m1-auto-player press-left --m1-test-name opposition-client --m1-run-id "$RUN_ID" \
     --m1-evaluate-after-ready-seconds 6 --m1-auto-quit-seconds 8 \
     --m1-expect-players 2 \
     --m1-expect-snapshots-min 1 --m1-expect-target-snapshots-min 1
