@@ -1,15 +1,17 @@
 # Graybox M1 — contrat exécutable
 
 Le banc M1 n'est pas le labyrinthe 16×16. Il part de
-`Assets/_Project/Maze/GrayboxTopology2x2.v1.json` et construit au runtime une arène 2×2 uniquement
-avec des primitives Unity. C'est un instrument de mesure réseau : le présenter comme « le jeu »
-fausse l'avis de la personne qui le lance.
+`Assets/_Project/Maze/GrayboxTopology2x2.v1.json` (nom historique conservé, la grille elle-même est
+en 6×6 depuis l'Étape 1 de `docs/M1_WALL_HANDOFF.md`) et construit au runtime une arène 6×6 avec des
+primitives Unity. C'est un instrument de mesure réseau : le présenter comme « le jeu » fausse l'avis
+de la personne qui le lance.
 
 ## Ce qui est déjà verrouillé
 
-- checksum runtime obligatoire : `2f5f3b…c13365` ;
+- checksum runtime obligatoire : `b21e35…e0bc4e` ;
 - copie runtime immuable des dimensions, IDs, états, pivots, ouvertures et spawns ;
-- neuf murs à `BoxCollider`, dont `wallId=10` mobile autour de `pivotId=100` ;
+- vingt-cinq murs à `BoxCollider` (vingt-quatre de périmètre + le battant), dont `wallId=10` mobile
+  autour de `pivotId=100`, nœud central de la grille ;
 - aucun FBX et aucun `MeshCollider` ;
 - battant libre sur 360° : son angle est un entier en milli-degrés dont l'origine est la pose
   initiale déclarée dans la topologie ; les deux poses déclarées ne sont plus que des repères ;
@@ -38,9 +40,10 @@ Ces valeurs et ces sens sont des décisions prises avec l'équipe, pas des const
 - **Aucun seuil, aucune latence** : le couple net du tick donne directement la vitesse angulaire.
   Le premier tick d'appui déplace déjà le battant, et le relâcher l'arrête au même tick — pas
   d'inertie, donc pas de dérive après la main levée.
-- **Bras de levier au prorata** : 300 pour mille de puissance au contact du gond, 1000 au bout du
-  battant, interpolés linéairement sur l'abscisse du contact. À 60 Hz et 900 milli-degrés par tick,
-  un quart de tour prend 1,7 s au bout et 5,6 s contre le gond.
+- **Bras de levier au prorata** : 400 pour mille de puissance au contact du gond, 1000 au bout du
+  battant, interpolés linéairement sur l'abscisse du contact. À 60 Hz et 400 milli-degrés par tick,
+  un quart de tour prend 3,75 s au bout et 9,4 s contre le gond (battant alourdi au retour du
+  premier testeur, cf. `docs/M1_WALL_HANDOFF.md`).
 - **Contre-poussée par addition** : les couples signés des sources s'additionnent, chaque source
   étant bornée à la pleine puissance et la somme à la vitesse nominale. Deux leviers égaux et
   opposés figent le battant ; celui qui s'éloigne du gond reprend la main à la différence exacte.
@@ -118,9 +121,9 @@ python3 tests/topology-fixtures/test-fixtures.py
 ./scripts/validate-repository.sh
 ```
 
-La gate PlayMode exige exactement un sol et neuf colliders de mur actifs, tous des `BoxCollider`,
-et vérifie qu'un angle intermédiaire du battant recouvre bien la capsule d'un joueur planté dans
-sa trajectoire — c'est ce recouvrement qui déclenche la poussée autoritaire.
+La gate PlayMode exige exactement un sol et vingt-cinq colliders de mur actifs, tous des
+`BoxCollider`, et vérifie qu'un angle intermédiaire du battant recouvre bien la capsule d'un joueur
+planté dans sa trajectoire — c'est ce recouvrement qui déclenche la poussée autoritaire.
 
 Les trois scénarios réseau prouvent respectivement : la rotation continue avec un joueur écarté
 (`occupancy`), la contre-poussée qui fige le battant (`opposition`), et l'arrivée tardive qui

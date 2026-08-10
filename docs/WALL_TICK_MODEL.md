@@ -33,7 +33,7 @@ poses : c'est un intégrateur angulaire continu. Le reste du contrat de tick est
 ## Politique technique provisoire de couple
 
 Pour rendre WALL-01 testable avant DEC-03, le banc courant applique une règle de porte simple : le
-battant s'éloigne toujours de celui qui pousse, et la puissance suit le bras de levier — 300 pour
+battant s'éloigne toujours de celui qui pousse, et la puissance suit le bras de levier — 400 pour
 mille contre le gond, 1000 au bout, au prorata de l'abscisse du contact. Le sens vient du demi-plan
 occupé par le pousseur à l'angle courant, jamais d'un axe codé en dur ni d'une pose de destination.
 

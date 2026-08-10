@@ -30,12 +30,14 @@ namespace NotThatWay.Game
 
         /// <summary>
         /// Vitesse d'un pousseur seul au bout du battant. À 60 ticks par seconde,
-        /// 900 milli-degrés par tick font un quart de tour en 1,7 s au bout et en
-        /// 5,6 s contre le gond : lourd, mais jamais immobile.
+        /// 400 milli-degrés par tick font un quart de tour en 3,75 s au bout et en
+        /// 9,375 s contre le gond (levier plancher 400 pour mille, ci-dessous) :
+        /// un battant alourdi par rapport au premier réglage (900 mdeg/tick),
+        /// mais jamais immobile.
         /// </summary>
-        [SerializeField, Min(1)] private int _maximumAngularSpeedMilliDegreesPerTick = 900;
+        [SerializeField, Min(1)] private int _maximumAngularSpeedMilliDegreesPerTick = 400;
 
-        [SerializeField, Range(0, 1000)] private int _minimumLeveragePermille = 300;
+        [SerializeField, Range(0, 1000)] private int _minimumLeveragePermille = 400;
         [SerializeField, Min(1)] private uint _maximumExtrapolationTicks = 180u;
 
         [Header("Validation serveur M1")]
@@ -81,9 +83,10 @@ namespace NotThatWay.Game
         private const uint PushSampleIntervalTicks = 2u;
         private uint _sweptPushCount;
 
-        // Une frappe verse son couple pendant quarante ticks au lieu de l'appui
-        // continu : le battant bouge visiblement à chaque coup sans qu'un client
-        // puisse désigner son mur ni son sens.
+        // Une frappe verse un couple atténué (M1PunchTuning.PunchTorqueScalePermille)
+        // pendant quinze ticks au lieu de l'appui continu : le battant bouge
+        // visiblement à chaque coup, sans balancer une fraction de tour, et sans
+        // qu'un client puisse désigner son mur ni son sens.
         private readonly Dictionary<int, PunchImpulse> _punchImpulses = new(4);
         private readonly Dictionary<int, PunchImpulse> _pendingPunchImpulses = new(4);
         private readonly List<int> _expiredPunchSources = new(4);
@@ -408,9 +411,12 @@ namespace NotThatWay.Game
         }
 
         /// <summary>
-        /// Un coup de poing verse le même couple qu'un appui, pendant une durée
-        /// bornée. Le sens et le levier sont figés au moment de l'impact : le
-        /// battant continue donc de tourner un instant après le coup.
+        /// Un coup de poing verse un couple atténué par rapport à un appui
+        /// continu, pendant une durée bornée : le sens et le levier sont figés au
+        /// moment de l'impact, le battant continue donc de tourner un instant
+        /// après le coup. L'atténuation est appliquée ici, sur le levier calculé
+        /// par le serveur — jamais sur une valeur qu'un client pourrait fournir —
+        /// donc une seule fois par coup, sans détour possible.
         /// </summary>
         public bool TryRegisterPunchImpulse(int sourceId, Vector3 worldPosition, float radiusMeters)
         {
@@ -426,10 +432,24 @@ namespace NotThatWay.Game
 
             _punchImpulses[sourceId] = new PunchImpulse(
                 decision.Direction,
-                decision.LeveragePermille,
+                ScalePunchLeverage(decision.LeveragePermille),
                 M1PunchTuning.WallImpulseTicks);
             return true;
         }
+
+        /// <summary>
+        /// Réduit le levier d'un coup au pour-mille défini par
+        /// <see cref="M1PunchTuning.PunchTorqueScalePermille"/>. Division entière
+        /// tronquée vers zéro — comportement natif de C# sur les entiers, donc
+        /// symétrique quel que soit le signe — pour rester cohérent avec le
+        /// modèle de mur, entièrement entier. <paramref name="leveragePermille"/>
+        /// n'est aujourd'hui jamais négatif (il vient de
+        /// <see cref="M1WallInteractionDecision"/>, qui l'interdit), mais la
+        /// division reste correcte si cette garantie changeait un jour.
+        /// </summary>
+        private static int ScalePunchLeverage(int leveragePermille) =>
+            (int)((long)leveragePermille * M1PunchTuning.PunchTorqueScalePermille /
+                  WallSimulationSettings.PermilleScale);
 
         private void AppendPunchIntents()
         {

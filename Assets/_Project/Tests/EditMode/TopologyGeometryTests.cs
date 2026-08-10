@@ -22,8 +22,8 @@ namespace NotThatWay.Game.Tests.EditMode
 
             Assert.That(created, Is.True, FormatIssues(issues));
             Assert.That(map.TopologyId, Is.EqualTo("graybox-duel-2x2-v1"));
-            Assert.That(map.Checksum, Is.EqualTo("2f5f3b1148408d643cad9793fb59d511948bc4f1e252898cf375affd98c13365"));
-            Assert.That(map.Walls, Has.Count.EqualTo(9));
+            Assert.That(map.Checksum, Is.EqualTo("b21e351222f20d1e3433de8f4d7db25535ff6a66edaef0b6e58b2228e4e0bc4e"));
+            Assert.That(map.Walls, Has.Count.EqualTo(25));
             Assert.That(map.Pivots, Has.Count.EqualTo(1));
             // Enceinte close : plus aucune arête de périmètre ouverte, donc aucun
             // moyen de quitter le sol de l'arène pendant un test humain.
@@ -113,7 +113,7 @@ namespace NotThatWay.Game.Tests.EditMode
             var states = map.CreateInitialWallStates();
 
             states[10] = 1;
-            Assert.That(TopologyConnectivity.BuildOccupiedEdges(map, states), Has.Count.EqualTo(9));
+            Assert.That(TopologyConnectivity.BuildOccupiedEdges(map, states), Has.Count.EqualTo(25));
 
             states.Remove(1005);
             Assert.That(
@@ -139,7 +139,7 @@ namespace NotThatWay.Game.Tests.EditMode
                         new()
                         {
                             StateId = 0,
-                            Edge = new TopologyEdge { Axis = TopologyEdge.HorizontalAxis, X = 0, Y = 1 },
+                            Edge = new TopologyEdge { Axis = TopologyEdge.HorizontalAxis, X = 2, Y = 3 },
                             QuarterTurns = 0
                         }
                     }
@@ -150,7 +150,7 @@ namespace NotThatWay.Game.Tests.EditMode
                 "      \"wallId\": 2000,\n" +
                 "      \"initialStateId\": 0,\n" +
                 "      \"states\": [\n" +
-                "        {\"stateId\": 0, \"edge\": {\"axis\": \"horizontal\", \"x\": 0, \"y\": 1}, \"quarterTurns\": 0}\n" +
+                "        {\"stateId\": 0, \"edge\": {\"axis\": \"horizontal\", \"x\": 2, \"y\": 3}, \"quarterTurns\": 0}\n" +
                 "      ]\n" +
                 "    }";
             var modifiedJson = sourceJson
@@ -166,7 +166,7 @@ namespace NotThatWay.Game.Tests.EditMode
 
             Assert.That(
                 () => TopologyConnectivity.BuildOccupiedEdges(map, states),
-                Throws.InvalidOperationException.With.Message.Contains("Horizontal:0:1"));
+                Throws.InvalidOperationException.With.Message.Contains("Horizontal:2:3"));
 
             states[10] = 0;
             var decision = TopologyTransitionGuard.Evaluate(

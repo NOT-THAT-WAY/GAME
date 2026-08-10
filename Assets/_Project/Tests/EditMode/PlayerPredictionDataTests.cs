@@ -175,9 +175,21 @@ namespace NotThatWay.Game.Tests.EditMode
                 Is.True);
             Assert.That(
                 follower.CreateCommand(90u).LookYaw,
-                Is.EqualTo(58),
-                "Le lacet suit la porte : sans lui le pousseur perd le contact.");
-            Assert.That(follower.CreateCommand(600u).MoveX, Is.EqualTo(-127));
+                Is.EqualTo(28),
+                "Le lacet suit la porte : sans lui le pousseur perd le contact. " +
+                "La valeur suit la vitesse du battant, 280 mdeg/tick au réglage " +
+                "courant, et se recalcule avec elle.");
+            // Amplitude réduite au contact : le surplus de vitesse ne pousse pas
+            // plus fort, il fait glisser le pousseur jusqu'à contourner le battant.
+            Assert.That(follower.CreateCommand(600u).MoveX, Is.EqualTo(-24));
+            // Puis relâchement, une fois le quart de tour acquis : un pousseur qui
+            // maintient indéfiniment finit sur l'autre face et contre-pousse sa
+            // propre porte.
+            Assert.That(follower.CreateCommand(610u).MoveX, Is.Zero);
+            Assert.That(
+                follower.CreateCommand(610u).Has(PlayerCommandButtons.InteractHeld),
+                Is.False,
+                "Passé la fenêtre de poussée, le pousseur automatisé lâche le mur.");
 
             Assert.That(
                 M1AutomatedCommandSource.TryParseArguments(
@@ -186,8 +198,8 @@ namespace NotThatWay.Game.Tests.EditMode
                     out error),
                 Is.True,
                 error);
-            Assert.That(mirrored.CreateCommand(120u).MoveX, Is.EqualTo(127));
-            Assert.That(mirrored.CreateCommand(120u).LookYaw, Is.EqualTo(-58));
+            Assert.That(mirrored.CreateCommand(120u).MoveX, Is.EqualTo(24));
+            Assert.That(mirrored.CreateCommand(120u).LookYaw, Is.EqualTo(-28));
 
             Assert.That(
                 M1AutomatedCommandSource.TryParseArguments(

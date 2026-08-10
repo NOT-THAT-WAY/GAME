@@ -196,7 +196,10 @@ namespace NotThatWay.Game.Editor
                 // L'enceinte est close sur 3 m : toute vue oblique cache une
                 // moitié de l'arène derrière un mur. Le plan zénithal montre les
                 // deux pads, le pivot orange et la pose du mur mobile d'un coup.
-                var plan = TopologyGeometry.NodeMm(map, 1, 1).Meters + Vector3.up * span * 1.9f;
+                // Le pivot du battant est au nœud central de la grille (Étape 1,
+                // arène 6x6) : un nœud figé à (1,1) pointait le centre de l'ancienne
+                // grille 2x2, pas celui-ci.
+                var plan = TopologyGeometry.NodeMm(map, 3, 3).Meters + Vector3.up * span * 1.9f;
                 RenderFrom(
                     plan,
                     Quaternion.LookRotation(Vector3.down, Vector3.forward),
@@ -422,11 +425,14 @@ namespace NotThatWay.Game.Editor
                 SetInt(serializedDirector, "_tickCallbacks", 1); // PreTick.
                 SetInt(serializedDirector, "_wallId", 10);
                 // Battant libre : la vitesse suit le bras de levier, sans seuil à
-                // charger ni palier. À 60 Hz, 900 milli-degrés par tick font un
-                // quart de tour en 1,7 s au bout du battant et en 5,6 s contre le
-                // gond — lourd et immédiat, jamais bloqué dans une pose.
-                SetInt(serializedDirector, "_maximumAngularSpeedMilliDegreesPerTick", 900);
-                SetInt(serializedDirector, "_minimumLeveragePermille", 300);
+                // charger ni palier. À 60 Hz, 400 milli-degrés par tick font un
+                // quart de tour en 3,75 s au bout du battant et en 9,4 s contre le
+                // gond (plancher remonté à 400 pour mille pour garder le gond jouable
+                // à cette vitesse réduite) — plus lourd qu'avant, toujours immédiat,
+                // jamais bloqué dans une pose. Réglage du retour testeur du
+                // 2026-08-10 : le battant partait trop vite (docs/M1_WALL_HANDOFF.md).
+                SetInt(serializedDirector, "_maximumAngularSpeedMilliDegreesPerTick", 400);
+                SetInt(serializedDirector, "_minimumLeveragePermille", 400);
                 SetLong(serializedDirector, "_maximumExtrapolationTicks", 180L);
                 SetInt(serializedDirector, "_reachFromCapsuleMm", 900);
                 serializedDirector.ApplyModifiedPropertiesWithoutUndo();

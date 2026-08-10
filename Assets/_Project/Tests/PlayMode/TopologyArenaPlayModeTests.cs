@@ -44,12 +44,16 @@ namespace NotThatWay.Game.Tests.PlayMode
                     Is.True);
                 Assert.That(mobileWall, Is.EqualTo(arena.GetWallView(10)));
 
+                // L'arène est passée de 2x2 à 6x6 cellules (Étape 1) : l'enceinte la
+                // plus proche à l'est de la cellule (3,2) est désormais à 6,75 m
+                // (grille x=6, face intérieure à 8,25 m - 0,125 m de demi-épaisseur -
+                // 1,375 m d'origine), donc la portée du rayon doit suivre.
                 Assert.That(
                     Physics.Raycast(
                         origin,
                         Vector3.right,
                         out var awayFromWall,
-                        2f,
+                        10f,
                         worldMask,
                         QueryTriggerInteraction.Ignore),
                     Is.True,
@@ -88,7 +92,9 @@ namespace NotThatWay.Game.Tests.PlayMode
                 controller.height = 1.4f;
                 controller.radius = 0.4f;
                 controller.center = new Vector3(0f, 0.7f, 0f);
-                // Centre de la cellule (0,0), c'est-à-dire le quart balayé.
+                // Centre de la cellule (2,2), c'est-à-dire le quart balayé (arène
+                // 6x6, mêmes coordonnées monde que l'ancienne cellule (0,0) en 2x2
+                // puisque le pivot reste centré sur l'origine).
                 player.transform.position = new Vector3(-1.375f, 0f, -1.375f);
                 Physics.SyncTransforms();
 
@@ -139,15 +145,15 @@ namespace NotThatWay.Game.Tests.PlayMode
                 yield return null;
 
                 Assert.That(arena.Map.Checksum,
-                    Is.EqualTo("2f5f3b1148408d643cad9793fb59d511948bc4f1e252898cf375affd98c13365"));
-                Assert.That(arena.WallCount, Is.EqualTo(9));
+                    Is.EqualTo("b21e351222f20d1e3433de8f4d7db25535ff6a66edaef0b6e58b2228e4e0bc4e"));
+                Assert.That(arena.WallCount, Is.EqualTo(25));
                 Assert.That(arena.HasOnlyPrimitiveGameplayColliders(), Is.True);
                 Assert.That(arena.GeneratedRoot.GetComponentsInChildren<MeshCollider>(true), Is.Empty);
                 var enabledColliders = arena.GeneratedRoot.GetComponentsInChildren<Collider>(true)
                     .Where(value => value.enabled)
                     .ToArray();
-                Assert.That(enabledColliders, Has.Length.EqualTo(10),
-                    "Un sol et neuf murs doivent être les seuls colliders actifs.");
+                Assert.That(enabledColliders, Has.Length.EqualTo(26),
+                    "Un sol et vingt-cinq murs doivent être les seuls colliders actifs.");
                 Assert.That(enabledColliders.All(value => value.gameObject.layer == GameplayLayers.World), Is.True);
                 Assert.That(
                     arena.GeneratedRoot.GetComponentsInChildren<Collider>(true)
@@ -171,7 +177,14 @@ namespace NotThatWay.Game.Tests.PlayMode
                     .ToArray();
                 Assert.That(
                     ids,
-                    Is.EqualTo(new[] { 10, 1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007 }));
+                    Is.EqualTo(new[]
+                    {
+                        10,
+                        1000, 1001, 1002, 1003, 1004, 1005,
+                        1006, 1007, 1008, 1009, 1010, 1011,
+                        1012, 1013, 1014, 1015, 1016, 1017,
+                        1018, 1019, 1020, 1021, 1022, 1023
+                    }));
 
                 var wall = arena.GetWallView(10);
                 var initialPosition = wall.transform.localPosition;

@@ -17,7 +17,17 @@ namespace NotThatWay.Game
     internal static class M1PunchTuning
     {
         public const uint CooldownTicks = 48u;
-        public const uint WallImpulseTicks = 40u;
+        public const uint WallImpulseTicks = 15u;
+
+        /// <summary>
+        /// Un coup ne verse qu'une fraction du levier d'un appui continu : mesuré
+        /// sans atténuation, un seul coup à pleine puissance versait jusqu'à 36°
+        /// de rotation (40 ticks × 900 mdeg), jugé excessif par le testeur. La
+        /// réduction se combine avec <see cref="WallImpulseTicks"/> : c'est le
+        /// couple appliqué à chaque tick de la fenêtre qui est réduit, pas la
+        /// durée de la fenêtre elle-même.
+        /// </summary>
+        public const int PunchTorqueScalePermille = 500;
     }
 
     internal static class M1PunchTargeting

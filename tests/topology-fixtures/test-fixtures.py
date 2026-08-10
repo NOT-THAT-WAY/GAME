@@ -109,10 +109,10 @@ class TopologyMigrationContractTests(unittest.TestCase):
 
     def test_graybox_checksum_and_cardinality_are_stable(self) -> None:
         graybox = strict_load(GRAYBOX_TOPOLOGY)
-        self.assertEqual("2f5f3b1148408d643cad9793fb59d511948bc4f1e252898cf375affd98c13365", graybox["checksum"])
+        self.assertEqual("b21e351222f20d1e3433de8f4d7db25535ff6a66edaef0b6e58b2228e4e0bc4e", graybox["checksum"])
         self.assertEqual(graybox["checksum"], self.migration.checksum(graybox))
-        self.assertEqual((2, 2), (graybox["dimensions"]["widthCells"], graybox["dimensions"]["heightCells"]))
-        self.assertEqual(9, len(graybox["walls"]))
+        self.assertEqual((6, 6), (graybox["dimensions"]["widthCells"], graybox["dimensions"]["heightCells"]))
+        self.assertEqual(25, len(graybox["walls"]))
         self.assertEqual(1, len(graybox["pivots"]))
         self.assertEqual(2, len(graybox["spawns"]))
         self.assertEqual(0, len(graybox["openings"]))

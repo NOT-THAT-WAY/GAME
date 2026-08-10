@@ -1,5 +1,13 @@
 # Reprise M1 — battant rotatif : état, mesures, plan
 
+> **Passe du 2026-08-10 (après-midi) : étapes 1, 2, 3 faites, étape 4 partielle.**
+> L'arène est en 6×6 (16,5 m), le battant tourne à 400 mdeg/tick avec un levier plancher à 400, le
+> coup de poing vaut 3° au lieu de 36°, et la caméra troisième personne a un bras à ressort qui ne
+> traverse plus les murs. Restent ouverts : **l'orbite de caméra** (décision produit, section 6),
+> l'étape 5, et surtout le **verdict humain** sur le nouveau ressenti — les chiffres ci-dessous
+> décrivent l'ancien réglage et sont conservés comme point de comparaison, pas comme état courant.
+> Le détail de la passe est en section 8.
+
 Document de passage de relais. Il décrit ce qui est en place sur la branche
 `feat/m1-minimal-skeleton`, ce que la session humaine du 2026-08-10 a réellement mesuré, le retour du
 testeur, et le plan de la passe suivante. Quiconque reprend la branche — humain ou agent — devrait
@@ -282,3 +290,57 @@ dont la moitié n'a jamais été observée par un humain.
 # puis, après fermeture des fenêtres :
 grep -cE "direction_reversed|torque_opposed" Logs/HumanTest/M1-*/host.log
 ```
+
+## 8. Ce que la passe du 2026-08-10 après-midi a livré
+
+### Fait
+
+| Étape | Livré | Preuve |
+| --- | --- | --- |
+| 1 | Grille 2×2 → 6×6, `cellPitchMm` inchangé. Arène 16,5 m, périmètre fermé de 24 murs, pivot au nœud central, spawns dans les deux cellules qui encadrent le battant. Nouveau checksum `b21e3512…` | 3 scénarios réseau, fixtures 11/11 |
+| 2 | `_maximumAngularSpeedMilliDegreesPerTick` 900 → 400, `_minimumLeveragePermille` 300 → 400, alignés entre le prefab et les défauts du director | scénarios réseau |
+| 3 | `WallImpulseTicks` 40 → 15 et `PunchTorqueScalePermille = 500`, appliqué serveur dans `TryRegisterPunchImpulse`. Un coup vaut 3° au bout, 1,2° au gond | `M1PunchTorqueTests`, valeurs figées en dur |
+| 4 (partiel) | `M1ThirdPersonSpringArm` : SphereCast 0,25 m contre le layer `World`, distance minimale 1,2 m, rentrée instantanée / sortie lissée en `1 - e^(-10·dt)`, corps en `ShadowsOnly` quand le bras est très court | 3 tests PlayMode, dont un `Physics.Linecast` ancrage→caméra frame par frame |
+
+`MaximumPushSpeedMetersPerSecond` reste à 3,5 : au nouveau réglage le bout du battant fait 1,15 m/s
+contre 2,15 m/s pour la poussée subie, la marge de dégagement augmente au lieu de se réduire.
+
+### Le piège qui a coûté cinq cycles de build
+
+Les profils `push-left` / `push-right` de `M1AutomatedCommandSource` sont **calibrés sur la vitesse
+du battant**, et rien ne le disait. L'étape 2 a divisé cette vitesse par 2,25 sous eux :
+
+- `FollowYawCentidegrees` 58 → **28** — le lacet doit suivre la porte, pas la doubler ;
+- amplitude latérale réduite à **24** une fois au contact — la règle ne mesure que la portée et
+  l'abscisse, pas la force ; tout excédent de vitesse ne sert qu'à faire glisser le pousseur
+  jusqu'à contourner le battant. Mesuré : 127 inverse à 56°, 55 à 74°, 24 à 96° ;
+- **fenêtre de relâchement** à 610 ticks — un pousseur qui maintient indéfiniment finit sur l'autre
+  face et contre-pousse sa propre porte.
+
+Les trois constantes portent maintenant leur dérivation en commentaire. **Toute nouvelle
+modification de la vitesse du battant oblige à les recalculer.**
+
+### Un seuil volontairement abaissé
+
+`occupancy` exigeait `--m1-expect-rotation-min-mdeg 90000`. Ce minimum porte sur l'angle **au moment
+de l'évaluation**, pas sur le pic. Avant l'ADR 0005 le mur n'était pas réversible et les deux se
+confondaient ; depuis, la contre-poussée est une fonctionnalité, donc l'angle final est légitimement
+inférieur au pic. Le seuil passe à **60000**, et la preuve du quart de tour reste portée par
+`--m1-expect-quarter-turns-min 1`, qui compte les franchissements. Mesuré : pic 96,2°, repos 83,7°.
+
+### Ce que le banc prouve maintenant tout seul
+
+Les deux mécaniques sans verdict humain de la section 2 sont désormais couvertes automatiquement :
+`opposition` mesure **178 ticks de couple opposé pour une rotation nette de −1,96°**, et `latejoin`
+observe une inversion de sens. Cela ne remplace pas le ressenti : il faut toujours une session
+humaine pour dire si le battant est « lourd mais réactif ».
+
+### Reste à faire
+
+1. **Verdict humain sur le nouveau réglage** — c'est la prochaine action, avant tout autre réglage.
+2. **Orbite de caméra** (section 6) : décision produit non tranchée, elle change
+   `GameControls.inputactions` et `PlayerInputSource`. Le bras à ressort livré reste valable quelle
+   que soit l'option.
+3. Étape 5, traversées visuelles bras/mur : toujours tolérées, toujours basse priorité.
+4. Les valeurs 400 / 400 / 15 / 500 sont des points de départ mesurés au banc, pas des valeurs
+   produit validées.

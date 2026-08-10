@@ -50,6 +50,12 @@ namespace NotThatWay.Game
         private bool[] _visibleInFirstPerson = Array.Empty<bool>();
         private bool _thirdPerson;
 
+        // Bras à ressort anti-mur de la caméra troisième personne. Purement
+        // local et cosmétique (ADR 0004) : la logique de sonde/lissage vit
+        // dans une classe non réseau, testable sans FishNet (voir
+        // M1ThirdPersonSpringArmPlayModeTests).
+        private readonly M1ThirdPersonSpringArm _thirdPersonSpringArm = new();
+
         /// <summary>
         /// Même table pour le jeu et pour les captures de contrôle du build.
         /// </summary>
@@ -78,7 +84,39 @@ namespace NotThatWay.Game
             if (!IsOwner || _inputSource == null || !_inputSource.ViewTogglePressedThisFrame)
                 return;
             _thirdPerson = !_thirdPerson;
+            if (_thirdPerson)
+            {
+                // Repart d'un calcul frais plutôt que d'hériter d'une longueur
+                // de bras retenue d'une session troisième personne précédente.
+                _thirdPersonSpringArm.Reset();
+            }
             ApplyAppearance();
+        }
+
+        /// <summary>
+        /// Après que la caméra ait suivi le personnage cette frame (tick de
+        /// prédiction inclus, cf. <c>PredictedPlayerMotor.ApplyPresentation</c>) :
+        /// sonde le mur derrière la position de caméra souhaitée et ramène le
+        /// bras devant, jamais à l'intérieur. Uniquement sur le porteur local —
+        /// jamais sur un proxy distant — et uniquement en vue troisième
+        /// personne, où un bras existe.
+        /// </summary>
+        private void LateUpdate()
+        {
+            if (!IsOwner || _camera == null || !_thirdPerson)
+                return;
+
+            var anchor = _camera.transform.parent;
+            if (anchor == null)
+                return;
+
+            var wasCloseOcclusionActive = _thirdPersonSpringArm.IsCloseOcclusionActive;
+            _camera.transform.localPosition = _thirdPersonSpringArm.Resolve(
+                anchor,
+                ThirdPersonCameraOffset,
+                Time.deltaTime);
+            if (_thirdPersonSpringArm.IsCloseOcclusionActive != wasCloseOcclusionActive)
+                UpdateBodyOcclusion();
         }
 
         public override void OnStartClient()
@@ -114,13 +152,35 @@ namespace NotThatWay.Game
                 properties.SetColor(BaseColorId, color);
                 properties.SetColor(LegacyColorId, color);
                 renderer.SetPropertyBlock(properties);
+            }
 
-                // Le corps du porteur masquerait l'écran en vue subjective : il ne
-                // garde que son ombre, tandis que ses avant-bras restent affichés.
-                var visible = !IsOwner || _thirdPerson || _visibleInFirstPerson[index];
-                renderer.shadowCastingMode = visible
-                    ? ShadowCastingMode.On
-                    : ShadowCastingMode.ShadowsOnly;
+            UpdateBodyOcclusion();
+        }
+
+        /// <summary>
+        /// Bascule les renderers du porteur en ombre seule (pas de couleur à
+        /// recalculer ici, contrairement à <see cref="ApplyAppearance"/>) dans
+        /// les deux cas où son propre corps boucherait l'écran : en vue
+        /// subjective pour les parties hors avant-bras, et en vue troisième
+        /// personne quand le bras à ressort est rentré tout près du personnage
+        /// à cause d'un mur. Un seul mécanisme pour les deux bascules, pour
+        /// qu'elles cohabitent sans se marcher dessus quel que soit l'ordre des
+        /// appels.
+        /// </summary>
+        private void UpdateBodyOcclusion()
+        {
+            for (var index = 0; index < _renderers.Length; index++)
+            {
+                var renderer = _renderers[index];
+                if (renderer == null)
+                    continue;
+
+                var occludingSelf = IsOwner && (
+                    (!_thirdPerson && !_visibleInFirstPerson[index]) ||
+                    (_thirdPerson && _thirdPersonSpringArm.IsCloseOcclusionActive));
+                renderer.shadowCastingMode = occludingSelf
+                    ? ShadowCastingMode.ShadowsOnly
+                    : ShadowCastingMode.On;
             }
         }
 
