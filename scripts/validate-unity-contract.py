@@ -130,6 +130,18 @@ require(
     "Standalone project backend must remain explicitly Mono between forced builds",
 )
 
+backend_scope = read("Assets/_Project/Editor/ScriptingBackendScope.cs")
+for required_backend_guard in (
+    "File.ReadAllBytes(_projectSettingsPath)",
+    "PlayerSettings.SetScriptingBackend(_target, _previousBackend)",
+    "File.WriteAllBytes(_projectSettingsPath, _projectSettingsSnapshot)",
+    "AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport)",
+):
+    require(
+        required_backend_guard in backend_scope,
+        f"build backend restoration contract missing: {required_backend_guard}",
+    )
+
 editor_build_settings = read("ProjectSettings/EditorBuildSettings.asset")
 require("Assets/Scenes/SampleScene.unity" in editor_build_settings, "bootstrap scene missing")
 

@@ -17,7 +17,9 @@ fail() {
 for required in \
   'M1PlaytestBuild.BuildWindows' \
   'GAME-M1-Playtest.exe' \
+  'DIRTY_WORKTREE' \
   'PROJECT_SETTINGS_MUTATED' \
+  'projectSettingsChanges' \
   'Authenticated as IL2CPP_PROBE' \
   'kicked for being on FishNet version' \
   '[GAME-FISHNET-HANDSHAKE]' \

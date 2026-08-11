@@ -48,6 +48,7 @@ $Summary = [ordered]@{
     buildPath = $BuildRelativePath
     launchBinarySha256 = $null
     projectSettingsPreserved = $false
+    projectSettingsChanges = @()
     handshakeMarkers = @()
     clientBoundaryObserved = $false
     serverBoundaryObserved = $false
@@ -75,6 +76,10 @@ try {
     }
     if (-not (Test-Path -LiteralPath $UnityEditor -PathType Leaf)) {
         Set-Failure "UNITY_EDITOR_MISSING"
+        exit 2
+    }
+    if ($DirtyWorktree) {
+        Set-Failure "DIRTY_WORKTREE"
         exit 2
     }
 
@@ -108,7 +113,12 @@ try {
     $BuildExitCode = $LASTEXITCODE
 
     $SettingsHashAfter = (Get-FileHash -LiteralPath $SettingsPath -Algorithm SHA256).Hash
-    $Summary.projectSettingsPreserved = $SettingsHashBefore -eq $SettingsHashAfter
+    $Summary.projectSettingsChanges = @(
+        & git status --short -- ProjectSettings
+    )
+    $Summary.projectSettingsPreserved =
+        ($SettingsHashBefore -eq $SettingsHashAfter) -and
+        ($Summary.projectSettingsChanges.Count -eq 0)
     if (-not $Summary.projectSettingsPreserved) {
         Set-Failure "PROJECT_SETTINGS_MUTATED"
         exit 1

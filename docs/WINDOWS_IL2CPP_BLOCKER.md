@@ -108,8 +108,9 @@ Sur le PC Windows, depuis une branche propre :
 .\scripts\verify-il2cpp-handshake-windows.ps1
 ```
 
-Le script reconstruit le player M1 IL2CPP, vérifie que `ProjectSettings.asset` est identique avant
-et après, lance un host headless, attend l'authentification et écrit le hash du binaire ainsi que les
+Le script refuse un arbre sale, reconstruit le player M1 IL2CPP, vérifie que tout le dossier
+`ProjectSettings/` reste propre et que `ProjectSettings.asset` est identique avant et après, puis
+lance un host headless. Il attend l'authentification et écrit le hash du binaire ainsi que les
 marqueurs dans `Logs/WindowsIl2CppHandshake/<session-id>/summary.json`. Il ne rend `PASS` que si les
 frontières `client-outgoing` et `server-incoming` ont toutes deux été observées en IL2CPP.
 
