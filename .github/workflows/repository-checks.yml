@@ -63,6 +63,9 @@ jobs:
       - name: Validate Unity test wrappers
         run: ./tests/unity-tests/test-wrapper-contract.sh
 
+      - name: Validate Windows IL2CPP handshake tooling
+        run: ./tests/windows-il2cpp/test-handshake-wrapper-contract.sh
+
       - name: Validate player build manifests
         run: ./tests/build-manifests/test-manifest-contract.sh
 

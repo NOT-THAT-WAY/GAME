@@ -1,12 +1,13 @@
 # Blocage Windows IL2CPP — handshake de version FishNet
 
 La cible joueur initiale déclarée dans `config/toolchain.env` est
-`PLAYER_TARGET=Windows-x86_64-IL2CPP`. **Sur cette cible, aucun player ne se connecte, pas même à
-lui-même.** Le serveur éjecte son propre client local environ une seconde après la connexion. Le
-même commit compilé en Mono2x se connecte normalement.
+`PLAYER_TARGET=Windows-x86_64-IL2CPP`. **Sur les builds testés avant le garde correctif, aucun player
+ne se connecte, pas même à lui-même.** Le serveur éjecte son propre client local environ une seconde
+après la connexion. Le même commit compilé en Mono2x se connecte normalement.
 
-Ce document consigne le constat et son contournement. Il ne pose pas de diagnostic : la cause exacte
-n'est pas établie.
+Ce document consigne le constat, le correctif de compatibilité en attente de preuve Windows et le
+contournement Mono. La cause exacte dans la chaîne IL2CPP reste à attribuer tant que le paquet brut
+n'a pas été observé sur le PC.
 
 ## Symptôme
 
@@ -47,11 +48,12 @@ commit, ni une régression du squelette M1 : le blocage précède de quatre jour
 
 ## Pourquoi personne ne l'avait vu
 
-`M1PlaytestBuild.BuildMac` et `MazePlaytestBuild.BuildMac` ne forcent aucun backend, et
-`ProjectSettings.asset` ne déclare pas de backend Standalone — Unity retombe donc sur Mono2x. **Toute
-la base de preuves macOS, y compris les gates réseau automatisées, est du Mono.** Seul le chemin
-Windows force IL2CPP. Le blocage était structurellement invisible tant que Windows n'était pas
-réellement lancé.
+Au moment du constat, `M1PlaytestBuild.BuildMac` et `MazePlaytestBuild.BuildMac` ne forçaient aucun
+backend et `ProjectSettings.asset` n'en déclarait aucun pour Standalone : Unity retombait sur
+Mono2x. **Toute la base de preuves macOS, y compris les gates réseau automatisées, était donc du
+Mono.** Le réglage Standalone Mono est désormais explicite pour que les scopes de build puissent
+forcer IL2CPP puis restaurer exactement le fichier ; les entrées Windows continuent de forcer
+IL2CPP. Le blocage était structurellement invisible tant que Windows n'était pas réellement lancé.
 
 ## Contournement
 
@@ -82,23 +84,59 @@ de la machine et ne le laisse pas modifié.
 
 Toute mesure Windows produite avec ce build doit donc être annoncée comme une mesure Mono.
 
-## Pistes non vérifiées
+## Correctif IL2CPP à vérifier
 
-Le message vient du désérialiseur, sur la chaîne de version envoyée à l'authentification. Les
-suspects habituels sur ce chemin, par ordre de coût :
+FishNet encode les longueurs signées en zig-zag. Pour la version ASCII `4.7.2`, longue de cinq
+octets, le marqueur attendu est `0x0A`. La valeur lue par le serveur, `-6`, correspond exactement au
+marqueur `0x0B` : le bit de signe est passé à un entre l'écriture et la lecture.
 
-1. le stripping managé — `ProjectSettings.asset` porte `stripEngineCode: 1` et un
-   `managedStrippingLevel` vide, donc la valeur par défaut IL2CPP s'applique ; tester
-   `Disabled` sur `Standalone` isole cette hypothèse en un build ;
-2. la codegen FishNet sous IL2CPP : un sérialiseur généré absent ou stripé produirait exactement une
-   longueur de chaîne incohérente à la lecture ;
-3. un `link.xml` préservant les types de `FishNet.Serializing` si le point 1 confirme.
+`FishNetVersionHandshakeGuard` est maintenant branché comme couche intermédiaire sur les trois
+profils générés (`connection`, `maze` et `m1`). Il ne désactive pas le contrôle de version : il ne
+corrige `0x0B` vers `0x0A` que si le paquet a la taille exacte attendue, l'identifiant FishNet
+`Version` et le payload exact compilé `4.7.2`. Une autre version ou un autre paquet reste inchangé.
 
-Aucune de ces pistes n'a été testée. Le point 1 est le moins cher et doit passer en premier.
+Le même garde inspecte les deux frontières et écrit un marqueur sans donnée personnelle :
+
+```text
+[GAME-FISHNET-HANDSHAKE] ... backend=il2cpp stage=client-outgoing ...
+[GAME-FISHNET-HANDSHAKE] ... backend=il2cpp stage=server-incoming ...
+```
+
+Sur le PC Windows, depuis une branche propre :
+
+```powershell
+.\scripts\verify-il2cpp-handshake-windows.ps1
+```
+
+Le script reconstruit le player M1 IL2CPP, vérifie que `ProjectSettings.asset` est identique avant
+et après, lance un host headless, attend l'authentification et écrit le hash du binaire ainsi que les
+marqueurs dans `Logs/WindowsIl2CppHandshake/<session-id>/summary.json`. Il ne rend `PASS` que si les
+frontières `client-outgoing` et `server-incoming` ont toutes deux été observées en IL2CPP.
+
+Interprétation :
+
+- `repaired ... stage=client-outgoing` : l'encodage IL2CPP a produit `0x0B` ; le garde l'a corrigé
+  avant Tugboat ;
+- sortie valide puis `repaired ... stage=server-incoming` : la mutation arrive dans le transport ;
+- `valid` aux deux frontières mais kick `-6` : les octets sont bons et le lecteur IL2CPP est fautif ;
+- `PASS` avec authentification et roster à un : le blocage immédiat est levé, mais les scénarios M1
+  complets restent à exécuter avant de valider l'égalité Mono/IL2CPP.
+
+## Diagnostic écarté ou restant
+
+Quand le backend Standalone passe à IL2CPP, Unity `6000.3.20f1` résout le niveau de stripping vide à
+`Minimal`. À ce niveau, l'appel du handshake est direct (`ClientManager` appelle
+`Writer.WriteString`) et ne dépend pas d'un sérialiseur FishNet généré. Le stripping ou un `link.xml`
+ne sont donc plus la première hypothèse ; les ajouter avant la capture brute masquerait le signal.
+
+Si le garde confirme des octets valides aux deux frontières sans authentification, le prochain essai
+isolera le lecteur. S'il corrige bien le paquet mais qu'une sérialisation ultérieure casse, il faudra
+traiter l'encodeur zig-zag IL2CPP en amont plutôt que multiplier les exceptions protocole.
 
 ## Ce que ça bloque
 
-- le test humain Windows, `scripts/human-test-windows.ps1`, sur son chemin IL2CPP ;
+- tant que la commande de preuve ci-dessus n'a pas rendu `PASS`, le test humain Windows,
+  `scripts/human-test-windows.ps1`, sur son chemin IL2CPP ;
 - toute session `lan-test` ou `remote-test` incluant un poste Windows sur la cible officielle ;
-- la preuve Windows/IL2CPP listée comme manquante dans [GRAYBOX_M1.md](GRAYBOX_M1.md), qui n'est plus
-  seulement absente : elle est en échec.
+- la preuve Windows/IL2CPP listée comme manquante dans [GRAYBOX_M1.md](GRAYBOX_M1.md) : le dernier
+  essai est en échec et le correctif reste non validé sur cette plateforme.

@@ -28,6 +28,7 @@ namespace NotThatWay.Game.Editor
             networkRoot.AddComponent<Tugboat>();
             var networkManager = networkRoot.AddComponent<NetworkManager>();
             networkManager.SpawnablePrefabs = prefabs;
+            FishNetBuildConfiguration.AddVersionHandshakeGuard(networkRoot);
             networkRoot.AddComponent<ConnectionSmokeTest>();
 
             CreateEnvironment();
@@ -42,16 +43,22 @@ namespace NotThatWay.Game.Editor
         [MenuItem("GAME/Connection Test/Build macOS")]
         public static void BuildMac()
         {
-            Build(BuildTarget.StandaloneOSX, "Builds/ConnectionTest/macOS/GAME-Connection-Test.app", false);
+            Build(BuildTarget.StandaloneOSX, "Builds/ConnectionTest/macOS/GAME-Connection-Test.app", null);
         }
 
         [MenuItem("GAME/Connection Test/Build Windows")]
         public static void BuildWindows()
         {
-            Build(BuildTarget.StandaloneWindows64, "Builds/ConnectionTest/Windows/GAME-Connection-Test.exe", true);
+            Build(
+                BuildTarget.StandaloneWindows64,
+                "Builds/ConnectionTest/Windows/GAME-Connection-Test.exe",
+                ScriptingImplementation.IL2CPP);
         }
 
-        private static void Build(BuildTarget target, string outputPath, bool forceIl2Cpp)
+        private static void Build(
+            BuildTarget target,
+            string outputPath,
+            ScriptingImplementation? forcedBackend)
         {
             CreateScene();
             var platform = target == BuildTarget.StandaloneOSX ? "macos" : "windows";
@@ -66,22 +73,11 @@ namespace NotThatWay.Game.Editor
                 options = BuildOptions.Development
             };
 
-            var namedTarget = NamedBuildTarget.FromBuildTargetGroup(BuildPipeline.GetBuildTargetGroup(target));
-            var previousBackend = PlayerSettings.GetScriptingBackend(namedTarget);
-
-            try
+            using (new ScriptingBackendScope(target, forcedBackend))
             {
-                if (forceIl2Cpp)
-                    PlayerSettings.SetScriptingBackend(namedTarget, ScriptingImplementation.IL2CPP);
-
                 var report = BuildPipeline.BuildPlayer(options);
                 if (report.summary.result != BuildResult.Succeeded)
                     throw new BuildFailedException($"Connection test build failed: {report.summary.result}.");
-            }
-            finally
-            {
-                if (forceIl2Cpp && PlayerSettings.GetScriptingBackend(namedTarget) != previousBackend)
-                    PlayerSettings.SetScriptingBackend(namedTarget, previousBackend);
             }
 
             Debug.Log($"[GAME-CONNECTION] Build ready: {Path.GetFullPath(outputPath)}");
