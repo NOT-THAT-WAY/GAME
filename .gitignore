@@ -31,6 +31,9 @@
 .vs/
 .idea/
 .vscode/
+# Unity réécrit .vsconfig au gré des workloads Visual Studio installées sur la
+# machine : c'est une préférence locale, pas un contrat partagé.
+/.vsconfig
 __pycache__/
 *.py[cod]
 *.csproj

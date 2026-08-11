@@ -105,7 +105,10 @@ Le rendu ne change aucune règle, mais un banc illisible ne produit pas d'avis e
 - rien n'arrête le battant : aucun mur statique, aucune butée, aucune conséquence sur un joueur
   coincé entre le battant et l'enceinte ;
 - aucun preset produit d'énergie ou de cooldown choisi ;
-- aucune preuve visuelle Windows/IL2CPP ni essai réseau distant, dégradé ou de longue durée ;
+- aucune preuve visuelle Windows/IL2CPP ni essai réseau distant, dégradé ou de longue durée — et
+  cette preuve n'est plus seulement absente : le player Windows IL2CPP se fait éjecter par son
+  propre serveur sur le handshake de version FishNet, voir
+  [WINDOWS_IL2CPP_BLOCKER.md](WINDOWS_IL2CPP_BLOCKER.md) ;
 - aucune réintégration de ce socle dans le labyrinthe 16×16 ;
 - aucun verdict humain sur la taille, la lisibilité ou le feel.
 
