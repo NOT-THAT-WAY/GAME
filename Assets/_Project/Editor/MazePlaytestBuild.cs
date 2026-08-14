@@ -115,6 +115,7 @@ namespace NotThatWay.Game.Editor
             networkRoot.AddComponent<Tugboat>();
             var networkManager = networkRoot.AddComponent<NetworkManager>();
             networkManager.SpawnablePrefabs = prefabCollection;
+            FishNetBuildConfiguration.AddVersionHandshakeGuard(networkRoot);
             networkRoot.AddComponent<ConnectionSmokeTest>();
 
             var directorSpawner = networkRoot.AddComponent<PivotDirectorSpawner>();
@@ -154,13 +155,16 @@ namespace NotThatWay.Game.Editor
         [MenuItem("GAME/Maze Playtest/Build macOS")]
         public static void BuildMac()
         {
-            Build(BuildTarget.StandaloneOSX, "Builds/MazePlaytest/macOS/GAME-Maze-Playtest.app", false);
+            Build(BuildTarget.StandaloneOSX, "Builds/MazePlaytest/macOS/GAME-Maze-Playtest.app", null);
         }
 
         [MenuItem("GAME/Maze Playtest/Build Windows")]
         public static void BuildWindows()
         {
-            Build(BuildTarget.StandaloneWindows64, "Builds/MazePlaytest/Windows/GAME-Maze-Playtest.exe", true);
+            Build(
+                BuildTarget.StandaloneWindows64,
+                "Builds/MazePlaytest/Windows/GAME-Maze-Playtest.exe",
+                ScriptingImplementation.IL2CPP);
         }
 
         /// <summary>
@@ -244,7 +248,10 @@ namespace NotThatWay.Game.Editor
             }
         }
 
-        private static void Build(BuildTarget target, string outputPath, bool forceIl2Cpp)
+        private static void Build(
+            BuildTarget target,
+            string outputPath,
+            ScriptingImplementation? forcedBackend)
         {
             CreateScene();
             var platform = target == BuildTarget.StandaloneOSX ? "macos" : "windows";
@@ -259,22 +266,11 @@ namespace NotThatWay.Game.Editor
                 options = BuildOptions.Development
             };
 
-            var namedTarget = NamedBuildTarget.FromBuildTargetGroup(BuildPipeline.GetBuildTargetGroup(target));
-            var previousBackend = PlayerSettings.GetScriptingBackend(namedTarget);
-
-            try
+            using (new ScriptingBackendScope(target, forcedBackend))
             {
-                if (forceIl2Cpp)
-                    PlayerSettings.SetScriptingBackend(namedTarget, ScriptingImplementation.IL2CPP);
-
                 var report = BuildPipeline.BuildPlayer(options);
                 if (report.summary.result != BuildResult.Succeeded)
                     throw new BuildFailedException($"Maze playtest build failed: {report.summary.result}.");
-            }
-            finally
-            {
-                if (forceIl2Cpp && PlayerSettings.GetScriptingBackend(namedTarget) != previousBackend)
-                    PlayerSettings.SetScriptingBackend(namedTarget, previousBackend);
             }
 
             Debug.Log($"[GAME-MAZE] Build ready: {Path.GetFullPath(outputPath)}");

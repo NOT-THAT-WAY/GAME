@@ -14,13 +14,15 @@ hash le binaire et écrit la session sous `Logs/HumanTest/<session-id>/`.
 ## Windows
 
 ```powershell
+.\scripts\verify-il2cpp-handshake-windows.ps1
 .\scripts\human-test-windows.ps1 -Build
 ```
 
-Ce chemin construit en IL2CPP, donc il ne se connecte pas aujourd’hui : le serveur éjecte son propre
-client local sur le handshake de version FishNet. Le constat, ses preuves et le build Mono de secours
-sont dans [WINDOWS_IL2CPP_BLOCKER.md](WINDOWS_IL2CPP_BLOCKER.md). Toute mesure Windows obtenue par ce
-repli doit être annoncée comme une mesure Mono.
+La première commande est la gate courte : elle construit M1 en IL2CPP, lance un host réel et exige
+son authentification locale. Ne lancer le test humain que si elle rend `PASS`. Le défaut observé, le
+garde de compatibilité, l'interprétation des marqueurs et le build Mono de secours sont dans
+[WINDOWS_IL2CPP_BLOCKER.md](WINDOWS_IL2CPP_BLOCKER.md). Toute mesure obtenue par le repli doit être
+annoncée comme une mesure Mono.
 
 ## Test
 

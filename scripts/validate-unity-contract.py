@@ -115,6 +115,33 @@ require("BuildTarget.StandaloneWindows64" in build_code, "Windows x86_64 build t
 require("ScriptingImplementation.IL2CPP" in build_code, "Windows IL2CPP build contract missing")
 require("BuildOptions.Development" in build_code, "connection proof must remain a Development build")
 
+for build_path in (
+    "Assets/_Project/Editor/ConnectionTestBuild.cs",
+    "Assets/_Project/Editor/MazePlaytestBuild.cs",
+    "Assets/_Project/Editor/M1PlaytestBuild.cs",
+):
+    require(
+        "FishNetBuildConfiguration.AddVersionHandshakeGuard" in read(build_path),
+        f"FishNet version handshake guard missing from {build_path}",
+    )
+
+require(
+    re.search(r"scriptingBackend:\s+Android: 0\s+Standalone: 0", project_settings) is not None,
+    "Standalone project backend must remain explicitly Mono between forced builds",
+)
+
+backend_scope = read("Assets/_Project/Editor/ScriptingBackendScope.cs")
+for required_backend_guard in (
+    "File.ReadAllBytes(_projectSettingsPath)",
+    "PlayerSettings.SetScriptingBackend(_target, _previousBackend)",
+    "File.WriteAllBytes(_projectSettingsPath, _projectSettingsSnapshot)",
+    "AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport)",
+):
+    require(
+        required_backend_guard in backend_scope,
+        f"build backend restoration contract missing: {required_backend_guard}",
+    )
+
 editor_build_settings = read("ProjectSettings/EditorBuildSettings.asset")
 require("Assets/Scenes/SampleScene.unity" in editor_build_settings, "bootstrap scene missing")
 

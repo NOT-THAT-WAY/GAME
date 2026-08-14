@@ -112,6 +112,7 @@ namespace NotThatWay.Game.Editor
 
             var networkManager = networkRoot.AddComponent<NetworkManager>();
             networkManager.SpawnablePrefabs = prefabCollection;
+            FishNetBuildConfiguration.AddVersionHandshakeGuard(networkRoot);
             var connection = networkRoot.AddComponent<ConnectionSmokeTest>();
             connection.ConfigureDisplay(
                 "GAME — banc M1 réseau",
@@ -318,12 +319,11 @@ namespace NotThatWay.Game.Editor
         }
 
         /// <summary>
-        /// Repli de secours tant que le player Windows IL2CPP se fait éjecter par
-        /// son propre serveur sur le handshake de version FishNet
-        /// (docs/WINDOWS_IL2CPP_BLOCKER.md). Sortie séparée pour ne pas écraser le
-        /// build de la cible officielle, et backend forcé ici plutôt que lu dans
-        /// les réglages du projet : la machine qui construit ne doit ni fournir ni
-        /// conserver le basculement.
+        /// Repli de secours tant que le garde du handshake FishNet n'est pas
+        /// validé sur Windows IL2CPP (docs/WINDOWS_IL2CPP_BLOCKER.md). Sortie
+        /// séparée pour ne pas écraser le build de la cible officielle, et backend
+        /// forcé ici plutôt que lu dans les réglages du projet : la machine qui
+        /// construit ne doit ni fournir ni conserver le basculement.
         /// </summary>
         [MenuItem("GAME/M1 Playtest/Build Windows (Mono)")]
         public static void BuildWindowsMono()
@@ -1135,25 +1135,11 @@ namespace NotThatWay.Game.Editor
                 options = BuildOptions.Development
             };
 
-            var namedTarget = NamedBuildTarget.FromBuildTargetGroup(
-                BuildPipeline.GetBuildTargetGroup(target));
-            var previousBackend = PlayerSettings.GetScriptingBackend(namedTarget);
-            try
+            using (new ScriptingBackendScope(target, forcedBackend))
             {
-                if (forcedBackend.HasValue)
-                    PlayerSettings.SetScriptingBackend(namedTarget, forcedBackend.Value);
-
                 var report = BuildPipeline.BuildPlayer(options);
                 if (report.summary.result != BuildResult.Succeeded)
                     throw new BuildFailedException($"Build M1 échoué: {report.summary.result}.");
-            }
-            finally
-            {
-                if (forcedBackend.HasValue &&
-                    PlayerSettings.GetScriptingBackend(namedTarget) != previousBackend)
-                {
-                    PlayerSettings.SetScriptingBackend(namedTarget, previousBackend);
-                }
             }
 
             Debug.Log($"[GAME-M1] Build ready: {Path.GetFullPath(outputPath)}");
