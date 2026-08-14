@@ -81,22 +81,26 @@ n'y est injecté : le banc mesure les actions prévues, pas la découverte d'un 
 
 | Action | Clavier / souris | Manette |
 | --- | --- | --- |
-| Se déplacer | `ZQSD` (`WASD`) | stick gauche |
+| Se déplacer | `ZQSD` ou flèches | stick gauche |
 | Regarder | souris | stick droit |
 | Courir | `Maj` | L3 |
-| **Pousser le mur cyan** | **maintenir `E`** ou clic gauche | gâchette droite |
-| Frapper | `F` ou clic droit | R1 |
+| Sauter | `Espace` | bouton Sud |
+| Interagir / ramasser | `E` | bouton Ouest |
+| **Pousser le mur cyan** | **maintenir `E`** | bouton Ouest |
+| Frapper / lancer | `F` ou clic gauche | gâchette droite |
+| Lâcher l'objet actif | `A` | bouton Est |
+| Cases d'objet | `1`, `2`, `3` ; `Tab` pour parcourir | épaule droite |
 | Vue 1re / 3e personne | `F1` | croix haut |
 | Libérer le curseur | `Échap` | Start |
 
 Le battant s'éloigne toujours de celui qui pousse et il tourne librement sur 360°. Il n'y a ni
 seuil à charger ni palier : il part au premier tick d'appui et s'arrête au tick où l'on relâche.
-La puissance dépend de l'endroit où l'on pousse — **30 % contre le gond, 100 % au bout du
+La puissance dépend de l'endroit où l'on pousse — **40 % contre le gond, 100 % au bout du
 battant**, au prorata — et l'indicateur central affiche ce levier en pour-cent. Comme une vraie
 porte, il faut **marcher avec elle** : un pousseur immobile perd le contact au bout de quelques
 dizaines de degrés. Se placer sur l'autre face inverse le sens. Deux joueurs face à face
 s'annulent : le battant se fige, et celui qui s'éloigne du gond l'emporte. Les coups de poing
-versent le même couple pendant une fraction de seconde. Le saut n'est pas branché sur ce banc.
+versent le même couple pendant une fraction de seconde. Le saut est actif sur ce banc.
 
 Faire uniquement ces cinq quêtes, sans indice en jeu ni questionnaire :
 

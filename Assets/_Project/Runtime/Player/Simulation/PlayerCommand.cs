@@ -10,7 +10,12 @@ namespace NotThatWay.Game.PlayerSimulation
         InteractHeld = 1 << 1,
         JumpPressed = 1 << 8,
         InteractPressed = 1 << 9,
-        PunchPressed = 1 << 10
+        PunchPressed = 1 << 10,
+        DropPressed = 1 << 11,
+        SelectSlot1Pressed = 1 << 12,
+        SelectSlot2Pressed = 1 << 13,
+        SelectSlot3Pressed = 1 << 14,
+        CycleSlotPressed = 1 << 15
     }
 
     /// <summary>
@@ -70,7 +75,12 @@ namespace NotThatWay.Game.PlayerSimulation
         public const PlayerCommandButtons PressedMask =
             PlayerCommandButtons.JumpPressed |
             PlayerCommandButtons.InteractPressed |
-            PlayerCommandButtons.PunchPressed;
+            PlayerCommandButtons.PunchPressed |
+            PlayerCommandButtons.DropPressed |
+            PlayerCommandButtons.SelectSlot1Pressed |
+            PlayerCommandButtons.SelectSlot2Pressed |
+            PlayerCommandButtons.SelectSlot3Pressed |
+            PlayerCommandButtons.CycleSlotPressed;
 
         public PlayerInputSample(
             float moveX,

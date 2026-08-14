@@ -34,6 +34,11 @@ namespace NotThatWay.Game.Input
         private InputAction _sprint;
         private InputAction _interact;
         private InputAction _punch;
+        private InputAction _drop;
+        private InputAction _selectSlot1;
+        private InputAction _selectSlot2;
+        private InputAction _selectSlot3;
+        private InputAction _cycleSlot;
         private InputAction _jump;
         private InputAction _pause;
         private InputAction _toggleView;
@@ -166,6 +171,16 @@ namespace NotThatWay.Game.Input
                 pressed |= PlayerCommandButtons.InteractPressed;
             if (_punch.WasPressedThisFrame())
                 pressed |= PlayerCommandButtons.PunchPressed;
+            if (_drop.WasPressedThisFrame())
+                pressed |= PlayerCommandButtons.DropPressed;
+            if (_selectSlot1.WasPressedThisFrame())
+                pressed |= PlayerCommandButtons.SelectSlot1Pressed;
+            if (_selectSlot2.WasPressedThisFrame())
+                pressed |= PlayerCommandButtons.SelectSlot2Pressed;
+            if (_selectSlot3.WasPressedThisFrame())
+                pressed |= PlayerCommandButtons.SelectSlot3Pressed;
+            if (_cycleSlot.WasPressedThisFrame())
+                pressed |= PlayerCommandButtons.CycleSlotPressed;
 
             PausePressedThisFrame = _pause.WasPressedThisFrame();
             ViewTogglePressedThisFrame = _toggleView.WasPressedThisFrame();
@@ -240,6 +255,11 @@ namespace NotThatWay.Game.Input
             _sprint = _playerMap.FindAction(GameControlsContract.Sprint, true);
             _interact = _playerMap.FindAction(GameControlsContract.Interact, true);
             _punch = _playerMap.FindAction(GameControlsContract.Punch, true);
+            _drop = _playerMap.FindAction(GameControlsContract.Drop, true);
+            _selectSlot1 = _playerMap.FindAction(GameControlsContract.SelectSlot1, true);
+            _selectSlot2 = _playerMap.FindAction(GameControlsContract.SelectSlot2, true);
+            _selectSlot3 = _playerMap.FindAction(GameControlsContract.SelectSlot3, true);
+            _cycleSlot = _playerMap.FindAction(GameControlsContract.CycleSlot, true);
             _jump = _playerMap.FindAction(GameControlsContract.Jump, true);
             _pause = _playerMap.FindAction(GameControlsContract.Pause, true);
             _toggleView = _playerMap.FindAction(GameControlsContract.ToggleView, true);
@@ -274,6 +294,11 @@ namespace NotThatWay.Game.Input
             _sprint = null;
             _interact = null;
             _punch = null;
+            _drop = null;
+            _selectSlot1 = null;
+            _selectSlot2 = null;
+            _selectSlot3 = null;
+            _cycleSlot = null;
             _jump = null;
             _pause = null;
             _toggleView = null;

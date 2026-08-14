@@ -29,7 +29,22 @@ namespace NotThatWay.Game.PlayerNetwork
         PressLeft = 6,
 
         /// <summary>Symétrique de <see cref="PressLeft"/>, vers l'est.</summary>
-        PressRight = 7
+        PressRight = 7,
+
+        /// <summary>
+        /// Régression bout-en-bout du sandbox : attend la manche, rejoint le
+        /// trophée, le ramasse puis le rapporte à la zone orange.
+        /// </summary>
+        SandboxTrophyRun = 8,
+
+        /// <summary>Cible immobile au nord du battant pour le test de projectile.</summary>
+        SandboxRockTarget = 9,
+
+        /// <summary>Ramasse un caillou puis le lance sur SandboxRockTarget.</summary>
+        SandboxRockThrower = 10,
+
+        /// <summary>Se place à portée puis porte quatre coups autoritaires.</summary>
+        SandboxPuncher = 11
     }
 
     /// <summary>
@@ -72,6 +87,14 @@ namespace NotThatWay.Game.PlayerNetwork
                         return "press-left";
                     case M1AutomatedPlayerProfile.PressRight:
                         return "press-right";
+                    case M1AutomatedPlayerProfile.SandboxTrophyRun:
+                        return "sandbox-trophy-run";
+                    case M1AutomatedPlayerProfile.SandboxRockTarget:
+                        return "sandbox-rock-target";
+                    case M1AutomatedPlayerProfile.SandboxRockThrower:
+                        return "sandbox-rock-thrower";
+                    case M1AutomatedPlayerProfile.SandboxPuncher:
+                        return "sandbox-puncher";
                     default:
                         return "none";
                 }
@@ -104,6 +127,14 @@ namespace NotThatWay.Game.PlayerNetwork
                     return ApproachAndPress(simulationTick, -127);
                 case M1AutomatedPlayerProfile.PressRight:
                     return ApproachAndPress(simulationTick, 127);
+                case M1AutomatedPlayerProfile.SandboxTrophyRun:
+                    return RunSandboxTrophyRoute(simulationTick);
+                case M1AutomatedPlayerProfile.SandboxRockTarget:
+                    return MoveNorthAfterRoundStart(simulationTick);
+                case M1AutomatedPlayerProfile.SandboxRockThrower:
+                    return RunSandboxRockThrow(simulationTick);
+                case M1AutomatedPlayerProfile.SandboxPuncher:
+                    return RunSandboxPunches(simulationTick);
                 default:
                     return new PlayerCommand(
                         simulationTick, 0, 0, 0, 0, PlayerCommandButtons.None);
@@ -177,6 +208,18 @@ namespace NotThatWay.Game.PlayerNetwork
                     break;
                 case "push-right":
                     profile = M1AutomatedPlayerProfile.PushRight;
+                    break;
+                case "sandbox-trophy-run":
+                    profile = M1AutomatedPlayerProfile.SandboxTrophyRun;
+                    break;
+                case "sandbox-rock-target":
+                    profile = M1AutomatedPlayerProfile.SandboxRockTarget;
+                    break;
+                case "sandbox-rock-thrower":
+                    profile = M1AutomatedPlayerProfile.SandboxRockThrower;
+                    break;
+                case "sandbox-puncher":
+                    profile = M1AutomatedPlayerProfile.SandboxPuncher;
                     break;
                 default:
                     error = "profile_unknown";
@@ -296,6 +339,149 @@ namespace NotThatWay.Game.PlayerNetwork
                 ? PlayerCommandButtons.InteractHeld
                 : PlayerCommandButtons.None;
             return new PlayerCommand(simulationTick, 0, 0, 0, 0, buttons);
+        }
+
+        private static PlayerCommand RunSandboxTrophyRoute(uint simulationTick)
+        {
+            // La première manche passe en Playing après trois secondes. Attendre
+            // 200 ticks évite que son reset canonique ne remette le trophée au sol
+            // juste après le ramassage automatisé.
+            if (simulationTick >= 200u && simulationTick < 325u)
+            {
+                return new PlayerCommand(
+                    simulationTick, 0, 127, 0, 0, PlayerCommandButtons.None);
+            }
+            if (simulationTick == 330u)
+            {
+                return new PlayerCommand(
+                    simulationTick,
+                    0,
+                    0,
+                    0,
+                    0,
+                    PlayerCommandButtons.InteractHeld |
+                    PlayerCommandButtons.InteractPressed);
+            }
+            if (simulationTick >= 350u && simulationTick < 650u)
+            {
+                // Depuis le trophée (-1,375 ; +6,875) vers le dépôt
+                // (+1,375 ; -6,875). Le premier tick fait demi-tour ; avec un yaw
+                // de 180°, X local négatif devient X monde positif et Y local
+                // positif devient Z monde négatif.
+                return new PlayerCommand(
+                    simulationTick,
+                    -25,
+                    125,
+                    simulationTick == 350u ? (short)18000 : (short)0,
+                    0,
+                    PlayerCommandButtons.None);
+            }
+            return new PlayerCommand(
+                simulationTick, 0, 0, 0, 0, PlayerCommandButtons.None);
+        }
+
+        private static PlayerCommand MoveNorthAfterRoundStart(uint simulationTick)
+        {
+            var move = simulationTick >= 200u && simulationTick < 270u
+                ? (sbyte)127
+                : (sbyte)0;
+            return new PlayerCommand(
+                simulationTick, 0, move, 0, 0, PlayerCommandButtons.None);
+        }
+
+        private static PlayerCommand RunSandboxRockThrow(uint simulationTick)
+        {
+            if (simulationTick >= 200u && simulationTick < 270u)
+            {
+                return new PlayerCommand(
+                    simulationTick, 0, 127, 0, 0, PlayerCommandButtons.None);
+            }
+            if (simulationTick >= 280u && simulationTick < 370u)
+            {
+                // Du spawn droit déplacé au nord vers le caillou (6,875 ; 1,375).
+                return new PlayerCommand(
+                    simulationTick, 120, -41, 0, 0, PlayerCommandButtons.None);
+            }
+            if (simulationTick == 375u)
+            {
+                return new PlayerCommand(
+                    simulationTick,
+                    0,
+                    0,
+                    0,
+                    0,
+                    PlayerCommandButtons.InteractHeld |
+                    PlayerCommandButtons.InteractPressed);
+            }
+            if (simulationTick == 385u)
+            {
+                return new PlayerCommand(
+                    simulationTick, 0, 0, -7720, 0, PlayerCommandButtons.None);
+            }
+            if (simulationTick == 390u)
+            {
+                return new PlayerCommand(
+                    simulationTick,
+                    0,
+                    0,
+                    0,
+                    0,
+                    PlayerCommandButtons.PunchPressed);
+            }
+            return new PlayerCommand(
+                simulationTick, 0, 0, 0, 0, PlayerCommandButtons.None);
+        }
+
+        private static PlayerCommand RunSandboxPunches(uint simulationTick)
+        {
+            if (simulationTick >= 200u && simulationTick < 270u)
+            {
+                return new PlayerCommand(
+                    simulationTick, 0, 127, 0, 0, PlayerCommandButtons.None);
+            }
+            if (simulationTick >= 280u && simulationTick < 300u)
+            {
+                return new PlayerCommand(
+                    simulationTick, -127, 0, 0, 0, PlayerCommandButtons.None);
+            }
+            if (simulationTick == 310u)
+            {
+                return new PlayerCommand(
+                    simulationTick, 0, 0, -9000, 0, PlayerCommandButtons.None);
+            }
+            // Répéter brièvement chaque front rend la sonde robuste à la perte
+            // d'un replicate sans multiplier les actions : les fenêtres restent
+            // espacées de 50 ticks, au-delà du cooldown serveur de 48 ticks.
+            if (IsInWindow(simulationTick, 320u, 3u) ||
+                IsInWindow(simulationTick, 370u, 3u) ||
+                IsInWindow(simulationTick, 420u, 3u) ||
+                IsInWindow(simulationTick, 470u, 3u))
+            {
+                return new PlayerCommand(
+                    simulationTick,
+                    0,
+                    0,
+                    0,
+                    0,
+                    PlayerCommandButtons.PunchPressed);
+            }
+            if (simulationTick > 322u && simulationTick < 470u)
+            {
+                // Le knockback éloigne la cible d'environ un mètre à chaque
+                // impact. Une entrée à 40/127 suit ce recul sur les 50 ticks du
+                // cooldown sans dépasser la cible, contrairement à la marche à
+                // pleine amplitude qui rendait la sonde dépendante des collisions.
+                return new PlayerCommand(
+                    simulationTick, 0, 40, 0, 0, PlayerCommandButtons.None);
+            }
+            return new PlayerCommand(
+                simulationTick, 0, 0, 0, 0, PlayerCommandButtons.None);
+        }
+
+        private static bool IsInWindow(uint tick, uint start, uint duration)
+        {
+            var elapsed = unchecked(tick - start);
+            return !TickMath.IsOlder(tick, start) && elapsed < duration;
         }
     }
 }

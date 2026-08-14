@@ -3,6 +3,7 @@ using FishNet.Transporting;
 using FishNet.Utility.Template;
 using NotThatWay.Game.Input;
 using NotThatWay.Game.PlayerSimulation;
+using NotThatWay.Game.Sandbox;
 using NotThatWay.Game.Simulation;
 using NotThatWay.Game.Topology;
 using UnityEngine;
@@ -110,6 +111,7 @@ namespace NotThatWay.Game
     public sealed class M1PlayerActions : TickNetworkBehaviour
     {
         private static readonly int PunchTrigger = Animator.StringToHash("Punch");
+        private static readonly int ThrowTrigger = Animator.StringToHash("Throw");
         private static readonly int PushBool = Animator.StringToHash("Push");
 
         [Header("Frappe — validée par l'hôte")]
@@ -123,6 +125,7 @@ namespace NotThatWay.Game
 
         private PredictedPlayerMotor _motor;
         private PlayerInputSource _inputSource;
+        private SandboxPlayerGameplay _sandboxGameplay;
         private Animator _animator;
         private M1AuthoritativeWallDirector _wallDirector;
         private TopologyArena _arena;
@@ -136,6 +139,7 @@ namespace NotThatWay.Game
         {
             _motor = GetComponent<PredictedPlayerMotor>();
             _inputSource = GetComponent<PlayerInputSource>();
+            _sandboxGameplay = GetComponent<SandboxPlayerGameplay>();
             _animator = GetComponentInChildren<Animator>(true);
             SetTickCallbacks(TickCallback.PostTick);
         }
@@ -150,9 +154,23 @@ namespace NotThatWay.Game
             // Retour immédiat chez le frappeur : l'hôte tranchera l'effet, mais le
             // bras ne doit pas attendre l'aller-retour réseau pour partir.
             if ((frame.PressedButtons & PlayerCommandButtons.PunchPressed) != 0)
-                PlayPunchAnimation();
+            {
+                if (_sandboxGameplay == null)
+                {
+                    PlayPunchAnimation();
+                }
+                else if (_sandboxGameplay.CanThrow)
+                {
+                    PlayThrowAnimation();
+                }
+                else if (_sandboxGameplay.CanPunch)
+                {
+                    PlayPunchAnimation();
+                }
+            }
 
-            var pushing = (frame.HeldButtons & PlayerCommandButtons.InteractHeld) != 0;
+            var pushing = (frame.HeldButtons & PlayerCommandButtons.InteractHeld) != 0 &&
+                          (_sandboxGameplay == null || _sandboxGameplay.CanPush);
             if (pushing == _pushing)
                 return;
             _pushing = pushing;
@@ -177,6 +195,22 @@ namespace NotThatWay.Game
             var serverTick = TimeManager.Tick;
             if (_hasPunched && TickMath.Elapsed(_lastPunchTick, serverTick) < _punchCooldownTicks)
                 return;
+
+            var direction = transform.forward;
+            direction.y = 0f;
+            if (_sandboxGameplay != null &&
+                _sandboxGameplay.ActiveKind != SandboxCarryableKind.None)
+            {
+                if (!_sandboxGameplay.TryThrowActive(command, direction))
+                    return;
+                _lastPunchTick = serverTick;
+                _hasPunched = true;
+                PlayThrowObserversRpc();
+                return;
+            }
+
+            if (_sandboxGameplay != null && !_sandboxGameplay.TrySpendPunch(command))
+                return;
             _lastPunchTick = serverTick;
             _hasPunched = true;
             ResolvePunch();
@@ -199,7 +233,21 @@ namespace NotThatWay.Game
             var victim = FindVictim();
             if (victim != null)
             {
-                victim.ApplyKnockbackFromServer(direction * _knockbackSpeed);
+                var victimGameplay = victim.GetComponent<SandboxPlayerGameplay>();
+                if (victimGameplay != null)
+                {
+                    if (!victimGameplay.ApplyDamageFromServer(
+                            SandboxGameplayConfig.Baseline60Hz.PunchDamage,
+                            SandboxDamageKind.Punch,
+                            direction * _knockbackSpeed))
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    victim.ApplyKnockbackFromServer(direction * _knockbackSpeed);
+                }
                 Debug.Log(
                     $"[GAME-M1-PUNCH] hit source={ObjectId} target={victim.ObjectId} " +
                     $"tick={TimeManager.Tick}.");
@@ -297,6 +345,8 @@ namespace NotThatWay.Game
         [ServerRpc]
         private void SetPushPoseServerRpc(bool pushing)
         {
+            if (_sandboxGameplay != null && !_sandboxGameplay.CanPush)
+                pushing = false;
             SetPushPoseObserversRpc(pushing);
         }
 
@@ -312,10 +362,22 @@ namespace NotThatWay.Game
             PlayPunchAnimation();
         }
 
+        [ObserversRpc(ExcludeOwner = true)]
+        private void PlayThrowObserversRpc()
+        {
+            PlayThrowAnimation();
+        }
+
         private void PlayPunchAnimation()
         {
             if (_animator != null && _animator.runtimeAnimatorController != null)
                 _animator.SetTrigger(PunchTrigger);
+        }
+
+        private void PlayThrowAnimation()
+        {
+            if (_animator != null && _animator.runtimeAnimatorController != null)
+                _animator.SetTrigger(ThrowTrigger);
         }
 
         private void ApplyPushPose(bool pushing)
@@ -327,7 +389,7 @@ namespace NotThatWay.Game
         /// <summary>
         /// Retour local du pousseur. Sans lui, le bras de levier est invisible : un
         /// joueur collé au gond conclut que la touche ne répond pas alors qu'il
-        /// applique 30 % de la puissance. L'indicateur rejoue la règle pure sur la
+        /// applique 40 % de la puissance. L'indicateur rejoue la règle pure sur la
         /// position locale et lit l'angle de l'état observé ; il ne décide rien.
         /// </summary>
         private void OnGUI()

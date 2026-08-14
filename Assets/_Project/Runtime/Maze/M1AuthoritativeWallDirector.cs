@@ -8,6 +8,7 @@ using FishNet.Object;
 using FishNet.Transporting;
 using FishNet.Utility.Template;
 using NotThatWay.Game.PlayerSimulation;
+using NotThatWay.Game.Sandbox;
 using NotThatWay.Game.Simulation;
 using NotThatWay.Game.Topology;
 using UnityEngine;
@@ -402,6 +403,14 @@ namespace NotThatWay.Game
                     // réarmer ici relancerait un rebond, qui romprait à nouveau le
                     // contact — le pousseur rebondirait en boucle au lieu de
                     // pousser. Seul le relâchement du bouton réarme.
+                    continue;
+                }
+
+                var sandboxGameplay = player.GetComponent<SandboxPlayerGameplay>();
+                if (sandboxGameplay != null &&
+                    !sandboxGameplay.TryConsumePushEnergy(command.Tick))
+                {
+                    _rejectedInteractionCount++;
                     continue;
                 }
 

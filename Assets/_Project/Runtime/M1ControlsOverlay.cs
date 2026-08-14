@@ -26,16 +26,20 @@ namespace NotThatWay.Game
 
         private static readonly string[,] Controls =
         {
-            { "Se déplacer", "ZQSD / WASD · stick gauche" },
+            { "Se déplacer", "ZQSD / flèches · stick gauche" },
             { "Regarder", "souris · stick droit" },
             { "Courir", "Maj · L3" },
-            { "Pousser le mur", "MAINTENIR E (clic gauche · RT) : il part" },
+            { "Sauter", "Espace · A/Croix" },
+            { "Interagir / ramasser", "E · X/Carré" },
+            { "Pousser le mur", "MAINTENIR E · X/Carré : il part" },
             { "", "au premier appui et s'écarte de vous" },
             // Doit suivre _minimumLeveragePermille du director : un panneau qui
             // annonce une force que la règle n'applique pas fausse le playtest.
             { "Force de poussée", "100 % au bout du battant, 40 % au gond" },
             { "Contre-pousser", "passer sur l'autre face et maintenir E" },
-            { "Frapper", "F ou clic droit · R1 — pousse le mur aussi" },
+            { "Frapper / lancer", "F ou clic gauche · RT" },
+            { "Lâcher l'objet", "A · B/Rond" },
+            { "Cases d'objet", "1 / 2 / 3 · Tab ou R1 pour parcourir" },
             { "Vue 1re / 3e personne", "F1 · croix haut" },
             { "Zoomer (3e personne)", "molette · croix gauche/droite" },
             { "Libérer le curseur", "Échap" }

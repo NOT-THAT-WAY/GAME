@@ -61,6 +61,51 @@
           "initialStateCheck": false
         },
         {
+          "name": "Drop",
+          "type": "Button",
+          "id": "d6b69a65-d3cf-4a78-b659-efbdf001923c",
+          "expectedControlType": "Button",
+          "processors": "",
+          "interactions": "",
+          "initialStateCheck": false
+        },
+        {
+          "name": "SelectSlot1",
+          "type": "Button",
+          "id": "733cb715-c748-4b0e-9507-404159642696",
+          "expectedControlType": "Button",
+          "processors": "",
+          "interactions": "",
+          "initialStateCheck": false
+        },
+        {
+          "name": "SelectSlot2",
+          "type": "Button",
+          "id": "f8733269-6b91-4fbf-933f-97f80a40bfa5",
+          "expectedControlType": "Button",
+          "processors": "",
+          "interactions": "",
+          "initialStateCheck": false
+        },
+        {
+          "name": "SelectSlot3",
+          "type": "Button",
+          "id": "e191189e-aa58-405e-ac67-8b6d515868e9",
+          "expectedControlType": "Button",
+          "processors": "",
+          "interactions": "",
+          "initialStateCheck": false
+        },
+        {
+          "name": "CycleSlot",
+          "type": "Button",
+          "id": "0a84b12c-4183-4aed-a929-bc30a67ad764",
+          "expectedControlType": "Button",
+          "processors": "",
+          "interactions": "",
+          "initialStateCheck": false
+        },
+        {
           "name": "Jump",
           "type": "Button",
           "id": "152e15dc-1d40-4263-a760-9b2ae92511f6",
@@ -108,7 +153,7 @@
       ],
       "bindings": [
         {
-          "name": "WASD",
+          "name": "ZQSD",
           "id": "e134540e-fed8-46c9-a23f-7dbd7019cfe6",
           "path": "Dpad",
           "interactions": "",
@@ -121,7 +166,7 @@
         {
           "name": "up",
           "id": "9c1be7d0-aa05-423b-87f3-bfd21b754339",
-          "path": "<Keyboard>/w",
+          "path": "<Keyboard>/z",
           "interactions": "",
           "processors": "",
           "groups": "KeyboardMouse",
@@ -143,7 +188,7 @@
         {
           "name": "left",
           "id": "d2113079-3540-4008-8cb9-06a7543b2d7c",
-          "path": "<Keyboard>/a",
+          "path": "<Keyboard>/q",
           "interactions": "",
           "processors": "",
           "groups": "KeyboardMouse",
@@ -286,10 +331,10 @@
         {
           "name": "",
           "id": "f3b8dd4d-ba45-40b2-a498-f0848de21d62",
-          "path": "<Mouse>/leftButton",
+          "path": "<Gamepad>/buttonWest",
           "interactions": "",
           "processors": "",
-          "groups": "KeyboardMouse",
+          "groups": "Gamepad",
           "action": "Interact",
           "isComposite": false,
           "isPartOfComposite": false
@@ -312,14 +357,14 @@
           "interactions": "",
           "processors": "",
           "groups": "Gamepad",
-          "action": "Interact",
+          "action": "Punch",
           "isComposite": false,
           "isPartOfComposite": false
         },
         {
           "name": "",
           "id": "58811ed4-d375-4ed4-9930-282f44f740ce",
-          "path": "<Mouse>/rightButton",
+          "path": "<Mouse>/leftButton",
           "interactions": "",
           "processors": "",
           "groups": "KeyboardMouse",
@@ -345,7 +390,73 @@
           "interactions": "",
           "processors": "",
           "groups": "Gamepad",
-          "action": "Punch",
+          "action": "CycleSlot",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "9246a56d-99bc-4fa9-bf3c-1dfdbb8d0c72",
+          "path": "<Keyboard>/a",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "Drop",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "513896dc-bcfb-48a0-88c7-f70aec1c2b17",
+          "path": "<Gamepad>/buttonEast",
+          "interactions": "",
+          "processors": "",
+          "groups": "Gamepad",
+          "action": "Drop",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "7c8294ab-d27a-4765-a655-4004964010ad",
+          "path": "<Keyboard>/digit1",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "SelectSlot1",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "a006cd9d-66c9-4613-a4ca-99549f423999",
+          "path": "<Keyboard>/digit2",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "SelectSlot2",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "c6e28469-3286-4bd5-ab32-7444a1a63c3f",
+          "path": "<Keyboard>/digit3",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "SelectSlot3",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "74036ee9-728e-4e18-b0db-1074eaad05b1",
+          "path": "<Keyboard>/tab",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "CycleSlot",
           "isComposite": false,
           "isPartOfComposite": false
         },
