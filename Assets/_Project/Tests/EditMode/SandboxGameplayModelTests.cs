@@ -1,4 +1,5 @@
 using System;
+using NotThatWay.Game.PlayerSimulation;
 using NotThatWay.Game.Sandbox;
 using NUnit.Framework;
 
@@ -188,6 +189,41 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(reset.HasFlag(SandboxRoundEvents.ResetRequested), Is.True);
             Assert.That(reset.HasFlag(SandboxRoundEvents.CountdownStarted), Is.True);
             Assert.That(round.State.RoundNumber, Is.EqualTo(2u));
+        }
+
+        [TestCase(SandboxRoundPhase.Waiting, false)]
+        [TestCase(SandboxRoundPhase.Countdown, false)]
+        [TestCase(SandboxRoundPhase.Playing, true)]
+        [TestCase(SandboxRoundPhase.Result, false)]
+        public void Round_AllowsPlayerControlOnlyWhilePlaying(
+            SandboxRoundPhase phase,
+            bool expected)
+        {
+            Assert.That(SandboxRoundRules.AllowsPlayerControl(phase), Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void RoundResetState_PreservesPoseAndTickButClearsEveryVelocityWindow()
+        {
+            var position = new PlayerVector3(3.5d, 0.05d, -2.25d);
+            var state = PlayerState.CreateStopped(
+                742u,
+                position,
+                27000,
+                -1200,
+                true,
+                -3d);
+
+            Assert.That(state.Tick, Is.EqualTo(742u));
+            Assert.That(state.Position, Is.EqualTo(position));
+            Assert.That(state.YawCentidegrees, Is.EqualTo(27000));
+            Assert.That(state.PitchCentidegrees, Is.EqualTo(-1200));
+            Assert.That(state.HorizontalVelocity, Is.EqualTo(PlayerVector3.Zero));
+            Assert.That(state.KnockbackVelocity, Is.EqualTo(PlayerVector3.Zero));
+            Assert.That(state.VerticalVelocity, Is.EqualTo(-3d));
+            Assert.That(state.IsGrounded, Is.True);
+            Assert.That(state.CoyoteTicksRemaining, Is.Zero);
+            Assert.That(state.JumpBufferTicksRemaining, Is.Zero);
         }
     }
 }

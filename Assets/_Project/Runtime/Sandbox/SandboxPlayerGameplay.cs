@@ -70,20 +70,26 @@ namespace NotThatWay.Game.Sandbox
         public SandboxCarryableKind ActiveKind => IsServerStarted
             ? _inventory.ActiveEntry?.Kind ?? SandboxCarryableKind.None
             : ObservedKindAt(_observedActiveSlot);
-        public int MovementSpeedPermille => IsServerStarted
-            ? _model.MovementPermille(_inventory.HasTrophy)
-            : !IsAlive
-                ? 0
-                : HasTrophy
-                    ? _config.TrophyMovementPermille
-                    : SandboxGameplayConfig.PermilleScale;
-        public bool CanPush => IsAlive && !HasTrophy && ObservedEnergy > 0;
+        public int MovementSpeedPermille => !RoundAllowsControl
+            ? 0
+            : IsServerStarted
+                ? _model.MovementPermille(_inventory.HasTrophy)
+                : !IsAlive
+                    ? 0
+                    : HasTrophy
+                        ? _config.TrophyMovementPermille
+                        : SandboxGameplayConfig.PermilleScale;
+        public bool CanPush =>
+            RoundAllowsControl && IsAlive && !HasTrophy && ObservedEnergy > 0;
         public bool CanPunch =>
-            IsAlive && !HasTrophy && ActiveKind == SandboxCarryableKind.None &&
+            RoundAllowsControl && IsAlive && !HasTrophy &&
+            ActiveKind == SandboxCarryableKind.None &&
             ObservedEnergy >= _config.PunchEnergyCost;
         public bool CanThrow =>
-            IsAlive && ActiveKind != SandboxCarryableKind.None &&
+            RoundAllowsControl && IsAlive && ActiveKind != SandboxCarryableKind.None &&
             ObservedEnergy >= _config.ThrowEnergyCost;
+        private bool RoundAllowsControl =>
+            SandboxRoundDirector.AllowsPlayerControl(IsServerStarted);
 
         private void Awake()
         {
@@ -152,15 +158,14 @@ namespace NotThatWay.Game.Sandbox
         }
 
         /// <summary>
-        /// Filtre utilisé par la prédiction comme par le serveur : un joueur KO
-        /// conserve le regard mais aucune intention physique ; le trophée coupe
-        /// la poussée, et le sprint disparaît dès que son prochain prélèvement ne
-        /// peut plus être payé.
+        /// Filtre utilisé par la prédiction comme par le serveur : un joueur KO ou
+        /// hors phase Playing conserve le regard mais aucune intention physique ;
+        /// le trophée coupe la poussée, et le sprint disparaît dès que son prochain
+        /// prélèvement ne peut plus être payé.
         /// </summary>
         public PlayerCommand FilterCommandForSimulation(PlayerCommand command)
         {
-            var alive = IsAlive;
-            if (!alive)
+            if (!IsAlive || !RoundAllowsControl)
             {
                 return new PlayerCommand(
                     command.Tick,
@@ -187,7 +192,8 @@ namespace NotThatWay.Game.Sandbox
 
         public bool TrySpendPunch(PlayerCommand command)
         {
-            if (!IsServerStarted || ActiveKind != SandboxCarryableKind.None || HasTrophy)
+            if (!IsServerStarted || !RoundAllowsControl ||
+                ActiveKind != SandboxCarryableKind.None || HasTrophy)
                 return false;
             if (!EnsureAdvanced(command))
                 return false;
@@ -199,7 +205,7 @@ namespace NotThatWay.Game.Sandbox
 
         public bool TryThrowActive(PlayerCommand command, Vector3 direction)
         {
-            if (!IsServerStarted || !IsAlive)
+            if (!IsServerStarted || !RoundAllowsControl || !IsAlive)
                 return false;
             if (!EnsureAdvanced(command))
                 return false;
@@ -233,7 +239,7 @@ namespace NotThatWay.Game.Sandbox
             SandboxDamageKind kind,
             Vector3 knockbackVelocity)
         {
-            if (!IsServerStarted)
+            if (!IsServerStarted || !RoundAllowsControl)
                 return false;
             var result = _model.ApplyDamage(damage, kind);
             if (!result.Applied)
@@ -255,7 +261,8 @@ namespace NotThatWay.Game.Sandbox
 
         public bool TryDepositTrophyFromServer()
         {
-            if (!IsServerStarted || !IsAlive || !TryFindTrophy(out var slot, out var entry))
+            if (!IsServerStarted || !RoundAllowsControl || !IsAlive ||
+                !TryFindTrophy(out var slot, out var entry))
                 return false;
             if (!SandboxCarryable.TryFindServer(entry.ObjectId, out var trophy))
             {
@@ -289,7 +296,15 @@ namespace NotThatWay.Game.Sandbox
                 return;
             DropAllFromServer();
             _model.Reset(_model.State.Tick);
+            _motor?.ResetToRoundSpawnFromServer();
             PublishSnapshot(true);
+        }
+
+        public void StopForRoundResultFromServer()
+        {
+            if (!IsServerStarted)
+                return;
+            _motor?.StopMotionFromServer();
         }
 
         internal static void CopyServerInstances(List<SandboxPlayerGameplay> destination)

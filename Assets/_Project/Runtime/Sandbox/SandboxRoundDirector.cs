@@ -28,6 +28,18 @@ namespace NotThatWay.Game.Sandbox
         public static SandboxRoundDirector ObservedInstance { get; private set; }
         public SandboxRoundState ObservedState => IsServerStarted ? _model.State : _observedState;
 
+        /// <summary>
+        /// En dehors d'une scène sandbox, l'absence de director reste permissive
+        /// pour ne pas casser les bancs historiques. Dès qu'une manche existe, la
+        /// phase observée devient le contrat commun client/serveur.
+        /// </summary>
+        public static bool AllowsPlayerControl(bool asServer)
+        {
+            var instance = asServer ? ServerInstance : ObservedInstance;
+            return instance == null ||
+                   SandboxRoundRules.AllowsPlayerControl(instance.ObservedState.Phase);
+        }
+
         private void Awake()
         {
             _model = new SandboxRoundModel(SandboxRoundConfig.Baseline60Hz);
@@ -88,6 +100,8 @@ namespace NotThatWay.Game.Sandbox
                 return;
             SandboxPlayerGameplay.CopyServerInstances(_players);
             var events = _model.AdvanceTick(_players.Count);
+            if ((events & SandboxRoundEvents.RoundCompleted) != 0)
+                StopPlayersForResult();
             if ((events & SandboxRoundEvents.ResetRequested) != 0)
                 ResetSandbox();
             if (events != SandboxRoundEvents.None ||
@@ -101,12 +115,20 @@ namespace NotThatWay.Game.Sandbox
         {
             if (!IsServerStarted || !_model.TryComplete(winnerObjectId))
                 return false;
+            StopPlayersForResult();
             PublishSnapshot();
             Debug.Log(
                 $"[GAME-SANDBOX-ROUND] completed round={_model.State.RoundNumber} " +
                 $"winner={winnerObjectId} tick={_model.State.Tick}.",
                 this);
             return true;
+        }
+
+        private void StopPlayersForResult()
+        {
+            SandboxPlayerGameplay.CopyServerInstances(_players);
+            for (var index = 0; index < _players.Count; index++)
+                _players[index].StopForRoundResultFromServer();
         }
 
         private void ResetSandbox()

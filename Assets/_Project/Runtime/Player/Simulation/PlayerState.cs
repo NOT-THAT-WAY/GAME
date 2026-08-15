@@ -87,6 +87,30 @@ namespace NotThatWay.Game.PlayerSimulation
             return hash.ToHashCode();
         }
 
+        /// <summary>
+        /// Construit une pose réconciliable sans inertie ni fenêtre de saut. Sert
+        /// aux changements de phase qui doivent conserver un tick et une pose,
+        /// tout en annulant mouvement contrôlé et forces externes.
+        /// </summary>
+        internal static PlayerState CreateStopped(
+            uint tick,
+            PlayerVector3 position,
+            int yawCentidegrees,
+            int pitchCentidegrees,
+            bool grounded,
+            double groundedVelocity)
+        {
+            return new PlayerState(
+                tick,
+                position,
+                yawCentidegrees,
+                pitchCentidegrees,
+                PlayerVector3.Zero,
+                grounded ? groundedVelocity : 0d,
+                PlayerVector3.Zero,
+                grounded);
+        }
+
         internal static void EnsureHorizontal(PlayerVector3 value, string parameterName)
         {
             if (value.Y != 0d)

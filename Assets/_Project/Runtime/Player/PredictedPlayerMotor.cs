@@ -23,6 +23,7 @@ namespace NotThatWay.Game
     [RequireComponent(typeof(PlayerInputSource))]
     public sealed class PredictedPlayerMotor : TickNetworkBehaviour
     {
+        private const double RoundSpawnGroundProbeMeters = 0.15d;
         private static readonly List<PredictedPlayerMotor> ServerInstances = new();
 
         [Header("Présentation locale")]
@@ -64,6 +65,11 @@ namespace NotThatWay.Game
         private M1AutomatedCommandSource _automatedCommands;
         private string _automationParseError;
         private bool _automationLogged;
+        private Vector3 _roundSpawnPosition;
+        private int _roundSpawnYawCentidegrees;
+        private bool _hasRoundSpawnPose;
+        private uint _roundResetCount;
+        private float _lastRoundResetPoseErrorMeters;
 
         public bool IsSimulationReady => _simulation != null;
         public uint SimulationTick => _simulation?.State.Tick ?? 0u;
@@ -72,6 +78,8 @@ namespace NotThatWay.Game
         public uint ReconcileCount => _reconcileCount;
         public float LastCorrectionMeters => _lastCorrectionMeters;
         public CharacterController CharacterController => _controller;
+        public uint RoundResetCount => _roundResetCount;
+        public float LastRoundResetPoseErrorMeters => _lastRoundResetPoseErrorMeters;
 
         private void Awake()
         {
@@ -98,6 +106,11 @@ namespace NotThatWay.Game
         public override void OnStartServer()
         {
             base.OnStartServer();
+            _roundSpawnPosition = transform.position;
+            _roundSpawnYawCentidegrees = QuantizeYaw(transform.eulerAngles.y);
+            _hasRoundSpawnPose = true;
+            _roundResetCount = 0u;
+            _lastRoundResetPoseErrorMeters = 0f;
             if (!ServerInstances.Contains(this))
                 ServerInstances.Add(this);
         }
@@ -105,6 +118,7 @@ namespace NotThatWay.Game
         public override void OnStopServer()
         {
             ServerInstances.Remove(this);
+            _hasRoundSpawnPose = false;
             _hasLatestAuthoritativeCommand = false;
             base.OnStopServer();
         }
@@ -317,6 +331,158 @@ namespace NotThatWay.Game
             Vector3 velocityCorrection)
         {
             QueueKnockback(velocityCorrection);
+        }
+
+        /// <summary>
+        /// Replace la vérité serveur sur la pose attribuée par PlayerSpawner. Le
+        /// snapshot de réconciliation est aussi envoyé aux observateurs par le
+        /// state forwarding FishNet ; le TargetRpc donne au propriétaire distant
+        /// un snap immédiat et vide son input tamponné.
+        /// </summary>
+        public void ResetToRoundSpawnFromServer()
+        {
+            if (!IsServerStarted)
+                return;
+            if (!_hasRoundSpawnPose)
+            {
+                throw new InvalidOperationException(
+                    "La pose de spawn de manche n'a pas été capturée côté serveur.");
+            }
+
+            EnsureSimulation();
+            var state = ResolveRoundSpawnState(
+                _simulation.State.Tick,
+                _roundSpawnPosition,
+                _roundSpawnYawCentidegrees);
+            _roundResetCount++;
+            ApplyRoundResetState(state, true);
+            if (Owner.IsValid && !Owner.IsLocalClient)
+            {
+                ApplyRoundResetTargetRpc(
+                    Owner,
+                    state.Tick,
+                    (float)state.Position.X,
+                    (float)state.Position.Y,
+                    (float)state.Position.Z,
+                    state.YawCentidegrees,
+                    state.IsGrounded,
+                    (float)state.VerticalVelocity,
+                    _roundResetCount,
+                    Channel.Reliable);
+            }
+
+            Debug.Log(
+                $"[GAME-SANDBOX-ROUND-RESET] server player={ObjectId} " +
+                $"sequence={_roundResetCount} tick={state.Tick} " +
+                $"spawn={_roundSpawnPosition} resolved={transform.position} " +
+                $"poseError={_lastRoundResetPoseErrorMeters:F4}m.",
+                this);
+        }
+
+        /// <summary>
+        /// Fige le résultat à la position atteinte sans réorienter le joueur. La
+        /// téléportation au spawn reste réservée au reset de manche suivant.
+        /// </summary>
+        public void StopMotionFromServer()
+        {
+            if (!IsServerStarted)
+                return;
+            EnsureSimulation();
+            var current = _simulation.State;
+            var state = PlayerState.CreateStopped(
+                current.Tick,
+                UnityCharacterControllerWorld.ToDomain(transform.position),
+                current.YawCentidegrees,
+                current.PitchCentidegrees,
+                current.IsGrounded,
+                _simulation.Config.GroundedVelocityMetersPerSecond);
+            ApplyAuthoritativeState(state, false);
+        }
+
+        [TargetRpc]
+        private void ApplyRoundResetTargetRpc(
+            NetworkConnection connection,
+            uint simulationTick,
+            float positionX,
+            float positionY,
+            float positionZ,
+            int yawCentidegrees,
+            bool grounded,
+            float verticalVelocity,
+            uint resetCount,
+            Channel channel = Channel.Reliable)
+        {
+            var state = new PlayerState(
+                simulationTick,
+                new PlayerVector3(positionX, positionY, positionZ),
+                yawCentidegrees,
+                0,
+                PlayerVector3.Zero,
+                verticalVelocity,
+                PlayerVector3.Zero,
+                grounded);
+            _roundResetCount = resetCount;
+            ApplyRoundResetState(state, true);
+            Debug.Log(
+                $"[GAME-SANDBOX-ROUND-RESET] owner player={ObjectId} " +
+                $"sequence={resetCount} tick={simulationTick} position={transform.position} " +
+                $"poseError={_lastRoundResetPoseErrorMeters:F4}m.",
+                this);
+        }
+
+        private PlayerState ResolveRoundSpawnState(
+            uint simulationTick,
+            Vector3 spawnPosition,
+            int spawnYawCentidegrees)
+        {
+            var start = UnityCharacterControllerWorld.ToDomain(spawnPosition);
+            var request = new PlayerCollisionRequest(
+                simulationTick,
+                start,
+                new PlayerVector3(0d, -RoundSpawnGroundProbeMeters, 0d),
+                spawnYawCentidegrees,
+                _simulation.Config.PlayerHeightMeters,
+                _simulation.Config.PlayerRadiusMeters);
+            var collision = _collisionWorld.Move(in request);
+            return PlayerState.CreateStopped(
+                simulationTick,
+                collision.ResolvedPosition,
+                spawnYawCentidegrees,
+                0,
+                collision.IsGrounded,
+                _simulation.Config.GroundedVelocityMetersPerSecond);
+        }
+
+        private void ApplyRoundResetState(PlayerState state, bool resetInput)
+        {
+            ApplyAuthoritativeState(state, true);
+            _lastRoundResetPoseErrorMeters = Vector3.Distance(
+                transform.position,
+                new Vector3(
+                    (float)state.Position.X,
+                    (float)state.Position.Y,
+                    (float)state.Position.Z));
+            if (resetInput && _inputSource != null && IsOwner)
+                _inputSource.ResetBufferedInput();
+        }
+
+        private void ApplyAuthoritativeState(PlayerState state, bool teleportPresentation)
+        {
+            EnsureSimulation(state);
+            _simulation.RestoreState(state);
+            _collisionWorld.SetPose(state.Position, state.YawCentidegrees);
+            _pendingKnockbackVelocityDelta = PlayerVector3.Zero;
+            _lastTickedReplicateData = default;
+            _hasLastTickedReplicateData = false;
+            _latestAuthoritativeCommand = default;
+            _hasLatestAuthoritativeCommand = false;
+            if (teleportPresentation)
+            {
+#pragma warning disable CS0618 // API active du smoother configuré sur NetworkObject FishNet v4.
+                NetworkObject.PredictionSmoother?.Teleport();
+#pragma warning restore CS0618
+            }
+            ApplyPresentation(state);
         }
 
         private void QueueKnockback(Vector3 velocity)

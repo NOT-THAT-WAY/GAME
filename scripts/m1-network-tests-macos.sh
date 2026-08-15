@@ -13,15 +13,15 @@ SCENARIOS=()
 
 usage() {
   printf '%s\n' \
-    'Usage: ./scripts/m1-network-tests-macos.sh [all|occupancy|opposition|latejoin] [options]' \
+    'Usage: ./scripts/m1-network-tests-macos.sh [all|occupancy|opposition|latejoin|roundreset] [options]' \
     '' \
     'Options:' \
     '  --build                 reconstruit le player Development M1 avant les tests' \
     '  --base-port PORT        premier port UDP (défaut: 7790)' \
     '  --results-dir PATH      dossier de preuves' \
     '' \
-    'Trois scénarios locaux réels sont lancés en processus séparés. Aucun input' \
-    'n est injecté hors du chemin FishNet Replicate/Reconcile.'
+    'Les scénarios locaux réels sont lancés en processus séparés. Aucun input' \
+    'ne sort du chemin FishNet Replicate/Reconcile.'
 }
 
 fail() {
@@ -72,8 +72,8 @@ while (( $# > 0 )); do
 done
 
 case "$SUITE" in
-  all) REQUESTED_SCENARIOS=(occupancy opposition latejoin) ;;
-  occupancy|opposition|latejoin) REQUESTED_SCENARIOS=("$SUITE") ;;
+  all) REQUESTED_SCENARIOS=(occupancy opposition latejoin roundreset) ;;
+  occupancy|opposition|latejoin|roundreset) REQUESTED_SCENARIOS=("$SUITE") ;;
   *) usage >&2; exit 2 ;;
 esac
 if [[ ! "$BASE_PORT" =~ ^[0-9]+$ ]] ||
@@ -251,20 +251,17 @@ run_occupancy() {
   mkdir -p "$directory"
   launch_player occupancy-host "$directory/host.log" \
     --game-role host --game-port "$port" --game-name M1_OCC_HOST \
-    --m1-auto-player none --m1-test-name occupancy-host --m1-run-id "$RUN_ID" \
+    --m1-auto-player sandbox-wall-occupant \
+    --m1-test-name occupancy-host --m1-run-id "$RUN_ID" \
     --m1-evaluate-after-ready-seconds 16 --m1-auto-quit-seconds 19 \
     --m1-expect-players 2 --m1-expect-connections 2 \
     --m1-expect-rotation-min-mdeg 60000 --m1-expect-quarter-turns-min 1 \
     --m1-expect-swept-pushes-min 1
   # Le quart de tour est prouvé par --m1-expect-quarter-turns-min, qui compte les
   # franchissements. Le minimum de rotation porte, lui, sur l'angle au moment de
-  # l'évaluation : depuis l'ADR 0005 le battant est contre-poussable dans les deux
-  # sens, donc l'angle final est légitimement inférieur au pic — le pousseur
-  # automatisé dépasse le bout du battant et le repousse un peu avant de décrocher.
-  # Exiger 90000 sur l'angle final confondait « le quart de tour a eu lieu » et
-  # « le battant s'est immobilisé au-delà », ce qui n'est vrai que pour un mur
-  # non réversible, c'est-à-dire le modèle d'avant l'ADR 0005. Le plancher reste
-  # élevé pour attraper un battant qui tournerait puis serait entièrement ramené.
+  # l'évaluation. Depuis l'ADR 0005, le battant reste réversible ; la sonde relâche
+  # donc son appui juste après le franchissement afin de mesurer un quart de tour
+  # acquis sans provoquer elle-même une contre-poussée sur l'autre face.
   local host_pid="$LAUNCHED_PID"
   wait_for_log "$directory/host.log" 'Roster updated \(1 participant\(s\)\)' "$host_pid" 10 ||
     { fail 'host occupancy non prêt'; return 1; }
@@ -389,6 +386,54 @@ run_latejoin() {
   # Le host dégage l'arc avant la poussée, et le pousseur n'est pas balayé par
   # le battant qu'il tient : personne ne doit être écarté.
   ! rg -q 'swept_player_pushed' "$directory/host.log" || return 1
+}
+
+run_roundreset() {
+  local port="$1"
+  local directory="$RESULTS_DIRECTORY/roundreset"
+  mkdir -p "$directory"
+  launch_player roundreset-host "$directory/host.log" \
+    --game-role host --game-port "$port" --game-name M1_RESET_HOST \
+    --m1-auto-player none --m1-test-name roundreset-host --m1-run-id "$RUN_ID" \
+    --m1-evaluate-after-ready-seconds 15 --m1-auto-quit-seconds 22 \
+    --m1-expect-players 2 --m1-expect-connections 2
+  local host_pid="$LAUNCHED_PID"
+  wait_for_log "$directory/host.log" 'Roster updated \(1 participant\(s\)\)' "$host_pid" 10 ||
+    { fail 'host roundreset non prêt'; return 1; }
+
+  # Le client suit la vraie route trophée. Après le dépôt, les trois secondes de
+  # résultat doivent mener à un second reset (sequence=2) : état serveur remis au
+  # spawn, puis même pose appliquée immédiatement au propriétaire distant.
+  launch_player roundreset-client "$directory/client.log" \
+    --game-role client --game-address 127.0.0.1 --game-port "$port" --game-name M1_RESET_CLIENT \
+    --m1-auto-player sandbox-trophy-run-second-spawn \
+    --m1-test-name roundreset-client --m1-run-id "$RUN_ID" \
+    --m1-evaluate-after-ready-seconds 15 --m1-auto-quit-seconds 18 \
+    --m1-expect-players 2 \
+    --m1-expect-snapshots-min 1 --m1-expect-target-snapshots-min 1
+  local client_pid="$LAUNCHED_PID"
+  local client_status=0 host_status=0
+  wait_for_process "$client_pid" 30 || client_status=$?
+  wait_for_process "$host_pid" 10 || host_status=$?
+  (( client_status == 0 && host_status == 0 )) || return 1
+  verify_log "$directory/host.log" roundreset-host || return 1
+  verify_log "$directory/client.log" roundreset-client || return 1
+  verify_same_build "$directory/host.log" "$directory/client.log" || return 1
+
+  rg -q '\[GAME-SANDBOX-TROPHY\] deposited player=' "$directory/host.log" ||
+    { fail 'dépôt trophée absent du scénario roundreset'; return 1; }
+  rg -q '\[GAME-SANDBOX-ROUND\] reset round=2 phase=Countdown' "$directory/host.log" ||
+    { fail 'transition vers la manche 2 absente'; return 1; }
+  local server_resets
+  server_resets="$(log_match_count \
+    "$directory/host.log" \
+    '\[GAME-SANDBOX-ROUND-RESET\] server player=.* sequence=2 .*poseError=0\.0000m')"
+  (( server_resets == 2 )) ||
+    { fail "reset serveur attendu pour 2 joueurs, reçu $server_resets"; return 1; }
+  rg -q \
+    '\[GAME-SANDBOX-ROUND-RESET\] owner player=.* sequence=2 .*poseError=0\.0000m' \
+    "$directory/client.log" ||
+    { fail 'reset propriétaire distant non confirmé'; return 1; }
 }
 
 printf 'M1 network suite — run=%s results=%s\n' "$RUN_ID" "$RESULTS_DIRECTORY"

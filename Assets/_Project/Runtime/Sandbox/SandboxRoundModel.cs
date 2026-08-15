@@ -10,6 +10,17 @@ namespace NotThatWay.Game.Sandbox
         Result = 3
     }
 
+    /// <summary>
+    /// Politique pure des phases. La simulation réseau et les adaptateurs gameplay
+    /// l'utilisent tous les deux afin qu'un client prédit ne puisse pas présenter
+    /// une commande que le serveur refusera ensuite.
+    /// </summary>
+    public static class SandboxRoundRules
+    {
+        public static bool AllowsPlayerControl(SandboxRoundPhase phase) =>
+            phase == SandboxRoundPhase.Playing;
+    }
+
     [Flags]
     public enum SandboxRoundEvents : byte
     {

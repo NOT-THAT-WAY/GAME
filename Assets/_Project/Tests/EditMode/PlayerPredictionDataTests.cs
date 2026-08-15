@@ -129,8 +129,10 @@ namespace NotThatWay.Game.Tests.EditMode
                     out var error),
                 Is.True,
                 error);
-            Assert.That(mover.CreateCommand(45u).MoveY, Is.EqualTo(127));
-            Assert.That(mover.CreateCommand(46u).MoveY, Is.Zero);
+            Assert.That(mover.CreateCommand(179u).MoveY, Is.Zero);
+            Assert.That(mover.CreateCommand(180u).MoveY, Is.EqualTo(127));
+            Assert.That(mover.CreateCommand(225u).MoveY, Is.EqualTo(127));
+            Assert.That(mover.CreateCommand(226u).MoveY, Is.Zero);
             Assert.That(mover.WasSpecified, Is.True);
 
             Assert.That(
@@ -165,29 +167,32 @@ namespace NotThatWay.Game.Tests.EditMode
                 Is.True,
                 error);
             Assert.That(follower.Name, Is.EqualTo("push-left"));
-            Assert.That(follower.CreateCommand(0u).MoveX, Is.EqualTo(-127));
+            Assert.That(follower.CreateCommand(179u).MoveX, Is.Zero);
+            Assert.That(follower.CreateCommand(180u).MoveX, Is.EqualTo(-127));
+            Assert.That(follower.CreateCommand(180u).MoveY, Is.EqualTo(-4));
             Assert.That(
-                follower.CreateCommand(89u).Has(PlayerCommandButtons.InteractHeld),
+                follower.CreateCommand(269u).Has(PlayerCommandButtons.InteractHeld),
                 Is.False);
-            Assert.That(follower.CreateCommand(89u).LookYaw, Is.Zero);
+            Assert.That(follower.CreateCommand(269u).LookYaw, Is.Zero);
             Assert.That(
-                follower.CreateCommand(90u).Has(PlayerCommandButtons.InteractHeld),
+                follower.CreateCommand(270u).Has(PlayerCommandButtons.InteractHeld),
                 Is.True);
             Assert.That(
-                follower.CreateCommand(90u).LookYaw,
+                follower.CreateCommand(270u).LookYaw,
                 Is.EqualTo(28),
                 "Le lacet suit la porte : sans lui le pousseur perd le contact. " +
                 "La valeur suit la vitesse du battant, 280 mdeg/tick au réglage " +
                 "courant, et se recalcule avec elle.");
             // Amplitude réduite au contact : le surplus de vitesse ne pousse pas
             // plus fort, il fait glisser le pousseur jusqu'à contourner le battant.
-            Assert.That(follower.CreateCommand(600u).MoveX, Is.EqualTo(-24));
+            Assert.That(follower.CreateCommand(710u).MoveX, Is.EqualTo(-24));
+            Assert.That(follower.CreateCommand(710u).MoveY, Is.Zero);
             // Puis relâchement, une fois le quart de tour acquis : un pousseur qui
             // maintient indéfiniment finit sur l'autre face et contre-pousse sa
             // propre porte.
-            Assert.That(follower.CreateCommand(610u).MoveX, Is.Zero);
+            Assert.That(follower.CreateCommand(720u).MoveX, Is.Zero);
             Assert.That(
-                follower.CreateCommand(610u).Has(PlayerCommandButtons.InteractHeld),
+                follower.CreateCommand(720u).Has(PlayerCommandButtons.InteractHeld),
                 Is.False,
                 "Passé la fenêtre de poussée, le pousseur automatisé lâche le mur.");
 
@@ -198,8 +203,8 @@ namespace NotThatWay.Game.Tests.EditMode
                     out error),
                 Is.True,
                 error);
-            Assert.That(mirrored.CreateCommand(120u).MoveX, Is.EqualTo(24));
-            Assert.That(mirrored.CreateCommand(120u).LookYaw, Is.EqualTo(-28));
+            Assert.That(mirrored.CreateCommand(300u).MoveX, Is.EqualTo(24));
+            Assert.That(mirrored.CreateCommand(300u).LookYaw, Is.EqualTo(-28));
 
             Assert.That(
                 M1AutomatedCommandSource.TryParseArguments(
@@ -216,6 +221,37 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(trophyRunner.CreateCommand(350u).LookYaw, Is.EqualTo(18000));
             Assert.That(trophyRunner.CreateCommand(350u).MoveX, Is.EqualTo(-25));
             Assert.That(trophyRunner.CreateCommand(650u).MoveY, Is.Zero);
+
+            Assert.That(
+                M1AutomatedCommandSource.TryParseArguments(
+                    new[] { "GAME", "--m1-auto-player=sandbox-trophy-run-second-spawn" },
+                    out var secondSpawnTrophyRunner,
+                    out error),
+                Is.True,
+                error);
+            Assert.That(
+                secondSpawnTrophyRunner.Name,
+                Is.EqualTo("sandbox-trophy-run-second-spawn"));
+            Assert.That(secondSpawnTrophyRunner.CreateCommand(200u).MoveX, Is.EqualTo(-40));
+            Assert.That(secondSpawnTrophyRunner.CreateCommand(200u).MoveY, Is.EqualTo(120));
+            Assert.That(
+                secondSpawnTrophyRunner.CreateCommand(330u)
+                    .Has(PlayerCommandButtons.InteractPressed),
+                Is.True);
+            Assert.That(secondSpawnTrophyRunner.CreateCommand(350u).MoveX, Is.EqualTo(-25));
+
+            Assert.That(
+                M1AutomatedCommandSource.TryParseArguments(
+                    new[] { "GAME", "--m1-auto-player=sandbox-wall-occupant" },
+                    out var wallOccupant,
+                    out error),
+                Is.True,
+                error);
+            Assert.That(wallOccupant.Name, Is.EqualTo("sandbox-wall-occupant"));
+            Assert.That(wallOccupant.CreateCommand(184u).MoveX, Is.Zero);
+            Assert.That(wallOccupant.CreateCommand(185u).MoveX, Is.EqualTo(70));
+            Assert.That(wallOccupant.CreateCommand(185u).MoveY, Is.EqualTo(40));
+            Assert.That(wallOccupant.CreateCommand(215u).MoveX, Is.Zero);
 
             Assert.That(
                 M1AutomatedCommandSource.TryParseArguments(

@@ -44,7 +44,19 @@ namespace NotThatWay.Game.PlayerNetwork
         SandboxRockThrower = 10,
 
         /// <summary>Se place à portée puis porte quatre coups autoritaires.</summary>
-        SandboxPuncher = 11
+        SandboxPuncher = 11,
+
+        /// <summary>
+        /// Route trophée depuis le second spawn. Elle sert à prouver le reset du
+        /// propriétaire distant plutôt que seulement celui du host local.
+        /// </summary>
+        SandboxTrophyRunSecondSpawn = 12,
+
+        /// <summary>
+        /// Place le joueur du premier spawn à l'intérieur du quart de disque
+        /// balayé afin de tester le déplacement par le battant sans tangence.
+        /// </summary>
+        SandboxWallOccupant = 13
     }
 
     /// <summary>
@@ -95,6 +107,10 @@ namespace NotThatWay.Game.PlayerNetwork
                         return "sandbox-rock-thrower";
                     case M1AutomatedPlayerProfile.SandboxPuncher:
                         return "sandbox-puncher";
+                    case M1AutomatedPlayerProfile.SandboxTrophyRunSecondSpawn:
+                        return "sandbox-trophy-run-second-spawn";
+                    case M1AutomatedPlayerProfile.SandboxWallOccupant:
+                        return "sandbox-wall-occupant";
                     default:
                         return "none";
                 }
@@ -109,7 +125,9 @@ namespace NotThatWay.Game.PlayerNetwork
                     return new PlayerCommand(
                         simulationTick,
                         0,
-                        simulationTick <= 45u ? (sbyte)127 : (sbyte)0,
+                        simulationTick >= 180u && simulationTick <= 225u
+                            ? (sbyte)127
+                            : (sbyte)0,
                         0,
                         0,
                         PlayerCommandButtons.None);
@@ -128,7 +146,11 @@ namespace NotThatWay.Game.PlayerNetwork
                 case M1AutomatedPlayerProfile.PressRight:
                     return ApproachAndPress(simulationTick, 127);
                 case M1AutomatedPlayerProfile.SandboxTrophyRun:
-                    return RunSandboxTrophyRoute(simulationTick);
+                    return RunSandboxTrophyRoute(simulationTick, 0);
+                case M1AutomatedPlayerProfile.SandboxTrophyRunSecondSpawn:
+                    return RunSandboxTrophyRoute(simulationTick, -40);
+                case M1AutomatedPlayerProfile.SandboxWallOccupant:
+                    return MoveIntoWallSweep(simulationTick);
                 case M1AutomatedPlayerProfile.SandboxRockTarget:
                     return MoveNorthAfterRoundStart(simulationTick);
                 case M1AutomatedPlayerProfile.SandboxRockThrower:
@@ -221,6 +243,12 @@ namespace NotThatWay.Game.PlayerNetwork
                 case "sandbox-puncher":
                     profile = M1AutomatedPlayerProfile.SandboxPuncher;
                     break;
+                case "sandbox-trophy-run-second-spawn":
+                    profile = M1AutomatedPlayerProfile.SandboxTrophyRunSecondSpawn;
+                    break;
+                case "sandbox-wall-occupant":
+                    profile = M1AutomatedPlayerProfile.SandboxWallOccupant;
+                    break;
                 default:
                     error = "profile_unknown";
                     return false;
@@ -264,6 +292,7 @@ namespace NotThatWay.Game.PlayerNetwork
         /// Mesuré sur occupancy : 127 inverse à 56°, 55 à 74°.
         /// </summary>
         private const int PushStrafeMagnitude = 24;
+        private const int PushApproachOutwardMagnitude = 4;
 
         /// <summary>
         /// Marche latérale continue, lacet asservi et appui maintenu. Un pousseur
@@ -282,7 +311,13 @@ namespace NotThatWay.Game.PlayerNetwork
         /// </summary>
         private static PlayerCommand ApproachAndPress(uint simulationTick, sbyte strafe)
         {
-            const uint approachTicks = 90u;
+            const uint roundStartTick = 180u;
+            const uint approachTicks = roundStartTick + 90u;
+            if (TickMath.IsOlder(simulationTick, roundStartTick))
+            {
+                return new PlayerCommand(
+                    simulationTick, 0, 0, 0, 0, PlayerCommandButtons.None);
+            }
             var pressing = !TickMath.IsOlder(simulationTick, approachTicks);
             return new PlayerCommand(
                 simulationTick,
@@ -298,15 +333,24 @@ namespace NotThatWay.Game.PlayerNetwork
             sbyte strafe,
             short yawPerTick)
         {
-            const uint approachTicks = 90u;
+            const uint roundStartTick = 180u;
+            const uint approachTicks = roundStartTick + 90u;
             // Relâcher une fois le quart de tour acquis. Un pousseur qui maintient
             // indéfiniment finit par dépasser le bout du battant, se retrouver sur
             // l'autre face et contre-pousser sa propre porte : occupancy montait à
             // 96° puis redescendait à 83°. La fenêtre couvre le balayage d'un quart
             // de tour au réglage du banc — 90000 mdeg à 280 mdeg/tick font 322
-            // ticks, portés à 520 pour absorber l'approche et les pertes de contact
-            // — et doit être rallongée si le battant est encore ralenti.
-            const uint releaseTicks = approachTicks + 520u;
+            // ticks. La fenêtre reste tenue 450 ticks côté propriétaire : son tick
+            // démarre après celui de l'hôte lors d'une connexion distante, ce qui
+            // place le relâchement serveur juste avant que la capsule passe de
+            // l'autre côté vers 89°. Elle doit être recalibrée si la vitesse, la
+            // traînée ou la chronologie de spawn change.
+            const uint releaseTicks = approachTicks + 450u;
+            if (TickMath.IsOlder(simulationTick, roundStartTick))
+            {
+                return new PlayerCommand(
+                    simulationTick, 0, 0, 0, 0, PlayerCommandButtons.None);
+            }
             if (!TickMath.IsOlder(simulationTick, releaseTicks))
                 return new PlayerCommand(
                     simulationTick, 0, 0, 0, 0, PlayerCommandButtons.None);
@@ -319,10 +363,14 @@ namespace NotThatWay.Game.PlayerNetwork
             var lateral = pushing
                 ? (sbyte)(Math.Sign(strafe) * PushStrafeMagnitude)
                 : strafe;
+            // Le spawn vise le milieu du battant. Une très légère dérive vers le
+            // bout pendant l'approche gagne le bras de levier nécessaire pour
+            // franchir 90° avec exactement la même barre de 100 points d'énergie.
+            var outward = pushing ? (sbyte)0 : (sbyte)-PushApproachOutwardMagnitude;
             return new PlayerCommand(
                 simulationTick,
                 lateral,
-                0,
+                outward,
                 pushing ? yawPerTick : (short)0,
                 0,
                 pushing ? PlayerCommandButtons.InteractHeld : PlayerCommandButtons.None);
@@ -341,7 +389,9 @@ namespace NotThatWay.Game.PlayerNetwork
             return new PlayerCommand(simulationTick, 0, 0, 0, 0, buttons);
         }
 
-        private static PlayerCommand RunSandboxTrophyRoute(uint simulationTick)
+        private static PlayerCommand RunSandboxTrophyRoute(
+            uint simulationTick,
+            sbyte trophyApproachX)
         {
             // La première manche passe en Playing après trois secondes. Attendre
             // 200 ticks évite que son reset canonique ne remette le trophée au sol
@@ -349,7 +399,12 @@ namespace NotThatWay.Game.PlayerNetwork
             if (simulationTick >= 200u && simulationTick < 325u)
             {
                 return new PlayerCommand(
-                    simulationTick, 0, 127, 0, 0, PlayerCommandButtons.None);
+                    simulationTick,
+                    trophyApproachX,
+                    trophyApproachX == 0 ? (sbyte)127 : (sbyte)120,
+                    0,
+                    0,
+                    PlayerCommandButtons.None);
             }
             if (simulationTick == 330u)
             {
@@ -387,6 +442,18 @@ namespace NotThatWay.Game.PlayerNetwork
                 : (sbyte)0;
             return new PlayerCommand(
                 simulationTick, 0, move, 0, 0, PlayerCommandButtons.None);
+        }
+
+        private static PlayerCommand MoveIntoWallSweep(uint simulationTick)
+        {
+            var moving = simulationTick >= 185u && simulationTick < 215u;
+            return new PlayerCommand(
+                simulationTick,
+                moving ? (sbyte)70 : (sbyte)0,
+                moving ? (sbyte)40 : (sbyte)0,
+                0,
+                0,
+                PlayerCommandButtons.None);
         }
 
         private static PlayerCommand RunSandboxRockThrow(uint simulationTick)

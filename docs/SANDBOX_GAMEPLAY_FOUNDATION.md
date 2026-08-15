@@ -1,9 +1,10 @@
 # Fondation gameplay du sandbox
 
-État au 14 août 2026 : la branche `feat/sandbox-gameplay-foundation` transforme le banc M1 en
-petit sandbox jouable, sans prétendre figer le game design final. Le mur rotatif 360° reste intact ;
-la nouvelle couche ajoute les contrôles, les ressources, le combat, trois cases de transport, un
-caillou physique et une première boucle de trophée.
+État au 15 août 2026 : la branche `feat/sandbox-gameplay-foundation`, prolongée par
+`feat/sandbox-round-reset`, transforme le banc M1 en petit sandbox jouable sans prétendre figer le
+game design final. Le mur rotatif 360° reste intact ; la nouvelle couche ajoute les contrôles, les
+ressources, le combat, trois cases de transport, un caillou physique et une première boucle de
+trophée rejouable.
 
 ## Contrat de contrôle
 
@@ -62,10 +63,12 @@ actions ont un impact immédiatement lisible, mais les chiffres restent des hypo
    redevient ramassable.
 6. Un joueur à zéro PV lâche tout, ne peut plus agir, puis se relève automatiquement.
 7. Porter le trophée ralentit le joueur. Entrer vivant dans la zone orange avec le trophée termine
-   la manche ; les ressources et objets sont remis à zéro pour la suivante.
+   la manche ; les joueurs sont figés pendant le résultat, puis positions, orientations, vitesses,
+   knockback, ressources et objets sont remis à zéro sur leurs spawns pour la suivante.
 
-Le reset de manche ne replace pas encore les joueurs à leur spawn. C'est intentionnellement laissé
-comme limite visible du prototype, à décider après le premier test de boucle.
+Le regard reste disponible pendant le compte à rebours et le résultat, mais déplacement, actions et
+dégâts sont autorisés uniquement pendant la phase `Playing`. Le serveur impose la remise au spawn et
+la réconciliation FishNet la propage au propriétaire comme aux observateurs.
 
 ## Autorité et séparation des responsabilités
 
@@ -94,9 +97,10 @@ Les fichiers centraux sont `Runtime/Sandbox/`, `Runtime/Player/M1PlayerActions.c
 | Réseau caillou | ramassage, lancer réel, collision physique, 30 dégâts sur l'autre processus |
 | Réseau poing | quatre impacts autoritaires, vie 75/50/25/0 et KO |
 
-Les profils `sandbox-trophy-run`, `sandbox-rock-target`, `sandbox-rock-thrower` et
-`sandbox-puncher` de `M1AutomatedCommandSource` sont des sondes de build Development, pas des bots de
-jeu destinés à la production.
+Les profils `sandbox-trophy-run`, `sandbox-trophy-run-second-spawn`, `sandbox-wall-occupant`,
+`sandbox-rock-target`, `sandbox-rock-thrower` et `sandbox-puncher` de
+`M1AutomatedCommandSource` sont des sondes de build Development, pas des bots de jeu destinés à la
+production.
 
 ## Test humain recommandé
 
@@ -110,7 +114,7 @@ Faire une session à deux joueurs et noter séparément :
 6. impact du poing, du caillou, du knockback et des quatre secondes de KO ;
 7. intérêt de pouvoir lancer le trophée contre le risque de le perdre ;
 8. clarté de la zone orange et du verdict de manche ;
-9. besoin ou non de replacer les joueurs à chaque nouvelle manche.
+9. confort du retour automatique aux spawns et absence de glissement/ancienne impulsion au départ.
 
 Le résultat attendu de cette passe est une liste courte de réglages, pas de nouvelles mécaniques.
 Après ce verdict seulement viennent l'intégration des animations, le vrai HUD, les sons/VFX et les
