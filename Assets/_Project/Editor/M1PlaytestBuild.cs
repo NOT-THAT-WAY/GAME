@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using FishNet.Component.Transforming;
 using FishNet.Component.Spawning;
 using FishNet.Managing;
 using FishNet.Managing.Object;
@@ -9,6 +11,7 @@ using FishNet.Managing.Timing;
 using FishNet.Object;
 using FishNet.Transporting.Tugboat;
 using NotThatWay.Game.Input;
+using NotThatWay.Game.Sandbox;
 using NotThatWay.Game.Topology;
 using UnityEditor;
 using UnityEditor.Animations;
@@ -32,6 +35,8 @@ namespace NotThatWay.Game.Editor
         public const string GeneratedPlayerPrefabPath = "Assets/_GeneratedLocal/M1PredictedPlayer.prefab";
         public const string GeneratedWallAuthorityPrefabPath =
             "Assets/_GeneratedLocal/M1WallAuthority.prefab";
+        public const string GeneratedRockPrefabPath = "Assets/_GeneratedLocal/SandboxRock.prefab";
+        public const string GeneratedTrophyPrefabPath = "Assets/_GeneratedLocal/SandboxTrophy.prefab";
         public const string GeneratedPrefabsPath = "Assets/_GeneratedLocal/M1PlaytestPrefabs.asset";
 
         private const string GeneratedDirectory = "Assets/_GeneratedLocal";
@@ -46,6 +51,21 @@ namespace NotThatWay.Game.Editor
         // figée en attendant une animation dédiée.
         private const float PushPoseNormalizedTime = 0.45f;
         private const string PunchParameter = "Punch";
+        private const string ThrowParameter = "Throw";
+        private const string HitParameter = "Hit";
+        private const string KnockoutParameter = "Knockout";
+        private const string RecoverParameter = "Recover";
+        private const string KnockedOutParameter = "KnockedOut";
+        private const string CarryKindParameter = "CarryKind";
+        private const string MoveSpeedParameter = "MoveSpeed";
+        private const string GroundedParameter = "Grounded";
+        private const string SprintingParameter = "Sprinting";
+        private const string JumpParameter = "Jump";
+        private const string LandParameter = "Land";
+        private const string PickupParameter = "Pickup";
+        private const string DropParameter = "Drop";
+        private const string DepositParameter = "Deposit";
+        private const string CarryingParameter = "Carrying";
         private const string PushParameter = "Push";
 
         // URP 17 n'expose plus de matériau par défaut hors éditeur. Chaque objet
@@ -84,10 +104,20 @@ namespace NotThatWay.Game.Editor
             var palette = CreatePalette();
             var playerPrefab = CreatePlayerPrefab(controls);
             var wallAuthorityPrefab = CreateWallAuthorityPrefab();
+            var rockPrefab = CreateCarryablePrefab(
+                SandboxCarryableKind.Rock,
+                GeneratedRockPrefabPath,
+                CreateLitMaterial("SandboxRock", new Color(0.34f, 0.31f, 0.29f), 0.08f, false));
+            var trophyPrefab = CreateCarryablePrefab(
+                SandboxCarryableKind.Trophy,
+                GeneratedTrophyPrefabPath,
+                CreateLitMaterial("SandboxTrophy", new Color(1f, 0.58f, 0.06f), 0.48f, true));
             var prefabCollection = LoadOrCreatePrefabCollection();
             prefabCollection.Clear();
             prefabCollection.AddObject(playerPrefab, true);
             prefabCollection.AddObject(wallAuthorityPrefab, true);
+            prefabCollection.AddObject(rockPrefab, true);
+            prefabCollection.AddObject(trophyPrefab, true);
             EditorUtility.SetDirty(prefabCollection);
 
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
@@ -101,6 +131,7 @@ namespace NotThatWay.Game.Editor
             CreateSpectatorCamera(map);
             var keyLight = CreateLighting();
             CreateDecor(map, palette);
+            CreateDepositZone(map);
             ConfigureRenderSettings(palette, keyLight);
 
             var networkRoot = new GameObject("NetworkManager");
@@ -131,17 +162,26 @@ namespace NotThatWay.Game.Editor
             SetObject(serializedWallSpawner, "_authorityPrefab", wallAuthorityPrefab);
             serializedWallSpawner.ApplyModifiedPropertiesWithoutUndo();
 
+            var sandboxSpawner = networkRoot.AddComponent<SandboxWorldSpawner>();
+            ConfigureSandboxSpawner(sandboxSpawner, map, rockPrefab, trophyPrefab);
+
             ValidateSceneContract(
                 map,
                 arena,
                 playerPrefab,
                 wallAuthorityPrefab,
+                rockPrefab,
+                trophyPrefab,
                 prefabCollection,
                 networkManager,
                 timeManager,
                 predictionManager,
                 spawner);
-            ValidateSceneRendering(scene, playerPrefab.gameObject);
+            ValidateSceneRendering(
+                scene,
+                playerPrefab.gameObject,
+                rockPrefab.gameObject,
+                trophyPrefab.gameObject);
 
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene, GeneratedScenePath))
@@ -404,6 +444,8 @@ namespace NotThatWay.Game.Editor
                 var motor = root.AddComponent<PredictedPlayerMotor>();
                 ConfigureMotor(motor, cameraPivot.transform, camera);
 
+                root.AddComponent<SandboxPlayerGameplay>();
+                root.AddComponent<SandboxPlayerAnimationBridge>();
                 root.AddComponent<M1PlayerActions>();
 
                 var appearance = root.AddComponent<M1PlayerAppearance>();
@@ -453,6 +495,7 @@ namespace NotThatWay.Game.Editor
                 SetLong(serializedDirector, "_maximumExtrapolationTicks", 180L);
                 SetInt(serializedDirector, "_reachFromCapsuleMm", 900);
                 serializedDirector.ApplyModifiedPropertiesWithoutUndo();
+                root.AddComponent<SandboxRoundDirector>();
 
                 var saved = PrefabUtility.SaveAsPrefabAsset(
                     root,
@@ -468,6 +511,154 @@ namespace NotThatWay.Game.Editor
             {
                 UnityEngine.Object.DestroyImmediate(root);
             }
+        }
+
+        private static NetworkObject CreateCarryablePrefab(
+            SandboxCarryableKind kind,
+            string prefabPath,
+            Material material)
+        {
+            var root = new GameObject($"Sandbox{kind}")
+            {
+                layer = GameplayLayers.Player
+            };
+            try
+            {
+                var networkObject = root.AddComponent<NetworkObject>();
+                var serializedNetworkObject = new SerializedObject(networkObject);
+                SetBool(serializedNetworkObject, "_enablePrediction", false);
+                SetBool(serializedNetworkObject, "_enableStateForwarding", false);
+                SetObject(serializedNetworkObject, "_networkTransform", null);
+                serializedNetworkObject.ApplyModifiedPropertiesWithoutUndo();
+
+                var body = root.AddComponent<Rigidbody>();
+                body.mass = kind == SandboxCarryableKind.Trophy ? 2.5f : 1.3f;
+                body.linearDamping = 0.25f;
+                body.angularDamping = 0.18f;
+                body.interpolation = RigidbodyInterpolation.Interpolate;
+                body.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+
+                Collider collider;
+                var visualRoot = new GameObject("Visual")
+                {
+                    layer = GameplayLayers.VisualOnly
+                };
+                visualRoot.transform.SetParent(root.transform, false);
+                if (kind == SandboxCarryableKind.Rock)
+                {
+                    var sphere = root.AddComponent<SphereCollider>();
+                    sphere.radius = 0.33f;
+                    collider = sphere;
+                    var visual = CreateCarryableVisualPrimitive(
+                        PrimitiveType.Sphere,
+                        "Rock",
+                        visualRoot.transform,
+                        material);
+                    visual.transform.localScale = new Vector3(0.66f, 0.55f, 0.62f);
+                    visual.transform.localRotation = Quaternion.Euler(13f, 28f, -9f);
+                }
+                else
+                {
+                    var box = root.AddComponent<BoxCollider>();
+                    box.size = new Vector3(0.78f, 1f, 0.78f);
+                    collider = box;
+                    var basePart = CreateCarryableVisualPrimitive(
+                        PrimitiveType.Cylinder,
+                        "Base",
+                        visualRoot.transform,
+                        material);
+                    basePart.transform.localPosition = new Vector3(0f, -0.36f, 0f);
+                    basePart.transform.localScale = new Vector3(0.48f, 0.09f, 0.48f);
+                    var stem = CreateCarryableVisualPrimitive(
+                        PrimitiveType.Cylinder,
+                        "Stem",
+                        visualRoot.transform,
+                        material);
+                    stem.transform.localPosition = new Vector3(0f, -0.08f, 0f);
+                    stem.transform.localScale = new Vector3(0.13f, 0.24f, 0.13f);
+                    var cup = CreateCarryableVisualPrimitive(
+                        PrimitiveType.Cylinder,
+                        "Cup",
+                        visualRoot.transform,
+                        material);
+                    cup.transform.localPosition = new Vector3(0f, 0.28f, 0f);
+                    cup.transform.localScale = new Vector3(0.38f, 0.20f, 0.38f);
+                    var crown = CreateCarryableVisualPrimitive(
+                        PrimitiveType.Sphere,
+                        "Crown",
+                        visualRoot.transform,
+                        material);
+                    crown.transform.localPosition = new Vector3(0f, 0.46f, 0f);
+                    crown.transform.localScale = new Vector3(0.58f, 0.20f, 0.58f);
+                }
+                collider.sharedMaterial = CreateCarryablePhysicsMaterial();
+
+                var networkTransform = root.AddComponent<NetworkTransform>();
+                var serializedTransform = new SerializedObject(networkTransform);
+                SetEnum(serializedTransform, "_componentConfiguration", 2); // Rigidbody.
+                SetBool(serializedTransform, "_synchronizeParent", false);
+                SetInt(serializedTransform, "_interpolation", 2);
+                SetInt(serializedTransform, "_extrapolation", 2);
+                SetBool(serializedTransform, "_enableTeleport", true);
+                SetFloat(serializedTransform, "_teleportThreshold", 2f);
+                SetBool(serializedTransform, "_clientAuthoritative", false);
+                SetBool(serializedTransform, "_sendToOwner", true);
+                SetInt(serializedTransform, "_interval", 1);
+                SetBool(serializedTransform, "_synchronizePosition", true);
+                SetBool(serializedTransform, "_synchronizeRotation", true);
+                SetBool(serializedTransform, "_synchronizeScale", false);
+                serializedTransform.ApplyModifiedPropertiesWithoutUndo();
+
+                var carryable = root.AddComponent<SandboxCarryable>();
+                var serializedCarryable = new SerializedObject(carryable);
+                SetEnum(serializedCarryable, "_kind", (int)kind);
+                SetObject(serializedCarryable, "_visualRoot", visualRoot.transform);
+                SetObject(serializedCarryable, "_gameplayCollider", collider);
+                SetObject(serializedCarryable, "_body", body);
+                serializedCarryable.ApplyModifiedPropertiesWithoutUndo();
+
+                var saved = PrefabUtility.SaveAsPrefabAsset(root, prefabPath);
+                if (saved == null)
+                    throw new InvalidOperationException($"Impossible d'enregistrer {prefabPath}.");
+                return FinalizeNetworkPrefab(saved.GetComponent<NetworkObject>());
+            }
+            finally
+            {
+                UnityEngine.Object.DestroyImmediate(root);
+            }
+        }
+
+        private static GameObject CreateCarryableVisualPrimitive(
+            PrimitiveType primitiveType,
+            string name,
+            Transform parent,
+            Material material)
+        {
+            var value = GameObject.CreatePrimitive(primitiveType);
+            value.name = name;
+            value.layer = GameplayLayers.VisualOnly;
+            value.transform.SetParent(parent, false);
+            UnityEngine.Object.DestroyImmediate(value.GetComponent<Collider>());
+            value.GetComponent<MeshRenderer>().sharedMaterial = material;
+            return value;
+        }
+
+        private static PhysicsMaterial CreateCarryablePhysicsMaterial()
+        {
+            const string path = MaterialsDirectory + "/SandboxCarryableBounce.physicMaterial";
+            var existing = AssetDatabase.LoadAssetAtPath<PhysicsMaterial>(path);
+            if (existing != null)
+                return existing;
+            var created = new PhysicsMaterial("SandboxCarryableBounce")
+            {
+                bounciness = 0.42f,
+                dynamicFriction = 0.48f,
+                staticFriction = 0.55f,
+                bounceCombine = PhysicsMaterialCombine.Maximum,
+                frictionCombine = PhysicsMaterialCombine.Average
+            };
+            AssetDatabase.CreateAsset(created, path);
+            return created;
         }
 
         private static void ConfigureNetworkPrediction(
@@ -507,12 +698,46 @@ namespace NotThatWay.Game.Editor
             SetFloat(serialized, "_airDeceleration", 8f);
             SetFloat(serialized, "_gravity", -22f);
             SetFloat(serialized, "_groundedVelocity", -3f);
-            SetBool(serialized, "_jumpEnabled", false);
+            SetBool(serialized, "_jumpEnabled", true);
             SetFloat(serialized, "_jumpSpeed", 5.5f);
             SetLong(serialized, "_coyoteTicks", 7L);
             SetLong(serialized, "_jumpBufferTicks", 9L);
             SetFloat(serialized, "_knockbackDecay", 10f);
             SetInt(serialized, "_maximumPitchCentidegrees", 8500);
+            serialized.ApplyModifiedPropertiesWithoutUndo();
+        }
+
+        private static void ConfigureSandboxSpawner(
+            SandboxWorldSpawner spawner,
+            TopologyRuntimeMap map,
+            NetworkObject rockPrefab,
+            NetworkObject trophyPrefab)
+        {
+            var rockCells = new[]
+            {
+                new TopologyGridCell(0, 3),
+                new TopologyGridCell(5, 3),
+                new TopologyGridCell(1, 4),
+                new TopologyGridCell(4, 4),
+                new TopologyGridCell(1, 1),
+                new TopologyGridCell(4, 1)
+            };
+            var rockPositions = new Vector3[rockCells.Length];
+            for (var index = 0; index < rockCells.Length; index++)
+            {
+                rockPositions[index] = TopologyGeometry.CellCenterMm(map, rockCells[index]).Meters +
+                                       Vector3.up * 0.38f;
+            }
+
+            var serialized = new SerializedObject(spawner);
+            SetObject(serialized, "_rockPrefab", rockPrefab);
+            SetObject(serialized, "_trophyPrefab", trophyPrefab);
+            SetVector3Array(serialized, "_rockSpawnPositions", rockPositions);
+            SetVector3(
+                serialized,
+                "_trophySpawnPosition",
+                TopologyGeometry.CellCenterMm(map, new TopologyGridCell(2, 5)).Meters +
+                Vector3.up * 0.55f);
             serialized.ApplyModifiedPropertiesWithoutUndo();
         }
 
@@ -686,6 +911,21 @@ namespace NotThatWay.Game.Editor
 
             var controller = AnimatorController.CreateAnimatorControllerAtPath(GeneratedAnimatorPath);
             controller.AddParameter(PunchParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(ThrowParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(HitParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(KnockoutParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(RecoverParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(KnockedOutParameter, AnimatorControllerParameterType.Bool);
+            controller.AddParameter(CarryKindParameter, AnimatorControllerParameterType.Int);
+            controller.AddParameter(MoveSpeedParameter, AnimatorControllerParameterType.Float);
+            controller.AddParameter(GroundedParameter, AnimatorControllerParameterType.Bool);
+            controller.AddParameter(SprintingParameter, AnimatorControllerParameterType.Bool);
+            controller.AddParameter(JumpParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(LandParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(PickupParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(DropParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(DepositParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(CarryingParameter, AnimatorControllerParameterType.Bool);
             controller.AddParameter(PushParameter, AnimatorControllerParameterType.Bool);
 
             var stateMachine = controller.layers[0].stateMachine;
@@ -841,6 +1081,44 @@ namespace NotThatWay.Game.Editor
                     (float)random.NextDouble() * 90f,
                     0f);
             }
+        }
+
+        private static void CreateDepositZone(TopologyRuntimeMap map)
+        {
+            var root = new GameObject("SandboxDepositZone")
+            {
+                layer = GameplayLayers.Player
+            };
+            root.transform.position =
+                TopologyGeometry.CellCenterMm(map, new TopologyGridCell(3, 0)).Meters;
+            var trigger = root.AddComponent<BoxCollider>();
+            trigger.isTrigger = true;
+            trigger.center = new Vector3(0f, 0.75f, 0f);
+            trigger.size = new Vector3(2.1f, 1.5f, 2.1f);
+            root.AddComponent<SandboxDepositZone>();
+
+            var material = CreateLitMaterial(
+                "SandboxDeposit",
+                new Color(1f, 0.28f, 0.04f),
+                0.34f,
+                true);
+            var marker = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            marker.name = "DepositMarker";
+            marker.layer = GameplayLayers.VisualOnly;
+            marker.transform.SetParent(root.transform, false);
+            marker.transform.localPosition = Vector3.up * 0.04f;
+            marker.transform.localScale = new Vector3(1.05f, 0.04f, 1.05f);
+            UnityEngine.Object.DestroyImmediate(marker.GetComponent<Collider>());
+            marker.GetComponent<MeshRenderer>().sharedMaterial = material;
+
+            var beacon = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            beacon.name = "DepositBeacon";
+            beacon.layer = GameplayLayers.VisualOnly;
+            beacon.transform.SetParent(root.transform, false);
+            beacon.transform.localPosition = new Vector3(0f, 0.55f, 0f);
+            beacon.transform.localScale = new Vector3(0.10f, 0.5f, 0.10f);
+            UnityEngine.Object.DestroyImmediate(beacon.GetComponent<Collider>());
+            beacon.GetComponent<MeshRenderer>().sharedMaterial = material;
         }
 
         private static GameObject CreateDecorBlock(Transform root, string name, Material material)
@@ -1040,6 +1318,8 @@ namespace NotThatWay.Game.Editor
             TopologyArena arena,
             NetworkObject playerPrefab,
             NetworkObject wallAuthorityPrefab,
+            NetworkObject rockPrefab,
+            NetworkObject trophyPrefab,
             DefaultPrefabObjects prefabCollection,
             NetworkManager networkManager,
             TimeManager timeManager,
@@ -1074,21 +1354,88 @@ namespace NotThatWay.Game.Editor
                 throw new InvalidOperationException("Prediction du prefab joueur M1 incomplète.");
             }
             var playerObject = playerPrefab.gameObject;
+            var playerMotor = playerObject.GetComponent<PredictedPlayerMotor>();
             if (playerObject.layer != GameplayLayers.Player ||
                 playerObject.GetComponent<CharacterController>() == null ||
                 playerObject.GetComponent<PlayerInputSource>() == null ||
-                playerObject.GetComponent<PredictedPlayerMotor>() == null ||
+                playerMotor == null ||
+                playerObject.GetComponent<SandboxPlayerGameplay>() == null ||
+                playerObject.GetComponent<SandboxPlayerAnimationBridge>() == null ||
                 playerObject.GetComponent<M1PlayerActions>() == null ||
                 playerObject.GetComponent<M1PlayerAppearance>() == null)
             {
                 throw new InvalidOperationException("Contrat du prefab joueur M1 incomplet.");
             }
+            var serializedMotor = new SerializedObject(playerMotor);
+            if (!RequireProperty(serializedMotor, "_jumpEnabled").boolValue)
+                throw new InvalidOperationException("Le saut doit rester actif dans le sandbox M1.");
+            ValidateAnimatorContract(playerObject);
             if (playerObject.GetComponent<FishNet.Component.Transforming.NetworkTransform>() != null)
                 throw new InvalidOperationException("Le joueur prédit M1 ne doit pas avoir de NetworkTransform.");
             if (wallAuthorityPrefab.GetComponent<M1AuthoritativeWallDirector>() == null ||
+                wallAuthorityPrefab.GetComponent<SandboxRoundDirector>() == null ||
                 wallAuthorityPrefab.EnablePrediction)
             {
                 throw new InvalidOperationException("Prefab d'autorité murale M1 invalide.");
+            }
+            foreach (var carryable in new[] { rockPrefab, trophyPrefab })
+            {
+                if (carryable == null || carryable.EnablePrediction ||
+                    carryable.GetComponent<SandboxCarryable>() == null ||
+                    carryable.GetComponent<Rigidbody>() == null ||
+                    carryable.GetComponent<NetworkTransform>() == null)
+                {
+                    throw new InvalidOperationException("Prefab carryable du sandbox invalide.");
+                }
+            }
+            if (UnityEngine.Object.FindFirstObjectByType<SandboxWorldSpawner>() == null ||
+                UnityEngine.Object.FindFirstObjectByType<SandboxDepositZone>() == null)
+            {
+                throw new InvalidOperationException("Boucle objets/trophée du sandbox incomplète.");
+            }
+        }
+
+        private static void ValidateAnimatorContract(GameObject playerObject)
+        {
+            var animator = playerObject.GetComponentInChildren<Animator>(true);
+            var controller = animator == null
+                ? null
+                : animator.runtimeAnimatorController as AnimatorController;
+            if (animator == null || controller == null)
+                throw new InvalidOperationException("Animator joueur M1 absent ou non éditable.");
+            if (animator.applyRootMotion)
+                throw new InvalidOperationException("Le root motion doit rester désactivé dans le sandbox M1.");
+
+            var expected = new Dictionary<string, AnimatorControllerParameterType>
+            {
+                [PunchParameter] = AnimatorControllerParameterType.Trigger,
+                [ThrowParameter] = AnimatorControllerParameterType.Trigger,
+                [HitParameter] = AnimatorControllerParameterType.Trigger,
+                [KnockoutParameter] = AnimatorControllerParameterType.Trigger,
+                [RecoverParameter] = AnimatorControllerParameterType.Trigger,
+                [KnockedOutParameter] = AnimatorControllerParameterType.Bool,
+                [CarryKindParameter] = AnimatorControllerParameterType.Int,
+                [MoveSpeedParameter] = AnimatorControllerParameterType.Float,
+                [GroundedParameter] = AnimatorControllerParameterType.Bool,
+                [SprintingParameter] = AnimatorControllerParameterType.Bool,
+                [JumpParameter] = AnimatorControllerParameterType.Trigger,
+                [LandParameter] = AnimatorControllerParameterType.Trigger,
+                [PickupParameter] = AnimatorControllerParameterType.Trigger,
+                [DropParameter] = AnimatorControllerParameterType.Trigger,
+                [DepositParameter] = AnimatorControllerParameterType.Trigger,
+                [CarryingParameter] = AnimatorControllerParameterType.Bool,
+                [PushParameter] = AnimatorControllerParameterType.Bool
+            };
+            var actual = new Dictionary<string, AnimatorControllerParameterType>();
+            foreach (var parameter in controller.parameters)
+                actual[parameter.name] = parameter.type;
+            foreach (var entry in expected)
+            {
+                if (!actual.TryGetValue(entry.Key, out var type) || type != entry.Value)
+                {
+                    throw new InvalidOperationException(
+                        $"Paramètre Animator M1 invalide: {entry.Key} doit être {entry.Value}.");
+                }
             }
         }
 
@@ -1231,6 +1578,20 @@ namespace NotThatWay.Game.Editor
 
         private static void SetFloat(SerializedObject serialized, string name, float value) =>
             RequireProperty(serialized, name).floatValue = value;
+
+        private static void SetVector3(SerializedObject serialized, string name, Vector3 value) =>
+            RequireProperty(serialized, name).vector3Value = value;
+
+        private static void SetVector3Array(
+            SerializedObject serialized,
+            string name,
+            IReadOnlyList<Vector3> values)
+        {
+            var property = RequireProperty(serialized, name);
+            property.arraySize = values.Count;
+            for (var index = 0; index < values.Count; index++)
+                property.GetArrayElementAtIndex(index).vector3Value = values[index];
+        }
 
         private static void SetEnum(SerializedObject serialized, string name, int value) =>
             RequireProperty(serialized, name).enumValueIndex = value;

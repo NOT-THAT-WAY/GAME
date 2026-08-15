@@ -29,6 +29,27 @@ namespace NotThatWay.Game.Tests.EditMode
         }
 
         [Test]
+        public void KeyboardBindings_KeepDropASeparateFromCanonicalZqsdMovement()
+        {
+            var player = LoadAsset().FindActionMap(GameControlsContract.PlayerMap, true);
+            var move = player.FindAction(GameControlsContract.Move, true);
+            var drop = player.FindAction(GameControlsContract.Drop, true);
+            var interact = player.FindAction(GameControlsContract.Interact, true);
+            var primary = player.FindAction(GameControlsContract.Punch, true);
+
+            Assert.That(HasPath(move, "<Keyboard>/z"), Is.True);
+            Assert.That(HasPath(move, "<Keyboard>/q"), Is.True);
+            Assert.That(HasPath(move, "<Keyboard>/s"), Is.True);
+            Assert.That(HasPath(move, "<Keyboard>/d"), Is.True);
+            Assert.That(HasPath(move, "<Keyboard>/a"), Is.False);
+            Assert.That(HasPath(drop, "<Keyboard>/a"), Is.True);
+            Assert.That(HasPath(interact, "<Keyboard>/e"), Is.True);
+            Assert.That(HasPath(interact, "<Mouse>/leftButton"), Is.False);
+            Assert.That(HasPath(primary, "<Mouse>/leftButton"), Is.True);
+            Assert.That(HasPath(primary, "<Keyboard>/f"), Is.True);
+        }
+
+        [Test]
         public void KeyboardMouse_ProducesHeldEdgesAndPointerDelta()
         {
             var keyboard = InputSystem.AddDevice<Keyboard>();
@@ -36,15 +57,17 @@ namespace NotThatWay.Game.Tests.EditMode
             var source = CreateSource(keyboard, mouse);
             try
             {
-                Press(keyboard.wKey);
+                Press(keyboard.zKey);
                 Press(keyboard.leftShiftKey);
                 Press(keyboard.spaceKey, queueEventOnly: true);
-                Press(mouse.rightButton, queueEventOnly: true);
+                Press(mouse.leftButton, queueEventOnly: true);
+                Press(keyboard.aKey, queueEventOnly: true);
                 Set(mouse.delta, new Vector2(10f, -5f), queueEventOnly: true);
                 InputSystem.Update();
 
                 Release(keyboard.spaceKey, queueEventOnly: true);
-                Release(mouse.rightButton, queueEventOnly: true);
+                Release(mouse.leftButton, queueEventOnly: true);
+                Release(keyboard.aKey, queueEventOnly: true);
                 InputSystem.Update();
 
                 var command = source.ConsumeCommand(10u, 1f / 60f);
@@ -55,6 +78,7 @@ namespace NotThatWay.Game.Tests.EditMode
                 Assert.That(command.Has(PlayerCommandButtons.SprintHeld), Is.True);
                 Assert.That(command.Has(PlayerCommandButtons.JumpPressed), Is.True);
                 Assert.That(command.Has(PlayerCommandButtons.PunchPressed), Is.True);
+                Assert.That(command.Has(PlayerCommandButtons.DropPressed), Is.True);
                 Assert.That(source.ConsumeCommand(11u, 1f / 60f)
                     .Has(PlayerCommandButtons.PunchPressed), Is.False);
             }
@@ -75,7 +99,7 @@ namespace NotThatWay.Game.Tests.EditMode
                 Set(gamepad.rightStick, Vector2.right);
                 Press(gamepad.leftStickButton);
                 Press(gamepad.buttonSouth);
-                Press(gamepad.rightShoulder);
+                Press(gamepad.rightTrigger);
 
                 // Les mises à jour Input ont été multiples, mais le taux stick est
                 // intégré exactement une fois à la consommation du tick.
@@ -198,6 +222,16 @@ namespace NotThatWay.Game.Tests.EditMode
             source.Configure(LoadAsset());
             Assert.That(source.IsReady, Is.True);
             return source;
+        }
+
+        private static bool HasPath(InputAction action, string path)
+        {
+            foreach (var binding in action.bindings)
+            {
+                if (binding.path == path)
+                    return true;
+            }
+            return false;
         }
     }
 }

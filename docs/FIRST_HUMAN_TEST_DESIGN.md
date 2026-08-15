@@ -25,7 +25,7 @@ Durée cible : **3 à 5 minutes**.
 
 1. Bouger et regarder autour de soi.
 2. Sauter une fois.
-3. Faire tourner un pivot avec clic gauche + avancer, ou déplacer un mur en avançant/clic droit.
+3. Faire tourner un pivot avec `E` + avancer, ou déplacer un mur en avançant/clic gauche.
 4. Donner un coup de poing au bot.
 5. Fermer le jeu. Si le personnage reste coincé, arrêter immédiatement et signaler le blocage ;
    aucune touche de déblocage ne fait partie du test.

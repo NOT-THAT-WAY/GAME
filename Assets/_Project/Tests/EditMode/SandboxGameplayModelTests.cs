@@ -1,0 +1,193 @@
+using System;
+using NotThatWay.Game.Sandbox;
+using NUnit.Framework;
+
+namespace NotThatWay.Game.Tests.EditMode
+{
+    public sealed class SandboxGameplayModelTests
+    {
+        [Test]
+        public void Baseline_ExposesTheAcceptedSandboxTuning()
+        {
+            var config = SandboxGameplayConfig.Baseline60Hz;
+
+            Assert.That(config.TickRate, Is.EqualTo(60));
+            Assert.That(config.MaximumHealth, Is.EqualTo(100));
+            Assert.That(config.MaximumEnergy, Is.EqualTo(100));
+            Assert.That(config.PunchDamage, Is.EqualTo(25));
+            Assert.That(config.RockDamage, Is.EqualTo(30));
+            Assert.That(config.TrophyDamage, Is.EqualTo(10));
+            Assert.That(config.PunchEnergyCost, Is.EqualTo(25));
+            Assert.That(config.ThrowEnergyCost, Is.EqualTo(18));
+            Assert.That(config.SprintDrainIntervalTicks, Is.EqualTo(5u));
+            Assert.That(config.SprintDrainAmount, Is.EqualTo(1));
+            Assert.That(config.PushDrainIntervalTicks, Is.EqualTo(4u));
+            Assert.That(config.PushDrainAmount, Is.EqualTo(1));
+            Assert.That(config.TrophyMovementPermille, Is.EqualTo(750));
+            Assert.That(config.TrophySprintDrainMultiplier, Is.EqualTo(5));
+            Assert.That(config.EnergyRegenerationDelayTicks, Is.EqualTo(60u));
+            Assert.That(config.EnergyRegenerationIntervalTicks, Is.EqualTo(4u));
+            Assert.That(config.EnergyRegenerationAmount, Is.EqualTo(1));
+            Assert.That(config.HealthRegenerationDelayTicks, Is.EqualTo(300u));
+            Assert.That(config.HealthRegenerationIntervalTicks, Is.EqualTo(10u));
+            Assert.That(config.HealthRegenerationAmount, Is.EqualTo(1));
+            Assert.That(config.KnockoutDurationTicks, Is.EqualTo(240u));
+            Assert.That(config.RecoveryHealth, Is.EqualTo(40));
+            Assert.That(config.RecoveryProtectionTicks, Is.EqualTo(60u));
+        }
+
+        [Test]
+        public void Sprint_DrainsByTickCadenceAndTrophyCostsFiveTimesMore()
+        {
+            var normal = new SandboxPlayerModel(SandboxGameplayConfig.Baseline60Hz);
+            var trophy = new SandboxPlayerModel(SandboxGameplayConfig.Baseline60Hz);
+
+            for (var tick = 0; tick < 6; tick++)
+            {
+                normal.AdvanceTick(true, false);
+                trophy.AdvanceTick(true, true);
+            }
+
+            Assert.That(normal.State.Energy, Is.EqualTo(98));
+            Assert.That(trophy.State.Energy, Is.EqualTo(90));
+            Assert.That(normal.State.SprintingLastTick, Is.True);
+            Assert.That(trophy.State.SprintingLastTick, Is.True);
+        }
+
+        [Test]
+        public void ActionsAndRegeneration_UseEnergyAndWaitForTheConfiguredDelay()
+        {
+            var model = new SandboxPlayerModel(SandboxGameplayConfig.Baseline60Hz);
+
+            Assert.That(model.TrySpendPunch(), Is.True);
+            Assert.That(model.TrySpendThrow(), Is.True);
+            Assert.That(model.State.Energy, Is.EqualTo(57));
+
+            for (var tick = 0; tick < 60; tick++)
+                model.AdvanceTick(false, false);
+            Assert.That(model.State.Energy, Is.EqualTo(57), "Pas de régénération pendant le délai d'une seconde.");
+
+            for (var tick = 0; tick < 4; tick++)
+                model.AdvanceTick(false, false);
+            Assert.That(model.State.Energy, Is.EqualTo(58));
+        }
+
+        [Test]
+        public void Push_IsChargedOnlyOnItsCadenceAndOncePerCommandTick()
+        {
+            var model = new SandboxPlayerModel(SandboxGameplayConfig.Baseline60Hz);
+
+            Assert.That(model.TryConsumePush(40u), Is.True);
+            Assert.That(model.State.Energy, Is.EqualTo(99));
+            Assert.That(model.TryConsumePush(40u), Is.True, "Le même tick doit être idempotent.");
+            Assert.That(model.State.Energy, Is.EqualTo(99));
+            Assert.That(model.TryConsumePush(41u), Is.True);
+            Assert.That(model.TryConsumePush(42u), Is.True);
+            Assert.That(model.State.Energy, Is.EqualTo(99));
+            Assert.That(model.TryConsumePush(43u), Is.True);
+            Assert.That(model.State.Energy, Is.EqualTo(99));
+            Assert.That(model.TryConsumePush(44u), Is.True);
+            Assert.That(model.State.Energy, Is.EqualTo(98));
+        }
+
+        [Test]
+        public void FourPunches_KnockOutThenRecoveryRestoresFortyHealthWithProtection()
+        {
+            var config = SandboxGameplayConfig.Baseline60Hz;
+            var victim = new SandboxPlayerModel(config);
+
+            for (var hit = 0; hit < 4; hit++)
+                victim.ApplyDamage(config.PunchDamage, SandboxDamageKind.Punch);
+
+            Assert.That(victim.State.LifeState, Is.EqualTo(SandboxLifeState.KnockedOut));
+            Assert.That(victim.State.Health, Is.Zero);
+            Assert.That(victim.ApplyDamage(1, SandboxDamageKind.World).Applied, Is.False);
+
+            for (var tick = 0u; tick < config.KnockoutDurationTicks; tick++)
+                victim.AdvanceTick(false, false);
+
+            Assert.That(victim.State.LifeState, Is.EqualTo(SandboxLifeState.Alive));
+            Assert.That(victim.State.Health, Is.EqualTo(config.RecoveryHealth));
+            Assert.That(victim.State.Energy, Is.EqualTo(config.MaximumEnergy));
+            Assert.That(victim.State.ProtectionTicksRemaining, Is.EqualTo(config.RecoveryProtectionTicks));
+            Assert.That(victim.ApplyDamage(1, SandboxDamageKind.World).Applied, Is.False);
+        }
+
+        [Test]
+        public void Trophy_SlowsMovementAndKnockoutStopsItEntirely()
+        {
+            var config = SandboxGameplayConfig.Baseline60Hz;
+            var model = new SandboxPlayerModel(config);
+
+            Assert.That(model.MovementPermille(false), Is.EqualTo(1000));
+            Assert.That(model.MovementPermille(true), Is.EqualTo(750));
+            model.ApplyDamage(100, SandboxDamageKind.World);
+            Assert.That(model.MovementPermille(false), Is.Zero);
+            Assert.That(model.MovementPermille(true), Is.Zero);
+            Assert.That(model.TrySpendPunch(), Is.False);
+        }
+
+        [Test]
+        public void Inventory_UsesThreeExplicitSlotsAndRejectsDuplicates()
+        {
+            var inventory = new SandboxInventoryModel();
+
+            Assert.That(inventory.TryAdd(new SandboxInventoryEntry(10, SandboxCarryableKind.Rock), out var first), Is.True);
+            Assert.That(first, Is.EqualTo(0));
+            Assert.That(inventory.TryAdd(new SandboxInventoryEntry(11, SandboxCarryableKind.Trophy), out var second), Is.True);
+            Assert.That(second, Is.EqualTo(1));
+            Assert.That(inventory.TryAdd(new SandboxInventoryEntry(12, SandboxCarryableKind.Rock), out var third), Is.True);
+            Assert.That(third, Is.EqualTo(2));
+            Assert.That(inventory.IsFull, Is.True);
+            Assert.That(inventory.HasTrophy, Is.True);
+            Assert.That(inventory.TryAdd(new SandboxInventoryEntry(10, SandboxCarryableKind.Rock), out _), Is.False);
+            Assert.That(inventory.Select(1), Is.True);
+            Assert.That(inventory.TryRemoveActive(out var removed), Is.True);
+            Assert.That(removed.ObjectId, Is.EqualTo(11));
+            Assert.That(inventory.HasTrophy, Is.False);
+            Assert.That(inventory.Count, Is.EqualTo(2));
+            Assert.That(inventory.Select(1), Is.True, "Une case vide peut libérer la main active.");
+            Assert.That(inventory.ActiveEntry.HasValue, Is.False);
+            Assert.That(inventory.TryRemoveAny(out var remaining), Is.True);
+            Assert.That(remaining.ObjectId, Is.EqualTo(10));
+            Assert.That(inventory.TryRemoveAny(out remaining), Is.True);
+            Assert.That(remaining.ObjectId, Is.EqualTo(12));
+            Assert.That(inventory.TryRemoveAny(out _), Is.False);
+            Assert.That(inventory.Count, Is.Zero);
+        }
+
+        [Test]
+        public void Inventory_RejectsInvalidEntriesAndSlots()
+        {
+            Assert.That(
+                () => new SandboxInventoryEntry(-1, SandboxCarryableKind.Rock),
+                Throws.TypeOf<ArgumentOutOfRangeException>());
+            Assert.That(
+                () => new SandboxInventoryEntry(1, SandboxCarryableKind.None),
+                Throws.TypeOf<ArgumentOutOfRangeException>());
+            var inventory = new SandboxInventoryModel();
+            Assert.That(() => inventory.Select(3), Throws.TypeOf<ArgumentOutOfRangeException>());
+        }
+
+        [Test]
+        public void Round_CountsDownPlaysCompletesAndRequestsAReset()
+        {
+            var config = new SandboxRoundConfig(1, 2u, 3u, 2u);
+            var round = new SandboxRoundModel(config);
+
+            Assert.That(round.AdvanceTick(1), Is.EqualTo(SandboxRoundEvents.CountdownStarted));
+            Assert.That(round.State.Phase, Is.EqualTo(SandboxRoundPhase.Countdown));
+            Assert.That(round.AdvanceTick(1), Is.EqualTo(SandboxRoundEvents.None));
+            var started = round.AdvanceTick(1);
+            Assert.That(started.HasFlag(SandboxRoundEvents.RoundStarted), Is.True);
+            Assert.That(started.HasFlag(SandboxRoundEvents.ResetRequested), Is.True);
+            Assert.That(round.TryComplete(17), Is.True);
+            Assert.That(round.State.WinnerObjectId, Is.EqualTo(17));
+            Assert.That(round.AdvanceTick(1), Is.EqualTo(SandboxRoundEvents.None));
+            var reset = round.AdvanceTick(1);
+            Assert.That(reset.HasFlag(SandboxRoundEvents.ResetRequested), Is.True);
+            Assert.That(reset.HasFlag(SandboxRoundEvents.CountdownStarted), Is.True);
+            Assert.That(round.State.RoundNumber, Is.EqualTo(2u));
+        }
+    }
+}

@@ -3,6 +3,30 @@ using NotThatWay.Game.Simulation;
 
 namespace NotThatWay.Game.PlayerSimulation
 {
+    /// <summary>
+    /// Modificateurs bornés fournis par une règle de jeu extérieure (trophée,
+    /// KO). La simulation de locomotion ne dépend ainsi d'aucun mode de jeu.
+    /// </summary>
+    public readonly struct PlayerTickModifiers : IEquatable<PlayerTickModifiers>
+    {
+        public const int PermilleScale = 1000;
+
+        public PlayerTickModifiers(int movementSpeedPermille)
+        {
+            if (movementSpeedPermille < 0 || movementSpeedPermille > PermilleScale)
+                throw new ArgumentOutOfRangeException(nameof(movementSpeedPermille));
+            MovementSpeedPermille = movementSpeedPermille;
+        }
+
+        public int MovementSpeedPermille { get; }
+        public static PlayerTickModifiers FullSpeed => new(PermilleScale);
+        public bool Equals(PlayerTickModifiers other) =>
+            MovementSpeedPermille == other.MovementSpeedPermille;
+        public override bool Equals(object value) =>
+            value is PlayerTickModifiers other && Equals(other);
+        public override int GetHashCode() => MovementSpeedPermille;
+    }
+
     public readonly struct PlayerTickForces : IEquatable<PlayerTickForces>
     {
         public PlayerTickForces(PlayerVector3 horizontalVelocityDelta)
@@ -110,7 +134,12 @@ namespace NotThatWay.Game.PlayerSimulation
             PlayerCommandButtons.InteractHeld |
             PlayerCommandButtons.JumpPressed |
             PlayerCommandButtons.InteractPressed |
-            PlayerCommandButtons.PunchPressed;
+            PlayerCommandButtons.PunchPressed |
+            PlayerCommandButtons.DropPressed |
+            PlayerCommandButtons.SelectSlot1Pressed |
+            PlayerCommandButtons.SelectSlot2Pressed |
+            PlayerCommandButtons.SelectSlot3Pressed |
+            PlayerCommandButtons.CycleSlotPressed;
 
         private readonly PlayerSimulationConfig _config;
         private PlayerState _state;
@@ -131,11 +160,22 @@ namespace NotThatWay.Game.PlayerSimulation
         public PlayerTickResult AdvanceTick(
             PlayerCommand command,
             IPlayerCollisionWorld collisionWorld) =>
-            AdvanceTick(command, PlayerTickForces.None, collisionWorld);
+            AdvanceTick(
+                command,
+                PlayerTickForces.None,
+                PlayerTickModifiers.FullSpeed,
+                collisionWorld);
 
         public PlayerTickResult AdvanceTick(
             PlayerCommand command,
             PlayerTickForces forces,
+            IPlayerCollisionWorld collisionWorld) =>
+            AdvanceTick(command, forces, PlayerTickModifiers.FullSpeed, collisionWorld);
+
+        public PlayerTickResult AdvanceTick(
+            PlayerCommand command,
+            PlayerTickForces forces,
+            PlayerTickModifiers modifiers,
             IPlayerCollisionWorld collisionWorld)
         {
             if (_isAdvancing)
@@ -144,7 +184,7 @@ namespace NotThatWay.Game.PlayerSimulation
             _isAdvancing = true;
             try
             {
-                return AdvanceTickCore(command, forces, collisionWorld);
+                return AdvanceTickCore(command, forces, modifiers, collisionWorld);
             }
             finally
             {
@@ -163,6 +203,7 @@ namespace NotThatWay.Game.PlayerSimulation
         private PlayerTickResult AdvanceTickCore(
             PlayerCommand command,
             PlayerTickForces forces,
+            PlayerTickModifiers modifiers,
             IPlayerCollisionWorld collisionWorld)
         {
             ValidateCommand(command);
@@ -193,6 +234,8 @@ namespace NotThatWay.Game.PlayerSimulation
             var targetSpeed = command.Has(PlayerCommandButtons.SprintHeld)
                 ? _config.SprintSpeedMetersPerSecond
                 : _config.WalkSpeedMetersPerSecond;
+            targetSpeed *= modifiers.MovementSpeedPermille /
+                           (double)PlayerTickModifiers.PermilleScale;
             var targetVelocity = worldDirection * targetSpeed;
             var targetMagnitude = targetVelocity.HorizontalMagnitude;
             var currentMagnitude = previous.HorizontalVelocity.HorizontalMagnitude;

@@ -227,7 +227,7 @@ déduites de la grille. `MazePlaytestBuild` refuse de produire la scène si une
 apparition n'a pas de sol, chevauche un collider ou n'a pas un pas de dégagement.
 Le bot apparaît deux mètres devant la première entrée validée et avance dans le
 couloir dès que le serveur démarre ; il tourne devant un obstacle et recule
-brièvement lorsqu'un punch le touche. L'hôte peut donc tester le clic droit
+brièvement lorsqu'un punch le touche. L'hôte peut donc tester le clic gauche
 immédiatement.
 
 ### Une seule machine
@@ -275,12 +275,12 @@ changent pas de comportement.
 
 | Touche | Effet |
 |---|---|
-| ZQSD / WASD / flèches ou stick gauche | se déplacer |
+| ZQSD / flèches ou stick gauche | se déplacer |
 | Souris ou stick droit | regarder |
 | Maj ou clic stick gauche | sprint |
 | Espace ou bouton Sud | sauter — contournement provisoire des gravats, statut gameplay à décider |
-| Clic gauche / E / gâchette droite maintenu + avancer | pousser un mur pivotant d'un quart de tour |
-| Clic droit / F / épaule droite | coup de poing : joueur ou bot devant soi, sinon le mur touché est ébranlé — trois coups enchaînés l'ouvrent |
+| E / bouton Ouest maintenu + avancer | pousser un mur pivotant d'un quart de tour |
+| Clic gauche / F / gâchette droite | coup de poing : joueur ou bot devant soi, sinon le mur touché est ébranlé — trois coups enchaînés l'ouvrent |
 | Avancer contre un mur | le pousser à l'épaule : il cède au bout d'environ 3 s, et retombe si on lâche |
 | Échap ou Menu | libérer ou recapturer le curseur |
 

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace NotThatWay.Game
 {
     /// <summary>
-    /// Coup de poing prototype du playtest labyrinthe. Le clic droit joue l'animation
+    /// Coup de poing prototype du playtest labyrinthe. Le clic gauche joue l'animation
     /// en local pour la réactivité, puis demande la validation à l'hôte : cooldown
     /// et recherche de cible sont mesurés côté serveur. Un coup qui ne trouve
     /// personne cherche un mur mobile devant le poing et demande à

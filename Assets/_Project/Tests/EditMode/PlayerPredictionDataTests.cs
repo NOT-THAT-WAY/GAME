@@ -203,6 +203,61 @@ namespace NotThatWay.Game.Tests.EditMode
 
             Assert.That(
                 M1AutomatedCommandSource.TryParseArguments(
+                    new[] { "GAME", "--m1-auto-player=sandbox-trophy-run" },
+                    out var trophyRunner,
+                    out error),
+                Is.True,
+                error);
+            Assert.That(trophyRunner.CreateCommand(199u).MoveY, Is.Zero);
+            Assert.That(trophyRunner.CreateCommand(200u).MoveY, Is.EqualTo(127));
+            Assert.That(
+                trophyRunner.CreateCommand(330u).Has(PlayerCommandButtons.InteractPressed),
+                Is.True);
+            Assert.That(trophyRunner.CreateCommand(350u).LookYaw, Is.EqualTo(18000));
+            Assert.That(trophyRunner.CreateCommand(350u).MoveX, Is.EqualTo(-25));
+            Assert.That(trophyRunner.CreateCommand(650u).MoveY, Is.Zero);
+
+            Assert.That(
+                M1AutomatedCommandSource.TryParseArguments(
+                    new[] { "GAME", "--m1-auto-player=sandbox-rock-thrower" },
+                    out var rockThrower,
+                    out error),
+                Is.True,
+                error);
+            Assert.That(rockThrower.CreateCommand(280u).MoveX, Is.EqualTo(120));
+            Assert.That(
+                rockThrower.CreateCommand(375u).Has(PlayerCommandButtons.InteractPressed),
+                Is.True);
+            Assert.That(rockThrower.CreateCommand(385u).LookYaw, Is.EqualTo(-7720));
+            Assert.That(
+                rockThrower.CreateCommand(390u).Has(PlayerCommandButtons.PunchPressed),
+                Is.True);
+
+            Assert.That(
+                M1AutomatedCommandSource.TryParseArguments(
+                    new[] { "GAME", "--m1-auto-player=sandbox-puncher" },
+                    out var puncher,
+                    out error),
+                Is.True,
+                error);
+            Assert.That(puncher.CreateCommand(280u).MoveX, Is.EqualTo(-127));
+            Assert.That(puncher.CreateCommand(310u).LookYaw, Is.EqualTo(-9000));
+            Assert.That(
+                puncher.CreateCommand(320u).Has(PlayerCommandButtons.PunchPressed),
+                Is.True);
+            Assert.That(
+                puncher.CreateCommand(322u).Has(PlayerCommandButtons.PunchPressed),
+                Is.True);
+            Assert.That(
+                puncher.CreateCommand(323u).Has(PlayerCommandButtons.PunchPressed),
+                Is.False);
+            Assert.That(puncher.CreateCommand(350u).MoveY, Is.EqualTo(40));
+            Assert.That(
+                puncher.CreateCommand(470u).Has(PlayerCommandButtons.PunchPressed),
+                Is.True);
+
+            Assert.That(
+                M1AutomatedCommandSource.TryParseArguments(
                     new[] { "GAME", "--m1-auto-player=unknown" },
                     out _,
                     out error),

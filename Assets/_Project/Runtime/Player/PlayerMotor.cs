@@ -660,12 +660,12 @@ namespace NotThatWay.Game
             var height = 118f;
             var area = new Rect(16f, Screen.height - height - 16f, Mathf.Min(760f, Screen.width - 32f), height);
             GUILayout.BeginArea(area, GUI.skin.box);
-            GUILayout.Label("ZQSD / WASD / stick se déplacer   ·   Maj / stick press sprint   ·   Espace / A sauter   ·   Souris / stick regarder", style);
-            GUILayout.Label($"Clic gauche / E / gâchette + avancer contre un pivot = pousser{(_pushedWall != null ? $"  [{_pushProgress * 100f:F0} %]" : "")}", style);
+            GUILayout.Label("ZQSD / flèches / stick se déplacer   ·   Maj / stick press sprint   ·   Espace / A sauter   ·   Souris / stick regarder", style);
+            GUILayout.Label($"E / bouton Ouest + avancer contre un pivot = pousser{(_pushedWall != null ? $"  [{_pushProgress * 100f:F0} %]" : "")}", style);
             var wallEffort = _pushedMovableWall != null && _wallDirector != null
                 ? $"  [{_wallDirector.EffortFor(_pushedMovableWall.Id) * 100f:F0} %]"
                 : "";
-            GUILayout.Label($"Avancer contre un mur = le pousser{wallEffort}   ·   clic droit / F / épaule droite = coup de poing", style);
+            GUILayout.Label($"Avancer contre un mur = le pousser{wallEffort}   ·   clic gauche / F / gâchette droite = coup de poing", style);
             GUILayout.Label($"Échap / Menu : curseur ({(_cursorLocked ? "capturé" : "libre")})", style);
             GUILayout.EndArea();
         }
@@ -681,7 +681,7 @@ namespace NotThatWay.Game
 
             GUILayout.BeginArea(area, GUI.skin.box);
             GUILayout.Label("SMOKE TEST : déplacement · pivot · mur mobile · punch bot", style);
-            GUILayout.Label("ZQSD / WASD / stick : bouger   ·   Souris / stick : regarder   ·   Espace / A : sauter", style);
+            GUILayout.Label("ZQSD / flèches / stick : bouger   ·   Souris / stick : regarder   ·   Espace / A : sauter", style);
             GUILayout.Label("Pivot : Interagir + avancer   ·   Mur : avancer ou Punch   ·   Échap / Menu : curseur", style);
 
             if (_pushedWall != null)

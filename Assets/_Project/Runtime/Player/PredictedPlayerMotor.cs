@@ -8,6 +8,7 @@ using FishNet.Utility.Template;
 using NotThatWay.Game.Input;
 using NotThatWay.Game.PlayerNetwork;
 using NotThatWay.Game.PlayerSimulation;
+using NotThatWay.Game.Sandbox;
 using NotThatWay.Game.Simulation;
 using UnityEngine;
 
@@ -47,6 +48,7 @@ namespace NotThatWay.Game
 
         private CharacterController _controller;
         private PlayerInputSource _inputSource;
+        private SandboxPlayerGameplay _sandboxGameplay;
         private UnityCharacterControllerWorld _collisionWorld;
         private PlayerStateMachine _simulation;
         private PlayerVector3 _pendingKnockbackVelocityDelta;
@@ -75,6 +77,7 @@ namespace NotThatWay.Game
         {
             _controller = GetComponent<CharacterController>();
             _inputSource = GetComponent<PlayerInputSource>();
+            _sandboxGameplay = GetComponent<SandboxPlayerGameplay>();
             _collisionWorld = new UnityCharacterControllerWorld(_controller);
             if (!M1AutomatedCommandSource.TryParseArguments(
                     Environment.GetCommandLineArgs(),
@@ -197,6 +200,8 @@ namespace NotThatWay.Game
             data = ResolveForwardedInput(data, replicateState);
             var simulationTick = TickMath.Next(_simulation.State.Tick);
             var command = ValidatedCommand(data, simulationTick);
+            if (_sandboxGameplay != null)
+                command = _sandboxGameplay.FilterCommandForSimulation(command);
             PlayerTickForces forces = default;
             if (replicateState.ContainsTicked() &&
                 !_pendingKnockbackVelocityDelta.Equals(PlayerVector3.Zero))
@@ -205,7 +210,10 @@ namespace NotThatWay.Game
                 _pendingKnockbackVelocityDelta = PlayerVector3.Zero;
             }
 
-            var result = _simulation.AdvanceTick(command, forces, _collisionWorld);
+            var modifiers = _sandboxGameplay == null
+                ? PlayerTickModifiers.FullSpeed
+                : new PlayerTickModifiers(_sandboxGameplay.MovementSpeedPermille);
+            var result = _simulation.AdvanceTick(command, forces, modifiers, _collisionWorld);
             if (IsServerStarted && replicateState.ContainsTicked() &&
                 !replicateState.ContainsReplayed())
             {

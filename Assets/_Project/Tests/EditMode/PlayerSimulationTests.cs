@@ -156,6 +156,35 @@ namespace NotThatWay.Game.Tests.EditMode
         }
 
         [Test]
+        public void MovementModifier_ScalesWalkAndSprintWithoutChangingTheBaseConfig()
+        {
+            var walking = new PlayerStateMachine(Config(), InitialState(grounded: true));
+            var sprinting = new PlayerStateMachine(Config(), InitialState(grounded: true));
+            var world = new PassThroughWorld(PlayerCollisionFlags.Below);
+            var slowed = new PlayerTickModifiers(750);
+
+            walking.AdvanceTick(
+                Command(1u, moveY: 127),
+                PlayerTickForces.None,
+                slowed,
+                world);
+            sprinting.AdvanceTick(
+                Command(1u, moveY: 127, buttons: PlayerCommandButtons.SprintHeld),
+                PlayerTickForces.None,
+                slowed,
+                world);
+
+            Assert.That(walking.State.HorizontalVelocity.HorizontalMagnitude,
+                Is.EqualTo(3d).Within(Tolerance));
+            Assert.That(sprinting.State.HorizontalVelocity.HorizontalMagnitude,
+                Is.EqualTo(6d).Within(Tolerance));
+            Assert.That(walking.Config.WalkSpeedMetersPerSecond, Is.EqualTo(4d));
+            Assert.That(
+                () => new PlayerTickModifiers(1001),
+                Throws.TypeOf<ArgumentOutOfRangeException>());
+        }
+
+        [Test]
         public void AccelerationAndDeceleration_ComeOnlyFromSuppliedConfig()
         {
             var slow = new PlayerStateMachine(
@@ -479,7 +508,7 @@ namespace NotThatWay.Game.Tests.EditMode
                 Throws.TypeOf<ArgumentOutOfRangeException>());
             Assert.That(
                 () => simulation.AdvanceTick(
-                    Command(1u, buttons: (PlayerCommandButtons)(1 << 15)),
+                    Command(1u, buttons: (PlayerCommandButtons)(1 << 7)),
                     world),
                 Throws.TypeOf<ArgumentOutOfRangeException>());
             Assert.That(world.CallCount, Is.Zero);
