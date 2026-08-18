@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-animation-v001",
+  "objective": "Produire et valider le clip SB_Idle du personnage sandbox depuis PersoBouleRigged.fbx : boucle in-place 1-60 a 30 fps, respiration et transfert de poids tres subtils.",
+  "target": "Unity 6000.3.20f1, rig Generic, Windows x86_64 IL2CPP",
+  "audience_or_player": "Joueur du sandbox GAME, vues premiere ET troisieme personne. Le clip doit rester lisible dans les deux.",
+  "usage_and_viewing_distance": "Personnage jouable de 1.34 m. Troisieme personne: quelques metres, camera epaule. Premiere personne: les bras et poings entrent dans le champ proche.",
+  "deliverables": [
+    "master .blend dans local_work/sandbox-character-animation-v001/work/",
+    "FBX candidat dans local_work/sandbox-character-animation-v001/exports/",
+    "contact sheet face / profil / trois-quarts",
+    "playblast de plusieurs repetitions de la boucle",
+    "diagnostics JSON: root, drift des pieds, couture, penetrations",
+    "preuve de reimport Blender et preuve d import Unity temporaire"
+  ],
+  "identity_invariants": [
+    "volume spherique du corps preserve, aucune deformation de silhouette",
+    "hierarchie et noms d os inchanges (prefixe reel BAS_PUNCH_)",
+    "aucun nouvel os de deformation",
+    "poings et bras hors du volume du corps",
+    "orientation faciale -Y Blender / +Z Unity conservee"
+  ],
+  "physical_invariants": [
+    "BAS_PUNCH_root sans translation ni rotation sur toute la plage",
+    "pieds plantes: aucune glisse tangentielle, aucune penetration sous Z=0",
+    "aucune penetration corps / pieds ni bras / corps",
+    "couture 60 -> 1 continue en position, rotation, vitesse et deformation"
+  ],
+  "explicit_non_goals": [
+    "SB_Walk et les 16 autres clips: interdits dans cette passe",
+    "modification du placeholder Punch",
+    "modification des scripts, du reseau, de l Animator Controller ou de ses parametres",
+    "AnimationEvent de gameplay",
+    "remplacement de Assets/_Project/Player/PersoBouleRigged.fbx",
+    "collider dans le visuel",
+    "commit, push ou changement de branche"
+  ],
+  "acceptance_criteria": [
+    "Contrat: nom SB_Idle exact, 30 fps, plage 1-60 inclusive, loop, root immobile",
+    "Physique visuelle: contacts et arcs credibles, pas de glisse ni penetration",
+    "Reimport Blender: FBX rouvert en scene vide, Action et pose retrouvees",
+    "Import Unity: rig Generic valide en 6000.3.20f1, aucun warning, budget respecte",
+    "Preuves: captures face/profil/trois-quarts et playblast de boucle"
+  ]
+}

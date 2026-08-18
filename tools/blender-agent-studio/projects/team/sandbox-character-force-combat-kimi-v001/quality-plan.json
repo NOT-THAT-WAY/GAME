@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-force-combat-kimi-v001",
+  "iteration_policy": {
+    "one_category_at_a_time": true,
+    "max_attempts_per_category": 3
+  },
+  "gates": {
+    "skeleton_hierarchy": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/skeleton-audit.json"
+      ]
+    },
+    "bone_axes": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/skeleton-audit.json"
+      ]
+    },
+    "bind_pose": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/skeleton-audit.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/reference-integrity.json"
+      ]
+    },
+    "weights": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/weights-audit.json"
+      ]
+    },
+    "joint_limits": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/solved-poses.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/interface-poses.json"
+      ]
+    },
+    "deformation_extremes": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Punch-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_HitReact-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Knockout-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Recover-physical-validation.json"
+      ]
+    },
+    "contacts": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Punch-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_HitReact-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Knockout-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Recover-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/push-proxy-plane.json"
+      ]
+    },
+    "clip_ranges": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/clip-manifest.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Punch-contract.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_HitReact-contract.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-contract.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-contract.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-contract.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Knockout-contract.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Recover-contract.json"
+      ]
+    },
+    "loop_seams": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Punch-continuity.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_HitReact-continuity.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-continuity.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-continuity.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-continuity.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Knockout-continuity.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Recover-continuity.json"
+      ]
+    },
+    "root_motion": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Punch-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_HitReact-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Knockout-physical-validation.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Recover-physical-validation.json"
+      ]
+    },
+    "baked_export": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/unity-import.json"
+      ]
+    },
+    "reimported_clips": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Punch-reimport.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_HitReact-reimport.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-reimport.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-reimport.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-reimport.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Knockout-reimport.json",
+        "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Recover-reimport.json"
+      ]
+    }
+  },
+  "critical_failures": [],
+  "human_review_required": true
+}

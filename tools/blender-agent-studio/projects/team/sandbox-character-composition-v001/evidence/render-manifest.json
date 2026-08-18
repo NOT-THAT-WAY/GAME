@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-composition-v001",
+  "outputs": [
+    {
+      "role": "final_render",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/final/neutral-design-baseline.png",
+      "sha256": "d97892fe5fe867eb7520a20a63fa0f8f24dde709532cda827e37f0d498752560"
+    },
+    {
+      "role": "clay_gate",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/gates/clay-hero-f001.png",
+      "sha256": "dc0d148fbaa3394ad26a88dea2f8824021e77f1e8e62e381dd66a860f2c85b9e"
+    },
+    {
+      "role": "lighting_gate",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/gates/light-key-only-f001.png",
+      "sha256": "d7793a48be8fb501290afe3efdefc24da9977752fbb0bef928ea29092f9b8031"
+    },
+    {
+      "role": "lighting_gate",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/gates/light-key-fill-f001.png",
+      "sha256": "3f1771e5de1ff96976379209f040c159455ca971ccc8797ff76f2537f5508081"
+    },
+    {
+      "role": "lighting_gate",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/gates/light-full-f001.png",
+      "sha256": "484a34e4339f2a1bb6415ce47fa46e1d4398e4637dbb7bf65d81180fe270557e"
+    },
+    {
+      "role": "control_gate",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/gates/control-front-f001.png",
+      "sha256": "dd15cddc03a86caab158a2edbe9dcc075f69ef9ac6005d24b1b865f334da117f"
+    },
+    {
+      "role": "control_gate",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/gates/control-front-f031.png",
+      "sha256": "c663a0e18668df0eb5389b8ce72512e204726ab6a20edbece5aa0a37b40a129d"
+    },
+    {
+      "role": "control_gate",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/gates/control-profile-f001.png",
+      "sha256": "650e9ad1620e7f58259058ae32005ca1ece7520535e672c77c6a894e8ee876db"
+    },
+    {
+      "role": "control_gate",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/gates/control-profile-f031.png",
+      "sha256": "cac292b23499cd59e8a50ad8b1575115ef24d79faed2b06b48a30548a8b390dc"
+    },
+    {
+      "role": "contact_tile",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/hero-tiles/hero-f001.png",
+      "sha256": "a3a4e2ab18be92cfc17db00aa418ee5c00fc7771e87999668a4fe99c657a9c38"
+    },
+    {
+      "role": "contact_tile",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/hero-tiles/hero-f011.png",
+      "sha256": "900f721c5c0ef2f7c41941a9b3234a292273ca90a0a4ba25fcb910e45ca3ffb9"
+    },
+    {
+      "role": "contact_tile",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/hero-tiles/hero-f021.png",
+      "sha256": "32fee0e1fbf4fa9709569a75cff976416f6ee7a0b2abd73b1ebfbedb235b8d57"
+    },
+    {
+      "role": "contact_tile",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/hero-tiles/hero-f031.png",
+      "sha256": "66c5d24f2b40b8a383e4550bb961f18042276e5254d9cf992dc08e1eaded4dee"
+    },
+    {
+      "role": "contact_tile",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/hero-tiles/hero-f041.png",
+      "sha256": "03829a85546638d61c510963943864fa44ad12a8e3b4ea4124dc10a5a2404a4a"
+    },
+    {
+      "role": "contact_tile",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/hero-tiles/hero-f051.png",
+      "sha256": "b72148e04087cd4c9a84398b2c91e79a4e553b87c66902622c8d8781dab5177a"
+    },
+    {
+      "role": "preview_frame_sequence",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/preview-frames",
+      "frames": 60
+    }
+  ]
+}

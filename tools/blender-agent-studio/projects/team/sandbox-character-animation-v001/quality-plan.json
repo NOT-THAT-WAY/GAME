@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-animation-v001",
+  "iteration_policy": {
+    "one_category_at_a_time": true,
+    "max_attempts_per_category": 3
+  },
+  "gates": {
+    "skeleton_hierarchy": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/skeleton-audit.json",
+        "projects/team/sandbox-character-animation-v001/evidence/blender-reimport.json",
+        "projects/team/sandbox-character-animation-v001/evidence/unity-import.json"
+      ],
+      "notes": "10 os, hierarchie et noms reels BAS_PUNCH_* conserves a l identique de la source, verifies apres reimport Blender ET apres import Unity. Aucun leaf bone ajoute (add_leaf_bones=False)."
+    },
+    "bone_axes": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/skeleton-audit.json"
+      ],
+      "notes": "Axes d os releves au repos (roll_matrix_3x3 et direction Y monde par os). Export primary_bone_axis=Y / secondary=X. Round-trip: ecart de rotation 0.0 deg sur 60 frames."
+    },
+    "bind_pose": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/source-audit-pass2.json"
+      ],
+      "notes": "La pose importee a l image 1 n est PAS la bind pose (ecart matrix_basis 0.980, forearm.L) car l Action Punch est assignee. La vraie bind pose est retrouvee en desassignant l Action et sert de base a SB_Idle."
+    },
+    "weights": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/skeleton-audit.json",
+        "projects/team/sandbox-character-animation-v001/evidence/blender-reimport.json",
+        "projects/team/sandbox-character-animation-v001/evidence/unity-import.json"
+      ],
+      "notes": "Personnage a pieces rigides: max 1 influence/vertex (budget 4), 0 vertex non pese, somme des poids exacte. Confirme apres reimport Blender (max_influences=1) et dans Unity (max_bones_per_vertex=1)."
+    },
+    "joint_limits": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/shoulder-socket-baseline.json"
+      ],
+      "notes": "GATE SATISFAIT PAR SUBSTITUTION EXPLICITE. La source ne declare aucune limite articulaire et aucune n a ete inventee. Amplitudes reelles de SB_Idle: corps <=1.5 deg, bras <=2.5 deg. Le controle equivalent execute est la non-aggravation des sockets epaule/coude/poignet mesuree contre la bind pose de la source: aggravation maximale 0.000030 m."
+    },
+    "deformation_extremes": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/physical-validation.json"
+      ],
+      "notes": "GATE SATISFAIT PAR SUBSTITUTION EXPLICITE. Aucune deformation continue n est possible: chaque mesh est pese a 100% sur un seul os (1 influence/vertex). Le controle equivalent execute est l interpenetration des volumes sur les 36 paires, chaque frame: 0 recouvrement sur toutes les paires non adjacentes, paire la plus serree Body/Foot_L a 0.0370 m."
+    },
+    "contacts": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/physical-validation.json"
+      ],
+      "notes": "Pieds plantes: drift XY 0.000000 m, deplacement du pire vertex 0.000000 m, penetration sol 0.000000 m, semelle a Z=0. 36 paires mesurees sur geometrie evaluee, chaque frame."
+    },
+    "clip_ranges": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/blender-reimport.json",
+        "projects/team/sandbox-character-animation-v001/evidence/unity-import.json"
+      ],
+      "notes": "SB_Idle 1-60 inclusif a 30 fps. Unity: 60 echantillons, 1.9666667 s, frameRate 30. Blender renumerote a 2-61 au reimport (span identique 59 intervalles) : convention de l importeur, pas une derive."
+    },
+    "loop_seams": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/physical-validation.json",
+        "local_work/sandbox-character-animation-v001/renders/seam-strip-SB_Idle.png"
+      ],
+      "notes": "Couture traitee cycliquement. Pas a la couture 0.004375 m, DANS l intervalle interieur [0.002808, 0.004438]. Acceleration 0.000449 vs max interieur 0.000549. Image 60 distincte de l image 1 de 0.004375 m: aucune pose finale dupliquee."
+    },
+    "root_motion": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/physical-validation.json",
+        "projects/team/sandbox-character-animation-v001/evidence/unity-import.json"
+      ],
+      "notes": "Root strictement immobile: translation 0.0 m, rotation 0.0 deg sur 1-60; objet armature a l identite. Unity: hasRootCurves=false, hasMotionCurves=false, averageSpeed=(0,0,0), apparentSpeed=0, courbes du root a delta 0."
+    },
+    "baked_export": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/blender-reimport.json"
+      ],
+      "notes": "Export FBX avec bake_anim=True, step 1.0, simplify 0.0, force_startend_keying, tous les os, use_all_actions=False. Take FBX unique nomme SB_Idle (lu dans le binaire). Placeholder Punch absent du fichier."
+    },
+    "reimported_clips": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/blender-reimport.json",
+        "projects/team/sandbox-character-animation-v001/evidence/unity-import.json"
+      ],
+      "notes": "Reimport Blender en scene vide: ecart max 3.4e-07 m en translation, 0.0 deg en rotation, 4.2e-07 m sur les bounds evalues (offset de numerotation +1). Import Unity 6000.3.20f1 separe: PASS."
+    }
+  },
+  "critical_failures": [],
+  "human_review_required": true,
+  "corrections_applied": [
+    {
+      "category": "classification des paires de contact",
+      "attempt": 1,
+      "of_max": 3,
+      "what": "Body/UpperArm etait compte comme collision. Ligne de base au repos prise sur la source intacte: 102 vertices a l interieur, 0.148885 m. C est l articulation d epaule, pas une collision.",
+      "resolution": "Paire reclassee en socket avec critere de non-aggravation. Aggravation reelle mesuree: 0.000002 m. Aucun seuil elargi apres coup.",
+      "also_fixed": "La statistique overlap_tris etait une SOMME sur 60 frames (7080) presentee comme une valeur par frame; corrigee en max par frame (118 = valeur au repos). Couverture etendue de 9 a 36 paires."
+    }
+  ]
+}

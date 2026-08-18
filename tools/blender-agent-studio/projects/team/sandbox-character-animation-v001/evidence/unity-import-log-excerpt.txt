@@ -1,0 +1,4 @@
+Start importing Assets/_GeneratedLocal/SandboxAnimTemp/unity-import-probe.json using Guid(49af3783efde94273b372ab3097c86a5) (TextScriptImporter) -> (artifact id: 'f9b84934722ddca853bc0998a82785f9') in 0.124321917 seconds
+Start importing Assets/_GeneratedLocal/SandboxAnimTemp/SB_Idle_candidate_TEMP.fbx using Guid(c13303f867d364637b8a5d638c326813) (FBXImporter)Launching external process: /Applications/Unity/Hub/Editor/6000.3.20f1/Unity.app/Contents/Helpers/UnityShaderCompiler
+SbIdleImportProbe:Run () (at Assets/_GeneratedLocal/SandboxAnimTemp/Editor/SbIdleImportProbe.cs:290)
+(Filename: Assets/_GeneratedLocal/SandboxAnimTemp/Editor/SbIdleImportProbe.cs Line: 290)

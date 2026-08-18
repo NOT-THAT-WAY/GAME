@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-motion-object-claude-v001",
+  "files": [
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/work/sandbox_character_claude_motion_object_master.blend",
+      "role": "master_blend",
+      "bytes": 433281,
+      "sha256": "76e4ff91336bf3d979c1de68a4d0e40703d85bdb4d3f4f478e6fafd40a76fc3d",
+      "status": "validated",
+      "note": "Master du pole: 11 Actions du lot + SB_Idle intact + placeholder Punch intact"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/clip-manifest.json",
+      "role": "clip_manifest",
+      "bytes": 31384,
+      "sha256": "2af0f05bc52b049b870e0469470b73b1996c44e5089dec794450460e774e0b16",
+      "status": "validated",
+      "note": "Manifeste des 11 clips avec plages, loop, vitesses nominales et verdicts"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Walk_candidate.fbx",
+      "role": "export",
+      "bytes": 349916,
+      "sha256": "5a1aa9628b1f74d9e94d06dbc76e753345206ec3a1b7f7c8db5d5e48673efe39",
+      "status": "validated",
+      "note": "Candidat SB_Walk, un take unique nomme SB_Walk"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Walk/SB_Walk-playblast.mp4",
+      "role": "playblast",
+      "bytes": 135539,
+      "sha256": "a30758a883e834bff3e78f2eb99e07ab83829d614411af7ce07e0bffc235b26e",
+      "status": "validated",
+      "note": "Playblast complet SB_Walk repete 4 fois pour la couture"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1864,
+      "sha256": "24c09c6d89dc69a5a7e4a74271c9ad59ecea135c759a090033b829f8472ffe1a",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_Walk"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Sprint_candidate.fbx",
+      "role": "export",
+      "bytes": 343884,
+      "sha256": "43553740dc8b300cbc9304528a0c0eddf53de28a31724146ac51fb3aa8dc2987",
+      "status": "validated",
+      "note": "Candidat SB_Sprint, un take unique nomme SB_Sprint"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Sprint/SB_Sprint-playblast.mp4",
+      "role": "playblast",
+      "bytes": 123359,
+      "sha256": "8a7d56a4b5570e6db8abe79ea912018a336cafb6c4ad8229824b3297e98be3d6",
+      "status": "validated",
+      "note": "Playblast complet SB_Sprint repete 4 fois pour la couture"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1871,
+      "sha256": "1a0a0482fe2f712544cc645325fae88f71e2164d8eba8075f4c0ac294a2388a5",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_Sprint"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Airborne_candidate.fbx",
+      "role": "export",
+      "bytes": 343900,
+      "sha256": "3df329d12f3611e6af41a70badeb6232006f0e052502c2a375e1c9bf28db3cdf",
+      "status": "validated",
+      "note": "Candidat SB_Airborne, un take unique nomme SB_Airborne"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Airborne/SB_Airborne-playblast.mp4",
+      "role": "playblast",
+      "bytes": 74270,
+      "sha256": "841c717b043eacd8110cbe37476fbb64f79622e7f568171a4a03afb16c7a039c",
+      "status": "validated",
+      "note": "Playblast complet SB_Airborne repete 4 fois pour la couture"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1880,
+      "sha256": "7440f251f6c63110094711a0db21f09f321a0814abd03bf7b8eee8cf2c04c554",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_Airborne"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_JumpTakeoff_candidate.fbx",
+      "role": "export",
+      "bytes": 333132,
+      "sha256": "8a8318d7cb6335a798332e9d73d10aaa5e70c29861c1e67232ac9f40eefdf828",
+      "status": "validated",
+      "note": "Candidat SB_JumpTakeoff, un take unique nomme SB_JumpTakeoff"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_JumpTakeoff/SB_JumpTakeoff-playblast.mp4",
+      "role": "playblast",
+      "bytes": 20433,
+      "sha256": "a079aa19b6ef72c5247048b4cdc8429fafa6c4b3f0c713cc55c93742cf76c919",
+      "status": "validated",
+      "note": "Playblast complet SB_JumpTakeoff"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_JumpTakeoff-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1891,
+      "sha256": "0148bdc11026a4793e30fd17acdd970ed46ba26227162baa5c54c85fa6dc290e",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_JumpTakeoff"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Land_candidate.fbx",
+      "role": "export",
+      "bytes": 333084,
+      "sha256": "9d9e2cf922b1fa96f7f9ffeaaa7d48ae21d5e149cf0c15562d332f134c3d6790",
+      "status": "validated",
+      "note": "Candidat SB_Land, un take unique nomme SB_Land"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Land/SB_Land-playblast.mp4",
+      "role": "playblast",
+      "bytes": 16794,
+      "sha256": "cadc3041132c7e2a31ff7801e8912dd819981fbceb33cebdffc2c586fcf626df",
+      "status": "validated",
+      "note": "Playblast complet SB_Land"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Land-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1863,
+      "sha256": "b750013dbbfd7a615f42b7ee06b9c1a1d9569dcdfcae3a5563bdcb856a89a79c",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_Land"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_CarryIdle_candidate.fbx",
+      "role": "export",
+      "bytes": 363884,
+      "sha256": "8e69989593d604907d2cdcbf988bdb8d3069bed79521626430db16ac2a336d8f",
+      "status": "validated",
+      "note": "Candidat SB_CarryIdle, un take unique nomme SB_CarryIdle"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_CarryIdle/SB_CarryIdle-playblast.mp4",
+      "role": "playblast",
+      "bytes": 121893,
+      "sha256": "22bb2dd5e57c3f38d6fd706036b8769a3e26a1bc9c1b5ee45f677564e2321695",
+      "status": "validated",
+      "note": "Playblast complet SB_CarryIdle repete 4 fois pour la couture"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1883,
+      "sha256": "1b943d0d43bcc8c65946199f1a63524a4aa9bac6b253d0286b834192832e0255",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_CarryIdle"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_CarryWalk_candidate.fbx",
+      "role": "export",
+      "bytes": 349948,
+      "sha256": "0a4e28dc10cb5324783f9859060d2c0cd22305906ede8474d6fbe93ab1275116",
+      "status": "validated",
+      "note": "Candidat SB_CarryWalk, un take unique nomme SB_CarryWalk"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_CarryWalk/SB_CarryWalk-playblast.mp4",
+      "role": "playblast",
+      "bytes": 106593,
+      "sha256": "3ac9e55484393f094f053728f785fe6d71a2d4c2e119f6d1a82f99847e8d92e8",
+      "status": "validated",
+      "note": "Playblast complet SB_CarryWalk repete 4 fois pour la couture"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1884,
+      "sha256": "c8e95d78b9667a62659b1d24d5e879f2e6a6b1cdb5fb38d791524476c2abaeae",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_CarryWalk"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Pickup_candidate.fbx",
+      "role": "export",
+      "bytes": 343884,
+      "sha256": "6a001a60241fe4c5bc900662b87a8eeef0b667a2c08a0cc385368d2de545cc1a",
+      "status": "validated",
+      "note": "Candidat SB_Pickup, un take unique nomme SB_Pickup"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Pickup/SB_Pickup-playblast.mp4",
+      "role": "playblast",
+      "bytes": 33692,
+      "sha256": "c96c33453287e9b0d86be80b2a5bd050506b976e14f2d0990464cab7565682ef",
+      "status": "validated",
+      "note": "Playblast complet SB_Pickup"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Pickup-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1871,
+      "sha256": "160db9ad1ba3d465a5aa4c230e1075b0ebb70c314bf7ba110d8f12f73617519c",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_Pickup"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Throw_candidate.fbx",
+      "role": "export",
+      "bytes": 343884,
+      "sha256": "a8adc4028de77837698e809874cff0947313f7fcaf02dbd71fb042acf70cffd1",
+      "status": "validated",
+      "note": "Candidat SB_Throw, un take unique nomme SB_Throw"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Throw/SB_Throw-playblast.mp4",
+      "role": "playblast",
+      "bytes": 34579,
+      "sha256": "6c9bb2a38dc9680583489c051c206e15c2a3feb240f06e3c725a534677cbb51e",
+      "status": "validated",
+      "note": "Playblast complet SB_Throw"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Throw-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1868,
+      "sha256": "81048664f207691e8246d622da8a8c572a5d7db6aa27481f7a1d459bfc43196f",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_Throw"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Drop_candidate.fbx",
+      "role": "export",
+      "bytes": 337836,
+      "sha256": "b52936553d1b18593c328ce945b584d3f3ed451d78ffe6e9fd879c24b908a661",
+      "status": "validated",
+      "note": "Candidat SB_Drop, un take unique nomme SB_Drop"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Drop/SB_Drop-playblast.mp4",
+      "role": "playblast",
+      "bytes": 22615,
+      "sha256": "08a52725a6c32af137acb90db09df146ce708854ab901dd7cdcdb4cc15d7ec58",
+      "status": "validated",
+      "note": "Playblast complet SB_Drop"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Drop-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1862,
+      "sha256": "79bb8de9a55ce8658107f697f3d1180c0a42c7b5b9740cdbfeb22d3a69c6184d",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_Drop"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Deposit_candidate.fbx",
+      "role": "export",
+      "bytes": 349932,
+      "sha256": "c8da9b9483c0c12b73bdf1c38dda084982c5970e38d2ea7399d3b8960adfdc75",
+      "status": "validated",
+      "note": "Candidat SB_Deposit, un take unique nomme SB_Deposit"
+    },
+    {
+      "path": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Deposit/SB_Deposit-playblast.mp4",
+      "role": "playblast",
+      "bytes": 39426,
+      "sha256": "63b4bca95be041bd0141c915e7624ffd0f6c6cee4d754c90b7b88d8e413cf1fe",
+      "status": "validated",
+      "note": "Playblast complet SB_Deposit"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Deposit-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1876,
+      "sha256": "7c3a30b9882f52eab45860fa44ac2d9489ffbb4bfa88d991a464780bad16e32b",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_Deposit"
+    },
+    {
+      "path": "projects/team/sandbox-character-motion-object-claude-v001/evidence/unity-import.json",
+      "role": "target_engine_import",
+      "bytes": 6178,
+      "sha256": "7c7652311ae9e2b404aadd7b9b951ebfe7a7a6b7ba41c7b8fcaae765b9e5fb42",
+      "status": "validated",
+      "note": "Import Unity 6000.3.20f1 des 11 candidats en rig Generic"
+    }
+  ],
+  "target_validation": {
+    "status": "passed",
+    "target": "Unity 6000.3.20f1, rig Generic, gameplay reseau in-place",
+    "evidence": [
+      "projects/team/sandbox-character-motion-object-claude-v001/evidence/unity-import.json"
+    ]
+  },
+  "rights_review": {
+    "status": "passed",
+    "notes": "Aucun asset externe utilise. Toute la geometrie et le rig proviennent de Assets/_Project/Player/PersoBouleRigged.fbx, propriete du projet GAME, ouvert en lecture seule et jamais reecrit (SHA-256 verifie inchange). Aucune texture, HDRI, modele ou animation tierce n'a ete telechargee ni incorporee."
+  }
+}

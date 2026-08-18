@@ -1,0 +1,143 @@
+{
+  "master_blend": "local_work/sandbox-character-animation-v001/work/sandbox_character_SB_Idle_master.blend",
+  "candidate_fbx": "local_work/sandbox-character-animation-v001/exports/SB_Idle_candidate.fbx",
+  "scene_state": "read_factory_settings(use_empty=True) + orphan purge",
+  "census": {
+    "object_types": [
+      "ARMATURE",
+      "MESH"
+    ],
+    "mesh_objects": 9,
+    "armature_objects": 1,
+    "cameras": [],
+    "lights": [],
+    "unskinned_meshes": [],
+    "actions": [
+      "BAS_PUNCH_Rig|SB_Idle"
+    ],
+    "total_vertices": 2870,
+    "total_tris": 5664,
+    "no_parasites": true
+  },
+  "skeleton": {
+    "bone_count": 10,
+    "bones": [
+      "BAS_PUNCH_root",
+      "BAS_PUNCH_body",
+      "BAS_PUNCH_upperarm.L",
+      "BAS_PUNCH_forearm.L",
+      "BAS_PUNCH_hand.L",
+      "BAS_PUNCH_upperarm.R",
+      "BAS_PUNCH_forearm.R",
+      "BAS_PUNCH_hand.R",
+      "BAS_PUNCH_foot.L",
+      "BAS_PUNCH_foot.R"
+    ],
+    "names_match_source": true,
+    "missing": [],
+    "unexpected": [],
+    "hierarchy": {
+      "BAS_PUNCH_root": null,
+      "BAS_PUNCH_body": "BAS_PUNCH_root",
+      "BAS_PUNCH_upperarm.L": "BAS_PUNCH_body",
+      "BAS_PUNCH_forearm.L": "BAS_PUNCH_upperarm.L",
+      "BAS_PUNCH_hand.L": "BAS_PUNCH_forearm.L",
+      "BAS_PUNCH_upperarm.R": "BAS_PUNCH_body",
+      "BAS_PUNCH_forearm.R": "BAS_PUNCH_upperarm.R",
+      "BAS_PUNCH_hand.R": "BAS_PUNCH_forearm.R",
+      "BAS_PUNCH_foot.L": "BAS_PUNCH_root",
+      "BAS_PUNCH_foot.R": "BAS_PUNCH_root"
+    },
+    "leaf_bones_added": [],
+    "armature_object_transform": {
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_deg": [
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "clip": {
+    "action_count": 1,
+    "name_after_blender_import": "BAS_PUNCH_Rig|SB_Idle",
+    "blender_importer_prefix_note": "Blender's FBX importer names actions '<object>|<take>'; the take itself is the part after the last '|'",
+    "take_name_stripped": "SB_Idle",
+    "raw_fbx_anim_stack_names": [
+      "SB_Idle"
+    ],
+    "raw_fbx_take_count": 1,
+    "name_is_exactly_SB_Idle": true,
+    "frame_start": 2.0,
+    "frame_end": 61.0,
+    "frame_span": 59.0,
+    "span_is_59_intervals_60_samples": true,
+    "range_is_1_to_60": false,
+    "fcurve_count": 109,
+    "bones_animated": [
+      "BAS_PUNCH_body",
+      "BAS_PUNCH_foot.L",
+      "BAS_PUNCH_foot.R",
+      "BAS_PUNCH_forearm.L",
+      "BAS_PUNCH_forearm.R",
+      "BAS_PUNCH_hand.L",
+      "BAS_PUNCH_hand.R",
+      "BAS_PUNCH_root",
+      "BAS_PUNCH_upperarm.L",
+      "BAS_PUNCH_upperarm.R"
+    ],
+    "all_10_bones_animated": true,
+    "scene_fps": 30.0,
+    "fps_is_30": true,
+    "duration_s": 1.966667,
+    "punch_absent": true
+  },
+  "master_vs_candidate": {
+    "frames_compared": 60,
+    "tested_frame_offsets": {
+      "0": {
+        "max_bone_translation_delta_m": 0.00359458,
+        "max_bone_rotation_delta_deg": 0.205584,
+        "max_evaluated_bounds_delta_m": 0.00200902,
+        "worst_translation_frame": 2,
+        "worst_translation_bone": "BAS_PUNCH_hand.L"
+      },
+      "1": {
+        "max_bone_translation_delta_m": 3.4e-07,
+        "max_bone_rotation_delta_deg": 0.0,
+        "max_evaluated_bounds_delta_m": 4.2e-07,
+        "worst_translation_frame": 51,
+        "worst_translation_bone": "BAS_PUNCH_hand.R"
+      }
+    },
+    "best_frame_offset": 1,
+    "offset_meaning": "candidate scene frame (master frame + offset) holds the same pose; a non-zero offset is a frame-numbering convention of Blender's FBX importer, not motion drift",
+    "max_bone_translation_delta_m": 3.4e-07,
+    "worst_translation_frame": 51,
+    "worst_translation_bone": "BAS_PUNCH_hand.R",
+    "max_bone_rotation_delta_deg": 0.0,
+    "max_evaluated_bounds_delta_m": 4.2e-07,
+    "matches": true
+  },
+  "root_motion_after_reimport": {
+    "bone": "BAS_PUNCH_root",
+    "max_translation_m": 0.0,
+    "max_rotation_deg": 0.0,
+    "passed": true
+  },
+  "weights_after_reimport": {
+    "max_influences": 1,
+    "unweighted_vertices": 0,
+    "within_4_influence_budget": true
+  },
+  "passed": true
+}

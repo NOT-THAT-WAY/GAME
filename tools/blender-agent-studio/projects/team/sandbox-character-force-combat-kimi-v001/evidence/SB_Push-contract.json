@@ -1,0 +1,23 @@
+{
+ "clip": "SB_Push",
+ "f_start": 1,
+ "f_end": 30,
+ "loop": true,
+ "nominal_speed_mps": 0.0,
+ "stance_windows": {
+  "L": [
+   {
+    "start": 1,
+    "end": 30
+   }
+  ],
+  "R": [
+   {
+    "start": 1,
+    "end": 30
+   }
+  ]
+ },
+ "swing_windows": {},
+ "note": "appuis plantes larges, offset constant de 0.12 m"
+}

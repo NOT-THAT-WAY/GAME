@@ -1,0 +1,696 @@
+{
+ "schema_version": 1,
+ "project_id": "sandbox-character-force-combat-kimi-v001",
+ "pole": "forces, poussee, combat et etats de vie",
+ "owner": "Kimi (repris par Claude apres epuisement de son budget)",
+ "fps": 30,
+ "units": "metres",
+ "up_axis": "Z (Blender), Y (Unity)",
+ "facing": "-Y (Blender), +Z (Unity)",
+ "rig": "Unity Generic, 10 os BAS_PUNCH_, 9 pieces rigides",
+ "clip_count": 7,
+ "clips": [
+  {
+   "clip": "SB_Punch",
+   "action": "SB_Punch",
+   "frame_range": [
+    1,
+    20
+   ],
+   "samples": 20,
+   "fps": 30,
+   "duration_s": 0.6333333333333333,
+   "loop": false,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": false,
+    "samples": 20,
+    "duration_s": 0.6333333333333333,
+    "intent": "garde f1, anticipation f3-5, impact VISUEL f10, suivi f11-13, recuperation compatible Idle f20",
+    "impact_frame": 10,
+    "reauthored_at_30fps": true,
+    "asymmetry": "poing droit frappe, poing gauche garde"
+   },
+   "fbx": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_Punch_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-force-combat-kimi-v001/checkpoints/SB_Punch_v006.blend",
+   "arm_relax": {
+    "frames_relaxed": 9,
+    "max_extra_deg": 16.5,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "envelope_fallback_frames": [
+     1
+    ],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Punch-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Punch-continuity.json",
+    "reimport": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Punch-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Punch-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Punch-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_Punch/SB_Punch-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 22,
+    "avg_frame_rate": "30/1",
+    "duration_s": 0.733333,
+    "loop_repeats": 1,
+    "source_frames": 20
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimKimi/SB_Punch_candidate.fbx",
+    "expected_name": "SB_Punch",
+    "expected_loop": false,
+    "clip_count": 1,
+    "name": "SB_Punch",
+    "length_s": 0.6333333,
+    "frame_rate": 30,
+    "samples": 20,
+    "loop_time": false,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS",
+   "extra_check_continuity": true
+  },
+  {
+   "clip": "SB_HitReact",
+   "action": "SB_HitReact",
+   "frame_range": [
+    1,
+    18
+   ],
+   "samples": 18,
+   "fps": 30,
+   "duration_s": 0.5666666666666667,
+   "loop": false,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": false,
+    "samples": 18,
+    "duration_s": 0.5666666666666667,
+    "intent": "depart Idle, impact f2-3, recul et protection jusqu'a f8, recuperation compatible Idle f18",
+    "impact_frame": 3,
+    "no_fall": true
+   },
+   "fbx": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_HitReact_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-force-combat-kimi-v001/checkpoints/SB_HitReact_v008.blend",
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "envelope_fallback_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_HitReact-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_HitReact-continuity.json",
+    "reimport": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_HitReact-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_HitReact-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_HitReact-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_HitReact/SB_HitReact-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 19,
+    "avg_frame_rate": "30/1",
+    "duration_s": 0.633333,
+    "loop_repeats": 1,
+    "source_frames": 18
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimKimi/SB_HitReact_candidate.fbx",
+    "expected_name": "SB_HitReact",
+    "expected_loop": false,
+    "clip_count": 1,
+    "name": "SB_HitReact",
+    "length_s": 0.566666663,
+    "frame_rate": 30,
+    "samples": 18,
+    "loop_time": false,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS",
+   "extra_check_continuity": true
+  },
+  {
+   "clip": "SB_Push",
+   "action": "SB_Push",
+   "frame_range": [
+    1,
+    30
+   ],
+   "samples": 30,
+   "fps": 30,
+   "duration_s": 0.9666666666666667,
+   "loop": true,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": true,
+    "samples": 30,
+    "duration_s": 0.9666666666666667,
+    "intent": "pieds ecartes et stables, corps bascule vers l'avant, mains en appui contre un plan proxy, effort cyclique sans pompage",
+    "stance_offset_m": 0.12,
+    "proxy_plane": "derive de la geometrie evaluee des poings, preuve seulement, jamais exporte"
+   },
+   "fbx": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_Push_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-force-combat-kimi-v001/checkpoints/SB_Push_v006.blend",
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "envelope_fallback_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-continuity.json",
+    "reimport": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_Push/SB_Push-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 121,
+    "avg_frame_rate": "30/1",
+    "duration_s": 4.033333,
+    "loop_repeats": 4,
+    "source_frames": 30
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimKimi/SB_Push_candidate.fbx",
+    "expected_name": "SB_Push",
+    "expected_loop": true,
+    "clip_count": 1,
+    "name": "SB_Push",
+    "length_s": 0.966666639,
+    "frame_rate": 30,
+    "samples": 30,
+    "loop_time": true,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS",
+   "extra_check_continuity": true
+  },
+  {
+   "clip": "SB_WallPushed",
+   "action": "SB_WallPushed",
+   "frame_range": [
+    1,
+    24
+   ],
+   "samples": 24,
+   "fps": 30,
+   "duration_s": 0.7666666666666667,
+   "loop": true,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": true,
+    "samples": 24,
+    "duration_s": 0.7666666666666667,
+    "intent": "volume en retard sur la translation externe, bascule amortie, bras en contrepoids, petits pas alternes",
+    "credible_speed_range_mps": [
+     1.0,
+     3.5
+    ],
+    "no_impact_at_seam": true,
+    "direction_neutral": true
+   },
+   "fbx": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_WallPushed_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-force-combat-kimi-v001/checkpoints/SB_WallPushed_v002.blend",
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "envelope_fallback_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-continuity.json",
+    "reimport": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_WallPushed/SB_WallPushed-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 97,
+    "avg_frame_rate": "30/1",
+    "duration_s": 3.233333,
+    "loop_repeats": 4,
+    "source_frames": 24
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimKimi/SB_WallPushed_candidate.fbx",
+    "expected_name": "SB_WallPushed",
+    "expected_loop": true,
+    "clip_count": 1,
+    "name": "SB_WallPushed",
+    "length_s": 0.7666667,
+    "frame_rate": 30,
+    "samples": 24,
+    "loop_time": true,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS",
+   "extra_check_continuity": true
+  },
+  {
+   "clip": "SB_KnockedOutLoop",
+   "action": "SB_KnockedOutLoop",
+   "frame_range": [
+    1,
+    60
+   ],
+   "samples": 60,
+   "fps": 30,
+   "duration_s": 1.9666666666666666,
+   "loop": true,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": true,
+    "samples": 60,
+    "duration_s": 1.9666666666666666,
+    "intent": "corps au sol, contacts stables, respiration a peine visible, lecture KO et non Idle couche",
+    "anchor_frame_1": "reference exacte des deux transitions"
+   },
+   "fbx": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_KnockedOutLoop_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-force-combat-kimi-v001/checkpoints/SB_KnockedOutLoop_v004.blend",
+   "arm_relax": {
+    "frames_relaxed": 60,
+    "max_extra_deg": 1.5,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "envelope_fallback_frames": [
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58
+    ],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-continuity.json",
+    "reimport": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_KnockedOutLoop/SB_KnockedOutLoop-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 241,
+    "avg_frame_rate": "30/1",
+    "duration_s": 8.033333,
+    "loop_repeats": 4,
+    "source_frames": 60
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimKimi/SB_KnockedOutLoop_candidate.fbx",
+    "expected_name": "SB_KnockedOutLoop",
+    "expected_loop": true,
+    "clip_count": 1,
+    "name": "SB_KnockedOutLoop",
+    "length_s": 1.9666667,
+    "frame_rate": 30,
+    "samples": 60,
+    "loop_time": true,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS",
+   "extra_check_continuity": true
+  },
+  {
+   "clip": "SB_Knockout",
+   "action": "SB_Knockout",
+   "frame_range": [
+    1,
+    30
+   ],
+   "samples": 30,
+   "fps": 30,
+   "duration_s": 0.9666666666666667,
+   "loop": false,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": false,
+    "samples": 30,
+    "duration_s": 0.9666666666666667,
+    "intent": "rupture d'equilibre f1-8, descente controlee, premier contact sol avant f22, f30 identique a SB_KnockedOutLoop f1",
+    "first_ground_contact_before": 22,
+    "interface_pose": "frame 30 == SB_KnockedOutLoop frame 1"
+   },
+   "fbx": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_Knockout_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-force-combat-kimi-v001/checkpoints/SB_Knockout_v012.blend",
+   "arm_relax": {
+    "frames_relaxed": 8,
+    "max_extra_deg": 1.5,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "envelope_fallback_frames": [
+     24,
+     25,
+     26
+    ],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Knockout-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Knockout-continuity.json",
+    "reimport": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Knockout-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Knockout-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Knockout-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_Knockout/SB_Knockout-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 31,
+    "avg_frame_rate": "30/1",
+    "duration_s": 1.033333,
+    "loop_repeats": 1,
+    "source_frames": 30
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimKimi/SB_Knockout_candidate.fbx",
+    "expected_name": "SB_Knockout",
+    "expected_loop": false,
+    "clip_count": 1,
+    "name": "SB_Knockout",
+    "length_s": 0.966666639,
+    "frame_rate": 30,
+    "samples": 30,
+    "loop_time": false,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": false,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS",
+   "extra_check_continuity": false
+  },
+  {
+   "clip": "SB_Recover",
+   "action": "SB_Recover",
+   "frame_range": [
+    1,
+    36
+   ],
+   "samples": 36,
+   "fps": 30,
+   "duration_s": 1.1666666666666667,
+   "loop": false,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": false,
+    "samples": 36,
+    "duration_s": 1.1666666666666667,
+    "intent": "f1 identique a SB_KnockedOutLoop f1, appui des mains, redressement, f36 compatible SB_Idle",
+    "interface_pose": "frame 1 == SB_KnockedOutLoop frame 1",
+    "no_invented_joint": true
+   },
+   "fbx": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_Recover_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-force-combat-kimi-v001/checkpoints/SB_Recover_v008.blend",
+   "arm_relax": {
+    "frames_relaxed": 11,
+    "max_extra_deg": 7.5,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "envelope_fallback_frames": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     11
+    ],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Recover-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Recover-continuity.json",
+    "reimport": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Recover-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Recover-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Recover-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_Recover/SB_Recover-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 37,
+    "avg_frame_rate": "30/1",
+    "duration_s": 1.233333,
+    "loop_repeats": 1,
+    "source_frames": 36
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimKimi/SB_Recover_candidate.fbx",
+    "expected_name": "SB_Recover",
+    "expected_loop": false,
+    "clip_count": 1,
+    "name": "SB_Recover",
+    "length_s": 1.16666675,
+    "frame_rate": 30,
+    "samples": 36,
+    "loop_time": false,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS",
+   "extra_check_continuity": true
+  }
+ ],
+ "all_pass": true
+}

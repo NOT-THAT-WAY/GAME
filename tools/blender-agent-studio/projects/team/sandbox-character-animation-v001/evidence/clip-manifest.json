@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-animation-v001",
+  "pass_scope": "SB_Idle only; SB_Walk not started, awaiting explicit authorisation",
+  "clips": [
+    {
+      "action_name": "SB_Idle",
+      "fbx_take_name": [
+        "SB_Idle"
+      ],
+      "unity_clip_name": "SB_Idle",
+      "frame_start": 1,
+      "frame_end": 60,
+      "inclusive": true,
+      "sampled_poses": 60,
+      "fps": 30,
+      "unity_length_s": 1.9666667,
+      "unity_sampled_frames": 60,
+      "loop": true,
+      "loop_flag_location": "Unity ModelImporter clipAnimations[].loopTime (.meta), not stored inside the FBX",
+      "unity_loopTime": true,
+      "unity_isLooping": true,
+      "loop_period_frames": 60,
+      "loop_construction": "every channel is a sum of harmonics of period 60 frames evaluated at theta=2*pi*(f-1)/60, so pose(f+60)==pose(f) by construction; frame 60 is not a duplicate of frame 1",
+      "root_motion": "none",
+      "additive": false,
+      "reference_pose": "source FBX bind pose, Punch action detached",
+      "animated_bones": [
+        "BAS_PUNCH_body",
+        "BAS_PUNCH_foot.L",
+        "BAS_PUNCH_foot.R",
+        "BAS_PUNCH_forearm.L",
+        "BAS_PUNCH_forearm.R",
+        "BAS_PUNCH_hand.L",
+        "BAS_PUNCH_hand.R",
+        "BAS_PUNCH_root",
+        "BAS_PUNCH_upperarm.L",
+        "BAS_PUNCH_upperarm.R"
+      ],
+      "animated_bone_count": 10,
+      "events": "none; no gameplay AnimationEvent and no SFX_/VFX_ marker added in this pass",
+      "export_settings": {
+        "bake_anim": true,
+        "bake_anim_step": 1.0,
+        "bake_anim_simplify_factor": 0.0,
+        "bake_anim_use_all_actions": false,
+        "bake_anim_force_startend_keying": true,
+        "add_leaf_bones": false,
+        "axis_forward": "-Z",
+        "axis_up": "Y",
+        "primary_bone_axis": "Y",
+        "secondary_bone_axis": "X"
+      },
+      "measurements": {
+        "root_max_translation_m": 0.0,
+        "root_max_rotation_deg": 0.0,
+        "foot_drift_xy_m": {
+          "BAS_PUNCH_Foot_L": 0.0,
+          "BAS_PUNCH_Foot_R": 0.0
+        },
+        "ground_penetration_m": 0.0,
+        "seam_step_m": 0.004375,
+        "seam_interior_step_range_m": [
+          0.002808,
+          0.004438
+        ],
+        "frame60_vs_frame1_m": 0.004375,
+        "tightest_non_adjacent_pair_m": 0.036955,
+        "max_socket_deepening_m": 3e-05,
+        "reimport_max_translation_delta_m": 3.4e-07,
+        "reimport_max_rotation_delta_deg": 0.0
+      },
+      "verdicts": {
+        "contract": "PASS",
+        "visual_physics": "PASS",
+        "blender_reimport": "PASS",
+        "unity_import": "PASS",
+        "evidence": "PASS"
+      }
+    }
+  ],
+  "remaining_clips_not_started": [
+    "SB_Walk",
+    "SB_Sprint",
+    "SB_JumpTakeoff",
+    "SB_Airborne",
+    "SB_Land",
+    "SB_Push",
+    "SB_Punch",
+    "SB_Pickup",
+    "SB_CarryIdle",
+    "SB_CarryWalk",
+    "SB_Throw",
+    "SB_Drop",
+    "SB_HitReact",
+    "SB_Knockout",
+    "SB_KnockedOutLoop",
+    "SB_Recover",
+    "SB_Deposit"
+  ]
+}

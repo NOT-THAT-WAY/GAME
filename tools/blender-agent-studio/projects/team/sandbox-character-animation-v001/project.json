@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-animation-v001",
+  "project_type": "animation",
+  "status": "reviewed",
+  "owner": "unrecorded",
+  "objective": "Clips minimaux du personnage sandbox depuis PersoBouleRigged.fbx ; passe 1 = SB_Idle uniquement, in-place, boucle 1-60 a 30 fps",
+  "target": "Unity 6000.3.20f1, rig Generic, Windows x86_64 IL2CPP",
+  "technical_profile": "rig-animation",
+  "style_profile": "neutral-production",
+  "created_at": "2026-08-15T20:38:09+02:00",
+  "object_prefix": "BAS_SANDBOX_CHARACTER_ANIMATION_V001_",
+  "catalog_asset_references": [],
+  "local_work_root": "local_work/sandbox-character-animation-v001",
+  "source_overwrite_allowed": false,
+  "binary_files_allowed_in_git": false
+}

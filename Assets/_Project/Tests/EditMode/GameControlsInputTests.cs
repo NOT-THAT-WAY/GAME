@@ -37,12 +37,29 @@ namespace NotThatWay.Game.Tests.EditMode
             var interact = player.FindAction(GameControlsContract.Interact, true);
             var primary = player.FindAction(GameControlsContract.Punch, true);
 
-            Assert.That(HasPath(move, "<Keyboard>/z"), Is.True);
-            Assert.That(HasPath(move, "<Keyboard>/q"), Is.True);
-            Assert.That(HasPath(move, "<Keyboard>/s"), Is.True);
-            Assert.That(HasPath(move, "<Keyboard>/d"), Is.True);
+            // Les touches sont liées PAR CARACTÈRE, pas par position physique.
+            // `<Keyboard>/z` désigne la position de Z sur un clavier US, c'est-à-dire
+            // la touche marquée W en AZERTY : le déplacement tombait alors sur WASD
+            // et « gauche » atterrissait sur A, ce que le contrat interdit.
+            // `<Keyboard>/#(z)` désigne la touche qui produit le caractère z dans la
+            // disposition courante, donc le vrai Z d'un AZERTY.
+            Assert.That(HasPath(move, "<Keyboard>/#(z)"), Is.True);
+            Assert.That(HasPath(move, "<Keyboard>/#(q)"), Is.True);
+            Assert.That(HasPath(move, "<Keyboard>/#(s)"), Is.True);
+            Assert.That(HasPath(move, "<Keyboard>/#(d)"), Is.True);
+            Assert.That(HasPath(move, "<Keyboard>/#(a)"), Is.False);
+            Assert.That(HasPath(drop, "<Keyboard>/#(a)"), Is.True);
+
+            // La liaison par position physique ne doit plus exister : c'est elle qui
+            // faisait récupérer A par un binding de mouvement en AZERTY.
+            Assert.That(HasPath(move, "<Keyboard>/z"), Is.False);
+            Assert.That(HasPath(move, "<Keyboard>/q"), Is.False);
             Assert.That(HasPath(move, "<Keyboard>/a"), Is.False);
-            Assert.That(HasPath(drop, "<Keyboard>/a"), Is.True);
+            Assert.That(HasPath(drop, "<Keyboard>/a"), Is.False);
+
+            // Les flèches restent une alternative indépendante de la disposition.
+            Assert.That(HasPath(move, "<Keyboard>/upArrow"), Is.True);
+            Assert.That(HasPath(move, "<Keyboard>/leftArrow"), Is.True);
             Assert.That(HasPath(interact, "<Keyboard>/e"), Is.True);
             Assert.That(HasPath(interact, "<Mouse>/leftButton"), Is.False);
             Assert.That(HasPath(primary, "<Mouse>/leftButton"), Is.True);

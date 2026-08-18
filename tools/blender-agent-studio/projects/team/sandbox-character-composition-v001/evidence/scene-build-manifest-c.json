@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-composition-v001",
+  "generated_at": "2026-08-15T19:32:45.819586+00:00",
+  "execution_mode": "isolated batch",
+  "source": {
+    "path": "local_work/sandbox-character-animation-v001/work/sandbox_character_SB_Idle_master.blend",
+    "sha256": "864807e970705bf44a1c3dcbcfaac85102458917a5c8ccec90f5f36728590464",
+    "overwritten": false
+  },
+  "output": {
+    "path": "local_work/sandbox-character-composition-v001/work/sandbox_character_composition_v001_c.blend",
+    "sha256": "d400f2211cf5597e42f300b115a6b3fc0b97aff28e6e73e9adc3a7ebc68d1b04",
+    "saved": true
+  },
+  "source_fingerprint_preserved": true,
+  "scene": "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_REVIEW",
+  "frame_range": [
+    1,
+    60
+  ],
+  "fps": 30.0,
+  "collections": [
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CHARACTER_LOCKED",
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_STAGE_EDITABLE",
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_LIGHTING_EDITABLE",
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAMERAS_EDITABLE",
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_GUIDES"
+  ],
+  "active_camera": {
+    "name": "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_HERO_3Q",
+    "type": "PERSP",
+    "lens_mm": 64.0,
+    "location_m": [
+      2.55,
+      -5.0,
+      1.78
+    ],
+    "target_m": [
+      0.0,
+      0.0,
+      0.67
+    ],
+    "dof_enabled": false,
+    "focus_object": "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_FOCUS_FACE"
+  },
+  "utility_cameras": [
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_FRONT_ORTHO",
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_PROFILE_ORTHO"
+  ],
+  "stage": {
+    "name": "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_STAGE_CYCLORAMA",
+    "support_plane_z": 0.0
+  },
+  "lights": [
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_LIGHT_KEY",
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_LIGHT_FILL",
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_LIGHT_RIM"
+  ],
+  "render": {
+    "engine": "BLENDER_EEVEE",
+    "resolution": [
+      1920,
+      1080,
+      100
+    ],
+    "samples": 64,
+    "view_transform": "AgX",
+    "look": "AgX - Medium High Contrast",
+    "file_format": "PNG"
+  },
+  "runtime_export": false
+}

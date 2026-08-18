@@ -1,0 +1,25 @@
+{
+  "action": "SB_Push",
+  "frame_start": 1,
+  "frame_end": 30,
+  "loop": true,
+  "planted_feet": "all",
+  "ground_contacts": {},
+  "plane_contacts": {
+    "BAS_PUNCH_Fist_L": {
+      "plane_y": -0.818203,
+      "frames": [
+        1,
+        30
+      ]
+    },
+    "BAS_PUNCH_Fist_R": {
+      "plane_y": -0.818203,
+      "frames": [
+        1,
+        30
+      ]
+    }
+  },
+  "interface_checks": []
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-composition-v001",
+  "policy": {
+    "one_category_at_a_time": true,
+    "max_attempts_per_category": 3
+  },
+  "iterations": [
+    {
+      "attempt": "A",
+      "category": "composition",
+      "camera": {
+        "position_m": [3.0, -4.7, 1.85],
+        "lens_mm": 62.0
+      },
+      "technical_result": "PASS",
+      "visual_observation": "Bonne profondeur, mais le bras arrière et les pieds sont davantage comprimés par l'angle; la lecture design est moins symétrique.",
+      "evidence": [
+        "projects/team/sandbox-character-composition-v001/evidence/composition-validation-a.json",
+        "local_work/sandbox-character-composition-v001/renders/attempt-a/hero-neutral-a-0001.png"
+      ],
+      "decision": "revise composition only"
+    },
+    {
+      "attempt": "B",
+      "category": "composition",
+      "camera": {
+        "position_m": [2.55, -5.0, 1.78],
+        "lens_mm": 64.0
+      },
+      "technical_result": "PASS",
+      "visual_observation": "Les deux bras, les deux pieds et les yeux sont mieux équilibrés tout en gardant un volume trois-quarts lisible.",
+      "evidence": [
+        "projects/team/sandbox-character-composition-v001/evidence/composition-validation-b.json",
+        "local_work/sandbox-character-composition-v001/renders/attempt-b/hero-neutral-b-0001.png"
+      ],
+      "decision": "accept composition; proceed to lighting category"
+    },
+    {
+      "attempt": "C",
+      "category": "lighting",
+      "camera_changed": false,
+      "technical_result": "PASS",
+      "visual_observation": "Key plus large et plus frontale, fill relevée et rim adoucie : ombres des yeux raccourcies, fond moins concurrent et volumes toujours lisibles.",
+      "evidence": [
+        "projects/team/sandbox-character-composition-v001/evidence/composition-validation-c.json",
+        "local_work/sandbox-character-composition-v001/renders/final/comparison-attempt-a-vs-final-c.png",
+        "local_work/sandbox-character-composition-v001/renders/final/contact-sheet-lighting.png"
+      ],
+      "decision": "accept neutral technical baseline; stop before creative art direction"
+    }
+  ],
+  "evidence_generation_correction": {
+    "issue": "Le premier script de clay gate avait modifié en mémoire les indices de matériaux avant les vues suivantes, rendant les yeux terracotta dans les premières contact sheets.",
+    "impact_on_saved_blend": "none; render script never saved the .blend",
+    "fix": "View Layer material_override non destructif, puis réouverture propre et régénération de toutes les preuves et vidéos.",
+    "post_fix_visual_check": "PASS; yeux noirs présents sur le hero, les six poses et les contrôles face/profil."
+  },
+  "selected_output": "local_work/sandbox-character-composition-v001/work/sandbox_character_composition_v001_c.blend"
+}

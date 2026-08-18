@@ -230,10 +230,10 @@ namespace NotThatWay.Game
                 return;
             direction.Normalize();
 
-            var victim = FindVictim();
-            if (victim != null)
+            FindVictim(out var victimPlayer, out var victimBot);
+            if (victimPlayer != null)
             {
-                var victimGameplay = victim.GetComponent<SandboxPlayerGameplay>();
+                var victimGameplay = victimPlayer.GetComponent<SandboxPlayerGameplay>();
                 if (victimGameplay != null)
                 {
                     if (!victimGameplay.ApplyDamageFromServer(
@@ -246,20 +246,37 @@ namespace NotThatWay.Game
                 }
                 else
                 {
-                    victim.ApplyKnockbackFromServer(direction * _knockbackSpeed);
+                    victimPlayer.ApplyKnockbackFromServer(direction * _knockbackSpeed);
                 }
                 Debug.Log(
-                    $"[GAME-M1-PUNCH] hit source={ObjectId} target={victim.ObjectId} " +
+                    $"[GAME-M1-PUNCH] hit source={ObjectId} target={victimPlayer.ObjectId} " +
                     $"tick={TimeManager.Tick}.");
+                return;
+            }
+
+            if (victimBot != null)
+            {
+                if (!victimBot.ApplyDamageFromServer(
+                        SandboxGameplayConfig.Baseline60Hz.PunchDamage,
+                        direction * _knockbackSpeed))
+                {
+                    return;
+                }
+                Debug.Log(
+                    $"[GAME-M1-PUNCH] hit source={ObjectId} bot={victimBot.ObjectId} " +
+                    $"health={victimBot.Health} tick={TimeManager.Tick}.");
                 return;
             }
 
             TryPunchWall(direction);
         }
 
-        private PredictedPlayerMotor FindVictim()
+        private void FindVictim(
+            out PredictedPlayerMotor victimPlayer,
+            out SimpleBot victimBot)
         {
-            PredictedPlayerMotor best = null;
+            victimPlayer = null;
+            victimBot = null;
             var bestDistance = float.PositiveInfinity;
             var origin = transform.position;
             var forward = transform.forward;
@@ -283,10 +300,32 @@ namespace NotThatWay.Game
                     continue;
 
                 bestDistance = distance;
-                best = candidate;
+                victimPlayer = candidate;
+                victimBot = null;
             }
 
-            return best;
+            foreach (var candidate in FindObjectsByType<SimpleBot>(FindObjectsSortMode.None))
+            {
+                if (candidate == null || !candidate.CanBeHit)
+                    continue;
+
+                var offset = candidate.transform.position - origin;
+                offset.y = 0f;
+                var distance = offset.magnitude;
+                if (distance > _punchRangeMeters || distance >= bestDistance)
+                    continue;
+                if (distance > 0.01f &&
+                    Vector3.Angle(forward, offset) > _punchHalfAngleDegrees)
+                {
+                    continue;
+                }
+                if (!HasLineOfSight(candidate.transform))
+                    continue;
+
+                bestDistance = distance;
+                victimPlayer = null;
+                victimBot = candidate;
+            }
         }
 
         private bool HasLineOfSight(Transform target)

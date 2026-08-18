@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-force-combat-kimi-v001",
+  "project_type": "animation",
+  "status": "reviewed",
+  "owner": "Kimi",
+  "objective": "Produire les 7 clips pouss\u00e9e, combat et \u00e9tats de vie du personnage sandbox",
+  "target": "Unity 6000.3.20f1, rig Generic, gameplay r\u00e9seau in-place",
+  "technical_profile": "rig-animation",
+  "style_profile": "neutral-production",
+  "created_at": "2026-08-15T23:31:09+02:00",
+  "object_prefix": "BAS_SANDBOX_CHARACTER_FORCE_COMBAT_KIMI_V001_",
+  "catalog_asset_references": [],
+  "local_work_root": "local_work/sandbox-character-force-combat-kimi-v001",
+  "source_overwrite_allowed": false,
+  "binary_files_allowed_in_git": false
+}

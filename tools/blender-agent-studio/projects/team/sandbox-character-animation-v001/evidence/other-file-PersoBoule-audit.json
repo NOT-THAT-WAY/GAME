@@ -1,0 +1,122 @@
+{
+  "source": "Assets/_Project/Player/PersoBoule.fbx",
+  "blender": "5.1.1",
+  "scene": {
+    "fps": 24,
+    "fps_base": 1.0,
+    "effective_fps": 24.0,
+    "frame_start": 1,
+    "frame_end": 250,
+    "unit_system": "METRIC",
+    "scale_length": 1.0
+  },
+  "objects": [
+    {
+      "name": "Perso_Boule",
+      "type": "MESH",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "modifiers": [],
+      "vertices": 2234,
+      "polygons": 2384,
+      "tris": 4440,
+      "vertex_groups": [],
+      "materials": [
+        "DA_Perso_Terracotta",
+        "DA_Perso_Oeil"
+      ],
+      "shape_keys": 0
+    }
+  ],
+  "armature_count": 0,
+  "armatures": [],
+  "weights": [
+    {
+      "mesh": "Perso_Boule",
+      "skinned": false,
+      "vertices": 2234,
+      "tris": 4440
+    }
+  ],
+  "total_vertices": 2234,
+  "total_tris": 4440,
+  "skinned_vertices": 0,
+  "skinned_tris": 0,
+  "actions": [],
+  "evaluated_bounds_all_m": {
+    "min": [
+      -0.605992,
+      -0.533499,
+      -0.0
+    ],
+    "max": [
+      0.605992,
+      0.5335,
+      1.3835
+    ],
+    "size": [
+      1.211984,
+      1.067,
+      1.3835
+    ]
+  },
+  "evaluated_bounds_skinned_m": {
+    "min": [
+      1000000000.0,
+      1000000000.0,
+      1000000000.0
+    ],
+    "max": [
+      -1000000000.0,
+      -1000000000.0,
+      -1000000000.0
+    ],
+    "size": [
+      -2000000000.0,
+      -2000000000.0,
+      -2000000000.0
+    ],
+    "height_z": -2000000000.0
+  }
+}

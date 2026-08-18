@@ -1,0 +1,36 @@
+{
+ "clip": "SB_Recover",
+ "f_start": 1,
+ "f_end": 36,
+ "loop": false,
+ "nominal_speed_mps": 0.0,
+ "stance_windows": {
+  "L": [
+   {
+    "start": 30,
+    "end": 36
+   }
+  ],
+  "R": [
+   {
+    "start": 30,
+    "end": 36
+   }
+  ]
+ },
+ "swing_windows": {
+  "L": [
+   {
+    "start": 1,
+    "end": 20
+   }
+  ],
+  "R": [
+   {
+    "start": 1,
+    "end": 20
+   }
+  ]
+ },
+ "note": ""
+}

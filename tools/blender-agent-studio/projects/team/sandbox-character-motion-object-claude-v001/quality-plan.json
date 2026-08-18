@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-motion-object-claude-v001",
+  "iteration_policy": {
+    "one_category_at_a_time": true,
+    "max_attempts_per_category": 3
+  },
+  "gates": {
+    "skeleton_hierarchy": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/skeleton-audit.json"
+      ]
+    },
+    "bone_axes": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/skeleton-audit.json"
+      ]
+    },
+    "bind_pose": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/skeleton-audit.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/reference-integrity.json"
+      ]
+    },
+    "weights": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/weights-audit.json"
+      ]
+    },
+    "joint_limits": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/solved-poses.json"
+      ]
+    },
+    "deformation_extremes": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_JumpTakeoff-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Land-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Pickup-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Throw-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Drop-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Deposit-physical-validation.json"
+      ]
+    },
+    "contacts": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_JumpTakeoff-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Land-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Pickup-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Throw-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Drop-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Deposit-physical-validation.json"
+      ]
+    },
+    "clip_ranges": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/clip-manifest.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-contract.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-contract.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-contract.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_JumpTakeoff-contract.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Land-contract.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-contract.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-contract.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Pickup-contract.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Throw-contract.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Drop-contract.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Deposit-contract.json"
+      ]
+    },
+    "loop_seams": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-continuity.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-continuity.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-continuity.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_JumpTakeoff-continuity.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Land-continuity.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-continuity.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-continuity.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Pickup-continuity.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Throw-continuity.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Drop-continuity.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Deposit-continuity.json"
+      ]
+    },
+    "root_motion": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_JumpTakeoff-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Land-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Pickup-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Throw-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Drop-physical-validation.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Deposit-physical-validation.json"
+      ]
+    },
+    "baked_export": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/unity-import.json"
+      ]
+    },
+    "reimported_clips": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-reimport.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-reimport.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-reimport.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_JumpTakeoff-reimport.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Land-reimport.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-reimport.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-reimport.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Pickup-reimport.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Throw-reimport.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Drop-reimport.json",
+        "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Deposit-reimport.json"
+      ]
+    }
+  },
+  "critical_failures": [],
+  "human_review_required": true
+}

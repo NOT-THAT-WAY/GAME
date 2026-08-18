@@ -1,0 +1,87 @@
+{
+ "candidate_fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Pickup_candidate.fbx",
+ "master_blend": "local_work/sandbox-character-motion-object-claude-v001/checkpoints/SB_Pickup_v009.blend",
+ "action": "SB_Pickup",
+ "master": {
+  "frame_range": [
+   1,
+   24
+  ],
+  "samples": 24,
+  "bones": [
+   "BAS_PUNCH_body",
+   "BAS_PUNCH_foot.L",
+   "BAS_PUNCH_foot.R",
+   "BAS_PUNCH_forearm.L",
+   "BAS_PUNCH_forearm.R",
+   "BAS_PUNCH_hand.L",
+   "BAS_PUNCH_hand.R",
+   "BAS_PUNCH_root",
+   "BAS_PUNCH_upperarm.L",
+   "BAS_PUNCH_upperarm.R"
+  ],
+  "meshes": [
+   "BAS_PUNCH_Body",
+   "BAS_PUNCH_Fist_L",
+   "BAS_PUNCH_Fist_R",
+   "BAS_PUNCH_Foot_L",
+   "BAS_PUNCH_Foot_R",
+   "BAS_PUNCH_Forearm_L",
+   "BAS_PUNCH_Forearm_R",
+   "BAS_PUNCH_UpperArm_L",
+   "BAS_PUNCH_UpperArm_R"
+  ],
+  "triangles": 5664
+ },
+ "candidate": {
+  "frame_range": [
+   2,
+   25
+  ],
+  "samples": 24,
+  "actions": [
+   "BAS_PUNCH_Rig|SB_Pickup"
+  ],
+  "bones": [
+   "BAS_PUNCH_body",
+   "BAS_PUNCH_foot.L",
+   "BAS_PUNCH_foot.R",
+   "BAS_PUNCH_forearm.L",
+   "BAS_PUNCH_forearm.R",
+   "BAS_PUNCH_hand.L",
+   "BAS_PUNCH_hand.R",
+   "BAS_PUNCH_root",
+   "BAS_PUNCH_upperarm.L",
+   "BAS_PUNCH_upperarm.R"
+  ],
+  "meshes": [
+   "BAS_PUNCH_Body",
+   "BAS_PUNCH_Fist_L",
+   "BAS_PUNCH_Fist_R",
+   "BAS_PUNCH_Foot_L",
+   "BAS_PUNCH_Foot_R",
+   "BAS_PUNCH_Forearm_L",
+   "BAS_PUNCH_Forearm_R",
+   "BAS_PUNCH_UpperArm_L",
+   "BAS_PUNCH_UpperArm_R"
+  ],
+  "triangles": 5664,
+  "non_mesh_non_armature_objects": []
+ },
+ "best_alignment": {
+  "offset": 1,
+  "matched_frames": 24,
+  "max_position_delta_m": 3.264680847556389e-07,
+  "max_rotation_delta_deg": 0.0
+ },
+ "checks": {
+  "sample_count_equal": true,
+  "bones_equal": true,
+  "triangles_equal": true,
+  "single_action": true,
+  "no_parasites": true,
+  "pose_within_1e4_m": true,
+  "rotation_within_0p05_deg": true
+ },
+ "pass": true
+}

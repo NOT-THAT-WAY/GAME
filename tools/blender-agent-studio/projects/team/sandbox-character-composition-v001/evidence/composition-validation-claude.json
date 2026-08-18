@@ -1,0 +1,1330 @@
+{
+  "schema_version": 2,
+  "project_id": "sandbox-character-composition-v001",
+  "source": "local_work/sandbox-character-composition-v001/work/claude_L3_camera.blend",
+  "method": "all evaluated character mesh vertices after armature/modifiers, projected through the saved hero camera; every frame 1-60",
+  "coordinate_frame": "Blender world Z-up, metres; normalized camera frame x/y in [0,1]",
+  "thresholds": {
+    "safe_frame": [
+      0.06,
+      0.05,
+      0.94,
+      0.95
+    ],
+    "height_coverage": [
+      0.64,
+      0.82
+    ],
+    "width_coverage_max": 0.7,
+    "center_offset_abs_max": [
+      0.08,
+      0.08
+    ],
+    "camera_clearance_min_m": 0.08,
+    "support_plane_z_m": 0.0
+  },
+  "sample_frame_step": 1,
+  "frame_range": [
+    1,
+    60
+  ],
+  "worst": {
+    "min_left_margin": 0.246636,
+    "min_bottom_margin": 0.104535,
+    "min_right_margin": 0.24731499999999995,
+    "min_top_margin": 0.15391500000000002,
+    "height_coverage_range": [
+      0.729285,
+      0.74155
+    ],
+    "width_coverage_max": 0.50419,
+    "center_offset_abs_max": [
+      0.003823,
+      0.030822
+    ],
+    "ground_min_z_m": -7.450580596923828e-09,
+    "camera_to_character_clearance_min_m": 4.813913738375288,
+    "root_identity_max_abs": 0.0
+  },
+  "checks": {
+    "all_frames_in_safe_frame": true,
+    "all_frames_clip_clear": true,
+    "height_coverage_in_target": true,
+    "width_coverage_under_max": true,
+    "center_offset_under_max": true,
+    "ground_contact_plane_consistent": true,
+    "camera_clearance": true,
+    "root_object_identity": true,
+    "render_resolution": true,
+    "dof_disabled_for_baseline": true,
+    "runtime_export_disabled": true
+  },
+  "passed": true,
+  "critical_failures": [],
+  "frames": [
+    {
+      "bounds": [
+        0.248695,
+        0.104535,
+        0.752586,
+        0.84178
+      ],
+      "width_coverage": 0.503891,
+      "height_coverage": 0.737245,
+      "center_offset": [
+        0.000641,
+        -0.026842
+      ],
+      "depth_range_m": [
+        4.81353,
+        5.909923
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 1
+    },
+    {
+      "bounds": [
+        0.248929,
+        0.104535,
+        0.752657,
+        0.842571
+      ],
+      "width_coverage": 0.503728,
+      "height_coverage": 0.738036,
+      "center_offset": [
+        0.000793,
+        -0.026447
+      ],
+      "depth_range_m": [
+        4.814855,
+        5.910934
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 2
+    },
+    {
+      "bounds": [
+        0.249148,
+        0.104535,
+        0.752685,
+        0.8433
+      ],
+      "width_coverage": 0.503537,
+      "height_coverage": 0.738765,
+      "center_offset": [
+        0.000917,
+        -0.026082
+      ],
+      "depth_range_m": [
+        4.81623,
+        5.912014
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 3
+    },
+    {
+      "bounds": [
+        0.249347,
+        0.104535,
+        0.752668,
+        0.843956
+      ],
+      "width_coverage": 0.503321,
+      "height_coverage": 0.739421,
+      "center_offset": [
+        0.001008,
+        -0.025754
+      ],
+      "depth_range_m": [
+        4.817621,
+        5.91313
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 4
+    },
+    {
+      "bounds": [
+        0.249521,
+        0.104535,
+        0.752605,
+        0.844529
+      ],
+      "width_coverage": 0.503085,
+      "height_coverage": 0.739994,
+      "center_offset": [
+        0.001063,
+        -0.025468
+      ],
+      "depth_range_m": [
+        4.818993,
+        5.914267
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 5
+    },
+    {
+      "bounds": [
+        0.249665,
+        0.104535,
+        0.752496,
+        0.845013
+      ],
+      "width_coverage": 0.502831,
+      "height_coverage": 0.740478,
+      "center_offset": [
+        0.00108,
+        -0.025226
+      ],
+      "depth_range_m": [
+        4.820315,
+        5.915356
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 6
+    },
+    {
+      "bounds": [
+        0.249776,
+        0.104535,
+        0.752341,
+        0.845404
+      ],
+      "width_coverage": 0.502565,
+      "height_coverage": 0.740869,
+      "center_offset": [
+        0.001059,
+        -0.02503
+      ],
+      "depth_range_m": [
+        4.821558,
+        5.916393
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 7
+    },
+    {
+      "bounds": [
+        0.249853,
+        0.104535,
+        0.752141,
+        0.845703
+      ],
+      "width_coverage": 0.502288,
+      "height_coverage": 0.741167,
+      "center_offset": [
+        0.000997,
+        -0.024881
+      ],
+      "depth_range_m": [
+        4.822701,
+        5.917368
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 8
+    },
+    {
+      "bounds": [
+        0.249893,
+        0.104535,
+        0.751897,
+        0.845912
+      ],
+      "width_coverage": 0.502004,
+      "height_coverage": 0.741376,
+      "center_offset": [
+        0.000895,
+        -0.024776
+      ],
+      "depth_range_m": [
+        4.823722,
+        5.918254
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 9
+    },
+    {
+      "bounds": [
+        0.249898,
+        0.104535,
+        0.751613,
+        0.846037
+      ],
+      "width_coverage": 0.501715,
+      "height_coverage": 0.741501,
+      "center_offset": [
+        0.000755,
+        -0.024714
+      ],
+      "depth_range_m": [
+        4.824611,
+        5.91904
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 10
+    },
+    {
+      "bounds": [
+        0.249867,
+        0.104535,
+        0.751291,
+        0.846085
+      ],
+      "width_coverage": 0.501424,
+      "height_coverage": 0.74155,
+      "center_offset": [
+        0.000579,
+        -0.02469
+      ],
+      "depth_range_m": [
+        4.82536,
+        5.919719
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 11
+    },
+    {
+      "bounds": [
+        0.249802,
+        0.104535,
+        0.750935,
+        0.846067
+      ],
+      "width_coverage": 0.501133,
+      "height_coverage": 0.741531,
+      "center_offset": [
+        0.000369,
+        -0.024699
+      ],
+      "depth_range_m": [
+        4.825968,
+        5.92029
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 12
+    },
+    {
+      "bounds": [
+        0.249708,
+        0.104535,
+        0.75055,
+        0.845992
+      ],
+      "width_coverage": 0.500842,
+      "height_coverage": 0.741456,
+      "center_offset": [
+        0.000129,
+        -0.024736
+      ],
+      "depth_range_m": [
+        4.82644,
+        5.920758
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 13
+    },
+    {
+      "bounds": [
+        0.249587,
+        0.104535,
+        0.750142,
+        0.845871
+      ],
+      "width_coverage": 0.500555,
+      "height_coverage": 0.741336,
+      "center_offset": [
+        -0.000136,
+        -0.024797
+      ],
+      "depth_range_m": [
+        4.826785,
+        5.921131
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 14
+    },
+    {
+      "bounds": [
+        0.249443,
+        0.104535,
+        0.749715,
+        0.845717
+      ],
+      "width_coverage": 0.500271,
+      "height_coverage": 0.741181,
+      "center_offset": [
+        -0.000421,
+        -0.024874
+      ],
+      "depth_range_m": [
+        4.827017,
+        5.921422
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 15
+    },
+    {
+      "bounds": [
+        0.249283,
+        0.104535,
+        0.749275,
+        0.845539
+      ],
+      "width_coverage": 0.499992,
+      "height_coverage": 0.741004,
+      "center_offset": [
+        -0.000721,
+        -0.024963
+      ],
+      "depth_range_m": [
+        4.827153,
+        5.921648
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 16
+    },
+    {
+      "bounds": [
+        0.249109,
+        0.104535,
+        0.748829,
+        0.845348
+      ],
+      "width_coverage": 0.49972,
+      "height_coverage": 0.740812,
+      "center_offset": [
+        -0.001031,
+        -0.025058
+      ],
+      "depth_range_m": [
+        4.827212,
+        5.921825
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 17
+    },
+    {
+      "bounds": [
+        0.248929,
+        0.104535,
+        0.748383,
+        0.845151
+      ],
+      "width_coverage": 0.499454,
+      "height_coverage": 0.740615,
+      "center_offset": [
+        -0.001344,
+        -0.025157
+      ],
+      "depth_range_m": [
+        4.827215,
+        5.921973
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 18
+    },
+    {
+      "bounds": [
+        0.248747,
+        0.104535,
+        0.747944,
+        0.844955
+      ],
+      "width_coverage": 0.499197,
+      "height_coverage": 0.740419,
+      "center_offset": [
+        -0.001655,
+        -0.025255
+      ],
+      "depth_range_m": [
+        4.827181,
+        5.922111
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 19
+    },
+    {
+      "bounds": [
+        0.248567,
+        0.104535,
+        0.747517,
+        0.844765
+      ],
+      "width_coverage": 0.498949,
+      "height_coverage": 0.740229,
+      "center_offset": [
+        -0.001958,
+        -0.02535
+      ],
+      "depth_range_m": [
+        4.827132,
+        5.922255
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 20
+    },
+    {
+      "bounds": [
+        0.248394,
+        0.104535,
+        0.747108,
+        0.844582
+      ],
+      "width_coverage": 0.498713,
+      "height_coverage": 0.740047,
+      "center_offset": [
+        -0.002249,
+        -0.025441
+      ],
+      "depth_range_m": [
+        4.827083,
+        5.922421
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 21
+    },
+    {
+      "bounds": [
+        0.248232,
+        0.104535,
+        0.746723,
+        0.844407
+      ],
+      "width_coverage": 0.498491,
+      "height_coverage": 0.739872,
+      "center_offset": [
+        -0.002523,
+        -0.025529
+      ],
+      "depth_range_m": [
+        4.827048,
+        5.922621
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 22
+    },
+    {
+      "bounds": [
+        0.248083,
+        0.104535,
+        0.746366,
+        0.844237
+      ],
+      "width_coverage": 0.498283,
+      "height_coverage": 0.739702,
+      "center_offset": [
+        -0.002776,
+        -0.025614
+      ],
+      "depth_range_m": [
+        4.827038,
+        5.922864
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 23
+    },
+    {
+      "bounds": [
+        0.247949,
+        0.104535,
+        0.746043,
+        0.844069
+      ],
+      "width_coverage": 0.498094,
+      "height_coverage": 0.739533,
+      "center_offset": [
+        -0.003004,
+        -0.025698
+      ],
+      "depth_range_m": [
+        4.827059,
+        5.923152
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 24
+    },
+    {
+      "bounds": [
+        0.247832,
+        0.104535,
+        0.745757,
+        0.843896
+      ],
+      "width_coverage": 0.497925,
+      "height_coverage": 0.73936,
+      "center_offset": [
+        -0.003206,
+        -0.025784
+      ],
+      "depth_range_m": [
+        4.827113,
+        5.923486
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 25
+    },
+    {
+      "bounds": [
+        0.247731,
+        0.104535,
+        0.74551,
+        0.843711
+      ],
+      "width_coverage": 0.497779,
+      "height_coverage": 0.739176,
+      "center_offset": [
+        -0.003379,
+        -0.025877
+      ],
+      "depth_range_m": [
+        4.827195,
+        5.923858
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 26
+    },
+    {
+      "bounds": [
+        0.247647,
+        0.104535,
+        0.745306,
+        0.843507
+      ],
+      "width_coverage": 0.497659,
+      "height_coverage": 0.738971,
+      "center_offset": [
+        -0.003524,
+        -0.025979
+      ],
+      "depth_range_m": [
+        4.827297,
+        5.924258
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 27
+    },
+    {
+      "bounds": [
+        0.247578,
+        0.104535,
+        0.745146,
+        0.843275
+      ],
+      "width_coverage": 0.497568,
+      "height_coverage": 0.738739,
+      "center_offset": [
+        -0.003638,
+        -0.026095
+      ],
+      "depth_range_m": [
+        4.827408,
+        5.924673
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 28
+    },
+    {
+      "bounds": [
+        0.247521,
+        0.104535,
+        0.74503,
+        0.843008
+      ],
+      "width_coverage": 0.497509,
+      "height_coverage": 0.738472,
+      "center_offset": [
+        -0.003724,
+        -0.026228
+      ],
+      "depth_range_m": [
+        4.827511,
+        5.925082
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 29
+    },
+    {
+      "bounds": [
+        0.247476,
+        0.104535,
+        0.744959,
+        0.842698
+      ],
+      "width_coverage": 0.497483,
+      "height_coverage": 0.738163,
+      "center_offset": [
+        -0.003783,
+        -0.026383
+      ],
+      "depth_range_m": [
+        4.827588,
+        5.925464
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 30
+    },
+    {
+      "bounds": [
+        0.247438,
+        0.104535,
+        0.744932,
+        0.84234
+      ],
+      "width_coverage": 0.497493,
+      "height_coverage": 0.737805,
+      "center_offset": [
+        -0.003815,
+        -0.026562
+      ],
+      "depth_range_m": [
+        4.827618,
+        5.925797
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 31
+    },
+    {
+      "bounds": [
+        0.247406,
+        0.104535,
+        0.744948,
+        0.841931
+      ],
+      "width_coverage": 0.497542,
+      "height_coverage": 0.737395,
+      "center_offset": [
+        -0.003823,
+        -0.026767
+      ],
+      "depth_range_m": [
+        4.827581,
+        5.926056
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 32
+    },
+    {
+      "bounds": [
+        0.247376,
+        0.104535,
+        0.745006,
+        0.841467
+      ],
+      "width_coverage": 0.49763,
+      "height_coverage": 0.736932,
+      "center_offset": [
+        -0.003809,
+        -0.026999
+      ],
+      "depth_range_m": [
+        4.827456,
+        5.926218
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 33
+    },
+    {
+      "bounds": [
+        0.247344,
+        0.104535,
+        0.745102,
+        0.840951
+      ],
+      "width_coverage": 0.497758,
+      "height_coverage": 0.736416,
+      "center_offset": [
+        -0.003777,
+        -0.027257
+      ],
+      "depth_range_m": [
+        4.827223,
+        5.92626
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 34
+    },
+    {
+      "bounds": [
+        0.24731,
+        0.104535,
+        0.745236,
+        0.840385
+      ],
+      "width_coverage": 0.497926,
+      "height_coverage": 0.73585,
+      "center_offset": [
+        -0.003727,
+        -0.02754
+      ],
+      "depth_range_m": [
+        4.826866,
+        5.926164
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 35
+    },
+    {
+      "bounds": [
+        0.247271,
+        0.104535,
+        0.745404,
+        0.839776
+      ],
+      "width_coverage": 0.498133,
+      "height_coverage": 0.73524,
+      "center_offset": [
+        -0.003662,
+        -0.027845
+      ],
+      "depth_range_m": [
+        4.826373,
+        5.925913
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 36
+    },
+    {
+      "bounds": [
+        0.247226,
+        0.104535,
+        0.745604,
+        0.839131
+      ],
+      "width_coverage": 0.498378,
+      "height_coverage": 0.734595,
+      "center_offset": [
+        -0.003585,
+        -0.028167
+      ],
+      "depth_range_m": [
+        4.825736,
+        5.925496
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 37
+    },
+    {
+      "bounds": [
+        0.247173,
+        0.104535,
+        0.745832,
+        0.838462
+      ],
+      "width_coverage": 0.498659,
+      "height_coverage": 0.733927,
+      "center_offset": [
+        -0.003497,
+        -0.028501
+      ],
+      "depth_range_m": [
+        4.82495,
+        5.924908
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 38
+    },
+    {
+      "bounds": [
+        0.247114,
+        0.104535,
+        0.746086,
+        0.837783
+      ],
+      "width_coverage": 0.498971,
+      "height_coverage": 0.733247,
+      "center_offset": [
+        -0.0034,
+        -0.028841
+      ],
+      "depth_range_m": [
+        4.82402,
+        5.924148
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 39
+    },
+    {
+      "bounds": [
+        0.247049,
+        0.104535,
+        0.746362,
+        0.837108
+      ],
+      "width_coverage": 0.499313,
+      "height_coverage": 0.732573,
+      "center_offset": [
+        -0.003294,
+        -0.029178
+      ],
+      "depth_range_m": [
+        4.822954,
+        5.923223
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 40
+    },
+    {
+      "bounds": [
+        0.24698,
+        0.104535,
+        0.746658,
+        0.836454
+      ],
+      "width_coverage": 0.499678,
+      "height_coverage": 0.731919,
+      "center_offset": [
+        -0.003181,
+        -0.029505
+      ],
+      "depth_range_m": [
+        4.821767,
+        5.922145
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 41
+    },
+    {
+      "bounds": [
+        0.246909,
+        0.104535,
+        0.746971,
+        0.835838
+      ],
+      "width_coverage": 0.500062,
+      "height_coverage": 0.731302,
+      "center_offset": [
+        -0.00306,
+        -0.029813
+      ],
+      "depth_range_m": [
+        4.820478,
+        5.920933
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 42
+    },
+    {
+      "bounds": [
+        0.246839,
+        0.104535,
+        0.747298,
+        0.835276
+      ],
+      "width_coverage": 0.500459,
+      "height_coverage": 0.730741,
+      "center_offset": [
+        -0.002931,
+        -0.030094
+      ],
+      "depth_range_m": [
+        4.819113,
+        5.919611
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 43
+    },
+    {
+      "bounds": [
+        0.246774,
+        0.104535,
+        0.747637,
+        0.834786
+      ],
+      "width_coverage": 0.500863,
+      "height_coverage": 0.730251,
+      "center_offset": [
+        -0.002794,
+        -0.030339
+      ],
+      "depth_range_m": [
+        4.817701,
+        5.918206
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 44
+    },
+    {
+      "bounds": [
+        0.246718,
+        0.104535,
+        0.747985,
+        0.834384
+      ],
+      "width_coverage": 0.501268,
+      "height_coverage": 0.729848,
+      "center_offset": [
+        -0.002648,
+        -0.030541
+      ],
+      "depth_range_m": [
+        4.816276,
+        5.916751
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 45
+    },
+    {
+      "bounds": [
+        0.246673,
+        0.104535,
+        0.74834,
+        0.834081
+      ],
+      "width_coverage": 0.501667,
+      "height_coverage": 0.729546,
+      "center_offset": [
+        -0.002493,
+        -0.030692
+      ],
+      "depth_range_m": [
+        4.814872,
+        5.915281
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 46
+    },
+    {
+      "bounds": [
+        0.246645,
+        0.104535,
+        0.748699,
+        0.83389
+      ],
+      "width_coverage": 0.502054,
+      "height_coverage": 0.729355,
+      "center_offset": [
+        -0.002328,
+        -0.030787
+      ],
+      "depth_range_m": [
+        4.813527,
+        5.913834
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 47
+    },
+    {
+      "bounds": [
+        0.246636,
+        0.104535,
+        0.749059,
+        0.83382
+      ],
+      "width_coverage": 0.502423,
+      "height_coverage": 0.729285,
+      "center_offset": [
+        -0.002152,
+        -0.030822
+      ],
+      "depth_range_m": [
+        4.812274,
+        5.912444
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 48
+    },
+    {
+      "bounds": [
+        0.246651,
+        0.104535,
+        0.749419,
+        0.833876
+      ],
+      "width_coverage": 0.502768,
+      "height_coverage": 0.72934,
+      "center_offset": [
+        -0.001965,
+        -0.030794
+      ],
+      "depth_range_m": [
+        4.811149,
+        5.911149
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 49
+    },
+    {
+      "bounds": [
+        0.246691,
+        0.104535,
+        0.749775,
+        0.834059
+      ],
+      "width_coverage": 0.503084,
+      "height_coverage": 0.729523,
+      "center_offset": [
+        -0.001767,
+        -0.030703
+      ],
+      "depth_range_m": [
+        4.810183,
+        5.90998
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 50
+    },
+    {
+      "bounds": [
+        0.246759,
+        0.104535,
+        0.750125,
+        0.834367
+      ],
+      "width_coverage": 0.503366,
+      "height_coverage": 0.729831,
+      "center_offset": [
+        -0.001558,
+        -0.030549
+      ],
+      "depth_range_m": [
+        4.809403,
+        5.908968
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 51
+    },
+    {
+      "bounds": [
+        0.246855,
+        0.104535,
+        0.750465,
+        0.834795
+      ],
+      "width_coverage": 0.50361,
+      "height_coverage": 0.73026,
+      "center_offset": [
+        -0.00134,
+        -0.030335
+      ],
+      "depth_range_m": [
+        4.808832,
+        5.908138
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 52
+    },
+    {
+      "bounds": [
+        0.24698,
+        0.104535,
+        0.750794,
+        0.835335
+      ],
+      "width_coverage": 0.503814,
+      "height_coverage": 0.7308,
+      "center_offset": [
+        -0.001113,
+        -0.030065
+      ],
+      "depth_range_m": [
+        4.808485,
+        5.907509
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 53
+    },
+    {
+      "bounds": [
+        0.247132,
+        0.104535,
+        0.751107,
+        0.835974
+      ],
+      "width_coverage": 0.503975,
+      "height_coverage": 0.731439,
+      "center_offset": [
+        -0.00088,
+        -0.029745
+      ],
+      "depth_range_m": [
+        4.808372,
+        5.907094
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 54
+    },
+    {
+      "bounds": [
+        0.24731,
+        0.104535,
+        0.751401,
+        0.836698
+      ],
+      "width_coverage": 0.504091,
+      "height_coverage": 0.732163,
+      "center_offset": [
+        -0.000644,
+        -0.029383
+      ],
+      "depth_range_m": [
+        4.808496,
+        5.9069
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 55
+    },
+    {
+      "bounds": [
+        0.247511,
+        0.104535,
+        0.751674,
+        0.837489
+      ],
+      "width_coverage": 0.504163,
+      "height_coverage": 0.732954,
+      "center_offset": [
+        -0.000408,
+        -0.028988
+      ],
+      "depth_range_m": [
+        4.808853,
+        5.906927
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 56
+    },
+    {
+      "bounds": [
+        0.247731,
+        0.104535,
+        0.75192,
+        0.838329
+      ],
+      "width_coverage": 0.50419,
+      "height_coverage": 0.733794,
+      "center_offset": [
+        -0.000175,
+        -0.028568
+      ],
+      "depth_range_m": [
+        4.809432,
+        5.907167
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 57
+    },
+    {
+      "bounds": [
+        0.247964,
+        0.104535,
+        0.752138,
+        0.839198
+      ],
+      "width_coverage": 0.504174,
+      "height_coverage": 0.734662,
+      "center_offset": [
+        5.1e-05,
+        -0.028133
+      ],
+      "depth_range_m": [
+        4.810214,
+        5.907609
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 58
+    },
+    {
+      "bounds": [
+        0.248207,
+        0.104535,
+        0.752324,
+        0.840075
+      ],
+      "width_coverage": 0.504117,
+      "height_coverage": 0.73554,
+      "center_offset": [
+        0.000265,
+        -0.027695
+      ],
+      "depth_range_m": [
+        4.811177,
+        5.908231
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 59
+    },
+    {
+      "bounds": [
+        0.248453,
+        0.104535,
+        0.752474,
+        0.840943
+      ],
+      "width_coverage": 0.504022,
+      "height_coverage": 0.736407,
+      "center_offset": [
+        0.000463,
+        -0.027261
+      ],
+      "depth_range_m": [
+        4.812294,
+        5.909012
+      ],
+      "safe_frame": true,
+      "clip_clear": true,
+      "frame": 60
+    }
+  ],
+  "limitations": [
+    "This validates technical composition and contact visibility, not final artistic taste.",
+    "Ray-based occlusion is confirmed by the rendered hero/front/profile gates, not inferred from projection alone."
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "question": "Is Body/UpperArm intersection a source-design socket or an SB_Idle defect?",
+  "method": "signed distance of limb vertices against the body's nearest-surface normal, evaluated geometry; rest baseline taken from the untouched source FBX with the Punch action detached",
+  "source_fbx": "Assets/_Project/Player/PersoBouleRigged.fbx",
+  "master_blend": "local_work/sandbox-character-animation-v001/work/sandbox_character_SB_Idle_master.blend",
+  "rest_baseline": {
+    "BAS_PUNCH_UpperArm_L": {
+      "vertices_inside_body": 102,
+      "vertex_count": 388,
+      "deepest_penetration_m": 0.148885,
+      "overlap_triangle_pairs": 118
+    },
+    "BAS_PUNCH_UpperArm_R": {
+      "vertices_inside_body": 102,
+      "vertex_count": 388,
+      "deepest_penetration_m": 0.148885,
+      "overlap_triangle_pairs": 114
+    },
+    "BAS_PUNCH_Forearm_L": {
+      "vertices_inside_body": 0,
+      "vertex_count": 388,
+      "deepest_penetration_m": 0.0,
+      "overlap_triangle_pairs": 0
+    },
+    "BAS_PUNCH_Forearm_R": {
+      "vertices_inside_body": 0,
+      "vertex_count": 388,
+      "deepest_penetration_m": 0.0,
+      "overlap_triangle_pairs": 0
+    },
+    "BAS_PUNCH_Fist_L": {
+      "vertices_inside_body": 0,
+      "vertex_count": 128,
+      "deepest_penetration_m": 0.0,
+      "overlap_triangle_pairs": 0
+    },
+    "BAS_PUNCH_Fist_R": {
+      "vertices_inside_body": 0,
+      "vertex_count": 128,
+      "deepest_penetration_m": 0.0,
+      "overlap_triangle_pairs": 0
+    },
+    "BAS_PUNCH_Foot_L": {
+      "vertices_inside_body": 0,
+      "vertex_count": 178,
+      "deepest_penetration_m": 0.0,
+      "overlap_triangle_pairs": 0
+    },
+    "BAS_PUNCH_Foot_R": {
+      "vertices_inside_body": 0,
+      "vertex_count": 178,
+      "deepest_penetration_m": 0.0,
+      "overlap_triangle_pairs": 0
+    }
+  },
+  "comparison": {
+    "BAS_PUNCH_UpperArm_L": {
+      "rest_deepest_m": 0.148885,
+      "rest_vertices_inside": 102,
+      "rest_overlap_tris": 118,
+      "animated_deepest_m": 0.148883,
+      "animated_worst_frame": 33,
+      "animated_max_vertices_inside": 102,
+      "delta_vs_rest_m": -2e-06,
+      "socketed_at_rest": true
+    },
+    "BAS_PUNCH_UpperArm_R": {
+      "rest_deepest_m": 0.148885,
+      "rest_vertices_inside": 102,
+      "rest_overlap_tris": 114,
+      "animated_deepest_m": 0.148887,
+      "animated_worst_frame": 36,
+      "animated_max_vertices_inside": 102,
+      "delta_vs_rest_m": 2e-06,
+      "socketed_at_rest": true
+    },
+    "BAS_PUNCH_Forearm_L": {
+      "rest_deepest_m": 0.0,
+      "rest_vertices_inside": 0,
+      "rest_overlap_tris": 0,
+      "animated_deepest_m": 0.0,
+      "animated_worst_frame": 60,
+      "animated_max_vertices_inside": 0,
+      "delta_vs_rest_m": 0.0,
+      "socketed_at_rest": false
+    },
+    "BAS_PUNCH_Forearm_R": {
+      "rest_deepest_m": 0.0,
+      "rest_vertices_inside": 0,
+      "rest_overlap_tris": 0,
+      "animated_deepest_m": 0.0,
+      "animated_worst_frame": 60,
+      "animated_max_vertices_inside": 0,
+      "delta_vs_rest_m": 0.0,
+      "socketed_at_rest": false
+    },
+    "BAS_PUNCH_Fist_L": {
+      "rest_deepest_m": 0.0,
+      "rest_vertices_inside": 0,
+      "rest_overlap_tris": 0,
+      "animated_deepest_m": 0.0,
+      "animated_worst_frame": 60,
+      "animated_max_vertices_inside": 0,
+      "delta_vs_rest_m": 0.0,
+      "socketed_at_rest": false
+    },
+    "BAS_PUNCH_Fist_R": {
+      "rest_deepest_m": 0.0,
+      "rest_vertices_inside": 0,
+      "rest_overlap_tris": 0,
+      "animated_deepest_m": 0.0,
+      "animated_worst_frame": 60,
+      "animated_max_vertices_inside": 0,
+      "delta_vs_rest_m": 0.0,
+      "socketed_at_rest": false
+    },
+    "BAS_PUNCH_Foot_L": {
+      "rest_deepest_m": 0.0,
+      "rest_vertices_inside": 0,
+      "rest_overlap_tris": 0,
+      "animated_deepest_m": 0.0,
+      "animated_worst_frame": 60,
+      "animated_max_vertices_inside": 0,
+      "delta_vs_rest_m": 0.0,
+      "socketed_at_rest": false
+    },
+    "BAS_PUNCH_Foot_R": {
+      "rest_deepest_m": 0.0,
+      "rest_vertices_inside": 0,
+      "rest_overlap_tris": 0,
+      "animated_deepest_m": 0.0,
+      "animated_worst_frame": 60,
+      "animated_max_vertices_inside": 0,
+      "delta_vs_rest_m": 0.0,
+      "socketed_at_rest": false
+    }
+  },
+  "verdict": {
+    "socketed_by_design": [
+      "BAS_PUNCH_UpperArm_L",
+      "BAS_PUNCH_UpperArm_R"
+    ],
+    "clear_by_design": [
+      "BAS_PUNCH_Forearm_L",
+      "BAS_PUNCH_Forearm_R",
+      "BAS_PUNCH_Fist_L",
+      "BAS_PUNCH_Fist_R",
+      "BAS_PUNCH_Foot_L",
+      "BAS_PUNCH_Foot_R"
+    ],
+    "deepened_by_animation_m": {
+      "BAS_PUNCH_UpperArm_L": -2e-06,
+      "BAS_PUNCH_UpperArm_R": 2e-06,
+      "BAS_PUNCH_Forearm_L": 0.0,
+      "BAS_PUNCH_Forearm_R": 0.0,
+      "BAS_PUNCH_Fist_L": 0.0,
+      "BAS_PUNCH_Fist_R": 0.0,
+      "BAS_PUNCH_Foot_L": 0.0,
+      "BAS_PUNCH_Foot_R": 0.0
+    },
+    "max_deepening_m": 2e-06
+  }
+}

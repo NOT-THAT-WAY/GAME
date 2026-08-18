@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-composition-v001",
+  "objective": "Construire une composition Blender neutre et vérifiée autour du personnage sandbox et de SB_Idle, puis fournir à Claude une scène de handoff créatif sans modifier le rig, l'animation ou les assets Unity.",
+  "target": "Blender 5.1.1, revue design 1920x1080, handoff Claude; aucune livraison Unity runtime",
+  "audience_or_player": "Claude pour la direction artistique créative, puis l'équipe GAME pour une revue visuelle humaine.",
+  "usage_and_viewing_distance": "Revue desktop 1920x1080 et lecture en vignette. Le personnage entier, les yeux, les poings, les pieds et le contact au sol doivent rester lisibles dans le plan hero.",
+  "deliverables": [
+    "copie de présentation .blend dans local_work/sandbox-character-composition-v001/work/",
+    "rendu hero neutre 1920x1080 PNG",
+    "contact sheet de cadrage hero/front/profil et poses de la boucle",
+    "preview MP4 d'une boucle SB_Idle depuis la caméra hero",
+    "audit de scène, validation de composition sur 60 images et réglages de rendu",
+    "handoff Claude qui sépare les invariants verrouillés des choix artistiques ouverts"
+  ],
+  "identity_invariants": [
+    "les 10 objets du personnage, leurs noms BAS_PUNCH_*, leurs données, matériaux et parents restent inchangés",
+    "les Actions SB_Idle et BAS_PUNCH_Rig|BAS_PUNCH_Rig|BAS_PUNCH_punch restent inchangées",
+    "le volume sphérique, les proportions, l'orientation faciale -Y Blender et la hauteur de 1,34 m restent inchangés",
+    "le master SB_Idle et Assets/_Project/Player/PersoBouleRigged.fbx restent immuables",
+    "tous les nouveaux objets et datablocks portent le préfixe BAS_SANDBOX_CHARACTER_COMPOSITION_V001_"
+  ],
+  "physical_invariants": [
+    "le sol de présentation est réellement à Z=0 et coïncide avec les semelles plantées",
+    "le root et l'objet armature restent à l'identité sur toute la plage 1-60",
+    "aucun nouvel objet de présentation ne pénètre le personnage",
+    "aucune caméra ne clippe la géométrie du personnage",
+    "la scène de présentation ne contient aucun collider ni règle gameplay"
+  ],
+  "explicit_non_goals": [
+    "direction artistique finale, palette définitive, redesign matière ou redesign du personnage",
+    "modification du mesh, du rig, des poids, de SB_Idle ou création de SB_Walk",
+    "export FBX, remplacement d'un asset Unity ou modification d'un .meta",
+    "commit, push, publication ou redistribution d'un binaire",
+    "profondeur de champ, bloom, grain, motion blur ou FX destinés à masquer un défaut de composition"
+  ],
+  "acceptance_criteria": [
+    "la composition vit dans une copie séparée et le hash du master source reste identique",
+    "la caméra hero garde tout le personnage dans le safe frame sur chacune des 60 images",
+    "les vues hero, face et profil montrent le contact au sol, les yeux et la silhouette sans clipping",
+    "la lumière neutre est séparée par rôles key/fill/rim et reste remplaçable",
+    "le rendu, la contact sheet, la preview et les diagnostics sont produits et vérifiés",
+    "Claude reçoit une carte précise des collections, caméras et libertés créatives, avec les invariants P0-P2 explicitement verrouillés"
+  ],
+  "creative_pass": {
+    "author": "Claude",
+    "direction": "arena-echo",
+    "intent": "La mascotte se tient dans son terrain de jeu : un sol d'arène chaud éclairé par-dessus, un fond froid qui recule, et l'orange de la zone de dépôt qui revient en accent au dos du personnage.",
+    "decided_by_human": [
+      "direction = écho de l'arène",
+      "contrat de cadrage = inchangé (centré, sans DOF)"
+    ],
+    "locked_and_untouched": [
+      "personnage",
+      "rig",
+      "Actions",
+      "matériaux du personnage",
+      "master d'animation",
+      "assets Unity"
+    ]
+  }
+}

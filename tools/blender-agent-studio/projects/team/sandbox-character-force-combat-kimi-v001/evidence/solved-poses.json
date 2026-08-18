@@ -1,0 +1,246 @@
+{
+ "guard": {
+  "body_rx_deg": 13.703986639007931,
+  "upperarm": [
+   -72.5038,
+   8.1512,
+   -34.0082
+  ],
+  "forearm": [
+   -14.5925,
+   10.1051,
+   18.8449
+  ],
+  "fist_left": [
+   0.5435624122619629,
+   -0.7676364779472351,
+   0.8492211699485779
+  ],
+  "fist_right": [
+   -0.5435624718666077,
+   -0.7676364183425903,
+   0.8492212295532227
+  ],
+  "target_left": [
+   0.5,
+   -0.7200000286102295,
+   0.8999999761581421
+  ],
+  "residual_to_target_m": 0.08213039704714964,
+  "body_collision_depth_m": 0.0,
+  "verified_at_full_resolution": true,
+  "envelope_residuals": {
+   "rock": {
+    "-0.16": {
+     "left_signed_distance_m": 0.3735624016692562,
+     "right_signed_distance_m": 0.053562477148395016
+    },
+    "+0.00": {
+     "left_signed_distance_m": 0.21356241292117217,
+     "right_signed_distance_m": 0.21356247397364858
+    },
+    "+0.16": {
+     "left_signed_distance_m": 0.053562418465235115,
+     "right_signed_distance_m": 0.37356246150327566
+    }
+   },
+   "trophy": {
+    "-0.16": {
+     "left_signed_distance_m": 0.3135624230232471,
+     "right_signed_distance_m": -0.006437524687498808
+    },
+    "+0.00": {
+     "left_signed_distance_m": 0.15356240930698187,
+     "right_signed_distance_m": 0.15356246995479242
+    },
+    "+0.16": {
+     "left_signed_distance_m": -0.006437584292143583,
+     "right_signed_distance_m": 0.31356248242593177
+    }
+   }
+  }
+ },
+ "punch": {
+  "body_rx_deg": 22.918311805232932,
+  "upperarm": [
+   -88.8085,
+   16.4532,
+   -36.9065
+  ],
+  "forearm": [
+   -2.3276,
+   14.682,
+   -14.3239
+  ],
+  "fist_left": [
+   0.320061057806015,
+   -0.7852189540863037,
+   0.860338568687439
+  ],
+  "fist_right": [
+   -0.3200610876083374,
+   -0.7852189540863037,
+   0.8603383898735046
+  ],
+  "target_left": [
+   0.11999999731779099,
+   -0.949999988079071,
+   0.8799999952316284
+  ],
+  "residual_to_target_m": 0.25993035081983457,
+  "body_collision_depth_m": 0.0,
+  "verified_at_full_resolution": true,
+  "envelope_residuals": {
+   "rock": {
+    "-0.16": {
+     "left_signed_distance_m": 0.15006105427162758,
+     "right_signed_distance_m": -0.10978104919195175
+    },
+    "+0.00": {
+     "left_signed_distance_m": -0.009938942268490791,
+     "right_signed_distance_m": -0.009938912466168404
+    },
+    "+0.16": {
+     "left_signed_distance_m": -0.10978104919195175,
+     "right_signed_distance_m": 0.15006108530307952
+    }
+   },
+   "trophy": {
+    "-0.16": {
+     "left_signed_distance_m": 0.09006105452290204,
+     "right_signed_distance_m": -0.22993890941143036
+    },
+    "+0.00": {
+     "left_signed_distance_m": -0.06993894279003143,
+     "right_signed_distance_m": -0.06993891298770905
+    },
+    "+0.16": {
+     "left_signed_distance_m": -0.22993893921375275,
+     "right_signed_distance_m": 0.09006108554593699
+    }
+   }
+  }
+ },
+ "push": {
+  "body_rx_deg": 26.427678300409223,
+  "upperarm": [
+   -91.6732,
+   18.3346,
+   -35.3085
+  ],
+  "forearm": [
+   -17.9586,
+   27.4304,
+   10.3491
+  ],
+  "fist_left": [
+   0.4576623737812042,
+   -0.87608802318573,
+   0.9262313842773438
+  ],
+  "fist_right": [
+   -0.45766255259513855,
+   -0.8760882019996643,
+   0.9262315630912781
+  ],
+  "target_left": [
+   0.4000000059604645,
+   -0.8199999928474426,
+   1.0
+  ],
+  "residual_to_target_m": 0.10914497049571695,
+  "body_collision_depth_m": 0.0,
+  "verified_at_full_resolution": true,
+  "envelope_residuals": {
+   "rock": {
+    "-0.16": {
+     "left_signed_distance_m": 0.2876623628164717,
+     "right_signed_distance_m": -0.018911803141236305
+    },
+    "+0.00": {
+     "left_signed_distance_m": 0.12766237212714135,
+     "right_signed_distance_m": 0.1276625545070184
+    },
+    "+0.16": {
+     "left_signed_distance_m": -0.01891198195517063,
+     "right_signed_distance_m": 0.28766253116925594
+    }
+   },
+   "trophy": {
+    "-0.16": {
+     "left_signed_distance_m": 0.22766236823925431,
+     "right_signed_distance_m": -0.09233744442462921
+    },
+    "+0.00": {
+     "left_signed_distance_m": 0.06766237439876487,
+     "right_signed_distance_m": 0.06766255333392002
+    },
+    "+0.16": {
+     "left_signed_distance_m": -0.09233762323856354,
+     "right_signed_distance_m": 0.22766254823464574
+    }
+   }
+  }
+ },
+ "splay": {
+  "body_rx_deg": 0.0,
+  "upperarm": [
+   -11.4592,
+   -3.2229,
+   -14.503
+  ],
+  "forearm": [
+   1.88,
+   -18.263,
+   -1.88
+  ],
+  "fist_left": [
+   0.7790811061859131,
+   -0.2784697115421295,
+   0.4227186143398285
+  ],
+  "fist_right": [
+   -0.7790809273719788,
+   -0.27846962213516235,
+   0.42271846532821655
+  ],
+  "target_left": [
+   0.7799999713897705,
+   -0.2800000011920929,
+   0.41999998688697815
+  ],
+  "residual_to_target_m": 0.003252235354338278,
+  "body_collision_depth_m": 0.0,
+  "verified_at_full_resolution": true,
+  "envelope_residuals": {
+   "rock": {
+    "-0.16": {
+     "left_signed_distance_m": 0.6257848029327495,
+     "right_signed_distance_m": 0.3227919773957453
+    },
+    "+0.00": {
+     "left_signed_distance_m": 0.4714877190111813,
+     "right_signed_distance_m": 0.4714875995064294
+    },
+    "+0.16": {
+     "left_signed_distance_m": 0.3227920596242139,
+     "right_signed_distance_m": 0.625784653363873
+    }
+   },
+   "trophy": {
+    "-0.16": {
+     "left_signed_distance_m": 0.5511130276777525,
+     "right_signed_distance_m": 0.2339094186809017
+    },
+    "+0.00": {
+     "left_signed_distance_m": 0.3919434217612394,
+     "right_signed_distance_m": 0.3919432687955329
+    },
+    "+0.16": {
+     "left_signed_distance_m": 0.23390956350982034,
+     "right_signed_distance_m": 0.5511128512950425
+    }
+   }
+  }
+ }
+}

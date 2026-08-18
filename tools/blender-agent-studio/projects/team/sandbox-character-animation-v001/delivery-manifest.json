@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-animation-v001",
+  "files": [
+    {
+      "role": "master_blend",
+      "path": "local_work/sandbox-character-animation-v001/work/sandbox_character_SB_Idle_master.blend",
+      "bytes": 221394,
+      "sha256": "864807e970705bf44a1c3dcbcfaac85102458917a5c8ccec90f5f36728590464",
+      "extension": ".blend",
+      "status": "validated"
+    },
+    {
+      "role": "candidate_fbx",
+      "path": "local_work/sandbox-character-animation-v001/exports/SB_Idle_candidate.fbx",
+      "bytes": 364876,
+      "sha256": "69eea5a6004a9191f30d6fcfda3689203d4c10f4e0842a4e5a856788bcf4cb31",
+      "extension": ".fbx",
+      "status": "validated"
+    },
+    {
+      "role": "contact_sheet",
+      "path": "local_work/sandbox-character-animation-v001/renders/contact-sheet-SB_Idle.png",
+      "bytes": 3833348,
+      "sha256": "4f2d1f522864f49452af5d98d731a7fe9e7670ec5fa3247f5fae89b289f21cf8",
+      "extension": ".png",
+      "status": "validated"
+    },
+    {
+      "role": "seam_strip",
+      "path": "local_work/sandbox-character-animation-v001/renders/seam-strip-SB_Idle.png",
+      "bytes": 952937,
+      "sha256": "4a44a491ec7b59e45c2b179b960fd3b4cfc7344efa5f744ddaa87f22dd021c9f",
+      "extension": ".png",
+      "status": "validated"
+    },
+    {
+      "role": "playblast",
+      "path": "local_work/sandbox-character-animation-v001/renders/playblast-SB_Idle-loop-x4.mp4",
+      "bytes": 795565,
+      "sha256": "077d7992230303fa41c6a9c5e1fc793f164d4d0e3314d5632a7eb574389a4a78",
+      "extension": ".mp4",
+      "status": "validated"
+    },
+    {
+      "role": "clip_manifest",
+      "path": "projects/team/sandbox-character-animation-v001/evidence/clip-manifest.json",
+      "bytes": 3025,
+      "sha256": "fde491bddbcaa13458bcc758d272a5807846f39944df28f81dd65942d4036ee3",
+      "extension": ".json",
+      "status": "validated"
+    },
+    {
+      "role": "target_engine_import",
+      "path": "projects/team/sandbox-character-animation-v001/evidence/unity-import.json",
+      "bytes": 3188,
+      "sha256": "dd759175ba4c2b33ecdf6d8f31ed326605273eee8325620628c7de6e0d896d4e",
+      "extension": ".json",
+      "status": "validated"
+    },
+    {
+      "role": "playblast_probe",
+      "path": "projects/team/sandbox-character-animation-v001/evidence/playblast-probe.json",
+      "bytes": 2712,
+      "sha256": "6ec10fef2ec87ce3784526529f6881516255fef2767629c9f13bde1e7e60ec37",
+      "extension": ".json",
+      "status": "validated"
+    },
+    {
+      "role": "reimport_evidence",
+      "path": "projects/team/sandbox-character-animation-v001/evidence/blender-reimport.json",
+      "bytes": 4133,
+      "sha256": "194eb1b999e4522d8615b1c4bb02ef602b053d1a1806ad80304fe422dd37c164",
+      "extension": ".json",
+      "status": "validated"
+    },
+    {
+      "role": "rig_audit",
+      "path": "projects/team/sandbox-character-animation-v001/evidence/skeleton-audit.json",
+      "bytes": 24701,
+      "sha256": "e5725f98c544f8a90cec5ce3f373a3b5b73a592dd78ad2953e33343fe8a92ddf",
+      "extension": ".json",
+      "status": "validated"
+    },
+    {
+      "role": "weights_audit",
+      "path": "projects/team/sandbox-character-animation-v001/evidence/weights-audit.json",
+      "bytes": 3374,
+      "sha256": "2a09b37c0e9bcd37957090c8f360b7556aac12501528cc597b735f0986a5679f",
+      "extension": ".json",
+      "status": "validated"
+    },
+    {
+      "role": "physical_validation",
+      "path": "projects/team/sandbox-character-animation-v001/evidence/physical-validation.json",
+      "bytes": 28788,
+      "sha256": "a5517e18e408c55d241cc528c766e14f1e16647c35075757b719a4107321ce8c",
+      "extension": ".json",
+      "status": "validated"
+    }
+  ],
+  "target_validation": {
+    "status": "passed",
+    "target": "Unity 6000.3.20f1, rig Generic, Windows x86_64 IL2CPP",
+    "evidence": [
+      "projects/team/sandbox-character-animation-v001/evidence/unity-import.json",
+      "projects/team/sandbox-character-animation-v001/evidence/unity-import-log-excerpt.txt"
+    ],
+    "notes": "Import temporaire sous Assets/_GeneratedLocal/SandboxAnimTemp/ (ignore par Git), supprime apres controle. Assets/_Project/Player/PersoBouleRigged.fbx jamais remplace (SHA-256 identique avant/apres). Aucun warning d import imputable au FBX."
+  },
+  "rights_review": {
+    "status": "passed",
+    "notes": "Aucun asset externe. Tout derive de Assets/_Project/Player/PersoBouleRigged.fbx, propriete du projet GAME. Aucun coffre prive utilise, aucun asset catalogue materialise."
+  },
+  "updated_at": "2026-08-15T19:10:17.095054+00:00"
+}

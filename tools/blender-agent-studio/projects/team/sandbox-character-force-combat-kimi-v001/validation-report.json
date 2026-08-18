@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-08-16T18:21:04.018340+00:00",
+  "project_id": "sandbox-character-force-combat-kimi-v001",
+  "project_type": "animation",
+  "stage": "final",
+  "package_valid": false,
+  "verified_delivery_files": 25,
+  "errors": [
+    "delivery_size_mismatch:local_work/sandbox-character-force-combat-kimi-v001/work/sandbox_character_kimi_force_combat_master.blend"
+  ],
+  "warnings": []
+}

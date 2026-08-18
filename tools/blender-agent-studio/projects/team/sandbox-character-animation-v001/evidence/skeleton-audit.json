@@ -1,0 +1,1306 @@
+{
+  "source": "Assets/_Project/Player/PersoBouleRigged.fbx",
+  "blender": "5.1.1",
+  "scene": {
+    "fps": 24,
+    "fps_base": 1.0,
+    "effective_fps": 24.0,
+    "frame_start": 1,
+    "frame_end": 250,
+    "unit_system": "METRIC",
+    "scale_length": 1.0
+  },
+  "objects": [
+    {
+      "name": "BAS_PUNCH_Body",
+      "type": "MESH",
+      "parent": "BAS_PUNCH_Rig",
+      "parent_type": "OBJECT",
+      "location": [
+        0.0,
+        -0.0,
+        0.78
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.78
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "modifiers": [
+        {
+          "name": "BAS_PUNCH_Rig",
+          "type": "ARMATURE",
+          "object": "BAS_PUNCH_Rig"
+        }
+      ],
+      "vertices": 706,
+      "polygons": 752,
+      "tris": 1400,
+      "vertex_groups": [
+        "BAS_PUNCH_body"
+      ],
+      "materials": [
+        "BAS_PUNCH_Mat_Terracotta",
+        "BAS_PUNCH_Mat_Eye"
+      ],
+      "shape_keys": 0
+    },
+    {
+      "name": "BAS_PUNCH_Fist_L",
+      "type": "MESH",
+      "parent": "BAS_PUNCH_Rig",
+      "parent_type": "OBJECT",
+      "location": [
+        0.72,
+        -0.13,
+        0.36
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.72
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.13
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.36
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "modifiers": [
+        {
+          "name": "BAS_PUNCH_Rig",
+          "type": "ARMATURE",
+          "object": "BAS_PUNCH_Rig"
+        }
+      ],
+      "vertices": 128,
+      "polygons": 140,
+      "tris": 252,
+      "vertex_groups": [
+        "BAS_PUNCH_hand.L"
+      ],
+      "materials": [
+        "BAS_PUNCH_Mat_Terracotta"
+      ],
+      "shape_keys": 0
+    },
+    {
+      "name": "BAS_PUNCH_Fist_R",
+      "type": "MESH",
+      "parent": "BAS_PUNCH_Rig",
+      "parent_type": "OBJECT",
+      "location": [
+        -0.72,
+        -0.13,
+        0.36
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.72
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.13
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.36
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "modifiers": [
+        {
+          "name": "BAS_PUNCH_Rig",
+          "type": "ARMATURE",
+          "object": "BAS_PUNCH_Rig"
+        }
+      ],
+      "vertices": 128,
+      "polygons": 140,
+      "tris": 252,
+      "vertex_groups": [
+        "BAS_PUNCH_hand.R"
+      ],
+      "materials": [
+        "BAS_PUNCH_Mat_Terracotta"
+      ],
+      "shape_keys": 0
+    },
+    {
+      "name": "BAS_PUNCH_Foot_L",
+      "type": "MESH",
+      "parent": "BAS_PUNCH_Rig",
+      "parent_type": "OBJECT",
+      "location": [
+        0.28,
+        -0.08,
+        0.11
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.28
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.08
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.11
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "modifiers": [
+        {
+          "name": "BAS_PUNCH_Rig",
+          "type": "ARMATURE",
+          "object": "BAS_PUNCH_Rig"
+        }
+      ],
+      "vertices": 178,
+      "polygons": 192,
+      "tris": 352,
+      "vertex_groups": [
+        "BAS_PUNCH_foot.L"
+      ],
+      "materials": [
+        "BAS_PUNCH_Mat_Terracotta"
+      ],
+      "shape_keys": 0
+    },
+    {
+      "name": "BAS_PUNCH_Foot_R",
+      "type": "MESH",
+      "parent": "BAS_PUNCH_Rig",
+      "parent_type": "OBJECT",
+      "location": [
+        -0.28,
+        -0.08,
+        0.11
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.28
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.08
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.11
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "modifiers": [
+        {
+          "name": "BAS_PUNCH_Rig",
+          "type": "ARMATURE",
+          "object": "BAS_PUNCH_Rig"
+        }
+      ],
+      "vertices": 178,
+      "polygons": 192,
+      "tris": 352,
+      "vertex_groups": [
+        "BAS_PUNCH_foot.R"
+      ],
+      "materials": [
+        "BAS_PUNCH_Mat_Terracotta"
+      ],
+      "shape_keys": 0
+    },
+    {
+      "name": "BAS_PUNCH_Forearm_L",
+      "type": "MESH",
+      "parent": "BAS_PUNCH_Rig",
+      "parent_type": "OBJECT",
+      "location": [
+        0.7,
+        -0.04,
+        0.66
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.7
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.04
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.66
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "modifiers": [
+        {
+          "name": "BAS_PUNCH_Rig",
+          "type": "ARMATURE",
+          "object": "BAS_PUNCH_Rig"
+        }
+      ],
+      "vertices": 388,
+      "polygons": 402,
+      "tris": 764,
+      "vertex_groups": [
+        "BAS_PUNCH_forearm.L"
+      ],
+      "materials": [
+        "BAS_PUNCH_Mat_Terracotta"
+      ],
+      "shape_keys": 0
+    },
+    {
+      "name": "BAS_PUNCH_Forearm_R",
+      "type": "MESH",
+      "parent": "BAS_PUNCH_Rig",
+      "parent_type": "OBJECT",
+      "location": [
+        -0.7,
+        -0.04,
+        0.66
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.7
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.04
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.66
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "modifiers": [
+        {
+          "name": "BAS_PUNCH_Rig",
+          "type": "ARMATURE",
+          "object": "BAS_PUNCH_Rig"
+        }
+      ],
+      "vertices": 388,
+      "polygons": 402,
+      "tris": 764,
+      "vertex_groups": [
+        "BAS_PUNCH_forearm.R"
+      ],
+      "materials": [
+        "BAS_PUNCH_Mat_Terracotta"
+      ],
+      "shape_keys": 0
+    },
+    {
+      "name": "BAS_PUNCH_Rig",
+      "type": "ARMATURE",
+      "parent": null,
+      "parent_type": null,
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "modifiers": []
+    },
+    {
+      "name": "BAS_PUNCH_UpperArm_L",
+      "type": "MESH",
+      "parent": "BAS_PUNCH_Rig",
+      "parent_type": "OBJECT",
+      "location": [
+        0.52,
+        -0.0,
+        0.92
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.52
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.92
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "modifiers": [
+        {
+          "name": "BAS_PUNCH_Rig",
+          "type": "ARMATURE",
+          "object": "BAS_PUNCH_Rig"
+        }
+      ],
+      "vertices": 388,
+      "polygons": 402,
+      "tris": 764,
+      "vertex_groups": [
+        "BAS_PUNCH_upperarm.L"
+      ],
+      "materials": [
+        "BAS_PUNCH_Mat_Terracotta"
+      ],
+      "shape_keys": 0
+    },
+    {
+      "name": "BAS_PUNCH_UpperArm_R",
+      "type": "MESH",
+      "parent": "BAS_PUNCH_Rig",
+      "parent_type": "OBJECT",
+      "location": [
+        -0.52,
+        -0.0,
+        0.92
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -0.52
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.92
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "modifiers": [
+        {
+          "name": "BAS_PUNCH_Rig",
+          "type": "ARMATURE",
+          "object": "BAS_PUNCH_Rig"
+        }
+      ],
+      "vertices": 388,
+      "polygons": 402,
+      "tris": 764,
+      "vertex_groups": [
+        "BAS_PUNCH_upperarm.R"
+      ],
+      "materials": [
+        "BAS_PUNCH_Mat_Terracotta"
+      ],
+      "shape_keys": 0
+    }
+  ],
+  "armature_count": 1,
+  "armatures": [
+    {
+      "object": "BAS_PUNCH_Rig",
+      "data": "BAS_PUNCH_Rig",
+      "object_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "object_location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "object_rotation_deg": [
+        -0.0,
+        0.0,
+        0.0
+      ],
+      "matrix_world": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "bone_count": 10,
+      "bones": [
+        {
+          "name": "BAS_PUNCH_root",
+          "parent": null,
+          "children": [
+            "BAS_PUNCH_body",
+            "BAS_PUNCH_foot.L",
+            "BAS_PUNCH_foot.R"
+          ],
+          "head_local": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "tail_local": [
+            0.0,
+            0.0,
+            0.294136
+          ],
+          "length": 0.294136,
+          "use_deform": true,
+          "use_connect": false,
+          "roll_matrix_3x3": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ],
+          "y_axis_world_dir": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "BAS_PUNCH_body",
+          "parent": "BAS_PUNCH_root",
+          "children": [
+            "BAS_PUNCH_upperarm.L",
+            "BAS_PUNCH_upperarm.R"
+          ],
+          "head_local": [
+            0.0,
+            0.0,
+            0.3
+          ],
+          "tail_local": [
+            0.0,
+            0.0,
+            1.109197
+          ],
+          "length": 0.809197,
+          "use_deform": true,
+          "use_connect": false,
+          "roll_matrix_3x3": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ],
+          "y_axis_world_dir": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "BAS_PUNCH_upperarm.L",
+          "parent": "BAS_PUNCH_body",
+          "children": [
+            "BAS_PUNCH_forearm.L"
+          ],
+          "head_local": [
+            0.52,
+            0.0,
+            0.92
+          ],
+          "tail_local": [
+            0.7,
+            -0.04,
+            0.66
+          ],
+          "length": 0.318747,
+          "use_deform": true,
+          "use_connect": false,
+          "roll_matrix_3x3": [
+            [
+              0.635341,
+              0.56471,
+              0.52673
+            ],
+            [
+              -0.56471,
+              -0.125491,
+              0.815693
+            ],
+            [
+              0.52673,
+              -0.815693,
+              0.239168
+            ]
+          ],
+          "y_axis_world_dir": [
+            0.56471,
+            -0.125491,
+            -0.815693
+          ]
+        },
+        {
+          "name": "BAS_PUNCH_forearm.L",
+          "parent": "BAS_PUNCH_upperarm.L",
+          "children": [
+            "BAS_PUNCH_hand.L"
+          ],
+          "head_local": [
+            0.7,
+            -0.04,
+            0.66
+          ],
+          "tail_local": [
+            0.72,
+            -0.1,
+            0.48
+          ],
+          "length": 0.190788,
+          "use_deform": true,
+          "use_connect": true,
+          "roll_matrix_3x3": [
+            [
+              0.98397,
+              0.104829,
+              0.144274
+            ],
+            [
+              -0.104829,
+              -0.314486,
+              0.943456
+            ],
+            [
+              0.144274,
+              -0.943457,
+              -0.298456
+            ]
+          ],
+          "y_axis_world_dir": [
+            0.104829,
+            -0.314486,
+            -0.943456
+          ]
+        },
+        {
+          "name": "BAS_PUNCH_hand.L",
+          "parent": "BAS_PUNCH_forearm.L",
+          "children": [],
+          "head_local": [
+            0.72,
+            -0.1,
+            0.48
+          ],
+          "tail_local": [
+            0.72,
+            -0.146273,
+            0.294909
+          ],
+          "length": 0.190788,
+          "use_deform": true,
+          "use_connect": true,
+          "roll_matrix_3x3": [
+            [
+              1.0,
+              -0.0,
+              -0.0
+            ],
+            [
+              0.0,
+              -0.242536,
+              0.970142
+            ],
+            [
+              -0.0,
+              -0.970143,
+              -0.242536
+            ]
+          ],
+          "y_axis_world_dir": [
+            -0.0,
+            -0.242536,
+            -0.970142
+          ]
+        },
+        {
+          "name": "BAS_PUNCH_upperarm.R",
+          "parent": "BAS_PUNCH_body",
+          "children": [
+            "BAS_PUNCH_forearm.R"
+          ],
+          "head_local": [
+            -0.52,
+            0.0,
+            0.92
+          ],
+          "tail_local": [
+            -0.7,
+            -0.04,
+            0.66
+          ],
+          "length": 0.318747,
+          "use_deform": true,
+          "use_connect": false,
+          "roll_matrix_3x3": [
+            [
+              0.635341,
+              -0.56471,
+              -0.52673
+            ],
+            [
+              0.56471,
+              -0.125491,
+              0.815693
+            ],
+            [
+              -0.52673,
+              -0.815693,
+              0.239168
+            ]
+          ],
+          "y_axis_world_dir": [
+            -0.56471,
+            -0.125491,
+            -0.815693
+          ]
+        },
+        {
+          "name": "BAS_PUNCH_forearm.R",
+          "parent": "BAS_PUNCH_upperarm.R",
+          "children": [
+            "BAS_PUNCH_hand.R"
+          ],
+          "head_local": [
+            -0.7,
+            -0.04,
+            0.66
+          ],
+          "tail_local": [
+            -0.72,
+            -0.1,
+            0.48
+          ],
+          "length": 0.190788,
+          "use_deform": true,
+          "use_connect": true,
+          "roll_matrix_3x3": [
+            [
+              0.98397,
+              -0.104829,
+              -0.144274
+            ],
+            [
+              0.104829,
+              -0.314486,
+              0.943456
+            ],
+            [
+              -0.144274,
+              -0.943457,
+              -0.298456
+            ]
+          ],
+          "y_axis_world_dir": [
+            -0.104829,
+            -0.314486,
+            -0.943456
+          ]
+        },
+        {
+          "name": "BAS_PUNCH_hand.R",
+          "parent": "BAS_PUNCH_forearm.R",
+          "children": [],
+          "head_local": [
+            -0.72,
+            -0.1,
+            0.48
+          ],
+          "tail_local": [
+            -0.72,
+            -0.146273,
+            0.294909
+          ],
+          "length": 0.190788,
+          "use_deform": true,
+          "use_connect": true,
+          "roll_matrix_3x3": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              -0.0,
+              -0.242536,
+              0.970142
+            ],
+            [
+              0.0,
+              -0.970143,
+              -0.242536
+            ]
+          ],
+          "y_axis_world_dir": [
+            0.0,
+            -0.242536,
+            -0.970142
+          ]
+        },
+        {
+          "name": "BAS_PUNCH_foot.L",
+          "parent": "BAS_PUNCH_root",
+          "children": [],
+          "head_local": [
+            0.28,
+            -0.08,
+            0.0
+          ],
+          "tail_local": [
+            0.28,
+            -0.08,
+            0.294136
+          ],
+          "length": 0.294136,
+          "use_deform": true,
+          "use_connect": false,
+          "roll_matrix_3x3": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ],
+          "y_axis_world_dir": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "BAS_PUNCH_foot.R",
+          "parent": "BAS_PUNCH_root",
+          "children": [],
+          "head_local": [
+            -0.28,
+            -0.08,
+            0.0
+          ],
+          "tail_local": [
+            -0.28,
+            -0.08,
+            0.294136
+          ],
+          "length": 0.294136,
+          "use_deform": true,
+          "use_connect": false,
+          "roll_matrix_3x3": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              -1.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ],
+          "y_axis_world_dir": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "pose_max_deviation_from_rest": 0.9800337,
+      "pose_is_rest": false
+    }
+  ],
+  "weights": [
+    {
+      "mesh": "BAS_PUNCH_Body",
+      "skinned": true,
+      "vertices": 706,
+      "tris": 1400,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_body"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_Fist_L",
+      "skinned": true,
+      "vertices": 128,
+      "tris": 252,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_hand.L"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_Fist_R",
+      "skinned": true,
+      "vertices": 128,
+      "tris": 252,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_hand.R"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_Foot_L",
+      "skinned": true,
+      "vertices": 178,
+      "tris": 352,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_foot.L"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_Foot_R",
+      "skinned": true,
+      "vertices": 178,
+      "tris": 352,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_foot.R"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_Forearm_L",
+      "skinned": true,
+      "vertices": 388,
+      "tris": 764,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_forearm.L"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_Forearm_R",
+      "skinned": true,
+      "vertices": 388,
+      "tris": 764,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_forearm.R"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_UpperArm_L",
+      "skinned": true,
+      "vertices": 388,
+      "tris": 764,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_upperarm.L"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_UpperArm_R",
+      "skinned": true,
+      "vertices": 388,
+      "tris": 764,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_upperarm.R"
+      ]
+    }
+  ],
+  "total_vertices": 2870,
+  "total_tris": 5664,
+  "skinned_vertices": 2870,
+  "skinned_tris": 5664,
+  "actions": [
+    {
+      "name": "BAS_PUNCH_Rig|BAS_PUNCH_Rig|BAS_PUNCH_punch",
+      "frame_range": [
+        1.0,
+        20.0
+      ],
+      "fcurve_count": 109,
+      "bones_animated": [
+        "BAS_PUNCH_body",
+        "BAS_PUNCH_foot.L",
+        "BAS_PUNCH_foot.R",
+        "BAS_PUNCH_forearm.L",
+        "BAS_PUNCH_forearm.R",
+        "BAS_PUNCH_hand.L",
+        "BAS_PUNCH_hand.R",
+        "BAS_PUNCH_root",
+        "BAS_PUNCH_upperarm.L",
+        "BAS_PUNCH_upperarm.R"
+      ],
+      "sample_data_paths": [
+        "location",
+        "pose.bones[\"BAS_PUNCH_body\"].location",
+        "pose.bones[\"BAS_PUNCH_body\"].rotation_quaternion",
+        "pose.bones[\"BAS_PUNCH_body\"].scale",
+        "pose.bones[\"BAS_PUNCH_foot.L\"].location",
+        "pose.bones[\"BAS_PUNCH_foot.L\"].rotation_quaternion",
+        "pose.bones[\"BAS_PUNCH_foot.L\"].scale",
+        "pose.bones[\"BAS_PUNCH_foot.R\"].location",
+        "pose.bones[\"BAS_PUNCH_foot.R\"].rotation_quaternion",
+        "pose.bones[\"BAS_PUNCH_foot.R\"].scale",
+        "pose.bones[\"BAS_PUNCH_forearm.L\"].location",
+        "pose.bones[\"BAS_PUNCH_forearm.L\"].rotation_quaternion"
+      ],
+      "slots": [
+        "OBSlot"
+      ],
+      "users": 2
+    }
+  ],
+  "evaluated_bounds_all_m": {
+    "min": [
+      -0.728343,
+      -0.526049,
+      -0.0
+    ],
+    "max": [
+      0.728343,
+      0.5208,
+      1.34
+    ],
+    "size": [
+      1.456686,
+      1.046849,
+      1.34
+    ]
+  },
+  "evaluated_bounds_skinned_m": {
+    "min": [
+      -0.728343,
+      -0.526049,
+      -0.0
+    ],
+    "max": [
+      0.728343,
+      0.5208,
+      1.34
+    ],
+    "size": [
+      1.456686,
+      1.046849,
+      1.34
+    ],
+    "height_z": 1.34
+  }
+}
