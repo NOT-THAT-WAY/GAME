@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-composition-v001",
+  "project_type": "still",
+  "status": "reviewed",
+  "owner": "unrecorded",
+  "objective": "Construire une composition Blender neutre et vérifiée autour du personnage sandbox et de SB_Idle, puis fournir à Claude une scène de handoff créatif sans modifier le rig, l animation ou les assets Unity.",
+  "target": "Blender 5.1.1, revue design 1920x1080, handoff Claude; aucune livraison Unity runtime",
+  "technical_profile": "cinematic",
+  "style_profile": "neutral-production",
+  "created_at": "2026-08-15T21:25:56+02:00",
+  "object_prefix": "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_",
+  "catalog_asset_references": [],
+  "local_work_root": "local_work/sandbox-character-composition-v001",
+  "source_overwrite_allowed": false,
+  "binary_files_allowed_in_git": false
+}

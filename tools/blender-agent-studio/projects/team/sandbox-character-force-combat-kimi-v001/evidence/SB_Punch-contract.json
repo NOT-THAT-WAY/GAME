@@ -1,0 +1,23 @@
+{
+ "clip": "SB_Punch",
+ "f_start": 1,
+ "f_end": 20,
+ "loop": false,
+ "nominal_speed_mps": 0.0,
+ "stance_windows": {
+  "L": [
+   {
+    "start": 1,
+    "end": 20
+   }
+  ],
+  "R": [
+   {
+    "start": 1,
+    "end": 20
+   }
+  ]
+ },
+ "swing_windows": {},
+ "note": ""
+}

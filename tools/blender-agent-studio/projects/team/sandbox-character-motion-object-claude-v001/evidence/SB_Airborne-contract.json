@@ -1,0 +1,22 @@
+{
+ "clip": "SB_Airborne",
+ "f_start": 1,
+ "f_end": 24,
+ "loop": true,
+ "nominal_speed_mps": 0.0,
+ "stance_windows": {},
+ "swing_windows": {
+  "L": [
+   {
+    "start": 1,
+    "end": 24
+   }
+  ],
+  "R": [
+   {
+    "start": 1,
+    "end": 24
+   }
+  ]
+ }
+}

@@ -1,0 +1,677 @@
+{
+  "blender": "5.1.1",
+  "master_blend": "local_work/sandbox-character-force-combat-kimi-v001/checkpoints/master_ckpt09_SB_HitReact_pass4.blend",
+  "config": {
+    "action": "SB_HitReact",
+    "frame_start": 1,
+    "frame_end": 18,
+    "loop": false,
+    "planted_feet": "all",
+    "ground_contacts": {},
+    "interface_checks": [
+      {
+        "frame": 18,
+        "other_action": "SB_Idle",
+        "other_frame": 1,
+        "max_translation_m": 0.0001,
+        "max_rotation_deg": 0.05,
+        "label": "SB_HitReact f18 == SB_Idle f1 (r\u00e9cup\u00e9ration compatible Idle)"
+      },
+      {
+        "frame": 1,
+        "other_action": "SB_Idle",
+        "other_frame": 1,
+        "max_translation_m": 0.0001,
+        "max_rotation_deg": 0.05,
+        "label": "SB_HitReact f1 == SB_Idle f1 (d\u00e9part compatible Idle)"
+      }
+    ]
+  },
+  "frame_range": [
+    1,
+    18
+  ],
+  "fps": 30.0,
+  "action": "SB_HitReact",
+  "coordinate_frame": "Blender world, Z-up, metres; armature object at identity",
+  "method": "evaluated meshes via depsgraph (armature applied), sample_frame_step = 1",
+  "thresholds": {
+    "root_translation_max_m": 0.0,
+    "root_rotation_max_deg": 0.0,
+    "planted_foot_drift_max_m": 0.005,
+    "planted_support_gap_max_m": 0.005,
+    "ground_penetration_max_m": 0.002,
+    "limb_body_min_clearance_m": 0.01,
+    "socket_deepening_max_m": 0.001
+  },
+  "root_motion": {
+    "bone": "BAS_PUNCH_root",
+    "max_translation_m": 0.0,
+    "max_rotation_deg": 0.0,
+    "worst_frame_translation": 1,
+    "armature_object_max_abs_deviation_from_identity": 0.0,
+    "passed": true
+  },
+  "planted_feet": {
+    "BAS_PUNCH_Foot_L": {
+      "planted_windows": [
+        [
+          1,
+          18
+        ]
+      ],
+      "centroid_drift_xy_m": 0.0,
+      "worst_single_vertex_travel_m": 0.0,
+      "ground_penetration_m": 0.0,
+      "max_sole_gap_m": 0.0,
+      "passed": true
+    },
+    "BAS_PUNCH_Foot_R": {
+      "planted_windows": [
+        [
+          1,
+          18
+        ]
+      ],
+      "centroid_drift_xy_m": 0.0,
+      "worst_single_vertex_travel_m": 0.0,
+      "ground_penetration_m": 0.0,
+      "max_sole_gap_m": 0.0,
+      "passed": true
+    }
+  },
+  "ground": {
+    "lowest_z_over_clip_m": -0.0,
+    "penetration_m": 0.0,
+    "worst_frame": 1,
+    "passed": true
+  },
+  "intended_ground_contacts": {},
+  "pair_count": 36,
+  "clearances": [
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_Fist_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.123292,
+      "worst_frame": 3,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_Fist_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.136074,
+      "worst_frame": 17,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_Foot_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.046414,
+      "worst_frame": 1,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_Foot_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.056295,
+      "worst_frame": 8,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_Forearm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.026096,
+      "worst_frame": 3,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_Forearm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.035504,
+      "worst_frame": 3,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "socket",
+      "min_distance_m": 2e-06,
+      "worst_frame": 16,
+      "max_overlap_triangle_pairs_per_frame": 123,
+      "deepest_penetration_m": 0.148867,
+      "deepest_frame": 1,
+      "rest_baseline_depth_m": 0.148885,
+      "deepening_vs_rest_m": -1.8e-05,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "socket",
+      "min_distance_m": 9.3e-05,
+      "worst_frame": 14,
+      "max_overlap_triangle_pairs_per_frame": 122,
+      "deepest_penetration_m": 0.148756,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.148885,
+      "deepening_vs_rest_m": -0.000129,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_Fist_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.898191,
+      "worst_frame": 3,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_Foot_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.208469,
+      "worst_frame": 1,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_Foot_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.725945,
+      "worst_frame": 16,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_Forearm_L"
+      ],
+      "kind": "socket",
+      "min_distance_m": 0.00086,
+      "worst_frame": 18,
+      "max_overlap_triangle_pairs_per_frame": 118,
+      "deepest_penetration_m": 0.124311,
+      "deepest_frame": 8,
+      "rest_baseline_depth_m": 0.124311,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_Forearm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.978589,
+      "worst_frame": 3,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.054468,
+      "worst_frame": 18,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.980027,
+      "worst_frame": 3,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_R",
+        "BAS_PUNCH_Foot_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.712961,
+      "worst_frame": 1,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_R",
+        "BAS_PUNCH_Foot_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.210227,
+      "worst_frame": 1,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_R",
+        "BAS_PUNCH_Forearm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.980842,
+      "worst_frame": 3,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_R",
+        "BAS_PUNCH_Forearm_R"
+      ],
+      "kind": "socket",
+      "min_distance_m": 0.000882,
+      "worst_frame": 18,
+      "max_overlap_triangle_pairs_per_frame": 119,
+      "deepest_penetration_m": 0.124311,
+      "deepest_frame": 4,
+      "rest_baseline_depth_m": 0.124311,
+      "deepening_vs_rest_m": -0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_R",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 1.001381,
+      "worst_frame": 3,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_R",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.054462,
+      "worst_frame": 1,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_L",
+        "BAS_PUNCH_Foot_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.22,
+      "worst_frame": 1,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_L",
+        "BAS_PUNCH_Forearm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.330489,
+      "worst_frame": 1,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_L",
+        "BAS_PUNCH_Forearm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.799334,
+      "worst_frame": 1,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_L",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.448562,
+      "worst_frame": 17,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_L",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.853818,
+      "worst_frame": 16,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_R",
+        "BAS_PUNCH_Forearm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.811954,
+      "worst_frame": 17,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_R",
+        "BAS_PUNCH_Forearm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.338979,
+      "worst_frame": 1,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_R",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.863566,
+      "worst_frame": 15,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_R",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.458031,
+      "worst_frame": 17,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Forearm_L",
+        "BAS_PUNCH_Forearm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 1.048626,
+      "worst_frame": 3,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Forearm_L",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "socket",
+      "min_distance_m": 4e-06,
+      "worst_frame": 15,
+      "max_overlap_triangle_pairs_per_frame": 1648,
+      "deepest_penetration_m": 0.01829,
+      "deepest_frame": 7,
+      "rest_baseline_depth_m": 0.017997,
+      "deepening_vs_rest_m": 0.000293,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Forearm_L",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.963387,
+      "worst_frame": 3,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Forearm_R",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.972884,
+      "worst_frame": 3,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Forearm_R",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "socket",
+      "min_distance_m": 2e-06,
+      "worst_frame": 13,
+      "max_overlap_triangle_pairs_per_frame": 1650,
+      "deepest_penetration_m": 0.018236,
+      "deepest_frame": 3,
+      "rest_baseline_depth_m": 0.017997,
+      "deepening_vs_rest_m": 0.000239,
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_UpperArm_L",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.780003,
+      "worst_frame": 18,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 18,
+      "rest_baseline_depth_m": 0.0,
+      "deepening_vs_rest_m": 0.0,
+      "passed": true
+    }
+  ],
+  "clearances_passed": true,
+  "clearance_failures": [],
+  "interface_checks": [
+    {
+      "label": "SB_HitReact f18 == SB_Idle f1 (r\u00e9cup\u00e9ration compatible Idle)",
+      "frame": 18,
+      "other": "SB_Idle f1",
+      "max_translation_delta_m": 0.0,
+      "worst_bone": "BAS_PUNCH_hand.L",
+      "max_rotation_delta_deg": 0.0,
+      "limit_translation_m": 0.0001,
+      "limit_rotation_deg": 0.05,
+      "passed": true
+    },
+    {
+      "label": "SB_HitReact f1 == SB_Idle f1 (d\u00e9part compatible Idle)",
+      "frame": 1,
+      "other": "SB_Idle f1",
+      "max_translation_delta_m": 0.0,
+      "worst_bone": "BAS_PUNCH_forearm.R",
+      "max_rotation_delta_deg": 0.0,
+      "limit_translation_m": 0.0001,
+      "limit_rotation_deg": 0.05,
+      "passed": true
+    }
+  ],
+  "bounds_over_clip_m": {
+    "min": [
+      -0.853421,
+      -0.632705,
+      -0.0
+    ],
+    "max": [
+      0.878828,
+      0.616768,
+      1.341846
+    ],
+    "size": [
+      1.732249,
+      1.249473,
+      1.341846
+    ]
+  },
+  "passed": true
+}

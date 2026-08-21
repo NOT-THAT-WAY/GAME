@@ -1,0 +1,22 @@
+{
+ "clip": "SB_Pickup",
+ "f_start": 1,
+ "f_end": 24,
+ "loop": false,
+ "nominal_speed_mps": 0.0,
+ "stance_windows": {
+  "L": [
+   {
+    "start": 1,
+    "end": 24
+   }
+  ],
+  "R": [
+   {
+    "start": 1,
+    "end": 24
+   }
+  ]
+ },
+ "swing_windows": {}
+}

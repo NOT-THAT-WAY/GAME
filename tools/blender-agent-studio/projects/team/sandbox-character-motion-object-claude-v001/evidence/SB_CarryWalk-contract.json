@@ -1,0 +1,39 @@
+{
+ "clip": "SB_CarryWalk",
+ "f_start": 1,
+ "f_end": 30,
+ "loop": true,
+ "nominal_speed_mps": 2.1,
+ "stance_windows": {
+  "L": [
+   {
+    "start": 1,
+    "end": 19
+   }
+  ],
+  "R": [
+   {
+    "start": 16,
+    "end": 30
+   },
+   {
+    "start": 1,
+    "end": 4
+   }
+  ]
+ },
+ "swing_windows": {
+  "L": [
+   {
+    "start": 19,
+    "end": 30
+   }
+  ],
+  "R": [
+   {
+    "start": 4,
+    "end": 15
+   }
+  ]
+ }
+}

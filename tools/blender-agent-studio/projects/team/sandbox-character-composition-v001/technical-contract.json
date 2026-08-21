@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-composition-v001",
+  "project_type": "still",
+  "profile": "cinematic",
+  "style_profile": "neutral-production",
+  "execution_mode": "isolated batch; MCP indisponible selon studio_readiness_check",
+  "common": {
+    "blender_units": "meters",
+    "coordinate_frame": "Blender monde Z-up, personnage face -Y; caméra hero placée côté -Y et légèrement +X; aucun changement de repère Unity dans cette passe",
+    "dimensions_m": {
+      "character_height_z": 1.34,
+      "body_sphere_center": [
+        0.0,
+        0.0,
+        0.78
+      ],
+      "body_sphere_radius_xz": 0.56,
+      "support_plane_z": 0.0
+    },
+    "origin_and_pivot": "BAS_PUNCH_Rig à location (0,0,0), rotation (0,0,0), scale (1,1,1); BAS_PUNCH_root à l'origine; caméras visent un target séparé à proximité du centre visuel.",
+    "supports_contacts_and_colliders": "Le cyclorama de présentation possède un plancher réel à Z=0. Les deux semelles restent plantées sur ce plan. Aucun collider n'est créé ni exporté.",
+    "source_provenance": [
+      {
+        "path": "local_work/sandbox-character-animation-v001/work/sandbox_character_SB_Idle_master.blend",
+        "sha256": "864807e970705bf44a1c3dcbcfaac85102458917a5c8ccec90f5f36728590464",
+        "mutable": false,
+        "role": "master d'animation validé, source immuable de la copie de présentation"
+      },
+      {
+        "path": "../Assets/_Project/Player/PersoBouleRigged.fbx",
+        "sha256": "4503459d16ccc2af8ebc11b621850de3d1dae213d8d3f43420ae97f84231cce1",
+        "mutable": false,
+        "role": "provenance runtime originale; non ouverte ni écrite par cette passe"
+      }
+    ]
+  },
+  "domain": {
+    "camera": {
+      "active": "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_HERO_3Q",
+      "type": "perspective",
+      "lens_mm": 58.0,
+      "sensor_width_mm": 36.0,
+      "position_m": [
+        1.75,
+        -5.04,
+        1.58
+      ],
+      "target_m": [
+        0.0,
+        0.0,
+        0.7
+      ],
+      "dof": "désactivé; le contrat de cadrage interdit la profondeur de champ dans cette passe",
+      "utility_cameras": [
+        "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_FRONT_ORTHO",
+        "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_PROFILE_ORTHO"
+      ]
+    },
+    "composition_contract": {
+      "sample_frames": "chaque image 1-60",
+      "safe_frame_normalized": [
+        0.06,
+        0.05,
+        0.94,
+        0.95
+      ],
+      "subject_height_coverage_target": [
+        0.64,
+        0.82
+      ],
+      "subject_width_coverage_max": 0.7,
+      "center_offset_abs_max": [
+        0.08,
+        0.08
+      ],
+      "camera_to_character_clearance_min_m": 0.08,
+      "hero_intent": "silhouette complète, yeux proches du tiers supérieur, pieds et ombre de contact visibles; légère vue trois-quarts pour montrer le volume sans masquer les bras"
+    },
+    "resolution": [
+      1920,
+      1080,
+      100
+    ],
+    "color_management": "AgX, AgX - Medium High Contrast, exposition 0, gamma 1",
+    "render_engine": "Blender 5.1.1 Eevee",
+    "samples": 64,
+    "lighting_roles": [
+      "key: exposition et volume — (1.00,0.92,0.82), 600 W, taille 2.8, à (-2.60,-3.60,3.60)",
+      "fill: lisibilité du côté ombre — (0.62,0.72,0.95), 130 W, taille 6.0, à (3.55,-3.05,1.95)",
+      "rim: séparation du fond + accent zone de dépôt — (1.00,0.28,0.04), 145 W, taille 0.9, à (-1.45,1.30,2.90)"
+    ],
+    "delivery_format": "PNG 8-bit RGB pour la baseline; H.264 MP4 30 fps pour la preview de boucle",
+    "stage_geometry_measured": {
+      "floor_z": 0.0,
+      "floor_y_range": [
+        -6.0,
+        1.8
+      ],
+      "wall_vertical_y": 2.8,
+      "note": "toute lumière placée à y>2.80 au-dessus de z=1.0 est derrière le mur et n'éclaire plus le sujet"
+    }
+  },
+  "budgets": {
+    "character_triangles_unchanged": 5664,
+    "character_bones_unchanged": 10,
+    "new_presentation_meshes_max": 1,
+    "new_lights_max": 3,
+    "new_cameras_max": 3,
+    "render_resolution_max": [
+      1920,
+      1080
+    ],
+    "render_samples_max": 64
+  },
+  "delivery": {
+    "formats": [
+      "blend",
+      "png",
+      "mp4",
+      "json",
+      "md"
+    ],
+    "target_importer": "Blender 5.1.1 reopen with auto-execution disabled; no runtime importer",
+    "version": "Blender 5.1.1",
+    "runtime_export": false,
+    "must_not_write": [
+      "local_work/sandbox-character-animation-v001/work/sandbox_character_SB_Idle_master.blend",
+      "../Assets/_Project/Player/PersoBouleRigged.fbx",
+      "../Assets/_Project/"
+    ]
+  },
+  "art_direction": {
+    "name": "arena-echo",
+    "author": "Claude, passe créative sur la baseline technique de GPT",
+    "intent": "La mascotte se tient dans son terrain de jeu : un sol d'arène chaud éclairé par-dessus, un fond froid qui recule, et l'orange de la zone de dépôt qui revient en accent au dos du personnage.",
+    "framing_contract_changed": false,
+    "framing_contract_note": "Décision humaine : garder le contrat centré. center_offset reste ±0.08, la profondeur de champ reste interdite, validate_composition_scene.py n'a pas été modifié.",
+    "palette_sources": {
+      "accent_deposit_zone": {
+        "linear": [
+          1.0,
+          0.28,
+          0.04
+        ],
+        "from": "Assets/_Project/Editor/M1PlaytestBuild.cs:1102 SandboxDeposit"
+      },
+      "key_light": {
+        "linear": [
+          1.0,
+          0.92,
+          0.82
+        ],
+        "from": "M1PlaytestBuild.cs:838"
+      },
+      "fill_light": {
+        "linear": [
+          0.62,
+          0.72,
+          0.95
+        ],
+        "from": "M1PlaytestBuild.cs:849"
+      },
+      "horizon": {
+        "linear": [
+          0.16,
+          0.19,
+          0.26
+        ],
+        "from": "M1PlaytestBuild.cs:91 HorizonColor"
+      },
+      "decor_ground": {
+        "linear": [
+          0.1,
+          0.11,
+          0.14
+        ],
+        "from": "M1PlaytestBuild.cs:1144 M1DecorGround"
+      },
+      "decor_pillar_warm": {
+        "linear": [
+          0.24,
+          0.21,
+          0.2
+        ],
+        "from": "M1PlaytestBuild.cs:1147"
+      }
+    },
+    "budgets_respected": {
+      "new_presentation_meshes": 0,
+      "new_lights": 0,
+      "new_cameras": 0,
+      "note": "le mesh de décor et les 3 lumières existants ont été MODIFIÉS, aucun ajouté"
+    }
+  }
+}

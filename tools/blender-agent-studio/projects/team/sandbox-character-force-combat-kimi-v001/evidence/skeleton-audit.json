@@ -1,0 +1,468 @@
+{
+ "schema_version": 1,
+ "rig_object": "BAS_PUNCH_Rig",
+ "armature_matrix_world": [
+  [
+   1.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   1.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   1.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   0.0,
+   1.0
+  ]
+ ],
+ "armature_is_identity": true,
+ "bone_count": 10,
+ "bone_budget": 16,
+ "deform_bone_count": 10,
+ "root_bone": "BAS_PUNCH_root",
+ "roots": [
+  "BAS_PUNCH_root"
+ ],
+ "feet_parent": {
+  "BAS_PUNCH_foot.L": "BAS_PUNCH_root",
+  "BAS_PUNCH_foot.R": "BAS_PUNCH_root"
+ },
+ "no_legs_no_knees": true,
+ "bones": [
+  {
+   "name": "BAS_PUNCH_root",
+   "parent": null,
+   "head_local_m": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "tail_local_m": [
+    0.0,
+    0.0,
+    0.294136
+   ],
+   "length_m": 0.294136,
+   "use_deform": true,
+   "matrix_local": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "BAS_PUNCH_body",
+   "parent": "BAS_PUNCH_root",
+   "head_local_m": [
+    0.0,
+    0.0,
+    0.3
+   ],
+   "tail_local_m": [
+    0.0,
+    0.0,
+    1.109197
+   ],
+   "length_m": 0.809197,
+   "use_deform": true,
+   "matrix_local": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     -1.0,
+     0.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.3
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "BAS_PUNCH_upperarm.L",
+   "parent": "BAS_PUNCH_body",
+   "head_local_m": [
+    0.52,
+    0.0,
+    0.92
+   ],
+   "tail_local_m": [
+    0.7,
+    -0.04,
+    0.66
+   ],
+   "length_m": 0.318747,
+   "use_deform": true,
+   "matrix_local": [
+    [
+     0.635341,
+     0.56471,
+     0.52673,
+     0.52
+    ],
+    [
+     -0.56471,
+     -0.125491,
+     0.815693,
+     0.0
+    ],
+    [
+     0.52673,
+     -0.815693,
+     0.239168,
+     0.92
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "BAS_PUNCH_forearm.L",
+   "parent": "BAS_PUNCH_upperarm.L",
+   "head_local_m": [
+    0.7,
+    -0.04,
+    0.66
+   ],
+   "tail_local_m": [
+    0.72,
+    -0.1,
+    0.48
+   ],
+   "length_m": 0.190788,
+   "use_deform": true,
+   "matrix_local": [
+    [
+     0.98397,
+     0.104829,
+     0.144274,
+     0.7
+    ],
+    [
+     -0.104829,
+     -0.314486,
+     0.943456,
+     -0.04
+    ],
+    [
+     0.144274,
+     -0.943457,
+     -0.298456,
+     0.66
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "BAS_PUNCH_hand.L",
+   "parent": "BAS_PUNCH_forearm.L",
+   "head_local_m": [
+    0.72,
+    -0.1,
+    0.48
+   ],
+   "tail_local_m": [
+    0.72,
+    -0.146273,
+    0.294909
+   ],
+   "length_m": 0.190788,
+   "use_deform": true,
+   "matrix_local": [
+    [
+     1.0,
+     -0.0,
+     -0.0,
+     0.72
+    ],
+    [
+     0.0,
+     -0.242536,
+     0.970142,
+     -0.1
+    ],
+    [
+     -0.0,
+     -0.970143,
+     -0.242536,
+     0.48
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "BAS_PUNCH_upperarm.R",
+   "parent": "BAS_PUNCH_body",
+   "head_local_m": [
+    -0.52,
+    0.0,
+    0.92
+   ],
+   "tail_local_m": [
+    -0.7,
+    -0.04,
+    0.66
+   ],
+   "length_m": 0.318747,
+   "use_deform": true,
+   "matrix_local": [
+    [
+     0.635341,
+     -0.56471,
+     -0.52673,
+     -0.52
+    ],
+    [
+     0.56471,
+     -0.125491,
+     0.815693,
+     0.0
+    ],
+    [
+     -0.52673,
+     -0.815693,
+     0.239168,
+     0.92
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "BAS_PUNCH_forearm.R",
+   "parent": "BAS_PUNCH_upperarm.R",
+   "head_local_m": [
+    -0.7,
+    -0.04,
+    0.66
+   ],
+   "tail_local_m": [
+    -0.72,
+    -0.1,
+    0.48
+   ],
+   "length_m": 0.190788,
+   "use_deform": true,
+   "matrix_local": [
+    [
+     0.98397,
+     -0.104829,
+     -0.144274,
+     -0.7
+    ],
+    [
+     0.104829,
+     -0.314486,
+     0.943456,
+     -0.04
+    ],
+    [
+     -0.144274,
+     -0.943457,
+     -0.298456,
+     0.66
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "BAS_PUNCH_hand.R",
+   "parent": "BAS_PUNCH_forearm.R",
+   "head_local_m": [
+    -0.72,
+    -0.1,
+    0.48
+   ],
+   "tail_local_m": [
+    -0.72,
+    -0.146273,
+    0.294909
+   ],
+   "length_m": 0.190788,
+   "use_deform": true,
+   "matrix_local": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -0.72
+    ],
+    [
+     -0.0,
+     -0.242536,
+     0.970142,
+     -0.1
+    ],
+    [
+     0.0,
+     -0.970143,
+     -0.242536,
+     0.48
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "BAS_PUNCH_foot.L",
+   "parent": "BAS_PUNCH_root",
+   "head_local_m": [
+    0.28,
+    -0.08,
+    0.0
+   ],
+   "tail_local_m": [
+    0.28,
+    -0.08,
+    0.294136
+   ],
+   "length_m": 0.294136,
+   "use_deform": true,
+   "matrix_local": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.28
+    ],
+    [
+     0.0,
+     0.0,
+     -1.0,
+     -0.08
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  },
+  {
+   "name": "BAS_PUNCH_foot.R",
+   "parent": "BAS_PUNCH_root",
+   "head_local_m": [
+    -0.28,
+    -0.08,
+    0.0
+   ],
+   "tail_local_m": [
+    -0.28,
+    -0.08,
+    0.294136
+   ],
+   "length_m": 0.294136,
+   "use_deform": true,
+   "matrix_local": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -0.28
+    ],
+    [
+     0.0,
+     0.0,
+     -1.0,
+     -0.08
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  }
+ ],
+ "unit_system": "METRIC",
+ "scale_length": 1.0,
+ "fps": 30
+}

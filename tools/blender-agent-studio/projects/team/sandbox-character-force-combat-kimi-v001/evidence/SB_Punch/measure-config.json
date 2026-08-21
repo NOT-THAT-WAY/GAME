@@ -1,0 +1,13 @@
+{
+  "action": "SB_Punch",
+  "frame_start": 1,
+  "frame_end": 20,
+  "loop": false,
+  "planted_feet": "all",
+  "ground_contacts": {},
+  "interface_checks": [
+    {"frame": 20, "other_action": "SB_Idle", "other_frame": 1,
+     "max_translation_m": 0.0001, "max_rotation_deg": 0.05,
+     "label": "SB_Punch f20 == SB_Idle f1 (récupération compatible Idle)"}
+  ]
+}

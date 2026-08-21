@@ -1,0 +1,89 @@
+{
+ "action": "SB_CarryIdle",
+ "range": [
+  1,
+  60
+ ],
+ "spike_ratio_threshold": 4.0,
+ "spike_absolute_deg": 8.0,
+ "bones": {
+  "BAS_PUNCH_root": {
+   "median_rotation_step_deg": 0.0,
+   "peak_rotation_step_deg": 0.0,
+   "peak_frame": 1,
+   "peak_over_median_ratio": 0.0,
+   "max_position_step_m": 0.0
+  },
+  "BAS_PUNCH_body": {
+   "median_rotation_step_deg": 0.08846931922527276,
+   "peak_rotation_step_deg": 0.12511451142200766,
+   "peak_frame": 15,
+   "peak_over_median_ratio": 1.4142135659869142,
+   "max_position_step_m": 0.0014128793750974266
+  },
+  "BAS_PUNCH_upperarm.L": {
+   "median_rotation_step_deg": 0.17693865179075874,
+   "peak_rotation_step_deg": 1.627464391701846,
+   "peak_frame": 42,
+   "peak_over_median_ratio": 9.197902070749508,
+   "max_position_step_m": 0.0025889519409240448
+  },
+  "BAS_PUNCH_forearm.L": {
+   "median_rotation_step_deg": 0.2017411097196981,
+   "peak_rotation_step_deg": 1.616365014135458,
+   "peak_frame": 42,
+   "peak_over_median_ratio": 8.01207555753638,
+   "max_position_step_m": 0.0033768606619040105
+  },
+  "BAS_PUNCH_hand.L": {
+   "median_rotation_step_deg": 0.19782343594174043,
+   "peak_rotation_step_deg": 1.6158807110346218,
+   "peak_frame": 42,
+   "peak_over_median_ratio": 8.168297670810365,
+   "max_position_step_m": 0.0045647359772757416
+  },
+  "BAS_PUNCH_upperarm.R": {
+   "median_rotation_step_deg": 0.12511451142200766,
+   "peak_rotation_step_deg": 1.5830943089146796,
+   "peak_frame": 55,
+   "peak_over_median_ratio": 12.653163017796935,
+   "max_position_step_m": 0.0024345175967135434
+  },
+  "BAS_PUNCH_forearm.R": {
+   "median_rotation_step_deg": 0.16785874238244658,
+   "peak_rotation_step_deg": 1.59883736134303,
+   "peak_frame": 55,
+   "peak_over_median_ratio": 9.52489777208187,
+   "max_position_step_m": 0.0030036003253882965
+  },
+  "BAS_PUNCH_hand.R": {
+   "median_rotation_step_deg": 0.16785874238244658,
+   "peak_rotation_step_deg": 1.59883736134303,
+   "peak_frame": 55,
+   "peak_over_median_ratio": 9.52489777208187,
+   "max_position_step_m": 0.0042855657622533514
+  },
+  "BAS_PUNCH_foot.L": {
+   "median_rotation_step_deg": 0.0,
+   "peak_rotation_step_deg": 0.0,
+   "peak_frame": 1,
+   "peak_over_median_ratio": 0.0,
+   "max_position_step_m": 0.0
+  },
+  "BAS_PUNCH_foot.R": {
+   "median_rotation_step_deg": 0.0,
+   "peak_rotation_step_deg": 0.0,
+   "peak_frame": 1,
+   "peak_over_median_ratio": 0.0,
+   "max_position_step_m": 0.0
+  }
+ },
+ "worst": {
+  "bone": "BAS_PUNCH_upperarm.R",
+  "ratio": 12.653163017796935,
+  "frame": 55,
+  "peak_deg": 1.5830943089146796,
+  "qualifies": false
+ },
+ "pass": true
+}

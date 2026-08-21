@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-motion-object-claude-v001",
+  "project_type": "animation",
+  "status": "reviewed",
+  "owner": "Claude",
+  "objective": "Produire les 11 clips locomotion, verticalite et objets du personnage sandbox",
+  "target": "Unity 6000.3.20f1, rig Generic, gameplay reseau in-place",
+  "technical_profile": "rig-animation",
+  "style_profile": "neutral-production",
+  "created_at": "2026-08-15T23:31:23+02:00",
+  "object_prefix": "BAS_SANDBOX_CHARACTER_MOTION_OBJECT_CLAUDE_V001_",
+  "catalog_asset_references": [],
+  "local_work_root": "local_work/sandbox-character-motion-object-claude-v001",
+  "source_overwrite_allowed": false,
+  "binary_files_allowed_in_git": false
+}

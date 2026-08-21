@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-motion-object-claude-v001",
+  "project_type": "animation",
+  "profile": "rig-animation",
+  "common": {
+    "blender_units": "meters",
+    "coordinate_frame": "declare",
+    "dimensions_m": "declare",
+    "origin_and_pivot": "declare",
+    "supports_contacts_and_colliders": "declare",
+    "source_provenance": []
+  },
+  "domain": {
+    "fps": "declare",
+    "clips": "declare",
+    "contacts": "declare",
+    "root_motion": "declare",
+    "loop_policy": "declare",
+    "export_sampling": "declare"
+  },
+  "budgets": {
+    "triangles": {
+      "declared": 6000,
+      "measured": 5664
+    },
+    "bones": {
+      "declared": 16,
+      "measured": 10
+    },
+    "influences_per_vertex": {
+      "declared": 4,
+      "measured": 1
+    }
+  },
+  "delivery": {
+    "formats": [],
+    "target_importer": "declare",
+    "version": "declare"
+  },
+  "blender_version": "5.1.1",
+  "target_engine": "Unity 6000.3.20f1",
+  "units": "metres",
+  "scale_length": 1.0,
+  "fps": 30,
+  "up_axis": "Z",
+  "forward_axis": "-Y",
+  "export_format": "FBX (bake 30 fps, simplify 0, add_leaf_bones false)",
+  "thresholds_locked_before_authoring": {
+    "ground_penetration_max_m": 0.002,
+    "planted_gap_max_m": 0.005,
+    "planted_drift_max_m": 0.005,
+    "swing_clearance_min_m": 0.01,
+    "socket_depth_tolerance_m": 0.02,
+    "continuity_spike_ratio": 4.0,
+    "continuity_spike_absolute_deg": 8.0
+  },
+  "nominal_cycle_speeds_mps": {
+    "SB_Walk": 2.1,
+    "SB_CarryWalk": 2.1,
+    "SB_Sprint": 3.5,
+    "gameplay_walk": 4.2,
+    "gameplay_sprint": 7.0,
+    "playback_multiplier": 2.0
+  }
+}

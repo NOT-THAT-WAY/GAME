@@ -1,0 +1,573 @@
+{
+ "SB_Sprint": {
+  "clip": "SB_Sprint",
+  "checkpoint": "SB_Sprint_v008.blend",
+  "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Sprint_candidate.fbx",
+  "authored": {
+   "action": "SB_Sprint",
+   "range": [
+    1.0,
+    24.0
+   ],
+   "fcurves": 100,
+   "fake_user": true,
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "declared": {
+    "loop": true,
+    "samples": 24,
+    "duration_s": 0.7666666666666667,
+    "nominal_speed_mps": 3.5,
+    "gameplay_speed_mps": 7.0,
+    "playback_multiplier": 2.0,
+    "duty_factor": 0.35,
+    "stance_frames": 8,
+    "swing_frames": 16,
+    "stance_excursion_m": 0.9333333333333333,
+    "stride_per_cycle_m": 2.8,
+    "contacts": {
+     "L": 1,
+     "R": 13
+    },
+    "swing_apex": {
+     "L": 19,
+     "R": 7
+    },
+    "foot_lift_m": 0.13
+   }
+  },
+  "gate_contract": true,
+  "gate_physical": true,
+  "gate_continuity": true,
+  "gate_reimport": true,
+  "gate_unity": "PENDING",
+  "media": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Sprint/SB_Sprint-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 97,
+   "avg_frame_rate": "30/1",
+   "duration_s": 3.233333,
+   "loop_repeats": 4,
+   "source_frames": 24
+  }
+ },
+ "SB_Airborne": {
+  "clip": "SB_Airborne",
+  "checkpoint": "SB_Airborne_v007.blend",
+  "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Airborne_candidate.fbx",
+  "authored": {
+   "action": "SB_Airborne",
+   "range": [
+    1.0,
+    24.0
+   ],
+   "fcurves": 100,
+   "fake_user": true,
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "declared": {
+    "loop": true,
+    "samples": 24,
+    "duration_s": 0.7666666666666667,
+    "intent": "pose aerienne stable, faible balancier, aucun pedalage",
+    "foot_out_m": 0.22,
+    "foot_lift_m": 0.09
+   }
+  },
+  "gate_contract": true,
+  "gate_physical": true,
+  "gate_continuity": true,
+  "gate_reimport": true,
+  "gate_unity": "PENDING",
+  "media": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Airborne/SB_Airborne-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 97,
+   "avg_frame_rate": "30/1",
+   "duration_s": 3.233333,
+   "loop_repeats": 4,
+   "source_frames": 24
+  }
+ },
+ "SB_JumpTakeoff": {
+  "clip": "SB_JumpTakeoff",
+  "checkpoint": "SB_JumpTakeoff_v008.blend",
+  "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_JumpTakeoff_candidate.fbx",
+  "authored": {
+   "action": "SB_JumpTakeoff",
+   "range": [
+    1.0,
+    12.0
+   ],
+   "fcurves": 100,
+   "fake_user": true,
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "declared": {
+    "loop": false,
+    "samples": 12,
+    "duration_s": 0.36666666666666664,
+    "intent": "compression f4, extension f8-9, f12 identique a SB_Airborne f1",
+    "handover_pose": "SB_Airborne frame 1"
+   }
+  },
+  "gate_contract": true,
+  "gate_physical": true,
+  "gate_continuity": true,
+  "gate_reimport": true,
+  "gate_unity": "PENDING",
+  "media": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_JumpTakeoff/SB_JumpTakeoff-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 13,
+   "avg_frame_rate": "30/1",
+   "duration_s": 0.433333,
+   "loop_repeats": 1,
+   "source_frames": 12
+  }
+ },
+ "SB_Land": {
+  "clip": "SB_Land",
+  "checkpoint": "SB_Land_v012.blend",
+  "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Land_candidate.fbx",
+  "authored": {
+   "action": "SB_Land",
+   "range": [
+    1.0,
+    12.0
+   ],
+   "fcurves": 100,
+   "fake_user": true,
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "declared": {
+    "loop": false,
+    "samples": 12,
+    "duration_s": 0.36666666666666664,
+    "intent": "f1 deja au sol, compression max f5, f12 compatible Idle/Walk"
+   }
+  },
+  "gate_contract": true,
+  "gate_physical": true,
+  "gate_continuity": true,
+  "gate_reimport": true,
+  "gate_unity": "PENDING",
+  "media": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Land/SB_Land-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 13,
+   "avg_frame_rate": "30/1",
+   "duration_s": 0.433333,
+   "loop_repeats": 1,
+   "source_frames": 12
+  }
+ },
+ "SB_CarryIdle": {
+  "clip": "SB_CarryIdle",
+  "checkpoint": "SB_CarryIdle_v008.blend",
+  "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_CarryIdle_candidate.fbx",
+  "authored": {
+   "action": "SB_CarryIdle",
+   "range": [
+    1.0,
+    60.0
+   ],
+   "fcurves": 100,
+   "fake_user": true,
+   "arm_relax": {
+    "frames_relaxed": 60,
+    "max_extra_deg": 24.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "declared": {
+    "loop": true,
+    "samples": 60,
+    "duration_s": 1.9666666666666666,
+    "intent": "calme d'Idle, bras stabilisant la zone d'objet devant le torse",
+    "carry_zone_blender_m": [
+     0.0,
+     -0.62,
+     0.86
+    ]
+   }
+  },
+  "gate_contract": true,
+  "gate_physical": true,
+  "gate_continuity": true,
+  "gate_reimport": true,
+  "gate_unity": "PENDING",
+  "media": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_CarryIdle/SB_CarryIdle-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 241,
+   "avg_frame_rate": "30/1",
+   "duration_s": 8.033333,
+   "loop_repeats": 4,
+   "source_frames": 60
+  }
+ },
+ "SB_CarryWalk": {
+  "clip": "SB_CarryWalk",
+  "checkpoint": "SB_CarryWalk_v008.blend",
+  "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_CarryWalk_candidate.fbx",
+  "authored": {
+   "action": "SB_CarryWalk",
+   "range": [
+    1.0,
+    30.0
+   ],
+   "fcurves": 100,
+   "fake_user": true,
+   "arm_relax": {
+    "frames_relaxed": 30,
+    "max_extra_deg": 24.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "declared": {
+    "loop": true,
+    "samples": 30,
+    "duration_s": 0.9666666666666667,
+    "nominal_speed_mps": 2.1,
+    "gameplay_speed_mps": 4.2,
+    "playback_multiplier": 2.0,
+    "duty_factor": 0.6,
+    "stance_frames": 18,
+    "swing_frames": 12,
+    "stance_excursion_m": 1.2600000000000002,
+    "stride_per_cycle_m": 2.1,
+    "contacts": {
+     "L": 1,
+     "R": 16
+    },
+    "swing_apex": {
+     "L": 23,
+     "R": 8
+    },
+    "foot_lift_m": 0.085,
+    "intent": "phases et vitesse nominale identiques a SB_Walk, corps plus stable, zone portee coherente"
+   }
+  },
+  "gate_contract": true,
+  "gate_physical": true,
+  "gate_continuity": true,
+  "gate_reimport": true,
+  "gate_unity": "PENDING",
+  "media": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_CarryWalk/SB_CarryWalk-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 121,
+   "avg_frame_rate": "30/1",
+   "duration_s": 4.033333,
+   "loop_repeats": 4,
+   "source_frames": 30
+  }
+ },
+ "SB_Pickup": {
+  "clip": "SB_Pickup",
+  "checkpoint": "SB_Pickup_v009.blend",
+  "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Pickup_candidate.fbx",
+  "authored": {
+   "action": "SB_Pickup",
+   "range": [
+    1.0,
+    24.0
+   ],
+   "fcurves": 100,
+   "fake_user": true,
+   "arm_relax": {
+    "frames_relaxed": 19,
+    "max_extra_deg": 16.5,
+    "unresolved": [],
+    "body_lifted_frames": 8,
+    "max_body_lift_m": 0.024000000000000007,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "declared": {
+    "loop": false,
+    "samples": 24,
+    "duration_s": 0.7666666666666667,
+    "intent": "lecture du sol, portee basse f8, prise visuelle f12, f24 compatible SB_CarryIdle f1"
+   }
+  },
+  "gate_contract": true,
+  "gate_physical": true,
+  "gate_continuity": true,
+  "gate_reimport": true,
+  "gate_unity": "PENDING",
+  "media": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Pickup/SB_Pickup-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 25,
+   "avg_frame_rate": "30/1",
+   "duration_s": 0.833333,
+   "loop_repeats": 1,
+   "source_frames": 24
+  }
+ },
+ "SB_Throw": {
+  "clip": "SB_Throw",
+  "checkpoint": "SB_Throw_v012.blend",
+  "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Throw_candidate.fbx",
+  "authored": {
+   "action": "SB_Throw",
+   "range": [
+    1.0,
+    24.0
+   ],
+   "fcurves": 100,
+   "fake_user": true,
+   "arm_relax": {
+    "frames_relaxed": 23,
+    "max_extra_deg": 34.0,
+    "unresolved": [
+     {
+      "frame": 12
+     }
+    ],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "declared": {
+    "loop": false,
+    "samples": 24,
+    "duration_s": 0.7666666666666667,
+    "intent": "arme f4-7, acceleration f8-11, release VISUEL f12, suivi f13-17, f24 sans objet compatible Idle",
+    "release_frame": 12,
+    "note": "aucun projectile ni evenement gameplay n'est exporte"
+   }
+  },
+  "gate_contract": true,
+  "gate_physical": true,
+  "gate_continuity": true,
+  "gate_reimport": true,
+  "gate_unity": "PENDING",
+  "media": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Throw/SB_Throw-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 25,
+   "avg_frame_rate": "30/1",
+   "duration_s": 0.833333,
+   "loop_repeats": 1,
+   "source_frames": 24
+  }
+ },
+ "SB_Drop": {
+  "clip": "SB_Drop",
+  "checkpoint": "SB_Drop_v010.blend",
+  "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Drop_candidate.fbx",
+  "authored": {
+   "action": "SB_Drop",
+   "range": [
+    1.0,
+    18.0
+   ],
+   "fcurves": 100,
+   "fake_user": true,
+   "arm_relax": {
+    "frames_relaxed": 6,
+    "max_extra_deg": 16.5,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "declared": {
+    "loop": false,
+    "samples": 18,
+    "duration_s": 0.5666666666666667,
+    "intent": "ouverture des mains f6, release VISUEL f8-9, f18 compatible Idle",
+    "release_frame": 9
+   }
+  },
+  "gate_contract": true,
+  "gate_physical": true,
+  "gate_continuity": true,
+  "gate_reimport": true,
+  "gate_unity": "PENDING",
+  "media": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Drop/SB_Drop-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 19,
+   "avg_frame_rate": "30/1",
+   "duration_s": 0.633333,
+   "loop_repeats": 1,
+   "source_frames": 18
+  }
+ },
+ "SB_Deposit": {
+  "clip": "SB_Deposit",
+  "checkpoint": "SB_Deposit_v011.blend",
+  "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Deposit_candidate.fbx",
+  "authored": {
+   "action": "SB_Deposit",
+   "range": [
+    1.0,
+    30.0
+   ],
+   "fcurves": 100,
+   "fake_user": true,
+   "arm_relax": {
+    "frames_relaxed": 6,
+    "max_extra_deg": 16.5,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "declared": {
+    "loop": false,
+    "samples": 30,
+    "duration_s": 0.9666666666666667,
+    "intent": "presentation f1-10, extension vers la zone, release VISUEL f15, retrait f22, f30 sans objet compatible Idle",
+    "release_frame": 15
+   }
+  },
+  "gate_contract": true,
+  "gate_physical": true,
+  "gate_continuity": true,
+  "gate_reimport": true,
+  "gate_unity": "PENDING",
+  "media": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Deposit/SB_Deposit-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 31,
+   "avg_frame_rate": "30/1",
+   "duration_s": 1.033333,
+   "loop_repeats": 1,
+   "source_frames": 30
+  }
+ },
+ "SB_Walk": {
+  "clip": "SB_Walk",
+  "checkpoint": "SB_Walk_v010.blend",
+  "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Walk_candidate.fbx",
+  "authored": {
+   "action": "SB_Walk",
+   "range": [
+    1.0,
+    30.0
+   ],
+   "fcurves": 100,
+   "fake_user": true,
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "declared": {
+    "loop": true,
+    "samples": 30,
+    "duration_s": 0.9666666666666667,
+    "nominal_speed_mps": 2.1,
+    "gameplay_speed_mps": 4.2,
+    "playback_multiplier": 2.0,
+    "duty_factor": 0.6,
+    "stance_frames": 18,
+    "swing_frames": 12,
+    "stance_excursion_m": 1.2600000000000002,
+    "stride_per_cycle_m": 2.1,
+    "contacts": {
+     "L": 1,
+     "R": 16
+    },
+    "swing_apex": {
+     "L": 23,
+     "R": 8
+    },
+    "foot_lift_m": 0.095
+   }
+  },
+  "gate_contract": true,
+  "gate_physical": true,
+  "gate_continuity": true,
+  "gate_reimport": true,
+  "gate_unity": "PENDING",
+  "media": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Walk/SB_Walk-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 121,
+   "avg_frame_rate": "30/1",
+   "duration_s": 4.033333,
+   "loop_repeats": 4,
+   "source_frames": 30
+  }
+ }
+}

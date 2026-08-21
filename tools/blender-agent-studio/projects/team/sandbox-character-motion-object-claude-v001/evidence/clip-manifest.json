@@ -1,0 +1,1037 @@
+{
+ "schema_version": 1,
+ "project_id": "sandbox-character-motion-object-claude-v001",
+ "pole": "locomotion, verticalite et interactions d'objet",
+ "owner": "Claude",
+ "fps": 30,
+ "units": "metres",
+ "up_axis": "Z (Blender), Y (Unity)",
+ "facing": "-Y (Blender), +Z (Unity)",
+ "rig": "Unity Generic, 10 os BAS_PUNCH_, 9 pieces rigides",
+ "clip_count": 11,
+ "clips": [
+  {
+   "clip": "SB_Walk",
+   "action": "SB_Walk",
+   "frame_range": [
+    1,
+    30
+   ],
+   "samples": 30,
+   "fps": 30,
+   "duration_s": 0.9666666666666667,
+   "loop": true,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": true,
+    "samples": 30,
+    "duration_s": 0.9666666666666667,
+    "nominal_speed_mps": 2.1,
+    "gameplay_speed_mps": 4.2,
+    "playback_multiplier": 2.0,
+    "duty_factor": 0.6,
+    "stance_frames": 18,
+    "swing_frames": 12,
+    "stance_excursion_m": 1.2600000000000002,
+    "stride_per_cycle_m": 2.1,
+    "contacts": {
+     "L": 1,
+     "R": 16
+    },
+    "swing_apex": {
+     "L": 23,
+     "R": 8
+    },
+    "foot_lift_m": 0.095
+   },
+   "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Walk_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-motion-object-claude-v001/checkpoints/SB_Walk_v010.blend",
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-continuity.json",
+    "reimport": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Walk-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Walk/SB_Walk-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 121,
+    "avg_frame_rate": "30/1",
+    "duration_s": 4.033333,
+    "loop_repeats": 4,
+    "source_frames": 30
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimClaude/SB_Walk_candidate.fbx",
+    "expected_name": "SB_Walk",
+    "expected_loop": true,
+    "clip_count": 1,
+    "name": "SB_Walk",
+    "length_s": 0.966666639,
+    "frame_rate": 30,
+    "samples": 30,
+    "loop_time": true,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS"
+  },
+  {
+   "clip": "SB_Sprint",
+   "action": "SB_Sprint",
+   "frame_range": [
+    1,
+    24
+   ],
+   "samples": 24,
+   "fps": 30,
+   "duration_s": 0.7666666666666667,
+   "loop": true,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": true,
+    "samples": 24,
+    "duration_s": 0.7666666666666667,
+    "nominal_speed_mps": 3.5,
+    "gameplay_speed_mps": 7.0,
+    "playback_multiplier": 2.0,
+    "duty_factor": 0.35,
+    "stance_frames": 8,
+    "swing_frames": 16,
+    "stance_excursion_m": 0.9333333333333333,
+    "stride_per_cycle_m": 2.8,
+    "contacts": {
+     "L": 1,
+     "R": 13
+    },
+    "swing_apex": {
+     "L": 19,
+     "R": 7
+    },
+    "foot_lift_m": 0.13
+   },
+   "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Sprint_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-motion-object-claude-v001/checkpoints/SB_Sprint_v008.blend",
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-continuity.json",
+    "reimport": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Sprint-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Sprint/SB_Sprint-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 97,
+    "avg_frame_rate": "30/1",
+    "duration_s": 3.233333,
+    "loop_repeats": 4,
+    "source_frames": 24
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimClaude/SB_Sprint_candidate.fbx",
+    "expected_name": "SB_Sprint",
+    "expected_loop": true,
+    "clip_count": 1,
+    "name": "SB_Sprint",
+    "length_s": 0.7666667,
+    "frame_rate": 30,
+    "samples": 24,
+    "loop_time": true,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS"
+  },
+  {
+   "clip": "SB_Airborne",
+   "action": "SB_Airborne",
+   "frame_range": [
+    1,
+    24
+   ],
+   "samples": 24,
+   "fps": 30,
+   "duration_s": 0.7666666666666667,
+   "loop": true,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": true,
+    "samples": 24,
+    "duration_s": 0.7666666666666667,
+    "intent": "pose aerienne stable, faible balancier, aucun pedalage",
+    "foot_out_m": 0.22,
+    "foot_lift_m": 0.09
+   },
+   "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Airborne_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-motion-object-claude-v001/checkpoints/SB_Airborne_v007.blend",
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-continuity.json",
+    "reimport": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Airborne-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Airborne/SB_Airborne-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 97,
+    "avg_frame_rate": "30/1",
+    "duration_s": 3.233333,
+    "loop_repeats": 4,
+    "source_frames": 24
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimClaude/SB_Airborne_candidate.fbx",
+    "expected_name": "SB_Airborne",
+    "expected_loop": true,
+    "clip_count": 1,
+    "name": "SB_Airborne",
+    "length_s": 0.7666667,
+    "frame_rate": 30,
+    "samples": 24,
+    "loop_time": true,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS"
+  },
+  {
+   "clip": "SB_JumpTakeoff",
+   "action": "SB_JumpTakeoff",
+   "frame_range": [
+    1,
+    12
+   ],
+   "samples": 12,
+   "fps": 30,
+   "duration_s": 0.36666666666666664,
+   "loop": false,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": false,
+    "samples": 12,
+    "duration_s": 0.36666666666666664,
+    "intent": "compression f4, extension f8-9, f12 identique a SB_Airborne f1",
+    "handover_pose": "SB_Airborne frame 1"
+   },
+   "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_JumpTakeoff_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-motion-object-claude-v001/checkpoints/SB_JumpTakeoff_v008.blend",
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_JumpTakeoff-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_JumpTakeoff-continuity.json",
+    "reimport": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_JumpTakeoff-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_JumpTakeoff-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_JumpTakeoff-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_JumpTakeoff/SB_JumpTakeoff-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 13,
+    "avg_frame_rate": "30/1",
+    "duration_s": 0.433333,
+    "loop_repeats": 1,
+    "source_frames": 12
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimClaude/SB_JumpTakeoff_candidate.fbx",
+    "expected_name": "SB_JumpTakeoff",
+    "expected_loop": false,
+    "clip_count": 1,
+    "name": "SB_JumpTakeoff",
+    "length_s": 0.3666667,
+    "frame_rate": 30,
+    "samples": 12,
+    "loop_time": false,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS"
+  },
+  {
+   "clip": "SB_Land",
+   "action": "SB_Land",
+   "frame_range": [
+    1,
+    12
+   ],
+   "samples": 12,
+   "fps": 30,
+   "duration_s": 0.36666666666666664,
+   "loop": false,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": false,
+    "samples": 12,
+    "duration_s": 0.36666666666666664,
+    "intent": "f1 deja au sol, compression max f5, f12 compatible Idle/Walk"
+   },
+   "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Land_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-motion-object-claude-v001/checkpoints/SB_Land_v012.blend",
+   "arm_relax": {
+    "frames_relaxed": 0,
+    "max_extra_deg": 0.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Land-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Land-continuity.json",
+    "reimport": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Land-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Land-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Land-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Land/SB_Land-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 13,
+    "avg_frame_rate": "30/1",
+    "duration_s": 0.433333,
+    "loop_repeats": 1,
+    "source_frames": 12
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimClaude/SB_Land_candidate.fbx",
+    "expected_name": "SB_Land",
+    "expected_loop": false,
+    "clip_count": 1,
+    "name": "SB_Land",
+    "length_s": 0.3666667,
+    "frame_rate": 30,
+    "samples": 12,
+    "loop_time": false,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS"
+  },
+  {
+   "clip": "SB_CarryIdle",
+   "action": "SB_CarryIdle",
+   "frame_range": [
+    1,
+    60
+   ],
+   "samples": 60,
+   "fps": 30,
+   "duration_s": 1.9666666666666666,
+   "loop": true,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": true,
+    "samples": 60,
+    "duration_s": 1.9666666666666666,
+    "intent": "calme d'Idle, bras stabilisant la zone d'objet devant le torse",
+    "carry_zone_blender_m": [
+     0.0,
+     -0.62,
+     0.86
+    ]
+   },
+   "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_CarryIdle_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-motion-object-claude-v001/checkpoints/SB_CarryIdle_v008.blend",
+   "arm_relax": {
+    "frames_relaxed": 60,
+    "max_extra_deg": 24.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-continuity.json",
+    "reimport": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryIdle-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_CarryIdle/SB_CarryIdle-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 241,
+    "avg_frame_rate": "30/1",
+    "duration_s": 8.033333,
+    "loop_repeats": 4,
+    "source_frames": 60
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimClaude/SB_CarryIdle_candidate.fbx",
+    "expected_name": "SB_CarryIdle",
+    "expected_loop": true,
+    "clip_count": 1,
+    "name": "SB_CarryIdle",
+    "length_s": 1.9666667,
+    "frame_rate": 30,
+    "samples": 60,
+    "loop_time": true,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS"
+  },
+  {
+   "clip": "SB_CarryWalk",
+   "action": "SB_CarryWalk",
+   "frame_range": [
+    1,
+    30
+   ],
+   "samples": 30,
+   "fps": 30,
+   "duration_s": 0.9666666666666667,
+   "loop": true,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": true,
+    "samples": 30,
+    "duration_s": 0.9666666666666667,
+    "nominal_speed_mps": 2.1,
+    "gameplay_speed_mps": 4.2,
+    "playback_multiplier": 2.0,
+    "duty_factor": 0.6,
+    "stance_frames": 18,
+    "swing_frames": 12,
+    "stance_excursion_m": 1.2600000000000002,
+    "stride_per_cycle_m": 2.1,
+    "contacts": {
+     "L": 1,
+     "R": 16
+    },
+    "swing_apex": {
+     "L": 23,
+     "R": 8
+    },
+    "foot_lift_m": 0.085,
+    "intent": "phases et vitesse nominale identiques a SB_Walk, corps plus stable, zone portee coherente"
+   },
+   "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_CarryWalk_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-motion-object-claude-v001/checkpoints/SB_CarryWalk_v008.blend",
+   "arm_relax": {
+    "frames_relaxed": 30,
+    "max_extra_deg": 24.0,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-continuity.json",
+    "reimport": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_CarryWalk-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_CarryWalk/SB_CarryWalk-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 121,
+    "avg_frame_rate": "30/1",
+    "duration_s": 4.033333,
+    "loop_repeats": 4,
+    "source_frames": 30
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimClaude/SB_CarryWalk_candidate.fbx",
+    "expected_name": "SB_CarryWalk",
+    "expected_loop": true,
+    "clip_count": 1,
+    "name": "SB_CarryWalk",
+    "length_s": 0.966666639,
+    "frame_rate": 30,
+    "samples": 30,
+    "loop_time": true,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS"
+  },
+  {
+   "clip": "SB_Pickup",
+   "action": "SB_Pickup",
+   "frame_range": [
+    1,
+    24
+   ],
+   "samples": 24,
+   "fps": 30,
+   "duration_s": 0.7666666666666667,
+   "loop": false,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": false,
+    "samples": 24,
+    "duration_s": 0.7666666666666667,
+    "intent": "lecture du sol, portee basse f8, prise visuelle f12, f24 compatible SB_CarryIdle f1"
+   },
+   "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Pickup_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-motion-object-claude-v001/checkpoints/SB_Pickup_v009.blend",
+   "arm_relax": {
+    "frames_relaxed": 19,
+    "max_extra_deg": 16.5,
+    "unresolved": [],
+    "body_lifted_frames": 8,
+    "max_body_lift_m": 0.024000000000000007,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Pickup-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Pickup-continuity.json",
+    "reimport": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Pickup-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Pickup-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Pickup-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Pickup/SB_Pickup-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 25,
+    "avg_frame_rate": "30/1",
+    "duration_s": 0.833333,
+    "loop_repeats": 1,
+    "source_frames": 24
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimClaude/SB_Pickup_candidate.fbx",
+    "expected_name": "SB_Pickup",
+    "expected_loop": false,
+    "clip_count": 1,
+    "name": "SB_Pickup",
+    "length_s": 0.7666667,
+    "frame_rate": 30,
+    "samples": 24,
+    "loop_time": false,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS"
+  },
+  {
+   "clip": "SB_Throw",
+   "action": "SB_Throw",
+   "frame_range": [
+    1,
+    24
+   ],
+   "samples": 24,
+   "fps": 30,
+   "duration_s": 0.7666666666666667,
+   "loop": false,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": false,
+    "samples": 24,
+    "duration_s": 0.7666666666666667,
+    "intent": "arme f4-7, acceleration f8-11, release VISUEL f12, suivi f13-17, f24 sans objet compatible Idle",
+    "release_frame": 12,
+    "note": "aucun projectile ni evenement gameplay n'est exporte"
+   },
+   "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Throw_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-motion-object-claude-v001/checkpoints/SB_Throw_v012.blend",
+   "arm_relax": {
+    "frames_relaxed": 23,
+    "max_extra_deg": 34.0,
+    "unresolved": [
+     {
+      "frame": 12
+     }
+    ],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Throw-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Throw-continuity.json",
+    "reimport": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Throw-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Throw-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Throw-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Throw/SB_Throw-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 25,
+    "avg_frame_rate": "30/1",
+    "duration_s": 0.833333,
+    "loop_repeats": 1,
+    "source_frames": 24
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimClaude/SB_Throw_candidate.fbx",
+    "expected_name": "SB_Throw",
+    "expected_loop": false,
+    "clip_count": 1,
+    "name": "SB_Throw",
+    "length_s": 0.7666667,
+    "frame_rate": 30,
+    "samples": 24,
+    "loop_time": false,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS"
+  },
+  {
+   "clip": "SB_Drop",
+   "action": "SB_Drop",
+   "frame_range": [
+    1,
+    18
+   ],
+   "samples": 18,
+   "fps": 30,
+   "duration_s": 0.5666666666666667,
+   "loop": false,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": false,
+    "samples": 18,
+    "duration_s": 0.5666666666666667,
+    "intent": "ouverture des mains f6, release VISUEL f8-9, f18 compatible Idle",
+    "release_frame": 9
+   },
+   "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Drop_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-motion-object-claude-v001/checkpoints/SB_Drop_v010.blend",
+   "arm_relax": {
+    "frames_relaxed": 6,
+    "max_extra_deg": 16.5,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Drop-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Drop-continuity.json",
+    "reimport": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Drop-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Drop-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Drop-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Drop/SB_Drop-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 19,
+    "avg_frame_rate": "30/1",
+    "duration_s": 0.633333,
+    "loop_repeats": 1,
+    "source_frames": 18
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimClaude/SB_Drop_candidate.fbx",
+    "expected_name": "SB_Drop",
+    "expected_loop": false,
+    "clip_count": 1,
+    "name": "SB_Drop",
+    "length_s": 0.566666663,
+    "frame_rate": 30,
+    "samples": 18,
+    "loop_time": false,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS"
+  },
+  {
+   "clip": "SB_Deposit",
+   "action": "SB_Deposit",
+   "frame_range": [
+    1,
+    30
+   ],
+   "samples": 30,
+   "fps": 30,
+   "duration_s": 0.9666666666666667,
+   "loop": false,
+   "root_motion": false,
+   "additive": false,
+   "reference_pose": "SB_Idle (validated, untouched)",
+   "animation_events": [],
+   "declared": {
+    "loop": false,
+    "samples": 30,
+    "duration_s": 0.9666666666666667,
+    "intent": "presentation f1-10, extension vers la zone, release VISUEL f15, retrait f22, f30 sans objet compatible Idle",
+    "release_frame": 15
+   },
+   "fbx": "local_work/sandbox-character-motion-object-claude-v001/exports/SB_Deposit_candidate.fbx",
+   "checkpoint": "local_work/sandbox-character-motion-object-claude-v001/checkpoints/SB_Deposit_v011.blend",
+   "arm_relax": {
+    "frames_relaxed": 6,
+    "max_extra_deg": 16.5,
+    "unresolved": [],
+    "body_lifted_frames": 0,
+    "max_body_lift_m": 0.0,
+    "method": "rate-limited envelope over per-frame minimal clearing",
+    "abduction_sign": 1.0,
+    "residual_contact_frames": [],
+    "rate_limit_deg_per_frame": 3.0
+   },
+   "evidence": {
+    "physical": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Deposit-physical-validation.json",
+    "continuity": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Deposit-continuity.json",
+    "reimport": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Deposit-reimport.json",
+    "playblast_probe": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Deposit-playblast-probe.json",
+    "contract": "projects/team/sandbox-character-motion-object-claude-v001/evidence/SB_Deposit-contract.json"
+   },
+   "media": {
+    "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Deposit/SB_Deposit-playblast.mp4",
+    "width": 640,
+    "height": 480,
+    "nb_frames": 31,
+    "avg_frame_rate": "30/1",
+    "duration_s": 1.033333,
+    "loop_repeats": 1,
+    "source_frames": 30
+   },
+   "unity": {
+    "asset": "Assets/_GeneratedLocal/SandboxAnimClaude/SB_Deposit_candidate.fbx",
+    "expected_name": "SB_Deposit",
+    "expected_loop": false,
+    "clip_count": 1,
+    "name": "SB_Deposit",
+    "length_s": 0.966666639,
+    "frame_rate": 30,
+    "samples": 30,
+    "loop_time": false,
+    "loop_blend": false,
+    "has_root_curves": false,
+    "average_speed": [
+     0,
+     0,
+     0
+    ],
+    "animated_transform_paths": 11,
+    "curve_bindings": 110,
+    "triangles": 5664,
+    "bones": 10,
+    "max_influences": 1,
+    "cameras": 0,
+    "lights": 0,
+    "colliders": 0,
+    "pass": true
+   },
+   "gates": {
+    "contract": true,
+    "physical": true,
+    "continuity": true,
+    "reimport": true,
+    "unity": true
+   },
+   "verdict": "PASS"
+  }
+ ],
+ "all_pass": true
+}

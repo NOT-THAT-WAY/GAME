@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-composition-v001",
+  "iteration_policy": {
+    "one_category_at_a_time": true,
+    "max_attempts_per_category": 3
+  },
+  "gates": {
+    "physical": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-animation-v001/evidence/physical-validation.json",
+        "projects/team/sandbox-character-composition-v001/evidence/composition-validation-claude.json"
+      ],
+      "notes": "Root immobile (0.0), semelles à Z=0, 60/60 images dans le safe frame après la passe créative. Le personnage et SB_Idle n'ont pas été touchés."
+    },
+    "clay_composition": {
+      "status": "passed",
+      "evidence": [
+        "local_work/sandbox-character-composition-v001/renders/claude-final/gates/clay-hero-f001.png",
+        "projects/team/sandbox-character-composition-v001/evidence/composition-validation-claude.json"
+      ],
+      "notes": "Silhouette lisible : la réduction de l'angle trois-quarts (x 2.55 -> 1.75) dégage les DEUX bras du corps, ce que la baseline ne faisait pas côté écran-gauche."
+    },
+    "key_poses": {
+      "status": "passed",
+      "evidence": [
+        "local_work/sandbox-character-composition-v001/renders/claude-final/final/contact-sheet-hero-poses.png",
+        "projects/team/sandbox-character-animation-v001/evidence/clip-manifest.json"
+      ],
+      "notes": "Six poses hero sur le cycle, même caméra et même résolution."
+    },
+    "camera_corridor": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-composition-v001/evidence/composition-validation-claude.json"
+      ],
+      "notes": "58 mm à (1.75,-5.04,1.58). Hauteur 0.729-0.742 (cible 0.64-0.82), largeur 0.504 (max 0.70), centre (0.0038, 0.0308) sous ±0.08, clearance 4.81 m."
+    },
+    "focus": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-composition-v001/evidence/render-settings.json",
+        "local_work/sandbox-character-composition-v001/renders/claude-final/final/neutral-design-baseline.png"
+      ],
+      "notes": "Profondeur de champ volontairement désactivée : le contrat de cadrage, gardé inchangé sur décision humaine, l'interdit. dof_disabled_for_baseline = True."
+    },
+    "lighting_layers": {
+      "status": "passed",
+      "evidence": [
+        "local_work/sandbox-character-composition-v001/renders/claude-final/final/contact-sheet-lighting.png",
+        "projects/team/sandbox-character-composition-v001/evidence/render-settings.json"
+      ],
+      "notes": "Les trois rôles sont enfin distincts. Dans la baseline le rim était à y=3.70, derrière le mur du cyclorama (vertical à y=2.80), donc key+fill et lumière complète étaient quasi identiques."
+    },
+    "material_response": {
+      "status": "passed",
+      "evidence": [
+        "local_work/sandbox-character-composition-v001/renders/claude-final/final/neutral-design-baseline.png",
+        "local_work/sandbox-character-composition-v001/renders/claude-final/final/contact-sheet-controls.png"
+      ],
+      "notes": "Matériaux du personnage INCHANGÉS. Seuls le matériau du décor (procédural) et le World ont été retravaillés."
+    },
+    "full_motion_preview": {
+      "status": "passed",
+      "evidence": [
+        "local_work/sandbox-character-composition-v001/renders/claude-final/final/sb-idle-arena-echo-loop-x4.mp4",
+        "projects/team/sandbox-character-composition-v001/evidence/media-probe.json"
+      ],
+      "notes": "Boucle x4, 960x540, 30 fps, 240 images, 8.0 s, vérifiée par ffprobe."
+    },
+    "contact_sheet": {
+      "status": "passed",
+      "evidence": [
+        "local_work/sandbox-character-composition-v001/renders/claude-final/final/contact-sheet-hero-poses.png",
+        "local_work/sandbox-character-composition-v001/renders/claude-final/final/contact-sheet-controls.png",
+        "local_work/sandbox-character-composition-v001/renders/claude-final/final/comparison-baseline-c-vs-claude-arena-echo.png"
+      ],
+      "notes": "Contact sheets hero, contrôles face/profil et comparaison baseline vs arena-echo au même cadre et à la même résolution."
+    },
+    "ffprobe": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-composition-v001/evidence/media-probe.json"
+      ],
+      "notes": "media-probe.json regénéré sur la boucle arena-echo."
+    },
+    "final_review": {
+      "status": "passed",
+      "evidence": [
+        "projects/team/sandbox-character-composition-v001/FINAL_REVIEW.md",
+        "projects/team/sandbox-character-composition-v001/CLAUDE_CREATIVE_HANDOFF.md",
+        "projects/team/sandbox-character-composition-v001/evidence/iteration-log-claude.json"
+      ],
+      "notes": "Revue réécrite pour la passe créative; le handoff de GPT est conservé tel quel comme document d'entrée."
+    }
+  },
+  "critical_failures": [],
+  "human_review_required": true,
+  "creative_pass": {
+    "author": "Claude",
+    "direction": "arena-echo",
+    "categories_changed": [
+      "decor_et_palette",
+      "eclairage",
+      "camera_hero"
+    ],
+    "attempts": {
+      "decor_et_palette": 2,
+      "eclairage": 3,
+      "camera_hero": 1
+    },
+    "max_attempts_per_category": 3,
+    "framing_contract_changed": false,
+    "log": "projects/team/sandbox-character-composition-v001/evidence/iteration-log-claude.json"
+  }
+}

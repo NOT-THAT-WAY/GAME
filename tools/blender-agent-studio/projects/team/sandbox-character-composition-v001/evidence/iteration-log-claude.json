@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-composition-v001",
+  "pass": "direction artistique Claude — écho de l'arène",
+  "policy": {
+    "one_category_at_a_time": true,
+    "max_attempts_per_category": 3
+  },
+  "creative_intent": "La mascotte se tient dans son terrain de jeu : un sol d'arène chaud éclairé par-dessus, un fond froid qui recule, et l'orange de la zone de dépôt qui revient en accent au dos du personnage.",
+  "framing_contract": "INCHANGÉ sur décision humaine : compo centrée ±0.08, DOF interdit, validateur non modifié.",
+  "palette_provenance": "dérivée d'Assets/_Project/Editor/M1PlaytestBuild.cs, aucune couleur inventée",
+  "categories": [
+    {
+      "category": "decor_et_palette",
+      "attempts": 2,
+      "of_max": 3,
+      "attempt_1": {
+        "verdict": "REJETÉ",
+        "what": "anneau orange peint sur le sol via MapRange+SINE",
+        "why": "la rampe ne redescendait jamais à zéro au-delà de 2.30 m : sin(1)≈0.84 restait constant, donc 0.135 d'orange sur TOUT le sol et le fond. Le fond passait rose à la même valeur que le personnage et la séparation devenait pire que la baseline."
+      },
+      "attempt_2": {
+        "verdict": "ACCEPTÉ",
+        "what": "orange peint supprimé, fond assombri sous la valeur du personnage, pool d'argile resserré à 0.50-2.20 m avec exposant 2.0",
+        "why": "le fond recule, le personnage se détache, la chaleur reste sous les pieds. L'accent est délégué à la lumière, ce qui est la bonne façon de poser un accent."
+      }
+    },
+    {
+      "category": "eclairage",
+      "attempts": 3,
+      "of_max": 3,
+      "attempt_1": {
+        "verdict": "REJETÉ",
+        "what": "rim orange à (-2.15, 3.15, 2.35)",
+        "why": "mesure du mesh : le mur du cyclorama est VERTICAL à y=2.80 au-dessus de z=1.0. Le rim était donc derrière le mur et inondait le fond sans jamais raser la silhouette. La baseline avait exactement le même défaut (rim à y=3.70), ce qui explique que key+fill et lumière complète y étaient quasi identiques."
+      },
+      "attempt_2": {
+        "verdict": "REJETÉ",
+        "what": "rim ramené devant le mur à (-1.75, 1.60, 2.20), 300 W, taille 1.3",
+        "why": "il rasait enfin la silhouette mais déversait une flaque orange sur tout le sol et le fond écran-droit, détruisant la séparation de ce côté."
+      },
+      "attempt_3": {
+        "verdict": "ACCEPTÉ",
+        "what": "rim monté et resserré à (-1.45, 1.30, 2.90), 145 W, taille 0.9",
+        "why": "la chute en 1/d² pénalise le sol lointain bien plus que la silhouette : l'accent redevient une arête fine sur le crâne et le bras écran-droit. Les trois lumières ont enfin un rôle visible et distinct."
+      }
+    },
+    {
+      "category": "camera_hero",
+      "attempts": 1,
+      "of_max": 3,
+      "attempt_1": {
+        "verdict": "ACCEPTÉ",
+        "what": "angle trois-quarts réduit, 64 mm -> 58 mm, position (2.55,-5.00,1.78) -> (1.75,-5.04,1.58)",
+        "why": "le défaut restant était géométrique : à x=2.55 le bras écran-gauche passait devant le corps et s'y noyait. Cadrage calculé avant rendu (demi-angle atan(18/58)=17.24°, fenêtre 3.36x1.89 m à 5.41 m) puis vérifié : hauteur 0.729-0.742 pour une prédiction de 0.72."
+      }
+    }
+  ]
+}

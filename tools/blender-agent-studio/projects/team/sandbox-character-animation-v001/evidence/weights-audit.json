@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-animation-v001",
+  "source": "Assets/_Project/Player/PersoBouleRigged.fbx",
+  "method": "vertex groups filtered to deform bones, weight > 1e-6, on the imported source FBX",
+  "budget_influences_per_vertex": 4,
+  "measured_max_influences_per_vertex": 1,
+  "unweighted_vertices_total": 0,
+  "worst_weight_sum_error": 0.0,
+  "rigid_binding_note": "Chaque mesh est pese a 100% sur un seul os: personnage a pieces rigides, aucune deformation continue. Aucun poids n a ete modifie par cette passe.",
+  "per_mesh": [
+    {
+      "mesh": "BAS_PUNCH_Body",
+      "vertices": 706,
+      "tris": 1400,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_body"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_Fist_L",
+      "vertices": 128,
+      "tris": 252,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_hand.L"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_Fist_R",
+      "vertices": 128,
+      "tris": 252,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_hand.R"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_Foot_L",
+      "vertices": 178,
+      "tris": 352,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_foot.L"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_Foot_R",
+      "vertices": 178,
+      "tris": 352,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_foot.R"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_Forearm_L",
+      "vertices": 388,
+      "tris": 764,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_forearm.L"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_Forearm_R",
+      "vertices": 388,
+      "tris": 764,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_forearm.R"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_UpperArm_L",
+      "vertices": 388,
+      "tris": 764,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_upperarm.L"
+      ]
+    },
+    {
+      "mesh": "BAS_PUNCH_UpperArm_R",
+      "vertices": 388,
+      "tris": 764,
+      "max_influences": 1,
+      "vertices_over_4_influences": 0,
+      "unweighted_vertices": 0,
+      "worst_weight_sum_error": 0.0,
+      "bones_used": [
+        "BAS_PUNCH_upperarm.R"
+      ]
+    }
+  ],
+  "after_blender_reimport": {
+    "max_influences": 1,
+    "unweighted_vertices": 0,
+    "within_4_influence_budget": true
+  },
+  "after_unity_import": {
+    "max_bones_per_vertex": 1,
+    "within_4_influence_budget": true
+  },
+  "passed": true
+}

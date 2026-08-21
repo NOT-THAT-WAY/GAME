@@ -1,0 +1,23 @@
+{
+ "clip": "SB_HitReact",
+ "f_start": 1,
+ "f_end": 18,
+ "loop": false,
+ "nominal_speed_mps": 0.0,
+ "stance_windows": {
+  "L": [
+   {
+    "start": 1,
+    "end": 18
+   }
+  ],
+  "R": [
+   {
+    "start": 1,
+    "end": 18
+   }
+  ]
+ },
+ "swing_windows": {},
+ "note": ""
+}

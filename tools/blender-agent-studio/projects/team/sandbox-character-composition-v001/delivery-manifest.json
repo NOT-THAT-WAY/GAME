@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-composition-v001",
+  "files": [
+    {
+      "role": "creative_handoff",
+      "path": "projects/team/sandbox-character-composition-v001/CLAUDE_CREATIVE_HANDOFF.md",
+      "bytes": 5548,
+      "sha256": "19f7b4600354d9f1bf2ec5a01a290b7afd53daa4a7c4b906e013ec123236fa4b",
+      "extension": ".md",
+      "status": "validated"
+    },
+    {
+      "role": "master_blend",
+      "path": "local_work/sandbox-character-composition-v001/work/sandbox_character_composition_claude_v001.blend",
+      "bytes": 231704,
+      "sha256": "e76402f018dacaf3e8938151abbc78563b0a6e20b43e578ea8f5688aef970009",
+      "extension": ".blend",
+      "status": "validated"
+    },
+    {
+      "role": "final_render",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/final/neutral-design-baseline.png",
+      "bytes": 1912746,
+      "sha256": "d97892fe5fe867eb7520a20a63fa0f8f24dde709532cda827e37f0d498752560",
+      "extension": ".png",
+      "status": "validated"
+    },
+    {
+      "role": "preview",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/final/sb-idle-arena-echo-loop-x4.mp4",
+      "bytes": 556920,
+      "sha256": "e61f01359935ed4d87ce5e43df2bdf48d2ef285a7829b6fdc6ce995d66175e13",
+      "extension": ".mp4",
+      "status": "validated"
+    },
+    {
+      "role": "contact_sheet",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/final/contact-sheet-hero-poses.png",
+      "bytes": 981806,
+      "sha256": "caa8750413ae67f84236520a1aa6d055ac51c4399ef7c8259ff1b8d1a830e5f5",
+      "extension": ".png",
+      "status": "validated"
+    },
+    {
+      "role": "control_sheet",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/final/contact-sheet-controls.png",
+      "bytes": 1445771,
+      "sha256": "36325c5ba774442fa1c68eb27616fb89a46ec523c6252b34362b5b7da65c4891",
+      "extension": ".png",
+      "status": "validated"
+    },
+    {
+      "role": "lighting_gate",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/final/contact-sheet-lighting.png",
+      "bytes": 1264811,
+      "sha256": "182c9cd5ef84a0b003b53839fa6b20a2d3e782ca9435765453533af0c02a07e5",
+      "extension": ".png",
+      "status": "validated"
+    },
+    {
+      "role": "media_probe",
+      "path": "projects/team/sandbox-character-composition-v001/evidence/media-probe.json",
+      "bytes": 2852,
+      "sha256": "171685e1f89ef577321e5eefc014b8cfb3ab44455e893233dc62097f950dface",
+      "extension": ".json",
+      "status": "validated"
+    },
+    {
+      "role": "composition_validation",
+      "path": "projects/team/sandbox-character-composition-v001/evidence/composition-validation-claude.json",
+      "bytes": 25298,
+      "sha256": "830704a44e422adcf820974608be76bda5c7f6475aebc852878ad0af66e8ccc2",
+      "extension": ".json",
+      "status": "validated"
+    },
+    {
+      "role": "iteration_log",
+      "path": "projects/team/sandbox-character-composition-v001/evidence/iteration-log-claude.json",
+      "bytes": 3324,
+      "sha256": "b7caadbf2419705b8f62d35c02f1542e5d8c7e7f10a77bf6bfe6b40ae47e0847",
+      "extension": ".json",
+      "status": "validated"
+    },
+    {
+      "role": "comparison_sheet",
+      "path": "local_work/sandbox-character-composition-v001/renders/claude-final/final/comparison-baseline-c-vs-claude-arena-echo.png",
+      "bytes": 732964,
+      "sha256": "5ddb695ba3b72e39c4e87fdee8a214f104a53485101d8c560475906ddb1118d0",
+      "extension": ".png",
+      "status": "validated"
+    },
+    {
+      "role": "render_settings",
+      "path": "projects/team/sandbox-character-composition-v001/evidence/render-settings.json",
+      "bytes": 1718,
+      "sha256": "557af8a827e4b9a5f2a61394d291775781e2064bcfd0e7ca044c43beb8dcaff9",
+      "extension": ".json",
+      "status": "validated"
+    },
+    {
+      "role": "scene_audit",
+      "path": "projects/team/sandbox-character-composition-v001/evidence/scene-audit.json",
+      "bytes": 2549,
+      "sha256": "68f2d717cdca3466cb00a132143e18407b7eb4c53d32d0577d77216674dffb30",
+      "extension": ".json",
+      "status": "validated"
+    }
+  ],
+  "target_validation": {
+    "status": "passed",
+    "target": "Blender 5.1.1, revue design 1920x1080, handoff Claude; aucune livraison Unity runtime",
+    "evidence": [
+      "projects/team/sandbox-character-composition-v001/evidence/scene-audit.json",
+      "projects/team/sandbox-character-composition-v001/evidence/composition-validation-c.json",
+      "projects/team/sandbox-character-composition-v001/evidence/render-settings.json",
+      "projects/team/sandbox-character-composition-v001/evidence/media-probe.json"
+    ]
+  },
+  "rights_review": {
+    "status": "passed",
+    "notes": "Aucun asset externe, HDRI, texture tierce ou média téléchargé. La scène réutilise uniquement les sources locales GAME déjà déclarées. Ce verdict ne confère aucun droit de redistribution publique; les binaires restent dans local_work/."
+  },
+  "updated_at": "2026-08-15T20:13:41.242269+00:00"
+}

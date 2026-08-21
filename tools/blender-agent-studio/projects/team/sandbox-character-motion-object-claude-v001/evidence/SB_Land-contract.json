@@ -1,0 +1,22 @@
+{
+ "clip": "SB_Land",
+ "f_start": 1,
+ "f_end": 12,
+ "loop": false,
+ "nominal_speed_mps": 0.0,
+ "stance_windows": {
+  "L": [
+   {
+    "start": 1,
+    "end": 12
+   }
+  ],
+  "R": [
+   {
+    "start": 1,
+    "end": 12
+   }
+  ]
+ },
+ "swing_windows": {}
+}

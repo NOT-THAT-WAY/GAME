@@ -1,0 +1,107 @@
+{
+ "tolerances": {
+  "position_m": 0.001,
+  "rotation_deg": 0.01
+ },
+ "pairs": [
+  {
+   "from": "SB_Knockout f30",
+   "to": "SB_KnockedOutLoop f1",
+   "worst_position_delta_m": 0.0,
+   "worst_rotation_delta_deg": 0.0,
+   "bones": {
+    "BAS_PUNCH_root": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_body": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_upperarm.L": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_forearm.L": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_hand.L": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_upperarm.R": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_forearm.R": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_hand.R": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_foot.L": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_foot.R": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    }
+   },
+   "pass": true
+  },
+  {
+   "from": "SB_Recover f1",
+   "to": "SB_KnockedOutLoop f1",
+   "worst_position_delta_m": 0.0,
+   "worst_rotation_delta_deg": 0.0,
+   "bones": {
+    "BAS_PUNCH_root": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_body": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_upperarm.L": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_forearm.L": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_hand.L": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_upperarm.R": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_forearm.R": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_hand.R": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_foot.L": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    },
+    "BAS_PUNCH_foot.R": {
+     "position_delta_m": 0.0,
+     "rotation_delta_deg": 0.0
+    }
+   },
+   "pass": true
+  }
+ ],
+ "pass": true
+}

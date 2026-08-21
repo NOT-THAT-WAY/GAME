@@ -1,0 +1,76 @@
+{
+ "schema_version": 1,
+ "clips": {
+  "SB_Punch": {
+   "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_Punch/SB_Punch-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 22,
+   "avg_frame_rate": "30/1",
+   "duration_s": 0.733333,
+   "loop_repeats": 1,
+   "source_frames": 20
+  },
+  "SB_HitReact": {
+   "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_HitReact/SB_HitReact-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 19,
+   "avg_frame_rate": "30/1",
+   "duration_s": 0.633333,
+   "loop_repeats": 1,
+   "source_frames": 18
+  },
+  "SB_Push": {
+   "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_Push/SB_Push-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 121,
+   "avg_frame_rate": "30/1",
+   "duration_s": 4.033333,
+   "loop_repeats": 4,
+   "source_frames": 30
+  },
+  "SB_WallPushed": {
+   "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_WallPushed/SB_WallPushed-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 97,
+   "avg_frame_rate": "30/1",
+   "duration_s": 3.233333,
+   "loop_repeats": 4,
+   "source_frames": 24
+  },
+  "SB_KnockedOutLoop": {
+   "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_KnockedOutLoop/SB_KnockedOutLoop-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 241,
+   "avg_frame_rate": "30/1",
+   "duration_s": 8.033333,
+   "loop_repeats": 4,
+   "source_frames": 60
+  },
+  "SB_Knockout": {
+   "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_Knockout/SB_Knockout-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 31,
+   "avg_frame_rate": "30/1",
+   "duration_s": 1.033333,
+   "loop_repeats": 1,
+   "source_frames": 30
+  },
+  "SB_Recover": {
+   "file": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_Recover/SB_Recover-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 37,
+   "avg_frame_rate": "30/1",
+   "duration_s": 1.233333,
+   "loop_repeats": 1,
+   "source_frames": 36
+  }
+ },
+ "all_present": true
+}

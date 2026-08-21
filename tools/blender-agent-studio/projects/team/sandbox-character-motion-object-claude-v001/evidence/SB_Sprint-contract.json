@@ -1,0 +1,39 @@
+{
+ "clip": "SB_Sprint",
+ "f_start": 1,
+ "f_end": 24,
+ "loop": true,
+ "nominal_speed_mps": 3.5,
+ "stance_windows": {
+  "L": [
+   {
+    "start": 1,
+    "end": 9
+   }
+  ],
+  "R": [
+   {
+    "start": 13,
+    "end": 21
+   }
+  ]
+ },
+ "swing_windows": {
+  "L": [
+   {
+    "start": 9,
+    "end": 24
+   }
+  ],
+  "R": [
+   {
+    "start": 21,
+    "end": 24
+   },
+   {
+    "start": 1,
+    "end": 12
+   }
+  ]
+ }
+}

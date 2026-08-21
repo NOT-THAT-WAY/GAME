@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-motion-object-claude-v001",
+  "objective": "Produire les 11 clips locomotion, verticalite et objets du personnage sandbox",
+  "target": "Unity 6000.3.20f1, rig Generic, gameplay reseau in-place",
+  "audience_or_player": "Integrateur du depot GAME puis joueur du sandbox multijoueur; les clips sont vus a la troisieme personne et en vue rapprochee premiere personne.",
+  "usage_and_viewing_distance": "Personnage jouable haut de 1.34 m observe entre 1.5 m et 12 m par une camera de jeu; lisibilite exigee en silhouette a la distance de duel.",
+  "deliverables": [
+    "SB_Walk (Action + FBX candidat)",
+    "SB_Sprint (Action + FBX candidat)",
+    "SB_Airborne (Action + FBX candidat)",
+    "SB_JumpTakeoff (Action + FBX candidat)",
+    "SB_Land (Action + FBX candidat)",
+    "SB_CarryIdle (Action + FBX candidat)",
+    "SB_CarryWalk (Action + FBX candidat)",
+    "SB_Pickup (Action + FBX candidat)",
+    "SB_Throw (Action + FBX candidat)",
+    "SB_Drop (Action + FBX candidat)",
+    "SB_Deposit (Action + FBX candidat)"
+  ],
+  "identity_invariants": [
+    "10 os BAS_PUNCH_ inchanges en noms, hierarchie, bind pose et axes",
+    "9 meshes rigides, une influence par vertex, 5664 triangles",
+    "aucun os de deformation ajoute, aucune articulation inventee",
+    "SB_Idle et le placeholder Punch conserves sans modification"
+  ],
+  "physical_invariants": [
+    "BAS_PUNCH_root immobile: aucune translation ni rotation sur tous les clips",
+    "penetration sol <= 0.002 m",
+    "appui plante: ecart <= 0.005 m et drift <= 0.005 m dans le monde reconstruit",
+    "clearance d'un pied en swing >= 0.010 m",
+    "sockets d'epaule juges en non-aggravation contre la bind pose"
+  ],
+  "explicit_non_goals": [
+    "les 7 clips du pole forces/combat (SB_Push, SB_WallPushed, SB_Punch, SB_HitReact, SB_Knockout, SB_KnockedOutLoop, SB_Recover)",
+    "SB_CarrySprint et les variantes caillou/trophee",
+    "toute integration dans Assets/_Project/ ou dans un Animator Controller"
+  ],
+  "acceptance_criteria": [
+    "cinq portes PASS par clip: contrat, physique, continuite, reimport Blender, import Unity",
+    "un FBX = un take nomme exactement comme l'Action",
+    "loopTime vrai pour les 5 boucles, faux pour les 6 one-shots",
+    "aucun warning Unity imputable au candidat"
+  ]
+}

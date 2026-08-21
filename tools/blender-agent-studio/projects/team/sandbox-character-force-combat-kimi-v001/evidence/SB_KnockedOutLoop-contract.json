@@ -1,0 +1,23 @@
+{
+ "clip": "SB_KnockedOutLoop",
+ "f_start": 1,
+ "f_end": 60,
+ "loop": true,
+ "nominal_speed_mps": 0.0,
+ "stance_windows": {},
+ "swing_windows": {
+  "L": [
+   {
+    "start": 1,
+    "end": 60
+   }
+  ],
+  "R": [
+   {
+    "start": 1,
+    "end": 60
+   }
+  ]
+ },
+ "note": "support reel = volume du corps au sol, pas les pieds"
+}

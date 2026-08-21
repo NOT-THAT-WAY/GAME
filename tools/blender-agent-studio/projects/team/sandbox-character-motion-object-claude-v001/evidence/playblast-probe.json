@@ -1,0 +1,116 @@
+{
+ "schema_version": 1,
+ "clips": {
+  "SB_Walk": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Walk/SB_Walk-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 121,
+   "avg_frame_rate": "30/1",
+   "duration_s": 4.033333,
+   "loop_repeats": 4,
+   "source_frames": 30
+  },
+  "SB_Sprint": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Sprint/SB_Sprint-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 97,
+   "avg_frame_rate": "30/1",
+   "duration_s": 3.233333,
+   "loop_repeats": 4,
+   "source_frames": 24
+  },
+  "SB_Airborne": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Airborne/SB_Airborne-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 97,
+   "avg_frame_rate": "30/1",
+   "duration_s": 3.233333,
+   "loop_repeats": 4,
+   "source_frames": 24
+  },
+  "SB_JumpTakeoff": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_JumpTakeoff/SB_JumpTakeoff-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 13,
+   "avg_frame_rate": "30/1",
+   "duration_s": 0.433333,
+   "loop_repeats": 1,
+   "source_frames": 12
+  },
+  "SB_Land": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Land/SB_Land-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 13,
+   "avg_frame_rate": "30/1",
+   "duration_s": 0.433333,
+   "loop_repeats": 1,
+   "source_frames": 12
+  },
+  "SB_CarryIdle": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_CarryIdle/SB_CarryIdle-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 241,
+   "avg_frame_rate": "30/1",
+   "duration_s": 8.033333,
+   "loop_repeats": 4,
+   "source_frames": 60
+  },
+  "SB_CarryWalk": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_CarryWalk/SB_CarryWalk-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 121,
+   "avg_frame_rate": "30/1",
+   "duration_s": 4.033333,
+   "loop_repeats": 4,
+   "source_frames": 30
+  },
+  "SB_Pickup": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Pickup/SB_Pickup-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 25,
+   "avg_frame_rate": "30/1",
+   "duration_s": 0.833333,
+   "loop_repeats": 1,
+   "source_frames": 24
+  },
+  "SB_Throw": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Throw/SB_Throw-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 25,
+   "avg_frame_rate": "30/1",
+   "duration_s": 0.833333,
+   "loop_repeats": 1,
+   "source_frames": 24
+  },
+  "SB_Drop": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Drop/SB_Drop-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 19,
+   "avg_frame_rate": "30/1",
+   "duration_s": 0.633333,
+   "loop_repeats": 1,
+   "source_frames": 18
+  },
+  "SB_Deposit": {
+   "file": "local_work/sandbox-character-motion-object-claude-v001/renders/SB_Deposit/SB_Deposit-playblast.mp4",
+   "width": 640,
+   "height": 480,
+   "nb_frames": 31,
+   "avg_frame_rate": "30/1",
+   "duration_s": 1.033333,
+   "loop_repeats": 1,
+   "source_frames": 30
+  }
+ },
+ "all_present": true
+}

@@ -1,0 +1,17 @@
+{
+ "actions": {
+  "SB_Idle": {
+   "curve_count_reference": 100,
+   "curve_count_copy": 100,
+   "identical": true,
+   "worst_value_delta": 0.0
+  },
+  "BAS_PUNCH_Rig|BAS_PUNCH_Rig|BAS_PUNCH_punch": {
+   "curve_count_reference": 109,
+   "curve_count_copy": 109,
+   "identical": true,
+   "worst_value_delta": 0.0
+  }
+ },
+ "pass": true
+}

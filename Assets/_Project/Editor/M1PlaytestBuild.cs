@@ -35,6 +35,7 @@ namespace NotThatWay.Game.Editor
         public const string GeneratedPlayerPrefabPath = "Assets/_GeneratedLocal/M1PredictedPlayer.prefab";
         public const string GeneratedWallAuthorityPrefabPath =
             "Assets/_GeneratedLocal/M1WallAuthority.prefab";
+        public const string GeneratedBotPrefabPath = "Assets/_GeneratedLocal/M1TrainingBot.prefab";
         public const string GeneratedRockPrefabPath = "Assets/_GeneratedLocal/SandboxRock.prefab";
         public const string GeneratedTrophyPrefabPath = "Assets/_GeneratedLocal/SandboxTrophy.prefab";
         public const string GeneratedPrefabsPath = "Assets/_GeneratedLocal/M1PlaytestPrefabs.asset";
@@ -102,7 +103,9 @@ namespace NotThatWay.Game.Editor
                 throw new InvalidOperationException($"Contrôles M1 invalides: {controlsError}.");
 
             var palette = CreatePalette();
-            var playerPrefab = CreatePlayerPrefab(controls);
+            var animatorController = CreatePlayerAnimatorController();
+            var playerPrefab = CreatePlayerPrefab(controls, animatorController);
+            var botPrefab = CreateBotPrefab(animatorController);
             var wallAuthorityPrefab = CreateWallAuthorityPrefab();
             var rockPrefab = CreateCarryablePrefab(
                 SandboxCarryableKind.Rock,
@@ -115,6 +118,7 @@ namespace NotThatWay.Game.Editor
             var prefabCollection = LoadOrCreatePrefabCollection();
             prefabCollection.Clear();
             prefabCollection.AddObject(playerPrefab, true);
+            prefabCollection.AddObject(botPrefab, true);
             prefabCollection.AddObject(wallAuthorityPrefab, true);
             prefabCollection.AddObject(rockPrefab, true);
             prefabCollection.AddObject(trophyPrefab, true);
@@ -157,6 +161,9 @@ namespace NotThatWay.Game.Editor
             spawner.Spawns = spawns;
             spawner.SetPlayerPrefab(playerPrefab);
 
+            var botSpawner = networkRoot.AddComponent<SimpleBotSpawner>();
+            ConfigureBotSpawner(botSpawner, map, botPrefab);
+
             var wallSpawner = networkRoot.AddComponent<M1WallAuthoritySpawner>();
             var serializedWallSpawner = new SerializedObject(wallSpawner);
             SetObject(serializedWallSpawner, "_authorityPrefab", wallAuthorityPrefab);
@@ -169,6 +176,7 @@ namespace NotThatWay.Game.Editor
                 map,
                 arena,
                 playerPrefab,
+                botPrefab,
                 wallAuthorityPrefab,
                 rockPrefab,
                 trophyPrefab,
@@ -374,7 +382,9 @@ namespace NotThatWay.Game.Editor
                 ScriptingImplementation.Mono2x);
         }
 
-        private static NetworkObject CreatePlayerPrefab(InputActionAsset controls)
+        private static NetworkObject CreatePlayerPrefab(
+            InputActionAsset controls,
+            AnimatorController animatorController)
         {
             var root = new GameObject("M1PredictedPlayer")
             {
@@ -404,7 +414,7 @@ namespace NotThatWay.Game.Editor
                 // se regarder comme le jeu. Il reste strictement visuel, sur le
                 // layer VisualOnly et sans collider ; le CharacterController est la
                 // seule forme physique du joueur.
-                var body = CreatePlayerVisual();
+                var body = CreatePlayerVisual(animatorController);
                 body.transform.SetParent(presentation.transform, false);
 
                 var cameraPivot = new GameObject("CameraPivot")
@@ -459,6 +469,81 @@ namespace NotThatWay.Game.Editor
                     throw new InvalidOperationException(
                         $"Impossible d'enregistrer {GeneratedPlayerPrefabPath}.");
 
+                return FinalizeNetworkPrefab(saved.GetComponent<NetworkObject>());
+            }
+            finally
+            {
+                UnityEngine.Object.DestroyImmediate(root);
+            }
+        }
+
+        /// <summary>
+        /// Clone réseau serveur-autoritaire du personnage, sans caméra ni entrée.
+        /// Il partage le contrôleur d'animation du joueur afin que la préversion
+        /// Claude montre marche, frappe et poussée sur le même rig.
+        /// </summary>
+        private static NetworkObject CreateBotPrefab(AnimatorController animatorController)
+        {
+            var root = new GameObject("M1TrainingBot")
+            {
+                layer = GameplayLayers.Player
+            };
+
+            try
+            {
+                var controller = root.AddComponent<CharacterController>();
+                controller.height = PlayerHeight;
+                controller.radius = PlayerRadius;
+                controller.center = new Vector3(0f, PlayerHeight * 0.5f, 0f);
+                controller.slopeLimit = 45f;
+                controller.stepOffset = 0.3f;
+                controller.skinWidth = 0.03f;
+                controller.minMoveDistance = 0f;
+                controller.detectCollisions = true;
+                controller.enableOverlapRecovery = true;
+
+                var presentation = new GameObject("Presentation")
+                {
+                    layer = GameplayLayers.VisualOnly
+                };
+                presentation.transform.SetParent(root.transform, false);
+                var body = CreatePlayerVisual(animatorController);
+                body.transform.SetParent(presentation.transform, false);
+
+                var networkObject = root.AddComponent<NetworkObject>();
+                var serializedNetworkObject = new SerializedObject(networkObject);
+                SetBool(serializedNetworkObject, "_enablePrediction", false);
+                SetBool(serializedNetworkObject, "_enableStateForwarding", false);
+                SetObject(serializedNetworkObject, "_networkTransform", null);
+                serializedNetworkObject.ApplyModifiedPropertiesWithoutUndo();
+
+                var networkTransform = root.AddComponent<NetworkTransform>();
+                var serializedTransform = new SerializedObject(networkTransform);
+                SetEnum(
+                    serializedTransform,
+                    "_componentConfiguration",
+                    (int)NetworkTransform.ComponentConfigurationType.CharacterController);
+                SetBool(serializedTransform, "_clientAuthoritative", false);
+                SetBool(serializedTransform, "_sendToOwner", true);
+                SetInt(serializedTransform, "_interval", 1);
+                SetBool(serializedTransform, "_synchronizePosition", true);
+                SetBool(serializedTransform, "_synchronizeRotation", true);
+                SetBool(serializedTransform, "_synchronizeScale", false);
+                SetBool(serializedTransform, "_enableTeleport", true);
+                SetFloat(serializedTransform, "_teleportThreshold", 2f);
+                serializedTransform.ApplyModifiedPropertiesWithoutUndo();
+
+                var bot = root.AddComponent<SimpleBot>();
+                var serializedBot = new SerializedObject(bot);
+                SetObject(serializedBot, "_visual", presentation.transform);
+                serializedBot.ApplyModifiedPropertiesWithoutUndo();
+
+                var saved = PrefabUtility.SaveAsPrefabAsset(root, GeneratedBotPrefabPath);
+                if (saved == null)
+                {
+                    throw new InvalidOperationException(
+                        $"Impossible d'enregistrer {GeneratedBotPrefabPath}.");
+                }
                 return FinalizeNetworkPrefab(saved.GetComponent<NetworkObject>());
             }
             finally
@@ -741,6 +826,24 @@ namespace NotThatWay.Game.Editor
             serialized.ApplyModifiedPropertiesWithoutUndo();
         }
 
+        private static void ConfigureBotSpawner(
+            SimpleBotSpawner spawner,
+            TopologyRuntimeMap map,
+            NetworkObject botPrefab)
+        {
+            // Une cellule au nord du premier joueur : assez proche pour que la
+            // poursuite soit visible immédiatement, sans superposer les capsules.
+            var position = TopologyGeometry.CellCenterMm(
+                               map,
+                               new TopologyGridCell(2, 3)).Meters +
+                           Vector3.up * SpawnHeight;
+            var serialized = new SerializedObject(spawner);
+            SetObject(serialized, "_botPrefab", botPrefab);
+            SetVector3(serialized, "_spawnPosition", position);
+            SetQuaternion(serialized, "_spawnRotation", Quaternion.Euler(0f, 180f, 0f));
+            serialized.ApplyModifiedPropertiesWithoutUndo();
+        }
+
         private static Transform[] CreateSpawnPoints(TopologyRuntimeMap map)
         {
             if (map.Spawns.Count != GameplaySpawnCount)
@@ -875,8 +978,10 @@ namespace NotThatWay.Game.Editor
         /// collider, aucun MeshCollider. Sa hauteur et son budget sont vérifiés
         /// pour que le rendu reste aligné sur la capsule simulée de 1,40 m.
         /// </summary>
-        private static GameObject CreatePlayerVisual()
+        private static GameObject CreatePlayerVisual(AnimatorController animatorController)
         {
+            if (animatorController == null)
+                throw new ArgumentNullException(nameof(animatorController));
             var model = RequireAsset<GameObject>(PlayerModelPath);
             var visual = (GameObject)PrefabUtility.InstantiatePrefab(model);
             if (visual == null)
@@ -891,7 +996,7 @@ namespace NotThatWay.Game.Editor
                            visual.AddComponent<Animator>();
             animator.applyRootMotion = false;
             animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
-            animator.runtimeAnimatorController = CreatePlayerAnimatorController();
+            animator.runtimeAnimatorController = animatorController;
 
             ValidatePlayerVisual(visual);
             return visual;
@@ -1317,6 +1422,7 @@ namespace NotThatWay.Game.Editor
             TopologyRuntimeMap map,
             TopologyArena arena,
             NetworkObject playerPrefab,
+            NetworkObject botPrefab,
             NetworkObject wallAuthorityPrefab,
             NetworkObject rockPrefab,
             NetworkObject trophyPrefab,
@@ -1331,7 +1437,8 @@ namespace NotThatWay.Game.Editor
                 throw new InvalidOperationException(
                     "Le banc M1 doit contenir deux spawns et au moins un mur mobile.");
             }
-            if (arena == null || playerPrefab == null || wallAuthorityPrefab == null ||
+            if (arena == null || playerPrefab == null || botPrefab == null ||
+                wallAuthorityPrefab == null ||
                 networkManager == null ||
                 timeManager == null || predictionManager == null || spawner == null)
             {
@@ -1372,6 +1479,17 @@ namespace NotThatWay.Game.Editor
             ValidateAnimatorContract(playerObject);
             if (playerObject.GetComponent<FishNet.Component.Transforming.NetworkTransform>() != null)
                 throw new InvalidOperationException("Le joueur prédit M1 ne doit pas avoir de NetworkTransform.");
+
+            var botObject = botPrefab.gameObject;
+            if (botPrefab.EnablePrediction ||
+                botObject.layer != GameplayLayers.Player ||
+                botObject.GetComponent<CharacterController>() == null ||
+                botObject.GetComponent<NetworkTransform>() == null ||
+                botObject.GetComponent<SimpleBot>() == null)
+            {
+                throw new InvalidOperationException("Contrat du bot d'entraînement M1 incomplet.");
+            }
+            ValidateAnimatorContract(botObject);
             if (wallAuthorityPrefab.GetComponent<M1AuthoritativeWallDirector>() == null ||
                 wallAuthorityPrefab.GetComponent<SandboxRoundDirector>() == null ||
                 wallAuthorityPrefab.EnablePrediction)
@@ -1388,7 +1506,8 @@ namespace NotThatWay.Game.Editor
                     throw new InvalidOperationException("Prefab carryable du sandbox invalide.");
                 }
             }
-            if (UnityEngine.Object.FindFirstObjectByType<SandboxWorldSpawner>() == null ||
+            if (UnityEngine.Object.FindFirstObjectByType<SimpleBotSpawner>() == null ||
+                UnityEngine.Object.FindFirstObjectByType<SandboxWorldSpawner>() == null ||
                 UnityEngine.Object.FindFirstObjectByType<SandboxDepositZone>() == null)
             {
                 throw new InvalidOperationException("Boucle objets/trophée du sandbox incomplète.");
@@ -1581,6 +1700,12 @@ namespace NotThatWay.Game.Editor
 
         private static void SetVector3(SerializedObject serialized, string name, Vector3 value) =>
             RequireProperty(serialized, name).vector3Value = value;
+
+        private static void SetQuaternion(
+            SerializedObject serialized,
+            string name,
+            Quaternion value) =>
+            RequireProperty(serialized, name).quaternionValue = value;
 
         private static void SetVector3Array(
             SerializedObject serialized,

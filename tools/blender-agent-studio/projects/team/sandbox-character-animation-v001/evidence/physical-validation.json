@@ -1,0 +1,927 @@
+{
+  "blender": "5.1.1",
+  "master_blend": "local_work/sandbox-character-animation-v001/work/sandbox_character_SB_Idle_master.blend",
+  "frame_range": [
+    1,
+    60
+  ],
+  "fps": 30.0,
+  "action": "SB_Idle",
+  "coordinate_frame": "Blender world, Z-up, metres; armature object at identity",
+  "method": "evaluated meshes via depsgraph (armature + modifiers applied), sample_frame_step = 1, cyclic seam analysis",
+  "thresholds": {
+    "root_translation_max_m": 0.0,
+    "root_rotation_max_deg": 0.0,
+    "planted_foot_drift_max_m": 0.005,
+    "ground_penetration_max_m": 0.002,
+    "limb_body_min_clearance_m": 0.01,
+    "socket_deepening_max_m": 0.001
+  },
+  "rest_baseline_pairs": {
+    "BAS_PUNCH_Body | BAS_PUNCH_Fist_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.138038,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Body | BAS_PUNCH_Fist_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.138039,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Body | BAS_PUNCH_Foot_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.05125,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Body | BAS_PUNCH_Foot_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.05125,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Body | BAS_PUNCH_Forearm_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.045329,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Body | BAS_PUNCH_Forearm_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.045329,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Body | BAS_PUNCH_UpperArm_L": {
+      "overlap_tris": 118,
+      "min_distance_m": 0.000135,
+      "penetration_depth_m": 0.148885,
+      "vertices_inside": 106
+    },
+    "BAS_PUNCH_Body | BAS_PUNCH_UpperArm_R": {
+      "overlap_tris": 114,
+      "min_distance_m": 0.000135,
+      "penetration_depth_m": 0.148885,
+      "vertices_inside": 106
+    },
+    "BAS_PUNCH_Fist_L | BAS_PUNCH_Fist_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 1.147522,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Fist_L | BAS_PUNCH_Foot_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.205824,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Fist_L | BAS_PUNCH_Foot_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.718628,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Fist_L | BAS_PUNCH_Forearm_L": {
+      "overlap_tris": 116,
+      "min_distance_m": 0.000918,
+      "penetration_depth_m": 0.124311,
+      "vertices_inside": 105
+    },
+    "BAS_PUNCH_Fist_L | BAS_PUNCH_Forearm_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 1.197472,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Fist_L | BAS_PUNCH_UpperArm_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.054486,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Fist_L | BAS_PUNCH_UpperArm_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 1.089837,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Fist_R | BAS_PUNCH_Foot_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.718628,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Fist_R | BAS_PUNCH_Foot_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.205824,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Fist_R | BAS_PUNCH_Forearm_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 1.197472,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Fist_R | BAS_PUNCH_Forearm_R": {
+      "overlap_tris": 118,
+      "min_distance_m": 0.000918,
+      "penetration_depth_m": 0.124311,
+      "vertices_inside": 105
+    },
+    "BAS_PUNCH_Fist_R | BAS_PUNCH_UpperArm_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 1.089837,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Fist_R | BAS_PUNCH_UpperArm_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.054486,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Foot_L | BAS_PUNCH_Foot_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.22,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Foot_L | BAS_PUNCH_Forearm_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.330742,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Foot_L | BAS_PUNCH_Forearm_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.803974,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Foot_L | BAS_PUNCH_UpperArm_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.451189,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Foot_L | BAS_PUNCH_UpperArm_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.859298,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Foot_R | BAS_PUNCH_Forearm_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.803974,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Foot_R | BAS_PUNCH_Forearm_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.330742,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Foot_R | BAS_PUNCH_UpperArm_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.859298,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Foot_R | BAS_PUNCH_UpperArm_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.451189,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Forearm_L | BAS_PUNCH_Forearm_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 1.18,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Forearm_L | BAS_PUNCH_UpperArm_L": {
+      "overlap_tris": 366,
+      "min_distance_m": 0.0,
+      "penetration_depth_m": 0.017997,
+      "vertices_inside": 199
+    },
+    "BAS_PUNCH_Forearm_L | BAS_PUNCH_UpperArm_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 1.00859,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Forearm_R | BAS_PUNCH_UpperArm_L": {
+      "overlap_tris": 0,
+      "min_distance_m": 1.00859,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    },
+    "BAS_PUNCH_Forearm_R | BAS_PUNCH_UpperArm_R": {
+      "overlap_tris": 355,
+      "min_distance_m": 0.0,
+      "penetration_depth_m": 0.017997,
+      "vertices_inside": 202
+    },
+    "BAS_PUNCH_UpperArm_L | BAS_PUNCH_UpperArm_R": {
+      "overlap_tris": 0,
+      "min_distance_m": 0.78,
+      "penetration_depth_m": 0.0,
+      "vertices_inside": 0
+    }
+  },
+  "root_motion": {
+    "bone": "BAS_PUNCH_root",
+    "max_translation_m": 0.0,
+    "max_rotation_deg": 0.0,
+    "worst_frame_translation": 1,
+    "armature_object_max_abs_deviation_from_identity": 0.0,
+    "passed": true
+  },
+  "planted_feet": {
+    "BAS_PUNCH_Foot_L": {
+      "centroid_drift_xy_m": 0.0,
+      "centroid_drift_3d_m": 0.0,
+      "worst_single_vertex_travel_m": 0.0,
+      "sole_min_z_m": -0.0,
+      "sole_min_z_max_over_cycle_m": -0.0,
+      "ground_penetration_m": 0.0,
+      "passed": true
+    },
+    "BAS_PUNCH_Foot_R": {
+      "centroid_drift_xy_m": 0.0,
+      "centroid_drift_3d_m": 0.0,
+      "worst_single_vertex_travel_m": 0.0,
+      "sole_min_z_m": -0.0,
+      "sole_min_z_max_over_cycle_m": -0.0,
+      "ground_penetration_m": 0.0,
+      "passed": true
+    }
+  },
+  "ground": {
+    "lowest_z_over_cycle_m": -0.0,
+    "penetration_m": 0.0,
+    "passed": true
+  },
+  "pair_count": 36,
+  "clearances": [
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_Fist_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.134436,
+      "worst_frame": 20,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_Fist_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.13428,
+      "worst_frame": 48,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_Foot_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.036955,
+      "worst_frame": 51,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_Foot_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.039231,
+      "worst_frame": 44,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_Forearm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.042723,
+      "worst_frame": 19,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_Forearm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.044605,
+      "worst_frame": 43,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "socket",
+      "min_distance_m": 4e-06,
+      "worst_frame": 4,
+      "max_overlap_triangle_pairs_per_frame": 118,
+      "deepest_penetration_m": 0.148883,
+      "deepest_frame": 33,
+      "rest_baseline_depth_m": 0.148885,
+      "rest_baseline_overlap_tris": 118,
+      "deepening_vs_rest_m": -2e-06,
+      "criterion": "declared joint socket (adjacent chain segments): the animation must not deepen it by more than 0.001 m vs the source bind pose",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Body",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "socket",
+      "min_distance_m": 4e-06,
+      "worst_frame": 37,
+      "max_overlap_triangle_pairs_per_frame": 115,
+      "deepest_penetration_m": 0.148887,
+      "deepest_frame": 36,
+      "rest_baseline_depth_m": 0.148885,
+      "rest_baseline_overlap_tris": 114,
+      "deepening_vs_rest_m": 2e-06,
+      "criterion": "declared joint socket (adjacent chain segments): the animation must not deepen it by more than 0.001 m vs the source bind pose",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_Fist_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 1.147484,
+      "worst_frame": 56,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_Foot_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.201901,
+      "worst_frame": 20,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_Foot_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.7099,
+      "worst_frame": 26,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_Forearm_L"
+      ],
+      "kind": "socket",
+      "min_distance_m": 0.000845,
+      "worst_frame": 48,
+      "max_overlap_triangle_pairs_per_frame": 118,
+      "deepest_penetration_m": 0.124321,
+      "deepest_frame": 39,
+      "rest_baseline_depth_m": 0.124311,
+      "rest_baseline_overlap_tris": 116,
+      "deepening_vs_rest_m": 1e-05,
+      "criterion": "declared joint socket (adjacent chain segments): the animation must not deepen it by more than 0.001 m vs the source bind pose",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_Forearm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 1.194955,
+      "worst_frame": 20,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.054461,
+      "worst_frame": 8,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_L",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 1.085481,
+      "worst_frame": 20,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_R",
+        "BAS_PUNCH_Foot_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.71014,
+      "worst_frame": 53,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_R",
+        "BAS_PUNCH_Foot_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.198569,
+      "worst_frame": 44,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_R",
+        "BAS_PUNCH_Forearm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 1.195096,
+      "worst_frame": 49,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_R",
+        "BAS_PUNCH_Forearm_R"
+      ],
+      "kind": "socket",
+      "min_distance_m": 0.000829,
+      "worst_frame": 12,
+      "max_overlap_triangle_pairs_per_frame": 119,
+      "deepest_penetration_m": 0.124321,
+      "deepest_frame": 39,
+      "rest_baseline_depth_m": 0.124311,
+      "rest_baseline_overlap_tris": 118,
+      "deepening_vs_rest_m": 1e-05,
+      "criterion": "declared joint socket (adjacent chain segments): the animation must not deepen it by more than 0.001 m vs the source bind pose",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_R",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 1.085657,
+      "worst_frame": 48,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Fist_R",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.054455,
+      "worst_frame": 8,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_L",
+        "BAS_PUNCH_Foot_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.22,
+      "worst_frame": 1,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_L",
+        "BAS_PUNCH_Forearm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.328586,
+      "worst_frame": 50,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_L",
+        "BAS_PUNCH_Forearm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.795753,
+      "worst_frame": 52,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_L",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.441041,
+      "worst_frame": 50,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_L",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.84855,
+      "worst_frame": 51,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_R",
+        "BAS_PUNCH_Forearm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.796745,
+      "worst_frame": 27,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_R",
+        "BAS_PUNCH_Forearm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.321497,
+      "worst_frame": 43,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_R",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.853117,
+      "worst_frame": 39,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Foot_R",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.439005,
+      "worst_frame": 45,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Forearm_L",
+        "BAS_PUNCH_Forearm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 1.179999,
+      "worst_frame": 9,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Forearm_L",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "socket",
+      "min_distance_m": 1e-06,
+      "worst_frame": 53,
+      "max_overlap_triangle_pairs_per_frame": 1630,
+      "deepest_penetration_m": 0.018027,
+      "deepest_frame": 45,
+      "rest_baseline_depth_m": 0.017997,
+      "rest_baseline_overlap_tris": 366,
+      "deepening_vs_rest_m": 3e-05,
+      "criterion": "declared joint socket (adjacent chain segments): the animation must not deepen it by more than 0.001 m vs the source bind pose",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Forearm_L",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 1.007131,
+      "worst_frame": 19,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Forearm_R",
+        "BAS_PUNCH_UpperArm_L"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 1.007125,
+      "worst_frame": 47,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_Forearm_R",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "socket",
+      "min_distance_m": 0.0,
+      "worst_frame": 56,
+      "max_overlap_triangle_pairs_per_frame": 1629,
+      "deepest_penetration_m": 0.018021,
+      "deepest_frame": 24,
+      "rest_baseline_depth_m": 0.017997,
+      "rest_baseline_overlap_tris": 355,
+      "deepening_vs_rest_m": 2.4e-05,
+      "criterion": "declared joint socket (adjacent chain segments): the animation must not deepen it by more than 0.001 m vs the source bind pose",
+      "passed": true
+    },
+    {
+      "pair": [
+        "BAS_PUNCH_UpperArm_L",
+        "BAS_PUNCH_UpperArm_R"
+      ],
+      "kind": "clearance",
+      "min_distance_m": 0.780001,
+      "worst_frame": 34,
+      "max_overlap_triangle_pairs_per_frame": 0,
+      "deepest_penetration_m": 0.0,
+      "deepest_frame": 60,
+      "rest_baseline_depth_m": 0.0,
+      "rest_baseline_overlap_tris": 0,
+      "deepening_vs_rest_m": 0.0,
+      "criterion": "declared clearance pair (non-adjacent): zero triangle overlap and at least 0.010 m of separation",
+      "passed": true
+    }
+  ],
+  "clearances_passed": true,
+  "clearance_failures": [],
+  "loop_seam": {
+    "policy": "cyclic: the 60->1 wrap is an ordinary 1/30 s step, not a patched join",
+    "max_vertex_step_at_seam_m": 0.004375,
+    "interior_step_mean_m": 0.003617,
+    "interior_step_max_m": 0.004438,
+    "interior_step_min_m": 0.002808,
+    "seam_step_within_interior_range": true,
+    "seam_step_ratio_to_mean": 1.209719,
+    "max_vertex_accel_at_seam_m": 0.000449,
+    "interior_accel_max_m": 0.000549,
+    "interior_accel_mean_m": 0.000402,
+    "seam_accel_within_interior_range": true,
+    "frame60_vs_frame1_max_vertex_distance_m": 0.004375,
+    "frame60_is_not_duplicate_of_frame1": true,
+    "passed": true
+  },
+  "body_motion": {
+    "centroid_travel_x_m": 0.047232,
+    "centroid_travel_y_m": 0.017614,
+    "centroid_travel_z_m": 0.023949
+  },
+  "bounds_over_cycle_m": {
+    "min": [
+      -0.87963,
+      -0.528881,
+      -0.0
+    ],
+    "max": [
+      0.879309,
+      0.528916,
+      1.348924
+    ],
+    "size": [
+      1.75894,
+      1.057797,
+      1.348924
+    ]
+  },
+  "passed": true
+}

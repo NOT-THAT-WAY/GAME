@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-force-combat-kimi-v001",
+  "objective": "Produire les 7 clips pouss\u00e9e, combat et \u00e9tats de vie du personnage sandbox",
+  "target": "Unity 6000.3.20f1, rig Generic, gameplay r\u00e9seau in-place",
+  "audience_or_player": "Integrateur du depot GAME puis joueur du sandbox multijoueur; les clips sont vus a la troisieme personne et en vue rapprochee premiere personne.",
+  "usage_and_viewing_distance": "Personnage jouable haut de 1.34 m observe entre 1.5 m et 12 m par une camera de jeu; lisibilite exigee en silhouette a la distance de duel, ou l'etat KO doit se lire instantanement.",
+  "deliverables": [
+    "SB_Punch (Action + FBX candidat)",
+    "SB_HitReact (Action + FBX candidat)",
+    "SB_Push (Action + FBX candidat)",
+    "SB_WallPushed (Action + FBX candidat)",
+    "SB_KnockedOutLoop (Action + FBX candidat)",
+    "SB_Knockout (Action + FBX candidat)",
+    "SB_Recover (Action + FBX candidat)"
+  ],
+  "identity_invariants": [
+    "10 os BAS_PUNCH_ inchanges en noms, hierarchie, bind pose et axes",
+    "9 meshes rigides, une influence par vertex, 5664 triangles",
+    "aucun os de deformation ajoute, aucune articulation inventee",
+    "SB_Idle et le placeholder Punch conserves sans modification",
+    "aucun genou ni articulation de jambe simule: les pieds restent des volumes libres enfants du root"
+  ],
+  "physical_invariants": [
+    "BAS_PUNCH_root immobile: aucune translation ni rotation sur tous les clips",
+    "penetration sol <= 0.002 m",
+    "appui plante: ecart <= 0.005 m et drift <= 0.005 m dans le monde reconstruit",
+    "clearance d'un pied en swing >= 0.010 m",
+    "sockets d'epaule juges en non-aggravation contre la bind pose"
+  ],
+  "explicit_non_goals": [
+    "les 11 clips du pole locomotion/objets (SB_Walk, SB_Sprint, SB_JumpTakeoff, SB_Airborne, SB_Land, SB_Pickup, SB_CarryIdle, SB_CarryWalk, SB_Throw, SB_Drop, SB_Deposit)",
+    "les reactions de poussee gauche/droite: une seule SB_WallPushed neutre",
+    "toute integration dans Assets/_Project/ ou dans un Animator Controller",
+    "les parametres WallPushed et WallPushSpeed, reserves mais pas exposes"
+  ],
+  "acceptance_criteria": [
+    "cinq portes PASS par clip: contrat, physique, reimport Blender, import Unity, preuve",
+    "un FBX = un take nomme exactement comme l'Action",
+    "loopTime vrai pour les 3 boucles, faux pour les 4 one-shots",
+    "SB_Knockout f30 et SB_Recover f1 identiques os par os a SB_KnockedOutLoop f1",
+    "aucun warning Unity imputable au candidat"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-composition-v001",
+  "source": "local_work/sandbox-character-composition-v001/work/sandbox_character_composition_claude_v001.blend",
+  "source_sha256": "e76402f018dacaf3e8938151abbc78563b0a6e20b43e578ea8f5688aef970009",
+  "scene": "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_REVIEW",
+  "frame_range": [
+    1,
+    60
+  ],
+  "fps": 30.0,
+  "objects": 19,
+  "object_types": {
+    "ARMATURE": 1,
+    "CAMERA": 3,
+    "EMPTY": 2,
+    "LIGHT": 3,
+    "MESH": 10
+  },
+  "collections": {
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CHARACTER_LOCKED": [
+      "BAS_PUNCH_Body",
+      "BAS_PUNCH_Fist_L",
+      "BAS_PUNCH_Fist_R",
+      "BAS_PUNCH_Foot_L",
+      "BAS_PUNCH_Foot_R",
+      "BAS_PUNCH_Forearm_L",
+      "BAS_PUNCH_Forearm_R",
+      "BAS_PUNCH_Rig",
+      "BAS_PUNCH_UpperArm_L",
+      "BAS_PUNCH_UpperArm_R"
+    ],
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_STAGE_EDITABLE": [
+      "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_STAGE_CYCLORAMA"
+    ],
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_LIGHTING_EDITABLE": [
+      "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_LIGHT_KEY",
+      "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_LIGHT_FILL",
+      "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_LIGHT_RIM"
+    ],
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAMERAS_EDITABLE": [
+      "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_HERO_3Q",
+      "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_FRONT_ORTHO",
+      "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_PROFILE_ORTHO"
+    ],
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_GUIDES": [
+      "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_TARGET_CHARACTER",
+      "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_FOCUS_FACE"
+    ]
+  },
+  "cameras": [
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_HERO_3Q",
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_FRONT_ORTHO",
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_PROFILE_ORTHO"
+  ],
+  "lights": [
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_LIGHT_KEY",
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_LIGHT_FILL",
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_LIGHT_RIM"
+  ],
+  "materials": [
+    "BAS_PUNCH_Mat_Eye",
+    "BAS_PUNCH_Mat_Terracotta",
+    "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_MAT_STAGE"
+  ],
+  "actions": {
+    "BAS_PUNCH_Rig|BAS_PUNCH_Rig|BAS_PUNCH_punch": [
+      1.0,
+      20.0
+    ],
+    "SB_Idle": [
+      1.0,
+      60.0
+    ]
+  },
+  "active_camera": "BAS_SANDBOX_CHARACTER_COMPOSITION_V001_CAM_HERO_3Q",
+  "missing_images": [],
+  "dirty": false,
+  "saved_by_script": false,
+  "runtime_export": false
+}

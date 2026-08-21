@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-08-16T18:20:55.652347+00:00",
+  "project_id": "sandbox-character-motion-object-claude-v001",
+  "project_type": "animation",
+  "stage": "final",
+  "package_valid": false,
+  "verified_delivery_files": 35,
+  "errors": [
+    "delivery_size_mismatch:local_work/sandbox-character-motion-object-claude-v001/work/sandbox_character_claude_motion_object_master.blend"
+  ],
+  "warnings": []
+}

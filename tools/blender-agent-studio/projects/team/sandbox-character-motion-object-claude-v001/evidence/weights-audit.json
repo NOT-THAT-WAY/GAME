@@ -1,0 +1,120 @@
+{
+ "schema_version": 1,
+ "influence_budget_per_vertex": 4,
+ "max_influences_per_vertex": 1,
+ "triangle_budget": 6000,
+ "total_triangles": 5664,
+ "rigid_pieces": true,
+ "note": "Every vertex has exactly one influence: the character is nine rigid pieces, not a smooth skin. No squash, stretch or smooth deformation was introduced by this pole.",
+ "meshes": [
+  {
+   "name": "BAS_PUNCH_Body",
+   "parent": "BAS_PUNCH_Rig",
+   "vertices": 706,
+   "triangles": 1400,
+   "vertex_groups": [
+    "BAS_PUNCH_body"
+   ],
+   "max_influences_per_vertex": 1,
+   "min_influences_per_vertex": 1,
+   "vertices_with_unnormalised_weights": 0
+  },
+  {
+   "name": "BAS_PUNCH_Fist_L",
+   "parent": "BAS_PUNCH_Rig",
+   "vertices": 128,
+   "triangles": 252,
+   "vertex_groups": [
+    "BAS_PUNCH_hand.L"
+   ],
+   "max_influences_per_vertex": 1,
+   "min_influences_per_vertex": 1,
+   "vertices_with_unnormalised_weights": 0
+  },
+  {
+   "name": "BAS_PUNCH_Fist_R",
+   "parent": "BAS_PUNCH_Rig",
+   "vertices": 128,
+   "triangles": 252,
+   "vertex_groups": [
+    "BAS_PUNCH_hand.R"
+   ],
+   "max_influences_per_vertex": 1,
+   "min_influences_per_vertex": 1,
+   "vertices_with_unnormalised_weights": 0
+  },
+  {
+   "name": "BAS_PUNCH_Foot_L",
+   "parent": "BAS_PUNCH_Rig",
+   "vertices": 178,
+   "triangles": 352,
+   "vertex_groups": [
+    "BAS_PUNCH_foot.L"
+   ],
+   "max_influences_per_vertex": 1,
+   "min_influences_per_vertex": 1,
+   "vertices_with_unnormalised_weights": 0
+  },
+  {
+   "name": "BAS_PUNCH_Foot_R",
+   "parent": "BAS_PUNCH_Rig",
+   "vertices": 178,
+   "triangles": 352,
+   "vertex_groups": [
+    "BAS_PUNCH_foot.R"
+   ],
+   "max_influences_per_vertex": 1,
+   "min_influences_per_vertex": 1,
+   "vertices_with_unnormalised_weights": 0
+  },
+  {
+   "name": "BAS_PUNCH_Forearm_L",
+   "parent": "BAS_PUNCH_Rig",
+   "vertices": 388,
+   "triangles": 764,
+   "vertex_groups": [
+    "BAS_PUNCH_forearm.L"
+   ],
+   "max_influences_per_vertex": 1,
+   "min_influences_per_vertex": 1,
+   "vertices_with_unnormalised_weights": 0
+  },
+  {
+   "name": "BAS_PUNCH_Forearm_R",
+   "parent": "BAS_PUNCH_Rig",
+   "vertices": 388,
+   "triangles": 764,
+   "vertex_groups": [
+    "BAS_PUNCH_forearm.R"
+   ],
+   "max_influences_per_vertex": 1,
+   "min_influences_per_vertex": 1,
+   "vertices_with_unnormalised_weights": 0
+  },
+  {
+   "name": "BAS_PUNCH_UpperArm_L",
+   "parent": "BAS_PUNCH_Rig",
+   "vertices": 388,
+   "triangles": 764,
+   "vertex_groups": [
+    "BAS_PUNCH_upperarm.L"
+   ],
+   "max_influences_per_vertex": 1,
+   "min_influences_per_vertex": 1,
+   "vertices_with_unnormalised_weights": 0
+  },
+  {
+   "name": "BAS_PUNCH_UpperArm_R",
+   "parent": "BAS_PUNCH_Rig",
+   "vertices": 388,
+   "triangles": 764,
+   "vertex_groups": [
+    "BAS_PUNCH_upperarm.R"
+   ],
+   "max_influences_per_vertex": 1,
+   "min_influences_per_vertex": 1,
+   "vertices_with_unnormalised_weights": 0
+  }
+ ],
+ "all_normalised": true
+}

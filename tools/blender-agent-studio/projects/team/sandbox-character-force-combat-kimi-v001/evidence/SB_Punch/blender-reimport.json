@@ -1,0 +1,112 @@
+{
+  "master_blend": "local_work/sandbox-character-force-combat-kimi-v001/checkpoints/master_ckpt05_SB_Punch_accepted.blend",
+  "candidate_fbx": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_Punch_candidate.fbx",
+  "action": "SB_Punch",
+  "scene_state": "read_factory_settings(use_empty=True) + orphan purge",
+  "census": {
+    "object_types": [
+      "ARMATURE",
+      "MESH"
+    ],
+    "mesh_objects": 9,
+    "armature_objects": 1,
+    "cameras": [],
+    "lights": [],
+    "unskinned_meshes": [],
+    "actions": [
+      "BAS_PUNCH_Rig|SB_Punch"
+    ],
+    "total_vertices": 2870,
+    "total_tris": 5664,
+    "no_parasites": true
+  },
+  "skeleton": {
+    "bone_count": 10,
+    "names_match_source": true,
+    "missing": [],
+    "unexpected": [],
+    "hierarchy": {
+      "BAS_PUNCH_root": null,
+      "BAS_PUNCH_body": "BAS_PUNCH_root",
+      "BAS_PUNCH_upperarm.L": "BAS_PUNCH_body",
+      "BAS_PUNCH_forearm.L": "BAS_PUNCH_upperarm.L",
+      "BAS_PUNCH_hand.L": "BAS_PUNCH_forearm.L",
+      "BAS_PUNCH_upperarm.R": "BAS_PUNCH_body",
+      "BAS_PUNCH_forearm.R": "BAS_PUNCH_upperarm.R",
+      "BAS_PUNCH_hand.R": "BAS_PUNCH_forearm.R",
+      "BAS_PUNCH_foot.L": "BAS_PUNCH_root",
+      "BAS_PUNCH_foot.R": "BAS_PUNCH_root"
+    },
+    "leaf_bones_added": []
+  },
+  "clip": {
+    "action_count": 1,
+    "name_after_blender_import": "BAS_PUNCH_Rig|SB_Punch",
+    "take_name_stripped": "SB_Punch",
+    "raw_fbx_anim_stack_names": [
+      "SB_Punch"
+    ],
+    "raw_fbx_take_count": 1,
+    "take_name_matches_action": true,
+    "frame_start": 2.0,
+    "frame_end": 21.0,
+    "frame_span": 19.0,
+    "span_matches_contract": true,
+    "fcurve_count": 109,
+    "bones_animated": [
+      "BAS_PUNCH_body",
+      "BAS_PUNCH_foot.L",
+      "BAS_PUNCH_foot.R",
+      "BAS_PUNCH_forearm.L",
+      "BAS_PUNCH_forearm.R",
+      "BAS_PUNCH_hand.L",
+      "BAS_PUNCH_hand.R",
+      "BAS_PUNCH_root",
+      "BAS_PUNCH_upperarm.L",
+      "BAS_PUNCH_upperarm.R"
+    ],
+    "all_10_bones_animated": true,
+    "scene_fps": 30.0,
+    "fps_is_30": true,
+    "duration_s": 0.633333,
+    "foreign_takes_absent": true
+  },
+  "master_vs_candidate": {
+    "frames_compared": 20,
+    "tested_frame_offsets": {
+      "0": {
+        "max_bone_translation_delta_m": 0.12071567,
+        "max_bone_rotation_delta_deg": 11.761466,
+        "max_evaluated_bounds_delta_m": 0.09526219,
+        "worst_translation_frame": 8,
+        "worst_translation_bone": "BAS_PUNCH_hand.R"
+      },
+      "1": {
+        "max_bone_translation_delta_m": 5.1e-07,
+        "max_bone_rotation_delta_deg": 0.0,
+        "max_evaluated_bounds_delta_m": 4.8e-07,
+        "worst_translation_frame": 16,
+        "worst_translation_bone": "BAS_PUNCH_hand.R"
+      }
+    },
+    "best_frame_offset": 1,
+    "max_bone_translation_delta_m": 5.1e-07,
+    "worst_translation_frame": 16,
+    "worst_translation_bone": "BAS_PUNCH_hand.R",
+    "max_bone_rotation_delta_deg": 0.0,
+    "max_evaluated_bounds_delta_m": 4.8e-07,
+    "matches": true
+  },
+  "root_motion_after_reimport": {
+    "bone": "BAS_PUNCH_root",
+    "max_translation_m": 0.0,
+    "max_rotation_deg": 0.0,
+    "passed": true
+  },
+  "weights_after_reimport": {
+    "max_influences": 1,
+    "unweighted_vertices": 0,
+    "within_4_influence_budget": true
+  },
+  "passed": true
+}

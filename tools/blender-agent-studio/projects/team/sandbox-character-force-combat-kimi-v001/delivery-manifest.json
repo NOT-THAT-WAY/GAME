@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-force-combat-kimi-v001",
+  "files": [
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/work/sandbox_character_kimi_force_combat_master.blend",
+      "role": "master_blend",
+      "bytes": 379901,
+      "sha256": "2b67611d0e44afbdd4a4df6be49b39ab0e34dd78754d78d8dff1a9a004fd791d",
+      "status": "validated",
+      "note": "Master du pole: 7 Actions du lot + SB_Idle intact + placeholder Punch intact"
+    },
+    {
+      "path": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/clip-manifest.json",
+      "role": "clip_manifest",
+      "bytes": 20949,
+      "sha256": "7cabbd79bc5d37c45c4d7e5aff9e9db51becbd3dbe80c097520579552cfddff5",
+      "status": "validated",
+      "note": "Manifeste des 7 clips avec plages, loop et verdicts"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_Punch_candidate.fbx",
+      "role": "export",
+      "bytes": 339916,
+      "sha256": "ce588ab12071fb72dfd4b993f488451966984543962d665ed9727590e6b0316f",
+      "status": "validated",
+      "note": "Candidat SB_Punch, un take unique nomme SB_Punch"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_Punch/SB_Punch-playblast.mp4",
+      "role": "playblast",
+      "bytes": 30959,
+      "sha256": "808e92b9022087f802d61bd2f2d427e8698cdcff24b3b153f2e8966752c0b46e",
+      "status": "validated",
+      "note": "Playblast complet SB_Punch"
+    },
+    {
+      "path": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Punch-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1861,
+      "sha256": "26c83e04bf777e95987531044c3e60bed3c2775c6204b9572f74df9a56114fe8",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_Punch"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_HitReact_candidate.fbx",
+      "role": "export",
+      "bytes": 337868,
+      "sha256": "fd87a0fc0fd89750832dbd7b6d5f548322c540470aebe09556fdc65af20a6556",
+      "status": "validated",
+      "note": "Candidat SB_HitReact, un take unique nomme SB_HitReact"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_HitReact/SB_HitReact-playblast.mp4",
+      "role": "playblast",
+      "bytes": 23732,
+      "sha256": "8c956c5cc1543d0e807cb8fbc09010ddaa9199c8352cd31e5eb633ae5eda055d",
+      "status": "validated",
+      "note": "Playblast complet SB_HitReact"
+    },
+    {
+      "path": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_HitReact-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1874,
+      "sha256": "60bde7dc3bb6af984f9fe720c4c4be1955bfca9c2e7f33ce261a989af1c5271d",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_HitReact"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_Push_candidate.fbx",
+      "role": "export",
+      "bytes": 349916,
+      "sha256": "b9ce5658a4d90019396be34110b0ee794aecfb470791d70e8e61a8370cbe5279",
+      "status": "validated",
+      "note": "Candidat SB_Push, un take unique nomme SB_Push"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_Push/SB_Push-playblast.mp4",
+      "role": "playblast",
+      "bytes": 60545,
+      "sha256": "7f59ece16cd7c5085b7e43cd11ce09975179b5a116e150c12ddc2b16b2649a7e",
+      "status": "validated",
+      "note": "Playblast complet SB_Push repete 4 fois pour la couture"
+    },
+    {
+      "path": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Push-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1858,
+      "sha256": "8cf5e08df448e7e113d22980c73ce0d61a16ea2d44f706ace51ec091543396f6",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_Push"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_WallPushed_candidate.fbx",
+      "role": "export",
+      "bytes": 343916,
+      "sha256": "7d0bd33923178a7d70cb6281fe1738231237c877961a0375a65b7c2d876789d4",
+      "status": "validated",
+      "note": "Candidat SB_WallPushed, un take unique nomme SB_WallPushed"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_WallPushed/SB_WallPushed-playblast.mp4",
+      "role": "playblast",
+      "bytes": 79962,
+      "sha256": "53513ea2a10104e541015be353bf923a11c670161f2058ca26c749144d3afdfc",
+      "status": "validated",
+      "note": "Playblast complet SB_WallPushed repete 4 fois pour la couture"
+    },
+    {
+      "path": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_WallPushed-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1881,
+      "sha256": "ea1ca9274f43449f31fadce40402b6f3d1e23082294686f90653b7d9c8a2b159",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_WallPushed"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_KnockedOutLoop_candidate.fbx",
+      "role": "export",
+      "bytes": 362220,
+      "sha256": "26f743ec3b53f166ae4de79926e757f99c5b8cb49dd0662bcfe833b690feb2a1",
+      "status": "validated",
+      "note": "Candidat SB_KnockedOutLoop, un take unique nomme SB_KnockedOutLoop"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_KnockedOutLoop/SB_KnockedOutLoop-playblast.mp4",
+      "role": "playblast",
+      "bytes": 80010,
+      "sha256": "af9fda78a2fb2d6e2eb37e3e94dc80e12e2fb114a43654d5ede61250ec654615",
+      "status": "validated",
+      "note": "Playblast complet SB_KnockedOutLoop repete 4 fois pour la couture"
+    },
+    {
+      "path": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_KnockedOutLoop-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1897,
+      "sha256": "bb2bdd505275baf4985c342a6df3d3ae865fa983939c68fc08725a5727fa23b0",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_KnockedOutLoop"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_Knockout_candidate.fbx",
+      "role": "export",
+      "bytes": 349932,
+      "sha256": "d919a67755776a341520a7549c96bea63f35f060710159751569c89f756aade9",
+      "status": "validated",
+      "note": "Candidat SB_Knockout, un take unique nomme SB_Knockout"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_Knockout/SB_Knockout-playblast.mp4",
+      "role": "playblast",
+      "bytes": 34045,
+      "sha256": "7e0fb91c72ec2ed797e51c8568adc2b413a8c143e5cb0845f6b1f788ae7488ef",
+      "status": "validated",
+      "note": "Playblast complet SB_Knockout"
+    },
+    {
+      "path": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Knockout-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1873,
+      "sha256": "1da5bc3c558f28357207b105a89b4b3b70290463a752052ab0e444976b0e35e8",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_Knockout"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/exports/SB_Recover_candidate.fbx",
+      "role": "export",
+      "bytes": 348700,
+      "sha256": "773204c03577c395a7e0c6ea094ce0fb36c5d4ef2414e08efa6150bb0ecb6618",
+      "status": "validated",
+      "note": "Candidat SB_Recover, un take unique nomme SB_Recover"
+    },
+    {
+      "path": "local_work/sandbox-character-force-combat-kimi-v001/renders/SB_Recover/SB_Recover-playblast.mp4",
+      "role": "playblast",
+      "bytes": 39107,
+      "sha256": "d820a6e519e24aca622478a1349c5ca6989589ba6e889ba46c7c465d84fbcad7",
+      "status": "validated",
+      "note": "Playblast complet SB_Recover"
+    },
+    {
+      "path": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/SB_Recover-reimport.json",
+      "role": "reimport_evidence",
+      "bytes": 1870,
+      "sha256": "0531e3e50300cc908669f9d885a1fce116bb8cfdb3aa468c717b8943a73432e7",
+      "status": "validated",
+      "note": "Reimport Blender independant de SB_Recover"
+    },
+    {
+      "path": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/interface-poses.json",
+      "role": "clip_manifest",
+      "bytes": 2351,
+      "sha256": "d85d33af76e8e371ff11fe83115f6066c981034d17cb9dbd3a60210d96539846",
+      "status": "validated",
+      "note": "Comparaison os par os des poses d'interface KO (Knockout f30, Recover f1)"
+    },
+    {
+      "path": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/push-proxy-plane.json",
+      "role": "reimport_evidence",
+      "bytes": 12419,
+      "sha256": "00e44b88bb73aef29819bf9cd1fee8dd6c7e1d40ae3ef0aace7b7318b951d849",
+      "status": "validated",
+      "note": "Plan proxy de SB_Push derive de la geometrie evaluee, jamais exporte"
+    },
+    {
+      "path": "projects/team/sandbox-character-force-combat-kimi-v001/evidence/unity-import.json",
+      "role": "target_engine_import",
+      "bytes": 3964,
+      "sha256": "2f3f36da0e073e52db80700743c1fe06bdbfd809a57c4d979ed156464d53dce9",
+      "status": "validated",
+      "note": "Import Unity 6000.3.20f1 des 7 candidats en rig Generic"
+    }
+  ],
+  "target_validation": {
+    "status": "passed",
+    "target": "Unity 6000.3.20f1, rig Generic, gameplay r\u00e9seau in-place",
+    "evidence": [
+      "projects/team/sandbox-character-force-combat-kimi-v001/evidence/unity-import.json"
+    ]
+  },
+  "rights_review": {
+    "status": "passed",
+    "notes": "Aucun asset externe utilise. Toute la geometrie et le rig proviennent de Assets/_Project/Player/PersoBouleRigged.fbx, propriete du projet GAME, ouvert en lecture seule et jamais reecrit (SHA-256 verifie inchange). Aucune texture, HDRI, modele ou animation tierce n'a ete telechargee ni incorporee."
+  }
+}

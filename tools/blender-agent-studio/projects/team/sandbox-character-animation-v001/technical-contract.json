@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-animation-v001",
+  "project_type": "animation",
+  "profile": "rig-animation",
+  "pass_scope": "SB_Idle uniquement. SB_Walk et les 16 clips suivants sont explicitement hors passe.",
+  "common": {
+    "blender_units": "meters",
+    "blender_version": "5.1.1",
+    "coordinate_frame": "Blender monde Z-up, Y-forward negatif ; personnage regarde -Y (mesure: patch materiau BAS_PUNCH_Mat_Eye centre a Y=-0.44)",
+    "target_frame": "Unity Y-up Z-forward ; export FBX axis_forward=-Z axis_up=Y",
+    "dimensions_m": {
+      "character_height_z": 1.34,
+      "body_sphere_center": [0.0, 0.0, 0.78],
+      "body_sphere_radius_xz": 0.56,
+      "ground_plane_z": 0.0
+    },
+    "origin_and_pivot": "objet armature BAS_PUNCH_Rig a loc (0,0,0), rot (0,0,0), scale (1,1,1). Os racine BAS_PUNCH_root tete a (0,0,0). Os BAS_PUNCH_body tete a (0,0,0.30), sous le centre de la sphere.",
+    "supports_contacts_and_colliders": "Appuis declares: semelle BAS_PUNCH_Foot_L et BAS_PUNCH_Foot_R sur le plan Z=0. Aucun collider dans le visuel. Aucun collider exporte.",
+    "source_provenance": [
+      {
+        "path": "Assets/_Project/Player/PersoBouleRigged.fbx",
+        "sha256": "4503459d16ccc2af8ebc11b621850de3d1dae213d8d3f43420ae97f84231cce1",
+        "mutable": false,
+        "role": "source immuable, lecture seule"
+      }
+    ]
+  },
+  "domain": {
+    "fps": 30,
+    "clips": [
+      {
+        "action_name": "SB_Idle",
+        "frame_start": 1,
+        "frame_end": 60,
+        "inclusive": true,
+        "sampled_poses": 60,
+        "duration_s_imported": 1.9666666,
+        "loop": true,
+        "loop_period_frames": 60,
+        "root_motion": "none",
+        "additive": false,
+        "reference_pose": "bind pose du FBX source, Action Punch desassignee",
+        "events": "aucun AnimationEvent gameplay ; aucun marqueur SFX_/VFX_ ajoute dans cette passe"
+      }
+    ],
+    "contacts": {
+      "planted": ["BAS_PUNCH_Foot_L", "BAS_PUNCH_Foot_R"],
+      "support_plane_z": 0.0,
+      "method": "geometrie evaluee, toutes les frames, repere monde Blender",
+      "semantic_pairs": {
+        "socket": [
+          ["BAS_PUNCH_Body", "BAS_PUNCH_UpperArm_L"],
+          ["BAS_PUNCH_Body", "BAS_PUNCH_UpperArm_R"]
+        ],
+        "clearance": [
+          ["BAS_PUNCH_Body", "BAS_PUNCH_Forearm_L"],
+          ["BAS_PUNCH_Body", "BAS_PUNCH_Forearm_R"],
+          ["BAS_PUNCH_Body", "BAS_PUNCH_Fist_L"],
+          ["BAS_PUNCH_Body", "BAS_PUNCH_Fist_R"],
+          ["BAS_PUNCH_Body", "BAS_PUNCH_Foot_L"],
+          ["BAS_PUNCH_Body", "BAS_PUNCH_Foot_R"],
+          ["BAS_PUNCH_Foot_L", "BAS_PUNCH_Foot_R"]
+        ]
+      },
+      "socket_justification": "Les deux upperarm sont encastres dans la sphere du corps par la CONSTRUCTION DE LA SOURCE, pas par l animation : 102 vertices a l interieur et 0.148885 m de profondeur mesures dans la bind pose du FBX intact, Action Punch desassignee. C est l articulation d epaule. Preuve: evidence/shoulder-socket-baseline.json. Le critere applique n est donc pas un degagement mais une non-aggravation: l animation ne doit pas creuser le socket de plus de 0.001 m par rapport au repos. Mesure reelle: 0.000002 m. Ce n est pas un seuil elargi apres coup, c est une paire reclassee avec sa ligne de base."
+    },
+    "root_motion": "BAS_PUNCH_root immobile en translation et rotation sur 1-60 ; objet armature immobile",
+    "loop_policy": "periode exacte de 60 images. pose(f+60) == pose(f). La pose de l'image 60 n'est PAS une copie de l'image 1 : la couture est le pas normal 60 -> 1. Toutes les courbes sont des sommes d'harmoniques de periode 60, donc continuite C-infinie en position ET en vitesse a la couture.",
+    "export_sampling": "Bake Animation actif, bake_anim_step=1.0, bake_anim_simplify_factor=0.0 (Simplify 0), force_startend_keying, tous les os bakes"
+  },
+  "budgets": {
+    "triangles_max": 6000,
+    "triangles_actual": 5664,
+    "bones_max": 16,
+    "bones_actual": 10,
+    "influences_per_vertex_max": 4,
+    "influences_per_vertex_actual": 1,
+    "new_deform_bones_allowed": 0,
+    "body_to_foot_vertical_clearance_rest_m": 0.071,
+    "planned_body_vertical_travel_m": 0.026,
+    "planned_body_lateral_travel_m": 0.021
+  },
+  "thresholds": {
+    "root_translation_max_m": 0.0,
+    "root_rotation_max_deg": 0.0,
+    "planted_foot_drift_max_m": 0.005,
+    "planted_foot_gap_max_m": 0.005,
+    "ground_penetration_max_m": 0.002,
+    "limb_body_min_clearance_m": 0.010,
+    "socket_deepening_max_m": 0.001,
+    "seam_position_max_m": 0.002,
+    "seam_velocity_max_m_per_frame": 0.002,
+    "sampling": "every frame, 1..60 plus wrap frame 61"
+  },
+  "delivery": {
+    "formats": ["fbx"],
+    "target_importer": "Unity FBX importer, Animation Type = Generic",
+    "version": "Unity 6000.3.20f1",
+    "candidate_only": true,
+    "must_not_replace": "Assets/_Project/Player/PersoBouleRigged.fbx"
+  }
+}

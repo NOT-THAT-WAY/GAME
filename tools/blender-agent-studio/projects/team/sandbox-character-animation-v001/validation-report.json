@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-08-15T19:10:17.150649+00:00",
+  "project_id": "sandbox-character-animation-v001",
+  "project_type": "animation",
+  "stage": "final",
+  "package_valid": true,
+  "verified_delivery_files": 12,
+  "errors": [],
+  "warnings": []
+}

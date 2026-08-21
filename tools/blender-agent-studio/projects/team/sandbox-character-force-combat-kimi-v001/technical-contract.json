@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "project_id": "sandbox-character-force-combat-kimi-v001",
+  "project_type": "animation",
+  "profile": "rig-animation",
+  "pass_scope": "P\u00f4le Kimi : forces, pouss\u00e9e, combat et \u00e9tats de vie. 7 clips uniquement : SB_Punch, SB_HitReact, SB_Push, SB_WallPushed, SB_KnockedOutLoop, SB_Knockout, SB_Recover (ordre de construction des ancres).",
+  "common": {
+    "blender_units": "meters",
+    "blender_version": "5.1.1",
+    "coordinate_frame": "Blender monde Z-up, personnage face \u00e0 -Y ; mesures sur g\u00e9om\u00e9trie \u00e9valu\u00e9e (depsgraph), rep\u00e8re monde, sample_frame_step=1",
+    "target_frame": "Unity Y-up Z-forward ; export FBX axis_forward=-Z axis_up=Y",
+    "dimensions_m": {
+      "character_height_z": 1.34,
+      "body_sphere_center": [
+        0.0,
+        0.0,
+        0.78
+      ],
+      "body_sphere_radius_xz": 0.56,
+      "ground_plane_z": 0.0
+    },
+    "origin_and_pivot": "objet armature BAS_PUNCH_Rig \u00e0 l'identit\u00e9 ; BAS_PUNCH_root t\u00eate \u00e0 (0,0,0) ; BAS_PUNCH_body t\u00eate \u00e0 (0,0,0.30). Ni l'objet ni le root ne bougent dans aucun clip.",
+    "supports_contacts_and_colliders": "Sol = plan Z=0 (debout) ; contacts au sol r\u00e9els des pi\u00e8ces pour KO/Recover ; plan proxy vertical pour SB_Push (preuve, pr\u00e9fixe BAS_KIMI_, jamais export\u00e9). Aucun collider export\u00e9.",
+    "source_provenance": [
+      {
+        "path": "Assets/_Project/Player/PersoBouleRigged.fbx",
+        "sha256": "4503459d16ccc2af8ebc11b621850de3d1dae213d8d3f43420ae97f84231cce1",
+        "mutable": false,
+        "role": "source immuable, audit\u00e9e en lecture seule"
+      },
+      {
+        "path": "tools/blender-agent-studio/local_work/sandbox-character-animation-v001/work/sandbox_character_SB_Idle_master.blend",
+        "sha256": "864807e970705bf44a1c3dcbcfaac85102458917a5c8ccec90f5f36728590464",
+        "mutable": false,
+        "role": "r\u00e9f\u00e9rence SB_Idle valid\u00e9e, dupliqu\u00e9e, jamais modifi\u00e9e en place"
+      }
+    ],
+    "working_copy": "tools/blender-agent-studio/local_work/sandbox-character-force-combat-kimi-v001/work/sandbox_character_kimi_force_combat_master.blend"
+  },
+  "domain": {
+    "fps": 30,
+    "clips": [
+      {
+        "action_name": "SB_Punch",
+        "frame_start": 1,
+        "frame_end": 20,
+        "inclusive": true,
+        "sampled_poses": 20,
+        "duration_s": 0.6333333,
+        "loop": false,
+        "root_motion": "none",
+        "additive": false,
+        "reference_pose": "SB_Idle f1 (garde)",
+        "events": "aucun",
+        "beats": "garde f1, anticipation f3-5, extension/impact visuel f10, suivi f11-13, r\u00e9cup\u00e9ration compatible Idle f20"
+      },
+      {
+        "action_name": "SB_HitReact",
+        "frame_start": 1,
+        "frame_end": 18,
+        "inclusive": true,
+        "sampled_poses": 18,
+        "duration_s": 0.5666667,
+        "loop": false,
+        "root_motion": "none",
+        "additive": false,
+        "reference_pose": "SB_Idle f1",
+        "events": "aucun",
+        "beats": "d\u00e9part Idle, impact f2-3, recul haut du corps + protection visage jusqu'\u00e0 f8, r\u00e9cup\u00e9ration compatible Idle f18 ; pas de chute, pas de translation root"
+      },
+      {
+        "action_name": "SB_Push",
+        "frame_start": 1,
+        "frame_end": 30,
+        "inclusive": true,
+        "sampled_poses": 30,
+        "duration_s": 0.9666667,
+        "loop": true,
+        "loop_period_frames": 30,
+        "root_motion": "none",
+        "additive": false,
+        "reference_pose": "SB_Idle f1",
+        "events": "aucun",
+        "beats": "pieds \u00e9cart\u00e9s stables, corps bascul\u00e9 vers l'avant autour de son pivot, mains sur plan proxy, effort cyclique sans pompage des mains ni glisse des appuis"
+      },
+      {
+        "action_name": "SB_WallPushed",
+        "frame_start": 1,
+        "frame_end": 24,
+        "inclusive": true,
+        "sampled_poses": 24,
+        "duration_s": 0.7666667,
+        "loop": true,
+        "loop_period_frames": 24,
+        "root_motion": "none",
+        "additive": false,
+        "reference_pose": "SB_Idle f1",
+        "events": "aucun",
+        "beats": "corps en retard sur la translation externe, bascule amortie, bras en contrepoids, petits pas altern\u00e9s pieds d\u00e9tach\u00e9s, cr\u00e9dible \u00e0 WallPushSpeed 1..3,5 m/s, pas d'impact \u00e0 la couture"
+      },
+      {
+        "action_name": "SB_KnockedOutLoop",
+        "frame_start": 1,
+        "frame_end": 60,
+        "inclusive": true,
+        "sampled_poses": 60,
+        "duration_s": 1.9666667,
+        "loop": true,
+        "loop_period_frames": 60,
+        "root_motion": "none",
+        "additive": false,
+        "reference_pose": "pose KO f1 (r\u00e9f\u00e9rence exacte des transitions)",
+        "events": "aucun",
+        "beats": "corps KO au sol, supports r\u00e9els stables, respiration \u00e0 peine visible, aucune d\u00e9rive, couture continue ; lecture KO, pas Idle couch\u00e9"
+      },
+      {
+        "action_name": "SB_Knockout",
+        "frame_start": 1,
+        "frame_end": 30,
+        "inclusive": true,
+        "sampled_poses": 30,
+        "duration_s": 0.9666667,
+        "loop": false,
+        "root_motion": "none",
+        "additive": false,
+        "reference_pose": "SB_Idle f1 au d\u00e9part ; SB_KnockedOutLoop f1 \u00e0 f30",
+        "events": "aucun",
+        "beats": "rupture d'\u00e9quilibre f1-8, descente contr\u00f4l\u00e9e, premier contact sol avant f22, stabilisation ; f30 == SB_KnockedOutLoop f1 os par os"
+      },
+      {
+        "action_name": "SB_Recover",
+        "frame_start": 1,
+        "frame_end": 36,
+        "inclusive": true,
+        "sampled_poses": 36,
+        "duration_s": 1.1666667,
+        "loop": false,
+        "root_motion": "none",
+        "additive": false,
+        "reference_pose": "SB_KnockedOutLoop f1 au d\u00e9part ; SB_Idle f1 \u00e0 f36",
+        "events": "aucun",
+        "beats": "f1 == SB_KnockedOutLoop f1, appui des mains, redressement, pieds repris sous le corps avec les articulations r\u00e9elles, f36 compatible SB_Idle"
+      }
+    ],
+    "contacts": {
+      "support_plane_z": 0.0,
+      "method": "g\u00e9om\u00e9trie \u00e9valu\u00e9e, toutes les frames, rep\u00e8re monde Blender Z-up",
+      "planted_per_clip": {
+        "SB_Punch": [
+          "BAS_PUNCH_Foot_L",
+          "BAS_PUNCH_Foot_R"
+        ],
+        "SB_HitReact": [
+          "BAS_PUNCH_Foot_L",
+          "BAS_PUNCH_Foot_R"
+        ],
+        "SB_Push": [
+          "BAS_PUNCH_Foot_L",
+          "BAS_PUNCH_Foot_R",
+          "mains sur plan proxy (preuve, non export\u00e9)"
+        ],
+        "SB_WallPushed": [
+          "contacts pieds altern\u00e9s, aucun appui permanent"
+        ],
+        "SB_KnockedOutLoop": [
+          "contacts r\u00e9els du corps au sol, mesur\u00e9s pi\u00e8ce par pi\u00e8ce"
+        ],
+        "SB_Knockout": [
+          "pieds jusqu'\u00e0 la rupture, puis contacts de chute mesur\u00e9s"
+        ],
+        "SB_Recover": [
+          "contacts sol (corps, mains, pieds) mesur\u00e9s sur toute la remont\u00e9e"
+        ]
+      },
+      "socket_justification": "Sockets \u00e9paule/coude/poignet pr\u00e9sents dans la bind pose source (preuve : sandbox-character-animation-v001/evidence/shoulder-socket-baseline.json). Crit\u00e8re de non-aggravation <= 0,001 m, jamais pr\u00e9sent\u00e9 comme nul."
+    },
+    "root_motion": "BAS_PUNCH_root et objet armature immobiles (translation 0, rotation 0) dans les 7 clips",
+    "loop_policy": "boucles construites p\u00e9riodiques par sommes d'harmoniques de p\u00e9riode exacte (30/24/60 images) \u00e9valu\u00e9es \u00e0 theta=2*pi*(f-1)/N : pose(f+N)==pose(f), continuit\u00e9 position+vitesse \u00e0 la couture, derni\u00e8re image distincte de la premi\u00e8re",
+    "export_sampling": "Bake Animation 30 fps, step 1.0, Simplify 0, un take nomm\u00e9 comme l'Action, armature + 9 meshes uniquement, aucune cam\u00e9ra/lumi\u00e8re/helper/plan proxy"
+  },
+  "budgets": {
+    "triangles": {
+      "declared": 6000,
+      "measured": 5664
+    },
+    "bones": {
+      "declared": 16,
+      "measured": 10
+    },
+    "influences_per_vertex": {
+      "declared": 4,
+      "measured": 1
+    }
+  },
+  "thresholds": {
+    "root_translation_max_m": 0.0,
+    "root_rotation_max_deg": 0.0,
+    "planted_foot_drift_max_m": 0.005,
+    "planted_support_gap_max_m": 0.005,
+    "ground_penetration_max_m": 0.002,
+    "limb_body_min_clearance_m": 0.01,
+    "swing_clearance_min_m": 0.01,
+    "socket_deepening_max_m": 0.001,
+    "interface_pose_max_delta_m": 0.0001,
+    "interface_pose_max_delta_deg": 0.05,
+    "sampling": "toutes les frames, sample_frame_step=1"
+  },
+  "delivery": {
+    "formats": [
+      "fbx"
+    ],
+    "target_importer": "Unity FBX importer, Animation Type = Generic",
+    "version": "Unity 6000.3.20f1",
+    "unity_import_sandbox": "Assets/_GeneratedLocal/SandboxAnimKimi/ uniquement",
+    "candidate_only": true,
+    "must_not_replace": "Assets/_Project/Player/PersoBouleRigged.fbx",
+    "loop_flag_note": "loopTime est un r\u00e9glage d'importeur Unity (.meta), pas une donn\u00e9e FBX : pos\u00e9 et v\u00e9rifi\u00e9 \u00e0 l'import (true pour SB_Push, SB_WallPushed, SB_KnockedOutLoop ; false pour les 4 one-shots)"
+  },
+  "documentary_limitations": [
+    "tools/blender-agent-studio/references/animation-and-rig.md et references/evidence-and-stop-gates.md sont absents de ce checkout (pas de dossier references/) ; les standards pr\u00e9sents (AGENTS.md, CORE_PRODUCTION_STANDARD, AGENT_HANDBOOK, BLENDER_RULES_PRIORITY, PHYSICAL_WORLD_OBJECT_RULES, SCENE_TRIAL_EVALUATION_RULES, RIG_ANIMATION_STANDARD, profiles/rig-animation.json, style-profiles/neutral-production.md) ont \u00e9t\u00e9 appliqu\u00e9s \u00e0 la place, sans invention de contenu"
+  ],
+  "blender_version": "5.1.1",
+  "target_engine": "Unity 6000.3.20f1",
+  "units": "metres",
+  "scale_length": 1.0,
+  "fps": 30,
+  "up_axis": "Z",
+  "forward_axis": "-Y",
+  "export_format": "FBX (bake 30 fps, simplify 0, add_leaf_bones false)",
+  "thresholds_locked_before_authoring": {
+    "ground_penetration_max_m": 0.002,
+    "planted_gap_max_m": 0.005,
+    "planted_drift_max_m": 0.005,
+    "swing_clearance_min_m": 0.01,
+    "socket_depth_tolerance_m": 0.02,
+    "continuity_spike_ratio": 4.0,
+    "continuity_spike_absolute_deg": 8.0
+  },
+  "wall_push_speed_range_mps": [
+    0.0,
+    3.5
+  ],
+  "proxy_plane_policy": "le plan d'appui de SB_Push est derive de la geometrie evaluee et vit uniquement dans les preuves; aucun objet plan n'existe ni n'est exporte",
+  "interface_pose_tolerances": {
+    "position_m": 0.001,
+    "rotation_deg": 0.01
+  }
+}
