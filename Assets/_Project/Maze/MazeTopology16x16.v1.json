@@ -59,14 +59,44 @@
       ]
     },
     {
-      "wallId": 4,
+      "wallId": 2,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 3,
+            "x": 1,
+            "y": 0
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 6,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 5,
+            "y": 0
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 8,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 7,
             "y": 0
           },
           "quarterTurns": 0
@@ -120,7 +150,6 @@
     },
     {
       "wallId": 20,
-      "pivotId": 10037,
       "initialStateId": 0,
       "states": [
         {
@@ -128,6 +157,52 @@
           "edge": {
             "axis": "vertical",
             "x": 2,
+            "y": 1
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 22,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 4,
+            "y": 1
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 23,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 5,
+            "y": 1
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 26,
+      "pivotId": 10043,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 8,
             "y": 1
           },
           "quarterTurns": 0
@@ -136,7 +211,7 @@
           "stateId": 1,
           "edge": {
             "axis": "horizontal",
-            "x": 1,
+            "x": 7,
             "y": 2
           },
           "quarterTurns": 1
@@ -145,7 +220,7 @@
           "stateId": 2,
           "edge": {
             "axis": "vertical",
-            "x": 2,
+            "x": 8,
             "y": 2
           },
           "quarterTurns": 2
@@ -154,25 +229,10 @@
           "stateId": 3,
           "edge": {
             "axis": "horizontal",
-            "x": 2,
+            "x": 8,
             "y": 2
           },
           "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 25,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 7,
-            "y": 1
-          },
-          "quarterTurns": 0
         }
       ]
     },
@@ -192,60 +252,17 @@
       ]
     },
     {
-      "wallId": 30,
+      "wallId": 31,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 12,
-            "y": 1
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 32,
-      "pivotId": 10032,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 14,
-            "y": 1
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "horizontal",
-            "x": 14,
-            "y": 1
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "vertical",
-            "x": 14,
-            "y": 0
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "horizontal",
             "x": 13,
             "y": 1
           },
-          "quarterTurns": 3
+          "quarterTurns": 0
         }
       ]
     },
@@ -280,14 +297,14 @@
       ]
     },
     {
-      "wallId": 38,
+      "wallId": 37,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 3,
+            "x": 2,
             "y": 2
           },
           "quarterTurns": 0
@@ -295,15 +312,15 @@
       ]
     },
     {
-      "wallId": 42,
-      "pivotId": 10059,
+      "wallId": 39,
+      "pivotId": 10056,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 7,
+            "x": 4,
             "y": 2
           },
           "quarterTurns": 0
@@ -312,7 +329,7 @@
           "stateId": 1,
           "edge": {
             "axis": "horizontal",
-            "x": 6,
+            "x": 3,
             "y": 3
           },
           "quarterTurns": 1
@@ -321,7 +338,7 @@
           "stateId": 2,
           "edge": {
             "axis": "vertical",
-            "x": 7,
+            "x": 4,
             "y": 3
           },
           "quarterTurns": 2
@@ -330,7 +347,7 @@
           "stateId": 3,
           "edge": {
             "axis": "horizontal",
-            "x": 7,
+            "x": 4,
             "y": 3
           },
           "quarterTurns": 3
@@ -338,7 +355,23 @@
       ]
     },
     {
+      "wallId": 41,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 6,
+            "y": 2
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
       "wallId": 43,
+      "pivotId": 10043,
       "initialStateId": 0,
       "states": [
         {
@@ -349,21 +382,33 @@
             "y": 2
           },
           "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 45,
-      "initialStateId": 0,
-      "states": [
+        },
         {
-          "stateId": 0,
+          "stateId": 1,
           "edge": {
-            "axis": "vertical",
-            "x": 10,
+            "axis": "horizontal",
+            "x": 8,
             "y": 2
           },
-          "quarterTurns": 0
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "vertical",
+            "x": 8,
+            "y": 1
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "horizontal",
+            "x": 7,
+            "y": 2
+          },
+          "quarterTurns": 3
         }
       ]
     },
@@ -426,21 +471,6 @@
       ]
     },
     {
-      "wallId": 49,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 14,
-            "y": 2
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
       "wallId": 50,
       "initialStateId": 0,
       "states": [
@@ -486,14 +516,14 @@
       ]
     },
     {
-      "wallId": 54,
+      "wallId": 53,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 2,
+            "x": 1,
             "y": 3
           },
           "quarterTurns": 0
@@ -501,130 +531,29 @@
       ]
     },
     {
-      "wallId": 57,
+      "wallId": 58,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 5,
-            "y": 3
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 59,
-      "pivotId": 10059,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 7,
-            "y": 3
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "horizontal",
-            "x": 7,
-            "y": 3
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "vertical",
-            "x": 7,
-            "y": 2
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "horizontal",
             "x": 6,
             "y": 3
           },
-          "quarterTurns": 3
+          "quarterTurns": 0
         }
       ]
     },
     {
-      "wallId": 61,
+      "wallId": 62,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 9,
-            "y": 3
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 63,
-      "pivotId": 10063,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 11,
-            "y": 3
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "horizontal",
-            "x": 11,
-            "y": 3
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "vertical",
-            "x": 11,
-            "y": 2
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "horizontal",
             "x": 10,
-            "y": 3
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 65,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 13,
             "y": 3
           },
           "quarterTurns": 0
@@ -633,6 +562,7 @@
     },
     {
       "wallId": 66,
+      "pivotId": 10083,
       "initialStateId": 0,
       "states": [
         {
@@ -643,21 +573,33 @@
             "y": 3
           },
           "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 67,
-      "initialStateId": 0,
-      "states": [
+        },
         {
-          "stateId": 0,
+          "stateId": 1,
+          "edge": {
+            "axis": "horizontal",
+            "x": 13,
+            "y": 4
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
           "edge": {
             "axis": "vertical",
-            "x": 15,
-            "y": 3
+            "x": 14,
+            "y": 4
           },
-          "quarterTurns": 0
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "horizontal",
+            "x": 14,
+            "y": 4
+          },
+          "quarterTurns": 3
         }
       ]
     },
@@ -692,14 +634,14 @@
       ]
     },
     {
-      "wallId": 70,
+      "wallId": 72,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 1,
+            "x": 3,
             "y": 4
           },
           "quarterTurns": 0
@@ -707,14 +649,14 @@
       ]
     },
     {
-      "wallId": 75,
+      "wallId": 74,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 6,
+            "x": 5,
             "y": 4
           },
           "quarterTurns": 0
@@ -722,29 +664,14 @@
       ]
     },
     {
-      "wallId": 77,
+      "wallId": 76,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 8,
-            "y": 4
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 78,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 9,
+            "x": 7,
             "y": 4
           },
           "quarterTurns": 0
@@ -767,38 +694,8 @@
       ]
     },
     {
-      "wallId": 80,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 11,
-            "y": 4
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 81,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 12,
-            "y": 4
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
       "wallId": 83,
-      "pivotId": 10100,
+      "pivotId": 10083,
       "initialStateId": 0,
       "states": [
         {
@@ -814,8 +711,8 @@
           "stateId": 1,
           "edge": {
             "axis": "horizontal",
-            "x": 13,
-            "y": 5
+            "x": 14,
+            "y": 4
           },
           "quarterTurns": 1
         },
@@ -824,7 +721,7 @@
           "edge": {
             "axis": "vertical",
             "x": 14,
-            "y": 5
+            "y": 3
           },
           "quarterTurns": 2
         },
@@ -832,8 +729,8 @@
           "stateId": 3,
           "edge": {
             "axis": "horizontal",
-            "x": 14,
-            "y": 5
+            "x": 13,
+            "y": 4
           },
           "quarterTurns": 3
         }
@@ -870,45 +767,15 @@
       ]
     },
     {
-      "wallId": 93,
+      "wallId": 88,
+      "pivotId": 10105,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 7,
-            "y": 5
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 94,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 8,
-            "y": 5
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 95,
-      "pivotId": 10112,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 9,
+            "x": 2,
             "y": 5
           },
           "quarterTurns": 0
@@ -917,7 +784,7 @@
           "stateId": 1,
           "edge": {
             "axis": "horizontal",
-            "x": 8,
+            "x": 1,
             "y": 6
           },
           "quarterTurns": 1
@@ -926,7 +793,7 @@
           "stateId": 2,
           "edge": {
             "axis": "vertical",
-            "x": 9,
+            "x": 2,
             "y": 6
           },
           "quarterTurns": 2
@@ -935,7 +802,65 @@
           "stateId": 3,
           "edge": {
             "axis": "horizontal",
-            "x": 9,
+            "x": 2,
+            "y": 6
+          },
+          "quarterTurns": 3
+        }
+      ]
+    },
+    {
+      "wallId": 90,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 4,
+            "y": 5
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 91,
+      "pivotId": 10108,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 5,
+            "y": 5
+          },
+          "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "horizontal",
+            "x": 4,
+            "y": 6
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "vertical",
+            "x": 5,
+            "y": 6
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "horizontal",
+            "x": 5,
             "y": 6
           },
           "quarterTurns": 3
@@ -973,29 +898,14 @@
       ]
     },
     {
-      "wallId": 99,
+      "wallId": 100,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 13,
-            "y": 5
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 101,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 15,
+            "x": 14,
             "y": 5
           },
           "quarterTurns": 0
@@ -1033,44 +943,14 @@
       ]
     },
     {
-      "wallId": 106,
+      "wallId": 110,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 3,
-            "y": 6
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 108,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 5,
-            "y": 6
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 109,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 6,
+            "x": 7,
             "y": 6
           },
           "quarterTurns": 0
@@ -1093,79 +973,6 @@
       ]
     },
     {
-      "wallId": 112,
-      "pivotId": 10112,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 9,
-            "y": 6
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "horizontal",
-            "x": 9,
-            "y": 6
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "vertical",
-            "x": 9,
-            "y": 5
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "horizontal",
-            "x": 8,
-            "y": 6
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 113,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 10,
-            "y": 6
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 114,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 11,
-            "y": 6
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
       "wallId": 115,
       "initialStateId": 0,
       "states": [
@@ -1181,14 +988,14 @@
       ]
     },
     {
-      "wallId": 117,
+      "wallId": 116,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 14,
+            "x": 13,
             "y": 6
           },
           "quarterTurns": 0
@@ -1226,64 +1033,6 @@
       ]
     },
     {
-      "wallId": 121,
-      "pivotId": 10121,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 1,
-            "y": 7
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "horizontal",
-            "x": 1,
-            "y": 7
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "vertical",
-            "x": 1,
-            "y": 6
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "horizontal",
-            "x": 0,
-            "y": 7
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 123,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 3,
-            "y": 7
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
       "wallId": 124,
       "initialStateId": 0,
       "states": [
@@ -1299,14 +1048,29 @@
       ]
     },
     {
-      "wallId": 125,
+      "wallId": 126,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 5,
+            "x": 6,
+            "y": 7
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 127,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 7,
             "y": 7
           },
           "quarterTurns": 0
@@ -1359,57 +1123,14 @@
       ]
     },
     {
-      "wallId": 132,
-      "pivotId": 10149,
+      "wallId": 133,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 12,
-            "y": 7
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "horizontal",
-            "x": 11,
-            "y": 8
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "vertical",
-            "x": 12,
-            "y": 8
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "horizontal",
-            "x": 12,
-            "y": 8
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 135,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 15,
+            "x": 13,
             "y": 7
           },
           "quarterTurns": 0
@@ -1447,15 +1168,45 @@
       ]
     },
     {
-      "wallId": 141,
-      "pivotId": 10158,
+      "wallId": 139,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 4,
+            "x": 2,
+            "y": 8
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 142,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 5,
+            "y": 8
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 143,
+      "pivotId": 10160,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 6,
             "y": 8
           },
           "quarterTurns": 0
@@ -1464,7 +1215,7 @@
           "stateId": 1,
           "edge": {
             "axis": "horizontal",
-            "x": 3,
+            "x": 5,
             "y": 9
           },
           "quarterTurns": 1
@@ -1473,7 +1224,7 @@
           "stateId": 2,
           "edge": {
             "axis": "vertical",
-            "x": 4,
+            "x": 6,
             "y": 9
           },
           "quarterTurns": 2
@@ -1482,25 +1233,10 @@
           "stateId": 3,
           "edge": {
             "axis": "horizontal",
-            "x": 4,
+            "x": 6,
             "y": 9
           },
           "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 144,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 7,
-            "y": 8
-          },
-          "quarterTurns": 0
         }
       ]
     },
@@ -1520,17 +1256,60 @@
       ]
     },
     {
-      "wallId": 151,
+      "wallId": 147,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 14,
+            "x": 10,
             "y": 8
           },
           "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 149,
+      "pivotId": 10149,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 12,
+            "y": 8
+          },
+          "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "horizontal",
+            "x": 12,
+            "y": 8
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "vertical",
+            "x": 12,
+            "y": 7
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "horizontal",
+            "x": 11,
+            "y": 8
+          },
+          "quarterTurns": 3
         }
       ]
     },
@@ -1595,7 +1374,23 @@
       ]
     },
     {
+      "wallId": 158,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 4,
+            "y": 9
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
       "wallId": 160,
+      "pivotId": 10160,
       "initialStateId": 0,
       "states": [
         {
@@ -1606,33 +1401,45 @@
             "y": 9
           },
           "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 161,
-      "initialStateId": 0,
-      "states": [
+        },
         {
-          "stateId": 0,
+          "stateId": 1,
           "edge": {
-            "axis": "vertical",
-            "x": 7,
+            "axis": "horizontal",
+            "x": 6,
             "y": 9
           },
-          "quarterTurns": 0
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "vertical",
+            "x": 6,
+            "y": 8
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "horizontal",
+            "x": 5,
+            "y": 9
+          },
+          "quarterTurns": 3
         }
       ]
     },
     {
-      "wallId": 164,
+      "wallId": 165,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 10,
+            "x": 11,
             "y": 9
           },
           "quarterTurns": 0
@@ -1655,14 +1462,14 @@
       ]
     },
     {
-      "wallId": 168,
+      "wallId": 169,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 14,
+            "x": 15,
             "y": 9
           },
           "quarterTurns": 0
@@ -1700,36 +1507,6 @@
       ]
     },
     {
-      "wallId": 173,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 2,
-            "y": 10
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 174,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 3,
-            "y": 10
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
       "wallId": 175,
       "initialStateId": 0,
       "states": [
@@ -1745,14 +1522,14 @@
       ]
     },
     {
-      "wallId": 177,
+      "wallId": 178,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 6,
+            "x": 7,
             "y": 10
           },
           "quarterTurns": 0
@@ -1761,7 +1538,6 @@
     },
     {
       "wallId": 179,
-      "pivotId": 10179,
       "initialStateId": 0,
       "states": [
         {
@@ -1772,33 +1548,6 @@
             "y": 10
           },
           "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "horizontal",
-            "x": 8,
-            "y": 10
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "vertical",
-            "x": 8,
-            "y": 9
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "horizontal",
-            "x": 7,
-            "y": 10
-          },
-          "quarterTurns": 3
         }
       ]
     },
@@ -1811,21 +1560,6 @@
           "edge": {
             "axis": "vertical",
             "x": 10,
-            "y": 10
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 183,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 12,
             "y": 10
           },
           "quarterTurns": 0
@@ -1848,17 +1582,45 @@
       ]
     },
     {
-      "wallId": 186,
+      "wallId": 185,
+      "pivotId": 10202,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 15,
+            "x": 14,
             "y": 10
           },
           "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "horizontal",
+            "x": 13,
+            "y": 11
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "vertical",
+            "x": 14,
+            "y": 11
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "horizontal",
+            "x": 14,
+            "y": 11
+          },
+          "quarterTurns": 3
         }
       ]
     },
@@ -1894,7 +1656,6 @@
     },
     {
       "wallId": 189,
-      "pivotId": 10189,
       "initialStateId": 0,
       "states": [
         {
@@ -1902,6 +1663,22 @@
           "edge": {
             "axis": "vertical",
             "x": 1,
+            "y": 11
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 190,
+      "pivotId": 10207,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 2,
             "y": 11
           },
           "quarterTurns": 0
@@ -1911,7 +1688,7 @@
           "edge": {
             "axis": "horizontal",
             "x": 1,
-            "y": 11
+            "y": 12
           },
           "quarterTurns": 1
         },
@@ -1919,8 +1696,8 @@
           "stateId": 2,
           "edge": {
             "axis": "vertical",
-            "x": 1,
-            "y": 10
+            "x": 2,
+            "y": 12
           },
           "quarterTurns": 2
         },
@@ -1928,25 +1705,10 @@
           "stateId": 3,
           "edge": {
             "axis": "horizontal",
-            "x": 0,
-            "y": 11
+            "x": 2,
+            "y": 12
           },
           "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 191,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 3,
-            "y": 11
-          },
-          "quarterTurns": 0
         }
       ]
     },
@@ -1959,21 +1721,6 @@
           "edge": {
             "axis": "vertical",
             "x": 5,
-            "y": 11
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 195,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 7,
             "y": 11
           },
           "quarterTurns": 0
@@ -1996,49 +1743,6 @@
       ]
     },
     {
-      "wallId": 200,
-      "pivotId": 10217,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 12,
-            "y": 11
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "horizontal",
-            "x": 11,
-            "y": 12
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "vertical",
-            "x": 12,
-            "y": 12
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "horizontal",
-            "x": 12,
-            "y": 12
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
       "wallId": 201,
       "initialStateId": 0,
       "states": [
@@ -2050,6 +1754,49 @@
             "y": 11
           },
           "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 202,
+      "pivotId": 10202,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 14,
+            "y": 11
+          },
+          "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "horizontal",
+            "x": 14,
+            "y": 11
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "vertical",
+            "x": 14,
+            "y": 10
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "horizontal",
+            "x": 13,
+            "y": 11
+          },
+          "quarterTurns": 3
         }
       ]
     },
@@ -2085,6 +1832,7 @@
     },
     {
       "wallId": 207,
+      "pivotId": 10207,
       "initialStateId": 0,
       "states": [
         {
@@ -2095,6 +1843,33 @@
             "y": 12
           },
           "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "horizontal",
+            "x": 2,
+            "y": 12
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "vertical",
+            "x": 2,
+            "y": 11
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "horizontal",
+            "x": 1,
+            "y": 12
+          },
+          "quarterTurns": 3
         }
       ]
     },
@@ -2107,21 +1882,6 @@
           "edge": {
             "axis": "vertical",
             "x": 5,
-            "y": 12
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 212,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 7,
             "y": 12
           },
           "quarterTurns": 0
@@ -2145,6 +1905,7 @@
     },
     {
       "wallId": 215,
+      "pivotId": 10215,
       "initialStateId": 0,
       "states": [
         {
@@ -2155,12 +1916,38 @@
             "y": 12
           },
           "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "horizontal",
+            "x": 10,
+            "y": 12
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "vertical",
+            "x": 10,
+            "y": 11
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "horizontal",
+            "x": 9,
+            "y": 12
+          },
+          "quarterTurns": 3
         }
       ]
     },
     {
       "wallId": 217,
-      "pivotId": 10217,
       "initialStateId": 0,
       "states": [
         {
@@ -2171,33 +1958,6 @@
             "y": 12
           },
           "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "horizontal",
-            "x": 12,
-            "y": 12
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "vertical",
-            "x": 12,
-            "y": 11
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "horizontal",
-            "x": 11,
-            "y": 12
-          },
-          "quarterTurns": 3
         }
       ]
     },
@@ -2262,6 +2022,21 @@
       ]
     },
     {
+      "wallId": 223,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 1,
+            "y": 13
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
       "wallId": 225,
       "initialStateId": 0,
       "states": [
@@ -2270,64 +2045,6 @@
           "edge": {
             "axis": "vertical",
             "x": 3,
-            "y": 13
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 226,
-      "pivotId": 10226,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 4,
-            "y": 13
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "horizontal",
-            "x": 4,
-            "y": 13
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "vertical",
-            "x": 4,
-            "y": 12
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "horizontal",
-            "x": 3,
-            "y": 13
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 229,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 7,
             "y": 13
           },
           "quarterTurns": 0
@@ -2350,14 +2067,14 @@
       ]
     },
     {
-      "wallId": 233,
+      "wallId": 232,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 11,
+            "x": 10,
             "y": 13
           },
           "quarterTurns": 0
@@ -2380,29 +2097,14 @@
       ]
     },
     {
-      "wallId": 235,
+      "wallId": 236,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 13,
-            "y": 13
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 237,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 15,
+            "x": 14,
             "y": 13
           },
           "quarterTurns": 0
@@ -2440,57 +2142,14 @@
       ]
     },
     {
-      "wallId": 240,
-      "pivotId": 10257,
+      "wallId": 241,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 1,
-            "y": 14
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "horizontal",
-            "x": 0,
-            "y": 15
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "vertical",
-            "x": 1,
-            "y": 15
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "horizontal",
-            "x": 1,
-            "y": 15
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 243,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "vertical",
-            "x": 4,
+            "x": 2,
             "y": 14
           },
           "quarterTurns": 0
@@ -2499,6 +2158,7 @@
     },
     {
       "wallId": 244,
+      "pivotId": 10244,
       "initialStateId": 0,
       "states": [
         {
@@ -2509,6 +2169,33 @@
             "y": 14
           },
           "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "horizontal",
+            "x": 5,
+            "y": 14
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "vertical",
+            "x": 5,
+            "y": 13
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "horizontal",
+            "x": 4,
+            "y": 14
+          },
+          "quarterTurns": 3
         }
       ]
     },
@@ -2528,15 +2215,15 @@
       ]
     },
     {
-      "wallId": 248,
-      "pivotId": 10248,
+      "wallId": 247,
+      "pivotId": 10264,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 9,
+            "x": 8,
             "y": 14
           },
           "quarterTurns": 0
@@ -2545,8 +2232,8 @@
           "stateId": 1,
           "edge": {
             "axis": "horizontal",
-            "x": 9,
-            "y": 14
+            "x": 7,
+            "y": 15
           },
           "quarterTurns": 1
         },
@@ -2554,8 +2241,8 @@
           "stateId": 2,
           "edge": {
             "axis": "vertical",
-            "x": 9,
-            "y": 13
+            "x": 8,
+            "y": 15
           },
           "quarterTurns": 2
         },
@@ -2564,21 +2251,21 @@
           "edge": {
             "axis": "horizontal",
             "x": 8,
-            "y": 14
+            "y": 15
           },
           "quarterTurns": 3
         }
       ]
     },
     {
-      "wallId": 251,
+      "wallId": 249,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 12,
+            "x": 10,
             "y": 14
           },
           "quarterTurns": 0
@@ -2586,15 +2273,15 @@
       ]
     },
     {
-      "wallId": 253,
-      "pivotId": 10270,
+      "wallId": 252,
+      "pivotId": 10269,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 14,
+            "x": 13,
             "y": 14
           },
           "quarterTurns": 0
@@ -2603,7 +2290,7 @@
           "stateId": 1,
           "edge": {
             "axis": "horizontal",
-            "x": 13,
+            "x": 12,
             "y": 15
           },
           "quarterTurns": 1
@@ -2612,7 +2299,7 @@
           "stateId": 2,
           "edge": {
             "axis": "vertical",
-            "x": 14,
+            "x": 13,
             "y": 15
           },
           "quarterTurns": 2
@@ -2621,10 +2308,25 @@
           "stateId": 3,
           "edge": {
             "axis": "horizontal",
-            "x": 14,
+            "x": 13,
             "y": 15
           },
           "quarterTurns": 3
+        }
+      ]
+    },
+    {
+      "wallId": 254,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "vertical",
+            "x": 15,
+            "y": 14
+          },
+          "quarterTurns": 0
         }
       ]
     },
@@ -2659,14 +2361,14 @@
       ]
     },
     {
-      "wallId": 259,
+      "wallId": 261,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 3,
+            "x": 5,
             "y": 15
           },
           "quarterTurns": 0
@@ -2674,29 +2376,57 @@
       ]
     },
     {
-      "wallId": 260,
+      "wallId": 264,
+      "pivotId": 10264,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 4,
+            "x": 8,
             "y": 15
           },
           "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "horizontal",
+            "x": 8,
+            "y": 15
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "vertical",
+            "x": 8,
+            "y": 14
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "horizontal",
+            "x": 7,
+            "y": 15
+          },
+          "quarterTurns": 3
         }
       ]
     },
     {
-      "wallId": 266,
+      "wallId": 267,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "vertical",
-            "x": 10,
+            "x": 11,
             "y": 15
           },
           "quarterTurns": 0
@@ -2899,29 +2629,14 @@
       ]
     },
     {
-      "wallId": 289,
+      "wallId": 291,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 0,
-            "y": 1
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 290,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 1,
+            "x": 2,
             "y": 1
           },
           "quarterTurns": 0
@@ -2944,44 +2659,14 @@
       ]
     },
     {
-      "wallId": 293,
+      "wallId": 295,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 4,
-            "y": 1
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 294,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 5,
-            "y": 1
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 296,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 7,
+            "x": 6,
             "y": 1
           },
           "quarterTurns": 0
@@ -3034,51 +2719,7 @@
       ]
     },
     {
-      "wallId": 302,
-      "pivotId": 10032,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 13,
-            "y": 1
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 14,
-            "y": 1
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 14,
-            "y": 1
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 14,
-            "y": 0
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
       "wallId": 303,
-      "pivotId": 10032,
       "initialStateId": 0,
       "states": [
         {
@@ -3089,82 +2730,26 @@
             "y": 1
           },
           "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 14,
-            "y": 0
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 13,
-            "y": 1
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 14,
-            "y": 1
-          },
-          "quarterTurns": 3
         }
       ]
     },
     {
-      "wallId": 306,
-      "pivotId": 10037,
+      "wallId": 304,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 1,
-            "y": 2
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 2,
-            "y": 2
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 2,
-            "y": 2
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 2,
+            "x": 15,
             "y": 1
           },
-          "quarterTurns": 3
+          "quarterTurns": 0
         }
       ]
     },
     {
       "wallId": 307,
-      "pivotId": 10037,
       "initialStateId": 0,
       "states": [
         {
@@ -3172,63 +2757,6 @@
           "edge": {
             "axis": "horizontal",
             "x": 2,
-            "y": 2
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 2,
-            "y": 1
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 1,
-            "y": 2
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 2,
-            "y": 2
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 308,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 3,
-            "y": 2
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 309,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 4,
             "y": 2
           },
           "quarterTurns": 0
@@ -3251,32 +2779,45 @@
       ]
     },
     {
-      "wallId": 311,
+      "wallId": 312,
+      "pivotId": 10043,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 6,
+            "x": 7,
             "y": 2
           },
           "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 313,
-      "initialStateId": 0,
-      "states": [
+        },
         {
-          "stateId": 0,
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 8,
+            "y": 2
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
           "edge": {
             "axis": "horizontal",
             "x": 8,
             "y": 2
           },
-          "quarterTurns": 0
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 8,
+            "y": 1
+          },
+          "quarterTurns": 3
         }
       ]
     },
@@ -3296,14 +2837,14 @@
       ]
     },
     {
-      "wallId": 317,
+      "wallId": 318,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 12,
+            "x": 13,
             "y": 2
           },
           "quarterTurns": 0
@@ -3311,14 +2852,14 @@
       ]
     },
     {
-      "wallId": 320,
+      "wallId": 319,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 15,
+            "x": 14,
             "y": 2
           },
           "quarterTurns": 0
@@ -3341,7 +2882,51 @@
       ]
     },
     {
+      "wallId": 324,
+      "pivotId": 10056,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 3,
+            "y": 3
+          },
+          "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 4,
+            "y": 3
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "horizontal",
+            "x": 4,
+            "y": 3
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 4,
+            "y": 2
+          },
+          "quarterTurns": 3
+        }
+      ]
+    },
+    {
       "wallId": 325,
+      "pivotId": 10056,
       "initialStateId": 0,
       "states": [
         {
@@ -3352,12 +2937,38 @@
             "y": 3
           },
           "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 4,
+            "y": 2
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "horizontal",
+            "x": 3,
+            "y": 3
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 4,
+            "y": 3
+          },
+          "quarterTurns": 3
         }
       ]
     },
     {
       "wallId": 327,
-      "pivotId": 10059,
       "initialStateId": 0,
       "states": [
         {
@@ -3368,45 +2979,18 @@
             "y": 3
           },
           "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 7,
-            "y": 3
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 7,
-            "y": 3
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 7,
-            "y": 2
-          },
-          "quarterTurns": 3
         }
       ]
     },
     {
-      "wallId": 330,
+      "wallId": 328,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 9,
+            "x": 7,
             "y": 3
           },
           "quarterTurns": 0
@@ -3457,6 +3041,21 @@
       ]
     },
     {
+      "wallId": 333,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 12,
+            "y": 3
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
       "wallId": 338,
       "initialStateId": 0,
       "states": [
@@ -3465,36 +3064,6 @@
           "edge": {
             "axis": "horizontal",
             "x": 1,
-            "y": 4
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 339,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 2,
-            "y": 4
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 340,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 3,
             "y": 4
           },
           "quarterTurns": 0
@@ -3517,21 +3086,6 @@
       ]
     },
     {
-      "wallId": 342,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 5,
-            "y": 4
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
       "wallId": 344,
       "initialStateId": 0,
       "states": [
@@ -3540,6 +3094,36 @@
           "edge": {
             "axis": "horizontal",
             "x": 7,
+            "y": 4
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 347,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 10,
+            "y": 4
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 348,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 11,
             "y": 4
           },
           "quarterTurns": 0
@@ -3562,124 +3146,8 @@
       ]
     },
     {
-      "wallId": 355,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 2,
-            "y": 5
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 356,
-      "pivotId": 10090,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 3,
-            "y": 5
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 4,
-            "y": 5
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 4,
-            "y": 5
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 4,
-            "y": 4
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 357,
-      "pivotId": 10090,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 4,
-            "y": 5
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 4,
-            "y": 4
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 3,
-            "y": 5
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 4,
-            "y": 5
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 359,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 6,
-            "y": 5
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 367,
-      "pivotId": 10100,
+      "wallId": 351,
+      "pivotId": 10083,
       "initialStateId": 0,
       "states": [
         {
@@ -3687,7 +3155,7 @@
           "edge": {
             "axis": "horizontal",
             "x": 14,
-            "y": 5
+            "y": 4
           },
           "quarterTurns": 0
         },
@@ -3696,7 +3164,7 @@
           "edge": {
             "axis": "vertical",
             "x": 14,
-            "y": 4
+            "y": 3
           },
           "quarterTurns": 1
         },
@@ -3705,7 +3173,7 @@
           "edge": {
             "axis": "horizontal",
             "x": 13,
-            "y": 5
+            "y": 4
           },
           "quarterTurns": 2
         },
@@ -3714,14 +3182,14 @@
           "edge": {
             "axis": "vertical",
             "x": 14,
-            "y": 5
+            "y": 4
           },
           "quarterTurns": 3
         }
       ]
     },
     {
-      "wallId": 369,
+      "wallId": 353,
       "initialStateId": 0,
       "states": [
         {
@@ -3729,7 +3197,97 @@
           "edge": {
             "axis": "horizontal",
             "x": 0,
-            "y": 6
+            "y": 5
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 354,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 1,
+            "y": 5
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 356,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 3,
+            "y": 5
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 360,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 7,
+            "y": 5
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 361,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 8,
+            "y": 5
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 362,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 9,
+            "y": 5
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 368,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 15,
+            "y": 5
           },
           "quarterTurns": 0
         }
@@ -3737,6 +3295,7 @@
     },
     {
       "wallId": 370,
+      "pivotId": 10105,
       "initialStateId": 0,
       "states": [
         {
@@ -3747,26 +3306,82 @@
             "y": 6
           },
           "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 2,
+            "y": 6
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "horizontal",
+            "x": 2,
+            "y": 6
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 2,
+            "y": 5
+          },
+          "quarterTurns": 3
         }
       ]
     },
     {
-      "wallId": 372,
+      "wallId": 371,
+      "pivotId": 10105,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 3,
+            "x": 2,
             "y": 6
           },
           "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 2,
+            "y": 5
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "horizontal",
+            "x": 1,
+            "y": 6
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 2,
+            "y": 6
+          },
+          "quarterTurns": 3
         }
       ]
     },
     {
       "wallId": 373,
+      "pivotId": 10108,
       "initialStateId": 0,
       "states": [
         {
@@ -3777,11 +3392,39 @@
             "y": 6
           },
           "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 5,
+            "y": 6
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "horizontal",
+            "x": 5,
+            "y": 6
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 5,
+            "y": 5
+          },
+          "quarterTurns": 3
         }
       ]
     },
     {
       "wallId": 374,
+      "pivotId": 10108,
       "initialStateId": 0,
       "states": [
         {
@@ -3792,6 +3435,91 @@
             "y": 6
           },
           "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 5,
+            "y": 5
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "horizontal",
+            "x": 4,
+            "y": 6
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 5,
+            "y": 6
+          },
+          "quarterTurns": 3
+        }
+      ]
+    },
+    {
+      "wallId": 375,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 6,
+            "y": 6
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 377,
+      "pivotId": 10112,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 8,
+            "y": 6
+          },
+          "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 9,
+            "y": 6
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "horizontal",
+            "x": 9,
+            "y": 6
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 9,
+            "y": 5
+          },
+          "quarterTurns": 3
         }
       ]
     },
@@ -3839,15 +3567,45 @@
       ]
     },
     {
-      "wallId": 382,
+      "wallId": 379,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 13,
+            "x": 10,
             "y": 6
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 383,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 14,
+            "y": 6
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 385,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 0,
+            "y": 7
           },
           "quarterTurns": 0
         }
@@ -3855,7 +3613,6 @@
     },
     {
       "wallId": 386,
-      "pivotId": 10121,
       "initialStateId": 0,
       "states": [
         {
@@ -3866,45 +3623,78 @@
             "y": 7
           },
           "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 1,
-            "y": 6
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 0,
-            "y": 7
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 1,
-            "y": 7
-          },
-          "quarterTurns": 3
         }
       ]
     },
     {
-      "wallId": 391,
+      "wallId": 388,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 6,
+            "x": 3,
+            "y": 7
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 389,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 4,
+            "y": 7
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 390,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 5,
+            "y": 7
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 395,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 10,
+            "y": 7
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 398,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 13,
             "y": 7
           },
           "quarterTurns": 0
@@ -3920,6 +3710,21 @@
           "edge": {
             "axis": "horizontal",
             "x": 14,
+            "y": 7
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 400,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 15,
             "y": 7
           },
           "quarterTurns": 0
@@ -3957,36 +3762,6 @@
       ]
     },
     {
-      "wallId": 406,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 5,
-            "y": 8
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 407,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 6,
-            "y": 8
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
       "wallId": 408,
       "initialStateId": 0,
       "states": [
@@ -3995,21 +3770,6 @@
           "edge": {
             "axis": "horizontal",
             "x": 7,
-            "y": 8
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 411,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 10,
             "y": 8
           },
           "quarterTurns": 0
@@ -4118,15 +3878,15 @@
       ]
     },
     {
-      "wallId": 418,
+      "wallId": 415,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 1,
-            "y": 9
+            "x": 14,
+            "y": 8
           },
           "quarterTurns": 0
         }
@@ -4134,6 +3894,7 @@
     },
     {
       "wallId": 419,
+      "pivotId": 10157,
       "initialStateId": 0,
       "states": [
         {
@@ -4144,12 +3905,39 @@
             "y": 9
           },
           "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 3,
+            "y": 9
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "horizontal",
+            "x": 3,
+            "y": 9
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 3,
+            "y": 8
+          },
+          "quarterTurns": 3
         }
       ]
     },
     {
       "wallId": 420,
-      "pivotId": 10158,
+      "pivotId": 10157,
       "initialStateId": 0,
       "states": [
         {
@@ -4165,8 +3953,8 @@
           "stateId": 1,
           "edge": {
             "axis": "vertical",
-            "x": 4,
-            "y": 9
+            "x": 3,
+            "y": 8
           },
           "quarterTurns": 1
         },
@@ -4174,7 +3962,7 @@
           "stateId": 2,
           "edge": {
             "axis": "horizontal",
-            "x": 4,
+            "x": 2,
             "y": 9
           },
           "quarterTurns": 2
@@ -4183,23 +3971,23 @@
           "stateId": 3,
           "edge": {
             "axis": "vertical",
-            "x": 4,
-            "y": 8
+            "x": 3,
+            "y": 9
           },
           "quarterTurns": 3
         }
       ]
     },
     {
-      "wallId": 421,
-      "pivotId": 10158,
+      "wallId": 423,
+      "pivotId": 10160,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 4,
+            "x": 6,
             "y": 9
           },
           "quarterTurns": 0
@@ -4208,40 +3996,40 @@
           "stateId": 1,
           "edge": {
             "axis": "vertical",
-            "x": 4,
+            "x": 6,
             "y": 8
           },
           "quarterTurns": 1
         },
         {
           "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 3,
-            "y": 9
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 4,
-            "y": 9
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 422,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
           "edge": {
             "axis": "horizontal",
             "x": 5,
+            "y": 9
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 6,
+            "y": 9
+          },
+          "quarterTurns": 3
+        }
+      ]
+    },
+    {
+      "wallId": 424,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 7,
             "y": 9
           },
           "quarterTurns": 0
@@ -4264,21 +4052,6 @@
       ]
     },
     {
-      "wallId": 426,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 9,
-            "y": 9
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
       "wallId": 427,
       "initialStateId": 0,
       "states": [
@@ -4294,14 +4067,14 @@
       ]
     },
     {
-      "wallId": 428,
+      "wallId": 430,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 11,
+            "x": 13,
             "y": 9
           },
           "quarterTurns": 0
@@ -4309,44 +4082,14 @@
       ]
     },
     {
-      "wallId": 431,
+      "wallId": 435,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 14,
-            "y": 9
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 434,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 1,
-            "y": 10
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 436,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 3,
+            "x": 2,
             "y": 10
           },
           "quarterTurns": 0
@@ -4369,88 +4112,32 @@
       ]
     },
     {
-      "wallId": 440,
-      "pivotId": 10179,
+      "wallId": 438,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 7,
+            "x": 5,
             "y": 10
           },
           "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 8,
-            "y": 10
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 8,
-            "y": 10
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 8,
-            "y": 9
-          },
-          "quarterTurns": 3
         }
       ]
     },
     {
-      "wallId": 441,
-      "pivotId": 10179,
+      "wallId": 442,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 8,
+            "x": 9,
             "y": 10
           },
           "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 8,
-            "y": 9
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 7,
-            "y": 10
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 8,
-            "y": 10
-          },
-          "quarterTurns": 3
         }
       ]
     },
@@ -4470,14 +4157,14 @@
       ]
     },
     {
-      "wallId": 445,
+      "wallId": 447,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 12,
+            "x": 14,
             "y": 10
           },
           "quarterTurns": 0
@@ -4486,7 +4173,6 @@
     },
     {
       "wallId": 449,
-      "pivotId": 10189,
       "initialStateId": 0,
       "states": [
         {
@@ -4497,33 +4183,21 @@
             "y": 11
           },
           "quarterTurns": 0
-        },
+        }
+      ]
+    },
+    {
+      "wallId": 452,
+      "initialStateId": 0,
+      "states": [
         {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 1,
-            "y": 11
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
+          "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 1,
+            "x": 3,
             "y": 11
           },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 1,
-            "y": 10
-          },
-          "quarterTurns": 3
+          "quarterTurns": 0
         }
       ]
     },
@@ -4543,14 +4217,14 @@
       ]
     },
     {
-      "wallId": 456,
+      "wallId": 455,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 7,
+            "x": 6,
             "y": 11
           },
           "quarterTurns": 0
@@ -4558,14 +4232,14 @@
       ]
     },
     {
-      "wallId": 458,
+      "wallId": 457,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 9,
+            "x": 8,
             "y": 11
           },
           "quarterTurns": 0
@@ -4588,14 +4262,29 @@
       ]
     },
     {
-      "wallId": 462,
+      "wallId": 460,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 13,
+            "x": 11,
+            "y": 11
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 461,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 12,
             "y": 11
           },
           "quarterTurns": 0
@@ -4604,6 +4293,7 @@
     },
     {
       "wallId": 463,
+      "pivotId": 10202,
       "initialStateId": 0,
       "states": [
         {
@@ -4614,26 +4304,39 @@
             "y": 11
           },
           "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 466,
-      "initialStateId": 0,
-      "states": [
+        },
         {
-          "stateId": 0,
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 14,
+            "y": 10
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
           "edge": {
             "axis": "horizontal",
-            "x": 1,
-            "y": 12
+            "x": 13,
+            "y": 11
           },
-          "quarterTurns": 0
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 14,
+            "y": 11
+          },
+          "quarterTurns": 3
         }
       ]
     },
     {
       "wallId": 467,
+      "pivotId": 10207,
       "initialStateId": 0,
       "states": [
         {
@@ -4641,6 +4344,48 @@
           "edge": {
             "axis": "horizontal",
             "x": 2,
+            "y": 12
+          },
+          "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 2,
+            "y": 11
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "horizontal",
+            "x": 1,
+            "y": 12
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 2,
+            "y": 12
+          },
+          "quarterTurns": 3
+        }
+      ]
+    },
+    {
+      "wallId": 468,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 3,
             "y": 12
           },
           "quarterTurns": 0
@@ -4678,30 +4423,15 @@
       ]
     },
     {
-      "wallId": 473,
+      "wallId": 474,
+      "pivotId": 10215,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 8,
-            "y": 12
-          },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 476,
-      "pivotId": 10217,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 11,
+            "x": 9,
             "y": 12
           },
           "quarterTurns": 0
@@ -4710,7 +4440,7 @@
           "stateId": 1,
           "edge": {
             "axis": "vertical",
-            "x": 12,
+            "x": 10,
             "y": 12
           },
           "quarterTurns": 1
@@ -4719,7 +4449,7 @@
           "stateId": 2,
           "edge": {
             "axis": "horizontal",
-            "x": 12,
+            "x": 10,
             "y": 12
           },
           "quarterTurns": 2
@@ -4728,7 +4458,7 @@
           "stateId": 3,
           "edge": {
             "axis": "vertical",
-            "x": 12,
+            "x": 10,
             "y": 11
           },
           "quarterTurns": 3
@@ -4736,14 +4466,57 @@
       ]
     },
     {
-      "wallId": 479,
+      "wallId": 475,
+      "pivotId": 10215,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 14,
+            "x": 10,
+            "y": 12
+          },
+          "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 10,
+            "y": 11
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "horizontal",
+            "x": 9,
+            "y": 12
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 10,
+            "y": 12
+          },
+          "quarterTurns": 3
+        }
+      ]
+    },
+    {
+      "wallId": 476,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 11,
             "y": 12
           },
           "quarterTurns": 0
@@ -4766,88 +4539,17 @@
       ]
     },
     {
-      "wallId": 484,
-      "pivotId": 10226,
+      "wallId": 483,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 3,
+            "x": 2,
             "y": 13
           },
           "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 4,
-            "y": 13
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 4,
-            "y": 13
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 4,
-            "y": 12
-          },
-          "quarterTurns": 3
-        }
-      ]
-    },
-    {
-      "wallId": 485,
-      "pivotId": 10226,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 4,
-            "y": 13
-          },
-          "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 4,
-            "y": 12
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 3,
-            "y": 13
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 4,
-            "y": 13
-          },
-          "quarterTurns": 3
         }
       ]
     },
@@ -4867,14 +4569,14 @@
       ]
     },
     {
-      "wallId": 490,
+      "wallId": 487,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 9,
+            "x": 6,
             "y": 13
           },
           "quarterTurns": 0
@@ -4882,14 +4584,14 @@
       ]
     },
     {
-      "wallId": 491,
+      "wallId": 492,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 10,
+            "x": 11,
             "y": 13
           },
           "quarterTurns": 0
@@ -4912,37 +4614,66 @@
       ]
     },
     {
-      "wallId": 498,
+      "wallId": 495,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 1,
-            "y": 14
+            "x": 14,
+            "y": 13
           },
           "quarterTurns": 0
         }
       ]
     },
     {
-      "wallId": 499,
+      "wallId": 501,
+      "pivotId": 10244,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 2,
+            "x": 4,
             "y": 14
           },
           "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 5,
+            "y": 14
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "horizontal",
+            "x": 5,
+            "y": 14
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 5,
+            "y": 13
+          },
+          "quarterTurns": 3
         }
       ]
     },
     {
       "wallId": 502,
+      "pivotId": 10244,
       "initialStateId": 0,
       "states": [
         {
@@ -4953,29 +4684,13 @@
             "y": 14
           },
           "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 505,
-      "pivotId": 10248,
-      "initialStateId": 0,
-      "states": [
-        {
-          "stateId": 0,
-          "edge": {
-            "axis": "horizontal",
-            "x": 8,
-            "y": 14
-          },
-          "quarterTurns": 0
         },
         {
           "stateId": 1,
           "edge": {
             "axis": "vertical",
-            "x": 9,
-            "y": 14
+            "x": 5,
+            "y": 13
           },
           "quarterTurns": 1
         },
@@ -4983,7 +4698,7 @@
           "stateId": 2,
           "edge": {
             "axis": "horizontal",
-            "x": 9,
+            "x": 4,
             "y": 14
           },
           "quarterTurns": 2
@@ -4992,8 +4707,8 @@
           "stateId": 3,
           "edge": {
             "axis": "vertical",
-            "x": 9,
-            "y": 13
+            "x": 5,
+            "y": 14
           },
           "quarterTurns": 3
         }
@@ -5001,7 +4716,6 @@
     },
     {
       "wallId": 506,
-      "pivotId": 10248,
       "initialStateId": 0,
       "states": [
         {
@@ -5012,33 +4726,6 @@
             "y": 14
           },
           "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 9,
-            "y": 13
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 8,
-            "y": 14
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 9,
-            "y": 14
-          },
-          "quarterTurns": 3
         }
       ]
     },
@@ -5058,17 +4745,75 @@
       ]
     },
     {
-      "wallId": 511,
+      "wallId": 509,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 14,
+            "x": 12,
             "y": 14
           },
           "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 512,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 15,
+            "y": 14
+          },
+          "quarterTurns": 0
+        }
+      ]
+    },
+    {
+      "wallId": 513,
+      "pivotId": 10257,
+      "initialStateId": 0,
+      "states": [
+        {
+          "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 0,
+            "y": 15
+          },
+          "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 1,
+            "y": 15
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
+          "edge": {
+            "axis": "horizontal",
+            "x": 1,
+            "y": 15
+          },
+          "quarterTurns": 2
+        },
+        {
+          "stateId": 3,
+          "edge": {
+            "axis": "vertical",
+            "x": 1,
+            "y": 14
+          },
+          "quarterTurns": 3
         }
       ]
     },
@@ -5116,14 +4861,14 @@
       ]
     },
     {
-      "wallId": 518,
+      "wallId": 516,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
           "edge": {
             "axis": "horizontal",
-            "x": 5,
+            "x": 3,
             "y": 15
           },
           "quarterTurns": 0
@@ -5146,32 +4891,45 @@
       ]
     },
     {
-      "wallId": 520,
+      "wallId": 521,
+      "pivotId": 10264,
       "initialStateId": 0,
       "states": [
         {
           "stateId": 0,
+          "edge": {
+            "axis": "horizontal",
+            "x": 8,
+            "y": 15
+          },
+          "quarterTurns": 0
+        },
+        {
+          "stateId": 1,
+          "edge": {
+            "axis": "vertical",
+            "x": 8,
+            "y": 14
+          },
+          "quarterTurns": 1
+        },
+        {
+          "stateId": 2,
           "edge": {
             "axis": "horizontal",
             "x": 7,
             "y": 15
           },
-          "quarterTurns": 0
-        }
-      ]
-    },
-    {
-      "wallId": 523,
-      "initialStateId": 0,
-      "states": [
+          "quarterTurns": 2
+        },
         {
-          "stateId": 0,
+          "stateId": 3,
           "edge": {
-            "axis": "horizontal",
-            "x": 10,
+            "axis": "vertical",
+            "x": 8,
             "y": 15
           },
-          "quarterTurns": 0
+          "quarterTurns": 3
         }
       ]
     },
@@ -5192,7 +4950,7 @@
     },
     {
       "wallId": 526,
-      "pivotId": 10270,
+      "pivotId": 10269,
       "initialStateId": 0,
       "states": [
         {
@@ -5208,8 +4966,8 @@
           "stateId": 1,
           "edge": {
             "axis": "vertical",
-            "x": 14,
-            "y": 15
+            "x": 13,
+            "y": 14
           },
           "quarterTurns": 1
         },
@@ -5217,7 +4975,7 @@
           "stateId": 2,
           "edge": {
             "axis": "horizontal",
-            "x": 14,
+            "x": 12,
             "y": 15
           },
           "quarterTurns": 2
@@ -5226,8 +4984,8 @@
           "stateId": 3,
           "edge": {
             "axis": "vertical",
-            "x": 14,
-            "y": 14
+            "x": 13,
+            "y": 15
           },
           "quarterTurns": 3
         }
@@ -5235,7 +4993,6 @@
     },
     {
       "wallId": 527,
-      "pivotId": 10270,
       "initialStateId": 0,
       "states": [
         {
@@ -5246,33 +5003,6 @@
             "y": 15
           },
           "quarterTurns": 0
-        },
-        {
-          "stateId": 1,
-          "edge": {
-            "axis": "vertical",
-            "x": 14,
-            "y": 14
-          },
-          "quarterTurns": 1
-        },
-        {
-          "stateId": 2,
-          "edge": {
-            "axis": "horizontal",
-            "x": 13,
-            "y": 15
-          },
-          "quarterTurns": 2
-        },
-        {
-          "stateId": 3,
-          "edge": {
-            "axis": "vertical",
-            "x": 14,
-            "y": 15
-          },
-          "quarterTurns": 3
         }
       ]
     },
@@ -5519,39 +5249,27 @@
   ],
   "pivots": [
     {
-      "pivotId": 10032,
+      "pivotId": 10043,
       "node": {
-        "x": 14,
-        "y": 1
-      },
-      "wallIds": [
-        32,
-        302,
-        303
-      ]
-    },
-    {
-      "pivotId": 10037,
-      "node": {
-        "x": 2,
+        "x": 8,
         "y": 2
       },
       "wallIds": [
-        20,
-        306,
-        307
+        26,
+        43,
+        312
       ]
     },
     {
-      "pivotId": 10059,
+      "pivotId": 10056,
       "node": {
-        "x": 7,
+        "x": 4,
         "y": 3
       },
       "wallIds": [
-        42,
-        59,
-        327
+        39,
+        324,
+        325
       ]
     },
     {
@@ -5562,30 +5280,43 @@
       },
       "wallIds": [
         46,
-        63,
         332
       ]
     },
     {
-      "pivotId": 10090,
+      "pivotId": 10083,
       "node": {
-        "x": 4,
-        "y": 5
+        "x": 14,
+        "y": 4
       },
       "wallIds": [
-        356,
-        357
+        66,
+        83,
+        351
       ]
     },
     {
-      "pivotId": 10100,
+      "pivotId": 10105,
       "node": {
-        "x": 14,
-        "y": 5
+        "x": 2,
+        "y": 6
       },
       "wallIds": [
-        83,
-        367
+        88,
+        370,
+        371
+      ]
+    },
+    {
+      "pivotId": 10108,
+      "node": {
+        "x": 5,
+        "y": 6
+      },
+      "wallIds": [
+        91,
+        373,
+        374
       ]
     },
     {
@@ -5595,20 +5326,8 @@
         "y": 6
       },
       "wallIds": [
-        95,
-        112,
+        377,
         378
-      ]
-    },
-    {
-      "pivotId": 10121,
-      "node": {
-        "x": 1,
-        "y": 7
-      },
-      "wallIds": [
-        121,
-        386
       ]
     },
     {
@@ -5618,80 +5337,80 @@
         "y": 8
       },
       "wallIds": [
-        132,
+        149,
         412,
         413
       ]
     },
     {
-      "pivotId": 10158,
+      "pivotId": 10157,
       "node": {
-        "x": 4,
+        "x": 3,
         "y": 9
       },
       "wallIds": [
-        141,
-        420,
-        421
+        419,
+        420
       ]
     },
     {
-      "pivotId": 10179,
+      "pivotId": 10160,
       "node": {
-        "x": 8,
-        "y": 10
+        "x": 6,
+        "y": 9
       },
       "wallIds": [
-        179,
-        440,
-        441
+        143,
+        160,
+        423
       ]
     },
     {
-      "pivotId": 10189,
+      "pivotId": 10202,
       "node": {
-        "x": 1,
+        "x": 14,
         "y": 11
       },
       "wallIds": [
-        189,
-        449
+        185,
+        202,
+        463
       ]
     },
     {
-      "pivotId": 10217,
+      "pivotId": 10207,
       "node": {
-        "x": 12,
+        "x": 2,
         "y": 12
       },
       "wallIds": [
-        200,
-        217,
-        476
+        190,
+        207,
+        467
       ]
     },
     {
-      "pivotId": 10226,
+      "pivotId": 10215,
       "node": {
-        "x": 4,
-        "y": 13
+        "x": 10,
+        "y": 12
       },
       "wallIds": [
-        226,
-        484,
-        485
+        215,
+        474,
+        475
       ]
     },
     {
-      "pivotId": 10248,
+      "pivotId": 10244,
       "node": {
-        "x": 9,
+        "x": 5,
         "y": 14
       },
       "wallIds": [
-        248,
-        505,
-        506
+        244,
+        501,
+        502
       ]
     },
     {
@@ -5701,20 +5420,31 @@
         "y": 15
       },
       "wallIds": [
-        240,
+        513,
         514
       ]
     },
     {
-      "pivotId": 10270,
+      "pivotId": 10264,
       "node": {
-        "x": 14,
+        "x": 8,
         "y": 15
       },
       "wallIds": [
-        253,
-        526,
-        527
+        247,
+        264,
+        521
+      ]
+    },
+    {
+      "pivotId": 10269,
+      "node": {
+        "x": 13,
+        "y": 15
+      },
+      "wallIds": [
+        252,
+        526
       ]
     }
   ],
@@ -5725,7 +5455,7 @@
         "x": 2,
         "y": 0
       },
-      "yawQuarterTurns": 3
+      "yawQuarterTurns": 1
     },
     {
       "spawnId": 30007,
@@ -5733,7 +5463,7 @@
         "x": 6,
         "y": 0
       },
-      "yawQuarterTurns": 1
+      "yawQuarterTurns": 3
     },
     {
       "spawnId": 30011,
@@ -5752,5 +5482,5 @@
       "yawQuarterTurns": 3
     }
   ],
-  "checksum": "36a81a05cfe75d751f6fa4c25f105060116b8c6fba0816d811b552baed3e528a"
+  "checksum": "5e228a1f5037a2ef3d06f8c4050e849f200b4abb722bbc925e83c8c024f4bf1c"
 }

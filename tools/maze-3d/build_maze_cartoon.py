@@ -105,15 +105,16 @@ PIVOT_COUNT = 17
 
 EMPTY, STATIC, PIVOT_ARM = 0, 1, 2
 
-# Directions en coordonnées de grille. Les lettres décrivent le monde Unity :
-# la rangée y=0 porte les entrées et regarde le +Z, donc « N ». Unity reçoit
-# -x, donc avancer en x va vers l'ouest. Ces lettres sont documentaires — Unity
-# ne lit que les états d'arêtes.
+# Directions en coordonnées de grille. Les lettres suivent la convention de
+# `scripts/migrate-maze-topology-v1.py`, qui les lit pour dériver les états des
+# bras : N = +y, S = -y, E = +x, W = -x dans le repère de la grille, sans égard
+# à l'orientation du monde Unity. Elles ne sont pas documentaires — un bras
+# nommé « N » doit couvrir l'arête verticale `vwalls[x][y]` de son nœud.
 DIRECTIONS = {
-    "N": (0, -1),
-    "S": (0, 1),
-    "W": (1, 0),
-    "E": (-1, 0),
+    "N": (0, 1),
+    "S": (0, -1),
+    "E": (1, 0),
+    "W": (-1, 0),
 }
 
 
@@ -156,16 +157,20 @@ class Grid:
 
     @staticmethod
     def edges_at_node(nx: int, ny: int) -> dict[str, tuple[int, int, int]]:
-        """Les quatre arêtes qui touchent un nœud, par direction de grille."""
+        """Les quatre arêtes qui touchent un nœud, par direction de grille.
+
+        L'ordre d'insertion est celui du tirage aléatoire des bras : le changer
+        changerait la map produite par une seed donnée.
+        """
         edges: dict[str, tuple[int, int, int]] = {}
         if ny > 0:
-            edges["N"] = (0, nx, ny - 1)
+            edges["S"] = (0, nx, ny - 1)
         if ny < HEIGHT:
-            edges["S"] = (0, nx, ny)
+            edges["N"] = (0, nx, ny)
         if nx < WIDTH:
-            edges["W"] = (1, nx, ny)
+            edges["E"] = (1, nx, ny)
         if nx > 0:
-            edges["E"] = (1, nx - 1, ny)
+            edges["W"] = (1, nx - 1, ny)
         return edges
 
     # -- construction -------------------------------------------------------

@@ -638,9 +638,9 @@
       ],
       "shape": "T",
       "arms": [
+        "E",
         "N",
-        "S",
-        "W"
+        "S"
       ],
       "orientation": 0
     },
@@ -652,7 +652,7 @@
       "shape": "T",
       "arms": [
         "E",
-        "S",
+        "N",
         "W"
       ],
       "orientation": 0
@@ -665,7 +665,7 @@
       "shape": "T",
       "arms": [
         "E",
-        "N",
+        "S",
         "W"
       ],
       "orientation": 0
@@ -678,7 +678,7 @@
       "shape": "T",
       "arms": [
         "E",
-        "N",
+        "S",
         "W"
       ],
       "orientation": 0
@@ -690,9 +690,9 @@
       ],
       "shape": "T",
       "arms": [
+        "E",
         "N",
-        "S",
-        "W"
+        "S"
       ],
       "orientation": 0
     },
@@ -703,9 +703,9 @@
       ],
       "shape": "T",
       "arms": [
+        "E",
         "N",
-        "S",
-        "W"
+        "S"
       ],
       "orientation": 0
     },
@@ -717,7 +717,7 @@
       "shape": "T",
       "arms": [
         "E",
-        "S",
+        "N",
         "W"
       ],
       "orientation": 0
@@ -730,7 +730,7 @@
       "shape": "T",
       "arms": [
         "E",
-        "N",
+        "S",
         "W"
       ],
       "orientation": 0
@@ -742,6 +742,19 @@
       ],
       "shape": "T",
       "arms": [
+        "E",
+        "N",
+        "S"
+      ],
+      "orientation": 0
+    },
+    {
+      "node": [
+        8,
+        2
+      ],
+      "shape": "T",
+      "arms": [
         "N",
         "S",
         "W"
@@ -750,8 +763,8 @@
     },
     {
       "node": [
-        8,
-        2
+        6,
+        9
       ],
       "shape": "T",
       "arms": [
@@ -763,26 +776,13 @@
     },
     {
       "node": [
-        6,
-        9
-      ],
-      "shape": "T",
-      "arms": [
-        "N",
-        "S",
-        "W"
-      ],
-      "orientation": 0
-    },
-    {
-      "node": [
         10,
         12
       ],
       "shape": "T",
       "arms": [
         "E",
-        "S",
+        "N",
         "W"
       ],
       "orientation": 0
@@ -794,8 +794,8 @@
       ],
       "shape": "L",
       "arms": [
-        "N",
-        "W"
+        "E",
+        "S"
       ],
       "orientation": 0
     },
@@ -806,8 +806,8 @@
       ],
       "shape": "L",
       "arms": [
-        "N",
-        "W"
+        "E",
+        "S"
       ],
       "orientation": 0
     },
