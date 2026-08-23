@@ -29,15 +29,21 @@ namespace NotThatWay.Game.Sandbox
         private static readonly int PickupTrigger = Animator.StringToHash("Pickup");
         private static readonly int DropTrigger = Animator.StringToHash("Drop");
         private static readonly int DepositTrigger = Animator.StringToHash("Deposit");
+        private static readonly int ThrowTrigger = Animator.StringToHash("Throw");
         private static readonly int KnockedOutBool = Animator.StringToHash("KnockedOut");
         private static readonly int CarryKindInt = Animator.StringToHash("CarryKind");
 
         private readonly SandboxCarryableKind[] _observedSlots =
             new SandboxCarryableKind[SandboxInventoryModel.Capacity];
 
+        private readonly List<int> _ammoObjectIds = new();
+
         private SandboxGameplayConfig _config;
         private SandboxPlayerModel _model;
         private SandboxInventoryModel _inventory;
+        private SandboxSlingshotModel _slingshot;
+        private Transform _handSocket;
+        private int _observedAmmo;
         private PredictedPlayerMotor _motor;
         private Animator _animator;
         private uint _lastInventoryCommandTick;
@@ -70,6 +76,11 @@ namespace NotThatWay.Game.Sandbox
         public bool HasRock => IsServerStarted
             ? _inventory.HasKind(SandboxCarryableKind.Rock)
             : ObservedHasKind(SandboxCarryableKind.Rock);
+        /// <summary>Cailloux gardés comme munitions du lance-pierre, hors des trois cases.</summary>
+        public int AmmoCount => IsServerStarted ? _ammoObjectIds.Count : _observedAmmo;
+        public bool HasSlingshotInHand => ActiveKind == SandboxCarryableKind.Slingshot;
+        /// <summary>Main droite du personnage, résolue dans le visuel importé ; null si absente.</summary>
+        public Transform HandSocket => _handSocket;
         public SandboxCarryableKind ActiveKind => IsServerStarted
             ? _inventory.ActiveEntry?.Kind ?? SandboxCarryableKind.None
             : ObservedKindAt(_observedActiveSlot);
@@ -80,6 +91,44 @@ namespace NotThatWay.Game.Sandbox
                 : HasTrophy
                     ? _config.TrophyMovementPermille
                     : SandboxGameplayConfig.PermilleScale;
+        /// <summary>
+        /// Modificateur de vitesse pour une commande donnée : la base (trophée,
+        /// KO) puis le ralentissement de visée si le joueur bande le lance-pierre.
+        /// Dérivé de la commande et de l'objet actif, donc identique chez l'hôte et
+        /// le propriétaire qui prédit — sans état supplémentaire à répliquer.
+        /// </summary>
+        public int MovementSpeedPermilleFor(PlayerCommand command)
+        {
+            var permille = MovementSpeedPermille;
+            if (permille > 0 && HasSlingshotInHand && command.Has(PlayerCommandButtons.PunchHeld))
+            {
+                permille = (int)((long)permille * _config.SlingshotAimMovementPermille /
+                                 SandboxGameplayConfig.PermilleScale);
+                if (permille < 1)
+                    permille = 1;
+            }
+            return permille;
+        }
+
+        /// <summary>Direction du regard de l'hôte, pitch compris, pour un tir visé.</summary>
+        private Vector3 AimDirection
+        {
+            get
+            {
+                var forward = transform.forward;
+                forward.y = 0f;
+                if (forward.sqrMagnitude < 0.0001f)
+                    forward = Vector3.forward;
+                forward.Normalize();
+                var pitchDegrees = _motor != null && _motor.IsSimulationReady
+                    ? _motor.SimulationState.PitchCentidegrees / 100f
+                    : 0f;
+                return Quaternion.LookRotation(forward, Vector3.up) *
+                       Quaternion.Euler(-pitchDegrees, 0f, 0f) *
+                       Vector3.forward;
+            }
+        }
+
         public bool CanPush => IsAlive && !HasTrophy && ObservedEnergy > 0;
         public bool CanPunch =>
             IsAlive && !HasTrophy && ActiveKind == SandboxCarryableKind.None &&
@@ -90,7 +139,7 @@ namespace NotThatWay.Game.Sandbox
             ActiveKind != SandboxCarryableKind.Slingshot &&
             ObservedEnergy >= _config.ThrowEnergyCost;
         public bool CanFireSlingshot =>
-            IsAlive && ActiveKind == SandboxCarryableKind.Slingshot && HasRock &&
+            IsAlive && HasSlingshotInHand && AmmoCount > 0 &&
             ObservedEnergy >= _config.SlingshotEnergyCost;
 
         private void Awake()
@@ -100,6 +149,8 @@ namespace NotThatWay.Game.Sandbox
             _inventory = new SandboxInventoryModel();
             _motor = GetComponent<PredictedPlayerMotor>();
             _animator = GetComponentInChildren<Animator>(true);
+            _slingshot = SandboxSlingshotModel.FromConfig(_config);
+            _handSocket = FindHandSocket(transform);
             _observedHealth = _config.MaximumHealth;
             _observedEnergy = _config.MaximumEnergy;
             _observedLifeState = SandboxLifeState.Alive;
@@ -137,7 +188,8 @@ namespace NotThatWay.Game.Sandbox
                 (byte)KindAt(0),
                 (byte)KindAt(1),
                 (byte)KindAt(2),
-                (byte)_inventory.ActiveSlot);
+                (byte)_inventory.ActiveSlot,
+                (byte)_ammoObjectIds.Count);
         }
 
         protected override void TimeManager_OnPostTick()
@@ -155,6 +207,7 @@ namespace NotThatWay.Game.Sandbox
                 _hasProcessedInventoryCommand = true;
                 _lastInventoryCommandTick = command.Tick;
                 ProcessInventoryCommand(command);
+                ProcessSlingshotCommand(command);
             }
             PublishSnapshot(false);
         }
@@ -228,40 +281,163 @@ namespace NotThatWay.Game.Sandbox
         }
 
         /// <summary>
-        /// Tir serveur : lance-pierre actif, un caillou quelque part dans
-        /// l'inventaire et l'énergie du tir. Le caillou consommé part comme
-        /// projectile armé du profil lance-pierre ; le lance-pierre reste en main.
+        /// Le bouton lance-pierre et la charge du tir passent par le modèle pur,
+        /// un pas par tick de commande. L'hôte applique ou refuse chaque action.
+        /// Un joueur KO ou qui ne tient plus l'arme voit sa charge annulée.
         /// </summary>
-        public bool TryFireSlingshot(PlayerCommand command, Vector3 direction)
+        private void ProcessSlingshotCommand(PlayerCommand command)
         {
-            if (!IsServerStarted || !IsAlive)
-                return false;
-            if (!EnsureAdvanced(command))
-                return false;
-            if (ActiveKind != SandboxCarryableKind.Slingshot)
-                return false;
-            if (!_inventory.TryFindFirstOfKind(SandboxCarryableKind.Rock, out var ammo))
+            if (!IsAlive)
             {
-                Debug.Log(
-                    $"[GAME-SANDBOX-ITEM] slingshot_empty player={ObjectId}.",
-                    this);
-                return false;
+                _slingshot.Reset();
+                return;
             }
-            if (!SandboxCarryable.TryFindServer(ammo.ObjectId, out var rock) ||
-                !_model.TrySpendSlingshotShot() ||
-                !_inventory.TryRemoveObject(ammo.ObjectId, out _))
+
+            var result = _slingshot.Advance(new SlingshotTickInput(
+                command.Has(PlayerCommandButtons.SlingshotPressed),
+                command.Has(PlayerCommandButtons.SlingshotHeld),
+                command.Has(PlayerCommandButtons.PunchPressed),
+                command.Has(PlayerCommandButtons.PunchHeld),
+                HasSlingshotInHand));
+            switch (result.Action)
             {
+                case SlingshotActionKind.TakeOrLoad:
+                    if (HasSlingshotInHand)
+                        TryLoadAmmoFromServer();
+                    else
+                        TryTakeSlingshotFromServer();
+                    break;
+                case SlingshotActionKind.Drop:
+                    if (HasSlingshotInHand)
+                        DropActiveFromServer();
+                    break;
+                case SlingshotActionKind.Fire:
+                    TryFireSlingshotFromServer(result.PowerPermille);
+                    break;
+            }
+        }
+
+        /// <summary>Prendre le lance-pierre : depuis la poche s'il y est, sinon au sol à portée.</summary>
+        private bool TryTakeSlingshotFromServer()
+        {
+            var pocketSlot = _inventory.IndexOfKind(SandboxCarryableKind.Slingshot);
+            if (pocketSlot >= 0)
+            {
+                _inventory.Select(pocketSlot);
+                RefreshHeldPresentations();
+                Debug.Log($"[GAME-SANDBOX-ITEM] slingshot_drawn player={ObjectId} slot={pocketSlot}.", this);
+                return true;
+            }
+
+            if (_inventory.IsFull)
+                return false;
+            var ground = SandboxCarryable.FindNearestAvailableServer(
+                transform.position,
+                PickupRangeMeters,
+                SandboxCarryableKind.Slingshot);
+            if (ground == null)
+                return false;
+            var entry = new SandboxInventoryEntry(ground.ObjectId, ground.Kind);
+            if (!_inventory.TryAdd(entry, out var slot))
+                return false;
+            ground.HoldFromServer(this, slot, true);
+            RefreshHeldPresentations();
+            PlayInventoryEvent(0);
+            Debug.Log(
+                $"[GAME-SANDBOX-ITEM] slingshot_pickup player={ObjectId} item={ground.ObjectId} slot={slot}.",
+                this);
+            return true;
+        }
+
+        /// <summary>
+        /// Charger un caillou : d'abord celui d'une case de l'inventaire, sinon le
+        /// plus proche au sol. Il rejoint la réserve, invisible, jusqu'à la capacité.
+        /// </summary>
+        private bool TryLoadAmmoFromServer()
+        {
+            if (_ammoObjectIds.Count >= _config.SlingshotAmmoCapacity)
+            {
+                Debug.Log($"[GAME-SANDBOX-ITEM] slingshot_ammo_full player={ObjectId}.", this);
                 return false;
             }
 
-            rock.FireFromSlingshotServer(this, direction);
+            SandboxCarryable rock;
+            if (_inventory.TryFindFirstOfKind(SandboxCarryableKind.Rock, out var pocket) &&
+                SandboxCarryable.TryFindServer(pocket.ObjectId, out rock) &&
+                _inventory.TryRemoveObject(pocket.ObjectId, out _))
+            {
+                // La case active doit rester le lance-pierre après retrait.
+                var slingshotSlot = _inventory.IndexOfKind(SandboxCarryableKind.Slingshot);
+                if (slingshotSlot >= 0)
+                    _inventory.Select(slingshotSlot);
+            }
+            else
+            {
+                rock = SandboxCarryable.FindNearestAvailableServer(
+                    transform.position,
+                    PickupRangeMeters,
+                    SandboxCarryableKind.Rock);
+                if (rock == null)
+                    return false;
+            }
+
+            _ammoObjectIds.Add(rock.ObjectId);
+            rock.StoreAsAmmoFromServer(this);
             RefreshHeldPresentations();
+            PlayInventoryEvent(0);
             PublishSnapshot(false);
             Debug.Log(
-                $"[GAME-SANDBOX-ITEM] slingshot_fire player={ObjectId} rock={ammo.ObjectId} " +
-                $"remainingRocks={(HasRock ? "yes" : "no")}.",
+                $"[GAME-SANDBOX-ITEM] slingshot_load player={ObjectId} rock={rock.ObjectId} " +
+                $"ammo={_ammoObjectIds.Count}/{_config.SlingshotAmmoCapacity}.",
                 this);
             return true;
+        }
+
+        /// <summary>
+        /// Tir serveur : arme en main, une munition et l'énergie du tir. Le dernier
+        /// caillou chargé part comme projectile à la puissance du modèle.
+        /// </summary>
+        private bool TryFireSlingshotFromServer(int powerPermille)
+        {
+            if (!HasSlingshotInHand || _ammoObjectIds.Count == 0)
+            {
+                Debug.Log($"[GAME-SANDBOX-ITEM] slingshot_empty player={ObjectId}.", this);
+                return false;
+            }
+            var ammoId = _ammoObjectIds[_ammoObjectIds.Count - 1];
+            if (!SandboxCarryable.TryFindServer(ammoId, out var rock))
+            {
+                _ammoObjectIds.RemoveAt(_ammoObjectIds.Count - 1);
+                return false;
+            }
+            if (!_model.TrySpendSlingshotShot())
+                return false;
+
+            _ammoObjectIds.RemoveAt(_ammoObjectIds.Count - 1);
+            rock.FireFromSlingshotServer(this, AimDirection, powerPermille);
+            PlayInventoryEvent(3);
+            PublishSnapshot(false);
+            Debug.Log(
+                $"[GAME-SANDBOX-ITEM] slingshot_fire player={ObjectId} rock={ammoId} " +
+                $"power={powerPermille} ammo={_ammoObjectIds.Count}.",
+                this);
+            return true;
+        }
+
+        private static Transform FindHandSocket(Transform root)
+        {
+            Transform fallback = null;
+            foreach (var child in root.GetComponentsInChildren<Transform>(true))
+            {
+                var name = child.name.ToLowerInvariant();
+                var isRight = name.EndsWith(".r") || name.EndsWith("_r") || name.Contains("_r_") ||
+                              name.Contains("right");
+                if ((name.Contains("hand") || name.Contains("fist")) && isRight)
+                    return child;
+                if (fallback == null && (name.Contains("hand") || name.Contains("fist")))
+                    fallback = child;
+            }
+            return fallback;
         }
 
         public bool TryConsumePushEnergy(uint commandTick)
@@ -455,6 +631,10 @@ namespace NotThatWay.Game.Sandbox
                 return false;
             if (SandboxCarryable.TryFindServer(entry.ObjectId, out var carryable))
                 carryable.DropFromServer(this, Vector3.zero);
+            // La réserve appartient au lance-pierre : le lâcher rend ses cailloux à
+            // l'arène au lieu de les garder confisqués dans une poche invisible.
+            if (entry.Kind == SandboxCarryableKind.Slingshot)
+                SpillAmmoFromServer(1);
             PlayInventoryEvent(1);
             Debug.Log(
                 $"[GAME-SANDBOX-ITEM] drop player={ObjectId} item={entry.ObjectId} kind={entry.Kind}.",
@@ -480,8 +660,29 @@ namespace NotThatWay.Game.Sandbox
                 }
                 dropIndex++;
             }
+            // Les munitions s'éparpillent aussi : un KO vide les poches.
+            dropIndex += SpillAmmoFromServer(dropIndex);
+            _slingshot.Reset();
             if (dropIndex > 0)
                 PlayInventoryEvent(1);
+        }
+
+        /// <summary>Rend les cailloux de la réserve à l'arène en éventail autour du joueur.</summary>
+        private int SpillAmmoFromServer(int dropIndex)
+        {
+            var spilled = 0;
+            for (var index = 0; index < _ammoObjectIds.Count; index++)
+            {
+                if (!SandboxCarryable.TryFindServer(_ammoObjectIds[index], out var ammo))
+                    continue;
+                var angle = (dropIndex + index) * 72f + 36f;
+                ammo.DropFromServer(
+                    this,
+                    Quaternion.Euler(0f, angle, 0f) * transform.forward * 0.8f);
+                spilled++;
+            }
+            _ammoObjectIds.Clear();
+            return spilled;
         }
 
         private void SelectNextSlot()
@@ -555,7 +756,7 @@ namespace NotThatWay.Game.Sandbox
             var value = _inventory.ActiveSlot;
             for (var slot = 0; slot < SandboxInventoryModel.Capacity; slot++)
                 value = value * 31 + (int)KindAt(slot);
-            return value;
+            return value * 31 + _ammoObjectIds.Count;
         }
 
         private static bool PublicStateChanged(
@@ -594,6 +795,7 @@ namespace NotThatWay.Game.Sandbox
                 (byte)KindAt(1),
                 (byte)KindAt(2),
                 (byte)_inventory.ActiveSlot,
+                (byte)_ammoObjectIds.Count,
                 Channel.Reliable);
             ApplySnapshot(
                 state.Tick,
@@ -605,7 +807,8 @@ namespace NotThatWay.Game.Sandbox
                 KindAt(0),
                 KindAt(1),
                 KindAt(2),
-                _inventory.ActiveSlot);
+                _inventory.ActiveSlot,
+                _ammoObjectIds.Count);
         }
 
         [ObserversRpc(BufferLast = true, ExcludeServer = true)]
@@ -620,6 +823,7 @@ namespace NotThatWay.Game.Sandbox
             byte slot1,
             byte slot2,
             byte activeSlot,
+            byte ammo,
             Channel channel = Channel.Reliable)
         {
             ApplySnapshot(
@@ -632,7 +836,8 @@ namespace NotThatWay.Game.Sandbox
                 (SandboxCarryableKind)slot0,
                 (SandboxCarryableKind)slot1,
                 (SandboxCarryableKind)slot2,
-                activeSlot);
+                activeSlot,
+                ammo);
         }
 
         [TargetRpc]
@@ -648,6 +853,7 @@ namespace NotThatWay.Game.Sandbox
             byte slot1,
             byte slot2,
             byte activeSlot,
+            byte ammo,
             Channel channel = Channel.Reliable)
         {
             ApplySnapshot(
@@ -660,7 +866,8 @@ namespace NotThatWay.Game.Sandbox
                 (SandboxCarryableKind)slot0,
                 (SandboxCarryableKind)slot1,
                 (SandboxCarryableKind)slot2,
-                activeSlot);
+                activeSlot,
+                ammo);
         }
 
         private void ApplySnapshot(
@@ -673,7 +880,8 @@ namespace NotThatWay.Game.Sandbox
             SandboxCarryableKind slot0,
             SandboxCarryableKind slot1,
             SandboxCarryableKind slot2,
-            int activeSlot)
+            int activeSlot,
+            int ammo)
         {
             if (_observedTick != 0u && TickMath.IsOlder(tick, _observedTick))
                 return;
@@ -687,6 +895,7 @@ namespace NotThatWay.Game.Sandbox
             _observedSlots[1] = slot1;
             _observedSlots[2] = slot2;
             _observedActiveSlot = Mathf.Clamp(activeSlot, 0, SandboxInventoryModel.Capacity - 1);
+            _observedAmmo = Mathf.Clamp(ammo, 0, _config.SlingshotAmmoCapacity);
             if (_animator != null && _animator.runtimeAnimatorController != null)
             {
                 _animator.SetBool(KnockedOutBool, lifeState == SandboxLifeState.KnockedOut);
@@ -736,6 +945,7 @@ namespace NotThatWay.Game.Sandbox
             {
                 0 => PickupTrigger,
                 1 => DropTrigger,
+                3 => ThrowTrigger,
                 _ => DepositTrigger
             });
         }

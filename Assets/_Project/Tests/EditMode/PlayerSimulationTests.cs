@@ -508,7 +508,7 @@ namespace NotThatWay.Game.Tests.EditMode
                 Throws.TypeOf<ArgumentOutOfRangeException>());
             Assert.That(
                 () => simulation.AdvanceTick(
-                    Command(1u, buttons: (PlayerCommandButtons)(1 << 7)),
+                    Command(1u, buttons: (PlayerCommandButtons)(1 << 6)),
                     world),
                 Throws.TypeOf<ArgumentOutOfRangeException>());
             Assert.That(world.CallCount, Is.Zero);

@@ -212,7 +212,7 @@ namespace NotThatWay.Game
 
             var modifiers = _sandboxGameplay == null
                 ? PlayerTickModifiers.FullSpeed
-                : new PlayerTickModifiers(_sandboxGameplay.MovementSpeedPermille);
+                : new PlayerTickModifiers(_sandboxGameplay.MovementSpeedPermilleFor(command));
             var result = _simulation.AdvanceTick(command, forces, modifiers, _collisionWorld);
             if (IsServerStarted && replicateState.ContainsTicked() &&
                 !replicateState.ContainsReplayed())

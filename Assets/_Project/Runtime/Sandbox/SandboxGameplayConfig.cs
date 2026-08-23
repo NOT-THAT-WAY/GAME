@@ -37,7 +37,12 @@ namespace NotThatWay.Game.Sandbox
             uint recoveryProtectionTicks,
             int trophyMovementPermille,
             int slingshotDamage,
-            int slingshotEnergyCost)
+            int slingshotEnergyCost,
+            int slingshotAmmoCapacity,
+            uint slingshotChargeTicks,
+            int slingshotMinimumPowerPermille,
+            uint slingshotDropHoldTicks,
+            int slingshotAimMovementPermille)
         {
             TickRate = tickRate;
             MaximumHealth = maximumHealth;
@@ -64,6 +69,11 @@ namespace NotThatWay.Game.Sandbox
             TrophyMovementPermille = trophyMovementPermille;
             SlingshotDamage = slingshotDamage;
             SlingshotEnergyCost = slingshotEnergyCost;
+            SlingshotAmmoCapacity = slingshotAmmoCapacity;
+            SlingshotChargeTicks = slingshotChargeTicks;
+            SlingshotMinimumPowerPermille = slingshotMinimumPowerPermille;
+            SlingshotDropHoldTicks = slingshotDropHoldTicks;
+            SlingshotAimMovementPermille = slingshotAimMovementPermille;
             Validate();
         }
 
@@ -92,13 +102,22 @@ namespace NotThatWay.Game.Sandbox
         public int TrophyMovementPermille { get; }
 
         /// <summary>
-        /// Lance-pierre ramassable : chaque tir consomme un caillou de l'inventaire
-        /// — on le recharge en ramassant des cailloux — et frappe plus fort qu'un
-        /// lancer à la main. La vitesse du projectile reste une constante de
-        /// l'objet réseau ; ici seulement dégâts et énergie.
+        /// Lance-pierre ramassable. Ses cailloux sont une réserve à part des trois
+        /// cases (jusqu'à <see cref="SlingshotAmmoCapacity"/>), rechargée en
+        /// ramassant au sol. Le tir se charge en tenant le bouton : la puissance
+        /// va de <see cref="SlingshotMinimumPowerPermille"/> à 1000 ‰ sur
+        /// <see cref="SlingshotChargeTicks"/> ticks et règle vitesse et dégâts,
+        /// <see cref="SlingshotDamage"/> étant le maximum. Tenir le bouton
+        /// lance-pierre <see cref="SlingshotDropHoldTicks"/> ticks le lâche.
         /// </summary>
         public int SlingshotDamage { get; }
         public int SlingshotEnergyCost { get; }
+        public int SlingshotAmmoCapacity { get; }
+        public uint SlingshotChargeTicks { get; }
+        public int SlingshotMinimumPowerPermille { get; }
+        public uint SlingshotDropHoldTicks { get; }
+        /// <summary>Vitesse de déplacement pendant qu'on bande le lance-pierre : on vise, on ne court pas.</summary>
+        public int SlingshotAimMovementPermille { get; }
 
         /// <summary>
         /// Baseline acceptée pour le sandbox à 60 Hz : valeurs publiques 0–100,
@@ -129,7 +148,12 @@ namespace NotThatWay.Game.Sandbox
             60u,
             750,
             45,
-            14);
+            14,
+            5,
+            72u,
+            350,
+            30u,
+            650);
 
         public void Validate()
         {
@@ -172,6 +196,19 @@ namespace NotThatWay.Game.Sandbox
                     "Le lance-pierre doit blesser plus qu'un caillou lancé à la main.");
             }
             EnsureRange(SlingshotEnergyCost, 1, MaximumEnergy, nameof(SlingshotEnergyCost));
+            EnsureRange(SlingshotAmmoCapacity, 1, 64, nameof(SlingshotAmmoCapacity));
+            EnsurePositive(SlingshotChargeTicks, nameof(SlingshotChargeTicks));
+            EnsureRange(
+                SlingshotMinimumPowerPermille,
+                1,
+                PermilleScale,
+                nameof(SlingshotMinimumPowerPermille));
+            EnsurePositive(SlingshotDropHoldTicks, nameof(SlingshotDropHoldTicks));
+            EnsureRange(
+                SlingshotAimMovementPermille,
+                1,
+                PermilleScale,
+                nameof(SlingshotAimMovementPermille));
         }
 
         public bool Equals(SandboxGameplayConfig other) =>
@@ -199,7 +236,12 @@ namespace NotThatWay.Game.Sandbox
             RecoveryProtectionTicks == other.RecoveryProtectionTicks &&
             TrophyMovementPermille == other.TrophyMovementPermille &&
             SlingshotDamage == other.SlingshotDamage &&
-            SlingshotEnergyCost == other.SlingshotEnergyCost;
+            SlingshotEnergyCost == other.SlingshotEnergyCost &&
+            SlingshotAmmoCapacity == other.SlingshotAmmoCapacity &&
+            SlingshotChargeTicks == other.SlingshotChargeTicks &&
+            SlingshotMinimumPowerPermille == other.SlingshotMinimumPowerPermille &&
+            SlingshotDropHoldTicks == other.SlingshotDropHoldTicks &&
+            SlingshotAimMovementPermille == other.SlingshotAimMovementPermille;
 
         public override bool Equals(object value) =>
             value is SandboxGameplayConfig other && Equals(other);
@@ -232,6 +274,11 @@ namespace NotThatWay.Game.Sandbox
             hash.Add(TrophyMovementPermille);
             hash.Add(SlingshotDamage);
             hash.Add(SlingshotEnergyCost);
+            hash.Add(SlingshotAmmoCapacity);
+            hash.Add(SlingshotChargeTicks);
+            hash.Add(SlingshotMinimumPowerPermille);
+            hash.Add(SlingshotDropHoldTicks);
+            hash.Add(SlingshotAimMovementPermille);
             return hash.ToHashCode();
         }
 

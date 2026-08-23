@@ -19,9 +19,13 @@ namespace NotThatWay.Game.Sandbox
     {
         private const float ThrowSpeedMetersPerSecond = 11f;
         private const float ThrowLiftMetersPerSecond = 2.4f;
-        // Tir au lance-pierre : tendu et rapide, presque sans cloche. Baseline de banc.
-        private const float SlingshotSpeedMetersPerSecond = 24f;
-        private const float SlingshotLiftMetersPerSecond = 0.6f;
+        // Tir au lance-pierre : de la pichenette au trait tendu selon la charge.
+        // Baseline de banc ; la puissance en ‰ vient du modèle pur.
+        private const float SlingshotMinimumSpeedMetersPerSecond = 12f;
+        private const float SlingshotMaximumSpeedMetersPerSecond = 30f;
+        private const float SlingshotLiftMetersPerSecond = 0.3f;
+        /// <summary>Case d'inventaire fictive des cailloux gardés comme munitions.</summary>
+        public const int AmmoSlot = -2;
         private const float RockKnockbackMetersPerSecond = 5.5f;
         private const float TrophyKnockbackMetersPerSecond = 3f;
         private const float SlingshotKnockbackMetersPerSecond = 7f;
@@ -47,6 +51,7 @@ namespace NotThatWay.Game.Sandbox
         private Vector3 _throwDirection;
         private bool _damageArmed;
         private bool _launchedBySlingshot;
+        private int _launchDamage;
         private int _settledFixedUpdates;
 
         public SandboxCarryableKind Kind => _kind;
@@ -173,7 +178,7 @@ namespace NotThatWay.Game.Sandbox
                     knockbackSpeed = TrophyKnockbackMetersPerSecond;
                     break;
                 case SandboxCarryableKind.Rock when _launchedBySlingshot:
-                    damage = config.SlingshotDamage;
+                    damage = Mathf.Clamp(_launchDamage, config.RockDamage, config.SlingshotDamage);
                     damageKind = SandboxDamageKind.SlingshotRock;
                     knockbackSpeed = SlingshotKnockbackMetersPerSecond;
                     break;
@@ -241,30 +246,57 @@ namespace NotThatWay.Game.Sandbox
 
         /// <summary>
         /// Tir depuis un lance-pierre tenu par <paramref name="shooter"/> : même
-        /// objet caillou, plus vite et armé d'un profil de dégâts plus élevé.
+        /// objet caillou, vitesse et dégâts interpolés par la puissance chargée
+        /// (en ‰, bornée par le modèle pur) entre le caillou à la main et le
+        /// maximum du lance-pierre.
         /// </summary>
-        public void FireFromSlingshotServer(SandboxPlayerGameplay shooter, Vector3 direction) =>
+        public void FireFromSlingshotServer(
+            SandboxPlayerGameplay shooter,
+            Vector3 aimDirection,
+            int powerPermille)
+        {
+            var power = Mathf.Clamp01(powerPermille / (float)SandboxSlingshotModel.PermilleScale);
+            var config = SandboxGameplayConfig.Baseline60Hz;
+            var damage = Mathf.RoundToInt(
+                Mathf.Lerp(config.RockDamage, config.SlingshotDamage, power));
             LaunchFromServer(
                 shooter,
-                direction,
-                SlingshotSpeedMetersPerSecond,
+                aimDirection,
+                Mathf.Lerp(
+                    SlingshotMinimumSpeedMetersPerSecond,
+                    SlingshotMaximumSpeedMetersPerSecond,
+                    power),
                 SlingshotLiftMetersPerSecond,
-                true);
+                true,
+                keepPitch: true);
+            _launchDamage = damage;
+        }
+
+        /// <summary>Garde le caillou en poche comme munition : invisible, sans collider, suit le porteur.</summary>
+        public void StoreAsAmmoFromServer(SandboxPlayerGameplay holder) =>
+            HoldFromServer(holder, AmmoSlot, false);
 
         private void LaunchFromServer(
             SandboxPlayerGameplay thrower,
             Vector3 direction,
             float speed,
             float lift,
-            bool bySlingshot)
+            bool bySlingshot,
+            bool keepPitch = false)
         {
             if (!IsServerStarted || thrower == null)
                 return;
-            direction.y = 0f;
-            if (direction.sqrMagnitude < 0.0001f)
-                direction = thrower.transform.forward;
+            // Un lancer à la main part à plat avec sa cloche ; un tir visé garde
+            // l'inclinaison du regard. L'origine reste devant la poitrine, à plat,
+            // pour ne jamais naître dans le sol en visant bas.
+            var flat = new Vector3(direction.x, 0f, direction.z);
+            if (flat.sqrMagnitude < 0.0001f)
+                flat = thrower.transform.forward;
+            flat.Normalize();
+            if (!keepPitch || direction.sqrMagnitude < 0.0001f)
+                direction = flat;
             direction.Normalize();
-            var origin = thrower.transform.position + Vector3.up * 0.9f + direction * 0.8f;
+            var origin = thrower.transform.position + Vector3.up * 0.9f + flat * 0.8f;
             var velocity = direction * speed + Vector3.up * lift;
             ReleaseToWorld(
                 origin,
@@ -332,7 +364,14 @@ namespace NotThatWay.Game.Sandbox
 
         public static SandboxCarryable FindNearestAvailableServer(
             Vector3 position,
-            float maximumDistance)
+            float maximumDistance) =>
+            FindNearestAvailableServer(position, maximumDistance, SandboxCarryableKind.None);
+
+        /// <summary>Le plus proche objet ramassable, limité à un genre si <paramref name="kind"/> n'est pas None.</summary>
+        public static SandboxCarryable FindNearestAvailableServer(
+            Vector3 position,
+            float maximumDistance,
+            SandboxCarryableKind kind)
         {
             SandboxCarryable best = null;
             var bestDistance = maximumDistance * maximumDistance;
@@ -340,6 +379,8 @@ namespace NotThatWay.Game.Sandbox
             {
                 var candidate = ServerInstances[index];
                 if (candidate == null || !candidate.AvailableForPickup)
+                    continue;
+                if (kind != SandboxCarryableKind.None && candidate.Kind != kind)
                     continue;
                 var distance = (candidate.transform.position - position).sqrMagnitude;
                 if (distance > bestDistance ||
@@ -417,12 +458,26 @@ namespace NotThatWay.Game.Sandbox
                 DropFromServer(null, Vector3.zero);
                 return;
             }
-            var side = (_inventorySlot - 1) * 0.16f;
-            var position = holder.transform.position +
+            Vector3 position;
+            var rotation = Quaternion.LookRotation(holder.transform.forward, Vector3.up);
+            var handSocket = holder.HandSocket;
+            if (_kind == SandboxCarryableKind.Slingshot && handSocket != null)
+            {
+                // Dans la main droite, fourche vers le haut, élastique vers le joueur.
+                position = handSocket.position + holder.transform.forward * 0.08f;
+            }
+            else if (_inventorySlot == AmmoSlot)
+            {
+                position = holder.transform.position + Vector3.up * 0.5f;
+            }
+            else
+            {
+                var side = (_inventorySlot - 1) * 0.16f;
+                position = holder.transform.position +
                            Vector3.up * 0.86f +
                            holder.transform.forward * 0.62f +
                            holder.transform.right * side;
-            var rotation = Quaternion.LookRotation(holder.transform.forward, Vector3.up);
+            }
             if (_body != null)
             {
                 _body.position = position;

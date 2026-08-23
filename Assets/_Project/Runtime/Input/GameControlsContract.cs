@@ -17,6 +17,7 @@ namespace NotThatWay.Game.Input
         public const string Sprint = "Sprint";
         public const string Interact = "Interact";
         public const string Punch = "Punch";
+        public const string Slingshot = "Slingshot";
         public const string Drop = "Drop";
         public const string SelectSlot1 = "SelectSlot1";
         public const string SelectSlot2 = "SelectSlot2";
@@ -42,6 +43,7 @@ namespace NotThatWay.Game.Input
             new(PlayerMap, Sprint, InputActionType.Button, "Button", true, true),
             new(PlayerMap, Interact, InputActionType.Button, "Button", true, true),
             new(PlayerMap, Punch, InputActionType.Button, "Button", true, true),
+            new(PlayerMap, Slingshot, InputActionType.Button, "Button", true, true),
             new(PlayerMap, Drop, InputActionType.Button, "Button", true, true),
             new(PlayerMap, SelectSlot1, InputActionType.Button, "Button", true, false),
             new(PlayerMap, SelectSlot2, InputActionType.Button, "Button", true, false),

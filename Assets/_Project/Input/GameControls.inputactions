@@ -61,6 +61,15 @@
           "initialStateCheck": false
         },
         {
+          "name": "Slingshot",
+          "type": "Button",
+          "id": "e461e39b-669a-4558-93c0-96830f4b96d8",
+          "expectedControlType": "Button",
+          "processors": "",
+          "interactions": "",
+          "initialStateCheck": false
+        },
+        {
           "name": "Drop",
           "type": "Button",
           "id": "d6b69a65-d3cf-4a78-b659-efbdf001923c",
@@ -380,6 +389,28 @@
           "processors": "",
           "groups": "KeyboardMouse",
           "action": "Punch",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "03b9f33a-d070-48d8-9191-e64b62d6ec85",
+          "path": "<Mouse>/rightButton",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "Slingshot",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "f408a961-975f-4280-8680-01a8d3390b97",
+          "path": "<Gamepad>/leftTrigger",
+          "interactions": "",
+          "processors": "",
+          "groups": "Gamepad",
+          "action": "Slingshot",
           "isComposite": false,
           "isPartOfComposite": false
         },

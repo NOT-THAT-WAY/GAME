@@ -132,6 +132,9 @@ namespace NotThatWay.Game.PlayerSimulation
         private const PlayerCommandButtons KnownButtons =
             PlayerCommandButtons.SprintHeld |
             PlayerCommandButtons.InteractHeld |
+            PlayerCommandButtons.PunchHeld |
+            PlayerCommandButtons.SlingshotHeld |
+            PlayerCommandButtons.SlingshotPressed |
             PlayerCommandButtons.JumpPressed |
             PlayerCommandButtons.InteractPressed |
             PlayerCommandButtons.PunchPressed |

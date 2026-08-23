@@ -69,6 +69,17 @@ namespace NotThatWay.Game.Sandbox
 
         public bool HasKind(SandboxCarryableKind kind) => TryFindFirstOfKind(kind, out _);
 
+        /// <summary>Case de la première occurrence du genre, ou -1.</summary>
+        public int IndexOfKind(SandboxCarryableKind kind)
+        {
+            for (var index = 0; index < Capacity; index++)
+            {
+                if (_slots[index]?.Kind == kind)
+                    return index;
+            }
+            return -1;
+        }
+
         /// <summary>Première case, par ordre de case, qui contient un objet du genre demandé.</summary>
         public bool TryFindFirstOfKind(SandboxCarryableKind kind, out SandboxInventoryEntry entry)
         {

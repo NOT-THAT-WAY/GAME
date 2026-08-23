@@ -34,6 +34,7 @@ namespace NotThatWay.Game.Input
         private InputAction _sprint;
         private InputAction _interact;
         private InputAction _punch;
+        private InputAction _slingshot;
         private InputAction _drop;
         private InputAction _selectSlot1;
         private InputAction _selectSlot2;
@@ -171,6 +172,8 @@ namespace NotThatWay.Game.Input
                 pressed |= PlayerCommandButtons.InteractPressed;
             if (_punch.WasPressedThisFrame())
                 pressed |= PlayerCommandButtons.PunchPressed;
+            if (_slingshot.WasPressedThisFrame())
+                pressed |= PlayerCommandButtons.SlingshotPressed;
             if (_drop.WasPressedThisFrame())
                 pressed |= PlayerCommandButtons.DropPressed;
             if (_selectSlot1.WasPressedThisFrame())
@@ -218,6 +221,10 @@ namespace NotThatWay.Game.Input
                 held |= PlayerCommandButtons.SprintHeld;
             if (_interact.IsPressed())
                 held |= PlayerCommandButtons.InteractHeld;
+            if (_punch.IsPressed())
+                held |= PlayerCommandButtons.PunchHeld;
+            if (_slingshot.IsPressed())
+                held |= PlayerCommandButtons.SlingshotHeld;
             return held;
         }
 
@@ -255,6 +262,7 @@ namespace NotThatWay.Game.Input
             _sprint = _playerMap.FindAction(GameControlsContract.Sprint, true);
             _interact = _playerMap.FindAction(GameControlsContract.Interact, true);
             _punch = _playerMap.FindAction(GameControlsContract.Punch, true);
+            _slingshot = _playerMap.FindAction(GameControlsContract.Slingshot, true);
             _drop = _playerMap.FindAction(GameControlsContract.Drop, true);
             _selectSlot1 = _playerMap.FindAction(GameControlsContract.SelectSlot1, true);
             _selectSlot2 = _playerMap.FindAction(GameControlsContract.SelectSlot2, true);
@@ -294,6 +302,7 @@ namespace NotThatWay.Game.Input
             _sprint = null;
             _interact = null;
             _punch = null;
+            _slingshot = null;
             _drop = null;
             _selectSlot1 = null;
             _selectSlot2 = null;
