@@ -30,12 +30,14 @@ namespace NotThatWay.Game.Sandbox
         public const int PouchSlot = -3;
         // Géométrie de présentation du lance-pierre, partagée avec le caillou de
         // poche : la poche pend entre les pointes et recule avec la tension.
-        private const float HandleInFistMeters = 0.12f;
+        // Le poing du rig fait 0,47 m : le bas du manche est en son centre et la
+        // fourche doit émerger au-dessus, sinon elle semble plantée dans le poignet.
+        private const float HandleInFistMeters = 0.26f;
         private static readonly Vector3 PouchRestLocal = new(0f, 0.30f, -0.03f);
         private static readonly Vector3 TipLeftLocal = new(-0.165f, 0.30f, 0f);
         private static readonly Vector3 TipRightLocal = new(0.165f, 0.30f, 0f);
         private const float BandPullMeters = 0.20f;
-        private const float BandPullDropMeters = 0.08f;
+        private const float BandPullDropMeters = 0.16f;
         private const float SnapOvershootMeters = 0.05f;
         private const float SnapSeconds = 0.12f;
         private const float PouchRockScale = 0.28f;

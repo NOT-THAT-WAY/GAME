@@ -682,19 +682,21 @@ namespace NotThatWay.Game.Editor
                     // par SandboxCarryable (tension, claquement) : leurs noms sont
                     // un contrat de présentation, jamais une règle.
                     var box = root.AddComponent<BoxCollider>();
-                    box.center = new Vector3(0f, 0.10f, 0f);
-                    box.size = new Vector3(0.40f, 0.50f, 0.14f);
+                    box.center = new Vector3(0f, 0.04f, 0f);
+                    box.size = new Vector3(0.40f, 0.62f, 0.14f);
                     collider = box;
                     var wrap = CreateLitMaterial("SandboxSlingshotWrap", new Color(0.16f, 0.12f, 0.09f), 0.20f, false);
                     var leather = CreateLitMaterial("SandboxSlingshotPouch", new Color(0.38f, 0.23f, 0.13f), 0.30f, false);
                     var rubber = CreateLitMaterial("SandboxSlingshotBand", new Color(0.13f, 0.12f, 0.11f), 0.08f, false);
 
+                    // Manche long : sa base est au centre du poing, la ligature là où
+                    // les doigts finissent, la fourche au-dessus du poing.
                     var handle = CreateCarryableVisualPrimitive(PrimitiveType.Capsule, "Handle", visualRoot.transform, material);
-                    handle.transform.localPosition = new Vector3(0f, -0.10f, 0f);
-                    handle.transform.localScale = new Vector3(0.075f, 0.12f, 0.075f);
+                    handle.transform.localPosition = new Vector3(0f, -0.12f, 0f);
+                    handle.transform.localScale = new Vector3(0.075f, 0.15f, 0.075f);
                     var grip = CreateCarryableVisualPrimitive(PrimitiveType.Cylinder, "Grip", visualRoot.transform, wrap);
-                    grip.transform.localPosition = new Vector3(0f, -0.13f, 0f);
-                    grip.transform.localScale = new Vector3(0.082f, 0.055f, 0.082f);
+                    grip.transform.localPosition = new Vector3(0f, -0.05f, 0f);
+                    grip.transform.localScale = new Vector3(0.082f, 0.05f, 0.082f);
                     foreach (var sign in new[] { -1f, 1f })
                     {
                         var side = sign < 0f ? "Left" : "Right";
