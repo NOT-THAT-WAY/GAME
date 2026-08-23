@@ -28,12 +28,18 @@ namespace NotThatWay.Game.Sandbox
         public const int AmmoSlot = -2;
         /// <summary>Le caillou du dessus de la réserve, visible dans la poche de l'élastique.</summary>
         public const int PouchSlot = -3;
-        // Pose en main et géométrie de l'élastique, partagées par le lance-pierre
-        // (sa bande) et le caillou de poche (posé dans cette bande).
-        private const float HandForwardOffsetMeters = 0.08f;
-        private const float BandRestHeightMeters = 0.24f;
-        private const float BandPullMeters = 0.22f;
-        private const float PouchRockScale = 0.38f;
+        // Géométrie de présentation du lance-pierre, partagée avec le caillou de
+        // poche : la poche pend entre les pointes et recule avec la tension.
+        private const float HandleInFistMeters = 0.12f;
+        private static readonly Vector3 PouchRestLocal = new(0f, 0.30f, -0.03f);
+        private static readonly Vector3 TipLeftLocal = new(-0.165f, 0.30f, 0f);
+        private static readonly Vector3 TipRightLocal = new(0.165f, 0.30f, 0f);
+        private const float BandPullMeters = 0.26f;
+        private const float BandPullDropMeters = 0.03f;
+        private const float SnapOvershootMeters = 0.05f;
+        private const float SnapSeconds = 0.12f;
+        private const float PouchRockScale = 0.28f;
+        private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
         private const float RockKnockbackMetersPerSecond = 5.5f;
         private const float TrophyKnockbackMetersPerSecond = 3f;
         private const float SlingshotKnockbackMetersPerSecond = 7f;
@@ -49,11 +55,16 @@ namespace NotThatWay.Game.Sandbox
         [SerializeField] private Rigidbody _body;
 
         private Renderer[] _renderers = Array.Empty<Renderer>();
-        private Transform _band;
+        private Transform _pouch;
+        private Transform _bandLeft;
+        private Transform _bandRight;
         private SandboxPlayerGameplay _cachedHolder;
         private int _cachedHolderObjectId = -1;
         private bool _visualDetached;
         private Vector3 _visualRestScale = Vector3.one;
+        private float _lastCharge;
+        private float _snapRemainingSeconds;
+        private bool _instanceLookApplied;
         private Vector3 _spawnPosition;
         private Quaternion _spawnRotation;
         private SandboxCarryablePhase _phase = SandboxCarryablePhase.World;
@@ -80,8 +91,45 @@ namespace NotThatWay.Game.Sandbox
             _gameplayCollider ??= GetComponent<Collider>();
             var root = _visualRoot != null ? _visualRoot : transform;
             _renderers = root.GetComponentsInChildren<Renderer>(true);
-            _band = root.Find("Band");
+            _pouch = root.Find("Pouch");
+            _bandLeft = root.Find("BandLeft");
+            _bandRight = root.Find("BandRight");
             _visualRestScale = root.localScale;
+        }
+
+        /// <summary>
+        /// Deux galets identiques côte à côte trahissent la primitive. Chaque
+        /// caillou reçoit une orientation et une teinte dérivées de son identifiant
+        /// réseau — identiques sur tous les postes, sans rien répliquer de plus.
+        /// </summary>
+        private void ApplyInstanceLook()
+        {
+            if (_instanceLookApplied || _kind != SandboxCarryableKind.Rock || _visualRoot == null)
+                return;
+            _instanceLookApplied = true;
+            var seed = (uint)ObjectId * 2654435761u;
+            var yaw = seed % 360u;
+            var pitch = (seed >> 9) % 50u - 25f;
+            var tint = 0.90f + (seed >> 17) % 21u / 100f;
+            var turn = Quaternion.Euler(pitch, yaw, 0f);
+            foreach (Transform child in _visualRoot)
+            {
+                child.localPosition = turn * child.localPosition;
+                child.localRotation = turn * child.localRotation;
+            }
+            var block = new MaterialPropertyBlock();
+            foreach (var renderer in _renderers)
+            {
+                if (renderer == null || renderer.sharedMaterial == null)
+                    continue;
+                var baseColor = renderer.sharedMaterial.HasProperty(BaseColorId)
+                    ? renderer.sharedMaterial.GetColor(BaseColorId)
+                    : Color.gray;
+                renderer.GetPropertyBlock(block);
+                block.SetColor(BaseColorId, baseColor * tint);
+                renderer.SetPropertyBlock(block);
+                block.Clear();
+            }
         }
 
         /// <summary>
@@ -95,6 +143,7 @@ namespace NotThatWay.Game.Sandbox
         {
             if (_visualRoot == null)
                 return;
+            ApplyInstanceLook();
             var visibleHeld = _phase == SandboxCarryablePhase.Held && _activeInHand;
             if (!visibleHeld || !TryResolveHolder(out var holder))
             {
@@ -104,9 +153,11 @@ namespace NotThatWay.Game.Sandbox
                     _visualRoot.localRotation = Quaternion.identity;
                     _visualRoot.localScale = _visualRestScale;
                     _visualDetached = false;
-                    if (_band != null)
-                        _band.localPosition = new Vector3(0f, BandRestHeightMeters, 0f);
+                    _lastCharge = 0f;
+                    _snapRemainingSeconds = 0f;
                 }
+                if (_kind == SandboxCarryableKind.Slingshot)
+                    LayoutSlingshot(0f, 0f);
                 return;
             }
 
@@ -114,47 +165,87 @@ namespace NotThatWay.Game.Sandbox
             var charge = holder.ObservedChargePermille / (float)SandboxSlingshotModel.PermilleScale;
             if (_inventorySlot == PouchSlot)
             {
-                // Caillou dans la poche de l'élastique, tiré vers l'arrière avec la charge.
-                HandPose(holder, out var handPosition, out var handRotation);
+                // La pierre attend dans la poche, et recule avec elle quand on tend.
+                holder.GetSlingshotGrip(out var gripPosition, out var gripRotation);
+                var slingshotOrigin = gripPosition + gripRotation * Vector3.up * HandleInFistMeters;
                 _visualRoot.SetPositionAndRotation(
-                    handPosition + handRotation * new Vector3(
-                        0f,
-                        BandRestHeightMeters,
-                        -BandPullMeters * charge - 0.03f),
-                    handRotation);
+                    slingshotOrigin + gripRotation * PouchLocal(charge, 0f),
+                    gripRotation);
                 _visualRoot.localScale = _visualRestScale * PouchRockScale;
                 return;
             }
 
             _visualRoot.localScale = _visualRestScale;
-            if (_kind == SandboxCarryableKind.Trophy || holder.HandSocket == null)
+            if (_kind == SandboxCarryableKind.Slingshot)
             {
-                var side = (_inventorySlot - 1) * 0.16f;
+                // Relâchement brutal : la poche dépasse légèrement vers l'avant
+                // puis revient — le claquement de l'élastique, purement local.
+                if (_lastCharge > 0.15f && charge <= 0f)
+                    _snapRemainingSeconds = SnapSeconds;
+                _lastCharge = charge;
+                var snap = 0f;
+                if (_snapRemainingSeconds > 0f)
+                {
+                    _snapRemainingSeconds -= Time.deltaTime;
+                    snap = Mathf.Clamp01(_snapRemainingSeconds / SnapSeconds);
+                }
+                holder.GetSlingshotGrip(out var position, out var rotation);
                 _visualRoot.SetPositionAndRotation(
-                    holder.transform.position +
-                    Vector3.up * 0.86f +
-                    holder.transform.forward * 0.62f +
-                    holder.transform.right * side,
-                    Quaternion.LookRotation(holder.transform.forward, Vector3.up));
+                    position + rotation * Vector3.up * HandleInFistMeters,
+                    rotation);
+                LayoutSlingshot(charge, snap);
                 return;
             }
 
-            HandPose(holder, out var position, out var rotation);
-            _visualRoot.SetPositionAndRotation(position, rotation);
-            if (_band != null && _kind == SandboxCarryableKind.Slingshot)
-                _band.localPosition = new Vector3(0f, BandRestHeightMeters, -BandPullMeters * charge);
+            if (_kind == SandboxCarryableKind.Trophy)
+            {
+                _visualRoot.SetPositionAndRotation(
+                    holder.PresentationFrame.TransformPoint(new Vector3(0f, 0.86f, 0.62f)),
+                    holder.PresentationFrame.rotation);
+                return;
+            }
+
+            // Caillou ou autre objet en main : dans le poing droit, bras levé.
+            holder.GetSlingshotGrip(out var handPosition, out var handRotation);
+            _visualRoot.SetPositionAndRotation(
+                handPosition + handRotation * Vector3.forward * 0.06f,
+                handRotation);
         }
 
-        private static void HandPose(
-            SandboxPlayerGameplay holder,
-            out Vector3 position,
-            out Quaternion rotation)
+        private static Vector3 PouchLocal(float charge, float snap) =>
+            PouchRestLocal +
+            new Vector3(
+                0f,
+                -BandPullDropMeters * charge,
+                -BandPullMeters * charge + SnapOvershootMeters * snap);
+
+        /// <summary>
+        /// Place la poche et tend les deux élastiques entre les pointes et la poche :
+        /// un cylindre unité fait 2 m de haut, donc demi-longueur en échelle Y.
+        /// </summary>
+        private void LayoutSlingshot(float charge, float snap)
         {
-            var forward = holder.transform.forward;
-            rotation = Quaternion.LookRotation(forward, Vector3.up);
-            var socket = holder.HandSocket;
-            position = (socket != null ? socket.position : holder.transform.position + Vector3.up * 0.86f) +
-                       forward * HandForwardOffsetMeters;
+            if (_pouch == null)
+                return;
+            var pouchLocal = PouchLocal(charge, snap);
+            _pouch.localPosition = pouchLocal;
+            _pouch.localRotation = Quaternion.Euler(-55f * charge, 0f, 0f);
+            StretchBand(_bandLeft, TipLeftLocal, pouchLocal + new Vector3(-0.045f, 0f, 0f));
+            StretchBand(_bandRight, TipRightLocal, pouchLocal + new Vector3(0.045f, 0f, 0f));
+        }
+
+        private static void StretchBand(Transform band, Vector3 from, Vector3 to)
+        {
+            if (band == null)
+                return;
+            var delta = to - from;
+            var length = delta.magnitude;
+            band.localPosition = (from + to) * 0.5f;
+            band.localRotation = length > 0.0001f
+                ? Quaternion.FromToRotation(Vector3.up, delta / length)
+                : Quaternion.identity;
+            var thickness = Mathf.Lerp(0.016f, 0.010f, Mathf.InverseLerp(0.06f, 0.34f, length));
+            band.localScale = new Vector3(thickness, length * 0.5f, thickness);
         }
 
         /// <summary>Porteur résolu localement, serveur ou client, d'après l'identifiant répliqué.</summary>
@@ -579,26 +670,12 @@ namespace NotThatWay.Game.Sandbox
                 DropFromServer(null, Vector3.zero);
                 return;
             }
-            Vector3 position;
+            // Le corps réseau suit le porteur grossièrement (réseau, distances) ;
+            // le visuel, lui, est posé à chaque image dans LateUpdate.
             var rotation = Quaternion.LookRotation(holder.transform.forward, Vector3.up);
-            var handSocket = holder.HandSocket;
-            if (_kind == SandboxCarryableKind.Slingshot && handSocket != null)
-            {
-                // Dans la main droite, fourche vers le haut, élastique vers le joueur.
-                position = handSocket.position + holder.transform.forward * 0.08f;
-            }
-            else if (_inventorySlot == AmmoSlot)
-            {
-                position = holder.transform.position + Vector3.up * 0.5f;
-            }
-            else
-            {
-                var side = (_inventorySlot - 1) * 0.16f;
-                position = holder.transform.position +
-                           Vector3.up * 0.86f +
-                           holder.transform.forward * 0.62f +
-                           holder.transform.right * side;
-            }
+            var position = _inventorySlot < 0
+                ? holder.transform.position + Vector3.up * 0.5f
+                : holder.transform.position + Vector3.up * 0.86f + holder.transform.forward * 0.5f;
             if (_body != null)
             {
                 _body.position = position;

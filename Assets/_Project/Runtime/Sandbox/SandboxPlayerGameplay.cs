@@ -45,7 +45,7 @@ namespace NotThatWay.Game.Sandbox
         private SandboxPlayerModel _model;
         private SandboxInventoryModel _inventory;
         private SandboxSlingshotModel _slingshot;
-        private Transform _handSocket;
+        private Transform _presentationFrame;
         private int _observedAmmo;
         private uint _chargeStartTick;
         private uint _observedChargeStartTick;
@@ -84,8 +84,26 @@ namespace NotThatWay.Game.Sandbox
         /// <summary>Cailloux gardés comme munitions du lance-pierre, hors des trois cases.</summary>
         public int AmmoCount => IsServerStarted ? _ammoObjectIds.Count : _observedAmmo;
         public bool HasSlingshotInHand => ActiveKind == SandboxCarryableKind.Slingshot;
-        /// <summary>Main droite du personnage, résolue dans le visuel importé ; null si absente.</summary>
-        public Transform HandSocket => _handSocket;
+        /// <summary>
+        /// Point de prise du lance-pierre dans le repère graphique du personnage :
+        /// devant l'épaule droite, à portée du bras (0,51 m) et hors de la boule du
+        /// corps, dans le champ de la caméra subjective. Le bras y est amené par
+        /// <c>M1SlingshotArmPose</c> et l'objet s'y pose : les deux partagent cette
+        /// seule formule, donc jamais de retard d'une image entre la main et l'arme.
+        /// </summary>
+        public static readonly Vector3 SlingshotGripLocal = new(0.40f, 0.95f, 0.45f);
+        public const float SlingshotGripYawDegrees = -14f;
+
+        /// <summary>Racine graphique (lissée par FishNet) ou, à défaut, la racine réseau.</summary>
+        public Transform PresentationFrame =>
+            _presentationFrame != null ? _presentationFrame : transform;
+
+        public void GetSlingshotGrip(out Vector3 position, out Quaternion rotation)
+        {
+            var frame = PresentationFrame;
+            position = frame.TransformPoint(SlingshotGripLocal);
+            rotation = frame.rotation * Quaternion.Euler(0f, SlingshotGripYawDegrees, 0f);
+        }
 
         /// <summary>
         /// Charge du lance-pierre vue d'ici, en ‰ : exacte chez l'hôte, estimée
@@ -175,7 +193,8 @@ namespace NotThatWay.Game.Sandbox
             _motor = GetComponent<PredictedPlayerMotor>();
             _animator = GetComponentInChildren<Animator>(true);
             _slingshot = SandboxSlingshotModel.FromConfig(_config);
-            _handSocket = FindHandSocket(transform);
+            var appearance = GetComponent<M1PlayerAppearance>();
+            _presentationFrame = appearance != null ? appearance.Body : null;
             _observedHealth = _config.MaximumHealth;
             _observedEnergy = _config.MaximumEnergy;
             _observedLifeState = SandboxLifeState.Alive;
@@ -457,22 +476,6 @@ namespace NotThatWay.Game.Sandbox
                 $"power={powerPermille} ammo={_ammoObjectIds.Count}.",
                 this);
             return true;
-        }
-
-        private static Transform FindHandSocket(Transform root)
-        {
-            Transform fallback = null;
-            foreach (var child in root.GetComponentsInChildren<Transform>(true))
-            {
-                var name = child.name.ToLowerInvariant();
-                var isRight = name.EndsWith(".r") || name.EndsWith("_r") || name.Contains("_r_") ||
-                              name.Contains("right");
-                if ((name.Contains("hand") || name.Contains("fist")) && isRight)
-                    return child;
-                if (fallback == null && (name.Contains("hand") || name.Contains("fist")))
-                    fallback = child;
-            }
-            return fallback;
         }
 
         public bool TryConsumePushEnergy(uint commandTick)

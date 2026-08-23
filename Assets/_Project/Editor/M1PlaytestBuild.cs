@@ -465,6 +465,10 @@ namespace NotThatWay.Game.Editor
                 root.AddComponent<SandboxPlayerGameplay>();
                 root.AddComponent<SandboxPlayerAnimationBridge>();
                 root.AddComponent<M1PlayerActions>();
+                var armPose = root.AddComponent<M1SlingshotArmPose>();
+                var serializedArmPose = new SerializedObject(armPose);
+                SetObject(serializedArmPose, "_body", presentation.transform);
+                serializedArmPose.ApplyModifiedPropertiesWithoutUndo();
 
                 var appearance = root.AddComponent<M1PlayerAppearance>();
                 var serializedAppearance = new SerializedObject(appearance);
@@ -644,49 +648,74 @@ namespace NotThatWay.Game.Editor
                 visualRoot.transform.SetParent(root.transform, false);
                 if (kind == SandboxCarryableKind.Rock)
                 {
+                    // Un caillou qu'on tient dans une main : ~40 cm, pas un ballon.
+                    // Le collider suit la silhouette (ce qu'on voit est ce qui arrête).
                     var sphere = root.AddComponent<SphereCollider>();
-                    sphere.radius = 0.33f;
+                    sphere.radius = 0.21f;
                     collider = sphere;
-                    var visual = CreateCarryableVisualPrimitive(
-                        PrimitiveType.Sphere,
-                        "Rock",
-                        visualRoot.transform,
-                        material);
-                    visual.transform.localScale = new Vector3(0.66f, 0.55f, 0.62f);
-                    visual.transform.localRotation = Quaternion.Euler(13f, 28f, -9f);
+                    // Un galet, pas une bille : quatre volumes aplatis qui se
+                    // chevauchent, un dessus plus clair et un dessous plus sombre.
+                    // La teinte et l'orientation varient par instance au runtime.
+                    var darker = CreateLitMaterial("SandboxRockShade", new Color(0.26f, 0.24f, 0.23f), 0.06f, false);
+                    var lighter = CreateLitMaterial("SandboxRockTop", new Color(0.44f, 0.41f, 0.37f), 0.10f, false);
+                    var core = CreateCarryableVisualPrimitive(PrimitiveType.Sphere, "Rock", visualRoot.transform, material);
+                    core.transform.localScale = new Vector3(0.42f, 0.27f, 0.36f);
+                    core.transform.localRotation = Quaternion.Euler(8f, 24f, -9f);
+                    var shoulder = CreateCarryableVisualPrimitive(PrimitiveType.Sphere, "RockShoulder", visualRoot.transform, darker);
+                    shoulder.transform.localPosition = new Vector3(0.11f, -0.04f, -0.07f);
+                    shoulder.transform.localScale = new Vector3(0.30f, 0.20f, 0.28f);
+                    shoulder.transform.localRotation = Quaternion.Euler(-14f, 40f, 12f);
+                    var crest = CreateCarryableVisualPrimitive(PrimitiveType.Sphere, "RockCrest", visualRoot.transform, lighter);
+                    crest.transform.localPosition = new Vector3(-0.07f, 0.07f, 0.05f);
+                    crest.transform.localScale = new Vector3(0.26f, 0.15f, 0.24f);
+                    crest.transform.localRotation = Quaternion.Euler(20f, -30f, 6f);
+                    var chip = CreateCarryableVisualPrimitive(PrimitiveType.Sphere, "RockChip", visualRoot.transform, darker);
+                    chip.transform.localPosition = new Vector3(-0.13f, -0.06f, -0.09f);
+                    chip.transform.localScale = new Vector3(0.17f, 0.11f, 0.15f);
+                    chip.transform.localRotation = Quaternion.Euler(-6f, 70f, -18f);
                 }
                 else if (kind == SandboxCarryableKind.Slingshot)
                 {
-                    // Un Y de bois : manche, deux branches écartées et l'élastique
-                    // tendu entre leurs pointes. Lisible de loin, ramassable au sol.
+                    // Un Y de bois poli tenu par le manche : fourche en capsules,
+                    // ligatures sombres aux pointes, poche de cuir suspendue à deux
+                    // élastiques. Les élastiques et la poche sont animés au runtime
+                    // par SandboxCarryable (tension, claquement) : leurs noms sont
+                    // un contrat de présentation, jamais une règle.
                     var box = root.AddComponent<BoxCollider>();
-                    box.size = new Vector3(0.46f, 0.62f, 0.16f);
+                    box.center = new Vector3(0f, 0.10f, 0f);
+                    box.size = new Vector3(0.40f, 0.50f, 0.14f);
                     collider = box;
-                    var handle = CreateCarryableVisualPrimitive(
-                        PrimitiveType.Cylinder,
-                        "Handle",
-                        visualRoot.transform,
-                        material);
-                    handle.transform.localPosition = new Vector3(0f, -0.17f, 0f);
-                    handle.transform.localScale = new Vector3(0.09f, 0.14f, 0.09f);
+                    var wrap = CreateLitMaterial("SandboxSlingshotWrap", new Color(0.16f, 0.12f, 0.09f), 0.20f, false);
+                    var leather = CreateLitMaterial("SandboxSlingshotPouch", new Color(0.38f, 0.23f, 0.13f), 0.30f, false);
+                    var rubber = CreateLitMaterial("SandboxSlingshotBand", new Color(0.13f, 0.12f, 0.11f), 0.08f, false);
+
+                    var handle = CreateCarryableVisualPrimitive(PrimitiveType.Capsule, "Handle", visualRoot.transform, material);
+                    handle.transform.localPosition = new Vector3(0f, -0.10f, 0f);
+                    handle.transform.localScale = new Vector3(0.075f, 0.12f, 0.075f);
+                    var grip = CreateCarryableVisualPrimitive(PrimitiveType.Cylinder, "Grip", visualRoot.transform, wrap);
+                    grip.transform.localPosition = new Vector3(0f, -0.13f, 0f);
+                    grip.transform.localScale = new Vector3(0.082f, 0.055f, 0.082f);
                     foreach (var sign in new[] { -1f, 1f })
                     {
-                        var branch = CreateCarryableVisualPrimitive(
-                            PrimitiveType.Cylinder,
-                            sign < 0f ? "BranchLeft" : "BranchRight",
-                            visualRoot.transform,
-                            material);
-                        branch.transform.localPosition = new Vector3(sign * 0.11f, 0.09f, 0f);
-                        branch.transform.localRotation = Quaternion.Euler(0f, 0f, -sign * 32f);
-                        branch.transform.localScale = new Vector3(0.07f, 0.17f, 0.07f);
+                        var side = sign < 0f ? "Left" : "Right";
+                        var branch = CreateCarryableVisualPrimitive(PrimitiveType.Capsule, "Branch" + side, visualRoot.transform, material);
+                        branch.transform.localPosition = new Vector3(sign * 0.085f, 0.15f, 0f);
+                        branch.transform.localRotation = Quaternion.Euler(0f, 0f, -sign * 30f);
+                        branch.transform.localScale = new Vector3(0.06f, 0.19f, 0.06f);
+                        var tip = CreateCarryableVisualPrimitive(PrimitiveType.Cylinder, "Tip" + side, visualRoot.transform, wrap);
+                        tip.transform.localPosition = new Vector3(sign * 0.165f, 0.30f, 0f);
+                        tip.transform.localRotation = Quaternion.Euler(0f, 0f, -sign * 30f);
+                        tip.transform.localScale = new Vector3(0.068f, 0.02f, 0.068f);
+                        var band = CreateCarryableVisualPrimitive(PrimitiveType.Cylinder, "Band" + side, visualRoot.transform, rubber);
+                        band.transform.localScale = new Vector3(0.016f, 0.1f, 0.016f);
                     }
-                    var band = CreateCarryableVisualPrimitive(
-                        PrimitiveType.Cube,
-                        "Band",
-                        visualRoot.transform,
-                        CreateLitMaterial("SandboxSlingshotBand", new Color(0.16f, 0.15f, 0.14f), 0.05f, false));
-                    band.transform.localPosition = new Vector3(0f, 0.24f, 0f);
-                    band.transform.localScale = new Vector3(0.42f, 0.025f, 0.035f);
+                    // La poche est une capsule couchée : un cuir arrondi, pas une boîte.
+                    var pouch = new GameObject("Pouch") { layer = GameplayLayers.VisualOnly };
+                    pouch.transform.SetParent(visualRoot.transform, false);
+                    pouch.transform.localPosition = new Vector3(0f, 0.30f, -0.03f);
+                    var pouchShell = CreateCarryableVisualPrimitive(PrimitiveType.Capsule, "PouchLeather", pouch.transform, leather);
+                    pouchShell.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+                    pouchShell.transform.localScale = new Vector3(0.062f, 0.055f, 0.040f);
                 }
                 else
                 {
