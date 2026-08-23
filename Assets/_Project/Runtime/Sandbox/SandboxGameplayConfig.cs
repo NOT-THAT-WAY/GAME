@@ -35,7 +35,9 @@ namespace NotThatWay.Game.Sandbox
             uint knockoutDurationTicks,
             int recoveryHealth,
             uint recoveryProtectionTicks,
-            int trophyMovementPermille)
+            int trophyMovementPermille,
+            int slingshotDamage,
+            int slingshotEnergyCost)
         {
             TickRate = tickRate;
             MaximumHealth = maximumHealth;
@@ -60,6 +62,8 @@ namespace NotThatWay.Game.Sandbox
             RecoveryHealth = recoveryHealth;
             RecoveryProtectionTicks = recoveryProtectionTicks;
             TrophyMovementPermille = trophyMovementPermille;
+            SlingshotDamage = slingshotDamage;
+            SlingshotEnergyCost = slingshotEnergyCost;
             Validate();
         }
 
@@ -88,6 +92,15 @@ namespace NotThatWay.Game.Sandbox
         public int TrophyMovementPermille { get; }
 
         /// <summary>
+        /// Lance-pierre ramassable : chaque tir consomme un caillou de l'inventaire
+        /// — on le recharge en ramassant des cailloux — et frappe plus fort qu'un
+        /// lancer à la main. La vitesse du projectile reste une constante de
+        /// l'objet réseau ; ici seulement dégâts et énergie.
+        /// </summary>
+        public int SlingshotDamage { get; }
+        public int SlingshotEnergyCost { get; }
+
+        /// <summary>
         /// Baseline acceptée pour le sandbox à 60 Hz : valeurs publiques 0–100,
         /// saut et déplacement restant dans PlayerSimulationConfig.
         /// </summary>
@@ -114,7 +127,9 @@ namespace NotThatWay.Game.Sandbox
             240u,
             40,
             60u,
-            750);
+            750,
+            45,
+            14);
 
         public void Validate()
         {
@@ -149,6 +164,14 @@ namespace NotThatWay.Game.Sandbox
                 1,
                 PermilleScale,
                 nameof(TrophyMovementPermille));
+            EnsureRange(SlingshotDamage, 1, MaximumHealth, nameof(SlingshotDamage));
+            if (SlingshotDamage <= RockDamage)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(SlingshotDamage),
+                    "Le lance-pierre doit blesser plus qu'un caillou lancé à la main.");
+            }
+            EnsureRange(SlingshotEnergyCost, 1, MaximumEnergy, nameof(SlingshotEnergyCost));
         }
 
         public bool Equals(SandboxGameplayConfig other) =>
@@ -174,7 +197,9 @@ namespace NotThatWay.Game.Sandbox
             KnockoutDurationTicks == other.KnockoutDurationTicks &&
             RecoveryHealth == other.RecoveryHealth &&
             RecoveryProtectionTicks == other.RecoveryProtectionTicks &&
-            TrophyMovementPermille == other.TrophyMovementPermille;
+            TrophyMovementPermille == other.TrophyMovementPermille &&
+            SlingshotDamage == other.SlingshotDamage &&
+            SlingshotEnergyCost == other.SlingshotEnergyCost;
 
         public override bool Equals(object value) =>
             value is SandboxGameplayConfig other && Equals(other);
@@ -205,6 +230,8 @@ namespace NotThatWay.Game.Sandbox
             hash.Add(RecoveryHealth);
             hash.Add(RecoveryProtectionTicks);
             hash.Add(TrophyMovementPermille);
+            hash.Add(SlingshotDamage);
+            hash.Add(SlingshotEnergyCost);
             return hash.ToHashCode();
         }
 

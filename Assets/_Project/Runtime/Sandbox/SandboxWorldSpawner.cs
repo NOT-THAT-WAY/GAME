@@ -6,13 +6,15 @@ using UnityEngine;
 
 namespace NotThatWay.Game.Sandbox
 {
-    /// <summary>Fait apparaître le lot fixe de cailloux et l'unique trophée du sandbox.</summary>
+    /// <summary>Fait apparaître le lot fixe de cailloux, les lance-pierres et l'unique trophée du sandbox.</summary>
     [DisallowMultipleComponent]
     public sealed class SandboxWorldSpawner : MonoBehaviour
     {
         [SerializeField] private NetworkObject _rockPrefab;
         [SerializeField] private NetworkObject _trophyPrefab;
+        [SerializeField] private NetworkObject _slingshotPrefab;
         [SerializeField] private Vector3[] _rockSpawnPositions = System.Array.Empty<Vector3>();
+        [SerializeField] private Vector3[] _slingshotSpawnPositions = System.Array.Empty<Vector3>();
         [SerializeField] private Vector3 _trophySpawnPosition;
 
         private readonly List<NetworkObject> _spawned = new();
@@ -46,17 +48,20 @@ namespace NotThatWay.Game.Sandbox
             }
             if (state.ConnectionState != LocalConnectionState.Started || _spawned.Count != 0)
                 return;
-            if (_rockPrefab == null || _trophyPrefab == null)
+            if (_rockPrefab == null || _trophyPrefab == null || _slingshotPrefab == null)
             {
-                Debug.LogError("[GAME-SANDBOX] Prefabs de caillou/trophée absents.", this);
+                Debug.LogError("[GAME-SANDBOX] Prefabs de caillou/trophée/lance-pierre absents.", this);
                 return;
             }
 
             for (var index = 0; index < _rockSpawnPositions.Length; index++)
                 Spawn(_rockPrefab, _rockSpawnPositions[index], $"rock-{index}");
+            for (var index = 0; index < _slingshotSpawnPositions.Length; index++)
+                Spawn(_slingshotPrefab, _slingshotSpawnPositions[index], $"slingshot-{index}");
             Spawn(_trophyPrefab, _trophySpawnPosition, "trophy");
             Debug.Log(
-                $"[GAME-SANDBOX] objects_ready rocks={_rockSpawnPositions.Length} trophy=1.",
+                $"[GAME-SANDBOX] objects_ready rocks={_rockSpawnPositions.Length} " +
+                $"slingshots={_slingshotSpawnPositions.Length} trophy=1.",
                 this);
         }
 

@@ -19,6 +19,12 @@ namespace NotThatWay.Game.Sandbox
     {
         private const float ThrowSpeedMetersPerSecond = 11f;
         private const float ThrowLiftMetersPerSecond = 2.4f;
+        // Tir au lance-pierre : tendu et rapide, presque sans cloche. Baseline de banc.
+        private const float SlingshotSpeedMetersPerSecond = 24f;
+        private const float SlingshotLiftMetersPerSecond = 0.6f;
+        private const float RockKnockbackMetersPerSecond = 5.5f;
+        private const float TrophyKnockbackMetersPerSecond = 3f;
+        private const float SlingshotKnockbackMetersPerSecond = 7f;
         private const float MinimumDamageSpeedMetersPerSecond = 2.5f;
         private const float SettledSpeedMetersPerSecond = 0.2f;
         private const int SettledFixedUpdatesRequired = 20;
@@ -40,6 +46,7 @@ namespace NotThatWay.Game.Sandbox
         private int _throwerObjectId = -1;
         private Vector3 _throwDirection;
         private bool _damageArmed;
+        private bool _launchedBySlingshot;
         private int _settledFixedUpdates;
 
         public SandboxCarryableKind Kind => _kind;
@@ -122,6 +129,7 @@ namespace NotThatWay.Game.Sandbox
             _throwerObjectId = -1;
             _throwDirection = Vector3.zero;
             _damageArmed = false;
+            _launchedBySlingshot = false;
             PublishState();
             Debug.Log(
                 $"[GAME-SANDBOX-ITEM] settled item={ObjectId} kind={_kind} " +
@@ -154,20 +162,39 @@ namespace NotThatWay.Game.Sandbox
                 direction = transform.forward;
             direction.Normalize();
             var config = SandboxGameplayConfig.Baseline60Hz;
-            var damage = _kind == SandboxCarryableKind.Trophy
-                ? config.TrophyDamage
-                : config.RockDamage;
-            var damageKind = _kind == SandboxCarryableKind.Trophy
-                ? SandboxDamageKind.Trophy
-                : SandboxDamageKind.Rock;
-            var knockback = direction * (_kind == SandboxCarryableKind.Trophy ? 3f : 5.5f);
-            if (!victim.ApplyDamageFromServer(damage, damageKind, knockback))
+            int damage;
+            SandboxDamageKind damageKind;
+            float knockbackSpeed;
+            switch (_kind)
+            {
+                case SandboxCarryableKind.Trophy:
+                    damage = config.TrophyDamage;
+                    damageKind = SandboxDamageKind.Trophy;
+                    knockbackSpeed = TrophyKnockbackMetersPerSecond;
+                    break;
+                case SandboxCarryableKind.Rock when _launchedBySlingshot:
+                    damage = config.SlingshotDamage;
+                    damageKind = SandboxDamageKind.SlingshotRock;
+                    knockbackSpeed = SlingshotKnockbackMetersPerSecond;
+                    break;
+                case SandboxCarryableKind.Rock:
+                    damage = config.RockDamage;
+                    damageKind = SandboxDamageKind.Rock;
+                    knockbackSpeed = RockKnockbackMetersPerSecond;
+                    break;
+                default:
+                    // Un lance-pierre n'est pas un projectile : lâché ou jeté, il ne blesse pas.
+                    _damageArmed = false;
+                    return;
+            }
+            if (!victim.ApplyDamageFromServer(damage, damageKind, direction * knockbackSpeed))
                 return;
 
             _damageArmed = false;
             Debug.Log(
                 $"[GAME-SANDBOX-ITEM] impact item={ObjectId} kind={_kind} " +
-                $"thrower={_throwerObjectId} target={victim.ObjectId} speed={speed:F2}.",
+                $"damageKind={damageKind} thrower={_throwerObjectId} " +
+                $"target={victim.ObjectId} speed={speed:F2}.",
                 this);
         }
 
@@ -186,6 +213,7 @@ namespace NotThatWay.Game.Sandbox
             _throwerObjectId = -1;
             _throwDirection = Vector3.zero;
             _damageArmed = false;
+            _launchedBySlingshot = false;
             _settledFixedUpdates = 0;
             ApplyPhaseLocally();
             FollowHolder();
@@ -203,7 +231,32 @@ namespace NotThatWay.Game.Sandbox
             ReleaseToWorld(origin, inheritedVelocity, SandboxCarryablePhase.World, -1, false);
         }
 
-        public void ThrowFromServer(SandboxPlayerGameplay thrower, Vector3 direction)
+        public void ThrowFromServer(SandboxPlayerGameplay thrower, Vector3 direction) =>
+            LaunchFromServer(
+                thrower,
+                direction,
+                ThrowSpeedMetersPerSecond,
+                ThrowLiftMetersPerSecond,
+                false);
+
+        /// <summary>
+        /// Tir depuis un lance-pierre tenu par <paramref name="shooter"/> : même
+        /// objet caillou, plus vite et armé d'un profil de dégâts plus élevé.
+        /// </summary>
+        public void FireFromSlingshotServer(SandboxPlayerGameplay shooter, Vector3 direction) =>
+            LaunchFromServer(
+                shooter,
+                direction,
+                SlingshotSpeedMetersPerSecond,
+                SlingshotLiftMetersPerSecond,
+                true);
+
+        private void LaunchFromServer(
+            SandboxPlayerGameplay thrower,
+            Vector3 direction,
+            float speed,
+            float lift,
+            bool bySlingshot)
         {
             if (!IsServerStarted || thrower == null)
                 return;
@@ -212,13 +265,14 @@ namespace NotThatWay.Game.Sandbox
                 direction = thrower.transform.forward;
             direction.Normalize();
             var origin = thrower.transform.position + Vector3.up * 0.9f + direction * 0.8f;
-            var velocity = direction * ThrowSpeedMetersPerSecond + Vector3.up * ThrowLiftMetersPerSecond;
+            var velocity = direction * speed + Vector3.up * lift;
             ReleaseToWorld(
                 origin,
                 velocity,
                 SandboxCarryablePhase.Thrown,
                 thrower.ObjectId,
                 true);
+            _launchedBySlingshot = bySlingshot;
         }
 
         public void DepositFromServer()
@@ -232,6 +286,7 @@ namespace NotThatWay.Game.Sandbox
             _throwerObjectId = -1;
             _throwDirection = Vector3.zero;
             _damageArmed = false;
+            _launchedBySlingshot = false;
             if (_body != null)
             {
                 _body.linearVelocity = Vector3.zero;
@@ -258,6 +313,7 @@ namespace NotThatWay.Game.Sandbox
             _throwerObjectId = -1;
             _throwDirection = Vector3.zero;
             _damageArmed = false;
+            _launchedBySlingshot = false;
             _settledFixedUpdates = 0;
             if (_body != null)
             {
@@ -339,6 +395,7 @@ namespace NotThatWay.Game.Sandbox
                 ? new Vector3(velocity.x, 0f, velocity.z).normalized
                 : Vector3.zero;
             _damageArmed = damageArmed;
+            _launchedBySlingshot = false;
             _settledFixedUpdates = 0;
             transform.position = position;
             if (_body != null)

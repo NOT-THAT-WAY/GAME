@@ -38,6 +38,7 @@ namespace NotThatWay.Game.Editor
         public const string GeneratedBotPrefabPath = "Assets/_GeneratedLocal/M1TrainingBot.prefab";
         public const string GeneratedRockPrefabPath = "Assets/_GeneratedLocal/SandboxRock.prefab";
         public const string GeneratedTrophyPrefabPath = "Assets/_GeneratedLocal/SandboxTrophy.prefab";
+        public const string GeneratedSlingshotPrefabPath = "Assets/_GeneratedLocal/SandboxSlingshot.prefab";
         public const string GeneratedPrefabsPath = "Assets/_GeneratedLocal/M1PlaytestPrefabs.asset";
 
         private const string GeneratedDirectory = "Assets/_GeneratedLocal";
@@ -115,6 +116,10 @@ namespace NotThatWay.Game.Editor
                 SandboxCarryableKind.Trophy,
                 GeneratedTrophyPrefabPath,
                 CreateLitMaterial("SandboxTrophy", new Color(1f, 0.58f, 0.06f), 0.48f, true));
+            var slingshotPrefab = CreateCarryablePrefab(
+                SandboxCarryableKind.Slingshot,
+                GeneratedSlingshotPrefabPath,
+                CreateLitMaterial("SandboxSlingshot", new Color(0.52f, 0.34f, 0.18f), 0.12f, false));
             var prefabCollection = LoadOrCreatePrefabCollection();
             prefabCollection.Clear();
             prefabCollection.AddObject(playerPrefab, true);
@@ -122,6 +127,7 @@ namespace NotThatWay.Game.Editor
             prefabCollection.AddObject(wallAuthorityPrefab, true);
             prefabCollection.AddObject(rockPrefab, true);
             prefabCollection.AddObject(trophyPrefab, true);
+            prefabCollection.AddObject(slingshotPrefab, true);
             EditorUtility.SetDirty(prefabCollection);
 
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
@@ -170,7 +176,7 @@ namespace NotThatWay.Game.Editor
             serializedWallSpawner.ApplyModifiedPropertiesWithoutUndo();
 
             var sandboxSpawner = networkRoot.AddComponent<SandboxWorldSpawner>();
-            ConfigureSandboxSpawner(sandboxSpawner, map, rockPrefab, trophyPrefab);
+            ConfigureSandboxSpawner(sandboxSpawner, map, rockPrefab, trophyPrefab, slingshotPrefab);
 
             ValidateSceneContract(
                 map,
@@ -180,6 +186,7 @@ namespace NotThatWay.Game.Editor
                 wallAuthorityPrefab,
                 rockPrefab,
                 trophyPrefab,
+                slingshotPrefab,
                 prefabCollection,
                 networkManager,
                 timeManager,
@@ -189,7 +196,8 @@ namespace NotThatWay.Game.Editor
                 scene,
                 playerPrefab.gameObject,
                 rockPrefab.gameObject,
-                trophyPrefab.gameObject);
+                trophyPrefab.gameObject,
+                slingshotPrefab.gameObject);
 
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene, GeneratedScenePath))
@@ -617,7 +625,12 @@ namespace NotThatWay.Game.Editor
                 serializedNetworkObject.ApplyModifiedPropertiesWithoutUndo();
 
                 var body = root.AddComponent<Rigidbody>();
-                body.mass = kind == SandboxCarryableKind.Trophy ? 2.5f : 1.3f;
+                body.mass = kind switch
+                {
+                    SandboxCarryableKind.Trophy => 2.5f,
+                    SandboxCarryableKind.Slingshot => 0.7f,
+                    _ => 1.3f
+                };
                 body.linearDamping = 0.25f;
                 body.angularDamping = 0.18f;
                 body.interpolation = RigidbodyInterpolation.Interpolate;
@@ -641,6 +654,39 @@ namespace NotThatWay.Game.Editor
                         material);
                     visual.transform.localScale = new Vector3(0.66f, 0.55f, 0.62f);
                     visual.transform.localRotation = Quaternion.Euler(13f, 28f, -9f);
+                }
+                else if (kind == SandboxCarryableKind.Slingshot)
+                {
+                    // Un Y de bois : manche, deux branches écartées et l'élastique
+                    // tendu entre leurs pointes. Lisible de loin, ramassable au sol.
+                    var box = root.AddComponent<BoxCollider>();
+                    box.size = new Vector3(0.46f, 0.62f, 0.16f);
+                    collider = box;
+                    var handle = CreateCarryableVisualPrimitive(
+                        PrimitiveType.Cylinder,
+                        "Handle",
+                        visualRoot.transform,
+                        material);
+                    handle.transform.localPosition = new Vector3(0f, -0.17f, 0f);
+                    handle.transform.localScale = new Vector3(0.09f, 0.14f, 0.09f);
+                    foreach (var sign in new[] { -1f, 1f })
+                    {
+                        var branch = CreateCarryableVisualPrimitive(
+                            PrimitiveType.Cylinder,
+                            sign < 0f ? "BranchLeft" : "BranchRight",
+                            visualRoot.transform,
+                            material);
+                        branch.transform.localPosition = new Vector3(sign * 0.11f, 0.09f, 0f);
+                        branch.transform.localRotation = Quaternion.Euler(0f, 0f, -sign * 32f);
+                        branch.transform.localScale = new Vector3(0.07f, 0.17f, 0.07f);
+                    }
+                    var band = CreateCarryableVisualPrimitive(
+                        PrimitiveType.Cube,
+                        "Band",
+                        visualRoot.transform,
+                        CreateLitMaterial("SandboxSlingshotBand", new Color(0.16f, 0.15f, 0.14f), 0.05f, false));
+                    band.transform.localPosition = new Vector3(0f, 0.24f, 0f);
+                    band.transform.localScale = new Vector3(0.42f, 0.025f, 0.035f);
                 }
                 else
                 {
@@ -796,7 +842,8 @@ namespace NotThatWay.Game.Editor
             SandboxWorldSpawner spawner,
             TopologyRuntimeMap map,
             NetworkObject rockPrefab,
-            NetworkObject trophyPrefab)
+            NetworkObject trophyPrefab,
+            NetworkObject slingshotPrefab)
         {
             var rockCells = new[]
             {
@@ -814,10 +861,27 @@ namespace NotThatWay.Game.Editor
                                        Vector3.up * 0.38f;
             }
 
+            // Deux lance-pierres, loin des apparitions et de part et d'autre du
+            // pivot : les prendre oblige à traverser, les recharger à ramasser.
+            var slingshotCells = new[]
+            {
+                new TopologyGridCell(0, 0),
+                new TopologyGridCell(5, 5)
+            };
+            var slingshotPositions = new Vector3[slingshotCells.Length];
+            for (var index = 0; index < slingshotCells.Length; index++)
+            {
+                slingshotPositions[index] =
+                    TopologyGeometry.CellCenterMm(map, slingshotCells[index]).Meters +
+                    Vector3.up * 0.36f;
+            }
+
             var serialized = new SerializedObject(spawner);
             SetObject(serialized, "_rockPrefab", rockPrefab);
             SetObject(serialized, "_trophyPrefab", trophyPrefab);
+            SetObject(serialized, "_slingshotPrefab", slingshotPrefab);
             SetVector3Array(serialized, "_rockSpawnPositions", rockPositions);
+            SetVector3Array(serialized, "_slingshotSpawnPositions", slingshotPositions);
             SetVector3(
                 serialized,
                 "_trophySpawnPosition",
@@ -1426,6 +1490,7 @@ namespace NotThatWay.Game.Editor
             NetworkObject wallAuthorityPrefab,
             NetworkObject rockPrefab,
             NetworkObject trophyPrefab,
+            NetworkObject slingshotPrefab,
             DefaultPrefabObjects prefabCollection,
             NetworkManager networkManager,
             TimeManager timeManager,
@@ -1496,7 +1561,7 @@ namespace NotThatWay.Game.Editor
             {
                 throw new InvalidOperationException("Prefab d'autorité murale M1 invalide.");
             }
-            foreach (var carryable in new[] { rockPrefab, trophyPrefab })
+            foreach (var carryable in new[] { rockPrefab, trophyPrefab, slingshotPrefab })
             {
                 if (carryable == null || carryable.EnablePrediction ||
                     carryable.GetComponent<SandboxCarryable>() == null ||

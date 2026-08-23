@@ -67,6 +67,9 @@ namespace NotThatWay.Game.Sandbox
             IsServerStarted ? _inventory.ActiveSlot : _observedActiveSlot;
         public bool IsAlive => ObservedLifeState == SandboxLifeState.Alive;
         public bool HasTrophy => IsServerStarted ? _inventory.HasTrophy : ObservedHasTrophy();
+        public bool HasRock => IsServerStarted
+            ? _inventory.HasKind(SandboxCarryableKind.Rock)
+            : ObservedHasKind(SandboxCarryableKind.Rock);
         public SandboxCarryableKind ActiveKind => IsServerStarted
             ? _inventory.ActiveEntry?.Kind ?? SandboxCarryableKind.None
             : ObservedKindAt(_observedActiveSlot);
@@ -81,9 +84,14 @@ namespace NotThatWay.Game.Sandbox
         public bool CanPunch =>
             IsAlive && !HasTrophy && ActiveKind == SandboxCarryableKind.None &&
             ObservedEnergy >= _config.PunchEnergyCost;
+        // Le lance-pierre en main ne se lance pas : il tire. Il se lâche avec Drop.
         public bool CanThrow =>
             IsAlive && ActiveKind != SandboxCarryableKind.None &&
+            ActiveKind != SandboxCarryableKind.Slingshot &&
             ObservedEnergy >= _config.ThrowEnergyCost;
+        public bool CanFireSlingshot =>
+            IsAlive && ActiveKind == SandboxCarryableKind.Slingshot && HasRock &&
+            ObservedEnergy >= _config.SlingshotEnergyCost;
 
         private void Awake()
         {
@@ -216,6 +224,43 @@ namespace NotThatWay.Game.Sandbox
             carryable.ThrowFromServer(this, direction);
             RefreshHeldPresentations();
             PublishSnapshot(false);
+            return true;
+        }
+
+        /// <summary>
+        /// Tir serveur : lance-pierre actif, un caillou quelque part dans
+        /// l'inventaire et l'énergie du tir. Le caillou consommé part comme
+        /// projectile armé du profil lance-pierre ; le lance-pierre reste en main.
+        /// </summary>
+        public bool TryFireSlingshot(PlayerCommand command, Vector3 direction)
+        {
+            if (!IsServerStarted || !IsAlive)
+                return false;
+            if (!EnsureAdvanced(command))
+                return false;
+            if (ActiveKind != SandboxCarryableKind.Slingshot)
+                return false;
+            if (!_inventory.TryFindFirstOfKind(SandboxCarryableKind.Rock, out var ammo))
+            {
+                Debug.Log(
+                    $"[GAME-SANDBOX-ITEM] slingshot_empty player={ObjectId}.",
+                    this);
+                return false;
+            }
+            if (!SandboxCarryable.TryFindServer(ammo.ObjectId, out var rock) ||
+                !_model.TrySpendSlingshotShot() ||
+                !_inventory.TryRemoveObject(ammo.ObjectId, out _))
+            {
+                return false;
+            }
+
+            rock.FireFromSlingshotServer(this, direction);
+            RefreshHeldPresentations();
+            PublishSnapshot(false);
+            Debug.Log(
+                $"[GAME-SANDBOX-ITEM] slingshot_fire player={ObjectId} rock={ammo.ObjectId} " +
+                $"remainingRocks={(HasRock ? "yes" : "no")}.",
+                this);
             return true;
         }
 
@@ -493,11 +538,13 @@ namespace NotThatWay.Game.Sandbox
                 ? _observedSlots[slot]
                 : SandboxCarryableKind.None;
 
-        private bool ObservedHasTrophy()
+        private bool ObservedHasTrophy() => ObservedHasKind(SandboxCarryableKind.Trophy);
+
+        private bool ObservedHasKind(SandboxCarryableKind kind)
         {
             for (var index = 0; index < _observedSlots.Length; index++)
             {
-                if (_observedSlots[index] == SandboxCarryableKind.Trophy)
+                if (_observedSlots[index] == kind)
                     return true;
             }
             return false;

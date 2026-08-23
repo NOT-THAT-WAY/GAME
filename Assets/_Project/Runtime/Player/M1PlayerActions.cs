@@ -159,7 +159,7 @@ namespace NotThatWay.Game
                 {
                     PlayPunchAnimation();
                 }
-                else if (_sandboxGameplay.CanThrow)
+                else if (_sandboxGameplay.CanThrow || _sandboxGameplay.CanFireSlingshot)
                 {
                     PlayThrowAnimation();
                 }
@@ -198,6 +198,16 @@ namespace NotThatWay.Game
 
             var direction = transform.forward;
             direction.y = 0f;
+            if (_sandboxGameplay != null &&
+                _sandboxGameplay.ActiveKind == SandboxCarryableKind.Slingshot)
+            {
+                if (!_sandboxGameplay.TryFireSlingshot(command, direction))
+                    return;
+                _lastPunchTick = serverTick;
+                _hasPunched = true;
+                PlayThrowObserversRpc();
+                return;
+            }
             if (_sandboxGameplay != null &&
                 _sandboxGameplay.ActiveKind != SandboxCarryableKind.None)
             {

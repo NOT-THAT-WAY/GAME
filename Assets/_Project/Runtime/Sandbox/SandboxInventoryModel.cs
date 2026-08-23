@@ -6,7 +6,8 @@ namespace NotThatWay.Game.Sandbox
     {
         None = 0,
         Rock = 1,
-        Trophy = 2
+        Trophy = 2,
+        Slingshot = 3
     }
 
     public enum SandboxCarryablePhase : byte
@@ -65,6 +66,23 @@ namespace NotThatWay.Game.Sandbox
         }
 
         public SandboxInventoryEntry? ActiveEntry => _slots[_activeSlot];
+
+        public bool HasKind(SandboxCarryableKind kind) => TryFindFirstOfKind(kind, out _);
+
+        /// <summary>Première case, par ordre de case, qui contient un objet du genre demandé.</summary>
+        public bool TryFindFirstOfKind(SandboxCarryableKind kind, out SandboxInventoryEntry entry)
+        {
+            for (var index = 0; index < Capacity; index++)
+            {
+                var value = _slots[index];
+                if (!value.HasValue || value.Value.Kind != kind)
+                    continue;
+                entry = value.Value;
+                return true;
+            }
+            entry = default;
+            return false;
+        }
 
         public SandboxInventoryEntry? EntryAt(int slot)
         {
