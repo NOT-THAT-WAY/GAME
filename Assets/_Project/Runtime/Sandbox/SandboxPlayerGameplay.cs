@@ -86,13 +86,16 @@ namespace NotThatWay.Game.Sandbox
         public bool HasSlingshotInHand => ActiveKind == SandboxCarryableKind.Slingshot;
         /// <summary>
         /// Point de prise du lance-pierre dans le repère graphique du personnage :
-        /// devant l'épaule droite, à portée du bras (0,51 m) et hors de la boule du
-        /// corps, dans le champ de la caméra subjective. Le bras y est amené par
-        /// <c>M1SlingshotArmPose</c> et l'objet s'y pose : les deux partagent cette
-        /// seule formule, donc jamais de retard d'une image entre la main et l'arme.
+        /// devant et sous l'épaule droite (0,92 m), à portée du bras (0,51 m) et
+        /// hors de la boule du corps. Le poing est ainsi vers l'avant-bas, la
+        /// fourche (+0,42 m) à hauteur des yeux et la poche tendue vient à la joue.
+        /// Le bras y est amené par <c>M1SlingshotArmPose</c> et l'objet s'y pose :
+        /// une seule formule, donc jamais de retard d'une image entre main et arme.
         /// </summary>
-        public static readonly Vector3 SlingshotGripLocal = new(0.40f, 0.95f, 0.45f);
-        public const float SlingshotGripYawDegrees = -14f;
+        public static readonly Vector3 SlingshotGripLocal = new(0.30f, 0.78f, 0.43f);
+        // Fourche tournée vers l'intérieur : la poche tendue vient vers la joue, dans
+        // le champ de la caméra subjective au lieu d'en sortir par la droite.
+        public const float SlingshotGripYawDegrees = 28f;
 
         /// <summary>Racine graphique (lissée par FishNet) ou, à défaut, la racine réseau.</summary>
         public Transform PresentationFrame =>

@@ -34,8 +34,8 @@ namespace NotThatWay.Game.Sandbox
         private static readonly Vector3 PouchRestLocal = new(0f, 0.30f, -0.03f);
         private static readonly Vector3 TipLeftLocal = new(-0.165f, 0.30f, 0f);
         private static readonly Vector3 TipRightLocal = new(0.165f, 0.30f, 0f);
-        private const float BandPullMeters = 0.26f;
-        private const float BandPullDropMeters = 0.03f;
+        private const float BandPullMeters = 0.20f;
+        private const float BandPullDropMeters = 0.08f;
         private const float SnapOvershootMeters = 0.05f;
         private const float SnapSeconds = 0.12f;
         private const float PouchRockScale = 0.28f;
@@ -77,6 +77,8 @@ namespace NotThatWay.Game.Sandbox
         private bool _launchedBySlingshot;
         private int _launchDamage;
         private int _settledFixedUpdates;
+        private Collider _ignoredThrowerCollider;
+        private int _ignoreThrowerFixedUpdates;
 
         public SandboxCarryableKind Kind => _kind;
         public SandboxCarryablePhase Phase => _phase;
@@ -320,6 +322,9 @@ namespace NotThatWay.Game.Sandbox
             if (!IsServerStarted)
                 return;
 
+            if (_ignoreThrowerFixedUpdates > 0 && --_ignoreThrowerFixedUpdates == 0)
+                RestoreThrowerCollision();
+
             if (_phase == SandboxCarryablePhase.Held)
             {
                 FollowHolder();
@@ -415,6 +420,7 @@ namespace NotThatWay.Game.Sandbox
         {
             if (!IsServerStarted || holder == null)
                 return;
+            RestoreThrowerCollision();
             var changed = _phase != SandboxCarryablePhase.Held ||
                           _holderObjectId != holder.ObjectId ||
                           _inventorySlot != slot ||
@@ -467,6 +473,11 @@ namespace NotThatWay.Game.Sandbox
             var config = SandboxGameplayConfig.Baseline60Hz;
             var damage = Mathf.RoundToInt(
                 Mathf.Lerp(config.RockDamage, config.SlingshotDamage, power));
+            // La pierre part de la poche tendue, là où on la voit : c'est le même
+            // objet, sans téléportation vers la poitrine. Elle naît contre la
+            // capsule du tireur, dont on ignore la collision le temps de sortir.
+            shooter.GetSlingshotGrip(out var gripPosition, out var gripRotation);
+            var origin = gripPosition + gripRotation * (Vector3.up * HandleInFistMeters + PouchLocal(power, 0f));
             LaunchFromServer(
                 shooter,
                 aimDirection,
@@ -476,8 +487,28 @@ namespace NotThatWay.Game.Sandbox
                     power),
                 SlingshotLiftMetersPerSecond,
                 true,
-                keepPitch: true);
+                keepPitch: true,
+                origin: origin);
             _launchDamage = damage;
+            IgnoreThrowerBriefly(shooter);
+        }
+
+        private void IgnoreThrowerBriefly(SandboxPlayerGameplay thrower)
+        {
+            var throwerCollider = thrower != null ? thrower.GetComponent<Collider>() : null;
+            if (throwerCollider == null || _gameplayCollider == null)
+                return;
+            Physics.IgnoreCollision(_gameplayCollider, throwerCollider, true);
+            _ignoredThrowerCollider = throwerCollider;
+            _ignoreThrowerFixedUpdates = 15;
+        }
+
+        private void RestoreThrowerCollision()
+        {
+            if (_ignoredThrowerCollider != null && _gameplayCollider != null)
+                Physics.IgnoreCollision(_gameplayCollider, _ignoredThrowerCollider, false);
+            _ignoredThrowerCollider = null;
+            _ignoreThrowerFixedUpdates = 0;
         }
 
         /// <summary>Garde le caillou en réserve : invisible, sans collider, suit le porteur.</summary>
@@ -494,7 +525,8 @@ namespace NotThatWay.Game.Sandbox
             float speed,
             float lift,
             bool bySlingshot,
-            bool keepPitch = false)
+            bool keepPitch = false,
+            Vector3? origin = null)
         {
             if (!IsServerStarted || thrower == null)
                 return;
@@ -508,10 +540,10 @@ namespace NotThatWay.Game.Sandbox
             if (!keepPitch || direction.sqrMagnitude < 0.0001f)
                 direction = flat;
             direction.Normalize();
-            var origin = thrower.transform.position + Vector3.up * 0.9f + flat * 0.8f;
+            var launchOrigin = origin ?? thrower.transform.position + Vector3.up * 0.9f + flat * 0.8f;
             var velocity = direction * speed + Vector3.up * lift;
             ReleaseToWorld(
-                origin,
+                launchOrigin,
                 velocity,
                 SandboxCarryablePhase.Thrown,
                 thrower.ObjectId,
