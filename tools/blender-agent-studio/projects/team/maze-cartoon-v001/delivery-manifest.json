@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "project_id": "maze-cartoon-v001",
+  "files": [
+    {
+      "path": "local_work/maze-cartoon-v001/maze_cartoon.blend",
+      "role": "master_blend",
+      "status": "validated",
+      "bytes": 405904,
+      "sha256": "d0e78e7f15ee38b57f1bf9b01e534597d5b3b8b8869e52699b3a8b18d259518c"
+    },
+    {
+      "path": "projects/team/maze-cartoon-v001/evidence/performance.json",
+      "role": "performance_report",
+      "status": "validated",
+      "bytes": 773,
+      "sha256": "e6b8063ff3e189336d649f82f92a3f3dfc859eb5b82703d501db473c4bbc03dc"
+    },
+    {
+      "path": "projects/team/maze-cartoon-v001/evidence/unity-import.log",
+      "role": "target_engine_import",
+      "status": "validated",
+      "bytes": 582,
+      "sha256": "26ce4e4c2a7f1e078dfbacd7b2ea6f6453605ed2357a2f18027a7e111fb085d8"
+    },
+    {
+      "path": "projects/team/maze-cartoon-v001/evidence/unity-transforms.log",
+      "role": "transform_audit",
+      "status": "validated",
+      "bytes": 444,
+      "sha256": "33d95e57a12d340bf3e1d0ec4b2007089dd01f0edfd42044eb2661ab3beb08db"
+    },
+    {
+      "path": "local_work/maze-cartoon-v001/Maze16x16.fbx",
+      "role": "export",
+      "status": "validated",
+      "bytes": 334364,
+      "sha256": "971671ca25767ed6d9a4112e70d39e09a96ad8172d83eee7cc884dacba8784c2"
+    },
+    {
+      "path": "local_work/maze-cartoon-v001/MazeGrid16x16.json",
+      "role": "topology",
+      "status": "validated",
+      "bytes": 8969,
+      "sha256": "9907a5d039ad2b4d0355b842c46a0ecceb2b975fac8696dbd00eff5bceb150bd"
+    }
+  ],
+  "target_validation": {
+    "status": "passed",
+    "target": "Unity 6000.3.20f1 URP, Windows x86_64 IL2CPP et macOS Apple Silicon",
+    "evidence": [
+      "projects/team/maze-cartoon-v001/evidence/unity-import.log",
+      "projects/team/maze-cartoon-v001/evidence/unity-transforms.log",
+      "projects/team/maze-cartoon-v001/evidence/performance.json"
+    ],
+    "scope": "macOS Apple Silicon uniquement. Windows x86_64 IL2CPP declare dans la cible du projet mais NON verifie a cette livraison."
+  },
+  "rights_review": {
+    "status": "passed",
+    "notes": "Geometrie, palette et topologie generees par tools/maze-3d/build_maze_cartoon.py. Aucune texture, aucun asset tiers, aucune reprise d'asset Epic/Fortnite. Le style cartoon est une direction artistique, non un contenu repris."
+  },
+  "runtime_copies": {
+    "note": "copies livrees hors racine studio, versionnees dans GAME",
+    "fbx": "Assets/_Project/Maze/Maze16x16.fbx sha256 971671ca25767ed6d9a4112e70d39e09a96ad8172d83eee7cc884dacba8784c2",
+    "json": "Assets/_Project/Maze/MazeGrid16x16.json sha256 9907a5d039ad2b4d0355b842c46a0ecceb2b975fac8696dbd00eff5bceb150bd",
+    "generator": "tools/maze-3d/build_maze_cartoon.py"
+  }
+}
