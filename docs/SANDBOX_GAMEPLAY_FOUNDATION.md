@@ -16,7 +16,7 @@ caillou physique et une première boucle de trophée.
 | Interagir / ramasser | `E` | bouton Ouest |
 | Pousser le mur | maintenir `E` au contact | maintenir bouton Ouest |
 | Frapper / lancer l'objet actif | clic gauche ou `F` | gâchette droite |
-| Prendre le lance-pierre (poche ou sol) / en main : charger un caillou à portée | clic droit (tap) | gâchette gauche (tap) |
+| Prendre le lance-pierre (poche ou sol) / en main : charger un caillou à portée (2,2 m) | clic droit (tap) ou `E` | gâchette gauche (tap) ou bouton Ouest |
 | Lâcher le lance-pierre | clic droit maintenu 0,5 s | gâchette gauche maintenue |
 | Tirer au lance-pierre | clic gauche ou `F` **maintenu** puis relâché : plus long, plus fort et plus loin | gâchette droite maintenue puis relâchée |
 | Lâcher l'objet actif | `A` | bouton Est |
@@ -66,8 +66,11 @@ actions ont un impact immédiatement lisible, mais les chiffres restent des hypo
    dans la main ; en main, un clic droit près d'un caillou le met en réserve (5 au plus) ; clic
    gauche **maintenu** charge le tir et le relâcher fait partir le dernier caillou chargé — une
    pichenette à 350 ‰, un trait tendu à pleine charge, 14 d'énergie à chaque tir. Sans caillou en
-   réserve, rien ne part : recharger, c'est ramasser. Clic droit maintenu une demi-seconde lâche
-   le lance-pierre. Le tap, le maintien et la charge sont comptés en ticks par un modèle pur
+   réserve, rien ne part : recharger, c'est ramasser (`E` ou clic droit, 2,2 m). Clic droit maintenu
+   une demi-seconde lâche le lance-pierre. Présentation : l'objet tenu se pose dans la main à chaque
+   image sur tous les postes (pas via la physique), le caillou du dessus attend dans la poche de
+   l'élastique et l'élastique se tend avec la charge — le tick de début de charge est répliqué pour
+   que chacun voie le tir se bander. Le tap, le maintien et la charge sont comptés en ticks par un modèle pur
    (`SandboxSlingshotModel`) ; l'hôte applique ou refuse chaque action.
 6. Un caillou ou trophée lancé rebondit, ne peut blesser qu'une fois par lancer, se stabilise, puis
    redevient ramassable.

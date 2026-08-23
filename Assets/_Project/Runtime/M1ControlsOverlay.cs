@@ -39,7 +39,7 @@ namespace NotThatWay.Game
             { "Contre-pousser", "passer sur l'autre face et maintenir E" },
             { "Frapper / lancer", "F ou clic gauche · RT" },
             { "Lance-pierre", "clic droit · LT : le prendre (poche ou sol)" },
-            { "", "en main, clic droit près d'un caillou le charge (5 max)" },
+            { "", "en main, E ou clic droit près d'un caillou le charge (5 max)" },
             { "", "MAINTENIR clic gauche charge le tir, relâcher tire" },
             { "", "MAINTENIR clic droit le lâche" },
             { "Lâcher l'objet", "A · B/Rond" },

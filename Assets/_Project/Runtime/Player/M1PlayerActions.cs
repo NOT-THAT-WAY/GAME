@@ -489,7 +489,7 @@ namespace NotThatWay.Game
             GUILayout.BeginArea(area, GUI.skin.box);
             GUILayout.Label(
                 $"Lance-pierre · cailloux {_sandboxGameplay.AmmoCount}/{config.SlingshotAmmoCapacity}" +
-                (_sandboxGameplay.AmmoCount == 0 ? " — clic droit près d'un caillou" : ""));
+                (_sandboxGameplay.AmmoCount == 0 ? " — E ou clic droit près d'un caillou" : ""));
             var bar = GUILayoutUtility.GetRect(width - 16f, 10f);
             GUI.Box(bar, GUIContent.none);
             if (charge > 0f)

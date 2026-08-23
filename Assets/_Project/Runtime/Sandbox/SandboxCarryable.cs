@@ -24,8 +24,16 @@ namespace NotThatWay.Game.Sandbox
         private const float SlingshotMinimumSpeedMetersPerSecond = 12f;
         private const float SlingshotMaximumSpeedMetersPerSecond = 30f;
         private const float SlingshotLiftMetersPerSecond = 0.3f;
-        /// <summary>Case d'inventaire fictive des cailloux gardés comme munitions.</summary>
+        /// <summary>Case d'inventaire fictive des cailloux gardés comme munitions, invisibles.</summary>
         public const int AmmoSlot = -2;
+        /// <summary>Le caillou du dessus de la réserve, visible dans la poche de l'élastique.</summary>
+        public const int PouchSlot = -3;
+        // Pose en main et géométrie de l'élastique, partagées par le lance-pierre
+        // (sa bande) et le caillou de poche (posé dans cette bande).
+        private const float HandForwardOffsetMeters = 0.08f;
+        private const float BandRestHeightMeters = 0.24f;
+        private const float BandPullMeters = 0.22f;
+        private const float PouchRockScale = 0.38f;
         private const float RockKnockbackMetersPerSecond = 5.5f;
         private const float TrophyKnockbackMetersPerSecond = 3f;
         private const float SlingshotKnockbackMetersPerSecond = 7f;
@@ -41,6 +49,11 @@ namespace NotThatWay.Game.Sandbox
         [SerializeField] private Rigidbody _body;
 
         private Renderer[] _renderers = Array.Empty<Renderer>();
+        private Transform _band;
+        private SandboxPlayerGameplay _cachedHolder;
+        private int _cachedHolderObjectId = -1;
+        private bool _visualDetached;
+        private Vector3 _visualRestScale = Vector3.one;
         private Vector3 _spawnPosition;
         private Quaternion _spawnRotation;
         private SandboxCarryablePhase _phase = SandboxCarryablePhase.World;
@@ -67,6 +80,110 @@ namespace NotThatWay.Game.Sandbox
             _gameplayCollider ??= GetComponent<Collider>();
             var root = _visualRoot != null ? _visualRoot : transform;
             _renderers = root.GetComponentsInChildren<Renderer>(true);
+            _band = root.Find("Band");
+            _visualRestScale = root.localScale;
+        }
+
+        /// <summary>
+        /// Présentation de l'objet tenu, sur tous les postes et après l'animation :
+        /// le visuel se pose dans la main (ou devant, pour le trophée) à chaque
+        /// image, sans attendre la physique ni le NetworkTransform. Le corps
+        /// réseau, lui, continue de suivre grossièrement côté serveur. Aucune
+        /// règle ici : collision et ramassage se jouent sur le corps.
+        /// </summary>
+        private void LateUpdate()
+        {
+            if (_visualRoot == null)
+                return;
+            var visibleHeld = _phase == SandboxCarryablePhase.Held && _activeInHand;
+            if (!visibleHeld || !TryResolveHolder(out var holder))
+            {
+                if (_visualDetached)
+                {
+                    _visualRoot.localPosition = Vector3.zero;
+                    _visualRoot.localRotation = Quaternion.identity;
+                    _visualRoot.localScale = _visualRestScale;
+                    _visualDetached = false;
+                    if (_band != null)
+                        _band.localPosition = new Vector3(0f, BandRestHeightMeters, 0f);
+                }
+                return;
+            }
+
+            _visualDetached = true;
+            var charge = holder.ObservedChargePermille / (float)SandboxSlingshotModel.PermilleScale;
+            if (_inventorySlot == PouchSlot)
+            {
+                // Caillou dans la poche de l'élastique, tiré vers l'arrière avec la charge.
+                HandPose(holder, out var handPosition, out var handRotation);
+                _visualRoot.SetPositionAndRotation(
+                    handPosition + handRotation * new Vector3(
+                        0f,
+                        BandRestHeightMeters,
+                        -BandPullMeters * charge - 0.03f),
+                    handRotation);
+                _visualRoot.localScale = _visualRestScale * PouchRockScale;
+                return;
+            }
+
+            _visualRoot.localScale = _visualRestScale;
+            if (_kind == SandboxCarryableKind.Trophy || holder.HandSocket == null)
+            {
+                var side = (_inventorySlot - 1) * 0.16f;
+                _visualRoot.SetPositionAndRotation(
+                    holder.transform.position +
+                    Vector3.up * 0.86f +
+                    holder.transform.forward * 0.62f +
+                    holder.transform.right * side,
+                    Quaternion.LookRotation(holder.transform.forward, Vector3.up));
+                return;
+            }
+
+            HandPose(holder, out var position, out var rotation);
+            _visualRoot.SetPositionAndRotation(position, rotation);
+            if (_band != null && _kind == SandboxCarryableKind.Slingshot)
+                _band.localPosition = new Vector3(0f, BandRestHeightMeters, -BandPullMeters * charge);
+        }
+
+        private static void HandPose(
+            SandboxPlayerGameplay holder,
+            out Vector3 position,
+            out Quaternion rotation)
+        {
+            var forward = holder.transform.forward;
+            rotation = Quaternion.LookRotation(forward, Vector3.up);
+            var socket = holder.HandSocket;
+            position = (socket != null ? socket.position : holder.transform.position + Vector3.up * 0.86f) +
+                       forward * HandForwardOffsetMeters;
+        }
+
+        /// <summary>Porteur résolu localement, serveur ou client, d'après l'identifiant répliqué.</summary>
+        private bool TryResolveHolder(out SandboxPlayerGameplay holder)
+        {
+            if (_holderObjectId < 0)
+            {
+                holder = null;
+                return false;
+            }
+            if (_cachedHolder != null && _cachedHolderObjectId == _holderObjectId)
+            {
+                holder = _cachedHolder;
+                return true;
+            }
+
+            var manager = NetworkManager;
+            NetworkObject networkObject = null;
+            if (manager != null)
+            {
+                var spawned = manager.IsServerStarted
+                    ? manager.ServerManager.Objects.Spawned
+                    : manager.ClientManager.Objects.Spawned;
+                spawned.TryGetValue(_holderObjectId, out networkObject);
+            }
+            holder = networkObject != null ? networkObject.GetComponent<SandboxPlayerGameplay>() : null;
+            _cachedHolder = holder;
+            _cachedHolderObjectId = holder != null ? _holderObjectId : -1;
+            return holder != null;
         }
 
         public override void OnStartServer()
@@ -272,9 +389,13 @@ namespace NotThatWay.Game.Sandbox
             _launchDamage = damage;
         }
 
-        /// <summary>Garde le caillou en poche comme munition : invisible, sans collider, suit le porteur.</summary>
+        /// <summary>Garde le caillou en réserve : invisible, sans collider, suit le porteur.</summary>
         public void StoreAsAmmoFromServer(SandboxPlayerGameplay holder) =>
             HoldFromServer(holder, AmmoSlot, false);
+
+        /// <summary>Le caillou du dessus de la réserve, montré dans la poche de l'élastique.</summary>
+        public void ShowInPouchFromServer(SandboxPlayerGameplay holder) =>
+            HoldFromServer(holder, PouchSlot, true);
 
         private void LaunchFromServer(
             SandboxPlayerGameplay thrower,
