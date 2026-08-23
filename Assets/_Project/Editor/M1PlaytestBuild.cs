@@ -460,9 +460,12 @@ namespace NotThatWay.Game.Editor
                 root.AddComponent<SandboxPlayerGameplay>();
                 root.AddComponent<SandboxPlayerAnimationBridge>();
                 root.AddComponent<M1PlayerActions>();
+                // La posture n'incline que le corps importé : le CameraPivot, lui
+                // aussi enfant de Presentation, doit rester d'aplomb pour que la vue
+                // et donc l'avant à l'écran ne basculent jamais avec le plongeon.
                 var divePresentation = root.AddComponent<M1DivePresentation>();
                 var serializedDive = new SerializedObject(divePresentation);
-                SetObject(serializedDive, "_body", presentation.transform);
+                SetObject(serializedDive, "_body", body.transform);
                 serializedDive.ApplyModifiedPropertiesWithoutUndo();
 
                 var appearance = root.AddComponent<M1PlayerAppearance>();
