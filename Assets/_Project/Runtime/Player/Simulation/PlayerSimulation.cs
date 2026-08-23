@@ -134,6 +134,7 @@ namespace NotThatWay.Game.PlayerSimulation
         private const PlayerCommandButtons KnownButtons =
             PlayerCommandButtons.SprintHeld |
             PlayerCommandButtons.InteractHeld |
+            PlayerCommandButtons.JumpHeld |
             PlayerCommandButtons.DivePressed |
             PlayerCommandButtons.JumpPressed |
             PlayerCommandButtons.InteractPressed |
@@ -289,8 +290,13 @@ namespace NotThatWay.Game.PlayerSimulation
             }
 
             var knockbackVelocity = previous.KnockbackVelocity + forces.HorizontalVelocityDelta;
+            // Saut tenu : garder Espace enfoncé vaut un appui à chaque tick, donc
+            // on ressaute dès que le sol revient, sprint ou pas. Le front seul
+            // reste suffisant pour un saut unique.
             var jumpAllowed = _config.JumpEnabled && !diveLocksControl;
-            var jumpPressed = jumpAllowed && command.Has(PlayerCommandButtons.JumpPressed);
+            var jumpPressed = jumpAllowed &&
+                              (command.Has(PlayerCommandButtons.JumpPressed) ||
+                               command.Has(PlayerCommandButtons.JumpHeld));
             var coyoteTicks = jumpAllowed ? previous.CoyoteTicksRemaining : 0u;
             var jumpBufferTicks = jumpAllowed ? previous.JumpBufferTicksRemaining : 0u;
             var canUseGroundWindow = previous.IsGrounded || coyoteTicks > 0u;

@@ -696,6 +696,37 @@ namespace NotThatWay.Game.Tests.EditMode
         }
 
         [Test]
+        public void JumpHeld_HopsAgainOnLandingWhileSprintingWithoutANewPress()
+        {
+            var world = new GroundPlaneWorld();
+            var config = Config(jumpEnabled: true, jumpSpeed: 2d, coyoteTicks: 0u, bufferTicks: 0u);
+            var simulation = new PlayerStateMachine(config, InitialState(grounded: true));
+            const PlayerCommandButtons sprintJump =
+                PlayerCommandButtons.SprintHeld | PlayerCommandButtons.JumpHeld;
+
+            // Tick 1 : décollage sans front, seulement le bouton tenu, en sprint.
+            var first = simulation.AdvanceTick(Command(1u, moveY: 127, buttons: sprintJump), world);
+            Assert.That(first.Events.HasFlag(PlayerTickEvents.Jumped), Is.True);
+            Assert.That(first.Current.IsGrounded, Is.False);
+
+            // En l'air, tenir ne fait rien de plus ; +1 puis 0 puis -1 m/s : sol au tick 3.
+            var air = simulation.AdvanceTick(Command(2u, moveY: 127, buttons: sprintJump), world);
+            Assert.That(air.Events.HasFlag(PlayerTickEvents.Jumped), Is.False);
+            var landing = simulation.AdvanceTick(Command(3u, moveY: 127, buttons: sprintJump), world);
+            Assert.That(landing.Events.HasFlag(PlayerTickEvents.Landed), Is.True);
+
+            // Tick 4 : toujours tenu, toujours en sprint → on repart sans nouvel appui.
+            var hop = simulation.AdvanceTick(Command(4u, moveY: 127, buttons: sprintJump), world);
+            Assert.That(hop.Events.HasFlag(PlayerTickEvents.Jumped), Is.True);
+            Assert.That(hop.Current.HorizontalVelocity.Z, Is.GreaterThan(4d), "Le sprint n'est pas coupé par le saut.");
+
+            // Relâché au sol : plus aucun saut.
+            simulation.AdvanceTick(Command(5u, moveY: 127), world);
+            var rest = simulation.AdvanceTick(Command(6u, moveY: 127, buttons: PlayerCommandButtons.SprintHeld), world);
+            Assert.That(rest.Events.HasFlag(PlayerTickEvents.Jumped), Is.False);
+        }
+
+        [Test]
         public void Dive_RequiresASprintTowardTheFront()
         {
             var world = new GroundPlaneWorld();

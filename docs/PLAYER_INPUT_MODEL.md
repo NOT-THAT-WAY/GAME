@@ -22,7 +22,8 @@ et `PlayerCommand` est l'intention compacte destinée à un tick.
 
 - Mouvement : deux `sbyte` dans `[-127, 127]`, diagonale normalisée, `-128` jamais produit.
 - Regard : deux `short` en centièmes de degré, arrondi explicite et saturation sans wrap.
-- Continus : `SprintHeld`, `InteractHeld`.
+- Continus : `SprintHeld`, `InteractHeld`, `JumpHeld` — Espace tenu ressaute à chaque retour au sol,
+  sprint compris ; le front `JumpPressed` suffit toujours pour un saut unique.
 - Fronts mémorisés jusqu'au tick : `JumpPressed`, `DivePressed`, `InteractPressed`, `PunchPressed`.
 - `Dive` : `Ctrl gauche` ou `C` au clavier, `LB/L1` à la manette — bindings de banc, pas un feel
   validé.

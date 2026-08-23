@@ -221,6 +221,8 @@ namespace NotThatWay.Game.Input
                 held |= PlayerCommandButtons.SprintHeld;
             if (_interact.IsPressed())
                 held |= PlayerCommandButtons.InteractHeld;
+            if (_jump.IsPressed())
+                held |= PlayerCommandButtons.JumpHeld;
             return held;
         }
 

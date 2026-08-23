@@ -53,6 +53,8 @@ Avec `CoyoteTicks = N`, quitter le sol publie `N` opportunités sur les ticks fu
 `JumpBufferTicks = N`, un appui en l’air reste disponible pendant `N` ticks futurs ; s’il touche le
 sol durant cette fenêtre, il est conservé sur le tick d’atterrissage et consommé au tick suivant.
 Lorsque le saut est désactivé, l’appui est ignoré et les deux compteurs restent à zéro.
+`JumpHeld` (bouton tenu) vaut un appui à chaque tick : garder Espace enfoncé enchaîne les sauts dès
+que le sol revient, pendant un sprint comme à l'arrêt, sans dépendre d'un front par tick.
 
 ## Plongeon avant
 
