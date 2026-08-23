@@ -44,8 +44,8 @@ namespace NotThatWay.Game
         [SerializeField] private uint _jumpBufferTicks = 9u;
         [SerializeField, Min(0f)] private float _knockbackDecay = 10f;
         [SerializeField] private bool _diveEnabled;
-        [SerializeField, Min(0f)] private float _diveForwardSpeed = 8.5f;
-        [SerializeField, Min(0f)] private float _diveUpwardSpeed = 3.2f;
+        [SerializeField, Min(0f)] private float _diveForwardSpeed = 13f;
+        [SerializeField, Min(0f)] private float _diveUpwardSpeed = 4.2f;
         [SerializeField] private uint _diveRecoveryTicks = 24u;
         [SerializeField] private uint _diveCooldownTicks = 90u;
         [SerializeField, Range(0, PlayerState.PhysicalPitchLimitCentidegrees)]

@@ -235,8 +235,9 @@ namespace NotThatWay.Game.PlayerSimulation
                 0d,
                 localZ * yawCosine - localX * yawSine);
 
-            // Plongeon : le vol coupe le contrôle horizontal, le relevé au sol
-            // l'immobilise, et l'attente empêche d'enchaîner. Tout est en ticks.
+            // Plongeon : seulement lancé depuis un sprint vers l'avant. Le vol coupe
+            // le contrôle horizontal, le relevé au sol l'immobilise, et l'attente
+            // empêche d'enchaîner. Tout est en ticks.
             var diveEnabled = _config.DiveEnabled;
             var wasDiving = diveEnabled && previous.IsDiving;
             var diveRecoveryTicks = diveEnabled ? previous.DiveRecoveryTicksRemaining : 0u;
@@ -244,6 +245,8 @@ namespace NotThatWay.Game.PlayerSimulation
             var isRecovering = diveRecoveryTicks > 0u;
             var dived = diveEnabled &&
                         command.Has(PlayerCommandButtons.DivePressed) &&
+                        command.Has(PlayerCommandButtons.SprintHeld) &&
+                        localZ > 0d &&
                         previous.IsGrounded &&
                         !wasDiving &&
                         !isRecovering &&

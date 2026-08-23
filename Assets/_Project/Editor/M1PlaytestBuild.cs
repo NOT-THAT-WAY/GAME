@@ -460,6 +460,10 @@ namespace NotThatWay.Game.Editor
                 root.AddComponent<SandboxPlayerGameplay>();
                 root.AddComponent<SandboxPlayerAnimationBridge>();
                 root.AddComponent<M1PlayerActions>();
+                var divePresentation = root.AddComponent<M1DivePresentation>();
+                var serializedDive = new SerializedObject(divePresentation);
+                SetObject(serializedDive, "_body", presentation.transform);
+                serializedDive.ApplyModifiedPropertiesWithoutUndo();
 
                 var appearance = root.AddComponent<M1PlayerAppearance>();
                 var serializedAppearance = new SerializedObject(appearance);
@@ -792,12 +796,13 @@ namespace NotThatWay.Game.Editor
             SetLong(serialized, "_jumpBufferTicks", 9L);
             SetFloat(serialized, "_knockbackDecay", 10f);
             SetInt(serialized, "_maximumPitchCentidegrees", 8500);
-            // Plongeon avant (baseline de banc, DEC-01 ouvert) : 8,5 m/s vers
-            // l'avant et 3,2 m/s vers le haut, soit ~3 m de bond à gravité -22 ;
+            // Plongeon avant (baseline de banc, DEC-01 ouvert), seulement depuis un
+            // sprint : 13 m/s vers l'avant et 4,2 m/s vers le haut, soit ~5 m de
+            // bond à gravité -22 (premier essai à 8,5/3,2 jugé trop court) ;
             // relevé 0,4 s, puis 1,5 s avant le suivant.
             SetBool(serialized, "_diveEnabled", true);
-            SetFloat(serialized, "_diveForwardSpeed", 8.5f);
-            SetFloat(serialized, "_diveUpwardSpeed", 3.2f);
+            SetFloat(serialized, "_diveForwardSpeed", 13f);
+            SetFloat(serialized, "_diveUpwardSpeed", 4.2f);
             SetLong(serialized, "_diveRecoveryTicks", 24L);
             SetLong(serialized, "_diveCooldownTicks", 90L);
             serialized.ApplyModifiedPropertiesWithoutUndo();

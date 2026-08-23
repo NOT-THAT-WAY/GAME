@@ -56,8 +56,9 @@ Lorsque le saut est désactivé, l’appui est ignoré et les deux compteurs res
 
 ## Plongeon avant
 
-`DivePressed` au sol, hors relevé et hors attente, lance le joueur dans la direction de son regard à
-`DiveForwardSpeed` avec `DiveUpwardSpeed` vers le haut, sans passer par l'accélération. Pendant le
+`DivePressed` au sol, **sprint tenu et axe avant poussé**, hors relevé et hors attente, lance le
+joueur dans la direction de son regard à `DiveForwardSpeed` avec `DiveUpwardSpeed` vers le haut,
+sans passer par l'accélération. Marcher ne suffit pas : le plongeon prolonge une course. Pendant le
 vol, les axes et le saut sont ignorés ; la vitesse horizontale est conservée telle quelle et le
 knockback continue de s'ajouter. Au premier contact avec le sol, la vitesse horizontale est annulée
 — le joueur s'étale — et `DiveRecoveryTicks` ticks de relevé immobilisent le déplacement et le saut.
@@ -65,8 +66,10 @@ knockback continue de s'ajouter. Au premier contact avec le sol, la vitesse hori
 le lancement. Désactivé, l'appui est ignoré et les trois champs restent à zéro ; un état qui les
 porte est alors refusé à la restauration, comme les fenêtres de saut.
 
-Les valeurs du banc M1 (8,5 m/s, 3,2 m/s, 24 et 90 ticks à 60 Hz) sont une baseline : le plongeon
-relève de la même décision DEC-01 que le saut et n'est pas plus acquis que lui.
+Les valeurs du banc M1 (13 m/s, 4,2 m/s, 24 et 90 ticks à 60 Hz — un premier essai à 8,5/3,2 a
+été jugé trop court) sont une baseline : le plongeon relève de la même décision DEC-01 que le saut
+et n'est pas plus acquis que lui. La posture (corps basculé en vol, à plat puis redressé pendant le
+relevé) est un composant cosmétique, `M1DivePresentation`, sans effet sur la capsule.
 
 ## Collision et réseau
 

@@ -7,6 +7,8 @@ namespace NotThatWay.Game.Tests.EditMode
     public sealed class PlayerSimulationTests
     {
         private const double Tolerance = 0.000000001d;
+        private const PlayerCommandButtons SprintDive =
+            PlayerCommandButtons.DivePressed | PlayerCommandButtons.SprintHeld;
 
         [Test]
         public void ConfigAndState_RejectInvalidOrImplicitValues()
@@ -578,14 +580,18 @@ namespace NotThatWay.Game.Tests.EditMode
                 InitialState(yaw: 9000, grounded: true, verticalVelocity: -2d));
 
             var launch = simulation.AdvanceTick(
-                Command(1u, moveX: -127, buttons: PlayerCommandButtons.DivePressed),
+                Command(
+                    1u,
+                    moveX: -90,
+                    moveY: 90,
+                    buttons: PlayerCommandButtons.DivePressed | PlayerCommandButtons.SprintHeld),
                 world);
 
             Assert.That(launch.Events.HasFlag(PlayerTickEvents.Dived), Is.True);
             Assert.That(launch.Events.HasFlag(PlayerTickEvents.Jumped), Is.False);
             Assert.That(launch.Current.IsDiving, Is.True);
             Assert.That(launch.Current.IsGrounded, Is.False);
-            // Yaw 90° : l'avant est +X. L'entrée latérale est ignorée.
+            // Yaw 90° : l'avant est +X. La diagonale d'entrée n'infléchit pas le bond.
             Assert.That(launch.Current.HorizontalVelocity.X, Is.EqualTo(12d).Within(Tolerance));
             Assert.That(launch.Current.HorizontalVelocity.Z, Is.EqualTo(0d).Within(Tolerance));
             Assert.That(launch.Current.VerticalVelocity, Is.EqualTo(3d - 1d).Within(Tolerance));
@@ -617,7 +623,7 @@ namespace NotThatWay.Game.Tests.EditMode
 
             // Tick 1 : +0,5 m/s après gravité, y = 0,05 ; tick 2 : -0,5 m/s, y = 0 → sol.
             var launch = simulation.AdvanceTick(
-                Command(1u, buttons: PlayerCommandButtons.DivePressed),
+                Command(1u, moveY: 127, buttons: SprintDive),
                 world);
             Assert.That(launch.Current.IsDiving, Is.True);
             var landing = simulation.AdvanceTick(Command(2u, moveY: 127), world);
@@ -660,33 +666,66 @@ namespace NotThatWay.Game.Tests.EditMode
                 config,
                 InitialState(position: new PlayerVector3(0d, 5d, 0d), grounded: false));
             var rejected = airborne.AdvanceTick(
-                Command(1u, buttons: PlayerCommandButtons.DivePressed),
+                Command(1u, moveY: 127, buttons: SprintDive),
                 world);
             Assert.That(rejected.Events.HasFlag(PlayerTickEvents.Dived), Is.False);
             Assert.That(rejected.Current.IsDiving, Is.False);
 
             var frozen = new PlayerStateMachine(config, InitialState(grounded: true));
             var blocked = frozen.AdvanceTick(
-                Command(1u, buttons: PlayerCommandButtons.DivePressed),
+                Command(1u, moveY: 127, buttons: SprintDive),
                 PlayerTickForces.None,
                 new PlayerTickModifiers(0),
                 world);
             Assert.That(blocked.Events.HasFlag(PlayerTickEvents.Dived), Is.False);
 
             var chained = new PlayerStateMachine(config, InitialState(grounded: true));
-            chained.AdvanceTick(Command(1u, buttons: PlayerCommandButtons.DivePressed), world);
+            chained.AdvanceTick(Command(1u, moveY: 127, buttons: SprintDive), world);
             chained.AdvanceTick(Command(2u), world);
             Assert.That(chained.State.IsGrounded, Is.True, "Retombé avant l'essai suivant.");
             var tooSoon = chained.AdvanceTick(
-                Command(3u, buttons: PlayerCommandButtons.DivePressed),
+                Command(3u, moveY: 127, buttons: SprintDive),
                 world);
             Assert.That(tooSoon.Events.HasFlag(PlayerTickEvents.Dived), Is.False);
             Assert.That(tooSoon.Current.DiveCooldownTicksRemaining, Is.EqualTo(1u));
             chained.AdvanceTick(Command(4u), world);
             var allowed = chained.AdvanceTick(
-                Command(5u, buttons: PlayerCommandButtons.DivePressed),
+                Command(5u, moveY: 127, buttons: SprintDive),
                 world);
             Assert.That(allowed.Events.HasFlag(PlayerTickEvents.Dived), Is.True);
+        }
+
+        [Test]
+        public void Dive_RequiresASprintTowardTheFront()
+        {
+            var world = new GroundPlaneWorld();
+            var config = Config(diveEnabled: true, diveForwardSpeed: 6d, diveUpwardSpeed: 1d);
+
+            var walking = new PlayerStateMachine(config, InitialState(grounded: true));
+            var noSprint = walking.AdvanceTick(
+                Command(1u, moveY: 127, buttons: PlayerCommandButtons.DivePressed),
+                world);
+            Assert.That(noSprint.Events.HasFlag(PlayerTickEvents.Dived), Is.False,
+                "Marcher vers l'avant ne suffit pas : il faut sprinter.");
+
+            var standing = new PlayerStateMachine(config, InitialState(grounded: true));
+            var noForward = standing.AdvanceTick(
+                Command(1u, buttons: SprintDive),
+                world);
+            Assert.That(noForward.Events.HasFlag(PlayerTickEvents.Dived), Is.False,
+                "Sprint tenu sans pousser vers l'avant : pas de bond.");
+
+            var backward = new PlayerStateMachine(config, InitialState(grounded: true));
+            var reversing = backward.AdvanceTick(
+                Command(1u, moveY: -127, buttons: SprintDive),
+                world);
+            Assert.That(reversing.Events.HasFlag(PlayerTickEvents.Dived), Is.False);
+
+            var sprinting = new PlayerStateMachine(config, InitialState(grounded: true));
+            var dived = sprinting.AdvanceTick(
+                Command(1u, moveY: 127, buttons: SprintDive),
+                world);
+            Assert.That(dived.Events.HasFlag(PlayerTickEvents.Dived), Is.True);
         }
 
         [Test]
@@ -697,7 +736,7 @@ namespace NotThatWay.Game.Tests.EditMode
             var simulation = new PlayerStateMachine(config, InitialState(grounded: true));
 
             var result = simulation.AdvanceTick(
-                Command(1u, moveY: 127, buttons: PlayerCommandButtons.DivePressed),
+                Command(1u, moveY: 127, buttons: SprintDive),
                 world);
 
             Assert.That(result.Events.HasFlag(PlayerTickEvents.Dived), Is.False);
