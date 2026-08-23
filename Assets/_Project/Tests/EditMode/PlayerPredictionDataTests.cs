@@ -76,7 +76,10 @@ namespace NotThatWay.Game.Tests.EditMode
                 new PlayerVector3(-1.5d, 0d, 0.75d),
                 false,
                 2u,
-                3u);
+                3u,
+                isDiving: true,
+                diveRecoveryTicksRemaining: 0u,
+                diveCooldownTicksRemaining: 55u);
             var data = new PlayerReconcileData(state);
             data.SetTick(987u);
 
@@ -99,6 +102,9 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(restored.IsGrounded, Is.False);
             Assert.That(restored.CoyoteTicksRemaining, Is.EqualTo(2u));
             Assert.That(restored.JumpBufferTicksRemaining, Is.EqualTo(3u));
+            Assert.That(restored.IsDiving, Is.True);
+            Assert.That(restored.DiveRecoveryTicksRemaining, Is.Zero);
+            Assert.That(restored.DiveCooldownTicksRemaining, Is.EqualTo(55u));
         }
 
         [Test]

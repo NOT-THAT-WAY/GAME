@@ -8,6 +8,7 @@ namespace NotThatWay.Game.PlayerSimulation
         None = 0,
         SprintHeld = 1 << 0,
         InteractHeld = 1 << 1,
+        DivePressed = 1 << 7,
         JumpPressed = 1 << 8,
         InteractPressed = 1 << 9,
         PunchPressed = 1 << 10,
@@ -73,6 +74,7 @@ namespace NotThatWay.Game.PlayerSimulation
             PlayerCommandButtons.InteractHeld;
 
         public const PlayerCommandButtons PressedMask =
+            PlayerCommandButtons.DivePressed |
             PlayerCommandButtons.JumpPressed |
             PlayerCommandButtons.InteractPressed |
             PlayerCommandButtons.PunchPressed |

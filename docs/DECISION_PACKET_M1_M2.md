@@ -77,6 +77,11 @@ devient une donnée canonique unique, jamais une copie dans le prefab et le gén
 Recommandation : retirer le saut du banc M1 et le conserver seulement dans le smoke historique. Le
 réintroduire exige un test montrant qu’il sert le duel plutôt qu’un bouton de déblocage.
 
+Le **plongeon avant** (demande Sean, 23 août 2026 : bond en avant façon Call of Duty, contrôle
+coupé en vol, relevé au sol) est implémenté dans le même modèle et relève de la même décision : il
+partage l'état vertical prédit et pose en plus la question du relevé comme fenêtre de vulnérabilité.
+Il se désactive indépendamment du saut (`DiveEnabled`).
+
 ### Mur contre joueur
 
 | Option | Propriété | Dette créée |

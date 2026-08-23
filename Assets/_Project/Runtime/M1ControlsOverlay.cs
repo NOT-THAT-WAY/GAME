@@ -30,6 +30,7 @@ namespace NotThatWay.Game
             { "Regarder", "souris · stick droit" },
             { "Courir", "Maj · L3" },
             { "Sauter", "Espace · A/Croix" },
+            { "Plonger en avant", "Ctrl ou C · LB/L1 — au sol seulement" },
             { "Interagir / ramasser", "E · X/Carré" },
             { "Pousser le mur", "MAINTENIR E · X/Carré : il part" },
             { "", "au premier appui et s'écarte de vous" },

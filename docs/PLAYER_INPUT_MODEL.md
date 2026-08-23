@@ -6,7 +6,8 @@ et `PlayerCommand` est l'intention compacte destinée à un tick.
 
 ## Contrat de l'asset
 
-- Map `Player` : `Move`, `LookPointer`, `LookStick`, `Sprint`, `Interact`, `Punch`, `Jump`, `Pause`.
+- Map `Player` : `Move`, `LookPointer`, `LookStick`, `Sprint`, `Interact`, `Punch`, `Jump`, `Dive`,
+  `Pause`.
 - Map `UI` : `Navigate`, `Submit`, `Cancel`, `Point`, `Click`, `Scroll`.
 - Schemes `KeyboardMouse` et `Gamepad` validés au chargement et en EditMode.
 - Le pointeur produit un delta par frame ; le stick produit un taux intégré une seule fois avec la
@@ -22,7 +23,9 @@ et `PlayerCommand` est l'intention compacte destinée à un tick.
 - Mouvement : deux `sbyte` dans `[-127, 127]`, diagonale normalisée, `-128` jamais produit.
 - Regard : deux `short` en centièmes de degré, arrondi explicite et saturation sans wrap.
 - Continus : `SprintHeld`, `InteractHeld`.
-- Fronts mémorisés jusqu'au tick : `JumpPressed`, `InteractPressed`, `PunchPressed`.
+- Fronts mémorisés jusqu'au tick : `JumpPressed`, `DivePressed`, `InteractPressed`, `PunchPressed`.
+- `Dive` : `Ctrl gauche` ou `C` au clavier, `LB/L1` à la manette — bindings de banc, pas un feel
+  validé.
 - `Pause` reste une action locale et n'entre pas dans `PlayerCommand`.
 
 Un appui puis relâchement entre deux ticks est conservé. Après `Consume`, les fronts et deltas de

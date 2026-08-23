@@ -79,12 +79,14 @@ namespace NotThatWay.Game.Tests.EditMode
                 Press(keyboard.spaceKey, queueEventOnly: true);
                 Press(mouse.leftButton, queueEventOnly: true);
                 Press(keyboard.aKey, queueEventOnly: true);
+                Press(keyboard.leftCtrlKey, queueEventOnly: true);
                 Set(mouse.delta, new Vector2(10f, -5f), queueEventOnly: true);
                 InputSystem.Update();
 
                 Release(keyboard.spaceKey, queueEventOnly: true);
                 Release(mouse.leftButton, queueEventOnly: true);
                 Release(keyboard.aKey, queueEventOnly: true);
+                Release(keyboard.leftCtrlKey, queueEventOnly: true);
                 InputSystem.Update();
 
                 var command = source.ConsumeCommand(10u, 1f / 60f);
@@ -96,8 +98,10 @@ namespace NotThatWay.Game.Tests.EditMode
                 Assert.That(command.Has(PlayerCommandButtons.JumpPressed), Is.True);
                 Assert.That(command.Has(PlayerCommandButtons.PunchPressed), Is.True);
                 Assert.That(command.Has(PlayerCommandButtons.DropPressed), Is.True);
-                Assert.That(source.ConsumeCommand(11u, 1f / 60f)
-                    .Has(PlayerCommandButtons.PunchPressed), Is.False);
+                Assert.That(command.Has(PlayerCommandButtons.DivePressed), Is.True);
+                var next = source.ConsumeCommand(11u, 1f / 60f);
+                Assert.That(next.Has(PlayerCommandButtons.PunchPressed), Is.False);
+                Assert.That(next.Has(PlayerCommandButtons.DivePressed), Is.False);
             }
             finally
             {

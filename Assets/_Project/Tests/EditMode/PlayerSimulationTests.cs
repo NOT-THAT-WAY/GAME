@@ -508,7 +508,7 @@ namespace NotThatWay.Game.Tests.EditMode
                 Throws.TypeOf<ArgumentOutOfRangeException>());
             Assert.That(
                 () => simulation.AdvanceTick(
-                    Command(1u, buttons: (PlayerCommandButtons)(1 << 7)),
+                    Command(1u, buttons: (PlayerCommandButtons)(1 << 6)),
                     world),
                 Throws.TypeOf<ArgumentOutOfRangeException>());
             Assert.That(world.CallCount, Is.Zero);
@@ -561,6 +561,163 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(simulation.State, Is.EqualTo(initial));
         }
 
+        [Test]
+        public void Dive_LaunchesAlongYawAndIgnoresMovementUntilLanding()
+        {
+            // Sol plat en y = 0 : le joueur décolle tant que sa vitesse le porte.
+            var world = new GroundPlaneWorld();
+            var config = Config(
+                jumpEnabled: true,
+                diveEnabled: true,
+                diveForwardSpeed: 12d,
+                diveUpwardSpeed: 3d,
+                diveRecoveryTicks: 2u,
+                diveCooldownTicks: 10u);
+            var simulation = new PlayerStateMachine(
+                config,
+                InitialState(yaw: 9000, grounded: true, verticalVelocity: -2d));
+
+            var launch = simulation.AdvanceTick(
+                Command(1u, moveX: -127, buttons: PlayerCommandButtons.DivePressed),
+                world);
+
+            Assert.That(launch.Events.HasFlag(PlayerTickEvents.Dived), Is.True);
+            Assert.That(launch.Events.HasFlag(PlayerTickEvents.Jumped), Is.False);
+            Assert.That(launch.Current.IsDiving, Is.True);
+            Assert.That(launch.Current.IsGrounded, Is.False);
+            // Yaw 90° : l'avant est +X. L'entrée latérale est ignorée.
+            Assert.That(launch.Current.HorizontalVelocity.X, Is.EqualTo(12d).Within(Tolerance));
+            Assert.That(launch.Current.HorizontalVelocity.Z, Is.EqualTo(0d).Within(Tolerance));
+            Assert.That(launch.Current.VerticalVelocity, Is.EqualTo(3d - 1d).Within(Tolerance));
+            Assert.That(launch.Current.DiveCooldownTicksRemaining, Is.EqualTo(10u));
+            Assert.That(launch.Current.CoyoteTicksRemaining, Is.Zero);
+
+            var flight = simulation.AdvanceTick(
+                Command(2u, moveY: -127, buttons: PlayerCommandButtons.JumpPressed),
+                world);
+            Assert.That(flight.Events.HasFlag(PlayerTickEvents.Jumped), Is.False);
+            Assert.That(flight.Current.IsDiving, Is.True);
+            Assert.That(flight.Current.HorizontalVelocity.X, Is.EqualTo(12d).Within(Tolerance));
+            Assert.That(flight.Current.JumpBufferTicksRemaining, Is.Zero);
+            Assert.That(flight.Current.DiveCooldownTicksRemaining, Is.EqualTo(9u));
+        }
+
+        [Test]
+        public void Dive_LandingFlattensVelocityThenRecoveryLocksMovementAndJump()
+        {
+            var world = new GroundPlaneWorld();
+            var config = Config(
+                jumpEnabled: true,
+                diveEnabled: true,
+                diveForwardSpeed: 6d,
+                diveUpwardSpeed: 1.5d,
+                diveRecoveryTicks: 2u,
+                diveCooldownTicks: 3u);
+            var simulation = new PlayerStateMachine(config, InitialState(grounded: true));
+
+            // Tick 1 : +0,5 m/s après gravité, y = 0,05 ; tick 2 : -0,5 m/s, y = 0 → sol.
+            var launch = simulation.AdvanceTick(
+                Command(1u, buttons: PlayerCommandButtons.DivePressed),
+                world);
+            Assert.That(launch.Current.IsDiving, Is.True);
+            var landing = simulation.AdvanceTick(Command(2u, moveY: 127), world);
+
+            Assert.That(landing.Current.IsGrounded, Is.True);
+            Assert.That(landing.Events.HasFlag(PlayerTickEvents.DiveLanded), Is.True);
+            Assert.That(landing.Events.HasFlag(PlayerTickEvents.Landed), Is.True);
+            Assert.That(landing.Current.IsDiving, Is.False);
+            Assert.That(landing.Current.HorizontalVelocity, Is.EqualTo(PlayerVector3.Zero));
+            Assert.That(landing.Current.DiveRecoveryTicksRemaining, Is.EqualTo(2u));
+
+            var recovering = simulation.AdvanceTick(
+                Command(3u, moveY: 127, buttons: PlayerCommandButtons.JumpPressed),
+                world);
+            Assert.That(recovering.Events.HasFlag(PlayerTickEvents.Jumped), Is.False);
+            Assert.That(recovering.Current.HorizontalVelocity, Is.EqualTo(PlayerVector3.Zero));
+            Assert.That(recovering.Current.JumpBufferTicksRemaining, Is.Zero);
+            Assert.That(recovering.Current.DiveRecoveryTicksRemaining, Is.EqualTo(1u));
+
+            var lastLocked = simulation.AdvanceTick(Command(4u, moveY: 127), world);
+            Assert.That(lastLocked.Current.HorizontalVelocity, Is.EqualTo(PlayerVector3.Zero));
+            Assert.That(lastLocked.Current.DiveRecoveryTicksRemaining, Is.Zero);
+
+            var free = simulation.AdvanceTick(Command(5u, moveY: 127), world);
+            Assert.That(free.Current.HorizontalVelocity.Z, Is.GreaterThan(0d));
+        }
+
+        [Test]
+        public void Dive_RequiresGroundCooldownAndMovementAllowance()
+        {
+            var world = new GroundPlaneWorld();
+            var config = Config(
+                diveEnabled: true,
+                diveForwardSpeed: 6d,
+                diveUpwardSpeed: 1d,
+                diveRecoveryTicks: 0u,
+                diveCooldownTicks: 3u);
+
+            var airborne = new PlayerStateMachine(
+                config,
+                InitialState(position: new PlayerVector3(0d, 5d, 0d), grounded: false));
+            var rejected = airborne.AdvanceTick(
+                Command(1u, buttons: PlayerCommandButtons.DivePressed),
+                world);
+            Assert.That(rejected.Events.HasFlag(PlayerTickEvents.Dived), Is.False);
+            Assert.That(rejected.Current.IsDiving, Is.False);
+
+            var frozen = new PlayerStateMachine(config, InitialState(grounded: true));
+            var blocked = frozen.AdvanceTick(
+                Command(1u, buttons: PlayerCommandButtons.DivePressed),
+                PlayerTickForces.None,
+                new PlayerTickModifiers(0),
+                world);
+            Assert.That(blocked.Events.HasFlag(PlayerTickEvents.Dived), Is.False);
+
+            var chained = new PlayerStateMachine(config, InitialState(grounded: true));
+            chained.AdvanceTick(Command(1u, buttons: PlayerCommandButtons.DivePressed), world);
+            chained.AdvanceTick(Command(2u), world);
+            Assert.That(chained.State.IsGrounded, Is.True, "Retombé avant l'essai suivant.");
+            var tooSoon = chained.AdvanceTick(
+                Command(3u, buttons: PlayerCommandButtons.DivePressed),
+                world);
+            Assert.That(tooSoon.Events.HasFlag(PlayerTickEvents.Dived), Is.False);
+            Assert.That(tooSoon.Current.DiveCooldownTicksRemaining, Is.EqualTo(1u));
+            chained.AdvanceTick(Command(4u), world);
+            var allowed = chained.AdvanceTick(
+                Command(5u, buttons: PlayerCommandButtons.DivePressed),
+                world);
+            Assert.That(allowed.Events.HasFlag(PlayerTickEvents.Dived), Is.True);
+        }
+
+        [Test]
+        public void DiveDisabled_IgnoresInputAndRejectsDivePhasesInState()
+        {
+            var world = new PassThroughWorld(PlayerCollisionFlags.Below);
+            var config = Config(diveEnabled: false);
+            var simulation = new PlayerStateMachine(config, InitialState(grounded: true));
+
+            var result = simulation.AdvanceTick(
+                Command(1u, moveY: 127, buttons: PlayerCommandButtons.DivePressed),
+                world);
+
+            Assert.That(result.Events.HasFlag(PlayerTickEvents.Dived), Is.False);
+            Assert.That(result.Current.IsDiving, Is.False);
+            Assert.That(result.Current.HorizontalVelocity.Z, Is.GreaterThan(0d));
+            Assert.That(
+                () => simulation.RestoreState(InitialState(grounded: true, diveCooldownTicks: 1u)),
+                Throws.ArgumentException);
+            Assert.That(
+                () => new PlayerStateMachine(
+                    Config(diveEnabled: true, diveForwardSpeed: 0d, diveUpwardSpeed: 1d),
+                    InitialState()),
+                Throws.TypeOf<ArgumentOutOfRangeException>());
+            Assert.That(
+                () => new PlayerStateMachine(
+                    Config(diveEnabled: true, diveForwardSpeed: 5d, diveUpwardSpeed: 1d),
+                    InitialState(grounded: true, isDiving: true)),
+                Throws.ArgumentException);
+        }
+
         private static PlayerState RunTrace(int samplesPerTick)
         {
             var simulation = new PlayerStateMachine(Config(), InitialState(grounded: true));
@@ -601,7 +758,12 @@ namespace NotThatWay.Game.Tests.EditMode
             uint coyoteTicks = 2u,
             uint bufferTicks = 2u,
             double knockbackDecay = 5d,
-            int maximumPitch = 8000) =>
+            int maximumPitch = 8000,
+            bool diveEnabled = false,
+            double diveForwardSpeed = 0d,
+            double diveUpwardSpeed = 0d,
+            uint diveRecoveryTicks = 0u,
+            uint diveCooldownTicks = 0u) =>
             new(
                 tickDuration,
                 height,
@@ -619,7 +781,12 @@ namespace NotThatWay.Game.Tests.EditMode
                 coyoteTicks,
                 bufferTicks,
                 knockbackDecay,
-                maximumPitch);
+                maximumPitch,
+                diveEnabled,
+                diveForwardSpeed,
+                diveUpwardSpeed,
+                diveRecoveryTicks,
+                diveCooldownTicks);
 
         private static PlayerState InitialState(
             uint tick = 0u,
@@ -631,7 +798,10 @@ namespace NotThatWay.Game.Tests.EditMode
             PlayerVector3 knockbackVelocity = default,
             bool grounded = false,
             uint coyoteTicks = 0u,
-            uint bufferTicks = 0u) =>
+            uint bufferTicks = 0u,
+            bool isDiving = false,
+            uint diveRecoveryTicks = 0u,
+            uint diveCooldownTicks = 0u) =>
             new(
                 tick,
                 position,
@@ -642,7 +812,10 @@ namespace NotThatWay.Game.Tests.EditMode
                 knockbackVelocity,
                 grounded,
                 coyoteTicks,
-                bufferTicks);
+                bufferTicks,
+                isDiving,
+                diveRecoveryTicks,
+                diveCooldownTicks);
 
         private static PlayerCommand Command(
             uint tick,
@@ -701,6 +874,23 @@ namespace NotThatWay.Game.Tests.EditMode
                 if (CallCount >= _results.Length)
                     throw new InvalidOperationException("Fixture collision épuisée.");
                 return _results[CallCount++];
+            }
+        }
+
+        /// <summary>Sol infini en y = 0 : au sol dès qu'un déplacement y retombe à 0 ou moins.</summary>
+        private sealed class GroundPlaneWorld : IPlayerCollisionWorld
+        {
+            public PlayerCollisionResult Move(in PlayerCollisionRequest request)
+            {
+                var target = request.StartPosition + request.DesiredDisplacement;
+                if (target.Y <= 0d)
+                {
+                    return new PlayerCollisionResult(
+                        new PlayerVector3(target.X, 0d, target.Z),
+                        PlayerCollisionFlags.Below);
+                }
+
+                return new PlayerCollisionResult(target, PlayerCollisionFlags.None);
             }
         }
 

@@ -68,6 +68,9 @@ namespace NotThatWay.Game.Editor
         private const string DepositParameter = "Deposit";
         private const string CarryingParameter = "Carrying";
         private const string PushParameter = "Push";
+        private const string DiveParameter = "Dive";
+        private const string DivingParameter = "Diving";
+        private const string DiveRecoveringParameter = "DiveRecovering";
 
         // URP 17 n'expose plus de matériau par défaut hors éditeur. Chaque objet
         // rendu du banc doit donc porter un matériau explicite construit ici.
@@ -789,6 +792,14 @@ namespace NotThatWay.Game.Editor
             SetLong(serialized, "_jumpBufferTicks", 9L);
             SetFloat(serialized, "_knockbackDecay", 10f);
             SetInt(serialized, "_maximumPitchCentidegrees", 8500);
+            // Plongeon avant (baseline de banc, DEC-01 ouvert) : 8,5 m/s vers
+            // l'avant et 3,2 m/s vers le haut, soit ~3 m de bond à gravité -22 ;
+            // relevé 0,4 s, puis 1,5 s avant le suivant.
+            SetBool(serialized, "_diveEnabled", true);
+            SetFloat(serialized, "_diveForwardSpeed", 8.5f);
+            SetFloat(serialized, "_diveUpwardSpeed", 3.2f);
+            SetLong(serialized, "_diveRecoveryTicks", 24L);
+            SetLong(serialized, "_diveCooldownTicks", 90L);
             serialized.ApplyModifiedPropertiesWithoutUndo();
         }
 
@@ -1032,6 +1043,9 @@ namespace NotThatWay.Game.Editor
             controller.AddParameter(DepositParameter, AnimatorControllerParameterType.Trigger);
             controller.AddParameter(CarryingParameter, AnimatorControllerParameterType.Bool);
             controller.AddParameter(PushParameter, AnimatorControllerParameterType.Bool);
+            controller.AddParameter(DiveParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(DivingParameter, AnimatorControllerParameterType.Bool);
+            controller.AddParameter(DiveRecoveringParameter, AnimatorControllerParameterType.Bool);
 
             var stateMachine = controller.layers[0].stateMachine;
             var idle = stateMachine.AddState("Idle");
@@ -1543,7 +1557,10 @@ namespace NotThatWay.Game.Editor
                 [DropParameter] = AnimatorControllerParameterType.Trigger,
                 [DepositParameter] = AnimatorControllerParameterType.Trigger,
                 [CarryingParameter] = AnimatorControllerParameterType.Bool,
-                [PushParameter] = AnimatorControllerParameterType.Bool
+                [PushParameter] = AnimatorControllerParameterType.Bool,
+                [DiveParameter] = AnimatorControllerParameterType.Trigger,
+                [DivingParameter] = AnimatorControllerParameterType.Bool,
+                [DiveRecoveringParameter] = AnimatorControllerParameterType.Bool
             };
             var actual = new Dictionary<string, AnimatorControllerParameterType>();
             foreach (var parameter in controller.parameters)

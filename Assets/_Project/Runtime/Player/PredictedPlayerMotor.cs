@@ -43,6 +43,11 @@ namespace NotThatWay.Game
         [SerializeField] private uint _coyoteTicks = 7u;
         [SerializeField] private uint _jumpBufferTicks = 9u;
         [SerializeField, Min(0f)] private float _knockbackDecay = 10f;
+        [SerializeField] private bool _diveEnabled;
+        [SerializeField, Min(0f)] private float _diveForwardSpeed = 8.5f;
+        [SerializeField, Min(0f)] private float _diveUpwardSpeed = 3.2f;
+        [SerializeField] private uint _diveRecoveryTicks = 24u;
+        [SerializeField] private uint _diveCooldownTicks = 90u;
         [SerializeField, Range(0, PlayerState.PhysicalPitchLimitCentidegrees)]
         private int _maximumPitchCentidegrees = 8500;
 
@@ -381,7 +386,12 @@ namespace NotThatWay.Game
                 _coyoteTicks,
                 _jumpBufferTicks,
                 _knockbackDecay,
-                _maximumPitchCentidegrees);
+                _maximumPitchCentidegrees,
+                _diveEnabled,
+                _diveForwardSpeed,
+                _diveUpwardSpeed,
+                _diveRecoveryTicks,
+                _diveCooldownTicks);
         }
 
         private void EnsureTickDurationUnchanged()
