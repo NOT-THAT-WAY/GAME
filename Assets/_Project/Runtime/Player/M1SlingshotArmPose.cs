@@ -28,6 +28,7 @@ namespace NotThatWay.Game
         private Quaternion _upperArmRest;
         private Quaternion _forearmRest;
         private Quaternion _handRest;
+        private Vector3 _upperArmRestPosition;
         private float _upperLength;
         private float _foreLength;
         private float _weight;
@@ -53,6 +54,7 @@ namespace NotThatWay.Game
             _upperArmRest = _upperArm.localRotation;
             _forearmRest = _forearm.localRotation;
             _handRest = _hand.localRotation;
+            _upperArmRestPosition = _upperArm.localPosition;
             _upperLength = Vector3.Distance(_upperArm.position, _forearm.position);
             _foreLength = Vector3.Distance(_forearm.position, _hand.position);
         }
@@ -74,23 +76,36 @@ namespace NotThatWay.Game
             // repartir de la pose de repos garantit un fondu propre à l'aller
             // comme au retour.
             _upperArm.localRotation = _upperArmRest;
+            _upperArm.localPosition = _upperArmRestPosition;
             _forearm.localRotation = _forearmRest;
             _hand.localRotation = _handRest;
             var restUpper = _upperArm.rotation;
             var restFore = _forearm.rotation;
+            var restShoulder = _upperArm.position;
 
-            _gameplay.GetSlingshotGrip(out var gripPosition, out _);
-            SolveTwoBone(gripPosition);
+            _gameplay.GetPresentedSlingshotGrip(out var gripPosition, out _);
+            SolveTwoBone(gripPosition, _gameplay.UsesViewmodel);
 
+            _upperArm.position = Vector3.Lerp(restShoulder, _upperArm.position, _weight);
             _upperArm.rotation = Quaternion.Slerp(restUpper, _upperArm.rotation, _weight);
             _forearm.rotation = Quaternion.Slerp(restFore, _forearm.rotation, _weight);
         }
 
-        /// <summary>IK analytique : le coude se place sur le cercle des solutions, du côté de l'indice.</summary>
-        private void SolveTwoBone(Vector3 target)
+        /// <summary>
+        /// IK analytique : le coude se place sur le cercle des solutions, du côté de
+        /// l'indice. En modèle de vue, l'épaule — invisible en vue subjective — glisse
+        /// vers la cible si le bras est trop court : le poing atteint toujours l'arme.
+        /// </summary>
+        private void SolveTwoBone(Vector3 target, bool allowShoulderShift)
         {
-            var shoulder = _upperArm.position;
             var reach = Mathf.Max(_upperLength + _foreLength - 0.001f, 0.001f);
+            if (allowShoulderShift)
+            {
+                var overshoot = (target - _upperArm.position).magnitude - reach * 0.98f;
+                if (overshoot > 0f)
+                    _upperArm.position += (target - _upperArm.position).normalized * overshoot;
+            }
+            var shoulder = _upperArm.position;
             var toTarget = target - shoulder;
             var distance = Mathf.Clamp(toTarget.magnitude, 0.001f, reach);
             var direction = toTarget / Mathf.Max(toTarget.magnitude, 0.0001f);

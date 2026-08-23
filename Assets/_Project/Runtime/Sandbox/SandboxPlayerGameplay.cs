@@ -46,6 +46,7 @@ namespace NotThatWay.Game.Sandbox
         private SandboxInventoryModel _inventory;
         private SandboxSlingshotModel _slingshot;
         private Transform _presentationFrame;
+        private M1PlayerAppearance _appearance;
         private int _observedAmmo;
         private uint _chargeStartTick;
         private uint _observedChargeStartTick;
@@ -93,19 +94,47 @@ namespace NotThatWay.Game.Sandbox
         /// une seule formule, donc jamais de retard d'une image entre main et arme.
         /// </summary>
         public static readonly Vector3 SlingshotGripLocal = new(0.30f, 0.70f, 0.40f);
-        // Fourche tournée vers l'intérieur : la poche tendue vient vers la joue, dans
-        // le champ de la caméra subjective au lieu d'en sortir par la droite.
+        // Fourche tournée vers l'intérieur : la poche tendue vient vers la joue.
         public const float SlingshotGripYawDegrees = 28f;
+
+        /// <summary>
+        /// Modèle de vue : en vue subjective, le joueur local voit son lance-pierre
+        /// ancré à sa caméra (yaw et pitch du regard), bas-droite, entier dans
+        /// l'image quel que soit le bras du rig. Le bras visible est étiré jusqu'à
+        /// lui par <c>M1SlingshotArmPose</c> ; l'épaule, cachée, suit. Les autres
+        /// joueurs voient le modèle monde au point de prise du corps.
+        /// </summary>
+        public static readonly Vector3 SlingshotViewmodelLocal = new(0.22f, -0.34f, 0.50f);
+        public const float SlingshotViewmodelYawDegrees = 24f;
 
         /// <summary>Racine graphique (lissée par FishNet) ou, à défaut, la racine réseau.</summary>
         public Transform PresentationFrame =>
             _presentationFrame != null ? _presentationFrame : transform;
 
+        /// <summary>Le joueur local se regarde-t-il en vue subjective ? (modèle de vue)</summary>
+        public bool UsesViewmodel =>
+            IsOwner && _appearance != null && !_appearance.IsThirdPerson &&
+            _appearance.PlayerCamera != null;
+
+        /// <summary>Point de prise du monde (corps), pour la règle et les autres joueurs.</summary>
         public void GetSlingshotGrip(out Vector3 position, out Quaternion rotation)
         {
             var frame = PresentationFrame;
             position = frame.TransformPoint(SlingshotGripLocal);
             rotation = frame.rotation * Quaternion.Euler(0f, SlingshotGripYawDegrees, 0f);
+        }
+
+        /// <summary>Point de prise tel que ce poste doit le dessiner : modèle de vue ou monde.</summary>
+        public void GetPresentedSlingshotGrip(out Vector3 position, out Quaternion rotation)
+        {
+            if (!UsesViewmodel)
+            {
+                GetSlingshotGrip(out position, out rotation);
+                return;
+            }
+            var camera = _appearance.PlayerCamera.transform;
+            position = camera.TransformPoint(SlingshotViewmodelLocal);
+            rotation = camera.rotation * Quaternion.Euler(0f, SlingshotViewmodelYawDegrees, 0f);
         }
 
         /// <summary>
@@ -196,8 +225,8 @@ namespace NotThatWay.Game.Sandbox
             _motor = GetComponent<PredictedPlayerMotor>();
             _animator = GetComponentInChildren<Animator>(true);
             _slingshot = SandboxSlingshotModel.FromConfig(_config);
-            var appearance = GetComponent<M1PlayerAppearance>();
-            _presentationFrame = appearance != null ? appearance.Body : null;
+            _appearance = GetComponent<M1PlayerAppearance>();
+            _presentationFrame = _appearance != null ? _appearance.Body : null;
             _observedHealth = _config.MaximumHealth;
             _observedEnergy = _config.MaximumEnergy;
             _observedLifeState = SandboxLifeState.Alive;

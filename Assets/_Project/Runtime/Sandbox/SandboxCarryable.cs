@@ -170,7 +170,7 @@ namespace NotThatWay.Game.Sandbox
             if (_inventorySlot == PouchSlot)
             {
                 // La pierre attend dans la poche, et recule avec elle quand on tend.
-                holder.GetSlingshotGrip(out var gripPosition, out var gripRotation);
+                holder.GetPresentedSlingshotGrip(out var gripPosition, out var gripRotation);
                 var slingshotOrigin = gripPosition + gripRotation * Vector3.up * HandleInFistMeters;
                 _visualRoot.SetPositionAndRotation(
                     slingshotOrigin + gripRotation * PouchLocal(charge, 0f),
@@ -193,7 +193,7 @@ namespace NotThatWay.Game.Sandbox
                     _snapRemainingSeconds -= Time.deltaTime;
                     snap = Mathf.Clamp01(_snapRemainingSeconds / SnapSeconds);
                 }
-                holder.GetSlingshotGrip(out var position, out var rotation);
+                holder.GetPresentedSlingshotGrip(out var position, out var rotation);
                 _visualRoot.SetPositionAndRotation(
                     position + rotation * Vector3.up * HandleInFistMeters,
                     rotation);
@@ -210,7 +210,7 @@ namespace NotThatWay.Game.Sandbox
             }
 
             // Caillou ou autre objet en main : dans le poing droit, bras levé.
-            holder.GetSlingshotGrip(out var handPosition, out var handRotation);
+            holder.GetPresentedSlingshotGrip(out var handPosition, out var handRotation);
             _visualRoot.SetPositionAndRotation(
                 handPosition + handRotation * Vector3.forward * 0.06f,
                 handRotation);
