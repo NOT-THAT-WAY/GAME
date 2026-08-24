@@ -25,9 +25,9 @@ murs ou collisions suit [l'ADR 0004](adr/0004-authoritative-topology-and-ticks.m
 
 | Élément | Chemin | Origine |
 |---|---|---|
-| Labyrinthe | `Assets/_Project/Maze/Maze16x16.fbx` | `tools/maze-3d/build_maze.py` du dépôt de préproduction |
+| Labyrinthe | `Assets/_Project/Maze/Maze16x16.fbx` | `tools/maze-3d/build_maze_cartoon.py`, studio `maze-cartoon-v001` |
 | Topologie runtime | `Assets/_Project/Maze/MazeTopology16x16.v1.json` | migration reproductible de `MazeGrid16x16.json` par `scripts/migrate-maze-topology-v1.py` |
-| Grille source historique | `Assets/_Project/Maze/MazeGrid16x16.json` | `tools/maze-forge/maps/maze_16_16x16.json` (seed 1704), non consommée directement par Unity |
+| Grille source | `Assets/_Project/Maze/MazeGrid16x16.json` | **le même générateur**, seed 20260805 ; non consommée directement par Unity |
 | Personnage jouable + punch | `Assets/_Project/Player/PersoBouleRigged.fbx` | studio Blender `player-punch-rig-v001`, export validé sur `art/player-punch-rig` |
 | Contrôles | `Assets/_Project/Input/GameControls.inputactions` | actions Player/UI, clavier-souris et manette |
 | Déplacement | `Assets/_Project/Runtime/Player/PlayerMotor.cs` | — |
@@ -43,8 +43,15 @@ sont **pas** versionnés : ils sont régénérés par `MazePlaytestBuild` dans
 
 ## Échelle et orientation
 
-Les FBX sortent de Blender avec la convention Unity (`axis_forward=-Z`,
-`axis_up=Y`, 1 unité = 1 m) : aucune correction n'est appliquée à l'import.
+Le FBX du labyrinthe sort de Blender avec la convention Unity (`axis_forward=-Z`,
+`axis_up=Y`, 1 unité = 1 m) **et ses transformations cuites dans le maillage** :
+racine et enfants arrivent à l'identité et à l'échelle 1, mesuré à l'import.
+
+Les deux FBX du personnage, eux, ne sont pas encore ré-exportés : chacun de leurs
+nœuds porte encore `-90°` en x et une échelle 100, c'est-à-dire la conversion
+d'axes de Blender au lieu de celle d'Unity. Le rendu monde est juste, mais tout
+code qui écrirait leur `localRotation` ou leur `localScale` en supposant
+l'identité casserait — c'est ce qui avait couché les pivots au démarrage.
 
 - couloir 2,50 m, murs 3,00 m de haut et 0,25 m d'épaisseur, donc un **pas de
   grille de 2,75 m** ; emprise 44 x 44 m, map centrée sur l'origine ;
@@ -60,19 +67,49 @@ règlent pas ici. Le pas de 2,75 m est la conséquence des deux premières valeu
 pas un réglage indépendant.
 
 Le schéma v1 transporte maintenant `cellPitchMm`, épaisseur/hauteur des murs, IDs, orientations de
-spawn et checksum. Le `GridPitch` du générateur historique reste temporairement dupliqué, mais
-`MazePlaytestBuild` refuse désormais la scène si cette constante diverge de la topologie. Le chargeur
-runtime exige le checksum et valide murs, pivots, références bijectives, états, occupations et bornes
-avant toute génération. Les orientations de spawn sont choisies pendant la migration selon les
-arêtes réellement libres, puis consommées sans recalcul depuis le FBX.
+spawn et checksum. Le `GridPitch` de `build_maze_cartoon.py` reste temporairement dupliqué dans
+`MazePlaytestBuild`, mais celui-ci refuse désormais la scène si cette constante diverge de la
+topologie. Le chargeur runtime exige le checksum et valide murs, pivots, références bijectives,
+états, occupations et bornes avant toute génération. Les orientations de spawn sont choisies
+pendant la migration selon les arêtes réellement libres, puis consommées sans recalcul depuis le
+FBX.
+
+## Direction artistique
+
+Le parti pris, la palette et le fonctionnement du générateur sont dans
+[MAZE_ART_DIRECTION.md](MAZE_ART_DIRECTION.md). Ce qui compte pour jouer tient en
+une règle et deux lignes :
+
+**Ce qu'on voit est ce qui arrête.**
+
+- **Sous 1,40 m — la taille du joueur — rien ne dépasse du nu du mur.** Le relief
+  de pierre est en creux : les blocs affleurent l'épaisseur nominale, les joints
+  rentrent. La boîte de collision coïncide donc avec la silhouette.
+- **Au-dessus de 1,40 m, le décor peut déborder** : torches, chaînages de bois,
+  corniches, crénelage, végétation. Le joueur ne peut pas s'y cogner.
+
+Trois conséquences assumées, héritées de l'ancienne map :
+
+- **il n'y a plus de groupe `Props`** — les colonnes brisées, caisses et jarres
+  obligeaient à sauter pour avancer. Un couloir est libre sur ses 2,50 m ;
+- **la végétation ne descend jamais dans un couloir** — dessus de murs, lierre
+  plaqué au nu du mur, ou hors du labyrinthe. Sans collider, mais hors
+  d'atteinte : elle ne peut plus faire croire à un passage ;
+- **les corniches sont colorées par quadrant** — cuivre, ardoise, terre cuite,
+  olive. C'est le seul repère d'orientation offert au sol : lever les yeux dit
+  dans quel coin on se trouve.
+
+**Réserve d'intégration :** Unity ne lit pas encore les couleurs de sommet qui
+portent tout le style. Tant que le shader décrit dans `MAZE_ART_DIRECTION.md`
+n'existe pas, la map arrive grise dans le jeu même si elle est correcte dans
+Blender.
 
 ## Collisions
 
-Le FBX embarque de la végétation et des props denses. Pour ce smoke test,
-`MazePlaytestBuild` ajoute encore un `MeshCollider` aux ensembles de décor qui arrêtent le joueur
-— `Sol_Dalles`, `Sol_Sable`, `Reperes_Gameplay` et `Props`. Seule
-`Vegetation` reste traversable : mousses, lianes et buissons doivent pouvoir être
-longés.
+Pour ce smoke test, `MazePlaytestBuild` ajoute encore un `MeshCollider` aux ensembles de décor
+qui arrêtent le joueur — `Sol_Dalles`, `Sol_Sable` et `Reperes_Gameplay`. Le FBX cartoon n'a plus
+de groupe `Props` ; s'il en revenait un, il recevrait le même traitement. `Vegetation` n'en reçoit
+pas, et ne peut pas tromper puisqu'elle est au-dessus de la tête.
 
 **Les murs statiques font exception depuis les murs mobiles** : ils ne
 reçoivent plus de `MeshCollider` mais une `BoxCollider` aux cotes du design —
@@ -81,8 +118,8 @@ collision vient donc de la topologie typée et non des triangles sculptés.
 
 Les 17 objets `Pivot_*` ne portent plus de `MeshCollider` : leurs 46 bras reçoivent chacun une
 `BoxCollider` de 2,75 × 0,25 × 3,00 m, liée au `wallId` et au `pivotId` canoniques puis enfantée au
-pivot visuel. Les quatre `MeshCollider` restants appartiennent au décor/sol du smoke historique ;
-ils ne définissent ni une arête, ni un état, ni une décision réseau.
+pivot visuel. Les trois `MeshCollider` restants appartiennent aux sols et repères du smoke
+historique ; ils ne définissent ni une arête, ni un état, ni une décision réseau.
 
 La collision restante, issue des triangles et des noms du FBX, est une dette
 connue. La cible M1 génère des primitives simples depuis la topologie JSON
@@ -90,10 +127,9 @@ typée/versionnée, avec IDs et checksum stables. Ne pas ajouter une nouvelle r�
 gameplay, un spawn ou une validation réseau dépendant d'un nom de maillage ou de
 sa hiérarchie.
 
-Conséquence utile au diagnostic : **les lianes et la mousse n'arrêtent jamais un
-joueur**. Ce qui gêne dans un couloir, ce sont les `Props` — colonnes brisées,
-caisses et jarres semées dans environ 15 % des cellules. Sauter suffit à les
-passer.
+Conséquence utile au diagnostic : **plus rien ne gêne dans un couloir.** Si le
+joueur est arrêté, c'est un mur, un bras de pivot ou le pourtour — jamais un
+décor. Un blocage inexpliqué est donc un vrai défaut, pas un gravat.
 
 ## Murs mobiles
 
@@ -123,7 +159,7 @@ Le gond est le bout le plus éloigné du point touché, et le battant part du c�
 où l'on pousse. Frapper le milieu d'un mur marche aussi : le gond est alors
 simplement le bout le plus loin des deux.
 
-Les 173 murs intérieurs de la map sont concernés ; seul le pourtour est fixe,
+Les 155 murs intérieurs de la map sont concernés ; seul le pourtour est fixe,
 sans quoi le labyrinthe s'ouvrirait sur le sable.
 
 **Un mur garde toujours un pied chez lui** : son arête d'arrivée doit toucher un
@@ -221,9 +257,9 @@ produise pas silencieusement une map qu'on traverse.
 
 Les joueurs se répartissent sur les quatre entrées, dans la cellule du seuil,
 tournés vers le couloir le plus dégagé. Toutes les cellules d'entrée ne sont pas
-ouvertes vers l'intérieur et le générateur sème des gravats jusque dans les
-couloirs : la position et l'orientation sont donc mesurées sur la géométrie, pas
-déduites de la grille. `MazePlaytestBuild` refuse de produire la scène si une
+ouvertes vers l'intérieur : la position et l'orientation sont donc mesurées sur
+la géométrie, pas déduites de la grille. `MazePlaytestBuild` refuse de produire
+la scène si une
 apparition n'a pas de sol, chevauche un collider ou n'a pas un pas de dégagement.
 Le bot apparaît deux mètres devant la première entrée validée et avance dans le
 couloir dès que le serveur démarre ; il tourne devant un obstacle et recule
@@ -278,7 +314,7 @@ changent pas de comportement.
 | ZQSD / flèches ou stick gauche | se déplacer |
 | Souris ou stick droit | regarder |
 | Maj ou clic stick gauche | sprint |
-| Espace ou bouton Sud | sauter — contournement provisoire des gravats, statut gameplay à décider |
+| Espace ou bouton Sud | sauter — plus aucun obstacle au sol à franchir, statut gameplay à décider |
 | E / bouton Ouest maintenu + avancer | pousser un mur pivotant d'un quart de tour |
 | Clic gauche / F / gâchette droite | coup de poing : joueur ou bot devant soi, sinon le mur touché est ébranlé — trois coups enchaînés l'ouvrent |
 | Avancer contre un mur | le pousser à l'épaule : il cède au bout d'environ 3 s, et retombe si on lâche |

@@ -88,7 +88,10 @@ namespace NotThatWay.Game.Editor
         private const int StaticWallState = 1;
         private const int PivotWallState = 2;
 
-        private static readonly Color SkyColor = new(0.96f, 0.85f, 0.72f);
+        // Ciel franc de la direction cartoon, accordé au monde Blender du
+        // générateur : la même couleur sert de fond de caméra et de brouillard,
+        // sans quoi le bord du plateau se détacherait sur un dégradé étranger.
+        private static readonly Color SkyColor = new(0.30f, 0.52f, 0.86f);
 
         [MenuItem("GAME/Maze Playtest/Create Scene")]
         public static void CreateScene()
@@ -662,8 +665,8 @@ namespace NotThatWay.Game.Editor
             lightObject.transform.rotation = Quaternion.Euler(50f, 155f, 0f);
             var light = lightObject.GetComponent<Light>();
             light.type = LightType.Directional;
-            light.color = new Color(1f, 0.95f, 0.86f);
-            light.intensity = 1.4f;
+            light.color = new Color(1f, 0.97f, 0.90f);
+            light.intensity = 1.5f;
             light.shadows = LightShadows.Soft;
 
             var cameraObject = new GameObject("SpectatorCamera", typeof(Camera), typeof(AudioListener), typeof(SpectatorCamera));
@@ -677,20 +680,22 @@ namespace NotThatWay.Game.Editor
             spectatorCamera.backgroundColor = SkyColor;
             spectatorCamera.farClipPlane = 600f;
 
-            // Direction artistique : ciel crème chaud, pas de bleu. Le brouillard masque
-            // le bord du plan de sable sans cacher les murs du labyrinthe.
+            // Direction artistique cartoon : ciel bleu franc, ambiante claire et
+            // ombres qui restent colorées. Un ambiant sombre écraserait les aplats
+            // et ferait ressembler les couloirs à des tranchées.
             RenderSettings.ambientMode = AmbientMode.Trilight;
-            RenderSettings.ambientSkyColor = new Color(0.72f, 0.66f, 0.58f);
-            RenderSettings.ambientEquatorColor = new Color(0.56f, 0.48f, 0.41f);
-            RenderSettings.ambientGroundColor = new Color(0.38f, 0.31f, 0.26f);
+            RenderSettings.ambientSkyColor = new Color(0.55f, 0.68f, 0.86f);
+            RenderSettings.ambientEquatorColor = new Color(0.48f, 0.58f, 0.60f);
+            RenderSettings.ambientGroundColor = new Color(0.30f, 0.42f, 0.26f);
             RenderSettings.skybox = null;
             RenderSettings.fog = true;
             RenderSettings.fogMode = FogMode.Linear;
             RenderSettings.fogColor = SkyColor;
-            // Le sable s'arrête à 48 m du centre (emprise 44 m + 26 m de débord) :
-            // le brouillard fond son bord sans toucher aux couloirs.
-            RenderSettings.fogStartDistance = 45f;
-            RenderSettings.fogEndDistance = 150f;
+            // Le plateau extérieur fait 200 m de côté et porte les arbres : le
+            // brouillard ne doit fondre que son bord lointain, pas les silhouettes
+            // qui donnent l'échelle depuis un couloir.
+            RenderSettings.fogStartDistance = 70f;
+            RenderSettings.fogEndDistance = 260f;
             RenderSettings.sun = light;
         }
 
