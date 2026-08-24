@@ -202,7 +202,6 @@ Le membre qui possède le PC prend la validation Windows. Les rôles pilote/bin�
 - [Test depuis des réseaux différents](docs/REMOTE_CONNECTION_TEST.md)
 - [Test jouable du labyrinthe](docs/MAZE_PLAYTEST.md)
 - [Blocage Windows IL2CPP et build Mono de secours](docs/WINDOWS_IL2CPP_BLOCKER.md)
-- [Direction artistique du labyrinthe](docs/MAZE_ART_DIRECTION.md)
 - [Travail à trois](docs/WORKFLOW.md)
 - [Assets hors GitHub](docs/ASSETS.md)
 - [Gestion des données](docs/DATA_MANAGEMENT.md)
