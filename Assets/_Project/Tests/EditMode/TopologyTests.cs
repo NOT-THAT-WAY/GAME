@@ -72,13 +72,13 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(result.IsValid, Is.True, FormatIssues(result));
             Assert.That(result.Document.Dimensions.WidthCells, Is.EqualTo(16));
             Assert.That(result.Document.Dimensions.HeightCells, Is.EqualTo(16));
-            Assert.That(result.Document.Walls, Has.Count.EqualTo(261));
+            Assert.That(result.Document.Walls, Has.Count.EqualTo(279));
             Assert.That(result.Document.Pivots, Has.Count.EqualTo(17));
             Assert.That(result.Document.Openings, Has.Count.EqualTo(4));
             Assert.That(result.Document.Spawns, Has.Count.EqualTo(4));
             Assert.That(
                 result.Document.Checksum,
-                Is.EqualTo("5e228a1f5037a2ef3d06f8c4050e849f200b4abb722bbc925e83c8c024f4bf1c"));
+                Is.EqualTo("36a81a05cfe75d751f6fa4c25f105060116b8c6fba0816d811b552baed3e528a"));
             Assert.That(TopologyCanonicalizer.ComputeChecksum(result.Document), Is.EqualTo(result.Document.Checksum));
         }
 
