@@ -23,6 +23,7 @@ namespace NotThatWay.Game.Input
         public const string SelectSlot3 = "SelectSlot3";
         public const string CycleSlot = "CycleSlot";
         public const string Jump = "Jump";
+        public const string Dive = "Dive";
         public const string Pause = "Pause";
         public const string ToggleView = "ToggleView";
 
@@ -48,6 +49,7 @@ namespace NotThatWay.Game.Input
             new(PlayerMap, SelectSlot3, InputActionType.Button, "Button", true, false),
             new(PlayerMap, CycleSlot, InputActionType.Button, "Button", true, true),
             new(PlayerMap, Jump, InputActionType.Button, "Button", true, true),
+            new(PlayerMap, Dive, InputActionType.Button, "Button", true, true),
             new(PlayerMap, Pause, InputActionType.Button, "Button", true, true),
             new(PlayerMap, ToggleView, InputActionType.Button, "Button", true, true),
             new(PlayerMap, Zoom, InputActionType.PassThrough, "Axis", true, false),

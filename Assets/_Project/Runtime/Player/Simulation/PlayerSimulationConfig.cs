@@ -25,7 +25,12 @@ namespace NotThatWay.Game.PlayerSimulation
             uint coyoteTicks,
             uint jumpBufferTicks,
             double knockbackDecayMetersPerSecondSquared,
-            int maximumPitchCentidegrees)
+            int maximumPitchCentidegrees,
+            bool diveEnabled = false,
+            double diveForwardSpeedMetersPerSecond = 0d,
+            double diveUpwardSpeedMetersPerSecond = 0d,
+            uint diveRecoveryTicks = 0u,
+            uint diveCooldownTicks = 0u)
         {
             TickDurationSeconds = tickDurationSeconds;
             PlayerHeightMeters = playerHeightMeters;
@@ -44,6 +49,11 @@ namespace NotThatWay.Game.PlayerSimulation
             JumpBufferTicks = jumpBufferTicks;
             KnockbackDecayMetersPerSecondSquared = knockbackDecayMetersPerSecondSquared;
             MaximumPitchCentidegrees = maximumPitchCentidegrees;
+            DiveEnabled = diveEnabled;
+            DiveForwardSpeedMetersPerSecond = diveForwardSpeedMetersPerSecond;
+            DiveUpwardSpeedMetersPerSecond = diveUpwardSpeedMetersPerSecond;
+            DiveRecoveryTicks = diveRecoveryTicks;
+            DiveCooldownTicks = diveCooldownTicks;
             Validate();
         }
 
@@ -64,6 +74,27 @@ namespace NotThatWay.Game.PlayerSimulation
         public uint JumpBufferTicks { get; }
         public double KnockbackDecayMetersPerSecondSquared { get; }
         public int MaximumPitchCentidegrees { get; }
+
+        /// <summary>
+        /// Plongeon avant : une impulsion horizontale dans la direction du regard et
+        /// une impulsion verticale, le contrôle coupé jusqu'à l'atterrissage, puis un
+        /// relevé au sol pendant lequel le joueur ne se déplace pas. Comme le saut,
+        /// c'est une baseline de banc tant que DEC-01 n'a pas tranché.
+        /// </summary>
+        public bool DiveEnabled { get; }
+        public double DiveForwardSpeedMetersPerSecond { get; }
+        public double DiveUpwardSpeedMetersPerSecond { get; }
+        public uint DiveRecoveryTicks { get; }
+        public uint DiveCooldownTicks { get; }
+
+        /// <summary>
+        /// Vitesse horizontale maximale qu'un état valide peut porter : le sprint, ou
+        /// le plongeon s'il est activé et plus rapide.
+        /// </summary>
+        public double MaximumControlledSpeedMetersPerSecond =>
+            DiveEnabled && DiveForwardSpeedMetersPerSecond > SprintSpeedMetersPerSecond
+                ? DiveForwardSpeedMetersPerSecond
+                : SprintSpeedMetersPerSecond;
 
         public void Validate()
         {
@@ -114,6 +145,17 @@ namespace NotThatWay.Game.PlayerSimulation
                 nameof(KnockbackDecayMetersPerSecondSquared));
             if (MaximumPitchCentidegrees < 0 || MaximumPitchCentidegrees > 9000)
                 throw new ArgumentOutOfRangeException(nameof(MaximumPitchCentidegrees));
+
+            EnsureNonNegativeFinite(
+                DiveForwardSpeedMetersPerSecond,
+                nameof(DiveForwardSpeedMetersPerSecond));
+            EnsureNonNegativeFinite(
+                DiveUpwardSpeedMetersPerSecond,
+                nameof(DiveUpwardSpeedMetersPerSecond));
+            if (DiveEnabled && DiveForwardSpeedMetersPerSecond <= 0d)
+                throw new ArgumentOutOfRangeException(nameof(DiveForwardSpeedMetersPerSecond));
+            if (DiveEnabled && DiveUpwardSpeedMetersPerSecond <= 0d)
+                throw new ArgumentOutOfRangeException(nameof(DiveUpwardSpeedMetersPerSecond));
         }
 
         public bool Equals(PlayerSimulationConfig other) =>
@@ -135,7 +177,12 @@ namespace NotThatWay.Game.PlayerSimulation
             CoyoteTicks == other.CoyoteTicks &&
             JumpBufferTicks == other.JumpBufferTicks &&
             KnockbackDecayMetersPerSecondSquared.Equals(other.KnockbackDecayMetersPerSecondSquared) &&
-            MaximumPitchCentidegrees == other.MaximumPitchCentidegrees;
+            MaximumPitchCentidegrees == other.MaximumPitchCentidegrees &&
+            DiveEnabled == other.DiveEnabled &&
+            DiveForwardSpeedMetersPerSecond.Equals(other.DiveForwardSpeedMetersPerSecond) &&
+            DiveUpwardSpeedMetersPerSecond.Equals(other.DiveUpwardSpeedMetersPerSecond) &&
+            DiveRecoveryTicks == other.DiveRecoveryTicks &&
+            DiveCooldownTicks == other.DiveCooldownTicks;
 
         public override bool Equals(object value) =>
             value is PlayerSimulationConfig other && Equals(other);
@@ -160,6 +207,11 @@ namespace NotThatWay.Game.PlayerSimulation
             hash.Add(JumpBufferTicks);
             hash.Add(KnockbackDecayMetersPerSecondSquared);
             hash.Add(MaximumPitchCentidegrees);
+            hash.Add(DiveEnabled);
+            hash.Add(DiveForwardSpeedMetersPerSecond);
+            hash.Add(DiveUpwardSpeedMetersPerSecond);
+            hash.Add(DiveRecoveryTicks);
+            hash.Add(DiveCooldownTicks);
             return hash.ToHashCode();
         }
 

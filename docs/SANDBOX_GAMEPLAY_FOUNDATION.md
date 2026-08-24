@@ -13,6 +13,7 @@ caillou physique et une première boucle de trophée.
 | Regarder | souris | stick droit |
 | Sprinter | `Maj` maintenu | clic stick gauche |
 | Sauter | `Espace` | bouton Sud |
+| Plonger en avant (en sprintant vers l'avant) | `Ctrl gauche` ou `C` | LB/L1 |
 | Interagir / ramasser | `E` | bouton Ouest |
 | Pousser le mur | maintenir `E` au contact | maintenir bouton Ouest |
 | Frapper / lancer l'objet actif | clic gauche ou `F` | gâchette droite |
@@ -35,6 +36,7 @@ Toutes les durées de gameplay sont calculées à 60 ticks/s. Elles sont regroup
 | --- | --- |
 | Marche / sprint | 4,2 m/s / 7 m/s |
 | Saut | impulsion 5,5 m/s, gravité -22 m/s², coyote 7 ticks, buffer 9 ticks |
+| Plongeon avant | 13 m/s vers l'avant + 4,2 m/s vers le haut (~5 m), relevé 24 ticks, attente 90 ticks ; seulement en sprint vers l'avant, au sol, contrôle coupé en vol |
 | Vie / énergie | 100 / 100 |
 | Coup de poing | 25 dégâts, 25 énergie, cooldown 48 ticks |
 | Caillou | 30 dégâts, lancer 18 énergie, vitesse 11 m/s + 2,4 m/s vers le haut |

@@ -51,6 +51,9 @@ réexporter au nouveau contrat 30 fps et au nom canonique `SB_Punch` avant de le
 | `WallPushed` | bool, à ajouter | réaction durable du joueur déplacé par le volume balayé du mur |
 | `WallPushSpeed` | float, à ajouter | vitesse tangentielle externe décidée par le serveur, en m/s, de 0 à 3,5 |
 | `Jump`, `Land` | trigger | transitions verticales |
+| `Dive` | trigger | décollage du plongeon avant (remplace `Jump` sur ce décollage) |
+| `Diving` | bool | vol du plongeon, jusqu'au contact sol |
+| `DiveRecovering` | bool | relevé au sol après le plongeon, joueur immobile |
 | `Punch`, `Throw` | trigger | actions primaires acceptables localement puis validées serveur |
 | `Hit`, `Knockout`, `Recover` | trigger | réactions décidées par le serveur |
 | `Pickup`, `Drop`, `Deposit` | trigger | présentation des changements d'objet décidés par le serveur |
