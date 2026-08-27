@@ -23,6 +23,7 @@ namespace NotThatWay.Game.Sandbox
         private static readonly int DiveTrigger = Animator.StringToHash("Dive");
         private static readonly int DivingBool = Animator.StringToHash("Diving");
         private static readonly int DiveRecoveringBool = Animator.StringToHash("DiveRecovering");
+        private static readonly int CrawlingBool = Animator.StringToHash("Crawling");
 
         // La marche M1 plafonne à 4,2 m/s ; le sprint avec trophée atteint
         // 5,25 m/s. Un seuil à 4,3 sépare donc les deux profils sans connaître
@@ -62,6 +63,7 @@ namespace NotThatWay.Game.Sandbox
                 alive && !state.IsDiving && speed > SprintPresentationThreshold);
             _animator.SetBool(DivingBool, state.IsDiving);
             _animator.SetBool(DiveRecoveringBool, state.DiveRecoveryTicksRemaining > 0u);
+            _animator.SetBool(CrawlingBool, state.IsCrawling);
             if (state.IsDiving && !_wasDiving)
                 _animator.SetTrigger(DiveTrigger);
             _wasDiving = state.IsDiving;

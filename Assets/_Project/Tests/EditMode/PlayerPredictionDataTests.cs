@@ -79,7 +79,8 @@ namespace NotThatWay.Game.Tests.EditMode
                 3u,
                 isDiving: true,
                 diveRecoveryTicksRemaining: 0u,
-                diveCooldownTicksRemaining: 55u);
+                diveCooldownTicksRemaining: 55u,
+                isCrawling: false);
             var data = new PlayerReconcileData(state);
             data.SetTick(987u);
 
@@ -105,6 +106,19 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(restored.IsDiving, Is.True);
             Assert.That(restored.DiveRecoveryTicksRemaining, Is.Zero);
             Assert.That(restored.DiveCooldownTicksRemaining, Is.EqualTo(55u));
+            Assert.That(restored.IsCrawling, Is.False);
+
+            var crawling = new PlayerReconcileData(new PlayerState(
+                7u,
+                default,
+                0,
+                0,
+                default,
+                -1d,
+                default,
+                true,
+                isCrawling: true));
+            Assert.That(crawling.ToState().IsCrawling, Is.True);
         }
 
         [Test]

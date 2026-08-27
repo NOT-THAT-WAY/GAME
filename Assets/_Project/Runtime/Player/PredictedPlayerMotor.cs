@@ -48,6 +48,9 @@ namespace NotThatWay.Game
         [SerializeField, Min(0f)] private float _diveUpwardSpeed = 4.2f;
         [SerializeField] private uint _diveRecoveryTicks = 24u;
         [SerializeField] private uint _diveCooldownTicks = 90u;
+        [SerializeField] private bool _crawlEnabled;
+        [SerializeField, Min(0f)] private float _crawlSpeed = 1.7f;
+        [SerializeField, Min(0f)] private float _crawlHeight = 0.85f;
         [SerializeField, Range(0, PlayerState.PhysicalPitchLimitCentidegrees)]
         private int _maximumPitchCentidegrees = 8500;
 
@@ -391,7 +394,10 @@ namespace NotThatWay.Game
                 _diveForwardSpeed,
                 _diveUpwardSpeed,
                 _diveRecoveryTicks,
-                _diveCooldownTicks);
+                _diveCooldownTicks,
+                _crawlEnabled,
+                _crawlSpeed,
+                _crawlHeight);
         }
 
         private void EnsureTickDurationUnchanged()

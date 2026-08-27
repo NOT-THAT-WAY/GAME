@@ -73,6 +73,16 @@ Les valeurs du banc M1 (13 m/s, 4,2 m/s, 24 et 90 ticks à 60 Hz — un premier 
 et n'est pas plus acquis que lui. La posture (corps basculé en vol, à plat puis redressé pendant le
 relevé) est un composant cosmétique, `M1DivePresentation`, sans effet sur la capsule.
 
+## Ramper
+
+La même touche que le plongeon, au sol et hors sprint-avant, bascule à plat ventre ; la même touche
+ou le saut relève (le tick du relevé ne saute pas). À plat ventre : vitesse plafonnée à
+`CrawlSpeed`, sprint et saut coupés, plongeon impossible, et la capsule de collision du tick passe
+à `CrawlHeightMeters` (au moins deux rayons — PhysX n'accepte pas moins ; 0,85 m au banc pour un
+rayon de 0,40), pieds au sol. Se relever ne vérifie pas encore le dégagement au-dessus de la tête :
+aucune géométrie basse n'existe dans les bancs, la contrainte est notée ici plutôt qu'inventée.
+Baselines du banc : 1,7 m/s, capsule 0,85 m — même décision DEC-01 que le reste.
+
 ## Collision et réseau
 
 Le modèle émet position de départ, déplacement désiré, yaw et dimensions de capsule. L’adaptateur

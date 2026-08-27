@@ -244,6 +244,8 @@ namespace NotThatWay.Game.PlayerSimulation
             var diveRecoveryTicks = diveEnabled ? previous.DiveRecoveryTicksRemaining : 0u;
             var diveCooldownTicks = diveEnabled ? previous.DiveCooldownTicksRemaining : 0u;
             var isRecovering = diveRecoveryTicks > 0u;
+            var crawlEnabled = _config.CrawlEnabled;
+            var wasCrawling = crawlEnabled && previous.IsCrawling;
             var dived = diveEnabled &&
                         command.Has(PlayerCommandButtons.DivePressed) &&
                         command.Has(PlayerCommandButtons.SprintHeld) &&
@@ -251,9 +253,26 @@ namespace NotThatWay.Game.PlayerSimulation
                         previous.IsGrounded &&
                         !wasDiving &&
                         !isRecovering &&
+                        !wasCrawling &&
                         diveCooldownTicks == 0u &&
                         modifiers.MovementSpeedPermille > 0;
             var diveLocksControl = dived || wasDiving || isRecovering;
+
+            // Ramper : la même touche que le plongeon, hors sprint, bascule à plat
+            // ventre ; la même touche ou le saut relève. Décidé maintenant pour que
+            // vitesse et capsule du tick soient déjà celles de la nouvelle posture.
+            var isCrawling = wasCrawling;
+            if (crawlEnabled && previous.IsGrounded && !diveLocksControl)
+            {
+                if (command.Has(PlayerCommandButtons.DivePressed) && !dived)
+                    isCrawling = !wasCrawling;
+                else if (wasCrawling &&
+                         (command.Has(PlayerCommandButtons.JumpPressed) ||
+                          command.Has(PlayerCommandButtons.JumpHeld)))
+                {
+                    isCrawling = false;
+                }
+            }
 
             PlayerVector3 horizontalVelocity;
             if (dived)
@@ -269,9 +288,11 @@ namespace NotThatWay.Game.PlayerSimulation
             }
             else
             {
-                var targetSpeed = command.Has(PlayerCommandButtons.SprintHeld)
-                    ? _config.SprintSpeedMetersPerSecond
-                    : _config.WalkSpeedMetersPerSecond;
+                var targetSpeed = isCrawling
+                    ? _config.CrawlSpeedMetersPerSecond
+                    : command.Has(PlayerCommandButtons.SprintHeld)
+                        ? _config.SprintSpeedMetersPerSecond
+                        : _config.WalkSpeedMetersPerSecond;
                 targetSpeed *= modifiers.MovementSpeedPermille /
                                (double)PlayerTickModifiers.PermilleScale;
                 var targetVelocity = isRecovering
@@ -293,7 +314,7 @@ namespace NotThatWay.Game.PlayerSimulation
             // Saut tenu : garder Espace enfoncé vaut un appui à chaque tick, donc
             // on ressaute dès que le sol revient, sprint ou pas. Le front seul
             // reste suffisant pour un saut unique.
-            var jumpAllowed = _config.JumpEnabled && !diveLocksControl;
+            var jumpAllowed = _config.JumpEnabled && !diveLocksControl && !wasCrawling;
             var jumpPressed = jumpAllowed &&
                               (command.Has(PlayerCommandButtons.JumpPressed) ||
                                command.Has(PlayerCommandButtons.JumpHeld));
@@ -328,7 +349,7 @@ namespace NotThatWay.Game.PlayerSimulation
                 previous.Position,
                 totalVelocity * _config.TickDurationSeconds,
                 yaw,
-                _config.PlayerHeightMeters,
+                isCrawling ? _config.CrawlHeightMeters : _config.PlayerHeightMeters,
                 _config.PlayerRadiusMeters);
             var collisionResult = collisionWorld.Move(in collisionRequest);
             var flags = collisionResult.Flags;
@@ -411,7 +432,8 @@ namespace NotThatWay.Game.PlayerSimulation
                 jumpBufferTicks,
                 isDiving,
                 diveRecoveryTicks,
-                diveCooldownTicks);
+                diveCooldownTicks,
+                isCrawling);
             _state = current;
             return new PlayerTickResult(
                 previous,
@@ -578,6 +600,18 @@ namespace NotThatWay.Game.PlayerSimulation
                 throw new ArgumentOutOfRangeException(
                     parameterName,
                     "L'attente de plongeon dépasse le réglage de simulation.");
+            }
+            if (!config.CrawlEnabled && state.IsCrawling)
+            {
+                throw new ArgumentException(
+                    "Un état sans ramper ne peut pas être à plat ventre.",
+                    parameterName);
+            }
+            if (state.IsCrawling && state.IsDiving)
+            {
+                throw new ArgumentException(
+                    "Un état ne peut pas ramper et plonger à la fois.",
+                    parameterName);
             }
         }
 

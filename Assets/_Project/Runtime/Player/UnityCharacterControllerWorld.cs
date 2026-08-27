@@ -28,6 +28,15 @@ namespace NotThatWay.Game
             if (!_controller.enabled)
                 throw new InvalidOperationException("CharacterController désactivé pendant un tick simulé.");
 
+            // La capsule est celle que la requête décrit : ramper l'abaisse, les
+            // pieds restant au sol (centre = hauteur/2, convention du prefab).
+            var height = (float)request.PlayerHeightMeters;
+            if (Mathf.Abs(_controller.height - height) > 0.0001f)
+            {
+                _controller.height = height;
+                _controller.center = new Vector3(0f, height * 0.5f, 0f);
+            }
+
             var expectedStart = ToUnity(request.StartPosition, nameof(request.StartPosition));
             if ((_controller.transform.position - expectedStart).sqrMagnitude >
                 PoseMismatchToleranceSquared)

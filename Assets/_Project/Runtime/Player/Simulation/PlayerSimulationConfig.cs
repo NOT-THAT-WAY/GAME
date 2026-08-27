@@ -30,7 +30,10 @@ namespace NotThatWay.Game.PlayerSimulation
             double diveForwardSpeedMetersPerSecond = 0d,
             double diveUpwardSpeedMetersPerSecond = 0d,
             uint diveRecoveryTicks = 0u,
-            uint diveCooldownTicks = 0u)
+            uint diveCooldownTicks = 0u,
+            bool crawlEnabled = false,
+            double crawlSpeedMetersPerSecond = 0d,
+            double crawlHeightMeters = 0d)
         {
             TickDurationSeconds = tickDurationSeconds;
             PlayerHeightMeters = playerHeightMeters;
@@ -54,6 +57,9 @@ namespace NotThatWay.Game.PlayerSimulation
             DiveUpwardSpeedMetersPerSecond = diveUpwardSpeedMetersPerSecond;
             DiveRecoveryTicks = diveRecoveryTicks;
             DiveCooldownTicks = diveCooldownTicks;
+            CrawlEnabled = crawlEnabled;
+            CrawlSpeedMetersPerSecond = crawlSpeedMetersPerSecond;
+            CrawlHeightMeters = crawlHeightMeters;
             Validate();
         }
 
@@ -86,6 +92,16 @@ namespace NotThatWay.Game.PlayerSimulation
         public double DiveUpwardSpeedMetersPerSecond { get; }
         public uint DiveRecoveryTicks { get; }
         public uint DiveCooldownTicks { get; }
+
+        /// <summary>
+        /// Ramper : même touche que le plongeon, hors sprint. La capsule descend à
+        /// <see cref="CrawlHeightMeters"/> (au moins deux rayons — PhysX n'accepte
+        /// pas moins), les pieds restant au sol ; la vitesse est plafonnée, sprint
+        /// et saut coupés. Baseline de banc, même décision ouverte que le saut.
+        /// </summary>
+        public bool CrawlEnabled { get; }
+        public double CrawlSpeedMetersPerSecond { get; }
+        public double CrawlHeightMeters { get; }
 
         /// <summary>
         /// Vitesse horizontale maximale qu'un état valide peut porter : le sprint, ou
@@ -156,6 +172,19 @@ namespace NotThatWay.Game.PlayerSimulation
                 throw new ArgumentOutOfRangeException(nameof(DiveForwardSpeedMetersPerSecond));
             if (DiveEnabled && DiveUpwardSpeedMetersPerSecond <= 0d)
                 throw new ArgumentOutOfRangeException(nameof(DiveUpwardSpeedMetersPerSecond));
+
+            EnsureNonNegativeFinite(CrawlSpeedMetersPerSecond, nameof(CrawlSpeedMetersPerSecond));
+            EnsureNonNegativeFinite(CrawlHeightMeters, nameof(CrawlHeightMeters));
+            if (CrawlEnabled && CrawlSpeedMetersPerSecond <= 0d)
+                throw new ArgumentOutOfRangeException(nameof(CrawlSpeedMetersPerSecond));
+            if (CrawlEnabled &&
+                (CrawlHeightMeters < PlayerRadiusMeters * 2d ||
+                 CrawlHeightMeters >= PlayerHeightMeters))
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(CrawlHeightMeters),
+                    "La capsule rampée doit tenir entre deux rayons et la hauteur debout.");
+            }
         }
 
         public bool Equals(PlayerSimulationConfig other) =>
@@ -182,7 +211,10 @@ namespace NotThatWay.Game.PlayerSimulation
             DiveForwardSpeedMetersPerSecond.Equals(other.DiveForwardSpeedMetersPerSecond) &&
             DiveUpwardSpeedMetersPerSecond.Equals(other.DiveUpwardSpeedMetersPerSecond) &&
             DiveRecoveryTicks == other.DiveRecoveryTicks &&
-            DiveCooldownTicks == other.DiveCooldownTicks;
+            DiveCooldownTicks == other.DiveCooldownTicks &&
+            CrawlEnabled == other.CrawlEnabled &&
+            CrawlSpeedMetersPerSecond.Equals(other.CrawlSpeedMetersPerSecond) &&
+            CrawlHeightMeters.Equals(other.CrawlHeightMeters);
 
         public override bool Equals(object value) =>
             value is PlayerSimulationConfig other && Equals(other);
@@ -212,6 +244,9 @@ namespace NotThatWay.Game.PlayerSimulation
             hash.Add(DiveUpwardSpeedMetersPerSecond);
             hash.Add(DiveRecoveryTicks);
             hash.Add(DiveCooldownTicks);
+            hash.Add(CrawlEnabled);
+            hash.Add(CrawlSpeedMetersPerSecond);
+            hash.Add(CrawlHeightMeters);
             return hash.ToHashCode();
         }
 
