@@ -31,7 +31,7 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(config.HealthRegenerationDelayTicks, Is.EqualTo(300u));
             Assert.That(config.HealthRegenerationIntervalTicks, Is.EqualTo(10u));
             Assert.That(config.HealthRegenerationAmount, Is.EqualTo(1));
-            Assert.That(config.KnockoutDurationTicks, Is.EqualTo(240u));
+            Assert.That(config.KnockoutDurationTicks, Is.EqualTo(120u));
             Assert.That(config.RecoveryHealth, Is.EqualTo(40));
             Assert.That(config.RecoveryProtectionTicks, Is.EqualTo(60u));
         }
@@ -91,7 +91,7 @@ namespace NotThatWay.Game.Tests.EditMode
         }
 
         [Test]
-        public void FourPunches_KnockOutThenRecoveryRestoresFortyHealthWithProtection()
+        public void FourPunches_KnockOutThenStandUpOnlyByRequestAfterTheFloorDelay()
         {
             var config = SandboxGameplayConfig.Baseline60Hz;
             var victim = new SandboxPlayerModel(config);
@@ -103,14 +103,28 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(victim.State.Health, Is.Zero);
             Assert.That(victim.ApplyDamage(1, SandboxDamageKind.World).Applied, Is.False);
 
+            // Marteler Espace pendant le délai au sol ne relève pas.
             for (var tick = 0u; tick < config.KnockoutDurationTicks; tick++)
-                victim.AdvanceTick(false, false);
-
+            {
+                victim.AdvanceTick(false, false, standUpRequested: true);
+                if (tick < config.KnockoutDurationTicks - 1u)
+                    Assert.That(victim.State.LifeState, Is.EqualTo(SandboxLifeState.KnockedOut));
+            }
+            // Le dernier tick du délai portait déjà la demande : relevé accepté.
             Assert.That(victim.State.LifeState, Is.EqualTo(SandboxLifeState.Alive));
             Assert.That(victim.State.Health, Is.EqualTo(config.RecoveryHealth));
             Assert.That(victim.State.Energy, Is.EqualTo(config.MaximumEnergy));
             Assert.That(victim.State.ProtectionTicksRemaining, Is.EqualTo(config.RecoveryProtectionTicks));
             Assert.That(victim.ApplyDamage(1, SandboxDamageKind.World).Applied, Is.False);
+
+            // Sans demande, on reste au sol indéfiniment ; la demande relève.
+            var idle = new SandboxPlayerModel(config);
+            idle.ApplyDamage(config.MaximumHealth, SandboxDamageKind.Punch);
+            for (var tick = 0u; tick < config.KnockoutDurationTicks * 3u; tick++)
+                idle.AdvanceTick(false, false);
+            Assert.That(idle.State.LifeState, Is.EqualTo(SandboxLifeState.KnockedOut));
+            idle.AdvanceTick(false, false, standUpRequested: true);
+            Assert.That(idle.State.LifeState, Is.EqualTo(SandboxLifeState.Alive));
         }
 
         [Test]
