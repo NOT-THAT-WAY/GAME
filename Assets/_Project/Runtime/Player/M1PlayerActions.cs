@@ -433,7 +433,10 @@ namespace NotThatWay.Game
         /// </summary>
         private void OnGUI()
         {
-            if (!IsOwner || !TryDescribeWall(out var headline, out var status, out var leverage))
+            if (!IsOwner)
+                return;
+            DrawKnockoutHud();
+            if (!TryDescribeWall(out var headline, out var status, out var leverage))
                 return;
 
             const float width = 380f;
@@ -455,6 +458,29 @@ namespace NotThatWay.Game
             }
             GUILayout.Label(status);
             GUILayout.EndArea();
+        }
+
+        private void DrawKnockoutHud()
+        {
+            if (_sandboxGameplay == null || _sandboxGameplay.IsAlive)
+                return;
+            var config = _sandboxGameplay.Config;
+            var remaining = _sandboxGameplay.ObservedKnockoutTicksRemaining;
+            var text = remaining > 0u
+                ? $"KO — au sol encore {remaining / (float)config.TickRate:0.0} s"
+                : "KO — appuie sur ESPACE pour te relever";
+            const float width = 420f;
+            var area = new Rect((Screen.width - width) * 0.5f, Screen.height * 0.35f, width, 40f);
+            GUI.Box(area, GUIContent.none);
+            GUI.Label(
+                new Rect(area.x, area.y + 10f, width, 24f),
+                $"<b>{text}</b>",
+                new GUIStyle(GUI.skin.label)
+                {
+                    alignment = TextAnchor.MiddleCenter,
+                    richText = true,
+                    fontSize = 14
+                });
         }
 
         private bool TryDescribeWall(out string headline, out string status, out float leverage)
