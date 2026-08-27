@@ -3,26 +3,13 @@ using UnityEngine;
 namespace NotThatWay.Game
 {
     /// <summary>
-    /// Rappel permanent des commandes du banc M1. Un testeur qui cherche la touche
-    /// ne teste plus le réseau. Affichage local uniquement : aucun état partagé,
-    /// aucune règle, aucun tick. Le repli passe par un bouton IMGUI et non par une
-    /// lecture clavier directe, interdite hors Input Actions.
+    /// Table des commandes du banc M1, affichée par le menu pause (Échap) — plus
+    /// aucun panneau permanent à l'écran. La table reste ici pour que chaque
+    /// fonctionnalité continue d'y déclarer sa ligne au même endroit.
     /// </summary>
-    [DisallowMultipleComponent]
-    public sealed class M1ControlsOverlay : MonoBehaviour
+    public static class M1ControlsOverlay
     {
-        private const float PanelWidth = 500f;
-        private const float PanelMargin = 16f;
-        private const float ActionColumnWidth = 160f;
 
-        // Hauteur réelle d'une ligne GUILayout à cette taille de police, marge et
-        // remplissage de la boîte compris. Sous-estimer coupe le bouton de repli
-        // dans le player : mesuré sur la capture de contrôle, pas estimé.
-        private const float LineHeight = 22f;
-        private const float HeaderHeight = 40f;
-        private const float ButtonHeight = 34f;
-        private const float CollapsedWidth = 150f;
-        private const float CollapsedHeight = 46f;
 
         private static readonly string[,] Controls =
         {
@@ -46,68 +33,11 @@ namespace NotThatWay.Game
             { "Pause / réglages", "Échap — sensibilité, FOV, volume…" }
         };
 
-        private bool _expanded = true;
-        private GUIStyle _titleStyle;
-        private GUIStyle _actionStyle;
-        private GUIStyle _bindingStyle;
+        /// <summary>Lignes action/touches, dans l'ordre d'affichage du menu pause.</summary>
+        public static int RowCount => Controls.GetLength(0);
 
-        private void OnGUI()
-        {
-            EnsureStyles();
-            if (!_expanded)
-            {
-                var collapsed = new Rect(
-                    PanelMargin,
-                    Screen.height - CollapsedHeight - PanelMargin,
-                    Mathf.Min(CollapsedWidth, Screen.width - PanelMargin * 2f),
-                    CollapsedHeight);
-                GUILayout.BeginArea(collapsed, GUI.skin.box);
-                if (GUILayout.Button("COMMANDES"))
-                    _expanded = true;
-                GUILayout.EndArea();
-                return;
-            }
+        public static string ActionAt(int row) => Controls[row, 0];
 
-            var rows = Controls.GetLength(0);
-            var height = HeaderHeight + rows * LineHeight + ButtonHeight;
-            var area = new Rect(
-                PanelMargin,
-                Screen.height - height - PanelMargin,
-                Mathf.Min(PanelWidth, Screen.width - PanelMargin * 2f),
-                height);
-
-            GUILayout.BeginArea(area, GUI.skin.box);
-            GUILayout.Label("COMMANDES — banc M1", _titleStyle);
-            for (var row = 0; row < rows; row++)
-            {
-                GUILayout.BeginHorizontal();
-                GUILayout.Label(Controls[row, 0], _actionStyle, GUILayout.Width(ActionColumnWidth));
-                GUILayout.Label(Controls[row, 1], _bindingStyle);
-                GUILayout.EndHorizontal();
-            }
-
-            // Le curseur est capturé pendant le jeu : Échap le libère, puis ce
-            // bouton replie le cadre.
-            if (GUILayout.Button("MASQUER"))
-                _expanded = false;
-            GUILayout.EndArea();
-        }
-
-        private void EnsureStyles()
-        {
-            // Un GUIStyle ne survit pas à un rechargement de domaine : il se
-            // construit à la première frame de rendu, pas dans Awake.
-            _titleStyle ??= new GUIStyle(GUI.skin.label)
-            {
-                fontSize = 13,
-                fontStyle = FontStyle.Bold
-            };
-            _actionStyle ??= new GUIStyle(GUI.skin.label) { fontSize = 12 };
-            _bindingStyle ??= new GUIStyle(GUI.skin.label)
-            {
-                fontSize = 12,
-                fontStyle = FontStyle.Bold
-            };
-        }
+        public static string BindingAt(int row) => Controls[row, 1];
     }
 }

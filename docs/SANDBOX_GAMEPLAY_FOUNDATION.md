@@ -9,7 +9,7 @@ caillou physique et une première boucle de trophée.
 
 | Intention | Clavier/souris | Manette |
 | --- | --- | --- |
-| Pause / réglages (sensibilités, inversion Y, FOV, volume, limite d'images, aide, plein écran — la partie continue) | `Échap` | Start |
+| Pause : réglages (sensibilités, inversion Y, FOV, volume, limite d'images, plein écran) et rappel des commandes — plus de panneau permanent, la partie continue | `Échap` | Start |
 | Se déplacer | `ZQSD` ou flèches | stick gauche |
 | Regarder | souris | stick droit |
 | Sprinter | `Maj` maintenu | clic stick gauche |

@@ -158,7 +158,6 @@ namespace NotThatWay.Game.Editor
                 true);
             networkRoot.AddComponent<M1PlaytestDiagnostics>();
             networkRoot.AddComponent<M1ScreenshotProbe>();
-            networkRoot.AddComponent<M1ControlsOverlay>();
 
             var spawner = networkRoot.AddComponent<PlayerSpawner>();
             spawner.Spawns = spawns;
