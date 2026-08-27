@@ -33,6 +33,11 @@ namespace NotThatWay.Game.Sandbox
         // Le poing du rig fait 0,47 m : le bas du manche est en son centre et la
         // fourche doit émerger au-dessus, sinon elle semble plantée dans le poignet.
         private const float HandleInFistMeters = 0.26f;
+        // Dégagement vers l'avant : l'arme est tenue au bout des doigts, devant le
+        // poing, au lieu de traverser l'avant-bras levé.
+        private const float HandClearanceMeters = 0.10f;
+        private static readonly Vector3 GripToRoot =
+            new(0f, HandleInFistMeters, HandClearanceMeters);
         private static readonly Vector3 PouchRestLocal = new(0f, 0.30f, -0.03f);
         private static readonly Vector3 TipLeftLocal = new(-0.165f, 0.30f, 0f);
         private static readonly Vector3 TipRightLocal = new(0.165f, 0.30f, 0f);
@@ -171,7 +176,7 @@ namespace NotThatWay.Game.Sandbox
             {
                 // La pierre attend dans la poche, et recule avec elle quand on tend.
                 holder.GetPresentedSlingshotGrip(out var gripPosition, out var gripRotation);
-                var slingshotOrigin = gripPosition + gripRotation * Vector3.up * HandleInFistMeters;
+                var slingshotOrigin = gripPosition + gripRotation * GripToRoot;
                 _visualRoot.SetPositionAndRotation(
                     slingshotOrigin + gripRotation * PouchLocal(charge, 0f),
                     gripRotation);
@@ -195,7 +200,7 @@ namespace NotThatWay.Game.Sandbox
                 }
                 holder.GetPresentedSlingshotGrip(out var position, out var rotation);
                 _visualRoot.SetPositionAndRotation(
-                    position + rotation * Vector3.up * HandleInFistMeters,
+                    position + rotation * GripToRoot,
                     rotation);
                 LayoutSlingshot(charge, snap);
                 return;
@@ -479,7 +484,7 @@ namespace NotThatWay.Game.Sandbox
             // objet, sans téléportation vers la poitrine. Elle naît contre la
             // capsule du tireur, dont on ignore la collision le temps de sortir.
             shooter.GetSlingshotGrip(out var gripPosition, out var gripRotation);
-            var origin = gripPosition + gripRotation * (Vector3.up * HandleInFistMeters + PouchLocal(power, 0f));
+            var origin = gripPosition + gripRotation * (GripToRoot + PouchLocal(power, 0f));
             LaunchFromServer(
                 shooter,
                 aimDirection,
