@@ -69,6 +69,9 @@ namespace NotThatWay.Game.Editor
         private const string DepositParameter = "Deposit";
         private const string CarryingParameter = "Carrying";
         private const string PushParameter = "Push";
+        private const string DiveParameter = "Dive";
+        private const string DivingParameter = "Diving";
+        private const string DiveRecoveringParameter = "DiveRecovering";
 
         // URP 17 n'expose plus de matériau par défaut hors éditeur. Chaque objet
         // rendu du banc doit donc porter un matériau explicite construit ici.
@@ -465,6 +468,13 @@ namespace NotThatWay.Game.Editor
                 root.AddComponent<SandboxPlayerGameplay>();
                 root.AddComponent<SandboxPlayerAnimationBridge>();
                 root.AddComponent<M1PlayerActions>();
+                // La posture n'incline que le corps importé : le CameraPivot, lui
+                // aussi enfant de Presentation, doit rester d'aplomb pour que la vue
+                // et donc l'avant à l'écran ne basculent jamais avec le plongeon.
+                var divePresentation = root.AddComponent<M1DivePresentation>();
+                var serializedDive = new SerializedObject(divePresentation);
+                SetObject(serializedDive, "_body", body.transform);
+                serializedDive.ApplyModifiedPropertiesWithoutUndo();
                 var armPose = root.AddComponent<M1SlingshotArmPose>();
                 var serializedArmPose = new SerializedObject(armPose);
                 SetObject(serializedArmPose, "_body", presentation.transform);
@@ -866,6 +876,15 @@ namespace NotThatWay.Game.Editor
             SetLong(serialized, "_jumpBufferTicks", 9L);
             SetFloat(serialized, "_knockbackDecay", 10f);
             SetInt(serialized, "_maximumPitchCentidegrees", 8500);
+            // Plongeon avant (baseline de banc, DEC-01 ouvert), seulement depuis un
+            // sprint : 13 m/s vers l'avant et 4,2 m/s vers le haut, soit ~5 m de
+            // bond à gravité -22 (premier essai à 8,5/3,2 jugé trop court) ;
+            // relevé 0,4 s, puis 1,5 s avant le suivant.
+            SetBool(serialized, "_diveEnabled", true);
+            SetFloat(serialized, "_diveForwardSpeed", 13f);
+            SetFloat(serialized, "_diveUpwardSpeed", 4.2f);
+            SetLong(serialized, "_diveRecoveryTicks", 24L);
+            SetLong(serialized, "_diveCooldownTicks", 90L);
             serialized.ApplyModifiedPropertiesWithoutUndo();
         }
 
@@ -1127,6 +1146,9 @@ namespace NotThatWay.Game.Editor
             controller.AddParameter(DepositParameter, AnimatorControllerParameterType.Trigger);
             controller.AddParameter(CarryingParameter, AnimatorControllerParameterType.Bool);
             controller.AddParameter(PushParameter, AnimatorControllerParameterType.Bool);
+            controller.AddParameter(DiveParameter, AnimatorControllerParameterType.Trigger);
+            controller.AddParameter(DivingParameter, AnimatorControllerParameterType.Bool);
+            controller.AddParameter(DiveRecoveringParameter, AnimatorControllerParameterType.Bool);
 
             var stateMachine = controller.layers[0].stateMachine;
             var idle = stateMachine.AddState("Idle");
@@ -1639,7 +1661,10 @@ namespace NotThatWay.Game.Editor
                 [DropParameter] = AnimatorControllerParameterType.Trigger,
                 [DepositParameter] = AnimatorControllerParameterType.Trigger,
                 [CarryingParameter] = AnimatorControllerParameterType.Bool,
-                [PushParameter] = AnimatorControllerParameterType.Bool
+                [PushParameter] = AnimatorControllerParameterType.Bool,
+                [DiveParameter] = AnimatorControllerParameterType.Trigger,
+                [DivingParameter] = AnimatorControllerParameterType.Bool,
+                [DiveRecoveringParameter] = AnimatorControllerParameterType.Bool
             };
             var actual = new Dictionary<string, AnimatorControllerParameterType>();
             foreach (var parameter in controller.parameters)

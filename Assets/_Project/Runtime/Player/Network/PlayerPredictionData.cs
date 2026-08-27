@@ -72,6 +72,9 @@ namespace NotThatWay.Game.PlayerNetwork
         public bool IsGrounded;
         public uint CoyoteTicksRemaining;
         public uint JumpBufferTicksRemaining;
+        public bool IsDiving;
+        public uint DiveRecoveryTicksRemaining;
+        public uint DiveCooldownTicksRemaining;
         public uint SimulationTick;
 
         private uint _tick;
@@ -99,6 +102,9 @@ namespace NotThatWay.Game.PlayerNetwork
             IsGrounded = state.IsGrounded;
             CoyoteTicksRemaining = state.CoyoteTicksRemaining;
             JumpBufferTicksRemaining = state.JumpBufferTicksRemaining;
+            IsDiving = state.IsDiving;
+            DiveRecoveryTicksRemaining = state.DiveRecoveryTicksRemaining;
+            DiveCooldownTicksRemaining = state.DiveCooldownTicksRemaining;
             SimulationTick = state.Tick;
             _tick = 0u;
         }
@@ -117,7 +123,10 @@ namespace NotThatWay.Game.PlayerNetwork
             new PlayerVector3(KnockbackVelocityX, 0d, KnockbackVelocityZ),
             IsGrounded,
             CoyoteTicksRemaining,
-            JumpBufferTicksRemaining);
+            JumpBufferTicksRemaining,
+            IsDiving,
+            DiveRecoveryTicksRemaining,
+            DiveCooldownTicksRemaining);
 
         private static float ToFiniteFloat(double value, string parameterName)
         {

@@ -41,6 +41,7 @@ namespace NotThatWay.Game.Input
         private InputAction _selectSlot3;
         private InputAction _cycleSlot;
         private InputAction _jump;
+        private InputAction _dive;
         private InputAction _pause;
         private InputAction _toggleView;
         private InputAction _zoom;
@@ -168,6 +169,8 @@ namespace NotThatWay.Game.Input
             var pressed = PlayerCommandButtons.None;
             if (_jump.WasPressedThisFrame())
                 pressed |= PlayerCommandButtons.JumpPressed;
+            if (_dive.WasPressedThisFrame())
+                pressed |= PlayerCommandButtons.DivePressed;
             if (_interact.WasPressedThisFrame())
                 pressed |= PlayerCommandButtons.InteractPressed;
             if (_punch.WasPressedThisFrame())
@@ -225,6 +228,8 @@ namespace NotThatWay.Game.Input
                 held |= PlayerCommandButtons.PunchHeld;
             if (_slingshot.IsPressed())
                 held |= PlayerCommandButtons.SlingshotHeld;
+            if (_jump.IsPressed())
+                held |= PlayerCommandButtons.JumpHeld;
             return held;
         }
 
@@ -269,6 +274,7 @@ namespace NotThatWay.Game.Input
             _selectSlot3 = _playerMap.FindAction(GameControlsContract.SelectSlot3, true);
             _cycleSlot = _playerMap.FindAction(GameControlsContract.CycleSlot, true);
             _jump = _playerMap.FindAction(GameControlsContract.Jump, true);
+            _dive = _playerMap.FindAction(GameControlsContract.Dive, true);
             _pause = _playerMap.FindAction(GameControlsContract.Pause, true);
             _toggleView = _playerMap.FindAction(GameControlsContract.ToggleView, true);
             _zoom = _playerMap.FindAction(GameControlsContract.Zoom, true);
@@ -309,6 +315,7 @@ namespace NotThatWay.Game.Input
             _selectSlot3 = null;
             _cycleSlot = null;
             _jump = null;
+            _dive = null;
             _pause = null;
             _toggleView = null;
             _zoom = null;

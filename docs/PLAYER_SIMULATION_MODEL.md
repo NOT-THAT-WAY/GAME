@@ -12,7 +12,8 @@ Un snapshot joueur contient tout l’état mutable nécessaire à une reprise ex
 - vitesse horizontale contrôlée et vitesse verticale séparée ;
 - vitesse de knockback restante ;
 - contact au sol ;
-- fenêtres coyote et buffer de saut restantes, exprimées en ticks.
+- fenêtres coyote et buffer de saut restantes, exprimées en ticks ;
+- phase de plongeon : en vol, ticks de relevé restants, ticks d'attente restants.
 
 `RestoreState` remplace cet ensemble atomiquement et fixe l’origine du tick suivant. Un tick dupliqué,
 sauté ou ancien est refusé ; le passage `uint.MaxValue → 0` reste accepté par le modèle pur. FishNet
@@ -22,7 +23,8 @@ réserve toutefois le tick `0` et sa couche de prédiction devra gérer cette di
 
 `PlayerSimulationConfig` est fourni explicitement à chaque instance. Il porte durée du tick, capsule,
 vitesses, accélérations/décélérations sol-air, gravité, vitesse collée au sol, saut activé ou non,
-fenêtres de saut, décroissance du knockback et limite de pitch.
+fenêtres de saut, décroissance du knockback, limite de pitch, et plongeon avant activé ou non avec
+ses impulsions, son relevé et son attente.
 
 Il n’existe ni preset global ni `ScriptableObject` canonique pour le moment. Le banc M1 peut donc
 tester plusieurs gabarits et garder le saut désactivé sans inscrire prématurément une décision de
@@ -35,7 +37,8 @@ game design dans le moteur. DEC-01 choisira plus tard les valeurs sérialisées 
 3. Décoder et renormaliser les axes, choisir marche/sprint, puis accélérer vers une cible plus rapide
    ou décélérer vers une cible moins rapide, y compris lors d’une baisse de stick ou de sprint.
 4. Ajouter l’impulsion horizontale externe du tick.
-5. Résoudre saut/buffer/coyote, puis appliquer la gravité.
+5. Résoudre le plongeon (lancement, vol ou relevé), puis saut/buffer/coyote, puis appliquer la
+   gravité.
 6. Construire un déplacement métrique et appeler une seule fois le monde de collision.
 7. Prendre sa position résolue comme vérité ; traiter plafond et sol.
 8. Mettre à jour événements et fenêtres, puis décroître le knockback pour le tick suivant.
@@ -50,6 +53,25 @@ Avec `CoyoteTicks = N`, quitter le sol publie `N` opportunités sur les ticks fu
 `JumpBufferTicks = N`, un appui en l’air reste disponible pendant `N` ticks futurs ; s’il touche le
 sol durant cette fenêtre, il est conservé sur le tick d’atterrissage et consommé au tick suivant.
 Lorsque le saut est désactivé, l’appui est ignoré et les deux compteurs restent à zéro.
+`JumpHeld` (bouton tenu) vaut un appui à chaque tick : garder Espace enfoncé enchaîne les sauts dès
+que le sol revient, pendant un sprint comme à l'arrêt, sans dépendre d'un front par tick.
+
+## Plongeon avant
+
+`DivePressed` au sol, **sprint tenu et axe avant poussé**, hors relevé et hors attente, lance le
+joueur dans la direction de son regard à `DiveForwardSpeed` avec `DiveUpwardSpeed` vers le haut,
+sans passer par l'accélération. Marcher ne suffit pas : le plongeon prolonge une course. Pendant le
+vol, les axes et le saut sont ignorés ; la vitesse horizontale est conservée telle quelle et le
+knockback continue de s'ajouter. Au premier contact avec le sol, la vitesse horizontale est annulée
+— le joueur s'étale — et `DiveRecoveryTicks` ticks de relevé immobilisent le déplacement et le saut.
+`DiveCooldownTicks` court depuis le lancement. Un modificateur de vitesse à `0 ‰` (KO, gel) interdit
+le lancement. Désactivé, l'appui est ignoré et les trois champs restent à zéro ; un état qui les
+porte est alors refusé à la restauration, comme les fenêtres de saut.
+
+Les valeurs du banc M1 (13 m/s, 4,2 m/s, 24 et 90 ticks à 60 Hz — un premier essai à 8,5/3,2 a
+été jugé trop court) sont une baseline : le plongeon relève de la même décision DEC-01 que le saut
+et n'est pas plus acquis que lui. La posture (corps basculé en vol, à plat puis redressé pendant le
+relevé) est un composant cosmétique, `M1DivePresentation`, sans effet sur la capsule.
 
 ## Collision et réseau
 

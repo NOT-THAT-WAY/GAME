@@ -5,6 +5,9 @@ namespace NotThatWay.Game.PlayerSimulation
     /// <summary>
     /// État intégral nécessaire pour reprendre ou réconcilier la simulation à un tick.
     /// Les vitesses horizontales ont toujours Y=0 ; la verticale reste un scalaire séparé.
+    /// Le plongeon avant vit dans trois champs : en vol (<see cref="IsDiving"/>), au sol
+    /// pendant le relevé (<see cref="DiveRecoveryTicksRemaining"/>) et l'attente avant
+    /// le prochain plongeon (<see cref="DiveCooldownTicksRemaining"/>).
     /// </summary>
     public readonly struct PlayerState : IEquatable<PlayerState>
     {
@@ -21,7 +24,10 @@ namespace NotThatWay.Game.PlayerSimulation
             PlayerVector3 knockbackVelocity,
             bool isGrounded,
             uint coyoteTicksRemaining = 0u,
-            uint jumpBufferTicksRemaining = 0u)
+            uint jumpBufferTicksRemaining = 0u,
+            bool isDiving = false,
+            uint diveRecoveryTicksRemaining = 0u,
+            uint diveCooldownTicksRemaining = 0u)
         {
             if (yawCentidegrees < 0 || yawCentidegrees >= FullYawCentidegrees)
                 throw new ArgumentOutOfRangeException(nameof(yawCentidegrees));
@@ -44,6 +50,9 @@ namespace NotThatWay.Game.PlayerSimulation
             IsGrounded = isGrounded;
             CoyoteTicksRemaining = coyoteTicksRemaining;
             JumpBufferTicksRemaining = jumpBufferTicksRemaining;
+            IsDiving = isDiving;
+            DiveRecoveryTicksRemaining = diveRecoveryTicksRemaining;
+            DiveCooldownTicksRemaining = diveCooldownTicksRemaining;
         }
 
         public uint Tick { get; }
@@ -56,6 +65,9 @@ namespace NotThatWay.Game.PlayerSimulation
         public bool IsGrounded { get; }
         public uint CoyoteTicksRemaining { get; }
         public uint JumpBufferTicksRemaining { get; }
+        public bool IsDiving { get; }
+        public uint DiveRecoveryTicksRemaining { get; }
+        public uint DiveCooldownTicksRemaining { get; }
 
         public bool Equals(PlayerState other) =>
             Tick == other.Tick &&
@@ -67,7 +79,10 @@ namespace NotThatWay.Game.PlayerSimulation
             KnockbackVelocity.Equals(other.KnockbackVelocity) &&
             IsGrounded == other.IsGrounded &&
             CoyoteTicksRemaining == other.CoyoteTicksRemaining &&
-            JumpBufferTicksRemaining == other.JumpBufferTicksRemaining;
+            JumpBufferTicksRemaining == other.JumpBufferTicksRemaining &&
+            IsDiving == other.IsDiving &&
+            DiveRecoveryTicksRemaining == other.DiveRecoveryTicksRemaining &&
+            DiveCooldownTicksRemaining == other.DiveCooldownTicksRemaining;
 
         public override bool Equals(object value) => value is PlayerState other && Equals(other);
 
@@ -84,6 +99,9 @@ namespace NotThatWay.Game.PlayerSimulation
             hash.Add(IsGrounded);
             hash.Add(CoyoteTicksRemaining);
             hash.Add(JumpBufferTicksRemaining);
+            hash.Add(IsDiving);
+            hash.Add(DiveRecoveryTicksRemaining);
+            hash.Add(DiveCooldownTicksRemaining);
             return hash.ToHashCode();
         }
 

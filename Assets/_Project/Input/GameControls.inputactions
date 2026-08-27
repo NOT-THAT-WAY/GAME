@@ -124,6 +124,15 @@
           "initialStateCheck": false
         },
         {
+          "name": "Dive",
+          "type": "Button",
+          "id": "15b33bb1-f1a7-4b92-86aa-4f8163627928",
+          "expectedControlType": "Button",
+          "processors": "",
+          "interactions": "",
+          "initialStateCheck": false
+        },
+        {
           "name": "Pause",
           "type": "Button",
           "id": "964f3a3d-d976-4077-ad4d-1dd0ce831595",
@@ -510,6 +519,39 @@
           "processors": "",
           "groups": "Gamepad",
           "action": "Jump",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "3076a271-19f1-4668-aad0-74f93dd2a26d",
+          "path": "<Keyboard>/leftCtrl",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "Dive",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "065a5903-bb24-4f27-be16-2bb76532ecae",
+          "path": "<Keyboard>/#(c)",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "Dive",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "6268ca84-14cc-490f-8aeb-53a666e07d6b",
+          "path": "<Gamepad>/leftShoulder",
+          "interactions": "",
+          "processors": "",
+          "groups": "Gamepad",
+          "action": "Dive",
           "isComposite": false,
           "isPartOfComposite": false
         },

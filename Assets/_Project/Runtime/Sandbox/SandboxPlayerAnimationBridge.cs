@@ -20,6 +20,9 @@ namespace NotThatWay.Game.Sandbox
         private static readonly int CarryingBool = Animator.StringToHash("Carrying");
         private static readonly int CarryKindInt = Animator.StringToHash("CarryKind");
         private static readonly int KnockedOutBool = Animator.StringToHash("KnockedOut");
+        private static readonly int DiveTrigger = Animator.StringToHash("Dive");
+        private static readonly int DivingBool = Animator.StringToHash("Diving");
+        private static readonly int DiveRecoveringBool = Animator.StringToHash("DiveRecovering");
 
         // La marche M1 plafonne à 4,2 m/s ; le sprint avec trophée atteint
         // 5,25 m/s. Un seuil à 4,3 sépare donc les deux profils sans connaître
@@ -31,6 +34,7 @@ namespace NotThatWay.Game.Sandbox
         private Animator _animator;
         private bool _hasGroundedSample;
         private bool _wasGrounded;
+        private bool _wasDiving;
 
         private void Awake()
         {
@@ -55,15 +59,25 @@ namespace NotThatWay.Game.Sandbox
             _animator.SetBool(GroundedBool, state.IsGrounded);
             _animator.SetBool(
                 SprintingBool,
-                alive && speed > SprintPresentationThreshold);
+                alive && !state.IsDiving && speed > SprintPresentationThreshold);
+            _animator.SetBool(DivingBool, state.IsDiving);
+            _animator.SetBool(DiveRecoveringBool, state.DiveRecoveryTicksRemaining > 0u);
+            if (state.IsDiving && !_wasDiving)
+                _animator.SetTrigger(DiveTrigger);
+            _wasDiving = state.IsDiving;
             _animator.SetBool(CarryingBool, activeKind != SandboxCarryableKind.None);
             _animator.SetInteger(CarryKindInt, (int)activeKind);
             _animator.SetBool(KnockedOutBool, !alive);
 
             if (_hasGroundedSample)
             {
-                if (_wasGrounded && !state.IsGrounded && state.VerticalVelocity > 0d)
+                // Le décollage d'un plongeon a son propre déclencheur : ne pas le
+                // doubler d'un saut.
+                if (_wasGrounded && !state.IsGrounded && state.VerticalVelocity > 0d &&
+                    !state.IsDiving)
+                {
                     _animator.SetTrigger(JumpTrigger);
+                }
                 else if (!_wasGrounded && state.IsGrounded)
                     _animator.SetTrigger(LandTrigger);
             }

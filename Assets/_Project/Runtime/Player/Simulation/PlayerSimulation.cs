@@ -90,7 +90,9 @@ namespace NotThatWay.Game.PlayerSimulation
         Landed = 1 << 1,
         LeftGround = 1 << 2,
         HitSides = 1 << 3,
-        HitCeiling = 1 << 4
+        HitCeiling = 1 << 4,
+        Dived = 1 << 5,
+        DiveLanded = 1 << 6
     }
 
     public readonly struct PlayerTickResult
@@ -132,6 +134,8 @@ namespace NotThatWay.Game.PlayerSimulation
         private const PlayerCommandButtons KnownButtons =
             PlayerCommandButtons.SprintHeld |
             PlayerCommandButtons.InteractHeld |
+            PlayerCommandButtons.JumpHeld |
+            PlayerCommandButtons.DivePressed |
             PlayerCommandButtons.PunchHeld |
             PlayerCommandButtons.SlingshotHeld |
             PlayerCommandButtons.SlingshotPressed |
@@ -234,42 +238,87 @@ namespace NotThatWay.Game.PlayerSimulation
                 localX * yawCosine + localZ * yawSine,
                 0d,
                 localZ * yawCosine - localX * yawSine);
-            var targetSpeed = command.Has(PlayerCommandButtons.SprintHeld)
-                ? _config.SprintSpeedMetersPerSecond
-                : _config.WalkSpeedMetersPerSecond;
-            targetSpeed *= modifiers.MovementSpeedPermille /
-                           (double)PlayerTickModifiers.PermilleScale;
-            var targetVelocity = worldDirection * targetSpeed;
-            var targetMagnitude = targetVelocity.HorizontalMagnitude;
-            var currentMagnitude = previous.HorizontalVelocity.HorizontalMagnitude;
-            var isDecelerating = IsMeaningfullyLower(targetMagnitude, currentMagnitude);
-            var velocityChangeRate = SelectVelocityChangeRate(
-                previous.IsGrounded,
-                isDecelerating);
-            var horizontalVelocity = MoveToward(
-                previous.HorizontalVelocity,
-                targetVelocity,
-                velocityChangeRate * _config.TickDurationSeconds);
+
+            // Plongeon : seulement lancé depuis un sprint vers l'avant. Le vol coupe
+            // le contrôle horizontal, le relevé au sol l'immobilise, et l'attente
+            // empêche d'enchaîner. Tout est en ticks.
+            var diveEnabled = _config.DiveEnabled;
+            var wasDiving = diveEnabled && previous.IsDiving;
+            var diveRecoveryTicks = diveEnabled ? previous.DiveRecoveryTicksRemaining : 0u;
+            var diveCooldownTicks = diveEnabled ? previous.DiveCooldownTicksRemaining : 0u;
+            var isRecovering = diveRecoveryTicks > 0u;
+            var dived = diveEnabled &&
+                        command.Has(PlayerCommandButtons.DivePressed) &&
+                        command.Has(PlayerCommandButtons.SprintHeld) &&
+                        localZ > 0d &&
+                        previous.IsGrounded &&
+                        !wasDiving &&
+                        !isRecovering &&
+                        diveCooldownTicks == 0u &&
+                        modifiers.MovementSpeedPermille > 0;
+            var diveLocksControl = dived || wasDiving || isRecovering;
+
+            PlayerVector3 horizontalVelocity;
+            if (dived)
+            {
+                // Impulsion franche dans la direction du regard, sans passer par
+                // l'accélération : c'est un bond, pas une course.
+                horizontalVelocity = new PlayerVector3(yawSine, 0d, yawCosine) *
+                                     _config.DiveForwardSpeedMetersPerSecond;
+            }
+            else if (wasDiving)
+            {
+                horizontalVelocity = previous.HorizontalVelocity;
+            }
+            else
+            {
+                var targetSpeed = command.Has(PlayerCommandButtons.SprintHeld)
+                    ? _config.SprintSpeedMetersPerSecond
+                    : _config.WalkSpeedMetersPerSecond;
+                targetSpeed *= modifiers.MovementSpeedPermille /
+                               (double)PlayerTickModifiers.PermilleScale;
+                var targetVelocity = isRecovering
+                    ? PlayerVector3.Zero
+                    : worldDirection * targetSpeed;
+                var targetMagnitude = targetVelocity.HorizontalMagnitude;
+                var currentMagnitude = previous.HorizontalVelocity.HorizontalMagnitude;
+                var isDecelerating = IsMeaningfullyLower(targetMagnitude, currentMagnitude);
+                var velocityChangeRate = SelectVelocityChangeRate(
+                    previous.IsGrounded,
+                    isDecelerating);
+                horizontalVelocity = MoveToward(
+                    previous.HorizontalVelocity,
+                    targetVelocity,
+                    velocityChangeRate * _config.TickDurationSeconds);
+            }
 
             var knockbackVelocity = previous.KnockbackVelocity + forces.HorizontalVelocityDelta;
-            var jumpPressed = command.Has(PlayerCommandButtons.JumpPressed);
-            var coyoteTicks = _config.JumpEnabled ? previous.CoyoteTicksRemaining : 0u;
-            var jumpBufferTicks = _config.JumpEnabled ? previous.JumpBufferTicksRemaining : 0u;
+            // Saut tenu : garder Espace enfoncé vaut un appui à chaque tick, donc
+            // on ressaute dès que le sol revient, sprint ou pas. Le front seul
+            // reste suffisant pour un saut unique.
+            var jumpAllowed = _config.JumpEnabled && !diveLocksControl;
+            var jumpPressed = jumpAllowed &&
+                              (command.Has(PlayerCommandButtons.JumpPressed) ||
+                               command.Has(PlayerCommandButtons.JumpHeld));
+            var coyoteTicks = jumpAllowed ? previous.CoyoteTicksRemaining : 0u;
+            var jumpBufferTicks = jumpAllowed ? previous.JumpBufferTicksRemaining : 0u;
             var canUseGroundWindow = previous.IsGrounded || coyoteTicks > 0u;
             var hasBufferedJump = jumpBufferTicks > 0u;
-            var jumped = _config.JumpEnabled &&
+            var jumped = jumpAllowed &&
                          canUseGroundWindow &&
                          (jumpPressed || hasBufferedJump);
             var bufferSetThisTick = false;
-            if (_config.JumpEnabled && jumpPressed && !jumped)
+            if (jumpAllowed && jumpPressed && !jumped)
             {
                 jumpBufferTicks = _config.JumpBufferTicks;
                 bufferSetThisTick = jumpBufferTicks > 0u;
             }
 
-            var verticalVelocity = jumped
-                ? _config.JumpSpeedMetersPerSecond
-                : previous.VerticalVelocity;
+            var verticalVelocity = dived
+                ? _config.DiveUpwardSpeedMetersPerSecond
+                : jumped
+                    ? _config.JumpSpeedMetersPerSecond
+                    : previous.VerticalVelocity;
             verticalVelocity +=
                 _config.GravityMetersPerSecondSquared * _config.TickDurationSeconds;
 
@@ -293,9 +342,32 @@ namespace NotThatWay.Game.PlayerSimulation
             if (grounded)
                 verticalVelocity = _config.GroundedVelocityMetersPerSecond;
 
+            // Le plongeon se termine au premier contact avec le sol : le joueur
+            // s'étale (vitesse horizontale annulée) puis se relève pendant
+            // DiveRecoveryTicks. L'attente court depuis le lancement.
+            var isDiving = dived || wasDiving;
+            if (isDiving && grounded)
+            {
+                isDiving = false;
+                horizontalVelocity = PlayerVector3.Zero;
+                diveRecoveryTicks = _config.DiveRecoveryTicks;
+            }
+            else if (isRecovering)
+            {
+                diveRecoveryTicks--;
+            }
+            if (dived)
+                diveCooldownTicks = _config.DiveCooldownTicks;
+            else if (diveCooldownTicks > 0u)
+                diveCooldownTicks--;
+
             var events = PlayerTickEvents.None;
             if (jumped)
                 events |= PlayerTickEvents.Jumped;
+            if (dived)
+                events |= PlayerTickEvents.Dived;
+            if ((dived || wasDiving) && !isDiving)
+                events |= PlayerTickEvents.DiveLanded;
             if (!previous.IsGrounded && grounded)
                 events |= PlayerTickEvents.Landed;
             if (previous.IsGrounded && !grounded)
@@ -305,7 +377,7 @@ namespace NotThatWay.Game.PlayerSimulation
             if ((flags & PlayerCollisionFlags.Above) != 0)
                 events |= PlayerTickEvents.HitCeiling;
 
-            if (!_config.JumpEnabled || jumped)
+            if (!jumpAllowed || jumped)
             {
                 coyoteTicks = 0u;
                 jumpBufferTicks = 0u;
@@ -339,7 +411,10 @@ namespace NotThatWay.Game.PlayerSimulation
                 knockbackVelocity,
                 grounded,
                 coyoteTicks,
-                jumpBufferTicks);
+                jumpBufferTicks,
+                isDiving,
+                diveRecoveryTicks,
+                diveCooldownTicks);
             _state = current;
             return new PlayerTickResult(
                 previous,
@@ -426,11 +501,11 @@ namespace NotThatWay.Game.PlayerSimulation
             PlayerState state,
             string parameterName)
         {
+            var maximumSpeed = config.MaximumControlledSpeedMetersPerSecond;
             var velocityTolerance = Math.Max(
                 VelocityValidationAbsoluteTolerance,
-                config.SprintSpeedMetersPerSecond * VelocityValidationRelativeTolerance);
-            if (state.HorizontalVelocity.HorizontalMagnitude >
-                config.SprintSpeedMetersPerSecond + velocityTolerance)
+                maximumSpeed * VelocityValidationRelativeTolerance);
+            if (state.HorizontalVelocity.HorizontalMagnitude > maximumSpeed + velocityTolerance)
             {
                 throw new ArgumentOutOfRangeException(
                     parameterName,
@@ -473,6 +548,39 @@ namespace NotThatWay.Game.PlayerSimulation
                 throw new ArgumentOutOfRangeException(
                     parameterName,
                     "Le buffer de saut dépasse le réglage de simulation.");
+            }
+            if (!config.DiveEnabled &&
+                (state.IsDiving ||
+                 state.DiveRecoveryTicksRemaining != 0u ||
+                 state.DiveCooldownTicksRemaining != 0u))
+            {
+                throw new ArgumentException(
+                    "Un état sans plongeon ne peut pas conserver de phase de plongeon.",
+                    parameterName);
+            }
+            if (state.IsGrounded && state.IsDiving)
+            {
+                throw new ArgumentException(
+                    "Un état au sol ne peut pas être en plein plongeon.",
+                    parameterName);
+            }
+            if (state.IsDiving && state.DiveRecoveryTicksRemaining != 0u)
+            {
+                throw new ArgumentException(
+                    "Un plongeon en vol ne peut pas déjà être en relevé.",
+                    parameterName);
+            }
+            if (state.DiveRecoveryTicksRemaining > config.DiveRecoveryTicks)
+            {
+                throw new ArgumentOutOfRangeException(
+                    parameterName,
+                    "Le relevé de plongeon dépasse le réglage de simulation.");
+            }
+            if (state.DiveCooldownTicksRemaining > config.DiveCooldownTicks)
+            {
+                throw new ArgumentOutOfRangeException(
+                    parameterName,
+                    "L'attente de plongeon dépasse le réglage de simulation.");
             }
         }
 
