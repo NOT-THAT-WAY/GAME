@@ -43,7 +43,7 @@ namespace NotThatWay.Game
             { "Cases d'objet", "1 / 2 / 3 · Tab ou R1 pour parcourir" },
             { "Vue 1re / 3e personne", "F1 · croix haut" },
             { "Zoomer (3e personne)", "molette · croix gauche/droite" },
-            { "Libérer le curseur", "Échap" }
+            { "Pause / réglages", "Échap — sensibilité, FOV, volume…" }
         };
 
         private bool _expanded = true;

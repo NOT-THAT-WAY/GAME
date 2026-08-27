@@ -468,6 +468,10 @@ namespace NotThatWay.Game.Editor
                 SetObject(serializedDive, "_body", body.transform);
                 serializedDive.ApplyModifiedPropertiesWithoutUndo();
 
+                var pauseMenu = root.AddComponent<M1PauseMenu>();
+                var serializedPause = new SerializedObject(pauseMenu);
+                SetObject(serializedPause, "_camera", camera);
+                serializedPause.ApplyModifiedPropertiesWithoutUndo();
                 var appearance = root.AddComponent<M1PlayerAppearance>();
                 var serializedAppearance = new SerializedObject(appearance);
                 SetObject(serializedAppearance, "_body", presentation.transform);
