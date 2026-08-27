@@ -58,6 +58,7 @@ namespace NotThatWay.Game
         private PlayerStateMachine _simulation;
         private PlayerVector3 _pendingKnockbackVelocityDelta;
         private PlayerReplicateData _lastTickedReplicateData;
+        private uint _pendingKnockdownTicks;
         private bool _hasLastTickedReplicateData;
         private bool _cursorLocked;
         private bool _ownsPresentation;
@@ -209,10 +210,14 @@ namespace NotThatWay.Game
                 command = _sandboxGameplay.FilterCommandForSimulation(command);
             PlayerTickForces forces = default;
             if (replicateState.ContainsTicked() &&
-                !_pendingKnockbackVelocityDelta.Equals(PlayerVector3.Zero))
+                (!_pendingKnockbackVelocityDelta.Equals(PlayerVector3.Zero) ||
+                 _pendingKnockdownTicks > 0u))
             {
-                forces = new PlayerTickForces(_pendingKnockbackVelocityDelta);
+                forces = new PlayerTickForces(
+                    _pendingKnockbackVelocityDelta,
+                    _pendingKnockdownTicks);
                 _pendingKnockbackVelocityDelta = PlayerVector3.Zero;
+                _pendingKnockdownTicks = 0u;
             }
 
             var modifiers = _sandboxGameplay == null
@@ -280,6 +285,32 @@ namespace NotThatWay.Game
             QueueKnockback(velocity);
             if (!Owner.IsLocalClient)
                 ApplyKnockbackTargetRpc(Owner, velocity);
+        }
+
+        /// <summary>
+        /// Chute décidée par l'hôte (glissade) : mise en file comme le knockback,
+        /// prédite par le propriétaire dès réception, corrigée au reconcile.
+        /// </summary>
+        public void ApplyKnockdownFromServer(uint ticks)
+        {
+            if (!IsServerStarted || !Owner.IsValid || ticks == 0u)
+                return;
+
+            QueueKnockdown(ticks);
+            if (!Owner.IsLocalClient)
+                ApplyKnockdownTargetRpc(Owner, ticks);
+        }
+
+        [TargetRpc]
+        private void ApplyKnockdownTargetRpc(NetworkConnection connection, uint ticks) =>
+            QueueKnockdown(ticks);
+
+        private void QueueKnockdown(uint ticks)
+        {
+            if (ticks > PlayerTickForces.MaximumKnockdownTicks)
+                ticks = PlayerTickForces.MaximumKnockdownTicks;
+            if (ticks > _pendingKnockdownTicks)
+                _pendingKnockdownTicks = ticks;
         }
 
         /// <summary>

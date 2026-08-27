@@ -12,7 +12,9 @@ namespace NotThatWay.Game.Sandbox
     {
         [SerializeField] private NetworkObject _rockPrefab;
         [SerializeField] private NetworkObject _trophyPrefab;
+        [SerializeField] private NetworkObject _oilCanPrefab;
         [SerializeField] private Vector3[] _rockSpawnPositions = System.Array.Empty<Vector3>();
+        [SerializeField] private Vector3[] _oilCanSpawnPositions = System.Array.Empty<Vector3>();
         [SerializeField] private Vector3 _trophySpawnPosition;
 
         private readonly List<NetworkObject> _spawned = new();
@@ -46,17 +48,20 @@ namespace NotThatWay.Game.Sandbox
             }
             if (state.ConnectionState != LocalConnectionState.Started || _spawned.Count != 0)
                 return;
-            if (_rockPrefab == null || _trophyPrefab == null)
+            if (_rockPrefab == null || _trophyPrefab == null || _oilCanPrefab == null)
             {
-                Debug.LogError("[GAME-SANDBOX] Prefabs de caillou/trophée absents.", this);
+                Debug.LogError("[GAME-SANDBOX] Prefabs de caillou/trophée/bidon absents.", this);
                 return;
             }
 
             for (var index = 0; index < _rockSpawnPositions.Length; index++)
                 Spawn(_rockPrefab, _rockSpawnPositions[index], $"rock-{index}");
+            for (var index = 0; index < _oilCanSpawnPositions.Length; index++)
+                Spawn(_oilCanPrefab, _oilCanSpawnPositions[index], $"oilcan-{index}");
             Spawn(_trophyPrefab, _trophySpawnPosition, "trophy");
             Debug.Log(
-                $"[GAME-SANDBOX] objects_ready rocks={_rockSpawnPositions.Length} trophy=1.",
+                $"[GAME-SANDBOX] objects_ready rocks={_rockSpawnPositions.Length} " +
+                $"oilcans={_oilCanSpawnPositions.Length} trophy=1.",
                 this);
         }
 

@@ -73,6 +73,15 @@ Les valeurs du banc M1 (13 m/s, 4,2 m/s, 24 et 90 ticks à 60 Hz — un premier 
 et n'est pas plus acquis que lui. La posture (corps basculé en vol, à plat puis redressé pendant le
 relevé) est un composant cosmétique, `M1DivePresentation`, sans effet sur la capsule.
 
+## Chute imposée par l'hôte
+
+`PlayerTickForces` porte, en plus de l'impulsion horizontale, un nombre de ticks de chute
+(`KnockdownTicks`, borné à 120) : la glissade sur une flaque d'huile l'utilise. Appliquée sur un
+tick, elle met la vitesse contrôlée à zéro et arme la même fenêtre de relevé que l'atterrissage
+d'un plongeon — mêmes verrous (déplacement et saut coupés), même posture. Sans plongeon configuré,
+la fenêtre n'existe pas et la chute est ignorée plutôt qu'inventée. Le serveur la propage au
+propriétaire comme le knockback : mise en file, prédite, corrigée au reconcile.
+
 ## Collision et réseau
 
 Le modèle émet position de départ, déplacement désiré, yaw et dimensions de capsule. L’adaptateur

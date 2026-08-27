@@ -29,20 +29,39 @@ namespace NotThatWay.Game.PlayerSimulation
 
     public readonly struct PlayerTickForces : IEquatable<PlayerTickForces>
     {
+        /// <summary>Borne absolue d'une chute imposée : deux secondes à 60 Hz.</summary>
+        public const uint MaximumKnockdownTicks = 120u;
+
         public PlayerTickForces(PlayerVector3 horizontalVelocityDelta)
+            : this(horizontalVelocityDelta, 0u)
+        {
+        }
+
+        public PlayerTickForces(PlayerVector3 horizontalVelocityDelta, uint knockdownTicks)
         {
             PlayerState.EnsureHorizontal(horizontalVelocityDelta, nameof(horizontalVelocityDelta));
+            if (knockdownTicks > MaximumKnockdownTicks)
+                throw new ArgumentOutOfRangeException(nameof(knockdownTicks));
             HorizontalVelocityDelta = horizontalVelocityDelta;
+            KnockdownTicks = knockdownTicks;
         }
 
         public PlayerVector3 HorizontalVelocityDelta { get; }
+
+        /// <summary>
+        /// Chute décidée par l'hôte (glissade sur l'huile…) : le joueur s'étale et
+        /// se relève via la même fenêtre que l'atterrissage d'un plongeon.
+        /// </summary>
+        public uint KnockdownTicks { get; }
         public static PlayerTickForces None => default;
 
         public bool Equals(PlayerTickForces other) =>
-            HorizontalVelocityDelta.Equals(other.HorizontalVelocityDelta);
+            HorizontalVelocityDelta.Equals(other.HorizontalVelocityDelta) &&
+            KnockdownTicks == other.KnockdownTicks;
 
         public override bool Equals(object value) => value is PlayerTickForces other && Equals(other);
-        public override int GetHashCode() => HorizontalVelocityDelta.GetHashCode();
+        public override int GetHashCode() =>
+            HashCode.Combine(HorizontalVelocityDelta, KnockdownTicks);
     }
 
     /// <summary>
@@ -358,6 +377,15 @@ namespace NotThatWay.Game.PlayerSimulation
             else if (diveCooldownTicks > 0u)
                 diveCooldownTicks--;
 
+            // Chute imposée par l'hôte : le joueur s'étale sur place et se relève
+            // par la fenêtre du plongeon. Sans plongeon configuré, la fenêtre
+            // n'existe pas et la chute est ignorée (rien d'inventé).
+            if (diveEnabled && forces.KnockdownTicks > 0u && !isDiving)
+            {
+                horizontalVelocity = PlayerVector3.Zero;
+                diveRecoveryTicks = Math.Max(diveRecoveryTicks, forces.KnockdownTicks);
+            }
+
             var events = PlayerTickEvents.None;
             if (jumped)
                 events |= PlayerTickEvents.Jumped;
@@ -567,11 +595,12 @@ namespace NotThatWay.Game.PlayerSimulation
                     "Un plongeon en vol ne peut pas déjà être en relevé.",
                     parameterName);
             }
-            if (state.DiveRecoveryTicksRemaining > config.DiveRecoveryTicks)
+            if (state.DiveRecoveryTicksRemaining >
+                Math.Max(config.DiveRecoveryTicks, PlayerTickForces.MaximumKnockdownTicks))
             {
                 throw new ArgumentOutOfRangeException(
                     parameterName,
-                    "Le relevé de plongeon dépasse le réglage de simulation.");
+                    "Le relevé (plongeon ou chute imposée) dépasse la borne de simulation.");
             }
             if (state.DiveCooldownTicksRemaining > config.DiveCooldownTicks)
             {
