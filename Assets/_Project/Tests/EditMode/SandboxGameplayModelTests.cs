@@ -34,6 +34,23 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(config.KnockoutDurationTicks, Is.EqualTo(240u));
             Assert.That(config.RecoveryHealth, Is.EqualTo(40));
             Assert.That(config.RecoveryProtectionTicks, Is.EqualTo(60u));
+            Assert.That(config.OilPourEnergyCost, Is.EqualTo(8));
+            Assert.That(config.OilSlipKnockdownTicks, Is.EqualTo(45u));
+            Assert.That(config.OilSlipGraceTicks, Is.EqualTo(120u));
+        }
+
+        [Test]
+        public void OilPour_SpendsItsEnergyAndNeverDuringKnockout()
+        {
+            var config = SandboxGameplayConfig.Baseline60Hz;
+            var model = new SandboxPlayerModel(config);
+
+            Assert.That(model.TrySpendEnergyForOilPour(), Is.True);
+            Assert.That(model.State.Energy, Is.EqualTo(config.MaximumEnergy - config.OilPourEnergyCost));
+
+            var knockout = model.ApplyDamage(config.MaximumHealth, SandboxDamageKind.World);
+            Assert.That(knockout.KnockedOut, Is.True);
+            Assert.That(model.TrySpendEnergyForOilPour(), Is.False);
         }
 
         [Test]

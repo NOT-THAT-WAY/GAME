@@ -219,6 +219,42 @@ namespace NotThatWay.Game.Sandbox
             return true;
         }
 
+        /// <summary>
+        /// Verse le bidon actif : énergie, retrait de la case, puis l'objet devient
+        /// une flaque posée au sol 1,1 m devant le joueur. Le verseur n'est pas
+        /// épargné : il glissera comme les autres s'il repasse dessus avec de l'élan.
+        /// </summary>
+        public bool TryPourOilFromServer(PlayerCommand command)
+        {
+            if (!IsServerStarted || !IsAlive)
+                return false;
+            if (!EnsureAdvanced(command))
+                return false;
+            if (ActiveKind != SandboxCarryableKind.OilCan ||
+                !_inventory.ActiveEntry.HasValue)
+            {
+                return false;
+            }
+            var entry = _inventory.ActiveEntry.Value;
+            if (!SandboxCarryable.TryFindServer(entry.ObjectId, out var can) ||
+                !_model.TrySpendEnergyForOilPour() ||
+                !_inventory.TryRemoveActive(out _))
+            {
+                return false;
+            }
+
+            var forward = transform.forward;
+            forward.y = 0f;
+            forward = forward.sqrMagnitude > 0.0001f ? forward.normalized : Vector3.forward;
+            var ground = transform.position + forward * 1.1f;
+            ground.y = transform.position.y + 0.02f;
+            can.PourFromServer(this, ground);
+            RefreshHeldPresentations();
+            PlayInventoryEvent(1);
+            PublishSnapshot(false);
+            return true;
+        }
+
         public bool TryConsumePushEnergy(uint commandTick)
         {
             if (!IsServerStarted || !CanPush)

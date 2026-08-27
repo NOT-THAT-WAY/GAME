@@ -335,6 +335,13 @@ namespace NotThatWay.Game.Sandbox
             return TrySpendEnergy(_config.ThrowEnergyCost);
         }
 
+        public bool TrySpendEnergyForOilPour()
+        {
+            if (!CanAct)
+                return false;
+            return TrySpendEnergy(_config.OilPourEnergyCost);
+        }
+
         /// <summary>
         /// Coût continu appliqué uniquement après contact serveur accepté. Un
         /// même tick de commande ne peut jamais être facturé deux fois.

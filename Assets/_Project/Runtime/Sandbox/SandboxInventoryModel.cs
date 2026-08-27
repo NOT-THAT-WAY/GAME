@@ -6,7 +6,9 @@ namespace NotThatWay.Game.Sandbox
     {
         None = 0,
         Rock = 1,
-        Trophy = 2
+        Trophy = 2,
+        // 3 est réservé au lance-pierre (branche feat/slingshot, PR #38).
+        OilCan = 4
     }
 
     public enum SandboxCarryablePhase : byte

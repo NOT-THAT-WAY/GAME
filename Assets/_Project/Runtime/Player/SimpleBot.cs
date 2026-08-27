@@ -160,6 +160,18 @@ namespace NotThatWay.Game
             ApplyDamageFromServer(PlayerPunchDamage, velocity);
         }
 
+        /// <summary>Glissade sans dégâts (flaque d'huile) : recul et titubation seulement.</summary>
+        public void SlipFromServer(Vector3 velocity)
+        {
+            if (!IsServerStarted || _health <= 0)
+                return;
+            velocity.y = 0f;
+            _knockback = velocity;
+            _attacking = false;
+            SetPushing(false);
+            _visualStaggeredUntil = Time.time + StaggerSeconds;
+        }
+
         /// <summary>
         /// Dommage autoritaire reçu par le bot. Le recul et les réactions sont
         /// cosmétiques/répliqués ; aucun client ne choisit ses propres PV.

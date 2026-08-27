@@ -17,6 +17,7 @@ caillou physique et une première boucle de trophée.
 | Interagir / ramasser | `E` | bouton Ouest |
 | Pousser le mur | maintenir `E` au contact | maintenir bouton Ouest |
 | Frapper / lancer l'objet actif | clic gauche ou `F` | gâchette droite |
+| Verser le bidon d'huile (bidon actif en main) | clic gauche ou `F` | gâchette droite |
 | Lâcher l'objet actif | `A` | bouton Est |
 | Choisir une case | `1`, `2`, `3` | — |
 | Case suivante | `Tab` | épaule droite |
@@ -41,6 +42,7 @@ Toutes les durées de gameplay sont calculées à 60 ticks/s. Elles sont regroup
 | Coup de poing | 25 dégâts, 25 énergie, cooldown 48 ticks |
 | Caillou | 30 dégâts, lancer 18 énergie, vitesse 11 m/s + 2,4 m/s vers le haut |
 | Trophée lancé | 10 dégâts, même coût et même vitesse de lancer |
+| Bidon d'huile | ramassable (deux par arène) ; versé (8 énergie), il devient une flaque de ~0,95 m au sol, non ramassable jusqu'au reset ; quiconque la traverse à plus de 1,5 m/s — verseur compris — est poussé dans son élan (+6 m/s) et chute 45 ticks, au plus une fois par 120 ticks ; la flaque ne bloque pas et un bidon lancé ne blesse pas |
 | Sprint normal | -1 énergie tous les 5 ticks, soit 12/s |
 | Poussée valide du mur | -1 énergie tous les 4 ticks, soit 15/s |
 | Régénération énergie | délai 60 ticks, puis +1 tous les 4 ticks |
@@ -56,7 +58,7 @@ actions ont un impact immédiatement lisible, mais les chiffres restent des hypo
 
 ## Boucle jouable
 
-1. Le serveur fait apparaître six cailloux et un trophée dans l'arène 6×6.
+1. Le serveur fait apparaître six cailloux, deux bidons d'huile et un trophée dans l'arène 6×6.
 2. `E` ramasse l'objet disponible le plus proche à moins de 1,7 m, si une case est libre.
 3. L'objet de la case active est visible en main ; les deux autres sont transportés mais masqués.
 4. Clic gauche ou `F` lance l'objet actif. Le serveur fixe la trajectoire et la dépense d'énergie.

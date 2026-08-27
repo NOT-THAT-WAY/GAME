@@ -39,6 +39,8 @@ namespace NotThatWay.Game
             { "Force de poussée", "100 % au bout du battant, 40 % au gond" },
             { "Contre-pousser", "passer sur l'autre face et maintenir E" },
             { "Frapper / lancer", "F ou clic gauche · RT" },
+            { "Bidon d'huile", "le tenir + F/clic gauche : verser la flaque" },
+            { "", "quiconque la traverse en courant glisse et chute" },
             { "Lâcher l'objet", "A · B/Rond" },
             { "Cases d'objet", "1 / 2 / 3 · Tab ou R1 pour parcourir" },
             { "Vue 1re / 3e personne", "F1 · croix haut" },
