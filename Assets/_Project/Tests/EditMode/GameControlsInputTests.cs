@@ -78,6 +78,7 @@ namespace NotThatWay.Game.Tests.EditMode
                 Press(keyboard.leftShiftKey);
                 Press(keyboard.spaceKey, queueEventOnly: true);
                 Press(mouse.leftButton, queueEventOnly: true);
+                Press(mouse.rightButton, queueEventOnly: true);
                 Press(keyboard.aKey, queueEventOnly: true);
                 Press(keyboard.leftCtrlKey, queueEventOnly: true);
                 Set(mouse.delta, new Vector2(10f, -5f), queueEventOnly: true);
@@ -99,9 +100,16 @@ namespace NotThatWay.Game.Tests.EditMode
                 Assert.That(command.Has(PlayerCommandButtons.PunchPressed), Is.True);
                 Assert.That(command.Has(PlayerCommandButtons.DropPressed), Is.True);
                 Assert.That(command.Has(PlayerCommandButtons.DivePressed), Is.True);
+                Assert.That(command.Has(PlayerCommandButtons.SlingshotPressed), Is.True);
+                Assert.That(command.Has(PlayerCommandButtons.SlingshotHeld), Is.True,
+                    "Le clic droit est encore tenu au moment de consommer la commande.");
+                Assert.That(command.Has(PlayerCommandButtons.PunchHeld), Is.False,
+                    "Le clic gauche a été relâché avant la consommation.");
                 var next = source.ConsumeCommand(11u, 1f / 60f);
                 Assert.That(next.Has(PlayerCommandButtons.PunchPressed), Is.False);
                 Assert.That(next.Has(PlayerCommandButtons.DivePressed), Is.False);
+                Assert.That(next.Has(PlayerCommandButtons.SlingshotPressed), Is.False);
+                Assert.That(next.Has(PlayerCommandButtons.SlingshotHeld), Is.True);
             }
             finally
             {

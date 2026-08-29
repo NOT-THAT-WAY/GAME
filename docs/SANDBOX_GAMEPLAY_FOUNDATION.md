@@ -17,6 +17,9 @@ caillou physique et une première boucle de trophée.
 | Interagir / ramasser | `E` | bouton Ouest |
 | Pousser le mur | maintenir `E` au contact | maintenir bouton Ouest |
 | Frapper / lancer l'objet actif | clic gauche ou `F` | gâchette droite |
+| Prendre le lance-pierre (poche ou sol) / en main : charger un caillou à portée (2,2 m) | clic droit (tap) ou `E` | gâchette gauche (tap) ou bouton Ouest |
+| Lâcher le lance-pierre | clic droit maintenu 0,5 s | gâchette gauche maintenue |
+| Tirer au lance-pierre | clic gauche ou `F` **maintenu** puis relâché : plus long, plus fort et plus loin | gâchette droite maintenue puis relâchée |
 | Lâcher l'objet actif | `A` | bouton Est |
 | Choisir une case | `1`, `2`, `3` | — |
 | Case suivante | `Tab` | épaule droite |
@@ -41,6 +44,7 @@ Toutes les durées de gameplay sont calculées à 60 ticks/s. Elles sont regroup
 | Coup de poing | 25 dégâts, 25 énergie, cooldown 48 ticks |
 | Caillou | 30 dégâts, lancer 18 énergie, vitesse 11 m/s + 2,4 m/s vers le haut |
 | Trophée lancé | 10 dégâts, même coût et même vitesse de lancer |
+| Lance-pierre | ramassable au sol (deux par arène), tenu dans la main droite ; réserve de **5 cailloux** hors des trois cases, rechargée au clic droit près d'un caillou (ou depuis une case) ; tir chargé de 350 ‰ (pichenette) à 1000 ‰ en 72 ticks : vitesse 12 → 30 m/s, dégâts 30 → **45**, recul 7 m/s, 14 énergie ; le tir part dans la direction du regard, pitch compris ; bander ralentit à 650 ‰ ; ne se lance pas, se lâche (clic droit 30 ticks) ; lâcher le lance-pierre ou tomber KO rend la réserve à l'arène |
 | Sprint normal | -1 énergie tous les 5 ticks, soit 12/s |
 | Poussée valide du mur | -1 énergie tous les 4 ticks, soit 15/s |
 | Régénération énergie | délai 60 ticks, puis +1 tous les 4 ticks |
@@ -56,14 +60,24 @@ actions ont un impact immédiatement lisible, mais les chiffres restent des hypo
 
 ## Boucle jouable
 
-1. Le serveur fait apparaître six cailloux et un trophée dans l'arène 6×6.
+1. Le serveur fait apparaître six cailloux, deux lance-pierres et un trophée dans l'arène 6×6.
 2. `E` ramasse l'objet disponible le plus proche à moins de 1,7 m, si une case est libre.
 3. L'objet de la case active est visible en main ; les deux autres sont transportés mais masqués.
 4. Clic gauche ou `F` lance l'objet actif. Le serveur fixe la trajectoire et la dépense d'énergie.
-5. Un caillou ou trophée lancé rebondit, ne peut blesser qu'une fois par lancer, se stabilise, puis
+5. Le lance-pierre a ses propres gestes : clic droit le prend (de la poche, sinon au sol) et le pose
+   dans la main ; en main, un clic droit près d'un caillou le met en réserve (5 au plus) ; clic
+   gauche **maintenu** charge le tir et le relâcher fait partir le dernier caillou chargé — une
+   pichenette à 350 ‰, un trait tendu à pleine charge, 14 d'énergie à chaque tir. Sans caillou en
+   réserve, rien ne part : recharger, c'est ramasser (`E` ou clic droit, 2,2 m). Clic droit maintenu
+   une demi-seconde lâche le lance-pierre. Présentation : l'objet tenu se pose dans la main à chaque
+   image sur tous les postes (pas via la physique), le caillou du dessus attend dans la poche de
+   l'élastique et l'élastique se tend avec la charge — le tick de début de charge est répliqué pour
+   que chacun voie le tir se bander. Le tap, le maintien et la charge sont comptés en ticks par un modèle pur
+   (`SandboxSlingshotModel`) ; l'hôte applique ou refuse chaque action.
+6. Un caillou ou trophée lancé rebondit, ne peut blesser qu'une fois par lancer, se stabilise, puis
    redevient ramassable.
-6. Un joueur à zéro PV lâche tout, ne peut plus agir, puis se relève automatiquement.
-7. Porter le trophée ralentit le joueur. Entrer vivant dans la zone orange avec le trophée termine
+7. Un joueur à zéro PV lâche tout, ne peut plus agir, puis se relève automatiquement.
+8. Porter le trophée ralentit le joueur. Entrer vivant dans la zone orange avec le trophée termine
    la manche ; les ressources et objets sont remis à zéro pour la suivante.
 
 Le reset de manche ne replace pas encore les joueurs à leur spawn. C'est intentionnellement laissé

@@ -50,6 +50,12 @@ namespace NotThatWay.Game
         private bool[] _visibleInFirstPerson = Array.Empty<bool>();
         private bool _thirdPerson;
 
+        /// <summary>Racine graphique du personnage (lissée par FishNet), repère des objets tenus.</summary>
+        public Transform Body => _body;
+        public bool IsThirdPerson => _thirdPerson;
+        /// <summary>Caméra du joueur (sous le pivot, donc yaw et pitch du regard).</summary>
+        public Camera PlayerCamera => _camera;
+
         // Bras à ressort anti-mur de la caméra troisième personne. Purement
         // local et cosmétique (ADR 0004) : la logique de sonde/lissage vit
         // dans une classe non réseau, testable sans FishNet (voir

@@ -38,6 +38,7 @@ namespace NotThatWay.Game.Editor
         public const string GeneratedBotPrefabPath = "Assets/_GeneratedLocal/M1TrainingBot.prefab";
         public const string GeneratedRockPrefabPath = "Assets/_GeneratedLocal/SandboxRock.prefab";
         public const string GeneratedTrophyPrefabPath = "Assets/_GeneratedLocal/SandboxTrophy.prefab";
+        public const string GeneratedSlingshotPrefabPath = "Assets/_GeneratedLocal/SandboxSlingshot.prefab";
         public const string GeneratedPrefabsPath = "Assets/_GeneratedLocal/M1PlaytestPrefabs.asset";
 
         private const string GeneratedDirectory = "Assets/_GeneratedLocal";
@@ -118,6 +119,10 @@ namespace NotThatWay.Game.Editor
                 SandboxCarryableKind.Trophy,
                 GeneratedTrophyPrefabPath,
                 CreateLitMaterial("SandboxTrophy", new Color(1f, 0.58f, 0.06f), 0.48f, true));
+            var slingshotPrefab = CreateCarryablePrefab(
+                SandboxCarryableKind.Slingshot,
+                GeneratedSlingshotPrefabPath,
+                CreateLitMaterial("SandboxSlingshot", new Color(0.52f, 0.34f, 0.18f), 0.12f, false));
             var prefabCollection = LoadOrCreatePrefabCollection();
             prefabCollection.Clear();
             prefabCollection.AddObject(playerPrefab, true);
@@ -125,6 +130,7 @@ namespace NotThatWay.Game.Editor
             prefabCollection.AddObject(wallAuthorityPrefab, true);
             prefabCollection.AddObject(rockPrefab, true);
             prefabCollection.AddObject(trophyPrefab, true);
+            prefabCollection.AddObject(slingshotPrefab, true);
             EditorUtility.SetDirty(prefabCollection);
 
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
@@ -173,7 +179,7 @@ namespace NotThatWay.Game.Editor
             serializedWallSpawner.ApplyModifiedPropertiesWithoutUndo();
 
             var sandboxSpawner = networkRoot.AddComponent<SandboxWorldSpawner>();
-            ConfigureSandboxSpawner(sandboxSpawner, map, rockPrefab, trophyPrefab);
+            ConfigureSandboxSpawner(sandboxSpawner, map, rockPrefab, trophyPrefab, slingshotPrefab);
 
             ValidateSceneContract(
                 map,
@@ -183,6 +189,7 @@ namespace NotThatWay.Game.Editor
                 wallAuthorityPrefab,
                 rockPrefab,
                 trophyPrefab,
+                slingshotPrefab,
                 prefabCollection,
                 networkManager,
                 timeManager,
@@ -192,7 +199,8 @@ namespace NotThatWay.Game.Editor
                 scene,
                 playerPrefab.gameObject,
                 rockPrefab.gameObject,
-                trophyPrefab.gameObject);
+                trophyPrefab.gameObject,
+                slingshotPrefab.gameObject);
 
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene, GeneratedScenePath))
@@ -467,6 +475,10 @@ namespace NotThatWay.Game.Editor
                 var serializedDive = new SerializedObject(divePresentation);
                 SetObject(serializedDive, "_body", body.transform);
                 serializedDive.ApplyModifiedPropertiesWithoutUndo();
+                var armPose = root.AddComponent<M1SlingshotArmPose>();
+                var serializedArmPose = new SerializedObject(armPose);
+                SetObject(serializedArmPose, "_body", presentation.transform);
+                serializedArmPose.ApplyModifiedPropertiesWithoutUndo();
 
                 var appearance = root.AddComponent<M1PlayerAppearance>();
                 var serializedAppearance = new SerializedObject(appearance);
@@ -627,7 +639,12 @@ namespace NotThatWay.Game.Editor
                 serializedNetworkObject.ApplyModifiedPropertiesWithoutUndo();
 
                 var body = root.AddComponent<Rigidbody>();
-                body.mass = kind == SandboxCarryableKind.Trophy ? 2.5f : 1.3f;
+                body.mass = kind switch
+                {
+                    SandboxCarryableKind.Trophy => 2.5f,
+                    SandboxCarryableKind.Slingshot => 0.7f,
+                    _ => 1.3f
+                };
                 body.linearDamping = 0.25f;
                 body.angularDamping = 0.18f;
                 body.interpolation = RigidbodyInterpolation.Interpolate;
@@ -641,16 +658,76 @@ namespace NotThatWay.Game.Editor
                 visualRoot.transform.SetParent(root.transform, false);
                 if (kind == SandboxCarryableKind.Rock)
                 {
+                    // Un caillou qu'on tient dans une main : ~40 cm, pas un ballon.
+                    // Le collider suit la silhouette (ce qu'on voit est ce qui arrête).
                     var sphere = root.AddComponent<SphereCollider>();
-                    sphere.radius = 0.33f;
+                    sphere.radius = 0.21f;
                     collider = sphere;
-                    var visual = CreateCarryableVisualPrimitive(
-                        PrimitiveType.Sphere,
-                        "Rock",
-                        visualRoot.transform,
-                        material);
-                    visual.transform.localScale = new Vector3(0.66f, 0.55f, 0.62f);
-                    visual.transform.localRotation = Quaternion.Euler(13f, 28f, -9f);
+                    // Un galet, pas une bille : quatre volumes aplatis qui se
+                    // chevauchent, un dessus plus clair et un dessous plus sombre.
+                    // La teinte et l'orientation varient par instance au runtime.
+                    var darker = CreateLitMaterial("SandboxRockShade", new Color(0.26f, 0.24f, 0.23f), 0.06f, false);
+                    var lighter = CreateLitMaterial("SandboxRockTop", new Color(0.44f, 0.41f, 0.37f), 0.10f, false);
+                    var core = CreateCarryableVisualPrimitive(PrimitiveType.Sphere, "Rock", visualRoot.transform, material);
+                    core.transform.localScale = new Vector3(0.42f, 0.27f, 0.36f);
+                    core.transform.localRotation = Quaternion.Euler(8f, 24f, -9f);
+                    var shoulder = CreateCarryableVisualPrimitive(PrimitiveType.Sphere, "RockShoulder", visualRoot.transform, darker);
+                    shoulder.transform.localPosition = new Vector3(0.11f, -0.04f, -0.07f);
+                    shoulder.transform.localScale = new Vector3(0.30f, 0.20f, 0.28f);
+                    shoulder.transform.localRotation = Quaternion.Euler(-14f, 40f, 12f);
+                    var crest = CreateCarryableVisualPrimitive(PrimitiveType.Sphere, "RockCrest", visualRoot.transform, lighter);
+                    crest.transform.localPosition = new Vector3(-0.07f, 0.07f, 0.05f);
+                    crest.transform.localScale = new Vector3(0.26f, 0.15f, 0.24f);
+                    crest.transform.localRotation = Quaternion.Euler(20f, -30f, 6f);
+                    var chip = CreateCarryableVisualPrimitive(PrimitiveType.Sphere, "RockChip", visualRoot.transform, darker);
+                    chip.transform.localPosition = new Vector3(-0.13f, -0.06f, -0.09f);
+                    chip.transform.localScale = new Vector3(0.17f, 0.11f, 0.15f);
+                    chip.transform.localRotation = Quaternion.Euler(-6f, 70f, -18f);
+                }
+                else if (kind == SandboxCarryableKind.Slingshot)
+                {
+                    // Un Y de bois poli tenu par le manche : fourche en capsules,
+                    // ligatures sombres aux pointes, poche de cuir suspendue à deux
+                    // élastiques. Les élastiques et la poche sont animés au runtime
+                    // par SandboxCarryable (tension, claquement) : leurs noms sont
+                    // un contrat de présentation, jamais une règle.
+                    var box = root.AddComponent<BoxCollider>();
+                    box.center = new Vector3(0f, 0.04f, 0f);
+                    box.size = new Vector3(0.40f, 0.62f, 0.14f);
+                    collider = box;
+                    var wrap = CreateLitMaterial("SandboxSlingshotWrap", new Color(0.16f, 0.12f, 0.09f), 0.20f, false);
+                    var leather = CreateLitMaterial("SandboxSlingshotPouch", new Color(0.38f, 0.23f, 0.13f), 0.30f, false);
+                    var rubber = CreateLitMaterial("SandboxSlingshotBand", new Color(0.13f, 0.12f, 0.11f), 0.08f, false);
+
+                    // Manche long : sa base est au centre du poing, la ligature là où
+                    // les doigts finissent, la fourche au-dessus du poing.
+                    var handle = CreateCarryableVisualPrimitive(PrimitiveType.Capsule, "Handle", visualRoot.transform, material);
+                    handle.transform.localPosition = new Vector3(0f, -0.12f, 0f);
+                    handle.transform.localScale = new Vector3(0.075f, 0.15f, 0.075f);
+                    var grip = CreateCarryableVisualPrimitive(PrimitiveType.Cylinder, "Grip", visualRoot.transform, wrap);
+                    grip.transform.localPosition = new Vector3(0f, -0.05f, 0f);
+                    grip.transform.localScale = new Vector3(0.082f, 0.05f, 0.082f);
+                    foreach (var sign in new[] { -1f, 1f })
+                    {
+                        var side = sign < 0f ? "Left" : "Right";
+                        var branch = CreateCarryableVisualPrimitive(PrimitiveType.Capsule, "Branch" + side, visualRoot.transform, material);
+                        branch.transform.localPosition = new Vector3(sign * 0.085f, 0.15f, 0f);
+                        branch.transform.localRotation = Quaternion.Euler(0f, 0f, -sign * 30f);
+                        branch.transform.localScale = new Vector3(0.06f, 0.19f, 0.06f);
+                        var tip = CreateCarryableVisualPrimitive(PrimitiveType.Cylinder, "Tip" + side, visualRoot.transform, wrap);
+                        tip.transform.localPosition = new Vector3(sign * 0.165f, 0.30f, 0f);
+                        tip.transform.localRotation = Quaternion.Euler(0f, 0f, -sign * 30f);
+                        tip.transform.localScale = new Vector3(0.068f, 0.02f, 0.068f);
+                        var band = CreateCarryableVisualPrimitive(PrimitiveType.Cylinder, "Band" + side, visualRoot.transform, rubber);
+                        band.transform.localScale = new Vector3(0.016f, 0.1f, 0.016f);
+                    }
+                    // La poche est une capsule couchée : un cuir arrondi, pas une boîte.
+                    var pouch = new GameObject("Pouch") { layer = GameplayLayers.VisualOnly };
+                    pouch.transform.SetParent(visualRoot.transform, false);
+                    pouch.transform.localPosition = new Vector3(0f, 0.30f, -0.03f);
+                    var pouchShell = CreateCarryableVisualPrimitive(PrimitiveType.Capsule, "PouchLeather", pouch.transform, leather);
+                    pouchShell.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+                    pouchShell.transform.localScale = new Vector3(0.062f, 0.055f, 0.040f);
                 }
                 else
                 {
@@ -815,7 +892,8 @@ namespace NotThatWay.Game.Editor
             SandboxWorldSpawner spawner,
             TopologyRuntimeMap map,
             NetworkObject rockPrefab,
-            NetworkObject trophyPrefab)
+            NetworkObject trophyPrefab,
+            NetworkObject slingshotPrefab)
         {
             var rockCells = new[]
             {
@@ -833,10 +911,27 @@ namespace NotThatWay.Game.Editor
                                        Vector3.up * 0.38f;
             }
 
+            // Deux lance-pierres, loin des apparitions et de part et d'autre du
+            // pivot : les prendre oblige à traverser, les recharger à ramasser.
+            var slingshotCells = new[]
+            {
+                new TopologyGridCell(0, 0),
+                new TopologyGridCell(5, 5)
+            };
+            var slingshotPositions = new Vector3[slingshotCells.Length];
+            for (var index = 0; index < slingshotCells.Length; index++)
+            {
+                slingshotPositions[index] =
+                    TopologyGeometry.CellCenterMm(map, slingshotCells[index]).Meters +
+                    Vector3.up * 0.36f;
+            }
+
             var serialized = new SerializedObject(spawner);
             SetObject(serialized, "_rockPrefab", rockPrefab);
             SetObject(serialized, "_trophyPrefab", trophyPrefab);
+            SetObject(serialized, "_slingshotPrefab", slingshotPrefab);
             SetVector3Array(serialized, "_rockSpawnPositions", rockPositions);
+            SetVector3Array(serialized, "_slingshotSpawnPositions", slingshotPositions);
             SetVector3(
                 serialized,
                 "_trophySpawnPosition",
@@ -1448,6 +1543,7 @@ namespace NotThatWay.Game.Editor
             NetworkObject wallAuthorityPrefab,
             NetworkObject rockPrefab,
             NetworkObject trophyPrefab,
+            NetworkObject slingshotPrefab,
             DefaultPrefabObjects prefabCollection,
             NetworkManager networkManager,
             TimeManager timeManager,
@@ -1518,7 +1614,7 @@ namespace NotThatWay.Game.Editor
             {
                 throw new InvalidOperationException("Prefab d'autorité murale M1 invalide.");
             }
-            foreach (var carryable in new[] { rockPrefab, trophyPrefab })
+            foreach (var carryable in new[] { rockPrefab, trophyPrefab, slingshotPrefab })
             {
                 if (carryable == null || carryable.EnablePrediction ||
                     carryable.GetComponent<SandboxCarryable>() == null ||

@@ -14,7 +14,8 @@ namespace NotThatWay.Game.Sandbox
         Punch = 0,
         Rock = 1,
         Trophy = 2,
-        World = 3
+        World = 3,
+        SlingshotRock = 4
     }
 
     [Flags]
@@ -333,6 +334,14 @@ namespace NotThatWay.Game.Sandbox
             if (!CanAct)
                 return false;
             return TrySpendEnergy(_config.ThrowEnergyCost);
+        }
+
+        /// <summary>Tir au lance-pierre : le caillou consommé est retiré par l'inventaire, pas ici.</summary>
+        public bool TrySpendSlingshotShot()
+        {
+            if (!CanAct)
+                return false;
+            return TrySpendEnergy(_config.SlingshotEnergyCost);
         }
 
         /// <summary>

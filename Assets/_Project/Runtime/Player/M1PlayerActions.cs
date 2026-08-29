@@ -134,6 +134,9 @@ namespace NotThatWay.Game
         private uint _lastResolvedCommandTick;
         private bool _hasResolvedCommand;
         private bool _pushing;
+        // Estimation locale et purement cosmétique de la charge du lance-pierre :
+        // l'hôte compte en ticks, le propriétaire affiche une barre sans attendre.
+        private float _localSlingshotChargeSeconds;
 
         private void Awake()
         {
@@ -153,7 +156,13 @@ namespace NotThatWay.Game
 
             // Retour immédiat chez le frappeur : l'hôte tranchera l'effet, mais le
             // bras ne doit pas attendre l'aller-retour réseau pour partir.
-            if ((frame.PressedButtons & PlayerCommandButtons.PunchPressed) != 0)
+            var slingshotInHand = _sandboxGameplay != null && _sandboxGameplay.HasSlingshotInHand;
+            if (slingshotInHand && (frame.HeldButtons & PlayerCommandButtons.PunchHeld) != 0)
+                _localSlingshotChargeSeconds += Time.deltaTime;
+            else
+                _localSlingshotChargeSeconds = 0f;
+
+            if ((frame.PressedButtons & PlayerCommandButtons.PunchPressed) != 0 && !slingshotInHand)
             {
                 if (_sandboxGameplay == null)
                 {
@@ -198,6 +207,10 @@ namespace NotThatWay.Game
 
             var direction = transform.forward;
             direction.y = 0f;
+            // Lance-pierre en main : le tir se charge et part dans
+            // SandboxPlayerGameplay, pas ici.
+            if (_sandboxGameplay != null && _sandboxGameplay.HasSlingshotInHand)
+                return;
             if (_sandboxGameplay != null &&
                 _sandboxGameplay.ActiveKind != SandboxCarryableKind.None)
             {
@@ -433,7 +446,10 @@ namespace NotThatWay.Game
         /// </summary>
         private void OnGUI()
         {
-            if (!IsOwner || !TryDescribeWall(out var headline, out var status, out var leverage))
+            if (!IsOwner)
+                return;
+            DrawSlingshotHud();
+            if (!TryDescribeWall(out var headline, out var status, out var leverage))
                 return;
 
             const float width = 380f;
@@ -454,6 +470,30 @@ namespace NotThatWay.Game
                     GUIContent.none);
             }
             GUILayout.Label(status);
+            GUILayout.EndArea();
+        }
+
+        private void DrawSlingshotHud()
+        {
+            if (_sandboxGameplay == null || !_sandboxGameplay.HasSlingshotInHand)
+                return;
+
+            var config = _sandboxGameplay.Config;
+            var chargeSeconds = config.SlingshotChargeTicks / (float)config.TickRate;
+            var charge = chargeSeconds > 0f
+                ? Mathf.Clamp01(_localSlingshotChargeSeconds / chargeSeconds)
+                : 0f;
+            const float width = 300f;
+            const float height = 58f;
+            var area = new Rect((Screen.width - width) * 0.5f, Screen.height - height - 110f, width, height);
+            GUILayout.BeginArea(area, GUI.skin.box);
+            GUILayout.Label(
+                $"Lance-pierre · cailloux {_sandboxGameplay.AmmoCount}/{config.SlingshotAmmoCapacity}" +
+                (_sandboxGameplay.AmmoCount == 0 ? " — E ou clic droit près d'un caillou" : ""));
+            var bar = GUILayoutUtility.GetRect(width - 16f, 10f);
+            GUI.Box(bar, GUIContent.none);
+            if (charge > 0f)
+                GUI.Box(new Rect(bar.x, bar.y, bar.width * charge, bar.height), GUIContent.none);
             GUILayout.EndArea();
         }
 

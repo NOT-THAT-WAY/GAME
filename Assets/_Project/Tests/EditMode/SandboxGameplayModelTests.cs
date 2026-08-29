@@ -34,6 +34,74 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(config.KnockoutDurationTicks, Is.EqualTo(240u));
             Assert.That(config.RecoveryHealth, Is.EqualTo(40));
             Assert.That(config.RecoveryProtectionTicks, Is.EqualTo(60u));
+            Assert.That(config.SlingshotDamage, Is.EqualTo(45));
+            Assert.That(config.SlingshotEnergyCost, Is.EqualTo(14));
+            Assert.That(config.SlingshotAmmoCapacity, Is.EqualTo(5));
+            Assert.That(config.SlingshotChargeTicks, Is.EqualTo(72u));
+            Assert.That(config.SlingshotMinimumPowerPermille, Is.EqualTo(350));
+            Assert.That(config.SlingshotDropHoldTicks, Is.EqualTo(30u));
+            Assert.That(config.SlingshotAimMovementPermille, Is.EqualTo(650));
+        }
+
+        [Test]
+        public void Slingshot_FiresAPocketRockHarderThanAHandThrowAndReloadsByPickup()
+        {
+            var baseline = SandboxGameplayConfig.Baseline60Hz;
+            Assert.That(baseline.SlingshotDamage, Is.GreaterThan(baseline.RockDamage));
+            Assert.That(
+                () => new SandboxGameplayConfig(
+                    baseline.TickRate, baseline.MaximumHealth, baseline.MaximumEnergy,
+                    baseline.PunchDamage, baseline.RockDamage, baseline.TrophyDamage,
+                    baseline.PunchEnergyCost, baseline.ThrowEnergyCost,
+                    baseline.SprintDrainIntervalTicks, baseline.SprintDrainAmount,
+                    baseline.PushDrainIntervalTicks, baseline.PushDrainAmount,
+                    baseline.TrophySprintDrainMultiplier,
+                    baseline.EnergyRegenerationDelayTicks, baseline.EnergyRegenerationIntervalTicks,
+                    baseline.EnergyRegenerationAmount,
+                    baseline.HealthRegenerationDelayTicks, baseline.HealthRegenerationIntervalTicks,
+                    baseline.HealthRegenerationAmount,
+                    baseline.KnockoutDurationTicks, baseline.RecoveryHealth,
+                    baseline.RecoveryProtectionTicks, baseline.TrophyMovementPermille,
+                    slingshotDamage: baseline.RockDamage,
+                    slingshotEnergyCost: baseline.SlingshotEnergyCost,
+                    slingshotAmmoCapacity: baseline.SlingshotAmmoCapacity,
+                    slingshotChargeTicks: baseline.SlingshotChargeTicks,
+                    slingshotMinimumPowerPermille: baseline.SlingshotMinimumPowerPermille,
+                    slingshotDropHoldTicks: baseline.SlingshotDropHoldTicks,
+                    slingshotAimMovementPermille: baseline.SlingshotAimMovementPermille),
+                Throws.TypeOf<ArgumentOutOfRangeException>(),
+                "Un lance-pierre qui ne frappe pas plus fort qu'un lancer à la main n'a pas de raison d'être.");
+
+            // Inventaire : le lance-pierre occupe une case, les cailloux sont les munitions.
+            var inventory = new SandboxInventoryModel();
+            Assert.That(inventory.TryAdd(new SandboxInventoryEntry(20, SandboxCarryableKind.Slingshot), out _), Is.True);
+            Assert.That(inventory.HasKind(SandboxCarryableKind.Rock), Is.False, "Vide : rien à tirer.");
+            Assert.That(inventory.TryAdd(new SandboxInventoryEntry(21, SandboxCarryableKind.Rock), out _), Is.True);
+            Assert.That(inventory.TryAdd(new SandboxInventoryEntry(22, SandboxCarryableKind.Rock), out _), Is.True);
+            Assert.That(inventory.IndexOfKind(SandboxCarryableKind.Slingshot), Is.EqualTo(0));
+            Assert.That(inventory.IndexOfKind(SandboxCarryableKind.Trophy), Is.EqualTo(-1));
+            Assert.That(inventory.Select(0), Is.True);
+            Assert.That(inventory.ActiveEntry?.Kind, Is.EqualTo(SandboxCarryableKind.Slingshot));
+            Assert.That(inventory.TryFindFirstOfKind(SandboxCarryableKind.Rock, out var ammo), Is.True);
+            Assert.That(ammo.ObjectId, Is.EqualTo(21), "Le premier caillou par ordre de case part en premier.");
+            Assert.That(inventory.TryRemoveObject(ammo.ObjectId, out _), Is.True);
+            Assert.That(inventory.ActiveEntry?.Kind, Is.EqualTo(SandboxCarryableKind.Slingshot),
+                "Tirer ne change pas la main active : le lance-pierre reste tenu.");
+            Assert.That(inventory.TryFindFirstOfKind(SandboxCarryableKind.Rock, out ammo), Is.True);
+            Assert.That(ammo.ObjectId, Is.EqualTo(22));
+            Assert.That(inventory.TryRemoveObject(ammo.ObjectId, out _), Is.True);
+            Assert.That(inventory.HasKind(SandboxCarryableKind.Rock), Is.False);
+            Assert.That(inventory.TryAdd(new SandboxInventoryEntry(23, SandboxCarryableKind.Rock), out _), Is.True,
+                "Recharger, c'est ramasser un caillou.");
+            Assert.That(inventory.HasKind(SandboxCarryableKind.Rock), Is.True);
+
+            // Énergie : un tir coûte SlingshotEnergyCost, jamais pendant un KO.
+            var model = new SandboxPlayerModel(baseline);
+            Assert.That(model.TrySpendSlingshotShot(), Is.True);
+            Assert.That(model.State.Energy, Is.EqualTo(baseline.MaximumEnergy - baseline.SlingshotEnergyCost));
+            var knockout = model.ApplyDamage(baseline.MaximumHealth, SandboxDamageKind.SlingshotRock);
+            Assert.That(knockout.KnockedOut, Is.True);
+            Assert.That(model.TrySpendSlingshotShot(), Is.False);
         }
 
         [Test]

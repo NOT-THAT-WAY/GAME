@@ -136,6 +136,9 @@ namespace NotThatWay.Game.PlayerSimulation
             PlayerCommandButtons.InteractHeld |
             PlayerCommandButtons.JumpHeld |
             PlayerCommandButtons.DivePressed |
+            PlayerCommandButtons.PunchHeld |
+            PlayerCommandButtons.SlingshotHeld |
+            PlayerCommandButtons.SlingshotPressed |
             PlayerCommandButtons.JumpPressed |
             PlayerCommandButtons.InteractPressed |
             PlayerCommandButtons.PunchPressed |

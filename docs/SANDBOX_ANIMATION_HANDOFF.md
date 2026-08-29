@@ -45,7 +45,7 @@ réexporter au nouveau contrat 30 fps et au nom canonique `SB_Punch` avant de le
 | `Grounded` | bool | contact sol simulé |
 | `Sprinting` | bool | présentation locomotion rapide |
 | `Carrying` | bool | la case active contient un objet |
-| `CarryKind` | int | `0` vide, `1` caillou, `2` trophée |
+| `CarryKind` | int | `0` vide, `1` caillou, `2` trophée, `3` lance-pierre |
 | `KnockedOut` | bool | état KO durable |
 | `Push` | bool | pose/boucle du joueur qui pousse le mur tant que son intention reste active |
 | `WallPushed` | bool, à ajouter | réaction durable du joueur déplacé par le volume balayé du mur |
