@@ -17,6 +17,17 @@ namespace NotThatWay.Game.Input
         [SerializeField, Min(0f)] private float _pointerDegreesPerPixel = 0.12f;
         [SerializeField, Min(0f)] private float _stickDegreesPerSecond = 180f;
 
+        /// <summary>
+        /// Préférences locales de visée, réglées par le menu pause et persistées en
+        /// PlayerPrefs par lui. Elles façonnent l'intention avant quantification,
+        /// comme les sensibilités de base sérialisées : rien de partagé (ADR 0004).
+        /// </summary>
+        public float PointerSensitivityMultiplier { get; set; } = 1f;
+        public float StickSensitivityMultiplier { get; set; } = 1f;
+        public bool InvertLookPitch { get; set; }
+
+        private float PitchSign => InvertLookPitch ? -1f : 1f;
+
         // Zoom caméra troisième personne : purement cosmétique (voir
         // ZoomInputThisFrame). La molette livre déjà un delta intégré par frame,
         // donc sa sensibilité s'applique telle quelle ; la croix manette est un
@@ -129,8 +140,10 @@ namespace NotThatWay.Game.Input
             _accumulator.Accumulate(new PlayerInputSample(
                 move.x,
                 move.y,
-                _latestStick.x * _stickDegreesPerSecond * tickDurationSeconds,
-                _latestStick.y * _stickDegreesPerSecond * tickDurationSeconds,
+                _latestStick.x * _stickDegreesPerSecond * StickSensitivityMultiplier *
+                tickDurationSeconds,
+                _latestStick.y * _stickDegreesPerSecond * StickSensitivityMultiplier *
+                PitchSign * tickDurationSeconds,
                 held,
                 PlayerCommandButtons.None));
             return _accumulator.Consume(tick);
@@ -199,13 +212,16 @@ namespace NotThatWay.Game.Input
                 -_zoom.ReadValue<float>() * _scrollZoomSensitivity -
                 zoomStickValue * _zoomStickUnitsPerSecond * Time.unscaledDeltaTime;
 
-            var pointerYaw = pointer.x * _pointerDegreesPerPixel;
-            var pointerPitch = pointer.y * _pointerDegreesPerPixel;
+            var pointerYaw = pointer.x * _pointerDegreesPerPixel * PointerSensitivityMultiplier;
+            var pointerPitch = pointer.y * _pointerDegreesPerPixel * PointerSensitivityMultiplier *
+                               PitchSign;
             CurrentFrame = new PlayerInputSample(
                 move.x,
                 move.y,
-                pointerYaw + _latestStick.x * _stickDegreesPerSecond * Time.unscaledDeltaTime,
-                pointerPitch + _latestStick.y * _stickDegreesPerSecond * Time.unscaledDeltaTime,
+                pointerYaw + _latestStick.x * _stickDegreesPerSecond *
+                StickSensitivityMultiplier * Time.unscaledDeltaTime,
+                pointerPitch + _latestStick.y * _stickDegreesPerSecond *
+                StickSensitivityMultiplier * PitchSign * Time.unscaledDeltaTime,
                 held,
                 pressed);
             _accumulator.Accumulate(new PlayerInputSample(

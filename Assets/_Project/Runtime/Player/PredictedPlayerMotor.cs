@@ -468,6 +468,16 @@ namespace NotThatWay.Game
                 this);
         }
 
+        /// <summary>Le menu pause s'affiche quand le curseur est libre (Échap).</summary>
+        public bool CursorLocked => _cursorLocked;
+
+        /// <summary>Reprendre depuis le menu : re-verrouille le curseur du porteur.</summary>
+        public void ResumeFromMenu()
+        {
+            if (IsOwner)
+                SetCursorLocked(true);
+        }
+
         private void SetCursorLocked(bool locked)
         {
             _cursorLocked = locked;

@@ -217,6 +217,29 @@ namespace NotThatWay.Game.Tests.EditMode
         }
 
         [Test]
+        public void LookPreferences_ScaleAndInvertTheLookBeforeQuantization()
+        {
+            var keyboard = InputSystem.AddDevice<Keyboard>();
+            var mouse = InputSystem.AddDevice<Mouse>();
+            var source = CreateSource(keyboard, mouse);
+            try
+            {
+                source.PointerSensitivityMultiplier = 2f;
+                source.InvertLookPitch = true;
+                Set(mouse.delta, new Vector2(10f, -5f), queueEventOnly: true);
+                InputSystem.Update();
+
+                var command = source.ConsumeCommand(10u, 1f / 60f);
+                Assert.That(command.LookYaw, Is.EqualTo(240), "0,12°/px × 10 px × 2.");
+                Assert.That(command.LookPitch, Is.EqualTo(120), "Inversé : -5 px devient positif.");
+            }
+            finally
+            {
+                Object.DestroyImmediate(source.gameObject);
+            }
+        }
+
+        [Test]
         public void Pause_IsReportedLocallyButNeverEntersTheNetworkCommand()
         {
             var keyboard = InputSystem.AddDevice<Keyboard>();

@@ -165,7 +165,6 @@ namespace NotThatWay.Game.Editor
                 true);
             networkRoot.AddComponent<M1PlaytestDiagnostics>();
             networkRoot.AddComponent<M1ScreenshotProbe>();
-            networkRoot.AddComponent<M1ControlsOverlay>();
 
             var spawner = networkRoot.AddComponent<PlayerSpawner>();
             spawner.Spawns = spawns;
@@ -482,6 +481,10 @@ namespace NotThatWay.Game.Editor
                 SetObject(serializedArmPose, "_body", presentation.transform);
                 serializedArmPose.ApplyModifiedPropertiesWithoutUndo();
 
+                var pauseMenu = root.AddComponent<M1PauseMenu>();
+                var serializedPause = new SerializedObject(pauseMenu);
+                SetObject(serializedPause, "_camera", camera);
+                serializedPause.ApplyModifiedPropertiesWithoutUndo();
                 var appearance = root.AddComponent<M1PlayerAppearance>();
                 var serializedAppearance = new SerializedObject(appearance);
                 SetObject(serializedAppearance, "_body", presentation.transform);

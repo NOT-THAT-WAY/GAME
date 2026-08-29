@@ -39,7 +39,10 @@ focus, désactivation, restriction de devices et changement d'asset remettent to
 
 ## Décisions encore ouvertes
 
-Les sensibilités par défaut sont des valeurs de banc sérialisées, pas une décision de feel. Le saut
+Le menu pause (Échap libère le curseur et l'affiche) règle des multiplicateurs locaux de
+sensibilité souris/manette et l'inversion de l'axe vertical, appliqués avant quantification et
+persistés en PlayerPrefs — des préférences de poste, jamais une règle partagée ni un fichier du
+dépôt. Les sensibilités par défaut sont des valeurs de banc sérialisées, pas une décision de feel. Le saut
 reste capturé pour rendre le binding testable, mais PLY-01 doit pouvoir le désactiver par configuration
 tant que DEC-01 ne l'a pas retenu. L'adaptateur FishNet utilisera un DTO mutable propre à FishNet : il
 ne donnera pas directement ce `readonly struct` à son codegen.
