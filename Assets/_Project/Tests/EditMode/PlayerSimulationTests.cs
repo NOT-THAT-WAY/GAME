@@ -727,6 +727,92 @@ namespace NotThatWay.Game.Tests.EditMode
         }
 
         [Test]
+        public void Crawl_TogglesWithTheDiveKeyOutsideSprintAndLowersTheCapsule()
+        {
+            var world = new PassThroughWorld(PlayerCollisionFlags.Below);
+            var config = Config(
+                jumpEnabled: true,
+                diveEnabled: true,
+                diveForwardSpeed: 6d,
+                diveUpwardSpeed: 1d,
+                crawlEnabled: true,
+                crawlSpeed: 1.5d,
+                crawlHeight: 0.9d);
+            var sprinting = new PlayerStateMachine(config, InitialState(grounded: true));
+
+            // Sprint + avant + touche : plongeon, pas ramper.
+            var dived = sprinting.AdvanceTick(
+                Command(1u, moveY: 127, buttons: PlayerCommandButtons.DivePressed | PlayerCommandButtons.SprintHeld),
+                world);
+            Assert.That(dived.Events.HasFlag(PlayerTickEvents.Dived), Is.True);
+            Assert.That(dived.Current.IsCrawling, Is.False);
+
+            var standing = new PlayerStateMachine(config, InitialState(grounded: true));
+            var crawl = standing.AdvanceTick(
+                Command(1u, buttons: PlayerCommandButtons.DivePressed),
+                world);
+            Assert.That(crawl.Current.IsCrawling, Is.True);
+            Assert.That(crawl.CollisionRequest.PlayerHeightMeters, Is.EqualTo(0.9d).Within(Tolerance));
+
+            var moving = standing.AdvanceTick(
+                Command(2u, moveY: 127, buttons: PlayerCommandButtons.SprintHeld),
+                world);
+            Assert.That(moving.Current.IsCrawling, Is.True);
+            Assert.That(
+                moving.Current.HorizontalVelocity.HorizontalMagnitude,
+                Is.LessThanOrEqualTo(1.5d + Tolerance),
+                "À plat ventre, le sprint tenu ne dépasse jamais la vitesse de ramper.");
+
+            var up = standing.AdvanceTick(
+                Command(3u, buttons: PlayerCommandButtons.DivePressed),
+                world);
+            Assert.That(up.Current.IsCrawling, Is.False);
+            Assert.That(up.CollisionRequest.PlayerHeightMeters, Is.EqualTo(1.8d).Within(Tolerance));
+        }
+
+        [Test]
+        public void Crawl_JumpStandsUpWithoutJumpingAndCrawlBlocksDive()
+        {
+            var world = new PassThroughWorld(PlayerCollisionFlags.Below);
+            var config = Config(
+                jumpEnabled: true,
+                diveEnabled: true,
+                diveForwardSpeed: 6d,
+                diveUpwardSpeed: 1d,
+                crawlEnabled: true,
+                crawlSpeed: 1.5d,
+                crawlHeight: 0.9d);
+            var simulation = new PlayerStateMachine(config, InitialState(grounded: true));
+            simulation.AdvanceTick(Command(1u, buttons: PlayerCommandButtons.DivePressed), world);
+
+            // À plat ventre, sprint + avant + touche relève sans plonger.
+            var noDive = simulation.AdvanceTick(
+                Command(2u, moveY: 127, buttons: PlayerCommandButtons.DivePressed | PlayerCommandButtons.SprintHeld),
+                world);
+            Assert.That(noDive.Events.HasFlag(PlayerTickEvents.Dived), Is.False);
+            Assert.That(noDive.Current.IsCrawling, Is.False);
+
+            var again = new PlayerStateMachine(config, InitialState(grounded: true));
+            again.AdvanceTick(Command(1u, buttons: PlayerCommandButtons.DivePressed), world);
+            var standUp = again.AdvanceTick(
+                Command(2u, buttons: PlayerCommandButtons.JumpPressed),
+                world);
+            Assert.That(standUp.Current.IsCrawling, Is.False);
+            Assert.That(standUp.Events.HasFlag(PlayerTickEvents.Jumped), Is.False, "Espace relève, sans impulsion.");
+            var jumpNext = again.AdvanceTick(
+                Command(3u, buttons: PlayerCommandButtons.JumpPressed),
+                world);
+            Assert.That(jumpNext.Events.HasFlag(PlayerTickEvents.Jumped), Is.True, "Debout, le saut redevient normal.");
+
+            Assert.That(
+                () => new PlayerStateMachine(
+                    Config(crawlEnabled: false),
+                    InitialState(grounded: true, isCrawling: true)),
+                Throws.ArgumentException,
+                "Un état à plat ventre est refusé quand ramper est désactivé.");
+        }
+
+        [Test]
         public void Dive_RequiresASprintTowardTheFront()
         {
             var world = new GroundPlaneWorld();
@@ -833,7 +919,10 @@ namespace NotThatWay.Game.Tests.EditMode
             double diveForwardSpeed = 0d,
             double diveUpwardSpeed = 0d,
             uint diveRecoveryTicks = 0u,
-            uint diveCooldownTicks = 0u) =>
+            uint diveCooldownTicks = 0u,
+            bool crawlEnabled = false,
+            double crawlSpeed = 0d,
+            double crawlHeight = 0d) =>
             new(
                 tickDuration,
                 height,
@@ -856,7 +945,10 @@ namespace NotThatWay.Game.Tests.EditMode
                 diveForwardSpeed,
                 diveUpwardSpeed,
                 diveRecoveryTicks,
-                diveCooldownTicks);
+                diveCooldownTicks,
+                crawlEnabled,
+                crawlSpeed,
+                crawlHeight);
 
         private static PlayerState InitialState(
             uint tick = 0u,
@@ -871,7 +963,8 @@ namespace NotThatWay.Game.Tests.EditMode
             uint bufferTicks = 0u,
             bool isDiving = false,
             uint diveRecoveryTicks = 0u,
-            uint diveCooldownTicks = 0u) =>
+            uint diveCooldownTicks = 0u,
+            bool isCrawling = false) =>
             new(
                 tick,
                 position,
@@ -885,7 +978,8 @@ namespace NotThatWay.Game.Tests.EditMode
                 bufferTicks,
                 isDiving,
                 diveRecoveryTicks,
-                diveCooldownTicks);
+                diveCooldownTicks,
+                isCrawling);
 
         private static PlayerCommand Command(
             uint tick,

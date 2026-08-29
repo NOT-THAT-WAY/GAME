@@ -75,6 +75,7 @@ namespace NotThatWay.Game.PlayerNetwork
         public bool IsDiving;
         public uint DiveRecoveryTicksRemaining;
         public uint DiveCooldownTicksRemaining;
+        public bool IsCrawling;
         public uint SimulationTick;
 
         private uint _tick;
@@ -105,6 +106,7 @@ namespace NotThatWay.Game.PlayerNetwork
             IsDiving = state.IsDiving;
             DiveRecoveryTicksRemaining = state.DiveRecoveryTicksRemaining;
             DiveCooldownTicksRemaining = state.DiveCooldownTicksRemaining;
+            IsCrawling = state.IsCrawling;
             SimulationTick = state.Tick;
             _tick = 0u;
         }
@@ -126,7 +128,8 @@ namespace NotThatWay.Game.PlayerNetwork
             JumpBufferTicksRemaining,
             IsDiving,
             DiveRecoveryTicksRemaining,
-            DiveCooldownTicksRemaining);
+            DiveCooldownTicksRemaining,
+            IsCrawling);
 
         private static float ToFiniteFloat(double value, string parameterName)
         {

@@ -31,6 +31,7 @@ namespace NotThatWay.Game
             { "Courir", "Maj · L3" },
             { "Sauter", "Espace · A/Croix" },
             { "Plonger en avant", "Ctrl ou C · LB/L1 — en sprintant vers l'avant" },
+            { "Ramper", "Ctrl ou C hors sprint — se relever : même touche ou Espace" },
             { "Interagir / ramasser", "E · X/Carré" },
             { "Pousser le mur", "MAINTENIR E · X/Carré : il part" },
             { "", "au premier appui et s'écarte de vous" },

@@ -27,7 +27,8 @@ namespace NotThatWay.Game.PlayerSimulation
             uint jumpBufferTicksRemaining = 0u,
             bool isDiving = false,
             uint diveRecoveryTicksRemaining = 0u,
-            uint diveCooldownTicksRemaining = 0u)
+            uint diveCooldownTicksRemaining = 0u,
+            bool isCrawling = false)
         {
             if (yawCentidegrees < 0 || yawCentidegrees >= FullYawCentidegrees)
                 throw new ArgumentOutOfRangeException(nameof(yawCentidegrees));
@@ -53,6 +54,7 @@ namespace NotThatWay.Game.PlayerSimulation
             IsDiving = isDiving;
             DiveRecoveryTicksRemaining = diveRecoveryTicksRemaining;
             DiveCooldownTicksRemaining = diveCooldownTicksRemaining;
+            IsCrawling = isCrawling;
         }
 
         public uint Tick { get; }
@@ -68,6 +70,7 @@ namespace NotThatWay.Game.PlayerSimulation
         public bool IsDiving { get; }
         public uint DiveRecoveryTicksRemaining { get; }
         public uint DiveCooldownTicksRemaining { get; }
+        public bool IsCrawling { get; }
 
         public bool Equals(PlayerState other) =>
             Tick == other.Tick &&
@@ -82,7 +85,8 @@ namespace NotThatWay.Game.PlayerSimulation
             JumpBufferTicksRemaining == other.JumpBufferTicksRemaining &&
             IsDiving == other.IsDiving &&
             DiveRecoveryTicksRemaining == other.DiveRecoveryTicksRemaining &&
-            DiveCooldownTicksRemaining == other.DiveCooldownTicksRemaining;
+            DiveCooldownTicksRemaining == other.DiveCooldownTicksRemaining &&
+            IsCrawling == other.IsCrawling;
 
         public override bool Equals(object value) => value is PlayerState other && Equals(other);
 
@@ -102,6 +106,7 @@ namespace NotThatWay.Game.PlayerSimulation
             hash.Add(IsDiving);
             hash.Add(DiveRecoveryTicksRemaining);
             hash.Add(DiveCooldownTicksRemaining);
+            hash.Add(IsCrawling);
             return hash.ToHashCode();
         }
 

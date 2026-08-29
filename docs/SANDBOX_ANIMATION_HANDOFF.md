@@ -54,6 +54,7 @@ réexporter au nouveau contrat 30 fps et au nom canonique `SB_Punch` avant de le
 | `Dive` | trigger | décollage du plongeon avant (remplace `Jump` sur ce décollage) |
 | `Diving` | bool | vol du plongeon, jusqu'au contact sol |
 | `DiveRecovering` | bool | relevé au sol après le plongeon, joueur immobile |
+| `Crawling` | bool | à plat ventre, déplacement lent |
 | `Punch`, `Throw` | trigger | actions primaires acceptables localement puis validées serveur |
 | `Hit`, `Knockout`, `Recover` | trigger | réactions décidées par le serveur |
 | `Pickup`, `Drop`, `Deposit` | trigger | présentation des changements d'objet décidés par le serveur |
