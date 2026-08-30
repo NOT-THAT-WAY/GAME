@@ -491,6 +491,72 @@
         },
         {
           "name": "",
+          "id": "32871b11-96af-462f-abb5-e204dcd1a6e1",
+          "path": "<Keyboard>/numpad1",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "SelectSlot1",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "c6f24af4-85dc-4088-9aee-58216faff580",
+          "path": "<Keyboard>/numpad2",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "SelectSlot2",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "5978ff3c-77d2-4e67-8d88-3ba795428349",
+          "path": "<Keyboard>/numpad3",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "SelectSlot3",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "58e420fd-dfdb-4099-8f03-cae69bb02ee5",
+          "path": "<Keyboard>/#(&)",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "SelectSlot1",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "3e20e831-55c0-4633-82ae-218883f68eec",
+          "path": "<Keyboard>/#(\u00e9)",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "SelectSlot2",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
+          "id": "210cf6af-36b8-41ec-b146-cd0630c92939",
+          "path": "<Keyboard>/#(\")",
+          "interactions": "",
+          "processors": "",
+          "groups": "KeyboardMouse",
+          "action": "SelectSlot3",
+          "isComposite": false,
+          "isPartOfComposite": false
+        },
+        {
+          "name": "",
           "id": "74036ee9-728e-4e18-b0db-1074eaad05b1",
           "path": "<Keyboard>/tab",
           "interactions": "",
