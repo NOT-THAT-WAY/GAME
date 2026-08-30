@@ -120,6 +120,15 @@ namespace NotThatWay.Game
             var asset = Resources.Load<TextAsset>(ResourceName);
             if (asset == null)
             {
+                // Seul un player construit par le pipeline possède une identité
+                // injectée. En éditeur, son absence est l'état normal : une
+                // erreur ici ferait passer chaque session Play pour un build
+                // invalide et noierait les vraies erreurs du banc.
+                if (Application.isEditor)
+                {
+                    Debug.Log("[GAME-BUILD] editor_session identity=none");
+                    return;
+                }
                 Debug.LogError("[GAME-BUILD] invalid reason=identity_resource_missing");
                 return;
             }
