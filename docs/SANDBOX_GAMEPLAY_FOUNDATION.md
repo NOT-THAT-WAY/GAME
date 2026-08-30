@@ -58,6 +58,7 @@ Toutes les durées de gameplay sont calculées à 60 ticks/s. Elles sont regroup
 | Trophée porté | vitesse ×0,75 ; sprint autorisé ; coût du sprint ×5 |
 | Avec trophée | coup et poussée interdits ; lancer et lâcher autorisés |
 | Inventaire | 3 cases, une seule case active |
+| Chaussures-ressort | 2 bonds à 2200 ‰ de l'impulsion (5,5 → 12,1 m/s, apex ≈ 3,3 m > mur 3 m) ; disparaissent au dernier bond, réapparaissent au reset de manche |
 | Manche | 3 s de compte à rebours, 90 s de jeu, 3 s de résultat |
 
 Quatre coups mettent donc KO un joueur plein. Un seul caillou enlève 30 % de la vie : les deux
@@ -87,6 +88,17 @@ actions ont un impact immédiatement lisible, mais les chiffres restent des hypo
    revient alors à 40 PV avec une courte protection, comme avant.
 8. Porter le trophée ralentit le joueur. Entrer vivant dans la zone orange avec le trophée termine
    la manche ; les ressources et objets sont remis à zéro pour la suivante.
+9. Deux paires de chaussures-ressort apparaissent face à face. Ramassées, elles occupent une
+   case comme tout objet ; un **clic droit avec les bottes en main les chausse** : la paire
+   s'affiche aux pieds du porteur (drapeau `worn` répliqué par l'objet), la main redevient libre,
+   et Espace devient un bond amplifié qui passe par-dessus un mur de 3 m — même un autre objet en
+   main. Chaque paire offre deux bonds, décomptés par l'hôte au tick du décollage sur la paire
+   chaussée : au dernier, l'objet passe en phase `Consumed` — il disparaît de l'inventaire et du
+   monde (invisible, incollectable) jusqu'au reset de manche, qui le fait réapparaître complet à
+   son point d'apparition. Lâcher ou perdre la paire la déchausse ; une paire lâchée après un
+   seul bond garde le bond restant. Le HUD affiche l'état (rangées/chaussées) et les bonds via le
+   snapshot serveur ; l'amplification du tick est capturée dans le contexte de commande pour que
+   les rejeux de réconciliation restent fidèles.
 
 Le reset de manche ne replace pas encore les joueurs à leur spawn. C'est intentionnellement laissé
 comme limite visible du prototype, à décider après le premier test de boucle.
@@ -94,7 +106,8 @@ comme limite visible du prototype, à décider après le premier test de boucle.
 ## Autorité et séparation des responsabilités
 
 - Le client transmet des intentions de contrôle déjà intégrées aux commandes prédites.
-- L'hôte décide de l'énergie, du ramassage, de la case active, des dégâts, du KO, des lancers, des
+- L'hôte décide de l'énergie, du ramassage, de la case active, des dégâts, du KO, des lancers,
+  des bonds de ressort et de leur décompte, des
   impacts, du dépôt et du résultat de manche.
 - Le `NetworkTransform` transporte uniquement la pose des objets physiques ; il n'est pas utilisé
   sur le joueur prédit.
@@ -110,7 +123,7 @@ Les fichiers centraux sont `Runtime/Sandbox/`, `Runtime/Player/M1PlayerActions.c
 
 | Niveau | Ce qui est vérifié |
 | --- | --- |
-| EditMode | ressources, cadence, régénération, KO/relevé, multiplicateur trophée, inventaire, manche, mappings d'input, vitesse simulée |
+| EditMode | ressources, cadence, régénération, KO/relevé, multiplicateur trophée, inventaire, manche, mappings d'input, vitesse simulée, modificateur de saut et bornes des chaussures-ressort |
 | PlayMode | contrat historique du joueur, du mur et de l'arène |
 | Génération M1 | saut actif, composants sandbox, prefabs réseau, zone de dépôt, paramètres Animator, root motion désactivé |
 | Réseau mur | occupation, opposition et late join restent valides |

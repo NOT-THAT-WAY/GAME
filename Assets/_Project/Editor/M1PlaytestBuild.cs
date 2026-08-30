@@ -40,6 +40,8 @@ namespace NotThatWay.Game.Editor
         public const string GeneratedTrophyPrefabPath = "Assets/_GeneratedLocal/SandboxTrophy.prefab";
         public const string GeneratedSlingshotPrefabPath = "Assets/_GeneratedLocal/SandboxSlingshot.prefab";
         public const string GeneratedOilCanPrefabPath = "Assets/_GeneratedLocal/SandboxOilCan.prefab";
+        public const string GeneratedSpringShoesPrefabPath =
+            "Assets/_GeneratedLocal/SandboxSpringShoes.prefab";
         public const string GeneratedPrefabsPath = "Assets/_GeneratedLocal/M1PlaytestPrefabs.asset";
 
         private const string GeneratedDirectory = "Assets/_GeneratedLocal";
@@ -129,6 +131,10 @@ namespace NotThatWay.Game.Editor
                 SandboxCarryableKind.OilCan,
                 GeneratedOilCanPrefabPath,
                 CreateLitMaterial("SandboxOilCan", new Color(0.62f, 0.16f, 0.12f), 0.35f, false));
+            var springShoesPrefab = CreateCarryablePrefab(
+                SandboxCarryableKind.SpringShoes,
+                GeneratedSpringShoesPrefabPath,
+                CreateLitMaterial("SandboxSpringShoes", new Color(0.85f, 0.22f, 0.16f), 0.38f, false));
             var prefabCollection = LoadOrCreatePrefabCollection();
             prefabCollection.Clear();
             prefabCollection.AddObject(playerPrefab, true);
@@ -138,6 +144,10 @@ namespace NotThatWay.Game.Editor
             prefabCollection.AddObject(trophyPrefab, true);
             prefabCollection.AddObject(slingshotPrefab, true);
             prefabCollection.AddObject(oilCanPrefab, true);
+            // Tout carryable apparu par le spawner DOIT être dans la collection
+            // FishNet : sinon l'instance existe sans initialisation réseau
+            // (NullReferenceException en boucle, objet incollectable).
+            prefabCollection.AddObject(springShoesPrefab, true);
             EditorUtility.SetDirty(prefabCollection);
 
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
@@ -186,7 +196,13 @@ namespace NotThatWay.Game.Editor
 
             var sandboxSpawner = networkRoot.AddComponent<SandboxWorldSpawner>();
             ConfigureSandboxSpawner(
-                sandboxSpawner, map, rockPrefab, trophyPrefab, slingshotPrefab, oilCanPrefab);
+                sandboxSpawner,
+                map,
+                rockPrefab,
+                trophyPrefab,
+                slingshotPrefab,
+                oilCanPrefab,
+                springShoesPrefab);
 
             ValidateSceneContract(
                 map,
@@ -198,6 +214,7 @@ namespace NotThatWay.Game.Editor
                 trophyPrefab,
                 slingshotPrefab,
                 oilCanPrefab,
+                springShoesPrefab,
                 prefabCollection,
                 networkManager,
                 timeManager,
@@ -657,6 +674,7 @@ namespace NotThatWay.Game.Editor
                 {
                     SandboxCarryableKind.Trophy => 2.5f,
                     SandboxCarryableKind.Slingshot => 0.7f,
+                    SandboxCarryableKind.SpringShoes => 1.6f,
                     _ => 1.3f
                 };
                 body.linearDamping = 0.25f;
@@ -707,6 +725,80 @@ namespace NotThatWay.Game.Editor
                     tongue.transform.localPosition = new Vector3(0.55f, 0.010f, 0.4f);
                     tongue.transform.localScale = new Vector3(0.9f, 0.007f, 0.9f);
                     slickRoot.SetActive(false);
+                }
+                else if (kind == SandboxCarryableKind.SpringShoes)
+                {
+                    // Paire de bottes rouges sur ressorts : lisible de loin et
+                    // distincte du trophée doré comme des cailloux gris.
+                    var springBox = root.AddComponent<BoxCollider>();
+                    springBox.center = new Vector3(0f, 0f, 0.02f);
+                    springBox.size = new Vector3(0.62f, 0.56f, 0.60f);
+                    collider = springBox;
+                    var coil = CreateLitMaterial(
+                        "SandboxSpringCoil",
+                        new Color(0.74f, 0.78f, 0.83f),
+                        0.85f,
+                        false);
+                    var sole = CreateLitMaterial(
+                        "SandboxSpringSole",
+                        new Color(0.16f, 0.15f, 0.17f),
+                        0.25f,
+                        false);
+                    for (var side = 0; side < 2; side++)
+                    {
+                        var suffix = side == 0 ? "Left" : "Right";
+                        var x = (side == 0 ? -1f : 1f) * 0.155f;
+                        var boot = CreateCarryableVisualPrimitive(
+                            PrimitiveType.Cube,
+                            $"Boot{suffix}",
+                            visualRoot.transform,
+                            material);
+                        boot.transform.localPosition = new Vector3(x, 0.10f, -0.02f);
+                        boot.transform.localScale = new Vector3(0.20f, 0.22f, 0.30f);
+                        var toe = CreateCarryableVisualPrimitive(
+                            PrimitiveType.Sphere,
+                            $"Toe{suffix}",
+                            visualRoot.transform,
+                            material);
+                        toe.transform.localPosition = new Vector3(x, 0.04f, 0.16f);
+                        toe.transform.localScale = new Vector3(0.20f, 0.15f, 0.20f);
+                        var cuff = CreateCarryableVisualPrimitive(
+                            PrimitiveType.Cylinder,
+                            $"Cuff{suffix}",
+                            visualRoot.transform,
+                            sole);
+                        cuff.transform.localPosition = new Vector3(x, 0.225f, -0.02f);
+                        cuff.transform.localScale = new Vector3(0.205f, 0.028f, 0.205f);
+                        var soleBoard = CreateCarryableVisualPrimitive(
+                            PrimitiveType.Cube,
+                            $"Sole{suffix}",
+                            visualRoot.transform,
+                            sole);
+                        soleBoard.transform.localPosition = new Vector3(x, -0.025f, 0.05f);
+                        soleBoard.transform.localScale = new Vector3(0.22f, 0.045f, 0.46f);
+                        // Ressort : spires aplaties en quinconce sous la semelle.
+                        for (var loop = 0; loop < 4; loop++)
+                        {
+                            var sway = (loop % 2 == 0 ? -1f : 1f) * 0.02f;
+                            var spire = CreateCarryableVisualPrimitive(
+                                PrimitiveType.Cylinder,
+                                $"Coil{suffix}{loop}",
+                                visualRoot.transform,
+                                coil);
+                            spire.transform.localPosition = new Vector3(
+                                x + sway,
+                                -0.085f - loop * 0.048f,
+                                0.02f - sway);
+                            spire.transform.localScale = new Vector3(0.17f, 0.012f, 0.17f);
+                        }
+                        var pad = CreateCarryableVisualPrimitive(
+                            PrimitiveType.Cube,
+                            $"Pad{suffix}",
+                            visualRoot.transform,
+                            sole);
+                        pad.transform.localPosition = new Vector3(x, -0.27f, 0.02f);
+                        pad.transform.localScale = new Vector3(0.20f, 0.035f, 0.30f);
+                    }
                 }
                 else if (kind == SandboxCarryableKind.Rock)
                 {
@@ -951,7 +1043,8 @@ namespace NotThatWay.Game.Editor
             NetworkObject rockPrefab,
             NetworkObject trophyPrefab,
             NetworkObject slingshotPrefab,
-            NetworkObject oilCanPrefab)
+            NetworkObject oilCanPrefab,
+            NetworkObject springShoesPrefab)
         {
             var rockCells = new[]
             {
@@ -993,6 +1086,21 @@ namespace NotThatWay.Game.Editor
                     TopologyGeometry.CellCenterMm(map, oilCells[index]).Meters + Vector3.up * 0.30f;
             }
 
+            // Deux paires de chaussures-ressort, à mi-hauteur de chaque bord :
+            // chaque joueur du banc peut tenter le mur.
+            var springCells = new[]
+            {
+                new TopologyGridCell(0, 2),
+                new TopologyGridCell(5, 2)
+            };
+            var springPositions = new Vector3[springCells.Length];
+            for (var index = 0; index < springCells.Length; index++)
+            {
+                springPositions[index] =
+                    TopologyGeometry.CellCenterMm(map, springCells[index]).Meters +
+                    Vector3.up * 0.45f;
+            }
+
             var serialized = new SerializedObject(spawner);
             SetObject(serialized, "_rockPrefab", rockPrefab);
             SetObject(serialized, "_trophyPrefab", trophyPrefab);
@@ -1001,6 +1109,8 @@ namespace NotThatWay.Game.Editor
             SetVector3Array(serialized, "_slingshotSpawnPositions", slingshotPositions);
             SetObject(serialized, "_oilCanPrefab", oilCanPrefab);
             SetVector3Array(serialized, "_oilCanSpawnPositions", oilPositions);
+            SetObject(serialized, "_springShoesPrefab", springShoesPrefab);
+            SetVector3Array(serialized, "_springShoesSpawnPositions", springPositions);
             SetVector3(
                 serialized,
                 "_trophySpawnPosition",
@@ -1615,6 +1725,7 @@ namespace NotThatWay.Game.Editor
             NetworkObject trophyPrefab,
             NetworkObject slingshotPrefab,
             NetworkObject oilCanPrefab,
+            NetworkObject springShoesPrefab,
             DefaultPrefabObjects prefabCollection,
             NetworkManager networkManager,
             TimeManager timeManager,
@@ -1686,7 +1797,11 @@ namespace NotThatWay.Game.Editor
                 throw new InvalidOperationException("Prefab d'autorité murale M1 invalide.");
             }
             foreach (var carryable in
-                     new[] { rockPrefab, trophyPrefab, slingshotPrefab, oilCanPrefab })
+                     new[]
+                     {
+                         rockPrefab, trophyPrefab, slingshotPrefab, oilCanPrefab,
+                         springShoesPrefab
+                     })
             {
                 if (carryable == null || carryable.EnablePrediction ||
                     carryable.GetComponent<SandboxCarryable>() == null ||

@@ -187,6 +187,50 @@ namespace NotThatWay.Game.Tests.EditMode
         }
 
         [Test]
+        public void JumpModifier_ScalesTheImpulseAndValidatesItsRange()
+        {
+            var config = Config(jumpEnabled: true);
+            var normal = new PlayerStateMachine(config, InitialState(grounded: true));
+            var boosted = new PlayerStateMachine(config, InitialState(grounded: true));
+
+            var plain = normal.AdvanceTick(
+                Command(1u, buttons: PlayerCommandButtons.JumpPressed),
+                PlayerTickForces.None,
+                PlayerTickModifiers.FullSpeed,
+                new PassThroughWorld(PlayerCollisionFlags.Below));
+            var spring = boosted.AdvanceTick(
+                Command(1u, buttons: PlayerCommandButtons.JumpPressed),
+                PlayerTickForces.None,
+                new PlayerTickModifiers(1000, 2200),
+                new PassThroughWorld(PlayerCollisionFlags.Below));
+
+            Assert.That(plain.Events.HasFlag(PlayerTickEvents.Jumped), Is.True);
+            Assert.That(spring.Events.HasFlag(PlayerTickEvents.Jumped), Is.True);
+            // Impulsion 6 puis 6 x 2,2 = 13,2 m/s ; gravité -10 x 0,1 s déjà
+            // appliquée avant la requête de collision.
+            Assert.That(
+                plain.CollisionRequest.DesiredDisplacement.Y,
+                Is.EqualTo(0.5d).Within(Tolerance));
+            Assert.That(
+                spring.CollisionRequest.DesiredDisplacement.Y,
+                Is.EqualTo(1.22d).Within(Tolerance));
+
+            Assert.That(PlayerTickModifiers.FullSpeed.JumpSpeedPermille, Is.EqualTo(1000));
+            Assert.That(
+                new PlayerTickModifiers(750),
+                Is.EqualTo(new PlayerTickModifiers(750, 1000)),
+                "Le constructeur historique reste un saut normal.");
+            Assert.That(
+                () => new PlayerTickModifiers(1000, 0),
+                Throws.TypeOf<ArgumentOutOfRangeException>());
+            Assert.That(
+                () => new PlayerTickModifiers(
+                    1000,
+                    PlayerTickModifiers.MaximumJumpSpeedPermille + 1),
+                Throws.TypeOf<ArgumentOutOfRangeException>());
+        }
+
+        [Test]
         public void AccelerationAndDeceleration_ComeOnlyFromSuppliedConfig()
         {
             var slow = new PlayerStateMachine(
