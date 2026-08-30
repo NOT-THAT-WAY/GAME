@@ -135,3 +135,11 @@ reçoit le segment arrêté avec sa révision (`latejoin`).
 ```bash
 ./scripts/m1-network-tests-macos.sh all --build
 ```
+
+Ces scénarios tournent **sans le bot d'entraînement**. Le bot frappe, pousse les murs et fait
+repartir des manches de son propre chef : dans une gate qui compte quarts de tour, révisions et
+poussées opposées, il devient une source de couple non contrôlée et la mesure ne dit plus rien du
+scénario. `SimpleBotSpawner` s'efface donc dès que `M1AutomatedTestPlan.IsAutomatedRun` reconnaît un
+plan armé (`--m1-auto-quit-seconds`). Le banc humain (`m1-human-test-macos.sh`) et les captures de
+contrôle (`m1-preview-macos.sh`) n'arment aucun plan : ils gardent le bot, qui est leur raison
+d'être.

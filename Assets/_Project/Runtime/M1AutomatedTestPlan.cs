@@ -126,6 +126,19 @@ namespace NotThatWay.Game
         public uint MinimumTargetSnapshots { get; }
         public bool Enabled => QuitAfterSeconds > 0d;
 
+        /// <summary>
+        /// Vrai dès qu'un plan de test automatisé pilote ce processus. Sert aux
+        /// éléments de banc qui doivent disparaître d'une mesure : une gate
+        /// compte des poussées, des révisions et des quarts de tour, elle ne
+        /// peut pas partager l'arène avec un acteur autonome.
+        ///
+        /// Un plan mal formé n'est pas l'affaire de cet appel : il est signalé
+        /// et fait quitter le processus dans <c>M1PlaytestDiagnostics</c>. Ici,
+        /// « illisible » vaut « pas de plan », donc banc humain complet.
+        /// </summary>
+        public static bool IsAutomatedRun(IReadOnlyList<string> arguments) =>
+            TryParse(arguments, out var plan, out _) && plan.Enabled;
+
         public bool IsReadyToArm(M1AutomatedTestObservation observation)
         {
             if (!observation.Authenticated || !observation.HasWall)
