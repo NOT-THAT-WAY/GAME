@@ -631,7 +631,10 @@ namespace NotThatWay.Game.Sandbox
             {
                 var sprint = index == missing &&
                              command.Has(PlayerCommandButtons.SprintHeld);
-                var result = _model.AdvanceTick(sprint, _inventory.HasTrophy);
+                var standUp = index == missing &&
+                              (command.Has(PlayerCommandButtons.JumpPressed) ||
+                               command.Has(PlayerCommandButtons.JumpHeld));
+                var result = _model.AdvanceTick(sprint, _inventory.HasTrophy, standUp);
                 if ((result.Events & SandboxPlayerEvents.Recovered) != 0)
                     PlayRecoveryEvent();
             }

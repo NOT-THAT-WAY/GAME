@@ -79,7 +79,9 @@ actions ont un impact immédiatement lisible, mais les chiffres restent des hypo
    (`SandboxSlingshotModel`) ; l'hôte applique ou refuse chaque action.
 6. Un caillou ou trophée lancé rebondit, ne peut blesser qu'une fois par lancer, se stabilise, puis
    redevient ramassable.
-7. Un joueur à zéro PV lâche tout, ne peut plus agir, puis se relève automatiquement.
+7. Un joueur à zéro PV lâche tout, tombe à plat ventre et ne peut plus agir. Après **2 s au sol
+   minimum**, c'est à lui de se relever en appuyant sur `Espace` — jamais automatiquement ; il
+   revient alors à 40 PV avec une courte protection, comme avant.
 8. Porter le trophée ralentit le joueur. Entrer vivant dans la zone orange avec le trophée termine
    la manche ; les ressources et objets sont remis à zéro pour la suivante.
 

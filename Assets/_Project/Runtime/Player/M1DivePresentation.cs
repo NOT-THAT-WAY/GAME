@@ -1,4 +1,5 @@
 using NotThatWay.Game.PlayerSimulation;
+using NotThatWay.Game.Sandbox;
 using UnityEngine;
 
 namespace NotThatWay.Game
@@ -27,6 +28,7 @@ namespace NotThatWay.Game
         [SerializeField] private Transform _cameraPivot;
 
         private PredictedPlayerMotor _motor;
+        private SandboxPlayerGameplay _gameplay;
         private Quaternion _baseRotation = Quaternion.identity;
         private Vector3 _basePosition;
         private Vector3 _cameraRestPosition;
@@ -36,6 +38,7 @@ namespace NotThatWay.Game
         private void Awake()
         {
             _motor = GetComponent<PredictedPlayerMotor>();
+            _gameplay = GetComponent<SandboxPlayerGameplay>();
             if (_body != null)
             {
                 _baseRotation = _body.localRotation;
@@ -52,7 +55,13 @@ namespace NotThatWay.Game
 
             var state = _motor.SimulationState;
             float target;
-            if (state.IsDiving)
+            if (_gameplay != null && !_gameplay.IsAlive)
+            {
+                // KO : au sol, à plat, jusqu'au relevé volontaire.
+                target = ProneTiltDegrees;
+                _recoveryTotalTicks = 0u;
+            }
+            else if (state.IsDiving)
             {
                 target = AirborneTiltDegrees;
                 _recoveryTotalTicks = 0u;

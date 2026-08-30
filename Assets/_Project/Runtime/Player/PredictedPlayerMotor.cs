@@ -208,6 +208,10 @@ namespace NotThatWay.Game
             data = ResolveForwardedInput(data, replicateState);
             var simulationTick = TickMath.Next(_simulation.State.Tick);
             var command = ValidatedCommand(data, simulationTick);
+            // La commande brute reste la vérité pour les règles serveur (se
+            // relever d'un KO exige de voir l'appui même quand le filtre KO
+            // neutralise la simulation) ; seule la locomotion reçoit le filtre.
+            var rawCommand = command;
             if (_sandboxGameplay != null)
                 command = _sandboxGameplay.FilterCommandForSimulation(command);
             PlayerTickForces forces = default;
@@ -225,7 +229,7 @@ namespace NotThatWay.Game
             if (IsServerStarted && replicateState.ContainsTicked() &&
                 !replicateState.ContainsReplayed())
             {
-                _latestAuthoritativeCommand = command;
+                _latestAuthoritativeCommand = rawCommand;
                 _hasLatestAuthoritativeCommand = true;
             }
             ApplyPresentation(result.Current);

@@ -213,7 +213,10 @@ namespace NotThatWay.Game.Sandbox
                     ? _config.TrophyMovementPermille
                     : SandboxGameplayConfig.PermilleScale;
 
-        public SandboxPlayerTickResult AdvanceTick(bool sprintRequested, bool carryingTrophy)
+        public SandboxPlayerTickResult AdvanceTick(
+            bool sprintRequested,
+            bool carryingTrophy,
+            bool standUpRequested = false)
         {
             var previous = _state;
             var tick = TickMath.Next(previous.Tick);
@@ -238,7 +241,10 @@ namespace NotThatWay.Game.Sandbox
                 sprintCadence = 0u;
                 if (knockout > 0u)
                     knockout--;
-                if (knockout == 0u)
+                // Le compte à rebours n'est plus qu'un délai minimal au sol : une
+                // fois écoulé, le joueur reste KO tant qu'il ne demande pas à se
+                // relever (Espace), et se relève alors avec les mêmes restaurations.
+                if (knockout == 0u && standUpRequested)
                 {
                     life = SandboxLifeState.Alive;
                     health = _config.RecoveryHealth;

@@ -96,6 +96,11 @@ namespace NotThatWay.Game.Sandbox
         public uint HealthRegenerationDelayTicks { get; }
         public uint HealthRegenerationIntervalTicks { get; }
         public int HealthRegenerationAmount { get; }
+        /// <summary>
+        /// Temps minimal au sol après un KO : une fois écoulé, le joueur reste à
+        /// terre tant qu'il ne demande pas à se relever (Espace) — le relevé n'est
+        /// plus automatique.
+        /// </summary>
         public uint KnockoutDurationTicks { get; }
         public int RecoveryHealth { get; }
         public uint RecoveryProtectionTicks { get; }
@@ -143,7 +148,7 @@ namespace NotThatWay.Game.Sandbox
             300u,
             10u,
             1,
-            240u,
+            120u,
             40,
             60u,
             750,
