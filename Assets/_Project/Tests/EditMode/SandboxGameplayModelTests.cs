@@ -41,6 +41,9 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(config.SlingshotMinimumPowerPermille, Is.EqualTo(350));
             Assert.That(config.SlingshotDropHoldTicks, Is.EqualTo(30u));
             Assert.That(config.SlingshotAimMovementPermille, Is.EqualTo(650));
+            Assert.That(config.OilPourEnergyCost, Is.EqualTo(8));
+            Assert.That(config.OilSlipKnockdownTicks, Is.EqualTo(45u));
+            Assert.That(config.OilSlipGraceTicks, Is.EqualTo(120u));
         }
 
         [Test]
@@ -68,7 +71,10 @@ namespace NotThatWay.Game.Tests.EditMode
                     slingshotChargeTicks: baseline.SlingshotChargeTicks,
                     slingshotMinimumPowerPermille: baseline.SlingshotMinimumPowerPermille,
                     slingshotDropHoldTicks: baseline.SlingshotDropHoldTicks,
-                    slingshotAimMovementPermille: baseline.SlingshotAimMovementPermille),
+                    slingshotAimMovementPermille: baseline.SlingshotAimMovementPermille,
+                    oilPourEnergyCost: baseline.OilPourEnergyCost,
+                    oilSlipKnockdownTicks: baseline.OilSlipKnockdownTicks,
+                    oilSlipGraceTicks: baseline.OilSlipGraceTicks),
                 Throws.TypeOf<ArgumentOutOfRangeException>(),
                 "Un lance-pierre qui ne frappe pas plus fort qu'un lancer à la main n'a pas de raison d'être.");
 
@@ -102,6 +108,20 @@ namespace NotThatWay.Game.Tests.EditMode
             var knockout = model.ApplyDamage(baseline.MaximumHealth, SandboxDamageKind.SlingshotRock);
             Assert.That(knockout.KnockedOut, Is.True);
             Assert.That(model.TrySpendSlingshotShot(), Is.False);
+        }
+
+        [Test]
+        public void OilPour_SpendsItsEnergyAndNeverDuringKnockout()
+        {
+            var config = SandboxGameplayConfig.Baseline60Hz;
+            var model = new SandboxPlayerModel(config);
+
+            Assert.That(model.TrySpendEnergyForOilPour(), Is.True);
+            Assert.That(model.State.Energy, Is.EqualTo(config.MaximumEnergy - config.OilPourEnergyCost));
+
+            var knockout = model.ApplyDamage(config.MaximumHealth, SandboxDamageKind.World);
+            Assert.That(knockout.KnockedOut, Is.True);
+            Assert.That(model.TrySpendEnergyForOilPour(), Is.False);
         }
 
         [Test]

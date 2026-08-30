@@ -350,6 +350,14 @@ namespace NotThatWay.Game.Sandbox
             return TrySpendEnergy(_config.SlingshotEnergyCost);
         }
 
+        /// <summary>Versage du bidon : l'objet est retiré par l'inventaire, pas ici.</summary>
+        public bool TrySpendEnergyForOilPour()
+        {
+            if (!CanAct)
+                return false;
+            return TrySpendEnergy(_config.OilPourEnergyCost);
+        }
+
         /// <summary>
         /// Coût continu appliqué uniquement après contact serveur accepté. Un
         /// même tick de commande ne peut jamais être facturé deux fois.

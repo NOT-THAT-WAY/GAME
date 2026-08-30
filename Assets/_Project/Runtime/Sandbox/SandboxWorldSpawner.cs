@@ -15,6 +15,8 @@ namespace NotThatWay.Game.Sandbox
         [SerializeField] private NetworkObject _slingshotPrefab;
         [SerializeField] private Vector3[] _rockSpawnPositions = System.Array.Empty<Vector3>();
         [SerializeField] private Vector3[] _slingshotSpawnPositions = System.Array.Empty<Vector3>();
+        [SerializeField] private NetworkObject _oilCanPrefab;
+        [SerializeField] private Vector3[] _oilCanSpawnPositions = System.Array.Empty<Vector3>();
         [SerializeField] private Vector3 _trophySpawnPosition;
 
         private readonly List<NetworkObject> _spawned = new();
@@ -48,9 +50,12 @@ namespace NotThatWay.Game.Sandbox
             }
             if (state.ConnectionState != LocalConnectionState.Started || _spawned.Count != 0)
                 return;
-            if (_rockPrefab == null || _trophyPrefab == null || _slingshotPrefab == null)
+            if (_rockPrefab == null || _trophyPrefab == null ||
+                _slingshotPrefab == null || _oilCanPrefab == null)
             {
-                Debug.LogError("[GAME-SANDBOX] Prefabs de caillou/trophée/lance-pierre absents.", this);
+                Debug.LogError(
+                    "[GAME-SANDBOX] Prefabs de caillou/trophée/lance-pierre/bidon absents.",
+                    this);
                 return;
             }
 
@@ -58,10 +63,13 @@ namespace NotThatWay.Game.Sandbox
                 Spawn(_rockPrefab, _rockSpawnPositions[index], $"rock-{index}");
             for (var index = 0; index < _slingshotSpawnPositions.Length; index++)
                 Spawn(_slingshotPrefab, _slingshotSpawnPositions[index], $"slingshot-{index}");
+            for (var index = 0; index < _oilCanSpawnPositions.Length; index++)
+                Spawn(_oilCanPrefab, _oilCanSpawnPositions[index], $"oilcan-{index}");
             Spawn(_trophyPrefab, _trophySpawnPosition, "trophy");
             Debug.Log(
                 $"[GAME-SANDBOX] objects_ready rocks={_rockSpawnPositions.Length} " +
-                $"slingshots={_slingshotSpawnPositions.Length} trophy=1.",
+                $"slingshots={_slingshotSpawnPositions.Length} " +
+                $"oilcans={_oilCanSpawnPositions.Length} trophy=1.",
                 this);
         }
 

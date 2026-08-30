@@ -82,6 +82,38 @@ ou le saut relève (le tick du relevé ne saute pas). À plat ventre : vitesse p
 rayon de 0,40), pieds au sol. Se relever ne vérifie pas encore le dégagement au-dessus de la tête :
 aucune géométrie basse n'existe dans les bancs, la contrainte est notée ici plutôt qu'inventée.
 Baselines du banc : 1,7 m/s, capsule 0,85 m — même décision DEC-01 que le reste.
+## Chute imposée par l'hôte
+
+`PlayerTickForces` porte, en plus de l'impulsion horizontale, un nombre de ticks de chute
+(`KnockdownTicks`, borné à 120) : la glissade sur une flaque d'huile l'utilise. Appliquée sur un
+tick, elle met la vitesse contrôlée à zéro et arme la même fenêtre de relevé que l'atterrissage
+d'un plongeon — mêmes verrous (déplacement et saut coupés), même posture. Sans plongeon configuré,
+la fenêtre n'existe pas et la chute est ignorée plutôt qu'inventée. Le serveur la propage au
+propriétaire comme le knockback : mise en file, prédite, corrigée au reconcile.
+
+## Contexte de jeu du tick
+
+Le filtre d'intention et le modificateur de vitesse ne dépendent pas que de la commande : ils lisent
+aussi la vie, le trophée, l'énergie encore payable pour le sprint et l'objet tenu en main. Ces
+quatre valeurs vivent dans des champs répliqués de `SandboxPlayerGameplay`, **pas** dans
+`PlayerReconcileData`. Les relire pendant un rejeu de réconciliation resimulerait le tick N avec
+l'état de maintenant : le propriétaire divergeait de l'hôte à chaque KO, prise ou perte de trophée,
+panne d'énergie et lance-pierre dégainé ou lâché — un élastique visible juste après l'événement.
+
+`SandboxCommandContext` fige ces quatre valeurs, plus la vitesse de base et le ralentissement de
+visée, en une photographie par tick. `SandboxPlayerGameplay.ResolveContext(tick, replaying)`
+l'enregistre au premier passage du tick et la relit pendant un rejeu ; l'hôte, qui ne rejoue jamais,
+reste toujours sur l'état vivant, donc l'autorité ne change pas de main. L'anneau
+(`SandboxCommandContextHistory`, 128 ticks ≈ 2 s à 60 Hz) répond « inconnu » plutôt que de rendre le
+contexte d'un tick voisin : au-delà de la fenêtre, retomber sur l'état courant vaut mieux que mentir
+sur un tick oublié.
+
+Un joueur sans couche sandbox utilise `SandboxCommandContext.Unrestricted` : aucun filtre, pleine
+vitesse — le comportement du banc gris minimal est inchangé.
+
+La preuve EditMode porte sur les parties pures (filtre, ralentissement de visée, anneau qui rejoue
+le tick au lieu de l'état courant). Le fait que la trajectoire rejouée colle désormais à
+l'autoritaire reste à mesurer sur deux machines, avec le profil dégradé : ce n'est pas couvert ici.
 
 ## Collision et réseau
 

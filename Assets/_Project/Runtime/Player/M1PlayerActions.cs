@@ -212,6 +212,16 @@ namespace NotThatWay.Game
             if (_sandboxGameplay != null && _sandboxGameplay.HasSlingshotInHand)
                 return;
             if (_sandboxGameplay != null &&
+                _sandboxGameplay.ActiveKind == SandboxCarryableKind.OilCan)
+            {
+                if (!_sandboxGameplay.TryPourOilFromServer(command))
+                    return;
+                _lastPunchTick = serverTick;
+                _hasPunched = true;
+                PlayThrowObserversRpc();
+                return;
+            }
+            if (_sandboxGameplay != null &&
                 _sandboxGameplay.ActiveKind != SandboxCarryableKind.None)
             {
                 if (!_sandboxGameplay.TryThrowActive(command, direction))

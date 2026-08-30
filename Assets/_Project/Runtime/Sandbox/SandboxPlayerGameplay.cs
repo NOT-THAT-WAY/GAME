@@ -40,6 +40,7 @@ namespace NotThatWay.Game.Sandbox
             new SandboxCarryableKind[SandboxInventoryModel.Capacity];
 
         private readonly List<int> _ammoObjectIds = new();
+        private readonly SandboxCommandContextHistory _contextHistory = new();
 
         private SandboxGameplayConfig _config;
         private SandboxPlayerModel _model;
@@ -166,24 +167,39 @@ namespace NotThatWay.Game.Sandbox
                 : HasTrophy
                     ? _config.TrophyMovementPermille
                     : SandboxGameplayConfig.PermilleScale;
+
         /// <summary>
-        /// Modificateur de vitesse pour une commande donnée : la base (trophée,
-        /// KO) puis le ralentissement de visée si le joueur bande le lance-pierre.
-        /// Dérivé de la commande et de l'objet actif, donc identique chez l'hôte et
-        /// le propriétaire qui prédit — sans état supplémentaire à répliquer.
+        /// Contexte de jeu du tick demandé : filtre d'intention et vitesse.
+        ///
+        /// Au premier passage d'un tick, l'état vivant est lu puis mémorisé. Un
+        /// rejeu de réconciliation relit la mémoire au lieu de l'état courant :
+        /// vie, trophée, énergie et objet actif ne sont pas dans
+        /// <c>PlayerReconcileData</c>, et les relire pendant le rejeu ferait
+        /// resimuler le tick N avec l'inventaire et la vie de maintenant. C'est
+        /// ce décalage qui faisait diverger le propriétaire de l'hôte à chaque
+        /// KO, prise de trophée ou lance-pierre dégainé.
+        ///
+        /// L'hôte ne rejoue jamais : il reste toujours sur l'état vivant, donc
+        /// l'autorité ne change pas de main.
         /// </summary>
-        public int MovementSpeedPermilleFor(PlayerCommand command)
+        public SandboxCommandContext ResolveContext(uint tick, bool replaying)
         {
-            var permille = MovementSpeedPermille;
-            if (permille > 0 && HasSlingshotInHand && command.Has(PlayerCommandButtons.PunchHeld))
-            {
-                permille = (int)((long)permille * _config.SlingshotAimMovementPermille /
-                                 SandboxGameplayConfig.PermilleScale);
-                if (permille < 1)
-                    permille = 1;
-            }
-            return permille;
+            if (replaying && _contextHistory.TryGet(tick, out var recorded))
+                return recorded;
+
+            var live = CaptureContext();
+            if (!replaying)
+                _contextHistory.Record(tick, live);
+            return live;
         }
+
+        private SandboxCommandContext CaptureContext() => new(
+            IsAlive,
+            HasTrophy,
+            CanSprintForNextCharge(),
+            HasSlingshotInHand,
+            MovementSpeedPermille,
+            _config.SlingshotAimMovementPermille);
 
         /// <summary>Direction du regard de l'hôte, pitch compris, pour un tir visé.</summary>
         private Vector3 AimDirection
@@ -231,6 +247,14 @@ namespace NotThatWay.Game.Sandbox
             _observedEnergy = _config.MaximumEnergy;
             _observedLifeState = SandboxLifeState.Alive;
             SetTickCallbacks(TickCallback.PostTick);
+        }
+
+        public override void OnStartNetwork()
+        {
+            base.OnStartNetwork();
+            // Un objet réutilisé par le pool repartirait sinon avec les contextes
+            // d'un tick homonyme de la vie précédente.
+            _contextHistory.Clear();
         }
 
         public override void OnStartServer()
@@ -287,40 +311,6 @@ namespace NotThatWay.Game.Sandbox
                 ProcessSlingshotCommand(command);
             }
             PublishSnapshot(false);
-        }
-
-        /// <summary>
-        /// Filtre utilisé par la prédiction comme par le serveur : un joueur KO
-        /// conserve le regard mais aucune intention physique ; le trophée coupe
-        /// la poussée, et le sprint disparaît dès que son prochain prélèvement ne
-        /// peut plus être payé.
-        /// </summary>
-        public PlayerCommand FilterCommandForSimulation(PlayerCommand command)
-        {
-            var alive = IsAlive;
-            if (!alive)
-            {
-                return new PlayerCommand(
-                    command.Tick,
-                    0,
-                    0,
-                    command.LookYaw,
-                    command.LookPitch,
-                    PlayerCommandButtons.None);
-            }
-
-            var buttons = command.Buttons;
-            if (!CanSprintForNextCharge())
-                buttons &= ~PlayerCommandButtons.SprintHeld;
-            if (HasTrophy)
-                buttons &= ~PlayerCommandButtons.InteractHeld;
-            return new PlayerCommand(
-                command.Tick,
-                command.MoveX,
-                command.MoveY,
-                command.LookYaw,
-                command.LookPitch,
-                buttons);
         }
 
         public bool TrySpendPunch(PlayerCommand command)
@@ -507,6 +497,42 @@ namespace NotThatWay.Game.Sandbox
                 $"[GAME-SANDBOX-ITEM] slingshot_fire player={ObjectId} rock={ammoId} " +
                 $"power={powerPermille} ammo={_ammoObjectIds.Count}.",
                 this);
+            return true;
+        }
+
+        /// <summary>
+        /// Verse le bidon actif : énergie, retrait de la case, puis l'objet devient
+        /// une flaque posée au sol 1,1 m devant le joueur. Le verseur n'est pas
+        /// épargné : il glissera comme les autres s'il repasse dessus avec de l'élan.
+        /// </summary>
+        public bool TryPourOilFromServer(PlayerCommand command)
+        {
+            if (!IsServerStarted || !IsAlive)
+                return false;
+            if (!EnsureAdvanced(command))
+                return false;
+            if (ActiveKind != SandboxCarryableKind.OilCan ||
+                !_inventory.ActiveEntry.HasValue)
+            {
+                return false;
+            }
+            var entry = _inventory.ActiveEntry.Value;
+            if (!SandboxCarryable.TryFindServer(entry.ObjectId, out var can) ||
+                !_model.TrySpendEnergyForOilPour() ||
+                !_inventory.TryRemoveActive(out _))
+            {
+                return false;
+            }
+
+            var forward = transform.forward;
+            forward.y = 0f;
+            forward = forward.sqrMagnitude > 0.0001f ? forward.normalized : Vector3.forward;
+            var ground = transform.position + forward * 1.1f;
+            ground.y = transform.position.y + 0.02f;
+            can.PourFromServer(this, ground);
+            RefreshHeldPresentations();
+            PlayInventoryEvent(1);
+            PublishSnapshot(false);
             return true;
         }
 
@@ -1068,7 +1094,9 @@ namespace NotThatWay.Game.Sandbox
             var panel = new Rect(16f, 16f, width, 160f);
             GUILayout.BeginArea(panel, GUI.skin.box);
             GUILayout.Label(ObservedLifeState == SandboxLifeState.KnockedOut
-                ? $"KO — retour dans {ObservedKnockoutTicksRemaining / (float)_config.TickRate:F1} s"
+                ? ObservedKnockoutTicksRemaining > 0u
+                    ? $"KO — au sol encore {ObservedKnockoutTicksRemaining / (float)_config.TickRate:F1} s"
+                    : "KO — Espace pour te relever"
                 : ObservedProtectionTicksRemaining > 0u
                     ? "DEBOUT — protection temporaire"
                     : "SANDBOX");

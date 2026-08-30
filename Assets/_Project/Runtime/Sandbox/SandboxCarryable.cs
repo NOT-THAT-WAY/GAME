@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Transporting;
+using NotThatWay.Game.Simulation;
 using UnityEngine;
 
 namespace NotThatWay.Game.Sandbox
@@ -53,6 +54,12 @@ namespace NotThatWay.Game.Sandbox
         private const float MinimumDamageSpeedMetersPerSecond = 2.5f;
         private const float SettledSpeedMetersPerSecond = 0.2f;
         private const int SettledFixedUpdatesRequired = 20;
+        // Flaque d'huile : rayon de glissade, élan requis, poussée de glissade et
+        // cadence de balayage serveur. Baselines de banc.
+        private const float OilSlickRadiusMeters = 0.95f;
+        private const float OilSlipMinimumSpeedMetersPerSecond = 1.5f;
+        private const float OilSlipBoostMetersPerSecond = 6f;
+        private const int OilScanEveryFixedUpdates = 3;
 
         private static readonly List<SandboxCarryable> ServerInstances = new();
 
@@ -86,13 +93,18 @@ namespace NotThatWay.Game.Sandbox
         private int _settledFixedUpdates;
         private Collider _ignoredThrowerCollider;
         private int _ignoreThrowerFixedUpdates;
+        private bool _spilled;
+        private int _oilScanCountdown;
+        private readonly System.Collections.Generic.Dictionary<int, uint> _slipGraceByVictim = new();
 
         public SandboxCarryableKind Kind => _kind;
         public SandboxCarryablePhase Phase => _phase;
         public int HolderObjectId => _holderObjectId;
         public bool ActiveInHand => _activeInHand;
         public bool AvailableForPickup =>
-            IsServerStarted && _phase == SandboxCarryablePhase.World;
+            IsServerStarted && _phase == SandboxCarryablePhase.World && !_spilled;
+        /// <summary>Bidon versé : l'objet est devenu la flaque, au sol, jusqu'au reset.</summary>
+        public bool Spilled => _spilled;
 
         private void Awake()
         {
@@ -321,7 +333,8 @@ namespace NotThatWay.Game.Sandbox
                 (byte)_phase,
                 _holderObjectId,
                 (sbyte)_inventorySlot,
-                _activeInHand);
+                _activeInHand,
+                _spilled);
         }
 
         private void FixedUpdate()
@@ -331,6 +344,11 @@ namespace NotThatWay.Game.Sandbox
 
             if (_ignoreThrowerFixedUpdates > 0 && --_ignoreThrowerFixedUpdates == 0)
                 RestoreThrowerCollision();
+            if (_spilled)
+            {
+                ScanForSlips();
+                return;
+            }
 
             if (_phase == SandboxCarryablePhase.Held)
             {
@@ -386,6 +404,12 @@ namespace NotThatWay.Game.Sandbox
             if (direction.sqrMagnitude < 0.0001f)
                 direction = transform.forward;
             direction.Normalize();
+            if (_kind == SandboxCarryableKind.OilCan)
+            {
+                // Un bidon lancé cabosse, il ne blesse pas.
+                _damageArmed = false;
+                return;
+            }
             var config = SandboxGameplayConfig.Baseline60Hz;
             int damage;
             SandboxDamageKind damageKind;
@@ -558,6 +582,101 @@ namespace NotThatWay.Game.Sandbox
             _launchedBySlingshot = bySlingshot;
         }
 
+        /// <summary>
+        /// Verse le bidon : l'objet devient la flaque, posée au sol devant le
+        /// verseur, non ramassable jusqu'au reset de manche. La détection des
+        /// glissades est serveur : quiconque la traverse avec de l'élan — verseur
+        /// compris — reçoit une poussée dans son élan et une chute de
+        /// <see cref="SandboxGameplayConfig.OilSlipKnockdownTicks"/> ticks, au plus
+        /// une fois par fenêtre de grâce.
+        /// </summary>
+        public void PourFromServer(SandboxPlayerGameplay pourer, Vector3 groundPosition)
+        {
+            if (!IsServerStarted || _kind != SandboxCarryableKind.OilCan || _spilled)
+                return;
+            _spilled = true;
+            _slipGraceByVictim.Clear();
+            _oilScanCountdown = 0;
+            ReleaseToWorld(
+                groundPosition,
+                Vector3.zero,
+                SandboxCarryablePhase.World,
+                -1,
+                false);
+            if (_body != null)
+            {
+                _body.isKinematic = true;
+                _body.rotation = Quaternion.identity;
+            }
+            transform.rotation = Quaternion.identity;
+            ApplyPhaseLocally();
+            PublishState();
+            Debug.Log(
+                $"[GAME-SANDBOX-ITEM] oil_spilled item={ObjectId} pourer={pourer?.ObjectId ?? -1} " +
+                $"position={groundPosition}.",
+                this);
+        }
+
+        private void ScanForSlips()
+        {
+            if (--_oilScanCountdown > 0)
+                return;
+            _oilScanCountdown = OilScanEveryFixedUpdates;
+            var config = SandboxGameplayConfig.Baseline60Hz;
+            var tick = TimeManager != null ? TimeManager.Tick : 0u;
+            var center = transform.position;
+            var hits = Physics.OverlapSphere(
+                center + Vector3.up * 0.4f,
+                OilSlickRadiusMeters,
+                1 << GameplayLayers.Player);
+            foreach (var hit in hits)
+            {
+                var motor = hit.GetComponentInParent<PredictedPlayerMotor>();
+                if (motor != null && motor.IsServerStarted)
+                {
+                    if (!TryConsumeGrace(motor.ObjectId, tick, config.OilSlipGraceTicks))
+                        continue;
+                    var velocity = motor.SimulationState.HorizontalVelocity;
+                    var speed = velocity.HorizontalMagnitude;
+                    if (speed < OilSlipMinimumSpeedMetersPerSecond)
+                        continue;
+                    var direction = new Vector3(
+                        (float)(velocity.X / speed),
+                        0f,
+                        (float)(velocity.Z / speed));
+                    motor.ApplyKnockbackFromServer(direction * OilSlipBoostMetersPerSecond);
+                    motor.ApplyKnockdownFromServer(config.OilSlipKnockdownTicks);
+                    Debug.Log(
+                        $"[GAME-SANDBOX-ITEM] oil_slip item={ObjectId} victim={motor.ObjectId} " +
+                        $"speed={speed:F2} tick={tick}.",
+                        this);
+                    continue;
+                }
+
+                var bot = hit.GetComponentInParent<SimpleBot>();
+                if (bot != null)
+                {
+                    if (!TryConsumeGrace(bot.GetInstanceID(), tick, config.OilSlipGraceTicks))
+                        continue;
+                    bot.SlipFromServer(bot.transform.forward * OilSlipBoostMetersPerSecond);
+                    Debug.Log(
+                        $"[GAME-SANDBOX-ITEM] oil_slip item={ObjectId} victim=bot tick={tick}.",
+                        this);
+                }
+            }
+        }
+
+        private bool TryConsumeGrace(int victimId, uint tick, uint graceTicks)
+        {
+            if (_slipGraceByVictim.TryGetValue(victimId, out var lastTick) &&
+                TickMath.Elapsed(lastTick, tick) < graceTicks)
+            {
+                return false;
+            }
+            _slipGraceByVictim[victimId] = tick;
+            return true;
+        }
+
         public void DepositFromServer()
         {
             if (!IsServerStarted)
@@ -589,6 +708,8 @@ namespace NotThatWay.Game.Sandbox
         {
             if (!IsServerStarted)
                 return;
+            _spilled = false;
+            _slipGraceByVictim.Clear();
             _phase = SandboxCarryablePhase.World;
             _holderObjectId = -1;
             _inventorySlot = -1;
@@ -725,6 +846,17 @@ namespace NotThatWay.Game.Sandbox
 
         private void ApplyPhaseLocally()
         {
+            // Bidon versé : le groupe « Can » disparaît, le groupe « Slick » prend
+            // sa place, à plat au sol. Purement visuel, répliqué par l'état.
+            if (_kind == SandboxCarryableKind.OilCan && _visualRoot != null)
+            {
+                var can = _visualRoot.Find("Can");
+                var slick = _visualRoot.Find("Slick");
+                if (can != null)
+                    can.gameObject.SetActive(!_spilled);
+                if (slick != null)
+                    slick.gameObject.SetActive(_spilled);
+            }
             var visible = _phase != SandboxCarryablePhase.Held || _activeInHand;
             for (var index = 0; index < _renderers.Length; index++)
             {
@@ -733,9 +865,12 @@ namespace NotThatWay.Game.Sandbox
             }
             if (_gameplayCollider != null)
             {
+                // Une flaque n'arrête personne : son corps n'existe plus, seule la
+                // règle de glissade côté serveur la fait exister.
                 _gameplayCollider.enabled =
-                    _phase == SandboxCarryablePhase.World ||
-                    _phase == SandboxCarryablePhase.Thrown;
+                    !_spilled &&
+                    (_phase == SandboxCarryablePhase.World ||
+                     _phase == SandboxCarryablePhase.Thrown);
             }
             if (_body != null)
             {
@@ -743,6 +878,7 @@ namespace NotThatWay.Game.Sandbox
                 // la pose du NetworkTransform et ne doivent pas ajouter leur
                 // propre gravité entre deux snapshots.
                 _body.isKinematic = !IsServerStarted ||
+                    _spilled ||
                     _phase == SandboxCarryablePhase.Held ||
                     _phase == SandboxCarryablePhase.Deposited;
             }
@@ -757,6 +893,7 @@ namespace NotThatWay.Game.Sandbox
                 _holderObjectId,
                 (sbyte)_inventorySlot,
                 _activeInHand,
+                _spilled,
                 Channel.Reliable);
         }
 
@@ -766,9 +903,10 @@ namespace NotThatWay.Game.Sandbox
             int holderObjectId,
             sbyte inventorySlot,
             bool activeInHand,
+            bool spilled,
             Channel channel = Channel.Reliable)
         {
-            ApplyNetworkState(phase, holderObjectId, inventorySlot, activeInHand);
+            ApplyNetworkState(phase, holderObjectId, inventorySlot, activeInHand, spilled);
         }
 
         [TargetRpc]
@@ -778,21 +916,24 @@ namespace NotThatWay.Game.Sandbox
             int holderObjectId,
             sbyte inventorySlot,
             bool activeInHand,
+            bool spilled,
             Channel channel = Channel.Reliable)
         {
-            ApplyNetworkState(phase, holderObjectId, inventorySlot, activeInHand);
+            ApplyNetworkState(phase, holderObjectId, inventorySlot, activeInHand, spilled);
         }
 
         private void ApplyNetworkState(
             byte phase,
             int holderObjectId,
             int inventorySlot,
-            bool activeInHand)
+            bool activeInHand,
+            bool spilled)
         {
             _phase = (SandboxCarryablePhase)phase;
             _holderObjectId = holderObjectId;
             _inventorySlot = inventorySlot;
             _activeInHand = activeInHand;
+            _spilled = spilled;
             ApplyPhaseLocally();
         }
     }

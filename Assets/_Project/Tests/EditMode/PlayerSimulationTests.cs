@@ -813,6 +813,52 @@ namespace NotThatWay.Game.Tests.EditMode
         }
 
         [Test]
+        public void KnockdownForce_FlattensThenLocksMovementLikeADiveLanding()
+        {
+            var world = new PassThroughWorld(PlayerCollisionFlags.Below);
+            var config = Config(
+                jumpEnabled: true,
+                diveEnabled: true,
+                diveForwardSpeed: 6d,
+                diveUpwardSpeed: 1d,
+                diveRecoveryTicks: 2u,
+                diveCooldownTicks: 3u);
+            var simulation = new PlayerStateMachine(config, InitialState(grounded: true));
+
+            // L'hôte impose une chute de 3 ticks (glissade) : vitesse à plat,
+            // relevé armé au-delà du réglage de plongeon mais sous la borne dure.
+            var slipped = simulation.AdvanceTick(
+                Command(1u, moveY: 127),
+                new PlayerTickForces(default, 3u),
+                world);
+            Assert.That(slipped.Current.DiveRecoveryTicksRemaining, Is.EqualTo(3u));
+            Assert.That(slipped.Current.HorizontalVelocity, Is.EqualTo(PlayerVector3.Zero));
+
+            var locked = simulation.AdvanceTick(
+                Command(2u, moveY: 127, buttons: PlayerCommandButtons.JumpPressed),
+                world);
+            Assert.That(locked.Events.HasFlag(PlayerTickEvents.Jumped), Is.False);
+            Assert.That(locked.Current.HorizontalVelocity, Is.EqualTo(PlayerVector3.Zero));
+
+            simulation.AdvanceTick(Command(3u), world);
+            simulation.AdvanceTick(Command(4u), world);
+            var free = simulation.AdvanceTick(Command(5u, moveY: 127), world);
+            Assert.That(free.Current.HorizontalVelocity.Z, Is.GreaterThan(0d));
+
+            // Sans plongeon configuré, la chute imposée est ignorée, pas inventée.
+            var noDive = new PlayerStateMachine(Config(), InitialState(grounded: true));
+            var ignored = noDive.AdvanceTick(
+                Command(1u, moveY: 127),
+                new PlayerTickForces(default, 3u),
+                world);
+            Assert.That(ignored.Current.DiveRecoveryTicksRemaining, Is.Zero);
+
+            Assert.That(
+                () => new PlayerTickForces(default, PlayerTickForces.MaximumKnockdownTicks + 1u),
+                Throws.TypeOf<ArgumentOutOfRangeException>());
+        }
+
+        [Test]
         public void Dive_RequiresASprintTowardTheFront()
         {
             var world = new GroundPlaneWorld();

@@ -7,7 +7,8 @@ namespace NotThatWay.Game.Sandbox
         None = 0,
         Rock = 1,
         Trophy = 2,
-        Slingshot = 3
+        Slingshot = 3,
+        OilCan = 4
     }
 
     public enum SandboxCarryablePhase : byte

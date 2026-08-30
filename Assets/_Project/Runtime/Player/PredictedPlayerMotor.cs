@@ -61,6 +61,7 @@ namespace NotThatWay.Game
         private PlayerStateMachine _simulation;
         private PlayerVector3 _pendingKnockbackVelocityDelta;
         private PlayerReplicateData _lastTickedReplicateData;
+        private uint _pendingKnockdownTicks;
         private bool _hasLastTickedReplicateData;
         private bool _cursorLocked;
         private bool _ownsPresentation;
@@ -212,19 +213,28 @@ namespace NotThatWay.Game
             // relever d'un KO exige de voir l'appui même quand le filtre KO
             // neutralise la simulation) ; seule la locomotion reçoit le filtre.
             var rawCommand = command;
-            if (_sandboxGameplay != null)
-                command = _sandboxGameplay.FilterCommandForSimulation(command);
+            // Filtre et vitesse viennent du même instantané, résolu une seule
+            // fois : pendant un rejeu de réconciliation, c'est celui du tick
+            // rejoué, pas l'état de jeu de maintenant.
+            var context = _sandboxGameplay == null
+                ? SandboxCommandContext.Unrestricted
+                : _sandboxGameplay.ResolveContext(
+                    simulationTick,
+                    replicateState.ContainsReplayed());
+            command = context.Filter(command);
             PlayerTickForces forces = default;
             if (replicateState.ContainsTicked() &&
-                !_pendingKnockbackVelocityDelta.Equals(PlayerVector3.Zero))
+                (!_pendingKnockbackVelocityDelta.Equals(PlayerVector3.Zero) ||
+                 _pendingKnockdownTicks > 0u))
             {
-                forces = new PlayerTickForces(_pendingKnockbackVelocityDelta);
+                forces = new PlayerTickForces(
+                    _pendingKnockbackVelocityDelta,
+                    _pendingKnockdownTicks);
                 _pendingKnockbackVelocityDelta = PlayerVector3.Zero;
+                _pendingKnockdownTicks = 0u;
             }
 
-            var modifiers = _sandboxGameplay == null
-                ? PlayerTickModifiers.FullSpeed
-                : new PlayerTickModifiers(_sandboxGameplay.MovementSpeedPermilleFor(command));
+            var modifiers = new PlayerTickModifiers(context.MovementPermilleFor(command));
             var result = _simulation.AdvanceTick(command, forces, modifiers, _collisionWorld);
             if (IsServerStarted && replicateState.ContainsTicked() &&
                 !replicateState.ContainsReplayed())
@@ -287,6 +297,32 @@ namespace NotThatWay.Game
             QueueKnockback(velocity);
             if (!Owner.IsLocalClient)
                 ApplyKnockbackTargetRpc(Owner, velocity);
+        }
+
+        /// <summary>
+        /// Chute décidée par l'hôte (glissade) : mise en file comme le knockback,
+        /// prédite par le propriétaire dès réception, corrigée au reconcile.
+        /// </summary>
+        public void ApplyKnockdownFromServer(uint ticks)
+        {
+            if (!IsServerStarted || !Owner.IsValid || ticks == 0u)
+                return;
+
+            QueueKnockdown(ticks);
+            if (!Owner.IsLocalClient)
+                ApplyKnockdownTargetRpc(Owner, ticks);
+        }
+
+        [TargetRpc]
+        private void ApplyKnockdownTargetRpc(NetworkConnection connection, uint ticks) =>
+            QueueKnockdown(ticks);
+
+        private void QueueKnockdown(uint ticks)
+        {
+            if (ticks > PlayerTickForces.MaximumKnockdownTicks)
+                ticks = PlayerTickForces.MaximumKnockdownTicks;
+            if (ticks > _pendingKnockdownTicks)
+                _pendingKnockdownTicks = ticks;
         }
 
         /// <summary>
