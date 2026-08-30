@@ -61,6 +61,9 @@ namespace NotThatWay.Game.Sandbox
         private const float OilSlipBoostMetersPerSecond = 6f;
         private const int OilScanEveryFixedUpdates = 3;
 
+        /// <summary>Racine de la paire posée pour que les patins touchent le sol.</summary>
+        private const float WornShoesLiftMeters = 0.29f;
+
         private static readonly List<SandboxCarryable> ServerInstances = new();
 
         [SerializeField] private SandboxCarryableKind _kind = SandboxCarryableKind.Rock;
@@ -94,6 +97,8 @@ namespace NotThatWay.Game.Sandbox
         private Collider _ignoredThrowerCollider;
         private int _ignoreThrowerFixedUpdates;
         private bool _spilled;
+        private int _springUsesRemaining;
+        private bool _worn;
         private int _oilScanCountdown;
         private readonly System.Collections.Generic.Dictionary<int, uint> _slipGraceByVictim = new();
 
@@ -105,6 +110,87 @@ namespace NotThatWay.Game.Sandbox
             IsServerStarted && _phase == SandboxCarryablePhase.World && !_spilled;
         /// <summary>Bidon versé : l'objet est devenu la flaque, au sol, jusqu'au reset.</summary>
         public bool Spilled => _spilled;
+
+        /// <summary>Bonds restants d'une paire de chaussures-ressort (serveur).</summary>
+        public int SpringUsesRemaining => _springUsesRemaining;
+
+        /// <summary>Paire chaussée (aux pieds) plutôt que simplement transportée.</summary>
+        public bool Worn => _worn;
+
+        /// <summary>
+        /// Chausser la paire tenue : elle passe de la main aux pieds du porteur
+        /// et arme les bonds. Geste explicite — ramasser ne chausse pas.
+        /// </summary>
+        public bool TryWearFromServer()
+        {
+            if (!IsServerStarted || _kind != SandboxCarryableKind.SpringShoes ||
+                _phase != SandboxCarryablePhase.Held || _worn)
+            {
+                return false;
+            }
+
+            _worn = true;
+            ApplyPhaseLocally();
+            PublishState();
+            Debug.Log(
+                $"[GAME-SANDBOX-SPRING] worn item={ObjectId} holder={_holderObjectId} " +
+                $"usesLeft={_springUsesRemaining}.",
+                this);
+            return true;
+        }
+
+        /// <summary>
+        /// Décompte un bond de ressort autoritaire. Au dernier bond l'objet est
+        /// retiré du monde : il « disparaît de l'inventaire » au sens du contrat
+        /// produit, jusqu'au reset de manche qui le fait réapparaître complet.
+        /// </summary>
+        public bool TryConsumeSpringUseFromServer(out int usesRemaining)
+        {
+            usesRemaining = _springUsesRemaining;
+            if (!IsServerStarted || _kind != SandboxCarryableKind.SpringShoes ||
+                _phase != SandboxCarryablePhase.Held || !_worn || _springUsesRemaining <= 0)
+            {
+                return false;
+            }
+
+            _springUsesRemaining--;
+            usesRemaining = _springUsesRemaining;
+            if (_springUsesRemaining == 0)
+                ConsumeFromServer();
+            else
+                PublishState();
+            Debug.Log(
+                $"[GAME-SANDBOX-SPRING] use item={ObjectId} holder={_holderObjectId} " +
+                $"usesLeft={_springUsesRemaining} consumed={_springUsesRemaining == 0}.",
+                this);
+            return true;
+        }
+
+        private void ConsumeFromServer()
+        {
+            _phase = SandboxCarryablePhase.Consumed;
+            _holderObjectId = -1;
+            _inventorySlot = -1;
+            _activeInHand = false;
+            _throwerObjectId = -1;
+            _throwDirection = Vector3.zero;
+            _damageArmed = false;
+            _settledFixedUpdates = 0;
+            _worn = false;
+            if (_body != null)
+            {
+                _body.linearVelocity = Vector3.zero;
+                _body.angularVelocity = Vector3.zero;
+                _body.isKinematic = true;
+            }
+            ApplyPhaseLocally();
+            PublishState();
+        }
+
+        private int InitialSpringUses() =>
+            _kind == SandboxCarryableKind.SpringShoes
+                ? SandboxGameplayConfig.Baseline60Hz.SpringShoeUses
+                : 0;
 
         private void Awake()
         {
@@ -165,7 +251,9 @@ namespace NotThatWay.Game.Sandbox
             if (_visualRoot == null)
                 return;
             ApplyInstanceLook();
-            var visibleHeld = _phase == SandboxCarryablePhase.Held && _activeInHand;
+            var visibleHeld = _phase == SandboxCarryablePhase.Held &&
+                              (_activeInHand ||
+                               (_kind == SandboxCarryableKind.SpringShoes && _worn));
             if (!visibleHeld || !TryResolveHolder(out var holder))
             {
                 if (_visualDetached)
@@ -215,6 +303,21 @@ namespace NotThatWay.Game.Sandbox
                     position + rotation * GripToRoot,
                     rotation);
                 LayoutSlingshot(charge, snap);
+                return;
+            }
+
+            if (_kind == SandboxCarryableKind.SpringShoes && _worn)
+            {
+                // Chaussées : la paire s'affiche aux pieds du porteur, spires au
+                // sol, orientée sur le lacet du corps seulement (un plongeon ou
+                // une glissade ne couche pas les chaussures). Purement visuel :
+                // la capsule du joueur ne change pas.
+                var wornFrame = holder.PresentationFrame;
+                var wornYaw = Quaternion.Euler(0f, wornFrame.eulerAngles.y, 0f);
+                _visualRoot.SetPositionAndRotation(
+                    wornFrame.position + Vector3.up * WornShoesLiftMeters +
+                    wornYaw * new Vector3(0f, 0f, 0.05f),
+                    wornYaw);
                 return;
             }
 
@@ -305,6 +408,7 @@ namespace NotThatWay.Game.Sandbox
                 throw new InvalidOperationException("Un carryable réseau doit avoir un type concret.");
             _spawnPosition = transform.position;
             _spawnRotation = transform.rotation;
+            _springUsesRemaining = InitialSpringUses();
             if (!ServerInstances.Contains(this))
                 ServerInstances.Add(this);
             ApplyPhaseLocally();
@@ -334,7 +438,8 @@ namespace NotThatWay.Game.Sandbox
                 _holderObjectId,
                 (sbyte)_inventorySlot,
                 _activeInHand,
-                _spilled);
+                _spilled,
+                _worn);
         }
 
         private void FixedUpdate()
@@ -719,6 +824,8 @@ namespace NotThatWay.Game.Sandbox
             _damageArmed = false;
             _launchedBySlingshot = false;
             _settledFixedUpdates = 0;
+            _springUsesRemaining = InitialSpringUses();
+            _worn = false;
             if (_body != null)
             {
                 _body.isKinematic = true;
@@ -803,6 +910,7 @@ namespace NotThatWay.Game.Sandbox
             _holderObjectId = -1;
             _inventorySlot = -1;
             _activeInHand = false;
+            _worn = false;
             _throwerObjectId = throwerObjectId;
             _throwDirection = damageArmed
                 ? new Vector3(velocity.x, 0f, velocity.z).normalized
@@ -833,9 +941,11 @@ namespace NotThatWay.Game.Sandbox
             // Le corps réseau suit le porteur grossièrement (réseau, distances) ;
             // le visuel, lui, est posé à chaque image dans LateUpdate.
             var rotation = Quaternion.LookRotation(holder.transform.forward, Vector3.up);
-            var position = _inventorySlot < 0
-                ? holder.transform.position + Vector3.up * 0.5f
-                : holder.transform.position + Vector3.up * 0.86f + holder.transform.forward * 0.5f;
+            var position = _kind == SandboxCarryableKind.SpringShoes && _worn
+                ? holder.transform.position + Vector3.up * WornShoesLiftMeters
+                : _inventorySlot < 0
+                    ? holder.transform.position + Vector3.up * 0.5f
+                    : holder.transform.position + Vector3.up * 0.86f + holder.transform.forward * 0.5f;
             if (_body != null)
             {
                 _body.position = position;
@@ -857,7 +967,14 @@ namespace NotThatWay.Game.Sandbox
                 if (slick != null)
                     slick.gameObject.SetActive(_spilled);
             }
-            var visible = _phase != SandboxCarryablePhase.Held || _activeInHand;
+            // Des chaussures-ressort CHAUSSÉES restent visibles aux pieds même
+            // quand une autre case est active — la main tient autre chose. Un
+            // objet consommé disparaît entièrement.
+            var visible = _phase == SandboxCarryablePhase.Consumed
+                ? false
+                : _phase != SandboxCarryablePhase.Held ||
+                  _activeInHand ||
+                  (_kind == SandboxCarryableKind.SpringShoes && _worn);
             for (var index = 0; index < _renderers.Length; index++)
             {
                 if (_renderers[index] != null)
@@ -880,7 +997,8 @@ namespace NotThatWay.Game.Sandbox
                 _body.isKinematic = !IsServerStarted ||
                     _spilled ||
                     _phase == SandboxCarryablePhase.Held ||
-                    _phase == SandboxCarryablePhase.Deposited;
+                    _phase == SandboxCarryablePhase.Deposited ||
+                    _phase == SandboxCarryablePhase.Consumed;
             }
         }
 
@@ -894,6 +1012,7 @@ namespace NotThatWay.Game.Sandbox
                 (sbyte)_inventorySlot,
                 _activeInHand,
                 _spilled,
+                _worn,
                 Channel.Reliable);
         }
 
@@ -904,9 +1023,10 @@ namespace NotThatWay.Game.Sandbox
             sbyte inventorySlot,
             bool activeInHand,
             bool spilled,
+            bool worn,
             Channel channel = Channel.Reliable)
         {
-            ApplyNetworkState(phase, holderObjectId, inventorySlot, activeInHand, spilled);
+            ApplyNetworkState(phase, holderObjectId, inventorySlot, activeInHand, spilled, worn);
         }
 
         [TargetRpc]
@@ -917,9 +1037,10 @@ namespace NotThatWay.Game.Sandbox
             sbyte inventorySlot,
             bool activeInHand,
             bool spilled,
+            bool worn,
             Channel channel = Channel.Reliable)
         {
-            ApplyNetworkState(phase, holderObjectId, inventorySlot, activeInHand, spilled);
+            ApplyNetworkState(phase, holderObjectId, inventorySlot, activeInHand, spilled, worn);
         }
 
         private void ApplyNetworkState(
@@ -927,13 +1048,15 @@ namespace NotThatWay.Game.Sandbox
             int holderObjectId,
             int inventorySlot,
             bool activeInHand,
-            bool spilled)
+            bool spilled,
+            bool worn)
         {
             _phase = (SandboxCarryablePhase)phase;
             _holderObjectId = holderObjectId;
             _inventorySlot = inventorySlot;
             _activeInHand = activeInHand;
             _spilled = spilled;
+            _worn = worn;
             ApplyPhaseLocally();
         }
     }
