@@ -42,7 +42,10 @@ namespace NotThatWay.Game.Sandbox
             uint slingshotChargeTicks,
             int slingshotMinimumPowerPermille,
             uint slingshotDropHoldTicks,
-            int slingshotAimMovementPermille)
+            int slingshotAimMovementPermille,
+            int oilPourEnergyCost,
+            uint oilSlipKnockdownTicks,
+            uint oilSlipGraceTicks)
         {
             TickRate = tickRate;
             MaximumHealth = maximumHealth;
@@ -74,6 +77,9 @@ namespace NotThatWay.Game.Sandbox
             SlingshotMinimumPowerPermille = slingshotMinimumPowerPermille;
             SlingshotDropHoldTicks = slingshotDropHoldTicks;
             SlingshotAimMovementPermille = slingshotAimMovementPermille;
+            OilPourEnergyCost = oilPourEnergyCost;
+            OilSlipKnockdownTicks = oilSlipKnockdownTicks;
+            OilSlipGraceTicks = oilSlipGraceTicks;
             Validate();
         }
 
@@ -96,6 +102,11 @@ namespace NotThatWay.Game.Sandbox
         public uint HealthRegenerationDelayTicks { get; }
         public uint HealthRegenerationIntervalTicks { get; }
         public int HealthRegenerationAmount { get; }
+        /// <summary>
+        /// Temps minimal au sol après un KO : une fois écoulé, le joueur reste à
+        /// terre tant qu'il ne demande pas à se relever (Espace) — le relevé n'est
+        /// plus automatique.
+        /// </summary>
         public uint KnockoutDurationTicks { get; }
         public int RecoveryHealth { get; }
         public uint RecoveryProtectionTicks { get; }
@@ -118,6 +129,17 @@ namespace NotThatWay.Game.Sandbox
         public uint SlingshotDropHoldTicks { get; }
         /// <summary>Vitesse de déplacement pendant qu'on bande le lance-pierre : on vise, on ne court pas.</summary>
         public int SlingshotAimMovementPermille { get; }
+
+        /// <summary>
+        /// Bidon d'huile : versé devant soi, il devient une flaque ; quiconque la
+        /// traverse — poseur compris — glisse dans son élan et chute pendant
+        /// <see cref="OilSlipKnockdownTicks"/>, au plus une fois par fenêtre de
+        /// grâce. La glissade et la chute passent par les forces de tick de
+        /// PLY-01 ; ici seulement énergie et durées.
+        /// </summary>
+        public int OilPourEnergyCost { get; }
+        public uint OilSlipKnockdownTicks { get; }
+        public uint OilSlipGraceTicks { get; }
 
         /// <summary>
         /// Baseline acceptée pour le sandbox à 60 Hz : valeurs publiques 0–100,
@@ -143,7 +165,7 @@ namespace NotThatWay.Game.Sandbox
             300u,
             10u,
             1,
-            240u,
+            120u,
             40,
             60u,
             750,
@@ -153,7 +175,10 @@ namespace NotThatWay.Game.Sandbox
             72u,
             350,
             30u,
-            650);
+            650,
+            8,
+            45u,
+            120u);
 
         public void Validate()
         {
@@ -209,6 +234,9 @@ namespace NotThatWay.Game.Sandbox
                 1,
                 PermilleScale,
                 nameof(SlingshotAimMovementPermille));
+            EnsureRange(OilPourEnergyCost, 1, MaximumEnergy, nameof(OilPourEnergyCost));
+            EnsurePositive(OilSlipKnockdownTicks, nameof(OilSlipKnockdownTicks));
+            EnsurePositive(OilSlipGraceTicks, nameof(OilSlipGraceTicks));
         }
 
         public bool Equals(SandboxGameplayConfig other) =>
@@ -241,7 +269,10 @@ namespace NotThatWay.Game.Sandbox
             SlingshotChargeTicks == other.SlingshotChargeTicks &&
             SlingshotMinimumPowerPermille == other.SlingshotMinimumPowerPermille &&
             SlingshotDropHoldTicks == other.SlingshotDropHoldTicks &&
-            SlingshotAimMovementPermille == other.SlingshotAimMovementPermille;
+            SlingshotAimMovementPermille == other.SlingshotAimMovementPermille &&
+            OilPourEnergyCost == other.OilPourEnergyCost &&
+            OilSlipKnockdownTicks == other.OilSlipKnockdownTicks &&
+            OilSlipGraceTicks == other.OilSlipGraceTicks;
 
         public override bool Equals(object value) =>
             value is SandboxGameplayConfig other && Equals(other);
@@ -279,6 +310,9 @@ namespace NotThatWay.Game.Sandbox
             hash.Add(SlingshotMinimumPowerPermille);
             hash.Add(SlingshotDropHoldTicks);
             hash.Add(SlingshotAimMovementPermille);
+            hash.Add(OilPourEnergyCost);
+            hash.Add(OilSlipKnockdownTicks);
+            hash.Add(OilSlipGraceTicks);
             return hash.ToHashCode();
         }
 

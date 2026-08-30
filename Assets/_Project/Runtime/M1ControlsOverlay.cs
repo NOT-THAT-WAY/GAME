@@ -31,6 +31,8 @@ namespace NotThatWay.Game
             { "", "en main, E ou clic droit près d'un caillou le charge (5 max)" },
             { "", "MAINTENIR clic gauche charge le tir, relâcher tire" },
             { "", "MAINTENIR clic droit le lâche" },
+            { "Bidon d'huile", "le tenir + F/clic gauche : verser la flaque" },
+            { "", "quiconque la traverse en courant glisse et chute" },
             { "Lâcher l'objet", "A · B/Rond" },
             { "Cases d'objet", "1 / 2 / 3 · Tab ou R1 pour parcourir" },
             { "Vue 1re / 3e personne", "F1 · croix haut" },

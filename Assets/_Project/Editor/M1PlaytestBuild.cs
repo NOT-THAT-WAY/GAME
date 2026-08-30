@@ -39,6 +39,7 @@ namespace NotThatWay.Game.Editor
         public const string GeneratedRockPrefabPath = "Assets/_GeneratedLocal/SandboxRock.prefab";
         public const string GeneratedTrophyPrefabPath = "Assets/_GeneratedLocal/SandboxTrophy.prefab";
         public const string GeneratedSlingshotPrefabPath = "Assets/_GeneratedLocal/SandboxSlingshot.prefab";
+        public const string GeneratedOilCanPrefabPath = "Assets/_GeneratedLocal/SandboxOilCan.prefab";
         public const string GeneratedPrefabsPath = "Assets/_GeneratedLocal/M1PlaytestPrefabs.asset";
 
         private const string GeneratedDirectory = "Assets/_GeneratedLocal";
@@ -124,6 +125,10 @@ namespace NotThatWay.Game.Editor
                 SandboxCarryableKind.Slingshot,
                 GeneratedSlingshotPrefabPath,
                 CreateLitMaterial("SandboxSlingshot", new Color(0.52f, 0.34f, 0.18f), 0.12f, false));
+            var oilCanPrefab = CreateCarryablePrefab(
+                SandboxCarryableKind.OilCan,
+                GeneratedOilCanPrefabPath,
+                CreateLitMaterial("SandboxOilCan", new Color(0.62f, 0.16f, 0.12f), 0.35f, false));
             var prefabCollection = LoadOrCreatePrefabCollection();
             prefabCollection.Clear();
             prefabCollection.AddObject(playerPrefab, true);
@@ -132,6 +137,7 @@ namespace NotThatWay.Game.Editor
             prefabCollection.AddObject(rockPrefab, true);
             prefabCollection.AddObject(trophyPrefab, true);
             prefabCollection.AddObject(slingshotPrefab, true);
+            prefabCollection.AddObject(oilCanPrefab, true);
             EditorUtility.SetDirty(prefabCollection);
 
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
@@ -179,7 +185,8 @@ namespace NotThatWay.Game.Editor
             serializedWallSpawner.ApplyModifiedPropertiesWithoutUndo();
 
             var sandboxSpawner = networkRoot.AddComponent<SandboxWorldSpawner>();
-            ConfigureSandboxSpawner(sandboxSpawner, map, rockPrefab, trophyPrefab, slingshotPrefab);
+            ConfigureSandboxSpawner(
+                sandboxSpawner, map, rockPrefab, trophyPrefab, slingshotPrefab, oilCanPrefab);
 
             ValidateSceneContract(
                 map,
@@ -190,6 +197,7 @@ namespace NotThatWay.Game.Editor
                 rockPrefab,
                 trophyPrefab,
                 slingshotPrefab,
+                oilCanPrefab,
                 prefabCollection,
                 networkManager,
                 timeManager,
@@ -200,7 +208,8 @@ namespace NotThatWay.Game.Editor
                 playerPrefab.gameObject,
                 rockPrefab.gameObject,
                 trophyPrefab.gameObject,
-                slingshotPrefab.gameObject);
+                slingshotPrefab.gameObject,
+                oilCanPrefab.gameObject);
 
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene, GeneratedScenePath))
@@ -661,7 +670,45 @@ namespace NotThatWay.Game.Editor
                     layer = GameplayLayers.VisualOnly
                 };
                 visualRoot.transform.SetParent(root.transform, false);
-                if (kind == SandboxCarryableKind.Rock)
+                if (kind == SandboxCarryableKind.OilCan)
+                {
+                    // Bidon rouge à bec, et sa flaque (désactivée tant qu'il n'est
+                    // pas versé) : un disque sombre et brillant, aplati au sol.
+                    var box = root.AddComponent<BoxCollider>();
+                    box.center = new Vector3(0f, 0.26f, 0f);
+                    box.size = new Vector3(0.42f, 0.52f, 0.30f);
+                    collider = box;
+                    var canRoot = new GameObject("Can") { layer = GameplayLayers.VisualOnly };
+                    canRoot.transform.SetParent(visualRoot.transform, false);
+                    var bodyPart = CreateCarryableVisualPrimitive(
+                        PrimitiveType.Cube, "CanBody", canRoot.transform, material);
+                    bodyPart.transform.localPosition = new Vector3(0f, 0.24f, 0f);
+                    bodyPart.transform.localScale = new Vector3(0.36f, 0.44f, 0.24f);
+                    var cap = CreateCarryableVisualPrimitive(
+                        PrimitiveType.Cylinder, "CanCap",
+                        canRoot.transform,
+                        CreateLitMaterial("SandboxOilCap", new Color(0.85f, 0.78f, 0.35f), 0.5f, false));
+                    cap.transform.localPosition = new Vector3(0.10f, 0.50f, 0f);
+                    cap.transform.localScale = new Vector3(0.09f, 0.035f, 0.09f);
+                    var spout = CreateCarryableVisualPrimitive(
+                        PrimitiveType.Cylinder, "CanSpout", canRoot.transform, material);
+                    spout.transform.localPosition = new Vector3(-0.12f, 0.51f, 0f);
+                    spout.transform.localRotation = Quaternion.Euler(0f, 0f, 24f);
+                    spout.transform.localScale = new Vector3(0.05f, 0.07f, 0.05f);
+                    var slickRoot = new GameObject("Slick") { layer = GameplayLayers.VisualOnly };
+                    slickRoot.transform.SetParent(visualRoot.transform, false);
+                    var oil = CreateLitMaterial("SandboxOilSlick", new Color(0.09f, 0.08f, 0.07f), 0.92f, false);
+                    var puddle = CreateCarryableVisualPrimitive(
+                        PrimitiveType.Cylinder, "SlickPuddle", slickRoot.transform, oil);
+                    puddle.transform.localPosition = new Vector3(0f, 0.012f, 0f);
+                    puddle.transform.localScale = new Vector3(1.9f, 0.008f, 1.9f);
+                    var tongue = CreateCarryableVisualPrimitive(
+                        PrimitiveType.Cylinder, "SlickTongue", slickRoot.transform, oil);
+                    tongue.transform.localPosition = new Vector3(0.55f, 0.010f, 0.4f);
+                    tongue.transform.localScale = new Vector3(0.9f, 0.007f, 0.9f);
+                    slickRoot.SetActive(false);
+                }
+                else if (kind == SandboxCarryableKind.Rock)
                 {
                     // Un caillou qu'on tient dans une main : ~40 cm, pas un ballon.
                     // Le collider suit la silhouette (ce qu'on voit est ce qui arrête).
@@ -903,7 +950,8 @@ namespace NotThatWay.Game.Editor
             TopologyRuntimeMap map,
             NetworkObject rockPrefab,
             NetworkObject trophyPrefab,
-            NetworkObject slingshotPrefab)
+            NetworkObject slingshotPrefab,
+            NetworkObject oilCanPrefab)
         {
             var rockCells = new[]
             {
@@ -936,12 +984,23 @@ namespace NotThatWay.Game.Editor
                     Vector3.up * 0.36f;
             }
 
+            // Deux bidons, aux coins opposés : aller les chercher est un choix.
+            var oilCells = new[] { new TopologyGridCell(0, 5), new TopologyGridCell(5, 0) };
+            var oilPositions = new Vector3[oilCells.Length];
+            for (var index = 0; index < oilCells.Length; index++)
+            {
+                oilPositions[index] =
+                    TopologyGeometry.CellCenterMm(map, oilCells[index]).Meters + Vector3.up * 0.30f;
+            }
+
             var serialized = new SerializedObject(spawner);
             SetObject(serialized, "_rockPrefab", rockPrefab);
             SetObject(serialized, "_trophyPrefab", trophyPrefab);
             SetObject(serialized, "_slingshotPrefab", slingshotPrefab);
             SetVector3Array(serialized, "_rockSpawnPositions", rockPositions);
             SetVector3Array(serialized, "_slingshotSpawnPositions", slingshotPositions);
+            SetObject(serialized, "_oilCanPrefab", oilCanPrefab);
+            SetVector3Array(serialized, "_oilCanSpawnPositions", oilPositions);
             SetVector3(
                 serialized,
                 "_trophySpawnPosition",
@@ -1555,6 +1614,7 @@ namespace NotThatWay.Game.Editor
             NetworkObject rockPrefab,
             NetworkObject trophyPrefab,
             NetworkObject slingshotPrefab,
+            NetworkObject oilCanPrefab,
             DefaultPrefabObjects prefabCollection,
             NetworkManager networkManager,
             TimeManager timeManager,
@@ -1625,7 +1685,8 @@ namespace NotThatWay.Game.Editor
             {
                 throw new InvalidOperationException("Prefab d'autorité murale M1 invalide.");
             }
-            foreach (var carryable in new[] { rockPrefab, trophyPrefab, slingshotPrefab })
+            foreach (var carryable in
+                     new[] { rockPrefab, trophyPrefab, slingshotPrefab, oilCanPrefab })
             {
                 if (carryable == null || carryable.EnablePrediction ||
                     carryable.GetComponent<SandboxCarryable>() == null ||
