@@ -430,13 +430,16 @@ namespace NotThatWay.Game.Sandbox
             if (TryWearActiveShoesFromServer())
                 return true;
 
+            var ground = SandboxCarryable.FindNearestAvailableServer(
+                transform.position,
+                PickupRangeMeters);
+            // La réserve du lance-pierre n'occupe aucune case : elle se remplit
+            // même quand l'inventaire est plein, sinon un joueur équipé de trois
+            // objets ne peut plus jamais ramasser un caillou.
+            if (TryStoreRockAsAmmoServer(ground))
+                return true;
             if (!_inventory.IsFull)
             {
-                var ground = SandboxCarryable.FindNearestAvailableServer(
-                    transform.position,
-                    PickupRangeMeters);
-                if (TryStoreRockAsAmmoServer(ground))
-                    return true;
                 if (ground != null &&
                     _inventory.TryAdd(
                         new SandboxInventoryEntry(ground.ObjectId, ground.Kind),
@@ -853,8 +856,6 @@ namespace NotThatWay.Game.Sandbox
 
         private bool TryPickupNearestFromServer()
         {
-            if (_inventory.IsFull)
-                return false;
             var carryable = SandboxCarryable.FindNearestAvailableServer(
                 transform.position,
                 PickupRangeMeters);
@@ -873,8 +874,11 @@ namespace NotThatWay.Game.Sandbox
                     this);
                 return false;
             }
+            // Même règle qu'au clic droit : la réserve d'abord, les cases ensuite.
             if (TryStoreRockAsAmmoServer(carryable))
                 return true;
+            if (_inventory.IsFull)
+                return false;
             var entry = new SandboxInventoryEntry(carryable.ObjectId, carryable.Kind);
             if (!_inventory.TryAdd(entry, out var slot))
                 return false;
