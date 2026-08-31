@@ -44,6 +44,54 @@ namespace NotThatWay.Game.Tests.EditMode
             Assert.That(config.OilPourEnergyCost, Is.EqualTo(8));
             Assert.That(config.OilSlipKnockdownTicks, Is.EqualTo(45u));
             Assert.That(config.OilSlipGraceTicks, Is.EqualTo(120u));
+            Assert.That(config.SpringShoeUses, Is.EqualTo(2));
+            Assert.That(config.SpringJumpPermille, Is.EqualTo(2200));
+        }
+
+        [Test]
+        public void SpringShoes_RequireAnAmplifiedJumpAndAtLeastOneUse()
+        {
+            Assert.That(
+                () => BaselineWithSpring(springShoeUses: 0),
+                Throws.TypeOf<ArgumentOutOfRangeException>(),
+                "Une paire sans bond n'existe pas.");
+            Assert.That(
+                () => BaselineWithSpring(springJumpPermille: 1000),
+                Throws.TypeOf<ArgumentOutOfRangeException>(),
+                "Un bond de ressort doit amplifier le saut normal.");
+            Assert.That(
+                () => BaselineWithSpring(springJumpPermille: 5001),
+                Throws.TypeOf<ArgumentOutOfRangeException>(),
+                "La borne du modèle joueur reste 5000 pour mille.");
+            Assert.That(() => BaselineWithSpring(), Throws.Nothing);
+        }
+
+        private static SandboxGameplayConfig BaselineWithSpring(
+            int springShoeUses = 2,
+            int springJumpPermille = 2200)
+        {
+            var baseline = SandboxGameplayConfig.Baseline60Hz;
+            return new SandboxGameplayConfig(
+                baseline.TickRate, baseline.MaximumHealth, baseline.MaximumEnergy,
+                baseline.PunchDamage, baseline.RockDamage, baseline.TrophyDamage,
+                baseline.PunchEnergyCost, baseline.ThrowEnergyCost,
+                baseline.SprintDrainIntervalTicks, baseline.SprintDrainAmount,
+                baseline.PushDrainIntervalTicks, baseline.PushDrainAmount,
+                baseline.TrophySprintDrainMultiplier,
+                baseline.EnergyRegenerationDelayTicks, baseline.EnergyRegenerationIntervalTicks,
+                baseline.EnergyRegenerationAmount,
+                baseline.HealthRegenerationDelayTicks, baseline.HealthRegenerationIntervalTicks,
+                baseline.HealthRegenerationAmount,
+                baseline.KnockoutDurationTicks, baseline.RecoveryHealth,
+                baseline.RecoveryProtectionTicks, baseline.TrophyMovementPermille,
+                baseline.SlingshotDamage, baseline.SlingshotEnergyCost,
+                baseline.SlingshotAmmoCapacity, baseline.SlingshotChargeTicks,
+                baseline.SlingshotMinimumPowerPermille, baseline.SlingshotDropHoldTicks,
+                baseline.SlingshotAimMovementPermille,
+                baseline.OilPourEnergyCost, baseline.OilSlipKnockdownTicks,
+                baseline.OilSlipGraceTicks,
+                springShoeUses,
+                springJumpPermille);
         }
 
         [Test]
@@ -74,7 +122,9 @@ namespace NotThatWay.Game.Tests.EditMode
                     slingshotAimMovementPermille: baseline.SlingshotAimMovementPermille,
                     oilPourEnergyCost: baseline.OilPourEnergyCost,
                     oilSlipKnockdownTicks: baseline.OilSlipKnockdownTicks,
-                    oilSlipGraceTicks: baseline.OilSlipGraceTicks),
+                    oilSlipGraceTicks: baseline.OilSlipGraceTicks,
+                    springShoeUses: baseline.SpringShoeUses,
+                    springJumpPermille: baseline.SpringJumpPermille),
                 Throws.TypeOf<ArgumentOutOfRangeException>(),
                 "Un lance-pierre qui ne frappe pas plus fort qu'un lancer à la main n'a pas de raison d'être.");
 

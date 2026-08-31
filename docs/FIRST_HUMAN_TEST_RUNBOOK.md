@@ -89,7 +89,7 @@ n'y est injecté : le banc mesure les actions prévues, pas la découverte d'un 
 | **Pousser le mur cyan** | **maintenir `E`** | bouton Ouest |
 | Frapper / lancer | `F` ou clic gauche | gâchette droite |
 | Lâcher l'objet actif | `A` | bouton Est |
-| Cases d'objet | `1`, `2`, `3` ; `Tab` pour parcourir | épaule droite |
+| Cases d'objet | `&` `é` `"` en AZERTY, `1` `2` `3` en QWERTY ou au pavé numérique ; `Tab` pour parcourir | épaule droite |
 | Vue 1re / 3e personne | `F1` | croix haut |
 | Libérer le curseur | `Échap` | Start |
 

@@ -24,11 +24,32 @@ namespace NotThatWay.Game.Sandbox
             bool hasSlingshotInHand,
             int movementPermille,
             int aimMovementPermille)
+            : this(
+                alive,
+                hasTrophy,
+                canSprint,
+                hasSlingshotInHand,
+                movementPermille,
+                aimMovementPermille,
+                PlayerTickModifiers.PermilleScale)
+        {
+        }
+
+        public SandboxCommandContext(
+            bool alive,
+            bool hasTrophy,
+            bool canSprint,
+            bool hasSlingshotInHand,
+            int movementPermille,
+            int aimMovementPermille,
+            int jumpPermille)
         {
             if (movementPermille < 0 || movementPermille > SandboxGameplayConfig.PermilleScale)
                 throw new ArgumentOutOfRangeException(nameof(movementPermille));
             if (aimMovementPermille < 1 || aimMovementPermille > SandboxGameplayConfig.PermilleScale)
                 throw new ArgumentOutOfRangeException(nameof(aimMovementPermille));
+            if (jumpPermille < 1 || jumpPermille > PlayerTickModifiers.MaximumJumpSpeedPermille)
+                throw new ArgumentOutOfRangeException(nameof(jumpPermille));
 
             Alive = alive;
             HasTrophy = hasTrophy;
@@ -36,6 +57,7 @@ namespace NotThatWay.Game.Sandbox
             HasSlingshotInHand = hasSlingshotInHand;
             MovementPermille = movementPermille;
             AimMovementPermille = aimMovementPermille;
+            JumpPermille = jumpPermille;
         }
 
         public bool Alive { get; }
@@ -49,6 +71,13 @@ namespace NotThatWay.Game.Sandbox
         /// <summary>Ralentissement appliqué tant que le lance-pierre est bandé.</summary>
         public int AimMovementPermille { get; }
 
+        /// <summary>
+        /// Amplification de saut du tick (chaussures-ressort chaussées) :
+        /// capturée avec le contexte pour que les rejeux revoient la valeur du
+        /// tick d'origine, pas l'état de maintenant.
+        /// </summary>
+        public int JumpPermille { get; }
+
         /// <summary>Contexte d'un joueur sans couche sandbox : rien n'est bridé.</summary>
         public static SandboxCommandContext Unrestricted => new(
             true,
@@ -56,7 +85,8 @@ namespace NotThatWay.Game.Sandbox
             true,
             false,
             SandboxGameplayConfig.PermilleScale,
-            SandboxGameplayConfig.PermilleScale);
+            SandboxGameplayConfig.PermilleScale,
+            PlayerTickModifiers.PermilleScale);
 
         /// <summary>
         /// Un joueur KO garde son regard mais aucune intention physique ; le
@@ -116,13 +146,20 @@ namespace NotThatWay.Game.Sandbox
             CanSprint == other.CanSprint &&
             HasSlingshotInHand == other.HasSlingshotInHand &&
             MovementPermille == other.MovementPermille &&
-            AimMovementPermille == other.AimMovementPermille;
+            AimMovementPermille == other.AimMovementPermille &&
+            JumpPermille == other.JumpPermille;
 
         public override bool Equals(object value) =>
             value is SandboxCommandContext other && Equals(other);
 
         public override int GetHashCode() => HashCode.Combine(
-            Alive, HasTrophy, CanSprint, HasSlingshotInHand, MovementPermille, AimMovementPermille);
+            Alive,
+            HasTrophy,
+            CanSprint,
+            HasSlingshotInHand,
+            MovementPermille,
+            AimMovementPermille,
+            JumpPermille);
     }
 
     /// <summary>

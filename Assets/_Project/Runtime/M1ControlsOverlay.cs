@@ -34,7 +34,9 @@ namespace NotThatWay.Game
             { "Bidon d'huile", "le tenir + F/clic gauche : verser la flaque" },
             { "", "quiconque la traverse en courant glisse et chute" },
             { "Lâcher l'objet", "A · B/Rond" },
-            { "Cases d'objet", "1 / 2 / 3 · Tab ou R1 pour parcourir" },
+            { "Cases d'objet", "& é \" (AZERTY), 1 2 3 ou pavé num. · Tab/R1" },
+            { "Chausser les bottes", "clic droit, bottes-ressort en main" },
+            { "Bond ressort", "Espace, bottes chaussées — 2 bonds puis disparition" },
             { "Vue 1re / 3e personne", "F1 · croix haut" },
             { "Zoomer (3e personne)", "molette · croix gauche/droite" },
             { "Pause / réglages", "Échap — sensibilité, FOV, volume…" }

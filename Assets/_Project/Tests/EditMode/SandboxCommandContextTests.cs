@@ -22,8 +22,16 @@ namespace NotThatWay.Game.Tests.EditMode
             bool canSprint = true,
             bool hasSlingshotInHand = false,
             int movementPermille = Scale,
-            int aimMovementPermille = 650) =>
-            new(alive, hasTrophy, canSprint, hasSlingshotInHand, movementPermille, aimMovementPermille);
+            int aimMovementPermille = 650,
+            int jumpPermille = PlayerTickModifiers.PermilleScale) =>
+            new(
+                alive,
+                hasTrophy,
+                canSprint,
+                hasSlingshotInHand,
+                movementPermille,
+                aimMovementPermille,
+                jumpPermille);
 
         [Test]
         public void Filter_KeepsOnlyTheLookOfAKnockedOutPlayer()
@@ -151,6 +159,36 @@ namespace NotThatWay.Game.Tests.EditMode
         }
 
         [Test]
+        public void History_ReplaysTheSpringJumpOfItsTickAndRefusesAnImpossibleAmplification()
+        {
+            // Les bonds des chaussures-ressort s'épuisent : le tick 20 a bondi,
+            // le tick 21 n'a plus de bottes. Un rejeu qui relirait « maintenant »
+            // rendrait le bond déjà joué à hauteur normale, et le propriétaire
+            // repartirait d'une position que le serveur n'a jamais simulée.
+            var history = new SandboxCommandContextHistory();
+            var bounced = Context(jumpPermille: 2200);
+            history.Record(20u, bounced);
+            history.Record(21u, Context());
+
+            Assert.That(history.TryGet(20u, out var replayed), Is.True);
+            Assert.That(replayed.JumpPermille, Is.EqualTo(2200));
+            Assert.That(history.TryGet(21u, out var after), Is.True);
+            Assert.That(after.JumpPermille, Is.EqualTo(PlayerTickModifiers.PermilleScale),
+                "La paire consommée ne rend pas ses bonds au tick suivant.");
+            Assert.That(replayed, Is.Not.EqualTo(after),
+                "L'amplification fait partie de l'identité du contexte d'un tick.");
+
+            Assert.That(
+                () => Context(jumpPermille: 0),
+                Throws.TypeOf<ArgumentOutOfRangeException>());
+            Assert.That(
+                () => Context(
+                    jumpPermille: PlayerTickModifiers.MaximumJumpSpeedPermille + 1),
+                Throws.TypeOf<ArgumentOutOfRangeException>(),
+                "Le contexte ne peut pas demander au modèle joueur plus que sa borne.");
+        }
+
+        [Test]
         public void Unrestricted_LeavesAPlayerWithoutSandboxLayerAtFullSpeed()
         {
             var context = SandboxCommandContext.Unrestricted;
@@ -159,6 +197,10 @@ namespace NotThatWay.Game.Tests.EditMode
 
             Assert.That(context.Filter(command).Buttons, Is.EqualTo(command.Buttons));
             Assert.That(context.MovementPermilleFor(command), Is.EqualTo(Scale));
+            Assert.That(
+                context.JumpPermille,
+                Is.EqualTo(PlayerTickModifiers.PermilleScale),
+                "Sans couche sandbox, un saut reste un saut.");
         }
     }
 }

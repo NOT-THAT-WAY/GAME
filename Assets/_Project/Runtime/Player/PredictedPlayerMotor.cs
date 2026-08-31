@@ -234,13 +234,23 @@ namespace NotThatWay.Game
                 _pendingKnockdownTicks = 0u;
             }
 
-            var modifiers = new PlayerTickModifiers(context.MovementPermilleFor(command));
+            var modifiers = new PlayerTickModifiers(
+                context.MovementPermilleFor(command),
+                context.JumpPermille);
             var result = _simulation.AdvanceTick(command, forces, modifiers, _collisionWorld);
             if (IsServerStarted && replicateState.ContainsTicked() &&
                 !replicateState.ContainsReplayed())
             {
                 _latestAuthoritativeCommand = rawCommand;
                 _hasLatestAuthoritativeCommand = true;
+                // Un bond amplifié qui a réellement décollé sur le tick
+                // autoritaire consomme un usage des chaussures-ressort.
+                if (_sandboxGameplay != null &&
+                    modifiers.JumpSpeedPermille > PlayerTickModifiers.PermilleScale &&
+                    (result.Events & PlayerTickEvents.Jumped) != 0)
+                {
+                    _sandboxGameplay.ConsumeSpringJumpFromServer();
+                }
             }
             ApplyPresentation(result.Current);
         }

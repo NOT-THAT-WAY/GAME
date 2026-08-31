@@ -11,20 +11,39 @@ namespace NotThatWay.Game.PlayerSimulation
     {
         public const int PermilleScale = 1000;
 
+        /// <summary>Borne du bond amplifié : cinq fois l'impulsion configurée.</summary>
+        public const int MaximumJumpSpeedPermille = 5000;
+
         public PlayerTickModifiers(int movementSpeedPermille)
+            : this(movementSpeedPermille, PermilleScale)
+        {
+        }
+
+        public PlayerTickModifiers(int movementSpeedPermille, int jumpSpeedPermille)
         {
             if (movementSpeedPermille < 0 || movementSpeedPermille > PermilleScale)
                 throw new ArgumentOutOfRangeException(nameof(movementSpeedPermille));
+            if (jumpSpeedPermille < 1 || jumpSpeedPermille > MaximumJumpSpeedPermille)
+                throw new ArgumentOutOfRangeException(nameof(jumpSpeedPermille));
             MovementSpeedPermille = movementSpeedPermille;
+            JumpSpeedPermille = jumpSpeedPermille;
         }
 
         public int MovementSpeedPermille { get; }
-        public static PlayerTickModifiers FullSpeed => new(PermilleScale);
+
+        /// <summary>
+        /// Amplification de l'impulsion de saut décidée par la règle de jeu
+        /// (chaussures-ressort…) : 1000 ‰ = saut normal.
+        /// </summary>
+        public int JumpSpeedPermille { get; }
+        public static PlayerTickModifiers FullSpeed => new(PermilleScale, PermilleScale);
         public bool Equals(PlayerTickModifiers other) =>
-            MovementSpeedPermille == other.MovementSpeedPermille;
+            MovementSpeedPermille == other.MovementSpeedPermille &&
+            JumpSpeedPermille == other.JumpSpeedPermille;
         public override bool Equals(object value) =>
             value is PlayerTickModifiers other && Equals(other);
-        public override int GetHashCode() => MovementSpeedPermille;
+        public override int GetHashCode() =>
+            HashCode.Combine(MovementSpeedPermille, JumpSpeedPermille);
     }
 
     public readonly struct PlayerTickForces : IEquatable<PlayerTickForces>
@@ -357,7 +376,8 @@ namespace NotThatWay.Game.PlayerSimulation
             var verticalVelocity = dived
                 ? _config.DiveUpwardSpeedMetersPerSecond
                 : jumped
-                    ? _config.JumpSpeedMetersPerSecond
+                    ? _config.JumpSpeedMetersPerSecond *
+                      modifiers.JumpSpeedPermille / PlayerTickModifiers.PermilleScale
                     : previous.VerticalVelocity;
             verticalVelocity +=
                 _config.GravityMetersPerSecondSquared * _config.TickDurationSeconds;

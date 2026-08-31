@@ -65,6 +65,8 @@ namespace NotThatWay.Game.Sandbox
         private uint _observedKnockoutTicks;
         private uint _observedProtectionTicks;
         private int _observedActiveSlot;
+        private int _observedSpringShoeUses;
+        private bool _observedSpringShoesWorn;
         private uint _observedTick;
 
         public SandboxGameplayConfig Config => _config;
@@ -160,6 +162,25 @@ namespace NotThatWay.Game.Sandbox
         public SandboxCarryableKind ActiveKind => IsServerStarted
             ? _inventory.ActiveEntry?.Kind ?? SandboxCarryableKind.None
             : ObservedKindAt(_observedActiveSlot);
+        public int ObservedSpringShoeUses => IsServerStarted
+            ? SpringShoeUsesForSnapshot()
+            : _observedSpringShoeUses;
+
+        /// <summary>
+        /// Des chaussures-ressort CHAUSSÉES (clic droit, bottes en main) font du
+        /// prochain saut un bond amplifié — la main reste libre pour un autre
+        /// objet. Le propriétaire prédit avec le snapshot ; le serveur fait foi
+        /// et consomme les bonds.
+        /// </summary>
+        public bool WearsSpringShoes => IsServerStarted
+            ? TryFindWornShoesServer(out _, out _)
+            : _observedSpringShoesWorn;
+
+        public int JumpSpeedPermille =>
+            IsAlive && WearsSpringShoes
+                ? _config.SpringJumpPermille
+                : SandboxGameplayConfig.PermilleScale;
+
         public int MovementSpeedPermille => IsServerStarted
             ? _model.MovementPermille(_inventory.HasTrophy)
             : !IsAlive
@@ -199,7 +220,8 @@ namespace NotThatWay.Game.Sandbox
             CanSprintForNextCharge(),
             HasSlingshotInHand,
             MovementSpeedPermille,
-            _config.SlingshotAimMovementPermille);
+            _config.SlingshotAimMovementPermille,
+            JumpSpeedPermille);
 
         /// <summary>Direction du regard de l'hôte, pitch compris, pour un tir visé.</summary>
         private Vector3 AimDirection
@@ -290,7 +312,9 @@ namespace NotThatWay.Game.Sandbox
                 (byte)KindAt(2),
                 (byte)_inventory.ActiveSlot,
                 (byte)_ammoObjectIds.Count,
-                _chargeStartTick);
+                _chargeStartTick,
+                SpringShoeUsesForSnapshot(),
+                IsServerStarted && TryFindWornShoesServer(out _, out _));
         }
 
         protected override void TimeManager_OnPostTick()
@@ -377,10 +401,10 @@ namespace NotThatWay.Game.Sandbox
             switch (result.Action)
             {
                 case SlingshotActionKind.TakeOrLoad:
-                    if (HasSlingshotInHand)
+                    // Ramasser/dégainer d'abord ; si rien de tout ça et le
+                    // lance-pierre en main, le clic droit recharge la réserve.
+                    if (!TryTakeSlingshotFromServer() && HasSlingshotInHand)
                         TryLoadAmmoFromServer();
-                    else
-                        TryTakeSlingshotFromServer();
                     break;
                 case SlingshotActionKind.Drop:
                     if (HasSlingshotInHand)
@@ -392,34 +416,88 @@ namespace NotThatWay.Game.Sandbox
             }
         }
 
-        /// <summary>Prendre le lance-pierre : depuis la poche s'il y est, sinon au sol à portée.</summary>
+        /// <summary>
+        /// Clic droit « prendre » : d'abord n'importe quel objet au sol à portée
+        /// (un caillou file dans la réserve si on possède le lance-pierre,
+        /// sinon vers une case vide, sans changer la main), ensuite dégainer le
+        /// lance-pierre de la poche s'il n'est pas déjà en main. Le playtest a
+        /// montré qu'un outil en main ne doit jamais bloquer la collecte.
+        /// </summary>
         private bool TryTakeSlingshotFromServer()
         {
+            // Bottes en main : le clic droit les CHAUSSE (aux pieds, bonds
+            // armés). Geste explicite voulu — ramasser ne chausse jamais.
+            if (TryWearActiveShoesFromServer())
+                return true;
+
+            var ground = SandboxCarryable.FindNearestAvailableServer(
+                transform.position,
+                PickupRangeMeters);
+            // La réserve du lance-pierre n'occupe aucune case : elle se remplit
+            // même quand l'inventaire est plein, sinon un joueur équipé de trois
+            // objets ne peut plus jamais ramasser un caillou.
+            if (TryStoreRockAsAmmoServer(ground))
+                return true;
+            if (!_inventory.IsFull)
+            {
+                if (ground != null &&
+                    _inventory.TryAdd(
+                        new SandboxInventoryEntry(ground.ObjectId, ground.Kind),
+                        out var slot))
+                {
+                    ground.HoldFromServer(this, slot, slot == _inventory.ActiveSlot);
+                    RefreshHeldPresentations();
+                    PlayInventoryEvent(0);
+                    Debug.Log(
+                        $"[GAME-SANDBOX-ITEM] tool_pickup player={ObjectId} item={ground.ObjectId} " +
+                        $"kind={ground.Kind} slot={slot}.",
+                        this);
+                    return true;
+                }
+            }
+
             var pocketSlot = _inventory.IndexOfKind(SandboxCarryableKind.Slingshot);
-            if (pocketSlot >= 0)
+            if (pocketSlot >= 0 && pocketSlot != _inventory.ActiveSlot)
             {
                 _inventory.Select(pocketSlot);
                 RefreshHeldPresentations();
-                Debug.Log($"[GAME-SANDBOX-ITEM] slingshot_drawn player={ObjectId} slot={pocketSlot}.", this);
+                Debug.Log(
+                    $"[GAME-SANDBOX-ITEM] slingshot_drawn player={ObjectId} slot={pocketSlot}.",
+                    this);
                 return true;
             }
 
-            if (_inventory.IsFull)
+            Debug.Log(
+                $"[GAME-SANDBOX-ITEM] tool_pickup_rejected player={ObjectId} " +
+                $"position={transform.position} " +
+                $"inventory={_inventory.Count}/{SandboxInventoryModel.Capacity}.",
+                this);
+            return false;
+        }
+
+        /// <summary>
+        /// Posséder un lance-pierre change le destin des cailloux ramassés :
+        /// ils se cumulent dans sa réserve (jusqu'à la capacité) au lieu
+        /// d'occuper une case — la main ne change jamais. Réserve pleine ou
+        /// pas de lance-pierre : le caillou redevient un objet de case.
+        /// </summary>
+        private bool TryStoreRockAsAmmoServer(SandboxCarryable rock)
+        {
+            if (rock == null || rock.Kind != SandboxCarryableKind.Rock ||
+                !_inventory.HasKind(SandboxCarryableKind.Slingshot) ||
+                _ammoObjectIds.Count >= _config.SlingshotAmmoCapacity)
+            {
                 return false;
-            var ground = SandboxCarryable.FindNearestAvailableServer(
-                transform.position,
-                PickupRangeMeters,
-                SandboxCarryableKind.Slingshot);
-            if (ground == null)
-                return false;
-            var entry = new SandboxInventoryEntry(ground.ObjectId, ground.Kind);
-            if (!_inventory.TryAdd(entry, out var slot))
-                return false;
-            ground.HoldFromServer(this, slot, true);
+            }
+
+            _ammoObjectIds.Add(rock.ObjectId);
+            rock.StoreAsAmmoFromServer(this);
             RefreshHeldPresentations();
             PlayInventoryEvent(0);
+            PublishSnapshot(false);
             Debug.Log(
-                $"[GAME-SANDBOX-ITEM] slingshot_pickup player={ObjectId} item={ground.ObjectId} slot={slot}.",
+                $"[GAME-SANDBOX-ITEM] slingshot_load player={ObjectId} rock={rock.ObjectId} " +
+                $"ammo={_ammoObjectIds.Count}/{_config.SlingshotAmmoCapacity}.",
                 this);
             return true;
         }
@@ -534,6 +612,86 @@ namespace NotThatWay.Game.Sandbox
             PlayInventoryEvent(1);
             PublishSnapshot(false);
             return true;
+        }
+
+        /// <summary>
+        /// Appelé par le moteur au tick serveur où un bond amplifié a réellement
+        /// décollé. Décompte un bond sur la paire chaussée ; au dernier, l'objet
+        /// disparaît de l'inventaire et du monde jusqu'au reset de manche.
+        /// </summary>
+        public void ConsumeSpringJumpFromServer()
+        {
+            if (!IsServerStarted || !IsAlive)
+                return;
+            if (!TryFindWornShoesServer(out var entry, out var shoes) ||
+                !shoes.TryConsumeSpringUseFromServer(out var usesRemaining))
+            {
+                return;
+            }
+
+            if (usesRemaining == 0 &&
+                !_inventory.TryRemoveObject(entry.ObjectId, out _))
+            {
+                throw new InvalidOperationException(
+                    $"Les chaussures {entry.ObjectId} ont quitté l'inventaire pendant leur bond final.");
+            }
+            RefreshHeldPresentations();
+            PublishSnapshot(true);
+            Debug.Log(
+                $"[GAME-SANDBOX-SPRING] jump player={ObjectId} item={entry.ObjectId} " +
+                $"usesLeft={usesRemaining} consumed={usesRemaining == 0} tick={_model.State.Tick}.",
+                this);
+        }
+
+        private bool TryWearActiveShoesFromServer()
+        {
+            var entry = _inventory.ActiveEntry;
+            if (!entry.HasValue || entry.Value.Kind != SandboxCarryableKind.SpringShoes ||
+                WearsSpringShoes ||
+                !SandboxCarryable.TryFindServer(entry.Value.ObjectId, out var shoes) ||
+                !shoes.TryWearFromServer())
+            {
+                return false;
+            }
+
+            PublishSnapshot(true);
+            return true;
+        }
+
+        private bool TryFindWornShoesServer(
+            out SandboxInventoryEntry entry,
+            out SandboxCarryable shoes)
+        {
+            for (var slot = 0; slot < SandboxInventoryModel.Capacity; slot++)
+            {
+                var value = _inventory.EntryAt(slot);
+                if (!value.HasValue || value.Value.Kind != SandboxCarryableKind.SpringShoes)
+                    continue;
+                if (SandboxCarryable.TryFindServer(value.Value.ObjectId, out shoes) &&
+                    shoes.Worn)
+                {
+                    entry = value.Value;
+                    return true;
+                }
+            }
+            entry = default;
+            shoes = null;
+            return false;
+        }
+
+        private byte SpringShoeUsesForSnapshot()
+        {
+            if (TryFindWornShoesServer(out _, out var worn))
+                return (byte)Mathf.Clamp(worn.SpringUsesRemaining, 0, byte.MaxValue);
+            for (var slot = 0; slot < SandboxInventoryModel.Capacity; slot++)
+            {
+                var entry = _inventory.EntryAt(slot);
+                if (!entry.HasValue || entry.Value.Kind != SandboxCarryableKind.SpringShoes)
+                    continue;
+                if (SandboxCarryable.TryFindServer(entry.Value.ObjectId, out var shoes))
+                    return (byte)Mathf.Clamp(shoes.SpringUsesRemaining, 0, byte.MaxValue);
+            }
+            return 0;
         }
 
         public bool TryConsumePushEnergy(uint commandTick)
@@ -683,10 +841,14 @@ namespace NotThatWay.Game.Sandbox
 
             if (command.Has(PlayerCommandButtons.DropPressed))
                 DropActiveFromServer();
+            // E ramasse TOUJOURS : un objet en main ne bloque jamais la
+            // collecte. La recharge n'est qu'un repli quand le ramassage n'a
+            // rien donné (inventaire plein, par exemple).
             if (command.Has(PlayerCommandButtons.InteractPressed) &&
-                !(HasSlingshotInHand && TryLoadAmmoFromServer()))
+                !TryPickupNearestFromServer() &&
+                HasSlingshotInHand)
             {
-                TryPickupNearestFromServer();
+                TryLoadAmmoFromServer();
             }
 
             RefreshHeldPresentations();
@@ -694,8 +856,6 @@ namespace NotThatWay.Game.Sandbox
 
         private bool TryPickupNearestFromServer()
         {
-            if (_inventory.IsFull)
-                return false;
             var carryable = SandboxCarryable.FindNearestAvailableServer(
                 transform.position,
                 PickupRangeMeters);
@@ -714,11 +874,16 @@ namespace NotThatWay.Game.Sandbox
                     this);
                 return false;
             }
+            // Même règle qu'au clic droit : la réserve d'abord, les cases ensuite.
+            if (TryStoreRockAsAmmoServer(carryable))
+                return true;
+            if (_inventory.IsFull)
+                return false;
             var entry = new SandboxInventoryEntry(carryable.ObjectId, carryable.Kind);
             if (!_inventory.TryAdd(entry, out var slot))
                 return false;
 
-            carryable.HoldFromServer(this, slot, true);
+            carryable.HoldFromServer(this, slot, slot == _inventory.ActiveSlot);
             PlayInventoryEvent(0);
             Debug.Log(
                 $"[GAME-SANDBOX-ITEM] pickup player={ObjectId} item={carryable.ObjectId} " +
@@ -872,7 +1037,10 @@ namespace NotThatWay.Game.Sandbox
             var value = _inventory.ActiveSlot;
             for (var slot = 0; slot < SandboxInventoryModel.Capacity; slot++)
                 value = value * 31 + (int)KindAt(slot);
-            return (value * 31 + _ammoObjectIds.Count) * 31 + (int)(_chargeStartTick & 0x7FFFFFFF);
+            return (((value * 31 + _ammoObjectIds.Count) * 31 +
+                     (int)(_chargeStartTick & 0x7FFFFFFF)) * 31 +
+                    SpringShoeUsesForSnapshot()) * 2 +
+                   (TryFindWornShoesServer(out _, out _) ? 1 : 0);
         }
 
         private static bool PublicStateChanged(
@@ -913,6 +1081,8 @@ namespace NotThatWay.Game.Sandbox
                 (byte)_inventory.ActiveSlot,
                 (byte)_ammoObjectIds.Count,
                 _chargeStartTick,
+                SpringShoeUsesForSnapshot(),
+                TryFindWornShoesServer(out _, out _),
                 Channel.Reliable);
             ApplySnapshot(
                 state.Tick,
@@ -926,7 +1096,9 @@ namespace NotThatWay.Game.Sandbox
                 KindAt(2),
                 _inventory.ActiveSlot,
                 _ammoObjectIds.Count,
-                _chargeStartTick);
+                _chargeStartTick,
+                SpringShoeUsesForSnapshot(),
+                TryFindWornShoesServer(out _, out _));
         }
 
         [ObserversRpc(BufferLast = true, ExcludeServer = true)]
@@ -943,6 +1115,8 @@ namespace NotThatWay.Game.Sandbox
             byte activeSlot,
             byte ammo,
             uint chargeStartTick,
+            byte springShoeUses,
+            bool springShoesWorn,
             Channel channel = Channel.Reliable)
         {
             ApplySnapshot(
@@ -957,7 +1131,9 @@ namespace NotThatWay.Game.Sandbox
                 (SandboxCarryableKind)slot2,
                 activeSlot,
                 ammo,
-                chargeStartTick);
+                chargeStartTick,
+                springShoeUses,
+                springShoesWorn);
         }
 
         [TargetRpc]
@@ -975,6 +1151,8 @@ namespace NotThatWay.Game.Sandbox
             byte activeSlot,
             byte ammo,
             uint chargeStartTick,
+            byte springShoeUses,
+            bool springShoesWorn,
             Channel channel = Channel.Reliable)
         {
             ApplySnapshot(
@@ -989,7 +1167,9 @@ namespace NotThatWay.Game.Sandbox
                 (SandboxCarryableKind)slot2,
                 activeSlot,
                 ammo,
-                chargeStartTick);
+                chargeStartTick,
+                springShoeUses,
+                springShoesWorn);
         }
 
         private void ApplySnapshot(
@@ -1004,7 +1184,9 @@ namespace NotThatWay.Game.Sandbox
             SandboxCarryableKind slot2,
             int activeSlot,
             int ammo,
-            uint chargeStartTick)
+            uint chargeStartTick,
+            int springShoeUses,
+            bool springShoesWorn)
         {
             if (_observedTick != 0u && TickMath.IsOlder(tick, _observedTick))
                 return;
@@ -1020,6 +1202,8 @@ namespace NotThatWay.Game.Sandbox
             _observedActiveSlot = Mathf.Clamp(activeSlot, 0, SandboxInventoryModel.Capacity - 1);
             _observedAmmo = Mathf.Clamp(ammo, 0, _config.SlingshotAmmoCapacity);
             _observedChargeStartTick = chargeStartTick;
+            _observedSpringShoeUses = Mathf.Clamp(springShoeUses, 0, byte.MaxValue);
+            _observedSpringShoesWorn = springShoesWorn;
             if (_animator != null && _animator.runtimeAnimatorController != null)
             {
                 _animator.SetBool(KnockedOutBool, lifeState == SandboxLifeState.KnockedOut);
@@ -1091,7 +1275,7 @@ namespace NotThatWay.Game.Sandbox
                 return;
             const float width = 330f;
             const float barHeight = 20f;
-            var panel = new Rect(16f, 16f, width, 160f);
+            var panel = new Rect(16f, 16f, width, 178f);
             GUILayout.BeginArea(panel, GUI.skin.box);
             GUILayout.Label(ObservedLifeState == SandboxLifeState.KnockedOut
                 ? ObservedKnockoutTicksRemaining > 0u
@@ -1111,6 +1295,12 @@ namespace NotThatWay.Game.Sandbox
             GUILayout.EndHorizontal();
             if (HasTrophy)
                 GUILayout.Label("TROPHEE — vitesse 75 % · sprint energie x5");
+            if (ObservedSpringShoeUses > 0)
+            {
+                GUILayout.Label(WearsSpringShoes
+                    ? $"RESSORT aux pieds — {ObservedSpringShoeUses} bond(s) : Espace passe un mur"
+                    : $"BOTTES rangées ({ObservedSpringShoeUses} bond(s)) — clic droit, bottes en main, pour les chausser");
+            }
             GUILayout.EndArea();
         }
 
@@ -1137,6 +1327,9 @@ namespace NotThatWay.Game.Sandbox
         {
             SandboxCarryableKind.Rock => "CAILLOU",
             SandboxCarryableKind.Trophy => "TROPHEE",
+            SandboxCarryableKind.Slingshot => "LANCE-P.",
+            SandboxCarryableKind.OilCan => "BIDON",
+            SandboxCarryableKind.SpringShoes => "RESSORT",
             _ => "VIDE"
         };
     }

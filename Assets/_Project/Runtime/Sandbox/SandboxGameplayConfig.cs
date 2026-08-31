@@ -45,7 +45,9 @@ namespace NotThatWay.Game.Sandbox
             int slingshotAimMovementPermille,
             int oilPourEnergyCost,
             uint oilSlipKnockdownTicks,
-            uint oilSlipGraceTicks)
+            uint oilSlipGraceTicks,
+            int springShoeUses,
+            int springJumpPermille)
         {
             TickRate = tickRate;
             MaximumHealth = maximumHealth;
@@ -80,6 +82,8 @@ namespace NotThatWay.Game.Sandbox
             OilPourEnergyCost = oilPourEnergyCost;
             OilSlipKnockdownTicks = oilSlipKnockdownTicks;
             OilSlipGraceTicks = oilSlipGraceTicks;
+            SpringShoeUses = springShoeUses;
+            SpringJumpPermille = springJumpPermille;
             Validate();
         }
 
@@ -142,6 +146,16 @@ namespace NotThatWay.Game.Sandbox
         public uint OilSlipGraceTicks { get; }
 
         /// <summary>
+        /// Chaussures-ressort : chaussées, le saut devient un bond amplifié à
+        /// <see cref="SpringJumpPermille"/> ‰ de l'impulsion normale — de quoi
+        /// passer un mur de 3 m. Les bonds suivent l'objet : après
+        /// <see cref="SpringShoeUses"/> bonds, il disparaît jusqu'au reset de
+        /// manche.
+        /// </summary>
+        public int SpringShoeUses { get; }
+        public int SpringJumpPermille { get; }
+
+        /// <summary>
         /// Baseline acceptée pour le sandbox à 60 Hz : valeurs publiques 0–100,
         /// saut et déplacement restant dans PlayerSimulationConfig.
         /// </summary>
@@ -178,7 +192,9 @@ namespace NotThatWay.Game.Sandbox
             650,
             8,
             45u,
-            120u);
+            120u,
+            2,
+            2200);
 
         public void Validate()
         {
@@ -237,6 +253,13 @@ namespace NotThatWay.Game.Sandbox
             EnsureRange(OilPourEnergyCost, 1, MaximumEnergy, nameof(OilPourEnergyCost));
             EnsurePositive(OilSlipKnockdownTicks, nameof(OilSlipKnockdownTicks));
             EnsurePositive(OilSlipGraceTicks, nameof(OilSlipGraceTicks));
+            EnsureRange(SpringShoeUses, 1, 64, nameof(SpringShoeUses));
+            if (SpringJumpPermille <= PermilleScale || SpringJumpPermille > 5000)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(SpringJumpPermille),
+                    "Un bond de ressort amplifie forcément le saut normal, dans la borne du modèle.");
+            }
         }
 
         public bool Equals(SandboxGameplayConfig other) =>
@@ -272,7 +295,9 @@ namespace NotThatWay.Game.Sandbox
             SlingshotAimMovementPermille == other.SlingshotAimMovementPermille &&
             OilPourEnergyCost == other.OilPourEnergyCost &&
             OilSlipKnockdownTicks == other.OilSlipKnockdownTicks &&
-            OilSlipGraceTicks == other.OilSlipGraceTicks;
+            OilSlipGraceTicks == other.OilSlipGraceTicks &&
+            SpringShoeUses == other.SpringShoeUses &&
+            SpringJumpPermille == other.SpringJumpPermille;
 
         public override bool Equals(object value) =>
             value is SandboxGameplayConfig other && Equals(other);
@@ -313,6 +338,8 @@ namespace NotThatWay.Game.Sandbox
             hash.Add(OilPourEnergyCost);
             hash.Add(OilSlipKnockdownTicks);
             hash.Add(OilSlipGraceTicks);
+            hash.Add(SpringShoeUses);
+            hash.Add(SpringJumpPermille);
             return hash.ToHashCode();
         }
 
