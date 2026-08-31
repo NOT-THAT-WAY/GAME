@@ -236,8 +236,18 @@ namespace NotThatWay.Game
             var authenticated = client && _networkManager.ClientManager.Connection.IsAuthenticated;
             if (_collapseWhenAuthenticated && authenticated && !_networkPanelExpanded)
             {
+                // Replié, ce rappel n'est plus qu'un bouton de réouverture : il
+                // laisse le coin haut-gauche au HUD du joueur (vie, énergie,
+                // cases), qu'il recouvrait entièrement au même Rect(16, 16).
+                // Déplié, il redevient un panneau d'outil et masque le HUD, ce
+                // qui est le comportement voulu tant qu'on le regarde.
+                const float collapsedHeight = 72f;
                 GUILayout.BeginArea(
-                    new Rect(16f, 16f, Mathf.Min(250f, Screen.width - 32f), 72f),
+                    new Rect(
+                        16f,
+                        Screen.height - collapsedHeight - 16f,
+                        Mathf.Min(250f, Screen.width - 32f),
+                        collapsedHeight),
                     GUI.skin.box);
                 GUILayout.Label("M1 — réseau connecté");
                 if (GUILayout.Button("RÉSEAU"))

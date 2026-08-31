@@ -20,9 +20,6 @@ namespace NotThatWay.Game
         private const float ProneTiltDegrees = 90f;
         private const float TiltLerpPerSecond = 14f;
         private const float CrawlEyeHeightMeters = 0.55f;
-        // Le pivot de bascule est aux pieds : à plat, le bassin descend vers le sol
-        // pour que le corps ne flotte pas à hauteur de hanches.
-        private const float ProneDropMeters = 0.12f;
 
         [SerializeField] private Transform _body;
         [SerializeField] private Transform _cameraPivot;
@@ -35,6 +32,11 @@ namespace NotThatWay.Game
         private float _tilt;
         private uint _recoveryTotalTicks;
 
+        // Géométrie du modèle, mesurée une fois : hauteur du point le plus bas au
+        // repos (les pieds) et portée avant maximale. Voir ProneLiftMeters.
+        private float _restLowestMeters;
+        private float _forwardReachMeters;
+
         private void Awake()
         {
             _motor = GetComponent<PredictedPlayerMotor>();
@@ -43,6 +45,7 @@ namespace NotThatWay.Game
             {
                 _baseRotation = _body.localRotation;
                 _basePosition = _body.localPosition;
+                MeasureBody();
             }
             if (_cameraPivot != null)
                 _cameraRestPosition = _cameraPivot.localPosition;
@@ -88,7 +91,10 @@ namespace NotThatWay.Game
             _tilt = Mathf.Lerp(_tilt, target, 1f - Mathf.Exp(-TiltLerpPerSecond * Time.deltaTime));
             var flatness = Mathf.InverseLerp(AirborneTiltDegrees, ProneTiltDegrees, _tilt);
             _body.localRotation = Quaternion.Euler(_tilt, 0f, 0f) * _baseRotation;
-            _body.localPosition = _basePosition + Vector3.down * (ProneDropMeters * flatness);
+            _body.localPosition = _basePosition + Vector3.up * ProneLiftMeters(
+                _tilt,
+                _restLowestMeters,
+                _forwardReachMeters);
 
             // Les yeux suivent la posture : à plat ventre, la caméra descend —
             // translation verticale seulement, jamais de rotation.
@@ -103,6 +109,87 @@ namespace NotThatWay.Game
                     eye,
                     _cameraRestPosition.z);
             }
+        }
+
+        /// <summary>
+        /// Le pivot de bascule est aux pieds : après une rotation de θ autour de
+        /// X, un point (y, z) du modèle arrive à <c>y·cos θ − z·sin θ</c>. Le
+        /// point le plus bas devient donc <c>ymin·cos θ − zmax·sin θ</c> — à plat
+        /// ventre (θ = 90°), toute la moitié avant du corps passe SOUS le sol.
+        /// On remonte exactement de ce que la bascule a fait descendre : debout
+        /// (θ = 0) le décalage est nul et la pose de repos ne bouge pas, à plat
+        /// le corps repose sur le sol au lieu d'y être enfoncé.
+        ///
+        /// Strictement cosmétique. La forme physique du joueur reste la capsule
+        /// du <c>CharacterController</c>, dont la hauteur ne vient que de l'état
+        /// simulé du tick (ADR 0004) et que ce composant ne touche jamais.
+        /// </summary>
+        public static float ProneLiftMeters(
+            float tiltDegrees,
+            float restLowestMeters,
+            float forwardReachMeters)
+        {
+            var tilt = tiltDegrees * Mathf.Deg2Rad;
+            var lowest = restLowestMeters * Mathf.Cos(tilt) -
+                         forwardReachMeters * Mathf.Sin(tilt);
+            return restLowestMeters - lowest;
+        }
+
+        /// <summary>
+        /// Mesure le modèle au lieu de coder sa silhouette en dur : un export
+        /// plus grand ou plus rond corrige la posture tout seul. Les bornes
+        /// viennent des maillages, dans le repère du corps — pas d'une boîte
+        /// englobante monde, qui dépendrait du lacet du joueur à l'instant du
+        /// réveil.
+        /// </summary>
+        private void MeasureBody()
+        {
+            var lowest = float.PositiveInfinity;
+            var forward = float.NegativeInfinity;
+            var toBody = _body.worldToLocalMatrix;
+            foreach (var renderer in _body.GetComponentsInChildren<Renderer>(true))
+            {
+                var mesh = renderer is SkinnedMeshRenderer skinned
+                    ? skinned.sharedMesh
+                    : renderer.TryGetComponent<MeshFilter>(out var filter)
+                        ? filter.sharedMesh
+                        : null;
+                if (mesh == null)
+                    continue;
+
+                var matrix = toBody * renderer.transform.localToWorldMatrix;
+                var bounds = mesh.bounds;
+                for (var corner = 0; corner < 8; corner++)
+                {
+                    var sign = new Vector3(
+                        (corner & 1) == 0 ? -1f : 1f,
+                        (corner & 2) == 0 ? -1f : 1f,
+                        (corner & 4) == 0 ? -1f : 1f);
+                    var point = _baseRotation * matrix.MultiplyPoint3x4(
+                        bounds.center + Vector3.Scale(bounds.extents, sign));
+                    lowest = Mathf.Min(lowest, point.y);
+                    forward = Mathf.Max(forward, point.z);
+                }
+            }
+
+            if (float.IsInfinity(lowest) || float.IsInfinity(forward))
+            {
+                // Aucun maillage mesurable : ne rien inventer, la posture garde
+                // simplement sa pose de repos.
+                _restLowestMeters = 0f;
+                _forwardReachMeters = 0f;
+                return;
+            }
+
+            _restLowestMeters = lowest;
+            _forwardReachMeters = Mathf.Max(0f, forward);
+            // Une ligne par objet joueur : un export au gabarit différent doit se
+            // lire dans le journal de banc, pas se découvrir à l'écran.
+            Debug.Log(
+                $"[GAME-POSTURE] body_measured restLowest={_restLowestMeters:F3} " +
+                $"forwardReach={_forwardReachMeters:F3} " +
+                $"proneLift={ProneLiftMeters(ProneTiltDegrees, _restLowestMeters, _forwardReachMeters):F3}.",
+                this);
         }
     }
 }
