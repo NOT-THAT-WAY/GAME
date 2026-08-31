@@ -377,10 +377,10 @@ namespace NotThatWay.Game.Sandbox
             switch (result.Action)
             {
                 case SlingshotActionKind.TakeOrLoad:
-                    if (HasSlingshotInHand)
+                    // Ramasser/dégainer d'abord ; si rien de tout ça et le
+                    // lance-pierre en main, le clic droit recharge la réserve.
+                    if (!TryTakeSlingshotFromServer() && HasSlingshotInHand)
                         TryLoadAmmoFromServer();
-                    else
-                        TryTakeSlingshotFromServer();
                     break;
                 case SlingshotActionKind.Drop:
                     if (HasSlingshotInHand)
@@ -392,34 +392,80 @@ namespace NotThatWay.Game.Sandbox
             }
         }
 
-        /// <summary>Prendre le lance-pierre : depuis la poche s'il y est, sinon au sol à portée.</summary>
+        /// <summary>
+        /// Clic droit « prendre » : d'abord n'importe quel objet au sol à portée
+        /// (un caillou file dans la réserve si on possède le lance-pierre,
+        /// sinon vers une case vide, sans changer la main), ensuite dégainer le
+        /// lance-pierre de la poche s'il n'est pas déjà en main. Le playtest a
+        /// montré qu'un outil en main ne doit jamais bloquer la collecte.
+        /// </summary>
         private bool TryTakeSlingshotFromServer()
         {
+            if (!_inventory.IsFull)
+            {
+                var ground = SandboxCarryable.FindNearestAvailableServer(
+                    transform.position,
+                    PickupRangeMeters);
+                if (TryStoreRockAsAmmoServer(ground))
+                    return true;
+                if (ground != null &&
+                    _inventory.TryAdd(
+                        new SandboxInventoryEntry(ground.ObjectId, ground.Kind),
+                        out var slot))
+                {
+                    ground.HoldFromServer(this, slot, slot == _inventory.ActiveSlot);
+                    RefreshHeldPresentations();
+                    PlayInventoryEvent(0);
+                    Debug.Log(
+                        $"[GAME-SANDBOX-ITEM] tool_pickup player={ObjectId} item={ground.ObjectId} " +
+                        $"kind={ground.Kind} slot={slot}.",
+                        this);
+                    return true;
+                }
+            }
+
             var pocketSlot = _inventory.IndexOfKind(SandboxCarryableKind.Slingshot);
-            if (pocketSlot >= 0)
+            if (pocketSlot >= 0 && pocketSlot != _inventory.ActiveSlot)
             {
                 _inventory.Select(pocketSlot);
                 RefreshHeldPresentations();
-                Debug.Log($"[GAME-SANDBOX-ITEM] slingshot_drawn player={ObjectId} slot={pocketSlot}.", this);
+                Debug.Log(
+                    $"[GAME-SANDBOX-ITEM] slingshot_drawn player={ObjectId} slot={pocketSlot}.",
+                    this);
                 return true;
             }
 
-            if (_inventory.IsFull)
+            Debug.Log(
+                $"[GAME-SANDBOX-ITEM] tool_pickup_rejected player={ObjectId} " +
+                $"position={transform.position} " +
+                $"inventory={_inventory.Count}/{SandboxInventoryModel.Capacity}.",
+                this);
+            return false;
+        }
+
+        /// <summary>
+        /// Posséder un lance-pierre change le destin des cailloux ramassés :
+        /// ils se cumulent dans sa réserve (jusqu'à la capacité) au lieu
+        /// d'occuper une case — la main ne change jamais. Réserve pleine ou
+        /// pas de lance-pierre : le caillou redevient un objet de case.
+        /// </summary>
+        private bool TryStoreRockAsAmmoServer(SandboxCarryable rock)
+        {
+            if (rock == null || rock.Kind != SandboxCarryableKind.Rock ||
+                !_inventory.HasKind(SandboxCarryableKind.Slingshot) ||
+                _ammoObjectIds.Count >= _config.SlingshotAmmoCapacity)
+            {
                 return false;
-            var ground = SandboxCarryable.FindNearestAvailableServer(
-                transform.position,
-                PickupRangeMeters,
-                SandboxCarryableKind.Slingshot);
-            if (ground == null)
-                return false;
-            var entry = new SandboxInventoryEntry(ground.ObjectId, ground.Kind);
-            if (!_inventory.TryAdd(entry, out var slot))
-                return false;
-            ground.HoldFromServer(this, slot, true);
+            }
+
+            _ammoObjectIds.Add(rock.ObjectId);
+            rock.StoreAsAmmoFromServer(this);
             RefreshHeldPresentations();
             PlayInventoryEvent(0);
+            PublishSnapshot(false);
             Debug.Log(
-                $"[GAME-SANDBOX-ITEM] slingshot_pickup player={ObjectId} item={ground.ObjectId} slot={slot}.",
+                $"[GAME-SANDBOX-ITEM] slingshot_load player={ObjectId} rock={rock.ObjectId} " +
+                $"ammo={_ammoObjectIds.Count}/{_config.SlingshotAmmoCapacity}.",
                 this);
             return true;
         }
@@ -683,10 +729,14 @@ namespace NotThatWay.Game.Sandbox
 
             if (command.Has(PlayerCommandButtons.DropPressed))
                 DropActiveFromServer();
+            // E ramasse TOUJOURS : un objet en main ne bloque jamais la
+            // collecte. La recharge n'est qu'un repli quand le ramassage n'a
+            // rien donné (inventaire plein, par exemple).
             if (command.Has(PlayerCommandButtons.InteractPressed) &&
-                !(HasSlingshotInHand && TryLoadAmmoFromServer()))
+                !TryPickupNearestFromServer() &&
+                HasSlingshotInHand)
             {
-                TryPickupNearestFromServer();
+                TryLoadAmmoFromServer();
             }
 
             RefreshHeldPresentations();
@@ -714,11 +764,13 @@ namespace NotThatWay.Game.Sandbox
                     this);
                 return false;
             }
+            if (TryStoreRockAsAmmoServer(carryable))
+                return true;
             var entry = new SandboxInventoryEntry(carryable.ObjectId, carryable.Kind);
             if (!_inventory.TryAdd(entry, out var slot))
                 return false;
 
-            carryable.HoldFromServer(this, slot, true);
+            carryable.HoldFromServer(this, slot, slot == _inventory.ActiveSlot);
             PlayInventoryEvent(0);
             Debug.Log(
                 $"[GAME-SANDBOX-ITEM] pickup player={ObjectId} item={carryable.ObjectId} " +
@@ -1137,6 +1189,8 @@ namespace NotThatWay.Game.Sandbox
         {
             SandboxCarryableKind.Rock => "CAILLOU",
             SandboxCarryableKind.Trophy => "TROPHEE",
+            SandboxCarryableKind.Slingshot => "LANCE-P.",
+            SandboxCarryableKind.OilCan => "BIDON",
             _ => "VIDE"
         };
     }
