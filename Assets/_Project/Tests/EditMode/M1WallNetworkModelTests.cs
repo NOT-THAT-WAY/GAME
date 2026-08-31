@@ -266,6 +266,49 @@ namespace NotThatWay.Game.Tests.EditMode
         }
 
         [Test]
+        public void AutomatedRun_IsRecognisedSoTheBenchCanEmptyItself()
+        {
+            // Un plan armé : le bot d'entraînement doit se taire, sinon il
+            // frappe, pousse les murs et relance des manches pendant la mesure.
+            Assert.That(
+                M1AutomatedTestPlan.IsAutomatedRun(new[]
+                {
+                    "GAME",
+                    "--m1-test-name=occupancy-host",
+                    "--m1-auto-quit-seconds=19"
+                }),
+                Is.True);
+
+            // Banc humain et captures de contrôle : aucun plan, donc bot présent.
+            Assert.That(
+                M1AutomatedTestPlan.IsAutomatedRun(new[]
+                {
+                    "GAME",
+                    "--game-role=host",
+                    "--game-port=7770"
+                }),
+                Is.False);
+
+            // Un nom de test sans durée d'arrêt ne suffit pas : le plan n'est
+            // pas armé, rien n'est mesuré, le banc reste complet.
+            Assert.That(
+                M1AutomatedTestPlan.IsAutomatedRun(new[] { "GAME", "--m1-test-name=rotation" }),
+                Is.False);
+
+            // Un plan illisible est refusé plus tard par les diagnostics, qui
+            // font quitter le processus ; ici il ne doit pas vider le banc.
+            Assert.That(
+                M1AutomatedTestPlan.IsAutomatedRun(new[]
+                {
+                    "GAME",
+                    "--m1-auto-quit-seconds=pas-un-nombre"
+                }),
+                Is.False);
+
+            Assert.That(M1AutomatedTestPlan.IsAutomatedRun(null), Is.False);
+        }
+
+        [Test]
         public void AutomatedPlan_ParsesAndProducesBinaryNetworkVerdict()
         {
             Assert.That(
