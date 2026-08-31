@@ -8,7 +8,8 @@ namespace NotThatWay.Game.Sandbox
         Rock = 1,
         Trophy = 2,
         Slingshot = 3,
-        OilCan = 4
+        OilCan = 4,
+        SpringShoes = 5
     }
 
     public enum SandboxCarryablePhase : byte
@@ -16,7 +17,13 @@ namespace NotThatWay.Game.Sandbox
         World = 0,
         Held = 1,
         Thrown = 2,
-        Deposited = 3
+        Deposited = 3,
+
+        /// <summary>
+        /// Objet épuisé (chaussures-ressort au dernier bond) : invisible,
+        /// incollectable et hors du monde jusqu'au reset de manche.
+        /// </summary>
+        Consumed = 4
     }
 
     public readonly struct SandboxInventoryEntry : IEquatable<SandboxInventoryEntry>

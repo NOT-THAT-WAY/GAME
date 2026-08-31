@@ -16,7 +16,9 @@ namespace NotThatWay.Game.Sandbox
         [SerializeField] private Vector3[] _rockSpawnPositions = System.Array.Empty<Vector3>();
         [SerializeField] private Vector3[] _slingshotSpawnPositions = System.Array.Empty<Vector3>();
         [SerializeField] private NetworkObject _oilCanPrefab;
+        [SerializeField] private NetworkObject _springShoesPrefab;
         [SerializeField] private Vector3[] _oilCanSpawnPositions = System.Array.Empty<Vector3>();
+        [SerializeField] private Vector3[] _springShoesSpawnPositions = System.Array.Empty<Vector3>();
         [SerializeField] private Vector3 _trophySpawnPosition;
 
         private readonly List<NetworkObject> _spawned = new();
@@ -51,10 +53,11 @@ namespace NotThatWay.Game.Sandbox
             if (state.ConnectionState != LocalConnectionState.Started || _spawned.Count != 0)
                 return;
             if (_rockPrefab == null || _trophyPrefab == null ||
-                _slingshotPrefab == null || _oilCanPrefab == null)
+                _slingshotPrefab == null || _oilCanPrefab == null ||
+                _springShoesPrefab == null)
             {
                 Debug.LogError(
-                    "[GAME-SANDBOX] Prefabs de caillou/trophée/lance-pierre/bidon absents.",
+                    "[GAME-SANDBOX] Prefabs de caillou/trophée/lance-pierre/bidon/chaussures absents.",
                     this);
                 return;
             }
@@ -65,11 +68,19 @@ namespace NotThatWay.Game.Sandbox
                 Spawn(_slingshotPrefab, _slingshotSpawnPositions[index], $"slingshot-{index}");
             for (var index = 0; index < _oilCanSpawnPositions.Length; index++)
                 Spawn(_oilCanPrefab, _oilCanSpawnPositions[index], $"oilcan-{index}");
+            for (var index = 0; index < _springShoesSpawnPositions.Length; index++)
+            {
+                Spawn(
+                    _springShoesPrefab,
+                    _springShoesSpawnPositions[index],
+                    $"springshoes-{index}");
+            }
             Spawn(_trophyPrefab, _trophySpawnPosition, "trophy");
             Debug.Log(
                 $"[GAME-SANDBOX] objects_ready rocks={_rockSpawnPositions.Length} " +
                 $"slingshots={_slingshotSpawnPositions.Length} " +
-                $"oilcans={_oilCanSpawnPositions.Length} trophy=1.",
+                $"oilcans={_oilCanSpawnPositions.Length} " +
+                $"springShoes={_springShoesSpawnPositions.Length} trophy=1.",
                 this);
         }
 

@@ -56,6 +56,15 @@ Lorsque le saut est désactivé, l’appui est ignoré et les deux compteurs res
 `JumpHeld` (bouton tenu) vaut un appui à chaque tick : garder Espace enfoncé enchaîne les sauts dès
 que le sol revient, pendant un sprint comme à l'arrêt, sans dépendre d'un front par tick.
 
+Le modificateur de tick porte, à côté de la vitesse, une amplification de saut `JumpSpeedPermille`
+(1000 ‰ = saut normal, borne haute 5000 ‰) : la règle de jeu — les chaussures-ressort du sandbox —
+transforme un saut en bond sans toucher à la configuration. L'impulsion devient
+`JumpSpeed × permille / 1000` au tick du décollage ; fenêtres coyote/buffer, gravité, plafond et
+validation d'état restent inchangés. Le décompte des bonds n'appartient pas au modèle pur : il est
+décidé par l'hôte au tick autoritaire où l'événement `Jumped` accompagne un modificateur amplifié,
+et la valeur du tick est capturée dans le contexte de commande pour que les rejeux de
+réconciliation revoient l'amplification d'origine.
+
 ## Plongeon avant
 
 `DivePressed` au sol, **sprint tenu et axe avant poussé**, hors relevé et hors attente, lance le
